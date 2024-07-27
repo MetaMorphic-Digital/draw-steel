@@ -1,0 +1,42 @@
+{{! Sheet Header }}
+<header class='sheet-header'>
+  <img
+    class='profile-img'
+    src='{{actor.img}}'
+    data-edit='img'
+    data-action='onEditImage'
+    title='{{actor.name}}'
+    height='100'
+    width='100'
+  />
+  <div class='header-fields'>
+    <div class='document-name'>
+      {{formInput
+        fields.name
+        name="name"
+        value=actor.name
+        placeholder=(localize 'Name')
+      }}
+    </div>
+    <div class='resources grid grid-3col'>
+      <div class='resource flex-group-center'>
+        <label for='system.health.value' class='resource-label'>
+          {{localize 'DRAW_STEEL.Actor.base.FIELDS.stamina.value.label'}}
+        </label>
+        <div class='resource-content flexrow flex-center flex-between'>
+          {{formInput
+            systemFields.stamina.fields.value
+            name="system.stamina.value"
+            value=system.stamina.value
+          }}
+          <span> / </span>
+          {{formInput
+            systemFields.stamina.fields.max
+            name="system.stamina.max"
+            value=system.stamina.max
+          }}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

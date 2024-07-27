@@ -1,0 +1,29 @@
+{{! Biography Tab }}
+<section class='tab biography {{tab.cssClass}}' data-group='primary' data-tab='biography'>
+  {{#if editable}}
+    {{formGroup
+      systemFields.biography.fields.value
+      enriched=enrichedBiography
+      value=system.biography.value
+      documentUUID=actor.uuid
+      name="system.biography.value"
+      collaborate="true"
+      toggled="true"
+      height='200'
+    }}
+    {{#if gm}}
+      {{formGroup
+        systemFields.biography.fields.gm
+        enriched=enrichedGMNotes
+        value=system.biography.value
+        documentUUID=actor.uuid
+        name="system.biography.gm"
+        toggled="true"
+        height='300'
+      }}
+    {{/if}}
+  {{else}}
+    {{{enrichedBiography}}}
+    {{#if gm}}{{{enrichedGMNotes}}}{{/if}}
+  {{/if}}
+</section>

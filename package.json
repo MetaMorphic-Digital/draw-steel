@@ -1,0 +1,23 @@
+{
+  "name": "draw-steel",
+  "version": "1.0.0",
+  "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
+  "scripts": {
+    "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
+    "watch:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
+    "lint:fix": "eslint --fix src/module/**",
+    "lint:ci": "eslint src/module/**"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Joseph Meehan",
+  "private": true,
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^1.0.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^8.57.0",
+    "rollup": "^4.9.1",
+    "sass": "^1.53.0"
+  }
+}

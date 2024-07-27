@@ -1,0 +1,142 @@
+{
+  "DRAW_STEEL": {
+    "SheetLabels": {
+      "Actor": "DrawSteel Actor Sheet",
+      "Item": "DrawSteel Item Sheet"
+    },
+    "Actor": {
+      "Tabs": {
+        "Biography": "Biography",
+        "Features": "Features",
+        "Stats": "Stats",
+        "Abilities": "Abilities",
+        "Effects": "Effects"
+      },
+      "base": {
+        "FIELDS": {
+          "biography": {
+            "value": {
+              "label": "Biography"
+            },
+            "gm": {
+              "label": "GM Notes"
+            }
+          },
+          "characteristics": {
+            "mgt": {
+              "value": {
+                "label": "MGT",
+                "hint": "Might"
+              }
+            },
+            "agl": {
+              "value": {
+                "label": "AGL",
+                "hint": "Agility"
+              }
+            },
+            "rea": {
+              "value": {
+                "label": "REA",
+                "hint": "Reason"
+              }
+            },
+            "inu": {
+              "value": {
+                "label": "INU",
+                "hint": "Intuition"
+              }
+            },
+            "prs": {
+              "value": {
+                "label": "PRS",
+                "hint": "Presence"
+              }
+            }
+          },
+          "stamina": {
+            "value": {
+              "label": "Stamina"
+            }
+          }
+        }
+      },
+      "Character": {
+        "FIELDS": {
+          "attributes.level.value": {
+            "label": "Level"
+          }
+        }
+      },
+      "NPC": {
+        "FIELDS": {
+          "cr": {
+            "label": "CR"
+          }
+        },
+        "xp": {
+          "label": "XP"
+        }
+      }
+    },
+    "Item": {
+      "Tabs": {
+        "Attributes": "Attributes",
+        "Description": "Description",
+        "Effects": "Effects"
+      },
+      "Ability": {
+        "FIELDS": {}
+      },
+      "Ancestry": {
+        "FIELDS": {}
+      },
+      "Career": {
+        "FIELDS": {}
+      },
+      "Class": {
+        "FIELDS": {}
+      },
+      "Complication": {
+        "FIELDS": {}
+      },
+      "Culture": {
+        "FIELDS": {}
+      },
+      "Equipment": {
+        "FIELDS": {
+        }
+      },
+      "Feature": {
+        "FIELDS": {}
+      },
+      "Kit": {
+        "FIELDS": {}
+      }
+    },
+    "Effect": {
+      "Source": "Source",
+      "Toggle": "Toggle Effect",
+      "Temporary": "Temporary Effects",
+      "Passive": "Passive Effects",
+      "Inactive": "Inactive Effects"
+    }
+  },
+  "TYPES": {
+    "Actor": {
+      "character": "Character",
+      "npc": "NPC"
+    },
+    "Item": {
+      "ability": "Ability",
+      "ancestry": "Ancestry",
+      "career": "Career",
+      "class": "Class",
+      "complication": "Complication",
+      "culture": "Culture",
+      "feature": "Feature",
+      "equipment": "Equipment",
+      "kit": "Kit"
+    }
+  }
+}

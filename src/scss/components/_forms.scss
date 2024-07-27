@@ -1,0 +1,50 @@
+.item-form {
+  font-family: $font-primary;
+}
+
+.sheet-header {
+  flex: 0 0 100px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+
+  .profile-img {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 10px;
+    border: none;
+  }
+
+  .header-fields {
+    flex: 1;
+  }
+}
+
+.sheet-tabs {
+  flex: 0;
+}
+
+.tab {
+  overflow: scroll;
+
+  .biography {
+    flex: 1;
+
+    .editor {
+      height: 100%;
+    }
+  }
+}
+
+.tox {
+  .tox-editor-container {
+    background: $c-white;
+  }
+
+  .tox-edit-area {
+    padding: 0 8px;
+  }
+}

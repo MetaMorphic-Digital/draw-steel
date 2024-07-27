@@ -1,0 +1,91 @@
+{
+  "id": "draw-steel",
+  "title": "Draw Steel",
+  "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
+  "authors": [{
+    "name": "Joseph M.",
+    "url": "https://joseph-meehan.carrd.co/",
+    "discord": "chaosos"
+  }],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["biography.value", "biography.gm"]
+      },
+      "npc": {
+        "htmlFields": ["biography.value", "biography.gm"]
+      }
+    },
+    "Item": {
+      "ability": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "ancestry": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "career": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "class": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "complication": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "culture": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "equipment": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "feature": {
+        "htmlFields": ["description.value", "description.gm"]
+      },
+      "kit": {
+        "htmlFields": ["description.value", "description.gm"]
+      }
+    }
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "lang", "templates"]
+    }
+  },
+  "url": "TODO",
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "bugs": "TODO",
+  "changelog": "CHANGELOG.md",
+  "media": [{
+    "type": "setup",
+    "url": "systems/draw-steel/assets/anvil-impact.png",
+    "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
+  }],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "12.328",
+    "verified": "12.330"
+  },
+  "esmodules": ["draw-steel.mjs"],
+  "styles": ["css/draw-steel.css"],
+  "languages": [{
+    "lang": "en",
+    "name": "English",
+    "path": "lang/en.json"
+  }],
+  "packs": [],
+  "packFolders": [],
+  "socket": false,
+  "manifest": "TODO",
+  "download": "AUTOMATIC",
+  "background": "systems/draw-steel/assets/anvil-impact.png",
+  "grid": {
+    "type": 1,
+    "distance": 5,
+    "units": "ft",
+    "diagonals": 0
+  },
+  "primaryTokenAttribute": "stamina",
+  "secondaryTokenAttribute": "hero.resources"
+}
