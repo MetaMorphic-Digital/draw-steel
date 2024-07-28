@@ -14,6 +14,27 @@ export default class CareerModel extends BaseItemModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
+    schema.skills = new fields.SchemaField({
+      options: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
+      count: new fields.NumberField(),
+      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.skillChoice}))
+    });
+
+    schema.languages = new fields.SchemaField({
+      options: new fields.SetField(new fields.StringField({choices: this.languageOptions})),
+      count: new fields.NumberField(),
+      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.languageChoice}))
+    });
+
+    schema.renown = new fields.NumberField();
+
+    schema.projectPoints = new fields.NumberField();
+
+    schema.title = new fields.SchemaField({
+      grant: new fields.DocumentUUIDField(),
+      link: new fields.DocumentUUIDField()
+    });
+
     return schema;
   }
 }
