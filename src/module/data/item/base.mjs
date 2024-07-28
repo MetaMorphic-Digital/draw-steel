@@ -9,6 +9,17 @@ export default class BaseItemModel extends foundry.abstract
       gm: new fields.HTMLField()
     });
 
+    schema.source = new fields.SchemaField({
+      book: new fields.StringField(),
+      page: new fields.StringField(),
+      license: new fields.StringField()
+    });
+
+    /**
+     * The Draw Steel ID, indicating a unique game rules element
+     */
+    schema._dsid = new fields.StringField();
+
     return schema;
   }
 
