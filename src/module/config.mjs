@@ -84,3 +84,82 @@ DRAW_STEEL.culture = {
     }
   }
 };
+
+DRAW_STEEL.kits = {
+  types: {
+    martial: {
+      label: "",
+      categories: new Set("armor", "weapon")
+    },
+    caster: {
+      label: "",
+      categories: new Set("armor", "implement")
+    }
+  },
+  armor: {
+    none: {
+      label: ""
+    },
+    light: {
+      label: ""
+    },
+    medium: {
+      label: ""
+    },
+    heavy: {
+      label: ""
+    },
+    shield: {
+      label: ""
+    }
+  },
+  weapon: {
+    none: {
+      label: ""
+    },
+    bow: {
+      label: ""
+    },
+    ensnaring: {
+      label: ""
+    },
+    heavy: {
+      label: ""
+    },
+    light: {
+      label: ""
+    },
+    medium: {
+      label: ""
+    },
+    polearm: {
+      label: ""
+    },
+    unarmed: {
+      label: ""
+    },
+    whip: {
+      label: ""
+    }
+  },
+  implement: {
+    bone: {
+      label: ""
+    },
+    crystal: {
+      label: ""
+    },
+    glass: {
+      label: ""
+    },
+    metal: {
+      label: ""
+    },
+    stone: {
+      label: ""
+    },
+    wood: {
+      label: ""
+    }
+  }
+};
