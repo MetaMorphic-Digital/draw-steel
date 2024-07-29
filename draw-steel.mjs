@@ -11,6 +11,9 @@ globalThis.ds = {
   dataModels
 };
 
+/** Special global access */
+globalThis.PowerRoll = helpers.rolls.PowerRoll;
+
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
@@ -43,6 +46,8 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SheetLabels.Item"
   });
+
+  CONFIG.Dice.rolls = Object.values(helpers.rolls);
 });
 
 /* -------------------------------------------- */
