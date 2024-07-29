@@ -1,13 +1,14 @@
-import BaseItemModel from "./base.mjs";
+import FeatureModel from "./feature.mjs";
 
-export default class EquipmentModel extends BaseItemModel {
+export default class TitleModel extends FeatureModel {
   static metadata = Object.freeze({
-    type: "equipment"
+    type: "title"
   });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Equipment"
+    "DRAW_STEEL.Item.Feature",
+    "DRAW_STEEL.Item.Title"
   ];
 
   static defineSchema() {
@@ -15,8 +16,5 @@ export default class EquipmentModel extends BaseItemModel {
     const schema = super.defineSchema();
 
     return schema;
-  }
-
-  prepareDerivedData() {
   }
 }
