@@ -85,14 +85,82 @@
         "Description": "Description",
         "Effects": "Effects"
       },
+      "base": {
+        "FIELDS": {
+          "description": {
+            "value": {
+              "label": "Description"
+            },
+            "gm": {
+              "label": "GM Notes"
+            }
+          },
+          "source": {
+            "book": {
+              "label": "Book"
+            },
+            "page": {
+              "label": "Page"
+            },
+            "license": {
+              "label": "License"
+            }
+          },
+          "_dsid": {
+            "label": "DSID",
+            "hint": "Draw Steel ID"
+          }
+        }
+      },
       "Ability": {
-        "FIELDS": {}
+        "FIELDS": {
+          "keywords": {
+            "label": "Keywords"
+          },
+          "type": {
+            "label": "Type"
+          },
+          "distance": {
+            "label": ""
+          },
+          "trigger": {
+            "label": "Trigger"
+          },
+          "target": {
+            "label": "Target"
+          },
+          "powerRoll": {
+            "label": "Power Roll"
+          },
+          "effect": {
+            "label": "Effect"
+          },
+          "spend": {
+            "label": "Spend"
+          }
+        }
       },
       "Ancestry": {
         "FIELDS": {}
       },
       "Career": {
-        "FIELDS": {}
+        "FIELDS": {
+          "skills": {
+            "label": "Skills"
+          },
+          "languages": {
+            "label": "Languages"
+          },
+          "renown": {
+            "label": "Renown"
+          },
+          "projectPoints": {
+            "label": "Project Points"
+          },
+          "title": {
+            "label": "Title"
+          }
+        }
       },
       "Class": {
         "FIELDS": {}
@@ -101,7 +169,40 @@
         "FIELDS": {}
       },
       "Culture": {
-        "FIELDS": {}
+        "FIELDS": {
+          "language": {
+            "label": "Language"
+          },
+          "environment": {
+            "label": "Environment"
+          },
+          "organization": {
+            "label": "Organization"
+          },
+          "upbringing": {
+            "label": "Upbringing"
+          }
+        },
+        "Environments": {
+          "Nomadic": "Nomadic",
+          "Rural": "Rural",
+          "Secluded": "Secluded",
+          "Urban": "Urban",
+          "Wilderness": "Wilderness"
+        },
+        "Organization": {
+          "Anarchic": "Anarchic",
+          "Bureaucratic": "Bureaucratic",
+          "Communal": "Communal"
+        },
+        "Upbringing": {
+          "Academic": "Academic",
+          "Creative": "Creative",
+          "Illegal": "Illegal",
+          "Labor": "Labor",
+          "Martial": "Martial",
+          "Noble": "Noble"
+        }
       },
       "Equipment": {
         "FIELDS": {
@@ -111,6 +212,55 @@
         "FIELDS": {}
       },
       "Kit": {
+        "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
+          "equipment": {
+            "label": "Kit Equipment",
+            "armor": {
+              "label": "Armor Category"
+            },
+            "weapon": {
+              "label": "Weapon Category"
+            },
+            "implement": {
+              "label": "Implement Material"
+            }
+          }
+        },
+        "Types": {
+          "Martial": "Martial",
+          "Caster": "Caster"
+        },
+        "Armor": {
+          "None": "None",
+          "Light": "Light",
+          "Medium": "Medium",
+          "Heavy": "Heavy",
+          "Shield": "Shield"
+        },
+        "Weapons": {
+          "None": "None",
+          "Bow": "Bow",
+          "Ensnaring": "Ensnaring",
+          "Heavy": "Heavy",
+          "Light": "Light",
+          "Medium": "Medium",
+          "Polearm": "Polearm",
+          "Unarmed": "Unarmed",
+          "Whip": "Whip"
+        },
+        "Implements": {
+          "Bone": "Bone",
+          "Crystal": "Crystal",
+          "Glass": "Glass",
+          "Metal": "Metal",
+          "Stone": "Stone",
+          "Wood": "Wood"
+        }
+      },
+      "Title": {
         "FIELDS": {}
       }
     },

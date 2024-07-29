@@ -17,7 +17,7 @@ export default class KitModel extends BaseItemModel {
 
     schema.type = new fields.StringField({choices: config.type, initial: "martial"});
 
-    schema.categories = new fields.SchemaField({
+    schema.equipment = new fields.SchemaField({
       armor: new fields.StringField({choices: config.armor}),
       weapon: new fields.StringField({choices: config.weapon}),
       implement: new fields.StringField({choices: config.implement})

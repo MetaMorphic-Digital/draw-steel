@@ -23,143 +23,147 @@ DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 DRAW_STEEL.culture = {
   environments: {
     nomadic: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Environments.Nomadic",
       skillOpts: new Set()
     },
     rural: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Environments.Rural",
       skillOpts: new Set()
     },
     secluded: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Environments.Secluded",
       skillOpts: new Set()
     },
     urban: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Environments.Urban",
       skillOpts: new Set()
     },
     wilderness: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Environments.Wilderness",
       skillOpts: new Set()
     }
   },
   organization: {
     anarchic: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Organization.Anarchic",
       skillOpts: new Set()
     },
-    bureacratic: {
-      label: "",
+    bureaucratic: {
+      label: "DRAW_STEEL.Item.Culture.Organization.Bureaucratic",
       skillOpts: new Set()
     },
     communal: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Organization.Communal",
       skillOpts: new Set()
     }
   },
   upbringing: {
     academic: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Academic",
       skillOpts: new Set()
     },
     creative: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Creative",
       skillOpts: new Set()
     },
     illegal: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Illegal",
       skillOpts: new Set()
     },
     labor: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Labor",
       skillOpts: new Set()
     },
     martial: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Martial",
       skillOpts: new Set()
     },
     noble: {
-      label: "",
+      label: "DRAW_STEEL.Item.Culture.Upbringing.Noble",
       skillOpts: new Set()
     }
   }
 };
 
+/**
+ * Configuration details for Kits
+ * @type {Record<string,  Record<string, {label: string, equipment?: Set<string>}>>}
+ */
 DRAW_STEEL.kits = {
   types: {
     martial: {
-      label: "",
-      categories: new Set("armor", "weapon")
+      label: "DRAW_STEEL.Item.Kit.Types.Martial",
+      equipment: new Set("armor", "weapon")
     },
     caster: {
-      label: "",
-      categories: new Set("armor", "implement")
+      label: "DRAW_STEEL.Item.Kit.Types.Caster",
+      equipment: new Set("armor", "implement")
     }
   },
   armor: {
     none: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Armor.None"
     },
     light: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Armor.Light"
     },
     medium: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Armor.Medium"
     },
     heavy: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Armor.Heavy"
     },
     shield: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Armor.Shield"
     }
   },
   weapon: {
     none: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.None"
     },
     bow: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Bow"
     },
     ensnaring: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Ensnaring"
     },
     heavy: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Heavy"
     },
     light: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Light"
     },
     medium: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Medium"
     },
     polearm: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Polearm"
     },
     unarmed: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Unarmed"
     },
     whip: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Weapons.Whip"
     }
   },
   implement: {
     bone: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Bone"
     },
     crystal: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Crystal"
     },
     glass: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Glass"
     },
     metal: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Metal"
     },
     stone: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Stone"
     },
     wood: {
-      label: ""
+      label: "DRAW_STEEL.Item.Kit.Implements.Wood"
     }
   }
 };
