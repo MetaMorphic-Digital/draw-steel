@@ -15,38 +15,274 @@ DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 DRAW_STEEL.conditions = {
   // bleeding: {},
   dazed: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Dazed",
+    name: "DRAW_STEEL.Effect.Conditions.Dazed",
     img: ""
   },
   frightened: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Frightened",
+    name: "DRAW_STEEL.Effect.Conditions.Frightened",
     img: ""
 
   },
   grabbed: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Grabbed",
+    name: "DRAW_STEEL.Effect.Conditions.Grabbed",
     img: ""
   },
   // prone: {},
   restrained: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Restrained",
+    name: "DRAW_STEEL.Effect.Conditions.Restrained",
     img: ""
   },
   slowed: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Slowed",
+    name: "DRAW_STEEL.Effect.Conditions.Slowed",
     img: ""
   },
   taunted: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Taunted",
+    name: "DRAW_STEEL.Effect.Conditions.Taunted",
     img: ""
   },
   weakened: {
-    name: "DRAW_STEEL.ActiveEffect.Conditions.Weakened",
+    name: "DRAW_STEEL.Effect.Conditions.Weakened",
     img: ""
   }
 };
 
-// TODO: Skills
+DRAW_STEEL.skills = {
+  groups: {
+    crafting: {
+      label: "DRAW_STEEL.Skill.Group.Crafting"
+    },
+    exploration: {
+      label: "DRAW_STEEL.Skill.Group.Exploration"
+    },
+    interpersonal: {
+      label: "DRAW_STEEL.Skill.Group.Interpersonal"
+    },
+    intrigue: {
+      label: "DRAW_STEEL.Skill.Group.Intrigue"
+    },
+    lore: {
+      label: "DRAW_STEEL.Skill.Group.Lore"
+    }
+  },
+  list: {
+    alchemy: {
+      label: "DRAW_STEEL.Skill.List.Alchemy",
+      group: "crafting"
+    },
+    architecture: {
+      label: "DRAW_STEEL.Skill.List.Architecture",
+      group: "crafting"
+    },
+    blacskmithing: {
+      label: "DRAW_STEEL.Skill.List.Blacksmithing",
+      group: "crafting"
+    },
+    fletching: {
+      label: "DRAW_STEEL.Skill.List.Fletching",
+      group: "crafting"
+    },
+    forgery: {
+      label: "DRAW_STEEL.Skill.List.Forgery",
+      group: "crafting"
+    },
+    jewelry: {
+      label: "DRAW_STEEL.Skill.List.Jewelry",
+      group: "crafting"
+    },
+    mechanics: {
+      label: "DRAW_STEEL.Skill.List.Mechanics",
+      group: "crafting"
+    },
+    tailoring: {
+      label: "DRAW_STEEL.Skill.List.Tailoring",
+      group: "crafting"
+    },
+    climb: {
+      label: "DRAW_STEEL.Skill.List.Climb",
+      group: "exploration"
+    },
+    drive: {
+      label: "DRAW_STEEL.Skill.List.Drive",
+      group: "exploration"
+    },
+    endurance: {
+      label: "DRAW_STEEL.Skill.List.Endurance",
+      group: "exploration"
+    },
+    gymnastics: {
+      label: "DRAW_STEEL.Skill.List.Gymnastics",
+      group: "exploration"
+    },
+    heal: {
+      label: "DRAW_STEEL.Skill.List.Heal",
+      group: "exploration"
+    },
+    jump: {
+      label: "DRAW_STEEL.Skill.List.Jump",
+      group: "exploration"
+    },
+    lift: {
+      label: "DRAW_STEEL.Skill.List.Lift",
+      group: "exploration"
+    },
+    navigate: {
+      label: "DRAW_STEEL.Skill.List.Navigate",
+      group: "exploration"
+    },
+    ride: {
+      label: "DRAW_STEEL.Skill.List.Ride",
+      group: "exploration"
+    },
+    swim: {
+      label: "DRAW_STEEL.Skill.List.Swim",
+      group: "exploration"
+    },
+    brag: {
+      label: "DRAW_STEEL.Skill.List.Brag",
+      group: "interpersonal"
+    },
+    empathize: {
+      label: "DRAW_STEEL.Skill.List.Empathize",
+      group: "interpersonal"
+    },
+    flirt: {
+      label: "DRAW_STEEL.Skill.List.Flirt",
+      group: "interpersonal"
+    },
+    gamble: {
+      label: "DRAW_STEEL.Skill.List.Gamble",
+      group: "interpersonal"
+    },
+    handleAnimals: {
+      label: "DRAW_STEEL.Skill.List.HandleAnimals",
+      group: "interpersonal"
+    },
+    interrogate: {
+      label: "DRAW_STEEL.Skill.List.Interrogate",
+      group: "interpersonal"
+    },
+    intimidate: {
+      label: "DRAW_STEEL.Skill.List.Intimidate",
+      group: "interpersonal"
+    },
+    lead: {
+      label: "DRAW_STEEL.Skill.List.Lead",
+      group: "interpersonal"
+    },
+    lie: {
+      label: "DRAW_STEEL.Skill.List.Lie",
+      group: "interpersonal"
+    },
+    music: {
+      label: "DRAW_STEEL.Skill.List.Music",
+      group: "interpersonal"
+    },
+    perform: {
+      label: "DRAW_STEEL.Skill.List.Perform",
+      group: "interpersonal"
+    },
+    persuade: {
+      label: "DRAW_STEEL.Skill.List.Persuade",
+      group: "interpersonal"
+    },
+    readPerson: {
+      label: "DRAW_STEEL.Skill.List.ReadPerson",
+      group: "interpersonal"
+    },
+    alertness: {
+      label: "DRAW_STEEL.Skill.List.Alertness",
+      group: "intrigue"
+    },
+    concealObject: {
+      label: "DRAW_STEEL.Skill.List.ConcealObject",
+      group: "intrigue"
+    },
+    disguise: {
+      label: "DRAW_STEEL.Skill.List.Disguise",
+      group: "intrigue"
+    },
+    eavesdrop: {
+      label: "DRAW_STEEL.Skill.List.Eavesdrop",
+      group: "intrigue"
+    },
+    escapeArtist: {
+      label: "DRAW_STEEL.Skill.List.EscapeArtist",
+      group: "intrigue"
+    },
+    hide: {
+      label: "DRAW_STEEL.Skill.List.Hide",
+      group: "intrigue"
+    },
+    pickLock: {
+      label: "DRAW_STEEL.Skill.List.PickLock",
+      group: "intrigue"
+    },
+    pickPocket: {
+      label: "DRAW_STEEL.Skill.List.PickPocket",
+      group: "intrigue"
+    },
+    sabotage: {
+      label: "DRAW_STEEL.Skill.List.Sabotage",
+      group: "intrigue"
+    },
+    search: {
+      label: "DRAW_STEEL.Skill.List.Search",
+      group: "intrigue"
+    },
+    sneak: {
+      label: "DRAW_STEEL.Skill.List.Sneak",
+      group: "intrigue"
+    },
+    track: {
+      label: "DRAW_STEEL.Skill.List.Track",
+      group: "intrigue"
+    },
+    culture: {
+      label: "DRAW_STEEL.Skill.List.Culture",
+      group: "lore"
+    },
+    criminalUnderworld: {
+      label: "DRAW_STEEL.Skill.List.CriminalUnderworld",
+      group: "lore"
+    },
+    history: {
+      label: "DRAW_STEEL.Skill.List.History",
+      group: "lore"
+    },
+    magic: {
+      label: "DRAW_STEEL.Skill.List.Magic",
+      group: "lore"
+    },
+    monsters: {
+      label: "DRAW_STEEL.Skill.List.Monsters",
+      group: "lore"
+    },
+    nature: {
+      label: "DRAW_STEEL.Skill.List.Nature",
+      group: "lore"
+    },
+    psionics: {
+      label: "DRAW_STEEL.Skill.List.Psionics",
+      group: "lore"
+    },
+    religion: {
+      label: "DRAW_STEEL.Skill.List.Religion",
+      group: "lore"
+    },
+    rumors: {
+      label: "DRAW_STEEL.Skill.List.Rumors",
+      group: "lore"
+    },
+    society: {
+      label: "DRAW_STEEL.Skill.List.Society",
+      group: "lore"
+    },
+    timescape: {
+      label: "DRAW_STEEL.Skill.List.Timescape",
+      group: "lore"
+    }
+  }
+};
 
 // TODO: Languages
 
