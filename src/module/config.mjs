@@ -9,8 +9,42 @@ export const DRAW_STEEL = {};
  */
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
-// TODO: Conditions
-// Bleeding, Dazed, Frightened, Grabbed, Prone, Restrained, Slowed, Taunted, Weakened
+/**
+ * @type {Record<string, {img: string, name: string}>}
+ */
+DRAW_STEEL.conditions = {
+  // bleeding: {},
+  dazed: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Dazed",
+    img: ""
+  },
+  frightened: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Frightened",
+    img: ""
+
+  },
+  grabbed: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Grabbed",
+    img: ""
+  },
+  // prone: {},
+  restrained: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Restrained",
+    img: ""
+  },
+  slowed: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Slowed",
+    img: ""
+  },
+  taunted: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Taunted",
+    img: ""
+  },
+  weakened: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Weakened",
+    img: ""
+  }
+};
 
 // TODO: Skills
 

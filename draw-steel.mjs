@@ -23,13 +23,16 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  console.log(dataModels);
-
   // Assign data models
   for (const [doc, models] of Object.entries(dataModels)) {
     for (const modelCls of Object.values(models)) {
       CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
     }
+  }
+
+  // Status Effect Transfer
+  for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
+    CONFIG.statusEffects.push({id, ...value});
   }
 
   // Necessary until foundry makes this default behavior in v13
