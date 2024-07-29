@@ -1,7 +1,3 @@
-/**
- * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
- * @extends {Actor}
- */
 export class DrawSteelActor extends Actor {
   /** @override */
   getRollData() {
@@ -9,5 +5,11 @@ export class DrawSteelActor extends Actor {
     const rollData = {...this.system};
 
     return rollData;
+  }
+
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    Hooks.callAll("ds.prepareActorData", this);
   }
 }

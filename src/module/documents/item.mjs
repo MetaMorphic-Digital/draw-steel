@@ -1,7 +1,3 @@
-/**
- * Extend the basic Item with some very simple modifications.
- * @extends {Item}
- */
 export class DrawSteelItem extends Item {
 
   /** @override */
@@ -14,5 +10,11 @@ export class DrawSteelItem extends Item {
     rollData.actor = this.actor.getRollData();
 
     return rollData;
+  }
+
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    Hooks.callAll("ds.prepareItemData", this);
   }
 }
