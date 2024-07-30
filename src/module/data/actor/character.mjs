@@ -1,4 +1,4 @@
-import {barAttribute} from "./_helpers.mjs";
+import {barAttribute, requiredInteger} from "./_helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 export default class CharacterModel extends BaseActorModel {
@@ -13,16 +13,16 @@ export default class CharacterModel extends BaseActorModel {
 
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = (initial) => ({initial, required: true, nullable: false, integer: true, min: 0});
     const schema = super.defineSchema();
 
     schema.hero = new fields.SchemaField({
       // Some classes have a second resource
       resources: barAttribute(10),
-      xp: new fields.NumberField(requiredInteger(0)),
+      xp: requiredInteger(0),
       recoveries: barAttribute(8),
-      victories: new fields.NumberField(requiredInteger(0)),
-      renown: new fields.NumberField(requiredInteger(0))
+      victories: requiredInteger(0),
+      renown: requiredInteger(0),
+      skills: new fields.SetField(new fields.StringField({blank: true, required: true}))
     });
 
     return schema;

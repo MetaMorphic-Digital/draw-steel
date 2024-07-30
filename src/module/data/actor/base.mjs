@@ -1,9 +1,8 @@
-import {barAttribute} from "./_helpers.mjs";
+import {barAttribute, requiredInteger} from "./_helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = (initial) => ({initial, required: true, nullable: false, integer: true, min: 0});
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 
@@ -18,9 +17,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       }, {})
     );
 
-    schema.attributes = new fields.SchemaField({
-      size: new fields.NumberField(requiredInteger(1)),
-      weight: new fields.NumberField(requiredInteger(4))
+    schema.stats = new fields.SchemaField({
+      size: requiredInteger(1),
+      weight: requiredInteger(4),
+      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
     });
 
     schema.biography = new fields.SchemaField({

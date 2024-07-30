@@ -1,3 +1,4 @@
+import {requiredInteger} from "./_helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 export default class NPCModel extends BaseActorModel {
@@ -12,15 +13,22 @@ export default class NPCModel extends BaseActorModel {
 
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = (initial) => ({initial, required: true, nullable: false, integer: true, min: 0});
     const schema = super.defineSchema();
+    const config = CONFIG.DRAW_STEEL;
 
-    schema.negotiation = fields.SchemaField({
-      interest: new fields.StringField(requiredInteger(5)),
-      patience: new fields.NumberField(requiredInteger(5)),
-      motivations: new fields.ArrayField(new fields.StringField({choices: CONFIG.DRAW_STEEL.negotiation.motivations})),
+    schema.negotiation = new fields.SchemaField({
+      interest: requiredInteger(5),
+      patience: requiredInteger(5),
+      motivations: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
       pitfalls: new fields.ArrayField(new fields.StringField()),
-      impression: new fields.NumberField(requiredInteger(1))
+      impression: requiredInteger(1)
+    });
+
+    schema.monster = new fields.SchemaField({
+      keywords: new fields.SetField(new fields.StringField({blank: true, required: true})),
+      ev: requiredInteger(4),
+      role: new fields.StringField({choices: config.monsters.roles}),
+      subrole: new fields.StringField({choices: config.monsters.subroles})
     });
 
     return schema;

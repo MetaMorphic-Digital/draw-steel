@@ -327,6 +327,52 @@ DRAW_STEEL.negotiation = {
   }
 };
 
+DRAW_STEEL.monsters = {
+  roles: {
+    ambusher: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Ambusher"
+    },
+    artillery: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Artillery"
+    },
+    boss: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Boss"
+    },
+    brute: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Brute"
+    },
+    controller: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Controller"
+    },
+    defender: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Defender"
+    },
+    harrier: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Harrier"
+    },
+    hexer: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Hexer"
+    },
+    support: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Support"
+    },
+    mount: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Mount"
+    },
+    solo: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Solo"
+    }
+  },
+  subroles: {
+    minion: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Minion"
+    },
+    captain: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Captain"
+    }
+  }
+};
+
 /**
  * Configuration details for Cultures
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}

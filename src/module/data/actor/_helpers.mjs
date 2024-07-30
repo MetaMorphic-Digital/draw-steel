@@ -9,3 +9,5 @@ export const barAttribute = (initial = 0) => new SchemaField({
   value: new NumberField({initial}),
   max: new NumberField({initial})
 });
+
+export const requiredInteger = (initial = 0) => new NumberField({initial, required: true, nullable: false, integer: true, min: 0});
