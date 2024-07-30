@@ -62,12 +62,17 @@ export class PowerRoll extends DSRoll {
    */
   static RESULT_TIERS = [-Infinity, 12, 17, Infinity];
 
+  /**
+   * Determines if this is a power roll with 2d10 base
+   */
   get validPowerRoll() {
-    return (this.terms[0] instanceof foundry.dice.terms.Die) && (this.terms[0].faces === 10) && (this.terms[0].number === 2);
+    const firstTerm = this.terms[0];
+    return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
   }
 
   /**
    * Cancels out edges and banes to get the adjustment
+   * @returns {number} An integer from -2 to 2, inclusive
    */
   get netBoon() {
     return this.options.edges - this.options.banes;
@@ -81,7 +86,7 @@ export class PowerRoll extends DSRoll {
     if (this._total === undefined) return undefined;
     const tier = this.constructor.RESULT_TIERS.reduce((t, threshold) => t + Number(this.total > threshold), 0);
     // Adjusts tiers for double edge/bane
-    const adjustment = parseInt(this.netBoon / 2);
+    const adjustment = this.netBoon - Math.sign(this.netBoon);
     return Math.clamp(tier + adjustment, 1, 3);
   }
 
@@ -94,6 +99,7 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Returns the natural result of the power roll
+   * @returns {number | undefined}
    */
   get naturalResult() {
     return this.dice[0].total;
