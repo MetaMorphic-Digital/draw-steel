@@ -2,7 +2,8 @@ import BaseItemModel from "./base.mjs";
 
 export default class KitModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "kit"
+    type: "kit",
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [

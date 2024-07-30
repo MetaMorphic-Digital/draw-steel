@@ -2,7 +2,8 @@ import BaseItemModel from "./base.mjs";
 
 export default class ClassModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "class"
+    type: "class",
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [

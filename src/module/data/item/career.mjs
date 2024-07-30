@@ -2,7 +2,8 @@ import BaseItemModel from "./base.mjs";
 
 export default class CareerModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "career"
+    type: "career",
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [

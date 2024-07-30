@@ -2,7 +2,8 @@ import FeatureModel from "./feature.mjs";
 
 export default class TitleModel extends FeatureModel {
   static metadata = Object.freeze({
-    type: "title"
+    type: "title",
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [

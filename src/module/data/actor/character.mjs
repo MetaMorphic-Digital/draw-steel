@@ -25,4 +25,53 @@ export default class CharacterModel extends BaseActorModel {
 
     return schema;
   }
+
+  /** @override */
+  prepareBaseData() {
+    super.prepareBaseData();
+
+    this.hero.recoveries.bonus = 0;
+  }
+
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    this.hero.recoveries.recoveryValue = Math.round(this.stamina.max / 3) + this.hero.recoveries.bonus;
+  }
+
+  /**
+   * Finds the actor's current ancestry
+   */
+  get ancestry() {
+    return this.parent.items.find(i => i.type === "ancestry");
+  }
+
+  /**
+   * Finds the actor's current career
+   */
+  get career() {
+    return this.parent.items.find(i => i.type === "career");
+  }
+
+  /**
+   * Finds the actor's current class
+   */
+  get class() {
+    return this.parent.items.find(i => i.type === "class");
+  }
+
+  /**
+   * Finds the actor's current culture
+   */
+  get culture() {
+    return this.parent.items.find(i => i.type === "culture");
+  }
+
+  /**
+   * Returns all of the actor's kits
+   */
+  get kits() {
+    return this.parent.items.filter(i => i.type === "kit");
+  }
 }

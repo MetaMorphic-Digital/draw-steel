@@ -1,5 +1,9 @@
-export default class BaseItemModel extends foundry.abstract
-  .TypeDataModel {
+export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+  static metadata = Object.freeze({
+    type: "base",
+    invalidActorTypes: []
+  });
+
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = {};
@@ -53,5 +57,13 @@ export default class BaseItemModel extends foundry.abstract
    */
   static skillChoice() {
     return {};
+  }
+
+  /** @override */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    if (this.constructor.metadata.invalidActorTypes.includes(this.parent.actor?.type)) return false;
   }
 }

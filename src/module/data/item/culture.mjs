@@ -2,7 +2,8 @@ import BaseItemModel from "./base.mjs";
 
 export default class CultureModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "culture"
+    type: "culture",
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [
