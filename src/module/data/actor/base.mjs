@@ -3,7 +3,7 @@ import {barAttribute} from "./_helpers.mjs";
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = {initial: 8, nullable: false, integer: true};
+    const requiredInteger = (initial) => ({initial, nullable: false, integer: true});
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 
@@ -19,9 +19,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     );
 
     schema.attributes = new fields.SchemaField({
-      size: new fields.NumberField(requiredInteger),
-      weight: new fields.NumberField(requiredInteger),
-      fmr: new fields.NumberField(requiredInteger)
+      size: new fields.NumberField(requiredInteger(1)),
+      weight: new fields.NumberField(requiredInteger(4))
     });
 
     schema.biography = new fields.SchemaField({
@@ -29,6 +28,21 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       gm: new fields.HTMLField()
     });
 
+    schema.movement = new fields.SchemaField({
+      walk: new fields.NumberField(),
+      burrow: new fields.NumberField(),
+      climb: new fields.NumberField(),
+      swim: new fields.NumberField(),
+      fly: new fields.NumberField(),
+      teleport: new fields.NumberField()
+    });
+
     return schema;
+  }
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    this.stamina.winded = Math.floor(this.stamina.max / 2);
   }
 }
