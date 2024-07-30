@@ -3,7 +3,7 @@ import {barAttribute} from "./_helpers.mjs";
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = (initial) => ({initial, nullable: false, integer: true});
+    const requiredInteger = (initial) => ({initial, required: true, nullable: false, integer: true, min: 0});
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 

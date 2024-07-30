@@ -12,8 +12,16 @@ export default class NPCModel extends BaseActorModel {
 
   static defineSchema() {
     const fields = foundry.data.fields;
-    const requiredInteger = {required: true, nullable: false, integer: true};
+    const requiredInteger = (initial) => ({initial, required: true, nullable: false, integer: true, min: 0});
     const schema = super.defineSchema();
+
+    schema.negotiation = fields.SchemaField({
+      interest: new fields.StringField(requiredInteger(5)),
+      patience: new fields.NumberField(requiredInteger(5)),
+      motivations: new fields.ArrayField(new fields.StringField({choices: CONFIG.DRAW_STEEL.negotiation.motivations})),
+      pitfalls: new fields.ArrayField(new fields.StringField()),
+      impression: new fields.NumberField(requiredInteger(1))
+    });
 
     return schema;
   }

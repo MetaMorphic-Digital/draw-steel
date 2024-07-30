@@ -286,6 +286,47 @@ DRAW_STEEL.skills = {
 
 // TODO: Languages
 
+DRAW_STEEL.negotiation = {
+  motivations: {
+    benevolence: {
+      label: ""
+    },
+    discovery: {
+      label: ""
+    },
+    freedom: {
+      label: ""
+    },
+    greed: {
+      label: ""
+    },
+    authority: {
+      label: ""
+    },
+    justice: {
+      label: ""
+    },
+    legacy: {
+      label: ""
+    },
+    peace: {
+      label: ""
+    },
+    power: {
+      label: ""
+    },
+    protection: {
+      label: ""
+    },
+    revelry: {
+      label: ""
+    },
+    vengeance: {
+      label: ""
+    }
+  }
+};
+
 /**
  * Configuration details for Cultures
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}
