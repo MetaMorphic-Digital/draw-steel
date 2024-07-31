@@ -13,10 +13,11 @@ export default class EquipmentModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
+    const config = CONFIG.DRAW_STEEL.equipment;
+
+    schema.kind = new fields.StringField({required: true, choices: config.kind, blank: true});
+    schema.category = new fields.StringField({required: true});
 
     return schema;
-  }
-
-  prepareDerivedData() {
   }
 }

@@ -26,6 +26,7 @@ Hooks.once("init", function () {
   // Assign data models
   for (const [doc, models] of Object.entries(dataModels)) {
     for (const modelCls of Object.values(models)) {
+      if (!modelCls.metadata?.type) continue;
       CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
     }
   }

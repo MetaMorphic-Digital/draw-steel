@@ -14,14 +14,14 @@ export default class KitModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL.kits;
+    const config = CONFIG.DRAW_STEEL;
 
-    schema.type = new fields.StringField({choices: config.type, initial: "martial"});
+    schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 
     schema.equipment = new fields.SchemaField({
-      armor: new fields.StringField({choices: config.armor}),
-      weapon: new fields.StringField({choices: config.weapon}),
-      implement: new fields.StringField({choices: config.implement})
+      armor: new fields.StringField({choices: config.equipment.armor}),
+      weapon: new fields.StringField({choices: config.equipment.weapon}),
+      implement: new fields.StringField({choices: config.equipment.implement})
     });
 
     const damageSchema = () => ({

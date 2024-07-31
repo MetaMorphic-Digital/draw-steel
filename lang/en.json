@@ -215,32 +215,11 @@
       },
       "Equipment": {
         "FIELDS": {
-        }
-      },
-      "Feature": {
-        "FIELDS": {}
-      },
-      "Kit": {
-        "FIELDS": {
-          "type": {
-            "label": "Type"
-          },
-          "equipment": {
-            "label": "Kit Equipment",
-            "armor": {
-              "label": "Armor Category"
-            },
-            "weapon": {
-              "label": "Weapon Category"
-            },
-            "implement": {
-              "label": "Implement Material"
-            }
-          }
         },
-        "Types": {
-          "Martial": "Martial",
-          "Caster": "Caster"
+        "Kinds": {
+          "Armor": "Armor",
+          "Implement": "Implement",
+          "Weapon": "Weapon"
         },
         "Armor": {
           "None": "None",
@@ -267,6 +246,32 @@
           "Metal": "Metal",
           "Stone": "Stone",
           "Wood": "Wood"
+        }
+      },
+      "Feature": {
+        "FIELDS": {}
+      },
+      "Kit": {
+        "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
+          "equipment": {
+            "label": "Kit Equipment",
+            "armor": {
+              "label": "Armor Category"
+            },
+            "weapon": {
+              "label": "Weapon Category"
+            },
+            "implement": {
+              "label": "Implement Material"
+            }
+          }
+        },
+        "Types": {
+          "Martial": "Martial",
+          "Caster": "Caster"
         }
       },
       "Title": {

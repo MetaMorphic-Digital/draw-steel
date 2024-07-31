@@ -444,7 +444,7 @@ DRAW_STEEL.culture = {
 
 /**
  * Configuration details for Kits
- * @type {Record<string,  Record<string, {label: string, equipment?: Set<string>}>>}
+ * @type {Record<string,  Record<string, {label: string, equipment: Set<string>}>>}
  */
 DRAW_STEEL.kits = {
   types: {
@@ -456,71 +456,90 @@ DRAW_STEEL.kits = {
       label: "DRAW_STEEL.Item.Kit.Types.Caster",
       equipment: new Set("armor", "implement")
     }
+  }
+};
+
+/**
+ * Configuration details for Equipment
+ * Also used by Kits
+ * @type {Record<string,  Record<string, {label: string}>>}
+ */
+DRAW_STEEL.equipment = {
+  kinds: {
+    armor: {
+      label: "DRAW_STEEL.Item.Equipment.Kinds.Armor"
+    },
+    implement: {
+      label: "DRAW_STEEL.Item.Equipment.Kinds.Implement"
+    },
+    weapon: {
+      label: "DRAW_STEEL.Item.Equipment.Kinds.Weapon"
+    }
   },
   armor: {
     none: {
-      label: "DRAW_STEEL.Item.Kit.Armor.None"
+      label: "DRAW_STEEL.Item.Equipment.Armor.None"
     },
     light: {
-      label: "DRAW_STEEL.Item.Kit.Armor.Light"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Light"
     },
     medium: {
-      label: "DRAW_STEEL.Item.Kit.Armor.Medium"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Medium"
     },
     heavy: {
-      label: "DRAW_STEEL.Item.Kit.Armor.Heavy"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Heavy"
     },
     shield: {
-      label: "DRAW_STEEL.Item.Kit.Armor.Shield"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Shield"
     }
   },
   weapon: {
     none: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.None"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.None"
     },
     bow: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Bow"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Bow"
     },
     ensnaring: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Ensnaring"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Ensnaring"
     },
     heavy: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Heavy"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Heavy"
     },
     light: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Light"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Light"
     },
     medium: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Medium"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Medium"
     },
     polearm: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Polearm"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Polearm"
     },
     unarmed: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Unarmed"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Unarmed"
     },
     whip: {
-      label: "DRAW_STEEL.Item.Kit.Weapons.Whip"
+      label: "DRAW_STEEL.Item.Equipment.Weapons.Whip"
     }
   },
   implement: {
     bone: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Bone"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Bone"
     },
     crystal: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Crystal"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Crystal"
     },
     glass: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Glass"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Glass"
     },
     metal: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Metal"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Metal"
     },
     stone: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Stone"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Stone"
     },
     wood: {
-      label: "DRAW_STEEL.Item.Kit.Implements.Wood"
+      label: "DRAW_STEEL.Item.Equipment.Implements.Wood"
     }
   }
 };
