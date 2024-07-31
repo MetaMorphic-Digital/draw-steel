@@ -1,14 +1,14 @@
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/apps/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
-import * as dataModels from "./src/module/data/_module.mjs";
+import * as data from "./src/module/data/_module.mjs";
 import {DRAW_STEEL} from "./src/module/config.mjs";
 
 globalThis.ds = {
   documents,
   applications,
   helpers,
-  dataModels
+  data
 };
 
 /** Special global access */
@@ -24,7 +24,8 @@ Hooks.once("init", function () {
   }
 
   // Assign data models
-  for (const [doc, models] of Object.entries(dataModels)) {
+  for (const [doc, models] of Object.entries(data)) {
+    if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
     for (const modelCls of Object.values(models)) {
       if (!modelCls.metadata?.type) continue;
       CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;

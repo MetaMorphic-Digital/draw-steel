@@ -1,4 +1,14 @@
 {{! Stats Tab }}
 <section class='tab stats {{tab.cssClass}}' data-group='primary' data-tab='stats'>
-<h4>Stats</h4>
+<fieldset>
+  <legend>{{localize "DRAW_STEEL.Actor.base.FIELDS.characteristics.label"}}</legend>
+  {{#each system.characteristics as |chr key|}}
+    <label>
+      <a data-action="roll" data-roll-type="characteristic">
+        {{localize (concat "DRAW_STEEL.Actor.base.FIELDS.characteristics." key ".value.label")}}
+      </a>
+      <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value sign=true}}>
+    </label>
+  {{/each}}
+</fieldset>
 </section>

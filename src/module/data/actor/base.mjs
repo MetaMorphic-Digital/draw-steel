@@ -1,4 +1,4 @@
-import {barAttribute, requiredInteger} from "./_helpers.mjs";
+import {barAttribute, damageTypes, requiredInteger} from "../_helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   static defineSchema() {
@@ -35,6 +35,21 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       swim: new fields.NumberField(),
       fly: new fields.NumberField(),
       teleport: new fields.NumberField()
+    });
+
+    schema.damage = new fields.SchemaField({
+      immunities: damageTypes(requiredInteger, {
+        all: requiredInteger(),
+        magic: requiredInteger(),
+        psionic: requiredInteger(),
+        weapon: requiredInteger()
+      }),
+      weaknesses: damageTypes(requiredInteger, {
+        all: requiredInteger(),
+        magic: requiredInteger(),
+        psionic: requiredInteger(),
+        weapon: requiredInteger()
+      })
     });
 
     return schema;

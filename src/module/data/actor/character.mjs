@@ -1,4 +1,4 @@
-import {barAttribute, requiredInteger} from "./_helpers.mjs";
+import {barAttribute, requiredInteger} from "../_helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 export default class CharacterModel extends BaseActorModel {

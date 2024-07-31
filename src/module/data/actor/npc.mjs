@@ -1,4 +1,4 @@
-import {requiredInteger} from "./_helpers.mjs";
+import {requiredInteger} from "../_helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 export default class NPCModel extends BaseActorModel {
