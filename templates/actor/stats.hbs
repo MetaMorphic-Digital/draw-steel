@@ -3,10 +3,15 @@
 <fieldset>
   <legend>{{localize systemFields.characteristics.label}}</legend>
   <div class="flexrow">
-    {{#each system.characteristics as |chr key|}}
+    {{#each characteristics as |chr key|}}
       <label class="flexcol">
-        <a data-action="roll" data-roll-type="characteristic">
-          {{localize (concat "DRAW_STEEL.Actor.base.FIELDS.characteristics." key ".value.label")}}
+        <a
+          data-action="roll"
+          data-roll-type="characteristic"
+          data-characteristic="{{key}}"
+          data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}"
+        >
+          {{localize chr.field.label}}
         </a>
         <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value sign=true}}>
       </label>

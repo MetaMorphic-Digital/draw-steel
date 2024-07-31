@@ -102,6 +102,9 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _preparePartContext(partId, context) {
     switch (partId) {
       case "stats":
+        context.characteristics = this._getCharacteristics();
+        context.tab = context.tabs[partId];
+        break;
       case "features":
       case "abilities":
         context.tab = context.tabs[partId];
@@ -131,6 +134,16 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
     }
     return context;
+  }
+
+  _getCharacteristics() {
+    return CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
+      obj[chc] = {
+        field: this.actor.system.schema.getField(`characteristics.${chc}.value`),
+        value: foundry.utils.getProperty(this.actor, `system.characteristics.${chc}.value`)
+      };
+      return obj;
+    }, {});
   }
 
   /**
@@ -308,25 +321,13 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     event.preventDefault();
     const dataset = target.dataset;
 
-    let item;
+    let roll;
 
     // Handle item rolls.
     switch (dataset.rollType) {
-      case "item":
-        item = this._getEmbeddedDocument(target);
-        if (item) return item.roll();
-    }
-
-    // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : "";
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      await roll.toMessage({
-        speaker: ChatMessage.getSpeaker({actor: this.actor}),
-        flavor: label,
-        rollMode: game.settings.get("core", "rollMode")
-      });
-      return roll;
+      case "characteristic":
+        roll = new PowerRoll(`2d10 + @${dataset.characteristic}`, this.actor.getRollData());
+        await roll.toMessage();
     }
   }
 
