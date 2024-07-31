@@ -20,6 +20,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.stats = new fields.SchemaField({
       size: requiredInteger(1),
       weight: requiredInteger(4),
+      stability: requiredInteger(0),
+      reach: requiredInteger(0),
       languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
     });
 
