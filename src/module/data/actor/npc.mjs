@@ -20,7 +20,7 @@ export default class NPCModel extends BaseActorModel {
       interest: requiredInteger(5),
       patience: requiredInteger(5),
       motivations: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
-      pitfalls: new fields.ArrayField(new fields.StringField()),
+      pitfalls: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
       impression: requiredInteger(1)
     });
 

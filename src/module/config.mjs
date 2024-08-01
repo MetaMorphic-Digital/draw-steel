@@ -301,40 +301,40 @@ DRAW_STEEL.skills = {
 DRAW_STEEL.negotiation = {
   motivations: {
     benevolence: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Benevolence"
     },
     discovery: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Discovery"
     },
     freedom: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Freedom"
     },
     greed: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Greed"
     },
     authority: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.HigherAuthority"
     },
     justice: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Justice"
     },
     legacy: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Legacy"
     },
     peace: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Peace"
     },
     power: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Power"
     },
     protection: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Protection"
     },
     revelry: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Revelry"
     },
     vengeance: {
-      label: ""
+      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Vengeance"
     }
   }
 };
