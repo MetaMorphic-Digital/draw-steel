@@ -322,11 +322,30 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     const dataset = target.dataset;
 
     let roll;
+    let type;
 
     // Handle item rolls.
     switch (dataset.rollType) {
       case "characteristic":
-        roll = new PowerRoll(`2d10 + @${dataset.characteristic}`, this.actor.getRollData());
+        type = await foundry.applications.api.DialogV2.wait({
+          window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
+          content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
+          buttons: [
+            {
+              label: PowerRoll.TYPES.test,
+              icon: "fa-solid fa-dice",
+              action: "test"
+            },
+            {
+              label: PowerRoll.TYPES.resistance,
+              icon: "fa-solid fa-hand-fist",
+              action: "resistance"
+            }
+          ]});
+        roll = new PowerRoll(`2d10 + @${dataset.characteristic}`,
+          this.actor.getRollData(),
+          {flavor: game.i18n.localize(PowerRoll.TYPES[type])}
+        );
         await roll.toMessage();
     }
   }

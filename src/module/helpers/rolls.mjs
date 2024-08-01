@@ -29,22 +29,23 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Types of Power Rolls
+   * @returns A key-value pair of the valid types and their i18n strings
    */
   static get TYPES() {
     return PowerRoll.#TYPES;
   }
 
   static #TYPES = Object.freeze({
-    ABILITY: "ability",
-    RESISTANCE: "resistance",
-    TEST: "test"
+    ability: "DRAW_STEEL.Roll.Power.Types.Ability",
+    resistance: "DRAW_STEEL.Roll.Power.Types.Resistance",
+    test: "DRAW_STEEL.Roll.Power.Types.Test"
   });
 
   /**
    * Set of power roll types
    */
   static get VALID_TYPES() {
-    return new Set(Object.values(this.#TYPES));
+    return new Set(Object.keys(this.#TYPES));
   }
 
   /**
