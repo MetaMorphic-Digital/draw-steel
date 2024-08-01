@@ -8,10 +8,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields;
     const schema = {};
 
-    schema.description = new fields.SchemaField({
-      value: new fields.HTMLField(),
-      gm: new fields.HTMLField()
-    });
+    schema.description = new fields.SchemaField(this.itemDescription());
 
     schema.source = new fields.SchemaField({
       book: new fields.StringField(),
@@ -25,6 +22,13 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     schema._dsid = new fields.StringField();
 
     return schema;
+  }
+
+  static itemDescription() {
+    return {
+      value: new foundry.data.fields.HTMLField(),
+      gm: new foundry.data.fields.HTMLField()
+    };
   }
 
   /**

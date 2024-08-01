@@ -385,6 +385,35 @@ DRAW_STEEL.monsters = {
   }
 };
 
+DRAW_STEEL.abilities = {
+  keywords: {
+    area: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Area"
+    },
+    attack: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Attack"
+    },
+    magic: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Magic"
+    },
+    melee: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Melee"
+    },
+    psionic: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Psionic"
+    },
+    ranged: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
+    },
+    resistance: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Resistance"
+    },
+    weapon: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Weapon"
+    }
+  }
+};
+
 /**
  * Configuration details for Cultures
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}

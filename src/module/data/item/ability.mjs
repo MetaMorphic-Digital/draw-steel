@@ -13,8 +13,9 @@ export default class AbilityModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
+    const config = CONFIG.DRAW_STEEL.abilities;
 
-    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
+    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false, choices: config.keywords}));
     schema.type = new fields.StringField();
     schema.distance = new fields.StringField(); // WIP
     schema.trigger = new fields.StringField();
@@ -24,5 +25,11 @@ export default class AbilityModel extends BaseItemModel {
     schema.spend = new fields.NumberField();
 
     return schema;
+  }
+
+  static itemDescription() {
+    const description = super.itemDescription();
+    description.flavor = new foundry.data.fields.StringField({required: true, blank: true});
+    return description;
   }
 }
