@@ -1,13 +1,12 @@
 /**
  * Base roll class for Draw Steel
  */
-export class DSRoll extends Roll {}
+export class DSRoll extends foundry.dice.Roll {}
 
 /**
  * Augments the Roll class with specific functionality for power rolls
  */
 export class PowerRoll extends DSRoll {
-
   constructor(formula = "2d10", data = {}, options = {}) {
     super(formula, data, options);
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
@@ -62,6 +61,36 @@ export class PowerRoll extends DSRoll {
    * Result tiers and their ranges
    */
   static RESULT_TIERS = [-Infinity, 12, 17, Infinity];
+
+  /**
+   * Prompt the user with a roll configuration dialog
+   * @param {object} [options] - Options for the dialog
+   * @param {"ability"|"resistance"|"test"} [options.type="test"]   - A valid roll type
+   * @param {"none"|"evaluate"|"message"} [options.evaluation="evaluate"] - How will the roll be evaluated and returned?
+   * @param {number} [options.edges] - Base edges for the roll
+   * @param {number} [options.banes] - Base banes for the roll
+   * @param {Record<string, unknown>} [options.data] - Roll data to be parsed by the formula
+   */
+  static async prompt(options = {}) {
+    const type = options.type ?? "test";
+    const evaluation = options.evaluation ?? "message";
+    const formula = options.formula ?? "2d10";
+    if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability', 'resistance', or 'test'");
+    if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
+    const flavor = options.flavor ?? game.i18n.localize(this.TYPES[type]);
+
+    const roll = new this(formula, options.data, {
+      flavor,
+      edges: options.edges,
+      banes: options.banes
+    });
+
+    if (evaluation === "none") return roll;
+
+    if (evaluation === "evaluate") return roll.evaluate();
+
+    if (evaluation === "message") return roll.toMessage();
+  }
 
   /**
    * Determines if this is a power roll with 2d10 base
