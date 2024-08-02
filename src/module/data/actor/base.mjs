@@ -58,6 +58,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {string} characteristic - The characteristic to roll
    * @param {object} [options] - Options to modify the characteristic roll
    * @param {Array<"test" | "resistance" | "ability">} [options.types] - Valid roll types for the characteristic
+   * @param {number} [options.edges] - Base edges for the roll
+   * @param {number} [options.banes] - Base banes for the roll
    */
   async rollCharacteristic(characteristic, options = {}) {
     const types = options.types ?? ["test", "resistance"];
@@ -74,11 +76,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
         content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
         buttons
-      }
-      );
+      });
     }
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
-    return PowerRoll.prompt({type, formula, data});
+    return PowerRoll.prompt({type, formula, data, edges: options.edges, banes: options.banes});
   }
 }

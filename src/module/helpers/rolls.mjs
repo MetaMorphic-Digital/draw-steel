@@ -87,13 +87,34 @@ export class PowerRoll extends DSRoll {
     const formula = options.formula ?? "2d10";
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability', 'resistance', or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
-    const flavor = options.flavor ?? game.i18n.localize(this.TYPES[type].label);
+    const typeLabel = game.i18n.localize(this.TYPES[type].label);
+    const flavor = options.flavor ?? typeLabel;
 
-    const roll = new this(formula, options.data, {
-      flavor,
-      edges: options.edges,
-      banes: options.banes
+    const dialogContext = {
+      modChoices: Array.fromRange(3).reduce((obj, number) => {
+        obj[number] = number;
+        return obj;
+      }, {}),
+      bane: options.banes ?? 0,
+      edges: options.edges ?? 0
+    };
+
+    const content = await renderTemplate("systems/draw-steel/templates/helpers/roll-prompt.hbs", dialogContext);
+
+    const rollContext = await foundry.applications.api.DialogV2.prompt({
+      window: {title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})},
+      content,
+      ok: {
+        callback: (event, button, dialog) => {
+          return {
+            edges: button.form.elements.edges.value,
+            banes: button.form.elements.banes.value
+          };
+        }
+      }
     });
+
+    const roll = new this(formula, options.data, {flavor, ...rollContext});
 
     if (evaluation === "none") return roll;
 

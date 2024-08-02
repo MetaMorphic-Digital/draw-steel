@@ -26,7 +26,7 @@ export class DrawSteelActor extends Actor {
    * @returns
    */
   async rollCharacteristic(characteristic, options) {
-    if (this.system.rollCharacteristic instanceof Function) return this.system.rollCharacteristic(options);
+    if (this.system.rollCharacteristic instanceof Function) return this.system.rollCharacteristic(characteristic, options);
     throw new Error(`Actors of type ${this.type} cannot roll characteristics`);
   }
 }
