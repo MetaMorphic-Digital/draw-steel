@@ -17,17 +17,17 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       }, {})
     );
 
-    schema.stats = new fields.SchemaField({
+    schema.combat = new fields.SchemaField({
       size: requiredInteger(1),
       weight: requiredInteger(4),
       stability: requiredInteger(0),
-      reach: requiredInteger(0),
-      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
+      reach: requiredInteger(0)
     });
 
     schema.biography = new fields.SchemaField({
       value: new fields.HTMLField(),
-      gm: new fields.HTMLField()
+      gm: new fields.HTMLField(),
+      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
     });
 
     schema.movement = new fields.SchemaField({
