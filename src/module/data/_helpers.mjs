@@ -22,9 +22,23 @@ export const requiredInteger = (initial = 0) => new NumberField({initial, requir
  * @param {() => DataField} inner Callback that returns a field
  * @returns A Schema with entries for each damage type
  */
-export const damageTypes = (inner, extra = {}) => new SchemaField(
-  Object.keys(CONFIG.DRAW_STEEL.damageTypes).reduce((obj, type) => {
+export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
+  const schema = {};
+  const config = CONFIG.DRAW_STEEL;
+
+  if (all) schema.all = inner();
+
+  Object.keys(config.damageTypes).reduce((obj, type) => {
     obj[type] = inner();
     return obj;
-  }, extra)
-);
+  }, schema);
+
+  if (keywords) {
+    Object.entries(config.abilities.keywords).reduce((obj, [key, value]) => {
+      if (value.damage) obj[key] = inner();
+      return obj;
+    }, schema);
+  }
+
+  return new SchemaField(schema);
+};

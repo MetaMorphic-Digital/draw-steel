@@ -394,13 +394,15 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Keywords.Attack"
     },
     magic: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Magic"
+      label: "DRAW_STEEL.Item.Ability.Keywords.Magic",
+      damage: true
     },
     melee: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Melee"
     },
     psionic: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Psionic"
+      label: "DRAW_STEEL.Item.Ability.Keywords.Psionic",
+      damage: true
     },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
@@ -409,7 +411,8 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Keywords.Resistance"
     },
     weapon: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Weapon"
+      label: "DRAW_STEEL.Item.Ability.Keywords.Weapon",
+      damage: true
     }
   }
 };
