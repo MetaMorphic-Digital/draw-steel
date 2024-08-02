@@ -4,7 +4,7 @@
   "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
   "scripts": {
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
-    "watch:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
+    "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
     "lint:fix": "eslint --fix src/module/**",
     "lint:ci": "eslint src/module/**"
   },

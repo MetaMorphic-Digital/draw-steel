@@ -17,7 +17,8 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       // Some classes have a second resource
-      resources: barAttribute(10),
+      resourceOne: barAttribute(10),
+      resourceTwo: barAttribute(10),
       xp: requiredInteger(0),
       recoveries: barAttribute(8),
       victories: requiredInteger(0),

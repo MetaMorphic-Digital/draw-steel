@@ -19,23 +19,39 @@
     </div>
     <div class='resources grid grid-3col'>
       <div class='resource flex-group-center'>
-        <label for='system.health.value' class='resource-label'>
-          {{localize 'DRAW_STEEL.Actor.base.FIELDS.stamina.value.label'}}
+        <label class='resource-label'>
+          {{localize systemFields.stamina.label}}
         </label>
         <div class='resource-content flexrow flex-center flex-between'>
           {{formInput
             systemFields.stamina.fields.value
-            name="system.stamina.value"
             value=system.stamina.value
           }}
           <span> / </span>
           {{formInput
             systemFields.stamina.fields.max
-            name="system.stamina.max"
             value=system.stamina.max
           }}
         </div>
       </div>
+      {{#if (eq actor.type "character")}}
+      <div class='resource flex-group-center'>
+        <label class='resource-label'>
+          {{localize systemFields.hero.fields.recoveries.label}}
+        </label>
+        <div class='resource-content flexrow flex-center flex-between'>
+          {{formInput
+            systemFields.hero.fields.recoveries.fields.value
+            value=system.hero.recoveries.value
+          }}
+          <span> / </span>
+          {{formInput
+            systemFields.hero.fields.recoveries.fields.max
+            value=system.hero.recoveries.max
+          }}
+        </div>
+      </div>
+      {{/if}}
     </div>
   </div>
 </header>

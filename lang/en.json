@@ -59,8 +59,12 @@
             }
           },
           "stamina": {
+            "label": "Stamina",
             "value": {
-              "label": "Stamina"
+              "label": "Current Stamina"
+            },
+            "max": {
+              "label": "Max Stamina"
             }
           },
           "combat": {
@@ -103,8 +107,34 @@
       },
       "Character": {
         "FIELDS": {
-          "attributes.level.value": {
-            "label": "Level"
+          "hero": {
+            "resourceOne": {
+              "label": "Resource One"
+            },
+            "resourceTwo": {
+              "label": "Resource Two"
+            },
+            "xp": {
+              "label": "XP"
+            },
+            "recoveries": {
+              "label": "Recoveries",
+              "value": {
+                "label": "Current Recoveries"
+              },
+              "max": {
+                "label": "Max Recoveries"
+              }
+            },
+            "victories": {
+              "label": "Victories"
+            },
+            "renown": {
+              "label": "Renown"
+            },
+            "skills": {
+              "label": "Skills"
+            }
           }
         }
       },
