@@ -18,4 +18,15 @@ export class DrawSteelActor extends Actor {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActorData", this);
   }
+
+  /**
+   * Rolls a given actor's characteristic
+   * @param {string} characteristic
+   * @param {object} [options] Pass through options object
+   * @returns
+   */
+  async rollCharacteristic(characteristic, options) {
+    if (this.system.rollCharacteristic instanceof Function) return this.system.rollCharacteristic(options);
+    throw new Error(`Actors of type ${this.type} cannot roll characteristics`);
+  }
 }

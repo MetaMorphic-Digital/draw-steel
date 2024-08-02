@@ -52,4 +52,33 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
   }
+
+  /**
+   * Prompt the user for what types
+   * @param {string} characteristic - The characteristic to roll
+   * @param {object} [options] - Options to modify the characteristic roll
+   * @param {Array<"test" | "resistance" | "ability">} [options.types] - Valid roll types for the characteristic
+   */
+  async rollCharacteristic(characteristic, options = {}) {
+    const types = options.types ?? ["test", "resistance"];
+
+    let type = types[0];
+
+    if (types.length > 1) {
+      const buttons = types.reduce((b, action) => {
+        const {label, icon} = PowerRoll.TYPES[action];
+        b.push({label, icon, action});
+        return b;
+      }, []);
+      type = await foundry.applications.api.DialogV2.wait({
+        window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
+        content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
+        buttons
+      }
+      );
+    }
+    const formula = `2d10 + @${characteristic}`;
+    const data = this.parent.getRollData();
+    return PowerRoll.prompt({type, formula, data});
+  }
 }
