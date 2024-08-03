@@ -1,7 +1,32 @@
 /**
  * Base roll class for Draw Steel
  */
-export class DSRoll extends foundry.dice.Roll {}
+export class DSRoll extends foundry.dice.Roll {
+  /** @override */
+  async render({flavor, template = this.constructor.CHAT_TEMPLATE, isPrivate = false} = {}) {
+    if (!this._evaluated) await this.evaluate({allowInteractive: !isPrivate});
+    const chatData = await this._prepareContext({flavor, isPrivate});
+    return renderTemplate(template, chatData);
+  }
+
+  /**
+   * Helper function to generate render context in use with `static CHAT_TEMPLATE`
+   * @param {object} options
+   * @param {string} [options.flavor]     - Flavor text to include
+   * @param {boolean} [options.isPrivate] - Is the Roll displayed privately?
+   * @returns An object to be used in `renderTemplate`
+   */
+  async _prepareContext({flavor, isPrivate}) {
+    return {
+      formula: isPrivate ? "???" : this._formula,
+      flavor: isPrivate ? null : flavor ?? this.options.flavor,
+      user: game.user.id,
+      tooltip: isPrivate ? "" : await this.getTooltip(),
+      total: isPrivate ? "?" : Math.round(this.total * 100) / 100
+    };
+  }
+
+}
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -17,6 +42,16 @@ export class PowerRoll extends DSRoll {
     if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability, resistance, or test");
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
+    if (!options.appliedModifier && (Math.abs(this.netBoon) === 1)) {
+      const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+      const number = new foundry.dice.terms.NumericTerm({
+        number: 2,
+        flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane")
+      });
+      this.terms.push(operation, number);
+      this.resetFormula();
+      this.options.appliedModifier = true;
+    }
   }
 
   static DEFAULT_OPTIONS = Object.freeze({
@@ -25,6 +60,8 @@ export class PowerRoll extends DSRoll {
     banes: 0,
     edges: 0
   });
+
+  static CHAT_TEMPLATE = "systems/draw-steel/templates/rolls/power.hbs";
 
   /**
    * Types of Power Rolls
@@ -67,9 +104,26 @@ export class PowerRoll extends DSRoll {
   static MAX_BANE = 2;
 
   /**
-   * Result tiers and their ranges
+   * Power roll result tiers
    */
-  static RESULT_TIERS = [-Infinity, 12, 17, Infinity];
+  static get RESULT_TIERS() {
+    return this.#RESULT_TIERS;
+  }
+
+  static #RESULT_TIERS = {
+    tier1: {
+      label: "DRAW_STEEL.Roll.Power.Tiers.One",
+      threshold: -Infinity
+    },
+    tier2: {
+      label: "DRAW_STEEL.Roll.Power.Tiers.Two",
+      threshold: 12
+    },
+    tier3: {
+      label: "DRAW_STEEL.Roll.Power.Tiers.Three",
+      threshold: 17
+    }
+  };
 
   /**
    * Prompt the user with a roll configuration dialog
@@ -112,7 +166,7 @@ export class PowerRoll extends DSRoll {
       }, {});
     }
 
-    const content = await renderTemplate("systems/draw-steel/templates/helpers/roll-prompt.hbs", dialogContext);
+    const content = await renderTemplate("systems/draw-steel/templates/rolls/prompt.hbs", dialogContext);
 
     const rollContext = await foundry.applications.api.DialogV2.prompt({
       window: {title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})},
@@ -158,22 +212,24 @@ export class PowerRoll extends DSRoll {
   }
 
   /**
-   * Produces the tier of a roll
+   * Produces the tier of a roll as a number
    * @returns {number | undefined} Returns a number for the tier or undefined if this isn't yet evaluated
    */
   get product() {
     if (this._total === undefined) return undefined;
-    const tier = this.constructor.RESULT_TIERS.reduce((t, threshold) => t + Number(this.total > threshold), 0);
+    const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, {threshold}) => t + Number(this.total >= threshold), 0);
     // Adjusts tiers for double edge/bane
     const adjustment = this.netBoon - Math.sign(this.netBoon);
     return Math.clamp(tier + adjustment, 1, 3);
   }
 
   /**
-   * Semantic getter for {@link product}
+   * Converts the tier of a roll into a string property
+   * @returns {string | undefined} Returns a string for the tier or undefined if this isn't yet evaluated
    */
   get tier() {
-    return this.product;
+    if (this.product === undefined) return undefined;
+    return `tier${this.product}`;
   }
 
   /**
@@ -189,18 +245,53 @@ export class PowerRoll extends DSRoll {
    * @returns {boolean | null} Null if not yet evaluated
    */
   get nat20() {
-    if (this._total === undefined) return null;
+    if ((this._total === undefined) || !this.validPowerRoll) return null;
     return (this.dice[0].total >= 20);
   }
 
   /**
    * Determines if an ability power roll was a critical
    * @returns {boolean | null} Null if not yet evaluated or not an ability roll,
-   * otherwise returns true if the dice total is a 19 or higher
+   * otherwise returns if the dice total is a 19 or higher
    */
   get critical() {
     if (this.options.type !== "ability") return null;
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
+  }
+
+  async _prepareContext({flavor, isPrivate}) {
+    const context = await super._prepareContext({flavor, isPrivate});
+
+    context.tier = {
+      label: game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
+      class: this.tier
+    };
+
+    let modString = "";
+
+    switch (this.netBoon) {
+      case -2:
+        modString = "DRAW_STEEL.Roll.Power.Modifier.Banes";
+        break;
+      case -1:
+        modString = "DRAW_STEEL.Roll.Power.Modifier.Bane";
+        break;
+      case 1:
+        modString = "DRAW_STEEL.Roll.Power.Modifier.Edge";
+        break;
+      case 2:
+        modString = "DRAW_STEEL.Roll.Power.Modifier.Edges";
+        break;
+    }
+
+    context.modifier = {
+      number: Math.abs(this.netBoon),
+      mod: game.i18n.localize(modString)
+    };
+
+    context.critical = (this.critical || this.nat20) ? "critical" : "";
+
+    return context;
   }
 }
