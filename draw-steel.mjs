@@ -55,6 +55,11 @@ Hooks.once("init", function () {
   CONFIG.Dice.rolls = Object.values(helpers.rolls);
 });
 
+/**
+ * Perform one-time pre-localization and sorting of some configuration objects
+ */
+Hooks.once("i18nInit", () => helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL));
+
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
@@ -62,4 +67,5 @@ Hooks.once("init", function () {
 Hooks.once("ready", function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
+  Hooks.callAll("ds.ready");
 });

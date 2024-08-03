@@ -10,3 +10,11 @@
     {{selectOptions modChoices selected=bane}}
   </select>
 </label>
+{{#if skills}}
+<label>
+  <span>{{localize "DRAW_STEEL.Actor.Character.FIELDS.hero.skills.label"}}</span>
+  <select name="skills">
+    {{selectOptions skills blank=(localize "None")}}
+  </select>
+</label>
+{{/if}}

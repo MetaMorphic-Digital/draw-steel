@@ -1,3 +1,5 @@
+import {preLocalize} from "./helpers/utils.mjs";
+
 export const DRAW_STEEL = {};
 
 /**
@@ -20,6 +22,8 @@ DRAW_STEEL.damageTypes = {
   psychic: "DRAW_STEEL.DamageTypes.Psychic",
   sonic: "DRAW_STEEL.DamageTypes.Sonic"
 };
+
+preLocalize("damageTypes");
 
 /**
  * @type {Record<string, {img: string, name: string}>}
@@ -295,6 +299,8 @@ DRAW_STEEL.skills = {
     }
   }
 };
+preLocalize("skills.groups", {key: "label"});
+preLocalize("skills.list", {key: "label"});
 
 // TODO: Languages
 
@@ -338,6 +344,8 @@ DRAW_STEEL.negotiation = {
     }
   }
 };
+
+preLocalize("negotation.motivations", {key: "label"});
 
 DRAW_STEEL.monsters = {
   roles: {
@@ -384,6 +392,8 @@ DRAW_STEEL.monsters = {
     }
   }
 };
+preLocalize("monsters.roles", {key: "label"});
+preLocalize("monsters.subroles", {key: "label"});
 
 DRAW_STEEL.abilities = {
   keywords: {
@@ -416,6 +426,7 @@ DRAW_STEEL.abilities = {
     }
   }
 };
+preLocalize("abilities.keywords", {key: "label"});
 
 /**
  * Configuration details for Cultures
@@ -485,6 +496,9 @@ DRAW_STEEL.culture = {
     }
   }
 };
+preLocalize("culture.environments", {key: "label"});
+preLocalize("culture.organization", {key: "label"});
+preLocalize("culture.upbringing", {key: "label"});
 
 /**
  * Configuration details for Kits
@@ -502,6 +516,7 @@ DRAW_STEEL.kits = {
     }
   }
 };
+preLocalize("kits.types", {key: "label"});
 
 /**
  * Configuration details for Equipment
@@ -587,3 +602,7 @@ DRAW_STEEL.equipment = {
     }
   }
 };
+preLocalize("equipment.kinds", {key: "label"});
+preLocalize("equipment.armor", {key: "label"});
+preLocalize("equipment.weapon", {key: "label"});
+preLocalize("equipment.implement", {key: "label"});

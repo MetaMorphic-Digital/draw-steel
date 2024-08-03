@@ -80,6 +80,7 @@ export class PowerRoll extends DSRoll {
    * @param {number} [options.banes] - Base banes for the roll
    * @param {Record<string, unknown>} [options.formula="2d10"] - Roll formula
    * @param {Record<string, unknown>} [options.data] - Roll data to be parsed by the formula
+   * @param {string[]} [options.skills] - An array of skills that might be chosen
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
@@ -99,6 +100,18 @@ export class PowerRoll extends DSRoll {
       edges: options.edges ?? 0
     };
 
+    if (options.skills) {
+      dialogContext.skills = options.skills.reduce((obj, skill) => {
+        const label = CONFIG.DRAW_STEEL.skills.list[skill]?.label;
+        if (!label) {
+          console.warn("Could not find skill" + skill);
+          return obj;
+        }
+        obj[skill] = label;
+        return obj;
+      }, {});
+    }
+
     const content = await renderTemplate("systems/draw-steel/templates/helpers/roll-prompt.hbs", dialogContext);
 
     const rollContext = await foundry.applications.api.DialogV2.prompt({
@@ -106,21 +119,26 @@ export class PowerRoll extends DSRoll {
       content,
       ok: {
         callback: (event, button, dialog) => {
-          return {
-            edges: button.form.elements.edges.value,
-            banes: button.form.elements.banes.value
-          };
+          const output = Array.from(button.form.elements).reduce((obj, input) => {
+            if (input.name) obj[input.name] = input.value;
+            return obj;
+          }, {});
+
+          return output;
         }
       }
     });
 
     const roll = new this(formula, options.data, {flavor, ...rollContext});
 
-    if (evaluation === "none") return roll;
-
-    if (evaluation === "evaluate") return roll.evaluate();
-
-    if (evaluation === "message") return roll.toMessage();
+    switch (evaluation) {
+      case "none":
+        return roll;
+      case "evaluate":
+        return roll.evaluate();
+      case "message":
+        return roll.toMessage();
+    }
   }
 
   /**
