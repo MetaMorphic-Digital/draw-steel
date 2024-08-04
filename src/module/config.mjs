@@ -22,7 +22,6 @@ DRAW_STEEL.damageTypes = {
   psychic: "DRAW_STEEL.DamageTypes.Psychic",
   sonic: "DRAW_STEEL.DamageTypes.Sonic"
 };
-
 preLocalize("damageTypes");
 
 /**
@@ -424,9 +423,104 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Keywords.Weapon",
       damage: true
     }
+  },
+  types: {
+    action: {
+      label: "DRAW_STEEL.Item.Ability.Type.Action"
+    },
+    maneuver: {
+      label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
+    }
+  },
+  distances: {
+    melee: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Reach",
+      primary: true
+    },
+    ranged: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      primary: true
+    },
+    meleeRanged: {
+      label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
+      primary: true,
+      secondary: true
+    },
+    aura: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Aura",
+      primary: true,
+      area: true
+    },
+    burst: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Burst",
+      primary: true,
+      area: true
+    },
+    cube: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Cube",
+      primary: true,
+      area: true
+    },
+    line: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Line",
+      primary: true,
+      secondary: true,
+      area: true
+    },
+    wall: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Wall",
+      primary: true,
+      area: true
+    },
+    special: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Special",
+      area: true
+    },
+    self: {
+      label: "DRAW_STEEL.Item.Ability.Distance.Self"
+    }
+  },
+  targets: {
+    creature: {
+      label: "DRAW_STEEL.Item.Ability.Target.Creature",
+      all: "DRAW_STEEL.Item.Ability.Target.AllCreatures"
+    },
+    object: {
+      label: "DRAW_STEEL.Item.Ability.Target.Object",
+      all: "DRAW_STEEL.Item.Ability.Target.AllObjects"
+    },
+    creatureObject: {
+      label: "DRAW_STEEL.Item.Ability.Target.CreatureObject",
+      all: "DRAW_STEEL.Item.Ability.Target.AllCreatureObject"
+    },
+    enemy: {
+      label: "DRAW_STEEL.Item.Ability.Target.Enemy",
+      all: "DRAW_STEEL.Item.Ability.Target.AllEnemies"
+    },
+    ally: {
+      label: "DRAW_STEEL.Item.Ability.Target.Ally",
+      all: "DRAW_STEEL.Item.Ability.Target.AllAllies"
+    },
+    self: {
+      label: "DRAW_STEEL.Item.Ability.Target.Self"
+    }
+  },
+  forcedMovement: {
+    push: {
+      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Push"
+    },
+    pull: {
+      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Pull"
+    },
+    slide: {
+      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Slide"
+    }
   }
 };
 preLocalize("abilities.keywords", {key: "label"});
+preLocalize("abilities.distances", {key: "label"});
+preLocalize("abilities.targets", {keys: ["label", "all"]});
+preLocalize("abilities.forcedMovement", {key: "label"});
 
 /**
  * Configuration details for Cultures
