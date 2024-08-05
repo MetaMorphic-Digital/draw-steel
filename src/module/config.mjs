@@ -4,13 +4,16 @@ export const DRAW_STEEL = {};
 
 /**
  * The set of Characteristics used within the system.
- * The long form can be accessed under `DRAW_STEEL.Actor.base.FIELDS.characteristics.{}.value`
- * The `label` is the short form in all caps (e.g. MGT)
- * The `hint` is the full name (e.g. Might)
+ * The long form can be accessed under `DRAW_STEEL.Actor.base.FIELDS.characteristics.{}.value`.
+ * The `label` is the short form in all caps (e.g. MGT).
+ * The `hint` is the full name (e.g. Might).
  * @type {Array<string>}
  */
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
+/**
+ * Configuration information for damage types
+ */
 DRAW_STEEL.damageTypes = {
   acid: {
     label: "DRAW_STEEL.DamageTypes.Acid"
@@ -79,6 +82,9 @@ DRAW_STEEL.conditions = {
   }
 };
 
+/**
+ * Configuration information for skills
+ */
 DRAW_STEEL.skills = {
   groups: {
     crafting: {
@@ -321,6 +327,9 @@ preLocalize("skills.list", {key: "label"});
 
 // TODO: Languages
 
+/**
+ * Configuration information for negotiations
+ */
 DRAW_STEEL.negotiation = {
   motivations: {
     benevolence: {
@@ -361,9 +370,18 @@ DRAW_STEEL.negotiation = {
     }
   }
 };
-
 preLocalize("negotation.motivations", {key: "label"});
 
+/**
+ * Configuration information for heros
+ */
+DRAW_STEEL.hero = {
+  xp_track: [0, 10, 25, 40, 55, 70, 85, 100, 115, 130]
+};
+
+/**
+ * Configuration information for monsters
+ */
 DRAW_STEEL.monsters = {
   roles: {
     ambusher: {
@@ -412,6 +430,9 @@ DRAW_STEEL.monsters = {
 preLocalize("monsters.roles", {key: "label"});
 preLocalize("monsters.subroles", {key: "label"});
 
+/**
+ * Configuration information for Ability items
+ */
 DRAW_STEEL.abilities = {
   keywords: {
     area: {
@@ -541,7 +562,7 @@ preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});
 
 /**
- * Configuration details for Cultures
+ * Configuration details for Culture items
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}
  */
 DRAW_STEEL.culture = {
@@ -613,7 +634,7 @@ preLocalize("culture.organization", {key: "label"});
 preLocalize("culture.upbringing", {key: "label"});
 
 /**
- * Configuration details for Kits
+ * Configuration details for Kit items
  * @type {Record<string,  Record<string, {label: string, equipment: Set<string>}>>}
  */
 DRAW_STEEL.kits = {
@@ -631,7 +652,7 @@ DRAW_STEEL.kits = {
 preLocalize("kits.types", {key: "label"});
 
 /**
- * Configuration details for Equipment
+ * Configuration details for Equipment items
  * Also used by Kits
  * @type {Record<string,  Record<string, {label: string}>>}
  */
