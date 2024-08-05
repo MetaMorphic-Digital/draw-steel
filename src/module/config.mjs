@@ -12,17 +12,35 @@ export const DRAW_STEEL = {};
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
 DRAW_STEEL.damageTypes = {
-  acid: "DRAW_STEEL.DamageTypes.Acid",
-  cold: "DRAW_STEEL.DamageTypes.Cold",
-  corruption: "DRAW_STEEL.DamageTypes.Corruption",
-  fire: "DRAW_STEEL.DamageTypes.Fire",
-  holy: "DRAW_STEEL.DamageTypes.Holy",
-  lightning: "DRAW_STEEL.DamageTypes.Lightning",
-  poison: "DRAW_STEEL.DamageTypes.Poison",
-  psychic: "DRAW_STEEL.DamageTypes.Psychic",
-  sonic: "DRAW_STEEL.DamageTypes.Sonic"
+  acid: {
+    label: "DRAW_STEEL.DamageTypes.Acid"
+  },
+  cold: {
+    label: "DRAW_STEEL.DamageTypes.Cold"
+  },
+  corruption: {
+    label: "DRAW_STEEL.DamageTypes.Corruption"
+  },
+  fire: {
+    label: "DRAW_STEEL.DamageTypes.Fire"
+  },
+  holy: {
+    label: "DRAW_STEEL.DamageTypes.Holy"
+  },
+  lightning: {
+    label: "DRAW_STEEL.DamageTypes.Lightning"
+  },
+  poison: {
+    label: "DRAW_STEEL.DamageTypes.Poison"
+  },
+  psychic: {
+    label: "DRAW_STEEL.DamageTypes.Psychic"
+  },
+  sonic: {
+    label: "DRAW_STEEL.DamageTypes.Sonic"
+  }
 };
-preLocalize("damageTypes");
+preLocalize("damageTypes", {key: "label"});
 
 /**
  * @type {Record<string, {img: string, name: string}>}

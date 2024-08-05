@@ -12,14 +12,16 @@ export const barAttribute = (initial = 0) => new SchemaField({
 
 /**
  * Constructs a number field that is always a number with a min of 0
- * @param {number} initial The initial value for the field
+ * @param {object} [options] Options to forward to the field
+ * @param {number} [options.initial=0] The initial value for the field
+ * @param {string} [options.label] Label for the field
  * @returns A number field that is non-nullable and always defined
  */
-export const requiredInteger = (initial = 0) => new NumberField({initial, required: true, nullable: false, integer: true, min: 0});
+export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({initial, label, required: true, nullable: false, integer: true, min: 0});
 
 /**
  * Constructs a schema field with entries for each damage type
- * @param {() => DataField} inner Callback that returns a field
+ * @param {({label?: string}) => DataField} inner Callback that returns a field
  * @returns A Schema with entries for each damage type
  */
 export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
@@ -28,14 +30,14 @@ export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
 
   if (all) schema.all = inner();
 
-  Object.keys(config.damageTypes).reduce((obj, type) => {
-    obj[type] = inner();
+  Object.entries(config.damageTypes).reduce((obj, [type, value]) => {
+    obj[type] = inner({label: value.label});
     return obj;
   }, schema);
 
   if (keywords) {
     Object.entries(config.abilities.keywords).reduce((obj, [key, value]) => {
-      if (value.damage) obj[key] = inner();
+      if (value.damage) obj[key] = inner({label: value.label});
       return obj;
     }, schema);
   }

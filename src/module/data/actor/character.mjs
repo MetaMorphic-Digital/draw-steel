@@ -19,10 +19,10 @@ export default class CharacterModel extends BaseActorModel {
       // Some classes have a second resource
       resourceOne: barAttribute(10),
       resourceTwo: barAttribute(10),
-      xp: requiredInteger(0),
+      xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8),
-      victories: requiredInteger(0),
-      renown: requiredInteger(0),
+      victories: requiredInteger({initial: 0}),
+      renown: requiredInteger({initial: 0}),
       skills: new fields.SetField(new fields.StringField({blank: true, required: true}))
     });
 

@@ -17,16 +17,16 @@ export default class NPCModel extends BaseActorModel {
     const config = CONFIG.DRAW_STEEL;
 
     schema.negotiation = new fields.SchemaField({
-      interest: requiredInteger(5),
-      patience: requiredInteger(5),
+      interest: requiredInteger({initial: 5}),
+      patience: requiredInteger({initial: 5}),
       motivations: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
       pitfalls: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
-      impression: requiredInteger(1)
+      impression: requiredInteger({initial: 1})
     });
 
     schema.monster = new fields.SchemaField({
       keywords: new fields.SetField(new fields.StringField({blank: true, required: true})),
-      ev: requiredInteger(4),
+      ev: requiredInteger({initial: 4}),
       role: new fields.StringField({choices: config.monsters.roles}),
       subrole: new fields.StringField({choices: config.monsters.subroles})
     });

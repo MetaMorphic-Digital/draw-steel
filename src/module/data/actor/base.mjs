@@ -18,10 +18,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     );
 
     schema.combat = new fields.SchemaField({
-      size: requiredInteger(1),
-      weight: requiredInteger(4),
-      stability: requiredInteger(0),
-      reach: requiredInteger(0)
+      size: requiredInteger({initial: 1}),
+      weight: requiredInteger({initial: 4}),
+      stability: requiredInteger({initial: 0}),
+      reach: requiredInteger({initial: 0})
     });
 
     schema.biography = new fields.SchemaField({
