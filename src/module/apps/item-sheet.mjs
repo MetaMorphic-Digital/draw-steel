@@ -1,3 +1,4 @@
+import {systemPath} from "../constants.mjs";
 import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
 const {api, sheets} = foundry.applications;
@@ -36,17 +37,17 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: "systems/draw-steel/templates/item/header.hbs"
+      template: systemPath("templates/item/header.hbs")
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs"
     },
     description: {
-      template: "systems/draw-steel/templates/item/description.hbs"
+      template: systemPath("templates/item/description.hbs")
     },
     effects: {
-      template: "systems/draw-steel/templates/item/effects.hbs"
+      template: systemPath("templates/item/effects.hbs")
     }
   };
 

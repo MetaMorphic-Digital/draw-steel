@@ -1,3 +1,4 @@
+import {systemPath} from "../constants.mjs";
 import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
 const {api, sheets} = foundry.applications;
@@ -39,26 +40,26 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: "systems/draw-steel/templates/actor/header.hbs"
+      template: systemPath("templates/actor/header.hbs")
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs"
     },
     stats: {
-      template: "systems/draw-steel/templates/actor/stats.hbs"
+      template: systemPath("templates/actor/stats.hbs")
     },
     features: {
-      template: "systems/draw-steel/templates/actor/features.hbs"
+      template: systemPath("templates/actor/features.hbs")
     },
     abilities: {
-      template: "systems/draw-steel/templates/actor/abilities.hbs"
+      template: systemPath("templates/actor/abilities.hbs")
     },
     effects: {
-      template: "systems/draw-steel/templates/actor/effects.hbs"
+      template: systemPath("templates/actor/effects.hbs")
     },
     biography: {
-      template: "systems/draw-steel/templates/actor/biography.hbs"
+      template: systemPath("templates/actor/biography.hbs")
     }
   };
 

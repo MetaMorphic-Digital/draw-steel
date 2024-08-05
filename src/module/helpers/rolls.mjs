@@ -1,3 +1,5 @@
+import {systemPath} from "../constants.mjs";
+
 /**
  * Base roll class for Draw Steel
  */
@@ -61,7 +63,7 @@ export class PowerRoll extends DSRoll {
     edges: 0
   });
 
-  static CHAT_TEMPLATE = "systems/draw-steel/templates/rolls/power.hbs";
+  static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
 
   /**
    * Types of Power Rolls
@@ -166,7 +168,7 @@ export class PowerRoll extends DSRoll {
       }, {});
     }
 
-    const content = await renderTemplate("systems/draw-steel/templates/rolls/prompt.hbs", dialogContext);
+    const content = await renderTemplate(systemPath("templates/rolls/prompt.hbs"), dialogContext);
 
     const rollContext = await foundry.applications.api.DialogV2.prompt({
       window: {title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})},
