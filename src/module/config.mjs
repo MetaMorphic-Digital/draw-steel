@@ -82,6 +82,18 @@ DRAW_STEEL.conditions = {
   }
 };
 
+DRAW_STEEL.effectEnds = {
+  turn: {
+    label: "DRAW_STEEL.Effect"
+  },
+  resistance: {
+    label: "DRAW_STEEL.Effect"
+  },
+  encounter: {
+    label: "DRAW_STEEL.Effect"
+  }
+};
+
 /**
  * Configuration information for skills
  */
