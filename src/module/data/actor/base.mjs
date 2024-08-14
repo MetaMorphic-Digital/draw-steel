@@ -54,6 +54,24 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * @override
+   * @param {Record<string, unknown>} changes
+   * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
+   * @param {User} user
+   */
+  _preUpdate(changes, operation, user) {
+    const newSize = foundry.utils.getProperty(changes, "system.combat.size");
+    if ((newSize !== undefined) && (this.combat.size !== newSize)) {
+      foundry.utils.mergeObject(changes, {
+        prototypeToken: {
+          width: newSize,
+          height: newSize
+        }
+      });
+    }
+  }
+
+  /**
    * Prompt the user for what types
    * @param {string} characteristic - The characteristic to roll
    * @param {object} [options] - Options to modify the characteristic roll
