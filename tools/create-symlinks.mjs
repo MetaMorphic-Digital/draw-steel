@@ -10,6 +10,12 @@ const foundryConfig = yaml.load(fc);
 
 const fileRoot = path.join(foundryConfig.installPath, "resources", "app");
 
+try {
+  await fs.mkdir("foundry");
+} catch (e) {
+  if (e.code !== "EEXIST") throw e;
+}
+
 // Javascript files
 for (const p of ["client", "client-esm", "common"]) {
   try {
