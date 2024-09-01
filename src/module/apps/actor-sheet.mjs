@@ -289,12 +289,12 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     // Loop through the dataset and add it to our docData
     for (const [dataKey, value] of Object.entries(target.dataset)) {
       // These data attributes are reserved for the action handling
-      if (["action", "documentClass"].includes(dataKey)) continue;
+      if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
       // Nested properties use dot notation like `data-system.prop`
       foundry.utils.setProperty(docData, dataKey, value);
     }
 
-    await docCls.create(docData, {parent: this.actor});
+    await docCls.create(docData, {parent: this.actor, renderSheet: target.dataset.renderSheet});
   }
 
   /**
@@ -338,7 +338,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
-    const docRow = target.closest("li[data-document-class]");
+    const docRow = target.closest("[data-document-class]");
     if (docRow.dataset.documentClass === "Item") {
       return this.actor.items.get(docRow.dataset.itemId);
     } else if (docRow.dataset.documentClass === "ActiveEffect") {

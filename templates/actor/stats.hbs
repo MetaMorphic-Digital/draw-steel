@@ -1,6 +1,60 @@
 {{! Stats Tab }}
 <section class='tab stats {{tab.cssClass}}' data-group='primary' data-tab='stats'>
 <fieldset class="flexrow">
+    <legend>Resources</legend>
+    <div class='resource flex-group-center'>
+      <label class='resource-label'>
+        {{localize systemFields.stamina.label}}
+      </label>
+      <div class='resource-content flexrow flex-center flex-between'>
+        {{formInput
+          systemFields.stamina.fields.value
+          value=system.stamina.value
+        }}
+        <span> / </span>
+        {{formInput
+          systemFields.stamina.fields.max
+          value=system.stamina.max
+        }}
+      </div>
+    </div>
+    {{#if (eq actor.type "character")}}
+    <div class='resource flex-group-center'>
+      <label class='resource-label'>
+        {{localize systemFields.hero.fields.recoveries.label}}
+      </label>
+      <div class='resource-content flexrow flex-center flex-between'>
+        {{formInput
+          systemFields.hero.fields.recoveries.fields.value
+          value=system.hero.recoveries.value
+        }}
+        <span> / </span>
+        {{formInput
+          systemFields.hero.fields.recoveries.fields.max
+          value=system.hero.recoveries.max
+        }}
+      </div>
+    </div>
+    <div class="resource flex-group-center">
+      <label class="resource-label">
+
+      </label>
+      <div class='resource-content flexrow flex-center flex-between'>
+        {{formInput
+          systemFields.hero.fields.resourceOne.fields.value
+          value=system.hero.fields.resourceOne.value
+        }}
+        {{#if system.hero.fields.resourceTwo.value}}
+          {{formInput
+            systemFields.hero.fields.resourceTwo.fields.value
+            value=system.hero.fields.resourceTwo.value
+          }}
+        {{/if}}
+      </div>
+    </div>
+    {{/if}}
+</fieldset>
+<fieldset class="flexrow">
   <legend>{{localize systemFields.characteristics.label}}</legend>
   {{#each characteristics as |chr key|}}
     <label class="flexcol">

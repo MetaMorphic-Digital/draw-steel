@@ -17,40 +17,41 @@
         placeholder=(localize 'Name')
       }}
     </div>
-    <div class='resources grid grid-3col'>
-      <div class='resource flex-group-center'>
-        <label class='resource-label'>
-          {{localize systemFields.stamina.label}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          {{formInput
-            systemFields.stamina.fields.value
-            value=system.stamina.value
-          }}
-          <span> / </span>
-          {{formInput
-            systemFields.stamina.fields.max
-            value=system.stamina.max
-          }}
-        </div>
-      </div>
+    <div class="flexrow">
       {{#if (eq actor.type "character")}}
-      <div class='resource flex-group-center'>
-        <label class='resource-label'>
-          {{localize systemFields.hero.fields.recoveries.label}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          {{formInput
-            systemFields.hero.fields.recoveries.fields.value
-            value=system.hero.recoveries.value
-          }}
-          <span> / </span>
-          {{formInput
-            systemFields.hero.fields.recoveries.fields.max
-            value=system.hero.recoveries.max
-          }}
+        <div class="ancestry">
+        {{#if actor.system.ancestry}}
+          <a data-action="viewDoc" data-document-class="Item" data-item-id="{{actor.system.ancestry.id}}" >
+            {{actor.system.ancestry.name}}
+          </a>
+        {{else}}
+          <a data-action="createDoc" data-document-class="Item" data-type="ancestry" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.ancestry")}}
+          </a>
+        {{/if}}
         </div>
-      </div>
+        <div class="culture">
+        {{#if actor.system.culture}}
+          <a data-action="viewDoc" data-document-class="Item" data-item-id="{{actor.system.culture.id}}" >
+            {{actor.system.culture.name}}
+          </a>
+        {{else}}
+          <a data-action="createDoc" data-document-class="Item" data-type="culture" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.culture")}}
+          </a>
+        {{/if}}
+        </div>
+        <div class="career">
+        {{#if actor.system.career}}
+          <a data-action="viewDoc" data-document-class="Item" data-item-id="{{actor.system.career.id}}" >
+            {{actor.system.career.name}}
+          </a>
+        {{else}}
+          <a data-action="createDoc" data-document-class="Item" data-type="career" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.career")}}
+          </a>
+        {{/if}}
+        </div>
       {{/if}}
     </div>
   </div>
