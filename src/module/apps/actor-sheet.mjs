@@ -24,6 +24,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     },
     actions: {
       onEditImage: this._onEditImage,
+      toggleMode: this._toggleMode,
       viewDoc: this._viewDoc,
       createDoc: this._createDoc,
       deleteDoc: this._deleteDoc,
@@ -63,6 +64,22 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   };
 
+  /**
+   * Available sheet modes.
+   * @enum {number}
+   */
+  static MODES = {
+    PLAY: 1,
+    EDIT: 2
+  };
+
+  /**
+   * The mode the sheet is currently in.
+   * @type {ActorSheetV2.MODES}
+   * @protected
+   */
+  _mode = DrawSteelActorSheet.MODES.PLAY;
+
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
@@ -78,6 +95,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _prepareContext(options) {
     // Output initialization
     const context = {
+      isPlay: this._mode === DrawSteelActorSheet.MODES.PLAY,
       // Validates both permissions and compendium status
       editable: this.isEditable,
       owner: this.document.isOwner,
@@ -245,6 +263,22 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       left: this.position.left + 10
     });
     return fp.browse();
+  }
+
+  /**
+   * Toggle Edit vs. Play mode
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _toggleMode(event, target) {
+    if (!this.isEditable) {
+      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      return;
+    }
+    this._mode = this._mode === DrawSteelActorSheet.MODES.PLAY ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
+    this.render();
   }
 
   /**

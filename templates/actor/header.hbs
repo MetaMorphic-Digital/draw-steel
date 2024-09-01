@@ -26,7 +26,7 @@
           </a>
         {{else}}
           <a data-action="createDoc" data-document-class="Item" data-type="ancestry" data-render-sheet="true">
-            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.ancestry")}}
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ancestry")}}
           </a>
         {{/if}}
         </div>
@@ -37,7 +37,7 @@
           </a>
         {{else}}
           <a data-action="createDoc" data-document-class="Item" data-type="culture" data-render-sheet="true">
-            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.culture")}}
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.culture")}}
           </a>
         {{/if}}
         </div>
@@ -48,11 +48,37 @@
           </a>
         {{else}}
           <a data-action="createDoc" data-document-class="Item" data-type="career" data-render-sheet="true">
-            {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.career")}}
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.career")}}
           </a>
         {{/if}}
         </div>
       {{/if}}
     </div>
+  </div>
+  <div class="flexcol">
+    <div class="flexrow">
+      <span>{{localize "DRAW_STEEL.Sheet.Play"}}</span>
+      <a data-action="toggleMode">
+        {{#if isPlay}}
+          Play
+        {{else}}
+          Edit
+        {{/if}}
+      </a>
+      <span>{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
+    </div>
+    {{#if (eq actor.type "character")}}
+      <div class="class">
+      {{#if actor.system.class}}
+        <a data-action="viewDoc" data-document-class="Item" data-item-id="{{actor.system.class.id}}" >
+          {{actor.system.class.name}} {{actor.system.class.system.level}}
+        </a>
+      {{else}}
+        <a data-action="createDoc" data-document-class="Item" data-type="class" data-render-sheet="true">
+          {{localize "DRAW_STEEL.Add" itemName=(localize "TYPES.Item.class")}}
+        </a>
+      {{/if}}
+      </div>
+    {{/if}}
   </div>
 </header>
