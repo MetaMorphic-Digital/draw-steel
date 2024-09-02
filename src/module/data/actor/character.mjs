@@ -41,6 +41,10 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareDerivedData();
 
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
+    if (this.class) {
+      this.hero.resourceOne.label = this.class.system.resourceOne;
+      this.hero.resourceTwo.label = this.class.system.resourceTwo;
+    }
   }
 
   /**

@@ -1,73 +1,115 @@
 {{! Stats Tab }}
 <section class='tab stats {{tab.cssClass}}' data-group='primary' data-tab='stats'>
-<fieldset class="flexrow">
-    <legend>Resources</legend>
-    <div class='resource flex-group-center'>
+<fieldset class="resources flexrow">
+    <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
+    <div class='resource'>
       <label class='resource-label'>
         {{localize systemFields.stamina.label}}
       </label>
-      <div class='resource-content flexrow flex-center flex-between'>
-        {{formInput
-          systemFields.stamina.fields.value
-          value=system.stamina.value
-        }}
-        <span> / </span>
-        {{formInput
-          systemFields.stamina.fields.max
-          value=system.stamina.max
-        }}
+      <div class='resource-content flexrow'>
+        <div class="resource-current">
+          {{formInput
+            systemFields.stamina.fields.value
+            value=system.stamina.value
+          }}
+        </div>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">
+        {{#if isPlay}}
+          {{system.stamina.max}}
+        {{else}}
+          {{formInput
+            systemFields.stamina.fields.max
+            value=system.stamina.max
+          }}
+        {{/if}}
+        </span>
       </div>
     </div>
     {{#if (eq actor.type "character")}}
-    <div class='resource flex-group-center'>
+    <div class='resource'>
       <label class='resource-label'>
         {{localize systemFields.hero.fields.recoveries.label}}
       </label>
-      <div class='resource-content flexrow flex-center flex-between'>
-        {{formInput
-          systemFields.hero.fields.recoveries.fields.value
-          value=system.hero.recoveries.value
-        }}
-        <span> / </span>
-        {{formInput
-          systemFields.hero.fields.recoveries.fields.max
-          value=system.hero.recoveries.max
-        }}
+      <div class='resource-content flexrow'>
+        <div class="resource-current">
+          {{formInput
+            systemFields.hero.fields.recoveries.fields.value
+            value=system.hero.recoveries.value
+          }}
+        </div>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">
+        {{#if isPlay}}
+          {{system.hero.recoveries.max}}
+        {{else}}
+            {{formInput
+              systemFields.hero.fields.recoveries.fields.max
+              value=system.hero.recoveries.max
+            }}
+        {{/if}}
+        </span>
       </div>
     </div>
-    <div class="resource flex-group-center">
-      <label class="resource-label">
-
-      </label>
-      <div class='resource-content flexrow flex-center flex-between'>
-        {{formInput
-          systemFields.hero.fields.resourceOne.fields.value
-          value=system.hero.fields.resourceOne.value
-        }}
-        {{#if system.hero.fields.resourceTwo.value}}
+    <div class="resource">
+      {{#if system.class}}
+      {{#if isPlay}}
+        <label>
+          <span>{{system.hero.resourceOne.label}}</span>
+          {{formInput
+            systemFields.hero.fields.resourceOne.fields.value
+            value=system.hero.resourceOne.value
+          }}
+        </label>
+        {{#if system.class.system.resourceTwo}}
+        <label>
+          <span>{{system.hero.resourceTwo.label}}</span>
           {{formInput
             systemFields.hero.fields.resourceTwo.fields.value
-            value=system.hero.fields.resourceTwo.value
+            value=system.hero.resourceTwo.value
+          }}
+        </label>
+        {{/if}}
+      {{else}}
+      <label class="resource-label">
+        {{localize systemFields.hero.label}}
+      </label>
+      <div class='resource-content'>
+        {{formInput
+          systemFields.hero.fields.resourceOne.fields.value
+          value=system.hero.resourceOne.value
+        }}
+        {{#if system.class.system.resourceTwo}}
+          {{formInput
+            systemFields.hero.fields.resourceTwo.fields.value
+            value=system.hero.resourceTwo.value
           }}
         {{/if}}
       </div>
+      {{/if}}
+      {{/if}}
     </div>
     {{/if}}
 </fieldset>
-<fieldset class="flexrow">
+<fieldset class="characteristics flexrow">
   <legend>{{localize systemFields.characteristics.label}}</legend>
   {{#each characteristics as |chr key|}}
-    <label class="flexcol">
-      <a
-        data-action="roll"
-        data-roll-type="characteristic"
-        data-characteristic="{{key}}"
-        data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}"
-      >
-        {{localize chr.field.label}}
-      </a>
+    {{#if @root.isPlay}}
+    <a
+      class="characteristic play"
+      data-action="roll"
+      data-roll-type="characteristic"
+      data-characteristic="{{key}}"
+      data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}"
+    >
+      {{localize chr.field.label}} {{numberFormat chr.value sign=true}}
+    </a>
+    {{else}}
+    <label class="characteristic edit" data-tooltip="{{localize chr.field.hint}}">
+      <span class="label">{{localize chr.field.label}}</span>
       <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value sign=true}}>
     </label>
+    {{/if}}
   {{/each}}
 </fieldset>
 <div class="flexrow">
