@@ -1,133 +1,160 @@
 {{! Stats Tab }}
 <section class='tab stats {{tab.cssClass}}' data-group='primary' data-tab='stats'>
-<fieldset class="resources flexrow">
-    <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
-    <div class='resource'>
-      <label class='resource-label'>
-        {{localize systemFields.stamina.label}}
-      </label>
-      <div class='resource-content flexrow'>
-        <div class="resource-current">
-          {{formInput
-            systemFields.stamina.fields.value
-            value=system.stamina.value
-          }}
-        </div>
-        <span class="resource-divider"> / </span>
-        <span class="resource-max">
-        {{#if isPlay}}
-          {{system.stamina.max}}
-        {{else}}
-          {{formInput
-            systemFields.stamina.fields.max
-            value=system.stamina.max
-          }}
-        {{/if}}
-        </span>
-      </div>
-    </div>
-    {{#if (eq actor.type "character")}}
-    <div class='resource'>
-      <label class='resource-label'>
-        {{localize systemFields.hero.fields.recoveries.label}}
-      </label>
-      <div class='resource-content flexrow'>
-        <div class="resource-current">
-          {{formInput
-            systemFields.hero.fields.recoveries.fields.value
-            value=system.hero.recoveries.value
-          }}
-        </div>
-        <span class="resource-divider"> / </span>
-        <span class="resource-max">
-        {{#if isPlay}}
-          {{system.hero.recoveries.max}}
-        {{else}}
+  <fieldset class="resources flexrow">
+      <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
+      <div class='resource'>
+        <label class='resource-label'>
+          {{localize systemFields.stamina.label}}
+        </label>
+        <div class='resource-content flexrow'>
+          <div class="resource-current">
             {{formInput
-              systemFields.hero.fields.recoveries.fields.max
-              value=system.hero.recoveries.max
+              systemFields.stamina.fields.value
+              value=system.stamina.value
             }}
-        {{/if}}
-        </span>
+          </div>
+          <span class="resource-divider"> / </span>
+          <span class="resource-max">
+          {{#if isPlay}}
+            {{system.stamina.max}}
+          {{else}}
+            {{formInput
+              systemFields.stamina.fields.max
+              value=system.stamina.max
+            }}
+          {{/if}}
+          </span>
+        </div>
       </div>
-    </div>
-    <div class="resource">
-      {{#if system.class}}
-      {{#if isPlay}}
-        <label>
-          <span>{{system.hero.resourceOne.label}}</span>
+      {{#if (eq actor.type "character")}}
+      <div class='resource'>
+        <label class='resource-label'>
+          {{localize systemFields.hero.fields.recoveries.label}}
+        </label>
+        <div class='resource-content flexrow'>
+          <div class="resource-current">
+            {{formInput
+              systemFields.hero.fields.recoveries.fields.value
+              value=system.hero.recoveries.value
+            }}
+          </div>
+          <span class="resource-divider"> / </span>
+          <span class="resource-max">
+          {{#if isPlay}}
+            {{system.hero.recoveries.max}}
+          {{else}}
+              {{formInput
+                systemFields.hero.fields.recoveries.fields.max
+                value=system.hero.recoveries.max
+              }}
+          {{/if}}
+          </span>
+        </div>
+      </div>
+      <div class="resource">
+        {{#if system.class}}
+        {{#if isPlay}}
+          <label>
+            <span>{{system.hero.resourceOne.label}}</span>
+            {{formInput
+              systemFields.hero.fields.resourceOne.fields.value
+              value=system.hero.resourceOne.value
+            }}
+          </label>
+          {{#if system.class.system.resourceTwo}}
+          <label>
+            <span>{{system.hero.resourceTwo.label}}</span>
+            {{formInput
+              systemFields.hero.fields.resourceTwo.fields.value
+              value=system.hero.resourceTwo.value
+            }}
+          </label>
+          {{/if}}
+        {{else}}
+        <label class="resource-label">
+          {{localize systemFields.hero.label}}
+        </label>
+        <div class='resource-content'>
           {{formInput
             systemFields.hero.fields.resourceOne.fields.value
             value=system.hero.resourceOne.value
           }}
-        </label>
-        {{#if system.class.system.resourceTwo}}
-        <label>
-          <span>{{system.hero.resourceTwo.label}}</span>
-          {{formInput
-            systemFields.hero.fields.resourceTwo.fields.value
-            value=system.hero.resourceTwo.value
-          }}
-        </label>
+          {{#if system.class.system.resourceTwo}}
+            {{formInput
+              systemFields.hero.fields.resourceTwo.fields.value
+              value=system.hero.resourceTwo.value
+            }}
+          {{/if}}
+        </div>
         {{/if}}
-      {{else}}
-      <label class="resource-label">
-        {{localize systemFields.hero.label}}
-      </label>
-      <div class='resource-content'>
-        {{formInput
-          systemFields.hero.fields.resourceOne.fields.value
-          value=system.hero.resourceOne.value
-        }}
-        {{#if system.class.system.resourceTwo}}
-          {{formInput
-            systemFields.hero.fields.resourceTwo.fields.value
-            value=system.hero.resourceTwo.value
-          }}
         {{/if}}
       </div>
       {{/if}}
+  </fieldset>
+  <fieldset class="characteristics flexrow">
+    <legend>{{localize systemFields.characteristics.label}}</legend>
+    {{#each characteristics as |chr key|}}
+      {{#if @root.isPlay}}
+      <a
+        class="characteristic play"
+        data-action="roll"
+        data-roll-type="characteristic"
+        data-characteristic="{{key}}"
+        data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}"
+      >
+        {{localize chr.field.label}} {{numberFormat chr.value sign=true}}
+      </a>
+      {{else}}
+      <label class="characteristic edit" data-tooltip="{{localize chr.field.hint}}">
+        <span class="label">{{localize chr.field.label}}</span>
+        <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value sign=true}}>
+      </label>
       {{/if}}
-    </div>
-    {{/if}}
-</fieldset>
-<fieldset class="characteristics flexrow">
-  <legend>{{localize systemFields.characteristics.label}}</legend>
-  {{#each characteristics as |chr key|}}
-    {{#if @root.isPlay}}
-    <a
-      class="characteristic play"
-      data-action="roll"
-      data-roll-type="characteristic"
-      data-characteristic="{{key}}"
-      data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}"
-    >
-      {{localize chr.field.label}} {{numberFormat chr.value sign=true}}
-    </a>
-    {{else}}
-    <label class="characteristic edit" data-tooltip="{{localize chr.field.hint}}">
-      <span class="label">{{localize chr.field.label}}</span>
-      <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value sign=true}}>
-    </label>
-    {{/if}}
-  {{/each}}
-</fieldset>
-<div class="flexrow">
-  <fieldset>
+    {{/each}}
+  </fieldset>
+  {{#if isPlay}}
+  <div class="flexrow">
+    <fieldset class="combat flexrow">
+      <legend>{{localize systemFields.combat.label}}</legend>
+        <span class="play">
+          {{localize systemFields.combat.fields.size.label}} {{system.combat.size}}
+        </span>
+        <span class="play">
+          {{localize systemFields.combat.fields.weight.label}} {{system.combat.weight}}
+        </span>
+        <span class="play">
+          {{localize systemFields.combat.fields.reach.label}} {{system.combat.reach}}
+        </span>
+        <span class="play">
+          {{localize systemFields.combat.fields.stability.label}} {{system.combat.stability}}
+        </span>
+    </fieldset>
+    <fieldset class="movement flexrow">
+      <legend>{{localize systemFields.movement.label}}</legend>
+      {{log movement}}
+      {{#each movement as |mvmt key|}}
+      <span class="play">
+          {{mvmt.field.label}} {{mvmt.value}}
+      </span>
+      {{/each}}
+    </fieldset>
+  </div>
+  {{else}}
+  <fieldset class="combat flexrow">
     <legend>{{localize systemFields.combat.label}}</legend>
-    {{formGroup systemFields.combat.fields.size value=system.stats.size}}
-    {{formGroup systemFields.combat.fields.weight value=system.stats.weight}}
-    {{formGroup systemFields.combat.fields.reach value=system.stats.reach}}
-    {{formGroup systemFields.combat.fields.stability value=system.stats.stability}}
+    {{formGroup systemFields.combat.fields.size value=system.combat.size rootId=actor.uuid}}
+    {{formGroup systemFields.combat.fields.weight value=system.combat.weight rootId=actor.uuid}}
+    {{formGroup systemFields.combat.fields.reach value=system.combat.reach rootId=actor.uuid}}
+    {{formGroup systemFields.combat.fields.stability value=system.combat.stability rootId=actor.uuid}}
   </fieldset>
-  <fieldset>
+  <fieldset class="movement flexrow">
     <legend>{{localize systemFields.movement.label}}</legend>
-    {{formGroup systemFields.movement.fields.walk value=system.movement.walk}}
-    {{formGroup systemFields.movement.fields.burrow value=system.movement.burrow}}
-    {{formGroup systemFields.movement.fields.climb value=system.movement.climb}}
-    {{formGroup systemFields.movement.fields.swim value=system.movement.swim}}
-    {{formGroup systemFields.movement.fields.fly value=system.movement.fly}}
-    {{formGroup systemFields.movement.fields.teleport value=system.movement.teleport}}
+    {{formGroup systemFields.movement.fields.walk value=system.movement.walk rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.burrow value=system.movement.burrow rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.climb value=system.movement.climb rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.swim value=system.movement.swim rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.fly value=system.movement.fly rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.teleport value=system.movement.teleport rootId=actor.uuid}}
   </fieldset>
-</div>
+  {{/if}}
 </section>

@@ -123,6 +123,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
+        context.movement = this._getMovement();
         context.tab = context.tabs[partId];
         break;
       case "features":
@@ -161,6 +162,16 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       obj[chc] = {
         field: this.actor.system.schema.getField(`characteristics.${chc}.value`),
         value: foundry.utils.getProperty(this.actor, `system.characteristics.${chc}.value`)
+      };
+      return obj;
+    }, {});
+  }
+
+  _getMovement() {
+    return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
+      if (mvmt !== null) obj[key] = {
+        field: this.actor.system.schema.fields.movement.fields[key],
+        value: mvmt
       };
       return obj;
     }, {});
