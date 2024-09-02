@@ -1,6 +1,11 @@
 import {systemPath} from "../constants.mjs";
 import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
+/**
+ * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
+ * @typedef {import("../../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption} FormSelectOption
+ */
+
 const {api, sheets} = foundry.applications;
 
 /**
@@ -124,10 +129,15 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
+        context.skills = this._getSkillList();
         context.tab = context.tabs[partId];
         break;
       case "features":
+        context.features = this.actor.items.filter(i => i.type === "feature");
+        context.tab = context.tabs[partId];
+        break;
       case "abilities":
+        context.abilities = this.actor.items.filter(i => i.type === "ability");
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -157,6 +167,10 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
+  /**
+   * Constructs a record of valid characteristics and their associated field
+   * @returns {Record<string, {field: NumberField, value: number}>}
+   */
   _getCharacteristics() {
     return CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
       obj[chc] = {
@@ -167,6 +181,10 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }, {});
   }
 
+  /**
+   * Constructs a record of valid, non-null movements
+   * @returns {Record<string, {field: NumberField, value: number}>}
+   */
   _getMovement() {
     return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
       if (mvmt !== null) obj[key] = {
@@ -175,6 +193,19 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
       return obj;
     }, {});
+  }
+
+  /**
+   * Constructs a string listing the actor's skills
+   * @returns {string}
+   */
+  _getSkillList() {
+    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
+      skills.push(CONFIG.DRAW_STEEL.skills.list[skill].label);
+      return skills;
+    }, []);
+    const formatter = game.i18n.getListFormatter();
+    return formatter.format(list);
   }
 
   /**

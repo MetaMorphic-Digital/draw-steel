@@ -23,7 +23,7 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({blank: true, required: true}))
+      skills: new fields.SetField(new fields.StringField({blank: true, required: true, choices: CONFIG.DRAW_STEEL.skills.list}))
     });
 
     return schema;

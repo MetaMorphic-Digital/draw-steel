@@ -4,5 +4,9 @@
   data-group='primary'
   data-tab='features'
 >
-<h4>Features</h4>
+  <ul>
+    {{#each features as |feature index|}}
+      <li>{{feature.name}}</li>
+    {{/each}}
+  </ul>
 </section>

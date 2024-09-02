@@ -156,4 +156,12 @@
     {{formGroup systemFields.movement.fields.teleport value=system.movement.teleport rootId=actor.uuid}}
   </fieldset>
   {{/if}}
+  <fieldset class="skills flexrow">
+    <legend>{{localize systemFields.hero.fields.skills.label}}</legend>
+    {{#if isPlay}}
+    {{skills}}
+    {{else}}
+    {{formInput systemFields.hero.fields.skills value=system.hero.skills options=config.skills.optGroups}}
+    {{/if}}
+  </fieldset>
 </section>
