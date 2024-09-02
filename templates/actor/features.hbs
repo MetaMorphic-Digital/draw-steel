@@ -4,9 +4,15 @@
   data-group='primary'
   data-tab='features'
 >
-  <ul>
+  <div class="item-list">
     {{#each features as |feature index|}}
-      <li>{{feature.name}}</li>
+      <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{feature.id}}">
+        <img class="img" src="{{feature.img}}">
+        <span class="name">{{feature.name}}</span>
+        {{#unless @root.isPlay}}
+        <a class="delete" data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+        {{/unless}}
+      </button>
     {{/each}}
-  </ul>
+  </div>
 </section>
