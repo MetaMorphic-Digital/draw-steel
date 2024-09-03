@@ -54,19 +54,24 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       template: "templates/generic/tab-navigation.hbs"
     },
     stats: {
-      template: systemPath("templates/actor/stats.hbs")
+      template: systemPath("templates/actor/stats.hbs"),
+      scrollable: [""]
     },
     features: {
-      template: systemPath("templates/actor/features.hbs")
+      template: systemPath("templates/actor/features.hbs"),
+      scrollable: [""]
     },
     abilities: {
-      template: systemPath("templates/actor/abilities.hbs")
+      template: systemPath("templates/actor/abilities.hbs"),
+      scrollable: [""]
     },
     effects: {
-      template: systemPath("templates/actor/effects.hbs")
+      template: systemPath("templates/actor/effects.hbs"),
+      scrollable: [""]
     },
     biography: {
-      template: systemPath("templates/actor/biography.hbs")
+      template: systemPath("templates/actor/biography.hbs"),
+      scrollable: [""]
     }
   };
 
@@ -145,6 +150,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "biography":
         context.tab = context.tabs[partId];
+        context.languages = this._getLanguages();
         context.enrichedBiography = await TextEditor.enrichHTML(
           this.actor.system.biography.value,
           {
@@ -218,6 +224,11 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }, []);
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
+  }
+
+  _getLanguages() {
+    if (!foundry.utils.hasProperty(this.actor.system, "biography.languages")) return "";
+    return game.i18n.getListFormatter().format(this.actor.system.biography.languages);
   }
 
   /**
