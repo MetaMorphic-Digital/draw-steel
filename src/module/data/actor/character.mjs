@@ -17,13 +17,17 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       // Some classes have a second resource
-      resourceOne: new fields.SchemaField({value: new fields.NumberField({required: true, initial: 0, min: 0, integer: true, nullable: false})}),
-      resourceTwo: new fields.SchemaField({value: new fields.NumberField({required: false, initial: null, min: 0, integer: true})}),
+      resourceOne: new fields.SchemaField({
+        value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
+      }),
+      resourceTwo: new fields.SchemaField({
+        value: new fields.NumberField({initial: null, min: 0, integer: true})
+      }),
       xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({blank: true, required: true, choices: CONFIG.DRAW_STEEL.skills.list}))
+      skills: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.skills.list}))
     });
 
     return schema;

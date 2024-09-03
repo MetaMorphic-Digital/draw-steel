@@ -15,7 +15,7 @@
       value=system.biography.value
       documentUUID=actor.uuid
       collaborate=true
-      toggled=(ifThen isPlay 1 0)
+      toggled=isPlay
       height=200
     }}
     {{#if gm}}
@@ -24,7 +24,7 @@
         enriched=enrichedGMNotes
         value=system.biography.gm
         documentUUID=actor.uuid
-        toggled=(ifThen isPlay 1 0)
+        toggled=isPlay
         height=300
       }}
     {{/if}}

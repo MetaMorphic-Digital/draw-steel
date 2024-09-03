@@ -19,7 +19,7 @@
   {{#if (eq actor.type "character")}}
   <fieldset class="item-list kits">
     <legend>{{localize "TYPES.Item.kit"}}</legend>
-  {{#each system.kits as |kit|}}
+    {{#each system.kits as |kit|}}
     <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{kit.id}}">
       <img class="img" src="{{kit.img}}">
       <span class="name">{{kit.name}}</span>
@@ -27,11 +27,11 @@
       <a class="delete" data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
       {{/unless}}
     </button>
-  {{else}}
+    {{else}}
     <a data-action="createDoc" data-document-class="Item" data-type="kit" data-render-sheet="true">
       {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.kit")}}
     </a>
-  {{/each}}
+    {{/each}}
   </fieldset>
   {{/if}}
 </section>

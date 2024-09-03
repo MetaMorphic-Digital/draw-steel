@@ -224,7 +224,8 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getSkillList() {
     if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
     const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skills.push(CONFIG.DRAW_STEEL.skills.list[skill].label);
+      skill = CONFIG.DRAW_STEEL.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
       return skills;
     }, []);
     const formatter = game.i18n.getListFormatter();
