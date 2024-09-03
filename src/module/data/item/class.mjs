@@ -16,7 +16,13 @@ export default class ClassModel extends BaseItemModel {
     const schema = super.defineSchema();
     const config = CONFIG.DRAW_STEEL;
 
-    schema.level = new fields.NumberField({initial: 0, nullable: false, min: 0, max: config.hero.xp_track.length});
+    schema.level = new fields.NumberField({
+      initial: 0,
+      nullable: false,
+      integer: true,
+      min: 0,
+      max: config.hero.xp_track.length
+    });
 
     schema.resourceOne = new fields.StringField({required: true});
     schema.resourceTwo = new fields.StringField();

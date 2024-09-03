@@ -337,7 +337,7 @@ DRAW_STEEL.skills = {
 preLocalize("skills.groups", {key: "label"});
 preLocalize("skills.list", {key: "label"});
 
-Object.defineProperty(DRAW_STEEL.skills, "optGroups", {
+Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   get: function() {
     const config = CONFIG.DRAW_STEEL.skills;
     return Object.entries(config.list).reduce((arr, [value, {label, group}]) => {
