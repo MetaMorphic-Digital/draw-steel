@@ -1,6 +1,13 @@
 {{! Biography Tab }}
-<section class='tab biography {{tab.cssClass}}' data-group='primary' data-tab='biography'>
-  {{formGroup systemFields.biography.fields.languages value=system.biography.languages disabled=(not editable)}}
+<section class="tab biography {{tab.cssClass}}" data-group="primary" data-tab="biography">
+  <fieldset>
+    <legend>{{systemFields.biography.fields.languages.label}}</legend>
+    {{#if isPlay}}
+    {{languages}}
+    {{else}}
+    {{formInput systemFields.biography.fields.languages value=system.biography.languages disabled=(not editable)}}
+    {{/if}}
+  </fieldset>
   {{#if editable}}
     {{formGroup
       systemFields.biography.fields.value
@@ -8,7 +15,7 @@
       value=system.biography.value
       documentUUID=actor.uuid
       collaborate=true
-      toggled=true
+      toggled=isPlay
       height=200
     }}
     {{#if gm}}
@@ -17,12 +24,20 @@
         enriched=enrichedGMNotes
         value=system.biography.gm
         documentUUID=actor.uuid
-        toggled=true
+        toggled=isPlay
         height=300
       }}
     {{/if}}
   {{else}}
+  <fieldset>
+    <legend>{{systemFields.biography.fields.value.label}}</legend>
     {{{enrichedBiography}}}
-    {{#if gm}}{{{enrichedGMNotes}}}{{/if}}
+  </fieldset>
+    {{#if gm}}
+    <fieldset>
+    <legend>{{systemFields.biography.fields.gm.label}}</legend>
+      {{{enrichedGMNotes}}}
+    </fieldset>
+    {{/if}}
   {{/if}}
 </section>

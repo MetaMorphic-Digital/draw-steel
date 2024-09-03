@@ -1,6 +1,11 @@
 import {systemPath} from "../constants.mjs";
 import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
+/**
+ * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
+ * @typedef {import("../../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption} FormSelectOption
+ */
+
 const {api, sheets} = foundry.applications;
 
 /**
@@ -24,6 +29,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     },
     actions: {
       onEditImage: this._onEditImage,
+      toggleMode: this._toggleMode,
       viewDoc: this._viewDoc,
       createDoc: this._createDoc,
       deleteDoc: this._deleteDoc,
@@ -47,21 +53,57 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       template: "templates/generic/tab-navigation.hbs"
     },
     stats: {
-      template: systemPath("templates/actor/stats.hbs")
+      template: systemPath("templates/actor/stats.hbs"),
+      scrollable: [""]
     },
     features: {
-      template: systemPath("templates/actor/features.hbs")
+      template: systemPath("templates/actor/features.hbs"),
+      scrollable: [""]
     },
     abilities: {
-      template: systemPath("templates/actor/abilities.hbs")
+      template: systemPath("templates/actor/abilities.hbs"),
+      scrollable: [""]
     },
     effects: {
-      template: systemPath("templates/actor/effects.hbs")
+      template: systemPath("templates/actor/effects.hbs"),
+      scrollable: [""]
     },
     biography: {
-      template: systemPath("templates/actor/biography.hbs")
+      template: systemPath("templates/actor/biography.hbs"),
+      scrollable: [""]
     }
   };
+
+  /**
+   * Available sheet modes.
+   * @enum {number}
+   */
+  static MODES = {
+    PLAY: 1,
+    EDIT: 2
+  };
+
+  /**
+   * The mode the sheet is currently in.
+   * @type {ActorSheetV2.MODES}
+   */
+  #mode = DrawSteelActorSheet.MODES.PLAY;
+
+  /**
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
+  get isPlayMode() {
+    return this.#mode === DrawSteelActorSheet.MODES.PLAY;
+  }
+
+  /**
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
+  get isEditMode() {
+    return this.#mode === DrawSteelActorSheet.MODES.EDIT;
+  }
 
   /** @override */
   _configureRenderOptions(options) {
@@ -78,6 +120,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _prepareContext(options) {
     // Output initialization
     const context = {
+      isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
       editable: this.isEditable,
       owner: this.document.isOwner,
@@ -100,18 +143,26 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
+        context.movement = this._getMovement();
+        context.skills = this._getSkillList();
         context.tab = context.tabs[partId];
         break;
       case "features":
+        context.features = this.actor.items.filter(i => i.type === "feature");
+        context.tab = context.tabs[partId];
+        break;
       case "abilities":
+        context.abilities = this.actor.items.filter(i => i.type === "ability");
         context.tab = context.tabs[partId];
         break;
       case "biography":
         context.tab = context.tabs[partId];
+        context.languages = this._getLanguages();
         context.enrichedBiography = await TextEditor.enrichHTML(
           this.actor.system.biography.value,
           {
@@ -137,6 +188,10 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
+  /**
+   * Constructs a record of valid characteristics and their associated field
+   * @returns {Record<string, {field: NumberField, value: number}>}
+   */
   _getCharacteristics() {
     return CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
       obj[chc] = {
@@ -145,6 +200,40 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
       return obj;
     }, {});
+  }
+
+  /**
+   * Constructs a record of valid, non-null movements
+   * @returns {Record<string, {field: NumberField, value: number}>}
+   */
+  _getMovement() {
+    return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
+      if (mvmt !== null) obj[key] = {
+        field: this.actor.system.schema.fields.movement.fields[key],
+        value: mvmt
+      };
+      return obj;
+    }, {});
+  }
+
+  /**
+   * Constructs a string listing the actor's skills
+   * @returns {string}
+   */
+  _getSkillList() {
+    if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
+    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
+      skill = CONFIG.DRAW_STEEL.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
+      return skills;
+    }, []);
+    const formatter = game.i18n.getListFormatter();
+    return formatter.format(list);
+  }
+
+  _getLanguages() {
+    if (!this.actor.system.schema.getField("biography.languages")) return "";
+    return game.i18n.getListFormatter().format(this.actor.system.biography.languages);
   }
 
   /**
@@ -157,7 +246,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = "primary";
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = "biography";
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = this.document.limited ? "biography" : "stats";
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: "",
@@ -248,6 +337,22 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
+   * Toggle Edit vs. Play mode
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _toggleMode(event, target) {
+    if (!this.isEditable) {
+      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      return;
+    }
+    this.#mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
+    this.render();
+  }
+
+  /**
    * Renders an embedded document's sheet
    *
    * @this DrawSteelActorSheet
@@ -289,12 +394,12 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     // Loop through the dataset and add it to our docData
     for (const [dataKey, value] of Object.entries(target.dataset)) {
       // These data attributes are reserved for the action handling
-      if (["action", "documentClass"].includes(dataKey)) continue;
+      if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
       // Nested properties use dot notation like `data-system.prop`
       foundry.utils.setProperty(docData, dataKey, value);
     }
 
-    await docCls.create(docData, {parent: this.actor});
+    await docCls.create(docData, {parent: this.actor, renderSheet: target.dataset.renderSheet});
   }
 
   /**
@@ -338,7 +443,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
-    const docRow = target.closest("li[data-document-class]");
+    const docRow = target.closest("[data-document-class]");
     if (docRow.dataset.documentClass === "Item") {
       return this.actor.items.get(docRow.dataset.itemId);
     } else if (docRow.dataset.documentClass === "ActiveEffect") {

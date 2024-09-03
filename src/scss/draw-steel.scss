@@ -5,18 +5,19 @@
 @import 'utils/typography';
 @import 'utils/colors';
 @import 'utils/mixins';
+@import 'utils/slide-toggle';
 @import 'utils/variables';
 
 /* Global styles */
 @import 'global/window';
-@import 'global/grid';
 @import 'global/roll';
-@import 'global/flex';
 
 /* Styles limited to draw-steel sheets */
 .draw-steel {
   @import 'components/forms';
-  @import 'components/resource';
   @import 'components/items';
   @import 'components/effects';
+  &.actor {
+    @import 'components/actor-sheet';
+  }
 }

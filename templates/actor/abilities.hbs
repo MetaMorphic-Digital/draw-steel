@@ -1,4 +1,19 @@
 {{! Abilities Tab }}
-<section class='tab abilities {{tab.cssClass}}' data-group='primary' data-tab='abilities'>
-<h4>Abilities</h4>
+<section class="tab abilities {{tab.cssClass}}" data-group="primary" data-tab="abilities">
+  <div class="item-header flexrow">
+    <a data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true">
+      {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")}}
+    </a>
+  </div>
+  <div class="item-list">
+    {{#each abilities as |ability index|}}
+      <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{ability.id}}">
+        <img class="img" src="{{ability.img}}">
+        <span class="name">{{ability.name}}</span>
+        {{#unless @root.isPlay}}
+        <a class="delete" data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+        {{/unless}}
+      </button>
+    {{/each}}
+  </div>
 </section>

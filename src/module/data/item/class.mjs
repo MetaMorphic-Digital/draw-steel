@@ -14,6 +14,18 @@ export default class ClassModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
+    const config = CONFIG.DRAW_STEEL;
+
+    schema.level = new fields.NumberField({
+      initial: 0,
+      nullable: false,
+      integer: true,
+      min: 0,
+      max: config.hero.xp_track.length
+    });
+
+    schema.primary = new fields.StringField({required: true});
+    schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.characteristics, required: true}))

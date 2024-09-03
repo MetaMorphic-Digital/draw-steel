@@ -18,8 +18,86 @@
     border: none;
   }
 
-  .header-fields {
-    flex: 1;
+  .header-center {
+    .document-name {
+      height: 60px;
+      input, h2 {
+        height: 100%;
+        line-height: 60px;
+        font-family: var(--font-h2);
+        font-size: var(--font-h2-size);
+        color: var(--color-light-1);
+        margin: 0;
+        padding: 0;
+        border: 0;
+        text-shadow: 1px 1px 4px #000;
+        display: inline-block;
+      }
+    }
+    .origins {
+      height: 40px;
+      div {
+        text-align: center;
+      }
+      .filled {
+        font-weight: 700;
+
+      }
+      .unfilled {
+        // color: red;
+      }
+    }
+  }
+
+  .header-right {
+    flex: 0 0 200px;
+    height: 100px;
+    .mode-toggle {
+      flex: 0 0 20px;
+      .mode-slider {
+        --slide-toggle-track-color-unchecked: green;
+        --slide-toggle-track-color-checked: orange;
+      }
+      .label {
+        text-align: center;
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+    .class {
+      flex: 1;
+      .click-element {
+        height: 100%;
+        [data-action='deleteDoc'] {
+          flex: 0 0 20px;
+        }
+      }
+      .label {
+        display: inline-block;
+        line-height: 50px;
+        height: 100%;
+        font-size: var(--font-h3-size);
+        &.unfilled {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+    .victories {
+      flex: 0 0 30px;
+      line-height: 30px;
+      input {
+        height: 30px;
+        width: 40px;
+      }
+    }
+    .item-img {
+      display: inline-block;
+      border: none;
+      height: 36px;
+      flex: 0 0 36px;
+    }
   }
 }
 

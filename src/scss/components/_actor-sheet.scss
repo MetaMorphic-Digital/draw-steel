@@ -1,0 +1,55 @@
+.resources {
+  input[type="number"] {
+    width: 60px;
+  }
+  .resource-label {
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+  }
+  .resource-current {
+    text-align: center;
+  }
+  .resource-divider {
+    flex: 0 0 20px;
+    text-align: center;
+  }
+  .resource-max {
+    font-size: large;
+    text-align: center;
+  }
+}
+
+.characteristics {
+  .characteristic {
+    font-size: large;
+    height: 30px;
+    line-height: 30px;
+  }
+  .edit {
+    input {
+      width: 60px;
+      text-align: center;
+    }
+  }
+}
+
+.combat, .movement {
+  .play {
+    text-align: center;
+  }
+  .form-group {
+    text-align: center;
+    margin: 0;
+    .form-fields {
+      flex: 1 1 20px;
+    }
+  }
+}
+
+.biography {
+  .form-fields {
+    border: 2px groove;
+  }
+}

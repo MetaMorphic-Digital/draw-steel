@@ -1,8 +1,14 @@
 {
   "DRAW_STEEL": {
-    "SheetLabels": {
-      "Actor": "DrawSteel Actor Sheet",
-      "Item": "DrawSteel Item Sheet"
+    "Sheet": {
+      "Labels": {
+        "Actor": "DrawSteel Actor Sheet",
+        "Item": "DrawSteel Item Sheet"
+      },
+      "Add": "+ Add {itemName}",
+      "Play": "Play",
+      "Edit": "Edit",
+      "Resources": "Resources"
     },
     "Actor": {
       "Tabs": {
@@ -108,6 +114,7 @@
       "Character": {
         "FIELDS": {
           "hero": {
+            "label": "Heroic Resources",
             "resourceOne": {
               "label": "Resource One"
             },
@@ -413,6 +420,7 @@
       }
     },
     "Effect": {
+      "Name": "Effect",
       "Source": "Source",
       "Toggle": "Toggle Effect",
       "Temporary": "Temporary Effects",

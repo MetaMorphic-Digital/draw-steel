@@ -1,28 +1,28 @@
 {{! Effects Tab }}
 <section
-  class='tab effects flexcol {{tab.cssClass}}'
-  data-group='primary'
-  data-tab='effects'
+  class="tab effects flexcol {{tab.cssClass}}"
+  data-group="primary"
+  data-tab="effects"
 >
-  <ol class='effects-list'>
+  <ol class="effects-list">
     {{#each effects as |section sid|}}
       <li
-        class='effects-header flexrow'
-        data-effect-type='{{section.type}}'
+        class="effects-header flexrow"
+        data-effect-type="{{section.type}}"
         data-drag="true"
       >
-        <div class='effect-name flexrow'>
+        <div class="effect-name flexrow">
           {{localize section.label}}
         </div>
-        <div class='effect-source'>
-          {{localize 'DRAW_STEEL.Effect.Source'}}
+        <div class="effect-source">
+          {{localize "DRAW_STEEL.Effect.Source"}}
         </div>
-        <div class='effect-source'>{{localize 'EFFECT.TabDuration'}}</div>
-        <div class='effect-controls flexrow'>
+        <div class="effect-source">{{localize "EFFECT.TabDuration"}}</div>
+        <div class="effect-controls flexrow">
           <a
-            class='effect-control'
-            data-action='createDoc'
-            data-document-class='ActiveEffect'
+            class="effect-control"
+            data-action="createDoc"
+            data-document-class="ActiveEffect"
             data-origin="{{@root.actor.uuid}}"
             data-img="icons/svg/aura.svg"
             {{#if (eq section.type "inactive")}}
@@ -30,53 +30,53 @@
             {{else if (eq section.type "temporary")}}
               data-duration.rounds="1"
             {{/if}}
-            title='{{localize "DOCUMENT.Create" type='Effect'}}'
+            title="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.Effect.Name")}}"
           >
-            <i class='fas fa-plus'></i>
-            {{localize 'DOCUMENT.New' type='Effect'}}
+            <i class="fas fa-plus"></i>
+            {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.Effect.Name")}}
           </a>
         </div>
       </li>
 
-      <ol class='effect-list'>
+      <ol class="effect-list">
         {{#each section.effects as |effect|}}
           <li
-            class='effect effect flexrow'
-            data-effect-id='{{effect.id}}'
-            data-parent-id='{{effect.parent.id}}'
-            data-document-class='ActiveEffect'
+            class="effect effect flexrow"
+            data-effect-id="{{effect.id}}"
+            data-parent-id="{{effect.parent.id}}"
+            data-document-class="ActiveEffect"
             data-drag="true"
           >
-            <div class='effect-name flexrow'>
-              <img class='effect-image' src='{{effect.img}}' height="24" width="24"/>
+            <div class="effect-name flexrow">
+              <img class="effect-image" src="{{effect.img}}" height="24" width="24"/>
               <div>{{effect.name}}</div>
             </div>
-            <div class='effect-source'>{{effect.sourceName}}</div>
-            <div class='effect-duration'>{{effect.duration.label}}</div>
-            <div class='effect-controls flexrow'>
+            <div class="effect-source">{{effect.sourceName}}</div>
+            <div class="effect-duration">{{effect.duration.label}}</div>
+            <div class="effect-controls flexrow">
               {{#if @root.editable}}
               <a
-                class='effect-control'
-                data-action='toggleEffect'
-                title='{{localize "DRAW_STEEL.Effect.Toggle"}}'
+                class="effect-control"
+                data-action="toggleEffect"
+                title="{{localize "DRAW_STEEL.Effect.Toggle"}}"
               >
-                <i class='fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}'></i>
+                <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
               </a>
               {{/if}}
               <a
-                class='effect-control'
-                data-action='viewDoc'
-                title='{{localize "DOCUMENT.Update" type='Effect'}}'
+                class="effect-control"
+                data-action="viewDoc"
+                title="{{localize "DOCUMENT.Update" type="Effect"}}"
               >
-                <i class='fas fa-edit'></i>
+                <i class="fas fa-edit"></i>
               </a>
               {{#if @root.editable}}
               <a
-                class='effect-control'
-                data-action='deleteDoc'
-                title='{{localize "DOCUMENT.Delete" type='Effect'}}'
+                class="effect-control"
+                data-action="deleteDoc"
+                title="{{localize "DOCUMENT.Delete" type="Effect"}}"
               >
-                <i class='fas fa-trash'></i>
+                <i class="fas fa-trash"></i>
               </a>
               {{/if}}
             </div>

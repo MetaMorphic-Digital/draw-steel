@@ -17,13 +17,17 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       // Some classes have a second resource
-      resourceOne: barAttribute(10),
-      resourceTwo: barAttribute(10),
+      primary: new fields.SchemaField({
+        value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
+      }),
+      secondary: new fields.SchemaField({
+        value: new fields.NumberField({initial: null, min: 0, integer: true})
+      }),
       xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({blank: true, required: true}))
+      skills: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.skills.list}))
     });
 
     return schema;
@@ -41,6 +45,10 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareDerivedData();
 
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
+    if (this.class) {
+      this.hero.primary.label = this.class.system.primary;
+      this.hero.secondary.label = this.class.system.secondary;
+    }
   }
 
   /**
@@ -76,5 +84,13 @@ export default class CharacterModel extends BaseActorModel {
    */
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");
+  }
+
+  /**
+   * Returns the number of victories required to ascend to the next level
+   */
+  get victoriesMax() {
+    if (!this.class) return 0;
+    return CONFIG.DRAW_STEEL.hero.xp_track[this.class.system.level];
   }
 }

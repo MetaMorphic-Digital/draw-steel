@@ -68,6 +68,6 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    if (this.constructor.metadata.invalidActorTypes.includes(this.parent.actor?.type)) return false;
+    if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
   }
 }

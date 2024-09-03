@@ -1,57 +1,129 @@
 {{! Sheet Header }}
-<header class='sheet-header'>
+<header class="sheet-header">
   <img
-    class='profile-img'
-    src='{{actor.img}}'
-    data-edit='img'
-    data-action='onEditImage'
-    title='{{actor.name}}'
-    height='100'
-    width='100'
+    class="profile-img"
+    src="{{actor.img}}"
+    data-edit="img"
+    {{#if isPlay}}
+    data-action="showPortraitArtwork"
+    {{else}}
+    data-action="onEditImage"
+    {{/if}}
+    title="{{actor.name}}"
+    height="100"
+    width="100"
   />
-  <div class='header-fields'>
-    <div class='document-name'>
-      {{formInput
-        fields.name
-        value=actor.name
-        placeholder=(localize 'Name')
-      }}
-    </div>
-    <div class='resources grid grid-3col'>
-      <div class='resource flex-group-center'>
-        <label class='resource-label'>
-          {{localize systemFields.stamina.label}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          {{formInput
-            systemFields.stamina.fields.value
-            value=system.stamina.value
-          }}
-          <span> / </span>
-          {{formInput
-            systemFields.stamina.fields.max
-            value=system.stamina.max
-          }}
-        </div>
-      </div>
-      {{#if (eq actor.type "character")}}
-      <div class='resource flex-group-center'>
-        <label class='resource-label'>
-          {{localize systemFields.hero.fields.recoveries.label}}
-        </label>
-        <div class='resource-content flexrow flex-center flex-between'>
-          {{formInput
-            systemFields.hero.fields.recoveries.fields.value
-            value=system.hero.recoveries.value
-          }}
-          <span> / </span>
-          {{formInput
-            systemFields.hero.fields.recoveries.fields.max
-            value=system.hero.recoveries.max
-          }}
-        </div>
-      </div>
+  <div class="header-center flexcol">
+    <div class="document-name">
+      {{#if isPlay}}
+        <h2>{{actor.name}}</h2>
+      {{else}}
+        {{formInput
+          fields.name
+          value=actor.name
+          placeholder=(localize "Name")
+        }}
       {{/if}}
     </div>
+    <div class="origins flexrow">
+      {{#if (eq actor.type "character")}}
+        <div class="ancestry">
+        {{#if actor.system.ancestry}}
+          <span data-document-class="Item" data-item-id="{{actor.system.ancestry.id}}" >
+            <a class="filled" data-action="viewDoc">
+              {{actor.system.ancestry.name}}
+            </a>
+            {{#unless isPlay}}
+            <a data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+            {{/unless}}
+          </span>
+        {{else}}
+          <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="ancestry" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ancestry")}}
+          </a>
+        {{/if}}
+        </div>
+        <div class="culture">
+        {{#if actor.system.culture}}
+          <span data-document-class="Item" data-item-id="{{actor.system.culture.id}}" >
+            <a class="filled" data-action="viewDoc">
+              {{actor.system.culture.name}}
+            </a>
+            {{#unless isPlay}}
+            <a data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+            {{/unless}}
+          </span>
+        {{else}}
+          <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="culture" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.culture")}}
+          </a>
+        {{/if}}
+        </div>
+        <div class="career">
+        {{#if actor.system.career}}
+          <span data-document-class="Item" data-item-id="{{actor.system.career.id}}" >
+            <a class="filled" data-action="viewDoc">
+              {{actor.system.career.name}}
+            </a>
+            {{#unless isPlay}}
+            <a data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+            {{/unless}}
+          </span>
+        {{else}}
+          <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="career" data-render-sheet="true">
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.career")}}
+          </a>
+        {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="header-right flexcol">
+    <div class="mode-toggle flexrow">
+      <span class="label {{ifThen isPlay "active" ""}}">{{localize "DRAW_STEEL.Sheet.Play"}}</span>
+      <slide-toggle class="mode-slider" data-action="toggleMode" {{checked (not isPlay)}}>
+      </slide-toggle>
+      <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
+    </div>
+    {{#if (eq actor.type "character")}}
+      <div class="class">
+      {{#if actor.system.class}}
+        <span class="click-element flexrow" data-document-class="Item" data-item-id="{{actor.system.class.id}}" >
+          <a class="flexrow" data-action="viewDoc">
+            <img class="item-img" src="{{actor.system.class.img}}"/>
+            <span class="label filled">
+              {{actor.system.class.name}} {{actor.system.class.system.level}}
+            </span>
+          </a>
+          {{#unless isPlay}}
+          <a data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
+          {{/unless}}
+        </span>
+      {{else}}
+        <a class="click-element" data-action="createDoc" data-document-class="Item" data-type="class" data-render-sheet="true">
+          <span class="label unfilled">
+            {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.class")}}
+          </span>
+        </a>
+      {{/if}}
+      </div>
+      <div class="victories">
+        <label>{{systemFields.hero.fields.victories.label}}</label>
+        {{#if isPlay}}
+          <span class="resource-current">
+            {{system.hero.victories}}
+          </span>
+          <span class="resource-divider"> / </span>
+          <span class="resource-max">
+            {{system.victoriesMax}}
+          </span>
+        {{else}}
+          {{formInput
+            systemFields.hero.fields.victories
+            value=system.hero.victories
+          }}
+        {{/if}}
+      </div>
+    {{/if}}
   </div>
 </header>
