@@ -31,12 +31,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     schema.movement = new fields.SchemaField({
-      walk: new fields.NumberField({initial: 6}),
-      burrow: new fields.NumberField(),
-      climb: new fields.NumberField(),
-      swim: new fields.NumberField(),
-      fly: new fields.NumberField(),
-      teleport: new fields.NumberField()
+      walk: new fields.NumberField({integer: true, min: 0, initial: 6}),
+      burrow: new fields.NumberField({integer: true, min: 0}),
+      climb: new fields.NumberField({integer: true, min: 0}),
+      swim: new fields.NumberField({integer: true, min: 0}),
+      fly: new fields.NumberField({integer: true, min: 0}),
+      teleport: new fields.NumberField({integer: true, min: 0})
     });
 
     schema.damage = new fields.SchemaField({

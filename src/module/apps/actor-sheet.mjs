@@ -87,9 +87,24 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /**
    * The mode the sheet is currently in.
    * @type {ActorSheetV2.MODES}
-   * @protected
    */
-  _mode = DrawSteelActorSheet.MODES.PLAY;
+  #mode = DrawSteelActorSheet.MODES.PLAY;
+
+  /**
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
+  get isPlayMode() {
+    return this.#mode === DrawSteelActorSheet.MODES.PLAY;
+  }
+
+  /**
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
+  get isEditMode() {
+    return this.#mode === DrawSteelActorSheet.MODES.EDIT;
+  }
 
   /** @override */
   _configureRenderOptions(options) {
@@ -106,7 +121,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _prepareContext(options) {
     // Output initialization
     const context = {
-      isPlay: this._mode === DrawSteelActorSheet.MODES.PLAY,
+      isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
       editable: this.isEditable,
       owner: this.document.isOwner,
@@ -129,7 +144,8 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
-  async _preparePartContext(partId, context) {
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
@@ -216,7 +232,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   _getLanguages() {
-    if (!foundry.utils.hasProperty(this.actor.system, "biography.languages")) return "";
+    if (!this.actor.system.schema.getField("biography.languages")) return "";
     return game.i18n.getListFormatter().format(this.actor.system.biography.languages);
   }
 
@@ -350,7 +366,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       console.error("You can't switch to Edit mode if the sheet is uneditable");
       return;
     }
-    this._mode = this._mode === DrawSteelActorSheet.MODES.PLAY ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
+    this.#mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
     this.render();
   }
 
