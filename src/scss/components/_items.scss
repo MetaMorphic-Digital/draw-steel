@@ -3,6 +3,9 @@
   --grid-distance: 184px;
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-distance), 1em));
   grid-gap: 6px;
+  &.kits {
+    --grid-distance: 279px;
+  }
   .item {
     width: var(--grid-distance);
     padding: 3px;
