@@ -28,7 +28,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       height: 600
     },
     actions: {
-      showImage: this._showImage,
       onEditImage: this._onEditImage,
       toggleMode: this._toggleMode,
       viewDoc: this._viewDoc,
@@ -308,24 +307,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    *   ACTIONS
    *
    **************/
-
-  /**
-   * Handle displaying a Document's image.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @returns {Promise}
-   * @protected
-   */
-  static async _showImage(event, target) {
-    const attr = target.dataset.edit;
-    const prop = foundry.utils.getProperty(this.document, attr);
-    new ImagePopout(prop, {
-      title: this.document.name,
-      uuid: this.document.uuid
-    }).render(true);
-  }
 
   /**
    * Handle changing a Document's image.
