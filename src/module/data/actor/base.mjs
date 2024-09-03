@@ -31,7 +31,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     schema.movement = new fields.SchemaField({
-      walk: new fields.NumberField(),
+      walk: new fields.NumberField({initial: 6}),
       burrow: new fields.NumberField(),
       climb: new fields.NumberField(),
       swim: new fields.NumberField(),

@@ -51,6 +51,7 @@
 
   .header-right {
     flex: 0 0 200px;
+    height: 100px;
     .mode-toggle {
       flex: 0 0 20px;
       .mode-slider {
@@ -74,7 +75,7 @@
       }
       .label {
         display: inline-block;
-        line-height: 80px;
+        line-height: 50px;
         height: 100%;
         font-size: var(--font-h3-size);
         &.unfilled {
@@ -83,9 +84,19 @@
         }
       }
     }
+    .victories {
+      flex: 0 0 30px;
+      line-height: 30px;
+      input {
+        height: 30px;
+        width: 40px;
+      }
+    }
     .item-img {
       display: inline-block;
       border: none;
+      height: 36px;
+      flex: 0 0 36px;
     }
   }
 }

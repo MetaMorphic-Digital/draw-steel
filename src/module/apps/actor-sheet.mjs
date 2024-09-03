@@ -126,6 +126,9 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _preparePartContext(partId, context) {
     switch (partId) {
+      case "header":
+        context.victoriesMax = this._getMaxVictories();
+        break;
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
@@ -168,6 +171,14 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
+   * @returns {number} The current max victories for this character's level
+   */
+  _getMaxVictories() {
+    if (!this.actor.system.class) return 0;
+    return CONFIG.DRAW_STEEL.hero.xp_track[this.actor.system.class.system.level];
+  }
+
+  /**
    * Constructs a record of valid characteristics and their associated field
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
@@ -200,6 +211,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {string}
    */
   _getSkillList() {
+    if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
     const list = this.actor.system.hero.skills.reduce((skills, skill) => {
       skills.push(CONFIG.DRAW_STEEL.skills.list[skill].label);
       return skills;

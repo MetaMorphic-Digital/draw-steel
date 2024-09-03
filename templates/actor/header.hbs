@@ -107,6 +107,23 @@
         </a>
       {{/if}}
       </div>
+      <div class="victories">
+        <label>{{systemFields.hero.fields.victories.label}}</label>
+        {{#if isPlay}}
+          <span class="resource-current">
+            {{system.hero.victories}}
+          </span>
+          <span class="resource-divider"> / </span>
+          <span class="resource-max">
+            {{victoriesMax}}
+          </span>
+        {{else}}
+          {{formInput
+            systemFields.hero.fields.victories
+            value=system.hero.victories
+          }}
+        {{/if}}
+      </div>
     {{/if}}
   </div>
 </header>
