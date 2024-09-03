@@ -17,10 +17,10 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       // Some classes have a second resource
-      resourceOne: new fields.SchemaField({
+      primary: new fields.SchemaField({
         value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
       }),
-      resourceTwo: new fields.SchemaField({
+      secondary: new fields.SchemaField({
         value: new fields.NumberField({initial: null, min: 0, integer: true})
       }),
       xp: requiredInteger({initial: 0}),
@@ -46,8 +46,8 @@ export default class CharacterModel extends BaseActorModel {
 
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
     if (this.class) {
-      this.hero.resourceOne.label = this.class.system.resourceOne;
-      this.hero.resourceTwo.label = this.class.system.resourceTwo;
+      this.hero.primary.label = this.class.system.primary;
+      this.hero.secondary.label = this.class.system.secondary;
     }
   }
 

@@ -24,8 +24,8 @@ export default class ClassModel extends BaseItemModel {
       max: config.hero.xp_track.length
     });
 
-    schema.resourceOne = new fields.StringField({required: true});
-    schema.resourceTwo = new fields.StringField();
+    schema.primary = new fields.StringField({required: true});
+    schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.characteristics, required: true}))

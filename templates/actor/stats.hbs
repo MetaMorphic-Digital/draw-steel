@@ -55,18 +55,18 @@
         {{#if system.class}}
         {{#if isPlay}}
           <label>
-            <span>{{system.hero.resourceOne.label}}</span>
+            <span>{{system.hero.primary.label}}</span>
             {{formInput
-              systemFields.hero.fields.resourceOne.fields.value
-              value=system.hero.resourceOne.value
+              systemFields.hero.fields.primary.fields.value
+              value=system.hero.primary.value
             }}
           </label>
-          {{#if system.class.system.resourceTwo}}
+          {{#if system.class.system.secondary}}
           <label>
-            <span>{{system.hero.resourceTwo.label}}</span>
+            <span>{{system.hero.secondary.label}}</span>
             {{formInput
-              systemFields.hero.fields.resourceTwo.fields.value
-              value=system.hero.resourceTwo.value
+              systemFields.hero.fields.secondary.fields.value
+              value=system.hero.secondary.value
             }}
           </label>
           {{/if}}
@@ -76,13 +76,13 @@
         </label>
         <div class="resource-content">
           {{formInput
-            systemFields.hero.fields.resourceOne.fields.value
-            value=system.hero.resourceOne.value
+            systemFields.hero.fields.primary.fields.value
+            value=system.hero.primary.value
           }}
-          {{#if system.class.system.resourceTwo}}
+          {{#if system.class.system.secondary}}
             {{formInput
-              systemFields.hero.fields.resourceTwo.fields.value
-              value=system.hero.resourceTwo.value
+              systemFields.hero.fields.secondary.fields.value
+              value=system.hero.secondary.value
             }}
           {{/if}}
         </div>
