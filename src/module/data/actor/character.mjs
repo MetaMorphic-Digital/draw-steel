@@ -81,4 +81,12 @@ export default class CharacterModel extends BaseActorModel {
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");
   }
+
+  /**
+   * Returns the number of victories required to ascend to the next level
+   */
+  get victoriesMax() {
+    if (!this.class) return 0;
+    return CONFIG.DRAW_STEEL.hero.xp_track[this.class.system.level];
+  }
 }
