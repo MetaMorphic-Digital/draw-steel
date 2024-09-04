@@ -1,6 +1,9 @@
-import {barAttribute, requiredInteger} from "../_helpers.mjs";
+import {barAttribute, requiredInteger} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
+/**
+ * Characters are controlled by players and have heroic resources and advancement
+ */
 export default class CharacterModel extends BaseActorModel {
   static metadata = Object.freeze({
     type: "character"

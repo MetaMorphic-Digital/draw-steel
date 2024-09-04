@@ -1,6 +1,9 @@
-import {requiredInteger} from "../_helpers.mjs";
+import {requiredInteger} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
+/**
+ * NPCs are created and controlled by the director
+ */
 export default class NPCModel extends BaseActorModel {
   static metadata = Object.freeze({
     type: "npc"

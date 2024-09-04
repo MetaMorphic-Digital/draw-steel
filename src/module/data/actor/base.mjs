@@ -1,4 +1,4 @@
-import {barAttribute, damageTypes, requiredInteger} from "../_helpers.mjs";
+import {barAttribute, damageTypes, requiredInteger} from "../helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /** @override */

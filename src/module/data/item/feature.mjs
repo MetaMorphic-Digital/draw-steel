@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Passive benefits usually granted by other items
+ */
 export default class FeatureModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "feature"

@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Equipment covers all physical items that provide special benefits beyond the base kit
+ */
 export default class EquipmentModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "equipment"

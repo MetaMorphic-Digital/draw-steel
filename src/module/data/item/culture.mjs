@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Culture describes the community that raised a hero
+ */
 export default class CultureModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "culture",

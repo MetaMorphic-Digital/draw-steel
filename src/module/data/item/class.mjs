@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Classes provide the bulk of a hero's features and abilities
+ */
 export default class ClassModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "class",

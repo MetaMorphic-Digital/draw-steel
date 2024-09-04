@@ -1,6 +1,9 @@
 import {DSRoll} from "../../helpers/rolls.mjs";
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
+ */
 export default class AbilityModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "ability"

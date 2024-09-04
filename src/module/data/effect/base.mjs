@@ -1,4 +1,6 @@
-
+/**
+ * A data model used by default effects with properties to control the expiration behavior
+ */
 export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   static metadata = Object.freeze({
     type: "base"

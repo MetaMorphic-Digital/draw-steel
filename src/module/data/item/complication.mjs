@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * A complication is an optional feature that provides both a positive benefit and a negative drawback
+ */
 export default class ComplicationModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "complication",
