@@ -1,16 +1,10 @@
 import {systemPath} from "../constants.mjs";
 import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
-/**
- * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
- * @typedef {import("../../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption} FormSelectOption
- */
-
 const {api, sheets} = foundry.applications;
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheetV2}
  */
 export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
@@ -187,6 +181,10 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
     return context;
   }
+
+  /**
+   * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
+   */
 
   /**
    * Constructs a record of valid characteristics and their associated field
