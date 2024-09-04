@@ -6,8 +6,8 @@ const {NumberField, SchemaField} = foundry.data.fields;
  * @returns A Schema with a value and max
  */
 export const barAttribute = (initial = 0) => new SchemaField({
-  value: new NumberField({initial, nullable: false}),
-  max: new NumberField({initial, nullable: false})
+  value: new NumberField({initial, nullable: false, integer: true}),
+  max: new NumberField({initial, nullable: false, integer: true})
 });
 
 /**

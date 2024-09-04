@@ -85,17 +85,17 @@ DRAW_STEEL.conditions = {
 
 /**
  * Times when an effect can end
- * @type {Record<string, {label: string}}
+ * @enum {{label: string}}
  */
 DRAW_STEEL.effectEnds = {
   turn: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Turn.Label"
   },
   resistance: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Resistance.Label"
   },
   encounter: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Encounter.Label"
   }
 };
 
