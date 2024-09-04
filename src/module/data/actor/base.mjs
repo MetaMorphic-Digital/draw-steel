@@ -1,6 +1,7 @@
 import {barAttribute, damageTypes, requiredInteger} from "../_helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
@@ -47,6 +48,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     return schema;
   }
 
+  /** @override */
   prepareDerivedData() {
     super.prepareDerivedData();
 
