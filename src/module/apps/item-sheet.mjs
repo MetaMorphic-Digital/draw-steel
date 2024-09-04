@@ -4,7 +4,7 @@ import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 const {api, sheets} = foundry.applications;
 
 /**
- * Extend the basic ItemSheet with some very simple modifications
+ * AppV2-based sheet for all item classes
  */
 export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2

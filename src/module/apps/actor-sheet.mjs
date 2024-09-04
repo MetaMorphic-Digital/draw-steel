@@ -4,7 +4,7 @@ import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 const {api, sheets} = foundry.applications;
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
+ * AppV2-based sheet for all actor classes
  */
 export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
@@ -193,7 +193,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getCharacteristics() {
     return ds.CONFIG.characteristics.reduce((obj, chc) => {
       obj[chc] = {
-        field: this.actor.system.schema.getField(`characteristics.${chc}.value`),
+        field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
         value: foundry.utils.getProperty(this.actor, `system.characteristics.${chc}.value`)
       };
       return obj;
@@ -207,7 +207,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getMovement() {
     return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
       if (mvmt !== null) obj[key] = {
-        field: this.actor.system.schema.fields.movement.fields[key],
+        field: this.actor.system.schema.getField(["movement", key]),
         value: mvmt
       };
       return obj;
