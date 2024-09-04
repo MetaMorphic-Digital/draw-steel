@@ -14,7 +14,7 @@ export default class AbilityModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL.abilities;
+    const config = ds.CONFIG.abilities;
 
     const requiredChoice = (choices, initial) => ({
       required: true,

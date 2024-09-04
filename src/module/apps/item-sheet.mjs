@@ -73,8 +73,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       // Adding system and flags for easier access
       system: this.item.system,
       flags: this.item.flags,
-      // Adding a pointer to CONFIG.DRAW_STEEL
-      config: CONFIG.DRAW_STEEL,
+      // Adding a pointer to ds.CONFIG
+      config: ds.CONFIG,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers

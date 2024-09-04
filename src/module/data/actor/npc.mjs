@@ -14,13 +14,13 @@ export default class NPCModel extends BaseActorModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL;
+    const config = ds.CONFIG;
 
     schema.negotiation = new fields.SchemaField({
       interest: requiredInteger({initial: 5}),
       patience: requiredInteger({initial: 5}),
-      motivations: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
-      pitfalls: new fields.ArrayField(new fields.StringField({choices: config.negotiation.motivations})),
+      motivations: new fields.SetField(new fields.StringField({choices: config.negotiation.motivations})),
+      pitfalls: new fields.SetField(new fields.StringField({choices: config.negotiation.motivations})),
       impression: requiredInteger({initial: 1})
     });
 

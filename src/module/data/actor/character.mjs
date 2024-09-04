@@ -27,7 +27,7 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.skills.list}))
+      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list}))
     });
 
     return schema;
@@ -52,7 +52,12 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /**
+   * @typedef {import("../../documents/item.mjs").DrawSteelItem} DrawSteelItem
+   */
+
+  /**
    * Finds the actor's current ancestry
+   * @returns {undefined | DrawSteelItem}
    */
   get ancestry() {
     return this.parent.items.find(i => i.type === "ancestry");
@@ -60,6 +65,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current career
+   * @returns {undefined | DrawSteelItem}
    */
   get career() {
     return this.parent.items.find(i => i.type === "career");
@@ -67,6 +73,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current class
+   * @returns {undefined | DrawSteelItem}
    */
   get class() {
     return this.parent.items.find(i => i.type === "class");
@@ -74,6 +81,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current culture
+   * @returns {undefined | DrawSteelItem}
    */
   get culture() {
     return this.parent.items.find(i => i.type === "culture");
@@ -81,6 +89,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Returns all of the actor's kits
+   * @returns {DrawSteelItem[]}
    */
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");
@@ -91,6 +100,6 @@ export default class CharacterModel extends BaseActorModel {
    */
   get victoriesMax() {
     if (!this.class) return 0;
-    return CONFIG.DRAW_STEEL.hero.xp_track[this.class.system.level];
+    return ds.CONFIG.hero.xp_track[this.class.system.level];
   }
 }

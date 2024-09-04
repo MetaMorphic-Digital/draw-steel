@@ -20,13 +20,19 @@ export const barAttribute = (initial = 0) => new SchemaField({
 export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({initial, label, required: true, nullable: false, integer: true, min: 0});
 
 /**
+ * @callback DamageTypeCallback
+ * @param {{label: string}} damageConfig
+ * @returns {import("../../../foundry/common/data/fields.mjs").DataField} The SchemaField entry
+ */
+
+/**
  * Constructs a schema field with entries for each damage type
- * @param {({label?: string}) => DataField} inner Callback that returns a field
+ * @param {DamageTypeCallback} inner Callback that returns a field
  * @returns A Schema with entries for each damage type
  */
 export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
   const schema = {};
-  const config = CONFIG.DRAW_STEEL;
+  const config = ds.CONFIG;
 
   if (all) schema.all = inner();
 

@@ -131,8 +131,8 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
       flags: this.actor.flags,
-      // Adding a pointer to CONFIG.DRAW_STEEL
-      config: CONFIG.DRAW_STEEL,
+      // Adding a pointer to ds.CONFIG
+      config: ds.CONFIG,
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
@@ -193,7 +193,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
   _getCharacteristics() {
-    return CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
+    return ds.CONFIG.characteristics.reduce((obj, chc) => {
       obj[chc] = {
         field: this.actor.system.schema.getField(`characteristics.${chc}.value`),
         value: foundry.utils.getProperty(this.actor, `system.characteristics.${chc}.value`)
@@ -223,7 +223,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getSkillList() {
     if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
     const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skill = CONFIG.DRAW_STEEL.skills.list[skill]?.label;
+      skill = ds.CONFIG.skills.list[skill]?.label;
       if (skill) skills.push(skill);
       return skills;
     }, []);

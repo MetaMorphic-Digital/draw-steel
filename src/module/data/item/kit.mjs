@@ -14,7 +14,7 @@ export default class KitModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL;
+    const config = ds.CONFIG;
 
     schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 

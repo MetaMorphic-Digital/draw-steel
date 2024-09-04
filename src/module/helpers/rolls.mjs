@@ -158,7 +158,7 @@ export class PowerRoll extends DSRoll {
 
     if (options.skills) {
       dialogContext.skills = options.skills.reduce((obj, skill) => {
-        const label = CONFIG.DRAW_STEEL.skills.list[skill]?.label;
+        const label = ds.CONFIG.skills.list[skill]?.label;
         if (!label) {
           console.warn("Could not find skill" + skill);
           return obj;

@@ -10,7 +10,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.stamina = barAttribute(20);
 
     schema.characteristics = new fields.SchemaField(
-      CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
+      ds.CONFIG.characteristics.reduce((obj, chc) => {
         obj[chc] = new fields.SchemaField({
           value: new fields.NumberField(characteristic)
         });

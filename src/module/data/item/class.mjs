@@ -14,7 +14,7 @@ export default class ClassModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL;
+    const config = ds.CONFIG;
 
     schema.level = new fields.NumberField({
       initial: 0,
@@ -28,7 +28,7 @@ export default class ClassModel extends BaseItemModel {
     schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
-      core: new fields.SetField(new fields.StringField({choices: CONFIG.DRAW_STEEL.characteristics, required: true}))
+      core: new fields.SetField(new fields.StringField({choices: ds.CONFIG.characteristics, required: true}))
     });
 
     schema.stamina = new fields.SchemaField({
