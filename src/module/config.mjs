@@ -15,10 +15,18 @@ DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
  * @enum {string}
  */
 DRAW_STEEL.sizes = {
-  T: "DRAW_STEEL.Actor.base.sizes.T",
-  S: "DRAW_STEEL.Actor.base.sizes.S",
-  M: "DRAW_STEEL.Actor.base.sizes.M",
-  L: "DRAW_STEEL.Actor.base.sizes.L"
+  T: {
+    label: "DRAW_STEEL.Actor.base.sizes.T"
+  },
+  S: {
+    label: "DRAW_STEEL.Actor.base.sizes.S"
+  },
+  M: {
+    label: "DRAW_STEEL.Actor.base.sizes.M"
+  },
+  L: {
+    label: "DRAW_STEEL.Actor.base.sizes.L"
+  }
 };
 preLocalize("sizes");
 

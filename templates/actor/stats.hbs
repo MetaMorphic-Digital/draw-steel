@@ -96,11 +96,11 @@
     {{#each characteristics as |chr key|}}
     {{#if @root.isPlay}}
     <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}"
-      data-tooltip="{{localize " DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}">
+      data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=(localize chr.field.hint)}}">
       {{localize chr.field.label}} {{numberFormat chr.value sign=true}}
     </a>
     {{else}}
-    <label class="characteristic edit" data-tooltip="{{localize chr.field.hint}}">
+    <label class="characteristic edit" data-tooltip="{{chr.field.hint}}">
       <span class="label">{{localize chr.field.label}}</span>
       <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value={{numberFormat chr.value
         sign=true}}>
