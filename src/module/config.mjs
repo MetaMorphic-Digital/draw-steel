@@ -12,6 +12,7 @@ export const DRAW_STEEL = {};
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
 /**
+ * Valid letter modifiers for size 1 creatures
  * @enum {{label: string}}
  */
 DRAW_STEEL.sizes = {
