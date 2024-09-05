@@ -12,7 +12,7 @@ export const DRAW_STEEL = {};
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
 /**
- * @enum {string}
+ * @enum {{label: string}}
  */
 DRAW_STEEL.sizes = {
   T: {
