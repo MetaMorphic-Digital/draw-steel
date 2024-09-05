@@ -6,3 +6,10 @@ export type BarAttribute = {
   value: number,
   max: number
 }
+
+declare module "./helpers.mjs" {
+  export interface SizeModel {
+    value: number;
+    letter: string | null;
+  }
+}

@@ -61,8 +61,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {User} user
    */
   _preUpdate(changes, operation, user) {
-    const newSize = foundry.utils.getProperty(changes, "system.combat.size");
-    if ((newSize !== undefined) && (this.combat.size !== newSize)) {
+    const newSize = foundry.utils.getProperty(changes, "system.combat.size.value");
+    if ((newSize !== undefined) && (this.combat.size.value !== newSize)) {
       foundry.utils.mergeObject(changes, {
         prototypeToken: {
           width: newSize,

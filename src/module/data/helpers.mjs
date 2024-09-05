@@ -64,7 +64,7 @@ export class SizeModel extends foundry.abstract.DataModel {
   }
 
   toString() {
-    const letter = this.letter ?? "";
+    const letter = this.value === 1 ? this.letter ?? "" : "";
     return this.value + letter;
   }
 }

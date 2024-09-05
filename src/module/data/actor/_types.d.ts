@@ -1,5 +1,6 @@
 import { DrawSteelActor } from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
+import type { SizeModel } from "../helpers.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseActorModel {
@@ -7,8 +8,7 @@ declare module "./base.mjs" {
     stamina: BarAttribute & {winded: number},
     characteristics: Record<typeof ds["CONFIG"]["characteristics"][0], { value: number}>;
     combat: {
-      size: number;
-      weight: number;
+      size: SizeModel;
       stability: number;
       reach: number;
     }
