@@ -12,6 +12,26 @@ export const DRAW_STEEL = {};
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
 /**
+ * Valid letter modifiers for size 1 creatures
+ * @enum {{label: string}}
+ */
+DRAW_STEEL.sizes = {
+  T: {
+    label: "DRAW_STEEL.Actor.base.sizes.T"
+  },
+  S: {
+    label: "DRAW_STEEL.Actor.base.sizes.S"
+  },
+  M: {
+    label: "DRAW_STEEL.Actor.base.sizes.M"
+  },
+  L: {
+    label: "DRAW_STEEL.Actor.base.sizes.L"
+  }
+};
+preLocalize("sizes");
+
+/**
  * Configuration information for damage types
  * @type {Record<string, {label: string}>}
  */
