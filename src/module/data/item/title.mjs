@@ -1,5 +1,8 @@
 import FeatureModel from "./feature.mjs";
 
+/**
+ * Titles are earned benefits separate from normal heroic advancement
+ */
 export default class TitleModel extends FeatureModel {
   static metadata = Object.freeze({
     type: "title",

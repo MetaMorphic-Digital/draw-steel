@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Careers describe what a hero did for a living before becoming a hero
+ */
 export default class CareerModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "career",

@@ -13,6 +13,7 @@ DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
 
 /**
  * Configuration information for damage types
+ * @type {Record<string, {label: string}>}
  */
 DRAW_STEEL.damageTypes = {
   acid: {
@@ -82,20 +83,29 @@ DRAW_STEEL.conditions = {
   }
 };
 
+/**
+ * Times when an effect can end
+ * @enum {{label: string}}
+ */
 DRAW_STEEL.effectEnds = {
   turn: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Turn.Label"
   },
   resistance: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Resistance.Label"
   },
   encounter: {
-    label: "DRAW_STEEL.Effect"
+    label: "DRAW_STEEL.Effect.Ends.Encounter.Label"
   }
 };
 
 /**
  * Configuration information for skills
+ * @type {{
+ *  groups: Record<string, {label: string}>,
+ *  list: Record<string, {label: string, group: string}>,
+ *  optgroups: import("../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption[]
+ * }}
  */
 DRAW_STEEL.skills = {
   groups: {
@@ -338,8 +348,9 @@ preLocalize("skills.groups", {key: "label"});
 preLocalize("skills.list", {key: "label"});
 
 Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
+  /** @type {import("../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption[]} */
   get: function() {
-    const config = CONFIG.DRAW_STEEL.skills;
+    const config = ds.CONFIG.skills;
     return Object.entries(config.list).reduce((arr, [value, {label, group}]) => {
       arr.push({label, group: config.groups[group].label, value});
       return arr;
@@ -353,6 +364,7 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
  * Configuration information for negotiations
  */
 DRAW_STEEL.negotiation = {
+  /** @type {Record<string, {label: string}>} */
   motivations: {
     benevolence: {
       label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Benevolence"
@@ -405,6 +417,7 @@ DRAW_STEEL.hero = {
  * Configuration information for monsters
  */
 DRAW_STEEL.monsters = {
+  /** @type {Record<string, {label: string}>} */
   roles: {
     ambusher: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Ambusher"
@@ -440,6 +453,7 @@ DRAW_STEEL.monsters = {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Solo"
     }
   },
+  /** @type {Record<string, {label: string}>} */
   subroles: {
     minion: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Minion"
@@ -456,6 +470,7 @@ preLocalize("monsters.subroles", {key: "label"});
  * Configuration information for Ability items
  */
 DRAW_STEEL.abilities = {
+  /** @type {Record<string, {label: string, damage?: boolean}>} */
   keywords: {
     area: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Area"
@@ -485,6 +500,7 @@ DRAW_STEEL.abilities = {
       damage: true
     }
   },
+  /** @type {Record<string, {label: string}>} */
   types: {
     action: {
       label: "DRAW_STEEL.Item.Ability.Type.Action"
@@ -493,6 +509,7 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
     }
   },
+  /** @type {Record<string, {label: string, area?: boolean, primary?: boolean, secondary?: boolean}>} */
   distances: {
     melee: {
       label: "DRAW_STEEL.Item.Ability.Distance.Reach",
@@ -541,6 +558,7 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Distance.Self"
     }
   },
+  /** @type {Record<string, {label: string, all?: string}>} */
   targets: {
     creature: {
       label: "DRAW_STEEL.Item.Ability.Target.Creature",

@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Equipment covers all physical items that provide special benefits beyond the base kit
+ */
 export default class EquipmentModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "equipment"
@@ -13,7 +16,7 @@ export default class EquipmentModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = CONFIG.DRAW_STEEL.equipment;
+    const config = ds.CONFIG.equipment;
 
     schema.kind = new fields.StringField({required: true, choices: config.kind, blank: true});
     schema.category = new fields.StringField({required: true});

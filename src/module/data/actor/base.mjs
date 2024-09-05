@@ -1,6 +1,7 @@
-import {barAttribute, damageTypes, requiredInteger} from "../_helpers.mjs";
+import {barAttribute, damageTypes, requiredInteger} from "../helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
@@ -9,7 +10,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.stamina = barAttribute(20);
 
     schema.characteristics = new fields.SchemaField(
-      CONFIG.DRAW_STEEL.characteristics.reduce((obj, chc) => {
+      ds.CONFIG.characteristics.reduce((obj, chc) => {
         obj[chc] = new fields.SchemaField({
           value: new fields.NumberField(characteristic)
         });
@@ -47,6 +48,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     return schema;
   }
 
+  /** @override */
   prepareDerivedData() {
     super.prepareDerivedData();
 

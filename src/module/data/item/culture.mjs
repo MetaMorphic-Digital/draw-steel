@@ -1,5 +1,8 @@
 import BaseItemModel from "./base.mjs";
 
+/**
+ * Culture describes the community that raised a hero
+ */
 export default class CultureModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "culture",
@@ -16,7 +19,7 @@ export default class CultureModel extends BaseItemModel {
     const schema = super.defineSchema();
 
     const aspectSchema = (aspect) => ({
-      aspect: new fields.StringField({choices: CONFIG.DRAW_STEEL.culture[aspect]}),
+      aspect: new fields.StringField({choices: ds.CONFIG.culture[aspect]}),
       skillOptions: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
       skill: new fields.StringField({blank: true, required: true, choices: this.skillChoice})
     });
