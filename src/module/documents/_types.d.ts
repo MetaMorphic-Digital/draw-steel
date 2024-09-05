@@ -4,19 +4,21 @@ import { ActiveEffect as ActiveEffectModel, Actor as ActorModels, Item as ItemMo
 import { DrawSteelActiveEffect } from "./active-effect.mjs"
 import { DrawSteelItem } from "./item.mjs"
 
+// Collator for the types
+type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
+type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel">];
+
 declare global {
-  interface Actor extends ActorData {
-    type: "character" | "npc";
-    system: ActorModels.CharacterModel | ActorModels.NPCModel;
+  interface Actor<Model extends ActorModel = ActorModel> extends ActorData {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
     items: Collection<string, DrawSteelItem>;
     effects: Collection<string, DrawSteelActiveEffect>;
   }
 
-  interface Item extends ItemData {
-    type: "ability" | "ancestry" | "career" | "class" | "complication" | "culture" | "equipment" | "feature" | "kit" | "title";
-    system: ItemModels.AbilityModel | ItemModels.AncestryModel | ItemModels.CareerModel | ItemModels.ClassModel |
-      ItemModels.ComplicationModel | ItemModels.CultureModel | ItemModels.EquipmentModel | ItemModels.FeatureModel |
-      ItemModels.KitModel | ItemModels.TitleModel;
+  interface Item<Model extends ItemModel = ItemModel> extends ItemData {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
     effects: Collection<string, DrawSteelActiveEffect>;
   }
 
@@ -25,4 +27,3 @@ declare global {
     system: ActiveEffectModel.BaseEffectModel;
   }
 }
-

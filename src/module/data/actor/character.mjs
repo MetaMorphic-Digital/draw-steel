@@ -27,7 +27,7 @@ export default class CharacterModel extends BaseActorModel {
         value: new fields.NumberField({initial: null, min: 0, integer: true})
       }),
       xp: requiredInteger({initial: 0}),
-      recoveries: barAttribute(8),
+      recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
       skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list}))

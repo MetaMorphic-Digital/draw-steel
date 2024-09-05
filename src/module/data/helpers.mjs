@@ -3,11 +3,12 @@ const {NumberField, SchemaField} = foundry.data.fields;
 /**
  * Constructs a schema field with a value and max attribute
  * @param {number} initial The starting value for the bar
+ * @param {number} [min]   A minimum value for the fields
  * @returns A Schema with a value and max
  */
-export const barAttribute = (initial = 0) => new SchemaField({
-  value: new NumberField({initial, nullable: false, integer: true}),
-  max: new NumberField({initial, nullable: false, integer: true})
+export const barAttribute = (initial, min) => new SchemaField({
+  value: new NumberField({initial, min, nullable: false, integer: true}),
+  max: new NumberField({initial, min, nullable: false, integer: true})
 });
 
 /**

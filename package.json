@@ -8,7 +8,7 @@
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
     "lint:fix": "eslint --fix src/module/**",
     "lint:ci": "eslint src/module/**",
-    "postinstall": "npm run createSymlinks"
+    "postinstall": "npm run build:css && npm run createSymlinks"
   },
   "browserslist": [
     "last 3 versions"
