@@ -1,4 +1,4 @@
-const {NumberField, SchemaField} = foundry.data.fields;
+const {NumberField, SchemaField, StringField} = foundry.data.fields;
 
 /**
  * Constructs a schema field with a value and max attribute
@@ -51,3 +51,20 @@ export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
 
   return new SchemaField(schema);
 };
+
+/**
+ * A data model to represent the size of a creature in Draw Steel
+ */
+export class SizeModel extends foundry.abstract.DataModel {
+  static defineSchema() {
+    return {
+      value: new NumberField({initial: 1, required: true, nullable: false, integer: true, min: 1}),
+      letter: new StringField({choices: ds.CONFIG.sizes})
+    };
+  }
+
+  toString() {
+    const letter = this.letter ?? "";
+    return this.value + letter;
+  }
+}

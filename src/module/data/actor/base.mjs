@@ -1,4 +1,4 @@
-import {barAttribute, damageTypes, requiredInteger} from "../helpers.mjs";
+import {barAttribute, damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
 
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /** @override */
@@ -19,8 +19,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     );
 
     schema.combat = new fields.SchemaField({
-      size: requiredInteger({initial: 1}),
-      weight: requiredInteger({initial: 4}),
+      size: new fields.EmbeddedDataField(SizeModel),
       stability: requiredInteger({initial: 0}),
       reach: requiredInteger({initial: 0})
     });
