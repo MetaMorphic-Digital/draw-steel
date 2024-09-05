@@ -9,6 +9,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": [
+    "@html-eslint"
+  ],
+  "overrides": [{
+    "files": ["**/*.hbs", "**/*.html"],
+    "parser": "@html-eslint/parser",
+    "extends": ["plugin:@html-eslint/recommended"]
+  }],
   "rules": {
     "indent": ["error", 2, {"SwitchCase": 1}],
     "linebreak-style": [
@@ -45,6 +53,11 @@
       "groups": [
         ["==", "!=", "===", "!==", ">", ">=", "<", "<=", "&&", "||", "in", "instanceof"]
       ]
-    }]
+    }],
+    "@html-eslint/attrs-newline": ["off", {
+      "closeStyle": "sameline",
+      "ifAttrsMoreThan": 9
+    }],
+    "@html-eslint/indent": ["error", 2]
   }
 }
