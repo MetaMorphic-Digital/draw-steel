@@ -1,18 +1,12 @@
 <header class="sheet-header">
-  <img
-    class="profile-img"
-    src="{{item.img}}"
-    data-edit="img"
-    data-action="onEditImage"
-    title="{{item.name}}"
-  />
+  <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="onEditImage" title="{{item.name}}" alt="{{item.name}}">
   <div class="header-fields">
     <div class="document-name">
       {{formInput
-        fields.name
-        name="name"
-        value=item.name
-        placeholder=(localize "Name")
+      fields.name
+      name="name"
+      value=item.name
+      placeholder=(localize "Name")
       }}
     </div>
   </div>

@@ -17,6 +17,7 @@
     "parser": "@html-eslint/parser",
     "extends": ["plugin:@html-eslint/recommended"]
   }],
+  "ignorePatterns": ["foundry/**/*"],
   "rules": {
     "indent": ["error", 2, {"SwitchCase": 1}],
     "linebreak-style": [

@@ -7,13 +7,15 @@
   </div>
   <div class="item-list">
     {{#each abilities as |ability index|}}
-      <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{ability.id}}">
-        <img class="img" src="{{ability.img}}">
-        <span class="name">{{ability.name}}</span>
-        {{#unless @root.isPlay}}
-        <a class="delete" data-action="deleteDoc"><i class="fa-solid fa-trash-can"></i></a>
-        {{/unless}}
-      </button>
+    <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{ability.id}}">
+      <img class="img" src="{{ability.img}}" alt="{{ability.name}}">
+      <span class="name">{{ability.name}}</span>
+      {{#unless @root.isPlay}}
+      <a class="delete" data-action="deleteDoc">
+        <i class="fa-solid fa-trash-can"></i>
+      </a>
+      {{/unless}}
+    </button>
     {{/each}}
   </div>
 </section>
