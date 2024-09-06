@@ -21,6 +21,15 @@ For vscode, you will need to create a `.vscode/settings.json` file with the foll
 }
 ```
 
+Also copy the following into your `.vscode/settings.json` to support i18n-ally:
+```json
+"i18n-ally.localesPaths": [
+  "lang",
+  "foundry/lang"
+],
+"i18n-ally.keystyle": "nested",
+```
+
 ### VSCode support for i18n
 
 If you are using VSCode, the i18n Ally (ID: `lokalise.i18n-ally`) extension will preview the content of i18n strings by pulling from both `lang/en.json` as well as the symlinked core translation files at `foundry/lang/en.json`.
