@@ -498,6 +498,9 @@ DRAW_STEEL.abilities = {
     attack: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Attack"
     },
+    charge: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Charge"
+    },
     magic: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Magic",
       damage: true
