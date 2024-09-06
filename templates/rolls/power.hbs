@@ -1,16 +1,16 @@
 <div class="dice-roll">
-    <div class="tier {{tier.class}}">
-      {{tier.label}}
-      {{#if modifier.number}}
-        <em>({{localize "DRAW_STEEL.Roll.Power.Modifier.Label" number=modifier.number mod=modifier.mod}})</em>
-      {{/if}}
-    </div>
-    {{#if flavor}}
-    <div class="dice-flavor">{{flavor}}</div>
+  <div class="tier {{tier.class}}">
+    {{tier.label}}
+    {{#if modifier.number}}
+    <em>({{localize "DRAW_STEEL.Roll.Power.Modifier.Label" number=modifier.number mod=modifier.mod}})</em>
     {{/if}}
-    <div class="dice-result">
-        <div class="dice-formula">{{formula}}</div>
-        {{{tooltip}}}
-        <h4 class="dice-total {{critical}}">{{total}}</h4>
-    </div>
+  </div>
+  {{#if flavor}}
+  <div class="dice-flavor">{{flavor}}</div>
+  {{/if}}
+  <div class="dice-result">
+    <div class="dice-formula">{{formula}}</div>
+    {{{tooltip}}}
+    <h4 class="dice-total {{critical}}">{{total}}</h4>
+  </div>
 </div>
