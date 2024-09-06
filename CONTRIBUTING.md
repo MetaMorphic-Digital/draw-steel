@@ -6,11 +6,11 @@ Please ensure there is an open issue about whatever contribution you are submitt
 
 ## Developer Tooling
 
-Cloning this repository and either placing it in or symlinking it to your `Data/systems/draw-steel` user data directory is all that is necessary to run this within Foundry VTT.
+To start, clone this repository and either place it in or symlink it to your `Data/systems/draw-steel` user data directory. The CSS file referenced by `system.json` is derived from the SCSS files committed to the repository, so you must perform the following instructions to be able to load the repository in Foundry from the committed source.
 
 To provide type and i18n support, this repository uses a postinstall script that symlinks your local Foundry installation. For this to work, copy `example-foundry-config.yaml` and rename it to `foundry-config.yaml`, then replace the value of the `installPath` field.
 
-Once this is done you can run `npm install` to install all relevant dependencies. These include `eslint` and `sass`, which provide formatting and styling support.
+Once this is done you can run `npm install` to install all relevant dependencies as well as compile the CSS file. These include `eslint` and `sass`, which provide formatting and styling support.
 
 For vscode, you will need to create a `.vscode/settings.json` file with the following:
 
