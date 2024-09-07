@@ -21,7 +21,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.combat = new fields.SchemaField({
       size: new fields.EmbeddedDataField(SizeModel),
       stability: requiredInteger({initial: 0}),
-      reach: requiredInteger({initial: 0})
+      reach: requiredInteger({initial: 1})
     });
 
     schema.biography = new fields.SchemaField({
@@ -31,7 +31,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     schema.movement = new fields.SchemaField({
-      walk: new fields.NumberField({integer: true, min: 0, initial: 6}),
+      walk: new fields.NumberField({integer: true, min: 0, initial: 5}),
       burrow: new fields.NumberField({integer: true, min: 0}),
       climb: new fields.NumberField({integer: true, min: 0}),
       swim: new fields.NumberField({integer: true, min: 0}),

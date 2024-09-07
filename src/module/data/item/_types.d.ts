@@ -74,14 +74,19 @@ declare module "./kit.mjs" {
       stamina: number;
       speed: number;
       stability: number;
-      damage: {
-        melee: DamageSchema,
-        ranged: DamageSchema,
-        magical: DamageSchema
+      melee: {
+        damage: DamageSchema;
+        reach: number;
       }
-      distance: number;
-      reach: number;
-      area: number;
+      ranged: {
+        damage: DamageSchema;
+        distance: number;
+      }
+      magic: {
+        damage: DamageSchema;
+        distance: number;
+        area: number;
+      }
     }
   }
 }

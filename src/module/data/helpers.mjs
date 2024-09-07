@@ -59,7 +59,7 @@ export class SizeModel extends foundry.abstract.DataModel {
   static defineSchema() {
     return {
       value: new NumberField({initial: 1, required: true, nullable: false, integer: true, min: 1}),
-      letter: new StringField({choices: ds.CONFIG.sizes})
+      letter: new StringField({initial: "M", choices: ds.CONFIG.sizes})
     };
   }
 

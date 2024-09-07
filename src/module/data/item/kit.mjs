@@ -37,14 +37,19 @@ export default class KitModel extends BaseItemModel {
       stamina: new fields.NumberField({integer: true}),
       speed: new fields.NumberField({integer: true}),
       stability: new fields.NumberField({integer: true}),
-      damage: new fields.SchemaField({
-        melee: new fields.SchemaField(damageSchema()),
-        ranged: new fields.SchemaField(damageSchema()),
-        magical: new fields.SchemaField(damageSchema())
+      melee: new fields.SchemaField({
+        damage: new fields.SchemaField(damageSchema()),
+        distance: new fields.NumberField({integer: true})
       }),
-      distance: new fields.NumberField({integer: true}),
-      reach: new fields.NumberField({integer: true}),
-      area: new fields.NumberField({integer: true})
+      ranged: new fields.SchemaField({
+        damage: new fields.SchemaField(damageSchema()),
+        distance: new fields.NumberField({integer: true})
+      }),
+      magic: new fields.SchemaField({
+        damage: new fields.SchemaField(damageSchema()),
+        distance: new fields.NumberField({integer: true}),
+        area: new fields.NumberField({integer: true})
+      })
     });
 
     // schema.signature = new fields.SchemaField({

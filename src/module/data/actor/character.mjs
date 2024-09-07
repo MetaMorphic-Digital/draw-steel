@@ -30,7 +30,8 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list}))
+      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list})),
+      preferredKit: new fields.DocumentIdField()
     });
 
     return schema;
@@ -42,23 +43,49 @@ export default class CharacterModel extends BaseActorModel {
 
     this.hero.recoveries.bonus = 0;
 
-    let kitBonuses = {};
+    const kitBonuses = {
+      stamina: 0,
+      speed: 0,
+      stability: 0
+    };
+
+    this.abilityBonuses = {
+      melee: {},
+      ranged: {
+        distance: 0
+      },
+      magic: {
+        distance: 0,
+        area: 0
+      }
+    };
 
     for (const kit of this.kits) {
-      const kitData = kit.system;
-      for (const [key, value] of Object.entries(kitData.bonuses)) {
-        if (key === "damage") continue;
-        if (key in kitBonuses) kitBonuses[key] = Math.max(kitBonuses[key], value);
-        else kitBonuses[key] = value;
+      const bonuses = kit.system.bonuses;
+      kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
+      kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
+      kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
+      this.abilityBonuses.ranged.distance = Math.max(
+        this.abilityBonuses.ranged.distance,
+        bonuses.ranged.distance
+      );
+      this.abilityBonuses.magic.distance = Math.max(
+        this.abilityBonuses.magic.distance,
+        bonuses.magic.distance
+      );
+      this.abilityBonuses.magic.area = Math.max(
+        this.abilityBonuses.magic.area,
+        bonuses.magic.area
+      );
+      for (const [type, obj] of Object.entries(this.abilityBonuses)) {
+        if (("damage" in obj) && (this.hero.preferredKit !== kit.id)) continue;
+        if (Object.values(bonuses[type].damage).some(v => v)) obj.damage = bonuses[type].damage;
       }
     }
 
-    this.stamina.max += kitBonuses["stamina"] ?? 0;
-    this.movement.walk += kitBonuses["speed"] ?? 0;
-    this.combat.stability += kitBonuses["stability"] ?? 0;
-    this.combat.reach += kitBonuses["reach"] ?? 0;
-
-    // damage, distance, and area are more complicated
+    this.stamina.max += kitBonuses["stamina"];
+    this.movement.walk += kitBonuses["speed"];
+    this.combat.stability += kitBonuses["stability"];
   }
 
   /** @override */
