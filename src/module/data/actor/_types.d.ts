@@ -11,7 +11,6 @@ declare module "./base.mjs" {
     combat: {
       size: SizeModel;
       stability: number;
-      reach: number;
     }
     biography: {
       value: string;
@@ -54,6 +53,7 @@ declare module "./character.mjs" {
     }
     abilityBonuses: {
       melee: {
+        reach: number;
         damage?: DamageSchema;
       };
       ranged: {

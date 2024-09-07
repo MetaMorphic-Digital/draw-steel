@@ -90,7 +90,7 @@
         {{systemFields.combat.fields.size.label}} {{system.combat.size}}
       </span>
       <span class="play">
-        {{systemFields.combat.fields.reach.label}} {{system.combat.reach}}
+        {{localize "DRAW_STEEL.Item.Ability.Distance.Reach"}} {{system.reach}}
       </span>
       <span class="play">
         {{systemFields.combat.fields.stability.label}} {{system.combat.stability}}
@@ -115,7 +115,6 @@
       {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
       {{/if}}
     </div>
-    {{formGroup systemFields.combat.fields.reach value=systemSource.combat.reach rootId=actor.uuid}}
     {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
   </fieldset>
   <fieldset class="movement flexrow">

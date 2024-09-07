@@ -20,8 +20,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     schema.combat = new fields.SchemaField({
       size: new fields.EmbeddedDataField(SizeModel),
-      stability: requiredInteger({initial: 0}),
-      reach: requiredInteger({initial: 1})
+      stability: requiredInteger({initial: 0})
     });
 
     schema.biography = new fields.SchemaField({
@@ -52,6 +51,13 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
+  }
+
+  /**
+   * The actor's reach
+   */
+  get reach() {
+    return 1;
   }
 
   /**

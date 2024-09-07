@@ -39,7 +39,7 @@ export default class KitModel extends BaseItemModel {
       stability: new fields.NumberField({integer: true}),
       melee: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),
-        distance: new fields.NumberField({integer: true})
+        reach: new fields.NumberField({integer: true})
       }),
       ranged: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),

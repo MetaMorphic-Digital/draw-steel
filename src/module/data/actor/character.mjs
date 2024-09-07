@@ -50,7 +50,9 @@ export default class CharacterModel extends BaseActorModel {
     };
 
     this.abilityBonuses = {
-      melee: {},
+      melee: {
+        reach: 0
+      },
       ranged: {
         distance: 0
       },
@@ -65,18 +67,15 @@ export default class CharacterModel extends BaseActorModel {
       kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
       kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
       kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
-      this.abilityBonuses.ranged.distance = Math.max(
-        this.abilityBonuses.ranged.distance,
-        bonuses.ranged.distance
-      );
-      this.abilityBonuses.magic.distance = Math.max(
-        this.abilityBonuses.magic.distance,
-        bonuses.magic.distance
-      );
-      this.abilityBonuses.magic.area = Math.max(
-        this.abilityBonuses.magic.area,
-        bonuses.magic.area
-      );
+
+      const abiBonuses = ["melee.reach", "ranged.distance", "magic.distance", "magic.area"];
+
+      for (const key of abiBonuses) {
+        const current = foundry.utils.getProperty(this.abilityBonuses, key);
+        const kitValue = foundry.utils.getProperty(bonuses, key);
+        foundry.utils.setProperty(this.abilityBonuses, key, Math.max(current, kitValue));
+      }
+
       for (const [type, obj] of Object.entries(this.abilityBonuses)) {
         if (("damage" in obj) && (this.hero.preferredKit !== kit.id)) continue;
         if (Object.values(bonuses[type].damage).some(v => v)) obj.damage = bonuses[type].damage;
@@ -97,6 +96,11 @@ export default class CharacterModel extends BaseActorModel {
       this.hero.primary.label = this.class.system.primary;
       this.hero.secondary.label = this.class.system.secondary;
     }
+  }
+
+  /** @override */
+  get reach() {
+    return 1 + this.abilityBonuses.melee.reach;
   }
 
   /**
