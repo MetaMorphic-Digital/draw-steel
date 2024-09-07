@@ -47,10 +47,10 @@ export default class KitModel extends BaseItemModel {
       area: new fields.NumberField({integer: true})
     });
 
-    schema.signature = new fields.SchemaField({
-      grant: new fields.DocumentUUIDField(),
-      link: new fields.DocumentUUIDField()
-    });
+    // schema.signature = new fields.SchemaField({
+    //   grant: new fields.DocumentUUIDField(),
+    //   link: new fields.DocumentUUIDField()
+    // });
 
     // TODO: Mobility and Wards
 

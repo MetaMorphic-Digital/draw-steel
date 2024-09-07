@@ -41,6 +41,24 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.hero.recoveries.bonus = 0;
+
+    let kitBonuses = {};
+
+    for (const kit of this.kits) {
+      const kitData = kit.system;
+      for (const [key, value] of Object.entries(kitData.bonuses)) {
+        if (key === "damage") continue;
+        if (key in kitBonuses) kitBonuses[key] = Math.max(kitBonuses[key], value);
+        else kitBonuses[key] = value;
+      }
+    }
+
+    this.stamina.max += kitBonuses["stamina"] ?? 0;
+    this.movement.walk += kitBonuses["speed"] ?? 0;
+    this.combat.stability += kitBonuses["stability"] ?? 0;
+    this.combat.reach += kitBonuses["reach"] ?? 0;
+
+    // damage, distance, and area are more complicated
   }
 
   /** @override */
@@ -60,7 +78,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current ancestry
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
     return this.parent.items.find(i => i.type === "ancestry");
@@ -68,7 +86,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current career
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
     return this.parent.items.find(i => i.type === "career");
@@ -76,7 +94,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current class
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
     return this.parent.items.find(i => i.type === "class");
@@ -84,7 +102,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current culture
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
     return this.parent.items.find(i => i.type === "culture");
@@ -92,7 +110,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Returns all of the actor's kits
-   * @returns {DrawSteelItem[]}
+   * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
    */
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");
