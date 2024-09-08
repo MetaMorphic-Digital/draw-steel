@@ -73,6 +73,7 @@ export class PowerRoll extends DSRoll {
     return PowerRoll.#TYPES;
   }
 
+  /** @enum {{label: string; icon: string}} */
   static #TYPES = Object.freeze({
     ability: {
       label: "DRAW_STEEL.Roll.Power.Types.Ability",
@@ -90,6 +91,7 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Set of power roll types
+   * @type {Set<"ability" | "resistance" | "test">}
    */
   static get VALID_TYPES() {
     return new Set(Object.keys(this.#TYPES));
@@ -112,6 +114,15 @@ export class PowerRoll extends DSRoll {
     return this.#RESULT_TIERS;
   }
 
+  /**
+   * Names of the result tiers
+   * @type {Array<"tier1" | "tier2" | "tier3">}
+   */
+  static get TIER_NAMES() {
+    return Object.keys(this.#RESULT_TIERS);
+  }
+
+  /** @enum {{label: string; threshold: number}} */
   static #RESULT_TIERS = {
     tier1: {
       label: "DRAW_STEEL.Roll.Power.Tiers.One",

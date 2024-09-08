@@ -51,21 +51,6 @@ declare module "./character.mjs" {
       skills: Set<string>;
       preferredKit: string;
     }
-    abilityBonuses: {
-      melee: {
-        reach: number;
-        damage?: DamageSchema;
-      };
-      ranged: {
-        distance: number;
-        damage?: DamageSchema;
-      };
-      magic: {
-        distance: number;
-        area: number;
-        damage?: DamageSchema;
-      }
-    }
   }
 }
 

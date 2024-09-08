@@ -523,7 +523,7 @@ DRAW_STEEL.abilities = {
       damage: true
     }
   },
-  /** @type {Record<string, {label: string}>} */
+  /** @enum {{label: string}} */
   types: {
     action: {
       label: "DRAW_STEEL.Item.Ability.Type.Action"
@@ -532,7 +532,7 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
     }
   },
-  /** @type {Record<string, {label: string, area?: boolean, primary?: boolean, secondary?: boolean}>} */
+  /** @enum {{label: string, area?: boolean, primary?: boolean, secondary?: boolean}} */
   distances: {
     melee: {
       label: "DRAW_STEEL.Item.Ability.Distance.Reach",

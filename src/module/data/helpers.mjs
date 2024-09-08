@@ -1,3 +1,5 @@
+import {DSRoll} from "../helpers/rolls.mjs";
+
 const {NumberField, SchemaField, StringField} = foundry.data.fields;
 
 /**
@@ -67,5 +69,37 @@ export class SizeModel extends foundry.abstract.DataModel {
   toString() {
     const letter = this.value === 1 ? this.letter ?? "" : "";
     return this.value + letter;
+  }
+}
+
+/**
+ * Special case StringField which represents a formula.
+ */
+export class FormulaField extends foundry.data.fields.StringField {
+
+  /** @override */
+  static get _defaults() {
+    return foundry.utils.mergeObject(super._defaults, {
+      required: true,
+      deterministic: false
+    });
+  }
+
+  /* -------------------------------------------- */
+
+  /** @override */
+  _validateType(value) {
+    DSRoll.validate(value);
+    if (this.options.deterministic) {
+      const roll = new Roll(value);
+      if (!roll.isDeterministic) throw new Error("must not contain dice terms");
+    }
+    super._validateType(value);
+  }
+
+  /** @override */
+  _applyChangeAdd(value, delta, model, change) {
+    if (value) return value.concat(" + ", delta);
+    else return delta;
   }
 }

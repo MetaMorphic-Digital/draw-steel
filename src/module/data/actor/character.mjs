@@ -49,13 +49,18 @@ export default class CharacterModel extends BaseActorModel {
       stability: 0
     };
 
+    /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
+
     this.abilityBonuses = {
+      /** @type {{ reach: number, damage?: DamageSchema}} */
       melee: {
         reach: 0
       },
+      /** @type {{ distance: number, damage?: DamageSchema}} */
       ranged: {
         distance: 0
       },
+      /** @type {{ distance: number, area: number, damage?: DamageSchema }} */
       magic: {
         distance: 0,
         area: 0

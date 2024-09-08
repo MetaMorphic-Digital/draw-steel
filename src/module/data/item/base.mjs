@@ -63,6 +63,13 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     return {};
   }
 
+  /**
+   * Convenient access to the item's actor.
+   */
+  get actor() {
+    return this.parent.actor;
+  }
+
   /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
