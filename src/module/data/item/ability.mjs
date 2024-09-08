@@ -32,8 +32,8 @@ export default class AbilityModel extends BaseItemModel {
     schema.type = new fields.StringField(requiredChoice(config.types, "action"));
     schema.distance = new fields.SchemaField({
       type: new fields.StringField(requiredChoice(config.distances, "self")),
-      primary: new fields.NumberField({integer: true}),
-      secondary: new fields.NumberField({integer: true})
+      primary: new fields.NumberField({integer: true, required: true}),
+      secondary: new fields.NumberField({integer: true, required: true})
     });
     schema.damageDisplay = new fields.StringField({choices: ["melee", "ranged"]});
     schema.trigger = new fields.StringField();
@@ -46,12 +46,12 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField()
+        type: new fields.StringField({nullable: false})
       }),
       ae: new fields.StringField({validate: foundry.data.validators.isValidId}),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
-        value: new fields.NumberField(),
+        value: new fields.NumberField({required: true}),
         vertical: new fields.BooleanField()
       }),
       description: new fields.StringField()
@@ -102,14 +102,31 @@ export default class AbilityModel extends BaseItemModel {
             }
             break;
           case "aura":
+            if (this.keywords.has("magic")) {
+              this.distance.primary += bonuses.magic.area;
+            }
             break;
           case "burst":
+            if (this.keywords.has("magic")) {
+              this.distance.primary += bonuses.magic.area;
+            }
             break;
           case "cube":
+            if (this.keywords.has("magic")) {
+              this.distance.primary += bonuses.magic.area;
+              this.distance.secondary += bonuses.magic.distance;
+            }
             break;
           case "line":
+            if (this.keywords.has("magic")) {
+              this.distance.primary += bonuses.magic.area;
+              this.distance.secondary += bonuses.magic.area;
+            }
             break;
           case "wall":
+            if (this.keywords.has("magic")) {
+              this.distance.primary += bonuses.magic.area;
+            }
             break;
           case "self":
           case "special":

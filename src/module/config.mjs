@@ -523,7 +523,10 @@ DRAW_STEEL.abilities = {
       damage: true
     }
   },
-  /** @enum {{label: string}} */
+  /**
+   * Action types
+   * @enum {{label: string}}
+   */
   types: {
     action: {
       label: "DRAW_STEEL.Item.Ability.Type.Action"
@@ -532,45 +535,51 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
     }
   },
-  /** @enum {{label: string, area?: boolean, primary?: boolean, secondary?: boolean}} */
+  /**
+   * Valid distances in Draw Steel
+   * `primary` and `secondary`, if present represent additional measures/dimensions that are valid for this type
+   * The string values are the labels for those properties
+   * @type {Record<string, {label: string, primary?: string, secondary?: string, area?: boolean}>}
+   */
   distances: {
     melee: {
       label: "DRAW_STEEL.Item.Ability.Distance.Reach",
-      primary: true
+      primary: "DRAW_STEEL.Item.Ability.Distance.Reach"
     },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      primary: true
+      primary: "DRAW_STEEL.Item.Ability.Distance.Ranged"
     },
     meleeRanged: {
       label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
-      primary: true,
-      secondary: true
+      primary: "DRAW_STEEL.Item.Ability.Distance.Reach",
+      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged"
     },
     aura: {
       label: "DRAW_STEEL.Item.Ability.Distance.Aura",
-      primary: true,
+      primary: "DRAW_STEEL.Item.Ability.Distance.Aura",
       area: true
     },
     burst: {
       label: "DRAW_STEEL.Item.Ability.Distance.Burst",
-      primary: true,
+      primary: "DRAW_STEEL.Item.Ability.Distance.Burst",
       area: true
     },
     cube: {
       label: "DRAW_STEEL.Item.Ability.Distance.Cube",
-      primary: true,
+      primary: "DRAW_STEEL.Item.Ability.Distance.Length",
+      secondary: true,
       area: true
     },
     line: {
       label: "DRAW_STEEL.Item.Ability.Distance.Line",
-      primary: true,
-      secondary: true,
+      primary: "DRAW_STEEL.Item.Ability.Distance.Length",
+      secondary: "DRAW_STEEL.Item.Ability.Distance.Width",
       area: true
     },
     wall: {
       label: "DRAW_STEEL.Item.Ability.Distance.Wall",
-      primary: true,
+      primary: "DRAW_STEEL.Item.Ability.Distance.Squares",
       area: true
     },
     special: {
@@ -620,7 +629,7 @@ DRAW_STEEL.abilities = {
   }
 };
 preLocalize("abilities.keywords", {key: "label"});
-preLocalize("abilities.distances", {key: "label"});
+preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});
 
