@@ -1,10 +1,17 @@
 {{! Sheet Header }}
 <header class="sheet-header">
-  <img class="profile-img"
+  <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
+  <img
+    class="profile-img"
     src="{{actor.img}}"
     alt="{{actor.name}}"
     data-edit="img"
-    {{#if isPlay}} data-action="showPortraitArtwork" {{else}} data-action="onEditImage" {{/if}}
+    {{#if isPlay}}
+    data-action="showPortraitArtwork"
+    {{else}}
+    {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+    data-action="onEditImage"
+    {{/if}}
     title="{{actor.name}}"
     height="100"
     width="100"
@@ -16,7 +23,7 @@
       {{else}}
       {{formInput
       fields.name
-      value=actor.name
+      value=actor._source.name
       placeholder=(localize "Name")
       }}
       {{/if}}
@@ -124,7 +131,7 @@
       {{else}}
       {{formInput
       systemFields.hero.fields.victories
-      value=system.hero.victories
+      value=systemSource.hero.victories
       }}
       {{/if}}
     </div>

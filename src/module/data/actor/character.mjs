@@ -30,7 +30,8 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list}))
+      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list})),
+      preferredKit: new fields.DocumentIdField()
     });
 
     return schema;
@@ -41,6 +42,49 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.hero.recoveries.bonus = 0;
+
+    const kitBonuses = {
+      stamina: 0,
+      speed: 0,
+      stability: 0
+    };
+
+    this.abilityBonuses = {
+      melee: {
+        reach: 0
+      },
+      ranged: {
+        distance: 0
+      },
+      magic: {
+        distance: 0,
+        area: 0
+      }
+    };
+
+    for (const kit of this.kits) {
+      const bonuses = kit.system.bonuses;
+      kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
+      kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
+      kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
+
+      const abiBonuses = ["melee.reach", "ranged.distance", "magic.distance", "magic.area"];
+
+      for (const key of abiBonuses) {
+        const current = foundry.utils.getProperty(this.abilityBonuses, key);
+        const kitValue = foundry.utils.getProperty(bonuses, key);
+        foundry.utils.setProperty(this.abilityBonuses, key, Math.max(current, kitValue));
+      }
+
+      for (const [type, obj] of Object.entries(this.abilityBonuses)) {
+        if (("damage" in obj) && (this.hero.preferredKit !== kit.id)) continue;
+        if (Object.values(bonuses[type].damage).some(v => v)) obj.damage = bonuses[type].damage;
+      }
+    }
+
+    this.stamina.max += kitBonuses["stamina"];
+    this.movement.walk += kitBonuses["speed"];
+    this.combat.stability += kitBonuses["stability"];
   }
 
   /** @override */
@@ -54,13 +98,18 @@ export default class CharacterModel extends BaseActorModel {
     }
   }
 
+  /** @override */
+  get reach() {
+    return 1 + this.abilityBonuses.melee.reach;
+  }
+
   /**
    * @typedef {import("../../documents/item.mjs").DrawSteelItem} DrawSteelItem
    */
 
   /**
    * Finds the actor's current ancestry
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
     return this.parent.items.find(i => i.type === "ancestry");
@@ -68,7 +117,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current career
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
     return this.parent.items.find(i => i.type === "career");
@@ -76,7 +125,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current class
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
     return this.parent.items.find(i => i.type === "class");
@@ -84,7 +133,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Finds the actor's current culture
-   * @returns {undefined | DrawSteelItem}
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
     return this.parent.items.find(i => i.type === "culture");
@@ -92,7 +141,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Returns all of the actor's kits
-   * @returns {DrawSteelItem[]}
+   * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
    */
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");

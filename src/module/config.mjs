@@ -29,7 +29,7 @@ DRAW_STEEL.sizes = {
     label: "DRAW_STEEL.Actor.base.sizes.L"
   }
 };
-preLocalize("sizes");
+preLocalize("sizes", {key: "label"});
 
 /**
  * Configuration information for damage types

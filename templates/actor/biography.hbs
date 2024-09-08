@@ -5,7 +5,7 @@
     {{#if isPlay}}
     {{languages}}
     {{else}}
-    {{formInput systemFields.biography.fields.languages value=system.biography.languages disabled=(not editable)}}
+    {{formInput systemFields.biography.fields.languages value=systemSource.biography.languages disabled=(not editable) dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
   {{#if editable}}

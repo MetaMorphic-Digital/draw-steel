@@ -56,7 +56,39 @@ declare module "./feature.mjs" {
 }
 
 declare module "./kit.mjs" {
-  export default interface KitModel {}
+
+  type DamageSchema = {
+    tier1: number;
+    tier2: number;
+    tier3: number;
+  }
+
+  export default interface KitModel {
+    type: string;
+    equipment: {
+      armor: string;
+      weapon: string;
+      implement: string;
+    }
+    bonuses: {
+      stamina: number;
+      speed: number;
+      stability: number;
+      melee: {
+        damage: DamageSchema;
+        reach: number;
+      }
+      ranged: {
+        damage: DamageSchema;
+        distance: number;
+      }
+      magic: {
+        damage: DamageSchema;
+        distance: number;
+        area: number;
+      }
+    }
+  }
 }
 
 declare module "./title.mjs" {

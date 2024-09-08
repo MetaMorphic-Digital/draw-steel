@@ -124,13 +124,15 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       actor: this.actor,
       // Add the actor's data to context.data for easier access, as well as flags.
       system: this.actor.system,
+      systemSource: this.actor.system._source,
       flags: this.actor.flags,
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
       tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
-      systemFields: this.document.system.schema.fields
+      systemFields: this.document.system.schema.fields,
+      datasets: this._getDatasets()
     };
 
     return context;
@@ -191,10 +193,11 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
   _getCharacteristics() {
+    const data = this.isPlayMode ? this.actor : this.actor._source;
     return ds.CONFIG.characteristics.reduce((obj, chc) => {
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: foundry.utils.getProperty(this.actor, `system.characteristics.${chc}.value`)
+        value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`)
       };
       return obj;
     }, {});
@@ -285,6 +288,17 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       tabs[partId] = tab;
       return tabs;
     }, {});
+  }
+
+  /**
+   * Helper to compose datasets available in the hbs
+   * @returns {Record<string, unknown>}
+   */
+  _getDatasets() {
+    return {
+      isSource: {source: true},
+      notSource: {source: false}
+    };
   }
 
   /**
@@ -753,27 +767,12 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    ********************/
 
   /**
-   * Submit a document update based on the processed form data.
-   * @param {SubmitEvent} event                   The originating form submission event
-   * @param {HTMLFormElement} form                The form element that was submitted
-   * @param {object} submitData                   Processed and validated form data to be used for a document update
-   * @returns {Promise<void>}
-   * @protected
-   * @override
-   */
-  async _processSubmitData(event, form, submitData) {
-    const overrides = foundry.utils.flattenObject(this.actor.overrides);
-    for (let k of Object.keys(overrides)) delete submitData[k];
-    await this.document.update(submitData);
-  }
-
-  /**
    * Disables inputs subject to active effects
    */
   #disableOverrides() {
     const flatOverrides = foundry.utils.flattenObject(this.actor.overrides);
     for (const override of Object.keys(flatOverrides)) {
-      const input = this.element.querySelector(`[name="${override}"]`);
+      const input = this.element.querySelector(`[name="${override}"][data-source="false"]`);
       if (input) {
         input.disabled = true;
       }

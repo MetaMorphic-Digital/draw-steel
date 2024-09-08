@@ -8,14 +8,14 @@
       </label>
       <div class="resource-content flexrow">
         <div class="resource-current">
-          {{formInput systemFields.stamina.fields.value value=system.stamina.value}}
+          {{formInput systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
         </div>
         <span class="resource-divider"> / </span>
         <span class="resource-max">
           {{#if isPlay}}
           {{system.stamina.max}}
           {{else}}
-          {{formInput systemFields.stamina.fields.max value=system.stamina.max}}
+          {{formInput systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource}}
           {{/if}}
         </span>
       </div>
@@ -27,14 +27,14 @@
       </label>
       <div class="resource-content flexrow">
         <div class="resource-current">
-          {{formInput systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value}}
+          {{formInput systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource}}
         </div>
         <span class="resource-divider"> / </span>
         <span class="resource-max">
           {{#if isPlay}}
           {{system.hero.recoveries.max}}
           {{else}}
-          {{formInput systemFields.hero.fields.recoveries.fields.max value=system.hero.recoveries.max}}
+          {{formInput systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource}}
           {{/if}}
         </span>
       </div>
@@ -44,12 +44,12 @@
       {{#if isPlay}}
       <label>
         <span>{{system.hero.primary.label}}</span>
-        {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value}}
+        {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource}}
       </label>
       {{#if system.class.system.secondary}}
       <label>
         <span>{{system.hero.secondary.label}}</span>
-        {{formInput systemFields.hero.fields.secondary.fields.value value=system.hero.secondary.value}}
+        {{formInput systemFields.hero.fields.secondary.fields.value value=system.hero.secondary.value dataset=datasets.notSource}}
       </label>
       {{/if}}
       {{else}}
@@ -57,9 +57,9 @@
         {{systemFields.hero.label}}
       </label>
       <div class="resource-content">
-        {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value}}
+        {{formInput systemFields.hero.fields.primary.fields.value value=systemSource.hero.primary.value dataset=datasets.isSource}}
         {{#if system.class.system.secondary}}
-        {{formInput systemFields.hero.fields.secondary.fields.value value=system.hero.secondary.value}}
+        {{formInput systemFields.hero.fields.secondary.fields.value value=systemSource.hero.secondary.value dataset=datasets.isSource}}
         {{/if}}
       </div>
       {{/if}}
@@ -71,13 +71,13 @@
     <legend>{{systemFields.characteristics.label}}</legend>
     {{#each characteristics as |chr key|}}
     {{#if @root.isPlay}}
-    <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip="{{localize " DRAW_STEEL.Roll.Prompt" prompt chr.field.hint)}}">
+    <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=chr.field.hint}}">
       {{localize chr.field.label}} {{numberFormat chr.value sign=true}}
     </a>
     {{else}}
     <label class="characteristic edit" data-tooltip="{{chr.field.hint}}">
       <span class="label">{{localize chr.field.label}}</span>
-      <input type="text" data-dtype="Number" name="system.characteristics.{{key}}.value" value="{{numberFormat" chr.value sign="true}}">
+      <input type="text" name="system.characteristics.{{key}}.value" value="{{numberFormat chr.value sign=true}}" data-dtype="Number" data-source="true">
     </label>
     {{/if}}
     {{/each}}
@@ -90,7 +90,7 @@
         {{systemFields.combat.fields.size.label}} {{system.combat.size}}
       </span>
       <span class="play">
-        {{systemFields.combat.fields.reach.label}} {{system.combat.reach}}
+        {{localize "DRAW_STEEL.Item.Ability.Distance.Reach"}} {{system.reach}}
       </span>
       <span class="play">
         {{systemFields.combat.fields.stability.label}} {{system.combat.stability}}
@@ -110,22 +110,21 @@
     <legend>{{systemFields.combat.label}}</legend>
     <div class="size flexrow">
       <label class="size">{{systemFields.combat.fields.size.label}}</label>
-      {{formInput systemFields.combat.fields.size.fields.value value=system.combat.size.value rootId=actor.uuid}}
+      {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=actor.uuid dataset=datasets.isSource}}
       {{#if (eq system.combat.size.value 1)}}
-      {{formInput systemFields.combat.fields.size.fields.letter value=system.combat.size.letter rootId=actor.uuid}}
+      {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
       {{/if}}
     </div>
-    {{formGroup systemFields.combat.fields.reach value=system.combat.reach rootId=actor.uuid}}
-    {{formGroup systemFields.combat.fields.stability value=system.combat.stability rootId=actor.uuid}}
+    {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
   </fieldset>
   <fieldset class="movement flexrow">
     <legend>{{systemFields.movement.label}}</legend>
-    {{formGroup systemFields.movement.fields.walk value=system.movement.walk rootId=actor.uuid}}
-    {{formGroup systemFields.movement.fields.burrow value=system.movement.burrow rootId=actor.uuid}}
-    {{formGroup systemFields.movement.fields.climb value=system.movement.climb rootId=actor.uuid}}
-    {{formGroup systemFields.movement.fields.swim value=system.movement.swim rootId=actor.uuid}}
-    {{formGroup systemFields.movement.fields.fly value=system.movement.fly rootId=actor.uuid}}
-    {{formGroup systemFields.movement.fields.teleport value=system.movement.teleport rootId=actor.uuid}}
+    {{formGroup systemFields.movement.fields.walk value=systemSource.movement.walk rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.burrow value=systemSource.movement.burrow rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.climb value=systemSource.movement.climb rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.swim value=systemSource.movement.swim rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.fly value=systemSource.movement.fly rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
   </fieldset>
   {{/if}}
   <fieldset class="skills flexrow">
@@ -133,7 +132,7 @@
     {{#if isPlay}}
     {{skills}}
     {{else}}
-    {{formInput systemFields.hero.fields.skills value=system.hero.skills options=config.skills.optgroups}}
+    {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=config.skills.optgroups dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
 </section>

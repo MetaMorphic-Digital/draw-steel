@@ -1,6 +1,7 @@
 import { DrawSteelActor } from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
 import type { SizeModel } from "../helpers.mjs";
+import { DamageSchema } from "../item/kit.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseActorModel {
@@ -10,7 +11,6 @@ declare module "./base.mjs" {
     combat: {
       size: SizeModel;
       stability: number;
-      reach: number;
     }
     biography: {
       value: string;
@@ -49,6 +49,22 @@ declare module "./character.mjs" {
       };
       renown: number;
       skills: Set<string>;
+      preferredKit: string;
+    }
+    abilityBonuses: {
+      melee: {
+        reach: number;
+        damage?: DamageSchema;
+      };
+      ranged: {
+        distance: number;
+        damage?: DamageSchema;
+      };
+      magic: {
+        distance: number;
+        area: number;
+        damage?: DamageSchema;
+      }
     }
   }
 }
