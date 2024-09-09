@@ -97,9 +97,27 @@ export class FormulaField extends foundry.data.fields.StringField {
     super._validateType(value);
   }
 
+  /* -------------------------------------------- */
+
   /** @override */
+  _castChangeDelta(delta) {
+    // super just calls `_cast`
+    return this._cast(delta).trim();
+  }
+
+  /**
+   * @param {string} value
+   * @param {string} delta
+   * @param {InstanceType<foundry["abstract"]["DataModel"]>} model
+   * @param {import("../../../foundry/common/types.mjs").EffectChangeData} change
+   * @override
+   */
   _applyChangeAdd(value, delta, model, change) {
-    if (value) return value.concat(" + ", delta);
+    const sign = delta[0] !== "-" ? " + " : " - ";
+    if (["+", "-"].includes(delta[0])) delta = delta.substring(1);
+    if (value) return value.concat(sign, delta);
     else return delta;
   }
+
+  // TODO: Multiply, upgrade, downgrade
 }

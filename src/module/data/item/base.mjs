@@ -65,6 +65,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Convenient access to the item's actor.
+   * @returns {import("../../documents/actor.mjs").DrawSteelActor}
    */
   get actor() {
     return this.parent.actor;

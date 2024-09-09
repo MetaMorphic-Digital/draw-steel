@@ -1,5 +1,4 @@
-import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
-import CharacterModel from "../actor/character.mjs";
+import {PowerRoll} from "../../helpers/rolls.mjs";
 import {FormulaField} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -32,8 +31,8 @@ export default class AbilityModel extends BaseItemModel {
     schema.type = new fields.StringField(requiredChoice(config.types, "action"));
     schema.distance = new fields.SchemaField({
       type: new fields.StringField(requiredChoice(config.distances, "self")),
-      primary: new fields.NumberField({integer: true, required: true}),
-      secondary: new fields.NumberField({integer: true, required: true})
+      primary: new fields.NumberField({integer: true}),
+      secondary: new fields.NumberField({integer: true})
     });
     schema.damageDisplay = new fields.StringField({choices: ["melee", "ranged"]});
     schema.trigger = new fields.StringField();
@@ -46,12 +45,12 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField({nullable: false})
+        type: new fields.StringField({required: true})
       }),
       ae: new fields.StringField({validate: foundry.data.validators.isValidId}),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
-        value: new fields.NumberField({required: true}),
+        value: new fields.NumberField(),
         vertical: new fields.BooleanField()
       }),
       description: new fields.StringField()
@@ -74,11 +73,14 @@ export default class AbilityModel extends BaseItemModel {
     return description;
   }
 
+  /* -------------------------------------------- */
+
   /** @override */
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.actor && (this.actor.system instanceof CharacterModel)) {
+    if (this.actor?.type !== "character") {
+      /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
       const bonuses = this.actor.system.abilityBonuses;
       if (bonuses) { // Data prep order of operations issues
         switch (this.distance.type) {
