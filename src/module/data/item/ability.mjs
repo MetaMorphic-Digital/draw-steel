@@ -89,7 +89,7 @@ export default class AbilityModel extends BaseItemModel {
    */
   _prepareCharacterData() {
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
-    const bonuses = foundry.utils.getProperty(this.actor ?? {}, 'system.abilityBonuses');
+    const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
       switch (this.distance.type) {
         case "melee":
