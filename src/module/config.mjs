@@ -568,7 +568,7 @@ DRAW_STEEL.abilities = {
     cube: {
       label: "DRAW_STEEL.Item.Ability.Distance.Cube",
       primary: "DRAW_STEEL.Item.Ability.Distance.Length",
-      secondary: true,
+      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
       area: true
     },
     line: {
