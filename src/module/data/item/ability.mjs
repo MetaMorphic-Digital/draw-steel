@@ -84,12 +84,12 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
-   * TODO: Consider adding an `overrides` like property
+   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
    * @protected
    */
   _prepareCharacterData() {
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
-    const bonuses = foundry.utils.getProperty(this.actor, 'system.abilityBonuses');
+    const bonuses = foundry.utils.getProperty(this.actor ?? {}, 'system.abilityBonuses');
     if (bonuses) { // Data prep order of operations issues
       switch (this.distance.type) {
         case "melee":
