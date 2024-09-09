@@ -79,7 +79,7 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.actor?.type !== "character") {
+    if (this.actor?.type === "character") {
       /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
       const bonuses = this.actor.system.abilityBonuses;
       if (bonuses) { // Data prep order of operations issues
