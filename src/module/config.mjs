@@ -73,33 +73,33 @@ DRAW_STEEL.conditions = {
   // bleeding: {},
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed",
-    img: ""
+    img: "icons/svg/daze.svg"
   },
   frightened: {
     name: "DRAW_STEEL.Effect.Conditions.Frightened",
-    img: ""
+    img: "icons/svg/terror.svg"
 
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed",
-    img: ""
+    img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg"
   },
   // prone: {},
   restrained: {
     name: "DRAW_STEEL.Effect.Conditions.Restrained",
-    img: ""
+    img: "icons/svg/net.svg"
   },
   slowed: {
     name: "DRAW_STEEL.Effect.Conditions.Slowed",
-    img: ""
+    img: "systems/draw-steel/assets/icons/snail.svg"
   },
   taunted: {
     name: "DRAW_STEEL.Effect.Conditions.Taunted",
-    img: ""
+    img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg"
   },
   weakened: {
     name: "DRAW_STEEL.Effect.Conditions.Weakened",
-    img: ""
+    img: "icons/svg/downgrade.svg"
   }
 };
 
