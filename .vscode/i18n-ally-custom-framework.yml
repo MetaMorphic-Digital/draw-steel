@@ -22,6 +22,7 @@ usageMatchRegex:
   - "\\{\\{\\s*localize\\s+[\"']({key})['\"]\\}\\}"
   - "\\{\\{[\\w\\.\\s\\=]*\\(localize\\s+[\"']({key})['\"]\\)[\\w\\.\\s\\=]*\\}\\}"
   - "[^\\w\\d]label: \"({key})\""
+  - "[^\\w\\d]hint: \"({key})\""
 
 # An array of strings containing refactor templates.
 # The "$1" will be replaced by the keypath specified.

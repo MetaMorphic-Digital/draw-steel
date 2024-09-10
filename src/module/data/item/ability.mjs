@@ -79,94 +79,101 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    if (this.actor?.type === "character") {
-      /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
-      const bonuses = this.actor.system.abilityBonuses;
-      if (bonuses) { // Data prep order of operations issues
-        switch (this.distance.type) {
-          case "melee":
-            if (this.keywords.has("weapon")) {
-              this.distance.primary += bonuses.melee.reach;
-            }
-            break;
-          case "ranged":
-            if (this.keywords.has("weapon")) {
-              this.distance.primary += bonuses.ranged.reach;
-            }
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.distance;
-            }
-            break;
-          case "meleeRanged":
-            if (this.keywords.has("weapon")) {
-              this.distance.primary += bonuses.melee.reach;
-              this.distance.secondary += bonuses.ranged.distance;
-            }
-            break;
-          case "aura":
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.area;
-            }
-            break;
-          case "burst":
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.area;
-            }
-            break;
-          case "cube":
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.area;
-              this.distance.secondary += bonuses.magic.distance;
-            }
-            break;
-          case "line":
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.area;
-              this.distance.secondary += bonuses.magic.area;
-            }
-            break;
-          case "wall":
-            if (this.keywords.has("magic")) {
-              this.distance.primary += bonuses.magic.area;
-            }
-            break;
-          case "self":
-          case "special":
-            break;
-        }
-        // All three tier.damage.value fields should be identical, so their apply change should be identical
-        const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "value"]);
-        if (this.keywords.has("weapon")) {
-          const isMelee = this.keywords.has("melee");
-          const isRanged = this.keywords.has("ranged");
-          const prefMelee = this.damageDisplay === "melee";
-          if (isMelee && (prefMelee || !isRanged)) {
-            for (const tier of PowerRoll.TIER_NAMES) {
-              if (!bonuses.melee?.damage?.[tier]) continue;
-              this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-                value: bonuses.melee?.damage?.[tier],
-                mode: CONST.ACTIVE_EFFECT_MODES.ADD
-              });
-            }
+    if (this.actor?.type === "character") this._prepareCharacterData();
+  }
+
+  /**
+   * Adds kit bonuses as native "active effect" like adjustments.
+   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
+   * @protected
+   */
+  _prepareCharacterData() {
+    /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
+    const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
+    if (bonuses) { // Data prep order of operations issues
+      switch (this.distance.type) {
+        case "melee":
+          if (this.keywords.has("weapon")) {
+            this.distance.primary += bonuses.melee.reach;
           }
-          else if (isRanged) {
-            for (const tier of PowerRoll.TIER_NAMES) {
-              if (!bonuses.ranged?.damage?.[tier]) continue;
-              this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-                value: bonuses.ranged?.damage?.[tier],
-                mode: CONST.ACTIVE_EFFECT_MODES.ADD
-              });
-            }
+          break;
+        case "ranged":
+          if (this.keywords.has("weapon")) {
+            this.distance.primary += bonuses.ranged.reach;
           }
-        }
-        if (this.keywords.has("magic")) {
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.distance;
+          }
+          break;
+        case "meleeRanged":
+          if (this.keywords.has("weapon")) {
+            this.distance.primary += bonuses.melee.reach;
+            this.distance.secondary += bonuses.ranged.distance;
+          }
+          break;
+        case "aura":
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.area;
+          }
+          break;
+        case "burst":
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.area;
+          }
+          break;
+        case "cube":
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.area;
+            this.distance.secondary += bonuses.magic.distance;
+          }
+          break;
+        case "line":
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.area;
+            this.distance.secondary += bonuses.magic.area;
+          }
+          break;
+        case "wall":
+          if (this.keywords.has("magic")) {
+            this.distance.primary += bonuses.magic.area;
+          }
+          break;
+        case "self":
+        case "special":
+          break;
+      }
+      // All three tier.damage.value fields should be identical, so their apply change should be identical
+      const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "value"]);
+      if (this.keywords.has("weapon")) {
+        const isMelee = this.keywords.has("melee");
+        const isRanged = this.keywords.has("ranged");
+        const prefMelee = this.damageDisplay === "melee";
+        if (isMelee && (prefMelee || !isRanged)) {
           for (const tier of PowerRoll.TIER_NAMES) {
-            if (!bonuses.magic?.damage?.[tier]) continue;
+            if (!bonuses.melee?.damage?.[tier]) continue;
             this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-              value: bonuses.magic?.damage?.[tier],
+              value: bonuses.melee?.damage?.[tier],
               mode: CONST.ACTIVE_EFFECT_MODES.ADD
             });
           }
+        }
+        else if (isRanged) {
+          for (const tier of PowerRoll.TIER_NAMES) {
+            if (!bonuses.ranged?.damage?.[tier]) continue;
+            this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
+              value: bonuses.ranged?.damage?.[tier],
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD
+            });
+          }
+        }
+      }
+      if (this.keywords.has("magic")) {
+        for (const tier of PowerRoll.TIER_NAMES) {
+          if (!bonuses.magic?.damage?.[tier]) continue;
+          this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
+            value: bonuses.magic?.damage?.[tier],
+            mode: CONST.ACTIVE_EFFECT_MODES.ADD
+          });
         }
       }
     }
