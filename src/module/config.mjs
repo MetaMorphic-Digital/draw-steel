@@ -72,34 +72,34 @@ preLocalize("damageTypes", {key: "label"});
 DRAW_STEEL.conditions = {
   // bleeding: {},
   dazed: {
-    name: "DRAW_STEEL.Effect.Conditions.Dazed",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
+    img: "icons/svg/daze.svg"
   },
   frightened: {
-    name: "DRAW_STEEL.Effect.Conditions.Frightened",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
+    img: "icons/svg/terror.svg"
 
   },
   grabbed: {
-    name: "DRAW_STEEL.Effect.Conditions.Grabbed",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
+    img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg"
   },
   // prone: {},
   restrained: {
-    name: "DRAW_STEEL.Effect.Conditions.Restrained",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
+    img: "icons/svg/net.svg"
   },
   slowed: {
-    name: "DRAW_STEEL.Effect.Conditions.Slowed",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
+    img: "systems/draw-steel/assets/icons/snail.svg"
   },
   taunted: {
-    name: "DRAW_STEEL.Effect.Conditions.Taunted",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
+    img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg"
   },
   weakened: {
-    name: "DRAW_STEEL.Effect.Conditions.Weakened",
-    img: ""
+    name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
+    img: "icons/svg/downgrade.svg"
   }
 };
 
