@@ -1,5 +1,4 @@
 import * as fs from "fs";
-import {promises as fsPromises} from "fs";
 import yaml from "js-yaml";
 import path from "path";
 
@@ -8,7 +7,7 @@ console.log("Reforging Symlinks");
 if (fs.existsSync("foundry-config.yaml")) {
   let fileRoot = "";
   try {
-    const fc = await fsPromises.readFile("foundry-config.yaml", "utf-8");
+    const fc = await fs.promises.readFile("foundry-config.yaml", "utf-8");
 
     const foundryConfig = yaml.load(fc);
   
@@ -18,7 +17,7 @@ if (fs.existsSync("foundry-config.yaml")) {
   }
 
   try {
-    await fsPromises.mkdir("foundry");
+    await fs.promises.mkdir("foundry");
   } catch (e) {
     if (e.code !== "EEXIST") throw e;
   }
@@ -26,7 +25,7 @@ if (fs.existsSync("foundry-config.yaml")) {
   // Javascript files
   for (const p of ["client", "client-esm", "common"]) {
     try {
-      await fsPromises.symlink(path.join(fileRoot, p), path.join("foundry", p));
+      await fs.promises.symlink(path.join(fileRoot, p), path.join("foundry", p));
     } catch (e) {
       if (e.code !== "EEXIST") throw e;
     }
@@ -34,7 +33,7 @@ if (fs.existsSync("foundry-config.yaml")) {
 
   // Language files
   try {
-    await fsPromises.symlink(path.join(fileRoot, "public", "lang"), path.join("foundry", "lang"));
+    await fs.promises.symlink(path.join(fileRoot, "public", "lang"), path.join("foundry", "lang"));
   } catch (e) {
     if (e.code !== "EEXIST") throw e;
   }
