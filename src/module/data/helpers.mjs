@@ -1,5 +1,3 @@
-import {DSRoll} from "../helpers/rolls.mjs";
-
 const {NumberField, SchemaField, StringField} = foundry.data.fields;
 
 /**
@@ -70,54 +68,4 @@ export class SizeModel extends foundry.abstract.DataModel {
     const letter = this.value === 1 ? this.letter ?? "" : "";
     return this.value + letter;
   }
-}
-
-/**
- * Special case StringField which represents a formula.
- */
-export class FormulaField extends foundry.data.fields.StringField {
-
-  /** @override */
-  static get _defaults() {
-    return foundry.utils.mergeObject(super._defaults, {
-      required: true,
-      deterministic: false
-    });
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  _validateType(value) {
-    DSRoll.validate(value);
-    if (this.options.deterministic) {
-      const roll = new Roll(value);
-      if (!roll.isDeterministic) throw new Error("must not contain dice terms");
-    }
-    super._validateType(value);
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  _castChangeDelta(delta) {
-    // super just calls `_cast`
-    return this._cast(delta).trim();
-  }
-
-  /**
-   * @param {string} value
-   * @param {string} delta
-   * @param {InstanceType<foundry["abstract"]["DataModel"]>} model
-   * @param {import("../../../foundry/common/types.mjs").EffectChangeData} change
-   * @override
-   */
-  _applyChangeAdd(value, delta, model, change) {
-    const sign = delta[0] !== "-" ? " + " : " - ";
-    if (["+", "-"].includes(delta[0])) delta = delta.substring(1);
-    if (value) return value.concat(sign, delta);
-    else return delta;
-  }
-
-  // TODO: Multiply, upgrade, downgrade
 }
