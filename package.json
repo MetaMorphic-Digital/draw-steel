@@ -4,6 +4,10 @@
   "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
   "scripts": {
     "createSymlinks": "node ./tools/create-symlinks.mjs",
+    "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
+    "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
+    "unpack": "npm run pushLDBtoJSON",
+    "build:packs": "npm run pullJSONtoLDB",
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
     "lint:fix": "eslint --fix src/module/**",

@@ -77,8 +77,20 @@
     "name": "English",
     "path": "lang/en.json"
   }],
-  "packs": [],
-  "packFolders": [],
+  "packs": [
+    {
+      "name": "journals",
+      "label": "System Journals",
+      "type": "JournalEntry"
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Draw Steel System",
+      "color": "#483D8B",
+      "packs": ["journals"]
+    }
+  ],
   "socket": false,
   "manifest": "TODO",
   "download": "AUTOMATIC",
