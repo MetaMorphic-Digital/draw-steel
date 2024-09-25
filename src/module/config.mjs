@@ -73,33 +73,39 @@ DRAW_STEEL.conditions = {
   // bleeding: {},
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
-    img: "icons/svg/daze.svg"
+    img: "icons/svg/daze.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb"
   },
   frightened: {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
-    img: "icons/svg/terror.svg"
-
+    img: "icons/svg/terror.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg"
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
-    img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg"
+    img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn"
   },
   // prone: {},
   restrained: {
     name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
-    img: "icons/svg/net.svg"
+    img: "icons/svg/net.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj"
   },
   slowed: {
     name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
-    img: "systems/draw-steel/assets/icons/snail.svg"
+    img: "systems/draw-steel/assets/icons/snail.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL"
   },
   taunted: {
     name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
-    img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg"
+    img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh"
   },
   weakened: {
     name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
-    img: "icons/svg/downgrade.svg"
+    img: "icons/svg/downgrade.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.QZpLhRT6imKlqZ1n"
   }
 };
 
