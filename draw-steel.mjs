@@ -35,13 +35,13 @@ Hooks.once("init", function () {
     }
   }
 
+  //Remove Status Effects Not Available in DrawSteel
+  const toRemove = ["bleeding", "bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
+  CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
     CONFIG.statusEffects.push({id, ...value});
   }
-  //Remove Status Effects Not Available in DrawSteel
-  var toRemove = ["bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
-  CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
 
   // Necessary until foundry makes this default behavior in v13
   CONFIG.ActiveEffect.legacyTransferral = false;

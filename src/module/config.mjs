@@ -70,7 +70,11 @@ preLocalize("damageTypes", {key: "label"});
  * @type {Record<string, {img: string, name: string}>}
  */
 DRAW_STEEL.conditions = {
-  // bleeding: {},
+  bleeding: {
+    name: "DRAW_STEEL.Effect.Conditions.Bleeding.name",
+    img: "icons/svg/blood.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ"
+  },
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
@@ -86,7 +90,11 @@ DRAW_STEEL.conditions = {
     img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
     rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn"
   },
-  // prone: {},
+  prone: {
+    name: "DRAW_STEEL.Effect.Conditions.Prone.name",
+    img: "icons/svg/falling.svg",
+    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.v11clsSMgoFZm3V8"
+  },
   restrained: {
     name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
     img: "icons/svg/net.svg",
