@@ -268,7 +268,6 @@ export class PowerRoll extends DSRoll {
    * otherwise returns if the dice total is a 19 or higher
    */
   get critical() {
-    if (this.options.type !== "ability") return null;
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
