@@ -230,6 +230,9 @@ export class PowerRoll extends DSRoll {
    */
   get product() {
     if (this._total === undefined) return undefined;
+    // Crits are always a tier 3 result
+    if (this.critical) return 3;
+
     const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, {threshold}) => t + Number(this.total >= threshold), 0);
     // Adjusts tiers for double edge/bane
     const adjustment = this.netBoon - Math.sign(this.netBoon);
