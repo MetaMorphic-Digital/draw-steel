@@ -230,6 +230,9 @@ export class PowerRoll extends DSRoll {
    */
   get product() {
     if (this._total === undefined) return undefined;
+    // Crits are always a tier 3 result
+    if (this.critical) return 3;
+
     const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, {threshold}) => t + Number(this.total >= threshold), 0);
     // Adjusts tiers for double edge/bane
     const adjustment = this.netBoon - Math.sign(this.netBoon);
@@ -263,12 +266,11 @@ export class PowerRoll extends DSRoll {
   }
 
   /**
-   * Determines if an ability power roll was a critical
-   * @returns {boolean | null} Null if not yet evaluated or not an ability roll,
+   * Determines if a power roll was a critical
+   * @returns {boolean | null} Null if not yet evaluated,
    * otherwise returns if the dice total is a 19 or higher
    */
   get critical() {
-    if (this.options.type !== "ability") return null;
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
