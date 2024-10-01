@@ -266,8 +266,8 @@ export class PowerRoll extends DSRoll {
   }
 
   /**
-   * Determines if an ability power roll was a critical
-   * @returns {boolean | null} Null if not yet evaluated or not an ability roll,
+   * Determines if a power roll was a critical
+   * @returns {boolean | null} Null if not yet evaluated,
    * otherwise returns if the dice total is a 19 or higher
    */
   get critical() {
