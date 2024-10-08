@@ -1,8 +1,8 @@
 import {extractPack} from "@foundryvtt/foundryvtt-cli";
-import * as fs from "fs";
+import {promises as fs} from "fs";
 import path from "path";
 
-const MODULE_ID = process.cwd();
+const SYSTEM_ID = process.cwd();
 const BASE_LDB_PATH = "packs";
 const BASE_SRC_PATH = "src";
 
@@ -12,7 +12,7 @@ await extractPacks();
  * Unpacks all compendium packs located in the basePath
  */
 async function extractPacks() {
-  const dirents = await fs.promises.readdir(BASE_LDB_PATH, {withFileTypes: true, recursive: true});
+  const dirents = await fs.readdir(BASE_LDB_PATH, {withFileTypes: true, recursive: true});
   const packs = dirents.filter((dirent) => dirent.isDirectory());
 
   const folders = {};
@@ -32,8 +32,8 @@ async function extractPacks() {
  */
 async function extractAllFoldersFromPackFile(collection, packName) {
   await extractPack(
-    `${MODULE_ID}/${packName}`,
-    `${MODULE_ID}/${BASE_SRC_PATH}/${packName}`,
+    `${SYSTEM_ID}/${packName}`,
+    `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
     {
       transformEntry: (entry) => {
         if (entry._key.startsWith("!folders")) {
@@ -67,8 +67,8 @@ function buildAndAddPath(collection, folderEntry) {
  */
 async function unpackToPath(collection, packName) {
   await extractPack(
-    `${MODULE_ID}/${packName}`,
-    `${MODULE_ID}/${BASE_SRC_PATH}/${packName}`,
+    `${SYSTEM_ID}/${packName}`,
+    `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
     {
       transformName: entry => {
         const filename = transformName(entry);
