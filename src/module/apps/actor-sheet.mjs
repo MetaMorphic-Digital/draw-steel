@@ -1,5 +1,4 @@
 import {systemPath} from "../constants.mjs";
-import {prepareActiveEffectCategories} from "../helpers/utils.mjs";
 
 const {api, sheets} = foundry.applications;
 
@@ -178,7 +177,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "effects":
         context.tab = context.tabs[partId];
-        context.effects = prepareActiveEffectCategories(this.actor.allApplicableEffects());
+        context.effects = this.prepareActiveEffectCategories();
         break;
     }
     return context;
@@ -299,6 +298,51 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       isSource: {source: true},
       notSource: {source: false}
     };
+  }
+
+  /**
+   * @typedef ActiveEffectCategory
+   * @property {string} type                 - The type of category
+   * @property {string} label                - The localized name of the category
+   * @property {Array<ActiveEffect>} effects - The effects in the category
+   */
+
+  /**
+   * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
+   * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   */
+  prepareActiveEffectCategories() {
+    /** @type {Record<string, ActiveEffectCategory>} */
+    const categories = {
+      temporary: {
+        type: "temporary",
+        label: game.i18n.localize("DRAW_STEEL.Effect.Temporary"),
+        effects: []
+      },
+      passive: {
+        type: "passive",
+        label: game.i18n.localize("DRAW_STEEL.Effect.Passive"),
+        effects: []
+      },
+      inactive: {
+        type: "inactive",
+        label: game.i18n.localize("DRAW_STEEL.Effect.Inactive"),
+        effects: []
+      }
+    };
+
+    // Iterate over active effects, classifying them into categories
+    for (const e of this.actor.allApplicableEffects()) {
+      if (e.disabled) categories.inactive.effects.push(e);
+      else if (e.isTemporary) categories.temporary.effects.push(e);
+      else categories.passive.effects.push(e);
+    }
+
+    // Sort each category
+    for (const c of Object.values(categories)) {
+      c.effects.sort((a, b) => (a.sort || 0) - (b.sort || 0));
+    }
+    return categories;
   }
 
   /**

@@ -11,6 +11,7 @@
       </div>
       <div class="effect-source">{{localize "EFFECT.TabDuration"}}</div>
       <div class="effect-controls flexrow">
+        <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
         <a
           class="effect-control"
           data-action="createDoc"
@@ -19,10 +20,11 @@
           data-img="icons/svg/aura.svg"
           {{#if (eq section.type "inactive")}}
           data-disabled="true"
+          {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
           {{else if (eq section.type "temporary")}}
           data-duration.rounds="1"
           {{/if}}
-            title="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.Effect.Name")}}"
+          data-tooltip="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.Effect.Name")}}"
           >
           <i class="fas fa-plus"></i>
           {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.Effect.Name")}}
@@ -41,15 +43,15 @@
         <div class="effect-duration">{{effect.duration.label}}</div>
         <div class="effect-controls flexrow">
           {{#if @root.editable}}
-          <a class="effect-control" data-action="toggleEffect" title="{{localize " DRAW_STEEL.Effect.Toggle"}}">
+          <a class="effect-control" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle">
             <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
           </a>
           {{/if}}
-          <a class="effect-control" data-action="viewDoc" title="{{localize " DOCUMENT.Update" type="Effect" }}">
+          <a class="effect-control" data-action="viewDoc" data-tooltip="{{localize "DOCUMENT.Update" type="Effect"}}">
             <i class="fas fa-edit"></i>
           </a>
           {{#if @root.editable}}
-          <a class="effect-control" data-action="deleteDoc" title="{{localize " DOCUMENT.Delete" type="Effect" }}">
+          <a class="effect-control" data-action="deleteDoc" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}">
             <i class="fas fa-trash"></i>
           </a>
           {{/if}}
