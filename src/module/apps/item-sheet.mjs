@@ -152,8 +152,19 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }, {});
   }
 
+  /**
+   * @typedef ActiveEffectCategory
+   * @property {string} type                 - The type of category
+   * @property {string} label                - The localized name of the category
+   * @property {Array<ActiveEffect>} effects - The effects in the category
+   */
+
+  /**
+   * Prepare the data structure for Active Effects which are currently embedded in an Item.
+   * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   */
   prepareActiveEffectCategories() {
-  // Define effect header categories
+    /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {
         type: "temporary",
