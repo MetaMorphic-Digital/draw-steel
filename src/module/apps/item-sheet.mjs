@@ -66,6 +66,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       editable: this.isEditable,
       owner: this.document.isOwner,
       limited: this.document.limited,
+      gm: game.user.isGM,
       // Add the item document.
       item: this.item,
       // Adding system and flags for easier access

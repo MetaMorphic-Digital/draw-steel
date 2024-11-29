@@ -1,10 +1,37 @@
 {{! Description Tab }}
 <section class="tab {{tab.cssClass}}" data-group="primary" data-tab="description">
   {{! Editors must receive enriched text data from getData to properly handle rolls, UUID links, etc. }}
+
   {{#if editable}}
-  <prose-mirror name="system.description" data-document-u-u-i-d="{{item.uuid}}" value="{{system.description}}" collaborate="true" toggled="true">
+  {{formGroup
+  systemFields.description.fields.value
+  enriched=enrichedDescription
+  value=system.description.value
+  documentUUID=item.uuid
+  collaborate=true
+  toggled=true
+  height=200
+  }}
+  {{#if gm}}
+  {{formGroup
+  systemFields.description.fields.gm
+  enriched=enrichedGMNotes
+  value=system.biography.gm
+  documentUUID=item.uuid
+  toggled=true
+  height=300
+  }}
+  {{/if}}
+  {{else}}
+  <fieldset>
+    <legend>{{systemFields.description.fields.value.label}}</legend>
     {{{enrichedDescription}}}
-  </prose-mirror>
-  {{else}} {{{enrichedDescription}}}
+  </fieldset>
+  {{#if gm}}
+  <fieldset>
+    <legend>{{systemFields.description.fields.gm.label}}</legend>
+    {{{enrichedGMNotes}}}
+  </fieldset>
+  {{/if}}
   {{/if}}
 </section>
