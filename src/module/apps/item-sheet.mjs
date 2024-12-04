@@ -191,7 +191,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     // Iterate over active effects, classifying them into categories
     for (const e of this.item.effects) {
       if (!e.transfer) categories.applied.effects.push(e);
-      else if (e.disabled) categories.inactive.effects.push(e);
+      else if (!e.active) categories.inactive.effects.push(e);
       else if (e.isTemporary) categories.temporary.effects.push(e);
       else categories.passive.effects.push(e);
     }
