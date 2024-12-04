@@ -333,7 +333,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.allApplicableEffects()) {
-      if (e.disabled) categories.inactive.effects.push(e);
+      if (!e.active) categories.inactive.effects.push(e);
       else if (e.isTemporary) categories.temporary.effects.push(e);
       else categories.passive.effects.push(e);
     }
