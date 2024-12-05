@@ -1,3 +1,4 @@
+import { systemPath } from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -5,7 +6,8 @@ import BaseItemModel from "./base.mjs";
  */
 export default class FeatureModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "feature"
+    type: "feature",
+    detailsPartial: [systemPath("templates/item/partials/feature.hbs")]
   });
 
   static LOCALIZATION_PREFIXES = [

@@ -26,14 +26,18 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  // Assign data models
+  const templates = []
+
+  // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
     if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
     for (const modelCls of Object.values(models)) {
-      if (!modelCls.metadata?.type) continue;
-      CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
+      if (modelCls.metadata?.type) CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
+      if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }
+
+  loadTemplates(templates);
 
   //Remove Status Effects Not Available in DrawSteel
   const toRemove = ["bleeding", "bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];

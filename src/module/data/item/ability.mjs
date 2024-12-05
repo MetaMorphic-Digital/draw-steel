@@ -1,3 +1,4 @@
+import { systemPath } from "../../constants.mjs";
 import {PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import BaseItemModel from "./base.mjs";
@@ -7,7 +8,8 @@ import BaseItemModel from "./base.mjs";
  */
 export default class AbilityModel extends BaseItemModel {
   static metadata = Object.freeze({
-    type: "ability"
+    type: "ability",
+    detailsPartial: [systemPath("templates/item/partials/ability.hbs")]
   });
 
   static LOCALIZATION_PREFIXES = [

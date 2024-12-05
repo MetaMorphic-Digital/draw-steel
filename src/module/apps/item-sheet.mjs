@@ -44,6 +44,9 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     description: {
       template: systemPath("templates/item/description.hbs")
     },
+    details: {
+      template: systemPath("templates/item/details.hbs")
+    },
     effects: {
       template: systemPath("templates/item/effects.hbs")
     }
@@ -54,7 +57,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     super._configureRenderOptions(options);
     options.parts = ["header", "tabs", "description"];
     if (this.document.limited) return;
-    options.parts.push("effects");
+    options.parts.push("details", "effects");
   }
 
   /* -------------------------------------------- */
@@ -106,6 +109,10 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
           }
         );
         break;
+      case "details":
+        context.tab = context.tabs[partId];
+        context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
+        break;
       case "effects":
         context.tab = context.tabs[partId];
         context.effects = this.prepareActiveEffectCategories();
@@ -141,6 +148,10 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         case "description":
           tab.id = "description";
           tab.label += "Description";
+          break;
+        case "details":
+          tab.id = "details";
+          tab.label += "Details";
           break;
         case "effects":
           tab.id = "effects";

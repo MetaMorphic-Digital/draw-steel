@@ -1,3 +1,4 @@
+import { systemPath } from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -6,7 +7,8 @@ import BaseItemModel from "./base.mjs";
 export default class CultureModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "culture",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
+    detailsPartial: [systemPath("templates/item/partials/culture.hbs")]
   });
 
   static LOCALIZATION_PREFIXES = [

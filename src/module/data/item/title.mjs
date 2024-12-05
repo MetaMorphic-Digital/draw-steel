@@ -1,3 +1,4 @@
+import { systemPath } from "../../constants.mjs";
 import FeatureModel from "./feature.mjs";
 
 /**
@@ -6,7 +7,8 @@ import FeatureModel from "./feature.mjs";
 export default class TitleModel extends FeatureModel {
   static metadata = Object.freeze({
     type: "title",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
+    detailsPartial: [systemPath("templates/item/partials/title.hbs")]
   });
 
   static LOCALIZATION_PREFIXES = [
