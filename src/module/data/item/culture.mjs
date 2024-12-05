@@ -22,11 +22,11 @@ export default class CultureModel extends BaseItemModel {
 
     const aspectSchema = (aspect) => ({
       aspect: new fields.StringField({choices: ds.CONFIG.culture[aspect]}),
-      skillOptions: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
-      skill: new fields.StringField({blank: true, required: true, choices: this.skillChoice})
+      skillOptions: new fields.SetField(new fields.StringField({blank: false, required: true})),
+      skill: new fields.StringField({required: true})
     });
 
-    schema.language = new fields.StringField({blank: true, required: true, choices: this.languageChoice});
+    schema.language = new fields.StringField({required: true});
     schema.environment = new fields.SchemaField(aspectSchema("environment"));
     schema.organization = new fields.SchemaField(aspectSchema("organization"));
     schema.upbringing = new fields.SchemaField(aspectSchema("upbringing"));

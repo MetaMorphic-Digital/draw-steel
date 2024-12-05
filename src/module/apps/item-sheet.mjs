@@ -111,7 +111,9 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         break;
       case "details":
         context.tab = context.tabs[partId];
-        context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
+        const typeModel = this.item.system;
+        context.detailsPartial = typeModel.constructor.metadata.detailsPartial ?? null;
+        await typeModel.getSheetContext(context);
         break;
       case "effects":
         context.tab = context.tabs[partId];

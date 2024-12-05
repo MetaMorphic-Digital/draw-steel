@@ -21,15 +21,15 @@ export default class CareerModel extends BaseItemModel {
     const schema = super.defineSchema();
 
     schema.skills = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
+      options: new fields.SetField(new fields.StringField({blank: false, required: true})),
       count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.skillChoice}))
+      choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
     });
 
     schema.languages = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({choices: this.languageOptions})),
+      options: new fields.SetField(new fields.StringField({blank: false, required: true})),
       count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.languageChoice}))
+      choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
     });
 
     schema.renown = new fields.NumberField();
@@ -37,10 +37,15 @@ export default class CareerModel extends BaseItemModel {
     schema.projectPoints = new fields.NumberField();
 
     schema.title = new fields.SchemaField({
-      grant: new fields.DocumentUUIDField(),
-      link: new fields.DocumentUUIDField()
+      grant: new fields.DocumentUUIDField({type: "Item", embedded: false}),
+      link: new fields.DocumentUUIDField({type: "Item", embedded: true})
     });
 
     return schema;
+  }
+
+  getSheetContext(context) {
+    context.skillOptions = ds.CONFIG.skills.optgroups.filter(skill => this.skills.options.has(skill.value))
+    context.languageOptions = [] // ds.CONFIG.languages.optgroups.filter(lang => this.languages.options.has(lang))
   }
 }
