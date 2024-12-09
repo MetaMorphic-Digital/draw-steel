@@ -1,3 +1,5 @@
+export * as advancements from "./advancement/_module.mjs";
+
 export {DrawSteelActiveEffect} from "./active-effect.mjs";
 export {DrawSteelActor} from "./actor.mjs";
 export {DrawSteelChatMessage} from "./chat-message.mjs";

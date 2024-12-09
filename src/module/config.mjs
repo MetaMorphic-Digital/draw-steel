@@ -394,6 +394,17 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
 
 // TODO: Languages
 
+/** @import {AdvancementTypeConfiguration} from "./_types" */
+
+/**
+ * Advancement types that can be added to items.
+ * @enum {AdvancementTypeConfiguration}
+ */
+DRAW_STEEL.advancementTypes = {
+
+};
+
+
 /**
  * Configuration information for negotiations
  */

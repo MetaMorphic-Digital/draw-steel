@@ -23,6 +23,7 @@ Hooks.once("init", function () {
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
+    if (!foundry.utils.isSubclass(docCls, foundry.abstract.Document)) continue;
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
