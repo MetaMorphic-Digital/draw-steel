@@ -13,7 +13,7 @@ declare module "./base.mjs" {
       page: string | null;
       license: string | null;
     }
-    _dsid: string | null;
+    _dsid: string;
   }
 }
 
@@ -87,7 +87,12 @@ declare module "./equipment.mjs" {
 }
 
 declare module "./feature.mjs" {
-  export default interface FeatureModel {}
+  export default interface FeatureModel {
+    type: {
+      value: string;
+      subtype: string;
+    }
+  }
 }
 
 declare module "./kit.mjs" {
@@ -124,8 +129,4 @@ declare module "./kit.mjs" {
       }
     }
   }
-}
-
-declare module "./title.mjs" {
-  export default interface TitleModel {}
 }

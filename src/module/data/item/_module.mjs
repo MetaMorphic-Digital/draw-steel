@@ -8,4 +8,3 @@ export {default as CultureModel} from "./culture.mjs";
 export {default as FeatureModel} from "./feature.mjs";
 export {default as EquipmentModel} from "./equipment.mjs";
 export {default as KitModel} from "./kit.mjs";
-export {default as TitleModel} from "./title.mjs";

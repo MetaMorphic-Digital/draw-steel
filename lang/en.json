@@ -443,7 +443,26 @@
         }
       },
       "Feature": {
-        "FIELDS": {}
+        "FIELDS": {
+          "type": {
+            "value": {
+              "label": "Feature Type"
+            },
+            "subtype": {
+              "label": "Feature Subtype"
+            }
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            }
+          }
+        },
+        "Types": {
+          "Perk": "Perk",
+          "Title": "Title"
+        }
       },
       "Kit": {
         "FIELDS": {
@@ -467,9 +486,6 @@
           "Martial": "Martial",
           "Caster": "Caster"
         }
-      },
-      "Title": {
-        "FIELDS": {}
       }
     },
     "Effect": {
@@ -644,8 +660,7 @@
       "culture": "Culture",
       "feature": "Feature",
       "equipment": "Equipment",
-      "kit": "Kit",
-      "title": "Title"
+      "kit": "Kit"
     }
   }
 }

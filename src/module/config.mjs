@@ -836,3 +836,16 @@ preLocalize("equipment.kinds", {key: "label"});
 preLocalize("equipment.armor", {key: "label"});
 preLocalize("equipment.weapon", {key: "label"});
 preLocalize("equipment.implement", {key: "label"});
+
+DRAW_STEEL.features = {
+  /** @type {Record<string, {label: string, subtypes?: Record<string, string>}>} */
+  types: {
+    perk: {
+      label: "DRAW_STEEL.Item.Feature.Types.Perk"
+    },
+    title: {
+      label: "DRAW_STEEL.Item.Feature.Types.Title"
+    }
+  }
+}
+preLocalize("features.types", {key: "label"})

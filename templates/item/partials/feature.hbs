@@ -1,1 +1,8 @@
-<p>Feature</p>
+{{formGroup systemFields.type.fields.value value=system.type.value options=featureTypes blank=""}}
+{{#if featureSubtypes}}
+{{formGroup systemFields.type.fields.subtype value=system.type.subtype options=featureSubtypes blank=""}}
+{{/if}}
+<fieldset>
+  <legend>{{systemFields.prerequisites.label}}</legend>
+  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value}}
+</fieldset>

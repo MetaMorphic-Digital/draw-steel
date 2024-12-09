@@ -1,6 +1,6 @@
 // import AdvancementConfig from "../../applications/advancement/advancement-config.mjs";
 // import AdvancementFlow from "../../applications/advancement/advancement-flow.mjs";
-import BaseAdvancement from "../../data/advancement/base-advancement.mjs";
+import BaseAdvancement from "../../data/advancement/base.mjs";
 /** @import { DrawSteelActor } from "../actor.mjs" */
 /** @import { DrawSteelItem } from "../item.mjs" */
 /** @import { AdvancementMetadata } from "./_types" */
