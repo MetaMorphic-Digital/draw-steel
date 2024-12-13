@@ -21,7 +21,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       height: 600
     },
     actions: {
-      onEditImage: this._onEditImage,
+      editImage: this._onEditImage,
       toggleMode: this._toggleMode,
       viewDoc: this._viewDoc,
       createDoc: this._createDoc,
@@ -366,30 +366,36 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handle changing a Document's image.
-   *
+   * TODO: Copied from v13 implementation, can be removed after
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
+   * @param {PointerEvent} _event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
    * @protected
    */
-  static async _onEditImage(event, target) {
+  static async _onEditImage(_event, target) {
+    if ( target.nodeName !== "IMG" ) {
+      throw new Error("The editImage action is available only for IMG elements.");
+    }
     const attr = target.dataset.edit;
-    const current = foundry.utils.getProperty(this.document, attr);
-    const {img} =
-      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
-      {};
+    const current = foundry.utils.getProperty(this.document._source, attr);
+    const defaultArtwork = this.document.constructor.getDefaultArtwork?.(this.document._source) ?? {};
+    const defaultImage = foundry.utils.getProperty(defaultArtwork, attr);
     const fp = new FilePicker({
       current,
       type: "image",
-      redirectToRoot: img ? [img] : [],
-      callback: (path) => {
-        this.document.update({[attr]: path});
+      redirectToRoot: defaultImage ? [defaultImage] : [],
+      callback: path => {
+        target.src = path;
+        if ( this.options.form.submitOnChange ) {
+          const submit = new Event("submit");
+          this.element.dispatchEvent(submit);
+        }
       },
       top: this.position.top + 40,
       left: this.position.left + 10
     });
-    return fp.browse();
+    await fp.browse();
   }
 
   /**
