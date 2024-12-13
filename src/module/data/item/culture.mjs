@@ -8,7 +8,8 @@ export default class CultureModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "culture",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/culture.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/culture.hbs")],
+    hasAdvancements: true,
   });
 
   static LOCALIZATION_PREFIXES = [

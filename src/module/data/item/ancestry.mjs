@@ -8,7 +8,8 @@ export default class AncestryModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "ancestry",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/ancestry.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/ancestry.hbs")],
+    hasAdvancements: true,
   });
 
   static LOCALIZATION_PREFIXES = [

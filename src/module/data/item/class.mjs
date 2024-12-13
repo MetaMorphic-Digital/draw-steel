@@ -8,7 +8,8 @@ export default class ClassModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "class",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/class.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/class.hbs")],
+    hasAdvancements: true,
   });
 
   static LOCALIZATION_PREFIXES = [

@@ -8,7 +8,8 @@ export default class CareerModel extends BaseItemModel {
   static metadata = Object.freeze({
     type: "career",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/career.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/career.hbs")],
+    hasAdvancements: true,
   });
 
   static LOCALIZATION_PREFIXES = [
