@@ -1,6 +1,12 @@
 <header class="sheet-header">
   <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="editImage" title="{{item.name}}" alt="{{item.name}}">
   <div class="header-fields">
+    <div class="mode-toggle flexrow">
+      <span class="label {{ifThen isPlay " active" "" }}">{{localize "DRAW_STEEL.Sheet.Play"}}</span>
+      <slide-toggle class="mode-slider" data-action="toggleMode" {{checked (not isPlay)}}>
+      </slide-toggle>
+      <span class="label {{ifThen isPlay "" " active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
+    </div>
     <div class="document-name">
       {{formInput
       fields.name

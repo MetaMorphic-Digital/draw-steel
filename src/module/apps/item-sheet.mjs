@@ -18,6 +18,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     classes: ["draw-steel", "item"],
     actions: {
       editImage: this._onEditImage,
+      toggleMode: this._toggleMode,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
@@ -52,6 +53,37 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
   };
 
+  /**
+   * Available sheet modes.
+   * @enum {number}
+   */
+  static MODES = {
+    PLAY: 1,
+    EDIT: 2
+  };
+
+  /**
+   * The mode the sheet is currently in.
+   * @type {ActorSheetV2.MODES}
+   */
+  #mode = this.isEditable ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+
+  /**
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
+  get isPlayMode() {
+    return this.#mode === DrawSteelItemSheet.MODES.PLAY;
+  }
+
+  /**
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
+  get isEditMode() {
+    return this.#mode === DrawSteelItemSheet.MODES.EDIT;
+  }
+
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
@@ -65,6 +97,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _prepareContext(options) {
     const context = {
+      isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
       editable: this.isEditable,
       owner: this.document.isOwner,
@@ -74,6 +107,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       item: this.item,
       // Adding system and flags for easier access
       system: this.item.system,
+      systemSource: this.item.system._source,
       flags: this.item.flags,
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
@@ -83,7 +117,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
     };
-
+    console.log(context.isPlay);
     return context;
   }
 
@@ -266,6 +300,22 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       left: this.position.left + 10
     });
     await fp.browse();
+  }
+
+  /**
+   * Toggle Edit vs. Play mode
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _toggleMode(event, target) {
+    if (!this.isEditable) {
+      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      return;
+    }
+    this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+    this.render();
   }
 
   /**

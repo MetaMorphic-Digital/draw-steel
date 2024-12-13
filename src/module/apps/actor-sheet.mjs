@@ -111,7 +111,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _prepareContext(options) {
-    // Output initialization
     const context = {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
