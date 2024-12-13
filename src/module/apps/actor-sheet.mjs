@@ -8,11 +8,6 @@ const {api, sheets} = foundry.applications;
 export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
-  constructor(options = {}) {
-    super(options);
-    this.#dragDrop = this.#createDragDropHandlers();
-  }
-
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "actor"],
@@ -785,10 +780,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return this.#dragDrop;
   }
 
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop;
-
   /**
    * Create drag-and-drop workflow handlers for this Application
    * @returns {DragDrop[]}     An array of DragDrop handlers
@@ -808,6 +799,10 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       return new DragDrop(d);
     });
   }
+
+  // This is marked as private because there's no real need
+  // for subclasses or external hooks to mess with it directly
+  #dragDrop = this.#createDragDropHandlers();
 
   /********************
    *
