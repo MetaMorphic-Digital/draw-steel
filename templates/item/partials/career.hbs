@@ -1,15 +1,3 @@
-{{#if editable}}
-{{formGroup systemFields.skills.fields.options value=system.skills.options options=config.skills.optgroups}}
-{{formGroup systemFields.skills.fields.count value=system.skills.count}}
-{{#if item.isEmbedded}}
-{{formGroup systemFields.skills.fields.choices value=system.skills.choices options=skillOptions}}
-{{/if}}
-{{formGroup systemFields.languages.fields.options value=system.languages.options}}
-{{formGroup systemFields.languages.fields.count value=system.languages.count}}
-{{#if item.isEmbedded}}
-{{formGroup systemFields.languages.fields.choices value=system.languages.choices options=languageOptions}}
-{{/if}}
 {{formGroup systemFields.renown value=system.renown}}
 {{formGroup systemFields.projectPoints value=system.projectPoints}}
-{{formGroup systemFields.title.fields.grant value=system.title.grant}}
-{{/if}}
+{{formGroup systemFields.perk.fields.grant value=system.perk.grant}}

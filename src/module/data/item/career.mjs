@@ -21,23 +21,11 @@ export default class CareerModel extends BaseItemModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.skills = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({blank: false, required: true})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
-    });
+    schema.renown = new fields.NumberField({ integer: true });
 
-    schema.languages = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({blank: false, required: true})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
-    });
+    schema.projectPoints = new fields.NumberField({ integer: true });
 
-    schema.renown = new fields.NumberField();
-
-    schema.projectPoints = new fields.NumberField();
-
-    schema.title = new fields.SchemaField({
+    schema.perk = new fields.SchemaField({
       grant: new fields.DocumentUUIDField({type: "Item", embedded: false}),
       link: new fields.DocumentUUIDField({type: "Item", embedded: true})
     });

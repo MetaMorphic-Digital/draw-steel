@@ -102,7 +102,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       // Add the item document.
       item: this.item,
       // Adding system and flags for easier access
-      system: this.item.system,
+      system: this.isPlayMode ? this.item.system : this.item.system._source,
       systemSource: this.item.system._source,
       flags: this.item.flags,
       // Adding a pointer to ds.CONFIG
