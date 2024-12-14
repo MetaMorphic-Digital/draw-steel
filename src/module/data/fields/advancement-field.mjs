@@ -17,19 +17,19 @@ export default class AdvancementField extends foundry.data.fields.ObjectField {
 
   /** @inheritDoc */
   _cleanType(value, options) {
-    if ( !(typeof value === "object") ) value = {};
+    if (!(typeof value === "object")) value = {};
 
     const cls = this.getModelForType(value.type);
-    if ( cls ) return cls.cleanData(value, options);
+    if (cls) return cls.cleanData(value, options);
     return value;
   }
 
   /* -------------------------------------------- */
 
   /** @inheritDoc */
-  initialize(value, model, options={}) {
+  initialize(value, model, options = {}) {
     const cls = this.getModelForType(value.type);
-    if ( cls ) return new cls(value, {parent: model, ...options});
+    if (cls) return new cls(value, {parent: model, ...options});
     return foundry.utils.deepClone(value);
   }
 
@@ -42,6 +42,6 @@ export default class AdvancementField extends foundry.data.fields.ObjectField {
    */
   migrateSource(sourceData, fieldData) {
     const cls = this.getModelForType(fieldData.type);
-    if ( cls ) cls.migrateDataSafe(fieldData);
+    if (cls) cls.migrateDataSafe(fieldData);
   }
 }

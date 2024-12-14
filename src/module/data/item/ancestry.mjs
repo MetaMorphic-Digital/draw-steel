@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -9,7 +9,7 @@ export default class AncestryModel extends BaseItemModel {
     type: "ancestry",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/ancestry.hbs")],
-    hasAdvancements: true,
+    hasAdvancements: true
   });
 
   static LOCALIZATION_PREFIXES = [

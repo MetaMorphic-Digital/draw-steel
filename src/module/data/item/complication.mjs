@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**

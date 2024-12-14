@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -9,7 +9,7 @@ export default class ClassModel extends BaseItemModel {
     type: "class",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/class.hbs")],
-    hasAdvancements: true,
+    hasAdvancements: true
   });
 
   static LOCALIZATION_PREFIXES = [

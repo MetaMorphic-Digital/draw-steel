@@ -19,7 +19,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField({ required: true });
+    schema._dsid = new fields.StringField({required: true});
 
     return schema;
   }
@@ -46,7 +46,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
     if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
 
-    if (!this._dsid) this.updateSource({ _dsid: data.name.slugify({ strict: true })});
+    if (!this._dsid) this.updateSource({_dsid: data.name.slugify({strict: true})});
   }
 
   /**

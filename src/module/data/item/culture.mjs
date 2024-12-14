@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -9,7 +9,7 @@ export default class CultureModel extends BaseItemModel {
     type: "culture",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/culture.hbs")],
-    hasAdvancements: true,
+    hasAdvancements: true
   });
 
   static LOCALIZATION_PREFIXES = [
@@ -39,14 +39,14 @@ export default class CultureModel extends BaseItemModel {
     context.environment = {
       aspectOptions: Object.entries(ds.CONFIG.culture.environments).map(([value, option]) => ({value, label: option.label})),
       skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.environment.skillOptions.has(skill.value))
-    }
+    };
     context.organization = {
       aspectOptions: Object.entries(ds.CONFIG.culture.organization).map(([value, option]) => ({value, label: option.label})),
       skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.organization.skillOptions.has(skill.value))
-    }
+    };
     context.upbringing = {
       aspectOptions: Object.entries(ds.CONFIG.culture.upbringing).map(([value, option]) => ({value, label: option.label})),
       skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.upbringing.skillOptions.has(skill.value))
-    }
+    };
   }
 }

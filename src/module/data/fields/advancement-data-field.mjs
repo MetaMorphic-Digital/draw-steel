@@ -4,7 +4,7 @@
  * @param {Advancement} advancementType  Advancement class to which this field belongs.
  */
 export default class AdvancementDataField extends foundry.data.fields.ObjectField {
-  constructor(advancementType, options={}) {
+  constructor(advancementType, options = {}) {
     super(options);
     this.advancementType = advancementType;
   }
@@ -38,12 +38,12 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
 
   /** @inheritDoc */
   _cleanType(value, options) {
-    if ( !(typeof value === "object") ) value = {};
+    if (!(typeof value === "object")) value = {};
 
     // Use a defined DataModel
     const cls = this.getModel();
-    if ( cls ) return cls.cleanData(value, options);
-    if ( options.partial ) return value;
+    if (cls) return cls.cleanData(value, options);
+    if (options.partial) return value;
 
     // Use the defined defaults
     const defaults = this.getDefaults();
@@ -53,9 +53,9 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
   /* -------------------------------------------- */
 
   /** @inheritDoc */
-  initialize(value, model, options={}) {
+  initialize(value, model, options = {}) {
     const cls = this.getModel();
-    if ( cls ) return new cls(value, {parent: model, ...options});
+    if (cls) return new cls(value, {parent: model, ...options});
     return foundry.utils.deepClone(value);
   }
 
@@ -68,6 +68,6 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
    */
   migrateSource(sourceData, fieldData) {
     const cls = this.getModel();
-    if ( cls ) cls.migrateDataSafe(fieldData);
+    if (cls) cls.migrateDataSafe(fieldData);
   }
 }

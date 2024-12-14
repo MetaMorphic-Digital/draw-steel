@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -9,7 +9,7 @@ export default class CareerModel extends BaseItemModel {
     type: "career",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/career.hbs")],
-    hasAdvancements: true,
+    hasAdvancements: true
   });
 
   static LOCALIZATION_PREFIXES = [
@@ -21,9 +21,9 @@ export default class CareerModel extends BaseItemModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.renown = new fields.NumberField({ integer: true });
+    schema.renown = new fields.NumberField({integer: true});
 
-    schema.projectPoints = new fields.NumberField({ integer: true });
+    schema.projectPoints = new fields.NumberField({integer: true});
 
     schema.perk = new fields.SchemaField({
       grant: new fields.DocumentUUIDField({type: "Item", embedded: false}),
@@ -34,7 +34,7 @@ export default class CareerModel extends BaseItemModel {
   }
 
   getSheetContext(context) {
-    context.skillOptions = ds.CONFIG.skills.optgroups.filter(skill => this.skills.options.has(skill.value))
-    context.languageOptions = [] // ds.CONFIG.languages.optgroups.filter(lang => this.languages.options.has(lang))
+    context.skillOptions = ds.CONFIG.skills.optgroups.filter(skill => this.skills.options.has(skill.value));
+    context.languageOptions = []; // ds.CONFIG.languages.optgroups.filter(lang => this.languages.options.has(lang))
   }
 }

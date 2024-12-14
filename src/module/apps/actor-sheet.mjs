@@ -368,7 +368,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   static async _onEditImage(_event, target) {
-    if ( target.nodeName !== "IMG" ) {
+    if (target.nodeName !== "IMG") {
       throw new Error("The editImage action is available only for IMG elements.");
     }
     const attr = target.dataset.edit;
@@ -381,7 +381,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       redirectToRoot: defaultImage ? [defaultImage] : [],
       callback: path => {
         target.src = path;
-        if ( this.options.form.submitOnChange ) {
+        if (this.options.form.submitOnChange) {
           const submit = new Event("submit");
           this.element.dispatchEvent(submit);
         }

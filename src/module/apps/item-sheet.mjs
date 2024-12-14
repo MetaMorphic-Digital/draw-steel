@@ -141,9 +141,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         break;
       case "details":
         context.tab = context.tabs[partId];
-        const typeModel = this.item.system;
-        context.detailsPartial = typeModel.constructor.metadata.detailsPartial ?? null;
-        await typeModel.getSheetContext(context);
+        context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
+        await this.item.system.getSheetContext(context);
         break;
       case "effects":
         context.tab = context.tabs[partId];
@@ -274,7 +273,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   static async _onEditImage(_event, target) {
-    if ( target.nodeName !== "IMG" ) {
+    if (target.nodeName !== "IMG") {
       throw new Error("The editImage action is available only for IMG elements.");
     }
     const attr = target.dataset.edit;
@@ -287,7 +286,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       redirectToRoot: defaultImage ? [defaultImage] : [],
       callback: path => {
         target.src = path;
-        if ( this.options.form.submitOnChange ) {
+        if (this.options.form.submitOnChange) {
           const submit = new Event("submit");
           this.element.dispatchEvent(submit);
         }

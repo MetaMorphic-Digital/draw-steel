@@ -23,8 +23,8 @@ class AdvancementError extends Error {
  * @abstract
  */
 export default class Advancement extends BaseAdvancement {
-  constructor(data, {parent=null, ...options}={}) {
-    if ( parent instanceof Item ) parent = parent.system;
+  constructor(data, {parent = null, ...options} = {}) {
+    if (parent instanceof Item) parent = parent.system;
     super(data, {parent, ...options});
 
     /**
@@ -151,9 +151,9 @@ export default class Advancement extends BaseAdvancement {
    * @protected
    */
   _preCreate(data) {
-    if ( !["class", "subclass"].includes(this.item.type)
+    if (!["class", "subclass"].includes(this.item.type)
       || foundry.utils.hasProperty(data, "level")
-      || this.constructor.metadata.multiLevel ) return;
+      || this.constructor.metadata.multiLevel) return;
     this.updateSource({level: 1});
   }
 
@@ -193,7 +193,7 @@ export default class Advancement extends BaseAdvancement {
    *                                                 be displayed.
    * @returns {string}                               HTML title with any level-specific information.
    */
-  titleForLevel(level, options={}) {
+  titleForLevel(level, options = {}) {
     return this.title;
   }
 
@@ -209,7 +209,7 @@ export default class Advancement extends BaseAdvancement {
    *                                                 be displayed.
    * @returns {string}                               HTML content of the summary.
    */
-  summaryForLevel(level, options={}) {
+  summaryForLevel(level, options = {}) {
     return "";
   }
 
@@ -220,8 +220,8 @@ export default class Advancement extends BaseAdvancement {
    * @param {boolean} [force=false]     Force rendering
    * @param {object} [context={}]       Optional context
    */
-  render(force=false, context={}) {
-    for ( const app of Object.values(this.apps) ) app.render(force, context);
+  render(force = false, context = {}) {
+    for (const app of Object.values(this.apps)) app.render(force, context);
   }
 
   /* -------------------------------------------- */
@@ -268,8 +268,8 @@ export default class Advancement extends BaseAdvancement {
    * @returns {object}  An object of drag data.
    */
   toDragData() {
-    const dragData = { type: "Advancement" };
-    if ( this.id ) dragData.uuid = this.uuid;
+    const dragData = {type: "Advancement"};
+    if (this.id) dragData.uuid = this.uuid;
     else dragData.data = this.toObject();
     return dragData;
   }
@@ -317,8 +317,8 @@ export default class Advancement extends BaseAdvancement {
    */
   async createItemData(uuid, id) {
     const source = await fromUuid(uuid);
-    if ( !source ) return null;
-    const { _stats } = game.items.fromCompendium(source);
+    if (!source) return null;
+    const {_stats} = game.items.fromCompendium(source);
     return source.clone({
       _stats,
       _id: id ?? foundry.utils.randomID(),

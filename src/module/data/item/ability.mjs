@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 import {PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import BaseItemModel from "./base.mjs";

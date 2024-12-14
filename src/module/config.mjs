@@ -404,7 +404,6 @@ DRAW_STEEL.advancementTypes = {
 
 };
 
-
 /**
  * Configuration information for negotiations
  */
@@ -847,5 +846,5 @@ DRAW_STEEL.features = {
       label: "DRAW_STEEL.Item.Feature.Types.Title"
     }
   }
-}
-preLocalize("features.types", {key: "label"})
+};
+preLocalize("features.types", {key: "label"});

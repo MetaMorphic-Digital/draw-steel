@@ -1,7 +1,7 @@
-import { SparseDataModel } from "../helpers.mjs";
+import {SparseDataModel} from "../helpers.mjs";
 import AdvancementDataField from "../fields/advancement-data-field.mjs";
 
-const { DocumentIdField, FilePathField, NumberField, StringField } = foundry.data.fields;
+const {DocumentIdField, FilePathField, NumberField, StringField} = foundry.data.fields;
 
 /**
  * Base data model for advancement.
@@ -61,7 +61,7 @@ export default class BaseAdvancement extends SparseDataModel {
   /** @inheritDoc */
   static migrateData(source) {
     super.migrateData(source);
-    if ( source.configuration?.hint ) source.hint = source.configuration.hint;
+    if (source.configuration?.hint) source.hint = source.configuration.hint;
     return source;
   }
 }
