@@ -5,12 +5,12 @@ import BaseItemModel from "./base.mjs";
  * Classes provide the bulk of a hero's features and abilities
  */
 export default class ClassModel extends BaseItemModel {
-  static metadata = Object.freeze({
+  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
     type: "class",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/class.hbs")],
     hasAdvancements: true
-  });
+  }));
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

@@ -1,4 +1,8 @@
 export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this item subtype
+   * @type {import("./_types").ItemMetaData}
+   */
   static metadata = Object.freeze({
     type: "base",
     invalidActorTypes: []

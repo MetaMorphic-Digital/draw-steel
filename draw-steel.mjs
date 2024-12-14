@@ -27,7 +27,7 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  const templates = []
+  const templates = [];
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {

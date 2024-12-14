@@ -1,5 +1,15 @@
 import { DrawSteelItem } from "../../documents/item.mjs";
 
+export type ItemMetaData = Readonly<{
+  /** The expected `type` value */
+  type: string;
+  /** Actor types that this item cannot be placed on */
+  invalidActorTypes: string[];
+  /** Are there any partials to fill in the Details tab of the item? */
+  detailsPartial?: string[];
+  /** Does this item have advancements? */
+  hasAdvancements?: boolean;
+}>
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {

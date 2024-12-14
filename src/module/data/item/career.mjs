@@ -5,12 +5,12 @@ import BaseItemModel from "./base.mjs";
  * Careers describe what a hero did for a living before becoming a hero
  */
 export default class CareerModel extends BaseItemModel {
-  static metadata = Object.freeze({
+  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
     type: "career",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/career.hbs")],
     hasAdvancements: true
-  });
+  }));
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

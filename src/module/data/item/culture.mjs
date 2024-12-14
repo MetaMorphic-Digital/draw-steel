@@ -5,12 +5,12 @@ import BaseItemModel from "./base.mjs";
  * Culture describes the community that raised a hero
  */
 export default class CultureModel extends BaseItemModel {
-  static metadata = Object.freeze({
+  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
     type: "culture",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/culture.hbs")],
     hasAdvancements: true
-  });
+  }));
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
