@@ -5,10 +5,11 @@ import BaseItemModel from "./base.mjs";
  * Equipment covers all physical items that provide special benefits beyond the base kit
  */
 export default class EquipmentModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "equipment",
     detailsPartial: [systemPath("templates/item/partials/equipment.hbs")]
-  }));
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

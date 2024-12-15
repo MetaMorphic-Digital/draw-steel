@@ -1,16 +1,16 @@
 import {systemPath} from "../../constants.mjs";
-import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Culture describes the community that raised a hero
  */
-export default class CultureModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+export default class CultureModel extends AdvancementModel {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "culture",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/culture.hbs")],
-    hasAdvancements: true
-  }));
+    detailsPartial: [systemPath("templates/item/partials/culture.hbs")]
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

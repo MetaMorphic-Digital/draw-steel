@@ -1,16 +1,17 @@
 import {systemPath} from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Careers describe what a hero did for a living before becoming a hero
  */
-export default class CareerModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+export default class CareerModel extends AdvancementModel {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "career",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/career.hbs")],
-    hasAdvancements: true
-  }));
+    detailsPartial: [systemPath("templates/item/partials/career.hbs")]
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

@@ -5,11 +5,12 @@ import BaseItemModel from "./base.mjs";
  * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
  */
 export default class KitModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "kit",
     invalidActorTypes: ["npc"],
     detailsPartial: [systemPath("templates/item/partials/kit.hbs")]
-  }));
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

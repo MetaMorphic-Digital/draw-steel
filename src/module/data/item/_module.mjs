@@ -1,4 +1,5 @@
 export {default as AbilityModel} from "./ability.mjs";
+export {default as AdvancementModel} from "./advancement.mjs"
 export {default as AncestryModel} from "./ancestry.mjs";
 export {default as BaseItemModel} from "./base.mjs";
 export {default as CareerModel} from "./career.mjs";

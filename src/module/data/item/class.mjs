@@ -1,16 +1,16 @@
 import {systemPath} from "../../constants.mjs";
-import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Classes provide the bulk of a hero's features and abilities
  */
-export default class ClassModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+export default class ClassModel extends AdvancementModel {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "class",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/class.hbs")],
-    hasAdvancements: true
-  }));
+    detailsPartial: [systemPath("templates/item/partials/class.hbs")]
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

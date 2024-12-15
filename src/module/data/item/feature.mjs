@@ -5,10 +5,11 @@ import BaseItemModel from "./base.mjs";
  * Passive benefits usually granted by other items
  */
 export default class FeatureModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "feature",
     detailsPartial: [systemPath("templates/item/partials/feature.hbs")]
-  }));
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",

@@ -7,10 +7,11 @@ import BaseItemModel from "./base.mjs";
  * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
  */
 export default class AbilityModel extends BaseItemModel {
-  static metadata = Object.freeze(foundry.utils.mergeObject(super.metadata, {
+  static metadata = Object.freeze({
+    ...super.metadata,
     type: "ability",
     detailsPartial: [systemPath("templates/item/partials/ability.hbs")]
-  }));
+  });
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
