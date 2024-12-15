@@ -1,4 +1,3 @@
-import {systemPath} from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -8,8 +7,7 @@ export default class AncestryModel extends AdvancementModel {
   static metadata = Object.freeze({
     ...super.metadata,
     type: "ancestry",
-    invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/ancestry.hbs")]
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [

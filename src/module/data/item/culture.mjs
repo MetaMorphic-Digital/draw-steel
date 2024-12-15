@@ -8,8 +8,7 @@ export default class CultureModel extends AdvancementModel {
   static metadata = Object.freeze({
     ...super.metadata,
     type: "culture",
-    invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/culture.hbs")]
+    invalidActorTypes: ["npc"]
   });
 
   static LOCALIZATION_PREFIXES = [
@@ -20,33 +19,6 @@ export default class CultureModel extends AdvancementModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-
-    const aspectSchema = (aspect) => ({
-      aspect: new fields.StringField({required: true}),
-      skillOptions: new fields.SetField(new fields.StringField({blank: false, required: true})),
-      skill: new fields.StringField({required: true})
-    });
-
-    schema.language = new fields.StringField({required: true});
-    schema.environment = new fields.SchemaField(aspectSchema("environment"));
-    schema.organization = new fields.SchemaField(aspectSchema("organization"));
-    schema.upbringing = new fields.SchemaField(aspectSchema("upbringing"));
-
     return schema;
-  }
-
-  getSheetContext(context) {
-    context.environment = {
-      aspectOptions: Object.entries(ds.CONFIG.culture.environments).map(([value, option]) => ({value, label: option.label})),
-      skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.environment.skillOptions.has(skill.value))
-    };
-    context.organization = {
-      aspectOptions: Object.entries(ds.CONFIG.culture.organization).map(([value, option]) => ({value, label: option.label})),
-      skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.organization.skillOptions.has(skill.value))
-    };
-    context.upbringing = {
-      aspectOptions: Object.entries(ds.CONFIG.culture.upbringing).map(([value, option]) => ({value, label: option.label})),
-      skillOptions: ds.CONFIG.skills.optgroups.filter(skill => this.upbringing.skillOptions.has(skill.value))
-    };
   }
 }

@@ -85,7 +85,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     super._configureRenderOptions(options);
     options.parts = ["header", "tabs", "description"];
     if (this.document.limited) return;
-    options.parts.push("details", "effects");
+    if (this.item.system.constructor.metadata.detailsPartial) options.parts.push("details");
+    options.parts.push("effects");
   }
 
   /* -------------------------------------------- */

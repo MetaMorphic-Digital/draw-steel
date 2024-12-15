@@ -42,14 +42,11 @@ export default class ClassModel extends AdvancementModel {
       level: new fields.NumberField({required: true, initial: 12})
     });
 
-    schema.skills = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({blank: false, required: true})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
-    });
-
-    // TODO: Copy 5e? Huge risk of changes here
-    schema.advancement = new fields.ObjectField();
+    // schema.skills = new fields.SchemaField({
+    //   options: new fields.SetField(new fields.StringField({blank: false, required: true})),
+    //   count: new fields.NumberField(),
+    //   choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
+    // });
 
     return schema;
   }
