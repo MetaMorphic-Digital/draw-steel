@@ -1,5 +1,4 @@
 import {systemPath} from "../../constants.mjs";
-import BaseItemModel from "./base.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**

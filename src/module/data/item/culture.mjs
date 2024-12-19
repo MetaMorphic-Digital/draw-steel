@@ -1,4 +1,3 @@
-import {systemPath} from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
