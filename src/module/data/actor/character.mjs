@@ -30,7 +30,7 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({choices: ds.CONFIG.skills.list})),
+      skills: new fields.SetField(new fields.StringField({blank: false, required: true})),
       preferredKit: new fields.DocumentIdField()
     });
 
@@ -52,9 +52,9 @@ export default class CharacterModel extends BaseActorModel {
     /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
 
     this.abilityBonuses = {
-      /** @type {{ reach: number, damage?: DamageSchema}} */
+      /** @type {{ distance: number, damage?: DamageSchema}} */
       melee: {
-        reach: 0
+        distance: 0
       },
       /** @type {{ distance: number, damage?: DamageSchema}} */
       ranged: {
@@ -73,7 +73,7 @@ export default class CharacterModel extends BaseActorModel {
       kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
       kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
 
-      const abiBonuses = ["melee.reach", "ranged.distance", "magic.distance", "magic.area"];
+      const abiBonuses = ["melee.distance", "ranged.distance"];
 
       for (const key of abiBonuses) {
         const current = foundry.utils.getProperty(this.abilityBonuses, key);
@@ -105,7 +105,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @override */
   get reach() {
-    return 1 + this.abilityBonuses.melee.reach;
+    return 1 + this.abilityBonuses.melee.distance;
   }
 
   /**

@@ -1,0 +1,12 @@
+{{formGroup systemFields.category value=system.category options=categories disabled=isPlay}}
+{{formGroup systemFields.kind value=system.kind options=kinds disabled=isPlay}}
+{{formGroup systemFields.echelon value=system.echelon options=echelons disabled=isPlay}}
+{{formGroup systemFields.keywords value=system.keywords options=keywords disabled=isPlay}}
+{{formGroup systemFields.prerequisites value=system.prerequisites disabled=isPlay}}
+<fieldset>
+  <legend>{{systemFields.project.label}}</legend>
+  {{formGroup systemFields.project.fields.source value=system.project.source disabled=isPlay}}
+  {{formGroup systemFields.project.fields.rollCharacteristic value=system.project.rollCharacteristic options=characteristics disabled=isPlay}}
+  {{formGroup systemFields.project.fields.goal value=system.project.goal disabled=isPlay}}
+  {{formGroup systemFields.project.fields.yield value=system.project.yield disabled=isPlay}}
+</fieldset>

@@ -10,8 +10,8 @@
     "build:packs": "npm run pullJSONtoLDB",
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
-    "lint:fix": "eslint --fix src/module/**",
-    "lint:ci": "eslint src/module/**",
+    "lint:fix": "eslint --fix src/module/**.mjs",
+    "lint:ci": "eslint src/module/**.mjs",
     "postinstall": "npm run build:css && npm run createSymlinks"
   },
   "browserslist": [

@@ -8,16 +8,13 @@ const {api, sheets} = foundry.applications;
 export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
-  constructor(options = {}) {
-    super(options);
-    this.#dragDrop = this.#createDragDropHandlers();
-  }
 
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "item"],
     actions: {
-      onEditImage: this._onEditImage,
+      editImage: this._onEditImage,
+      toggleMode: this._toggleMode,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
@@ -44,16 +41,55 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     description: {
       template: systemPath("templates/item/description.hbs")
     },
+    details: {
+      template: systemPath("templates/item/details.hbs")
+    },
+    advancement: {
+      template: systemPath("templates/item/advancement.hbs")
+    },
     effects: {
       template: systemPath("templates/item/effects.hbs")
     }
   };
+
+  /**
+   * Available sheet modes.
+   * @enum {number}
+   */
+  static MODES = {
+    PLAY: 1,
+    EDIT: 2
+  };
+
+  /**
+   * The mode the sheet is currently in.
+   * @type {ActorSheetV2.MODES}
+   */
+  #mode = this.isEditable ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+
+  /**
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
+  get isPlayMode() {
+    return this.#mode === DrawSteelItemSheet.MODES.PLAY;
+  }
+
+  /**
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
+  get isEditMode() {
+    return this.#mode === DrawSteelItemSheet.MODES.EDIT;
+  }
 
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     options.parts = ["header", "tabs", "description"];
     if (this.document.limited) return;
+    if (this.item.system.constructor.metadata.detailsPartial) options.parts.push("details");
+    if (this.item.system.constructor.metadata.hasAdvancements) options.parts.push("advancement");
     options.parts.push("effects");
   }
 
@@ -62,14 +98,17 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   async _prepareContext(options) {
     const context = {
+      isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
       editable: this.isEditable,
       owner: this.document.isOwner,
       limited: this.document.limited,
+      gm: game.user.isGM,
       // Add the item document.
       item: this.item,
       // Adding system and flags for easier access
-      system: this.item.system,
+      system: this.isPlayMode ? this.item.system : this.item.system._source,
+      systemSource: this.item.system._source,
       flags: this.item.flags,
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
@@ -79,7 +118,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
     };
-
     return context;
   }
 
@@ -104,6 +142,14 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.item
           }
         );
+        break;
+      case "details":
+        context.tab = context.tabs[partId];
+        context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
+        await this.item.system.getSheetContext(context);
+        break;
+      case "advancement":
+        context.tab = context.tabs[partId];
         break;
       case "effects":
         context.tab = context.tabs[partId];
@@ -140,6 +186,14 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         case "description":
           tab.id = "description";
           tab.label += "Description";
+          break;
+        case "details":
+          tab.id = "details";
+          tab.label += "Details";
+          break;
+        case "advancement":
+          tab.id = "advancement";
+          tab.label += "Advancement";
           break;
         case "effects":
           tab.id = "effects";
@@ -222,30 +276,52 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handle changing a Document's image.
-   *
+   * TODO: Copied from v13 implementation, can be removed after
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
+   * @param {PointerEvent} _event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @returns {Promise}
    * @protected
    */
-  static async _onEditImage(event, target) {
+  static async _onEditImage(_event, target) {
+    if (target.nodeName !== "IMG") {
+      throw new Error("The editImage action is available only for IMG elements.");
+    }
     const attr = target.dataset.edit;
-    const current = foundry.utils.getProperty(this.document, attr);
-    const {img} =
-      this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ??
-      {};
+    const current = foundry.utils.getProperty(this.document._source, attr);
+    const defaultArtwork = this.document.constructor.getDefaultArtwork?.(this.document._source) ?? {};
+    const defaultImage = foundry.utils.getProperty(defaultArtwork, attr);
     const fp = new FilePicker({
       current,
       type: "image",
-      redirectToRoot: img ? [img] : [],
-      callback: (path) => {
-        this.document.update({[attr]: path});
+      redirectToRoot: defaultImage ? [defaultImage] : [],
+      callback: path => {
+        target.src = path;
+        if (this.options.form.submitOnChange) {
+          const submit = new Event("submit");
+          this.element.dispatchEvent(submit);
+        }
       },
       top: this.position.top + 40,
       left: this.position.left + 10
     });
-    return fp.browse();
+    await fp.browse();
+  }
+
+  /**
+   * Toggle Edit vs. Play mode
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _toggleMode(event, target) {
+    if (!this.isEditable) {
+      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      return;
+    }
+    this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+    this.render();
   }
 
   /**
@@ -512,10 +588,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.#dragDrop;
   }
 
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop;
-
   /**
    * Create drag-and-drop workflow handlers for this Application
    * @returns {DragDrop[]}     An array of DragDrop handlers
@@ -535,4 +607,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       return new DragDrop(d);
     });
   }
+
+  // This is marked as private because there's no real need
+  // for subclasses or external hooks to mess with it directly
+  #dragDrop = this.#createDragDropHandlers();
 }

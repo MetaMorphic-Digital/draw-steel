@@ -1,9 +1,14 @@
 export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this item subtype
+   * @type {import("./_types").ItemMetaData}
+   */
   static metadata = Object.freeze({
     type: "base",
     invalidActorTypes: []
   });
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = {};
@@ -19,48 +24,20 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField();
+    schema._dsid = new fields.StringField({required: true});
 
     return schema;
   }
 
+  /**
+   * Helper function to fill in the `description` property
+   * @returns {Record<string, foundry["data"]["fields"]["StringField"]}
+   */
   static itemDescription() {
     return {
       value: new foundry.data.fields.HTMLField(),
       gm: new foundry.data.fields.HTMLField()
     };
-  }
-
-  /**
-   * Valid languages and language groupings in Draw Steel
-   * @returns {Record<string, string>} A record of languages and language groups with their labels
-   */
-  static languageOptions() {
-    return {};
-  }
-
-  /**
-   * Valid languages in Draw Steel
-   * @returns {Record<string, string>} Languages and their labels
-   */
-  static languageChoice() {
-    return {};
-  }
-
-  /**
-   * Valid skills and skill groupings in Draw Steel
-   * @returns {Record<string, string>} A record of skills and skill groups with their labels
-   */
-  static skillOptions() {
-    return {};
-  }
-
-  /**
-   * Valid skills in Draw Steel
-   * @returns {Record<string, string>} Skills and their labels
-   */
-  static skillChoice() {
-    return {};
   }
 
   /**
@@ -77,5 +54,14 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     if (allowed === false) return false;
 
     if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
+
+    if (!this._dsid) this.updateSource({_dsid: data.name.slugify({strict: true})});
   }
+
+  /**
+   * Prepare type-specific data for the Item sheet.
+   * @param {Record<string, unknown>} context  Sheet context data.
+   * @returns {Promise<void>}
+   */
+  async getSheetContext(context) {}
 }

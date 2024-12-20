@@ -1,19 +1,26 @@
-import BaseItemModel from "./base.mjs";
+import {systemPath} from "../../constants.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Classes provide the bulk of a hero's features and abilities
  */
-export default class ClassModel extends BaseItemModel {
+export default class ClassModel extends AdvancementModel {
+  /** @override */
   static metadata = Object.freeze({
+    ...super.metadata,
     type: "class",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
+    detailsPartial: [systemPath("templates/item/partials/class.hbs")]
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Class"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -31,7 +38,7 @@ export default class ClassModel extends BaseItemModel {
     schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
-      core: new fields.SetField(new fields.StringField({choices: ds.CONFIG.characteristics, required: true}))
+      core: new fields.SetField(new fields.StringField({blank: false, required: true}))
     });
 
     schema.stamina = new fields.SchemaField({
@@ -39,15 +46,25 @@ export default class ClassModel extends BaseItemModel {
       level: new fields.NumberField({required: true, initial: 12})
     });
 
-    schema.skills = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.skillChoice}))
-    });
+    schema.recoveries = new fields.NumberField({required: true, nullable: false, initial: 8});
 
-    // TODO: Copy 5e? Huge risk of changes here
-    schema.advancement = new fields.ObjectField();
+    // TODO: Potency
 
     return schema;
+  }
+
+  /** @override */
+  getSheetContext(context) {
+    context.characteristics = ds.CONFIG.characteristics.map(value => ({
+      value,
+      label: game.i18n.localize(`DRAW_STEEL.Actor.base.FIELDS.characteristics.${value}.value.hint`)
+    }));
+  }
+
+  /** @override */
+  _onCreate(data, options, userId) {
+    if (this.actor && (this.actor.type === "character") && (game.userId === userId)) {
+      this.actor.update({"system.hero.recoveries.value": this.recoveries});
+    }
   }
 }

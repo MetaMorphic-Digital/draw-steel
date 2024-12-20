@@ -1,5 +1,15 @@
 import { DrawSteelItem } from "../../documents/item.mjs";
 
+export type ItemMetaData = Readonly<{
+  /** The expected `type` value */
+  type: string;
+  /** Actor types that this item cannot be placed on */
+  invalidActorTypes: string[];
+  /** Are there any partials to fill in the Details tab of the item? */
+  detailsPartial?: string[];
+  /** Does this item have advancements? */
+  hasAdvancements?: boolean;
+}>
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {
@@ -13,7 +23,7 @@ declare module "./base.mjs" {
       page: string | null;
       license: string | null;
     }
-    _dsid: string | null;
+    _dsid: string;
   }
 }
 
@@ -40,7 +50,7 @@ declare module "./ability.mjs" {
     }
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
-    damageDisplay: "melee" | "ranged" | "";
+    damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
       primary: number;
@@ -49,10 +59,11 @@ declare module "./ability.mjs" {
     trigger: string;
     target: {
       type: string;
-      value: number;
-      all: boolean;
+      /** Null value indicates "all"*/
+      value: number | null;
     }
     powerRoll: {
+      enabled: boolean;
       tier1: PowerRoll;
       tier2: PowerRoll;
       tier3: PowerRoll;
@@ -71,7 +82,19 @@ declare module "./career.mjs" {
 }
 
 declare module "./class.mjs" {
-  export default interface ClassModel {}
+  export default interface ClassModel {
+    level: number;
+    primary: string;
+    secondary: string | undefined;
+    characteristics: {
+      core: Set<string>;
+    }
+    stamina: {
+      starting: number;
+      level: number;
+    }
+    recoveries: number;
+  }
 }
 
 declare module "./complication.mjs" {
@@ -83,11 +106,28 @@ declare module "./culture.mjs" {
 }
 
 declare module "./equipment.mjs" {
-  export default interface EquipmentModel {}
+  export default interface EquipmentModel {
+    kind: keyof typeof ds["CONFIG"]["equipment"]["kinds"];
+    category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
+    echelon: keyof typeof ds["CONFIG"]["echelons"];
+    keywords: Set<string>;
+    prerequisites: string;
+    project: {
+      source: string;
+      rollCharacteristic: Set<string>;
+      goal: number;
+      yield: string;
+    }
+  }
 }
 
 declare module "./feature.mjs" {
-  export default interface FeatureModel {}
+  export default interface FeatureModel {
+    type: {
+      value: string;
+      subtype: string;
+    }
+  }
 }
 
 declare module "./kit.mjs" {
@@ -102,16 +142,17 @@ declare module "./kit.mjs" {
     type: string;
     equipment: {
       armor: string;
-      weapon: string;
-      implement: string;
+      weapon: Set<string>;
+      shield: boolean;
     }
     bonuses: {
       stamina: number;
       speed: number;
       stability: number;
+      disengage: number;
       melee: {
         damage: DamageSchema;
-        reach: number;
+        distance: number;
       }
       ranged: {
         damage: DamageSchema;
@@ -124,8 +165,4 @@ declare module "./kit.mjs" {
       }
     }
   }
-}
-
-declare module "./title.mjs" {
-  export default interface TitleModel {}
 }

@@ -1,43 +1,32 @@
-import BaseItemModel from "./base.mjs";
+import {systemPath} from "../../constants.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Careers describe what a hero did for a living before becoming a hero
  */
-export default class CareerModel extends BaseItemModel {
+export default class CareerModel extends AdvancementModel {
+  /** @override */
   static metadata = Object.freeze({
+    ...super.metadata,
     type: "career",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
+    detailsPartial: [systemPath("templates/item/partials/career.hbs")]
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Career"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.skills = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({choices: this.skillOptions})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.skillChoice}))
-    });
-
-    schema.languages = new fields.SchemaField({
-      options: new fields.SetField(new fields.StringField({choices: this.languageOptions})),
-      count: new fields.NumberField(),
-      choices: new fields.SetField(new fields.StringField({blank: true, required: true, choices: this.languageChoice}))
-    });
-
-    schema.renown = new fields.NumberField();
-
-    schema.projectPoints = new fields.NumberField();
-
-    schema.title = new fields.SchemaField({
-      grant: new fields.DocumentUUIDField(),
-      link: new fields.DocumentUUIDField()
-    });
+    schema.renown = new fields.NumberField({integer: true});
+    schema.projectPoints = new fields.NumberField({integer: true});
 
     return schema;
   }

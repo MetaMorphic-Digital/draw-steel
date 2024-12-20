@@ -1,0 +1,19 @@
+[data-tab="details"] {
+  &[data-subtype="kit"] {
+    .damage-bonus {
+      margin: 0.2rem 0 0.1rem;
+      font-size: 1.15rem;
+    }
+    .form-group.damage-part {
+      display: inline-flex;
+      width: 135px;
+      label {
+        text-align: center;
+      }
+      .form-fields {
+        flex: 0 0 40px;
+        text-align: right;
+      }
+    }
+  }
+}
