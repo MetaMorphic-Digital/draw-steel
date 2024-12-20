@@ -12,12 +12,7 @@ export default class CultureModel extends AdvancementModel {
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Culture"
   ];
-
-  static defineSchema() {
-    const fields = foundry.data.fields;
-    const schema = super.defineSchema();
-    return schema;
-  }
 }

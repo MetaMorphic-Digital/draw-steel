@@ -186,6 +186,7 @@
         "Attributes": "Attributes",
         "Description": "Description",
         "Details": "Details",
+        "Advancement": "Advancement",
         "Effects": "Effects"
       },
       "base": {
@@ -214,6 +215,9 @@
             "hint": "Draw Steel ID"
           }
         }
+      },
+      "advancement": {
+        "FIELDS": {}
       },
       "Ability": {
         "FIELDS": {
@@ -364,41 +368,11 @@
       },
       "Career": {
         "FIELDS": {
-          "skills": {
-            "label": "Skills",
-            "options": {
-              "label": "Skill Options"
-            },
-            "count": {
-              "label": "Skill Count"
-            },
-            "choices": {
-              "label": "Skill Choices"
-            }
-          },
-          "languages": {
-            "label": "Languages",
-            "options": {
-              "label": "Language Options"
-            },
-            "count": {
-              "label": "Language Count"
-            },
-            "choices": {
-              "label": "Language Choices"
-            }
-          },
           "renown": {
             "label": "Renown"
           },
           "projectPoints": {
             "label": "Project Points"
-          },
-          "title": {
-            "label": "Title",
-            "grant": {
-              "label": "Granted Title"
-            }
           }
         }
       },
@@ -409,47 +383,7 @@
         "FIELDS": {}
       },
       "Culture": {
-        "FIELDS": {
-          "language": {
-            "label": "Language"
-          },
-          "environment": {
-            "label": "Environment",
-            "aspect": {
-              "label": "Aspect"
-            },
-            "skillOptions": {
-              "label": "Skill Options"
-            },
-            "skill": {
-              "label": "Chosen Skill"
-            }
-          },
-          "organization": {
-            "label": "Organization",
-            "aspect": {
-              "label": "Aspect"
-            },
-            "skillOptions": {
-              "label": "Skill Options"
-            },
-            "skill": {
-              "label": "Chosen Skill"
-            }
-          },
-          "upbringing": {
-            "label": "Upbringing",
-            "aspect": {
-              "label": "Aspect"
-            },
-            "skillOptions": {
-              "label": "Skill Options"
-            },
-            "skill": {
-              "label": "Chosen Skill"
-            }
-          }
-        },
+        "FIELDS": {},
         "Environments": {
           "Nomadic": "Nomadic",
           "Rural": "Rural",

@@ -14,6 +14,7 @@ export default class ClassModel extends AdvancementModel {
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Class"
   ];
 
@@ -41,12 +42,6 @@ export default class ClassModel extends AdvancementModel {
       starting: new fields.NumberField({required: true, initial: 20}),
       level: new fields.NumberField({required: true, initial: 12})
     });
-
-    // schema.skills = new fields.SchemaField({
-    //   options: new fields.SetField(new fields.StringField({blank: false, required: true})),
-    //   count: new fields.NumberField(),
-    //   choices: new fields.SetField(new fields.StringField({blank: false, required: true}))
-    // });
 
     return schema;
   }

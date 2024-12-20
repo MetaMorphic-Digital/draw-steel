@@ -12,13 +12,7 @@ export default class AncestryModel extends AdvancementModel {
 
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Ancestry"
   ];
-
-  static defineSchema() {
-    const fields = foundry.data.fields;
-    const schema = super.defineSchema();
-
-    return schema;
-  }
 }
