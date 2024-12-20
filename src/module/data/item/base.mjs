@@ -8,6 +8,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     invalidActorTypes: []
   });
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = {};
@@ -28,6 +29,10 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     return schema;
   }
 
+  /**
+   * Helper function to fill in the `description` property
+   * @returns {Record<string, foundry["data"]["fields"]["StringField"]}
+   */
   static itemDescription() {
     return {
       value: new foundry.data.fields.HTMLField(),

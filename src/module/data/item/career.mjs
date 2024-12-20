@@ -5,6 +5,7 @@ import AdvancementModel from "./advancement.mjs";
  * Careers describe what a hero did for a living before becoming a hero
  */
 export default class CareerModel extends AdvancementModel {
+  /** @override */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "career",
@@ -12,12 +13,14 @@ export default class CareerModel extends AdvancementModel {
     detailsPartial: [systemPath("templates/item/partials/career.hbs")]
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.advancement",
     "DRAW_STEEL.Item.Career"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();

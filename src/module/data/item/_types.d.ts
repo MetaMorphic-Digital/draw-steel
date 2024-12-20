@@ -82,7 +82,19 @@ declare module "./career.mjs" {
 }
 
 declare module "./class.mjs" {
-  export default interface ClassModel {}
+  export default interface ClassModel {
+    level: number;
+    primary: string;
+    secondary: string | undefined;
+    characteristics: {
+      core: Set<string>;
+    }
+    stamina: {
+      starting: number;
+      level: number;
+    }
+    recoveries: number;
+  }
 }
 
 declare module "./complication.mjs" {

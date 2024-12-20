@@ -5,6 +5,7 @@ import BaseItemModel from "./base.mjs";
  * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
  */
 export default class KitModel extends BaseItemModel {
+  /** @override */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "kit",
@@ -12,11 +13,13 @@ export default class KitModel extends BaseItemModel {
     detailsPartial: [systemPath("templates/item/partials/kit.hbs")]
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Kit"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -65,6 +68,7 @@ export default class KitModel extends BaseItemModel {
     return schema;
   }
 
+  /** @override */
   getSheetContext(context) {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({value, label}));
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({value, label}))

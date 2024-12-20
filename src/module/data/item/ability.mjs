@@ -7,17 +7,20 @@ import BaseItemModel from "./base.mjs";
  * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
  */
 export default class AbilityModel extends BaseItemModel {
+  /** @override */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "ability",
     detailsPartial: [systemPath("templates/item/partials/ability.hbs")]
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Ability"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -66,6 +69,7 @@ export default class AbilityModel extends BaseItemModel {
     return schema;
   }
 
+  /** @override */
   static itemDescription() {
     const description = super.itemDescription();
     description.flavor = new foundry.data.fields.StringField({required: true, blank: true});
@@ -178,6 +182,7 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     context.keywords = Object.entries(config.keywords).map(([value, {label}]) => ({value, label}));
