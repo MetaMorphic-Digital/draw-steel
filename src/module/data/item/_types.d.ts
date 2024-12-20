@@ -50,7 +50,7 @@ declare module "./ability.mjs" {
     }
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
-    damageDisplay: "melee" | "ranged" | "";
+    damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
       primary: number;
@@ -59,10 +59,11 @@ declare module "./ability.mjs" {
     trigger: string;
     target: {
       type: string;
-      value: number;
-      all: boolean;
+      /** Null value indicates "all"*/
+      value: number | null;
     }
     powerRoll: {
+      enabled: boolean;
       tier1: PowerRoll;
       tier2: PowerRoll;
       tier3: PowerRoll;
@@ -94,9 +95,9 @@ declare module "./culture.mjs" {
 
 declare module "./equipment.mjs" {
   export default interface EquipmentModel {
-    kind: string;
-    category: string;
-    echelon: number;
+    kind: keyof typeof ds["CONFIG"]["equipment"]["kinds"];
+    category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
+    echelon: keyof typeof ds["CONFIG"]["echelons"];
     keywords: Set<string>;
     prerequisites: string;
     project: {

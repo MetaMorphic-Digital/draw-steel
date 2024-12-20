@@ -1,1 +1,39 @@
-<p>Ability</p>
+{{#*inline "powerRoll"}}
+<fieldset>
+  <legend>{{field.label}}</legend>
+  {{formGroup field.fields.damage.fields.value value=value.damage.value}}
+  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes}}
+  {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
+  {{formGroup field.fields.description value=value.description}}
+  {{!-- TODO: Forced Movement --}}
+</fieldset>
+{{/inline}}
+{{formGroup systemFields.keywords value=system.keywords options=keywords}}
+{{formGroup systemFields.type value=system.type options=actionTypes}}
+{{formGroup systemFields.trigger value=system.trigger}}
+{{formGroup systemFields.spend value=system.spend}}
+<fieldset>
+  <legend>{{systemFields.distance.label}}</legend>
+  {{formGroup systemFields.distance.fields.type value=system.distance.type options=distanceTypes}}
+  {{#if primaryDistance}}
+  {{formGroup systemFields.distance.fields.primary value=system.distance.primary label=primaryDistance}}
+  {{/if}}
+  {{#if secondaryDistance}}
+  {{formGroup systemFields.distance.fields.secondary value=system.distance.secondary label=secondaryDistance}}
+  {{/if}}
+</fieldset>
+{{#if showDamageDisplay}}
+{{formGroup systemFields.damageDisplay value=system.damageDisplay}}
+{{/if}}
+<fieldset>
+  <legend>{{systemFields.target.label}}</legend>
+  {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
+  {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
+</fieldset>
+{{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
+{{#if system.powerRoll.enabled}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier2}}
+{{/if}}
+{{formGroup systemFields.effect value=system.effect}}

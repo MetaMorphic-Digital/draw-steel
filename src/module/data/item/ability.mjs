@@ -23,26 +23,21 @@ export default class AbilityModel extends BaseItemModel {
     const schema = super.defineSchema();
     const config = ds.CONFIG.abilities;
 
-    const requiredChoice = (choices, initial) => ({
-      required: true,
-      blank: false,
-      choices,
-      initial
-    });
-
-    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false, choices: config.keywords}));
-    schema.type = new fields.StringField(requiredChoice(config.types, "action"));
+    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
+    schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
+    schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
-      type: new fields.StringField(requiredChoice(config.distances, "self")),
+      type: new fields.StringField({required: true, blank: false, initial: "self"}),
       primary: new fields.NumberField({integer: true}),
       secondary: new fields.NumberField({integer: true})
     });
-    schema.damageDisplay = new fields.StringField({choices: ["melee", "ranged"]});
-    schema.trigger = new fields.StringField();
+    schema.damageDisplay = new fields.StringField({choices: {
+      melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
+      ranged: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
+    }, initial: "melee", required: true, blank: false});
     schema.target = new fields.SchemaField({
-      type: new fields.StringField(requiredChoice(config.targets, "self")),
-      value: new fields.NumberField(),
-      all: new fields.BooleanField()
+      type: new fields.StringField({required: true, blank: false, initial: "self"}),
+      value: new fields.NumberField({integer: true})
     });
 
     const powerRollSchema = () => ({
@@ -50,7 +45,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new FormulaField(),
         type: new fields.StringField({required: true})
       }),
-      ae: new fields.StringField({validate: foundry.data.validators.isValidId}),
+      ae: new fields.SetField(new fields.StringField({validate: foundry.data.validators.isValidId})),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
         value: new fields.NumberField(),
@@ -60,12 +55,13 @@ export default class AbilityModel extends BaseItemModel {
     });
 
     schema.powerRoll = new fields.SchemaField({
+      enabled: new fields.BooleanField(),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
     });
     schema.effect = new fields.StringField();
-    schema.spend = new fields.NumberField();
+    schema.spend = new fields.NumberField({integer: true});
 
     return schema;
   }
@@ -180,5 +176,22 @@ export default class AbilityModel extends BaseItemModel {
         }
       }
     }
+  }
+
+  getSheetContext(context) {
+    const config = ds.CONFIG.abilities;
+    context.keywords = Object.entries(config.keywords).map(([value, {label}]) => ({value, label}));
+    context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
+
+    context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
+    context.primaryDistance = config.distances[this.distance.type].primary;
+    context.secondaryDistance = config.distances[this.distance.type].secondary;
+
+    context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
+
+    context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
+
+    context.damageType = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
+    context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
   }
 }

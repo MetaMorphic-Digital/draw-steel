@@ -575,7 +575,7 @@ DRAW_STEEL.abilities = {
   },
   /**
    * Action types
-   * @enum {{label: string}}
+   * @type {Record<string, {label: string}>}
    */
   types: {
     action: {
@@ -679,6 +679,7 @@ DRAW_STEEL.abilities = {
   }
 };
 preLocalize("abilities.keywords", {key: "label"});
+preLocalize("abilities.types", {key: "label"});
 preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});

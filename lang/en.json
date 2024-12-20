@@ -224,16 +224,79 @@
             "label": "Type"
           },
           "distance": {
-            "label": ""
+            "label": "Distance",
+            "type": {
+              "label": "Type"
+            }
           },
           "trigger": {
             "label": "Trigger"
           },
           "target": {
-            "label": "Target"
+            "label": "Target",
+            "type": {
+              "label": "Type"
+            },
+            "value": {
+              "label": "Value"
+            }
           },
           "powerRoll": {
-            "label": "Power Roll"
+            "label": "Power Roll",
+            "enabled": {
+              "label": "Has Power Roll"
+            },
+            "tier1": {
+              "label": "Tier 1 Result",
+              "damage": {
+                "value": {
+                  "label": "Damage Formula"
+                },
+                "type": {
+                  "label": "Damage Type"
+                }
+              },
+              "ae": {
+                "label": "Applied Effects"
+              },
+              "description": {
+                "label": "Description"
+              }
+            },
+            "tier2": {
+              "label": "Tier 2 Result",
+              "damage": {
+                "value": {
+                  "label": "Damage Formula"
+                },
+                "type": {
+                  "label": "Damage Type"
+                }
+              },
+              "ae": {
+                "label": "Applied Effects"
+              },
+              "description": {
+                "label": "Description"
+              }
+            },
+            "tier3": {
+              "label": "Tier 3 Result",
+              "damage": {
+                "value": {
+                  "label": "Damage Formula"
+                },
+                "type": {
+                  "label": "Damage Type"
+                }
+              },
+              "ae": {
+                "label": "Applied Effects"
+              },
+              "description": {
+                "label": "Description"
+              }
+            }
           },
           "effect": {
             "label": "Effect"
@@ -273,6 +336,7 @@
           "Self": "Self"
         },
         "Target": {
+          "All": "All",
           "Creature": "Creature",
           "AllCreatures": "All creatures",
           "Object": "Object",
