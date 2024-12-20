@@ -1,23 +1,23 @@
 {{#*inline "damageBonus"}}
   <h6 class="damage-bonus">{{damageField.label}}</h6>
-  {{formGroup damageField.fields.tier1 value=value.tier1 classes="damage-part"}}
-  {{formGroup damageField.fields.tier2 value=value.tier2 classes="damage-part"}}
-  {{formGroup damageField.fields.tier3 value=value.tier3 classes="damage-part"}}
+  {{formGroup damageField.fields.tier1 value=value.tier1 classes="damage-part" disabled=isPlay}}
+  {{formGroup damageField.fields.tier2 value=value.tier2 classes="damage-part" disabled=isPlay}}
+  {{formGroup damageField.fields.tier3 value=value.tier3 classes="damage-part" disabled=isPlay}}
 {{/inline}}
 <fieldset>
   <legend>{{systemFields.equipment.label}}</legend>
-  {{formGroup systemFields.equipment.fields.weapon value=system.equipment.weapon options=weaponOptions}}
-  {{formGroup systemFields.equipment.fields.armor value=system.equipment.armor options=armorOptions}}
-  {{formGroup systemFields.equipment.fields.shield value=system.equipment.shield}}
+  {{formGroup systemFields.equipment.fields.weapon value=system.equipment.weapon options=weaponOptions disabled=isPlay}}
+  {{formGroup systemFields.equipment.fields.armor value=system.equipment.armor options=armorOptions disabled=isPlay}}
+  {{formGroup systemFields.equipment.fields.shield value=system.equipment.shield disabled=isPlay}}
 </fieldset>
 <fieldset>
   <legend>{{systemFields.bonuses.label}}</legend>
-  {{formGroup systemFields.bonuses.fields.stamina value=system.bonuses.stamina}}
-  {{formGroup systemFields.bonuses.fields.speed value=system.bonuses.speed}}
-  {{formGroup systemFields.bonuses.fields.stability value=system.bonuses.stability}}
-  {{formGroup systemFields.bonuses.fields.disengage value=system.bonuses.disengage}}
+  {{formGroup systemFields.bonuses.fields.stamina value=system.bonuses.stamina disabled=isPlay}}
+  {{formGroup systemFields.bonuses.fields.speed value=system.bonuses.speed disabled=isPlay}}
+  {{formGroup systemFields.bonuses.fields.stability value=system.bonuses.stability disabled=isPlay}}
+  {{formGroup systemFields.bonuses.fields.disengage value=system.bonuses.disengage disabled=isPlay}}
   {{> damageBonus damageField=systemFields.bonuses.fields.melee.fields.damage value=system.bonuses.melee.damage}}
-  {{formGroup systemFields.bonuses.fields.melee.fields.distance value=system.bonuses.melee.distance}}
+  {{formGroup systemFields.bonuses.fields.melee.fields.distance value=system.bonuses.melee.distance disabled=isPlay}}
   {{> damageBonus damageField=systemFields.bonuses.fields.ranged.fields.damage value=system.bonuses.ranged.damage}}
-  {{formGroup systemFields.bonuses.fields.ranged.fields.distance value=system.bonuses.ranged.distance}}
+  {{formGroup systemFields.bonuses.fields.ranged.fields.distance value=system.bonuses.ranged.distance disabled=isPlay}}
 </fieldset>
