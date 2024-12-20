@@ -26,7 +26,7 @@ export default class KitModel extends BaseItemModel {
 
     schema.equipment = new fields.SchemaField({
       armor: new fields.StringField({required: true, blank: true}),
-      weapon: new fields.SetField(new fields.StringField({required: true, blank: true})),
+      weapon: new fields.SetField(new fields.StringField({required: true, blank: false})),
       shield: new fields.BooleanField()
       // implement: new fields.StringField({choices: config.equipment.implement})
     });
@@ -62,8 +62,6 @@ export default class KitModel extends BaseItemModel {
     //   link: new fields.DocumentUUIDField()
     // });
 
-    // TODO: Mobility and Wards
-
     return schema;
   }
 
@@ -71,5 +69,6 @@ export default class KitModel extends BaseItemModel {
   getSheetContext(context) {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({ value, label }))
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({ value, label }))
+      .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
   }
 }

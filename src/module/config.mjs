@@ -1,5 +1,7 @@
 import {preLocalize} from "./helpers/utils.mjs";
 
+/** @import {FormSelectOption} from "../../foundry/client-esm/applications/forms/fields.mjs" */
+
 export const DRAW_STEEL = {};
 
 /**
@@ -10,6 +12,30 @@ export const DRAW_STEEL = {};
  * @type {Array<string>}
  */
 DRAW_STEEL.characteristics = ["mgt", "agl", "rea", "inu", "prs"];
+
+/**
+ *
+ * @type {Record<number, {label: string, levels: number[]}>}
+ */
+DRAW_STEEL.echelons = {
+  1: {
+    label: "DRAW_STEEL.Echelon.1",
+    threshold: -Infinity
+  },
+  2: {
+    label: "DRAW_STEEL.Echelon.2",
+    threshold: 4
+  },
+  3: {
+    label: "DRAW_STEEL.Echelon.3",
+    threshold: 7
+  },
+  4: {
+    label: "DRAW_STEEL.Echelon.4",
+    threshold: 10
+  }
+};
+preLocalize("echelons", {key: "label"});
 
 /**
  * Valid letter modifiers for size 1 creatures
@@ -138,7 +164,7 @@ DRAW_STEEL.effectEnds = {
  * @type {{
  *  groups: Record<string, {label: string}>,
  *  list: Record<string, {label: string, group: string}>,
- *  optgroups: import("../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption[]
+ *  optgroups: FormSelectOption[]
  * }}
  */
 DRAW_STEEL.skills = {
@@ -382,7 +408,7 @@ preLocalize("skills.groups", {key: "label"});
 preLocalize("skills.list", {key: "label"});
 
 Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
-  /** @type {import("../../foundry/client-esm/applications/forms/fields.mjs").FormSelectOption[]} */
+  /** @type {FormSelectOption[]} */
   get: function() {
     const config = ds.CONFIG.skills;
     return Object.entries(config.list).reduce((arr, [value, {label, group}]) => {
@@ -731,53 +757,82 @@ preLocalize("culture.upbringing", {key: "label"});
 
 /**
  * Configuration details for Kit items
- * @type {Record<string,  Record<string, {label: string, equipment: Set<string>}>>}
+ * @type {Record<string,  Record<string, {label: string}>>}
  */
-DRAW_STEEL.kits = {
-  types: {
-    martial: {
-      label: "DRAW_STEEL.Item.Kit.Types.Martial",
-      equipment: new Set("armor", "weapon")
-    },
-    caster: {
-      label: "DRAW_STEEL.Item.Kit.Types.Caster",
-      equipment: new Set("armor", "implement")
-    }
-  }
-};
-preLocalize("kits.types", {key: "label"});
+DRAW_STEEL.kits = {};
+// preLocalize("kits.types", {key: "label"});
 
 /**
  * Configuration details for Equipment items
  * Also used by Kits
- * @type {Record<string,  Record<string, {label: string}>>}
  */
 DRAW_STEEL.equipment = {
+  /** @type {Record<string, {label: string, readonly keywords: FormSelectOption[]}>} */
+  categories: {
+    consumable: {
+      label: "DRAW_STEEL.Item.Equipment.Categories.Consumable",
+      get keywords() {
+        return [];
+      }
+    },
+    trinket: {
+      label: "DRAW_STEEL.Item.Equipment.Categories.Trinket",
+      get keywords() {
+        return [];
+      }
+    },
+    leveled: {
+      label: "DRAW_STEEL.Item.Equipment.Categories.Leveled",
+      get keywords() {
+        return [];
+      }
+    },
+    artifact: {
+      label: "DRAW_STEEL.Item.Equipment.Categories.Artifact",
+      get keywords() {
+        return [];
+      }
+    }
+  },
+  /** @type {Record<string, {label: string}>} */
   kinds: {
+    other: {
+      label: "DRAW_STEEL.Item.Equipment.Kinds.Other"
+    },
     armor: {
       label: "DRAW_STEEL.Item.Equipment.Kinds.Armor"
     },
-    // implement: {
-    //   label: "DRAW_STEEL.Item.Equipment.Kinds.Implement"
-    // },
+    implement: {
+      label: "DRAW_STEEL.Item.Equipment.Kinds.Implement"
+    },
     weapon: {
       label: "DRAW_STEEL.Item.Equipment.Kinds.Weapon"
     }
   },
+  /** @type {Record<string, {label: string, kitEquipment: boolean}>} */
   armor: {
     none: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.None"
+      label: "DRAW_STEEL.Item.Equipment.Armor.None",
+      kitEquipment: true
     },
     light: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Light"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Light",
+      kitEquipment: true
     },
     medium: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Medium"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Medium",
+      kitEquipment: true
     },
     heavy: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Heavy"
+      label: "DRAW_STEEL.Item.Equipment.Armor.Heavy",
+      kitEquipment: true
+    },
+    shield: {
+      label: "DRAW_STEEL.Item.Equipment.Armor.Shield",
+      kitEquipment: false
     }
   },
+  /** @type {Record<string, {label: string}>} */
   weapon: {
     none: {
       label: "DRAW_STEEL.Item.Equipment.Weapons.None"
@@ -807,31 +862,49 @@ DRAW_STEEL.equipment = {
       label: "DRAW_STEEL.Item.Equipment.Weapons.Whip"
     }
   },
-  // implement: {
-  //   bone: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Bone"
-  //   },
-  //   crystal: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Crystal"
-  //   },
-  //   glass: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Glass"
-  //   },
-  //   metal: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Metal"
-  //   },
-  //   stone: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Stone"
-  //   },
-  //   wood: {
-  //     label: "DRAW_STEEL.Item.Equipment.Implements.Wood"
-  //   }
-  // }
+  /** @type {Record<string, {label: string}>} */
+  implement: {
+    bone: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Bone"
+    },
+    crystal: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Crystal"
+    },
+    glass: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Glass"
+    },
+    metal: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Metal"
+    },
+    stone: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Stone"
+    },
+    wood: {
+      label: "DRAW_STEEL.Item.Equipment.Implements.Wood"
+    }
+  },
+  /** @type {Record<string, {label: string}>} */
+  other: {
+    feet: {
+      label: "DRAW_STEEL.Item.Equipment.Other.Feet"
+    },
+    hands: {
+      label: "DRAW_STEEL.Item.Equipment.Other.Hands"
+    },
+    neck: {
+      label: "DRAW_STEEL.Item.Equipment.Other.Neck"
+    },
+    ring: {
+      label: "DRAW_STEEL.Item.Equipment.Other.Ring"
+    }
+  }
 };
+preLocalize("equipment.categories", {key: "label"});
 preLocalize("equipment.kinds", {key: "label"});
 preLocalize("equipment.armor", {key: "label"});
 preLocalize("equipment.weapon", {key: "label"});
 preLocalize("equipment.implement", {key: "label"});
+preLocalize("equipment.other", {key: "label"});
 
 DRAW_STEEL.features = {
   /** @type {Record<string, {label: string, subtypes?: Record<string, string>}>} */

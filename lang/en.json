@@ -409,8 +409,45 @@
       },
       "Equipment": {
         "FIELDS": {
+          "kind": {
+            "label": "Kind"
+          },
+          "category": {
+            "label": "Category"
+          },
+          "echelon": {
+            "label": "Echelon"
+          },
+          "keywords": {
+            "label": "Keywords"
+          },
+          "prerequisites": {
+            "label": "Item Prerequisites"
+          },
+          "project": {
+            "label": "Project",
+            "source": {
+              "label": "Project Source"
+            },
+            "rollCharacteristic": {
+              "label": "Roll Characteristic"
+            },
+            "goal": {
+              "label": "Project Goal"
+            },
+            "yield": {
+              "label": "Project Yield"
+            }
+          }
+        },
+        "Categories": {
+          "Consumable": "Consumable",
+          "Trinket": "Trinket",
+          "Leveled": "Leveled",
+          "Artifact": "Artifact"
         },
         "Kinds": {
+          "Other": "Other",
           "Armor": "Armor",
           "Implement": "Implement",
           "Weapon": "Weapon"
@@ -440,6 +477,12 @@
           "Metal": "Metal",
           "Stone": "Stone",
           "Wood": "Wood"
+        },
+        "Other": {
+          "Feet": "Feet",
+          "Hands": "Hands",
+          "Neck": "Neck",
+          "Ring": "Ring"
         }
       },
       "Feature": {
@@ -693,6 +736,12 @@
     },
     "Advancement": {
       "Title": "Advancement"
+    },
+    "Echelon": {
+      "1": "1st Echelon",
+      "2": "2nd Echelon",
+      "3": "3rd Echelon",
+      "4": "4th Echelon"
     }
   },
   "TYPES": {

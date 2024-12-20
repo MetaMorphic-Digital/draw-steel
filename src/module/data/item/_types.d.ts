@@ -93,7 +93,19 @@ declare module "./culture.mjs" {
 }
 
 declare module "./equipment.mjs" {
-  export default interface EquipmentModel {}
+  export default interface EquipmentModel {
+    kind: string;
+    category: string;
+    echelon: number;
+    keywords: Set<string>;
+    prerequisites: string;
+    project: {
+      source: string;
+      rollCharacteristic: Set<string>;
+      goal: number;
+      yield: string;
+    }
+  }
 }
 
 declare module "./feature.mjs" {
@@ -117,13 +129,14 @@ declare module "./kit.mjs" {
     type: string;
     equipment: {
       armor: string;
-      weapon: string;
-      implement: string;
+      weapon: Set<string>;
+      shield: boolean;
     }
     bonuses: {
       stamina: number;
       speed: number;
       stability: number;
+      disengage: number;
       melee: {
         damage: DamageSchema;
         distance: number;
