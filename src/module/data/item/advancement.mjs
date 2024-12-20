@@ -5,8 +5,7 @@ export default class AdvancementModel extends BaseItemModel {
     ...super.metadata,
     type: "",
     hasAdvancements: true
-  })
-
+  });
 
   static defineSchema() {
     const fields = foundry.data.fields;

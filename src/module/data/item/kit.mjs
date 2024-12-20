@@ -65,10 +65,9 @@ export default class KitModel extends BaseItemModel {
     return schema;
   }
 
-
   getSheetContext(context) {
-    context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({ value, label }))
-    context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({ value, label }))
+    context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({value, label}));
+    context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({value, label}))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
   }
 }
