@@ -114,7 +114,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
     };
-    console.log(context.isPlay);
     return context;
   }
 

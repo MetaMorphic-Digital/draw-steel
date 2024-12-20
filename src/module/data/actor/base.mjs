@@ -54,7 +54,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * The actor's reach
+   * The actor's melee range
    */
   get reach() {
     return 1;

@@ -567,8 +567,8 @@ DRAW_STEEL.abilities = {
    */
   distances: {
     melee: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Reach",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Reach"
+      label: "DRAW_STEEL.Item.Ability.Distance.Melee",
+      primary: "DRAW_STEEL.Item.Ability.Distance.Melee"
     },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
@@ -576,7 +576,7 @@ DRAW_STEEL.abilities = {
     },
     meleeRanged: {
       label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Reach",
+      primary: "DRAW_STEEL.Item.Ability.Distance.Melee",
       secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged"
     },
     aura: {
@@ -757,9 +757,9 @@ DRAW_STEEL.equipment = {
     armor: {
       label: "DRAW_STEEL.Item.Equipment.Kinds.Armor"
     },
-    implement: {
-      label: "DRAW_STEEL.Item.Equipment.Kinds.Implement"
-    },
+    // implement: {
+    //   label: "DRAW_STEEL.Item.Equipment.Kinds.Implement"
+    // },
     weapon: {
       label: "DRAW_STEEL.Item.Equipment.Kinds.Weapon"
     }
@@ -776,9 +776,6 @@ DRAW_STEEL.equipment = {
     },
     heavy: {
       label: "DRAW_STEEL.Item.Equipment.Armor.Heavy"
-    },
-    shield: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Shield"
     }
   },
   weapon: {
@@ -810,26 +807,26 @@ DRAW_STEEL.equipment = {
       label: "DRAW_STEEL.Item.Equipment.Weapons.Whip"
     }
   },
-  implement: {
-    bone: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Bone"
-    },
-    crystal: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Crystal"
-    },
-    glass: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Glass"
-    },
-    metal: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Metal"
-    },
-    stone: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Stone"
-    },
-    wood: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Wood"
-    }
-  }
+  // implement: {
+  //   bone: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Bone"
+  //   },
+  //   crystal: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Crystal"
+  //   },
+  //   glass: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Glass"
+  //   },
+  //   metal: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Metal"
+  //   },
+  //   stone: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Stone"
+  //   },
+  //   wood: {
+  //     label: "DRAW_STEEL.Item.Equipment.Implements.Wood"
+  //   }
+  // }
 };
 preLocalize("equipment.kinds", {key: "label"});
 preLocalize("equipment.armor", {key: "label"});

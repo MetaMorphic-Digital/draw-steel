@@ -22,12 +22,13 @@ export default class KitModel extends BaseItemModel {
     const schema = super.defineSchema();
     const config = ds.CONFIG;
 
-    schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
+    // schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 
     schema.equipment = new fields.SchemaField({
-      armor: new fields.StringField({choices: config.equipment.armor}),
-      weapon: new fields.StringField({choices: config.equipment.weapon}),
-      implement: new fields.StringField({choices: config.equipment.implement})
+      armor: new fields.StringField({required: true, blank: true}),
+      weapon: new fields.SetField(new fields.StringField({required: true, blank: true})),
+      shield: new fields.BooleanField()
+      // implement: new fields.StringField({choices: config.equipment.implement})
     });
 
     const damageSchema = () => ({
@@ -42,17 +43,18 @@ export default class KitModel extends BaseItemModel {
       stability: new fields.NumberField({integer: true}),
       melee: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),
-        reach: new fields.NumberField({integer: true})
+        distance: new fields.NumberField({integer: true})
       }),
       ranged: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),
         distance: new fields.NumberField({integer: true})
       }),
-      magic: new fields.SchemaField({
-        damage: new fields.SchemaField(damageSchema()),
-        distance: new fields.NumberField({integer: true}),
-        area: new fields.NumberField({integer: true})
-      })
+      disengage: new fields.NumberField({integer: true})
+      // magic: new fields.SchemaField({
+      //   damage: new fields.SchemaField(damageSchema()),
+      //   distance: new fields.NumberField({integer: true}),
+      //   area: new fields.NumberField({integer: true})
+      // })
     });
 
     // schema.signature = new fields.SchemaField({
@@ -63,5 +65,11 @@ export default class KitModel extends BaseItemModel {
     // TODO: Mobility and Wards
 
     return schema;
+  }
+
+
+  getSheetContext(context) {
+    context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({ value, label }))
+    context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({ value, label }))
   }
 }

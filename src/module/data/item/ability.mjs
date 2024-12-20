@@ -97,12 +97,12 @@ export default class AbilityModel extends BaseItemModel {
       switch (this.distance.type) {
         case "melee":
           if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.reach;
+            this.distance.primary += bonuses.melee.distance;
           }
           break;
         case "ranged":
           if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.ranged.reach;
+            this.distance.primary += bonuses.ranged.distance;
           }
           if (this.keywords.has("magic")) {
             this.distance.primary += bonuses.magic.distance;
@@ -110,7 +110,7 @@ export default class AbilityModel extends BaseItemModel {
           break;
         case "meleeRanged":
           if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.reach;
+            this.distance.primary += bonuses.melee.distance;
             this.distance.secondary += bonuses.ranged.distance;
           }
           break;

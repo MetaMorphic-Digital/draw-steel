@@ -126,7 +126,7 @@ declare module "./kit.mjs" {
       stability: number;
       melee: {
         damage: DamageSchema;
-        reach: number;
+        distance: number;
       }
       ranged: {
         damage: DamageSchema;

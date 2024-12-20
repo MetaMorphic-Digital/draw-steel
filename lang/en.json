@@ -258,7 +258,7 @@
           "Maneuver": "Maneuver"
         },
         "Distance": {
-          "Reach": "Reach",
+          "Melee": "Melee",
           "Ranged": "Ranged",
           "MeleeRanged": "Melee or Ranged",
           "Aura": "Aura",
@@ -477,8 +477,57 @@
             "weapon": {
               "label": "Weapon Category"
             },
-            "implement": {
-              "label": "Implement Material"
+            "shield": {
+              "label": "Has Shield"
+            }
+          },
+          "bonuses": {
+            "label": "Kit Bonuses",
+            "stamina": {
+              "label": "Stamina Bonus"
+            },
+            "speed": {
+              "label": "Speed Bonus"
+            },
+            "stability": {
+              "label": "Stability Bonus"
+            },
+            "disengage": {
+              "label": "Disengage Bonus"
+            },
+            "melee": {
+              "damage": {
+                "label": "Melee Damage Bonus",
+                "tier1": {
+                  "label": "Tier 1"
+                },
+                "tier2": {
+                  "label": "Tier 2"
+                },
+                "tier3": {
+                  "label": "Tier 3"
+                }
+              },
+              "distance": {
+                "label": "Melee Distance Bonus"
+              }
+            },
+            "ranged": {
+              "damage": {
+                "label": "Ranged Damage Bonus",
+                "tier1": {
+                  "label": "Tier 1"
+                },
+                "tier2": {
+                  "label": "Tier 2"
+                },
+                "tier3": {
+                  "label": "Tier 3"
+                }
+              },
+              "distance": {
+                "label": "Ranged Distance Bonus"
+              }
             }
           }
         },
