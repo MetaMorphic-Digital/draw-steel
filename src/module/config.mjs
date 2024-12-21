@@ -415,7 +415,7 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   }
 });
 
-// TODO: Languages
+DRAW_STEEL.languages = {};
 
 /** @import {AdvancementTypeConfiguration} from "./_types" */
 
