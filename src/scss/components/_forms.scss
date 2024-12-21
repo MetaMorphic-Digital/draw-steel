@@ -49,22 +49,23 @@
     }
   }
 
+  .mode-toggle {
+    flex: 0 0 20px;
+    .mode-slider {
+      --slide-toggle-track-color-unchecked: green;
+      --slide-toggle-track-color-checked: orange;
+    }
+    .label {
+      text-align: center;
+      &.active {
+        font-weight: 600;
+      }
+    }
+  }
+
   .header-right {
     flex: 0 0 200px;
     height: 100px;
-    .mode-toggle {
-      flex: 0 0 20px;
-      .mode-slider {
-        --slide-toggle-track-color-unchecked: green;
-        --slide-toggle-track-color-checked: orange;
-      }
-      .label {
-        text-align: center;
-        &.active {
-          font-weight: 600;
-        }
-      }
-    }
     .class {
       flex: 1;
       .click-element {

@@ -1,8 +1,9 @@
 export {DrawSteelActorSheet} from "./actor-sheet.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";
 
-import SlideToggleElement from "./slide-toggle.mjs";
+import * as elements from "./elements/_module.mjs";
 
-window.customElements.define("slide-toggle", SlideToggleElement);
+window.customElements.define("ds-checkbox", elements.CheckboxElement);
+window.customElements.define("slide-toggle", elements.SlideToggleElement);
 
-export {SlideToggleElement};
+export {elements};
