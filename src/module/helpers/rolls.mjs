@@ -512,9 +512,9 @@ export class ProjectRoll extends DSRoll {
 
 export class SavingThrow extends DSRoll {
   /**
-   * @param {string} [formula="1d10"]      Most sav
-   * @param {Record<string, any>} data
-   * @param {Record<string, any>} options
+   * @param {string} [formula="1d10"]        Default saving throw is a flat 1d10
+   * @param {Record<string, any>} [data]     Roll data
+   * @param {{ flavor?: string }} [options]  Options to modify roll display
    */
   constructor(formula = "1d10", data = {}, options = {}) {
     super(formula, data, options);
