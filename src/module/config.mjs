@@ -151,9 +151,6 @@ DRAW_STEEL.effectEnds = {
   turn: {
     label: "DRAW_STEEL.Effect.Ends.Turn.Label"
   },
-  resistance: {
-    label: "DRAW_STEEL.Effect.Ends.Resistance.Label"
-  },
   encounter: {
     label: "DRAW_STEEL.Effect.Ends.Encounter.Label"
   }
@@ -564,9 +561,6 @@ DRAW_STEEL.abilities = {
     },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
-    },
-    resistance: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Resistance"
     },
     weapon: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Weapon",
