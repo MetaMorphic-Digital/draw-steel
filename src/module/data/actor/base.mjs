@@ -23,11 +23,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       stability: requiredInteger({initial: 0})
     });
 
-    schema.biography = new fields.SchemaField({
-      value: new fields.HTMLField(),
-      gm: new fields.HTMLField(),
-      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
-    });
+    schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
       walk: new fields.NumberField({integer: true, min: 0, initial: 5}),
@@ -44,6 +40,19 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     return schema;
+  }
+
+  /**
+   * Helper function to fill in the `biography` property
+   * @returns {Record<string, foundry["data"]["fields"]["StringField"]}
+   */
+  static actorBiography() {
+    const fields = foundry.data.fields;
+    return {
+      value: new fields.HTMLField(),
+      gm: new fields.HTMLField(),
+      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
+    };
   }
 
   /** @override */
