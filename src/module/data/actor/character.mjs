@@ -37,6 +37,25 @@ export default class CharacterModel extends BaseActorModel {
     return schema;
   }
 
+  static actorBiography() {
+    const fields = foundry.data.fields;
+    const bio = super.actorBiography();
+
+    bio.height = new fields.SchemaField({
+      value: new fields.NumberField({min: 0}),
+      units: new fields.StringField({blanK: false})
+    });
+
+    bio.weight = new fields.SchemaField({
+      value: new fields.NumberField({min: 0}),
+      units: new fields.StringField({blanK: false})
+    });
+
+    bio.age = new fields.StringField({blank: false});
+
+    return bio;
+  }
+
   /** @override */
   prepareBaseData() {
     super.prepareBaseData();
