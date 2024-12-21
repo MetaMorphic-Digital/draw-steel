@@ -35,7 +35,7 @@ export default class ClassModel extends AdvancementModel {
     });
 
     schema.primary = new fields.StringField({required: true});
-    schema.secondary = new fields.StringField();
+    // schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(new fields.StringField({blank: false, required: true}))

@@ -41,7 +41,7 @@ declare module "./character.mjs" {
   export default interface CharacterModel {
     hero: {
       primary: HeroicResource;
-      secondary: HeroicResource;
+      // secondary: HeroicResource;
       xp: number;
       recoveries: BarAttribute & {
         bonus: number;

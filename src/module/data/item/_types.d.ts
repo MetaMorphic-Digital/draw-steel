@@ -85,7 +85,7 @@ declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
-    secondary: string | undefined;
+    // secondary: string | undefined;
     characteristics: {
       core: Set<string>;
     }
