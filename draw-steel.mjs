@@ -16,6 +16,7 @@ globalThis.ds = {
 
 /** Special global access */
 globalThis.PowerRoll = helpers.rolls.PowerRoll;
+globalThis.ProjectRoll = helpers.rolls.ProjectRoll;
 
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
