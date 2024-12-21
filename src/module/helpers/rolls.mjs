@@ -206,8 +206,9 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Determines if this is a power roll with 2d10 base
+   * @returns {boolean}
    */
-  get validPowerRoll() {
+  get isValidPowerRoll() {
     const firstTerm = this.terms[0];
     return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
   }
@@ -222,12 +223,12 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Produces the tier of a roll as a number
-   * @returns {number | undefined} Returns a number for the tier or undefined if this isn't yet evaluated
+   * @returns {1 | 2 | 3 | undefined} Returns a number for the tier or undefined if this isn't yet evaluated
    */
   get product() {
     if (this._total === undefined) return undefined;
     // Crits are always a tier 3 result
-    if (this.critical) return 3;
+    if (this.isCritical) return 3;
 
     const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, {threshold}) => t + Number(this.total >= threshold), 0);
     // Adjusts tiers for double edge/bane
@@ -256,8 +257,8 @@ export class PowerRoll extends DSRoll {
    * Determines if the natural result was a natural 20
    * @returns {boolean | null} Null if not yet evaluated
    */
-  get nat20() {
-    if ((this._total === undefined) || !this.validPowerRoll) return null;
+  get isNat20() {
+    if ((this._total === undefined) || !this.isValidPowerRoll) return null;
     return (this.dice[0].total >= 20);
   }
 
@@ -266,7 +267,7 @@ export class PowerRoll extends DSRoll {
    * @returns {boolean | null} Null if not yet evaluated,
    * otherwise returns if the dice total is a 19 or higher
    */
-  get critical() {
+  get isCritical() {
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
@@ -301,7 +302,7 @@ export class PowerRoll extends DSRoll {
       mod: game.i18n.localize(modString)
     };
 
-    context.critical = (this.critical || this.nat20) ? "critical" : "";
+    context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 
     return context;
   }
@@ -420,8 +421,9 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Determines if this is a power roll with 2d10 base
+   * @returns {boolean}
    */
-  get validProjectRoll() {
+  get isValidProjectRoll() {
     const firstTerm = this.terms[0];
     return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
   }
@@ -436,6 +438,7 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Total project progress accrued from this roll
+   * @returns {number | undefined}
    */
   get product() {
     if (this._total === undefined) return undefined;
@@ -454,8 +457,8 @@ export class ProjectRoll extends DSRoll {
    * Determines if the natural result was a natural 20
    * @returns {boolean | null} Null if not yet evaluated
    */
-  get nat20() {
-    if ((this._total === undefined) || !this.validProjectRoll) return null;
+  get isNat20() {
+    if ((this._total === undefined) || !this.isValidProjectRoll) return null;
     return (this.dice[0].total >= 20);
   }
 
@@ -464,7 +467,7 @@ export class ProjectRoll extends DSRoll {
    * @returns {boolean | null} Null if not yet evaluated,
    * otherwise returns if the dice total is a 19 or higher
    */
-  get critical() {
+  get isCritical() {
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
@@ -472,8 +475,8 @@ export class ProjectRoll extends DSRoll {
   /**
    * Semantic alias for this.critical
    */
-  get breakthrough() {
-    return this.critical;
+  get isBreakthrough() {
+    return this.isCritical;
   }
 
   async _prepareContext({flavor, isPrivate}) {
@@ -501,7 +504,7 @@ export class ProjectRoll extends DSRoll {
       mod: game.i18n.localize(modString)
     };
 
-    context.critical = (this.critical || this.nat20) ? "critical" : "";
+    context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 
     return context;
   }
