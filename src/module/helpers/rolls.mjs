@@ -41,7 +41,7 @@ export class PowerRoll extends DSRoll {
       insertValues: true,
       overwrite: false
     });
-    if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability, resistance, or test");
+    if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability or test");
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
     if (!options.appliedModifier && (Math.abs(this.netBoon) === 1)) {
@@ -79,10 +79,6 @@ export class PowerRoll extends DSRoll {
       label: "DRAW_STEEL.Roll.Power.Types.Ability",
       icon: "fa-solid fa-bolt"
     },
-    resistance: {
-      label: "DRAW_STEEL.Roll.Power.Types.Resistance",
-      icon: "fa-solid fa-hand-fist"
-    },
     test: {
       label: "DRAW_STEEL.Roll.Power.Types.Test",
       icon: "fa-solid fa-dice"
@@ -91,7 +87,7 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Set of power roll types
-   * @type {Set<"ability" | "resistance" | "test">}
+   * @type {Set<"ability" | "test">}
    */
   static get VALID_TYPES() {
     return new Set(Object.keys(this.#TYPES));
@@ -141,11 +137,11 @@ export class PowerRoll extends DSRoll {
   /**
    * Prompt the user with a roll configuration dialog
    * @param {object} [options] - Options for the dialog
-   * @param {"ability"|"resistance"|"test"} [options.type="test"]   - A valid roll type
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="evaluate"] - How will the roll be evaluated and returned?
+   * @param {"ability"|"test"} [options.type="test"]   - A valid roll type
+   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] - How will the roll be evaluated and returned?
    * @param {number} [options.edges] - Base edges for the roll
    * @param {number} [options.banes] - Base banes for the roll
-   * @param {Record<string, unknown>} [options.formula="2d10"] - Roll formula
+   * @param {string} [options.formula="2d10"] - Roll formula
    * @param {Record<string, unknown>} [options.data] - Roll data to be parsed by the formula
    * @param {string[]} [options.skills] - An array of skills that might be chosen
    */
@@ -153,7 +149,7 @@ export class PowerRoll extends DSRoll {
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
-    if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability', 'resistance', or 'test'");
+    if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
     const flavor = options.flavor ?? typeLabel;
