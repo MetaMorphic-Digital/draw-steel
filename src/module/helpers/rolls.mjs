@@ -328,7 +328,7 @@ export class ProjectRoll extends DSRoll {
       const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
       const number = new foundry.dice.terms.NumericTerm({
         number: Math.min(4, 2 * Math.abs(this.netBoon)),
-        flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane")
+        flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`)
       });
       this.terms.push(operation, number);
       this.resetFormula();
@@ -367,7 +367,9 @@ export class ProjectRoll extends DSRoll {
   static async prompt(options = {}) {
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
-    if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
+    if (!["none", "evaluate", "message"].includes(evaluation)) {
+      throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
+    }
     const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.Roll.Project.Label");
 
     const dialogContext = {
