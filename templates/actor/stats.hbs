@@ -2,11 +2,14 @@
 <section class="tab stats {{tab.cssClass}}" data-group="primary" data-tab="stats">
   <fieldset class="resources flexrow">
     <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
-    <div class="resource">
+    <div class="resource stamina">
       <label class="resource-label">
         {{systemFields.stamina.label}}
       </label>
       <div class="resource-content flexrow">
+        <div class="resource-temporary">
+          {{formInput systemFields.stamina.fields.temporary value=system.stamina.temporary dataset=datasets.notSource}}
+        </div>
         <div class="resource-current">
           {{formInput systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
         </div>
@@ -21,7 +24,7 @@
       </div>
     </div>
     {{#if (eq actor.type "character")}}
-    <div class="resource">
+    <div class="resource recoveries">
       <label class="resource-label">
         {{systemFields.hero.fields.recoveries.label}}
       </label>
@@ -39,28 +42,19 @@
         </span>
       </div>
     </div>
-    <div class="resource">
+    <div class="resource heroic">
       {{#if system.class}}
       {{#if isPlay}}
       <label>
         <span>{{system.hero.primary.label}}</span>
         {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource}}
       </label>
-      {{#if system.class.system.secondary}}
-      <label>
-        <span>{{system.hero.secondary.label}}</span>
-        {{formInput systemFields.hero.fields.secondary.fields.value value=system.hero.secondary.value dataset=datasets.notSource}}
-      </label>
-      {{/if}}
       {{else}}
       <label class="resource-label">
         {{systemFields.hero.label}}
       </label>
       <div class="resource-content">
         {{formInput systemFields.hero.fields.primary.fields.value value=systemSource.hero.primary.value dataset=datasets.isSource}}
-        {{#if system.class.system.secondary}}
-        {{formInput systemFields.hero.fields.secondary.fields.value value=systemSource.hero.secondary.value dataset=datasets.isSource}}
-        {{/if}}
       </div>
       {{/if}}
       {{/if}}
@@ -127,6 +121,7 @@
     {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
   </fieldset>
   {{/if}}
+  {{#if (eq actor.type "character")}}
   <fieldset class="skills flexrow">
     <legend>{{systemFields.hero.fields.skills.label}}</legend>
     {{#if isPlay}}
@@ -135,4 +130,5 @@
     {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=config.skills.optgroups dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
+  {{/if}}
 </section>
