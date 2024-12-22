@@ -24,6 +24,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    * Compute derived data related to active effect duration.
    * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData>}
    * @protected
+   * @override
    */
   _prepareDuration() {
     return this.system._prepareDuration ?? super._prepareDuration();
@@ -31,6 +32,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
+   * @override
    */
   get isTemporary() {
     return this.system._isTemporary ?? super.isTemporary;

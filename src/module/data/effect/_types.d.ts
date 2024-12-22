@@ -4,7 +4,10 @@ import { DrawSteelCombat } from "../../documents/combat.mjs";
 declare module "./base.mjs" {
   export default interface BaseEffectModel {
     parent: DrawSteelActiveEffect;
-    end: keyof typeof ds["CONFIG"]["effectEnds"] | "";
+    end: {
+      type: keyof typeof ds["CONFIG"]["effectEnds"] | "";
+      roll: string;
+    }
   }
 }
 

@@ -1,3 +1,5 @@
+import FormulaField from "../fields/formula-field.mjs";
+
 /**
  * A data model used by default effects with properties to control the expiration behavior
  */
@@ -14,13 +16,17 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields;
     const config = ds.CONFIG;
     return {
-      end: new fields.StringField({choices: Object.keys(config.effectEnds), blank: true, required: true})
+      end: new fields.SchemaField({
+        type: new fields.StringField({choices: Object.keys(config.effectEnds), blank: true, required: true}),
+        roll: new FormulaField({initial: "1d10"})
+      })
     };
   }
 
   /**
    * An effect is also temporary if it has the `end` property set even though they have indeterminate lengths
-   * @returns {true | null}
+   * @returns {boolean | null}
+   * @internal
    */
   get _isTemporary() {
     if (this.end) return true;
@@ -32,7 +38,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * @returns {string}
    */
   get durationLabel() {
-    return ds.CONFIG.effectEnds[this.end]?.abbreviation ?? "";
+    return ds.CONFIG.effectEnds[this.end.type]?.abbreviation ?? "";
   }
 
   /** @import {ActiveEffectDuration, EffectDurationData} from "./_types" */

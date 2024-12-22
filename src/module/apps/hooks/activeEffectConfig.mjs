@@ -14,14 +14,18 @@ export function renderActiveEffectConfig(app, [html], context) {
 
   const endOptions = Object.entries(ds.CONFIG.effectEnds).map(([value, {label}]) => ({value, label}));
 
-  const endsInput = effect.system.schema.getField("end").toFormGroup(
+  const endsInput = effect.system.schema.getField("end.type").toFormGroup(
     {},
-    {options: endOptions, value: effect.system.end, blank: ""}
+    {options: endOptions, value: effect.system.end.type, blank: ""}
   );
+
+  const rollInput = effect.system.schema.getField("end.roll").toFormGroup({}, {value: effect.system.end.roll});
+
+  const hrBreak = document.createElement("hr");
 
   const durationTab = html.querySelector([".tab[data-tab=\"duration\"]"]);
 
-  durationTab.append(endsInput);
+  durationTab.prepend(endsInput, rollInput, hrBreak);
 
   app.setPosition();
 }
