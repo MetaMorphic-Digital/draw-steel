@@ -14,8 +14,8 @@ export class DSRoll extends foundry.dice.Roll {
   /**
    * Helper function to generate render context in use with `static CHAT_TEMPLATE`
    * @param {object} options
-   * @param {string} [options.flavor]     - Flavor text to include
-   * @param {boolean} [options.isPrivate] - Is the Roll displayed privately?
+   * @param {string} [options.flavor]     Flavor text to include
+   * @param {boolean} [options.isPrivate] Is the Roll displayed privately?
    * @returns An object to be used in `renderTemplate`
    */
   async _prepareContext({flavor, isPrivate}) {
@@ -136,14 +136,14 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {object} [options] - Options for the dialog
-   * @param {"ability"|"test"} [options.type="test"]   - A valid roll type
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] - How will the roll be evaluated and returned?
-   * @param {number} [options.edges] - Base edges for the roll
-   * @param {number} [options.banes] - Base banes for the roll
-   * @param {string} [options.formula="2d10"] - Roll formula
-   * @param {Record<string, unknown>} [options.data] - Roll data to be parsed by the formula
-   * @param {string[]} [options.skills] - An array of skills that might be chosen
+   * @param {object} [options] Options for the dialog
+   * @param {"ability"|"test"} [options.type="test"]  A valid roll type
+   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] How will the roll be evaluated and returned?
+   * @param {number} [options.edges]                  Base edges for the roll
+   * @param {number} [options.banes]                  Base banes for the roll
+   * @param {string} [options.formula="2d10"]         Roll formula
+   * @param {Record<string, unknown>} [options.data]  Roll data to be parsed by the formula
+   * @param {string[]} [options.skills]               An array of skills that might be chosen
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
@@ -353,13 +353,13 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {object} [options] - Options for the dialog
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] - How will the roll be evaluated and returned?
-   * @param {number} [options.edges] - Base edges for the roll
-   * @param {number} [options.banes] - Base banes for the roll
-   * @param {string} [options.formula="2d10"] - Roll formula
-   * @param {Record<string, unknown>} [options.data] - Roll data to be parsed by the formula
-   * @param {string[]} [options.skills] - An array of skills that might be chosen
+   * @param {object} [options] Options for the dialog
+   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] How will the roll be evaluated and returned?
+   * @param {number} [options.edges]                  Base edges for the roll
+   * @param {number} [options.banes]                  Base banes for the roll
+   * @param {string} [options.formula="2d10"]         Roll formula
+   * @param {Record<string, unknown>} [options.data]  Roll data to be parsed by the formula
+   * @param {string[]} [options.skills]               An array of skills that might be chosen
    */
   static async prompt(options = {}) {
     const evaluation = options.evaluation ?? "message";
@@ -510,7 +510,7 @@ export class ProjectRoll extends DSRoll {
   }
 }
 
-export class SavingThrow extends DSRoll {
+export class SavingThrowRoll extends DSRoll {
   /**
    * @param {string} [formula="1d10"]        Default saving throw is a flat 1d10
    * @param {Record<string, any>} [data]     Roll data
@@ -534,8 +534,8 @@ export class SavingThrow extends DSRoll {
   /**
    * Helper function to generate render context in use with `static CHAT_TEMPLATE`
    * @param {object} options
-   * @param {string} [options.flavor]     - Flavor text to include
-   * @param {boolean} [options.isPrivate] - Is the Roll displayed privately?
+   * @param {string} [options.flavor]     Flavor text to include
+   * @param {boolean} [options.isPrivate] Is the Roll displayed privately?
    * @returns An object to be used in `renderTemplate`
    */
   async _prepareContext({flavor, isPrivate}) {
