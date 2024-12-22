@@ -1,21 +1,25 @@
 import {barAttribute, requiredInteger} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
+const fields = foundry.data.fields;
+
 /**
  * Characters are controlled by players and have heroic resources and advancement
  */
 export default class CharacterModel extends BaseActorModel {
+  /** @override */
   static metadata = Object.freeze({
     type: "character"
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.Character"
   ];
 
+  /** @override */
   static defineSchema() {
-    const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
     schema.hero = new fields.SchemaField({
@@ -35,6 +39,25 @@ export default class CharacterModel extends BaseActorModel {
     });
 
     return schema;
+  }
+
+  /** @override */
+  static actorBiography() {
+    const bio = super.actorBiography();
+
+    bio.height = new fields.SchemaField({
+      value: new fields.NumberField({min: 0}),
+      units: new fields.StringField({blank: false})
+    });
+
+    bio.weight = new fields.SchemaField({
+      value: new fields.NumberField({min: 0}),
+      units: new fields.StringField({blank: false})
+    });
+
+    bio.age = new fields.StringField({blank: false});
+
+    return bio;
   }
 
   /** @override */

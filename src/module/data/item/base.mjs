@@ -1,3 +1,8 @@
+const fields = foundry.data.fields;
+
+/**
+ * A base item model that provides basic description and source metadata for an item instance
+ */
 export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   /**
    * Key information about this item subtype
@@ -10,7 +15,6 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
   /** @override */
   static defineSchema() {
-    const fields = foundry.data.fields;
     const schema = {};
 
     schema.description = new fields.SchemaField(this.itemDescription());
@@ -31,7 +35,8 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Helper function to fill in the `description` property
-   * @returns {Record<string, foundry["data"]["fields"]["StringField"]}
+   * @protected
+   * @returns {Record<string, fields["DataField"]}
    */
   static itemDescription() {
     return {
