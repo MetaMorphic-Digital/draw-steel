@@ -3,6 +3,8 @@ import {PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import BaseItemModel from "./base.mjs";
 
+const fields = foundry.data.fields;
+
 /**
  * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
  */
@@ -22,7 +24,6 @@ export default class AbilityModel extends BaseItemModel {
 
   /** @override */
   static defineSchema() {
-    const fields = foundry.data.fields;
     const schema = super.defineSchema();
     const config = ds.CONFIG.abilities;
 
@@ -72,7 +73,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @override */
   static itemDescription() {
     const description = super.itemDescription();
-    description.flavor = new foundry.data.fields.StringField({required: true, blank: true});
+    description.flavor = new fields.StringField({required: true, blank: true});
     return description;
   }
 

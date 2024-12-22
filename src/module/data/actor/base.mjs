@@ -1,9 +1,12 @@
 import {barAttribute, damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
+const fields = foundry.data.fields;
 
+/**
+ * A base actor model that provides common properties for both characters and npcs
+ */
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /** @override */
   static defineSchema() {
-    const fields = foundry.data.fields;
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 
@@ -44,10 +47,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Helper function to fill in the `biography` property
-   * @returns {Record<string, foundry["data"]["fields"]["StringField"]}
+   * @protected
+   * @returns {Record<string, fields["DataField"]}
    */
   static actorBiography() {
-    const fields = foundry.data.fields;
     return {
       value: new fields.HTMLField(),
       gm: new fields.HTMLField(),
