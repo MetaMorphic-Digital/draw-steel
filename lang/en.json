@@ -613,13 +613,16 @@
       "Applied": "Applied Effects",
       "Ends": {
         "Turn": {
-          "Label": "End of Turn"
+          "Label": "End of Turn",
+          "Abbr": "EoT"
         },
         "Save": {
-          "Label": "Save Ends"
+          "Label": "Save Ends",
+          "Abbr": "Save Ends"
         },
         "Encounter": {
-          "Label": "End of Encounter or Dying"
+          "Label": "End of Encounter or Dying",
+          "Abbr": "EoE"
         }
       },
       "Conditions": {
@@ -649,6 +652,13 @@
         },
         "Weakened": {
           "name": "Weakened"
+        }
+      },
+      "base": {
+        "FIELDS": {
+          "end": {
+            "label": "Draw Steel Durations"
+          }
         }
       }
     },

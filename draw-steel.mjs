@@ -83,3 +83,8 @@ Hooks.once("ready", function () {
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
+
+/**
+ * Render hooks
+ */
+Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);

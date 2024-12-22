@@ -145,19 +145,23 @@ DRAW_STEEL.conditions = {
 
 /**
  * Times when an effect can end
- * @enum {{label: string}}
+ * @enum {{label: string, abbreviation: string}}
  */
 DRAW_STEEL.effectEnds = {
   turn: {
-    label: "DRAW_STEEL.Effect.Ends.Turn.Label"
+    label: "DRAW_STEEL.Effect.Ends.Turn.Label",
+    abbreviation: "DRAW_STEEL.Effect.Ends.Turn.Abbr"
   },
   save: {
-    label: "DRAW_STEEL.Effect.Ends.Save.Label"
+    label: "DRAW_STEEL.Effect.Ends.Save.Label",
+    abbreviation: "DRAW_STEEL.Effect.Ends.Save.Abbr"
   },
   encounter: {
-    label: "DRAW_STEEL.Effect.Ends.Encounter.Label"
+    label: "DRAW_STEEL.Effect.Ends.Encounter.Label",
+    abbreviation: "DRAW_STEEL.Effect.Ends.Encounter.Abbr"
   }
 };
+preLocalize("effectEnds", {keys: ["label", "abbreviation"]});
 
 /**
  * Configuration information for skills
