@@ -43,12 +43,12 @@ export default class CharacterModel extends BaseActorModel {
 
     bio.height = new fields.SchemaField({
       value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blanK: false})
+      units: new fields.StringField({blank: false})
     });
 
     bio.weight = new fields.SchemaField({
       value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blanK: false})
+      units: new fields.StringField({blank: false})
     });
 
     bio.age = new fields.StringField({blank: false});
