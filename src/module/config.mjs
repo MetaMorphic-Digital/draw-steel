@@ -151,6 +151,9 @@ DRAW_STEEL.effectEnds = {
   turn: {
     label: "DRAW_STEEL.Effect.Ends.Turn.Label"
   },
+  save: {
+    label: "DRAW_STEEL.Effect.Ends.Save.Label"
+  },
   encounter: {
     label: "DRAW_STEEL.Effect.Ends.Encounter.Label"
   }
