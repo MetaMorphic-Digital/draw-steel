@@ -33,6 +33,6 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
    */
   get isTemporary() {
-    return this.system.isTemporary ?? super.isTemporary;
+    return this.system._isTemporary ?? super.isTemporary;
   }
 }

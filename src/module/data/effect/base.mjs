@@ -22,7 +22,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * An effect is also temporary if it has the `end` property set even though they have indeterminate lengths
    * @returns {true | null}
    */
-  get isTemporary() {
+  get _isTemporary() {
     if (this.end) return true;
     else return null;
   }

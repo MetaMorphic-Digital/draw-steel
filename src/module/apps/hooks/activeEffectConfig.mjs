@@ -14,7 +14,10 @@ export function renderActiveEffectConfig(app, [html], context) {
 
   const endOptions = Object.entries(ds.CONFIG.effectEnds).map(([value, {label}]) => ({value, label}));
 
-  const endsInput = effect.system.schema.getField("end").toFormGroup({}, {options: endOptions, value: effect.system.end, blank: ""});
+  const endsInput = effect.system.schema.getField("end").toFormGroup(
+    {},
+    {options: endOptions, value: effect.system.end, blank: ""}
+  );
 
   const durationTab = html.querySelector([".tab[data-tab=\"duration\"]"]);
 
