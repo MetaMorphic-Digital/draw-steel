@@ -29,7 +29,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * @internal
    */
   get _isTemporary() {
-    if (this.end) return true;
+    if (this.end.type) return true;
     else return null;
   }
 
@@ -49,7 +49,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * @internal
    */
   get _prepareDuration() {
-    if (!this.end) return null;
+    if (!this.end.type) return null;
     return {
       type: "draw-steel",
       duration: null,
