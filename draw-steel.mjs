@@ -22,6 +22,7 @@ globalThis.SavingThrowRoll = helpers.rolls.SavingThrowRoll;
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
+  helpers.DrawSteelSettingsHandler.registerSettings();
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
@@ -57,14 +58,18 @@ Hooks.once("init", function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelActorSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.SheetLabels.Actor"
+    label: "DRAW_STEEL.Sheet.Labels.Actor"
   });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.SheetLabels.Item"
+    label: "DRAW_STEEL.Sheet.Labels.Item"
   });
 
+  // Core application replacements
+  CONFIG.ui.combat = applications.core.DrawSteelCombatTracker;
+
+  // Register dice rolls
   CONFIG.Dice.rolls = Object.values(helpers.rolls);
 });
 
