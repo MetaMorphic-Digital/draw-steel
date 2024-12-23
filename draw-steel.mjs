@@ -93,3 +93,4 @@ Hooks.once("ready", function () {
  * Render hooks
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
+Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
