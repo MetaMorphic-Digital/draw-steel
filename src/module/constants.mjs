@@ -13,3 +13,8 @@ ______                      _____ _            _
 | |/ /| | | (_| |\\ V  V /  /\\__/ / ||  __/  __/ |
 |___/ |_|  \\__,_| \\_/\\_/   \\____/ \\__\\___|\\___|_|
 `;
+
+export const initiativeModes = Object.freeze({
+  default: "DRAW_STEEL.Combat.Initiative.Modes.Default",
+  alternative: "DRAW_STEEL.Combat.Initiative.Modes.Alternative"
+});
