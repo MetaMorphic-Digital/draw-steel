@@ -59,9 +59,12 @@ export function renderCombatTracker(app, [html], context) {
     } else initControl.innerHTML = "";
   }
 
-  // Footer updates
-  html.querySelector("a.combat-control[data-control=\"previousTurn\"]")?.remove();
-  html.querySelector("a.combat-control[data-control=\"nextTurn\"]")?.remove();
+  // Footer updates.
+  if (game.user.isGM) {
+    html.querySelector("a.combat-control[data-control=\"previousTurn\"]")?.remove();
+    html.querySelector("a.combat-control[data-control=\"nextTurn\"]")?.remove();
+  }
+  else html.querySelector(".directory-footer")?.remove();
 }
 
 /**

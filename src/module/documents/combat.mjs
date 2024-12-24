@@ -8,6 +8,14 @@ export class DrawSteelCombat extends Combat {
     Hooks.callAll("ds.prepareCombatData", this);
   }
 
+  /** @override */
+  async nextRound() {
+    await super.nextRound();
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    const combatantUpdates = this.combatants.filter(c => !c.initiative).map(c => ({_id: c.id, initiative: 1}));
+    this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+  }
+
   /**
    * @param {DrawSteelCombatant} a Some combatant
    * @param {DrawSteelCombatant} b Some other combatant
