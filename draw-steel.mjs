@@ -66,9 +66,6 @@ Hooks.once("init", function () {
     label: "DRAW_STEEL.Sheet.Labels.Item"
   });
 
-  // Core application replacements
-  CONFIG.ui.combat = applications.core.DrawSteelCombatTracker;
-
   // Register dice rolls
   CONFIG.Dice.rolls = Object.values(helpers.rolls);
 });
@@ -94,3 +91,4 @@ Hooks.once("ready", function () {
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
+Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);

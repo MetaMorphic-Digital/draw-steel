@@ -1,4 +1,3 @@
-export * as core from "./core/combat-tracker.mjs";
 export * as hooks from "./hooks/_module.mjs";
 export {DrawSteelActorSheet} from "./actor-sheet.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";

@@ -1,12 +1,14 @@
+/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs" */
+
 /**
- * A hook event that fires when the ActiveEffectConfig application is rendered
+ * A hook event that fires when the CombatantConfig application is rendered
  * @param {CombatantConfig} app
  * @param {JQuery<HTMLElement>} jquery
  * @param {Record<string, any>} context
  */
 export function renderCombatantConfig(app, [html], context) {
   /**
-   * @type {import("../../documents/combatant.mjs").DrawSteelCombatant}
+   * @type {DrawSteelCombatant}
    */
   const combatant = app.document;
 
