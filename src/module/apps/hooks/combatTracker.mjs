@@ -41,7 +41,7 @@ export function renderCombatTracker(app, [html], context) {
     initControl.classList.add(dispositionColor);
     if (combatant.isOwner) {
       initControl.innerHTML = `<a class="activate-combatant" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.${combatant.initiative ? "Act" : "Restore"}">
-        <i class="fa-solid ${combatant.initiative ? "fa-arrow-right" : "fa-clock-rotate-left"}"></i>
+        ${combatant.initiative > 1 ? combatant.initiative + " " : ""}<i class="fa-solid ${combatant.initiative ? "fa-arrow-right" : "fa-clock-rotate-left"}"></i>
         </a>`;
 
       /** @type {HTMLAnchorElement} */
