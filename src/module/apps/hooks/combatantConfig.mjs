@@ -2,9 +2,9 @@
 
 /**
  * A hook event that fires when the CombatantConfig application is rendered
- * @param {CombatantConfig} app
- * @param {JQuery<HTMLElement>} jquery
- * @param {Record<string, any>} context
+ * @param {CombatantConfig} app         The Application instance being rendered
+ * @param {JQuery<HTMLElement>} jquery  The inner HTML of the document that will be displayed and may be modified
+ * @param {Record<string, any>} context The object of data used when rendering the application
  */
 export function renderCombatantConfig(app, [html], context) {
   /**

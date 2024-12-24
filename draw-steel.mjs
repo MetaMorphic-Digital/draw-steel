@@ -92,3 +92,4 @@ Hooks.once("ready", function () {
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
+Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);

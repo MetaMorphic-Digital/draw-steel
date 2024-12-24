@@ -3,9 +3,9 @@ import {systemID} from "../../constants.mjs";
 
 /**
  * A hook event that fires when the CombatTracker application is rendered
- * @param {CombatTracker} app
- * @param {JQuery<HTMLElement>} jquery
- * @param {Record<string, any>} context
+ * @param {CombatTracker} app           The Application instance being rendered
+ * @param {JQuery<HTMLElement>} jquery  The inner HTML of the document that will be displayed and may be modified
+ * @param {Record<string, any>} context The object of data used when rendering the application
  * // TODO: Refactor to properly subclassing the CombatTracker app in v13
  */
 export function renderCombatTracker(app, [html], context) {
@@ -62,4 +62,15 @@ export function renderCombatTracker(app, [html], context) {
   // Footer updates
   html.querySelector("a.combat-control[data-control=\"previousTurn\"]")?.remove();
   html.querySelector("a.combat-control[data-control=\"nextTurn\"]")?.remove();
+}
+
+/**
+ * A hook event that fires when the context menu for entries in the CombatTracker is constructed.
+ * @param {CombatTracker} application         The Application instance that the context menu is constructed in
+ * @param {ContextMenuEntry[]} entryOptions   The context menu entries
+ */
+export function getCombatTrackerEntryContext(application, entryOptions) {
+  if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+  entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
+  entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
 }
