@@ -18,6 +18,28 @@
         "Abilities": "Abilities",
         "Effects": "Effects"
       },
+      "characteristics": {
+        "might": {
+          "abbreviation": "M",
+          "full": "Might"
+        },
+        "agility": {
+          "abbreviation": "A",
+          "full": "Agility"
+        },
+        "reason": {
+          "abbreviation": "R",
+          "full": "Reason"
+        },
+        "intuition": {
+          "abbreviation": "I",
+          "full": "Intuition"
+        },
+        "presence": {
+          "abbreviation": "P",
+          "full": "Presence"
+        }
+      },
       "base": {
         "FIELDS": {
           "biography": {
@@ -32,37 +54,7 @@
             }
           },
           "characteristics": {
-            "label": "Characteristics",
-            "mgt": {
-              "value": {
-                "label": "MGT",
-                "hint": "Might"
-              }
-            },
-            "agl": {
-              "value": {
-                "label": "AGL",
-                "hint": "Agility"
-              }
-            },
-            "rea": {
-              "value": {
-                "label": "REA",
-                "hint": "Reason"
-              }
-            },
-            "inu": {
-              "value": {
-                "label": "INU",
-                "hint": "Intuition"
-              }
-            },
-            "prs": {
-              "value": {
-                "label": "PRS",
-                "hint": "Presence"
-              }
-            }
+            "label": "Characteristics"
           },
           "stamina": {
             "label": "Stamina",
@@ -613,10 +605,16 @@
       "Applied": "Applied Effects",
       "Ends": {
         "Turn": {
-          "Label": "End of Turn"
+          "Label": "End of Turn",
+          "Abbr": "EoT"
+        },
+        "Save": {
+          "Label": "Save Ends",
+          "Abbr": "Save Ends"
         },
         "Encounter": {
-          "Label": "End of Encounter"
+          "Label": "End of Encounter or Dying",
+          "Abbr": "EoE"
         }
       },
       "Conditions": {
@@ -646,6 +644,18 @@
         },
         "Weakened": {
           "name": "Weakened"
+        }
+      },
+      "base": {
+        "FIELDS": {
+          "end": {
+            "type": {
+              "label": "Draw Steel Durations"
+            },
+            "roll": {
+              "label": "Saving Throw Formula"
+            }
+          }
         }
       }
     },
@@ -690,6 +700,9 @@
       "Project": {
         "Label": "Project Roll",
         "Breakthrough": "Breakthrough!"
+      },
+      "Save": {
+        "Label": "Saving Throw"
       }
     },
     "Skill": {

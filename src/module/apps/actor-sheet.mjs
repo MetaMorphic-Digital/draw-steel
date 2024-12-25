@@ -187,7 +187,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getCharacteristics() {
     const data = this.isPlayMode ? this.actor : this.actor._source;
-    return ds.CONFIG.characteristics.reduce((obj, chc) => {
+    return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
         value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`)

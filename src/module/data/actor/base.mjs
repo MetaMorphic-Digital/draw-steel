@@ -1,18 +1,21 @@
 import {barAttribute, damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
+const fields = foundry.data.fields;
 
+/**
+ * A base actor model that provides common properties for both characters and npcs
+ */
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /** @override */
   static defineSchema() {
-    const fields = foundry.data.fields;
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 
     schema.stamina = barAttribute(20);
 
     schema.characteristics = new fields.SchemaField(
-      ds.CONFIG.characteristics.reduce((obj, chc) => {
+      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, {label, hint}]) => {
         obj[chc] = new fields.SchemaField({
-          value: new fields.NumberField(characteristic)
+          value: new fields.NumberField({...characteristic, label, hint})
         });
         return obj;
       }, {})
@@ -23,11 +26,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       stability: requiredInteger({initial: 0})
     });
 
-    schema.biography = new fields.SchemaField({
-      value: new fields.HTMLField(),
-      gm: new fields.HTMLField(),
-      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
-    });
+    schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
       walk: new fields.NumberField({integer: true, min: 0, initial: 5}),
@@ -44,6 +43,19 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     return schema;
+  }
+
+  /**
+   * Helper function to fill in the `biography` property
+   * @protected
+   * @returns {Record<string, fields["DataField"]}
+   */
+  static actorBiography() {
+    return {
+      value: new fields.HTMLField(),
+      gm: new fields.HTMLField(),
+      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
+    };
   }
 
   /** @override */
