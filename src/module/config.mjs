@@ -6,12 +6,39 @@ export const DRAW_STEEL = {};
 
 /**
  * The set of Characteristics used within the system.
- * The long form can be accessed under `DRAW_STEEL.Actor.base.FIELDS.characteristics.{}.value`.
- * The `label` is the short form in all caps (e.g. M).
- * The `hint` is the full name (e.g. Might).
- * @type {Array<string>}
+ * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
+ * The `label` is the full name (e.g. Might).
+ * The `hint` is the short form in all caps (e.g. M).
+ * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
-DRAW_STEEL.characteristics = ["might", "agility", "reason", "intuition", "presence"];
+DRAW_STEEL.characteristics = {
+  might: {
+    label: "DRAW_STEEL.Actor.characteristics.might.full",
+    hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
+    rollKey: "M"
+  },
+  agility: {
+    label: "DRAW_STEEL.Actor.characteristics.agility.full",
+    hint: "DRAW_STEEL.Actor.characteristics.agility.abbreviation",
+    rollKey: "A"
+  },
+  reason: {
+    label: "DRAW_STEEL.Actor.characteristics.reason.full",
+    hint: "DRAW_STEEL.Actor.characteristics.reason.abbreviation",
+    rollKey: "R"
+  },
+  intuition: {
+    label: "DRAW_STEEL.Actor.characteristics.intuition.full",
+    hint: "DRAW_STEEL.Actor.characteristics.intuition.abbreviation",
+    rollKey: "I"
+  },
+  presence: {
+    label: "DRAW_STEEL.Actor.characteristics.presence.full",
+    hint: "DRAW_STEEL.Actor.characteristics.presence.abbreviation",
+    rollKey: "P"
+  }
+};
+preLocalize("characteristics", {keys: ["label", "hint"]});
 
 /**
  *
