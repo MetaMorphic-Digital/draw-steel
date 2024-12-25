@@ -449,6 +449,10 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   }
 });
 
+/**
+ * Configuration information for languages
+ * @type {Record<string, {label: string}>}
+ */
 DRAW_STEEL.languages = {
   // ancestry languages
   anjali: {
@@ -576,8 +580,8 @@ DRAW_STEEL.languages = {
   ullorvic: {
     label: "DRAW_STEEL.Languages.Ullorvic"
   }
-
 };
+preLocalize("languages", {key: "label"});
 
 /** @import {AdvancementTypeConfiguration} from "./_types" */
 
