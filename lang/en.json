@@ -2,8 +2,8 @@
   "DRAW_STEEL": {
     "Sheet": {
       "Labels": {
-        "Actor": "DrawSteel Actor Sheet",
-        "Item": "DrawSteel Item Sheet"
+        "Actor": "Draw Steel Actor Sheet",
+        "Item": "Draw Steel Item Sheet"
       },
       "Add": "+ Add {itemName}",
       "Play": "Play",
@@ -17,6 +17,28 @@
         "Stats": "Stats",
         "Abilities": "Abilities",
         "Effects": "Effects"
+      },
+      "characteristics": {
+        "might": {
+          "abbreviation": "M",
+          "full": "Might"
+        },
+        "agility": {
+          "abbreviation": "A",
+          "full": "Agility"
+        },
+        "reason": {
+          "abbreviation": "R",
+          "full": "Reason"
+        },
+        "intuition": {
+          "abbreviation": "I",
+          "full": "Intuition"
+        },
+        "presence": {
+          "abbreviation": "P",
+          "full": "Presence"
+        }
       },
       "base": {
         "FIELDS": {
@@ -32,37 +54,7 @@
             }
           },
           "characteristics": {
-            "label": "Characteristics",
-            "mgt": {
-              "value": {
-                "label": "MGT",
-                "hint": "Might"
-              }
-            },
-            "agl": {
-              "value": {
-                "label": "AGL",
-                "hint": "Agility"
-              }
-            },
-            "rea": {
-              "value": {
-                "label": "REA",
-                "hint": "Reason"
-              }
-            },
-            "inu": {
-              "value": {
-                "label": "INU",
-                "hint": "Intuition"
-              }
-            },
-            "prs": {
-              "value": {
-                "label": "PRS",
-                "hint": "Presence"
-              }
-            }
+            "label": "Characteristics"
           },
           "stamina": {
             "label": "Stamina",
@@ -146,8 +138,7 @@
         }
       },
       "NPC": {
-        "FIELDS": {
-        },
+        "FIELDS": {},
         "ROLES": {
           "Ambusher": "Ambusher",
           "Artillery": "Artillery",
@@ -177,6 +168,33 @@
             "Protection": "Protection",
             "Revelry": "Revelry",
             "Vengeance": "Vengeance"
+          }
+        }
+      }
+    },
+    "Combat": {
+      "Initiative": {
+        "Modes": {
+          "Label": "Initiative Mode",
+          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order",
+          "Default": "Default",
+          "Alternative": "Alternative"
+        },
+        "Actions": {
+          "Act": "Act",
+          "Restore": "Restore Action"
+        }
+      },
+      "base": {
+        "FIELDS": {}
+      }
+    },
+    "Combatant": {
+      "base": {
+        "FIELDS": {
+          "disposition": {
+            "label": "Disposition",
+            "blank": "Match Token"
           }
         }
       }
@@ -777,6 +795,49 @@
         "Society": "Society",
         "Timescape": "Timescape"
       }
+    },
+    "Languages": {
+      "Anjali": "Anjali",
+      "Axiomatic": "Axiomatic",
+      "Caeliah": "Caeliah",
+      "Filliaric": "Filliaric ",
+      "Higaran": "Higaran",
+      "HighKuric": "High Kuric",
+      "HighRhyvian": "High Rhyvian",
+      "Hyrallic": "Hyrallic",
+      "Illyvric": "Illyvric",
+      "Kalliak": "Kalliak",
+      "Kethaic": "Kethaic",
+      "Khamish": "Khamish",
+      "Khelt": "Khelt ",
+      "Kheltivari": "Kheltivari",
+      "Khemharic": "Khemharic",
+      "Khoursirian": "Khoursirian",
+      "LowKuric": "Low Kuric ",
+      "LowRhivian": "Low Rhivian",
+      "Mindspeech": "Mindspeech",
+      "Oaxuatl": "Oaxuatl",
+      "OldVariac": "Old Variac",
+      "Phaedran": "Phaedran",
+      "Phorialtic": "Phorialtic",
+      "ProtoCtholl": "Proto-Ctholl",
+      "Rallarian": "Rallarian",
+      "Riojan": "Riojan",
+      "Szetch": "Szetch",
+      "TheFirstLanguage": "The First Language ",
+      "Tholl": "Tholl",
+      "Ullorvic": "Ullorvic",
+      "Urollialic": "Urollialic ",
+      "Uvalic": "Uvalic",
+      "Vaniric": "Vaniric",
+      "Variac": "Variac",
+      "Vasloria": "Vasloria",
+      "Vastariax": "Vastariax",
+      "Vhoric": "Vhoric",
+      "Voll": "Voll",
+      "Yllyric": "Yllyric",
+      "Zahariax": "Za'hariax",
+      "Zaliac": "Zaliac"
     },
     "Advancement": {
       "Title": "Advancement"

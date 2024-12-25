@@ -7,7 +7,7 @@ declare module "./base.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
     stamina: BarAttribute & {winded: number},
-    characteristics: Record<typeof ds["CONFIG"]["characteristics"][0], { value: number}>;
+    characteristics: Record<string, { value: number}>;
     combat: {
       size: SizeModel;
       stability: number;

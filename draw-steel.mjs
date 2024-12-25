@@ -22,6 +22,7 @@ globalThis.SavingThrowRoll = helpers.rolls.SavingThrowRoll;
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
+  helpers.DrawSteelSettingsHandler.registerSettings();
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
@@ -57,21 +58,36 @@ Hooks.once("init", function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelActorSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.SheetLabels.Actor"
+    label: "DRAW_STEEL.Sheet.Labels.Actor"
   });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.SheetLabels.Item"
+    label: "DRAW_STEEL.Sheet.Labels.Item"
   });
 
+  // Register dice rolls
   CONFIG.Dice.rolls = Object.values(helpers.rolls);
 });
 
 /**
  * Perform one-time pre-localization and sorting of some configuration objects
  */
-Hooks.once("i18nInit", () => helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL));
+Hooks.once("i18nInit", () => {
+  helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+  // These fields are not auto-localized due to having a different location in en.json
+  for (const model of Object.values(CONFIG.Actor.dataModels)) {
+    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    const characteristicSchema = model.schema.getField("characteristics");
+    if (!characteristicSchema) continue;
+    for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
+      const field = characteristicSchema.getField(`${characteristic}.value`);
+      if (!field) continue;
+      field.label = label;
+      field.hint = hint;
+    }
+  }
+});
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
@@ -88,3 +104,6 @@ Hooks.once("ready", async function () {
  * Render hooks
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
+Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
+Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
+Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);

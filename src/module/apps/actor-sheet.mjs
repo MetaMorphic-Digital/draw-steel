@@ -1,5 +1,7 @@
 import {systemPath} from "../constants.mjs";
 
+/** @import {FormSelectOption} from "../../../foundry/client-esm/applications/forms/fields.mjs" */
+
 const {api, sheets} = foundry.applications;
 
 /**
@@ -187,7 +189,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getCharacteristics() {
     const data = this.isPlayMode ? this.actor : this.actor._source;
-    return ds.CONFIG.characteristics.reduce((obj, chc) => {
+    return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
         value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`)
@@ -225,9 +227,16 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return formatter.format(list);
   }
 
+  /**
+   * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
+   * @returns {{list: string, options: FormSelectOption[]}}
+   */
   _getLanguages() {
-    if (!this.actor.system.schema.getField("biography.languages")) return "";
-    return game.i18n.getListFormatter().format(this.actor.system.biography.languages);
+    if (!this.actor.system.schema.getField("biography.languages")) return {list: "", options: []};
+    return {
+      list: game.i18n.getListFormatter().format(Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l)),
+      options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
+    };
   }
 
   /**

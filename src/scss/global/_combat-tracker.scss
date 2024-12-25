@@ -1,0 +1,27 @@
+.combat-sidebar {
+  li.combatant {
+    .token-initiative {
+      &.PARTY {
+        background-color: rgba(51, 188, 78, 0.3);
+      }
+      &.SECRET {
+        background-color: rgba(166, 18, 212, 0.3);
+      }
+      &.HOSTILE {
+        background-color: rgba(231, 33, 36, 0.3);
+      }
+      &.NEUTRAL {
+        background-color: rgba(241, 216, 54, 0.3);
+      }
+      &.FRIENDLY {
+        background-color: rgba(67, 223, 223, 0.3);
+      }
+      &.OTHER {
+        background-color: rgba(85, 85, 85, 0.3);
+      }
+      .activate-combatant {
+        font-size: 24px;
+      }
+    }
+  }
+}
