@@ -531,23 +531,23 @@ DRAW_STEEL.languages = {
     label: "DRAW_STEEL.Languages.Zaliac"
   },
   // Human languages. Khoursirian already covered
-  uvalic: {
-    label: "DRAW_STEEL.Languages.Uvalic"
-  },
   higaran: {
     label: "DRAW_STEEL.Languages.Higaran"
   },
-  oaxuatl: {
-    label: "DRAW_STEEL.Languages.Oaxuatl"
-  },
   khemharic: {
     label: "DRAW_STEEL.Languages.Khemharic"
+  },
+  oaxuatl: {
+    label: "DRAW_STEEL.Languages.Oaxuatl"
   },
   phaedran: {
     label: "DRAW_STEEL.Languages.Phaedran"
   },
   riojan: {
     label: "DRAW_STEEL.Languages.Riojan"
+  },
+  uvalic: {
+    label: "DRAW_STEEL.Languages.Uvalic"
   },
   vaniric: {
     label: "DRAW_STEEL.Languages.Vaniric"
