@@ -11,6 +11,10 @@ export class DrawSteelActor extends Actor {
       }
     }
 
+    if ("potency" in this.system) {
+      rollData.potency = this.system.potency;
+    }
+
     return rollData;
   }
 
