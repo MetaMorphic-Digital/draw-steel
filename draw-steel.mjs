@@ -71,7 +71,21 @@ Hooks.once("init", function () {
 /**
  * Perform one-time pre-localization and sorting of some configuration objects
  */
-Hooks.once("i18nInit", () => helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL));
+Hooks.once("i18nInit", () => {
+  helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+  // These fields are not auto-localized due to having a different location in en.json
+  for (const model of Object.values(CONFIG.Actor.dataModels)) {
+    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    const characteristicSchema = model.schema.getField("characteristics");
+    if (!characteristicSchema) continue;
+    for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
+      const field = characteristicSchema.getField(`${characteristic}.value`);
+      if (!field) continue;
+      field.label = label;
+      field.hint = hint;
+    }
+  }
+});
 
 /* -------------------------------------------- */
 /*  Ready Hook                                  */
