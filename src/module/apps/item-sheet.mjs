@@ -42,7 +42,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       template: systemPath("templates/item/description.hbs")
     },
     details: {
-      template: systemPath("templates/item/details.hbs")
+      template: systemPath("templates/item/details.hbs"),
+      scrollable: [""]
     },
     advancement: {
       template: systemPath("templates/item/advancement.hbs")
