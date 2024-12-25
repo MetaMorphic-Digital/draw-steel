@@ -11,7 +11,7 @@ export const DRAW_STEEL = {};
  * The `hint` is the full name (e.g. Might).
  * @type {Array<string>}
  */
-DRAW_STEEL.characteristics = ["M", "A", "R", "I", "P"];
+DRAW_STEEL.characteristics = ["might", "agility", "reason", "intuition", "presence"];
 
 /**
  *
