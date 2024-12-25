@@ -36,7 +36,7 @@ If you are using VSCode, the i18n Ally (ID: `lokalise.i18n-ally`) extension will
 
 ## Compendiums
 
-The system is still under construction and not ready for compendium content yet! The current license allows for the full text of the backer packet and the backer packet only.
+The system is still under construction and not ready for compendium content yet! The current license allows for the full text of the backer packets and the backer packets only.
 
 ### Translations
 

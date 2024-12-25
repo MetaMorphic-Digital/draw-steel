@@ -5,15 +5,18 @@ import BaseActorModel from "./base.mjs";
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
+  /** @override */
   static metadata = Object.freeze({
     type: "npc"
   });
 
+  /** @override */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.NPC"
   ];
 
+  /** @override */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();

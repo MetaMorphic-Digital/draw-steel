@@ -55,10 +55,7 @@ export default class ClassModel extends AdvancementModel {
 
   /** @override */
   getSheetContext(context) {
-    context.characteristics = ds.CONFIG.characteristics.map(value => ({
-      value,
-      label: game.i18n.localize(`DRAW_STEEL.Actor.base.FIELDS.characteristics.${value}.value.hint`)
-    }));
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
   }
 
   /** @override */
