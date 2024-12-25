@@ -449,7 +449,139 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   }
 });
 
-// TODO: Languages
+/**
+ * Configuration information for languages
+ * @type {Record<string, {label: string}>}
+ */
+DRAW_STEEL.languages = {
+  // ancestry languages
+  anjali: {
+    label: "DRAW_STEEL.Languages.Anjali"
+  },
+  axiomatic: {
+    label: "DRAW_STEEL.Languages.Axiomatic"
+  },
+  caeliah: {
+    label: "DRAW_STEEL.Languages.Caeliah"
+  },
+  filliaric: {
+    label: "DRAW_STEEL.Languages.Filliaric"
+  },
+  highKuric: {
+    label: "DRAW_STEEL.Languages.HighKuric"
+  },
+  hyrallic: {
+    label: "DRAW_STEEL.Languages.Hyrallic"
+  },
+  illyvric: {
+    label: "DRAW_STEEL.Languages.Illyvric"
+  },
+  kalliak: {
+    label: "DRAW_STEEL.Languages.Kalliak"
+  },
+  kethaic: {
+    label: "DRAW_STEEL.Languages.Kethaic"
+  },
+  khelt: {
+    label: "DRAW_STEEL.Languages.Khelt"
+  },
+  khoursirian: {
+    label: "DRAW_STEEL.Languages.Khoursirian"
+  },
+  lowKuric: {
+    label: "DRAW_STEEL.Languages.LowKuric"
+  },
+  mindspeech: {
+    label: "DRAW_STEEL.Languages.Mindspeech"
+  },
+  protoCtholl: {
+    label: "DRAW_STEEL.Languages.ProtoCtholl"
+  },
+  szetch: {
+    label: "DRAW_STEEL.Languages.Szetch"
+  },
+  theFirstLanguage: {
+    label: "DRAW_STEEL.Languages.TheFirstLanguage"
+  },
+  tholl: {
+    label: "DRAW_STEEL.Languages.Tholl"
+  },
+  urollialic: {
+    label: "DRAW_STEEL.Languages.Urollialic"
+  },
+  variac: {
+    label: "DRAW_STEEL.Languages.Variac"
+  },
+  vastariax: {
+    label: "DRAW_STEEL.Languages.Vastariax"
+  },
+  vhoric: {
+    label: "DRAW_STEEL.Languages.Vhoric"
+  },
+  voll: {
+    label: "DRAW_STEEL.Languages.Voll"
+  },
+  yllyric: {
+    label: "DRAW_STEEL.Languages.Yllyric"
+  },
+  zahariax: {
+    label: "DRAW_STEEL.Languages.Zahariax"
+  },
+  zaliac: {
+    label: "DRAW_STEEL.Languages.Zaliac"
+  },
+  // Human languages. Khoursirian already covered
+  higaran: {
+    label: "DRAW_STEEL.Languages.Higaran"
+  },
+  khemharic: {
+    label: "DRAW_STEEL.Languages.Khemharic"
+  },
+  oaxuatl: {
+    label: "DRAW_STEEL.Languages.Oaxuatl"
+  },
+  phaedran: {
+    label: "DRAW_STEEL.Languages.Phaedran"
+  },
+  riojan: {
+    label: "DRAW_STEEL.Languages.Riojan"
+  },
+  uvalic: {
+    label: "DRAW_STEEL.Languages.Uvalic"
+  },
+  vaniric: {
+    label: "DRAW_STEEL.Languages.Vaniric"
+  },
+  vasloria: {
+    label: "DRAW_STEEL.Languages.Vasloria"
+  },
+  // Dead languages
+  highRhyvian: {
+    label: "DRAW_STEEL.Languages.HighRhyvian"
+  },
+  khamish: {
+    label: "DRAW_STEEL.Languages.Khamish"
+  },
+  kheltivari: {
+    label: "DRAW_STEEL.Languages.Kheltivari"
+  },
+  lowRhivian: {
+    label: "DRAW_STEEL.Languages.LowRhivian"
+  },
+  oldVariac: {
+    label: "DRAW_STEEL.Languages.OldVariac"
+  },
+  phorialtic: {
+    label: "DRAW_STEEL.Languages.Phorialtic"
+  },
+  rallarian: {
+    label: "DRAW_STEEL.Languages.Rallarian"
+  },
+  ullorvic: {
+    label: "DRAW_STEEL.Languages.Ullorvic"
+  }
+};
+preLocalize("languages", {key: "label"});
 
 /** @import {AdvancementTypeConfiguration} from "./_types" */
 
