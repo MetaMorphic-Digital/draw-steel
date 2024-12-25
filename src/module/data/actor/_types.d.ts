@@ -29,6 +29,9 @@ declare module "./base.mjs" {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
     }
+    potency: {
+      bonuses: number;
+    }
   }
 }
 
@@ -50,6 +53,12 @@ declare module "./character.mjs" {
       renown: number;
       skills: Set<string>;
       preferredKit: string;
+    }
+    potency: {
+      bonuses: number;
+      weak: number;
+      average: number;
+      strong: number;
     }
   }
 }
