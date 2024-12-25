@@ -1,4 +1,9 @@
 export class DrawSteelActiveEffect extends ActiveEffect {
+  /** @override */
+  static async _fromStatusEffect(statusId, effectData, options) {
+    if (effectData.rule) effectData.description ||= `@Embed[${effectData.rule} inline]`;
+    return new this(effectData, options);
+  }
 
   /**
    * Automatically deactivate effects with expired durations

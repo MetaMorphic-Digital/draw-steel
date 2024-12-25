@@ -80,15 +80,6 @@ Hooks.once("i18nInit", () => helpers.utils.performPreLocalization(CONFIG.DRAW_ST
 Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   // Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
-  for (const e of CONFIG.statusEffects) {
-    if (e.rule) {
-      /** @type {JournalEntryPage} */
-      const page = await fromUuid(e.rule);
-      if (page) {
-        e.description = page.text.content;
-      }
-    }
-  }
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
