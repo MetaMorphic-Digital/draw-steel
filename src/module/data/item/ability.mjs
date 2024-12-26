@@ -60,7 +60,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
-      characteristics: new fields.SetField(new fields.StringField({choices: ds.CONFIG.characteristics})),
+      characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
@@ -209,5 +209,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.damageType = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
+
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
   }
 }
