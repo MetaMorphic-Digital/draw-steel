@@ -60,6 +60,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
+      characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
@@ -88,10 +89,19 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
+   * Also selects the highest characteristic from the options.
    * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
    * @protected
    */
   _prepareCharacterData() {
+    this.powerRoll.characteristic = null;
+    for (const characteristic of this.powerRoll.characteristics) {
+      if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
+
+      const actorCharacteristics = this.actor.system.characteristics;
+      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
+    }
+
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
@@ -197,7 +207,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
 
-    context.damageType = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
+    context.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
+
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
   }
 }
