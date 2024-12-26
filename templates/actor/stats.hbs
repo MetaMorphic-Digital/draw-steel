@@ -7,18 +7,24 @@
         {{systemFields.stamina.label}}
       </label>
       <div class="resource-content flexrow">
+        {{#if isPlay}}
         <div class="resource-temporary">
           {{formGroup systemFields.stamina.fields.temporary value=system.stamina.temporary dataset=datasets.notSource}}
         </div>
         <div class="resource-current">
-          {{formInput systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
+          {{formGroup systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
         </div>
-        <span class="resource-divider"> / </span>
+        {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
-          {{system.stamina.max}}
+          <div>
+            {{systemFields.stamina.fields.max.label}}
+          </div>
+          <div>
+            {{system.stamina.max}}
+          </div>
           {{else}}
-          {{formInput systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource}}
+          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource}}
           {{/if}}
         </span>
       </div>
@@ -29,10 +35,11 @@
         {{systemFields.hero.fields.recoveries.label}}
       </label>
       <div class="resource-content flexrow">
+        {{#if isPlay}}
         <div class="resource-current">
           {{formInput systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource}}
         </div>
-        <span class="resource-divider"> / </span>
+        {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
           {{system.hero.recoveries.max}}
@@ -42,23 +49,14 @@
         </span>
       </div>
     </div>
+    {{#if (and system.class isPlay)}}
     <div class="resource heroic">
-      {{#if system.class}}
-      {{#if isPlay}}
       <label>
         <span>{{system.hero.primary.label}}</span>
         {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource}}
       </label>
-      {{else}}
-      <label class="resource-label">
-        {{systemFields.hero.label}}
-      </label>
-      <div class="resource-content">
-        {{formInput systemFields.hero.fields.primary.fields.value value=systemSource.hero.primary.value dataset=datasets.isSource}}
-      </div>
-      {{/if}}
-      {{/if}}
     </div>
+    {{/if}}
     {{/if}}
   </fieldset>
   <fieldset class="characteristics flexrow">

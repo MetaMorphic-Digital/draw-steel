@@ -1,11 +1,12 @@
 .resources {
   .resource {
-    &.stamina {
-      flex: 2;
+    input[type=number] {
+      width: 60px;
+      flex: 0 0 50px;
     }
   }
-  input[type="number"] {
-    width: 60px;
+  .form-fields {
+    justify-content: center;
   }
   .resource-label {
     font-weight: 600;
@@ -21,7 +22,7 @@
     text-align: center;
   }
   .resource-max {
-    font-size: large;
+    // font-size: large;
     text-align: center;
   }
 }

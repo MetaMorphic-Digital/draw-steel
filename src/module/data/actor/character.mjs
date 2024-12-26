@@ -120,8 +120,10 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareDerivedData();
 
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
-    if (this.class) {
-      this.hero.primary.label = this.class.system.primary;
+    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
+    const heroClass = this.class;
+    if (heroClass && heroClass.system.primary) {
+      this.hero.primary.label = heroClass.system.primary;
       // this.hero.secondary.label = this.class.system.secondary;
     }
   }
