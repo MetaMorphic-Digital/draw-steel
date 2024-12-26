@@ -115,9 +115,6 @@ export default class AbilityModel extends BaseItemModel {
           if (this.keywords.has("weapon")) {
             this.distance.primary += bonuses.ranged.distance;
           }
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.distance;
-          }
           break;
         case "meleeRanged":
           if (this.keywords.has("weapon")) {
@@ -126,32 +123,10 @@ export default class AbilityModel extends BaseItemModel {
           }
           break;
         case "aura":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "burst":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "cube":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-            this.distance.secondary += bonuses.magic.distance;
-          }
-          break;
         case "line":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-            this.distance.secondary += bonuses.magic.area;
-          }
-          break;
         case "wall":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "self":
         case "special":
           break;
@@ -179,15 +154,6 @@ export default class AbilityModel extends BaseItemModel {
               mode: CONST.ACTIVE_EFFECT_MODES.ADD
             });
           }
-        }
-      }
-      if (this.keywords.has("magic")) {
-        for (const tier of PowerRoll.TIER_NAMES) {
-          if (!bonuses.magic?.damage?.[tier]) continue;
-          this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-            value: bonuses.magic?.damage?.[tier],
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD
-          });
         }
       }
     }

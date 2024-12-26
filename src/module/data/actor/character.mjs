@@ -82,11 +82,6 @@ export default class CharacterModel extends BaseActorModel {
       /** @type {{ distance: number, damage?: DamageSchema}} */
       ranged: {
         distance: 0
-      },
-      /** @type {{ distance: number, area: number, damage?: DamageSchema }} */
-      magic: {
-        distance: 0,
-        area: 0
       }
     };
 
