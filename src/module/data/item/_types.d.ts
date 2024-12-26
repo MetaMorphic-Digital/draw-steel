@@ -158,11 +158,6 @@ declare module "./kit.mjs" {
         damage: DamageSchema;
         distance: number;
       }
-      magic: {
-        damage: DamageSchema;
-        distance: number;
-        area: number;
-      }
     }
   }
 }
