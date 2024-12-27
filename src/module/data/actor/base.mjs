@@ -75,6 +75,17 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * Perform item subtype specific modifications to the actor roll data
+   * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy
+   */
+  getRollData(rollData) {
+    for (const [key, obj] of Object.entries(this.characteristics)) {
+      const rollKey = ds.CONFIG.characteristics[key].rollKey;
+      rollData[rollKey] = obj.value;
+    }
+  }
+
+  /**
    * The actor's melee range
    */
   get reach() {
@@ -101,11 +112,11 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Prompt the user for what types
-   * @param {string} characteristic - The characteristic to roll
-   * @param {object} [options] - Options to modify the characteristic roll
-   * @param {Array<"test" | "ability">} [options.types] - Valid roll types for the characteristic
-   * @param {number} [options.edges] - Base edges for the roll
-   * @param {number} [options.banes] - Base banes for the roll
+   * @param {string} characteristic   The characteristic to roll
+   * @param {object} [options]        Options to modify the characteristic roll
+   * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic
+   * @param {number} [options.edges]                    Base edges for the roll
+   * @param {number} [options.banes]                    Base banes for the roll
    */
   async rollCharacteristic(characteristic, options = {}) {
     const types = options.types ?? ["test"];
