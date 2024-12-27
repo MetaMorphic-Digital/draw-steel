@@ -752,7 +752,7 @@ DRAW_STEEL.abilities = {
     },
     freeTriggered: {
       label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered"
-    },
+    }
   },
   /**
    * Valid distances in Draw Steel
