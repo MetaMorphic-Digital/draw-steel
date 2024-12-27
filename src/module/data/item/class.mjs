@@ -55,7 +55,7 @@ export default class ClassModel extends AdvancementModel {
 
   /** @override */
   getSheetContext(context) {
-    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
   }
 
   /** @override */
