@@ -72,10 +72,6 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
-    const highestCharacteristic = Object.values(this.characteristics).reduce((val, chr) => {
-      if (chr.value > val) return chr.value;
-      else return val;
-    }, 0);
   }
 
   /**
