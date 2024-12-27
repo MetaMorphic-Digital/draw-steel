@@ -9,22 +9,34 @@
       <div class="resource-content flexrow">
         {{#if isPlay}}
         <div class="resource-temporary">
-          {{formGroup systemFields.stamina.fields.temporary value=system.stamina.temporary dataset=datasets.notSource}}
+          {{formGroup
+            systemFields.stamina.fields.temporary
+            value=system.stamina.temporary
+            dataset=datasets.notSource
+            classes=(ifThen (eq actor.type "character") "stacked" "paired")
+          }}
         </div>
         <div class="resource-current">
-          {{formGroup systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
+          {{formGroup
+            systemFields.stamina.fields.value
+            value=system.stamina.value
+            dataset=datasets.notSource
+            classes=(ifThen (eq actor.type "character") "stacked" "paired")
+          }}
         </div>
         {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
-          <div>
-            {{systemFields.stamina.fields.max.label}}
-          </div>
-          <div>
-            {{system.stamina.max}}
+          <div class="form-group {{ifThen (eq actor.type "character") "stacked" "paired"}}">
+            <label class="input-placeholder-label">
+              {{systemFields.stamina.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.stamina.max}}
+            </div>
           </div>
           {{else}}
-          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource}}
+          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
           {{/if}}
         </span>
       </div>
@@ -37,16 +49,35 @@
       <div class="resource-content flexrow">
         {{#if isPlay}}
         <div class="resource-current">
-          {{formInput systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource}}
+          {{formGroup systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource classes="stacked"}}
         </div>
         {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
-          {{system.hero.recoveries.max}}
+          <div class="{{ifThen (eq actor.type "character") "form-group stacked" "form-group"}}">
+            <label class="input-placeholder-label">
+              {{systemFields.hero.fields.recoveries.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.hero.recoveries.max}}
+            </div>
+          </div>
           {{else}}
-          {{formInput systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource}}
+          {{formGroup systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource classes="paired"}}
           {{/if}}
         </span>
+        {{#if isPlay}}
+        <span class="recovery-value">
+          <div class="form-group stacked">
+            <label class="input-placeholder-label">
+              {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
+            </label>
+            <div class="input-placeholder">
+              {{system.hero.recoveries.recoveryValue}}
+            </div>
+          </div>
+        </span>
+        {{/if}}
       </div>
     </div>
     {{#if (and system.class isPlay)}}
