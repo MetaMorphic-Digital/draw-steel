@@ -132,8 +132,8 @@ export default class CharacterModel extends BaseActorModel {
     }, 0);
 
     // potency.bonus is handled as part of Ability calculations to accommodate NPCs not having a base shared potency
-    this.potency.weak += highestCharacteristic;
-    this.potency.average += highestCharacteristic;
+    this.potency.weak += highestCharacteristic - 2;
+    this.potency.average += highestCharacteristic - 1;
     this.potency.strong += highestCharacteristic;
   }
 
