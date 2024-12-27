@@ -61,6 +61,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
       characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
+      characteristicDamage: new fields.BooleanField(),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
@@ -94,12 +95,24 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _prepareCharacterData() {
+    // Determine the highest characteristic to use for the Power Roll and ability damage
     this.powerRoll.characteristic = null;
     for (const characteristic of this.powerRoll.characteristics) {
       if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
 
       const actorCharacteristics = this.actor.system.characteristics;
       if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
+    }
+
+    // Apply characteristic to damage field
+    if(this.powerRoll.characteristicDamage) {
+      for (const tier of PowerRoll.TIER_NAMES) {
+        const damageField = this.schema.getField(["powerRoll", tier, "damage", "value"]);
+        this.powerRoll[tier].damage.value = damageField.applyChange(this.powerRoll[tier].damage.value, this, {
+          value: this.actor.system.characteristics[this.powerRoll.characteristic].value,
+          mode: CONST.ACTIVE_EFFECT_MODES.ADD
+        });
+      }
     }
 
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */

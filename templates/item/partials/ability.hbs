@@ -33,8 +33,9 @@
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
+{{formGroup systemFields.powerRoll.fields.characteristicDamage value=system.powerRoll.characteristicDamage}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier2}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
 {{/if}}
 {{formGroup systemFields.effect value=system.effect}}
