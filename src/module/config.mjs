@@ -743,7 +743,16 @@ DRAW_STEEL.abilities = {
     },
     maneuver: {
       label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
-    }
+    },
+    freeManeuver: {
+      label: "DRAW_STEEL.Item.Ability.Type.FreeManeuver"
+    },
+    triggered: {
+      label: "DRAW_STEEL.Item.Ability.Type.Triggered"
+    },
+    freeTriggered: {
+      label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered"
+    },
   },
   /**
    * Valid distances in Draw Steel
