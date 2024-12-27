@@ -10,7 +10,9 @@
 {{/inline}}
 {{formGroup systemFields.keywords value=system.keywords options=keywords}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
+{{#if triggeredAction}}
 {{formGroup systemFields.trigger value=system.trigger}}
+{{/if}}
 {{formGroup systemFields.spend value=system.spend}}
 <fieldset>
   <legend>{{systemFields.distance.label}}</legend>
@@ -32,6 +34,7 @@
 </fieldset>
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}
+{{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier2}}

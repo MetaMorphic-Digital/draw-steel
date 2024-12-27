@@ -643,7 +643,7 @@ preLocalize("negotation.motivations", {key: "label"});
  * Configuration information for heros
  */
 DRAW_STEEL.hero = {
-  xp_track: [0, 10, 25, 40, 55, 70, 85, 100, 115, 130]
+  xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144]
 };
 
 /**
@@ -735,7 +735,7 @@ DRAW_STEEL.abilities = {
   },
   /**
    * Action types
-   * @type {Record<string, {label: string}>}
+   * @type {Record<string, {label: string, triggered?: boolean}>}
    */
   types: {
     action: {
@@ -743,6 +743,17 @@ DRAW_STEEL.abilities = {
     },
     maneuver: {
       label: "DRAW_STEEL.Item.Ability.Type.Maneuver"
+    },
+    freeManeuver: {
+      label: "DRAW_STEEL.Item.Ability.Type.FreeManeuver"
+    },
+    triggered: {
+      label: "DRAW_STEEL.Item.Ability.Type.Triggered",
+      triggered: true
+    },
+    freeTriggered: {
+      label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered",
+      triggered: true
     }
   },
   /**

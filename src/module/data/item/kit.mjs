@@ -53,11 +53,6 @@ export default class KitModel extends BaseItemModel {
         distance: new fields.NumberField({integer: true})
       }),
       disengage: new fields.NumberField({integer: true})
-      // magic: new fields.SchemaField({
-      //   damage: new fields.SchemaField(damageSchema()),
-      //   distance: new fields.NumberField({integer: true}),
-      //   area: new fields.NumberField({integer: true})
-      // })
     });
 
     // schema.signature = new fields.SchemaField({
