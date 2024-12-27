@@ -61,6 +61,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
+      characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
@@ -89,10 +90,19 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
+   * Also selects the highest characteristic from the options.
    * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
    * @protected
    */
   _prepareCharacterData() {
+    this.powerRoll.characteristic = null;
+    for (const characteristic of this.powerRoll.characteristics) {
+      if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
+
+      const actorCharacteristics = this.actor.system.characteristics;
+      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
+    }
+
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
@@ -106,9 +116,6 @@ export default class AbilityModel extends BaseItemModel {
           if (this.keywords.has("weapon")) {
             this.distance.primary += bonuses.ranged.distance;
           }
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.distance;
-          }
           break;
         case "meleeRanged":
           if (this.keywords.has("weapon")) {
@@ -117,32 +124,10 @@ export default class AbilityModel extends BaseItemModel {
           }
           break;
         case "aura":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "burst":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "cube":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-            this.distance.secondary += bonuses.magic.distance;
-          }
-          break;
         case "line":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-            this.distance.secondary += bonuses.magic.area;
-          }
-          break;
         case "wall":
-          if (this.keywords.has("magic")) {
-            this.distance.primary += bonuses.magic.area;
-          }
-          break;
         case "self":
         case "special":
           break;
@@ -172,15 +157,6 @@ export default class AbilityModel extends BaseItemModel {
           }
         }
       }
-      if (this.keywords.has("magic")) {
-        for (const tier of PowerRoll.TIER_NAMES) {
-          if (!bonuses.magic?.damage?.[tier]) continue;
-          this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-            value: bonuses.magic?.damage?.[tier],
-            mode: CONST.ACTIVE_EFFECT_MODES.ADD
-          });
-        }
-      }
     }
   }
 
@@ -190,6 +166,8 @@ export default class AbilityModel extends BaseItemModel {
     context.keywords = Object.entries(config.keywords).map(([value, {label}]) => ({value, label}));
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
 
+    context.triggeredAction = !!config.types[this.type]?.triggered;
+
     context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
     context.primaryDistance = config.distances[this.distance.type].primary;
     context.secondaryDistance = config.distances[this.distance.type].secondary;
@@ -198,7 +176,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
 
-    context.damageType = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
+    context.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
+
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
   }
 }
