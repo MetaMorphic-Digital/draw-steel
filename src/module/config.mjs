@@ -735,7 +735,7 @@ DRAW_STEEL.abilities = {
   },
   /**
    * Action types
-   * @type {Record<string, {label: string}>}
+   * @type {Record<string, {label: string, triggered?: boolean}>}
    */
   types: {
     action: {
@@ -748,10 +748,12 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Type.FreeManeuver"
     },
     triggered: {
-      label: "DRAW_STEEL.Item.Ability.Type.Triggered"
+      label: "DRAW_STEEL.Item.Ability.Type.Triggered",
+      triggered: true
     },
     freeTriggered: {
-      label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered"
+      label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered",
+      triggered: true
     }
   },
   /**
