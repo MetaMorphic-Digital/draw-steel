@@ -165,7 +165,7 @@ export default class AbilityModel extends BaseItemModel {
     context.keywords = Object.entries(config.keywords).map(([value, {label}]) => ({value, label}));
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
 
-    context.triggeredAction = this.type in Object.fromEntries(Object.entries(config.types).filter(([value, {triggered}]) => triggered));
+    context.triggeredAction = !!config.types[this.type]?.triggered;
 
     context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
     context.primaryDistance = config.distances[this.distance.type].primary;
