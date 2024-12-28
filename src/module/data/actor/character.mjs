@@ -136,6 +136,7 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.strong += highestCharacteristic;
   }
 
+  /** @override */
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
 
