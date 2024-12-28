@@ -1,3 +1,5 @@
+import {systemID} from "../../constants.mjs";
+
 const fields = foundry.data.fields;
 
 /**
@@ -16,4 +18,17 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /** Helper text for Hero Tokens */
   static hint = "DRAW_STEEL.Setting.HeroTokens.Hint";
+
+  /**
+   * Send a socket message to the Director to spend a hero token
+   * Necessary because only game masters can modify world settings
+   */
+  spendToken() {
+    const currentTokens = game.settings.get(systemID, "heroTokens").value;
+    if (currentTokens < 1) {
+      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens");
+      return;
+    }
+    game.system.socketHandler.emit("spendHeroToken", {userId: game.userId});
+  }
 }
