@@ -126,10 +126,7 @@ export default class CharacterModel extends BaseActorModel {
       this.hero.secondary.label = this.class.system.secondary;
     }
 
-    const highestCharacteristic = Object.values(this.characteristics).reduce((val, chr) => {
-      if (chr.value > val) return chr.value;
-      else return val;
-    }, 0);
+    const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
     // potency.bonus is handled as part of Ability calculations to accommodate NPCs not having a base shared potency
     this.potency.weak += highestCharacteristic - 2;
