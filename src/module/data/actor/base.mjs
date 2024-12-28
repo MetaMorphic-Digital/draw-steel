@@ -78,7 +78,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * Perform item subtype specific modifications to the actor roll data
    * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy
    */
-  getRollData(rollData) {
+  modifyRollData(rollData) {
     for (const [key, obj] of Object.entries(this.characteristics)) {
       const rollKey = ds.CONFIG.characteristics[key].rollKey;
       rollData[rollKey] = obj.value;

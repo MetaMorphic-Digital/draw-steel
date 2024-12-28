@@ -4,8 +4,8 @@ export class DrawSteelActor extends Actor {
     // Shallow copy
     const rollData = {...this.system};
 
-    if (this.system.getRollData instanceof Function) {
-      this.system.getRollData(rollData);
+    if (this.system.modifyRollData instanceof Function) {
+      this.system.modifyRollData(rollData);
     }
 
     return rollData;
