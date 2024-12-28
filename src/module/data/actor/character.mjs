@@ -138,7 +138,8 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @override */
   async _preCreate(data, options, user) {
-    await super._preCreate(data, options, user);
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
 
     this.parent.updateSource({
       prototypeToken: {
