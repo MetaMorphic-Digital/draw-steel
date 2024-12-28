@@ -87,6 +87,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       const rollKey = ds.CONFIG.characteristics[key].rollKey;
       rollData[rollKey] = obj.value;
     }
+
+    rollData.echelon = this.echelon;
   }
 
   /**
