@@ -1,4 +1,4 @@
-import { ActiveEffectData, ActorData, CombatantData, CombatData, ItemData } from "../../../foundry/common/types.mjs"
+import { ActiveEffectData, ActorData, CombatantData, CombatData, ItemData, JournalEntryPageData } from "../../../foundry/common/types.mjs"
 import Collection from "../../../foundry/common/utils/collection.mjs"
 import { ActiveEffect as ActiveEffectModel, Actor as ActorModels, Combat as CombatModel, Combatant as CombatantModel, Item as ItemModels } from "../data/_module.mjs"
 import { DrawSteelActiveEffect } from "./active-effect.mjs"
@@ -35,5 +35,10 @@ declare global {
   interface Combatant extends CombatantData {
     type: "base";
     system: CombatantModel.BaseCombatantModel;
+  }
+
+  interface JournalEntryPage extends JournalEntryPageData {
+    type: "text" | "image" | "pdf" | "video";
+    system: Record<string, unknown>;
   }
 }

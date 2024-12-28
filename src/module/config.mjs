@@ -120,53 +120,55 @@ DRAW_STEEL.damageTypes = {
 preLocalize("damageTypes", {key: "label"});
 
 /**
+ * Condition definitions provided by the system that are merged in during the `init` hook
+ * Afterwards all references *should* use the core-provided CONFIG.statusEffects
  * @type {Record<string, {img: string, name: string}>}
  */
 DRAW_STEEL.conditions = {
   bleeding: {
     name: "DRAW_STEEL.Effect.Conditions.Bleeding.name",
     img: "icons/svg/blood.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ"
   },
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb"
   },
   frightened: {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
     img: "icons/svg/terror.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg"
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
     img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn"
   },
   prone: {
     name: "DRAW_STEEL.Effect.Conditions.Prone.name",
     img: "icons/svg/falling.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.v11clsSMgoFZm3V8"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.v11clsSMgoFZm3V8"
   },
   restrained: {
     name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
     img: "icons/svg/net.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj"
   },
   slowed: {
     name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
     img: "systems/draw-steel/assets/icons/snail.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL"
   },
   taunted: {
     name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh"
   },
   weakened: {
     name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
     img: "icons/svg/downgrade.svg",
-    rule: "JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.QZpLhRT6imKlqZ1n"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.QZpLhRT6imKlqZ1n"
   }
 };
 

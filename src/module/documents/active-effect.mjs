@@ -1,4 +1,10 @@
 export class DrawSteelActiveEffect extends ActiveEffect {
+  /** @override */
+  static async _fromStatusEffect(statusId, effectData, options) {
+    const effect = await super._fromStatusEffect(statusId, effectData, options);
+    if (effectData.rule) effect.updateSource({description: `@Embed[${effectData.rule} inline]`});
+    return effect;
+  }
 
   /**
    * Automatically deactivate effects with expired durations
