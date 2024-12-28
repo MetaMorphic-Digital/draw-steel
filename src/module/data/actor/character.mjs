@@ -136,6 +136,20 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.strong += highestCharacteristic;
   }
 
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+
+    this.parent.updateSource({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        sight: {
+          enabled: true
+        }
+      }
+    });
+  }
+
   /** @override */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
