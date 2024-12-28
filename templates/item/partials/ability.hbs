@@ -2,7 +2,7 @@
 <fieldset>
   <legend>{{field.label}}</legend>
   {{formGroup field.fields.damage.fields.value value=value.damage.value}}
-  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes}}
+  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes blank=""}}
   {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
   {{formGroup field.fields.potency value=value.potency}}
   {{formGroup field.fields.description value=value.description}}
@@ -31,7 +31,9 @@
 <fieldset>
   <legend>{{systemFields.target.label}}</legend>
   {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
+  {{#if (ne system.target.type "self")}}
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
+  {{/if}}
 </fieldset>
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}

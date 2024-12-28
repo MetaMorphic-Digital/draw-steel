@@ -181,4 +181,12 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
   }
+
+  modifyRollData(rollData) {
+    super.modifyRollData(rollData);
+
+    if (this.actor) {
+      rollData.chr = this.actor.system.characteristics[this.powerRoll.characteristic]?.value;
+    }
+  }
 }

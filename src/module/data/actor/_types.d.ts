@@ -77,6 +77,7 @@ declare module "./npc.mjs" {
     }
     monster: {
       keywords: Set<string>;
+      level: number;
       ev: number;
       role: string;
       subrole: string;
