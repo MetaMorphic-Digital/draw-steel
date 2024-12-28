@@ -137,6 +137,22 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /** @override */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    this.parent.updateSource({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        sight: {
+          enabled: true
+        }
+      }
+    });
+  }
+
+  /** @override */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
   }
