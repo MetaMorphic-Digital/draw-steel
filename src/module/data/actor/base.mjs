@@ -1,4 +1,4 @@
-import {barAttribute, damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
+import {damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
 /**
@@ -10,7 +10,11 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
 
-    schema.stamina = barAttribute(20);
+    schema.stamina = new fields.SchemaField({
+      value: new fields.NumberField({initial: 20, nullable: false, integer: true}),
+      max: new fields.NumberField({initial: 20, nullable: false, integer: true}),
+      temporary: new fields.NumberField({integer: true})
+    });
 
     schema.characteristics = new fields.SchemaField(
       Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, {label, hint}]) => {

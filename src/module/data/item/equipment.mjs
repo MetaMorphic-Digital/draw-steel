@@ -49,7 +49,7 @@ export default class EquipmentModel extends BaseItemModel {
 
     context.echelons = Object.entries(ds.CONFIG.echelons).map(([value, {label}]) => ({value, label}));
 
-    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value], {label}) => ({value, label}));
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
 
     context.keywords = Object.entries(ds.CONFIG.abilities.keywords).map(([value, {label}]) => ({value, label}));
     if (this.category) context.keywords.push(...ds.CONFIG.equipment.categories[this.category].keywords);

@@ -1,13 +1,16 @@
 import { DrawSteelActor } from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
-import type { SizeModel } from "../helpers.mjs";
+import { SizeModel } from "../helpers.mjs";
 import { DamageSchema } from "../item/kit.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
-    stamina: BarAttribute & {winded: number},
-    characteristics: Record<string, { value: number}>;
+    stamina: BarAttribute & {
+      temporary: number;
+      winded: number;
+    },
+    characteristics: Record<string, {value: number}>;
     combat: {
       size: SizeModel;
       stability: number;
@@ -41,7 +44,7 @@ declare module "./character.mjs" {
   export default interface CharacterModel {
     hero: {
       primary: HeroicResource;
-      secondary: HeroicResource;
+      // secondary: HeroicResource;
       xp: number;
       recoveries: BarAttribute & {
         bonus: number;

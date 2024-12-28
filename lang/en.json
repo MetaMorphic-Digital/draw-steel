@@ -59,10 +59,13 @@
           "stamina": {
             "label": "Stamina",
             "value": {
-              "label": "Current Stamina"
+              "label": "Current"
             },
             "max": {
-              "label": "Max Stamina"
+              "label": "Max"
+            },
+            "temporary": {
+              "label": "Temporary"
             }
           },
           "combat": {
@@ -106,12 +109,8 @@
       "Character": {
         "FIELDS": {
           "hero": {
-            "label": "Heroic Resources",
-            "resourceOne": {
-              "label": "Resource One"
-            },
-            "resourceTwo": {
-              "label": "Resource Two"
+            "primary": {
+              "label": "Heroic Resource"
             },
             "xp": {
               "label": "XP"
@@ -119,10 +118,10 @@
             "recoveries": {
               "label": "Recoveries",
               "value": {
-                "label": "Current Recoveries"
+                "label": "Current"
               },
               "max": {
-                "label": "Max Recoveries"
+                "label": "Max"
               }
             },
             "victories": {
@@ -405,10 +404,7 @@
             "label": "Level"
           },
           "primary": {
-            "label": "Primary Resource"
-          },
-          "secondary": {
-            "label": "Secondary Resource"
+            "label": "Heroic Resource"
           },
           "characteristics": {
             "core": {

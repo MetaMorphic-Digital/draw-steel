@@ -2,69 +2,92 @@
 <section class="tab stats {{tab.cssClass}}" data-group="primary" data-tab="stats">
   <fieldset class="resources flexrow">
     <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
-    <div class="resource">
+    <div class="resource stamina">
       <label class="resource-label">
         {{systemFields.stamina.label}}
       </label>
       <div class="resource-content flexrow">
-        <div class="resource-current">
-          {{formInput systemFields.stamina.fields.value value=system.stamina.value dataset=datasets.notSource}}
+        {{#if isPlay}}
+        <div class="resource-temporary">
+          {{formGroup
+            systemFields.stamina.fields.temporary
+            value=system.stamina.temporary
+            dataset=datasets.notSource
+            classes=(ifThen (eq actor.type "character") "stacked" "paired")
+          }}
         </div>
-        <span class="resource-divider"> / </span>
+        <div class="resource-current">
+          {{formGroup
+            systemFields.stamina.fields.value
+            value=system.stamina.value
+            dataset=datasets.notSource
+            classes=(ifThen (eq actor.type "character") "stacked" "paired")
+          }}
+        </div>
+        {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
-          {{system.stamina.max}}
+          <div class="form-group {{ifThen (eq actor.type "character") "stacked" "paired"}}">
+            <label class="input-placeholder-label">
+              {{systemFields.stamina.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.stamina.max}}
+            </div>
+          </div>
           {{else}}
-          {{formInput systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource}}
+          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
           {{/if}}
         </span>
       </div>
     </div>
     {{#if (eq actor.type "character")}}
-    <div class="resource">
+    <div class="resource recoveries">
       <label class="resource-label">
         {{systemFields.hero.fields.recoveries.label}}
       </label>
       <div class="resource-content flexrow">
+        {{#if isPlay}}
         <div class="resource-current">
-          {{formInput systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource}}
+          {{formGroup systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource classes="stacked"}}
         </div>
-        <span class="resource-divider"> / </span>
+        {{/if}}
         <span class="resource-max">
           {{#if isPlay}}
-          {{system.hero.recoveries.max}}
+          <div class="{{ifThen (eq actor.type "character") "form-group stacked" "form-group"}}">
+            <label class="input-placeholder-label">
+              {{systemFields.hero.fields.recoveries.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.hero.recoveries.max}}
+            </div>
+          </div>
           {{else}}
-          {{formInput systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource}}
+          {{formGroup systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource classes="paired"}}
           {{/if}}
         </span>
+        {{#if isPlay}}
+        <span class="recovery-value">
+          <div class="form-group stacked">
+            <label class="input-placeholder-label">
+              {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
+            </label>
+            <div class="input-placeholder">
+              {{system.hero.recoveries.recoveryValue}}
+            </div>
+          </div>
+        </span>
+        {{/if}}
       </div>
     </div>
-    <div class="resource">
-      {{#if system.class}}
-      {{#if isPlay}}
+    {{#if (and system.class isPlay)}}
+    <div class="resource heroic">
       <label>
         <span>{{system.hero.primary.label}}</span>
         {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource}}
       </label>
-      {{#if system.class.system.secondary}}
-      <label>
-        <span>{{system.hero.secondary.label}}</span>
-        {{formInput systemFields.hero.fields.secondary.fields.value value=system.hero.secondary.value dataset=datasets.notSource}}
-      </label>
-      {{/if}}
-      {{else}}
-      <label class="resource-label">
-        {{systemFields.hero.label}}
-      </label>
-      <div class="resource-content">
-        {{formInput systemFields.hero.fields.primary.fields.value value=systemSource.hero.primary.value dataset=datasets.isSource}}
-        {{#if system.class.system.secondary}}
-        {{formInput systemFields.hero.fields.secondary.fields.value value=systemSource.hero.secondary.value dataset=datasets.isSource}}
-        {{/if}}
-      </div>
-      {{/if}}
-      {{/if}}
     </div>
+    {{/if}}
     {{/if}}
   </fieldset>
   <fieldset class="characteristics flexrow">
@@ -127,6 +150,7 @@
     {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
   </fieldset>
   {{/if}}
+  {{#if (eq actor.type "character")}}
   <fieldset class="skills flexrow">
     <legend>{{systemFields.hero.fields.skills.label}}</legend>
     {{#if isPlay}}
@@ -135,4 +159,5 @@
     {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=config.skills.optgroups dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
+  {{/if}}
 </section>
