@@ -8,6 +8,8 @@ export class DrawSteelActor extends Actor {
       this.system.modifyRollData(rollData);
     }
 
+    rollData.echelon = this.system.echelon;
+
     return rollData;
   }
 
