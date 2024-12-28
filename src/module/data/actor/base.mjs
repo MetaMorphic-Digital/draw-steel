@@ -97,6 +97,22 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * The actor's level
+   */
+  get level() {
+    return 1;
+  }
+  
+  /**
+   * The actor's echelon based on their current level
+   */
+  get echelon() {
+    return Object.entries(ds.CONFIG.echelons).reduce((acc, current) => {
+      return this.level >= current[1].threshold? Number(current[0]) : acc;
+    }, 0);
+  }
+
+  /**
    * @override
    * @param {Record<string, unknown>} changes
    * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
