@@ -141,6 +141,11 @@ export default class CharacterModel extends BaseActorModel {
     return 1 + this.abilityBonuses.melee.distance;
   }
 
+  /** @override */
+  get level() {
+    return this.class?.system.level ?? 0;
+  }
+
   /**
    * @typedef {import("../../documents/item.mjs").DrawSteelItem} DrawSteelItem
    */

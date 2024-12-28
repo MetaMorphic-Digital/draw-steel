@@ -87,6 +87,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       const rollKey = ds.CONFIG.characteristics[key].rollKey;
       rollData[rollKey] = obj.value;
     }
+
+    rollData.echelon = this.echelon;
   }
 
   /**
@@ -94,6 +96,22 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    */
   get reach() {
     return 1;
+  }
+
+  /**
+   * The actor's level
+   */
+  get level() {
+    return 1;
+  }
+  
+  /**
+   * The actor's echelon based on their current level
+   */
+  get echelon() {
+    return Object.entries(ds.CONFIG.echelons).reduce((acc, [key,value]) => {
+      return this.level >= value.threshold ? Number(key) : acc;
+    }, 1);
   }
 
   /**
