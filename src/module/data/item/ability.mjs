@@ -50,6 +50,7 @@ export default class AbilityModel extends BaseItemModel {
         type: new fields.StringField({required: true})
       }),
       ae: new fields.SetField(new fields.StringField({validate: foundry.data.validators.isValidId})),
+      potency: new FormulaField({deterministic: true}),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
         value: new fields.NumberField(),

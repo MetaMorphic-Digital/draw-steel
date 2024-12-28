@@ -4,6 +4,7 @@
   {{formGroup field.fields.damage.fields.value value=value.damage.value}}
   {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes}}
   {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
+  {{formGroup field.fields.potency value=value.potency}}
   {{formGroup field.fields.description value=value.description}}
   {{!-- TODO: Forced Movement --}}
 </fieldset>
@@ -36,7 +37,7 @@
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier2}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
 {{/if}}
 {{formGroup systemFields.effect value=system.effect}}

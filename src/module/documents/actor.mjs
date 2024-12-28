@@ -4,11 +4,8 @@ export class DrawSteelActor extends Actor {
     // Shallow copy
     const rollData = {...this.system};
 
-    if ("characteristics" in this.system) {
-      for (const [key, obj] of Object.entries(this.system.characteristics)) {
-        const rollKey = ds.CONFIG.characteristics[key].rollKey;
-        rollData[rollKey] = obj.value;
-      }
+    if (this.system.modifyRollData instanceof Function) {
+      this.system.modifyRollData(rollData);
     }
 
     return rollData;

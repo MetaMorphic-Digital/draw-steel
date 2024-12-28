@@ -2,12 +2,10 @@ export class DrawSteelItem extends Item {
 
   /** @override */
   getRollData() {
+    const rollData = this.actor?.getRollData() ?? {};
+
     // Shallow copy
-    const rollData = {...this.system};
-
-    if (!this.actor) return rollData;
-
-    rollData.actor = this.actor.getRollData();
+    rollData.item = {...this.system};
 
     return rollData;
   }
