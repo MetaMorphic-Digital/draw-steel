@@ -37,19 +37,32 @@ export default class DrawSteelSocketHandler {
   /**
    * Tell the GM to spend a hero token
    * @param {object} payload
+   * @param {string} payload.userId
+   * @param {string} payload.spendType
    */
-  spendHeroToken(payload) {
-    const {userId} = payload;
+  async spendHeroToken({userId, spendType}) {
     // TODO: Refactor in v13 to just call isActiveGM
     if (game.users.activeGM !== game.user) return;
+    const sendingUser = game.users.get(userId);
+    const sendingUsername = sendingUser?.name ?? userId;
+    const tokenSpend = ds.CONFIG.hero.tokenSpends[spendType];
+    if (!tokenSpend) {
+      console.error(`Invalid spendType ${spendType} send by ${sendingUsername}`);
+      return;
+    }
     const settingName = "heroTokens";
     const heroTokens = game.settings.get(systemID, settingName).value;
-    if (heroTokens < 1) {
+    if (heroTokens < tokenSpend.tokens) {
       // TODO: Refactor in v13 to use notification formatting
-      const message = game.i18n.format("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {name: game.users.get(userId)?.name ?? "Unknown"});
+      const message = game.i18n.format("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {name: sendingUsername});
       ui.notifications.error(message);
       return;
     }
-    game.settings.set(systemID, settingName, {value: heroTokens - 1});
+    await game.settings.set(systemID, settingName, {value: heroTokens - 1});
+    await ChatMessage.implementation.create({
+      author: userId,
+      content: tokenSpend.messageContent,
+      flavor: sendingUser?.character?.name
+    });
   }
 }

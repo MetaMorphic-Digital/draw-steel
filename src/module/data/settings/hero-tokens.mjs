@@ -22,13 +22,24 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /**
    * Send a socket message to the Director to spend a hero token
    * Necessary because only game masters can modify world settings
+   * @param {string} spendType - Key of ds.CONFIG.hero.tokenSpends
+   * @returns {boolean} Returns an explicit false if the socket message wasn't sent
    */
-  spendToken() {
-    const currentTokens = game.settings.get(systemID, "heroTokens").value;
-    if (currentTokens < 1) {
-      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens");
-      return;
+  spendToken(spendType) {
+    if (!game.users.activeGM) {
+      ui.notifications.error("DRAW_STEEL.Setting.NoActiveGM", {localize: true});
+      return false;
     }
-    game.system.socketHandler.emit("spendHeroToken", {userId: game.userId});
+    const tokenSpend = ds.CONFIG.hero.tokenSpends[spendType];
+    if (!tokenSpend) {
+      console.error("Invalid spendType");
+      return false;
+    }
+    const currentTokens = game.settings.get(systemID, "heroTokens").value;
+    if (currentTokens < tokenSpend.tokens) {
+      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", {localize: true});
+      return false;
+    }
+    game.system.socketHandler.emit("spendHeroToken", {userId: game.userId, spendType});
   }
 }
