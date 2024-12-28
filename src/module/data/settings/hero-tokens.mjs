@@ -30,13 +30,13 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       ui.notifications.error("DRAW_STEEL.Setting.NoActiveGM", {localize: true});
       return false;
     }
-    const tokenSpend = ds.CONFIG.hero.tokenSpends[spendType];
-    if (!tokenSpend) {
+    const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
+    if (!tokenSpendConfiguration) {
       console.error("Invalid spendType");
       return false;
     }
     const currentTokens = game.settings.get(systemID, "heroTokens").value;
-    if (currentTokens < tokenSpend.tokens) {
+    if (currentTokens < tokenSpendConfiguration.tokens) {
       ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", {localize: true});
       return false;
     }
