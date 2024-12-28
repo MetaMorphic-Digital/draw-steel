@@ -107,8 +107,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * The actor's echelon based on their current level
    */
   get echelon() {
-    return Object.entries(ds.CONFIG.echelons).reduce((acc, current) => {
-      return this.level >= current[1].threshold? Number(current[0]) : acc;
+    return Object.entries(ds.CONFIG.echelons).reduce((acc, [key,value]) => {
+      return this.level >= value.threshold ? Number(key) : acc;
     }, 1);
   }
 
