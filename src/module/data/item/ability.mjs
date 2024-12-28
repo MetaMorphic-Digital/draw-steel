@@ -1,5 +1,6 @@
 import {systemPath} from "../../constants.mjs";
-import {PowerRoll} from "../../helpers/rolls.mjs";
+import {DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -61,6 +62,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
+      formula: new FormulaField(),
       characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
@@ -188,5 +190,34 @@ export default class AbilityModel extends BaseItemModel {
     if (this.actor) {
       rollData.chr = this.actor.system.characteristics[this.powerRoll.characteristic]?.value;
     }
+  }
+
+  /**
+   * Use an ability, generating a chat message and potentially making a power roll
+   * @returns {Promise<DrawSteelChatMessage>}
+   */
+  async use() {
+    const messageData = {
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
+      flavor: this.description.flavor,
+      rolls: []
+    };
+
+    DrawSteelChatMessage.applyRollMode(messageData, "roll");
+
+    if (this.powerRoll.enabled) {
+      const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
+      const rollData = this.parent.getRollData();
+      const powerRoll = new PowerRoll(formula, rollData);
+      await powerRoll.evaluate();
+      messageData.rolls.push(powerRoll);
+      const damageFormula = this.powerRoll[`tier${powerRoll.product}`].damage.value;
+      if (damageFormula) {
+        const damageRoll = new DSRoll(damageFormula, rollData);
+        await damageRoll.evaluate();
+        messageData.rolls.push(damageRoll);
+      }
+    }
+    return DrawSteelChatMessage.create(messageData);
   }
 }

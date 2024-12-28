@@ -68,6 +68,7 @@ declare module "./ability.mjs" {
       characteristics: Set<string>;
       /** The highest characteristic of those available. Not set if there's no parent actor. */
       characteristic?: string;
+      formula: string;
       tier1: PowerRoll;
       tier2: PowerRoll;
       tier3: PowerRoll;

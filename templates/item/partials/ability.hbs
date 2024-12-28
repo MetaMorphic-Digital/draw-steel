@@ -9,6 +9,7 @@
   {{!-- TODO: Forced Movement --}}
 </fieldset>
 {{/inline}}
+{{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
 {{formGroup systemFields.keywords value=system.keywords options=keywords}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{#if triggeredAction}}
@@ -38,6 +39,7 @@
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
+{{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
