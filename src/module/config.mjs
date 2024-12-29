@@ -922,11 +922,11 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   get: function() {
     const sortedKeywords = Object.entries(ds.CONFIG.abilities.keywords).sort(([keyA, valueA], [keyB, valueB]) => {
       // When no group, sort between their keys
-      if (valueA.group === undefined && valueB.group === undefined) return keyA.localeCompare(keyB);
+      if ((valueA.group === undefined) && (valueB.group === undefined)) return keyA.localeCompare(keyB);
 
       // When or the other, but not both have a group, the one without a group comes first
-      if (valueA.group === undefined && valueB.group !== undefined) return -1;
-      if (valueA.group !== undefined && valueB.group === undefined) return 1;
+      if ((valueA.group === undefined) && (valueB.group !== undefined)) return -1;
+      if ((valueA.group !== undefined) && (valueB.group === undefined)) return 1;
 
       // When they both have a group and they are equal, sort between their keys
       if (valueA.group === valueB.group) return keyA.localeCompare(keyB);
