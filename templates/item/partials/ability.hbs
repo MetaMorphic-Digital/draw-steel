@@ -10,7 +10,7 @@
 </fieldset>
 {{/inline}}
 {{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
-{{formGroup systemFields.keywords value=system.keywords options=keywords}}
+{{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{#if triggeredAction}}
 {{formGroup systemFields.trigger value=system.trigger}}

@@ -111,7 +111,7 @@ export default class CharacterModel extends BaseActorModel {
       }
     }
 
-    this.stamina.max += kitBonuses["stamina"];
+    this.stamina.max += kitBonuses["stamina"] * this.echelon;
     this.movement.walk += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
   }
@@ -134,6 +134,22 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.weak += highestCharacteristic - 2;
     this.potency.average += highestCharacteristic - 1;
     this.potency.strong += highestCharacteristic;
+  }
+
+  /** @override */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    this.parent.updateSource({
+      prototypeToken: {
+        actorLink: true,
+        disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        sight: {
+          enabled: true
+        }
+      }
+    });
   }
 
   /** @override */

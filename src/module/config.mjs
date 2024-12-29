@@ -705,16 +705,41 @@ preLocalize("monsters.subroles", {key: "label"});
  * Configuration information for Ability items
  */
 DRAW_STEEL.abilities = {
-  /** @type {Record<string, {label: string, damage?: boolean}>} */
+  /** @type {Record<string, {label: string, group?: string, damage?: boolean}>} */
   keywords: {
+    animal: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Animal",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Fury"
+    },
+    animapathy: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Animapathy",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
     area: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Area"
     },
-    attack: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Attack"
-    },
     charge: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Charge"
+    },
+    chronopathy: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Chronopathy",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
+    cryokinesis: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Cryokinesis",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
+    earth: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Earth",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist"
+    },
+    fire: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Fire",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist"
+    },
+    green: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Green",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist"
     },
     magic: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Magic",
@@ -723,12 +748,47 @@ DRAW_STEEL.abilities = {
     melee: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Melee"
     },
+    metamorphosis: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Metamorphosis",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
     psionic: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Psionic",
       damage: true
     },
+    pyrokinesis: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Pyrokinesis",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
+    },
+    resopathy: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Resopathy",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
+    rot: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Rot",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist"
+    },
+    routine: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Routine",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Troubador"
+    },
+    strike: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Strike"
+    },
+    telekinesis: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Telekinesis",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
+    telepathy: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Telepathy",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent"
+    },
+    void: {
+      label: "DRAW_STEEL.Item.Ability.Keywords.Void",
+      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist"
     },
     weapon: {
       label: "DRAW_STEEL.Item.Ability.Keywords.Weapon",
@@ -851,11 +911,35 @@ DRAW_STEEL.abilities = {
     }
   }
 };
-preLocalize("abilities.keywords", {key: "label"});
+preLocalize("abilities.keywords", {keys: ["label", "group"]});
 preLocalize("abilities.types", {key: "label"});
 preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});
+
+Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
+  /** @type {FormSelectOption[]} */
+  get: function() {
+    const sortedKeywords = Object.entries(ds.CONFIG.abilities.keywords).sort(([keyA, valueA], [keyB, valueB]) => {
+      // When no group, sort between their keys
+      if ((valueA.group === undefined) && (valueB.group === undefined)) return keyA.localeCompare(keyB);
+
+      // When or the other, but not both have a group, the one without a group comes first
+      if ((valueA.group === undefined) && (valueB.group !== undefined)) return -1;
+      if ((valueA.group !== undefined) && (valueB.group === undefined)) return 1;
+
+      // When they both have a group and they are equal, sort between their keys
+      if (valueA.group === valueB.group) return keyA.localeCompare(keyB);
+
+      // When they both have a group and are not equal, sort between their groups
+      return valueA.group.localeCompare(valueB.group);
+    });
+    return sortedKeywords.reduce((arr, [value, {label, group}]) => {
+      arr.push({label, group, value});
+      return arr;
+    }, []);
+  }
+});
 
 /**
  * Configuration details for Culture items
