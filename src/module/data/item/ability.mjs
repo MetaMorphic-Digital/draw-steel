@@ -163,7 +163,6 @@ export default class AbilityModel extends BaseItemModel {
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
-    context.keywords = Object.entries(config.keywords).map(([value, {label}]) => ({value, label}));
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
