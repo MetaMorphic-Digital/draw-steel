@@ -5,6 +5,11 @@ const fields = foundry.data.fields;
  * A base actor model that provides common properties for both characters and npcs
  */
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this Actor subtype
+   */
+  static metadata = Object.freeze({});
+
   /** @override */
   static defineSchema() {
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};

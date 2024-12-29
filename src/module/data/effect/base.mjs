@@ -4,6 +4,9 @@ import FormulaField from "../fields/formula-field.mjs";
  * A data model used by default effects with properties to control the expiration behavior
  */
 export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this ActiveEffect subtype
+   */
   static metadata = Object.freeze({
     type: "base"
   });

@@ -200,6 +200,7 @@ export default class AbilityModel extends BaseItemModel {
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       flavor: this.description.flavor,
+      type: "abilityUse",
       rolls: []
     };
 
