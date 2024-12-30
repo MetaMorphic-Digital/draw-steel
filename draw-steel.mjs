@@ -93,9 +93,10 @@ Hooks.once("i18nInit", () => {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", function () {
+Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   // Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
+  await applications.helpers.registerDrawSteelPartials();
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });

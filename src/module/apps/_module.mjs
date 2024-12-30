@@ -1,3 +1,4 @@
+export * as helpers from "./helpers.mjs";
 export * as hooks from "./hooks/_module.mjs";
 export {DrawSteelActorSheet} from "./actor-sheet.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";

@@ -9,6 +9,9 @@
   {{!-- TODO: Forced Movement --}}
 </fieldset>
 {{/inline}}
+{{#if isPlay}}
+{{> "systems/draw-steel/templates/item/embeds/ability.hbs"}}
+{{else}}
 {{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
@@ -48,3 +51,4 @@
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
 {{/if}}
 {{formGroup systemFields.effect value=system.effect}}
+{{/if}}
