@@ -16,6 +16,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Perform subtype-specific alterations to the final chat message html
+   * Called by the renderChatMessage hook
    * @param {HTMLLIElement} html The pending HTML
    */
   async alterMessageHTML(html) {
@@ -37,7 +38,8 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * Add event listeners
+   * Add event listeners. Guaranteed to run after all alterations in {@link alterMessageHTML}
+   * Called by the renderChatMessage hook
    * @param {HTMLLIElement} html The pending HTML
    */
   addListeners(html) {}

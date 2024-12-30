@@ -3,11 +3,16 @@ div.ability {
     margin: 0;
     font-size: var(--font-h5-size);
   }
-  // Not strictly sure this is the best implementation but it "works"
-  .keywords, .distance {
-    float: left;
+  .metadata {
+    margin: 0.5em 0;
+
+    .info-row {
+      p {
+        margin: 0;
+      }
+    }
   }
-  .type, .target {
-    float: right;
+  .effect {
+    margin: 0.5em 0;
   }
 }

@@ -2,12 +2,18 @@
   {{#if system.description.flavor}}
   <p class="flavor"><em>{{system.description.flavor}}</em></p>
   {{/if}}
-  <span class="keywords"><strong>{{systemFields.keywords.label}}:</strong> {{keywordList}}</span>
-  <span class="type"><strong>{{systemFields.type.label}}:</strong> {{lookup (lookup config.abilities.types system.type) "label"}}</span>
-  <span class="distance"><strong>{{systemFields.distance.label}}:</strong> {{distanceLabel}}</span>
-  <span class="target"><strong>{{systemFields.target.label}}:</strong> {{targetLabel}}</span>
+  <div class="info-row usage">
+    <p class="keywords"><strong>{{systemFields.keywords.label}}:</strong> {{keywordList}}</p>
+    <p class="type"><strong>{{systemFields.type.label}}:</strong> {{lookup (lookup config.abilities.types system.type) "label"}}</p>
+  </div>
+  <div class="info-row targeting">
+    <p class="distance"><strong>{{systemFields.distance.label}}:</strong> {{distanceLabel}}</p>
+    <p class="target"><strong>{{systemFields.target.label}}:</strong> {{targetLabel}}</p>
+  </div>
 </section>
+{{#if system.effect}}
 <section class="effect">
   <p><strong>{{systemFields.effect.label}}</strong> {{system.effect}}</p>
 </section>
+{{/if}}
 {{!-- Power Tiers --}}

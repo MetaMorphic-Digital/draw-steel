@@ -8,11 +8,11 @@ import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
  * @param {JQuery<HTMLLIElement>} jquery The pending HTML as a jQuery object
  * @param {Record<string, any>} context
  */
-export function renderChatMessage(message, [html], context) {
+export async function renderChatMessage(message, [html], context) {
   if (message.system.alterMessageHTML instanceof Function) {
-    message.system.alterMessageHTML(html);
+    await message.system.alterMessageHTML(html);
   }
   if (message.system.addListeners instanceof Function) {
-    message.system.addListeners(html);
+    await message.system.addListeners(html);
   }
 }
