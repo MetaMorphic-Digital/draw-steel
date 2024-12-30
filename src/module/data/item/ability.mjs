@@ -33,8 +33,9 @@ export default class AbilityModel extends BaseItemModel {
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
-      primary: new fields.NumberField({integer: true}),
-      secondary: new fields.NumberField({integer: true})
+      primary: new fields.NumberField({integer: true, min: 0}),
+      secondary: new fields.NumberField({integer: true, min: 0}),
+      tertiary: new fields.NumberField({integer: true, min: 0})
     });
     schema.damageDisplay = new fields.StringField({choices: {
       melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
@@ -162,17 +163,39 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /**
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    console.log(config, options);
+    // All abilities are rendered inline
+    config.inline = true;
+    const embed = document.createElement("div");
+    embed.classList.add("ability");
+    embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const context = {system: this, systemFields: this.schema.fields, config: ds.CONFIG};
+    this.getSheetContext(context);
+    const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", abilityBody);
+    return embed;
+  }
+
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
+    context.keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k).join(", ");
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
 
+    context.distanceLabel = game.i18n.format(config.distances[this.distance.type]?.embedLabel, {...this.distance});
     context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
     context.primaryDistance = config.distances[this.distance.type].primary;
     context.secondaryDistance = config.distances[this.distance.type].secondary;
+    context.tertiaryDistance = config.distances[this.distance.type].tertiary;
 
+    context.targetLabel = game.i18n.format(config.targets[this.target.type]?.embedLabel, {value: this.target.value});
     context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");

@@ -399,17 +399,32 @@
           "Special": "Special",
           "Self": "Self"
         },
+        "DistanceEmbed": {
+          "Melee": "Melee {primary}",
+          "Ranged": "Ranged {primary}",
+          "MeleeRanged": "Melee {primary} or ranged {secondary}",
+          "Aura": "Aura {primary}",
+          "Burst": "Burst {primary}",
+          "Cube": "Cube {primary} within {secondary}",
+          "Line": "{primary} x {secondary} line within {tertiary}",
+          "Wall": "{primary} wall within {secondary}"
+        },
         "Target": {
           "All": "All",
           "Creature": "Creature",
+          "CreatureEmbed": "{value} creature(s)",
           "AllCreatures": "All creatures",
           "Object": "Object",
+          "ObjectEmbed": "{value} object(s)",
           "AllObjects": "All objects",
           "CreatureObject": "Creature or Object",
+          "CreatureObjectEmbed": "{value} creature(s) or object(s)",
           "AllCreatureObject": "All creatures and objects",
           "Enemy": "Enemy",
+          "EnemyEmbed": "{value} enemies",
           "AllEnemies": "All enemies",
           "Ally": "Ally",
+          "AllyEmbed": "{value} allies",
           "AllAllies": "All allies",
           "Self": "Self"
         },

@@ -25,6 +25,9 @@
   {{#if secondaryDistance}}
   {{formGroup systemFields.distance.fields.secondary value=system.distance.secondary label=secondaryDistance}}
   {{/if}}
+  {{#if tertiaryDistance}}
+  {{formGroup systemFields.distance.fields.tertiary value=system.distance.tertiary label=tertiaryDistance}}
+  {{/if}}
 </fieldset>
 {{#if showDamageDisplay}}
 {{formGroup systemFields.damageDisplay value=system.damageDisplay}}
