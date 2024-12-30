@@ -50,6 +50,7 @@ declare module "./ability.mjs" {
     }
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
+    category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";
     damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];

@@ -29,6 +29,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
+    schema.category = new fields.StringField({required: true, blank: true, initial: ""}),
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
@@ -164,6 +165,7 @@ export default class AbilityModel extends BaseItemModel {
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
+    context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
 

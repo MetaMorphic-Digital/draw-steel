@@ -11,6 +11,7 @@
 {{/inline}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
+{{formGroup systemFields.category value=system.category options=abilityCategories blank=""}}
 {{#if triggeredAction}}
 {{formGroup systemFields.trigger value=system.trigger}}
 {{/if}}
