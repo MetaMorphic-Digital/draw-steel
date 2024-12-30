@@ -1,0 +1,13 @@
+div.ability {
+  h5 {
+    margin: 0;
+    font-size: var(--font-h5-size);
+  }
+  // Not strictly sure this is the best implementation but it "works"
+  .keywords, .distance {
+    float: left;
+  }
+  .type, .target {
+    float: right;
+  }
+}

@@ -195,7 +195,10 @@ export default class AbilityModel extends BaseItemModel {
     context.secondaryDistance = config.distances[this.distance.type].secondary;
     context.tertiaryDistance = config.distances[this.distance.type].tertiary;
 
-    context.targetLabel = game.i18n.format(config.targets[this.target.type]?.embedLabel, {value: this.target.value});
+    const targetConfig = config.targets[this.target.type] ?? {embedLabel: "Unknown"};
+    context.targetLabel = this.target.value === null ?
+      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
+      game.i18n.format(targetConfig.embedLabel, {value: this.target.value});
     context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");

@@ -1,7 +1,7 @@
 {{#if system.description.flavor}}
 <p><em>{{system.description.flavor}}</em></p>
 {{/if}}
-<p><strong>{{systemFields.keywords.label}}:</strong> {{keywordList}}</p>
-<p><strong>{{systemFields.type.label}}:</strong> {{lookup (lookup config.abilities.types system.type) "label"}}</p>
-<p><strong>{{systemFields.distance.label}}:</strong> {{distanceLabel}}</p>
-<p><strong>{{systemFields.target.label}}:</strong> {{targetLabel}}</p>
+<span class="keywords"><strong>{{systemFields.keywords.label}}:</strong> {{keywordList}}</span>
+<span class="type"><strong>{{systemFields.type.label}}:</strong> {{lookup (lookup config.abilities.types system.type) "label"}}</span>
+<span class="distance"><strong>{{systemFields.distance.label}}:</strong> {{distanceLabel}}</span>
+<span class="target"><strong>{{systemFields.target.label}}:</strong> {{targetLabel}}</span>
