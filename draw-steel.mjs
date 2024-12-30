@@ -105,6 +105,7 @@ Hooks.once("ready", async function () {
  * Render hooks
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
+Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);

@@ -168,7 +168,6 @@ export default class AbilityModel extends BaseItemModel {
    * @param {EnrichmentOptions} options
    */
   async toEmbed(config, options = {}) {
-    console.log(config, options);
     // All abilities are rendered inline
     config.inline = true;
     const embed = document.createElement("div");
@@ -244,6 +243,9 @@ export default class AbilityModel extends BaseItemModel {
         messageData.rolls.push(damageRoll);
       }
     }
+
+    messageData.content = `@Embed[${this.parent.uuid}]`;
+
     return DrawSteelChatMessage.create(messageData);
   }
 }
