@@ -42,8 +42,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     });
 
     schema.damage = new fields.SchemaField({
-      immunities: damageTypes(requiredInteger, {all: true, keywords: true}),
-      weaknesses: damageTypes(requiredInteger, {all: true, keywords: true})
+      immunities: damageTypes(requiredInteger, {all: true}),
+      weaknesses: damageTypes(requiredInteger, {all: true})
     });
 
     return schema;
