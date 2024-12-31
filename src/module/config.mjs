@@ -818,6 +818,21 @@ DRAW_STEEL.abilities = {
       triggered: true
     }
   },
+  /** @type {Record<string, {label: string}>} */
+  categories: {
+    heroic: {
+      label: "DRAW_STEEL.Item.Ability.Category.Heroic"
+    },
+    freeStrike: {
+      label: "DRAW_STEEL.Item.Ability.Category.FreeStrike"
+    },
+    signature: {
+      label: "DRAW_STEEL.Item.Ability.Category.Signature"
+    },
+    villain: {
+      label: "DRAW_STEEL.Item.Ability.Category.Villain"
+    }
+  },
   /**
    * Valid distances in Draw Steel
    * `primary` and `secondary`, if present represent additional measures/dimensions that are valid for this type
@@ -931,6 +946,7 @@ DRAW_STEEL.abilities = {
 };
 preLocalize("abilities.keywords", {keys: ["label", "group"]});
 preLocalize("abilities.types", {key: "label"});
+preLocalize("abilities.categories", {key: "label"});
 // Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
 preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
