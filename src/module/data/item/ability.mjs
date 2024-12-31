@@ -29,7 +29,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true, blank: true, initial: ""}),
+    schema.category = new fields.StringField({required: true, nullable: false}),
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
