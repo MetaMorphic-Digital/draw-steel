@@ -1,9 +1,11 @@
 import BaseMessageModel from "./base.mjs";
+/** @import AbilityModel from "../item/ability.mjs" */
+/** @import { DrawSteelItem } from "../../documents/_module.mjs" */
 
 const fields = foundry.data.fields;
 
 /**
- * Chat messages with message
+ * Chat messages representing the result of {@link AbilityModel#use}
  */
 export default class AbilityUseModel extends BaseMessageModel {
   static metadata = Object.freeze({
@@ -23,17 +25,17 @@ export default class AbilityUseModel extends BaseMessageModel {
   async alterMessageHTML(html) {
     await super.alterMessageHTML(html);
 
-    // Append normal roll content
-    const renderRolls = async isPrivate => {
-      let html = "";
-      for (const r of this.parent.rolls) {
-        html += await r.render({isPrivate});
-      }
-      return html;
-    };
+    /** @type {DrawSteelItem} */
+    const item = await fromUuid(this.uuid);
 
-    const rollHTML = await renderRolls(!this.parent.isContentVisible);
+    let embed;
+    if (item) embed = await item.toEmbed({});
+    else {
+      embed = document.createElement("p");
+      embed.innerText = game.i18n.localize("DRAW_STEEL.Item.Ability.EmbedFail");
+    }
+
     const content = html.querySelector(".message-content");
-    content.insertAdjacentHTML("beforeend", rollHTML);
+    content.insertAdjacentElement("afterbegin", embed);
   }
 }

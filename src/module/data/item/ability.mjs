@@ -227,7 +227,7 @@ export default class AbilityModel extends BaseItemModel {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       type: "abilityUse",
       rolls: [],
-      content: `@Embed[${this.parent.uuid}]`,
+      content: this.parent.name,
       system: {
         uuid: this.parent.uuid
       }

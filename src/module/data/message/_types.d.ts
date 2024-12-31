@@ -5,3 +5,9 @@ declare module "./base.mjs" {
     parent: DrawSteelChatMessage;
   }
 }
+
+declare module "./ability-use.mjs" {
+  export default interface AbilityUseModel {
+    uuid: string;
+  }
+}
