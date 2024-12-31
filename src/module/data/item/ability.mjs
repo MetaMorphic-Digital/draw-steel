@@ -239,7 +239,10 @@ export default class AbilityModel extends BaseItemModel {
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      const powerRoll = new PowerRoll(formula, rollData);
+      const rollOptions = {
+        type: "ability"
+      }; // TODO: Add in Banes & Edges
+      const powerRoll = new PowerRoll(formula, rollData, rollOptions);
       await powerRoll.evaluate();
       messageData.rolls.push(powerRoll);
       const tier = this.powerRoll[`tier${powerRoll.product}`];
