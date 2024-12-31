@@ -4,6 +4,8 @@ export class DrawSteelItem extends Item {
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
 
+    rollData.itemFlags = this.flags;
+
     // Shallow copy
     rollData.item = this.system;
 
