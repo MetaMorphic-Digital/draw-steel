@@ -227,7 +227,10 @@ export default class AbilityModel extends BaseItemModel {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       type: "abilityUse",
       rolls: [],
-      content: `@Embed[${this.parent.uuid}]`
+      content: `@Embed[${this.parent.uuid}]`,
+      system: {
+        uuid: this.parent.uuid
+      }
     };
     // TODO: Put the spend in flavor text (e.g. "Spends 5 Essence" or whatever)
 

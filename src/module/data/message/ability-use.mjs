@@ -12,7 +12,8 @@ export default class AbilityUseModel extends BaseMessageModel {
 
   static defineSchema() {
     const schema = super.defineSchema();
-
+    // All ability use messages MUST have a uuid pointing to the relevant document
+    schema.uuid = new fields.StringField({required: true, nullable: false, blank: false});
     return schema;
   }
 
