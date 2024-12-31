@@ -162,4 +162,41 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.base.FIELDS.characteristics.${characteristic}.value.hint`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     return PowerRoll.prompt({type, formula, data, flavor, edges: options.edges, banes: options.banes});
   }
+
+  /**
+   * Deal damage to the actor, accounting for immunities and resistances
+   * @param {string} amount    The amount of damage to take
+   * @param {object} [options] Options to modify the damage application
+   * @param {string} [options.type]   Valid damage type
+   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore
+   * @returns {Promise<Actor>}
+   */
+  async takeDamage(damage, options = {}) {
+    // Determine highest weakness between all weakness and the damage's type weakness
+    const allWeakness = this.damage.weaknesses.all;
+    const specificWeakness = this.damage.weaknesses[options.type] ?? 0; // Null check in case the damage type is untyped
+    const weaknessAmount = Math.max(allWeakness, specificWeakness);
+
+    options.ignoredImmunities ??= [];
+    // Reduce the immunities list to non-ignored immunities
+    const immunities = Object.entries(this.damage.immunities).reduce((acc, [type, amount]) => {
+      if (!options.ignoredImmunities.includes("all") && !options.ignoredImmunities.includes(type)) acc[type] = amount;
+      return acc;
+    }, {});
+    const immunityAmount = Math.max(immunities.all ?? 0, immunities[options.type] ?? 0); // Null check in case type is not in immunities
+
+    damage = Math.max(0, damage + weaknessAmount - immunityAmount);
+
+    if(damage === 0) return this.parent;
+
+    // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
+    const staminaUpdates = {};
+    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
+    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
+
+    const remainingDamage = Math.max(0, damage - damageToTempStamina);
+    if(remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
+
+    return await this.parent.update({"system.stamina": staminaUpdates});
+  }
 }
