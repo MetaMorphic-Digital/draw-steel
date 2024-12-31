@@ -49,7 +49,7 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField({required: true})
+        type: new fields.StringField({required: true, nullable: false})
       }),
       ae: new fields.SetField(new fields.StringField({validate: foundry.data.validators.isValidId})),
       potency: new FormulaField({deterministic: true}),
@@ -223,10 +223,11 @@ export default class AbilityModel extends BaseItemModel {
   async use() {
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
-      flavor: this.description.flavor,
       type: "abilityUse",
-      rolls: []
+      rolls: [],
+      content: `@Embed[${this.parent.uuid}]`
     };
+    // TODO: Put the spend in flavor text (e.g. "Spends 5 Essence" or whatever)
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
@@ -236,15 +237,16 @@ export default class AbilityModel extends BaseItemModel {
       const powerRoll = new PowerRoll(formula, rollData);
       await powerRoll.evaluate();
       messageData.rolls.push(powerRoll);
-      const damageFormula = this.powerRoll[`tier${powerRoll.product}`].damage.value;
+      const tier = this.powerRoll[`tier${powerRoll.product}`];
+      const damageFormula = tier.damage.value;
       if (damageFormula) {
-        const damageRoll = new DSRoll(damageFormula, rollData);
+        const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
+        const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
+        const damageRoll = new DSRoll(damageFormula, rollData, {flavor});
         await damageRoll.evaluate();
         messageData.rolls.push(damageRoll);
       }
     }
-
-    messageData.content = `@Embed[${this.parent.uuid}]`;
 
     return DrawSteelChatMessage.create(messageData);
   }
