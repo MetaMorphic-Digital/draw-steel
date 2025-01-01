@@ -187,7 +187,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
-    if(damage === 0) return this.parent;
+    if(damage === 0) {
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", {localize: true});
+      return this.parent;
+    }
 
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
     const staminaUpdates = {};
