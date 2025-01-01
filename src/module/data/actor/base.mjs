@@ -201,6 +201,6 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if(remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return await this.parent.update({"system.stamina": staminaUpdates});
+    return this.parent.update({"system.stamina": staminaUpdates});
   }
 }
