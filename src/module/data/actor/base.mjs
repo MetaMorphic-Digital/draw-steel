@@ -151,17 +151,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    */
   _updateStaminaEffects() {
     Object.entries(ds.CONFIG.staminaEffects).forEach(([key, value]) => {
-      const existingEffect = this.parent.effects.get(value._id);
       let threshold = (Number.isNumeric(value.threshold)) ? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
       threshold = Number(threshold);
+      if (value.negative) threshold = -threshold;
 
-      if (!Number.isNumeric(threshold)) return;
-
-      if ((this.stamina.value <= threshold) && !existingEffect) {
-        ActiveEffect.implementation.create(value, {parent: this.parent, keepId: true});
-      } else if ((this.stamina.value > threshold) && existingEffect) {
-        existingEffect.delete();
-      }
+      const active = (!Number.isNumeric(threshold) || (this.stamina.value > threshold)) ? false : true;
+      this.parent.toggleStatusEffect(key, {active});
     });
   }
 
