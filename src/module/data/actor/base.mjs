@@ -133,6 +133,39 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * @override
+   * @param {object} changed            The differential data that was changed relative to the documents prior values
+   * @param {object} options            Additional options which modify the update request
+   * @param {string} userId             The id of the User requesting the document update
+   * @protected
+   * @internal
+   */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    if(changed.system?.stamina) this._updateStaminaEffects();
+  }
+
+  /**
+   * Update the stamina effects based on updated stamina values
+   */
+  _updateStaminaEffects() {
+    Object.entries(ds.CONFIG.staminaEffects).forEach(([key, value]) => {
+      const existingEffect = this.parent.effects.get(value._id);
+      let threshold = (Number.isNumeric(value.threshold))? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
+      threshold = Number(threshold);
+
+      if(!Number.isNumeric(threshold)) return;
+
+      if(this.stamina.value <= threshold && !existingEffect) {
+        ActiveEffect.implementation.create(value, { parent: this.parent, keepId: true });
+      } else if(this.stamina.value > threshold && existingEffect) {
+        existingEffect.delete();
+      }
+    });
+  }
+
+  /**
    * Prompt the user for what types
    * @param {string} characteristic   The characteristic to roll
    * @param {object} [options]        Options to modify the characteristic roll

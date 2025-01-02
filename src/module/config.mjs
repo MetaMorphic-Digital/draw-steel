@@ -173,6 +173,26 @@ DRAW_STEEL.conditions = {
 };
 
 /**
+ * Effects that apply based on stamina value
+ * @type {Record<string, {img: string, name: string, threshold: string | number}>}
+ */
+DRAW_STEEL.staminaEffects = {
+  dying: {
+    name: "DRAW_STEEL.Effect.StaminaEffects.Dying",
+    _id: "dying".padEnd(16, "0"),
+    img: "icons/svg/stoned.svg",
+    threshold: 0
+  },
+  winded: {
+    name: "DRAW_STEEL.Effect.StaminaEffects.Winded",
+    _id: "winded".padEnd(16, "0"),
+    img: "icons/svg/windmill.svg",
+    threshold: "system.stamina.winded"
+  }
+};
+preLocalize("staminaEffects", {key: "name"});
+
+/**
  * Times when an effect can end
  * @enum {{label: string, abbreviation: string}}
  */
