@@ -143,13 +143,13 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
 
-    if (changed.system?.stamina) this._updateStaminaEffects();
+    if (changed.system?.stamina) this.updateStaminaEffects();
   }
 
   /**
    * Update the stamina effects based on updated stamina values
    */
-  _updateStaminaEffects() {
+  updateStaminaEffects() {
     Object.entries(ds.CONST.staminaEffects).forEach(([key, value]) => {
       let threshold = (Number.isNumeric(value.threshold)) ? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
       threshold = Number(threshold);
