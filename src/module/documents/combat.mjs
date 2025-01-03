@@ -9,6 +9,16 @@ export class DrawSteelCombat extends Combat {
   }
 
   /** @override */
+  async startCombat() {
+    const characters = this.combatants.filter(combatant => combatant.actor.type === "character");
+    for (const character of characters) {
+      await character.actor.update({"system.hero.primary.value": character.actor.system.hero.victories});
+    }
+
+    return super.startCombat();
+  }
+
+  /** @override */
   async nextRound() {
     await super.nextRound();
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
