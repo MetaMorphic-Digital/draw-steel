@@ -40,17 +40,17 @@ export function renderCombatTracker(app, [html], context) {
     }
     initControl.classList.add(dispositionColor);
     if (combatant.isOwner) {
-      initControl.innerHTML = `<a class="activate-combatant" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.${combatant.initiative ? "Act" : "Restore"}">
-        ${combatant.initiative > 1 ? combatant.initiative + " " : ""}<i class="fa-solid ${combatant.initiative ? "fa-arrow-right" : "fa-clock-rotate-left"}"></i>
+      initControl.innerHTML = `<a class="activate-combatant" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.${combatant.system.turns ? "Act" : "Restore"}">
+        ${combatant.system.turns > 1 ? combatant.system.turns + " " : ""}<i class="fa-solid ${combatant.system.turns ? "fa-arrow-right" : "fa-clock-rotate-left"}"></i>
         </a>`;
 
       /** @type {HTMLAnchorElement} */
       const button = initControl.children[0];
 
       button.addEventListener("click", async (element, event) => {
-        const oldValue = combatant.initiative;
-        const newValue = oldValue ? oldValue - 1 : 1;
-        await combatant.update({initiative: newValue});
+        const oldValue = combatant.system.turns;
+        const newValue = oldValue ? oldValue - 1 : combatant.actor.system.combat.turns;
+        await combatant.update({"system.turns": newValue});
         if (oldValue) {
           const newTurn = app.viewed.turns.findIndex((c) => c === combatant);
           combat.update({turn: newTurn}, {direction: 1});

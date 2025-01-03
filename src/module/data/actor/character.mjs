@@ -153,6 +153,12 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /** @override */
+  async startCombat(combatant) {
+    await super.startCombat(combatant);
+    await this.parent.update({"system.hero.primary.value": this.hero.victories});
+  }
+
+  /** @override */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
   }

@@ -10,9 +10,8 @@ export class DrawSteelCombat extends Combat {
 
   /** @override */
   async startCombat() {
-    const characters = this.combatants.filter(combatant => combatant.actor.type === "character");
-    for (const character of characters) {
-      await character.actor.update({"system.hero.primary.value": character.actor.system.hero.victories});
+    for (const combatant of this.combatants) {
+      await combatant.actor.system.startCombat(combatant);
     }
 
     return super.startCombat();
@@ -22,7 +21,7 @@ export class DrawSteelCombat extends Combat {
   async nextRound() {
     await super.nextRound();
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    const combatantUpdates = this.combatants.filter(c => !c.initiative).map(c => ({_id: c.id, initiative: 1}));
+    const combatantUpdates = this.combatants.map(c => ({_id: c.id, "system.turns": c.actor.system.combat.turns}));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 

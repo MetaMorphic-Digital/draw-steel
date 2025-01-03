@@ -1,3 +1,5 @@
+import {requiredInteger} from "../helpers.mjs";
+
 const fields = foundry.data.fields;
 
 export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
@@ -13,7 +15,8 @@ export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
     return {
       disposition: new fields.NumberField({nullable: true, choices: Object.values(CONST.TOKEN_DISPOSITIONS),
         validationError: "must be a value in CONST.TOKEN_DISPOSITIONS"
-      })
+      }),
+      turns: requiredInteger({initial: 0})
     };
   }
 }
