@@ -104,12 +104,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   get level() {
     return 1;
   }
-  
+
   /**
    * The actor's echelon based on their current level
    */
   get echelon() {
-    return Object.entries(ds.CONFIG.echelons).reduce((acc, [key,value]) => {
+    return Object.entries(ds.CONFIG.echelons).reduce((acc, [key, value]) => {
       return this.level >= value.threshold ? Number(key) : acc;
     }, 1);
   }
@@ -129,6 +129,33 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
           height: newSize
         }
       });
+    }
+  }
+
+  /**
+   * @override
+   * @param {object} changed            The differential data that was changed relative to the documents prior values
+   * @param {object} options            Additional options which modify the update request
+   * @param {string} userId             The id of the User requesting the document update
+   * @protected
+   * @internal
+   */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    if (changed.system?.stamina) this.updateStaminaEffects();
+  }
+
+  /**
+   * Update the stamina effects based on updated stamina values
+   */
+  async updateStaminaEffects() {
+    for (const [key, value] of Object.entries(ds.CONST.staminaEffects)) {
+      let threshold = (Number.isNumeric(value.threshold)) ? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
+      threshold = Number(threshold);
+
+      const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
+      await this.parent.toggleStatusEffect(key, {active});
     }
   }
 
@@ -187,7 +214,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
-    if(damage === 0) {
+    if (damage === 0) {
       // TODO: V13 allows the format option to be passed. Notification could be updated to include the damaged actor's name
       ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", {localize: true});
       return this.parent;
@@ -199,7 +226,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
 
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
-    if(remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
+    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
     return this.parent.update({"system.stamina": staminaUpdates});
   }
