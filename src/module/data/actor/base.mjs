@@ -154,7 +154,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       let threshold = (Number.isNumeric(value.threshold)) ? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
       threshold = Number(threshold);
 
-      const active = (!Number.isNumeric(threshold) || (this.stamina.value > threshold)) ? false : true;
+      const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
       this.parent.toggleStatusEffect(key, {active});
     });
   }
