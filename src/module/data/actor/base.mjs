@@ -164,7 +164,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * Update combatant at the start of combat
    */
   async startCombat(combatant) {
-    await combatant.update({"system.turns": this.combat.turns});
+    await combatant.update({initiative: this.combat.turns});
   }
 
   /**

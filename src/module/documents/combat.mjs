@@ -21,7 +21,7 @@ export class DrawSteelCombat extends Combat {
   async nextRound() {
     await super.nextRound();
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    const combatantUpdates = this.combatants.map(c => ({_id: c.id, "system.turns": c.actor.system.combat.turns}));
+    const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor.system.combat.turns}));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 
