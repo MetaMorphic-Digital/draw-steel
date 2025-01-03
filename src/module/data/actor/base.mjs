@@ -150,10 +150,9 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * Update the stamina effects based on updated stamina values
    */
   _updateStaminaEffects() {
-    Object.entries(ds.CONFIG.staminaEffects).forEach(([key, value]) => {
+    Object.entries(ds.CONST.staminaEffects).forEach(([key, value]) => {
       let threshold = (Number.isNumeric(value.threshold)) ? value.threshold : foundry.utils.getProperty(this.parent, value.threshold);
       threshold = Number(threshold);
-      if (value.negative) threshold = -threshold;
 
       const active = (!Number.isNumeric(threshold) || (this.stamina.value > threshold)) ? false : true;
       this.parent.toggleStatusEffect(key, {active});

@@ -50,7 +50,7 @@ Hooks.once("init", function () {
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
     CONFIG.statusEffects.push({id, ...value});
   }
-  for (const [id, value] of Object.entries(DRAW_STEEL.staminaEffects)) {
+  for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
     CONFIG.statusEffects.push({id, ...value});
   }
 

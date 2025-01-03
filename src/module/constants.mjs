@@ -18,3 +18,20 @@ export const initiativeModes = Object.freeze({
   default: "DRAW_STEEL.Combat.Initiative.Modes.Default",
   alternative: "DRAW_STEEL.Combat.Initiative.Modes.Alternative"
 });
+
+/**
+ * Effects that apply based on stamina value
+ * @type {Record<string, {img: string, name: string, threshold: string | number}>}
+ */
+export const staminaEffects = Object.freeze({
+  dying: {
+    name: "DRAW_STEEL.Effect.StaminaEffects.Dying",
+    img: "icons/svg/stoned.svg",
+    threshold: 0
+  },
+  winded: {
+    name: "DRAW_STEEL.Effect.StaminaEffects.Winded",
+    img: "icons/svg/windmill.svg",
+    threshold: "system.stamina.winded"
+  }
+});
