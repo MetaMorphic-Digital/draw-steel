@@ -5,3 +5,4 @@ export * as Combatant from "./combatant/_module.mjs";
 export * as helpers from "./helpers.mjs";
 export * as Item from "./item/_module.mjs";
 export * as fields from "./fields/_module.mjs";
+export * as settings from "./settings/_module.mjs";
