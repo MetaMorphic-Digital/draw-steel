@@ -1,3 +1,4 @@
+import {DrawSteelActor} from "../../documents/actor.mjs";
 import {barAttribute, requiredInteger} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
@@ -160,7 +161,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /** 
    * Take a respite resetting the character's stamina/recoveries and convert victories to XP
-   * @returns {Promise<Actor>}
+   * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
     return this.parent.update({
