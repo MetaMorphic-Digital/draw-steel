@@ -27,7 +27,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     schema.combat = new fields.SchemaField({
       size: new fields.EmbeddedDataField(SizeModel),
-      stability: requiredInteger({initial: 0})
+      stability: requiredInteger({initial: 0}),
+      turns: requiredInteger({initial: 1})
     });
 
     schema.biography = new fields.SchemaField(this.actorBiography());
@@ -157,6 +158,13 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
       await this.parent.toggleStatusEffect(key, {active});
     }
+  }
+
+  /**
+   * Update combatant at the start of combat
+   */
+  async startCombat(combatant) {
+    await combatant.update({initiative: this.combat.turns});
   }
 
   /**

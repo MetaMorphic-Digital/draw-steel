@@ -49,7 +49,7 @@ export function renderCombatTracker(app, [html], context) {
 
       button.addEventListener("click", async (element, event) => {
         const oldValue = combatant.initiative;
-        const newValue = oldValue ? oldValue - 1 : 1;
+        const newValue = oldValue ? oldValue - 1 : combatant.actor.system.combat.turns;
         await combatant.update({initiative: newValue});
         if (oldValue) {
           const newTurn = app.viewed.turns.findIndex((c) => c === combatant);
