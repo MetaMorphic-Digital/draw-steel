@@ -1,5 +1,6 @@
 import {systemPath} from "../../constants.mjs";
-import {PowerRoll} from "../../helpers/rolls.mjs";
+import {DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -33,8 +34,9 @@ export default class AbilityModel extends BaseItemModel {
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
-      primary: new fields.NumberField({integer: true}),
-      secondary: new fields.NumberField({integer: true})
+      primary: new fields.NumberField({integer: true, min: 0}),
+      secondary: new fields.NumberField({integer: true, min: 0}),
+      tertiary: new fields.NumberField({integer: true, min: 0})
     });
     schema.damageDisplay = new fields.StringField({choices: {
       melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
@@ -48,7 +50,7 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField({required: true})
+        type: new fields.StringField({required: true, nullable: false})
       }),
       ae: new fields.SetField(new fields.StringField({validate: foundry.data.validators.isValidId})),
       potency: new FormulaField({deterministic: true}),
@@ -62,6 +64,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
+      formula: new FormulaField(),
       characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
@@ -161,18 +164,42 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /**
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    // All abilities are rendered inline
+    config.inline = true;
+    const embed = document.createElement("div");
+    embed.classList.add("ability");
+    embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const context = {system: this, systemFields: this.schema.fields, config: ds.CONFIG};
+    this.getSheetContext(context);
+    const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", abilityBody);
+    return embed;
+  }
+
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
+    context.keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k).join(", ");
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
     context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
 
+    context.distanceLabel = game.i18n.format(config.distances[this.distance.type]?.embedLabel, {...this.distance});
     context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
     context.primaryDistance = config.distances[this.distance.type].primary;
     context.secondaryDistance = config.distances[this.distance.type].secondary;
+    context.tertiaryDistance = config.distances[this.distance.type].tertiary;
 
+    const targetConfig = config.targets[this.target.type] ?? {embedLabel: "Unknown"};
+    context.targetLabel = this.target.value === null ?
+      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
+      game.i18n.format(targetConfig.embedLabel, {value: this.target.value});
     context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
@@ -181,5 +208,54 @@ export default class AbilityModel extends BaseItemModel {
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
+  }
+
+  modifyRollData(rollData) {
+    super.modifyRollData(rollData);
+
+    if (this.actor) {
+      rollData.chr = this.actor.system.characteristics[this.powerRoll.characteristic]?.value;
+    }
+  }
+
+  /**
+   * Use an ability, generating a chat message and potentially making a power roll
+   * @returns {Promise<DrawSteelChatMessage>}
+   */
+  async use() {
+    const messageData = {
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
+      type: "abilityUse",
+      rolls: [],
+      content: this.parent.name,
+      system: {
+        uuid: this.parent.uuid
+      }
+    };
+    // TODO: Put the spend in flavor text (e.g. "Spends 5 Essence" or whatever)
+
+    DrawSteelChatMessage.applyRollMode(messageData, "roll");
+
+    if (this.powerRoll.enabled) {
+      const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
+      const rollData = this.parent.getRollData();
+      const rollOptions = {
+        type: "ability"
+      }; // TODO: Add in Banes & Edges
+      const powerRoll = new PowerRoll(formula, rollData, rollOptions);
+      await powerRoll.evaluate();
+      messageData.rolls.push(powerRoll);
+      const tier = this.powerRoll[`tier${powerRoll.product}`];
+      const damageFormula = tier.damage.value;
+      if (damageFormula) {
+        const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
+        const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
+        const damageRoll = new DSRoll(damageFormula, rollData, {flavor});
+        await damageRoll.evaluate();
+        messageData.rolls.push(damageRoll);
+      }
+    }
+
+    return DrawSteelChatMessage.create(messageData);
   }
 }

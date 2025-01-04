@@ -3,6 +3,9 @@ import {requiredInteger} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
 export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this Combatant subtype
+   */
   static metadata = Object.freeze({
     type: "base"
   });

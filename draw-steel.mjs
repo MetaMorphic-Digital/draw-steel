@@ -30,7 +30,7 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  const templates = [];
+  const templates = ["templates/item/embeds/ability.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -96,7 +96,7 @@ Hooks.once("i18nInit", () => {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", function () {
+Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   // Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
   Hooks.callAll("ds.ready");
@@ -107,6 +107,7 @@ Hooks.once("ready", function () {
  * Render hooks
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
+Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);

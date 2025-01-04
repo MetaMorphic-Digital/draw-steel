@@ -65,6 +65,11 @@ declare module "./ability.mjs" {
     }
     powerRoll: {
       enabled: boolean;
+      /** The set of characteristics available to this power roll */
+      characteristics: Set<string>;
+      /** The highest characteristic of those available. Not set if there's no parent actor. */
+      characteristic?: string;
+      formula: string;
       tier1: PowerRoll;
       tier2: PowerRoll;
       tier3: PowerRoll;

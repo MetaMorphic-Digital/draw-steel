@@ -5,6 +5,11 @@ const fields = foundry.data.fields;
  * A base actor model that provides common properties for both characters and npcs
  */
 export default class BaseActorModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Key information about this Actor subtype
+   */
+  static metadata = Object.freeze({});
+
   /** @override */
   static defineSchema() {
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
@@ -80,7 +85,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * Perform item subtype specific modifications to the actor roll data
+   * Perform actor subtype specific modifications to the actor roll data
    * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy
    */
   modifyRollData(rollData) {
@@ -194,7 +199,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     }
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
-    const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.base.FIELDS.characteristics.${characteristic}.value.hint`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
+    const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     return PowerRoll.prompt({type, formula, data, flavor, edges: options.edges, banes: options.banes});
   }
 

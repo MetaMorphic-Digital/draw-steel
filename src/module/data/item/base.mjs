@@ -69,4 +69,10 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    * @returns {Promise<void>}
    */
   async getSheetContext(context) {}
+
+  /**
+   * Perform item subtype specific modifications to the actor roll data
+   * @param {object} rollData   Pointer to the roll data object
+   */
+  modifyRollData(rollData) {}
 }

@@ -1,7 +1,8 @@
-import { ActiveEffectData, ActorData, CombatantData, CombatData, ItemData, JournalEntryPageData } from "../../../foundry/common/types.mjs"
+import { ActiveEffectData, ActorData, ChatMessageData, CombatantData, CombatData, ItemData, JournalEntryPageData } from "../../../foundry/common/types.mjs"
 import Collection from "../../../foundry/common/utils/collection.mjs"
-import { ActiveEffect as ActiveEffectModel, Actor as ActorModels, Combat as CombatModel, Combatant as CombatantModel, Item as ItemModels } from "../data/_module.mjs"
+import { ActiveEffect as ActiveEffectModels, Actor as ActorModels, ChatMessage as ChatMessageModels, Combat as CombatModels, Combatant as CombatantModels, Item as ItemModels } from "../data/_module.mjs"
 import { DrawSteelActiveEffect } from "./active-effect.mjs"
+import { DrawSteelCombatant } from "./combatant.mjs"
 import { DrawSteelItem } from "./item.mjs"
 
 // Collator for the types
@@ -24,17 +25,22 @@ declare global {
 
   interface ActiveEffect extends ActiveEffectData {
     type: "base";
-    system: ActiveEffectModel.BaseEffectModel;
+    system: ActiveEffectModels.BaseEffectModel;
+  }
+  interface ChatMessage extends ChatMessageData {
+    type: "base" | "abilityUse";
+    system: ChatMessageModels.BaseMessageModel | ChatMessageModels.AbilityUseModel;
   }
 
   interface Combat extends CombatData {
     type: "base";
-    system: CombatModel.BaseCombatModel;
+    system: CombatModels.BaseCombatModel;
+    combatants: Collection<string, DrawSteelCombatant>;
   }
 
   interface Combatant extends CombatantData {
     type: "base";
-    system: CombatantModel.BaseCombatantModel;
+    system: CombatantModels.BaseCombatantModel;
   }
 
   interface JournalEntryPage extends JournalEntryPageData {
