@@ -167,7 +167,7 @@ export default class CharacterModel extends BaseActorModel {
       system: {
         hero: {
           recoveries: {
-            value: this.recoveries.max
+            value: this.hero.recoveries.max
           },
           victories: 0,
           xp: this.hero.xp + this.hero.victories
