@@ -158,6 +158,27 @@ export default class CharacterModel extends BaseActorModel {
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
   }
 
+  /** 
+   * Take a respite resetting the character's stamina/recoveries and convert victories to XP
+   * @returns {Promise<Actor>}
+   */
+  async takeRespite() {
+    return this.parent.update({
+      system: {
+        hero: {
+          recoveries: {
+            value: this.recoveries.max
+          },
+          victories: 0,
+          xp: this.hero.xp + this.hero.victories
+        },
+        stamina: {
+          value: this.stamina.max
+        }        
+      }
+    });
+  }
+
   /** @override */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
