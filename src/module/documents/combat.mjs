@@ -11,7 +11,7 @@ export class DrawSteelCombat extends Combat {
   /** @override */
   async startCombat() {
     for (const combatant of this.combatants) {
-      await combatant.actor.system.startCombat(combatant);
+      await combatant.actor?.system.startCombat(combatant);
     }
 
     return super.startCombat();
