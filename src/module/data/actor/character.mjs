@@ -1,3 +1,4 @@
+import {DrawSteelActor} from "../../documents/actor.mjs";
 import {barAttribute, requiredInteger} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
@@ -156,6 +157,27 @@ export default class CharacterModel extends BaseActorModel {
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
+  }
+
+  /** 
+   * Take a respite resetting the character's stamina/recoveries and convert victories to XP
+   * @returns {Promise<DrawSteelActor>}
+   */
+  async takeRespite() {
+    return this.parent.update({
+      system: {
+        hero: {
+          recoveries: {
+            value: this.hero.recoveries.max
+          },
+          victories: 0,
+          xp: this.hero.xp + this.hero.victories
+        },
+        stamina: {
+          value: this.stamina.max
+        }        
+      }
+    });
   }
 
   /** @override */
