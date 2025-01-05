@@ -1,13 +1,13 @@
-import {systemPath} from "../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 
-/** @import {FormSelectOption} from "../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
 const {api, sheets} = foundry.applications;
 
 /**
  * AppV2-based sheet for all actor classes
  */
-export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
+export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   /** @override */
@@ -30,37 +30,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     dragDrop: [{dragSelector: "[data-drag]", dropSelector: null}],
     form: {
       submitOnChange: true
-    }
-  };
-
-  /** @override */
-  static PARTS = {
-    header: {
-      template: systemPath("templates/actor/header.hbs")
-    },
-    tabs: {
-      // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs"
-    },
-    stats: {
-      template: systemPath("templates/actor/stats.hbs"),
-      scrollable: [""]
-    },
-    features: {
-      template: systemPath("templates/actor/features.hbs"),
-      scrollable: [""]
-    },
-    abilities: {
-      template: systemPath("templates/actor/abilities.hbs"),
-      scrollable: [""]
-    },
-    effects: {
-      template: systemPath("templates/actor/effects.hbs"),
-      scrollable: [""]
-    },
-    biography: {
-      template: systemPath("templates/actor/biography.hbs"),
-      scrollable: [""]
     }
   };
 
@@ -140,7 +109,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.skills = this._getSkillList();
         context.tab = context.tabs[partId];
         break;
       case "features":
@@ -180,7 +148,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
+   * @typedef {import("../../../../foundry/common/data/fields.mjs").NumberField} NumberField
    */
 
   /**
@@ -210,21 +178,6 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
       return obj;
     }, {});
-  }
-
-  /**
-   * Constructs a string listing the actor's skills
-   * @returns {string}
-   */
-  _getSkillList() {
-    if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
-    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skill = ds.CONFIG.skills.list[skill]?.label;
-      if (skill) skills.push(skill);
-      return skills;
-    }, []);
-    const formatter = game.i18n.getListFormatter();
-    return formatter.format(list);
   }
 
   /**

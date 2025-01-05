@@ -1,5 +1,5 @@
 export * as hooks from "./hooks/_module.mjs";
-export {DrawSteelActorSheet} from "./actor-sheet.mjs";
+export * from "./actor-sheet/_module.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";
 
 import * as elements from "./elements/_module.mjs";

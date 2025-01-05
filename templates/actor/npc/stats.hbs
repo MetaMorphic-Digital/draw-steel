@@ -1,0 +1,105 @@
+{{! Stats Tab }}
+<section class="tab stats {{tab.cssClass}}" data-group="primary" data-tab="stats">
+  <fieldset class="resources flexrow">
+    <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
+    <div class="resource stamina">
+      <label class="resource-label">
+        {{systemFields.stamina.label}}
+      </label>
+      <div class="resource-content flexrow">
+        {{#if isPlay}}
+        <div class="resource-temporary">
+          {{formGroup
+          systemFields.stamina.fields.temporary
+          value=system.stamina.temporary
+          dataset=datasets.notSource
+          classes="paired"
+          }}
+        </div>
+        <div class="resource-current">
+          {{formGroup
+          systemFields.stamina.fields.value
+          value=system.stamina.value
+          dataset=datasets.notSource
+          classes="paired"
+          }}
+        </div>
+        {{/if}}
+        <span class="resource-max">
+          {{#if isPlay}}
+          <div class="form-group paired">
+            <label class="input-placeholder-label">
+              {{systemFields.stamina.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.stamina.max}}
+            </div>
+          </div>
+          {{else}}
+          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
+          {{/if}}
+        </span>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="characteristics flexrow">
+    <legend>{{systemFields.characteristics.label}}</legend>
+    {{#each characteristics as |chr key|}}
+    {{#if @root.isPlay}}
+    <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=chr.field.hint}}">
+      {{chr.field.label}} {{numberFormat chr.value sign=true}}
+    </a>
+    {{else}}
+    <label class="characteristic edit" data-tooltip="{{chr.field.hint}}">
+      <span class="label">{{chr.field.hint}}</span>
+      <input type="text" name="system.characteristics.{{key}}.value" value="{{numberFormat chr.value sign=true}}" data-dtype="Number" data-source="true">
+    </label>
+    {{/if}}
+    {{/each}}
+  </fieldset>
+  {{#if isPlay}}
+  <div class="flexrow">
+    <fieldset class="combat flexrow">
+      <legend>{{systemFields.combat.label}}</legend>
+      <span class="play">
+        {{systemFields.combat.fields.size.label}} {{system.combat.size}}
+      </span>
+      <span class="play">
+        {{localize "DRAW_STEEL.Item.Ability.Distance.Melee"}} {{system.reach}}
+      </span>
+      <span class="play">
+        {{systemFields.combat.fields.stability.label}} {{system.combat.stability}}
+      </span>
+    </fieldset>
+    <fieldset class="movement flexrow">
+      <legend>{{systemFields.movement.label}}</legend>
+      {{#each movement as |mvmt key|}}
+      <span class="play">
+        {{mvmt.field.label}} {{mvmt.value}}
+      </span>
+      {{/each}}
+    </fieldset>
+  </div>
+  {{else}}
+  <fieldset class="combat flexrow">
+    <legend>{{systemFields.combat.label}}</legend>
+    <div class="size flexrow">
+      <label class="size">{{systemFields.combat.fields.size.label}}</label>
+      {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=actor.uuid dataset=datasets.isSource}}
+      {{#if (eq system.combat.size.value 1)}}
+      {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
+      {{/if}}
+    </div>
+    {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
+  </fieldset>
+  <fieldset class="movement flexrow">
+    <legend>{{systemFields.movement.label}}</legend>
+    {{formGroup systemFields.movement.fields.walk value=systemSource.movement.walk rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.burrow value=systemSource.movement.burrow rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.climb value=systemSource.movement.climb rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.swim value=systemSource.movement.swim rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.fly value=systemSource.movement.fly rootId=actor.uuid dataset=datasets.isSource}}
+    {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
+  </fieldset>
+  {{/if}}
+</section>

@@ -59,9 +59,15 @@ Hooks.once("init", function () {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelActorSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelCharacterSheet, {
+    types: ["character"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Actor"
+    label: "DRAW_STEEL.Sheet.Labels.Character"
+  });
+  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelNPCSheet, {
+    types: ["npc"],
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.NPC"
   });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
