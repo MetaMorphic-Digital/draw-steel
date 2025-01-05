@@ -22,8 +22,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /**
    * Send a socket message to the Director to spend a hero token
    * Necessary because only game masters can modify world settings
-   * @param {string} spendType - Key of ds.CONFIG.hero.tokenSpends
-   * @returns {boolean} Returns an explicit false if the socket message wasn't sent
+   * @param {string} spendType       Key of `ds.CONFIG.hero.tokenSpends`.
+   * @returns {void|false}           An explicit `false` if the socket message was not sent.
    */
   spendToken(spendType) {
     if (!game.users.activeGM) {
