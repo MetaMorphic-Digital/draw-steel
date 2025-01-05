@@ -31,7 +31,7 @@ export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({i
  * @param {DamageTypeCallback} inner Callback that returns a field
  * @returns A Schema with entries for each damage type
  */
-export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
+export const damageTypes = (inner, {all = false} = {}) => {
   const schema = {};
   const config = ds.CONFIG;
 
@@ -41,13 +41,6 @@ export const damageTypes = (inner, {all = false, keywords = false} = {}) => {
     obj[type] = inner({label: value.label});
     return obj;
   }, schema);
-
-  if (keywords) {
-    Object.entries(config.abilities.keywords).reduce((obj, [key, value]) => {
-      if (value.damage) obj[key] = inner({label: value.label});
-      return obj;
-    }, schema);
-  }
 
   return new SchemaField(schema);
 };

@@ -1,4 +1,3 @@
-import {systemID} from "../constants.mjs";
 
 export class DrawSteelCombatant extends Combatant {
   /**
@@ -23,13 +22,5 @@ export class DrawSteelCombatant extends Combatant {
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);
-  }
-
-  async _preCreate(data, options, user) {
-    const allowed = await super._preCreate(data, options, user);
-    if (allowed === false) return false;
-
-    // Start all combatants as ready to act
-    if ((game.settings.get(systemID, "initiativeMode") === "default") && !Number.isNumeric(data.initiative)) this.updateSource({initiative: 1});
   }
 }

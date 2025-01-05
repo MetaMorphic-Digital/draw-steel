@@ -50,6 +50,9 @@ Hooks.once("init", function () {
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
     CONFIG.statusEffects.push({id, ...value});
   }
+  for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
+    CONFIG.statusEffects.push({id, ...value});
+  }
 
   // Necessary until foundry makes this default behavior in v13
   CONFIG.ActiveEffect.legacyTransferral = false;

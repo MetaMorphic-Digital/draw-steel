@@ -9,10 +9,19 @@ export class DrawSteelCombat extends Combat {
   }
 
   /** @override */
+  async startCombat() {
+    for (const combatant of this.combatants) {
+      await combatant.actor?.system.startCombat(combatant);
+    }
+
+    return super.startCombat();
+  }
+
+  /** @override */
   async nextRound() {
     await super.nextRound();
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    const combatantUpdates = this.combatants.filter(c => !c.initiative).map(c => ({_id: c.id, initiative: 1}));
+    const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor?.system.combat.turns ?? 1}));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 
