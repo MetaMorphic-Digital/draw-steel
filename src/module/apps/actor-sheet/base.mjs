@@ -1,13 +1,13 @@
-import {systemPath} from "../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 
-/** @import {FormSelectOption} from "../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
 const {api, sheets} = foundry.applications;
 
 /**
  * AppV2-based sheet for all actor classes
  */
-export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
+export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
   /** @override */
@@ -180,7 +180,7 @@ export class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * @typedef {import("../../../foundry/common/data/fields.mjs").NumberField} NumberField
+   * @typedef {import("../../../../foundry/common/data/fields.mjs").NumberField} NumberField
    */
 
   /**
