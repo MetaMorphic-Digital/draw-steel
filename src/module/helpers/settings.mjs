@@ -5,12 +5,21 @@ import {HeroTokenModel} from "../data/settings/_module.mjs";
 
 const fields = foundry.data.fields;
 
+/**
+ * Helper class for setting registration
+ */
 export default class DrawSteelSettingsHandler {
   /**
    * @type {Record<string, SettingConfig>}
    */
   static get systemSettings() {
     return {
+      migrationVersion: {
+        name: "DRAW_STEEL.Setting.MigrationVersion.Label",
+        hint: "DRAW_STEEL.Setting.MigrationVersion.Hint",
+        type: new fields.StringField({nullable: false, blank: false}),
+        scope: "world"
+      },
       initiativeMode: {
         name: "DRAW_STEEL.Combat.Initiative.Modes.Label",
         hint: "DRAW_STEEL.Combat.Initiative.Modes.Hint",
