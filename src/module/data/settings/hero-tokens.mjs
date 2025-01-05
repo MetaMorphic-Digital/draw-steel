@@ -9,7 +9,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /** @override */
   static defineSchema() {
     return {
-      value: new fields.NumberField({required: true, nullable: false, initial: 0, integer: true, min: 0})
+      value: new fields.NumberField({nullable: false, initial: 0, integer: true, min: 0})
     };
   }
 
