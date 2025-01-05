@@ -1,5 +1,5 @@
 import {DrawSteelActor} from "../../documents/actor.mjs";
-import {barAttribute, requiredInteger} from "../helpers.mjs";
+import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 const fields = foundry.data.fields;
@@ -35,7 +35,7 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
-      skills: new fields.SetField(new fields.StringField({blank: false, required: true})),
+      skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField()
     });
 
@@ -159,7 +159,7 @@ export default class CharacterModel extends BaseActorModel {
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
   }
 
-  /** 
+  /**
    * Take a respite resetting the character's stamina/recoveries and convert victories to XP
    * @returns {Promise<DrawSteelActor>}
    */
@@ -175,7 +175,7 @@ export default class CharacterModel extends BaseActorModel {
         },
         stamina: {
           value: this.stamina.max
-        }        
+        }
       }
     });
   }

@@ -21,6 +21,15 @@ export const barAttribute = (initial, min) => new SchemaField({
 export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({initial, label, required: true, nullable: false, integer: true, min: 0});
 
 /**
+ * Constructs a string field for use inside of a SetField
+ * @param {object} [options] Options to forward to the field
+ * @param {Record<string, string>} [options.choices] CONST-derived choices for the field
+ * @param {Function} [options.validate] A validator function for field values
+ * @returns A string field that is always truthy
+ */
+export const setOptions = ({choices, validate} = {}) => new StringField({required: true, nullable: false, blank: false, choices, validate});
+
+/**
  * @callback DamageTypeCallback
  * @param {{label: string}} damageConfig
  * @returns {import("../../../foundry/common/data/fields.mjs").DataField} The SchemaField entry

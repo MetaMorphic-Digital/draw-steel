@@ -2,6 +2,7 @@ import {systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 const fields = foundry.data.fields;
@@ -28,7 +29,7 @@ export default class AbilityModel extends BaseItemModel {
     const schema = super.defineSchema();
     const config = ds.CONFIG.abilities;
 
-    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
+    schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
     schema.category = new fields.StringField({required: true, nullable: false}),
     schema.trigger = new fields.StringField();
@@ -52,7 +53,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new FormulaField(),
         type: new fields.StringField({required: true, nullable: false})
       }),
-      ae: new fields.SetField(new fields.StringField({validate: foundry.data.validators.isValidId})),
+      ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new FormulaField({deterministic: true}),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
@@ -65,7 +66,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
       formula: new FormulaField(),
-      characteristics: new fields.SetField(new fields.StringField({required: true, blank: false})),
+      characteristics: new fields.SetField(setOptions()),
       tier1: new fields.SchemaField(powerRollSchema()),
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
