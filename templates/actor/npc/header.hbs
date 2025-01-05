@@ -1,0 +1,40 @@
+{{! Sheet Header }}
+<header class="sheet-header">
+  <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
+  <img
+    class="profile-img"
+    src="{{actor.img}}"
+    alt="{{actor.name}}"
+    data-edit="img"
+    {{#if isPlay}}
+    data-action="showPortraitArtwork"
+    {{else}}
+    {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+    data-action="editImage"
+    {{/if}}
+    title="{{actor.name}}"
+    height="100"
+    width="100"
+  />
+  <div class="header-center flexcol">
+    <div class="document-name">
+      {{#if isPlay}}
+      <h2>{{actor.name}}</h2>
+      {{else}}
+      {{formInput
+      fields.name
+      value=actor._source.name
+      placeholder=(localize "Name")
+      }}
+      {{/if}}
+    </div>
+  </div>
+  <div class="header-right flexcol">
+    <div class="mode-toggle flexrow">
+      <span class="label {{ifThen isPlay "active" ""}}">{{localize "DRAW_STEEL.Sheet.Play"}}</span>
+      <slide-toggle class="mode-slider" data-action="toggleMode" {{checked (not isPlay)}}>
+      </slide-toggle>
+      <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
+    </div>
+  </div>
+</header>

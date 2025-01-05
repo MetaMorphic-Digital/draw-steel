@@ -29,7 +29,6 @@
       {{/if}}
     </div>
     <div class="origins flexrow">
-      {{#if (eq actor.type "character")}}
       <div class="ancestry">
         {{#if actor.system.ancestry}}
         <span data-document-class="Item" data-item-id="{{actor.system.ancestry.id}}">
@@ -84,7 +83,6 @@
         </a>
         {{/if}}
       </div>
-      {{/if}}
     </div>
   </div>
   <div class="header-right flexcol">
@@ -94,7 +92,6 @@
       </slide-toggle>
       <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
     </div>
-    {{#if (eq actor.type "character")}}
     <div class="class">
       {{#if actor.system.class}}
       <span class="click-element flexrow" data-document-class="Item" data-item-id="{{actor.system.class.id}}">
@@ -135,6 +132,5 @@
       }}
       {{/if}}
     </div>
-    {{/if}}
   </div>
 </header>

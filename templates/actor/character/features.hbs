@@ -18,7 +18,6 @@
     </button>
     {{/each}}
   </div>
-  {{#if (eq actor.type "character")}}
   <fieldset class="item-list kits">
     <legend>{{localize "TYPES.Item.kit"}}</legend>
     {{#each system.kits as |kit|}}
@@ -37,5 +36,4 @@
     </a>
     {{/each}}
   </fieldset>
-  {{/if}}
 </section>

@@ -33,37 +33,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   };
 
-  /** @override */
-  static PARTS = {
-    header: {
-      template: systemPath("templates/actor/header.hbs")
-    },
-    tabs: {
-      // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs"
-    },
-    stats: {
-      template: systemPath("templates/actor/stats.hbs"),
-      scrollable: [""]
-    },
-    features: {
-      template: systemPath("templates/actor/features.hbs"),
-      scrollable: [""]
-    },
-    abilities: {
-      template: systemPath("templates/actor/abilities.hbs"),
-      scrollable: [""]
-    },
-    effects: {
-      template: systemPath("templates/actor/effects.hbs"),
-      scrollable: [""]
-    },
-    biography: {
-      template: systemPath("templates/actor/biography.hbs"),
-      scrollable: [""]
-    }
-  };
-
   /**
    * Available sheet modes.
    * @enum {number}
