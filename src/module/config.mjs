@@ -645,8 +645,39 @@ preLocalize("negotation.motivations", {key: "label"});
  * Configuration information for heros
  */
 DRAW_STEEL.hero = {
-  xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144]
+  /**
+   * XP progression for heroes
+   * @type {number[]}
+   */
+  xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
+  /**
+   * Ways to spend hero tokens
+   * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
+   */
+  tokenSpends: {
+    gainSurges: {
+      label: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
+      tokens: 1,
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.GainSurges.messageContent"
+    },
+    succeedSave: {
+      label: "DRAW_STEEL.Setting.HeroTokens.SucceedSave.label",
+      tokens: 1,
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.SucceedSave.messageContent"
+    },
+    improveTest: {
+      label: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.label",
+      tokens: 1,
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.ImproveTest.messageContent"
+    },
+    regainStamina: {
+      label: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
+      tokens: 2,
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.messageContent"
+    }
+  }
 };
+preLocalize("hero.tokenSpends", {keys: ["label", "messageContent"], sort: true});
 
 /**
  * Configuration information for monsters

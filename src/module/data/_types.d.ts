@@ -5,6 +5,7 @@ import "./combat/_types";
 import "./combatant/_types";
 import "./effect/_types";
 import "./item/_types";
+import "./settings/_types";
 
 export type BarAttribute = {
   value: number,
