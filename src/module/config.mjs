@@ -865,81 +865,99 @@ DRAW_STEEL.abilities = {
    * Valid distances in Draw Steel
    * `primary` and `secondary`, if present represent additional measures/dimensions that are valid for this type
    * The string values are the labels for those properties
-   * @type {Record<string, {label: string, primary?: string, secondary?: string, area?: boolean}>}
+   * @type {Record<string, {label: string; primary?: string; secondary?: string; tertiary?: string; area?: boolean; embedLabel: string}>}
    */
   distances: {
     melee: {
       label: "DRAW_STEEL.Item.Ability.Distance.Melee",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Melee"
+      primary: "DRAW_STEEL.Item.Ability.Distance.Melee",
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Melee"
     },
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Ranged"
+      primary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Melee"
     },
     meleeRanged: {
       label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
       primary: "DRAW_STEEL.Item.Ability.Distance.Melee",
-      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged"
+      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.MeleeRanged"
     },
     aura: {
       label: "DRAW_STEEL.Item.Ability.Distance.Aura",
       primary: "DRAW_STEEL.Item.Ability.Distance.Aura",
-      area: true
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Aura"
     },
     burst: {
       label: "DRAW_STEEL.Item.Ability.Distance.Burst",
       primary: "DRAW_STEEL.Item.Ability.Distance.Burst",
-      area: true
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Burst"
     },
     cube: {
       label: "DRAW_STEEL.Item.Ability.Distance.Cube",
       primary: "DRAW_STEEL.Item.Ability.Distance.Length",
       secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      area: true
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Cube"
     },
     line: {
       label: "DRAW_STEEL.Item.Ability.Distance.Line",
       primary: "DRAW_STEEL.Item.Ability.Distance.Length",
       secondary: "DRAW_STEEL.Item.Ability.Distance.Width",
-      area: true
+      tertiary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Line"
     },
     wall: {
       label: "DRAW_STEEL.Item.Ability.Distance.Wall",
       primary: "DRAW_STEEL.Item.Ability.Distance.Squares",
-      area: true
+      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Wall"
     },
     special: {
       label: "DRAW_STEEL.Item.Ability.Distance.Special",
-      area: true
+      area: true,
+      embedLabel: "DRAW_STEEL.Item.Ability.Distance.Special"
     },
     self: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Self"
+      label: "DRAW_STEEL.Item.Ability.Distance.Self",
+      embedLabel: "DRAW_STEEL.Item.Ability.Distance.Self"
     }
   },
-  /** @type {Record<string, {label: string, all?: string}>} */
+  /** @type {Record<string, {label: string; all?: string; embedLabel: string}>} */
   targets: {
     creature: {
       label: "DRAW_STEEL.Item.Ability.Target.Creature",
-      all: "DRAW_STEEL.Item.Ability.Target.AllCreatures"
+      all: "DRAW_STEEL.Item.Ability.Target.AllCreatures",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.CreatureEmbed"
     },
     object: {
       label: "DRAW_STEEL.Item.Ability.Target.Object",
-      all: "DRAW_STEEL.Item.Ability.Target.AllObjects"
+      all: "DRAW_STEEL.Item.Ability.Target.AllObjects",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.ObjectEmbed"
     },
     creatureObject: {
       label: "DRAW_STEEL.Item.Ability.Target.CreatureObject",
-      all: "DRAW_STEEL.Item.Ability.Target.AllCreatureObject"
+      all: "DRAW_STEEL.Item.Ability.Target.AllCreatureObject",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.CreatureObjectEmbed"
     },
     enemy: {
       label: "DRAW_STEEL.Item.Ability.Target.Enemy",
-      all: "DRAW_STEEL.Item.Ability.Target.AllEnemies"
+      all: "DRAW_STEEL.Item.Ability.Target.AllEnemies",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.EnemyEmbed"
     },
     ally: {
       label: "DRAW_STEEL.Item.Ability.Target.Ally",
-      all: "DRAW_STEEL.Item.Ability.Target.AllAllies"
+      all: "DRAW_STEEL.Item.Ability.Target.AllAllies",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.AllyEmbed"
     },
     self: {
-      label: "DRAW_STEEL.Item.Ability.Target.Self"
+      label: "DRAW_STEEL.Item.Ability.Target.Self",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.Self"
     }
   },
   forcedMovement: {
@@ -957,6 +975,7 @@ DRAW_STEEL.abilities = {
 preLocalize("abilities.keywords", {keys: ["label", "group"]});
 preLocalize("abilities.types", {key: "label"});
 preLocalize("abilities.categories", {key: "label"});
+// Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
 preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});

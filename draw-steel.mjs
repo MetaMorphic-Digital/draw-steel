@@ -30,7 +30,7 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  const templates = [];
+  const templates = ["templates/item/embeds/ability.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -107,6 +107,7 @@ Hooks.once("ready", function () {
  * Render hooks
  */
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
+Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);

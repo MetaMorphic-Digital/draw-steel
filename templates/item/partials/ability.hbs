@@ -2,13 +2,17 @@
 <fieldset>
   <legend>{{field.label}}</legend>
   {{formGroup field.fields.damage.fields.value value=value.damage.value}}
-  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes}}
+  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes blank=""}}
   {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
   {{formGroup field.fields.potency value=value.potency}}
   {{formGroup field.fields.description value=value.description}}
   {{!-- TODO: Forced Movement --}}
 </fieldset>
 {{/inline}}
+{{#if isPlay}}
+{{> "systems/draw-steel/templates/item/embeds/ability.hbs"}}
+{{else}}
+{{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{formGroup systemFields.category value=system.category options=abilityCategories blank=""}}
@@ -25,6 +29,9 @@
   {{#if secondaryDistance}}
   {{formGroup systemFields.distance.fields.secondary value=system.distance.secondary label=secondaryDistance}}
   {{/if}}
+  {{#if tertiaryDistance}}
+  {{formGroup systemFields.distance.fields.tertiary value=system.distance.tertiary label=tertiaryDistance}}
+  {{/if}}
 </fieldset>
 {{#if showDamageDisplay}}
 {{formGroup systemFields.damageDisplay value=system.damageDisplay}}
@@ -32,13 +39,17 @@
 <fieldset>
   <legend>{{systemFields.target.label}}</legend>
   {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
+  {{#if (ne system.target.type "self")}}
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
+  {{/if}}
 </fieldset>
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
+{{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
 {{/if}}
 {{formGroup systemFields.effect value=system.effect}}
+{{/if}}
