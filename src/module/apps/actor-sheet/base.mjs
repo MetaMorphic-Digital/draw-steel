@@ -109,7 +109,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.skills = this._getSkillList();
         context.tab = context.tabs[partId];
         break;
       case "features":
@@ -179,21 +178,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
       return obj;
     }, {});
-  }
-
-  /**
-   * Constructs a string listing the actor's skills
-   * @returns {string}
-   */
-  _getSkillList() {
-    if (!foundry.utils.hasProperty(this.actor.system, "hero.skills")) return "";
-    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skill = ds.CONFIG.skills.list[skill]?.label;
-      if (skill) skills.push(skill);
-      return skills;
-    }, []);
-    const formatter = game.i18n.getListFormatter();
-    return formatter.format(list);
   }
 
   /**

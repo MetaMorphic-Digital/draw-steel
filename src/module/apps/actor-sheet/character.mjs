@@ -32,4 +32,29 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""]
     }
   };
+
+  /** @override */
+  async _preparePartContext(partId, context, options) {
+    await super._preparePartContext(partId, context, options);
+    switch (partId) {
+      case "stats":
+        context.skills = this._getSkillList();
+        break;
+    }
+    return context;
+  }
+
+  /**
+   * Constructs a string listing the actor's skills
+   * @returns {string}
+   */
+  _getSkillList() {
+    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
+      skill = ds.CONFIG.skills.list[skill]?.label;
+      if (skill) skills.push(skill);
+      return skills;
+    }, []);
+    const formatter = game.i18n.getListFormatter();
+    return formatter.format(list);
+  }
 }
