@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import {setOptions} from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -38,7 +39,7 @@ export default class ClassModel extends AdvancementModel {
     // schema.secondary = new fields.StringField();
 
     schema.characteristics = new fields.SchemaField({
-      core: new fields.SetField(new fields.StringField({blank: false, required: true}))
+      core: new fields.SetField(setOptions())
     });
 
     schema.stamina = new fields.SchemaField({

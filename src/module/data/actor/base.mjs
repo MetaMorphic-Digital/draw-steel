@@ -1,4 +1,4 @@
-import {damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
+import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
 /**
@@ -64,7 +64,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     return {
       value: new fields.HTMLField(),
       gm: new fields.HTMLField(),
-      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
+      languages: new fields.SetField(setOptions())
     };
   }
 

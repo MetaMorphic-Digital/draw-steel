@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -29,7 +30,7 @@ export default class KitModel extends BaseItemModel {
 
     schema.equipment = new fields.SchemaField({
       armor: new fields.StringField({required: true, blank: true}),
-      weapon: new fields.SetField(new fields.StringField({required: true, blank: false})),
+      weapon: new fields.SetField(setOptions()),
       shield: new fields.BooleanField()
       // implement: new fields.StringField({choices: config.equipment.implement})
     });
