@@ -39,14 +39,28 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "header":
+        context.monsterKeywords = this._getMonsterKeywords();
         context.organizations = this._getOrganizations();
         context.roles = this._getRoles();
+        context.evLabel = this._getEVLabel();
         break;
       case "biography":
         context.motivations = this._getMotivations();
         break;
     }
     return context;
+  }
+
+  /**
+   * Fetches the options for Monster Organizations
+   * @returns {{list: FormSelectOption[], current: string}}
+   */
+  _getMonsterKeywords() {
+    const formatter = game.i18n.getListFormatter({type: "unit"});
+    return {
+      list: [],
+      current: formatter.format(this.actor.system.monster.keywords)
+    };
   }
 
   /**
@@ -71,6 +85,15 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       list: Object.entries(roles).map(([value, {label}]) => ({value, label})),
       current: roles[this.actor.system.monster.role]?.label ?? ""
     };
+  }
+
+  /**
+   * Constructs a label
+   */
+  _getEVLabel() {
+    const data = {value: this.actor.system.monster.ev};
+    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
+    else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
   }
 
   /**

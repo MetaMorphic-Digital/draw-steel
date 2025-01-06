@@ -186,8 +186,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getLanguages() {
     if (!this.actor.system.schema.getField("biography.languages")) return {list: "", options: []};
+    const formatter = game.i18n.getListFormatter();
+    const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
     return {
-      list: game.i18n.getListFormatter().format(Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l)),
+      list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
     };
   }

@@ -28,6 +28,13 @@
       }}
       {{/if}}
     </div>
+    <div class="keywords">
+      {{#if isPlay}}
+      {{monsterKeywords.current}}
+      {{else}}
+      {{formInput systemFields.monster.fields.keywords value=system.monster.keywords}}
+      {{/if}}
+    </div>
   </div>
   <div class="header-right flexcol">
     <div class="mode-toggle flexrow">
@@ -37,14 +44,18 @@
       <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
     </div>
     {{#if isPlay}}
-    <div class="form-group">
+    <div class="monster-info">
       {{systemFields.monster.fields.level.label}} {{system.monster.level}}
       {{organizations.current}} {{roles.current}}
+    </div>
+    <div class="ev">
+      {{evLabel}}
     </div>
     {{else}}
     {{formGroup systemFields.monster.fields.level value=system.monster.level}}
     {{formGroup systemFields.monster.fields.organization value=system.monster.organization options=organizations.list}}
     {{formGroup systemFields.monster.fields.role value=system.monster.role options=roles.list}}
+    {{formGroup systemFields.monster.fields.ev value=system.monster.ev}}
     {{/if}}
   </div>
 </header>
