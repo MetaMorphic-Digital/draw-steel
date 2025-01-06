@@ -683,6 +683,69 @@ preLocalize("hero.tokenSpends", {keys: ["label", "messageContent"], sort: true})
  * Configuration information for monsters
  */
 DRAW_STEEL.monsters = {
+  /** @type {Record<string, {label: string, group: string}>} */
+  keywords: {
+    abyssal: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Abyssal",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    accursed: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Accursed",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    animal: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Animal",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    beast: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Beast",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    construct: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Construct",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    dragon: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Dragon",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    elemental: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Elemental",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    fey: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Fey",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    giant: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Giant",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    horror: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Horror",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    humanoid: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Humanoid",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    infernal: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Infernal",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    plant: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Plant",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    swarm: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Swarm",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    },
+    undead: {
+      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Undead",
+      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General"
+    }
+  },
   /** @type {Record<string, {label: string}>} */
   roles: {
     ambusher: {
@@ -735,6 +798,7 @@ DRAW_STEEL.monsters = {
     }
   }
 };
+preLocalize("monsters.keywords", {keys: ["label", "group"]});
 preLocalize("monsters.roles", {key: "label"});
 preLocalize("monsters.organizations", {key: "label"});
 
