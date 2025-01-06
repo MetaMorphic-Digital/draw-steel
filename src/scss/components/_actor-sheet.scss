@@ -1,43 +1,43 @@
+.form-group {
+  .input-placeholder {
+    line-height: var(--input-height);
+    font-size: var(--font-size-16);
+  }
+
+  &.paired {
+    gap: 10px;
+
+    label {
+      flex: 1;
+      text-align: right;
+      line-height: var(--input-height);
+    }
+
+    .form-fields,
+    .input-placeholder {
+      flex: 1;
+      justify-content: left;
+    }
+
+    .input-placeholder {
+      text-align: left;
+    }
+  }
+}
+
+.form-fields {
+  justify-content: center;
+}
+
 .resources {
+  .form-group.stacked {
+    flex-direction: column-reverse;
+  }
+
   .resource {
     input[type=number] {
       width: 60px;
       flex: 0 0 50px;
-    }
-
-    .form-group {
-      .input-placeholder {
-        line-height: var(--input-height);
-        font-size: var(--font-size-16);
-      }
-
-      &.paired {
-        gap: 10px;
-
-        label {
-          flex: 1;
-          text-align: right;
-          line-height: var(--input-height);
-        }
-
-        .form-fields,
-        .input-placeholder {
-          flex: 1;
-          justify-content: left;
-        }
-
-        .input-placeholder {
-          text-align: left;
-        }
-      }
-
-      &.stacked {
-        flex-direction: column-reverse;
-      }
-    }
-
-    .form-fields {
-      justify-content: center;
     }
   }
 
@@ -102,11 +102,5 @@
     .form-fields {
       flex: 1 1 20px;
     }
-  }
-}
-
-.biography {
-  .form-fields {
-    border: 2px groove;
   }
 }

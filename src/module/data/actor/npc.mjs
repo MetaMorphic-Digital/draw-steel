@@ -20,7 +20,6 @@ export default class NPCModel extends BaseActorModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = ds.CONFIG;
 
     schema.negotiation = new fields.SchemaField({
       interest: requiredInteger({initial: 5}),

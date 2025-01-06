@@ -39,9 +39,12 @@
     {{#if isPlay}}
     <div class="form-group">
       {{systemFields.monster.fields.level.label}} {{system.monster.level}}
+      {{organizations.current}} {{roles.current}}
     </div>
     {{else}}
     {{formGroup systemFields.monster.fields.level value=system.monster.level}}
+    {{formGroup systemFields.monster.fields.organization value=system.monster.organization options=organizations.list}}
+    {{formGroup systemFields.monster.fields.role value=system.monster.role options=roles.list}}
     {{/if}}
   </div>
 </header>

@@ -639,7 +639,7 @@ DRAW_STEEL.negotiation = {
     }
   }
 };
-preLocalize("negotation.motivations", {key: "label"});
+preLocalize("negotiation.motivations", {key: "label"});
 
 /**
  * Configuration information for heros
@@ -691,9 +691,6 @@ DRAW_STEEL.monsters = {
     artillery: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Artillery"
     },
-    boss: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Boss"
-    },
     brute: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Brute"
     },
@@ -709,28 +706,37 @@ DRAW_STEEL.monsters = {
     hexer: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Hexer"
     },
-    support: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Support"
-    },
     mount: {
       label: "DRAW_STEEL.Actor.NPC.ROLES.Mount"
     },
-    solo: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Solo"
+    support: {
+      label: "DRAW_STEEL.Actor.NPC.ROLES.Support"
     }
   },
   /** @type {Record<string, {label: string}>} */
-  subroles: {
+  organizations: {
     minion: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Minion"
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Minion"
     },
-    captain: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Captain"
+    band: {
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Band"
+    },
+    platoon: {
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Platoon"
+    },
+    troop: {
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Troop"
+    },
+    leader: {
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Leader"
+    },
+    solo: {
+      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Solo"
     }
   }
 };
 preLocalize("monsters.roles", {key: "label"});
-preLocalize("monsters.subroles", {key: "label"});
+preLocalize("monsters.organizations", {key: "label"});
 
 /**
  * Configuration information for Ability items

@@ -28,7 +28,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""]
     },
     biography: {
-      template: systemPath("templates/actor/shared/biography.hbs"),
+      template: systemPath("templates/actor/character/biography.hbs"),
       scrollable: [""]
     }
   };
