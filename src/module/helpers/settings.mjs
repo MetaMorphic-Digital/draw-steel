@@ -17,7 +17,8 @@ export default class DrawSteelSettingsHandler {
       migrationVersion: {
         name: "DRAW_STEEL.Setting.MigrationVersion.Label",
         hint: "DRAW_STEEL.Setting.MigrationVersion.Hint",
-        type: new fields.StringField({nullable: false, blank: false}),
+        type: new fields.StringField({required: true, nullable: false}),
+        default: "",
         scope: "world"
       },
       initiativeMode: {

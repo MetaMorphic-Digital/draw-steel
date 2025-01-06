@@ -24,8 +24,8 @@ For vscode, you will need to create a `.vscode/settings.json` file with the foll
 Also copy the following into your `.vscode/settings.json` to support i18n-ally:
 ```json
 "i18n-ally.localesPaths": [
-  "lang",
-  "foundry/lang"
+  "foundry/lang",
+  "lang"
 ],
 "i18n-ally.keystyle": "nested",
 ```
