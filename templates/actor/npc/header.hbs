@@ -1,6 +1,6 @@
 {{! Sheet Header }}
 <header class="sheet-header">
-  <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
+  {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
     class="profile-img"
     src="{{actor.img}}"
@@ -36,5 +36,12 @@
       </slide-toggle>
       <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
     </div>
+    {{#if isPlay}}
+    <div class="form-group">
+      {{systemFields.monster.fields.level.label}} {{system.monster.level}}
+    </div>
+    {{else}}
+    {{formGroup systemFields.monster.fields.level value=system.monster.level}}
+    {{/if}}
   </div>
 </header>

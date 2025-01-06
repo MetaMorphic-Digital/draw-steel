@@ -34,8 +34,8 @@ export default class NPCModel extends BaseActorModel {
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({initial: 1}),
       ev: requiredInteger({initial: 4}),
-      role: new fields.StringField({choices: config.monsters.roles}),
-      subrole: new fields.StringField({choices: config.monsters.subroles})
+      role: new fields.StringField({required: true, nullable: false}),
+      organization: new fields.StringField({required: true, nullable: false})
     });
 
     return schema;
