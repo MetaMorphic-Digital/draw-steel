@@ -271,7 +271,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     // Bubble editor active class state to containing formGroup
     /** @type {Array<HTMLButtonElement>} */
     const editorButtons = this.element.querySelectorAll("prose-mirror button[type=\"button\"]");
-    console.log(editorButtons);
     for (const button of editorButtons) {
       const formGroup = button.closest(".form-group");
       const tabSection = button.closest("section.tab");
@@ -282,7 +281,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
     /** @type {Array<HTMLElement} */
     const editors = this.element.querySelectorAll("prose-mirror");
-    console.log(editors);
     for (const ed of editors) {
       const formGroup = ed.closest(".form-group");
       const tabSection = ed.closest("section.tab");
