@@ -1,15 +1,15 @@
 {{! Description Tab }}
 <section class="tab {{tab.cssClass}}" data-group="primary" data-tab="description">
   {{#if isPlay}}
-  <fieldset>
-    <legend>{{systemFields.description.fields.value.label}}</legend>
+  <label>{{systemFields.description.fields.value.label}}</label>
+  <div class="description value play">
     {{{enrichedDescription}}}
-  </fieldset>
+  </div>
   {{#if gm}}
-  <fieldset>
-    <legend>{{systemFields.description.fields.gm.label}}</legend>
+  <label>{{systemFields.description.fields.gm.label}}</label>
+  <div class="description gm play">
     {{{enrichedGMNotes}}}
-  </fieldset>
+  </div>
   {{/if}}
   {{else}}
   {{formGroup
