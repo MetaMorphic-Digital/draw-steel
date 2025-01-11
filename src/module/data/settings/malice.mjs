@@ -1,3 +1,4 @@
+import {DrawSteelNPCSheet} from "../../apps/_module.mjs";
 
 const fields = foundry.data.fields;
 
@@ -26,5 +27,19 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /** Localized helper text for Malice */
   get hint() {
     return game.i18n.localize(this.constructor.hint);
+  }
+
+  /**
+   * Re-render NPC sheets to synchronize the Malice display
+   * @param {MaliceModel} value The MaliceModel instance
+   * @param {object} options    Additional options which modify the creation or update request
+   * @param {string} userId     The id of the User requesting the document update
+   */
+  static onChange(value, options, userId) {
+    for (const [index, app] of foundry.applications.instances) {
+      if (app instanceof DrawSteelNPCSheet) {
+        app.render({parts: ["header"]});
+      }
+    }
   }
 }

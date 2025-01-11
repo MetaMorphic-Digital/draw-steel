@@ -30,7 +30,8 @@ export default class DrawSteelSettingsHandler {
         hint: MaliceModel.hint,
         type: MaliceModel,
         scope: "world",
-        default: {value: 0}
+        default: {value: 0},
+        onChange: MaliceModel.onChange
       }
     };
   }
