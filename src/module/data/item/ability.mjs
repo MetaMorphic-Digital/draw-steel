@@ -186,7 +186,7 @@ export default class AbilityModel extends BaseItemModel {
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
-    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k);
+    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
     context.keywordList = keywordFormatter.format(keywordList);
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
     context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
@@ -223,9 +223,13 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
+   * @param {object} [options={}] Configuration
+   * @param {UIEvent} [options.event] The event prompting the use
+   * @param {number} [options.banes]  Banes to apply to a power roll
+   * @param {number} [options.edges]  Edges to apply to a power roll
    * @returns {Promise<DrawSteelChatMessage>}
    */
-  async use() {
+  async use(options = {}) {
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       type: "abilityUse",
@@ -243,7 +247,9 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       const rollOptions = {
-        type: "ability"
+        type: "ability",
+        banes: options.banes,
+        edges: options.edges
       }; // TODO: Add in Banes & Edges
       const powerRoll = new PowerRoll(formula, rollData, rollOptions);
       await powerRoll.evaluate();

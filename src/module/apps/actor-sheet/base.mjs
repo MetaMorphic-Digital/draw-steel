@@ -24,7 +24,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createDoc,
       deleteDoc: this._deleteDoc,
       toggleEffect: this._toggleEffect,
-      roll: this._onRoll
+      roll: this._onRoll,
+      useAbility: this._useAbility
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: "[data-drag]", dropSelector: null}],
@@ -450,6 +451,23 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "characteristic":
         return this.actor.rollCharacteristic(dataset.characteristic);
     }
+  }
+
+  /**
+   * Handle clickable rolls.
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _useAbility(event, target) {
+    const item = this._getEmbeddedDocument(target);
+    if (item?.type !== "ability") {
+      console.error("This is not an ability!", item);
+      return;
+    }
+    item.system.use({event});
   }
 
   /** Helper Functions */
