@@ -1,6 +1,6 @@
 import {systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
+import {PowerRoll, DamageRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -251,7 +251,7 @@ export default class AbilityModel extends BaseItemModel {
       if (damageFormula) {
         const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
         const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
-        const damageRoll = new DSRoll(damageFormula, rollData, {flavor});
+        const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
         await damageRoll.evaluate();
         messageData.rolls.push(damageRoll);
       }
