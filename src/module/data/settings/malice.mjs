@@ -15,6 +15,16 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /** Name for the setting */
   static label = "DRAW_STEEL.Setting.Malice.Label";
 
-  /** Helper text for Hero Tokens */
+  /** Localized name for the setting */
+  get label() {
+    return game.i18n.localize(this.constructor.label);
+  }
+
+  /** Helper text for Malice */
   static hint = "DRAW_STEEL.Setting.Malice.Hint";
+
+  /** Localized helper text for Malice */
+  get hint() {
+    return game.i18n.localize(this.constructor.hint);
+  }
 }

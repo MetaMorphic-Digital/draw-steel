@@ -1,5 +1,5 @@
 import DrawSteelActorSheet from "./base.mjs";
-import {systemPath} from "../../constants.mjs";
+import {systemID, systemPath} from "../../constants.mjs";
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
@@ -50,6 +50,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.organizationLabel = this._getOrganizationLabel();
         context.roleLabel = this._getRoleLabel();
         context.evLabel = this._getEVLabel();
+        context.malice = game.settings.get(systemID, "malice");
         break;
       case "biography":
         context.motivations = this._getMotivations();
@@ -119,6 +120,22 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       currentMotivations: formatter.format(currentMotivations),
       currentPitfalls: formatter.format(currentPitfalls)
     };
+  }
+
+  /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
+
+  _onRender(context, options) {
+    if (game.user.isGM) {
+      /** @type {HTMLInputElement} */
+      const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");
+      maliceInput.addEventListener("change", (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        game.settings.set(systemID, "malice", {value: ev.target.value});
+      });
+    }
   }
 
   /* -------------------------------------------------- */

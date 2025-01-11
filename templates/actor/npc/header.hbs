@@ -51,5 +51,13 @@
     <div class="ev">
       {{evLabel}}
     </div>
+    {{#if gm}}
+    <div class="form-group">
+      <label>{{malice.label}}</label>
+      <div class="form-fields">
+        <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+      </div>
+    </div>
+    {{/if}}
   </div>
 </header>
