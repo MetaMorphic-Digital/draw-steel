@@ -6,7 +6,7 @@ import {systemID} from "../constants.mjs";
  */
 export async function migrateWorld() {
   // TODO: In v13 simplify to the new getter
-  if (!game.users.activeGM.isSelf) {
+  if (!game.users.activeGM?.isSelf) {
     console.log("Not the active GM");
     return;
   }
