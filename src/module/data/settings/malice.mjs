@@ -1,7 +1,6 @@
 import {DrawSteelNPCSheet} from "../../apps/_module.mjs";
 import {systemID} from "../../constants.mjs";
-import {DrawSteelActor} from "../../documents/actor.mjs";
-import {DrawSteelCombat} from "../../documents/combat.mjs";
+/** @import {DrawSteelActor, DrawSteelCombat} from "../../documents/_module.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -54,8 +53,11 @@ export class MaliceModel extends foundry.abstract.DataModel {
   async startCombat(heroes) {
     const totalVictories = heroes.reduce((victories, character) => {
       victories += foundry.utils.getProperty(character, "system.hero.victories") ?? 0;
+      return victories;
     }, 0);
-    return game.settings.set(systemID, "malice", Math.floor(totalVictories / heroes.length));
+    const avgVictories = Math.floor(totalVictories / heroes.length);
+    // Also work in the first round of combat bonus
+    return game.settings.set(systemID, "malice", {value: avgVictories + 1 + heroes.length});
   }
 
   /**
@@ -65,7 +67,7 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * @returns {Promise<MaliceModel>}
    */
   async nextRound(combat, heroes) {
-    return game.settings.set(systemID, "malice", this.value + combat.round + heroes.length);
+    return game.settings.set(systemID, "malice", {value: this.value + combat.round + heroes.length});
   }
 
   /**
@@ -73,6 +75,6 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * @returns {Promise<MaliceModel>}
    */
   async endCombat() {
-    return game.settings.set(systemID, "malice", 0);
+    return game.settings.set(systemID, "malice", {value: 0});
   }
 }

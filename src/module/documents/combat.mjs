@@ -1,4 +1,5 @@
 import {systemID} from "../constants.mjs";
+/** @import {MaliceModel} from "../data/settings/malice.mjs" */
 /** @import {DrawSteelCombatant} from "./combatant.mjs" */
 
 export class DrawSteelCombat extends Combat {
@@ -14,15 +15,39 @@ export class DrawSteelCombat extends Combat {
       await combatant.actor?.system.startCombat(combatant);
     }
 
+    /** @type {MaliceModel} */
+    const malice = game.settings.get(systemID, "malice");
+    const heroes = this.combatants.filter(c => (c.actor?.type === "character") && c.hasPlayerOwner).map(c => c.actor);
+    await malice.startCombat(heroes);
+
     return super.startCombat();
   }
 
   /** @override */
   async nextRound() {
     await super.nextRound();
+
+    /** @type {MaliceModel} */
+    const malice = game.settings.get(systemID, "malice");
+    const aliveHeroes = this.combatants.filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead")).map(c => c.actor);
+    await malice.nextRound(this, aliveHeroes);
+
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
     const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor?.system.combat.turns ?? 1}));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+  }
+
+  /** @override */
+  async endCombat() {
+    const deletedCombat = await super.endCombat();
+
+    if (deletedCombat) {
+      /** @type {MaliceModel} */
+      const malice = game.settings.get(systemID, "malice");
+      await malice.endCombat();
+    }
+
+    return deletedCombat;
   }
 
   /**
