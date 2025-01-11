@@ -316,11 +316,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.#disableOverrides();
   }
 
-  /**************
-   *
-   *   ACTIONS
-   *
-   **************/
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Handle changing a Document's image.
@@ -475,11 +473,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     } else return console.warn("Could not find document class");
   }
 
-  /***************
-   *
-   * Drag and Drop
-   *
-   ***************/
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -768,11 +764,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   // for subclasses or external hooks to mess with it directly
   #dragDrop = this.#createDragDropHandlers();
 
-  /********************
-   *
-   * Actor Override Handling
-   *
-   ********************/
+  /* -------------------------------------------------- */
+  /*   Actor Override Handling                         */
+  /* -------------------------------------------------- */
 
   /**
    * Disables inputs subject to active effects

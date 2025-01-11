@@ -121,11 +121,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     };
   }
 
-  /**************
-   *
-   *   ACTIONS
-   *
-   **************/
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Open a dialog to edit the monster metadata
@@ -159,7 +157,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     /** @type {FormDataExtended | null} */
     const fd = await foundry.applications.api.DialogV2.prompt({
       content: htmlContainer.outerHTML,
-      window: {title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle"},
+      window: {
+        title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
+        icon: "fa-solid fa-spaghetti-monster-flying"
+      },
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
