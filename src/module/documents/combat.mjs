@@ -23,14 +23,29 @@ export class DrawSteelCombat extends Combat {
     return super.startCombat();
   }
 
+  /**
+   * @override In Draw Steel's default initiative, non-GM users cannot change the round
+   * @param {User} user The user attempting to change the round
+   * @returns {boolean} Is the user allowed to change the round?
+   */
+  _canChangeRound(user) {
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return super._canChangeRound(user);
+    return user.isGM;
+  }
+
   /** @override */
   async nextRound() {
     await super.nextRound();
 
-    /** @type {MaliceModel} */
-    const malice = game.settings.get(systemID, "malice");
-    const aliveHeroes = this.combatants.filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead")).map(c => c.actor);
-    await malice.nextRound(this, aliveHeroes);
+    // Only GM users can update world settings
+    if (game.user.isGM) {
+      /** @type {MaliceModel} */
+      const malice = game.settings.get(systemID, "malice");
+      const aliveHeroes = this.combatants
+        .filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
+        .map(c => c.actor);
+      await malice.nextRound(this, aliveHeroes);
+    }
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
     const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor?.system.combat.turns ?? 1}));
