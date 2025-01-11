@@ -50,7 +50,7 @@
       {{chr.field.label}} {{numberFormat chr.value sign=true}}
     </a>
     {{else}}
-    <label class="characteristic edit" data-tooltip="{{chr.field.hint}}">
+    <label class="characteristic edit" data-tooltip="{{chr.field.label}}">
       <span class="label">{{chr.field.hint}}</span>
       <input type="text" name="system.characteristics.{{key}}.value" value="{{numberFormat chr.value sign=true}}" data-dtype="Number" data-source="true">
     </label>

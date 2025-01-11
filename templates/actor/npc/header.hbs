@@ -1,6 +1,6 @@
 {{! Sheet Header }}
 <header class="sheet-header">
-  <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
+  {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
     class="profile-img"
     src="{{actor.img}}"
@@ -28,6 +28,9 @@
       }}
       {{/if}}
     </div>
+    <div class="keywords">
+      {{monsterKeywords}}
+    </div>
   </div>
   <div class="header-right flexcol">
     <div class="mode-toggle flexrow">
@@ -35,6 +38,18 @@
       <slide-toggle class="mode-slider" data-action="toggleMode" {{checked (not isPlay)}}>
       </slide-toggle>
       <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
+    </div>
+    <div class="monster-info">
+      {{systemFields.monster.fields.level.label}} {{system.monster.level}}
+      {{organizationLabel}} {{rolesLabel}}
+      {{#unless isPlay}}
+      <a data-action="editMonsterMetadata">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+      {{/unless}}
+    </div>
+    <div class="ev">
+      {{evLabel}}
     </div>
   </div>
 </header>

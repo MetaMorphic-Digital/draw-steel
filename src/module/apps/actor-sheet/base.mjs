@@ -186,8 +186,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getLanguages() {
     if (!this.actor.system.schema.getField("biography.languages")) return {list: "", options: []};
+    const formatter = game.i18n.getListFormatter();
+    const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
     return {
-      list: game.i18n.getListFormatter().format(Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l)),
+      list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
     };
   }
@@ -314,11 +316,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.#disableOverrides();
   }
 
-  /**************
-   *
-   *   ACTIONS
-   *
-   **************/
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Handle changing a Document's image.
@@ -473,11 +473,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     } else return console.warn("Could not find document class");
   }
 
-  /***************
-   *
-   * Drag and Drop
-   *
-   ***************/
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -766,11 +764,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   // for subclasses or external hooks to mess with it directly
   #dragDrop = this.#createDragDropHandlers();
 
-  /********************
-   *
-   * Actor Override Handling
-   *
-   ********************/
+  /* -------------------------------------------------- */
+  /*   Actor Override Handling                         */
+  /* -------------------------------------------------- */
 
   /**
    * Disables inputs subject to active effects

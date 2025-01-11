@@ -185,7 +185,9 @@ export default class AbilityModel extends BaseItemModel {
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
-    context.keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k).join(", ");
+    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k);
+    context.keywordList = keywordFormatter.format(keywordList);
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
     context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
 
