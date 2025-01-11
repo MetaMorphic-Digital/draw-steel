@@ -205,7 +205,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Deal damage to the actor, accounting for immunities and resistances
-   * @param {string} amount    The amount of damage to take
+   * @param {number} damage    The amount of damage to take
    * @param {object} [options] Options to modify the damage application
    * @param {string} [options.type]   Valid damage type
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore

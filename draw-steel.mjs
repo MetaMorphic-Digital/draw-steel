@@ -1,6 +1,7 @@
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/apps/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
+import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import {DRAW_STEEL} from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
@@ -9,15 +10,11 @@ globalThis.ds = {
   documents,
   applications,
   helpers,
+  rolls,
   data,
   CONST: DS_CONST,
   CONFIG: DRAW_STEEL
 };
-
-/** Special global access */
-globalThis.PowerRoll = helpers.rolls.PowerRoll;
-globalThis.ProjectRoll = helpers.rolls.ProjectRoll;
-globalThis.SavingThrowRoll = helpers.rolls.SavingThrowRoll;
 
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
@@ -76,7 +73,7 @@ Hooks.once("init", function () {
   });
 
   // Register dice rolls
-  CONFIG.Dice.rolls = Object.values(helpers.rolls);
+  CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 });
 
 /**
