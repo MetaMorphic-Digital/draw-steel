@@ -1,4 +1,7 @@
 import {DrawSteelNPCSheet} from "../../apps/_module.mjs";
+import {systemID} from "../../constants.mjs";
+import {DrawSteelActor} from "../../documents/actor.mjs";
+import {DrawSteelCombat} from "../../documents/combat.mjs";
 
 const fields = foundry.data.fields;
 
@@ -41,5 +44,35 @@ export class MaliceModel extends foundry.abstract.DataModel {
         app.render({parts: ["header"]});
       }
     }
+  }
+
+  /**
+   * Set malice for the start of combat
+   * @param {DrawSteelActor[]} heroes Heroes to tally up victories
+   * @returns {Promise<MaliceModel>}
+   */
+  async startCombat(heroes) {
+    const totalVictories = heroes.reduce((victories, character) => {
+      victories += foundry.utils.getProperty(character, "system.hero.victories") ?? 0;
+    }, 0);
+    return game.settings.set(systemID, "malice", Math.floor(totalVictories / heroes.length));
+  }
+
+  /**
+   * Increase malice on round change
+   * @param {DrawSteelCombat} combat The active combat
+   * @param {DrawSteelActor[]} heroes The heroes who are currently alive
+   * @returns {Promise<MaliceModel>}
+   */
+  async nextRound(combat, heroes) {
+    return game.settings.set(systemID, "malice", this.value + combat.round + heroes.length);
+  }
+
+  /**
+   * Reset malice to 0
+   * @returns {Promise<MaliceModel>}
+   */
+  async endCombat() {
+    return game.settings.set(systemID, "malice", 0);
   }
 }

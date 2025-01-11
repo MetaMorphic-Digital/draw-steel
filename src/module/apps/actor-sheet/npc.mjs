@@ -50,6 +50,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.organizationLabel = this._getOrganizationLabel();
         context.roleLabel = this._getRoleLabel();
         context.evLabel = this._getEVLabel();
+        context.showMalice = game.user.isGM && (this.actor.system.monster.organization !== "minion");
         context.malice = game.settings.get(systemID, "malice");
         break;
       case "biography":
@@ -127,9 +128,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   _onRender(context, options) {
-    if (game.user.isGM) {
-      /** @type {HTMLInputElement} */
-      const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");
+    /** @type {HTMLInputElement} */
+    const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");
+    if (maliceInput) {
       maliceInput.addEventListener("change", (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
