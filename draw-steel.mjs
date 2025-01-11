@@ -79,7 +79,7 @@ Hooks.once("init", function () {
   });
 
   // Register dice rolls
-  CONFIG.Dice.rolls = Object.values(rolls);
+  CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 });
 
 /**
