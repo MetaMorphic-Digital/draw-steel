@@ -16,12 +16,6 @@ globalThis.ds = {
   CONFIG: DRAW_STEEL
 };
 
-/** Special global access */
-globalThis.DamageRoll = rolls.DamageRoll;
-globalThis.PowerRoll = rolls.PowerRoll;
-globalThis.ProjectRoll = rolls.ProjectRoll;
-globalThis.SavingThrowRoll = rolls.SavingThrowRoll;
-
 Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DRAW_STEEL;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
