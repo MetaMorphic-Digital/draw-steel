@@ -27,6 +27,7 @@ export default class CharacterModel extends BaseActorModel {
       primary: new fields.SchemaField({
         value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
       }),
+      surges: requiredInteger({initial: 0}),
       // Possible future expansions will have classes with multiple resources
       // secondary: new fields.SchemaField({
       //   value: new fields.NumberField({initial: null, min: 0, integer: true})

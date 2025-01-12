@@ -79,12 +79,12 @@
         {{/if}}
       </div>
     </div>
-    {{#if (and system.class isPlay)}}
+    {{#if isPlay}}
     <div class="resource heroic">
-      <label>
-        <span>{{system.hero.primary.label}}</span>
-        {{formInput systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource}}
-      </label>
+      {{#if system.class}}
+      {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label}}
+      {{/if}}
+      {{formGroup systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
     </div>
     {{/if}}
   </fieldset>
