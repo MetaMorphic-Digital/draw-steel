@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
@@ -27,13 +28,13 @@ export default class EquipmentModel extends BaseItemModel {
     schema.category = new fields.StringField({required: true});
     schema.echelon = new fields.NumberField({initial: 1, integer: true});
 
-    schema.keywords = new fields.SetField(new fields.StringField({required: true, blank: false}));
+    schema.keywords = new fields.SetField(setOptions());
 
     schema.prerequisites = new fields.StringField();
 
     schema.project = new fields.SchemaField({
       source: new fields.StringField(),
-      rollCharacteristic: new fields.SetField(new fields.StringField({required: true, blank: false})),
+      rollCharacteristic: new fields.SetField(setOptions()),
       goal: new fields.NumberField(),
       yield: new fields.StringField()
     });

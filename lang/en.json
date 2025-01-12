@@ -138,21 +138,88 @@
         }
       },
       "NPC": {
-        "FIELDS": {},
+        "FIELDS": {
+          "negotiation": {
+            "label": "Negotiation",
+            "interest": {
+              "label": "Interest"
+            },
+            "patience": {
+              "label": "Patience"
+            },
+            "motivations": {
+              "label": "Motivations"
+            },
+            "pitfalls": {
+              "label": "Pitfalls"
+            },
+            "impression": {
+              "label": "Impression"
+            }
+          },
+          "monster": {
+            "keywords": {
+              "label": "Keywords"
+            },
+            "level": {
+              "label": "Level"
+            },
+            "ev": {
+              "label": "Encounter Value"
+            },
+            "role": {
+              "label": "Creature Role"
+            },
+            "organization": {
+              "label": "Monster Organization"
+            }
+          }
+        },
+        "MonsterMetadata": {
+          "DialogTitle": "Update Monster Metadata"
+        },
+        "EVLabel": {
+          "Minion": "EV {value} for eight minions",
+          "Other": "EV {value}"
+        },
+        "KEYWORDS": {
+          "Abyssal": "Abyssal",
+          "Accursed": "Accursed",
+          "Animal": "Animal",
+          "Beast": "Beast",
+          "Construct": "Construct",
+          "Dragon": "Dragon",
+          "Elemental": "Elemental",
+          "Fey": "Fey",
+          "Giant": "Giant",
+          "Horror": "Horror",
+          "Humanoid": "Humanoid",
+          "Infernal": "Infernal",
+          "Plant": "Plant",
+          "Swarm": "Swarm",
+          "Undead": "Undead"
+        },
+        "KeywordGroups": {
+          "General": "General"
+        },
         "ROLES": {
           "Ambusher": "Ambusher",
           "Artillery": "Artillery",
-          "Boss": "Boss",
           "Brute": "Brute",
           "Controller": "Controller",
           "Defender": "Defender",
           "Harrier": "Harrier",
           "Hexer": "Hexer",
-          "Support": "Support",
           "Mount": "Mount",
-          "Solo": "Solo",
+          "Support": "Support"
+        },
+        "ORGANIZATIONS": {
+          "Band": "Band",
+          "Leader": "Leader",
           "Minion": "Minion",
-          "Captain": "Captain"
+          "Platoon": "Platoon",
+          "Solo": "Solo",
+          "Troop": "Troop"
         },
         "Negotiation": {
           "Motivations": {
@@ -261,6 +328,9 @@
             "type": {
               "label": "Type"
             }
+          },
+          "damageDisplay": {
+            "label": "Damage Display"
           },
           "trigger": {
             "label": "Trigger"
@@ -829,6 +899,10 @@
           "messageContent": "Spends two hero tokens to regain stamina equal to their recovery value."
         }
       },
+      "Malice": {
+        "Label": "Malice",
+        "Hint": "Malice is a resource gained by the Director. You use malice to let enemies in the game activate their most powerful abilities and throw surprises at the heroes during combat."
+      },
       "MigrationVersion": {
         "Label": "Migration Version",
         "Hint": "Last Performed Migration"
@@ -903,7 +977,7 @@
       "Anjali": "Anjali",
       "Axiomatic": "Axiomatic",
       "Caeliah": "Caeliah",
-      "Filliaric": "Filliaric ",
+      "Filliaric": "Filliaric",
       "Higaran": "Higaran",
       "HighKuric": "High Kuric",
       "HighRhyvian": "High Rhyvian",
@@ -912,11 +986,11 @@
       "Kalliak": "Kalliak",
       "Kethaic": "Kethaic",
       "Khamish": "Khamish",
-      "Khelt": "Khelt ",
+      "Khelt": "Khelt",
       "Kheltivari": "Kheltivari",
       "Khemharic": "Khemharic",
       "Khoursirian": "Khoursirian",
-      "LowKuric": "Low Kuric ",
+      "LowKuric": "Low Kuric",
       "LowRhivian": "Low Rhivian",
       "Mindspeech": "Mindspeech",
       "Oaxuatl": "Oaxuatl",
@@ -927,10 +1001,10 @@
       "Rallarian": "Rallarian",
       "Riojan": "Riojan",
       "Szetch": "Szetch",
-      "TheFirstLanguage": "The First Language ",
+      "TheFirstLanguage": "The First Language",
       "Tholl": "Tholl",
       "Ullorvic": "Ullorvic",
-      "Urollialic": "Urollialic ",
+      "Urollialic": "Urollialic",
       "Uvalic": "Uvalic",
       "Vaniric": "Vaniric",
       "Variac": "Variac",

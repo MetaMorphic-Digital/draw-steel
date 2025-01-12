@@ -87,6 +87,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
+    if (options.mode && this.isEditable) this.#mode = options.mode;
+    // TODO: Refactor to use _configureRenderParts in v13
     options.parts = ["header", "tabs", "description"];
     if (this.document.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) options.parts.push("details");
@@ -269,11 +271,9 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     this.#dragDrop.forEach((d) => d.bind(this.element));
   }
 
-  /**************
-   *
-   *   ACTIONS
-   *
-   **************/
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Handle changing a Document's image.

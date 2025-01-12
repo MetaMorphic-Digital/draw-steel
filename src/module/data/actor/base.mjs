@@ -1,4 +1,4 @@
-import {damageTypes, requiredInteger, SizeModel} from "../helpers.mjs";
+import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
 /**
@@ -64,7 +64,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     return {
       value: new fields.HTMLField(),
       gm: new fields.HTMLField(),
-      languages: new fields.SetField(new fields.StringField({blank: true, required: true}))
+      languages: new fields.SetField(setOptions())
     };
   }
 
@@ -205,7 +205,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Deal damage to the actor, accounting for immunities and resistances
-   * @param {string} amount    The amount of damage to take
+   * @param {number} damage    The amount of damage to take
    * @param {object} [options] Options to modify the damage application
    * @param {string} [options.type]   Valid damage type
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore
