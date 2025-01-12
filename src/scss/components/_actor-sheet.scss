@@ -29,6 +29,10 @@
   justify-content: center;
 }
 
+section.tab {
+  height: 100%
+}
+
 .resources {
   .form-group.stacked {
     flex-direction: column-reverse;
@@ -102,5 +106,11 @@
     .form-fields {
       flex: 1 1 20px;
     }
+  }
+}
+
+.tab {
+  .item-header {
+    line-height: 24px;
   }
 }
