@@ -84,7 +84,14 @@
       {{#if system.class}}
       {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label}}
       {{/if}}
-      {{formGroup systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
+      <div class="form-group">
+        <label>
+          <a data-action="gainSurges">{{systemFields.hero.fields.surges.label}}</a>
+        </label>
+        <div class="form-fields">
+          {{formInput systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
+        </div>
+      </div>
     </div>
     {{/if}}
   </fieldset>

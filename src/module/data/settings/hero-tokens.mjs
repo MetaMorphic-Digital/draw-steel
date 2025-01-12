@@ -1,4 +1,5 @@
 import {systemID} from "../../constants.mjs";
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 
 const fields = foundry.data.fields;
 
@@ -23,9 +24,11 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
    * Send a socket message to the Director to spend a hero token
    * Necessary because only game masters can modify world settings
    * @param {string} spendType       Key of `ds.CONFIG.hero.tokenSpends`.
-   * @returns {void|false}           An explicit `false` if the socket message was not sent.
+   * @param {object} [options]       Options to modify the token spend
+   * @param {string} [options.flavor] Flavor for the chat message (default: Current user's character name)
+   * @returns {void|false}           An explicit `false` if there was an error in spending the token
    */
-  spendToken(spendType) {
+  async spendToken(spendType, options = {}) {
     if (!game.users.activeGM) {
       ui.notifications.error("DRAW_STEEL.Setting.NoActiveGM", {localize: true});
       return false;
@@ -40,6 +43,15 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", {localize: true});
       return false;
     }
-    game.system.socketHandler.emit("spendHeroToken", {userId: game.userId, spendType});
+    // Just directly execute if the current user is a game master
+    if (game.user.isGM) {
+      await game.settings.set(systemID, "heroTokens", {value: currentTokens - tokenSpendConfiguration.tokens});
+      await DrawSteelChatMessage.create({
+        author: game.userId,
+        content: tokenSpendConfiguration.messageContent,
+        flavor: options.flavor ?? game.user.character?.name
+      });
+    }
+    else game.system.socketHandler.emit("spendHeroToken", {userId: game.userId, spendType, flavor: options.flavor});
   }
 }
