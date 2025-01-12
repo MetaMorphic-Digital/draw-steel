@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import {DrawSteelItem} from "../../documents/item.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
@@ -304,6 +305,71 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return categories;
   }
 
+  /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
+
+  /**
+   * Actions performed after a first render of the Application.
+   * Post-render steps are not awaited by the render process.
+   * @param {ApplicationRenderContext} context      Prepared context data
+   * @param {RenderOptions} options                 Provided render options
+   * @protected
+   */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    // TODO: Change to ContextMenu.create in v13 with jQuery: false
+    new ContextMenu(this.element, "button[data-document-class]", this._getItemButtonContextOptions());
+  }
+
+  /**
+   * Get context menu entries for item buttons.
+   * @returns {ContextMenuEntry[]}
+   * @protected
+   */
+  _getItemButtonContextOptions() {
+    return [
+      {
+        name: "View",
+        icon: "<i class=\"fa-solid fa-eye\"></i>",
+        condition: () => this.isPlayMode,
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.sheet.render({force: true});
+        }
+      },
+      {
+        name: "Edit",
+        icon: "<i class=\"fas fa-edit\"></i>",
+        condition: () => this.isEditMode,
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.sheet.render({force: true});
+        }
+      },
+      {
+        name: "Delete",
+        icon: "<i class=\"fas fa-trash\"></i>",
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.deleteDialog();
+        }
+      }
+    ];
+  }
+
   /**
    * Actions performed after any render of the Application.
    * Post-render steps are not awaited by the render process.
@@ -394,7 +460,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    await doc.delete();
+    await doc.deleteDialog();
   }
 
   /**
@@ -665,7 +731,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropItem(event, data) {
     if (!this.actor.isOwner) return false;
-    const item = await Item.implementation.fromDropData(data);
+    const item = await DrawSteelItem.fromDropData(data);
 
     // Handle item sorting within the same Actor
     if (this.actor.uuid === item.parent?.uuid)

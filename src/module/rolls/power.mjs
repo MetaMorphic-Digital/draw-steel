@@ -160,8 +160,11 @@ export class PowerRoll extends DSRoll {
 
           return output;
         }
-      }
+      },
+      rejectClose: false
     });
+
+    if (!rollContext) return null;
 
     const roll = new this(formula, options.data, {flavor, ...rollContext});
 
