@@ -1,5 +1,5 @@
 import {systemID} from "../constants.mjs";
-import {HeroTokenModel} from "../data/settings/_module.mjs";
+import {HeroTokenModel, MaliceModel} from "../data/settings/_module.mjs";
 
 /** @import {SettingConfig} from "../../../foundry/common/types.mjs" */
 
@@ -24,6 +24,14 @@ export default class DrawSteelSettingsHandler {
         type: HeroTokenModel,
         scope: "world",
         default: {value: 0}
+      },
+      malice: {
+        name: MaliceModel.label,
+        hint: MaliceModel.hint,
+        type: MaliceModel,
+        scope: "world",
+        default: {value: 0},
+        onChange: MaliceModel.onChange
       }
     };
   }
