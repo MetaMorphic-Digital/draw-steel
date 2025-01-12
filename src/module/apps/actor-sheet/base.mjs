@@ -467,7 +467,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       console.error("This is not an ability!", item);
       return;
     }
-    item.system.use({event});
+    await item.system.use({event});
   }
 
   /** Helper Functions */
@@ -523,7 +523,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   _onDragStart(event) {
-    const docRow = event.currentTarget.closest("li");
+    const docRow = event.currentTarget.closest("[data-document-class]");
     if ("link" in event.target.dataset) return;
 
     // Chained operation
