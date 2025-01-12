@@ -1,5 +1,6 @@
 import {systemPath} from "../../constants.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
+import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
@@ -69,7 +70,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    // don't show all tabs if document is limited
+    if (options.mode && this.isEditable) this.#mode = options.mode;
+    // TODO: Refactor to use _configureRenderParts in v13
     if (this.document.limited) {
       options.parts = ["header", "tabs", "biography"];
     }
@@ -339,7 +341,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.sheet.render({force: true});
+          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.PLAY});
         }
       },
       {
@@ -352,7 +354,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.sheet.render({force: true});
+          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.EDIT});
         }
       },
       {
