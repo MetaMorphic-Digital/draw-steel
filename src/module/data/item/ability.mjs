@@ -170,6 +170,16 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
+   * Fetches the appropriate name for the resource this ability consumes
+   * @returns {string}
+   */
+  get resourceName() {
+    return this.actor?.type === "npc"
+      ? game.i18n.localize("DRAW_STEEL.Setting.Malice.Label")
+      : this.actor?.system.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
+  }
+
+  /**
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -179,7 +189,12 @@ export default class AbilityModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("ability");
     embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const context = {system: this, systemFields: this.schema.fields, config: ds.CONFIG};
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      config: ds.CONFIG,
+      resourceName: this.resourceName
+    };
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -189,6 +204,9 @@ export default class AbilityModel extends BaseItemModel {
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
+
+    context.resourceName = this.resourceName;
+
     const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
     context.keywordList = keywordFormatter.format(keywordList);
