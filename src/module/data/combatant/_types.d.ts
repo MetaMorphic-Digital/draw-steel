@@ -5,5 +5,6 @@ declare module "./base.mjs" {
     parent: DrawSteelCombatant;
     /** The combatant disposition. If defined, overrides the associated token dispositions */
     disposition: number | undefined;
+    turns: number;
   }
 }

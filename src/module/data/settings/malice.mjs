@@ -66,7 +66,7 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * @param {DrawSteelActor[]} heroes The heroes who are currently alive
    * @returns {Promise<MaliceModel>}
    */
-  async nextRound(combat, heroes) {
+  async _onStartRound(combat, heroes) {
     return game.settings.set(systemID, "malice", {value: this.value + combat.round + heroes.length});
   }
 

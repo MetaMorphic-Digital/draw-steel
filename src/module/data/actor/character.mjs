@@ -1,4 +1,5 @@
 import {DrawSteelActor} from "../../documents/actor.mjs";
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DSRoll} from "../../rolls/base.mjs";
 import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
@@ -157,11 +158,14 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /** @override */
-  async startTurn(combatant) {
-    await super.startTurn(combatant);
+  async _onStartTurn(combatant) {
+    await super._onStartTurn(combatant);
     if (this.class?.system.recovery) {
-      const recoveryRoll = new DSRoll(this.class.system.recovery, this.parent.getRollData());
+      const recoveryRoll = new DSRoll(this.class.system.recovery, this.parent.getRollData(), {
+        flavor: this.class.system.primary
+      });
       await recoveryRoll.toMessage({
+        speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
         flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
       });
       await this.parent.update({"system.hero.primary.value": this.hero.primary.value + recoveryRoll.total});
