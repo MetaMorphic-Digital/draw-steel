@@ -31,7 +31,8 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true, nullable: false}),
+    schema.category = new fields.StringField({required: true, nullable: false});
+    schema.resource = new fields.NumberField({min: 1, integer: true});
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
@@ -72,7 +73,10 @@ export default class AbilityModel extends BaseItemModel {
       tier3: new fields.SchemaField(powerRollSchema())
     });
     schema.effect = new fields.StringField();
-    schema.spend = new fields.NumberField({integer: true});
+    schema.spend = new fields.SchemaField({
+      value: new fields.NumberField({integer: true}),
+      text: new fields.StringField()
+    });
 
     return schema;
   }

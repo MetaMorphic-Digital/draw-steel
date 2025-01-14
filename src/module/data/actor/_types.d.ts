@@ -80,7 +80,7 @@ declare module "./npc.mjs" {
       level: number;
       ev: number;
       role: string;
-      subrole: string;
+      organization: string;
     }
   }
 }

@@ -16,10 +16,10 @@
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{formGroup systemFields.category value=system.category options=abilityCategories blank=""}}
+{{formGroup systemFields.resource value=system.resource}}
 {{#if triggeredAction}}
 {{formGroup systemFields.trigger value=system.trigger}}
 {{/if}}
-{{formGroup systemFields.spend value=system.spend}}
 <fieldset>
   <legend>{{systemFields.distance.label}}</legend>
   {{formGroup systemFields.distance.fields.type value=system.distance.type options=distanceTypes}}
@@ -51,5 +51,10 @@
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
 {{/if}}
+<fieldset>
+  <legend>{{systemFields.spend.label}}</legend>
+  {{formGroup systemFields.spend.fields.value value=system.spend.value}}
+  {{formGroup systemFields.spend.fields.text value=system.spend.text}}
+</fieldset>
 {{formGroup systemFields.effect value=system.effect}}
 {{/if}}
