@@ -25,12 +25,8 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
-        value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
+        value: new fields.NumberField({initial: 0, integer: true, nullable: false})
       }),
-      // Possible future expansions will have classes with multiple resources
-      // secondary: new fields.SchemaField({
-      //   value: new fields.NumberField({initial: null, min: 0, integer: true})
-      // }),
       xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),

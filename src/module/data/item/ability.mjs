@@ -5,6 +5,8 @@ import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
+/** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+
 const fields = foundry.data.fields;
 
 /**
@@ -32,7 +34,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
     schema.category = new fields.StringField({required: true, nullable: false});
-    schema.resource = new fields.NumberField({min: 1, integer: true});
+    schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
     schema.trigger = new fields.StringField();
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
@@ -250,8 +252,61 @@ export default class AbilityModel extends BaseItemModel {
    * @param {number} [options.banes]  Banes to apply to a power roll
    * @param {number} [options.edges]  Edges to apply to a power roll
    * @returns {Promise<DrawSteelChatMessage>}
+   * TODO: Add hooks based on discussion with module authors
    */
   async use(options = {}) {
+    /**
+     * Configuration information
+     * @type {object | null}
+     */
+    let configuration = null;
+    let resourceSpend = this.resource ?? 0;
+
+    // Determine if the configuration form should even run.
+    // Can be factored out if/when complexity increases
+    if (this.spend.value || this.spend.text) {
+      let content = "";
+
+      /**
+       * Range picker config is ignored by the checkbox element
+       * @type {FormInputConfig} */
+      const spendInputConfig = {
+        name: "spend",
+        min: 0,
+        max: this.actor.system.hero.primary.value,
+        step: 1
+      };
+
+      // Nullish value with text means X spend
+      const spendInput = this.spend.value ?
+        foundry.applications.fields.createCheckboxInput(spendInputConfig) :
+        foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
+
+      content += foundry.applications.fields.createFormGroup({
+        label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+          value: this.spend.value || "",
+          name: this.resourceName
+        }),
+        input: spendInput
+      }).outerHTML;
+
+      configuration = await foundry.applications.api.DialogV2.confirm({
+        content,
+        window: {
+          title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
+          icon: "fa-solid fa-gear"
+        },
+        yes: {
+          callback: (event, button, dialog) => {
+            return new FormDataExtended(button.form).object;
+          }
+        },
+        rejectClose: false
+      });
+
+      if (!configuration) throw new Error("Configuration required but not provided");
+    }
+
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       type: "abilityUse",
@@ -261,7 +316,19 @@ export default class AbilityModel extends BaseItemModel {
         uuid: this.parent.uuid
       }
     };
-    // TODO: Put the spend in flavor text (e.g. "Spends 5 Essence" or whatever)
+
+    if (configuration) {
+      if (configuration.spend) {
+        resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
+        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
+          value: resourceSpend,
+          name: this.resourceName
+        });
+      }
+    }
+
+    // TODO: Figure out how to better handle invocations when this.actor is null
+    await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
