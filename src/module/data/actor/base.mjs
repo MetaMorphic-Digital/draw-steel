@@ -1,3 +1,4 @@
+/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
 import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
@@ -166,11 +167,17 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * Update combatant at the start of combat
+   * Updates performed at the start of combat
    */
   async startCombat(combatant) {
     await combatant.update({initiative: this.combat.turns});
   }
+
+  /**
+   * Updates performed at the start of this actor's turn
+   * @param {DrawSteelCombatant} combatant
+   */
+  async startTurn(combatant) {}
 
   /**
    * Prompt the user for what types

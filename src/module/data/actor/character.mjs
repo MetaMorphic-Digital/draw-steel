@@ -1,4 +1,5 @@
 import {DrawSteelActor} from "../../documents/actor.mjs";
+import {DSRoll} from "../../rolls/base.mjs";
 import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
@@ -153,6 +154,18 @@ export default class CharacterModel extends BaseActorModel {
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
+  }
+
+  /** @override */
+  async startTurn(combatant) {
+    await super.startTurn(combatant);
+    if (this.class?.system.recovery) {
+      const recoveryRoll = new DSRoll(this.class.system.recovery, this.parent.getRollData());
+      await recoveryRoll.toMessage({
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
+      });
+      await this.parent.update({"system.hero.primary.value": this.hero.primary.value + recoveryRoll.total});
+    }
   }
 
   /**

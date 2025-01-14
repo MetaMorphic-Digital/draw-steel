@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
@@ -36,7 +37,8 @@ export default class ClassModel extends AdvancementModel {
     });
 
     schema.primary = new fields.StringField({required: true});
-    // schema.secondary = new fields.StringField();
+
+    schema.recovery = new FormulaField();
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(setOptions())
