@@ -7,12 +7,14 @@
     "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
     "unpack": "npm run pushLDBtoJSON",
+    "build": "npm run build:packs && npm run build:css && rollup -c",
     "build:packs": "npm run pullJSONtoLDB",
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
     "lint": "eslint src/module/**.mjs",
     "lint:fix": "eslint --fix src/module/**.mjs",
-    "postinstall": "npm run build:css && npm run createSymlinks"
+    "postinstall": "npm run build:css && npm run createSymlinks",
+    "prepareRelease": "npm run build:packs && rollup -c"
   },
   "browserslist": [
     "last 3 versions"
