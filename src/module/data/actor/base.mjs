@@ -194,7 +194,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       type = await foundry.applications.api.DialogV2.wait({
         window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
         content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
-        buttons
+        buttons,
+        rejectClose: true
       });
     }
     const formula = `2d10 + @${characteristic}`;
