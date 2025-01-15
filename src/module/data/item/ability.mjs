@@ -77,7 +77,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.effect = new fields.StringField();
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({integer: true}),
-      text: new fields.StringField()
+      text: new fields.StringField({required: true})
     });
 
     return schema;

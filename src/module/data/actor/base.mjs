@@ -176,6 +176,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /**
    * Updates performed at the start of this actor's turn
    * @param {DrawSteelCombatant} combatant
+   * @abstract
    */
   async _onStartTurn(combatant) {}
 
