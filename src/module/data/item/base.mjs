@@ -20,15 +20,15 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     schema.description = new fields.SchemaField(this.itemDescription());
 
     schema.source = new fields.SchemaField({
-      book: new fields.StringField(),
-      page: new fields.StringField(),
-      license: new fields.StringField()
+      book: new fields.StringField({required: true}),
+      page: new fields.StringField({required: true}),
+      license: new fields.StringField({required: true})
     });
 
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField({required: true});
+    schema._dsid = new fields.StringField({blank: false});
 
     return schema;
   }

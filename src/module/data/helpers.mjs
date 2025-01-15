@@ -27,7 +27,7 @@ export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({i
  * @param {Function} [options.validate] A validator function for field values
  * @returns A string field that is always truthy
  */
-export const setOptions = ({choices, validate} = {}) => new StringField({required: true, nullable: false, blank: false, choices, validate});
+export const setOptions = ({choices, validate} = {}) => new StringField({required: true, blank: false, choices, validate});
 
 /**
  * @callback DamageTypeCallback

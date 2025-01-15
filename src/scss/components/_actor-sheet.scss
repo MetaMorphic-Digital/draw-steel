@@ -29,6 +29,46 @@
   justify-content: center;
 }
 
+.sheet-header {
+  .header-right {
+    flex: 0 0 200px;
+    height: 100px;
+    .class {
+      flex: 1;
+      .click-element {
+        height: 100%;
+        [data-action='deleteDoc'] {
+          flex: 0 0 20px;
+        }
+      }
+      .label {
+        display: inline-block;
+        line-height: 50px;
+        height: 100%;
+        font-size: var(--font-h3-size);
+        &.unfilled {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+    .victories {
+      flex: 0 0 30px;
+      line-height: 30px;
+      input {
+        height: 30px;
+        width: 40px;
+      }
+    }
+    .item-img {
+      display: inline-block;
+      border: none;
+      height: 36px;
+      flex: 0 0 36px;
+    }
+  }
+}
+
 section.tab {
   height: 100%
 }

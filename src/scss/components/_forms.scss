@@ -50,54 +50,19 @@
   }
 
   .mode-toggle {
-    flex: 0 0 20px;
+    gap: 7px;
     .mode-slider {
+      flex: 0 0 40px;
       --slide-toggle-track-color-unchecked: green;
       --slide-toggle-track-color-checked: orange;
     }
     .label {
-      text-align: center;
+      &.play {
+        text-align: right;
+      }
       &.active {
         font-weight: 600;
       }
-    }
-  }
-
-  .header-right {
-    flex: 0 0 200px;
-    height: 100px;
-    .class {
-      flex: 1;
-      .click-element {
-        height: 100%;
-        [data-action='deleteDoc'] {
-          flex: 0 0 20px;
-        }
-      }
-      .label {
-        display: inline-block;
-        line-height: 50px;
-        height: 100%;
-        font-size: var(--font-h3-size);
-        &.unfilled {
-          width: 100%;
-          text-align: center;
-        }
-      }
-    }
-    .victories {
-      flex: 0 0 30px;
-      line-height: 30px;
-      input {
-        height: 30px;
-        width: 40px;
-      }
-    }
-    .item-img {
-      display: inline-block;
-      border: none;
-      height: 36px;
-      flex: 0 0 36px;
     }
   }
 }

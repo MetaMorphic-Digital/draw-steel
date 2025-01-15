@@ -19,10 +19,11 @@ declare module "./base.mjs" {
       gm: string;
     }
     source: {
-      book: string | null;
-      page: string | null;
-      license: string | null;
+      book: string;
+      page: string;
+      license: string;
     }
+    /** The Draw Steel ID, indicating a unique game rules element */
     _dsid: string;
   }
 }

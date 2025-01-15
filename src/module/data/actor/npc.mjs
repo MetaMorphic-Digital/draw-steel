@@ -33,8 +33,8 @@ export default class NPCModel extends BaseActorModel {
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({initial: 1}),
       ev: requiredInteger({initial: 4}),
-      role: new fields.StringField({required: true, nullable: false}),
-      organization: new fields.StringField({required: true, nullable: false})
+      role: new fields.StringField({required: true}),
+      organization: new fields.StringField({required: true})
     });
 
     return schema;

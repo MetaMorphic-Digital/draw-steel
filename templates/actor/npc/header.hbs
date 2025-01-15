@@ -33,12 +33,7 @@
     </div>
   </div>
   <div class="header-right flexcol">
-    <div class="mode-toggle flexrow">
-      <span class="label {{ifThen isPlay "active" ""}}">{{localize "DRAW_STEEL.Sheet.Play"}}</span>
-      <slide-toggle class="mode-slider" data-action="toggleMode" {{checked (not isPlay)}}>
-      </slide-toggle>
-      <span class="label {{ifThen isPlay "" "active"}}">{{localize "DRAW_STEEL.Sheet.Edit"}}</span>
-    </div>
+    {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
     <div class="monster-info">
       {{systemFields.monster.fields.level.label}} {{system.monster.level}}
       {{organizationLabel}} {{rolesLabel}}

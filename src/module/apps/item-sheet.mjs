@@ -32,7 +32,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: systemPath("templates/item/header.hbs")
+      template: systemPath("templates/item/header.hbs"),
+      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
     },
     tabs: {
       // Foundry-provided generic template
