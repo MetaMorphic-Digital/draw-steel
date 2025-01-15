@@ -2,7 +2,7 @@ export class DrawSteelActor extends Actor {
   /** @override */
   getRollData() {
     // Shallow copy
-    const rollData = {...this.system, flags: this.flags, name: this.name};
+    const rollData = {...this.system, flags: this.flags, name: this.name, statuses: {}};
 
     for (const status of this.statuses) {
       rollData.statuses[status] = 1;
