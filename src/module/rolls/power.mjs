@@ -127,7 +127,7 @@ export class PowerRoll extends DSRoll {
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
     const flavor = options.flavor ?? typeLabel;
 
-    if (options.data.statuses.weakened) banes += 1;
+    if (options.data?.statuses?.weakened) banes += 1;
 
     const dialogContext = {
       modChoices: Array.fromRange(3).reduce((obj, number) => {
