@@ -46,7 +46,7 @@ jobs:
 
       # Create zip file.
       - name: Create ZIP archive
-        run: zip -r ./module.zip module.json draw-steel.mjs css/ assets/ lang/ templates/
+        run: zip -r ./system.zip system.json draw-steel.mjs assets/ css/ lang/ packs/ templates/ CHANGELOG.md LICENSE.md
 
       # Create a release for this specific version.
       - name: Update Release with Files
