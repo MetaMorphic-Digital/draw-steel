@@ -1,35 +1,27 @@
 {{! Description Tab }}
 <section class="tab {{tab.cssClass}}" data-group="primary" data-tab="description">
-  {{#if isPlay}}
-  <label>{{systemFields.description.fields.value.label}}</label>
+  <label class="html-description">
+    {{systemFields.description.fields.value.label}}
+    {{#unless isPlay}}
+    <a class="label-action" data-action="editHTML" data-path="system.description.value">
+      <i class="fa-solid fa-feather"></i>
+    </a>
+    {{/unless}}
+  </label>
   <div class="description value play">
     {{{enrichedDescription}}}
   </div>
   {{#if gm}}
-  <label>{{systemFields.description.fields.gm.label}}</label>
+  <label class="html-description">
+    {{systemFields.description.fields.gm.label}}
+    {{#unless isPlay}}
+    <a class="label-action" data-action="editHTML" data-path="system.description.value">
+      <i class="fa-solid fa-feather"></i>
+    </a>
+    {{/unless}}
+  </label>
   <div class="description gm play">
     {{{enrichedGMNotes}}}
   </div>
-  {{/if}}
-  {{else}}
-  {{formGroup
-  systemFields.description.fields.value
-  enriched=enrichedDescription
-  value=systemSource.description.value
-  documentUUID=item.uuid
-  collaborate=true
-  toggled=true
-  classes="description value"
-  }}
-  {{#if gm}}
-  {{formGroup
-  systemFields.description.fields.gm
-  enriched=enrichedGMNotes
-  value=systemSource.description.gm
-  documentUUID=item.uuid
-  toggled=true
-  classes="description gm"
-  }}
-  {{/if}}
   {{/if}}
 </section>
