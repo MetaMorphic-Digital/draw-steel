@@ -120,18 +120,22 @@ export class PowerRoll extends DSRoll {
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
+    let edges = options.edges ?? 0;
+    let banes = options.banes ?? 0;
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
     const flavor = options.flavor ?? typeLabel;
+
+    if (options.data.statuses.weakened) banes += 1;
 
     const dialogContext = {
       modChoices: Array.fromRange(3).reduce((obj, number) => {
         obj[number] = number;
         return obj;
       }, {}),
-      bane: options.banes ?? 0,
-      edges: options.edges ?? 0
+      banes,
+      edges
     };
 
     if (options.skills) {
