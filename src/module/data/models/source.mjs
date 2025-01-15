@@ -1,4 +1,7 @@
 /** @import BasePackage from "../../../../foundry/common/packages/base-package.mjs"; */
+/** @import {DrawSteelActor, DrawSteelItem} from "../../documents/_module.mjs" */
+
+import BaseItemModel from "../item/base.mjs";
 
 const fields = foundry.data.fields;
 
@@ -6,8 +9,6 @@ const fields = foundry.data.fields;
  * Data model
  */
 export default class SourceModel extends foundry.abstract.DataModel {
-  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Source"];
-
   static defineSchema() {
     return {
       book: new fields.StringField({required: true}),
@@ -51,6 +52,14 @@ export default class SourceModel extends foundry.abstract.DataModel {
   }
 
   /**
+   * Fetches the document containing this model
+   * @returns {DrawSteelActor | DrawSteelItem}
+   */
+  get document() {
+    return this.parent?.parent ?? null;
+  }
+
+  /**
    * Prepare the source label.
    * @param {string} uuid  Compendium source or document UUID.
    */
@@ -70,5 +79,40 @@ export default class SourceModel extends foundry.abstract.DataModel {
   /** @override */
   toString() {
     return this.label;
+  }
+
+  /**
+   * Render a DialogV2 instance to update the SourceModel.
+   * If the document is an Item it also adds a field for _dsid
+   */
+  async updateDialog() {
+    /** @type {HTMLDivElement[]} */
+    const formGroups = [];
+    for (const [key, field] of Object.entries(this.schema.fields)) {
+      formGroups.push(field.toFormGroup({}, {value: this[key]}));
+    }
+    if (this.parent instanceof BaseItemModel) {
+      const field = this.parent.schema.getField("_dsid");
+      formGroups.push(field.toFormGroup({}, {value: this.parent._dsid}));
+    }
+
+    /** @type {FormDataExtended} */
+    const fd = await foundry.applications.api.DialogV2.prompt({
+      content: formGroups.map(e => e.outerHTML).join(" "),
+      window: {
+        title: "DRAW_STEEL.Source.UpdateTitle",
+        icon: "fa-solid fa-book"
+      },
+      ok: {
+        label: "Save",
+        icon: "fa-solid fa-floppy-disk",
+        callback: (event, button, dialog) => {
+          return new FormDataExtended(button.form);
+        }
+      },
+      rejectClose: false
+    });
+
+    this.document.update(fd.object);
   }
 }

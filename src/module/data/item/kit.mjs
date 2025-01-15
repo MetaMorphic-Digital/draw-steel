@@ -16,6 +16,7 @@ export default class KitModel extends BaseItemModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = [
+    "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Kit"
   ];

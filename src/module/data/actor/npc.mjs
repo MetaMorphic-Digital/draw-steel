@@ -13,6 +13,7 @@ export default class NPCModel extends BaseActorModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = [
+    "DRAW_STEEL.Source",
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.NPC"
   ];
