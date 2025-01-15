@@ -1,4 +1,6 @@
 import {systemPath} from "../../constants.mjs";
+import {DrawSteelItem} from "../../documents/item.mjs";
+import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
@@ -24,7 +26,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       createDoc: this._createDoc,
       deleteDoc: this._deleteDoc,
       toggleEffect: this._toggleEffect,
-      roll: this._onRoll
+      roll: this._onRoll,
+      useAbility: this._useAbility
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: "[data-drag]", dropSelector: null}],
@@ -67,7 +70,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
-    // don't show all tabs if document is limited
+    if (options.mode && this.isEditable) this.#mode = options.mode;
+    // TODO: Refactor to use _configureRenderParts in v13
     if (this.document.limited) {
       options.parts = ["header", "tabs", "biography"];
     }
@@ -186,8 +190,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getLanguages() {
     if (!this.actor.system.schema.getField("biography.languages")) return {list: "", options: []};
+    const formatter = game.i18n.getListFormatter();
+    const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
     return {
-      list: game.i18n.getListFormatter().format(Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l)),
+      list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
     };
   }
@@ -301,6 +307,71 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return categories;
   }
 
+  /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
+
+  /**
+   * Actions performed after a first render of the Application.
+   * Post-render steps are not awaited by the render process.
+   * @param {ApplicationRenderContext} context      Prepared context data
+   * @param {RenderOptions} options                 Provided render options
+   * @protected
+   */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+    // TODO: Change to ContextMenu.create in v13 with jQuery: false
+    new ContextMenu(this.element, "button[data-document-class]", this._getItemButtonContextOptions());
+  }
+
+  /**
+   * Get context menu entries for item buttons.
+   * @returns {ContextMenuEntry[]}
+   * @protected
+   */
+  _getItemButtonContextOptions() {
+    return [
+      {
+        name: "View",
+        icon: "<i class=\"fa-solid fa-eye\"></i>",
+        condition: () => this.isPlayMode,
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.PLAY});
+        }
+      },
+      {
+        name: "Edit",
+        icon: "<i class=\"fas fa-edit\"></i>",
+        condition: () => this.isEditMode,
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.EDIT});
+        }
+      },
+      {
+        name: "Delete",
+        icon: "<i class=\"fas fa-trash\"></i>",
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.deleteDialog();
+        }
+      }
+    ];
+  }
+
   /**
    * Actions performed after any render of the Application.
    * Post-render steps are not awaited by the render process.
@@ -314,11 +385,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.#disableOverrides();
   }
 
-  /**************
-   *
-   *   ACTIONS
-   *
-   **************/
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
 
   /**
    * Handle changing a Document's image.
@@ -393,7 +462,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    await doc.delete();
+    await doc.deleteDialog();
   }
 
   /**
@@ -452,6 +521,23 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
+  /**
+   * Handle clickable rolls.
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _useAbility(event, target) {
+    const item = this._getEmbeddedDocument(target);
+    if (item?.type !== "ability") {
+      console.error("This is not an ability!", item);
+      return;
+    }
+    await item.system.use({event});
+  }
+
   /** Helper Functions */
 
   /**
@@ -473,11 +559,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     } else return console.warn("Could not find document class");
   }
 
-  /***************
-   *
-   * Drag and Drop
-   *
-   ***************/
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -507,7 +591,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   _onDragStart(event) {
-    const docRow = event.currentTarget.closest("li");
+    const docRow = event.currentTarget.closest("[data-document-class]");
     if ("link" in event.target.dataset) return;
 
     // Chained operation
@@ -649,7 +733,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onDropItem(event, data) {
     if (!this.actor.isOwner) return false;
-    const item = await Item.implementation.fromDropData(data);
+    const item = await DrawSteelItem.fromDropData(data);
 
     // Handle item sorting within the same Actor
     if (this.actor.uuid === item.parent?.uuid)
@@ -766,11 +850,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   // for subclasses or external hooks to mess with it directly
   #dragDrop = this.#createDragDropHandlers();
 
-  /********************
-   *
-   * Actor Override Handling
-   *
-   ********************/
+  /* -------------------------------------------------- */
+  /*   Actor Override Handling                         */
+  /* -------------------------------------------------- */
 
   /**
    * Disables inputs subject to active effects

@@ -1,3 +1,4 @@
+/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
 import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
@@ -166,11 +167,19 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * Update combatant at the start of combat
+   * Updates performed at the start of combat
+   * @param {DrawSteelCombatant} combatant The combatant representation
    */
   async startCombat(combatant) {
     await combatant.update({initiative: this.combat.turns});
   }
+
+  /**
+   * Updates performed at the start of this actor's turn
+   * @param {DrawSteelCombatant} combatant The combatant representation
+   * @abstract
+   */
+  async _onStartTurn(combatant) {}
 
   /**
    * Prompt the user for what types
@@ -194,7 +203,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       type = await foundry.applications.api.DialogV2.wait({
         window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
         content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
-        buttons
+        buttons,
+        rejectClose: true
       });
     }
     const formula = `2d10 + @${characteristic}`;
@@ -205,7 +215,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Deal damage to the actor, accounting for immunities and resistances
-   * @param {string} amount    The amount of damage to take
+   * @param {number} damage    The amount of damage to take
    * @param {object} [options] Options to modify the damage application
    * @param {string} [options.type]   Valid damage type
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore

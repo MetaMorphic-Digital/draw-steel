@@ -1,9 +1,11 @@
 import {systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {DSRoll, PowerRoll} from "../../helpers/rolls.mjs";
+import {PowerRoll, DamageRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
+
+/** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -31,8 +33,9 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true, nullable: false}),
-    schema.trigger = new fields.StringField();
+    schema.category = new fields.StringField({required: true, nullable: false});
+    schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
+    schema.trigger = new fields.StringField({required: true, nullable: false});
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
       primary: new fields.NumberField({integer: true, min: 0}),
@@ -60,7 +63,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new fields.NumberField(),
         vertical: new fields.BooleanField()
       }),
-      description: new fields.StringField()
+      description: new fields.StringField({required: true, nullable: false})
     });
 
     schema.powerRoll = new fields.SchemaField({
@@ -71,8 +74,11 @@ export default class AbilityModel extends BaseItemModel {
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
     });
-    schema.effect = new fields.StringField();
-    schema.spend = new fields.NumberField({integer: true});
+    schema.effect = new fields.StringField({required: true, nullable: false});
+    schema.spend = new fields.SchemaField({
+      value: new fields.NumberField({integer: true}),
+      text: new fields.StringField({required: true})
+    });
 
     return schema;
   }
@@ -166,6 +172,16 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
+   * Fetches the appropriate name for the resource this ability consumes
+   * @returns {string}
+   */
+  get resourceName() {
+    return this.actor?.type === "npc"
+      ? game.i18n.localize("DRAW_STEEL.Setting.Malice.Label")
+      : this.actor?.system.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
+  }
+
+  /**
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -175,7 +191,12 @@ export default class AbilityModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("ability");
     embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const context = {system: this, systemFields: this.schema.fields, config: ds.CONFIG};
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      config: ds.CONFIG,
+      resourceName: this.resourceName
+    };
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -185,7 +206,12 @@ export default class AbilityModel extends BaseItemModel {
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
-    context.keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k].label ?? k).join(", ");
+
+    context.resourceName = this.resourceName;
+
+    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
+    context.keywordList = keywordFormatter.format(keywordList);
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
     context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
 
@@ -221,9 +247,66 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
+   * @param {object} [options={}] Configuration
+   * @param {UIEvent} [options.event] The event prompting the use
+   * @param {number} [options.banes]  Banes to apply to a power roll
+   * @param {number} [options.edges]  Edges to apply to a power roll
    * @returns {Promise<DrawSteelChatMessage>}
+   * TODO: Add hooks based on discussion with module authors
    */
-  async use() {
+  async use(options = {}) {
+    /**
+     * Configuration information
+     * @type {object | null}
+     */
+    let configuration = null;
+    let resourceSpend = this.resource ?? 0;
+
+    // Determine if the configuration form should even run.
+    // Can be factored out if/when complexity increases
+    if (this.spend.value || this.spend.text) {
+      let content = "";
+
+      /**
+       * Range picker config is ignored by the checkbox element
+       * @type {FormInputConfig} */
+      const spendInputConfig = {
+        name: "spend",
+        min: 0,
+        max: this.actor.system.hero.primary.value,
+        step: 1
+      };
+
+      // Nullish value with text means X spend
+      const spendInput = this.spend.value ?
+        foundry.applications.fields.createCheckboxInput(spendInputConfig) :
+        foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
+
+      content += foundry.applications.fields.createFormGroup({
+        label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+          value: this.spend.value || "",
+          name: this.resourceName
+        }),
+        input: spendInput
+      }).outerHTML;
+
+      configuration = await foundry.applications.api.DialogV2.prompt({
+        content,
+        window: {
+          title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
+          icon: "fa-solid fa-gear"
+        },
+        ok: {
+          callback: (event, button, dialog) => {
+            return new FormDataExtended(button.form).object;
+          }
+        },
+        rejectClose: false
+      });
+
+      if (!configuration) return null;
+    }
+
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
       type: "abilityUse",
@@ -233,25 +316,40 @@ export default class AbilityModel extends BaseItemModel {
         uuid: this.parent.uuid
       }
     };
-    // TODO: Put the spend in flavor text (e.g. "Spends 5 Essence" or whatever)
+
+    if (configuration) {
+      if (configuration.spend) {
+        resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
+        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
+          value: resourceSpend,
+          name: this.resourceName
+        });
+      }
+    }
+
+    // TODO: Figure out how to better handle invocations when this.actor is null
+    await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      const rollOptions = {
-        type: "ability"
-      }; // TODO: Add in Banes & Edges
-      const powerRoll = new PowerRoll(formula, rollData, rollOptions);
-      await powerRoll.evaluate();
+      const powerRoll = await PowerRoll.prompt({
+        type: "ability",
+        formula,
+        data: rollData,
+        evaluation: "evaluate",
+        banes: options.banes,
+        edges: options.banes
+      });
       messageData.rolls.push(powerRoll);
       const tier = this.powerRoll[`tier${powerRoll.product}`];
       const damageFormula = tier.damage.value;
       if (damageFormula) {
         const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
         const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
-        const damageRoll = new DSRoll(damageFormula, rollData, {flavor});
+        const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
         await damageRoll.evaluate();
         messageData.rolls.push(damageRoll);
       }

@@ -1,4 +1,6 @@
 import {DrawSteelActor} from "../../documents/actor.mjs";
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import {DSRoll} from "../../rolls/base.mjs";
 import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
@@ -25,12 +27,10 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
-        value: new fields.NumberField({initial: 0, min: 0, integer: true, nullable: false})
+        value: new fields.NumberField({initial: 0, integer: true, nullable: false})
       }),
-      // Possible future expansions will have classes with multiple resources
-      // secondary: new fields.SchemaField({
-      //   value: new fields.NumberField({initial: null, min: 0, integer: true})
-      // }),
+      // Epic resources are not part of public license yet
+      surges: requiredInteger({initial: 0}),
       xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
@@ -157,6 +157,22 @@ export default class CharacterModel extends BaseActorModel {
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
+  }
+
+  /** @override */
+  async _onStartTurn(combatant) {
+    await super._onStartTurn(combatant);
+    const characterClass = this.class;
+    if (characterClass && characterClass.system.turnGain) {
+      const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
+        flavor: this.class.system.primary
+      });
+      await recoveryRoll.toMessage({
+        speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
+      });
+      await this.parent.update({"system.hero.primary.value": this.hero.primary.value + recoveryRoll.total});
+    }
   }
 
   /**
