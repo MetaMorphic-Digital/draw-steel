@@ -160,8 +160,9 @@ export default class CharacterModel extends BaseActorModel {
   /** @override */
   async _onStartTurn(combatant) {
     await super._onStartTurn(combatant);
-    if (this.class?.system.recovery) {
-      const recoveryRoll = new DSRoll(this.class.system.recovery, this.parent.getRollData(), {
+    const characterClass = this.class;
+    if (characterClass && characterClass.system.turnGain) {
+      const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
         flavor: this.class.system.primary
       });
       await recoveryRoll.toMessage({

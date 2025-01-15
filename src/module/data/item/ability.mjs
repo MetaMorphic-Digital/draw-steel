@@ -35,7 +35,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
     schema.category = new fields.StringField({required: true, nullable: false});
     schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
-    schema.trigger = new fields.StringField();
+    schema.trigger = new fields.StringField({required: true, nullable: false});
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
       primary: new fields.NumberField({integer: true, min: 0}),
@@ -63,7 +63,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new fields.NumberField(),
         vertical: new fields.BooleanField()
       }),
-      description: new fields.StringField()
+      description: new fields.StringField({required: true, nullable: false})
     });
 
     schema.powerRoll = new fields.SchemaField({
@@ -74,7 +74,7 @@ export default class AbilityModel extends BaseItemModel {
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
     });
-    schema.effect = new fields.StringField();
+    schema.effect = new fields.StringField({required: true, nullable: false});
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({integer: true}),
       text: new fields.StringField({required: true})
@@ -290,13 +290,13 @@ export default class AbilityModel extends BaseItemModel {
         input: spendInput
       }).outerHTML;
 
-      configuration = await foundry.applications.api.DialogV2.confirm({
+      configuration = await foundry.applications.api.DialogV2.prompt({
         content,
         window: {
           title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear"
         },
-        yes: {
+        ok: {
           callback: (event, button, dialog) => {
             return new FormDataExtended(button.form).object;
           }
@@ -304,7 +304,7 @@ export default class AbilityModel extends BaseItemModel {
         rejectClose: false
       });
 
-      if (!configuration) throw new Error("Configuration required but not provided");
+      if (!configuration) return null;
     }
 
     const messageData = {

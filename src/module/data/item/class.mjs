@@ -38,7 +38,7 @@ export default class ClassModel extends AdvancementModel {
 
     schema.primary = new fields.StringField({required: true});
 
-    schema.recovery = new FormulaField();
+    schema.turnGain = new FormulaField();
 
     schema.characteristics = new fields.SchemaField({
       core: new fields.SetField(setOptions())

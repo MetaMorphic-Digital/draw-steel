@@ -95,7 +95,7 @@ declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
-    recovery: string;
+    turnGain: string;
     characteristics: {
       core: Set<string>;
     }

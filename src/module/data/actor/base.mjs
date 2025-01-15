@@ -168,6 +168,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Updates performed at the start of combat
+   * @param {DrawSteelCombatant} combatant The combatant representation
    */
   async startCombat(combatant) {
     await combatant.update({initiative: this.combat.turns});
@@ -175,7 +176,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Updates performed at the start of this actor's turn
-   * @param {DrawSteelCombatant} combatant
+   * @param {DrawSteelCombatant} combatant The combatant representation
    * @abstract
    */
   async _onStartTurn(combatant) {}
