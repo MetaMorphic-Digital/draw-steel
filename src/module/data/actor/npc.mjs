@@ -1,5 +1,6 @@
 import {requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
+import SourceModel from "../models/source.mjs";
 
 /**
  * NPCs are created and controlled by the director
@@ -20,6 +21,8 @@ export default class NPCModel extends BaseActorModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
+
+    schema.source = new fields.EmbeddedDataField(SourceModel);
 
     schema.negotiation = new fields.SchemaField({
       interest: requiredInteger({initial: 5}),

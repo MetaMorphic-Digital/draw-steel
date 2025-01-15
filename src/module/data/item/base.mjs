@@ -1,3 +1,5 @@
+import SourceModel from "../models/source.mjs";
+
 const fields = foundry.data.fields;
 
 /**
@@ -19,11 +21,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
     schema.description = new fields.SchemaField(this.itemDescription());
 
-    schema.source = new fields.SchemaField({
-      book: new fields.StringField({required: true}),
-      page: new fields.StringField({required: true}),
-      license: new fields.StringField({required: true})
-    });
+    schema.source = new fields.EmbeddedDataField(SourceModel);
 
     /**
      * The Draw Steel ID, indicating a unique game rules element

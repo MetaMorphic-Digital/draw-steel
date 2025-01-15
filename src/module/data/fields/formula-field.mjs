@@ -1,7 +1,4 @@
-/**
- * @typedef {StringFieldOptions} FormulaFieldOptions
- * @property {boolean} [deterministic=false]  Is this formula not allowed to have dice values?
- */
+/** @import {FormulaFieldOptions} from "./_types" */
 
 /**
  * Special case StringField which represents a formula.

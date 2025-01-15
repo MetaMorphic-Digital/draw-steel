@@ -53,35 +53,3 @@ export const damageTypes = (inner, {all = false} = {}) => {
 
   return new SchemaField(schema);
 };
-
-/**
- * A data model to represent the size of a creature in Draw Steel
- */
-export class SizeModel extends foundry.abstract.DataModel {
-  static defineSchema() {
-    return {
-      value: new NumberField({initial: 1, required: true, nullable: false, integer: true, min: 1}),
-      letter: new StringField({initial: "M", choices: ds.CONFIG.sizes})
-    };
-  }
-
-  /** @override */
-  toString() {
-    const letter = this.value === 1 ? this.letter ?? "" : "";
-    return this.value + letter;
-  }
-}
-/**
- * Data Model variant that does not export fields with an `undefined` value during `toObject(true)`.
- * Copied from dnd5e.
- */
-export class SparseDataModel extends foundry.abstract.DataModel {
-  /** @inheritDoc */
-  toObject(source = true) {
-    if (!source) return super.toObject(source);
-    const clone = foundry.utils.flattenObject(this._source);
-    // Remove any undefined keys from the source data
-    Object.keys(clone).filter(k => clone[k] === undefined).forEach(k => delete clone[k]);
-    return foundry.utils.expandObject(clone);
-  }
-}

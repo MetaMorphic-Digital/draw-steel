@@ -1,4 +1,5 @@
 import { DrawSteelItem } from "../../documents/item.mjs";
+import SourceModel from "../models/source.mjs";
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -18,11 +19,7 @@ declare module "./base.mjs" {
       value: string;
       gm: string;
     }
-    source: {
-      book: string;
-      page: string;
-      license: string;
-    }
+    source: SourceModel;
     /** The Draw Steel ID, indicating a unique game rules element */
     _dsid: string;
   }
