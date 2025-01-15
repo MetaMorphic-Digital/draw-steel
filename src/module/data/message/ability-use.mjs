@@ -28,6 +28,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     /** @type {DrawSteelItem} */
     const item = await fromUuid(this.uuid);
 
+    /** @type {HTMLDivElement} */
     let embed;
     if (item) embed = await item.toEmbed({});
     else {
@@ -36,6 +37,9 @@ export default class AbilityUseModel extends BaseMessageModel {
     }
 
     const content = html.querySelector(".message-content");
-    content.insertAdjacentElement("afterbegin", embed);
+
+    // If it's a roll, the roll rendering will replace the message's stored content. Otherwise we need to do it.
+    if (this.parent.isRoll) content.insertAdjacentElement("afterbegin", embed);
+    else content.innerHTML = embed.outerHTML;
   }
 }

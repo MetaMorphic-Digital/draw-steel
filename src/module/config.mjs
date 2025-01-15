@@ -916,7 +916,10 @@ DRAW_STEEL.abilities = {
       triggered: true
     }
   },
-  /** @type {Record<string, {label: string}>} */
+  /**
+   * Ability category, e.g. "Villain Action"
+   * @type {Record<string, {label: string}>}
+   */
   categories: {
     heroic: {
       label: "DRAW_STEEL.Item.Ability.Category.Heroic"

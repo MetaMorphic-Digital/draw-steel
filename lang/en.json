@@ -138,7 +138,8 @@
               "label": "Skills"
             }
           }
-        }
+        },
+        "HeroicResourceGain": "Start of turn resource gain"
       },
       "NPC": {
         "FIELDS": {
@@ -326,6 +327,9 @@
           "category": {
             "label": "Category"
           },
+          "resource": {
+            "label": "Resource Cost"
+          },
           "distance": {
             "label": "Distance",
             "type": {
@@ -423,8 +427,20 @@
             "label": "Effect"
           },
           "spend": {
-            "label": "Spend"
+            "label": "Spend",
+            "value": {
+              "label": "Spend Cost"
+            },
+            "text": {
+              "label": "Spend Effect"
+            }
           }
+        },
+        "ResourceCost": "Costs {value} {name}",
+        "ConfigureUse": {
+          "Title": "Configure Ability Use",
+          "SpendLabel": "Spend {value} {name}",
+          "SpentFlavor": "Spent {value} {name}"
         },
         "KeywordGroups": {
           "Elementalist": "Elementalist",
@@ -546,6 +562,9 @@
           },
           "primary": {
             "label": "Heroic Resource"
+          },
+          "turnGain": {
+            "label": "Gain Per Turn"
           },
           "characteristics": {
             "core": {

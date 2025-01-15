@@ -51,6 +51,7 @@ declare module "./ability.mjs" {
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
     category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";
+    resource: number;
     damageDisplay: "melee" | "ranged";
     distance: {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
@@ -74,8 +75,11 @@ declare module "./ability.mjs" {
       tier2: PowerRoll;
       tier3: PowerRoll;
     }
+    spend: {
+      value: number;
+      text: string;
+    };
     effect: string;
-    spend: number;
   }
 }
 
@@ -91,7 +95,7 @@ declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
-    // secondary: string | undefined;
+    turnGain: string;
     characteristics: {
       core: Set<string>;
     }

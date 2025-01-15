@@ -37,16 +37,6 @@ export class DrawSteelCombat extends Combat {
   async nextRound() {
     await super.nextRound();
 
-    // Only GM users can update world settings
-    if (game.user.isGM) {
-      /** @type {MaliceModel} */
-      const malice = game.settings.get(systemID, "malice");
-      const aliveHeroes = this.combatants
-        .filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
-        .map(c => c.actor);
-      await malice.nextRound(this, aliveHeroes);
-    }
-
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
     const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor?.system.combat.turns ?? 1}));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
@@ -78,5 +68,15 @@ export class DrawSteelCombat extends Combat {
     if (game.settings.get(systemID, "initiativeMode") === "default") dc = b.disposition - a.disposition;
     if (dc !== 0) return dc;
     return super._sortCombatants(a, b);
+  }
+
+  /** @override */
+  async _onStartRound() {
+    /** @type {MaliceModel} */
+    const malice = game.settings.get(systemID, "malice");
+    const aliveHeroes = this.combatants
+      .filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
+      .map(c => c.actor);
+    await malice._onStartRound(this, aliveHeroes);
   }
 }

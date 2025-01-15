@@ -1,4 +1,9 @@
 <section class="metadata">
+  {{#if system.resource}}
+  <p class="resource">
+    {{localize "DRAW_STEEL.Item.Ability.ResourceCost" value=system.resource name=resourceName}}
+  </p>
+  {{/if}}
   {{#if system.description.flavor}}
   <p class="flavor">
     <em>{{system.description.flavor}}</em>
