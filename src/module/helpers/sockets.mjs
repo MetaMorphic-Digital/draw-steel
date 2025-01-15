@@ -1,4 +1,5 @@
 import {systemID} from "../constants.mjs";
+import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
 
 export default class DrawSteelSocketHandler {
   constructor() {
@@ -39,10 +40,11 @@ export default class DrawSteelSocketHandler {
    * @param {object} payload
    * @param {string} payload.userId
    * @param {string} payload.spendType
+   * @param {string} payload.flavor
    */
-  async spendHeroToken({userId, spendType}) {
+  async spendHeroToken({userId, spendType, flavor}) {
     // TODO: Refactor in v13 to just call isActiveGM
-    if (game.users.activeGM !== game.user) return;
+    if (!game.users.activeGM?.isSelf) return;
     const sendingUser = game.users.get(userId);
     const sendingUsername = sendingUser?.name ?? userId;
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
@@ -58,11 +60,11 @@ export default class DrawSteelSocketHandler {
       ui.notifications.error(message);
       return;
     }
-    await game.settings.set(systemID, settingName, {value: heroTokens - 1});
-    await ChatMessage.implementation.create({
+    await game.settings.set(systemID, settingName, {value: heroTokens - tokenSpendConfiguration.tokens});
+    await DrawSteelChatMessage.create({
       author: userId,
       content: tokenSpendConfiguration.messageContent,
-      flavor: sendingUser?.character?.name
+      flavor: flavor ?? sendingUser?.character?.name
     });
   }
 }

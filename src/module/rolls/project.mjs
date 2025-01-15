@@ -97,7 +97,8 @@ export class ProjectRoll extends DSRoll {
 
           return output;
         }
-      }
+      },
+      rejectClose: true
     });
 
     const roll = new this(formula, options.data, {flavor, ...rollContext});

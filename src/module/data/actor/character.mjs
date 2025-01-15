@@ -29,6 +29,8 @@ export default class CharacterModel extends BaseActorModel {
       primary: new fields.SchemaField({
         value: new fields.NumberField({initial: 0, integer: true, nullable: false})
       }),
+      // Epic resources are not part of public license yet
+      surges: requiredInteger({initial: 0}),
       xp: requiredInteger({initial: 0}),
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({initial: 0}),
