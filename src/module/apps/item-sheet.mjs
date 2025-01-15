@@ -381,7 +381,13 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    */
   static async _editHTML(event, target) {
     /** @type {HTMLDivElement} */
-    const editorContainer = target.closest(".editor-content");
+    const tab = target.closest("section.tab");
+    /** @type {HTMLDivElement} */
+    const wrapper = target.closest(".prosemirror.editor");
+    tab.classList.add("editorActive");
+    wrapper.classList.add("active");
+    /** @type {HTMLDivElement} */
+    const editorContainer = wrapper.querySelector(".editor-content");
     const content = foundry.utils.getProperty(this.item, target.dataset.fieldName);
     this.#editor = await ProseMirrorEditor.create(editorContainer, content, {
       document: this.item,

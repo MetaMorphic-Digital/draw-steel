@@ -1,6 +1,19 @@
 section[data-tab="description"] {
+  &.editorActive {
+    .prosemirror.editor {
+      &:not(.active) {
+        display: none;
+      }
+      .label-action {
+        display: none;
+      }
+      .editor-container {
+        min-height: 250px;
+      }
+    }
+  }
 
-  .html-description {
+  .description-label {
     display: block;
     line-height: var(--form-field-height);
     font-family: var(--font-h4);
@@ -15,7 +28,7 @@ section[data-tab="description"] {
     height: 300px;
   }
 
-  .play.description {
+  .description {
     padding: 0.25rem;
   }
 }
