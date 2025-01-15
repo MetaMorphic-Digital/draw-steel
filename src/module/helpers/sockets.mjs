@@ -44,7 +44,7 @@ export default class DrawSteelSocketHandler {
    */
   async spendHeroToken({userId, spendType, flavor}) {
     // TODO: Refactor in v13 to just call isActiveGM
-    if (!game.users.activeGM.isSelf) return;
+    if (!game.users.activeGM?.isSelf) return;
     const sendingUser = game.users.get(userId);
     const sendingUsername = sendingUser?.name ?? userId;
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];

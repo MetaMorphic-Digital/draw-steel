@@ -26,7 +26,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
    * @param {string} spendType       Key of `ds.CONFIG.hero.tokenSpends`.
    * @param {object} [options]       Options to modify the token spend
    * @param {string} [options.flavor] Flavor for the chat message (default: Current user's character name)
-   * @returns {void|false}           An explicit `false` if there was an error in spending the token
+   * @returns {Promise<void|false>}           An explicit `false` if there was an error in spending the token
    */
   async spendToken(spendType, options = {}) {
     if (!game.users.activeGM) {

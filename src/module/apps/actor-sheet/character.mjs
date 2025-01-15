@@ -85,7 +85,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         title: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
         icon: "fa-solid fa-bolt-lightning"
       },
-      content: "<p>" + game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GainSurges.dialogContent", {value: heroTokens.value}) + "</p>",
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GainSurges.dialogContent", {
+        value: heroTokens.value
+      })}</p>`,
       rejectClose: false
     });
 
