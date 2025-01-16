@@ -1,0 +1,23 @@
+.group {
+  .header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .modifiers {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    label {
+      flex: 1;
+
+      select {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
