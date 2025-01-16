@@ -90,7 +90,8 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   /**
    * Spawn a PowerRollDialog and wait for it to be rolled or closed.
    * @param {Partial<ApplicationConfiguration>} [options]
-   * @returns {Promise<Array<PowerRollDialogPrompt> | null>}                           Resolves to the final context to use for one or more power rolls
+   * @returns {Promise<Array<PowerRollDialogPrompt> | null>}      Resolves to the final context to use for one or more power rolls. 
+   *                                                              If the dialog was closed without rolling, it resolves to null.
    */
   static async prompt(options) {
     return new Promise((resolve, reject) => {
