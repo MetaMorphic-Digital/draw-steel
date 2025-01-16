@@ -8,13 +8,9 @@ const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
 export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "power-roll-dialog"],
-    actions: {
-      roll: this.roll
-    },
     tag: "form",
     form: {
-      submitOnClose: false,
-      handler: this._onSubmit
+      closeOnSubmit: true
     }
   };
 
@@ -62,7 +58,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 
   /** Set a final context for resolving the prompt, then close the dialog */
-  static async roll() {
+  async _onSubmitForm(formConfig, event) {
     const targets = this.options.context.targets;
     if (!targets || (targets.length === 0)) this.finalContext = [this.options.context.modifiers];
     else {
@@ -71,8 +67,8 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         return accumlator;
       }, []);
     }
-
-    this.close();
+    
+    super._onSubmitForm(formConfig, event);
   }
 
   /* -------------------------------------------- */
