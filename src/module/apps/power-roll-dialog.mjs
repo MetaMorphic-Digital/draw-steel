@@ -33,7 +33,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       ...this.options.context
     };
 
-    this.combineModifiers(context);
+    if (context.targets) this.combineModifiers(context);
 
     return context;
   }
@@ -46,7 +46,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
 
     this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, {overwrite: true, recursive: true});
-    this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
+    if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
 
     this.render(true);
   }
@@ -63,7 +63,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
   static async roll() {
     const targets = this.options.context.targets;
-    if (targets.length === 0) this.finalContext = [this.options.context.modifiers];
+    if (!targets || (targets.length === 0)) this.finalContext = [this.options.context.modifiers];
     else {
       this.finalContext = targets.reduce((accumlator, target) => {
         accumlator.push({...target.combinedModifiers, actor: target.actor});
