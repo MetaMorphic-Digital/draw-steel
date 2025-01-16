@@ -1,4 +1,5 @@
 /** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
+import {PowerRoll} from "../../rolls/power.mjs";
 import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
 const fields = foundry.data.fields;
 
