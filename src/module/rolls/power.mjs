@@ -289,7 +289,5 @@ export class PowerRoll extends DSRoll {
    */
   static getActorModifiers(options) {
     if (options.actor?.statuses.has("weakened")) options.modifiers.banes += 1;
-
-    console.log(options);
   }
 }
