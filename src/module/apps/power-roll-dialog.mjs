@@ -61,6 +61,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     });
   }
 
+  /** Set a final context for resolving the prompt, then close the dialog */
   static async roll() {
     const targets = this.options.context.targets;
     if (!targets || (targets.length === 0)) this.finalContext = [this.options.context.modifiers];
