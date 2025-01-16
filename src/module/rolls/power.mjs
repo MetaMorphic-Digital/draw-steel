@@ -143,15 +143,17 @@ export class PowerRoll extends DSRoll {
     }
 
     this.getActorModifiers(options);
-    const context = {
-      window: {
-        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
-      },
+    const context = {     
       modifiers: options.modifiers,
       targets: options.targets
     };
 
-    const rollContexts = await PowerRollDialog.prompt({context});
+    const rollContexts = await PowerRollDialog.prompt({
+      context,
+      window: {
+        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
+      }
+    });
 
     if (!rollContexts) return null;
 
