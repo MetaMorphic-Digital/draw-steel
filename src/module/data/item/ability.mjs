@@ -251,7 +251,7 @@ export default class AbilityModel extends BaseItemModel {
    * @param {UIEvent} [options.event] The event prompting the use
    * @param {number} [options.banes]  Banes to apply to a power roll
    * @param {number} [options.edges]  Edges to apply to a power roll
-   * @returns {Promise<DrawSteelChatMessage>}
+   * @returns {Array<Promise<DrawSteelChatMessage>>}
    * TODO: Add hooks based on discussion with module authors
    */
   async use(options = {}) {
@@ -339,10 +339,12 @@ export default class AbilityModel extends BaseItemModel {
         type: "ability",
         formula,
         data: rollData,
-        evaluation: "evaluate",
-        banes: options.banes,
-        edges: options.banes,                
+        evaluation: "evaluate",      
         actor: this.actor,
+        modifiers: {
+          banes: options.banes ?? 0,
+          edges: options.banes ?? 0 
+        },
         targets: [...game.user.targets].reduce((acc, target, index) => {
           acc.push({
             actor: target.actor,
@@ -352,8 +354,10 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       };
 
+      // Get the power rolls made per target, or if no targets, then just one power roll
       const powerRolls = await PowerRoll.prompt(context);
 
+      // Roll damage and create a message per powerRolls
       const messages = [];
       for (const powerRoll of powerRolls) {
         const dataCopy = foundry.utils.duplicate(messageData);

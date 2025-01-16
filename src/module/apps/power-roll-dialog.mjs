@@ -34,8 +34,6 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       ...this.options.context
     };
 
-    console.log(context);
-
     this.combineModifiers(context);
 
     return context;

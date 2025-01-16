@@ -144,18 +144,14 @@ export class PowerRoll extends DSRoll {
 
     this.getActorModifiers(options);
     const context = {
-      modifiers: {
-        edges: options.edges,
-        banes: options.banes
-      },
       window: {
         title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
       },
+      modifiers: options.modifiers,
       targets: options.targets
     };
 
     const rollContexts = await PowerRollDialog.prompt({context});
-    console.log("rollContext", rollContexts);
 
     if (!rollContexts) return null;
 
@@ -288,7 +284,6 @@ export class PowerRoll extends DSRoll {
    * @param {object} [options] Options for the dialog
    */
   static getActorModifiers(options) {
-    if (options.actor?.statuses.has("weakness")) options.banes += 1;
-    //TODO: CONDITION CHECKS
+    if (options.actor?.statuses.has("weakness")) options.modifiers.banes += 1;
   }
 }
