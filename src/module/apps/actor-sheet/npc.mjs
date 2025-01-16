@@ -6,6 +6,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
     actions: {
+      updateSource: this._updateSource,
       editMonsterMetadata: this._editMonsterMetadata
     }
   };
@@ -143,6 +144,16 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
+
+  /**
+   * Open the update source dialog
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _updateSource(event, target) {
+    this.actor.system.source.updateDialog();
+  }
 
   /**
    * Open a dialog to edit the monster metadata

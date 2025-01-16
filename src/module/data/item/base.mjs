@@ -52,6 +52,11 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   }
 
   /** @override */
+  prepareDerivedData() {
+    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+  }
+
+  /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;

@@ -15,6 +15,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     actions: {
       editImage: this._onEditImage,
       toggleMode: this._toggleMode,
+      updateSource: this._updateSource,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
@@ -324,6 +325,17 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     this.render();
+  }
+
+  /**
+   * Open the update source dialog
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _updateSource(event, target) {
+    this.item.system.source.updateDialog();
   }
 
   /**

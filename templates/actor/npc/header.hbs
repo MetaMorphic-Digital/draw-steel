@@ -34,25 +34,39 @@
   </div>
   <div class="header-right flexcol">
     {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
-    <div class="monster-info">
-      {{systemFields.monster.fields.level.label}} {{system.monster.level}}
-      {{organizationLabel}} {{rolesLabel}}
-      {{#unless isPlay}}
-      <a data-action="editMonsterMetadata">
-        <i class="fa-solid fa-gear"></i>
-      </a>
-      {{/unless}}
-    </div>
-    <div class="ev">
-      {{evLabel}}
-    </div>
-    {{#if showMalice}}
-    <div class="form-group">
-      <label>{{malice.label}}</label>
-      <div class="form-fields">
-        <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+    <div class="monster-data flexrow">
+      <div class="monster-metadata">
+        <div class="actor-source">
+          {{#if isPlay}}
+          {{system.source.label}}
+          {{else}}
+          <a data-action="updateSource">
+            <i class="fa-solid fa-book"></i>
+            {{actor.system.source.label}}
+          </a>
+          {{/if}}
+        </div>
+        <div class="monster-info">
+          {{#unless isPlay}}
+          <a data-action="editMonsterMetadata">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+          {{/unless}}
+          {{systemFields.monster.fields.level.label}} {{system.monster.level}}
+          {{organizationLabel}} {{rolesLabel}}
+        </div>
+        <div class="ev">
+          {{evLabel}}
+        </div>
       </div>
+      {{#if showMalice}}
+      <div class="malice form-group stacked">
+        <label>{{malice.label}}</label>
+        <div class="form-fields">
+          <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+        </div>
+      </div>
+      {{/if}}
     </div>
-    {{/if}}
   </div>
 </header>

@@ -16,5 +16,15 @@
   </div>
   <div class="header-right">
     {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
+    <div class="item-source">
+      {{#if isPlay}}
+      {{system.source.label}}
+      {{else}}
+      <a data-action="updateSource">
+        <i class="fa-solid fa-book"></i>
+        {{item.system.source.label}}
+      </a>
+      {{/if}}
+    </div>
   </div>
 </header>

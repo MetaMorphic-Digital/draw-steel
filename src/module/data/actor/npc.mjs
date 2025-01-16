@@ -48,4 +48,10 @@ export default class NPCModel extends BaseActorModel {
   get level() {
     return this.monster.level;
   }
+
+  /** @override */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+  }
 }
