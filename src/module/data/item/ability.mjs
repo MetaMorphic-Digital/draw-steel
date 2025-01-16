@@ -1,6 +1,6 @@
 import {systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {PowerRoll, DamageRoll} from "../../rolls/_module.mjs";
+import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -335,26 +335,66 @@ export default class AbilityModel extends BaseItemModel {
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      const powerRoll = await PowerRoll.prompt({
+      const context = {
         type: "ability",
         formula,
         data: rollData,
         evaluation: "evaluate",
         banes: options.banes,
-        edges: options.banes
-      });
-      messageData.rolls.push(powerRoll);
-      const tier = this.powerRoll[`tier${powerRoll.product}`];
-      const damageFormula = tier.damage.value;
-      if (damageFormula) {
-        const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
-        const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
-        const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
-        await damageRoll.evaluate();
-        messageData.rolls.push(damageRoll);
+        edges: options.banes,                
+        actor: this.actor,
+        targets: [...game.user.targets].reduce((acc, target, index) => {
+          acc.push({
+            actor: target.actor,
+            modifiers: this.getTargetModifiers(options.actor, target.actor)
+          });
+          return acc;
+        }, [])
+      };
+
+      const powerRolls = await PowerRoll.prompt(context);
+
+      const messages = [];
+      for (const powerRoll of powerRolls) {
+        const dataCopy = foundry.utils.duplicate(messageData);
+        dataCopy.rolls.push(powerRoll);
+        const tier = this.powerRoll[`tier${powerRoll.product}`];
+        const damageFormula = tier.damage.value;
+        if (damageFormula) {
+          const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
+          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
+          const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
+          await damageRoll.evaluate();
+          dataCopy.rolls.push(damageRoll);
+        }
+
+        messages.push(DrawSteelChatMessage.create(dataCopy));
       }
     }
 
-    return DrawSteelChatMessage.create(messageData);
+    return messages;
+  }
+
+  /** Modify the options object based on conditions that apply to ability Power Rolls regardless of target
+   * @param {object} [options] Options for the dialog
+   */
+  getActorModifiers(options, actor) {
+    //TODO: CONDITION CHECKS
+  }
+
+  /** Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
+   * @param {DrawSteelActor} actor The triggering actor
+   * @param {DrawSteelActor} target A target of the Ability Roll
+   * @returns {object} 
+   */
+  getTargetModifiers(actor, target) {
+    const modifiers = {
+      banes: 0,
+      edges: 0
+    };
+
+    //TODO: CONDITION CHECKS
+
+    return modifiers;
   }
 }
