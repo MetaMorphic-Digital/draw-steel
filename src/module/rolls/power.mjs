@@ -128,10 +128,14 @@ export class PowerRoll extends DSRoll {
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
     const flavor = options.flavor ?? typeLabel;
 
-    if (options.data?.statuses?.weakened) options.banes += 1;
+    this.getActorModifiers(options);
+    const context = {     
+      modifiers: options.modifiers,
+      targets: options.targets
+    };
 
     if (options.skills) {
-      dialogContext.skills = options.skills.reduce((obj, skill) => {
+      context.skills = options.skills.reduce((obj, skill) => {
         const label = ds.CONFIG.skills.list[skill]?.label;
         if (!label) {
           console.warn("Could not find skill" + skill);
@@ -141,12 +145,6 @@ export class PowerRoll extends DSRoll {
         return obj;
       }, {});
     }
-
-    this.getActorModifiers(options);
-    const context = {     
-      modifiers: options.modifiers,
-      targets: options.targets
-    };
 
     const rollContexts = await PowerRollDialog.prompt({
       context,
