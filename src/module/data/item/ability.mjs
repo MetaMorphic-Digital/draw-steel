@@ -237,6 +237,7 @@ export default class AbilityModel extends BaseItemModel {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
   }
 
+  /** @override */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
@@ -378,7 +379,8 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
-  /** Modify the options object based on conditions that apply to ability Power Rolls regardless of target
+  /** 
+   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
    * @param {object} options Options for the dialog
    * @param {DrawSteelActor} actor The actor using the ability
    */
@@ -386,7 +388,8 @@ export default class AbilityModel extends BaseItemModel {
     //TODO: CONDITION CHECKS
   }
 
-  /** Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
+  /** 
+   * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
    * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
    * @returns {object} 

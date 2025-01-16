@@ -1,5 +1,6 @@
 import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
 import {systemPath} from "../constants.mjs";
+import {DrawSteelActor} from "../documents/actor.mjs";
 import {DSRoll} from "./base.mjs";
 
 /**
@@ -280,8 +281,10 @@ export class PowerRoll extends DSRoll {
     return context;
   }
 
-  /** Modify the options object based on conditions that apply to all Power Rolls
+  /** 
+   * Modify the options object based on conditions that apply to all Power Rolls
    * @param {object} [options] Options for the dialog
+   * @param {DrawSteelActor} [options.actor] The actor rolling the Power Roll
    */
   static getActorModifiers(options) {
     if (options.actor?.statuses.has("weakness")) options.modifiers.banes += 1;
