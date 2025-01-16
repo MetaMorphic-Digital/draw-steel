@@ -1,6 +1,6 @@
 <div>
   <div class="global group">
-    <div class="header">Global Modifiers</div>
+    <div class="header">{{localize "DRAW_STEEL.Roll.Power.Prompt.GlobalModifiers"}}</div>
     <div class="modifiers general">
       <label>
         <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Edges"}}</span>
@@ -26,14 +26,14 @@
         <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.edges}}
         </select>
-        <span class="total-edges">Total: {{target.combinedModifiers.edges}}</span>
+        <span class="total-edges">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.edges}}</span>
       </label>
       <label>
         <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Banes"}}</span>
         <select name="targets.{{@index}}.modifiers.banes" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.banes}}
         </select>
-        <span class="total-banes">Total: {{target.combinedModifiers.banes}}</span>
+        <span class="total-banes">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
       </label>
     </div>
     
@@ -47,5 +47,5 @@
     </select>
   </label>
   {{/if}}
-  <button data-action="roll">Roll</button>
+  <button data-action="roll">{{localize "DRAW_STEEL.Roll.Power.Prompt.Button"}}</button>
 </div>
