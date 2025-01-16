@@ -380,14 +380,15 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /** Modify the options object based on conditions that apply to ability Power Rolls regardless of target
-   * @param {object} [options] Options for the dialog
+   * @param {object} options Options for the dialog
+   * @param {DrawSteelActor} actor The actor using the ability
    */
   getActorModifiers(options, actor) {
     //TODO: CONDITION CHECKS
   }
 
   /** Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelActor} actor The triggering actor
+   * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
    * @returns {object} 
    */
