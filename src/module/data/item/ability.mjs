@@ -374,9 +374,9 @@ export default class AbilityModel extends BaseItemModel {
 
         messages.push(DrawSteelChatMessage.create(dataCopy));
       }
-    }
 
-    return messages;
+      return messages;
+    }
   }
 
   /** Modify the options object based on conditions that apply to ability Power Rolls regardless of target

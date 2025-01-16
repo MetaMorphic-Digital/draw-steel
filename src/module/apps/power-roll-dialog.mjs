@@ -13,7 +13,6 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     },
     tag: "form",
     form: {
-      submitOnChange: true,
       submitOnClose: false,
       handler: this._onSubmit
     }
