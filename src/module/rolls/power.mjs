@@ -122,8 +122,8 @@ export class PowerRoll extends DSRoll {
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
-    options.edges ??= 0;
-    options.banes ??= 0;
+    options.modifiers.edges ??= 0;
+    options.modifiers.banes ??= 0;
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
@@ -285,8 +285,11 @@ export class PowerRoll extends DSRoll {
    * Modify the options object based on conditions that apply to all Power Rolls
    * @param {object} [options] Options for the dialog
    * @param {DrawSteelActor} [options.actor] The actor rolling the Power Roll
+   * @param {object} [options.modifiers] The banes and edges for the roll
    */
   static getActorModifiers(options) {
-    if (options.actor?.statuses.has("weakness")) options.modifiers.banes += 1;
+    if (options.actor?.statuses.has("weakened")) options.modifiers.banes += 1;
+
+    console.log(options);
   }
 }
