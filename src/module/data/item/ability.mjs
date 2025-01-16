@@ -335,7 +335,9 @@ export default class AbilityModel extends BaseItemModel {
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
-      const context = {
+
+      // Get the power rolls made per target, or if no targets, then just one power roll
+      const powerRolls = await PowerRoll.prompt({
         type: "ability",
         formula,
         data: rollData,
@@ -345,17 +347,14 @@ export default class AbilityModel extends BaseItemModel {
           banes: options.banes ?? 0,
           edges: options.banes ?? 0 
         },
-        targets: [...game.user.targets].reduce((acc, target, index) => {
+        targets: [...game.user.targets].reduce((acc, target) => {
           acc.push({
             actor: target.actor,
             modifiers: this.getTargetModifiers(options.actor, target.actor)
           });
           return acc;
         }, [])
-      };
-
-      // Get the power rolls made per target, or if no targets, then just one power roll
-      const powerRolls = await PowerRoll.prompt(context);
+      });
 
       // Roll damage and create a message per powerRolls
       const messages = [];

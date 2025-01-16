@@ -34,6 +34,16 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     return context;
   }
 
+  /** Combine the always applicable modifers and target specific modifiers */
+  combineModifiers(context) {
+    context.targets.forEach(target => {
+      target.combinedModifiers = {
+        edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
+        banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE)
+      };
+    });
+  }
+
   /** Amend the global modifiers and target specific modifiers based on changed values
    * @override
    */
@@ -45,16 +55,6 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
 
     this.render(true);
-  }
-
-  /** Combine the always applicable modifers and target specific modifiers */
-  combineModifiers(context) {
-    context.targets.forEach(target => {
-      target.combinedModifiers = {
-        edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
-        banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE)
-      };
-    });
   }
 
   /** Set a final context for resolving the prompt, then close the dialog */
