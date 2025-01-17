@@ -10,19 +10,29 @@
 
 /* Global styles */
 @import 'global/combat-tracker';
-@import 'global/window';
 @import 'global/roll';
+@import 'global/light-theme-fix';
 
 /* Styles limited to draw-steel sheets */
 .draw-steel {
   @import 'components/forms';
   @import 'components/items';
   @import 'components/effects';
+
   &.actor {
     @import 'components/actor-sheet';
   }
+
   &.item {
     @import 'components/item-sheet';
+  }
+
+  &.power-roll-dialog {
+    @import 'components/power-roll-dialog';
+  }
+
+  &.targeted-condition-prompt {
+    @import 'components/targeted-condition-prompt';
   }
 }
 

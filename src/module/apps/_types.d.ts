@@ -1,4 +1,4 @@
-import * as documents from "../documents/_module.mjs"
+import * as documents from "../documents/_module.mjs";
 
 declare module "./actor-sheet.mjs" {
   export interface DrawSteelActorSheet {
@@ -10,4 +10,10 @@ declare module "./item-sheet.mjs" {
   export interface DrawSteelItemSheet {
     item: documents.DrawSteelItem;
   }
+}
+
+export interface PowerRollDialogPrompt {
+  edges: number;
+  banes: number;
+  target?: string;
 }

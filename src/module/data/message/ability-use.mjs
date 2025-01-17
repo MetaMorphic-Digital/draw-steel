@@ -16,6 +16,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const schema = super.defineSchema();
     // All ability use messages MUST have a uuid pointing to the relevant document
     schema.uuid = new fields.StringField({required: true, nullable: false, blank: false});
+    schema.embedText = new fields.BooleanField({initial: true});
     return schema;
   }
 
@@ -24,6 +25,8 @@ export default class AbilityUseModel extends BaseMessageModel {
    */
   async alterMessageHTML(html) {
     await super.alterMessageHTML(html);
+
+    if (!this.embedText) return;
 
     /** @type {DrawSteelItem} */
     const item = await fromUuid(this.uuid);

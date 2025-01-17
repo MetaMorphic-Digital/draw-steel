@@ -32,6 +32,18 @@ section[data-tab="description"] {
     padding: 0.25rem;
   }
 }
+.sheet-header {
+  .header-right {
+    flex: 0 0 125px;
+    height: 100%;
+    .item-source {
+      margin: 5px 5px;
+      font-family: var(--font-h6);
+      font-size: var(--font-size-18);
+    }
+  }
+}
+
 [data-tab="details"] {
   &[data-subtype="kit"] {
     .damage-bonus {

@@ -15,6 +15,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     actions: {
       editImage: this._onEditImage,
       toggleMode: this._toggleMode,
+      updateSource: this._updateSource,
       editHTML: this._editHTML,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
@@ -33,7 +34,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: systemPath("templates/item/header.hbs")
+      template: systemPath("templates/item/header.hbs"),
+      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
     },
     tabs: {
       // Foundry-provided generic template
@@ -349,6 +351,17 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     this.render();
+  }
+
+  /**
+   * Open the update source dialog
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _updateSource(event, target) {
+    this.item.system.source.updateDialog();
   }
 
   /**

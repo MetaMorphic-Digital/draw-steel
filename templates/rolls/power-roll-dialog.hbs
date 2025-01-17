@@ -1,0 +1,55 @@
+<div>
+  <div class="global group">
+    <div class="header">{{localize "DRAW_STEEL.Roll.Power.Prompt.GlobalModifiers"}}</div>
+    <div class="modifiers general">
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Edges"}}</span>
+        <select name="modifiers.edges" data-dtype="Number">
+          {{selectOptions modChoices selected=modifiers.edges}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Banes"}}</span>
+        <select name="modifiers.banes" data-dtype="Number">
+          {{selectOptions modChoices selected=modifiers.banes}}
+        </select>
+      </label>
+    </div>
+  </div>
+  
+  {{#each targets as |target|}}
+  <div class="target group">
+    <div class="header">{{target.actor.name}}</div>
+    <div class="modifiers">
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Edges"}}</span>
+        <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
+          {{selectOptions @root.modChoices selected=target.modifiers.edges}}
+        </select>
+        <span class="total-edges">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.edges}}</span>
+      </label>
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Banes"}}</span>
+        <select name="targets.{{@index}}.modifiers.banes" data-dtype="Number">
+          {{selectOptions @root.modChoices selected=target.modifiers.banes}}
+        </select>
+        <span class="total-banes">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
+      </label>
+    </div>
+    
+  </div>
+  {{/each}}
+  {{#if skills}}
+  <label>
+    <span>{{localize "DRAW_STEEL.Actor.Character.FIELDS.hero.skills.label"}}</span>
+    <select name="skills">
+      {{selectOptions skills blank=(localize "None")}}
+    </select>
+  </label>
+  {{/if}}
+  <footer class="form-footer">
+    <button type="submit">
+      <i class="fa-solid fa-dice"></i> {{localize "DRAW_STEEL.Roll.Power.Prompt.Button"}}
+    </button>
+  </footer>
+</div>
