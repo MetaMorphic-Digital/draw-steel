@@ -355,7 +355,7 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       });
 
-      if (!powerRolls) return null; 
+      if (!powerRolls) return null;
 
       // Power Rolls grouped by tier of success
       const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
