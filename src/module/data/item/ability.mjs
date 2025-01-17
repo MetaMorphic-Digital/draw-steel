@@ -252,7 +252,7 @@ export default class AbilityModel extends BaseItemModel {
    * @param {UIEvent} [options.event] The event prompting the use
    * @param {number} [options.banes]  Banes to apply to a power roll
    * @param {number} [options.edges]  Edges to apply to a power roll
-   * @returns {Array<Promise<DrawSteelChatMessage>>}
+   * @returns {Promise<Array<DrawSteelChatMessage> | null>}
    * TODO: Add hooks based on discussion with module authors
    */
   async use(options = {}) {
@@ -357,12 +357,24 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       });
 
-      // Roll damage and create a message per powerRolls
+      if (!powerRolls) return null; 
+
+      // Power Rolls grouped by tier of success
+      const groupedRolls = powerRolls.reduce((accumlator, powerRoll) => {
+        accumlator[powerRoll.product] ??= [];
+        accumlator[powerRoll.product].push(powerRoll);
+
+        return accumlator;
+      }, {});
+
+      // Each tier group gets a message. Rolls within a group are in the same message
       const messages = [];
-      for (const powerRoll of powerRolls) {
+      for (const tierNumber in groupedRolls) {
         const dataCopy = foundry.utils.duplicate(messageData);
-        dataCopy.rolls.push(powerRoll);
-        const tier = this.powerRoll[`tier${powerRoll.product}`];
+        for (const powerRoll of groupedRolls[tierNumber]) {
+          dataCopy.rolls.push(powerRoll);
+        }
+        const tier = this.powerRoll[`tier${tierNumber}`];
         const damageFormula = tier.damage.value;
         if (damageFormula) {
           const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
@@ -371,11 +383,11 @@ export default class AbilityModel extends BaseItemModel {
           await damageRoll.evaluate();
           dataCopy.rolls.push(damageRoll);
         }
-
+  
         messages.push(DrawSteelChatMessage.create(dataCopy));
       }
 
-      return messages;
+      return Promise.allSettled(messages);
     }
   }
 

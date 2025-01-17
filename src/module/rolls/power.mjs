@@ -14,6 +14,7 @@ export class PowerRoll extends DSRoll {
       insertValues: true,
       overwrite: false
     });
+
     if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability or test");
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
@@ -275,6 +276,7 @@ export class PowerRoll extends DSRoll {
       number: Math.abs(this.netBoon),
       mod: game.i18n.localize(modString)
     };
+    context.target = this.options.target;
 
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 

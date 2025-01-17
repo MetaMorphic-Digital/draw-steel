@@ -1,4 +1,9 @@
 <div class="dice-roll">
+  {{#if target}}
+  <div class="target-info">
+    {{target.name}}
+  </div>
+  {{/if}}
   <div class="tier {{tier.class}}">
     {{tier.label}}
     {{#if modifier.number}}
