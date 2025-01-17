@@ -370,9 +370,9 @@ export default class AbilityModel extends BaseItemModel {
       // Each tier group gets a message. Rolls within a group are in the same message
       const messages = [];
       for (const tierNumber in groupedRolls) {
-        const dataCopy = foundry.utils.duplicate(messageData);
+        const messageDataCopy = foundry.utils.duplicate(messageData);
         for (const powerRoll of groupedRolls[tierNumber]) {
-          dataCopy.rolls.push(powerRoll);
+          messageDataCopy.rolls.push(powerRoll);
         }
         const tier = this.powerRoll[`tier${tierNumber}`];
         const damageFormula = tier.damage.value;
@@ -381,10 +381,11 @@ export default class AbilityModel extends BaseItemModel {
           const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
           const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
           await damageRoll.evaluate();
-          dataCopy.rolls.push(damageRoll);
+          messageDataCopy.rolls.push(damageRoll);
         }
+        if (messages.length > 0) messageDataCopy.system.embedText = false;
   
-        messages.push(DrawSteelChatMessage.create(dataCopy));
+        messages.push(DrawSteelChatMessage.create(messageDataCopy));
       }
 
       return Promise.allSettled(messages);
