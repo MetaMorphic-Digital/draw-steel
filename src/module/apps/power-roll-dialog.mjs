@@ -4,10 +4,11 @@ import {PowerRoll} from "../rolls/power.mjs";
 /** @import {ApplicationConfiguration} from "../../../foundry/client-esm/applications/_types.mjs" */
 /** @import {PowerRollDialogPrompt} from "./_types" */
 
+const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
+
 /**
  * AppV2-based sheet Power Roll modifications
  */
-const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
 export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
   /** @override */
@@ -26,6 +27,12 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
   };
 
+  /**
+   * The final prompt value to return to the requester
+   * @type {Array<object>}
+   */
+  promptValue;
+
   /** @override */
   async _prepareContext(options) {
     const context = {
@@ -36,22 +43,24 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       ...this.options.context
     };
 
-    if (context.targets) this.combineModifiers(context);
+    if (context.targets) await this._prepareTargets(context);
 
     return context;
   }
 
   /** 
-   * Modify the context object by combining the always applicable modifers and target specific modifiers 
-   * @param {object} context The context object provided in _prepareContext
+   * Prepare targets by adding the actor and combinging modifiers
+   * @param {object} context The context from _prepareContext
    */
-  combineModifiers(context) {
-    context.targets.forEach(target => {
+  async _prepareTargets(context) {
+    for (const target of context.targets) {
+      if (!target.actor) target.actor = await fromUuid(target.uuid);
+
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
         banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE)
       };
-    });
+    }
   }
 
   /** 
@@ -74,10 +83,10 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
    */
   async _onSubmitForm(formConfig, event) {
     const targets = this.options.context.targets;
-    if (!targets || (targets.length === 0)) this.finalContext = [this.options.context.modifiers];
+    if (!targets || (targets.length === 0)) this.promptValue = [this.options.context.modifiers];
     else {
-      this.finalContext = targets.reduce((accumulator, target) => {
-        accumluator.push({...target.combinedModifiers, target: target.actor});
+      this.promptValue = targets.reduce((accumulator, target) => {
+        accumulator.push({...target.combinedModifiers, target: target.uuid});
         return accumulator;
       }, []);
     }
@@ -97,7 +106,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     return new Promise((resolve, reject) => {
       const dialog = new this(options);
       dialog.addEventListener("close", event => {
-        if (dialog.finalContext) resolve(dialog.finalContext);
+        if (dialog.promptValue) resolve(dialog.promptValue);
         else resolve(null);
       }, {once: true});
       

@@ -27,6 +27,11 @@ export interface PowerRollModifiers {
   banes: number;
 }
 
+export interface PowerRollTargets {
+  uuid: string;
+  modifiers: PowerRollModifiers;
+}
+
 export interface PowerRollPromptOptions {
   type: "ability" | "test";
   evaluation: "none" | "evaluate" | "message";
@@ -35,4 +40,5 @@ export interface PowerRollPromptOptions {
   actor: DrawSteelActor;
   data: Record<string, unknown>;
   skills: string[];
+  targets: PowerRollTargets[]
 }

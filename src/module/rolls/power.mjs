@@ -273,7 +273,8 @@ export class PowerRoll extends DSRoll {
       number: Math.abs(this.netBoon),
       mod: game.i18n.localize(modString)
     };
-    context.target = this.options.target;
+
+    context.target = await fromUuid(this.options.target);
 
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 

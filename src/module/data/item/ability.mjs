@@ -334,6 +334,7 @@ export default class AbilityModel extends BaseItemModel {
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
+      options.modifiers ??= {};
       options.modifiers.banes ??= 0;
       options.modifiers.edges ??= 0;
 
@@ -345,12 +346,12 @@ export default class AbilityModel extends BaseItemModel {
         evaluation: "evaluate",      
         actor: this.actor,
         modifiers: options.modifiers,
-        targets: [...game.user.targets].reduce((acc, target) => {
-          acc.push({
-            actor: target.actor,
+        targets: [...game.user.targets].reduce((accumulator, target) => {
+          accumulator.push({
+            uuid: target.actor.uuid,
             modifiers: this.getTargetModifiers(this.actor, target.actor)
           });
-          return acc;
+          return accumulator;
         }, [])
       });
 
