@@ -1,4 +1,4 @@
-import {systemPath} from "../../constants.mjs";
+import {systemID, systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -6,7 +6,7 @@ import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
+/** @import {PowerRollModifiers} from "../../_types.js" */
 
 const fields = foundry.data.fields;
 
@@ -358,11 +358,11 @@ export default class AbilityModel extends BaseItemModel {
       if (!powerRolls) return null; 
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumlator, powerRoll) => {
-        accumlator[powerRoll.product] ??= [];
-        accumlator[powerRoll.product].push(powerRoll);
+      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
+        accumulator[powerRoll.product] ??= [];
+        accumulator[powerRoll.product].push(powerRoll);
 
-        return accumlator;
+        return accumulator;
       }, {});
 
       // Each tier group gets a message. Rolls within a group are in the same message
@@ -382,7 +382,7 @@ export default class AbilityModel extends BaseItemModel {
           messageDataCopy.rolls.push(damageRoll);
         }
         if (messages.length > 0) messageDataCopy.system.embedText = false;
-  
+
         messages.push(DrawSteelChatMessage.create(messageDataCopy));
       }
 
@@ -399,11 +399,11 @@ export default class AbilityModel extends BaseItemModel {
     //TODO: CONDITION CHECKS
   }
 
-  /** 
+  /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
    * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
-   * @returns {object} 
+   * @returns {PowerRollModifiers}
    */
   getTargetModifiers(actor, target) {
     const modifiers = {
@@ -411,7 +411,11 @@ export default class AbilityModel extends BaseItemModel {
       edges: 0
     };
 
-    //TODO: CONDITION CHECKS
+    //TODO: ALL CONDITION CHECKS
+    
+    // Frightened condition checks
+    if (actor.statuses.has("frightened") && (actor.flags[systemID]?.frightened === target.uuid)) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (target.statuses.has("frightened") && (actor.uuid === target.flags[systemID]?.frightened)) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     return modifiers;
   }
