@@ -285,6 +285,8 @@ export class PowerRoll extends DSRoll {
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
    */
   static getActorModifiers(options) {
+    if (!options.actor) return;
+
     if (options.actor?.statuses.has("weakened")) options.modifiers.banes += 1;
   }
 }
