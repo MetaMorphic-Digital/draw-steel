@@ -1,3 +1,4 @@
+import {TargetedConditionPrompt} from "../apps/targeted-condition-prompt.mjs";
 import {systemID} from "../constants.mjs";
 
 export class DrawSteelActiveEffect extends ActiveEffect {
@@ -20,30 +21,13 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    */
   static async targetedConditionPrompt(statusId, sourceData) {
     try {
-      const title = game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
-        condition: CONFIG.statusEffects.find(condition => condition.id === statusId)?.name ?? ""
-      });
-      let imposingActorId = await foundry.applications.api.DialogV2.prompt({
-        window: {title},
-        content: `
-            ${game.i18n.localize("DRAW_STEEL.Effect.TargetedConditionPrompt.Prompt")}: 
-            <input type=text name="actorId" value="${game.user.targets.first()?.actor?.uuid ?? ""}" />
-          `,
-        ok: {
-          callback: (event, button, dialog) => dialog.querySelector("input").value
-        },
-        buttons: [{
-          action: "select-target",
-          label: "DRAW_STEEL.Effect.TargetedConditionPrompt.SelectFirstTarget",
-          callback: (event, button, dialog) => game.user.targets.first()?.actor?.uuid ?? ""
-        }]
-      });
+      let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
   
-      if (foundry.utils.parseUuid(imposingActorId)) {
+      if (foundry.utils.parseUuid(imposingActorUuid)) {
         sourceData.changes = [{
           key: `flags.${systemID}.${statusId}`,
           mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-          value: imposingActorId
+          value: imposingActorUuid
         }];
       }
     } catch (error) {

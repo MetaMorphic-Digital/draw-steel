@@ -836,9 +836,11 @@
       },
       "TargetedConditionPrompt": {
         "Title": "{condition} Configuration",
-        "Prompt": "Input the imposing actor's UUID",
-        "SelectFirstTarget": "Select First Target",
-        "Warning": "An invalid UUID was provided."
+        "Prompt": "Target the actor causing the {condition} condition",
+        "Warning": "An invalid UUID was provided.",
+        "Selected": "Currently Selected:",
+        "NoneSelected": "No actor has been selected as causing the {condition} condition",
+        "Choose": "Choose Actor"
       },
       "StaminaEffects": {
         "Dying": "Dying",
