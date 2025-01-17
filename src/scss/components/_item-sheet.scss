@@ -1,3 +1,15 @@
+.sheet-header {
+  .header-right {
+    flex: 0 0 125px;
+    height: 100%;
+    .item-source {
+      margin: 5px 5px;
+      font-family: var(--font-h6);
+      font-size: var(--font-size-18);
+    }
+  }
+}
+
 section[data-tab="description"] {
   &.editorActive {
     .prosemirror.editor {
@@ -30,17 +42,6 @@ section[data-tab="description"] {
 
   .description {
     padding: 0.25rem;
-  }
-}
-.sheet-header {
-  .header-right {
-    flex: 0 0 125px;
-    height: 100%;
-    .item-source {
-      margin: 5px 5px;
-      font-family: var(--font-h6);
-      font-size: var(--font-size-18);
-    }
   }
 }
 
