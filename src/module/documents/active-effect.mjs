@@ -7,7 +7,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     const sourceData = {};
 
     if (effectData.rule) sourceData.description = `@Embed[${effectData.rule} inline]`;
-    if (ds.CONFIG.conditions[statusId]?.targeted) this.targetedConditionPrompt(statusId, sourceData);
+    if (ds.CONFIG.conditions[statusId]?.targeted) await this.targetedConditionPrompt(statusId, sourceData);
     
     effect.updateSource(sourceData);
     return effect;
