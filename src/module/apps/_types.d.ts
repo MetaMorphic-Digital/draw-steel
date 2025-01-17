@@ -15,5 +15,5 @@ declare module "./item-sheet.mjs" {
 export interface PowerRollDialogPrompt {
   edges: number;
   banes: number;
-  actor?: documents.DrawSteelActor
+  target?: string;
 }

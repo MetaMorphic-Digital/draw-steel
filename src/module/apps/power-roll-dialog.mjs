@@ -106,6 +106,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     return new Promise((resolve, reject) => {
       const dialog = new this(options);
       dialog.addEventListener("close", event => {
+        console.log(dialog.promptValue);
         if (dialog.promptValue) resolve(dialog.promptValue);
         else resolve(null);
       }, {once: true});
