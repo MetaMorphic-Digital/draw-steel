@@ -343,7 +343,7 @@ export default class AbilityModel extends BaseItemModel {
         type: "ability",
         formula,
         data: rollData,
-        evaluation: "evaluate",      
+        evaluation: "evaluate",
         actor: this.actor,
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
