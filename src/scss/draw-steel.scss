@@ -18,11 +18,17 @@
   @import 'components/forms';
   @import 'components/items';
   @import 'components/effects';
+
   &.actor {
     @import 'components/actor-sheet';
   }
+
   &.item {
     @import 'components/item-sheet';
+  }
+
+  &.targeted-condition-prompt {
+    @import 'components/targeted-condition-prompt';
   }
 }
 
