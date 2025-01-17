@@ -251,13 +251,12 @@ export default class AbilityModel extends BaseItemModel {
      */
     let configuration = null;
     let resourceSpend = this.resource ?? 0;
+    const coreResource = this.actor?.system.coreResource;
 
     // Determine if the configuration form should even run.
     // Can be factored out if/when complexity increases
     if (this.spend.value || this.spend.text) {
       let content = "";
-
-      const coreResource = this.actor?.system.coreResource;
 
       /**
        * Range picker config is ignored by the checkbox element
@@ -277,7 +276,7 @@ export default class AbilityModel extends BaseItemModel {
       content += foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
-          name: this.resourceName
+          name: coreResource.name
         }),
         input: spendInput
       }).outerHTML;
@@ -314,7 +313,7 @@ export default class AbilityModel extends BaseItemModel {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
         messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
-          name: this.resourceName
+          name: coreResource.name
         });
       }
     }
