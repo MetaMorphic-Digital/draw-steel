@@ -349,7 +349,7 @@ export default class AbilityModel extends BaseItemModel {
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             uuid: target.actor.uuid,
-            modifiers: this.getTargetModifiers(this.actor, target.actor)
+            modifiers: this.getTargetModifiers(target.actor)
           });
           return accumulator;
         }, [])
@@ -401,11 +401,10 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
    * @returns {PowerRollModifiers}
    */
-  getTargetModifiers(actor, target) {
+  getTargetModifiers(target) {
     const modifiers = {
       banes: 0,
       edges: 0
@@ -414,8 +413,8 @@ export default class AbilityModel extends BaseItemModel {
     //TODO: ALL CONDITION CHECKS
     
     // Frightened condition checks
-    if (actor.statuses.has("frightened") && (actor.flags[systemID]?.frightened === target.uuid)) modifiers.banes += 1; // Attacking the target frightening the actor
-    if (target.statuses.has("frightened") && (actor.uuid === target.flags[systemID]?.frightened)) modifiers.edges += 1; // Attacking the target the actor has frightened
+    if (this.actor.statuses.has("frightened") && (this.actor.getFlag(systemID, "frightened") === target.uuid)) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (target.statuses.has("frightened") && (this.actor.uuid === target.getFlag(systemID, "frightened"))) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     return modifiers;
   }
