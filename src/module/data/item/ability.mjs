@@ -6,6 +6,7 @@ import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
 
 const fields = foundry.data.fields;
 
@@ -248,10 +249,9 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
-   * @param {object} [options={}] Configuration
+   * @param {Partial<PowerRollPromptOptions & AbilityUseOptions>} [options={}] Configuration
    * @param {UIEvent} [options.event] The event prompting the use
-   * @param {number} [options.banes]  Banes to apply to a power roll
-   * @param {number} [options.edges]  Edges to apply to a power roll
+   * @param {PowerRollModifiers} [options.modifers]  Edges and banes to apply to a power roll
    * @returns {Promise<Array<DrawSteelChatMessage> | null>}
    * TODO: Add hooks based on discussion with module authors
    */

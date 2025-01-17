@@ -1,8 +1,9 @@
 import "./apps/_types";
 import "./data/_types";
 import "./documents/_types";
+import { DrawSteelActor } from "./documents/actor.mjs";
 
-import Advancement from "./documents/advancement/advancement.mjs"
+import Advancement from "./documents/advancement/advancement.mjs";
 
 export interface AdvancementTypeConfiguration {
   /**
@@ -19,4 +20,19 @@ export interface AdvancementTypeConfiguration {
    * Should this advancement type be hidden in the selection dialog?
    */
   hidden?: boolean;
+}
+
+export interface PowerRollModifiers {
+  edges: number;
+  banes: number;
+}
+
+export interface PowerRollPromptOptions {
+  type: "ability" | "test";
+  evaluation: "none" | "evaluate" | "message";
+  modifiers: PowerRollModifiers;
+  formula: string;
+  actor: DrawSteelActor;
+  data: Record<string, unknown>;
+  skills: string[];
 }

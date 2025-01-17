@@ -1,7 +1,10 @@
 import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
 import {systemPath} from "../constants.mjs";
 import {DrawSteelActor} from "../documents/actor.mjs";
+import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
 import {DSRoll} from "./base.mjs";
+
+/** @import {PowerRollPromptOptions} from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -110,14 +113,8 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {object} [options] Options for the dialog
-   * @param {"ability"|"test"} [options.type="test"]  A valid roll type
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] How will the roll be evaluated and returned?
-   * @param {number} [options.edges]                  Base edges for the roll
-   * @param {number} [options.banes]                  Base banes for the roll
-   * @param {string} [options.formula="2d10"]         Roll formula
-   * @param {Record<string, unknown>} [options.data]  Roll data to be parsed by the formula
-   * @param {string[]} [options.skills]               An array of skills that might be chosen
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
+   * @return {Promise<Array<PowerRoll | DrawSteelChatMessage | object>>} Based on evaluation made can either return an array of power rolls or chat messages
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
@@ -125,6 +122,7 @@ export class PowerRoll extends DSRoll {
     const formula = options.formula ?? "2d10";
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
+    options.actor ??= DrawSteelChatMessage.getSpeakerActor();
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
