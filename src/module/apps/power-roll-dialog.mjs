@@ -76,9 +76,9 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     const targets = this.options.context.targets;
     if (!targets || (targets.length === 0)) this.finalContext = [this.options.context.modifiers];
     else {
-      this.finalContext = targets.reduce((accumlator, target) => {
-        accumlator.push({...target.combinedModifiers, target: target.actor});
-        return accumlator;
+      this.finalContext = targets.reduce((accumulator, target) => {
+        accumluator.push({...target.combinedModifiers, target: target.actor});
+        return accumulator;
       }, []);
     }
     

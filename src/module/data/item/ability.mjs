@@ -249,7 +249,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
-   * @param {PartialAbilityUseOptions>} [options={}] Configuration
+   * @param {Partial<AbilityUseOptions>} [options={}] Configuration
    * @returns {Promise<Array<DrawSteelChatMessage> | null>}
    * TODO: Add hooks based on discussion with module authors
    */
