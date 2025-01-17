@@ -8,7 +8,6 @@ import {systemPath} from "../constants.mjs";
  * @param {HotReloadData} data          The hot reload data
  */
 export function hotReload(data) {
-  console.log(data);
   if (data.packageType !== "system") return;
   // Possible need to update this if we add other languages into the base system
   if (data.path === systemPath("lang/en.json")) {
