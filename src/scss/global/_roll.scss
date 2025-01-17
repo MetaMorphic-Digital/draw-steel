@@ -1,8 +1,18 @@
 .dice-roll {
+  border: 1px solid var(--color-border-light-2);
+  padding: 5px;
+  border-radius: 5px;
+
+  .target-info {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
   .dice-result {
     .critical {
       color: green;
     }
+
     .failure {
       color: red;
     }

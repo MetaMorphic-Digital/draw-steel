@@ -1,6 +1,7 @@
 export * from "./actor-sheet/_module.mjs";
 export * as hooks from "./hooks/_module.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";
+export {PowerRollDialog} from "./power-roll-dialog.mjs";
 export {TargetedConditionPrompt} from "./targeted-condition-prompt.mjs";
 
 import * as elements from "./elements/_module.mjs";
