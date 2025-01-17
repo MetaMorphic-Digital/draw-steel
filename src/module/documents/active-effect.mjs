@@ -4,28 +4,25 @@ import {systemID} from "../constants.mjs";
 export class DrawSteelActiveEffect extends ActiveEffect {
   /** @override */
   static async _fromStatusEffect(statusId, effectData, options) {
-    const effect = await super._fromStatusEffect(statusId, effectData, options);
-    const sourceData = {};
+    if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;
+    if (ds.CONFIG.conditions[statusId]?.targeted) await this.targetedConditionPrompt(statusId, effectData);
 
-    if (effectData.rule) sourceData.description = `@Embed[${effectData.rule} inline]`;
-    if (ds.CONFIG.conditions[statusId]?.targeted) await this.targetedConditionPrompt(statusId, sourceData);
-    
-    effect.updateSource(sourceData);
+    const effect = await super._fromStatusEffect(statusId, effectData, options);
     return effect;
   }
 
   /**
-   * Modify the sourceData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
+   * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
    * @param {string} statusId 
-   * @param {object} sourceData
+   * @param {object} effectData
    */
-  static async targetedConditionPrompt(statusId, sourceData) {
+  static async targetedConditionPrompt(statusId, effectData) {
     try {
       let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
   
       if (foundry.utils.parseUuid(imposingActorUuid)) {
-        sourceData.changes = this.changes ?? [];
-        sourceData.changes.push({
+        effectData.changes = this.changes ?? [];
+        effectData.changes.push({
           key: `flags.${systemID}.${statusId}`,
           mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
           value: imposingActorUuid
