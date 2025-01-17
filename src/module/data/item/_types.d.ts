@@ -1,3 +1,4 @@
+import { PowerRollPromptOptions } from "../../_types.js";
 import { DrawSteelItem } from "../../documents/item.mjs";
 
 export type ItemMetaData = Readonly<{
@@ -82,7 +83,7 @@ declare module "./ability.mjs" {
     effect: string;
   }
 
-  export interface AbilityUseOptions {
+  export interface AbilityUseOptions extends PowerRollPromptOptions {
     event: UIEvent
   }
 }

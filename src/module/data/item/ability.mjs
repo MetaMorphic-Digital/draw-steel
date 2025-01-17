@@ -249,7 +249,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
-   * @param {Partial<PowerRollPromptOptions & AbilityUseOptions>} [options={}] Configuration
+   * @param {PartialAbilityUseOptions>} [options={}] Configuration
    * @param {UIEvent} [options.event] The event prompting the use
    * @param {PowerRollModifiers} [options.modifers]  Edges and banes to apply to a power roll
    * @returns {Promise<Array<DrawSteelChatMessage> | null>}
@@ -394,7 +394,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /** 
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
-   * @param {Partial<PowerRollPromptOptions & AbilityUseOptions>} options Options for the dialog
+   * @param {Partial<AbilityUseOptions>} options Options for the dialog
    */
   getActorModifiers(options) {
     //TODO: CONDITION CHECKS
