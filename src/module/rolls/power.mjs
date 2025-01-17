@@ -1,5 +1,9 @@
-import {DSRoll} from "./base.mjs";
+import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
 import {systemPath} from "../constants.mjs";
+import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
+import {DSRoll} from "./base.mjs";
+
+/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -12,6 +16,7 @@ export class PowerRoll extends DSRoll {
       insertValues: true,
       overwrite: false
     });
+
     if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability or test");
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
@@ -107,39 +112,29 @@ export class PowerRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {object} [options] Options for the dialog
-   * @param {"ability"|"test"} [options.type="test"]  A valid roll type
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] How will the roll be evaluated and returned?
-   * @param {number} [options.edges]                  Base edges for the roll
-   * @param {number} [options.banes]                  Base banes for the roll
-   * @param {string} [options.formula="2d10"]         Roll formula
-   * @param {Record<string, unknown>} [options.data]  Roll data to be parsed by the formula
-   * @param {string[]} [options.skills]               An array of skills that might be chosen
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
+   * @return {Promise<Array<PowerRoll | DrawSteelChatMessage | object>>} Based on evaluation made can either return an array of power rolls or chat messages
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
-    let edges = options.edges ?? 0;
-    let banes = options.banes ?? 0;
+    options.modifiers.edges ??= 0;
+    options.modifiers.banes ??= 0;
+    options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
     const flavor = options.flavor ?? typeLabel;
 
-    if (options.data?.statuses?.weakened) banes += 1;
-
-    const dialogContext = {
-      modChoices: Array.fromRange(3).reduce((obj, number) => {
-        obj[number] = number;
-        return obj;
-      }, {}),
-      banes,
-      edges
+    this.getActorModifiers(options);
+    const context = {     
+      modifiers: options.modifiers,
+      targets: options.targets
     };
 
     if (options.skills) {
-      dialogContext.skills = options.skills.reduce((obj, skill) => {
+      context.skills = options.skills.reduce((obj, skill) => {
         const label = ds.CONFIG.skills.list[skill]?.label;
         if (!label) {
           console.warn("Could not find skill" + skill);
@@ -150,36 +145,36 @@ export class PowerRoll extends DSRoll {
       }, {});
     }
 
-    const content = await renderTemplate(systemPath("templates/rolls/prompt.hbs"), dialogContext);
-
-    const rollContext = await foundry.applications.api.DialogV2.prompt({
-      window: {title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})},
-      content,
-      ok: {
-        callback: (event, button, dialog) => {
-          const output = Array.from(button.form.elements).reduce((obj, input) => {
-            if (input.name) obj[input.name] = input.value;
-            return obj;
-          }, {});
-
-          return output;
-        }
-      },
-      rejectClose: false
+    const rollContexts = await PowerRollDialog.prompt({
+      context,
+      window: {
+        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
+      }
     });
 
-    if (!rollContext) return null;
+    if (!rollContexts) return null;
 
-    const roll = new this(formula, options.data, {flavor, ...rollContext});
-
-    switch (evaluation) {
-      case "none":
-        return roll;
-      case "evaluate":
-        return roll.evaluate();
-      case "message":
-        return roll.toMessage();
-    }
+    const baseRoll = new this(formula);
+    await baseRoll.evaluate();
+    
+    const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
+    const rolls = [];
+    for (const context of rollContexts) {
+      const roll = new this(formula, options.data, {flavor, ...context});
+      roll.terms[0] = baseRoll.terms[0];
+      switch (evaluation) {
+        case "none":
+          rolls.push(roll);
+          break;
+        case "evaluate":
+          rolls.push(await roll.evaluate());
+          break;
+        case "message":
+          rolls.push(await roll.toMessage({speaker}));
+          break;
+      }
+    }    
+    return rolls;
   }
 
   /**
@@ -280,8 +275,20 @@ export class PowerRoll extends DSRoll {
       mod: game.i18n.localize(modString)
     };
 
+    context.target = await fromUuid(this.options.target);
+
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 
     return context;
+  }
+
+  /** 
+   * Modify the options object based on conditions that apply to all Power Rolls
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
+   */
+  static getActorModifiers(options) {
+    if (!options.actor) return;
+
+    if (options.actor?.statuses.has("weakened")) options.modifiers.banes += 1;
   }
 }

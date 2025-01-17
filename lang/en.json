@@ -850,6 +850,14 @@
           "name": "Weakened"
         }
       },
+      "TargetedConditionPrompt": {
+        "Title": "{condition} Configuration",
+        "Prompt": "Target the actor causing the {condition} condition",
+        "Warning": "An invalid UUID was provided.",
+        "Selected": "Currently Selected:",
+        "NoneSelected": "No actor has been selected as causing the {condition} condition",
+        "Choose": "Choose Actor"
+      },
       "StaminaEffects": {
         "Dying": "Dying",
         "Winded": "Winded"
@@ -882,7 +890,10 @@
       "Prompt": "Roll {prompt}",
       "Power": {
         "Prompt": {
-          "Title": "{typeLabel} Power Roll"
+          "Title": "{typeLabel} Power Roll",
+          "Total": "Total: {number}",
+          "GlobalModifiers": "Global Modifiers",
+          "Button": "Roll"
         },
         "Tiers": {
           "One": "Tier 1",
