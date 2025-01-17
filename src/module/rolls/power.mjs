@@ -121,7 +121,7 @@ export class PowerRoll extends DSRoll {
     const formula = options.formula ?? "2d10";
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
-    options.actor ??= DrawSteelChatMessage.getSpeakerActor();
+    options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
@@ -157,6 +157,7 @@ export class PowerRoll extends DSRoll {
     const baseRoll = new this(formula);
     await baseRoll.evaluate();
     
+    const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
     const rolls = [];
     for (const context of rollContexts) {
       const roll = new this(formula, options.data, {flavor, ...context});
@@ -169,7 +170,7 @@ export class PowerRoll extends DSRoll {
           rolls.push(await roll.evaluate());
           break;
         case "message":
-          rolls.push(await roll.toMessage());
+          rolls.push(await roll.toMessage({speaker}));
           break;
       }
     }    
