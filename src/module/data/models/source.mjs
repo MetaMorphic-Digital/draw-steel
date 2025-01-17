@@ -1,7 +1,6 @@
+import BaseItemModel from "../item/base.mjs";
 /** @import BasePackage from "../../../../foundry/common/packages/base-package.mjs"; */
 /** @import {DrawSteelActor, DrawSteelItem} from "../../documents/_module.mjs" */
-
-import BaseItemModel from "../item/base.mjs";
 
 const fields = foundry.data.fields;
 
@@ -9,6 +8,7 @@ const fields = foundry.data.fields;
  * Data model
  */
 export default class SourceModel extends foundry.abstract.DataModel {
+  /** @override */
   static defineSchema() {
     return {
       book: new fields.StringField({required: true}),
@@ -84,6 +84,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
   /**
    * Render a DialogV2 instance to update the SourceModel.
    * If the document is an Item it also adds a field for _dsid
+   * @returns {DrawSteelActor | DrawSteelItem}
    */
   async updateDialog() {
     /** @type {HTMLDivElement[]} */
@@ -113,6 +114,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
       rejectClose: false
     });
 
-    this.document.update(fd.object);
+    if (!fd) return;
+    return this.document.update(fd.object);
   }
 }
