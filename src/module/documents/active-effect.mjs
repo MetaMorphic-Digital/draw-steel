@@ -24,12 +24,12 @@ export class DrawSteelActiveEffect extends ActiveEffect {
       let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
   
       if (foundry.utils.parseUuid(imposingActorUuid)) {
-        console.log("changed", this.changes);
-        sourceData.changes = [{
+        sourceData.changes = this.changes ?? [];
+        sourceData.changes.push({
           key: `flags.${systemID}.${statusId}`,
           mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
           value: imposingActorUuid
-        }];
+        });
       }
     } catch (error) {
       ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", {localize: true});
