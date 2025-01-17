@@ -1,10 +1,9 @@
 import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
 import {systemPath} from "../constants.mjs";
-import {DrawSteelActor} from "../documents/actor.mjs";
 import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
 import {DSRoll} from "./base.mjs";
 
-/** @import {PowerRollPromptOptions} from "../_types.js" */
+/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -283,9 +282,7 @@ export class PowerRoll extends DSRoll {
 
   /** 
    * Modify the options object based on conditions that apply to all Power Rolls
-   * @param {object} [options] Options for the dialog
-   * @param {DrawSteelActor} [options.actor] The actor rolling the Power Roll
-   * @param {object} [options.modifiers] The banes and edges for the roll
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
    */
   static getActorModifiers(options) {
     if (options.actor?.statuses.has("weakened")) options.modifiers.banes += 1;
