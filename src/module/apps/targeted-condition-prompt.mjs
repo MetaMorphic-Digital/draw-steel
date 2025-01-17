@@ -2,17 +2,12 @@ import {systemPath} from "../constants.mjs";
 
 /** @import {ApplicationConfiguration} from "../../../foundry/client-esm/applications/_types.mjs" */
 
+const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
+
 /**
  * Prompt application for configuring the actor UUID that is causing a targeted condition
  */
-const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
 export class TargetedConditionPrompt extends HandlebarsApplicationMixin(ApplicationV2) {
-  constructor(options = {}) {
-    super(options);
-    this.target = game.user.targets.first();
-    this.options.context.condition = CONFIG.statusEffects.find(condition => condition.id === this.options.context.statusId)?.name ?? "";
-  }
-
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "targeted-condition-prompt"],
@@ -33,16 +28,34 @@ export class TargetedConditionPrompt extends HandlebarsApplicationMixin(Applicat
   async _prepareContext(options) {
     const context = {
       ...this.options.context,
-      target: this.target
+      target: this.target,
+      condition: this.condition
     };
 
     return context;
   }
 
+  /** 
+   * The first target in the user targets 
+   * @type {Token}
+   */
+  target = game.user.targets.first();
+
+  /**
+   * The hook ID for canceling the hook on close
+   * @type {number}
+   */
+  hook;
+
+  /** The condition label for the statusId */
+  get condition() {
+    return CONFIG.statusEffects.find(condition => condition.id === this.options.context.statusId)?.name ?? "";
+  }
+
   /** @override */
   get title() {
     return game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
-      condition: this.options.context.condition
+      condition: this.condition
     });
   }
 

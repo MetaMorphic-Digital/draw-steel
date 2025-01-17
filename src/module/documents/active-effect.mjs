@@ -24,6 +24,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
       let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
   
       if (foundry.utils.parseUuid(imposingActorUuid)) {
+        console.log("changed", this.changes);
         sourceData.changes = [{
           key: `flags.${systemID}.${statusId}`,
           mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
