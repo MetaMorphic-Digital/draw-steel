@@ -140,7 +140,6 @@ DRAW_STEEL.conditions = {
     img: "icons/svg/terror.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
     targeted: true
-
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
