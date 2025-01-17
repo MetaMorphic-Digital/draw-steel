@@ -20,8 +20,13 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    */
   static async targetedConditionPrompt(statusId, sourceData) {
     try {
+      const title = game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
+        condition: CONFIG.statusEffects.find(condition => condition.id === statusId)?.name ?? ""
+      });
       let imposingActorId = await foundry.applications.api.DialogV2.prompt({
-        content: `The imposing actor's UUID: 
+        window: {title},
+        content: `
+            ${game.i18n.localize("DRAW_STEEL.Effect.TargetedConditionPrompt.Prompt")}: 
             <input type=text name="actorId" value="${game.user.targets.first()?.actor?.uuid ?? ""}" />
           `,
         ok: {
@@ -29,8 +34,8 @@ export class DrawSteelActiveEffect extends ActiveEffect {
         },
         buttons: [{
           action: "select-target",
-          label: "Select First Target's UUID",
-          callback: (event, button, dialog) => game.user.targets.first()?.actor?.uuid
+          label: "DRAW_STEEL.Effect.TargetedConditionPrompt.SelectFirstTarget",
+          callback: (event, button, dialog) => game.user.targets.first()?.actor?.uuid ?? ""
         }]
       });
   
@@ -42,7 +47,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
         }];
       }
     } catch (error) {
-      ui.notifications.error("An Invalid UUID was provided. Value was not set and automation won't apply");
+      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", {localize: true});
     }
   }
 
