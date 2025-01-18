@@ -1,5 +1,5 @@
 import {TargetedConditionPrompt} from "../apps/targeted-condition-prompt.mjs";
-import {systemID} from "../constants.mjs";
+import {DrawSteelActor} from "./actor.mjs";
 
 export class DrawSteelActiveEffect extends ActiveEffect {
   /** @override */
@@ -26,14 +26,27 @@ export class DrawSteelActiveEffect extends ActiveEffect {
       if (foundry.utils.parseUuid(imposingActorUuid)) {
         sourceData.changes = this.changes ?? [];
         sourceData.changes.push({
-          key: `flags.${systemID}.${statusId}`,
-          mode: CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
+          key: `system.statuses.${statusId}.sources`,
+          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
           value: imposingActorUuid
         });
       }
     } catch (error) {
       ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", {localize: true});
     }
+  }
+
+  /**
+   * Determine if a source actor is imposing the statusId on the affected actor.
+   * @param {DrawSteelActor} affected 
+   * @param {DrawSteelActor} source 
+   * @param {string} statusId
+   * @returns {boolean}
+   */
+  static isStatusSource(affected, source, statusId) {
+    const isAffectedByStatusId = affected.statuses.has(statusId);
+    const isAffectedBySource = !!affected.system.statuses[statusId]?.sources.includes(source.uuid);
+    return isAffectedByStatusId && isAffectedBySource;
   }
 
   /**

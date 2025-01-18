@@ -1,5 +1,5 @@
-import {systemID, systemPath} from "../../constants.mjs";
-import {DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {systemPath} from "../../constants.mjs";
+import {DrawSteelActiveEffect, DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
@@ -327,7 +327,7 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     // TODO: Figure out how to better handle invocations when this.actor is null
-    await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
+    if (this.actor?.type === "character") await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
@@ -390,7 +390,7 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
-  /** 
+  /**
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
    * @param {Partial<AbilityUseOptions>} options Options for the dialog
    */
@@ -411,10 +411,10 @@ export default class AbilityModel extends BaseItemModel {
     };
 
     //TODO: ALL CONDITION CHECKS
-    
+
     // Frightened condition checks
-    if (this.actor.statuses.has("frightened") && (this.actor.getFlag(systemID, "frightened") === target.uuid)) modifiers.banes += 1; // Attacking the target frightening the actor
-    if (target.statuses.has("frightened") && (this.actor.uuid === target.getFlag(systemID, "frightened"))) modifiers.edges += 1; // Attacking the target the actor has frightened
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     return modifiers;
   }
