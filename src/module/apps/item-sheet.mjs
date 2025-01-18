@@ -340,7 +340,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Toggle Edit vs. Play mode
    *
-   * @this DrawSteelActorSheet
+   * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
