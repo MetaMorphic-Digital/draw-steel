@@ -3,6 +3,7 @@ import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DSRoll} from "../../rolls/base.mjs";
 import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
+/** @import {DrawSteelItem} from "../../documents/item.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -36,7 +37,7 @@ export default class CharacterModel extends BaseActorModel {
       victories: requiredInteger({initial: 0}),
       renown: requiredInteger({initial: 0}),
       skills: new fields.SetField(setOptions()),
-      preferredKit: new fields.DocumentIdField()
+      preferredKit: new fields.DocumentIdField({readonly: false})
     });
 
     return schema;
@@ -206,10 +207,14 @@ export default class CharacterModel extends BaseActorModel {
     return this.class?.system.level ?? 0;
   }
 
-  /**
-   * @typedef {import("../../documents/item.mjs").DrawSteelItem} DrawSteelItem
-   */
-
+  /** @override */
+  get coreResource() {
+    return {
+      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label"),
+      target: this.parent,
+      path: "system.hero.primary.value"
+    };
+  }
   /**
    * Finds the actor's current ancestry
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
@@ -256,5 +261,10 @@ export default class CharacterModel extends BaseActorModel {
   get victoriesMax() {
     if (!this.class) return 0;
     return ds.CONFIG.hero.xp_track[this.class.system.level];
+  }
+
+  /** @override */
+  async updateResource(delta) {
+    this.parent.update({"system.hero.primary.value": this.hero.primary.value + delta});
   }
 }

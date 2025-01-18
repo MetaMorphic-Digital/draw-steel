@@ -1,3 +1,50 @@
+.sheet-header {
+  .header-right {
+    flex: 0 0 125px;
+    height: 100%;
+    .item-source {
+      margin: 5px 5px;
+      font-family: var(--font-h6);
+      font-size: var(--font-size-18);
+    }
+  }
+}
+
+section[data-tab="description"] {
+  &.editorActive {
+    .prosemirror.editor {
+      &:not(.active) {
+        display: none;
+      }
+      .label-action {
+        display: none;
+      }
+      .editor-container {
+        min-height: 250px;
+      }
+    }
+  }
+
+  .description-label {
+    display: block;
+    line-height: var(--form-field-height);
+    font-family: var(--font-h4);
+    font-size: var(--font-h4-size);
+    .label-action {
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+  }
+
+  .editor-container {
+    height: 300px;
+  }
+
+  .description {
+    padding: 0.25rem;
+  }
+}
+
 [data-tab="details"] {
   &[data-subtype="kit"] {
     .damage-bonus {

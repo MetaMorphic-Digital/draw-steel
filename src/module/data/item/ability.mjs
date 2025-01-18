@@ -1,12 +1,13 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelActiveEffect, DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {PowerRollModifiers} from "../../_types.js" */
+/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
+/** @import {MaliceModel} from "../settings/_module.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -23,6 +24,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = [
+    "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Ability"
   ];
@@ -34,9 +36,9 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true, nullable: false});
+    schema.category = new fields.StringField({required: true});
     schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
-    schema.trigger = new fields.StringField({required: true, nullable: false});
+    schema.trigger = new fields.StringField({required: true});
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
       primary: new fields.NumberField({integer: true, min: 0}),
@@ -55,7 +57,7 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField({required: true, nullable: false})
+        type: new fields.StringField({required: true})
       }),
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new FormulaField({deterministic: true}),
@@ -64,7 +66,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new fields.NumberField(),
         vertical: new fields.BooleanField()
       }),
-      description: new fields.StringField({required: true, nullable: false})
+      description: new fields.StringField({required: true})
     });
 
     schema.powerRoll = new fields.SchemaField({
@@ -75,7 +77,7 @@ export default class AbilityModel extends BaseItemModel {
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
     });
-    schema.effect = new fields.StringField({required: true, nullable: false});
+    schema.effect = new fields.StringField({required: true});
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({integer: true}),
       text: new fields.StringField({required: true})
@@ -173,16 +175,6 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
-   * Fetches the appropriate name for the resource this ability consumes
-   * @returns {string}
-   */
-  get resourceName() {
-    return this.actor?.type === "npc"
-      ? game.i18n.localize("DRAW_STEEL.Setting.Malice.Label")
-      : this.actor?.system.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
-  }
-
-  /**
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -196,7 +188,7 @@ export default class AbilityModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
-      resourceName: this.resourceName
+      resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label")
     };
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
@@ -208,7 +200,7 @@ export default class AbilityModel extends BaseItemModel {
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
 
-    context.resourceName = this.resourceName;
+    context.resourceName = this.actor?.system.coreResource?.name ?? "";
 
     const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
@@ -260,6 +252,7 @@ export default class AbilityModel extends BaseItemModel {
      */
     let configuration = null;
     let resourceSpend = this.resource ?? 0;
+    const coreResource = this.actor?.system.coreResource;
 
     // Determine if the configuration form should even run.
     // Can be factored out if/when complexity increases
@@ -272,7 +265,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: this.actor.system.hero.primary.value,
+        max: foundry.utils.getProperty(coreResource.target, coreResource.target),
         step: 1
       };
 
@@ -284,7 +277,7 @@ export default class AbilityModel extends BaseItemModel {
       content += foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
-          name: this.resourceName
+          name: coreResource.name
         }),
         input: spendInput
       }).outerHTML;
@@ -321,13 +314,13 @@ export default class AbilityModel extends BaseItemModel {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
         messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
-          name: this.resourceName
+          name: coreResource.name
         });
       }
     }
 
     // TODO: Figure out how to better handle invocations when this.actor is null
-    if (this.actor?.type === "character") await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
+    await this.actor?.system.updateResource(resourceSpend * -1);
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
@@ -388,6 +381,7 @@ export default class AbilityModel extends BaseItemModel {
 
       return Promise.allSettled(messages);
     }
+    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
   }
 
   /**

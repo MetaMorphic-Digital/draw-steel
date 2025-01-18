@@ -15,6 +15,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     actions: {
       editImage: this._onEditImage,
       toggleMode: this._toggleMode,
+      updateSource: this._updateSource,
+      editHTML: this._editHTML,
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
@@ -32,7 +34,8 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   static PARTS = {
     header: {
-      template: systemPath("templates/item/header.hbs")
+      template: systemPath("templates/item/header.hbs"),
+      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
     },
     tabs: {
       // Foundry-provided generic template
@@ -89,7 +92,9 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
     // TODO: Refactor to use _configureRenderParts in v13
-    options.parts = ["header", "tabs", "description"];
+    options.parts = ["header", "tabs"];
+    // Don't re-render the description tab if there's an active editor
+    if (!this.#editor) options.parts.push("description");
     if (this.document.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) options.parts.push("details");
     if (this.item.system.constructor.metadata.hasAdvancements) options.parts.push("advancement");
@@ -169,9 +174,13 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   _getTabs(parts) {
+    const sheetTabs = parts.filter(p => !["header", "tabs"].includes(p));
+    // The description tab may get intentionally left out of re-renders if there's an active #editor
+    // Which means we need to add it *back* to the tabs
+    if (!sheetTabs.includes("description")) sheetTabs.unshift("description");
     const tabGroup = "primary";
     if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = "description";
-    return parts.reduce((tabs, partId) => {
+    return sheetTabs.reduce((tabs, partId) => {
       const tab = {
         cssClass: "",
         group: tabGroup,
@@ -183,9 +192,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         label: "DRAW_STEEL.Item.Tabs."
       };
       switch (partId) {
-        case "header":
-        case "tabs":
-          return tabs;
         case "description":
           tab.id = "description";
           tab.label += "Description";
@@ -269,6 +275,28 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    */
   _onRender(context, options) {
     this.#dragDrop.forEach((d) => d.bind(this.element));
+
+    // Bubble editor active class state to containing formGroup
+    /** @type {Array<HTMLButtonElement>} */
+    const editorButtons = this.element.querySelectorAll("prose-mirror button[type=\"button\"]");
+    for (const button of editorButtons) {
+      const formGroup = button.closest(".form-group");
+      const tabSection = button.closest("section.tab");
+      button.addEventListener("click", (ev) => {
+        formGroup.classList.add("active");
+        tabSection.classList.add("editorActive");
+      });
+    }
+    /** @type {Array<HTMLElement} */
+    const editors = this.element.querySelectorAll("prose-mirror");
+    for (const ed of editors) {
+      const formGroup = ed.closest(".form-group");
+      const tabSection = ed.closest("section.tab");
+      ed.addEventListener("close", (ev) => {
+        formGroup.classList.remove("active");
+        tabSection.classList.remove("editorActive");
+      });
+    }
   }
 
   /* -------------------------------------------------- */
@@ -312,7 +340,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Toggle Edit vs. Play mode
    *
-   * @this DrawSteelActorSheet
+   * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
@@ -323,6 +351,72 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     this.render();
+  }
+
+  /**
+   * Open the update source dialog
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _updateSource(event, target) {
+    this.item.system.source.updateDialog();
+  }
+
+  /**
+   * Active editor instance in the description tab
+   * @type {ProseMirrorEditor}
+   */
+  #editor = null;
+
+  /**
+   * Handle saving the editor content.
+   */
+  #saveEditor() {
+    const newValue = ProseMirror.dom.serializeString(this.#editor.view.state.doc.content);
+    const [uuid, fieldName] = this.#editor.uuid.split("#");
+    this.#editor.destroy();
+    this.#editor = null;
+    const currentValue = foundry.utils.getProperty(this.item, fieldName);
+    if (newValue !== currentValue) {
+      this.item.update({[fieldName]: newValue});
+    } else this.render();
+  }
+
+  /**
+   * Create a TextEditor instance that takes up the whole tab
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _editHTML(event, target) {
+    /** @type {HTMLDivElement} */
+    const tab = target.closest("section.tab");
+    /** @type {HTMLDivElement} */
+    const wrapper = target.closest(".prosemirror.editor");
+    tab.classList.add("editorActive");
+    wrapper.classList.add("active");
+    /** @type {HTMLDivElement} */
+    const editorContainer = wrapper.querySelector(".editor-content");
+    const content = foundry.utils.getProperty(this.item, target.dataset.fieldName);
+    this.#editor = await ProseMirrorEditor.create(editorContainer, content, {
+      document: this.item,
+      fieldName: target.dataset.fieldName,
+      relativeLinks: true,
+      collaborate: true,
+      plugins: {
+        menu: ProseMirror.ProseMirrorMenu.build(ProseMirror.defaultSchema, {
+          destroyOnSave: true,
+          onSave: this.#saveEditor.bind(this)
+        }),
+        keyMaps: ProseMirror.ProseMirrorKeyMaps.build(ProseMirror.defaultSchema, {
+          onSave: this.#saveEditor.bind(this)
+        })
+      }
+    });
   }
 
   /**

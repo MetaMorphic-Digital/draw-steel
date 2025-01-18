@@ -11,6 +11,33 @@
       "Edit": "Edit",
       "Resources": "Resources"
     },
+    "Source": {
+      "FIELDS": {
+        "source": {
+          "label": "Source",
+          "book": {
+            "label": "Book"
+          },
+          "license": {
+            "label": "License"
+          },
+          "page": {
+            "label": "Page/Section"
+          },
+          "revision": {
+            "label": "Revision"
+          },
+          "uuid": {
+            "label": "Original Source"
+          }
+        }
+      },
+      "UpdateTitle": "Update Source Information",
+      "Display": {
+        "Full": "{book} {page}",
+        "Page": "pg. {page}"
+      }
+    },
     "Actor": {
       "Tabs": {
         "Biography": "Biography",
@@ -291,17 +318,6 @@
               "label": "GM Notes"
             }
           },
-          "source": {
-            "book": {
-              "label": "Book"
-            },
-            "page": {
-              "label": "Page"
-            },
-            "license": {
-              "label": "License"
-            }
-          },
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
@@ -316,6 +332,12 @@
           "description": {
             "flavor": {
               "label": "Story Text"
+            },
+            "value": {
+              "label": "Description"
+            },
+            "gm": {
+              "label": "GM Notes"
             }
           },
           "keywords": {
