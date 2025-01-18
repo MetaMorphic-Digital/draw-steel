@@ -180,10 +180,9 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Generate the potency data for a given tier.
-   * Unable to have this done during ability data preparation as the actor potency information isn't updated yet
    *
    * @param {string} tierName The name of the tier to pull from the power roll
-   * @returns {PotencyData}
+   * @returns {Promise<PotencyData>}
    */
   async getPotencyData(tierName) {
     const potency = this.powerRoll[tierName].potency;
@@ -376,7 +375,6 @@ export default class AbilityModel extends BaseItemModel {
 
       if (!powerRolls) return null;
       const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
-      console.log(baseRoll);
 
       // Power Rolls grouped by tier of success
       const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
