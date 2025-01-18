@@ -46,7 +46,7 @@
 {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
-{{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula}}
+{{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
