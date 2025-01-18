@@ -62,7 +62,7 @@ export default class AbilityModel extends BaseItemModel {
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new fields.SchemaField({
         enabled: new fields.BooleanField(),
-        characteristic: new fields.StringField(),
+        characteristic: new fields.StringField({initial: "might"}),
         value: new FormulaField({deterministic: true, initial: initialPotency, required: false})
       }),
       forced: new fields.SchemaField({
@@ -185,9 +185,9 @@ export default class AbilityModel extends BaseItemModel {
    * @param {string} tierName The name of the tier to pull from the power roll
    * @returns {PotencyData}
    */
-  getPotencyData(tierName) {
+  async getPotencyData(tierName) {
     const potency = this.powerRoll[tierName].potency;
-    const potencyValue = DSRoll.replaceFormulaData(potency.value, this.parent.getRollData());
+    const potencyValue = (await new DSRoll(potency.value, this.parent.getRollData()).evaluate()).total;
     return {
       enabled: potency.enabled,
       characteristic: potency.characteristic,

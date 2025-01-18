@@ -6,7 +6,7 @@
   {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
   {{formGroup field.fields.potency.fields.enabled value=value.potency.enabled}}
   {{#if value.potency.enabled}}
-  {{formGroup field.fields.potency.fields.characteristic value=value.potency.characteristic options=@root.characteristics blank=""}}
+  {{formGroup field.fields.potency.fields.characteristic value=value.potency.characteristic options=@root.characteristics}}
   {{formGroup field.fields.potency.fields.value value=value.potency.value}}
   {{/if}}
   {{formGroup field.fields.description value=value.description}}
