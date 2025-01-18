@@ -128,7 +128,7 @@ export class PowerRoll extends DSRoll {
     const flavor = options.flavor ?? typeLabel;
 
     this.getActorModifiers(options);
-    const context = {     
+    const context = {
       modifiers: options.modifiers,
       targets: options.targets
     };
@@ -158,7 +158,7 @@ export class PowerRoll extends DSRoll {
 
     const baseRoll = new this(formula, options.data, {baseRoll: true});
     await baseRoll.evaluate();
-    
+
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
     const rolls = [baseRoll];
     for (const context of rollContexts) {
@@ -176,7 +176,7 @@ export class PowerRoll extends DSRoll {
           rolls.push(await roll.toMessage({speaker}));
           break;
       }
-    }    
+    }
     return rolls;
   }
 
@@ -295,7 +295,7 @@ export class PowerRoll extends DSRoll {
     return context;
   }
 
-  /** 
+  /**
    * Modify the options object based on conditions that apply to all Power Rolls
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
    */
