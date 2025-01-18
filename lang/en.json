@@ -398,6 +398,15 @@
                 "label": "Applied Effects"
               },
               "potency": {
+                "enabled": {
+                  "label": "Has Potency"
+                },
+                "characteristic": {
+                  "label": "Potency Characteristic"
+                },
+                "value": {
+                  "label": "Potency Value"
+                },
                 "label": "Potency"
               },
               "description": {
@@ -418,6 +427,15 @@
                 "label": "Applied Effects"
               },
               "potency": {
+                "enabled": {
+                  "label": "Has Potency"
+                },
+                "characteristic": {
+                  "label": "Potency Characteristic"
+                },
+                "value": {
+                  "label": "Potency Value"
+                },
                 "label": "Potency"
               },
               "description": {
@@ -438,6 +456,15 @@
                 "label": "Applied Effects"
               },
               "potency": {
+                "enabled": {
+                  "label": "Has Potency"
+                },
+                "characteristic": {
+                  "label": "Potency Characteristic"
+                },
+                "value": {
+                  "label": "Potency Value"
+                },
                 "label": "Potency"
               },
               "description": {
@@ -562,7 +589,16 @@
           "SlideX": "Slide {x}",
           "Vertical": "Vertical"
         },
-        "EmbedFail": "Failed to find item for this ability roll"
+        "EmbedFail": "Failed to find item for this ability roll",
+        "Potency": {
+          "label": "Potency",
+          "Weak": "Weak",
+          "Average": "Average",
+          "Strong": "Strong",
+          "Embed": "{characteristic}<{value}",
+          "Success": "Success",
+          "Failure": "Failure"
+        }
       },
       "Ancestry": {
         "FIELDS": {}
@@ -920,7 +956,8 @@
           "Bane": "Bane",
           "Banes": "Banes",
           "Label": "{number} {mod}"
-        }
+        },
+        "BaseRoll": "Base Power Roll"
       },
       "Project": {
         "Label": "Project Roll",

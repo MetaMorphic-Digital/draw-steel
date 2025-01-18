@@ -3,9 +3,11 @@
   padding: 5px;
   border-radius: 5px;
 
-  .target-info {
+  .header {
     flex-basis: 100%;
     text-align: center;
+    font-size: var(--font-size-16);
+    font-weight: bold;
   }
 
   .dice-result {
@@ -16,5 +18,9 @@
     .failure {
       color: red;
     }
+  }
+
+  .potency {
+    flex-basis: 100%;
   }
 }

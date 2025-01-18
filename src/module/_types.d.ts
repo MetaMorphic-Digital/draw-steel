@@ -40,5 +40,6 @@ export interface PowerRollPromptOptions {
   actor: DrawSteelActor;
   data: Record<string, unknown>;
   skills: string[];
-  targets: PowerRollTargets[]
+  targets: PowerRollTargets[],
+  ability?: string
 }
