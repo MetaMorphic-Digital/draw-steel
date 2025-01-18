@@ -1,6 +1,8 @@
+import {systemID} from "../../constants.mjs";
 import {requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
+/** @import {MaliceModel} from "../settings/_module.mjs"; */
 
 /**
  * NPCs are created and controlled by the director
@@ -49,9 +51,26 @@ export default class NPCModel extends BaseActorModel {
     return this.monster.level;
   }
 
-  /** @override */
   prepareDerivedData() {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+  }
+  
+  /** @override */
+  get coreResource() {
+    return {
+      name: game.i18n.localize("DRAW_STEEL.Setting.Malice.Label"),
+      /** @type {MaliceModel} */
+      target: game.settings.get(systemID, "malice"),
+      path: "value"
+    };
+  }
+
+  /** @override */
+  async updateResource(delta) {
+    if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
+    /** @type {MaliceModel} */
+    const malice = game.settings.get(systemID, "malice");
+    await game.settings.set(systemID, "malice", {value: malice.value + delta});
   }
 }

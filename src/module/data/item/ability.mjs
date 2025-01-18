@@ -1,5 +1,5 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
@@ -7,6 +7,7 @@ import BaseItemModel from "./base.mjs";
 
 /** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 /** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
+/** @import {MaliceModel} from "../settings/_module.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -174,16 +175,6 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
-   * Fetches the appropriate name for the resource this ability consumes
-   * @returns {string}
-   */
-  get resourceName() {
-    return this.actor?.type === "npc"
-      ? game.i18n.localize("DRAW_STEEL.Setting.Malice.Label")
-      : this.actor?.system.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
-  }
-
-  /**
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -197,7 +188,7 @@ export default class AbilityModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
-      resourceName: this.resourceName
+      resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label")
     };
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
@@ -209,7 +200,7 @@ export default class AbilityModel extends BaseItemModel {
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
 
-    context.resourceName = this.resourceName;
+    context.resourceName = this.actor?.system.coreResource?.name ?? "";
 
     const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
@@ -261,6 +252,7 @@ export default class AbilityModel extends BaseItemModel {
      */
     let configuration = null;
     let resourceSpend = this.resource ?? 0;
+    const coreResource = this.actor?.system.coreResource;
 
     // Determine if the configuration form should even run.
     // Can be factored out if/when complexity increases
@@ -273,7 +265,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: this.actor.system.hero.primary.value,
+        max: foundry.utils.getProperty(coreResource.target, coreResource.target),
         step: 1
       };
 
@@ -285,7 +277,7 @@ export default class AbilityModel extends BaseItemModel {
       content += foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
-          name: this.resourceName
+          name: coreResource.name
         }),
         input: spendInput
       }).outerHTML;
@@ -322,13 +314,13 @@ export default class AbilityModel extends BaseItemModel {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
         messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
-          name: this.resourceName
+          name: coreResource.name
         });
       }
     }
 
     // TODO: Figure out how to better handle invocations when this.actor is null
-    await this.actor?.update({"system.hero.primary.value": this.actor.system.hero.primary.value - resourceSpend});
+    await this.actor?.system.updateResource(resourceSpend * -1);
 
     DrawSteelChatMessage.applyRollMode(messageData, "roll");
 
@@ -344,7 +336,7 @@ export default class AbilityModel extends BaseItemModel {
         type: "ability",
         formula,
         data: rollData,
-        evaluation: "evaluate",      
+        evaluation: "evaluate",
         actor: this.actor,
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
@@ -356,14 +348,14 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       });
 
-      if (!powerRolls) return null; 
+      if (!powerRolls) return null;
 
       // Power Rolls grouped by tier of success
-      const groupedRolls = powerRolls.reduce((accumlator, powerRoll) => {
-        accumlator[powerRoll.product] ??= [];
-        accumlator[powerRoll.product].push(powerRoll);
+      const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
+        accumulator[powerRoll.product] ??= [];
+        accumulator[powerRoll.product].push(powerRoll);
 
-        return accumlator;
+        return accumulator;
       }, {});
 
       // Each tier group gets a message. Rolls within a group are in the same message
@@ -383,15 +375,16 @@ export default class AbilityModel extends BaseItemModel {
           messageDataCopy.rolls.push(damageRoll);
         }
         if (messages.length > 0) messageDataCopy.system.embedText = false;
-  
+
         messages.push(DrawSteelChatMessage.create(messageDataCopy));
       }
 
       return Promise.allSettled(messages);
     }
+    else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
   }
 
-  /** 
+  /**
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
    * @param {Partial<AbilityUseOptions>} options Options for the dialog
    */
@@ -400,11 +393,11 @@ export default class AbilityModel extends BaseItemModel {
     //TODO: CONDITION CHECKS
   }
 
-  /** 
+  /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
    * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
-   * @returns {object} 
+   * @returns {object}
    */
   getTargetModifiers(actor, target) {
     const modifiers = {
