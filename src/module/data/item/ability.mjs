@@ -62,7 +62,6 @@ export default class AbilityModel extends BaseItemModel {
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new fields.SchemaField({
         enabled: new fields.BooleanField(),
-        characteristic: new fields.StringField({initial: "might"}),
         value: new FormulaField({deterministic: true, initial: initialPotency, required: false})
       }),
       forced: new fields.SchemaField({
@@ -77,6 +76,7 @@ export default class AbilityModel extends BaseItemModel {
       enabled: new fields.BooleanField(),
       formula: new FormulaField(),
       characteristics: new fields.SetField(setOptions()),
+      potencyCharacteristic: new fields.StringField(),
       tier1: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.weak"})),
       tier2: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.average"})),
       tier3: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.strong"}))
@@ -182,20 +182,25 @@ export default class AbilityModel extends BaseItemModel {
    * Generate the potency data for a given tier.
    *
    * @param {string} tierName The name of the tier to pull from the power roll
-   * @returns {Promise<PotencyData>}
+   * @returns {Promise<Partial<PotencyData>>}
    */
   async getPotencyData(tierName) {
     const potency = this.powerRoll[tierName].potency;
-    const potencyValue = (await new DSRoll(potency.value, this.parent.getRollData()).evaluate()).total;
-    return {
-      enabled: potency.enabled,
-      characteristic: potency.characteristic,
-      value: potencyValue,
-      embed: game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-        characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potency.characteristic}.abbreviation`),
-        value: potencyValue
-      })
+    const potencyData = {
+      enabled: potency.enabled && !!this.powerRoll.potencyCharacteristic
     };
+
+    if (!potencyData.enabled) return potencyData;
+
+    const potencyValue = (await new DSRoll(potency.value, this.parent.getRollData()).evaluate()).total;
+    potencyData.characteristic = potency.characteristic;
+    potencyData.value = potencyValue;
+    potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potency.characteristic}.abbreviation`),
+      value: potencyValue
+    });
+
+    return potencyData;
   }
 
   /**

@@ -4,10 +4,11 @@
   {{formGroup field.fields.damage.fields.value value=value.damage.value}}
   {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes blank=""}}
   {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
+  {{#if @root.system.powerRoll.potencyCharacteristic}}
   {{formGroup field.fields.potency.fields.enabled value=value.potency.enabled}}
   {{#if value.potency.enabled}}
-  {{formGroup field.fields.potency.fields.characteristic value=value.potency.characteristic options=@root.characteristics}}
   {{formGroup field.fields.potency.fields.value value=value.potency.value}}
+  {{/if}}
   {{/if}}
   {{formGroup field.fields.description value=value.description}}
   {{!-- TODO: Forced Movement --}}
@@ -51,6 +52,7 @@
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula}}
+{{formGroup systemFields.powerRoll.fields.potencyCharacteristic value=system.powerRoll.potencyCharacteristic options=characteristics blank=""}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
