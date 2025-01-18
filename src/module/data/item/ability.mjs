@@ -24,6 +24,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /** @override */
   static LOCALIZATION_PREFIXES = [
+    "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Ability"
   ];
@@ -35,9 +36,9 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true, nullable: false});
+    schema.category = new fields.StringField({required: true});
     schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
-    schema.trigger = new fields.StringField({required: true, nullable: false});
+    schema.trigger = new fields.StringField({required: true});
     schema.distance = new fields.SchemaField({
       type: new fields.StringField({required: true, blank: false, initial: "self"}),
       primary: new fields.NumberField({integer: true, min: 0}),
@@ -56,7 +57,7 @@ export default class AbilityModel extends BaseItemModel {
     const powerRollSchema = () => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
-        type: new fields.StringField({required: true, nullable: false})
+        type: new fields.StringField({required: true})
       }),
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new FormulaField({deterministic: true}),
@@ -65,7 +66,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new fields.NumberField(),
         vertical: new fields.BooleanField()
       }),
-      description: new fields.StringField({required: true, nullable: false})
+      description: new fields.StringField({required: true})
     });
 
     schema.powerRoll = new fields.SchemaField({
@@ -76,7 +77,7 @@ export default class AbilityModel extends BaseItemModel {
       tier2: new fields.SchemaField(powerRollSchema()),
       tier3: new fields.SchemaField(powerRollSchema())
     });
-    schema.effect = new fields.StringField({required: true, nullable: false});
+    schema.effect = new fields.StringField({required: true});
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({integer: true}),
       text: new fields.StringField({required: true})

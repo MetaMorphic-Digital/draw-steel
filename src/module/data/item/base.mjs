@@ -1,3 +1,5 @@
+import SourceModel from "../models/source.mjs";
+
 const fields = foundry.data.fields;
 
 /**
@@ -19,16 +21,12 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
     schema.description = new fields.SchemaField(this.itemDescription());
 
-    schema.source = new fields.SchemaField({
-      book: new fields.StringField(),
-      page: new fields.StringField(),
-      license: new fields.StringField()
-    });
+    schema.source = new fields.EmbeddedDataField(SourceModel);
 
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField({required: true});
+    schema._dsid = new fields.StringField({blank: false});
 
     return schema;
   }
@@ -51,6 +49,11 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   get actor() {
     return this.parent.actor;
+  }
+
+  /** @override */
+  prepareDerivedData() {
+    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
   /** @override */

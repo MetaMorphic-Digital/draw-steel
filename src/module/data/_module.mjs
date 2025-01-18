@@ -6,5 +6,6 @@ export * as Item from "./item/_module.mjs";
 export * as ChatMessage from "./message/_module.mjs";
 export * as helpers from "./helpers.mjs";
 export * as fields from "./fields/_module.mjs";
+export * as models from "./models/_module.mjs";
 export * as settings from "./settings/_module.mjs";
 export * as migrations from "./migrations.mjs";

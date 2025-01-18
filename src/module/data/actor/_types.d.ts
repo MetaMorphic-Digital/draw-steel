@@ -1,7 +1,8 @@
 import { DrawSteelActor } from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
-import { SizeModel } from "../helpers.mjs";
+import SizeModel from "../models/size.mjs";
 import { DamageSchema } from "../item/kit.mjs";
+import SourceModel from "../models/source.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseActorModel {
@@ -68,6 +69,7 @@ declare module "./character.mjs" {
 
 declare module "./npc.mjs" {
   export default interface NPCModel {
+    source: SourceModel;
     negotiation: {
       interest: number;
       patience: number;

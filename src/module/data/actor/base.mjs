@@ -2,7 +2,8 @@
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
 import {PowerRoll} from "../../rolls/power.mjs";
-import {damageTypes, requiredInteger, setOptions, SizeModel} from "../helpers.mjs";
+import {damageTypes, requiredInteger, setOptions} from "../helpers.mjs";
+import SizeModel from "../models/size.mjs";
 const fields = foundry.data.fields;
 
 /**
