@@ -196,7 +196,7 @@ export default class AbilityModel extends BaseItemModel {
     potencyData.characteristic = potency.characteristic;
     potencyData.value = potencyValue;
     potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potency.characteristic}.abbreviation`),
+      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${this.powerRoll.potencyCharacteristic}.abbreviation`),
       value: potencyValue
     });
 
