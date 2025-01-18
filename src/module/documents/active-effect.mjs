@@ -13,13 +13,13 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
-   * @param {string} statusId 
+   * @param {string} statusId
    * @param {object} effectData
    */
   static async targetedConditionPrompt(statusId, effectData) {
     try {
       let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
-  
+
       if (foundry.utils.parseUuid(imposingActorUuid)) {
         effectData.changes = this.changes ?? [];
         effectData.changes.push({
@@ -35,8 +35,8 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Determine if a source actor is imposing the statusId on the affected actor.
-   * @param {DrawSteelActor} affected 
-   * @param {DrawSteelActor} source 
+   * @param {DrawSteelActor} affected The actor affected by the status
+   * @param {DrawSteelActor} source The actor imposing the status
    * @param {string} statusId
    * @returns {boolean}
    */
