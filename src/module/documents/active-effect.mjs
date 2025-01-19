@@ -42,7 +42,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    */
   static isStatusSource(affected, source, statusId) {
     const isAffectedByStatusId = affected.statuses.has(statusId);
-    const isAffectedBySource = !!affected.system.statuses[statusId]?.sources.includes(source.uuid);
+    const isAffectedBySource = !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
     return isAffectedByStatusId && isAffectedBySource;
   }
 
