@@ -128,10 +128,12 @@ export class PowerRoll extends DSRoll {
     const flavor = options.flavor ?? typeLabel;
 
     this.getActorModifiers(options);
-    const context = {     
+    const context = {
       modifiers: options.modifiers,
       targets: options.targets
     };
+
+    if (options.ability) context.ability = options.ability;
 
     if (options.skills) {
       context.skills = options.skills.reduce((obj, skill) => {
@@ -154,12 +156,13 @@ export class PowerRoll extends DSRoll {
 
     if (!rollContexts) return null;
 
-    const baseRoll = new this(formula);
+    const baseRoll = new this(formula, options.data, {baseRoll: true});
     await baseRoll.evaluate();
-    
+
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
-    const rolls = [];
+    const rolls = [baseRoll];
     for (const context of rollContexts) {
+      if (options.ability) context.ability = options.ability;
       const roll = new this(formula, options.data, {flavor, ...context});
       roll.terms[0] = baseRoll.terms[0];
       switch (evaluation) {
@@ -173,7 +176,7 @@ export class PowerRoll extends DSRoll {
           rolls.push(await roll.toMessage({speaker}));
           break;
       }
-    }    
+    }
     return rolls;
   }
 
@@ -275,14 +278,26 @@ export class PowerRoll extends DSRoll {
       mod: game.i18n.localize(modString)
     };
 
-    context.target = await fromUuid(this.options.target);
+    if (this.options.target) context.target = await fromUuid(this.options.target);
+    if (this.options.ability) {
+      context.ability = await fromUuid(this.options.ability);
+      const abilityPotency = context.ability.system.getPotencyData(this.tier);
+      
+      if (abilityPotency.enabled) {
+        context.potency = {...abilityPotency};
+        if (context.target) {
+          context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
+        }
+      }
+    }
 
+    context.baseRoll = this.options.baseRoll ?? false;
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 
     return context;
   }
 
-  /** 
+  /**
    * Modify the options object based on conditions that apply to all Power Rolls
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
    */
