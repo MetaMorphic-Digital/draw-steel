@@ -22,5 +22,19 @@
 
   .potency {
     flex-basis: 100%;
+
+    .label {
+      font-weight: bold;
+    }
+
+    .result {
+      &.Success {
+        color: var(--draw-steel-c-success);
+      }
+
+      &.Failure {
+        color: var(--draw-steel-c-failure);
+      }
+    }
   }
 }

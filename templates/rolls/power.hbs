@@ -23,7 +23,7 @@
     <span class="label">{{localize "DRAW_STEEL.Item.Ability.Potency.label"}}: </span>
     <span class="embed">{{potency.embed}}</span>
     {{#if potency.result}}
-    <span class="result">({{localize (concat "DRAW_STEEL.Item.Ability.Potency." potency.result)}})</span>
+    <span class="result {{potency.result}}">({{localize (concat "DRAW_STEEL.Item.Ability.Potency." potency.result)}})</span>
     {{/if}}
   </div>
   {{/if}}
