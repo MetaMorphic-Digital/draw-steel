@@ -122,7 +122,7 @@ preLocalize("damageTypes", {key: "label"});
 /**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
- * @type {Record<string, {img: string, name: string, rule: string, targeted? boolean}>}
+ * @type {Record<string, {img: string, name: string, rule: string, targeted? boolean, maxSources?: number, defaultSpeed?: number}>}
  */
 DRAW_STEEL.conditions = {
   bleeding: {
@@ -161,7 +161,8 @@ DRAW_STEEL.conditions = {
   slowed: {
     name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
     img: "systems/draw-steel/assets/icons/snail.svg",
-    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL",
+    defaultSpeed: 2
   },
   taunted: {
     name: "DRAW_STEEL.Effect.Conditions.Taunted.name",

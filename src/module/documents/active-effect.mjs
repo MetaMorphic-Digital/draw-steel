@@ -85,8 +85,17 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   }
 
   /** @override */
+  apply(actor, change) {
+    // If there's a change to the slowed speed, and the property does not exist, set it to the default slowed speed. This allows for upgrade/downgrade to apply.
+    const slowedSpeedChange = change.key.match(/^system\.statuses\.slowed\.speed$/);
+    if (!!slowedSpeedChange && !actor.system.statuses?.slowed?.speed) foundry.utils.mergeObject(actor, {"system.statuses.slowed.speed": ds.CONFIG.conditions.slowed.defaultSpeed});
+
+    return super.apply(actor, change);
+  }
+
+  /** @override */
   _applyAdd(actor, change, current, delta, changes) {
-    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array. 
+    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array.
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
@@ -99,12 +108,11 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     // Have the base class apply the changes
     super._applyAdd(actor, change, current, delta, changes);
 
-    // If the condition has a max value, slice the array to the max length
-    if (config?.maxSources) {
-      changes[change.key] = changes[change.key].slice(-config.maxSources);
+    // If we're modifying a condition source, slice the array to the max length if applicable, then convert back to Set
+    if (config) {
+      if (config.maxSources) changes[change.key] = changes[change.key].slice(-config.maxSources);
+      changes[change.key] = new Set(changes[change.key]);
     }
-
-    changes[change.key] = new Set(changes[change.key]);
   }
 
   /** @override */

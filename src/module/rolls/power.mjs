@@ -282,7 +282,7 @@ export class PowerRoll extends DSRoll {
     return context;
   }
 
-  /** 
+  /**
    * Modify the options object based on conditions that apply to all Power Rolls
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
    */
