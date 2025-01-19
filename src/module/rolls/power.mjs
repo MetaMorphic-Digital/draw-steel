@@ -281,11 +281,15 @@ export class PowerRoll extends DSRoll {
     if (this.options.target) context.target = await fromUuid(this.options.target);
     if (this.options.ability) {
       context.ability = await fromUuid(this.options.ability);
-      const abilityPotency = await context.ability.system.getPotencyData(this.tier);
+      const abilityPotency = context.ability.system.getPotencyData(this.tier);
 
+      console.log(abilityPotency);
       if (abilityPotency.enabled) {
         context.potency = {...abilityPotency};
-        if (context.target) context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
+        if (context.target) {
+          console.log(context.target.system.characteristics[abilityPotency.characteristic]?.value, abilityPotency);
+          context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
+        }
       }
     }
 

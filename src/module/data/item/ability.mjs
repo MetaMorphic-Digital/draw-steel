@@ -182,9 +182,9 @@ export default class AbilityModel extends BaseItemModel {
    * Generate the potency data for a given tier.
    *
    * @param {string} tierName The name of the tier to pull from the power roll
-   * @returns {Promise<Partial<PotencyData>>}
+   * @returns {Partial<PotencyData>}
    */
-  async getPotencyData(tierName) {
+  getPotencyData(tierName) {
     const potency = this.powerRoll[tierName].potency;
     const potencyData = {
       enabled: potency.enabled && !!this.powerRoll.potencyCharacteristic
@@ -194,10 +194,10 @@ export default class AbilityModel extends BaseItemModel {
     if (!potencyData.enabled && !potency.value) return potencyData;
 
     const potencyValue = new DSRoll(potency.value, this.parent.getRollData()).evaluateSync().total;
-    potencyData.characteristic = potency.characteristic;
+    potencyData.characteristic = this.powerRoll.potencyCharacteristic;
     potencyData.value = potencyValue;
     potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${this.powerRoll.potencyCharacteristic}.abbreviation`),
+      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
       value: potencyValue
     });
 
