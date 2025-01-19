@@ -282,8 +282,7 @@ export class PowerRoll extends DSRoll {
     if (this.options.ability) {
       context.ability = await fromUuid(this.options.ability);
       const abilityPotency = context.ability.system.getPotencyData(this.tier);
-
-      console.log(abilityPotency);
+      
       if (abilityPotency.enabled) {
         context.potency = {...abilityPotency};
         if (context.target) {
