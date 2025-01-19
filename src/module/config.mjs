@@ -1055,7 +1055,7 @@ preLocalize("abilities.keywords", {keys: ["label", "group"]});
 preLocalize("abilities.types", {key: "label"});
 preLocalize("abilities.categories", {key: "label"});
 // Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
-preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
+preLocalize("abilities.distances", {keys: ["label", "primary", "secondary", "tertiary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});
 

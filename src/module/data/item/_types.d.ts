@@ -27,12 +27,25 @@ declare module "./base.mjs" {
 }
 
 declare module "./ability.mjs" {
+
+  export interface Potency {
+    potency: {
+      enabled: boolean,
+      value: string | number;
+      characteristic: string;
+    }
+  }
+  export interface PotencyData extends Potency {
+    embed: string
+  }
+
   type PowerRoll = {
     damage: {
       value: string;
       type: string;
     }
     ae: string;
+    potency: Potency;
     forced: {
       type: string;
       value: number;

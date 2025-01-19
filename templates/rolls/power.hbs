@@ -1,21 +1,39 @@
 <div class="dice-roll">
-  {{#if target}}
-  <div class="target-info" data-uuid="{{target.uuid}}">
+  <div class="header" data-uuid="{{target.uuid}}">
+    {{#if baseRoll}}
+    {{localize "DRAW_STEEL.Roll.Power.BaseRoll"}}
+    {{else if target}}
     {{target.name}}
+    {{/if}}
   </div>
-  {{/if}}
+
+  {{#unless baseRoll}}
   <div class="tier {{tier.class}}">
     {{tier.label}}
     {{#if modifier.number}}
     <em>({{localize "DRAW_STEEL.Roll.Power.Modifier.Label" number=modifier.number mod=modifier.mod}})</em>
     {{/if}}
   </div>
+  {{/unless}}
   {{#if flavor}}
   <div class="dice-flavor">{{flavor}}</div>
   {{/if}}
+  {{#if potency}}
+  <div class="potency" data-result="{{potency.result}}">
+    <span class="label">{{localize "DRAW_STEEL.Item.Ability.Potency.label"}}: </span>
+    <span class="embed">{{potency.embed}}</span>
+    {{#if potency.result}}
+    <span class="result {{potency.result}}">({{localize (concat "DRAW_STEEL.Item.Ability.Potency." potency.result)}})</span>
+    {{/if}}
+  </div>
+  {{/if}}
   <div class="dice-result">
+    {{#if baseRoll}}
     <div class="dice-formula">{{formula}}</div>
     {{{tooltip}}}
+    {{/if}}
+    {{#unless baseRoll}}
     <h4 class="dice-total {{critical}}">{{total}}</h4>
+    {{/unless}}
   </div>
 </div>
