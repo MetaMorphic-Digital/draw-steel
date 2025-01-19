@@ -20,10 +20,10 @@
   {{/if}}
   {{#if potency}}
   <div class="potency" data-result="{{potency.result}}">
-    {{localize "DRAW_STEEL.Item.Ability.Potency.label"}}: {{potency.embed}}
+    <span class="label">{{localize "DRAW_STEEL.Item.Ability.Potency.label"}}: </span>
+    <span class="embed">{{potency.embed}}</span>
     {{#if potency.result}}
-    -
-    {{localize (concat "DRAW_STEEL.Item.Ability.Potency." potency.result)}}
+    <span class="result">({{localize (concat "DRAW_STEEL.Item.Ability.Potency." potency.result)}})</span>
     {{/if}}
   </div>
   {{/if}}
