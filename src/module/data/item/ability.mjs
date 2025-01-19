@@ -1,6 +1,6 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
+import {DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DamageRoll, DSRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -54,13 +54,16 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.NumberField({integer: true})
     });
 
-    const powerRollSchema = () => ({
+    const powerRollSchema = ({initialPotency} = {}) => ({
       damage: new fields.SchemaField({
         value: new FormulaField(),
         type: new fields.StringField({required: true})
       }),
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
-      potency: new FormulaField({deterministic: true}),
+      potency: new fields.SchemaField({
+        enabled: new fields.BooleanField(),
+        value: new FormulaField({deterministic: true, initial: initialPotency, blank: false})
+      }),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
         value: new fields.NumberField(),
@@ -73,9 +76,10 @@ export default class AbilityModel extends BaseItemModel {
       enabled: new fields.BooleanField(),
       formula: new FormulaField({blank: false, initial: "@chr"}),
       characteristics: new fields.SetField(setOptions()),
-      tier1: new fields.SchemaField(powerRollSchema()),
-      tier2: new fields.SchemaField(powerRollSchema()),
-      tier3: new fields.SchemaField(powerRollSchema())
+      potencyCharacteristic: new fields.StringField(),
+      tier1: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.weak"})),
+      tier2: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.average"})),
+      tier3: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.strong"}))
     });
     schema.effect = new fields.StringField({required: true});
     schema.spend = new fields.SchemaField({
@@ -172,6 +176,32 @@ export default class AbilityModel extends BaseItemModel {
         }
       }
     }
+  }
+
+  /**
+   * Generate the potency data for a given tier.
+   *
+   * @param {string} tierName The name of the tier to pull from the power roll
+   * @returns {Partial<PotencyData>}
+   */
+  getPotencyData(tierName) {
+    const potency = this.powerRoll[tierName].potency;
+    const potencyData = {
+      enabled: potency.enabled && !!this.powerRoll.potencyCharacteristic
+    };
+
+    // If potency is not enabled or there is no potency value return early
+    if (!potencyData.enabled && !potency.value) return potencyData;
+
+    const potencyValue = new DSRoll(potency.value, this.parent.getRollData()).evaluateSync().total;
+    potencyData.characteristic = this.powerRoll.potencyCharacteristic;
+    potencyData.value = potencyValue;
+    potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
+      value: potencyValue
+    });
+
+    return potencyData;
   }
 
   /**
@@ -338,21 +368,23 @@ export default class AbilityModel extends BaseItemModel {
         data: rollData,
         evaluation: "evaluate",
         actor: this.actor,
+        ability: this.parent.uuid,
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             uuid: target.actor.uuid,
-            modifiers: this.getTargetModifiers(this.actor, target.actor)
+            modifiers: this.getTargetModifiers(target.actor)
           });
           return accumulator;
         }, [])
       });
 
       if (!powerRolls) return null;
+      const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
       const groupedRolls = powerRolls.reduce((accumulator, powerRoll) => {
-        accumulator[powerRoll.product] ??= [];
+        accumulator[powerRoll.product] ??= [baseRoll];
         accumulator[powerRoll.product].push(powerRoll);
 
         return accumulator;
@@ -395,17 +427,20 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
-   * @returns {object}
+   * @returns {PowerRollModifiers}
    */
-  getTargetModifiers(actor, target) {
+  getTargetModifiers(target) {
     const modifiers = {
       banes: 0,
       edges: 0
     };
 
-    //TODO: CONDITION CHECKS
+    //TODO: ALL CONDITION CHECKS
+
+    // Frightened condition checks
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     return modifiers;
   }

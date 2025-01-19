@@ -139,7 +139,8 @@ DRAW_STEEL.conditions = {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
     img: "icons/svg/terror.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
-    targeted: true
+    targeted: true,
+    maxSources: 1
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
@@ -166,7 +167,8 @@ DRAW_STEEL.conditions = {
     name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh",
-    targeted: true
+    targeted: true,
+    maxSources: 1
   },
   weakened: {
     name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
@@ -952,7 +954,7 @@ DRAW_STEEL.abilities = {
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
       primary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Melee"
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Ranged"
     },
     meleeRanged: {
       label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
@@ -1052,7 +1054,7 @@ preLocalize("abilities.keywords", {keys: ["label", "group"]});
 preLocalize("abilities.types", {key: "label"});
 preLocalize("abilities.categories", {key: "label"});
 // Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
-preLocalize("abilities.distances", {keys: ["label", "primary", "secondary"]});
+preLocalize("abilities.distances", {keys: ["label", "primary", "secondary", "tertiary"]});
 preLocalize("abilities.targets", {keys: ["label", "all"]});
 preLocalize("abilities.forcedMovement", {key: "label"});
 
