@@ -86,7 +86,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /** @override */
   _applyAdd(actor, change, current, delta, changes) {
-    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array. 
+    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array.
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
@@ -99,12 +99,11 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     // Have the base class apply the changes
     super._applyAdd(actor, change, current, delta, changes);
 
-    // If the condition has a max value, slice the array to the max length
-    if (config?.maxSources) {
-      changes[change.key] = changes[change.key].slice(-config.maxSources);
+    // If we're modifying a condition source, slice the array to the max length if applicable, then convert back to Set
+    if (config) {
+      if (config.maxSources) changes[change.key] = changes[change.key].slice(-config.maxSources);
+      changes[change.key] = new Set(changes[change.key]);
     }
-
-    changes[change.key] = new Set(changes[change.key]);
   }
 
   /** @override */
@@ -116,5 +115,23 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     if (config) delta = new Set([delta]);
 
     super._applyOverride(actor, change, current, delta, changes);
+  }
+
+  /**
+   * TODO: REMOVE IN V13
+   * Fix bug where _applyUpgrade can set value to undefined
+   * @override
+   */
+  _applyUpgrade(actor, change, current, delta, changes) {
+    let update = current;
+    const ct = foundry.utils.getType(current);
+    switch (ct) {
+      case "boolean":
+      case "number":
+        if ((change.mode === CONST.ACTIVE_EFFECT_MODES.UPGRADE) && (delta > current)) update = delta;
+        else if ((change.mode === CONST.ACTIVE_EFFECT_MODES.DOWNGRADE) && (delta < current)) update = delta;
+        break;
+    }
+    changes[change.key] = update;
   }
 }

@@ -80,6 +80,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     this.potency = {
       bonuses: 0
     };
+
+    this.statuses = {
+      slowed: {
+        speed: ds.CONFIG.conditions.slowed.defaultSpeed
+      }
+    };
   }
 
   /** @override */
@@ -87,6 +93,13 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
+
+    // Reduce all movement speeds when slowed
+    if (this.parent.statuses.has("slowed")) {
+      for (const movement in this.movement) {
+        if (this.movement[movement] > this.statuses.slowed.speed) this.movement[movement] = this.statuses.slowed.speed;
+      }
+    }
   }
 
   /**
