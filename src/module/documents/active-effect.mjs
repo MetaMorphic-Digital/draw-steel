@@ -88,7 +88,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   apply(actor, change) {
     // If there's a change to the slowed speed, and the property does not exist, set it to the default slowed speed. This allows for upgrade/downgrade to apply.
     const path = "system.statuses.slowed.speed";
-    if ((change.key === path) && foundry.utils.hasProperty(actor, path))
+    if ((change.key === path) && !foundry.utils.hasProperty(actor, path))
       foundry.utils.setProperty(actor, path, ds.CONFIG.conditions.slowed.defaultSpeed);
 
     return super.apply(actor, change);
