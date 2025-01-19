@@ -287,7 +287,6 @@ export class PowerRoll extends DSRoll {
       if (abilityPotency.enabled) {
         context.potency = {...abilityPotency};
         if (context.target) {
-          console.log(context.target.system.characteristics[abilityPotency.characteristic]?.value, abilityPotency);
           context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
         }
       }
