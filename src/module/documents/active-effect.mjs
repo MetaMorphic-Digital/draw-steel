@@ -125,4 +125,22 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
     super._applyOverride(actor, change, current, delta, changes);
   }
+
+  /**
+   * TODO: REMOVE IN V13
+   * Fix bug where _applyUpgrade can set value to undefined
+   * @override
+   */
+  _applyUpgrade(actor, change, current, delta, changes) {
+    let update = current;
+    const ct = foundry.utils.getType(current);
+    switch (ct) {
+      case "boolean":
+      case "number":
+        if ((change.mode === CONST.ACTIVE_EFFECT_MODES.UPGRADE) && (delta > current)) update = delta;
+        else if ((change.mode === CONST.ACTIVE_EFFECT_MODES.DOWNGRADE) && (delta < current)) update = delta;
+        break;
+    }
+    changes[change.key] = update;
+  }
 }
