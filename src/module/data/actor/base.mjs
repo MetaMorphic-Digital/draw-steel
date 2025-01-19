@@ -90,8 +90,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     // Reduce all movement speeds when slowed
     if (this.parent.statuses.has("slowed")) {
+      const slowedSpeed = this.statuses?.slowed?.speed ?? ds.CONFIG.conditions.slowed.defaultSpeed;
       for (const movement in this.movement) {
-        const slowedSpeed = this.statuses?.slowed?.speed ?? ds.CONFIG.conditions.slowed.defaultSpeed;
         if (this.movement[movement] > slowedSpeed) this.movement[movement] = slowedSpeed;
       }
     }
