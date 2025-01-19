@@ -1,5 +1,5 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
+import {DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DamageRoll, PowerRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
@@ -342,7 +342,7 @@ export default class AbilityModel extends BaseItemModel {
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             uuid: target.actor.uuid,
-            modifiers: this.getTargetModifiers(this.actor, target.actor)
+            modifiers: this.getTargetModifiers(target.actor)
           });
           return accumulator;
         }, [])
@@ -395,17 +395,20 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelActor} actor The actor using the ability
    * @param {DrawSteelActor} target A target of the Ability Roll
-   * @returns {object}
+   * @returns {PowerRollModifiers}
    */
-  getTargetModifiers(actor, target) {
+  getTargetModifiers(target) {
     const modifiers = {
       banes: 0,
       edges: 0
     };
 
-    //TODO: CONDITION CHECKS
+    //TODO: ALL CONDITION CHECKS
+
+    // Frightened condition checks
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     return modifiers;
   }

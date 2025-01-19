@@ -139,7 +139,8 @@ DRAW_STEEL.conditions = {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
     img: "icons/svg/terror.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
-    targeted: true
+    targeted: true,
+    maxSources: 1
   },
   grabbed: {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
@@ -166,7 +167,8 @@ DRAW_STEEL.conditions = {
     name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh",
-    targeted: true
+    targeted: true,
+    maxSources: 1
   },
   weakened: {
     name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
