@@ -83,4 +83,38 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   get isTemporary() {
     return this.system._isTemporary ?? super.isTemporary;
   }
+
+  /** @override */
+  _applyAdd(actor, change, current, delta, changes) {
+    // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array. 
+    // If it does exist, convert the Set to an Array.
+    const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
+    const condition = match?.groups.condition;
+    const config = ds.CONFIG.conditions[condition];
+    if (config) {
+      if (current) current = Array.from(current);
+      else if (!current) current = [];
+    }
+
+    // Have the base class apply the changes
+    super._applyAdd(actor, change, current, delta, changes);
+
+    // If the condition has a max value, slice the array to the max length
+    if (config?.maxSources) {
+      changes[change.key] = changes[change.key].slice(-config.maxSources);
+    }
+
+    changes[change.key] = new Set(changes[change.key]);
+  }
+
+  /** @override */
+  _applyOverride(actor, change, current, delta, changes) {
+    // If the property is a condition, convert the delta to a Set
+    const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
+    const condition = match?.groups.condition;
+    const config = ds.CONFIG.conditions[condition];
+    if (config) delta = new Set([delta]);
+
+    super._applyOverride(actor, change, current, delta, changes);
+  }
 }

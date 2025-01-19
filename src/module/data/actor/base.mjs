@@ -80,14 +80,6 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     this.potency = {
       bonuses: 0
     };
-
-    // Add status sources object for AEs to target
-    this.statuses = {};
-    for (const [statusId, config] of Object.entries(ds.CONFIG.conditions)) {
-      this.statuses[statusId] = {
-        sources: []
-      };
-    }
   }
 
   /** @override */
@@ -95,12 +87,6 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
-
-    // Limit the status sources array to the max length provided in the config
-    for (const statusId in this.statuses) {
-      const maxSources = ds.CONFIG.conditions[statusId].maxSources;
-      if (maxSources) this.statuses[statusId].sources = this.statuses[statusId].sources.slice(-maxSources);
-    }
   }
 
   /**
