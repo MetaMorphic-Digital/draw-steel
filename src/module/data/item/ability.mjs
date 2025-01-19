@@ -62,7 +62,7 @@ export default class AbilityModel extends BaseItemModel {
       ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
       potency: new fields.SchemaField({
         enabled: new fields.BooleanField(),
-        value: new FormulaField({deterministic: true, initial: initialPotency, required: false})
+        value: new FormulaField({deterministic: true, initial: initialPotency, blank: false})
       }),
       forced: new fields.SchemaField({
         type: new fields.StringField({choices: config.forcedMovement, blank: false}),
@@ -190,9 +190,10 @@ export default class AbilityModel extends BaseItemModel {
       enabled: potency.enabled && !!this.powerRoll.potencyCharacteristic
     };
 
-    if (!potencyData.enabled) return potencyData;
+    // If potency is not enabled or there is no potency value return early
+    if (!potencyData.enabled && !potency.value) return potencyData;
 
-    const potencyValue = (await new DSRoll(potency.value, this.parent.getRollData()).evaluate()).total;
+    const potencyValue = new DSRoll(potency.value, this.parent.getRollData()).evaluateSync().total;
     potencyData.characteristic = potency.characteristic;
     potencyData.value = potencyValue;
     potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
