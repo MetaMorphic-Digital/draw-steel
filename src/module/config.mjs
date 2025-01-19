@@ -954,7 +954,7 @@ DRAW_STEEL.abilities = {
     ranged: {
       label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
       primary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Melee"
+      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Ranged"
     },
     meleeRanged: {
       label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
