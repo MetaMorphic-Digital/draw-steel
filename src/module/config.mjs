@@ -1310,7 +1310,7 @@ DRAW_STEEL.features = {
   /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
   types: {
     perk: {
-      label: "DRAW_STEEL.Item.Feature.Types.Perk.label",
+      label: "DRAW_STEEL.Item.Feature.Types.Perk.Label",
       subtypes: {
         crafting: {
           label: "DRAW_STEEL.Item.Feature.Types.Perk.Crafting"
@@ -1333,7 +1333,7 @@ DRAW_STEEL.features = {
       }
     },
     title: {
-      label: "DRAW_STEEL.Item.Feature.Types.Title.label",
+      label: "DRAW_STEEL.Item.Feature.Types.Title.Label",
       subtypes: {
         1: {
           label: "DRAW_STEEL.Echelon.1"
