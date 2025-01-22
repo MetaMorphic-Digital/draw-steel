@@ -211,6 +211,14 @@ export default class AbilityModel extends BaseItemModel {
   async toEmbed(config, options = {}) {
     // All abilities are rendered inline
     config.inline = true;
+
+    // If unspecified assume all three tiers are desired for display
+    if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
+      config.tier1 = this.powerRoll.enabled;
+      config.tier2 = this.powerRoll.enabled;
+      config.tier3 = this.powerRoll.enabled;
+    }
+
     const embed = document.createElement("div");
     embed.classList.add("ability");
     embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
@@ -220,6 +228,9 @@ export default class AbilityModel extends BaseItemModel {
       config: ds.CONFIG,
       resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label")
     };
+    if (config.tier1) context.tier1 = true;
+    if (config.tier2) context.tier2 = true;
+    if (config.tier3) context.tier3 = true;
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);

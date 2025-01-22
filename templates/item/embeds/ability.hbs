@@ -26,6 +26,25 @@
     </p>
   </div>
 </section>
+{{#if (or tier1 tier2 tier3)}}
+<section class="powerResult">
+  {{#if tier1}}
+  <p>
+    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}:</strong> {{system.powerRoll.tier1.description}}
+  </p>
+  {{/if}}
+  {{#if tier2}}
+  <p>
+    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}:</strong> {{system.powerRoll.tier2.description}}
+  </p>
+  {{/if}}
+  {{#if tier3}}
+  <p>
+    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}:</strong> {{system.powerRoll.tier3.description}}
+  </p>
+  {{/if}}
+</section>
+{{/if}}
 {{#if system.effect}}
 <section class="effect">
   <p>
@@ -33,4 +52,3 @@
   </p>
 </section>
 {{/if}}
-{{!-- Power Tiers --}}
