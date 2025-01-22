@@ -212,12 +212,11 @@ export default class AbilityModel extends BaseItemModel {
     // All abilities are rendered inline
     config.inline = true;
 
-    // TODO: Determine syntax for including tier 1, 2, & 3 results
-
+    // If unspecified assume all three tiers are desired for display
     if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
-      config.tier1 = true;
-      config.tier2 = true;
-      config.tier3 = true;
+      config.tier1 = this.powerRoll.enabled;
+      config.tier2 = this.powerRoll.enabled;
+      config.tier3 = this.powerRoll.enabled;
     }
 
     const embed = document.createElement("div");
