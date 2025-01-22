@@ -74,7 +74,7 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
-      formula: new FormulaField(),
+      formula: new FormulaField({blank: false, initial: "@chr"}),
       characteristics: new fields.SetField(setOptions()),
       potencyCharacteristic: new fields.StringField(),
       tier1: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.weak"})),
