@@ -44,7 +44,7 @@ export default class FeatureModel extends BaseItemModel {
     context.featureTypes = Object.entries(featureConfig.types).map(([value, entry]) => ({value, label: entry.label}));
 
     if (featureConfig.types[this.type.value]?.subtypes) {
-      context.featureSubtypes = Object.entries(featureConfig.types[this.type.value].subtypes).map(([value, label]) => ({value, label}));
+      context.featureSubtypes = Object.entries(featureConfig.types[this.type.value].subtypes).map(([value, {label}]) => ({value, label}));
     }
   }
 }

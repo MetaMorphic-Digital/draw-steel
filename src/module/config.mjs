@@ -1307,14 +1307,50 @@ preLocalize("equipment.implement", {key: "label"});
 preLocalize("equipment.other", {key: "label"});
 
 DRAW_STEEL.features = {
-  /** @type {Record<string, {label: string, subtypes?: Record<string, string>}>} */
+  /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
   types: {
     perk: {
-      label: "DRAW_STEEL.Item.Feature.Types.Perk"
+      label: "DRAW_STEEL.Item.Feature.Types.Perk.label",
+      subtypes: {
+        crafting: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Crafting"
+        },
+        exploration: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Exploration"
+        },
+        interpersonal: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Interpersonal"
+        },
+        intrigue: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Intrigue"
+        },
+        lore: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Lore"
+        },
+        supernatural: {
+          label: "DRAW_STEEL.Item.Feature.Types.Perk.Supernatural"
+        }
+      }
     },
     title: {
-      label: "DRAW_STEEL.Item.Feature.Types.Title"
+      label: "DRAW_STEEL.Item.Feature.Types.Title.label",
+      subtypes: {
+        1: {
+          label: "DRAW_STEEL.Echelon.1"
+        },
+        2: {
+          label: "DRAW_STEEL.Echelon.2"
+        },
+        3: {
+          label: "DRAW_STEEL.Echelon.3"
+        },
+        4: {
+          label: "DRAW_STEEL.Echelon.4"
+        }
+      }
     }
   }
 };
 preLocalize("features.types", {key: "label"});
+preLocalize("features.types.perk.subtypes", {key: "label"});
+preLocalize("features.types.title.subtypes", {key: "label"});
