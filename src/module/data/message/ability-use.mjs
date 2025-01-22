@@ -35,8 +35,6 @@ export default class AbilityUseModel extends BaseMessageModel {
 
     const content = html.querySelector(".message-content");
 
-    console.log(item, tier);
-
     if (this.embedText) {
       /** @type {HTMLDivElement} */
       let embed;
