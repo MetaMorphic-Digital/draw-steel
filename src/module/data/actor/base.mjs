@@ -86,6 +86,11 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         speed: ds.CONFIG.conditions.slowed.defaultSpeed
       }
     };
+
+    this.restrictions = {
+      type: new Set(),
+      dsid: new Set()
+    };
   }
 
   /** @override */

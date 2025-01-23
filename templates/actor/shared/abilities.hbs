@@ -7,9 +7,16 @@
   </div>
   <div class="item-list">
     {{#each abilities as |ability index|}}
-    <button type="button" class="item flexrow draggable" data-action="{{ifThen @root.isPlay "useAbility" "viewDoc"}}" data-document-class="Item" data-item-id="{{ability.id}}">
+    <button type="button" class="item flexrow draggable {{#if ability.system.restricted}}restricted{{/if}}" data-action="{{ifThen @root.isPlay "useAbility" "viewDoc"}}" data-document-class="Item" data-item-id="{{ability.id}}">
       <img class="img" src="{{ability.img}}" alt="{{ability.name}}">
-      <span class="name">{{ability.name}}</span>
+      <span class="name">
+        {{#if ability.system.restricted}}
+        <span class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </span>
+        {{/if}}
+        {{ability.name}}
+      </span>
       {{#unless @root.isPlay}}
       <a class="delete" data-action="deleteDoc">
         <i class="fa-solid fa-trash-can"></i>

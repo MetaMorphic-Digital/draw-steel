@@ -133,7 +133,22 @@ DRAW_STEEL.conditions = {
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
-    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb",
+    changes: [{
+      key: "system.restrictions.type",
+      value: "triggered",
+      mode: 2
+    },
+    {
+      key: "system.restrictions.type",
+      value: "freeTriggered",
+      mode: 2
+    },
+    {
+      key: "system.restrictions.type",
+      value: "freeManeuver",
+      mode: 2
+    }]
   },
   frightened: {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
