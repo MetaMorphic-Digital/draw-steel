@@ -1,5 +1,5 @@
-import DrawSteelActorSheet from "./base.mjs";
 import {systemID, systemPath} from "../../constants.mjs";
+import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
@@ -48,6 +48,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "stats":
         context.skills = this._getSkillList();
+        break;
+      case "features":
+        context.kits = this.actor.system.kits.sort((a, b) => a.sort - b.sort);
         break;
     }
     return context;

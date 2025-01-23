@@ -1,5 +1,5 @@
-import DrawSteelActorSheet from "./base.mjs";
 import {systemID, systemPath} from "../../constants.mjs";
+import DrawSteelActorSheet from "./base.mjs";
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
@@ -130,6 +130,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   _onRender(context, options) {
+    super._onRender(context, options);
+
     /** @type {HTMLInputElement} */
     const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");
     if (maliceInput) {

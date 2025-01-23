@@ -1,4 +1,3 @@
-import {systemPath} from "../../constants.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
@@ -30,7 +29,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       useAbility: this._useAbility
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{dragSelector: "[data-drag]", dropSelector: null}],
+    dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
     form: {
       submitOnChange: true
     }
@@ -116,11 +115,11 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         context.tab = context.tabs[partId];
         break;
       case "features":
-        context.features = this.actor.items.filter(i => i.type === "feature");
+        context.features = this.actor.items.filter(i => i.type === "feature").sort((a, b) => a.sort - b.sort);
         context.tab = context.tabs[partId];
         break;
       case "abilities":
-        context.abilities = this.actor.items.filter(i => i.type === "ability");
+        context.abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
         context.tab = context.tabs[partId];
         break;
       case "biography":

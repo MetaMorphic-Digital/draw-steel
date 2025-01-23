@@ -2,7 +2,7 @@
 <section class="tab effects flexcol {{tab.cssClass}}" data-group="primary" data-tab="effects">
   <ol class="effects-list">
     {{#each effects as |section sid|}}
-    <li class="effects-header flexrow" data-effect-type="{{section.type}}" data-drag="true">
+    <li class="effects-header flexrow draggable" data-effect-type="{{section.type}}">
       <div class="effect-name flexrow">
         {{localize section.label}}
       </div>
@@ -34,7 +34,7 @@
 
     <ol class="effect-list">
       {{#each section.effects as |effect|}}
-      <li class="effect effect flexrow" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}" data-document-class="ActiveEffect" data-drag="true">
+      <li class="effect effect flexrow draggable" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}" data-document-class="ActiveEffect">
         <div class="effect-name flexrow">
           <img class="effect-image" src="{{effect.img}}" height="24" width="24" alt="{{effect.name}}">
           <div>{{effect.name}}</div>
