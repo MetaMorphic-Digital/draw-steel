@@ -1,3 +1,4 @@
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
@@ -329,6 +330,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   _getItemButtonContextOptions() {
+    // name is auto-localized
     return [
       {
         name: "View",
@@ -357,8 +359,24 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         }
       },
       {
+        name: "DRAW_STEEL.Item.base.post",
+        icon: "<i class=\"fa-solid fa-share-from-square\"></i>",
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await DrawSteelChatMessage.create({
+            content: `@Embed[${item.uuid} caption=false]`,
+            speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor})
+          });
+        }
+      },
+      {
         name: "Delete",
         icon: "<i class=\"fas fa-trash\"></i>",
+        condition: () => this.actor.isOwner,
         callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
