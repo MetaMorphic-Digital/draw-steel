@@ -26,7 +26,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       submitOnChange: true
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{dragSelector: "[data-drag]", dropSelector: null}]
+    dragDrop: [{dragSelector: ".draggable", dropSelector: null}]
   };
 
   /* -------------------------------------------- */
