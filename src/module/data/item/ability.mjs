@@ -469,7 +469,7 @@ export default class AbilityModel extends BaseItemModel {
     if (restrictions.dsid.has(this._dsid)) return true;
 
     // Checking if statuses have restricted this type. In case the main condition isn't toggled, but the status is added to an effect
-    if (this.actor.statuses.has("dazed") && ["freeManeuver", "triggered", "freeTriggered"].includes(this.type)) return true;
+    if (this.actor.statuses.has("dazed") && CONFIG.statusEffects.find(e => e.id === "dazed")?.restrictions.has(this.type)) return true;
 
     return false;
   }

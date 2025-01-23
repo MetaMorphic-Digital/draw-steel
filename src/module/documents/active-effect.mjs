@@ -90,7 +90,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = ds.CONFIG.conditions[condition];
+    const config = CONFIG.statusEffects.find(e => e.id === condition);
     if (config) {
       if (current) current = Array.from(current);
       else if (!current) current = [];
@@ -112,7 +112,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = ds.CONFIG.conditions[condition];
+    const config = CONFIG.statusEffects.find(e => e.id === condition);
     const isSetChange = (foundry.utils.getType(current) === "Set") || config;
     if (isSetChange) delta = new Set([delta]);
 
