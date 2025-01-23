@@ -99,10 +99,16 @@
           "combat": {
             "label": "Combat",
             "size": {
-              "label": "Size"
+              "label": "Size",
+              "value": {
+                "label": "Size Number"
+              }
             },
             "stability": {
               "label": "Stability"
+            },
+            "turns": {
+              "label": "Turns Per Round"
             }
           },
           "movement": {
@@ -125,6 +131,22 @@
             "teleport": {
               "label": "Teleport"
             }
+          },
+          "damage": {
+            "immunities": {
+              "label": "Immunities",
+              "all": {
+                "label": "Damage"
+              },
+              "format": "{type} Immunity"
+            },
+            "weaknesses": {
+              "label": "Weaknesses",
+              "all": {
+                "label": "Damage"
+              },
+              "format": "{type} Weakness"
+            }
           }
         },
         "sizes": {
@@ -138,7 +160,10 @@
         "FIELDS": {
           "hero": {
             "primary": {
-              "label": "Heroic Resource"
+              "label": "Heroic Resource",
+              "value": {
+                "label": "Heroic Resource"
+              }
             },
             "surges": {
               "label": "Surges"
@@ -163,6 +188,27 @@
             },
             "skills": {
               "label": "Skills"
+            }
+          },
+          "biography": {
+            "value": {
+              "label": "Biography"
+            },
+            "gm": {
+              "label": "GM Notes"
+            },
+            "languages": {
+              "label": "Languages"
+            },
+            "height": {
+              "value": {
+                "label": "Height"
+              }
+            },
+            "weight": {
+              "value": {
+                "label": "Weight"
+              }
             }
           }
         },
