@@ -5,9 +5,8 @@ import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
-/** @import {MaliceModel} from "../settings/_module.mjs" */
+/** @import {FormInputConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {PowerRollModifiers} from "../../_types.js" */
 
 const fields = foundry.data.fields;
 
@@ -205,6 +204,7 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
+   * @override
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
