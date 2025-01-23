@@ -1,3 +1,5 @@
+/** @import {DrawSteelActor} from "../../documents/_module.mjs"; */
+
 const fields = foundry.data.fields;
 
 /**
@@ -38,5 +40,20 @@ export default class SquadModel extends foundry.abstract.TypeDataModel {
       value: new fields.HTMLField(),
       gm: new fields.HTMLField()
     };
+  }
+
+  /**
+   * Find all minions in the scene that have linked this squad
+   * @return {Array<DrawSteelActor>}
+   */
+  get minions() {
+    /** @type {Scene} */
+    const scene = this.parent.isToken ? this.parent.parent.parent : canvas.scene;
+    const tokens = scene.tokens.filter(t => (
+      (t.actor.type === "npc") &&
+      t.actor.system.isMinion &&
+      (foundry.utils.getProperty(t.actor, "system.monster.squad") === this.parent.uuid)
+    ));
+    return tokens.map(t => t.actor);
   }
 }

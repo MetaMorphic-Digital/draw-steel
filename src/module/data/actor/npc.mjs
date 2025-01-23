@@ -52,6 +52,24 @@ export default class NPCModel extends BaseActorModel {
     return this.monster.level;
   }
 
+  /**
+   * Checks if
+   */
+  get isMinion() {
+    return this.monster.organization === "minion";
+  }
+
+  async _preUpdate(changes, options, user) {
+    const newStamina = foundry.utils.getProperty(changes, "system.stamina");
+    if (this.isMinion && newStamina) {
+      const squad = fromUuidSync(this.monster.squad);
+      if (squad) {
+        squad.update({"system.stamina": {...newStamina}});
+        delete changes.system.stamina;
+      }
+    }
+  }
+
   prepareDerivedData() {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
