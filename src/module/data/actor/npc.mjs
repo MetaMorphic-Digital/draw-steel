@@ -40,7 +40,8 @@ export default class NPCModel extends BaseActorModel {
       level: requiredInteger({initial: 1}),
       ev: requiredInteger({initial: 4}),
       role: new fields.StringField({required: true}),
-      organization: new fields.StringField({required: true})
+      organization: new fields.StringField({required: true}),
+      squad: new fields.DocumentUUIDField({type: "Actor"})
     });
 
     return schema;
@@ -55,7 +56,7 @@ export default class NPCModel extends BaseActorModel {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
-  
+
   /** @override */
   get coreResource() {
     return {

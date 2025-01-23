@@ -83,6 +83,17 @@ declare module "./npc.mjs" {
       ev: number;
       role: string;
       organization: string;
+      squad: string;
     }
+  }
+}
+
+declare module "./squad.mjs" {
+  export default interface SquadModel {
+    parent: DrawSteelActor;
+    stamina: BarAttribute & {
+      temporary: number;
+    },
+    captain: string;
   }
 }
