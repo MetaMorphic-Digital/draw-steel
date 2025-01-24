@@ -198,9 +198,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
-        callback: (event, button, dialog) => {
-          return new FormDataExtended(button.form);
-        }
+        callback: (event, button, dialog) => new FormDataExtended(button.form)
       },
       rejectClose: false
     });
@@ -216,14 +214,49 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async _freeStrike(event, target) {
-    /** @type {Set<DrawSteelActor>} */
-    const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage);
-    console.log(event, target, targets);
-    if (!targets.size) {
+    /** @type {Array<DrawSteelActor>} */
+    const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
+    if (!targets.length) {
       ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", {localize: true});
       return;
     }
     const freeStrike = this.actor.system.freeStrike;
-    console.log(freeStrike);
+    let content = `<h6>${game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
+      value: freeStrike.value,
+      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? ""
+    })}</h6>`;
+    content += targets.map(a => {
+      const checkboxInput = foundry.applications.fields.createCheckboxInput({name: a.uuid, value: true});
+      const formGroup = foundry.applications.fields.createFormGroup({
+        label: a.name,
+        input: checkboxInput
+      });
+      // style fix
+      const label = formGroup.querySelector("label");
+      label.classList.add("checkbox");
+      label.style = "font-size: inherit;";
+      return formGroup.outerHTML;
+    }).join("");
+
+    /** @type {FormDataExtended} */
+    const fd = await foundry.applications.api.DialogV2.prompt({
+      window: {title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst"},
+      content,
+      rejectClose: true,
+      ok: {
+        label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
+        callback: (event, button, dialog) => new FormDataExtended(button.form)
+      }
+    });
+
+    if (fd) {
+      for (const [uuid, bool] of Object.entries(fd.object)) {
+        if (bool) {
+          /** @type {DrawSteelActor} */
+          const actor = fromUuidSync(uuid);
+          actor.system.takeDamage(freeStrike.value, {type: freeStrike.type});
+        }
+      }
+    }
   }
 }
