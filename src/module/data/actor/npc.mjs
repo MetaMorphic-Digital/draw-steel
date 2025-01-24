@@ -36,6 +36,7 @@ export default class NPCModel extends BaseActorModel {
     });
 
     schema.monster = new fields.SchemaField({
+      freeStrike: requiredInteger({initial: 0}),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({initial: 1}),
       ev: requiredInteger({initial: 4}),
@@ -55,7 +56,7 @@ export default class NPCModel extends BaseActorModel {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
-  
+
   /** @override */
   get coreResource() {
     return {
