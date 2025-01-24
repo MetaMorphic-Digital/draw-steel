@@ -2,6 +2,8 @@ import {systemID} from "../../constants.mjs";
 import {requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
+/** @import {DrawSteelItem} from "../../documents/_module.mjs"; */
+/** @import AbilityModel from "../item/ability.mjs"; */
 /** @import {MaliceModel} from "../settings/_module.mjs"; */
 
 /**
@@ -65,6 +67,23 @@ export default class NPCModel extends BaseActorModel {
       target: game.settings.get(systemID, "malice"),
       path: "value"
     };
+  }
+
+  /**
+   * Fetch the traits of this creature's free strike.
+   * The value is stored in `this.monster.freeStrike`
+   */
+  get freeStrike() {
+    /** @type {DrawSteelItem & {system: AbilityModel}} */
+    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const freeStrike = {
+      value: this.monster.freeStrike,
+      keywords: keywords.add("strike"),
+      type: signature?.system.powerRoll.tier1.damage.type ?? ""
+    };
+
+    return freeStrike;
   }
 
   /** @override */
