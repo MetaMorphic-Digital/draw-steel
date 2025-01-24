@@ -100,13 +100,14 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
     // Set movement speeds when affected by grabbed, restrained, or slowed
-    if (this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained") || this.parent.statuses.has("slowed")) {
+    const isSlowed = this.parent.statuses.has("slowed");
+    const isGrabbedOrRestrained = this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained");
+    if (isSlowed || isGrabbedOrRestrained) {
       for (const movement in this.movement) {
         // If slowed, set all speeds to slowed speed
-        if (this.parent.statuses.has("slowed") && (this.movement[movement] > this.statuses.slowed.speed)) this.movement[movement] = this.statuses.slowed.speed;
+        if (isSlowed && (this.movement[movement] > this.statuses.slowed.speed)) this.movement[movement] = this.statuses.slowed.speed;
 
         // If grabbed or restrained, set non-teleport speeds to 0
-        const isGrabbedOrRestrained = this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained");
         if (isGrabbedOrRestrained && (movement !== "teleport")) this.movement[movement] = 0;
       }
     }
