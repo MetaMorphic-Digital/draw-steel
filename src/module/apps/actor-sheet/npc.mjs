@@ -221,10 +221,16 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       return;
     }
     const freeStrike = this.actor.system.freeStrike;
-    let content = `<h6>${game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
+
+    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
       value: freeStrike.value,
       type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? ""
-    })}</h6>`;
+    });
+    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
+
+    let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
+
     content += targets.map(a => {
       const checkboxInput = foundry.applications.fields.createCheckboxInput({name: a.uuid, value: true});
       const formGroup = foundry.applications.fields.createFormGroup({
