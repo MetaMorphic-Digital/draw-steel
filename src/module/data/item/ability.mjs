@@ -455,4 +455,22 @@ export default class AbilityModel extends BaseItemModel {
 
     return modifiers;
   }
+
+  /**
+   * Determine if an Active Effect or a status is restricting this ability.
+   * @returns {boolean}
+   */
+  get restricted() {
+    if (!this.actor) return false;
+
+    // Checking if active effects have restricted this type
+    const restrictions = this.actor.system.restrictions;
+    if (restrictions.type.has(this.type)) return true;
+    if (restrictions.dsid.has(this._dsid)) return true;
+
+    // Checking if statuses have restricted this type. In case the main condition isn't toggled, but the status is added to an effect
+    if (this.actor.statuses.has("dazed") && CONFIG.statusEffects.find(e => e.id === "dazed")?.restrictions.type.has(this.type)) return true;
+
+    return false;
+  }
 }

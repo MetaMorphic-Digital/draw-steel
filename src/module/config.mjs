@@ -122,7 +122,15 @@ preLocalize("damageTypes", {key: "label"});
 /**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
- * @type {Record<string, {img: string, name: string, rule: string, targeted? boolean, maxSources?: number, defaultSpeed?: number}>}
+ * @type {Record<string, {
+ *  img: string, 
+ *  name: string, 
+ *  rule: string, 
+ *  targeted? boolean, 
+ *  maxSources?: number, 
+ *  defaultSpeed?: number, 
+ *  restrictions?: Record<string, Set<string>>
+ * }>}
  */
 DRAW_STEEL.conditions = {
   bleeding: {
@@ -133,7 +141,10 @@ DRAW_STEEL.conditions = {
   dazed: {
     name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
-    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb",
+    restrictions: {
+      type: new Set(["freeManeuver", "triggered", "freeTriggered"])
+    }
   },
   frightened: {
     name: "DRAW_STEEL.Effect.Conditions.Frightened.name",

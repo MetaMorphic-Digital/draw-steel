@@ -83,8 +83,13 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     this.statuses = {
       slowed: {
-        speed: ds.CONFIG.conditions.slowed.defaultSpeed
+        speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed
       }
+    };
+
+    this.restrictions = {
+      type: new Set(),
+      dsid: new Set()
     };
   }
 
