@@ -157,7 +157,10 @@ DRAW_STEEL.conditions = {
     name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
     img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn",
-    targeted: true
+    targeted: true,
+    restrictions: {
+      dsid: new Set(["knockback"])
+    }
   },
   prone: {
     name: "DRAW_STEEL.Effect.Conditions.Prone.name",
@@ -167,7 +170,10 @@ DRAW_STEEL.conditions = {
   restrained: {
     name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
     img: "icons/svg/net.svg",
-    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj"
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj",
+    restrictions: {
+      dsid: new Set(["stand-up"])
+    }
   },
   slowed: {
     name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
