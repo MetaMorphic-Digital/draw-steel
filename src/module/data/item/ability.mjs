@@ -372,6 +372,8 @@ export default class AbilityModel extends BaseItemModel {
       options.modifiers.banes ??= 0;
       options.modifiers.edges ??= 0;
 
+      this.getActorModifiers(options);
+
       // Get the power rolls made per target, or if no targets, then just one power roll
       const powerRolls = await PowerRoll.prompt({
         type: "ability",
@@ -432,8 +434,11 @@ export default class AbilityModel extends BaseItemModel {
    * @param {Partial<AbilityUseOptions>} options Options for the dialog
    */
   getActorModifiers(options) {
-    if (!options.actor) return;
+    if (!this.actor) return;
     //TODO: CONDITION CHECKS
+
+    // Restrained conditions check
+    if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
   }
 
   /**
@@ -452,6 +457,12 @@ export default class AbilityModel extends BaseItemModel {
     // Frightened condition checks
     if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
     if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
+
+    // Grabbed condition check - targeting a non-source adds a bane
+    if (DrawSteelActiveEffect.isNotStatusSource(this.actor, target, "grabbed")) modifiers.banes += 1; 
+
+    // Restrained condition check - targetting restrained gets an edge
+    if (target.statuses.has("restrained")) modifiers.edges += 1;
 
     return modifiers;
   }
