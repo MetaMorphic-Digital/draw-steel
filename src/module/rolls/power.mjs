@@ -306,7 +306,7 @@ export class PowerRoll extends DSRoll {
 
     if (options.actor.statuses.has("weakened")) options.modifiers.banes += 1;
 
-    // Restrained might and agility tests take a bane
+    // Restrained condition - might and agility tests take a bane
     if(options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
   }
 }
