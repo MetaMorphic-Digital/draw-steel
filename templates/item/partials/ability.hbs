@@ -15,7 +15,7 @@
 </fieldset>
 {{/inline}}
 {{#if isPlay}}
-{{> "systems/draw-steel/templates/item/embeds/ability.hbs" tier1="true" tier2="true" tier3="true"}}
+{{> "systems/draw-steel/templates/item/embeds/ability.hbs"}}
 {{else}}
 {{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
