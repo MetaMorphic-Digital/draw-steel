@@ -16,6 +16,10 @@ You can also perform a manual install by downloading one of the .zip archives fr
 
 The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is under active construction but is the best place to find out information about the system's features.
 
+## System Discussion
+
+Check out the [MCDM Discord](https://mcdm.gg/discord) - under the ds_homebrew channel there is a post for discussion of the system!
+
 ## Community Contribution
 
 If you wish to contribute to development, please review [CONTRIBUTING.md](./CONTRIBUTING.md).
