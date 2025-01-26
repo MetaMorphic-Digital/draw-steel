@@ -6,5 +6,17 @@
 
 ## Installation Instructions
 
-This system intentionally does not have any releases yet and is not submitted to the Foundry package listing, it is still in the pre-alpha development stage. If you wish to contribute to development, please review [CONTRIBUTING.md](./CONTRIBUTING.md).
+This system is still in early development and is not listed in the official Foundry package listing, but is available through the repository's [Releases](https://github.com/MetaMorphic-Digital/draw-steel/releases) page. You can install the system by pasting the following URL into the **Install System** dialog on the Setup menu of the application.
+
+https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json
+
+You can also perform a manual install by downloading one of the .zip archives from the Releases page and extracting it into your foundry Data folder, under `Data/systems/draw-steel`.
+
+## Frequently Asked Questions
+
+The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is under active construction but is the best place to find out information about the system's features.
+
+## Community Contribution
+
+If you wish to contribute to development, please review [CONTRIBUTING.md](./CONTRIBUTING.md).
 
