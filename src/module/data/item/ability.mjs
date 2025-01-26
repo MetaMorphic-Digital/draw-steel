@@ -459,7 +459,7 @@ export default class AbilityModel extends BaseItemModel {
     if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     // Grabbed condition check - targeting a non-source adds a bane
-    if (DrawSteelActiveEffect.isNotStatusSource(this.actor, target, "grabbed")) modifiers.banes += 1; 
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "grabbed") === false) modifiers.banes += 1; 
 
     // Restrained condition check - targeting restrained gets an edge
     if (target.statuses.has("restrained")) modifiers.edges += 1;
