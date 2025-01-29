@@ -238,7 +238,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
-    return PowerRoll.prompt({type, formula, data, flavor, modifiers: {edges: options.edges, banes: options.banes}, actor: this.parent});
+    return PowerRoll.prompt({type, formula, data, flavor, modifiers: {edges: options.edges, banes: options.banes}, actor: this.parent, characteristic});
   }
 
   /**
