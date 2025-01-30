@@ -84,7 +84,7 @@ export default class KitModel extends BaseItemModel {
     const actor = this.parent.actor;
     const kits = actor.system.kits;
     const kitLimit = actor.system.class?.system.kits;
-    if (kits.length < kitLimit) return;
+    if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
     let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", {kit: this.parent.name})}</strong>`;
