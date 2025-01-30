@@ -66,6 +66,64 @@ export default class KitModel extends BaseItemModel {
   }
 
   /** @override */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    if (this.parent.actor) {
+      const swapKit = await this._kitSwapDialog();
+      if (swapKit === false) return false;
+    }
+  }
+
+  /**
+   * Prompt the user for which kit to replace when the actor is already at the maximum.
+   * @returns {Promise<void|false>}
+   */
+  async _kitSwapDialog() {
+    const actor = this.parent.actor;
+    const kits = actor.system.kits;
+    const kitLimit = actor.system.class?.system.kits;
+    if (kits.length < kitLimit) return;
+
+    // Generate the HTML for the dialog
+    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", {kit: this.parent.name})}</strong>`;
+    for (const kit of kits) {
+      radioButtons += `
+        <div class="form-group">
+          <label for="${kit.id}">${kit.name}</label>
+          <div class="form-fields">
+            <input type="radio" value="${kit.id}" name="kit" id="${kit.id}" ${(kits.length === 1 ? "checked" : "")}>
+          </div>
+        </div>
+      `;
+    }
+
+    /** @type {FormDataExtended | null} */
+    const fd = await foundry.applications.api.DialogV2.prompt({
+      content: radioButtons,
+      window: {
+        icon: "fa-solid fa-arrow-right-arrow-left",
+        title: "DRAW_STEEL.Item.Kit.Swap.Title"
+      },
+      position: {
+        width: 400
+      },
+      ok: {
+        label: "DRAW_STEEL.Item.Kit.Swap.Button",
+        icon: "fa-solid fa-arrow-right-arrow-left",
+        callback: (event, button, dialog) => {
+          return new FormDataExtended(button.form);
+        }
+      },
+      rejectClose: false
+    });
+    if (!fd?.object.kit) return false;
+
+    await actor.deleteEmbeddedDocuments("Item", [fd.object.kit]);
+  }
+
+  /** @override */
   getSheetContext(context) {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({value, label}));
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({value, label}))
