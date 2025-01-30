@@ -52,6 +52,8 @@ export default class ClassModel extends AdvancementModel {
 
     schema.recoveries = new fields.NumberField({required: true, nullable: false, initial: 8});
 
+    schema.kits = new fields.NumberField({required: true, initial: 1});
+
     // TODO: Potency
 
     return schema;
@@ -60,6 +62,7 @@ export default class ClassModel extends AdvancementModel {
   /** @override */
   getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
+    context.kitOptions = Array.fromRange(3).map(number => ({label: number, value: number}));
   }
 
   /** @override */
