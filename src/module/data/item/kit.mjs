@@ -70,7 +70,15 @@ export default class KitModel extends BaseItemModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    if (this.parent.actor) {
+    const actor = this.parent.actor;
+    if (actor) {
+      const actorClass = actor.system.class;
+      if (actorClass?.system.kits === 0) {
+        const message = game.i18n.format("DRAW_STEEL.Item.Kit.NotAllowedByClass", {class: actorClass.name});
+        ui.notifications.error(message);
+        return false;
+      }
+
       const swapKit = await this._kitSwapDialog();
       if (swapKit === false) return false;
     }
