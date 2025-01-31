@@ -318,6 +318,16 @@ export default class AbilityModel extends BaseItemModel {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
 
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
+
+    if (context.tab.id === "details") {
+      context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
+        cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
+        group: "powerRoll",
+        id: tier,
+        label
+      }));
+      context.subtab = context.subtabs.find(subtab => subtab.cssClass === "active");
+    }
   }
 
   /** @override */

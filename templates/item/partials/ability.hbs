@@ -1,46 +1,62 @@
+{{!-- Partial for potency configuration on a tiers effect --}}
 {{#*inline "potency"}}
-{{formGroup field.enabled name=(concat "system.powerRoll." tier "." index ".potency.enabled") value=potency.enabled}}
+{{formGroup fields.enabled name=(concat fieldPath "potency.enabled") value=potency.enabled}}
 {{#if potency.enabled}}
-{{formGroup field.characteristic name=(concat "system.powerRoll." tier "." index ".potency.characteristic") value=effect.potency.characteristic options=@root.characteristics}}
-{{formGroup field.value name=(concat "system.powerRoll." tier "." index ".potency.value") value=potency.value placeholder=field.value.initial}}
+{{formGroup fields.characteristic name=(concat fieldPath "potency.characteristic") value=potency.characteristic options=@root.characteristics}}
+{{formGroup fields.value name=(concat fieldPath "potency.value") value=potency.value placeholder=fields.value.initial}}
 {{/if}}
 {{/inline}}
 
+{{!-- Partial for tier damage effects --}}
+{{#*inline "damage"}}
+{{formGroup fields.types name=(concat fieldPath "types") value=effect.types options=@root.damageTypes blank=""}}
+{{formGroup fields.value name=(concat fieldPath "value") value=effect.value }}
+{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
+{{/inline}}
+
+{{!-- Partial for tier AE effects --}}
+{{#*inline "ae"}}
+{{> potency fields=fields.potency.fields value=effect.potency name=name potency=effect.potency}}
+{{#if effect.potency.enabled}}
+{{formGroup fields.success name=(concat fieldPath "success") value=effect.success options=@root.appliedEffects}}
+{{formGroup fields.failure name=(concat fieldPath "failure") value=effect.failure options=@root.appliedEffects}}
+{{else}}
+{{formGroup fields.always name=(concat fieldPath "always") value=effect.always options=@root.appliedEffects}}
+{{/if}}
+{{/inline}}
+
+{{!-- Partial for tier forced movement effects --}}
+{{#*inline "forced"}}
+{{formGroup fields.types name=(concat fieldPath "types") value=effect.types}}
+{{formGroup fields.value name=(concat fieldPath "value") value=effect.value}}
+{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
+{{/inline}}
+
+{{!-- Partial for tier other/bespoke effects --}}
+{{#*inline "other"}}
+{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
+{{/inline}}
+
 {{#*inline "powerRoll"}}
-<fieldset>
+<fieldset class="tab {{ifThen (eq field.name subtab.id) "active" "" }}" data-group="powerRoll" data-tab="{{field.name}}">
   <legend>{{field.label}}</legend>
-  <span class="add-tier-effect" data-tier="{{field.name}}">Add Effect</span>
+  <span class="add-tier-effect" data-tier="{{field.name}}">{{localize "DRAW_STEEL.Item.Ability.AddTierEffect"}}</span>
   {{#each value as |effect|}}
   <div class="power-roll-effect">
-    <span class="delete-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}">Delete Effect</span>
+    <span class="delete-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}">{{localize "DRAW_STEEL.Item.Ability.RemoveTierEffect"}}</span>
     {{!-- effectFields will be equal to the fields under that effect type --}}
     {{#with (lookup (lookup ../field.element.types effect.type) "fields") as |effectFields|}}
     {{!-- The type selection will be shown on all effect types --}}
     {{formGroup effectFields.type name=(concat "system.powerRoll." ../../field.name "." @index ".type") value=effect.type options=@root.powerRollEffectOptions}}
-    {{#if (eq effect.type "damage")}}
-    {{formGroup effectFields.types name=(concat "system.powerRoll." ../../field.name "." @index ".types") value=effect.types options=@root.damageTypes blank=""}}
-    {{formGroup effectFields.value name=(concat "system.powerRoll." ../../field.name "." @index ".value") value=effect.value }}
-    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
-    {{else if (eq effect.type "ae")}}
-    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
-    {{#if effect.potency.enabled}}
-    {{formGroup effectFields.success name=(concat "system.powerRoll." ../../field.name "." @index ".success") value=effect.success options=@root.appliedEffects}}
-    {{formGroup effectFields.failure name=(concat "system.powerRoll." ../../field.name "." @index ".failure") value=effect.failure options=@root.appliedEffects}}
-    {{else}}
-    {{formGroup effectFields.always name=(concat "system.powerRoll." ../../field.name "." @index ".always") value=effect.always options=@root.appliedEffects}}
-    {{/if}}
-    {{else if (eq effect.type "forced")}}
-    {{formGroup effectFields.types name=(concat "system.powerRoll." ../../field.name "." @index ".types") value=effect.types}}
-    {{formGroup effectFields.value name=(concat "system.powerRoll." ../../field.name "." @index ".value") value=effect.value}}
-    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
-    {{/if}}
+
+    {{!-- Dynamically access the relevant partial based on effect type --}}
+    {{> (lookup effect "type") fieldPath=(concat "system.powerRoll." ../../field.name "." @index ".") fields=effectFields effect=effect}}
+
     {{!-- The display field will be shown on all effect types --}}
     {{formGroup effectFields.display name=(concat "system.powerRoll." ../../field.name "." @index ".display") value=effect.display}}
     {{/with}}
   </div>
   {{/each}}
-  {{!-- {{formGroup field.fields.description value=value.description}} --}}
-  {{!-- TODO: Forced Movement --}}
 </fieldset>
 {{/inline}}
 {{#if isPlay}}
@@ -82,6 +98,7 @@
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
 {{formGroup systemFields.powerRoll.fields.potencyCharacteristic value=system.powerRoll.potencyCharacteristic options=characteristics blank=""}}
+{{> "templates/generic/tab-navigation.hbs" tabs=subtabs}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}

@@ -122,6 +122,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       config: ds.CONFIG,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
+      tabGroups: this.tabGroups,
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
@@ -318,7 +319,6 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       for (const button of deleteEffectButtons) {
         button.addEventListener("click", async (event) => {
           const {tier, index} = event.target.dataset;
-          console.log(tier, index);
           const updateData = foundry.utils.duplicate(this.item.system.powerRoll[tier]);
           updateData.splice(index, 1);
 
