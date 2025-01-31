@@ -54,32 +54,53 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.NumberField({integer: true})
     });
 
-    const powerRollSchema = ({initialPotency} = {}) => ({
-      damage: new fields.SchemaField({
-        value: new FormulaField(),
-        type: new fields.StringField({required: true})
-      }),
-      ae: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
-      potency: new fields.SchemaField({
-        enabled: new fields.BooleanField(),
-        value: new FormulaField({deterministic: true, initial: initialPotency, blank: false})
-      }),
-      forced: new fields.SchemaField({
-        type: new fields.StringField({choices: config.forcedMovement, blank: false}),
-        value: new fields.NumberField(),
-        vertical: new fields.BooleanField()
-      }),
-      description: new fields.StringField({required: true})
+    const potencySchema = (initialPotency) => ({
+      enabled: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label"}),
+      characteristic: new fields.StringField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label"}),
+      value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
     });
+
+    const powerRollSchema = ({initialPotency}) => {
+      return new fields.TypedSchemaField({
+        damage: new fields.SchemaField({
+          type: new fields.StringField({required: true, initial: "damage", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
+          value: new FormulaField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.value.label"}),
+          types: new fields.SetField(new fields.StringField({required: true}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.types.label"}),
+          potency: new fields.SchemaField(potencySchema(initialPotency)),
+          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
+        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.label"}),
+        ae: new fields.SchemaField({
+          type: new fields.StringField({required: true, initial: "ae", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
+          always: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.always.label"}),
+          success: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.success.label"}),
+          failure: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.failure.label"}),
+          potency: new fields.SchemaField(potencySchema(initialPotency)),
+          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
+        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.label"}),
+        forced: new fields.SchemaField({
+          type: new fields.StringField({required: true, initial: "forced", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
+          types: new fields.SetField(new fields.StringField({choices: config.forcedMovement, blank: false}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.types.label"}),
+          value: new fields.NumberField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.value.label"}),
+          vertical: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.verical.label"}),
+          potency: new fields.SchemaField(potencySchema(initialPotency)),
+          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
+        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.label"}),
+        other: new fields.SchemaField({
+          type: new fields.StringField({required: true, initial: "other", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
+          potency: new fields.SchemaField(potencySchema(initialPotency)),
+          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
+        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.other.label"})
+      });
+    };
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
       formula: new FormulaField({blank: false, initial: "@chr"}),
       characteristics: new fields.SetField(setOptions()),
       potencyCharacteristic: new fields.StringField(),
-      tier1: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.weak"})),
-      tier2: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.average"})),
-      tier3: new fields.SchemaField(powerRollSchema({initialPotency: "@potency.strong"}))
+      tier1: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.weak"})),
+      tier2: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.average"})),
+      tier3: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.strong"}))
     });
     schema.effect = new fields.StringField({required: true});
     schema.spend = new fields.SchemaField({
@@ -269,6 +290,8 @@ export default class AbilityModel extends BaseItemModel {
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
+
+    context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
   }
 
   /** @override */
