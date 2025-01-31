@@ -1,16 +1,45 @@
+{{#*inline "potency"}}
+{{formGroup field.enabled name=(concat "system.powerRoll." tier "." index ".potency.enabled") value=potency.enabled localize=true}}
+{{#if potency.enabled}}
+{{formGroup field.characteristic name=(concat "system.powerRoll." tier "." index ".potency.characteristic") value=effect.potency.characteristic options=@root.characteristics localize=true}}
+{{formGroup field.value name=(concat "system.powerRoll." tier "." index ".potency.value") value=potency.value placeholder=field.value.initial localize=true}}
+{{/if}}
+{{/inline}}
+
 {{#*inline "powerRoll"}}
 <fieldset>
   <legend>{{field.label}}</legend>
-  {{formGroup field.fields.damage.fields.value value=value.damage.value}}
-  {{formGroup field.fields.damage.fields.type value=value.damage.type options=damageTypes blank=""}}
-  {{formGroup field.fields.ae value=value.ae options=appliedEffects}}
-  {{#if @root.system.powerRoll.potencyCharacteristic}}
-  {{formGroup field.fields.potency.fields.enabled value=value.potency.enabled}}
-  {{#if value.potency.enabled}}
-  {{formGroup field.fields.potency.fields.value value=value.potency.value placeholder=field.fields.potency.fields.value.initial}}
-  {{/if}}
-  {{/if}}
-  {{formGroup field.fields.description value=value.description}}
+  <span class="add-tier-effect" data-tier="{{field.name}}">Add Effect</span>
+  {{#each value as |effect|}}
+  <div class="power-roll-effect">
+    <span class="delete-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}">Delete Effect</span>
+    {{!-- effectFields will be equal to the fields under that effect type --}}
+    {{#with (lookup (lookup ../field.element.types effect.type) "fields") as |effectFields|}}
+    {{!-- The type selection will be shown on all effect types --}}
+    {{formGroup effectFields.type name=(concat "system.powerRoll." ../../field.name "." @index ".type") value=effect.type localize=true options=@root.powerRollEffectOptions}}
+    {{#if (eq effect.type "damage")}}
+    {{formGroup effectFields.types name=(concat "system.powerRoll." ../../field.name "." @index ".types") value=effect.types options=@root.damageTypes blank="" localize=true}}
+    {{formGroup effectFields.value name=(concat "system.powerRoll." ../../field.name "." @index ".value") value=effect.value localize=true}}
+    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
+    {{else if (eq effect.type "ae")}}
+    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
+    {{#if effect.potency.enabled}}
+    {{formGroup effectFields.success name=(concat "system.powerRoll." ../../field.name "." @index ".success") value=effect.success options=@root.appliedEffects localize=true}}
+    {{formGroup effectFields.failure name=(concat "system.powerRoll." ../../field.name "." @index ".failure") value=effect.failure options=@root.appliedEffects localize=true}}
+    {{else}}
+    {{formGroup effectFields.always name=(concat "system.powerRoll." ../../field.name "." @index ".always") value=effect.always options=@root.appliedEffects localize=true}}
+    {{/if}}
+    {{else if (eq effect.type "forced")}}
+    {{formGroup effectFields.types name=(concat "system.powerRoll." ../../field.name "." @index ".types") value=effect.types localize=true}}
+    {{formGroup effectFields.value name=(concat "system.powerRoll." ../../field.name "." @index ".value") value=effect.value localize=true}}
+    {{> potency field=effectFields.potency.fields value=effect.potency tier=../../field.name index=@index potency=effect.potency}}
+    {{/if}}
+    {{!-- The display field will be shown on all effect types --}}
+    {{formGroup effectFields.display name=(concat "system.powerRoll." ../../field.name "." @index ".display") value=effect.display localize=true}}
+    {{/with}}
+  </div>
+  {{/each}}
+  {{!-- {{formGroup field.fields.description value=value.description}} --}}
   {{!-- TODO: Forced Movement --}}
 </fieldset>
 {{/inline}}
