@@ -54,43 +54,69 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.NumberField({integer: true})
     });
 
-    const potencySchema = (initialPotency) => ({
-      enabled: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label"}),
-      characteristic: new fields.StringField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label"}),
-      value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
-    });
+    const potencySchema = (initialPotency) => {
+      const schema = {
+        enabled: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label"}),
+        characteristic: new fields.StringField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label"}),
+        value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
+      };
+
+      Object.entries(schema).forEach(([field, fieldSchema]) => fieldSchema.label = game.i18n.localize(`DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.${field}.label`));
+
+      return schema;
+    };
 
     const powerRollSchema = ({initialPotency}) => {
-      return new fields.TypedSchemaField({
+      const schema = new fields.TypedSchemaField({
         damage: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "damage", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
-          value: new FormulaField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.value.label"}),
-          types: new fields.SetField(new fields.StringField({required: true}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.types.label"}),
+          type: new fields.StringField({required: true, initial: "damage", blank: false}),
+          value: new FormulaField(),
+          types: new fields.SetField(new fields.StringField({required: true})),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
-        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.damage.label"}),
+          display: new fields.StringField({required: true})
+        }),
         ae: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "ae", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
-          always: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.always.label"}),
-          success: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.success.label"}),
-          failure: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.failure.label"}),
+          type: new fields.StringField({required: true, initial: "ae", blank: false}),
+          always: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
+          success: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
+          failure: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
-        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.ae.label"}),
+          display: new fields.StringField({required: true})
+        }),
         forced: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "forced", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
-          types: new fields.SetField(new fields.StringField({choices: config.forcedMovement, blank: false}), {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.types.label"}),
-          value: new fields.NumberField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.value.label"}),
-          vertical: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.verical.label"}),
+          type: new fields.StringField({required: true, initial: "forced", blank: false}),
+          types: new fields.SetField(new fields.StringField({choices: config.forcedMovement, blank: false})),
+          value: new fields.NumberField(),
+          vertical: new fields.BooleanField(),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
-        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.forced.label"}),
+          display: new fields.StringField({required: true})
+        }),
         other: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "other", blank: false, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.type.label"}),
+          type: new fields.StringField({required: true, initial: "other", blank: false}),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.display.label"})
-        }, {label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.other.label"})
+          display: new fields.StringField({required: true})
+        })
       });
+
+      const baseLabel = "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier";
+      Object.entries(schema.types).forEach(([type, typeSchema]) => {
+        schema.types[type].label = game.i18n.localize(`${baseLabel}.${type}.label`);
+        Object.entries(typeSchema.fields).forEach(([field, fieldSchema]) => {
+
+          switch (field) {
+            case "potency":
+            case "type":
+            case "display":
+              fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
+              break;
+            default:
+              fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
+              break;
+          }
+        });
+      });
+
+      return schema;
     };
 
     schema.powerRoll = new fields.SchemaField({
