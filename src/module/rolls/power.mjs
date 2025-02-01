@@ -147,21 +147,21 @@ export class PowerRoll extends DSRoll {
       }, {});
     }
 
-    const rollContexts = await PowerRollDialog.prompt({
+    const promptValue = await PowerRollDialog.prompt({
       context,
       window: {
         title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
       }
     });
 
-    if (!rollContexts) return null;
+    if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {baseRoll: true});
+    const baseRoll = new this(formula, options.data, {baseRoll: true, damageSelection: promptValue.damage});
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
     const rolls = [baseRoll];
-    for (const context of rollContexts) {
+    for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
       const roll = new this(formula, options.data, {flavor, ...context});
       roll.terms[0] = baseRoll.terms[0];

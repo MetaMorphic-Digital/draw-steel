@@ -329,6 +329,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
 
+    // Add the data for subtabs for the power roll tiers
     if (context.tab?.id === "details") {
       context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
         cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
@@ -481,11 +482,15 @@ export default class AbilityModel extends BaseItemModel {
         }
         const tier = this.powerRoll[`tier${tierNumber}`];
 
-        // TODO: Add damage choice to power roll dialog. Currently just pulling the first value or an empty string
         const damageEffects = tier.filter(effect => effect.type === "damage");
         if (damageEffects.length) {
           for (const damageEffect of damageEffects) {
-            const damageType = ds.CONFIG.damageTypes[damageEffect.types.first()]?.label ?? damageEffect.types.first() ?? "";
+            // If the damage types is only 1, get the only value. If it's multiple, set the type to the returned value from the dialog.
+            let damageKey = "";
+            if (damageEffect.types.size === 1) damageKey = damageEffect.types.first();
+            else if (damageEffect.types.size > 1) damageKey = baseRoll.options.damageSelection;
+            console.log(damageKey, damageEffect.types, baseRoll.options);
+            const damageType = ds.CONFIG.damageTypes[damageKey]?.label ?? damageKey ?? "";
             const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
             const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
             await damageRoll.evaluate();
