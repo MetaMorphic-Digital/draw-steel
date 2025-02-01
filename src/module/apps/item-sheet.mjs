@@ -304,25 +304,16 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 
-    // Add a power roll effect for a given tier
+    // Add or delete a power roll tier effect
     if ((this.item.type === "ability") && (partId === "details")) {
-      const addEffectButtons = htmlElement.querySelectorAll(".add-tier-effect");
-      for (const button of addEffectButtons) {
+      const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
+      for (const button of modifyEffectButtons) {
         button.addEventListener("click", async (event) => {
-          const tier = event.target.dataset.tier;
+          const {tier, operation, index} = event.target.dataset;
           const current = foundry.utils.duplicate(this.item.system._source.powerRoll[tier]);
-          const updated = [...current, {type: "damage"}];
-          await this.item.update({[`system.powerRoll.${tier}`]: updated});
-        });
-      }
-
-      // Delete a power roll effect for a given tier
-      const deleteEffectButtons = htmlElement.querySelectorAll(".delete-tier-effect");
-      for (const button of deleteEffectButtons) {
-        button.addEventListener("click", async (event) => {
-          const {tier, index} = event.target.dataset;
-          const updateData = foundry.utils.duplicate(this.item.system._source.powerRoll[tier]);
-          updateData.splice(index, 1);
+          let updateData = current;
+          if (operation === "add") updateData = [...current, {type: "damage"}];
+          else if (operation === "delete") updateData.splice(index, 1);
 
           await this.item.update({[`system.powerRoll.${tier}`]: updateData});
         });

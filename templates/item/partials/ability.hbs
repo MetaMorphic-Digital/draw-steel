@@ -40,10 +40,14 @@
 {{#*inline "powerRoll"}}
 <fieldset class="tab {{ifThen (eq field.name subtab.id) "active" "" }}" data-group="powerRoll" data-tab="{{field.name}}">
   <legend>{{field.label}}</legend>
-  <span class="add-tier-effect" data-tier="{{field.name}}">{{localize "DRAW_STEEL.Item.Ability.AddTierEffect"}}</span>
+  <div>
+    <button class="modify-tier-effect" data-tier="{{field.name}}" data-operation="add">
+      <i class="fa-solid fa-plus"></i>
+      {{localize "DRAW_STEEL.Item.Ability.AddTierEffect"}}
+    </button>
+  </div>
   {{#each value as |effect|}}
   <div class="power-roll-effect">
-    <span class="delete-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}">{{localize "DRAW_STEEL.Item.Ability.RemoveTierEffect"}}</span>
     {{!-- effectFields will be equal to the fields under that effect type --}}
     {{#with (lookup (lookup ../field.element.types effect.type) "fields") as |effectFields|}}
     {{!-- The type selection will be shown on all effect types --}}
@@ -55,6 +59,12 @@
     {{!-- The display field will be shown on all effect types --}}
     {{formGroup effectFields.display name=(concat "system.powerRoll." ../../field.name "." @index ".display") value=effect.display}}
     {{/with}}
+    <div>
+      <button class="modify-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}" data-operation="delete">
+        <i class="fa-solid fa-trash-can"></i>
+        {{localize "DRAW_STEEL.Item.Ability.RemoveTierEffect"}}
+      </button>
+    </div>
   </div>
   {{/each}}
 </fieldset>
