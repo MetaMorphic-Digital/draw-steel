@@ -151,7 +151,8 @@ export default class AbilityModel extends BaseItemModel {
    */
   preparePostActorPrepData() {
     for (const tier of PowerRoll.TIER_NAMES) {
-      for (const effect of this.powerRoll[tier]) {
+      const effects = this.powerRoll[tier];
+      for (const effect of effects) {
 
         // Replace {{damage}} with derived damage formula. Allows for showing damage with kit damage included
         if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);
