@@ -151,29 +151,27 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     if (this.actor?.type === "character") this._prepareCharacterData();
-
-    // replace {{damage}} in power roll tier effect displays with derived values
-    for (const tier of PowerRoll.TIER_NAMES) {
-      const effects = this.powerRoll[tier];
-      for (const effect of effects) {
-        if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);        
-      }
-    }
   }
 
   /**
-   * Apply actor potency data to power roll tier effects
-   * Replaces {{potency}} in power roll tier effects with derived value
+   * Prepare derived data available post actor data prep
    */
-  preparePotencyDerivedData() {
+  preparePostActorPrepData() {
     for (const tier of PowerRoll.TIER_NAMES) {
       const effects = this.powerRoll[tier];
       for (const effect of effects) {
+
+        // Replace {{damage}} with derived damage formula. Allows for showing damage with kit damage included
+        if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);
+
+        // Replace {{potency}} with appropriate string (i.e. M < 1)
         if (effect.potency.enabled && effect.display.includes("{{potency}}")) {
           const newValue = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
           effect.display = effect.display.replaceAll("{{potency}}", newValue);
         }
       }
+
+      effects.display = effects.map(effect => effect.display).join("; ");
     }
   }
 
@@ -284,10 +282,6 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
-    context.descriptions = PowerRoll.TIER_NAMES.reduce((accumulator, tier) => {
-      accumulator[tier] = this.powerRoll[tier].map(effect => effect.display).join("; ");
-      return accumulator;
-    }, {});
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
