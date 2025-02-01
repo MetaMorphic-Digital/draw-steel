@@ -136,6 +136,9 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.weak += highestCharacteristic - 2;
     this.potency.average += highestCharacteristic - 1;
     this.potency.strong += highestCharacteristic;
+
+    // prepare ability potency embeds after potency data is available on the actor
+    this.parent.items.filter(item => item.type === "ability").forEach(ability => ability.system.preparePotencyDerivedData());
   }
 
   /** @override */

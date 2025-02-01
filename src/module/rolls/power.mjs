@@ -279,17 +279,6 @@ export class PowerRoll extends DSRoll {
     };
 
     if (this.options.target) context.target = await fromUuid(this.options.target);
-    if (this.options.ability) {
-      context.ability = await fromUuid(this.options.ability);
-      const abilityPotency = context.ability.system.getPotencyData(this.tier);
-      
-      if (abilityPotency.enabled) {
-        context.potency = {...abilityPotency};
-        if (context.target) {
-          context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
-        }
-      }
-    }
 
     context.baseRoll = this.options.baseRoll ?? false;
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
@@ -307,6 +296,6 @@ export class PowerRoll extends DSRoll {
     if (options.actor.statuses.has("weakened")) options.modifiers.banes += 1;
 
     // Restrained condition - might and agility tests take a bane
-    if(options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
+    if (options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
   }
 }

@@ -151,6 +151,30 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     if (this.actor?.type === "character") this._prepareCharacterData();
+
+    // replace {{damage}} in power roll tier effect displays with derived values
+    for (const tier of PowerRoll.TIER_NAMES) {
+      const effects = this.powerRoll[tier];
+      for (const effect of effects) {
+        if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);        
+      }
+    }
+  }
+
+  /**
+   * Apply actor potency data to power roll tier effects
+   * Replaces {{potency}} in power roll tier effects with derived value
+   */
+  preparePotencyDerivedData() {
+    for (const tier of PowerRoll.TIER_NAMES) {
+      const effects = this.powerRoll[tier];
+      for (const effect of effects) {
+        if (effect.potency.enabled && effect.display.includes("{{potency}}")) {
+          const newValue = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
+          effect.display = effect.display.replaceAll("{{potency}}", newValue);
+        }
+      }
+    }
   }
 
   /**
@@ -222,29 +246,15 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
-   * Generate the potency data for a given tier.
-   *
-   * @param {string} tierName The name of the tier to pull from the power roll
-   * @returns {Partial<PotencyData>}
+   * Convert a tier effects potency data to an embed string (i.e. M<2)
+   * @param {object} potencyData
+   * @returns {string}
    */
-  getPotencyData(tierName) {
-    const potency = this.powerRoll[tierName].potency;
-    const potencyData = {
-      enabled: potency.enabled && !!this.powerRoll.potencyCharacteristic
-    };
-
-    // If potency is not enabled or there is no potency value return early
-    if (!potencyData.enabled && !potency.value) return potencyData;
-
-    const potencyValue = new DSRoll(potency.value, this.parent.getRollData()).evaluateSync().total;
-    potencyData.characteristic = this.powerRoll.potencyCharacteristic;
-    potencyData.value = potencyValue;
-    potencyData.embed = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+  toPotencyEmbed(potencyData) {
+    return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
-      value: potencyValue
+      value: new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total
     });
-
-    return potencyData;
   }
 
   /**
@@ -274,6 +284,10 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
+    context.descriptions = PowerRoll.TIER_NAMES.reduce((accumulator, tier) => {
+      accumulator[tier] = this.powerRoll[tier].map(effect => effect.display).join("; ");
+      return accumulator;
+    }, {});
     this.getSheetContext(context);
     const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
@@ -315,7 +329,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
 
-    if (context.tab.id === "details") {
+    if (context.tab?.id === "details") {
       context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
         cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
         group: "powerRoll",
@@ -466,13 +480,17 @@ export default class AbilityModel extends BaseItemModel {
           messageDataCopy.rolls.push(powerRoll);
         }
         const tier = this.powerRoll[`tier${tierNumber}`];
-        const damageFormula = tier.damage.value;
-        if (damageFormula) {
-          const damageType = ds.CONFIG.damageTypes[tier.damage.type]?.label ?? tier.damage.type;
-          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
-          const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
-          await damageRoll.evaluate();
-          messageDataCopy.rolls.push(damageRoll);
+
+        // TODO: Add damage choice to power roll dialog. Currently just pulling the first value or an empty string
+        const damageEffects = tier.filter(effect => effect.type === "damage");
+        if (damageEffects.length) {
+          for (const damageEffect of damageEffects) {
+            const damageType = ds.CONFIG.damageTypes[damageEffect.types.first()]?.label ?? damageEffect.types.first() ?? "";
+            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
+            const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
+            await damageRoll.evaluate();
+            messageDataCopy.rolls.push(damageRoll);
+          }
         }
         if (messages.length > 0) messageDataCopy.system.embedText = false;
 
