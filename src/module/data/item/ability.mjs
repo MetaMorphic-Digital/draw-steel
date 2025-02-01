@@ -197,26 +197,22 @@ export default class AbilityModel extends BaseItemModel {
         case "special":
           break;
       }
-      // All three tier.damage.value fields should be identical, so their apply change should be identical
-      const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "value"]);
+
       if (this.keywords.has("weapon")) {
         const isMelee = this.keywords.has("melee");
         const isRanged = this.keywords.has("ranged");
         const prefMelee = this.damageDisplay === "melee";
-        if (isMelee && (prefMelee || !isRanged)) {
+        const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
+
+        if (distance) {
+          // All three tier.damage.value fields should be identical, so their apply change should be identical
+          const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "value"]);
           for (const tier of PowerRoll.TIER_NAMES) {
-            if (!bonuses.melee?.damage?.[tier]) continue;
-            this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-              value: bonuses.melee?.damage?.[tier],
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD
-            });
-          }
-        }
-        else if (isRanged) {
-          for (const tier of PowerRoll.TIER_NAMES) {
-            if (!bonuses.ranged?.damage?.[tier]) continue;
-            this.powerRoll[tier].damage.value = formulaField.applyChange(this.powerRoll[tier].damage.value, this, {
-              value: bonuses.ranged?.damage?.[tier],
+            const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
+            if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;
+
+            firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
+              value: bonuses[distance].damage[tier],
               mode: CONST.ACTIVE_EFFECT_MODES.ADD
             });
           }
