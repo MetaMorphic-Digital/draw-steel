@@ -304,6 +304,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 
+    // Add a power roll effect for a given tier
     if ((this.item.type === "ability") && (partId === "details")) {
       const addEffectButtons = htmlElement.querySelectorAll(".add-tier-effect");
       for (const button of addEffectButtons) {
@@ -315,6 +316,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         });
       }
 
+      // Delete a power roll effect for a given tier
       const deleteEffectButtons = htmlElement.querySelectorAll(".delete-tier-effect");
       for (const button of deleteEffectButtons) {
         button.addEventListener("click", async (event) => {

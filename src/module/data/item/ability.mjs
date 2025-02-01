@@ -61,6 +61,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
       };
 
+      // Localize potencySchema
       Object.entries(schema).forEach(([field, fieldSchema]) => fieldSchema.label = game.i18n.localize(`DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.${field}.label`));
 
       return schema;
@@ -98,21 +99,13 @@ export default class AbilityModel extends BaseItemModel {
         })
       });
 
+      // Localize powerRollSchema
       const baseLabel = "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier";
       Object.entries(schema.types).forEach(([type, typeSchema]) => {
         schema.types[type].label = game.i18n.localize(`${baseLabel}.${type}.label`);
         Object.entries(typeSchema.fields).forEach(([field, fieldSchema]) => {
-
-          switch (field) {
-            case "potency":
-            case "type":
-            case "display":
-              fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
-              break;
-            default:
-              fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
-              break;
-          }
+          if (["type", "display"].includes(field)) fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
+          else fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
         });
       });
 
@@ -158,16 +151,15 @@ export default class AbilityModel extends BaseItemModel {
    */
   preparePostActorPrepData() {
     for (const tier of PowerRoll.TIER_NAMES) {
-      const effects = this.powerRoll[tier];
-      for (const effect of effects) {
+      for (const effect of this.powerRoll[tier]) {
 
         // Replace {{damage}} with derived damage formula. Allows for showing damage with kit damage included
         if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);
 
         // Replace {{potency}} with appropriate string (i.e. M < 1)
         if (effect.potency.enabled && effect.display.includes("{{potency}}")) {
-          const newValue = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
-          effect.display = effect.display.replaceAll("{{potency}}", newValue);
+          const potencyEmbed = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
+          effect.display = effect.display.replaceAll("{{potency}}", potencyEmbed);
         }
       }
 
@@ -244,9 +236,9 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
-   * Convert a tier effects potency data to an embed string (i.e. M<2)
+   * Convert a tier effects potency data to an embed string (i.e. M < 2)
    * @param {object} potencyData
-   * @returns {string}
+   * @returns {string} The potency embed string (i.e. M < 2)
    */
   toPotencyEmbed(potencyData) {
     return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
@@ -479,11 +471,10 @@ export default class AbilityModel extends BaseItemModel {
         const damageEffects = tier.filter(effect => effect.type === "damage");
         if (damageEffects.length) {
           for (const damageEffect of damageEffects) {
-            // If the damage types is only 1, get the only value. If it's multiple, set the type to the returned value from the dialog.
+            // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
             let damageKey = "";
             if (damageEffect.types.size === 1) damageKey = damageEffect.types.first();
             else if (damageEffect.types.size > 1) damageKey = baseRoll.options.damageSelection;
-            console.log(damageKey, damageEffect.types, baseRoll.options);
             const damageType = ds.CONFIG.damageTypes[damageKey]?.label ?? damageKey ?? "";
             const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
             const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
