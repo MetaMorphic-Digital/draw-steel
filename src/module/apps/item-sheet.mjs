@@ -309,7 +309,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       for (const button of addEffectButtons) {
         button.addEventListener("click", async (event) => {
           const tier = event.target.dataset.tier;
-          const current = foundry.utils.duplicate(this.item.system.powerRoll[tier]);
+          const current = foundry.utils.duplicate(this.item.system._source.powerRoll[tier]);
           const updated = [...current, {type: "damage"}];
           await this.item.update({[`system.powerRoll.${tier}`]: updated});
         });
@@ -319,7 +319,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       for (const button of deleteEffectButtons) {
         button.addEventListener("click", async (event) => {
           const {tier, index} = event.target.dataset;
-          const updateData = foundry.utils.duplicate(this.item.system.powerRoll[tier]);
+          const updateData = foundry.utils.duplicate(this.item.system._source.powerRoll[tier]);
           updateData.splice(index, 1);
 
           await this.item.update({[`system.powerRoll.${tier}`]: updateData});
