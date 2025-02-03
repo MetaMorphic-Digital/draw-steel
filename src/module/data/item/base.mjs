@@ -74,6 +74,14 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   async getSheetContext(context) {}
 
   /**
+   * Attach type-specific event listeners to details tab of the Item sheet.
+   * @param {HTMLElement} htmlElement             The rendered HTML element for the part
+   * @param {ApplicationRenderOptions} options    Rendering options passed to the render method
+   * @protected
+   */
+  _attachPartListeners(htmlElement, options) {}
+
+  /**
    * Perform item subtype specific modifications to the actor roll data
    * @param {object} rollData   Pointer to the roll data object
    */

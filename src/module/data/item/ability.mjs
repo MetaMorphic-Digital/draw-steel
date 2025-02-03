@@ -61,7 +61,7 @@ export default class AbilityModel extends BaseItemModel {
         value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
       };
 
-      // Localize potencySchema
+      // Localize potencySchema - TODO: Update in V13 onces arrays localize inner fields
       Object.entries(schema).forEach(([field, fieldSchema]) => fieldSchema.label = game.i18n.localize(`DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.${field}.label`));
 
       return schema;
@@ -99,7 +99,7 @@ export default class AbilityModel extends BaseItemModel {
         })
       });
 
-      // Localize powerRollSchema
+      // Localize powerRollSchema - TODO: Update in V13 onces arrays localize inner fields
       const baseLabel = "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier";
       Object.entries(schema.types).forEach(([type, typeSchema]) => {
         schema.types[type].label = game.i18n.localize(`${baseLabel}.${type}.label`);
@@ -155,10 +155,10 @@ export default class AbilityModel extends BaseItemModel {
       for (const effect of effects) {
 
         // Replace {{damage}} with derived damage formula. Allows for showing damage with kit damage included
-        if ((effect.type === "damage") && effect.display.includes("{{damage}}")) effect.display = effect.display.replaceAll("{{damage}}", effect.value);
+        if (effect.type === "damage") effect.display = effect.display.replaceAll("{{damage}}", effect.value);
 
         // Replace {{potency}} with appropriate string (i.e. M < 1)
-        if (effect.potency.enabled && effect.display.includes("{{potency}}")) {
+        if (effect.potency.enabled) {
           const potencyEmbed = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
           effect.display = effect.display.replaceAll("{{potency}}", potencyEmbed);
         }
@@ -325,6 +325,23 @@ export default class AbilityModel extends BaseItemModel {
         label
       }));
       context.subtab = context.subtabs.find(subtab => subtab.cssClass === "active");
+    }
+  }
+
+  /** @override */
+  _attachPartListeners(htmlElement, options) {
+    // Add or delete a power roll tier effect
+    const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
+    for (const button of modifyEffectButtons) {
+      button.addEventListener("click", async (event) => {
+        const {tier, operation, index} = event.target.dataset;
+        const current = foundry.utils.duplicate(this._source.powerRoll[tier]);
+        let updateData = current;
+        if (operation === "add") updateData = [...current, {type: "damage"}];
+        else if (operation === "delete") updateData.splice(index, 1);
+
+        await this.parent.update({[`system.powerRoll.${tier}`]: updateData});
+      });
     }
   }
 

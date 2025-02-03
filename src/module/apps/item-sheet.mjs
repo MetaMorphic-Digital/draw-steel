@@ -304,21 +304,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 
-    // Add or delete a power roll tier effect
-    if ((this.item.type === "ability") && (partId === "details")) {
-      const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
-      for (const button of modifyEffectButtons) {
-        button.addEventListener("click", async (event) => {
-          const {tier, operation, index} = event.target.dataset;
-          const current = foundry.utils.duplicate(this.item.system._source.powerRoll[tier]);
-          let updateData = current;
-          if (operation === "add") updateData = [...current, {type: "damage"}];
-          else if (operation === "delete") updateData.splice(index, 1);
-
-          await this.item.update({[`system.powerRoll.${tier}`]: updateData});
-        });
-      }
-    }
+    if (partId === "details") this.item.system._attachPartListeners(htmlElement, options);
   }
 
   /* -------------------------------------------------- */
