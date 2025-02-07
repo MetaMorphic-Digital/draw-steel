@@ -306,7 +306,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: foundry.utils.getProperty(coreResource.target, coreResource.target),
+        max: foundry.utils.getProperty(coreResource.target, coreResource.path),
         step: 1
       };
 
@@ -315,13 +315,22 @@ export default class AbilityModel extends BaseItemModel {
         foundry.applications.fields.createCheckboxInput(spendInputConfig) :
         foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
 
-      content += foundry.applications.fields.createFormGroup({
+      const spendGroup = foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name
         }),
         input: spendInput
-      }).outerHTML;
+      });
+
+      // Style fix
+      if (this.spend.value) {
+        const label = spendGroup.querySelector("label");
+        label.classList.add("checkbox");
+        label.style = "font-size: inherit;";
+      }
+
+      content += spendGroup.outerHTML;
 
       configuration = await foundry.applications.api.DialogV2.prompt({
         content,
