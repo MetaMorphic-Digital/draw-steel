@@ -78,6 +78,7 @@ declare module "./npc.mjs" {
       impression: number;
     }
     monster: {
+      freeStrike: number;
       keywords: Set<string>;
       level: number;
       ev: number;
