@@ -146,10 +146,10 @@ export default class AbilityModel extends BaseItemModel {
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
-  /**
-   * Prepare derived data available post actor data prep
-   */
+  /** @override */
   preparePostActorPrepData() {
+    super.preparePostActorPrepData();
+
     for (const tier of PowerRoll.TIER_NAMES) {
       const effects = this.powerRoll[tier];
       for (const effect of effects) {

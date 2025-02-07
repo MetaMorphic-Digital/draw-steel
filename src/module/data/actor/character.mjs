@@ -120,8 +120,6 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @override */
   prepareDerivedData() {
-    super.prepareDerivedData();
-
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
     const heroClass = this.class;
@@ -137,8 +135,7 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.average += highestCharacteristic - 1;
     this.potency.strong += highestCharacteristic;
 
-    // prepare ability potency embeds after potency data is available on the actor
-    this.parent.items.filter(item => item.type === "ability").forEach(ability => ability.system.preparePostActorPrepData());
+    super.prepareDerivedData();
   }
 
   /** @override */

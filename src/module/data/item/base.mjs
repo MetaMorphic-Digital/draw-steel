@@ -56,6 +56,11 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
+  /**
+   * Prepare derived item data that requires actor derived actor data to be available
+   */
+  preparePostActorPrepData() {}
+
   /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
