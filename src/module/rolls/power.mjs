@@ -161,10 +161,15 @@ export class PowerRoll extends DSRoll {
 
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
     const rolls = [baseRoll];
+    // DSN support - ensure that only the base power roll is displayed on screen
+    const termData = baseRoll.terms[0].toJSON();
+    // Ensures `termData.options` is a copy instead of reference
+    termData.options = {...termData.options, rollOrder: 999};
+    const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of rollContexts) {
       if (options.ability) context.ability = options.ability;
       const roll = new this(formula, options.data, {flavor, ...context});
-      roll.terms[0] = baseRoll.terms[0];
+      roll.terms[0] = firstTerm;
       switch (evaluation) {
         case "none":
           rolls.push(roll);
@@ -282,7 +287,7 @@ export class PowerRoll extends DSRoll {
     if (this.options.ability) {
       context.ability = await fromUuid(this.options.ability);
       const abilityPotency = context.ability.system.getPotencyData(this.tier);
-      
+
       if (abilityPotency.enabled) {
         context.potency = {...abilityPotency};
         if (context.target) {

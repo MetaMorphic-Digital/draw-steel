@@ -417,6 +417,10 @@ export default class AbilityModel extends BaseItemModel {
           const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
           const damageRoll = new DamageRoll(damageFormula, rollData, {flavor, type: damageType});
           await damageRoll.evaluate();
+          // DSN integration to make damage roll after power roll
+          for (const die of damageRoll.dice) {
+            die.options.rollOrder = 1;
+          }
           messageDataCopy.rolls.push(damageRoll);
         }
         if (messages.length > 0) messageDataCopy.system.embedText = false;
