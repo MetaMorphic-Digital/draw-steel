@@ -72,6 +72,23 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * @override
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+
+    options.rollData ??= this.parent.getRollData;
+    const enriched = await TextEditor.enrichHTML(this.description.value, options);
+
+    const embed = document.createElement("div");
+    embed.classList.add(this.parent.type);
+    embed.innerHTML = enriched;
+
+    return embed;
+  }
+
+  /**
    * Prepare type-specific data for the Item sheet.
    * @param {Record<string, unknown>} context  Sheet context data.
    * @returns {Promise<void>}

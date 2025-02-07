@@ -172,7 +172,7 @@ export default class CharacterModel extends BaseActorModel {
         speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
         flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
       });
-      await this.parent.update({"system.hero.primary.value": this.hero.primary.value + recoveryRoll.total});
+      await this.updateResource(recoveryRoll.total);
     }
   }
 

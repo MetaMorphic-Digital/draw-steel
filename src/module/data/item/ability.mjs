@@ -5,9 +5,8 @@ import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import {FormInputConfig, FormGroupConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../../_types.js" */
-/** @import {MaliceModel} from "../settings/_module.mjs" */
+/** @import {FormInputConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {PowerRollModifiers} from "../../_types.js" */
 
 const fields = foundry.data.fields;
 
@@ -249,6 +248,7 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
+   * @override
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -380,7 +380,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: foundry.utils.getProperty(coreResource.target, coreResource.target),
+        max: foundry.utils.getProperty(coreResource.target, coreResource.path),
         step: 1
       };
 
@@ -389,13 +389,22 @@ export default class AbilityModel extends BaseItemModel {
         foundry.applications.fields.createCheckboxInput(spendInputConfig) :
         foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
 
-      content += foundry.applications.fields.createFormGroup({
+      const spendGroup = foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name
         }),
         input: spendInput
-      }).outerHTML;
+      });
+
+      // Style fix
+      if (this.spend.value) {
+        const label = spendGroup.querySelector("label");
+        label.classList.add("checkbox");
+        label.style = "font-size: inherit;";
+      }
+
+      content += spendGroup.outerHTML;
 
       configuration = await foundry.applications.api.DialogV2.prompt({
         content,
@@ -497,6 +506,10 @@ export default class AbilityModel extends BaseItemModel {
             const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
             const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
             await damageRoll.evaluate();
+            // DSN integration to make damage roll after power roll
+            for (const die of damageRoll.dice) {
+              die.options.rollOrder = 1;
+            }
             messageDataCopy.rolls.push(damageRoll);
           }
         }
