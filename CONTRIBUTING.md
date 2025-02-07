@@ -133,7 +133,7 @@ https://github.com/foundryvtt/dnd5e/releases/download/release-1.6.3/dnd5e-1.6.3.
 
 `main` is to be kept as the "most recently released" version of the system. All work is done on development branches matching the milestone the work is a part of. Once the work on a milestone is complete, the following steps will create a system release:
 
-1. [ ] `system.json` `version` and `download` fields are updated on the development branch (e.g. `1.2.3`).
+1. [ ] The `system.json` file's `version` and `download` fields are updated on the development branch (e.g. `1.2.3`).
 2. [ ] A tag is created at the tip of the development branch with the format `release-x.y.z`, triggering the CI workflow.
 3. [ ] The `develop` Branch is merged to `main` after the workflow is completed.
 4. [ ] The foundryvtt.com admin listing is updated with the `manifest` url pointing to the `system.json` attached to the workflow-created release.
