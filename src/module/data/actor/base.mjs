@@ -178,7 +178,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
 
-    if (changed.system?.stamina) this.updateStaminaEffects();
+    if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
   }
 
   /**
