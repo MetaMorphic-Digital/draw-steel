@@ -248,7 +248,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     const fd = await foundry.applications.api.DialogV2.prompt({
       window: {title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst"},
       content,
-      rejectClose: true,
+      rejectClose: false,
       ok: {
         label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
         callback: (event, button, dialog) => new FormDataExtended(button.form)
