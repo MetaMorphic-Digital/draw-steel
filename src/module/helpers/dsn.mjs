@@ -20,8 +20,7 @@ export function diceSoNiceRollStart(messageId, context) {
       return true;
     });
     context.roll = foundry.dice.Roll.fromTerms(terms);
-  }
-  else {
+  } else {
     context.blind = context.roll.dice[0].options.rollOrder === 999;
   }
 }
