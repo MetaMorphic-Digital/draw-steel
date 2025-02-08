@@ -7,13 +7,20 @@
  * @param {object} context   The data needed to show the roll. Any change made to this object will be used in the roll animation.
  * @param {DSRoll} context.roll An instance of Roll class to show 3D dice animation
  * @param {DrawSteelUser} context.user
- * @param {} context.users List of users or userId who can see the roll, leave it empty if everyone can see.
+ * @param {Array<DrawSteelUser>} context.users List of users or userId who can see the roll, leave it empty if everyone can see.
  * @param {boolean} context.blind If the roll is blind for the current user
  */
 export function diceSoNiceRollStart(messageId, context) {
   const message = game.messages.get(messageId);
-  // Prevent extra rolls in ability usage
-  if (message?.type === "abilityUse") {
+  if (message?.type !== "abilityUse") return;
+  if (game.settings.get("dice-so-nice", "enabledSimultaneousRollForMessage")) {
+    const terms = context.roll.terms.filter((t, i, arr) => {
+      if (t.options.rollOrder === 999) return false;
+      else if ((++i < arr.length) && (arr[i].options.rollOrder === 999)) return false;
+      return true;
+    });
+    context.roll = foundry.dice.Roll.fromTerms(terms);
+  } else {
     context.blind = context.roll.dice[0].options.rollOrder === 999;
   }
 }
