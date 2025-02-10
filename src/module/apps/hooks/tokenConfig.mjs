@@ -15,15 +15,30 @@ export function renderTokenConfig(app, [html], context) {
     /** @type {HTMLSelectElement[]} */
     const bars = html.querySelectorAll(".bar-attribute");
     for (const bar of bars) {
-      for (const opt of bar.options) {
-        let field = schema.getField(opt.value);
-        if (field?.label) {
-          let label = field.label;
-          while (field.parent.name !== "system") {
-            field = field.parent;
-            if (field.label) label = field.label + ": " + label;
+      const groups = {};
+      const options = [...bar.options];
+      for (const opt of options) {
+        const field = schema.getField(opt.value);
+        if (field?.label) opt.label = field.label;
+        if (!field || (opt.parentElement.label === game.i18n.localize("TOKEN.BarAttributes"))) continue;
+        // Build groups by going to the highest level ancestor with a label
+        let ancestor = field;
+        let p = field.parent;
+        while (p.name !== "system") {
+          if (p.label) ancestor = p;
+          p = p.parent;
+        }
+        if (field !== ancestor) {
+          if (ancestor.name in groups) {
+            groups[ancestor.name].appendChild(opt);
           }
-          opt.label = label;
+          else {
+            const g = document.createElement("optgroup");
+            g.label = ancestor.label;
+            bar.appendChild(g);
+            groups[ancestor.name] = g;
+            g.appendChild(opt);
+          }
         }
       }
     }
