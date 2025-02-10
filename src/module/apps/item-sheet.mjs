@@ -122,6 +122,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       config: ds.CONFIG,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
+      tabGroups: this.tabGroups,
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
@@ -297,6 +298,13 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         tabSection.classList.remove("editorActive");
       });
     }
+  }
+
+  /** @override */
+  _attachPartListeners(partId, htmlElement, options) {
+    super._attachPartListeners(partId, htmlElement, options);
+
+    if (partId === "details") this.item.system._attachPartListeners(htmlElement, options);
   }
 
   /* -------------------------------------------------- */

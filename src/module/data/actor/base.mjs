@@ -111,6 +111,11 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         if (isGrabbedOrRestrained && (movement !== "teleport")) this.movement[movement] = 0;
       }
     }
+
+    // prepare derived item data that relies on derived actor values (i.e. ability potencies)
+    for (const item of this.parent.items) {
+      item.system.preparePostActorPrepData();
+    }
   }
 
   /**

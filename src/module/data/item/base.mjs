@@ -56,6 +56,11 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
+  /**
+   * Prepare derived item data that requires actor derived actor data to be available
+   */
+  preparePostActorPrepData() {}
+
   /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
@@ -89,6 +94,14 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    * @returns {Promise<void>}
    */
   async getSheetContext(context) {}
+
+  /**
+   * Attach type-specific event listeners to details tab of the Item sheet.
+   * @param {HTMLElement} htmlElement             The rendered HTML element for the part
+   * @param {ApplicationRenderOptions} options    Rendering options passed to the render method
+   * @protected
+   */
+  _attachPartListeners(htmlElement, options) {}
 
   /**
    * Perform item subtype specific modifications to the actor roll data

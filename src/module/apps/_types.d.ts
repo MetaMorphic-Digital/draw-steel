@@ -22,8 +22,14 @@ declare module "./item-sheet.mjs" {
   }
 }
 
-export interface PowerRollDialogPrompt {
+interface PowerRollDialogModifiers {
   edges: number;
   banes: number;
+  ability?: string;
   target?: string;
+}
+
+export interface PowerRollDialogPrompt {
+  rolls: PowerRollDialogModifiers[];
+  damage?: string;
 }

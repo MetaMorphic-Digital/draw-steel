@@ -147,16 +147,16 @@ export class PowerRoll extends DSRoll {
       }, {});
     }
 
-    const rollContexts = await PowerRollDialog.prompt({
+    const promptValue = await PowerRollDialog.prompt({
       context,
       window: {
         title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
       }
     });
 
-    if (!rollContexts) return null;
+    if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {baseRoll: true});
+    const baseRoll = new this(formula, options.data, {baseRoll: true, damageSelection: promptValue.damage});
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
@@ -166,7 +166,7 @@ export class PowerRoll extends DSRoll {
     // Ensures `termData.options` is a copy instead of reference
     termData.options = {...termData.options, rollOrder: 999};
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
-    for (const context of rollContexts) {
+    for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
       const roll = new this(formula, options.data, {flavor, ...context});
       roll.terms[0] = firstTerm;
@@ -284,17 +284,6 @@ export class PowerRoll extends DSRoll {
     };
 
     if (this.options.target) context.target = await fromUuid(this.options.target);
-    if (this.options.ability) {
-      context.ability = await fromUuid(this.options.ability);
-      const abilityPotency = context.ability.system.getPotencyData(this.tier);
-
-      if (abilityPotency.enabled) {
-        context.potency = {...abilityPotency};
-        if (context.target) {
-          context.potency.result = context.target.system.characteristics[abilityPotency.characteristic]?.value >= abilityPotency.value ? "Success" : "Failure";
-        }
-      }
-    }
 
     context.baseRoll = this.options.baseRoll ?? false;
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
@@ -312,6 +301,6 @@ export class PowerRoll extends DSRoll {
     if (options.actor.statuses.has("weakened")) options.modifiers.banes += 1;
 
     // Restrained condition - might and agility tests take a bane
-    if(options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
+    if (options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
   }
 }

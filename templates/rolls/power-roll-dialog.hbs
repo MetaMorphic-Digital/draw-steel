@@ -16,7 +16,6 @@
       </label>
     </div>
   </div>
-  
   {{#each targets as |target|}}
   <div class="target group">
     <div class="header">{{target.actor.name}}</div>
@@ -36,7 +35,6 @@
         <span class="total-banes">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
       </label>
     </div>
-    
   </div>
   {{/each}}
   {{#if skills}}
@@ -46,6 +44,16 @@
       {{selectOptions skills blank=(localize "None")}}
     </select>
   </label>
+  {{/if}}
+  {{#if damageOptions}}
+  <div class="form-group">
+    <label for="damage-selection">{{localize "DRAW_STEEL.Roll.Power.Prompt.DamageSelectionLabel"}}</label>
+    <div class="form-fields">
+      <select name="damage-selection" id="damage-selection">
+        {{selectOptions damageOptions selected=damage}}
+      </select>
+    </div>
+  </div>
   {{/if}}
   <footer class="form-footer">
     <button type="submit">
