@@ -301,6 +301,12 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
+  _onClose(options) {
+    super._onClose(options);
+    if (this.#editor) this.#saveEditor();
+  }
+
+  /** @override */
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 
@@ -358,6 +364,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       return;
     }
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+    if (this.isPlayMode && this.#editor) await this.#saveEditor();
     this.render();
   }
 
@@ -381,15 +388,15 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle saving the editor content.
    */
-  #saveEditor() {
+  async #saveEditor() {
     const newValue = ProseMirror.dom.serializeString(this.#editor.view.state.doc.content);
     const [uuid, fieldName] = this.#editor.uuid.split("#");
     this.#editor.destroy();
     this.#editor = null;
     const currentValue = foundry.utils.getProperty(this.item, fieldName);
     if (newValue !== currentValue) {
-      this.item.update({[fieldName]: newValue});
-    } else this.render();
+      await this.item.update({[fieldName]: newValue});
+    } else await this.render();
   }
 
   /**
