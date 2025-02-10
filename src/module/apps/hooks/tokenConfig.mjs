@@ -16,8 +16,15 @@ export function renderTokenConfig(app, [html], context) {
     const bars = html.querySelectorAll(".bar-attribute");
     for (const bar of bars) {
       for (const opt of bar.options) {
-        const field = schema.getField(opt.value);
-        if (field?.label) opt.label = field.label;
+        let field = schema.getField(opt.value);
+        if (field?.label) {
+          let label = field.label;
+          while (field.parent.name !== "system") {
+            field = field.parent;
+            if (field.label) label = field.label + ": " + label;
+          }
+          opt.label = label;
+        }
       }
     }
   }
