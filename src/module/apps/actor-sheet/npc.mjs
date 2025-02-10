@@ -1,13 +1,15 @@
 import {systemID, systemPath} from "../../constants.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {DrawSteelActor} from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
     actions: {
       updateSource: this._updateSource,
-      editMonsterMetadata: this._editMonsterMetadata
+      editMonsterMetadata: this._editMonsterMetadata,
+      freeStrike: this._freeStrike
     }
   };
 
@@ -196,14 +198,71 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
-        callback: (event, button, dialog) => {
-          return new FormDataExtended(button.form);
-        }
+        callback: (event, button, dialog) => new FormDataExtended(button.form)
       },
       rejectClose: false
     });
     if (fd) {
       await this.actor.update(fd.object);
+    }
+  }
+
+  /**
+   * Open a dialog to edit the monster metadata
+   * @this DrawSteelNPCSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _freeStrike(event, target) {
+    /** @type {Array<DrawSteelActor>} */
+    const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
+    if (!targets.length) {
+      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", {localize: true});
+      return;
+    }
+    const freeStrike = this.actor.system.freeStrike;
+
+    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
+      value: freeStrike.value,
+      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? ""
+    });
+    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
+
+    let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
+
+    content += targets.map(a => {
+      const checkboxInput = foundry.applications.fields.createCheckboxInput({name: a.uuid, value: true});
+      const formGroup = foundry.applications.fields.createFormGroup({
+        label: a.name,
+        input: checkboxInput
+      });
+      // style fix
+      const label = formGroup.querySelector("label");
+      label.classList.add("checkbox");
+      label.style = "font-size: inherit;";
+      return formGroup.outerHTML;
+    }).join("");
+
+    /** @type {FormDataExtended} */
+    const fd = await foundry.applications.api.DialogV2.prompt({
+      window: {title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst"},
+      content,
+      rejectClose: false,
+      ok: {
+        label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
+        callback: (event, button, dialog) => new FormDataExtended(button.form)
+      }
+    });
+
+    if (fd) {
+      for (const [uuid, bool] of Object.entries(fd.object)) {
+        if (bool) {
+          /** @type {DrawSteelActor} */
+          const actor = fromUuidSync(uuid);
+          actor.system.takeDamage(freeStrike.value, {type: freeStrike.type});
+        }
+      }
     }
   }
 }
