@@ -133,4 +133,8 @@ Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
 
+/**
+ * Other hooks
+ */
+Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

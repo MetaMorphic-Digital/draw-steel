@@ -2,6 +2,7 @@
   .header-right {
     flex: 0 0 125px;
     height: 100%;
+
     .item-source {
       margin: 5px 5px;
       font-family: var(--font-h6);
@@ -16,9 +17,11 @@ section[data-tab="description"] {
       &:not(.active) {
         display: none;
       }
+
       .label-action {
         display: none;
       }
+
       .editor-container {
         min-height: 250px;
       }
@@ -30,6 +33,7 @@ section[data-tab="description"] {
     line-height: var(--form-field-height);
     font-family: var(--font-h4);
     font-size: var(--font-h4-size);
+
     .label-action {
       font-size: 0.9rem;
       vertical-align: top;
@@ -51,16 +55,29 @@ section[data-tab="description"] {
       margin: 0.2rem 0 0.1rem;
       font-size: 1.15rem;
     }
+
     .form-group.damage-part {
       display: inline-flex;
       width: 135px;
+
       label {
         text-align: center;
       }
+
       .form-fields {
         flex: 0 0 40px;
         text-align: right;
       }
+    }
+  }
+
+  &[data-subtype="ability"] {
+    .power-roll-effect {
+      border: 1px solid black;
+      border-radius: 5px;
+      padding: 5px;
+      background-color: rgba(255, 255, 255, 0.02);
+      margin-top: 5px;
     }
   }
 }

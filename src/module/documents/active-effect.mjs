@@ -34,16 +34,16 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   }
 
   /**
-   * Determine if a source actor is imposing the statusId on the affected actor.
+   * Determine if the affected actor has the status and if the source is the one imposing it
    * @param {DrawSteelActor} affected The actor affected by the status
    * @param {DrawSteelActor} source The actor imposing the status
-   * @param {string} statusId
-   * @returns {boolean}
+   * @param {string} statusId A status id from the CONFIG object
+   * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    const isAffectedByStatusId = affected.statuses.has(statusId);
-    const isAffectedBySource = !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
-    return isAffectedByStatusId && isAffectedBySource;
+    if(!affected.statuses.has(statusId)) return null;
+
+    return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
   }
 
   /**
@@ -90,14 +90,15 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     // If it does exist, convert the Set to an Array.
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = ds.CONFIG.conditions[condition];
+    const config = CONFIG.statusEffects.find(e => e.id === condition);
     if (config) {
       if (current) current = Array.from(current);
       else if (!current) current = [];
     }
 
-    // Have the base class apply the changes
-    super._applyAdd(actor, change, current, delta, changes);
+    // If the type is Set, add to it, otherwise have the base class apply the changes
+    if (foundry.utils.getType(current) === "Set") current.add(delta);
+    else super._applyAdd(actor, change, current, delta, changes);
 
     // If we're modifying a condition source, slice the array to the max length if applicable, then convert back to Set
     if (config) {
@@ -108,11 +109,12 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /** @override */
   _applyOverride(actor, change, current, delta, changes) {
-    // If the property is a condition, convert the delta to a Set
+    // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
     const condition = match?.groups.condition;
-    const config = ds.CONFIG.conditions[condition];
-    if (config) delta = new Set([delta]);
+    const config = CONFIG.statusEffects.find(e => e.id === condition);
+    const isSetChange = (foundry.utils.getType(current) === "Set") || config;
+    if (isSetChange) delta = new Set([delta]);
 
     super._applyOverride(actor, change, current, delta, changes);
   }

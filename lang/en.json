@@ -235,6 +235,9 @@
             }
           },
           "monster": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
             "keywords": {
               "label": "Keywords"
             },
@@ -313,6 +316,12 @@
             "Revelry": "Revelry",
             "Vengeance": "Vengeance"
           }
+        },
+        "FreeStrike": {
+          "NoTargets": "Select one or more targets to make a free strike!",
+          "DialogHeader": "{value} {type} Damage",
+          "DialogTitle": "Free Strike",
+          "DialogButton": "Deal Damage"
         }
       },
       "DamageNotification": {
@@ -368,7 +377,8 @@
             "label": "DSID",
             "hint": "Draw Steel ID"
           }
-        }
+        },
+        "share": "Share"
       },
       "advancement": {
         "FIELDS": {}
@@ -433,13 +443,73 @@
             "potencyCharacteristic": {
               "label": "Potency Characteristic"
             },
+            "tier": {
+              "type": {
+                "label" : "Effect Type"
+              },
+             "potency": {
+                "label": "Potency",
+                "enabled": {
+                  "label": "Has Potency"
+                },
+                "characteristic": {
+                  "label": "Potency Characteristic"
+                },
+                "value": {
+                  "label": "Potency Value"
+                }
+              },
+              "display": {
+                "label": "Display Text"
+              },
+              "damage": {
+                "label": "Damage",
+                "types": {
+                  "label": "Damage Types"
+                },
+                "value": {
+                  "label": "Damage Formula"
+                }
+              },
+              "ae": {
+                "label": "Applied Effects",
+                "always": {
+                  "label": "Applied Effects"
+                },
+                "success": {
+                  "label": "Potency Success Effects"
+                },
+                "failure": {
+                  "label": "Potency Failure Effects"
+                }
+              },
+              "forced": {
+                "label": "Forced Movement",
+                "types": {
+                  "label": "Types"
+                },
+                "value": {
+                  "label": "Distance"
+                },
+                "vertical": {
+                  "label": "Vertical Movement"
+                }
+              },
+              "other": {
+                "label": "Other"
+              }
+            },
             "tier1": {
               "label": "Tier 1 Result",
               "damage": {
+                "label": "Damage",
+                "type": {
+                  "label": "Effect Type"
+                },
                 "value": {
                   "label": "Damage Formula"
                 },
-                "type": {
+                "subtype": {
                   "label": "Damage Type"
                 }
               },
@@ -635,10 +705,13 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic}<{value}",
+          "Embed": "{characteristic} < {value}",
           "Success": "Success",
           "Failure": "Failure"
-        }
+        },
+        "Restricted": "A condition or ability effect is restricting the usage of this ability.",
+        "AddTierEffect": "Add Tier Effect",
+        "RemoveTierEffect": "Remove Tier Effect"
       },
       "Ancestry": {
         "FIELDS": {}
@@ -679,6 +752,9 @@
           },
           "recoveries": {
             "label": "Recoveries"
+          },
+          "kits": {
+            "label": "Kits"
           }
         }
       },
@@ -888,6 +964,12 @@
         "Types": {
           "Martial": "Martial",
           "Caster": "Caster"
+        },
+        "NotAllowedByClass": "The {class} class does not allow kits.",
+        "Swap": {
+          "Title": "Choose Kit to Replace",
+          "Button": "Confirm Kit Swap",
+          "Header": "Choose which kit to replace with the {kit} kit."
         }
       }
     },
@@ -985,6 +1067,7 @@
           "Title": "{typeLabel} Power Roll",
           "Total": "Total: {number}",
           "GlobalModifiers": "Global Modifiers",
+          "DamageSelectionLabel": "Damage Type",
           "Button": "Roll"
         },
         "Tiers": {

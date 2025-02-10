@@ -43,12 +43,23 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       ...this.options.context
     };
 
+    // Find the first instance of multiple damage types and create the options to provide a select
+    context.ability = await fromUuid(this.options.context.ability);
+    context.damageOptions = null;
+    for (const tier of PowerRoll.TIER_NAMES) {
+      const effect = context.ability.system.powerRoll[tier].find(effect => (effect.type === "damage") && (effect.types.size > 1));
+      if (!effect || context.damageOptions) continue;
+
+      context.damageOptions = Object.entries(ds.CONFIG.damageTypes).filter(([type, data]) => effect.types.has(type)).map(([value, {label}]) => ({value, label}));
+      break;
+    }
+
     if (context.targets) await this._prepareTargets(context);
 
     return context;
   }
 
-  /** 
+  /**
    * Prepare targets by adding the actor and combinging modifiers
    * @param {object} context The context from _prepareContext
    */
@@ -63,7 +74,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
   }
 
-  /** 
+  /**
    * Amend the global modifiers and target specific modifiers based on changed values
    * @override
    */
@@ -73,24 +84,31 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
     this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, {overwrite: true, recursive: true});
     if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
+    if (formData["damage-selection"]) this.options.context.damage = formData["damage-selection"];
 
     this.render(true);
   }
 
-  /** 
-   * Set a final context for resolving the prompt, then close the dialog 
+  /**
+   * Set a final context for resolving the prompt, then close the dialog
    * @override
    */
   async _onSubmitForm(formConfig, event) {
+    const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
+
     const targets = this.options.context.targets;
-    if (!targets || (targets.length === 0)) this.promptValue = [this.options.context.modifiers];
+    if (!targets || (targets.length === 0)) this.promptValue = {rolls: [this.options.context.modifiers]};
     else {
-      this.promptValue = targets.reduce((accumulator, target) => {
+      const rolls = targets.reduce((accumulator, target) => {
         accumulator.push({...target.combinedModifiers, target: target.uuid});
         return accumulator;
       }, []);
+
+      this.promptValue = {rolls};
     }
-    
+
+    if (formData["damage-selection"]) this.promptValue.damage = formData["damage-selection"];
+
     super._onSubmitForm(formConfig, event);
   }
 
@@ -99,8 +117,8 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   /**
    * Spawn a PowerRollDialog and wait for it to be rolled or closed.
    * @param {Partial<ApplicationConfiguration>} [options]
-   * @returns {Promise<Array<PowerRollDialogPrompt> | null>}      Resolves to the final context to use for one or more power rolls. 
-   *                                                              If the dialog was closed without rolling, it resolves to null.
+   * @returns {Promise<PowerRollDialogPrompt | null>}      Resolves to the final context to use for one or more power rolls.
+   *                                                       If the dialog was closed without rolling, it resolves to null.
    */
   static async prompt(options) {
     return new Promise((resolve, reject) => {
@@ -109,7 +127,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         if (dialog.promptValue) resolve(dialog.promptValue);
         else resolve(null);
       }, {once: true});
-      
+
       dialog.render({force: true});
     });
   }

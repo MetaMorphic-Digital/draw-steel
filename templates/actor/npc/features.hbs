@@ -7,7 +7,7 @@
   </div>
   <div class="item-list features">
     {{#each features as |feature index|}}
-    <button type="button" class="item flexrow" data-action="viewDoc" data-document-class="Item" data-item-id="{{feature.id}}">
+    <button type="button" class="item flexrow draggable" data-action="viewDoc" data-document-class="Item" data-item-id="{{feature.id}}">
       <img class="img" src="{{feature.img}}" alt="{{feature.name}}">
       <span class="name">{{feature.name}}</span>
       {{#unless @root.isPlay}}
