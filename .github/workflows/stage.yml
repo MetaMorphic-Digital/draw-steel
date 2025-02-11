@@ -1,6 +1,6 @@
 name: Upload Repo to Azure File Share on Beta Tag
 
-# Trigger on push events for tags that end with "-beta"
+# Trigger only when a tag ending in "-beta" is pushed.
 on:
   push:
     tags:
@@ -10,26 +10,36 @@ jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out the repository code
+      # Step 1: Check out the repository.
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      # Step 2: Login to Azure using the stored credentials
+      # Step 2: Log in to Azure using your stored service principal credentials.
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Step 3: Upload the repository to the Data/systems directory in the file share
-      - name: Upload to Azure File Share (Data/systems)
+      # Step 3: Prepare files for upload by excluding unwanted directories.
+      - name: Prepare files for upload
+        run: |
+          # Create a temporary directory for the filtered files.
+          mkdir filtered_upload
+          # Use rsync to copy all files except .github and .vscode directories.
+          rsync -av --exclude='.github' --exclude='.vscode' ./ filtered_upload/
+          # If needed, add additional exclusions here.
+          # Example: To exclude a "tests" folder, add: --exclude='tests'
+
+      # Step 4: Upload the prepared files to the Azure File Share.
+      - name: Upload to Azure File Share (Data/systems/draw-steel)
         env:
-          AZURE_STORAGE_ACCOUNT_NAME: ${{secrets.AZURE_STORAGE_ACCOUNT_NAME}}
-          AZURE_FILE_SHARE_NAME: ${{secrets.AZURE_FILE_SHARE_NAME}}
+          AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
+          AZURE_FILE_SHARE_NAME: ${{ secrets.AZURE_FILE_SHARE_NAME }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
         run: |
           az storage file upload-batch \
             --destination $AZURE_FILE_SHARE_NAME \
-            --destination-path "Data/systems" \
+            --destination-path "Data/systems/draw-steel" \
             --account-name $AZURE_STORAGE_ACCOUNT_NAME \
             --account-key $AZURE_STORAGE_KEY \
-            --source .
+            --source filtered_upload
