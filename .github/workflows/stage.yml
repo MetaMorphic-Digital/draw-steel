@@ -1,0 +1,35 @@
+name: Upload Repo to Azure File Share on Beta Tag
+
+# Trigger on push events for tags that end with "-beta"
+on:
+  push:
+    tags:
+      - '*-beta'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Step 2: Login to Azure using the stored credentials
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Step 3: Upload the repository to the Data/systems directory in the file share
+      - name: Upload to Azure File Share (Data/systems)
+        env:
+          AZURE_STORAGE_ACCOUNT_NAME: ${{secrets.AZURE_STORAGE_ACCOUNT_NAME}}
+          AZURE_FILE_SHARE_NAME: ${{secrets.AZURE_FILE_SHARE_NAME}}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+        run: |
+          az storage file upload-batch \
+            --destination $AZURE_FILE_SHARE_NAME \
+            --destination-path "Data/systems" \
+            --account-name $AZURE_STORAGE_ACCOUNT_NAME \
+            --account-key $AZURE_STORAGE_KEY \
+            --source .
