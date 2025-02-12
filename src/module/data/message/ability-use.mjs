@@ -1,3 +1,4 @@
+import {DamageRoll} from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import { DrawSteelItem } from "../../documents/_module.mjs" */
@@ -57,5 +58,62 @@ export default class AbilityUseModel extends BaseMessageModel {
       }: </strong>${item.system.powerRoll[`tier${tier}`].display}</p>`
       );
     } else console.warn("Invalid configuration");
+  }
+
+  /** @override */
+  async _constructFooterButtons() {
+    const buttons = await super._constructFooterButtons();
+    buttons.push(...this._constructDamageFooterButtons());
+
+    return buttons;
+  }
+
+  /**
+   * Create an array of damage buttons based on each {@link DamageRoll} in this message's rolls.
+   * @returns {HTMLButtonElement[]}
+   * @protected
+   */
+  _constructDamageFooterButtons() {
+    const damageButtons = [];
+    const damageRolls = this.parent.rolls.filter(roll => roll instanceof DamageRoll);
+    for (const roll of damageRolls) {
+      const typeLabel = ds.CONFIG.damageTypes[roll.options.type]?.label ?? "";
+      const button = this._constructButton({
+        label: game.i18n.format("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Label", {
+          type: typeLabel ? " " + typeLabel : "",
+          amount: roll.total
+        }),
+        dataset: {
+          type: roll.options.type,
+          amount: roll.total,
+          tooltip: game.i18n.localize("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Tooltip"),
+          tooltipDirection: "UP"
+        },
+        classes: ["apply-damage"],
+        icon: "fa-solid fa-burst"
+      });
+
+      damageButtons.push(button);
+    }
+
+    return damageButtons;
+  }
+
+  /** @override */
+  addListeners(html) {
+    const damageButtons = html.querySelectorAll(".apply-damage");
+    for (const damageButton of damageButtons) {
+      damageButton.addEventListener("click", async (event) => {
+        if (!canvas.tokens.controlled.length) return ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", {localize: true});
+
+        const type = event.target.dataset.type;
+        let amount = Number(event.target.dataset.amount);
+        if (event.shiftKey) amount = Math.floor(amount / 2);
+
+        for (const token of canvas.tokens.controlled) {
+          token.actor?.system.takeDamage(amount, {type});
+        }
+      });
+    }
   }
 }
