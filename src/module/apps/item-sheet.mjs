@@ -60,14 +60,14 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * Available sheet modes.
    * @enum {number}
    */
-  static MODES = {
+  static MODES = Object.freeze({
     PLAY: 1,
     EDIT: 2
-  };
+  });
 
   /**
    * The mode the sheet is currently in.
-   * @type {ActorSheetV2.MODES}
+   * @type {DrawSteelItemSheet.MODES}
    */
   #mode = this.isEditable ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
 

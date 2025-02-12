@@ -191,6 +191,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     /** @type {FormDataExtended | null} */
     const fd = await foundry.applications.api.DialogV2.prompt({
       content: htmlContainer.outerHTML,
+      classes: ["draw-steel", "monster-metadata"],
       window: {
         title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
         icon: "fa-solid fa-spaghetti-monster-flying"
