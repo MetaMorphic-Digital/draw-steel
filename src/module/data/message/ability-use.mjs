@@ -1,3 +1,4 @@
+import {constructHTMLButton} from "../../helpers/utils.mjs";
 import {DamageRoll} from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -78,7 +79,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const damageRolls = this.parent.rolls.filter(roll => roll instanceof DamageRoll);
     for (const roll of damageRolls) {
       const typeLabel = ds.CONFIG.damageTypes[roll.options.type]?.label ?? "";
-      const button = this._constructButton({
+      const button = constructHTMLButton({
         label: game.i18n.format("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Label", {
           type: typeLabel ? " " + typeLabel : "",
           amount: roll.total
