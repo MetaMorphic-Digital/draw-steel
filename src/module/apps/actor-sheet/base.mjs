@@ -477,7 +477,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Renders an embedded document's sheet
+   * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode
    *
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
@@ -485,8 +485,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   static async _viewDoc(event, target) {
-    const doc = this._getEmbeddedDocument(target);
-    doc.sheet.render(true);
+    const item = this._getEmbeddedDocument(target);
+    if (!item) {
+      console.error("Could not find item");
+      return;
+    }
+    await item.sheet.render({force: true, mode: this.#mode});
   }
 
   /**
@@ -603,9 +607,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _postItemToChat(event, target) {
     const item = this._getEmbeddedDocument(target);
-    const embed = await item.system.toEmbed({});
-    ChatMessage.create({
-      content: embed.outerHTML
+    if (!item) {
+      console.error("Could not find item");
+      return;
+    }
+    await DrawSteelChatMessage.create({
+      content: `@Embed[${item.uuid} caption=false]`,
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor})
     });
   }
 
