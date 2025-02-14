@@ -341,7 +341,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
     // TODO: Change to ContextMenu.create in v13 with jQuery: false
-    new ContextMenu(this.element, "button[data-document-class]", this._getItemButtonContextOptions());
+    new ContextMenu(this.element, "[data-document-class]", this._getItemButtonContextOptions());
   }
 
   /**

@@ -41,18 +41,6 @@
           <div class="item-column item-distance">{{abilityContext.formattedLabels.distance}}</div>
           <div class="item-column item-target">{{abilityContext.formattedLabels.target}}</div>
           <div class="item-column item-controls">
-            <a data-action="viewDoc">
-              <i class="fa-solid {{ifThen @root.isPlay "fa-fw fa-eye" "fa-pen-to-square"}}"></i>
-            </a>
-            {{#if @root.isPlay}}
-            <a data-action="postItemToChat" data-tooltip="DRAW_STEEL.Item.base.share" data-tooltip-direction="UP">
-              <i class="fa-solid fa-fw fa-share-from-square"></i>
-            </a>
-            {{else}}
-            <a data-action="deleteDoc">
-              <i class="fa-solid fa-trash-can"></i>
-            </a>
-            {{/if}}
             <a data-action="toggleItemEmbed">
               <i class="fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}"></i>
             </a>
