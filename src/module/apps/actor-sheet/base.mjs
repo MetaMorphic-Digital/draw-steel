@@ -27,7 +27,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       deleteDoc: this._deleteDoc,
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
-      useAbility: this._useAbility
+      useAbility: this._useAbility,
+      toggleItemEmbed: this._toggleItemEmbed,
+      postItemToChat: this._postItemToChat
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
@@ -50,6 +52,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @type {ActorSheetV2.MODES}
    */
   #mode = DrawSteelActorSheet.MODES.PLAY;
+
+  /**
+   * A set of the currently expanded item ids
+   * @type {Set<string>}
+   */
+  #expanded = new Set();
 
   /**
    * Is this sheet in Play Mode?
@@ -121,6 +129,18 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "abilities":
         context.abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
+        context.abilityFields = context.abilities[0].system.schema.fields;
+        // filter out villain actions for characters
+        context.abilityTypes = Object.fromEntries(Object.entries(ds.CONFIG.abilities.types).filter(([type, data]) => ((this.actor.type === "npc") || (type !== "villain"))));
+        context.abilitiesContext = {};
+        for (const ability of context.abilities) {
+          context.abilitiesContext[ability.id] = {
+            expanded: this.#expanded.has(ability.id),
+            formattedLabels: ability.system.formattedLabels
+          };
+          // only get the embed data when it's relevant and expanded
+          if (context.abilitiesContext[ability.id].expanded) context.abilitiesContext[ability.id].embed = await ability.toEmbed({});
+        }
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -553,6 +573,40 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       return;
     }
     await item.system.use({event});
+  }
+
+  /**
+   * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _toggleItemEmbed(event, target) {
+    const {itemId} = target.closest(".item").dataset;
+
+    if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
+    else this.#expanded.add(itemId);
+
+    const part = target.closest("[data-application-part]").dataset.applicationPart;
+    this.render({parts: [part]});
+  }
+
+  /**
+   * Post the item to chat
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _postItemToChat(event, target) {
+    const item = this._getEmbeddedDocument(target);
+    const embed = await item.system.toEmbed({});
+    ChatMessage.create({
+      content: embed.outerHTML
+    });
   }
 
   /** Helper Functions */

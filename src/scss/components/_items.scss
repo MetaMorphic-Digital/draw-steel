@@ -28,3 +28,65 @@
     }
   }
 }
+.item-list-container {
+  margin: 10px 0px;
+
+  .item-row,
+  .item-header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item-header {
+    background-color: rgb(40, 35, 47);
+    border-radius: 5px 5px 0px 0px;
+    font-size: var(--font-size-15);
+    font-weight: bold;
+  }
+
+  .item-name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 5px 0px 5px 5px;
+  }
+
+  .item-controls {
+    display: flex;
+    width: 60px;
+    justify-content: space-evenly;
+  }
+
+  .item-list2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .item {
+      &:nth-child(even) {
+        background-color: rgba(255, 255, 255, .04);
+      }
+
+      .item-row {
+        .item-name {
+          gap: 5px;
+
+          .name {
+            .label {
+              font-weight: bold;
+              font-size: var(--font-size-15);
+            }
+          }
+
+          img {
+            width: 30px;
+            height: 30px;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

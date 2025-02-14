@@ -183,3 +183,28 @@ section.tab {
     line-height: 24px;
   }
 }
+
+.tab.abilities .item-list-container {
+
+  .item-cost,
+  .item-distance,
+  .item-target {
+    width: 100px;
+  }
+
+  .item-row {
+    .item-name {
+      cursor: pointer;
+
+      &:hover .label {
+        text-shadow: 0 0 8px var(--color-shadow-primary);
+      }
+
+      .name {
+        .keywords {
+          font-size: var(--font-size-12);
+        }
+      }
+    }
+  }
+}
