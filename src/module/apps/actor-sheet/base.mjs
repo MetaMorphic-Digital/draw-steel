@@ -29,7 +29,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
       useAbility: this._useAbility,
       toggleItemEmbed: this._toggleItemEmbed,
-      postItemToChat: this._postItemToChat
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
@@ -595,26 +594,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     const part = target.closest("[data-application-part]").dataset.applicationPart;
     this.render({parts: [part]});
-  }
-
-  /**
-   * Post the item to chat
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
-   */
-  static async _postItemToChat(event, target) {
-    const item = this._getEmbeddedDocument(target);
-    if (!item) {
-      console.error("Could not find item");
-      return;
-    }
-    await DrawSteelChatMessage.create({
-      content: `@Embed[${item.uuid} caption=false]`,
-      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor})
-    });
+  };
   }
 
   /** Helper Functions */
