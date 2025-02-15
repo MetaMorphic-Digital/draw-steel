@@ -499,11 +499,11 @@ export default class AbilityModel extends BaseItemModel {
         if (damageEffects.length) {
           for (const damageEffect of damageEffects) {
             // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-            let damageKey = "";
-            if (damageEffect.types.size === 1) damageKey = damageEffect.types.first();
-            else if (damageEffect.types.size > 1) damageKey = baseRoll.options.damageSelection;
-            const damageType = ds.CONFIG.damageTypes[damageKey]?.label ?? damageKey ?? "";
-            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageType});
+            let damageType = "";
+            if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
+            else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
+            const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageLabel});
             const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
             await damageRoll.evaluate();
             // DSN integration to make damage roll after power roll
