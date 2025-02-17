@@ -41,8 +41,13 @@
   .item-header {
     background-color: rgb(40, 35, 47);
     border-radius: 5px 5px 0px 0px;
-    font-size: var(--font-size-15);
-    font-weight: bold;
+    position: sticky;
+    top: 0px;
+
+    .item-name {
+      font-weight: bold;
+      font-size: var(--font-size-16);
+    }
   }
 
   .item-name {
