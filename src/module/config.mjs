@@ -937,6 +937,9 @@ DRAW_STEEL.abilities = {
     freeTriggered: {
       label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered",
       triggered: true
+    },
+    villain: {
+      label: "DRAW_STEEL.Item.Ability.Type.Villain"
     }
   },
   /**
