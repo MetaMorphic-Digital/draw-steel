@@ -1,12 +1,16 @@
 {{! Abilities Tab }}
 <section class="tab abilities {{tab.cssClass}}" data-group="primary" data-tab="abilities">
-  {{#each abilityTypes as |abilityType|}}
+  {{#each abilities as |abilityType|}}
   <section class="item-list-container">
     <div class="item-header">
       <div class="item-column item-name">{{abilityType.label}}</div>
-      <div class="item-column item-cost">{{@root.abilityFields.resource.label}}</div>
-      <div class="item-column item-distance">{{@root.abilityFields.distance.label}}</div>
-      <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
+      {{#if (eq @key "villain")}}
+      <div class="item-column item-order">{{localize "DRAW_STEEL.Item.Ability.Order"}}</div>
+      {{else}}
+      <div class="item-column item-cost">{{abilityType.fields.resource.label}}</div>
+      {{/if}}
+      <div class="item-column item-distance">{{abilityType.fields.distance.label}}</div>
+      <div class="item-column item-target">{{abilityType.fields.target.label}}</div>
       <div class="item-column item-controls">
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip="{{addItemTooltip}}">
@@ -16,28 +20,32 @@
       </div>
     </div>
     <ol class="item-list2 abilities-list">
-      {{#each @root.abilities as |ability|}}
-      {{#if (eq ability.system.type @../key)}}
-      {{#with (lookup @root.abilitiesContext ability.id) as |abilityContext|}}
-      <li class="item ability draggable" data-item-id="{{ability.id}}" data-document-class="Item">
+      {{#each abilityType.abilities as |abilityContext|}}
+      <li class="item ability draggable" data-item-id="{{abilityContext.ability.id}}" data-document-class="Item">
         <div class="item-row">
           <div class="item-column item-name" data-action="useAbility">
-            <img class="item-image" src="{{ability.img}}" alt="{{ability.name}}">
-            {{#if ability.system.restricted}}
+            <img class="item-image" src="{{abilityContext.ability.img}}" alt="{{abilityContext.ability.name}}">
+            {{#if abilityContext.ability.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             {{/if}}
             <div class="name">
-              <div class="label">{{ability.name}}</div>
+              <div class="label">{{abilityContext.ability.name}}</div>
               <div class="keywords">{{abilityContext.formattedLabels.keywords}}</div>
             </div>
           </div>
+          {{#if (eq @../key "villain")}}
+          <div class="item-column item-order">
+            {{abilityContext.order}}
+          </div>
+          {{else}}
           <div class="item-column item-cost">
-            {{#if ability.system.resource}}
-            {{ability.system.resource}} {{@root.system.coreResource.name}}
+            {{#if abilityContext.ability.system.resource}}
+            {{abilityContext.ability.system.resource}} {{@root.system.coreResource.name}}
             {{/if}}
           </div>
+          {{/if}}
           <div class="item-column item-distance">{{abilityContext.formattedLabels.distance}}</div>
           <div class="item-column item-target">{{abilityContext.formattedLabels.target}}</div>
           <div class="item-column item-controls">
@@ -50,8 +58,6 @@
           {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
-      {{/with}}
-      {{/if}}
       {{/each}}
     </ol>
   </section>

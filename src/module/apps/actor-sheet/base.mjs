@@ -127,19 +127,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         context.tab = context.tabs[partId];
         break;
       case "abilities":
-        context.abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
-        context.abilityFields = context.abilities[0].system.schema.fields;
-        // filter out villain actions for characters
-        context.abilityTypes = Object.fromEntries(Object.entries(ds.CONFIG.abilities.types).filter(([type, data]) => ((this.actor.type === "npc") || (type !== "villain"))));
-        context.abilitiesContext = {};
-        for (const ability of context.abilities) {
-          context.abilitiesContext[ability.id] = {
-            expanded: this.#expanded.has(ability.id),
-            formattedLabels: ability.system.formattedLabels
-          };
-          // only get the embed data when it's relevant and expanded
-          if (context.abilitiesContext[ability.id].expanded) context.abilitiesContext[ability.id].embed = await ability.toEmbed({});
-        }
+        context.abilities = await this._prepareAbilitiesContext();
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -287,6 +275,48 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @property {string} label                - The localized name of the category
    * @property {Array<ActiveEffect>} effects - The effects in the category
    */
+
+  /**
+   * Prepare the context for ability categories and individual abilities
+   * @returns {Record<string, object>}
+   */
+  async _prepareAbilitiesContext() {
+    const context = {};
+    const abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
+
+    // Prepare ability categories for each ability type
+    for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
+      // Don't show villain actions on non-NPC sheets
+      if ((type === "villain") && (this.actor.type !== "npc")) continue;
+
+      context[type] = {
+        label: config.label,
+        abilities: [],
+        fields: abilities[0].system.schema.fields
+      };
+    }
+
+    // Prepare the context for each individual ability
+    for (const ability of abilities) {
+      if (!context[ability.system.type]) continue;
+
+      const abilityContext = {
+        ability,
+        expanded: this.#expanded.has(ability.id),
+        formattedLabels: ability.system.formattedLabels
+      };
+      // only get the embed data when it's relevant and expanded
+      if (this.#expanded.has(ability.id)) abilityContext.embed = await ability.toEmbed({});
+
+      // add the order to the villain action based on the current # of villain actions in the context
+      const villianActionCount = context[ability.system.type].abilities.length;
+      if (ability.system.type === "villain") abilityContext.order = villianActionCount + 1;
+
+      context[ability.system.type].abilities.push(abilityContext);
+    }
+
+    return context;
+  }
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
