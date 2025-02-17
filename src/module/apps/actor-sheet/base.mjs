@@ -28,7 +28,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
       useAbility: this._useAbility,
-      toggleItemEmbed: this._toggleItemEmbed,
+      toggleItemEmbed: this._toggleItemEmbed
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
@@ -594,7 +594,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     const part = target.closest("[data-application-part]").dataset.applicationPart;
     this.render({parts: [part]});
-  };
   }
 
   /** Helper Functions */
