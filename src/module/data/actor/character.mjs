@@ -121,7 +121,7 @@ export default class CharacterModel extends BaseActorModel {
   /** @override */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
-    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
+    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
     if (heroClass && heroClass.system.primary) {
       this.hero.primary.label = heroClass.system.primary;
@@ -210,7 +210,7 @@ export default class CharacterModel extends BaseActorModel {
   /** @override */
   get coreResource() {
     return {
-      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label"),
+      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value"
     };
