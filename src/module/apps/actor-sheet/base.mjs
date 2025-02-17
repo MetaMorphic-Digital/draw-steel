@@ -484,12 +484,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   static async _viewDoc(event, target) {
-    const item = this._getEmbeddedDocument(target);
-    if (!item) {
-      console.error("Could not find item");
+    const doc = this._getEmbeddedDocument(target);
+    if (!doc) {
+      console.error("Could not find document");
       return;
     }
-    await item.sheet.render({force: true, mode: this.#mode});
+    await doc.sheet.render({force: true, mode: this.#mode});
   }
 
   /**
