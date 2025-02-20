@@ -40,14 +40,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * Available sheet modes.
    * @enum {number}
    */
-  static MODES = {
+  static MODES = Object.freeze({
     PLAY: 1,
     EDIT: 2
-  };
+  });
 
   /**
    * The mode the sheet is currently in.
-   * @type {ActorSheetV2.MODES}
+   * @type {DrawSteelActorSheet.MODES}
    */
   #mode = DrawSteelActorSheet.MODES.PLAY;
 
