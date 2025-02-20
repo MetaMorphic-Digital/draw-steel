@@ -282,7 +282,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _prepareAbilitiesContext() {
     const context = {};
-    const abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
+    const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
 
     // Prepare ability categories for each ability type
     for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
@@ -296,23 +296,32 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
     }
 
+    context["other"] = {
+      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      abilities: [],
+      fields: abilities[0].system.schema.fields
+    };
+
     // Prepare the context for each individual ability
     for (const ability of abilities) {
-      if (!context[ability.system.type]) continue;
+      const type = context[ability.system.type] ? ability.system.type : "other";
 
       const abilityContext = {
         ability,
         expanded: this.#expanded.has(ability.id),
         formattedLabels: ability.system.formattedLabels
       };
+
       // only get the embed data when it's relevant and expanded
       if (this.#expanded.has(ability.id)) abilityContext.embed = await ability.toEmbed({});
 
       // add the order to the villain action based on the current # of villain actions in the context
-      const villianActionCount = context[ability.system.type].abilities.length;
-      if (ability.system.type === "villain") abilityContext.order = villianActionCount + 1;
+      if (type === "villain") {
+        const villainActionCount = context[type].abilities.length;
+        abilityContext.order = villainActionCount + 1;
+      }
 
-      context[ability.system.type].abilities.push(abilityContext);
+      context[type].abilities.push(abilityContext);
     }
 
     return context;

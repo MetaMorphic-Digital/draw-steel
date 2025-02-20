@@ -1,6 +1,8 @@
 {{! Abilities Tab }}
 <section class="tab abilities {{tab.cssClass}}" data-group="primary" data-tab="abilities">
   {{#each abilities as |abilityType|}}
+  {{!-- Don't show the "Other" category if there's no other abilities --}}
+  {{#if (or (ne @key "other") (and (eq @key "other") (gte abilityType.abilities.length 1)))}}
   <section class="item-list-container">
     <div class="item-header">
       <div class="item-column item-name">{{abilityType.label}}</div>
@@ -61,5 +63,6 @@
       {{/each}}
     </ol>
   </section>
+  {{/if}}
   {{/each}}
 </section>
