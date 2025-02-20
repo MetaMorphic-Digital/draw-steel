@@ -39,7 +39,7 @@
   }
 
   .item-header {
-    background-color: rgb(40, 35, 47);
+    background-color: var(--draw-steel-c-item-header-bg);
     border-radius: 5px 5px 0px 0px;
     position: sticky;
     top: 0px;
@@ -71,7 +71,7 @@
 
     .item {
       &:nth-child(even) {
-        background-color: rgba(255, 255, 255, .04);
+        background-color: var(--draw-steel-c-item-alternating-bg);
       }
 
       .item-row {

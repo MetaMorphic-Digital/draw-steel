@@ -296,6 +296,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       };
     }
 
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
