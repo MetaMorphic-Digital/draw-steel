@@ -14,11 +14,13 @@
       <div class="item-column item-distance">{{abilityType.fields.distance.label}}</div>
       <div class="item-column item-target">{{abilityType.fields.target.label}}</div>
       <div class="item-column item-controls">
+        {{#unless (eq @key "other")}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
+        {{/unless}}
       </div>
     </div>
     <ol class="item-list2 abilities-list">
