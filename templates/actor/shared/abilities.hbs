@@ -1,28 +1,70 @@
 {{! Abilities Tab }}
 <section class="tab abilities {{tab.cssClass}}" data-group="primary" data-tab="abilities">
-  <div class="item-header flexrow">
-    <a data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true">
-      {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")}}
-    </a>
-  </div>
-  <div class="item-list">
-    {{#each abilities as |ability index|}}
-    <button type="button" class="item flexrow draggable {{#if ability.system.restricted}}restricted{{/if}}" data-action="{{ifThen @root.isPlay "useAbility" "viewDoc"}}" data-document-class="Item" data-item-id="{{ability.id}}">
-      <img class="img" src="{{ability.img}}" alt="{{ability.name}}">
-      <span class="name">
-        {{#if ability.system.restricted}}
-        <span class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-        </span>
-        {{/if}}
-        {{ability.name}}
-      </span>
-      {{#unless @root.isPlay}}
-      <a class="delete" data-action="deleteDoc">
-        <i class="fa-solid fa-trash-can"></i>
-      </a>
-      {{/unless}}
-    </button>
-    {{/each}}
-  </div>
+  {{#each abilities as |abilityType|}}
+  {{!-- Don't show the "Other" category if there's no other abilities --}}
+  {{#if (or (ne @key "other") (and (eq @key "other") (gte abilityType.abilities.length 1)))}}
+  <section class="item-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{abilityType.label}}</div>
+      {{#if (eq @key "villain")}}
+      <div class="item-column item-order">{{localize "DRAW_STEEL.Item.Ability.Order"}}</div>
+      {{else}}
+      <div class="item-column item-cost">{{abilityType.fields.resource.label}}</div>
+      {{/if}}
+      <div class="item-column item-distance">{{abilityType.fields.distance.label}}</div>
+      <div class="item-column item-target">{{abilityType.fields.target.label}}</div>
+      <div class="item-column item-controls">
+        {{#unless (eq @key "other")}}
+        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+        {{/unless}}
+      </div>
+    </div>
+    <ol class="item-list2 abilities-list">
+      {{#each abilityType.abilities as |abilityContext|}}
+      <li class="item ability draggable" data-item-id="{{abilityContext.ability.id}}" data-document-class="Item">
+        <div class="item-row">
+          <div class="item-column item-name" data-action="useAbility">
+            <img class="item-image" src="{{abilityContext.ability.img}}" alt="{{abilityContext.ability.name}}">
+            {{#if abilityContext.ability.system.restricted}}
+            <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            {{/if}}
+            <div class="name">
+              <div class="label">{{abilityContext.ability.name}}</div>
+              <div class="keywords">{{abilityContext.formattedLabels.keywords}}</div>
+            </div>
+          </div>
+          {{#if (eq @../key "villain")}}
+          <div class="item-column item-order">
+            {{abilityContext.order}}
+          </div>
+          {{else}}
+          <div class="item-column item-cost">
+            {{#if abilityContext.ability.system.resource}}
+            {{abilityContext.ability.system.resource}} {{@root.system.coreResource.name}}
+            {{/if}}
+          </div>
+          {{/if}}
+          <div class="item-column item-distance">{{abilityContext.formattedLabels.distance}}</div>
+          <div class="item-column item-target">{{abilityContext.formattedLabels.target}}</div>
+          <div class="item-column item-controls">
+            <a data-action="toggleItemEmbed">
+              <i class="fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="item-embed">
+          {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+  {{/if}}
+  {{/each}}
 </section>
