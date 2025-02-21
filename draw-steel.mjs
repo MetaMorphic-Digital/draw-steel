@@ -85,12 +85,28 @@ Hooks.once("i18nInit", () => {
   for (const model of Object.values(CONFIG.Actor.dataModels)) {
     /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
     const characteristicSchema = model.schema.getField("characteristics");
-    if (!characteristicSchema) continue;
-    for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
-      const field = characteristicSchema.getField(`${characteristic}.value`);
-      if (!field) continue;
-      field.label = label;
-      field.hint = hint;
+    if (characteristicSchema) {
+      for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
+        const field = characteristicSchema.getField(`${characteristic}.value`);
+        if (!field) continue;
+        field.label = label;
+        field.hint = hint;
+      }
+    }
+    // Allows CONFIG.damageTypes to only have to define the name of the damage type once
+    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    const damageSchema = model.schema.getField("damage");
+    if (damageSchema) {
+      for (const field of Object.values(damageSchema.fields.immunities.fields)) {
+        if (field.label) {
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", {type: game.i18n.localize(field.label)});
+        }
+      }
+      for (const field of Object.values(damageSchema.fields.weaknesses.fields)) {
+        if (field.label) {
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", {type: game.i18n.localize(field.label)});
+        }
+      }
     }
   }
 });
@@ -115,5 +131,10 @@ Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
+Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
 
+/**
+ * Other hooks
+ */
+Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

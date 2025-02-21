@@ -9,7 +9,8 @@
       "Add": "+ Add {itemName}",
       "Play": "Play",
       "Edit": "Edit",
-      "Resources": "Resources"
+      "Resources": "Resources",
+      "Other": "Other"
     },
     "Source": {
       "FIELDS": {
@@ -99,10 +100,16 @@
           "combat": {
             "label": "Combat",
             "size": {
-              "label": "Size"
+              "label": "Size",
+              "value": {
+                "label": "Size Number"
+              }
             },
             "stability": {
               "label": "Stability"
+            },
+            "turns": {
+              "label": "Turns Per Round"
             }
           },
           "movement": {
@@ -125,6 +132,22 @@
             "teleport": {
               "label": "Teleport"
             }
+          },
+          "damage": {
+            "immunities": {
+              "label": "Immunities",
+              "all": {
+                "label": "Damage"
+              },
+              "format": "{type} Immunity"
+            },
+            "weaknesses": {
+              "label": "Weaknesses",
+              "all": {
+                "label": "Damage"
+              },
+              "format": "{type} Weakness"
+            }
           }
         },
         "sizes": {
@@ -138,7 +161,9 @@
         "FIELDS": {
           "hero": {
             "primary": {
-              "label": "Heroic Resource"
+              "value": {
+                "label": "Heroic Resource"
+              }
             },
             "surges": {
               "label": "Surges"
@@ -163,6 +188,27 @@
             },
             "skills": {
               "label": "Skills"
+            }
+          },
+          "biography": {
+            "value": {
+              "label": "Biography"
+            },
+            "gm": {
+              "label": "GM Notes"
+            },
+            "languages": {
+              "label": "Languages"
+            },
+            "height": {
+              "value": {
+                "label": "Height"
+              }
+            },
+            "weight": {
+              "value": {
+                "label": "Weight"
+              }
             }
           }
         },
@@ -189,6 +235,9 @@
             }
           },
           "monster": {
+            "freeStrike": {
+              "label": "Free Strike"
+            },
             "keywords": {
               "label": "Keywords"
             },
@@ -267,6 +316,12 @@
             "Revelry": "Revelry",
             "Vengeance": "Vengeance"
           }
+        },
+        "FreeStrike": {
+          "NoTargets": "Select one or more targets to make a free strike!",
+          "DialogHeader": "{value} {type} Damage",
+          "DialogTitle": "Free Strike",
+          "DialogButton": "Deal Damage"
         }
       },
       "DamageNotification": {
@@ -322,7 +377,8 @@
             "label": "DSID",
             "hint": "Draw Steel ID"
           }
-        }
+        },
+        "share": "Share"
       },
       "advancement": {
         "FIELDS": {}
@@ -387,13 +443,73 @@
             "potencyCharacteristic": {
               "label": "Potency Characteristic"
             },
+            "tier": {
+              "type": {
+                "label" : "Effect Type"
+              },
+             "potency": {
+                "label": "Potency",
+                "enabled": {
+                  "label": "Has Potency"
+                },
+                "characteristic": {
+                  "label": "Potency Characteristic"
+                },
+                "value": {
+                  "label": "Potency Value"
+                }
+              },
+              "display": {
+                "label": "Display Text"
+              },
+              "damage": {
+                "label": "Damage",
+                "types": {
+                  "label": "Damage Types"
+                },
+                "value": {
+                  "label": "Damage Formula"
+                }
+              },
+              "ae": {
+                "label": "Applied Effects",
+                "always": {
+                  "label": "Applied Effects"
+                },
+                "success": {
+                  "label": "Potency Success Effects"
+                },
+                "failure": {
+                  "label": "Potency Failure Effects"
+                }
+              },
+              "forced": {
+                "label": "Forced Movement",
+                "types": {
+                  "label": "Types"
+                },
+                "value": {
+                  "label": "Distance"
+                },
+                "vertical": {
+                  "label": "Vertical Movement"
+                }
+              },
+              "other": {
+                "label": "Other"
+              }
+            },
             "tier1": {
               "label": "Tier 1 Result",
               "damage": {
+                "label": "Damage",
+                "type": {
+                  "label": "Effect Type"
+                },
                 "value": {
                   "label": "Damage Formula"
                 },
-                "type": {
+                "subtype": {
                   "label": "Damage Type"
                 }
               },
@@ -521,7 +637,8 @@
           "Maneuver": "Maneuver",
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
-          "FreeTriggered": "Free Triggered Action"
+          "FreeTriggered": "Free Triggered Action",
+          "Villain": "Villain Action"
         },
         "Category": {
           "Heroic": "Heroic Ability",
@@ -589,11 +706,14 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic}<{value}",
+          "Embed": "{characteristic} < {value}",
           "Success": "Success",
           "Failure": "Failure"
         },
-        "Restricted": "A condition or ability effect is restricting the usage of this ability."
+        "Restricted": "A condition or ability effect is restricting the usage of this ability.",
+        "AddTierEffect": "Add Tier Effect",
+        "RemoveTierEffect": "Remove Tier Effect",
+        "Order": "Order"
       },
       "Ancestry": {
         "FIELDS": {}
@@ -634,6 +754,9 @@
           },
           "recoveries": {
             "label": "Recoveries"
+          },
+          "kits": {
+            "label": "Kits"
           }
         }
       },
@@ -843,6 +966,12 @@
         "Types": {
           "Martial": "Martial",
           "Caster": "Caster"
+        },
+        "NotAllowedByClass": "The {class} class does not allow kits.",
+        "Swap": {
+          "Title": "Choose Kit to Replace",
+          "Button": "Confirm Kit Swap",
+          "Header": "Choose which kit to replace with the {kit} kit."
         }
       }
     },
@@ -940,6 +1069,7 @@
           "Title": "{typeLabel} Power Roll",
           "Total": "Total: {number}",
           "GlobalModifiers": "Global Modifiers",
+          "DamageSelectionLabel": "Damage Type",
           "Button": "Roll"
         },
         "Tiers": {
@@ -1127,6 +1257,17 @@
       "2": "2nd Echelon",
       "3": "3rd Echelon",
       "4": "4th Echelon"
+    },
+    "Messages": {
+      "AbilityUse": {
+        "Buttons": {
+          "ApplyDamage": {
+            "Label": "Apply {amount}{type} Damage",
+            "Tooltip": "Shift+Click: Halve Damage"
+          }
+        },
+        "NoTokenSelected": "You must have at least one token selected"
+      }
     }
   },
   "TYPES": {

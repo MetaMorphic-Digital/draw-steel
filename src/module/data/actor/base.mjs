@@ -99,11 +99,22 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
-    // Reduce all movement speeds when slowed
-    if (this.parent.statuses.has("slowed")) {
+    // Set movement speeds when affected by grabbed, restrained, or slowed
+    const isSlowed = this.parent.statuses.has("slowed");
+    const isGrabbedOrRestrained = this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained");
+    if (isSlowed || isGrabbedOrRestrained) {
       for (const movement in this.movement) {
-        if (this.movement[movement] > this.statuses.slowed.speed) this.movement[movement] = this.statuses.slowed.speed;
+        // If slowed, set all speeds to slowed speed
+        if (isSlowed && (this.movement[movement] > this.statuses.slowed.speed)) this.movement[movement] = this.statuses.slowed.speed;
+
+        // If grabbed or restrained, set non-teleport speeds to 0
+        if (isGrabbedOrRestrained && (movement !== "teleport")) this.movement[movement] = 0;
       }
+    }
+
+    // prepare derived item data that relies on derived actor values (i.e. ability potencies)
+    for (const item of this.parent.items) {
+      item.system.preparePostActorPrepData();
     }
   }
 
@@ -172,7 +183,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
 
-    if (changed.system?.stamina) this.updateStaminaEffects();
+    if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
   }
 
   /**
@@ -232,7 +243,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
-    return PowerRoll.prompt({type, formula, data, flavor, modifiers: {edges: options.edges, banes: options.banes}, actor: this.parent});
+    return PowerRoll.prompt({type, formula, data, flavor, modifiers: {edges: options.edges, banes: options.banes}, actor: this.parent, characteristic});
   }
 
   /**

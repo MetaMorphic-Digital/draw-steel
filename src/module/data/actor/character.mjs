@@ -120,10 +120,8 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @override */
   prepareDerivedData() {
-    super.prepareDerivedData();
-
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
-    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label");
+    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
     if (heroClass && heroClass.system.primary) {
       this.hero.primary.label = heroClass.system.primary;
@@ -136,6 +134,8 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.weak += highestCharacteristic - 2;
     this.potency.average += highestCharacteristic - 1;
     this.potency.strong += highestCharacteristic;
+
+    super.prepareDerivedData();
   }
 
   /** @override */
@@ -172,7 +172,7 @@ export default class CharacterModel extends BaseActorModel {
         speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
         flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
       });
-      await this.parent.update({"system.hero.primary.value": this.hero.primary.value + recoveryRoll.total});
+      await this.updateResource(recoveryRoll.total);
     }
   }
 
@@ -210,7 +210,7 @@ export default class CharacterModel extends BaseActorModel {
   /** @override */
   get coreResource() {
     return {
-      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.label"),
+      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value"
     };

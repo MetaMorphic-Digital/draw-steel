@@ -34,16 +34,16 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   }
 
   /**
-   * Determine if a source actor is imposing the statusId on the affected actor.
+   * Determine if the affected actor has the status and if the source is the one imposing it
    * @param {DrawSteelActor} affected The actor affected by the status
    * @param {DrawSteelActor} source The actor imposing the status
-   * @param {string} statusId
-   * @returns {boolean}
+   * @param {string} statusId A status id from the CONFIG object
+   * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    const isAffectedByStatusId = affected.statuses.has(statusId);
-    const isAffectedBySource = !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
-    return isAffectedByStatusId && isAffectedBySource;
+    if(!affected.statuses.has(statusId)) return null;
+
+    return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
   }
 
   /**

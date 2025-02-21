@@ -86,6 +86,10 @@ section.tab {
   height: 100%
 }
 
+.flexrow.fieldgroup {
+  align-items: stretch;
+}
+
 .resources {
   .form-group.stacked {
     flex-direction: column-reverse;
@@ -120,6 +124,15 @@ section.tab {
   .resource-max {
     // font-size: large;
     text-align: center;
+  }
+}
+
+.free-strike {
+  flex: 0 0 120px;
+  .free-strike-body {
+    text-align: center;
+    height: 100%;
+    padding: 10px 0;
   }
 }
 
@@ -168,5 +181,34 @@ section.tab {
 .tab {
   .item-header {
     line-height: 24px;
+  }
+}
+
+.tab.abilities .item-list-container {
+
+  .item-cost,
+  .item-distance,
+  .item-target {
+    width: 100px;
+  }
+
+  .item-order {
+    width: 50px;
+  }
+
+  .item-row {
+    .item-name {
+      cursor: pointer;
+
+      &:hover .label {
+        text-shadow: 0 0 8px var(--color-shadow-primary);
+      }
+
+      .name {
+        .keywords {
+          font-size: var(--font-size-12);
+        }
+      }
+    }
   }
 }

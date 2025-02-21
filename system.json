@@ -65,7 +65,7 @@
     "url": "systems/draw-steel/assets/anvil-impact.png",
     "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
   }],
-  "version": "0.1.0",
+  "version": "0.6.0",
   "compatibility": {
     "minimum": "12.328",
     "verified": "12.331"
@@ -92,16 +92,16 @@
     }
   ],
   "socket": true,
-  "manifest": "TODO",
-  "download": "AUTOMATIC",
+  "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.6.0/draw-steel-release-0.6.0.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,
-    "distance": 5,
-    "units": "ft",
+    "distance": 1,
+    "units": "sq",
     "diagonals": 0
   },
   "primaryTokenAttribute": "stamina",
   "secondaryTokenAttribute": "hero.resources",
-  "initiative": "2d10 + @agl"
+  "initiative": "2d10 + @A"
 }

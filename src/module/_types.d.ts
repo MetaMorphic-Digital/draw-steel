@@ -41,5 +41,6 @@ export interface PowerRollPromptOptions {
   data: Record<string, unknown>;
   skills: string[];
   targets: PowerRollTargets[],
-  ability?: string
+  ability?: string,
+  characteristic?: string
 }

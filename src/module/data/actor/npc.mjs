@@ -2,6 +2,8 @@ import {systemID} from "../../constants.mjs";
 import {requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
+/** @import {DrawSteelItem} from "../../documents/_module.mjs"; */
+/** @import AbilityModel from "../item/ability.mjs"; */
 /** @import {MaliceModel} from "../settings/_module.mjs"; */
 
 /**
@@ -36,6 +38,7 @@ export default class NPCModel extends BaseActorModel {
     });
 
     schema.monster = new fields.SchemaField({
+      freeStrike: requiredInteger({initial: 0}),
       keywords: new fields.SetField(setOptions()),
       level: requiredInteger({initial: 1}),
       ev: requiredInteger({initial: 4}),
@@ -55,7 +58,7 @@ export default class NPCModel extends BaseActorModel {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
-  
+
   /** @override */
   get coreResource() {
     return {
@@ -66,6 +69,49 @@ export default class NPCModel extends BaseActorModel {
     };
   }
 
+  /**
+   * Fetch the traits of this creature's free strike.
+   * The value is stored in `this.monster.freeStrike`
+   * @returns {{
+   *   value: number;
+   *   keywords: Set<string>;
+   *   type: string;
+   *   range: {
+   *     melee: number;
+   *     ranged: number;
+   *   };
+   * }}
+   */
+  get freeStrike() {
+    /** @type {DrawSteelItem & {system: AbilityModel}} */
+    const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
+    /** @type {Set<string>} */
+    const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+    const freeStrike = {
+      value: this.monster.freeStrike,
+      keywords: keywords.add("strike"),
+      type: signature?.system.powerRoll.tier1.damage.type ?? "",
+      range: {
+        melee: 1,
+        ranged: 5
+      }
+    };
+    switch (signature?.system.distance.type) {
+      case "melee":
+        freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
+        break;
+      case "ranged":
+        freeStrike.range.ranged = Math.max(5, signature.system.distance.primary ?? 0);
+        break;
+      case "meleeRanged":
+        freeStrike.range.melee = Math.max(1, signature.system.distance.primary ?? 0);
+        freeStrike.range.ranged = Math.max(5, signature.system.distance.secondary ?? 0);
+        break;
+    }
+
+    return freeStrike;
+  }
+
   /** @override */
   async updateResource(delta) {
     if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
@@ -74,3 +120,5 @@ export default class NPCModel extends BaseActorModel {
     await game.settings.set(systemID, "malice", {value: malice.value + delta});
   }
 }
+
+/** @typedef {ReturnType<NPCModel["freeStrike"]>} FreeStrike */

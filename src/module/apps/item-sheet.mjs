@@ -60,14 +60,14 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * Available sheet modes.
    * @enum {number}
    */
-  static MODES = {
+  static MODES = Object.freeze({
     PLAY: 1,
     EDIT: 2
-  };
+  });
 
   /**
    * The mode the sheet is currently in.
-   * @type {ActorSheetV2.MODES}
+   * @type {DrawSteelItemSheet.MODES}
    */
   #mode = this.isEditable ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
 
@@ -122,6 +122,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       config: ds.CONFIG,
       // You can factor out context construction to helper functions
       tabs: this._getTabs(options.parts),
+      tabGroups: this.tabGroups,
       // Necessary for formInput and formFields helpers
       fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
@@ -299,6 +300,19 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
+  /** @override */
+  _onClose(options) {
+    super._onClose(options);
+    if (this.#editor) this.#saveEditor();
+  }
+
+  /** @override */
+  _attachPartListeners(partId, htmlElement, options) {
+    super._attachPartListeners(partId, htmlElement, options);
+
+    if (partId === "details") this.item.system._attachPartListeners(htmlElement, options);
+  }
+
   /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
@@ -350,6 +364,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       return;
     }
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+    if (this.isPlayMode && this.#editor) await this.#saveEditor();
     this.render();
   }
 
@@ -373,15 +388,15 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /**
    * Handle saving the editor content.
    */
-  #saveEditor() {
+  async #saveEditor() {
     const newValue = ProseMirror.dom.serializeString(this.#editor.view.state.doc.content);
     const [uuid, fieldName] = this.#editor.uuid.split("#");
     this.#editor.destroy();
     this.#editor = null;
     const currentValue = foundry.utils.getProperty(this.item, fieldName);
     if (newValue !== currentValue) {
-      this.item.update({[fieldName]: newValue});
-    } else this.render();
+      await this.item.update({[fieldName]: newValue});
+    } else await this.render();
   }
 
   /**
