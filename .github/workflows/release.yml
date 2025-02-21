@@ -22,7 +22,7 @@ jobs:
       id: manifest
       uses: ActionsTools/read-json-action@main
       with:
-        file_path: "./${{ steps.type.outputs.value }}.json"
+        file_path: "./system.json"
 
 
     # Set up our some variables for future use
