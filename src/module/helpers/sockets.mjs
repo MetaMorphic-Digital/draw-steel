@@ -54,9 +54,7 @@ export default class DrawSteelSocketHandler {
     const settingName = "heroTokens";
     const heroTokens = game.settings.get(systemID, settingName).value;
     if (heroTokens < tokenSpendConfiguration.tokens) {
-      // TODO: Refactor in v13 to use notification formatting
-      const message = game.i18n.format("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {name: sendingUsername});
-      ui.notifications.error(message);
+      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {format: {name: sendingUsername}});
       return;
     }
     await game.settings.set(systemID, settingName, {value: heroTokens - tokenSpendConfiguration.tokens});
