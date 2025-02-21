@@ -1,3 +1,4 @@
+import AbilityModel from "../../data/item/ability.mjs";
 import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
@@ -292,7 +293,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       context[type] = {
         label: config.label,
         abilities: [],
-        fields: abilities[0].system.schema.fields
+        fields: AbilityModel.schema.fields
       };
     }
 
@@ -300,7 +301,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
-      fields: abilities[0].system.schema.fields
+      fields: AbilityModel.schema.fields
     };
 
     // Prepare the context for each individual ability
