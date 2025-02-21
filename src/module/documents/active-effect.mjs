@@ -41,7 +41,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    if(!affected.statuses.has(statusId)) return null;
+    if (!affected.statuses.has(statusId)) return null;
 
     return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
   }
@@ -117,23 +117,5 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     if (isSetChange) delta = new Set([delta]);
 
     super._applyOverride(actor, change, current, delta, changes);
-  }
-
-  /**
-   * TODO: REMOVE IN V13
-   * Fix bug where _applyUpgrade can set value to undefined
-   * @override
-   */
-  _applyUpgrade(actor, change, current, delta, changes) {
-    let update = current;
-    const ct = foundry.utils.getType(current);
-    switch (ct) {
-      case "boolean":
-      case "number":
-        if ((change.mode === CONST.ACTIVE_EFFECT_MODES.UPGRADE) && (delta > current)) update = delta;
-        else if ((change.mode === CONST.ACTIVE_EFFECT_MODES.DOWNGRADE) && (delta < current)) update = delta;
-        break;
-    }
-    changes[change.key] = update;
   }
 }
