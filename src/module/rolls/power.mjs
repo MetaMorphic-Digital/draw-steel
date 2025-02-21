@@ -130,7 +130,8 @@ export class PowerRoll extends DSRoll {
     this.getActorModifiers(options);
     const context = {
       modifiers: options.modifiers,
-      targets: options.targets
+      targets: options.targets,
+      type
     };
 
     if (options.ability) context.ability = options.ability;

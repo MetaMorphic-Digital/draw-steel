@@ -43,8 +43,22 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       ...this.options.context
     };
 
+    if (context.type === "ability") await this._prepareAbilityContext(context);
+
+    if (context.targets) await this._prepareTargets(context);
+
+    return context;
+  }
+
+  /**
+   * Prepare the ability context by generating the ability Item and damageOptions
+   * @param {object} context
+   */
+  async _prepareAbilityContext(context) {
+    context.ability = await fromUuid(context.ability);
+    if (!context.ability) return;
+
     // Find the first instance of multiple damage types and create the options to provide a select
-    context.ability = await fromUuid(this.options.context.ability);
     context.damageOptions = null;
     for (const tier of PowerRoll.TIER_NAMES) {
       const effect = context.ability.system.powerRoll[tier].find(effect => (effect.type === "damage") && (effect.types.size > 1));
@@ -53,10 +67,6 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       context.damageOptions = Object.entries(ds.CONFIG.damageTypes).filter(([type, data]) => effect.types.has(type)).map(([value, {label}]) => ({value, label}));
       break;
     }
-
-    if (context.targets) await this._prepareTargets(context);
-
-    return context;
   }
 
   /**
