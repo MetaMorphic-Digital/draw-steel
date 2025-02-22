@@ -29,6 +29,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     },
     features: {
       template: systemPath("templates/actor/npc/features.hbs"),
+      templates: ["templates/actor/shared/features-list.hbs"].map(t => systemPath(t)),
       scrollable: [""]
     },
     abilities: {
