@@ -37,7 +37,7 @@ export interface PowerRollDialogPrompt {
 export interface ActorSheetItemContext {
   item: documents.DrawSteelItem;
   expanded: boolean;
-  embed?: string
+  embed?: HTMLDivElement
 }
 
 interface ActorSheetAbiltyContext extends ActorSheetItemContext {
