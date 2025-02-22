@@ -56,9 +56,8 @@
       <div class="item-column item-name">{{localize "TYPES.Item.kit"}}</div>
       <div class="item-column item-melee-bonus">{{kitFields.bonuses.fields.melee.fields.damage.label}}</div>
       <div class="item-column item-ranged-bonus">{{kitFields.bonuses.fields.ranged.fields.damage.label}}</div>
-      <div class="item-column item-preferred-kit"></div>
       <div class="item-column item-controls">
-        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.feature")) as |addItemTooltip|}}
+        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.kit")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="kit" data-render-sheet="true" data-tooltip="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
@@ -71,17 +70,15 @@
         <div class="item-row">
           <div class="item-column item-name" data-action="useAbility">
             <img class="item-image" src="{{kitContext.item.img}}" alt="{{kitContext.item.name}}">
+            {{#if (eq @root.system.hero.preferredKit kitContext.item.id)}}
+            <i data-tooltip="{{localize "DRAW_STEEL.Item.Kit.PreferredKit.Label"}}" class="fa-solid fa-star"></i>
+            {{/if}}
             <div class="name">
               <div class="label">{{kitContext.item.name}}</div>
             </div>
           </div>
           <div class="item-column item-melee-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.melee.damage}}</div>
           <div class="item-column item-ranged-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.ranged.damage}}</div>
-          <div class="item-column item-preferred-kit">
-            {{#if (eq @root.system.hero.preferredKit kitContext.item.id)}}
-            <i data-tooltip="{{localize "DRAW_STEEL.Item.Kit.PreferredKit.Label"}}" class="fa-solid fa-star"></i>
-            {{/if}}
-          </div>
           <div class="item-column item-controls">
             <a data-action="toggleItemEmbed">
               <i class="fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}"></i>

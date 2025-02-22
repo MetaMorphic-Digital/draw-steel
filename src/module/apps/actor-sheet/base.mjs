@@ -407,7 +407,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", {hookName: "ItemButtonContext", jQuery: false, fixed: true});
+    new ContextMenu(this.element, "[data-document-class]", this._getItemButtonContextOptions());
   }
 
   /**
@@ -421,11 +421,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       //Ability specific options
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToMelee",
-        condition: (target) => {
+        icon: "",
+        condition: ([target]) => {
           let item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "ranged");
         },
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -437,11 +438,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       },
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToRanged",
-        condition: (target) => {
+        icon: "",
+        condition: ([target]) => {
           let item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
         },
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -454,8 +456,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       // Kit specific options
       {
         name: "DRAW_STEEL.Item.Kit.PreferredKit.MakePreferred",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
-        callback: async (target) => {
+        icon: "",
+        condition: ([target]) => this._getEmbeddedDocument(target)?.type === "kit",
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -470,7 +473,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         name: "View",
         icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
         condition: () => this.isPlayMode,
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -483,7 +486,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         name: "Edit",
         icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
         condition: () => this.isEditMode,
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -495,7 +498,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       {
         name: "DRAW_STEEL.Item.base.share",
         icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
@@ -511,7 +514,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         name: "Delete",
         icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
         condition: () => this.actor.isOwner,
-        callback: async (target) => {
+        callback: async ([target]) => {
           const item = this._getEmbeddedDocument(target);
           if (!item) {
             console.error("Could not find item");
