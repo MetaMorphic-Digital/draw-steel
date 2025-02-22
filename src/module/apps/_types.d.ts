@@ -33,3 +33,19 @@ export interface PowerRollDialogPrompt {
   rolls: PowerRollDialogModifiers[];
   damage?: string;
 }
+
+export interface ActorSheetItemContext {
+  item: documents.DrawSteelItem;
+  expanded: boolean;
+  embed?: string
+}
+
+interface ActorSheetAbiltyContext extends ActorSheetItemContext {
+  formattedLabels: object;
+  order?: number;
+}
+
+export interface ActorSheetAbilitiesContext {
+  label: string;
+  abilities: ActorSheetAbiltyContext[]
+}
