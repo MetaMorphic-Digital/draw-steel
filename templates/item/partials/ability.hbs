@@ -107,7 +107,6 @@
 {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
-{{formGroup systemFields.powerRoll.fields.potencyCharacteristic value=system.powerRoll.potencyCharacteristic options=characteristics blank=""}}
 {{> "templates/generic/tab-navigation.hbs" tabs=subtabs}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}

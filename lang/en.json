@@ -440,9 +440,6 @@
             "characteristics": {
               "label": "Characteristics"
             },
-            "potencyCharacteristic": {
-              "label": "Potency Characteristic"
-            },
             "tier": {
               "type": {
                 "label" : "Effect Type"
@@ -460,7 +457,8 @@
                 }
               },
               "display": {
-                "label": "Display Text"
+                "label": "Display Text",
+                "hint": "{{potency}} will be replaced with the derived potency info (i.e M<2). {{damage}} will be replaced with the derived damage number based on kits and other effects."
               },
               "damage": {
                 "label": "Damage",

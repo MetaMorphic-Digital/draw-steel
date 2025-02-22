@@ -103,7 +103,10 @@ export default class AbilityModel extends BaseItemModel {
       Object.entries(schema.types).forEach(([type, typeSchema]) => {
         schema.types[type].label = game.i18n.localize(`${baseLabel}.${type}.label`);
         Object.entries(typeSchema.fields).forEach(([field, fieldSchema]) => {
-          if (["type", "display"].includes(field)) fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
+          if (["type", "display"].includes(field)) {
+            fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
+            if (field === "display") fieldSchema.hint = game.i18n.localize(`${baseLabel}.${field}.hint`);
+          }
           else fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
         });
       });
@@ -115,7 +118,6 @@ export default class AbilityModel extends BaseItemModel {
       enabled: new fields.BooleanField(),
       formula: new FormulaField({blank: false, initial: "@chr"}),
       characteristics: new fields.SetField(setOptions()),
-      potencyCharacteristic: new fields.StringField(),
       tier1: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.weak"})),
       tier2: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.average"})),
       tier3: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.strong"}))
