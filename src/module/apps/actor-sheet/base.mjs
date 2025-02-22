@@ -407,7 +407,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", {hookName: "ItemButtonContext", jQuery: false});
+    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", {hookName: "ItemButtonContext", jQuery: false, fixed: true});
   }
 
   /**
