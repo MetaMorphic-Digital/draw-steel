@@ -2,6 +2,7 @@ import {systemID, systemPath} from "../../constants.mjs";
 import KitModel from "../../data/item/kit.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
+/** @import {ActorSheetItemContext} from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
@@ -75,7 +76,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for features
-   * @returns {Array<import("../_types.js").ActorSheetItemContext>}
+   * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareKitsContext() {
     const kits = this.actor.itemTypes.kit.toSorted((a, b) => a.sort - b.sort);
