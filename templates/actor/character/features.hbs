@@ -43,7 +43,6 @@
           </div>
         </div>
         <div class="item-embed">
-          {{log featureContext.embed.outerHTML}}
           {{#if featureContext.expanded}}{{{featureContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
@@ -79,7 +78,6 @@
           <div class="item-column item-melee-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.melee.damage}}</div>
           <div class="item-column item-ranged-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.ranged.damage}}</div>
           <div class="item-column item-preferred-kit">
-            {{log @root}}
             {{#if (eq @root.system.hero.preferredKit kitContext.item.id)}}
             <i data-tooltip="{{localize "DRAW_STEEL.Item.Kit.PreferredKit.Label"}}" class="fa-solid fa-star"></i>
             {{/if}}
