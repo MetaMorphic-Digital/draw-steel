@@ -5,6 +5,7 @@ import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {ActorSheetItemContext, ActorSheetAbilitiesContext} from "../_types.js" */
 
 const {api, sheets} = foundry.applications;
 
@@ -276,7 +277,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /**
    * Generate the context data shared between item types
    * @param {DrawSteelItem} item
-   * @returns {import("../_types.js").ActorSheetItemContext}
+   * @returns {ActorSheetItemContext}
    */
   async _prepareItemContext(item) {
     const context = {
@@ -292,7 +293,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Prepare the context for features
-   * @returns {Array<import("../_types.js").ActorSheetItemContext>}
+   * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareFeaturesContext() {
     const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
@@ -307,7 +308,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Prepare the context for ability categories and individual abilities
-   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", import("../_types.js").ActorSheetAbilitiesContext>}
+   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", ActorSheetAbilitiesContext>}
    */
   async _prepareAbilitiesContext() {
     const context = {};

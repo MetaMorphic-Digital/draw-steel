@@ -27,7 +27,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     },
     features: {
       template: systemPath("templates/actor/character/features.hbs"),
-      templates: ["templates/actor/shared/features-list.hbs"].map(t => systemPath(t)),
+      templates: ["templates/actor/character/features.hbs", "templates/actor/shared/features-list.hbs"].map(t => systemPath(t)),
       scrollable: [""]
     },
     abilities: {
