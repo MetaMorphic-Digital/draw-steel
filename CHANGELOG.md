@@ -27,15 +27,5 @@
 ### Changed
 - Updated the view of the features tab to match the style of the abilities tab
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
-
-### Known Issues
-
 
 ## 0.6 Initial Release
