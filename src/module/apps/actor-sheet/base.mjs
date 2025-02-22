@@ -1,3 +1,4 @@
+import AbilityModel from "../../data/item/ability.mjs";
 import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
@@ -27,7 +28,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       deleteDoc: this._deleteDoc,
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
-      useAbility: this._useAbility
+      useAbility: this._useAbility,
+      toggleItemEmbed: this._toggleItemEmbed
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
@@ -50,6 +52,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @type {DrawSteelActorSheet.MODES}
    */
   #mode = DrawSteelActorSheet.MODES.PLAY;
+
+  /**
+   * A set of the currently expanded item ids
+   * @type {Set<string>}
+   */
+  #expanded = new Set();
 
   /**
    * Is this sheet in Play Mode?
@@ -120,7 +128,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         context.tab = context.tabs[partId];
         break;
       case "abilities":
-        context.abilities = this.actor.items.filter(i => i.type === "ability").sort((a, b) => a.sort - b.sort);
+        context.abilities = await this._prepareAbilitiesContext();
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -270,6 +278,58 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
 
   /**
+   * Prepare the context for ability categories and individual abilities
+   * @returns {Record<string, object>}
+   */
+  async _prepareAbilitiesContext() {
+    const context = {};
+    const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
+
+    // Prepare ability categories for each ability type
+    for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
+      // Don't show villain actions on non-NPC sheets
+      if ((type === "villain") && (this.actor.type !== "npc")) continue;
+
+      context[type] = {
+        label: config.label,
+        abilities: [],
+        fields: AbilityModel.schema.fields
+      };
+    }
+
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    context["other"] = {
+      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      abilities: [],
+      fields: AbilityModel.schema.fields
+    };
+
+    // Prepare the context for each individual ability
+    for (const ability of abilities) {
+      const type = context[ability.system.type] ? ability.system.type : "other";
+
+      const abilityContext = {
+        ability,
+        expanded: this.#expanded.has(ability.id),
+        formattedLabels: ability.system.formattedLabels
+      };
+
+      // only get the embed data when it's relevant and expanded
+      if (this.#expanded.has(ability.id)) abilityContext.embed = await ability.toEmbed({});
+
+      // add the order to the villain action based on the current # of villain actions in the context
+      if (type === "villain") {
+        const villainActionCount = context[type].abilities.length;
+        abilityContext.order = villainActionCount + 1;
+      }
+
+      context[type].abilities.push(abilityContext);
+    }
+
+    return context;
+  }
+
+  /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
    */
@@ -321,7 +381,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
     // TODO: Change to ContextMenu.create in v13 with jQuery: false
-    new ContextMenu(this.element, "button[data-document-class]", this._getItemButtonContextOptions());
+    new ContextMenu(this.element, "[data-document-class]", this._getItemButtonContextOptions());
   }
 
   /**
@@ -457,7 +517,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Renders an embedded document's sheet
+   * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode
    *
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
@@ -466,7 +526,11 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    doc.sheet.render(true);
+    if (!doc) {
+      console.error("Could not find document");
+      return;
+    }
+    await doc.sheet.render({force: true, mode: this.#mode});
   }
 
   /**
@@ -553,6 +617,24 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       return;
     }
     await item.system.use({event});
+  }
+
+  /**
+   * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async _toggleItemEmbed(event, target) {
+    const {itemId} = target.closest(".item").dataset;
+
+    if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
+    else this.#expanded.add(itemId);
+
+    const part = target.closest("[data-application-part]").dataset.applicationPart;
+    this.render({parts: [part]});
   }
 
   /** Helper Functions */

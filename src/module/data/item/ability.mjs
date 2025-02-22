@@ -281,30 +281,46 @@ export default class AbilityModel extends BaseItemModel {
     return embed;
   }
 
+  /**
+   * The formatted text strings for keywords, distance, and target for use in the ability embed and actor sheet.
+   * @returns {Record<string, string>}
+   */
+  get formattedLabels() {
+    const labels = {};
+    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
+    labels.keywords = keywordFormatter.format(keywordList);
+
+    labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, {...this.distance});
+
+    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? {embedLabel: "Unknown"};
+    labels.target = this.target.value === null ?
+      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
+      game.i18n.format(targetConfig.embedLabel, {value: this.target.value});
+
+    return labels;
+  }
+
   /** @override */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
+    const formattedLabels = this.formattedLabels;
 
     context.resourceName = this.actor?.system.coreResource?.name ?? "";
 
-    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
-    const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
-    context.keywordList = keywordFormatter.format(keywordList);
+    context.keywordList = formattedLabels.keywords;
     context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
     context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
 
-    context.distanceLabel = game.i18n.format(config.distances[this.distance.type]?.embedLabel, {...this.distance});
+    context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
     context.primaryDistance = config.distances[this.distance.type].primary;
     context.secondaryDistance = config.distances[this.distance.type].secondary;
     context.tertiaryDistance = config.distances[this.distance.type].tertiary;
 
-    const targetConfig = config.targets[this.target.type] ?? {embedLabel: "Unknown"};
-    context.targetLabel = this.target.value === null ?
-      targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, {value: this.target.value});
+    context.targetLabel = formattedLabels.target;
     context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
