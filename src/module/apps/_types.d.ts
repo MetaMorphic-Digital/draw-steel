@@ -40,12 +40,12 @@ export interface ActorSheetItemContext {
   embed?: HTMLDivElement
 }
 
-interface ActorSheetAbiltyContext extends ActorSheetItemContext {
-  formattedLabels: object;
+interface ActorSheetAbilityContext extends ActorSheetItemContext {
+  formattedLabels: Record<"keywords" | "distance" | "target", string>;
   order?: number;
 }
 
 export interface ActorSheetAbilitiesContext {
   label: string;
-  abilities: ActorSheetAbiltyContext[]
+  abilities: ActorSheetAbilityContext[]
 }

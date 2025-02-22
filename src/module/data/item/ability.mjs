@@ -283,7 +283,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * The formatted text strings for keywords, distance, and target for use in the ability embed and actor sheet.
-   * @returns {Record<string, string>}
+   * @returns {Record<"keywords" | "distance" | "target", string>}
    */
   get formattedLabels() {
     const labels = {};
