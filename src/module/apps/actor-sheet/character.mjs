@@ -1,6 +1,8 @@
 import {systemID, systemPath} from "../../constants.mjs";
+import KitModel from "../../data/item/kit.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
+/** @import {ActorSheetItemContext} from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
@@ -26,6 +28,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     },
     features: {
       template: systemPath("templates/actor/character/features.hbs"),
+      templates: ["templates/actor/character/features.hbs", "templates/actor/shared/features-list.hbs"].map(t => systemPath(t)),
       scrollable: [""]
     },
     abilities: {
@@ -50,7 +53,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         context.skills = this._getSkillList();
         break;
       case "features":
-        context.kits = this.actor.system.kits.sort((a, b) => a.sort - b.sort);
+        context.kits = await this._prepareKitsContext();
+        context.kitFields = KitModel.schema.fields;
         break;
     }
     return context;
@@ -68,6 +72,21 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }, []);
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
+  }
+
+  /**
+   * Prepare the context for features
+   * @returns {Array<ActorSheetItemContext>}
+   */
+  async _prepareKitsContext() {
+    const kits = this.actor.itemTypes.kit.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const kit of kits) {
+      context.push(await this._prepareItemContext(kit));
+    }
+
+    return context;
   }
 
   /* -------------------------------------------------- */

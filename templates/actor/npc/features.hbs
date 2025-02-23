@@ -1,21 +1,5 @@
 {{! Features Tab }}
 <section class="tab features {{tab.cssClass}}" data-group="primary" data-tab="features">
-  <div class="item-header flexrow">
-    <a data-action="createDoc" data-document-class="Item" data-type="feature" data-render-sheet="true">
-      {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.feature")}}
-    </a>
-  </div>
-  <div class="item-list features">
-    {{#each features as |feature index|}}
-    <button type="button" class="item flexrow draggable" data-action="viewDoc" data-document-class="Item" data-item-id="{{feature.id}}">
-      <img class="img" src="{{feature.img}}" alt="{{feature.name}}">
-      <span class="name">{{feature.name}}</span>
-      {{#unless @root.isPlay}}
-      <a class="delete" data-action="deleteDoc">
-        <i class="fa-solid fa-trash-can"></i>
-      </a>
-      {{/unless}}
-    </button>
-    {{/each}}
-  </div>
+  {{! Features List}}
+  {{> "systems/draw-steel/templates/actor/shared/features-list.hbs"}}
 </section>

@@ -78,7 +78,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   async toEmbed(config, options = {}) {
 
-    options.rollData ??= this.parent.getRollData;
+    options.rollData ??= this.parent.getRollData();
     const enriched = await TextEditor.enrichHTML(this.description.value, options);
 
     const embed = document.createElement("div");
