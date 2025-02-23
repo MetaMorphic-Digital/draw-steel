@@ -10,9 +10,10 @@
   {{> "systems/draw-steel/templates/actor/shared/features-list.hbs"}}
 
   {{! Kits List}}
+  {{#if (or system.class.system.kits kits.length)}}
   <section class="item-list-container kit-list-container">
     <div class="item-header">
-      <div class="item-column item-name">{{localize "TYPES.Item.kit"}}</div>
+      <div class="item-column item-name">{{localize "TYPES.Item.kit"}} ({{kits.length}} / {{ifThen system.class.system.kits system.class.system.kits 0}})</div>
       <div class="item-column item-melee-bonus">{{kitFields.bonuses.fields.melee.fields.damage.label}}</div>
       <div class="item-column item-ranged-bonus">{{kitFields.bonuses.fields.ranged.fields.damage.label}}</div>
       <div class="item-column item-controls">
@@ -51,4 +52,5 @@
       {{/each}}
     </ol>
   </section>
+  {{/if}}
 </section>
