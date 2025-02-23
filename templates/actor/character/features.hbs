@@ -1,6 +1,6 @@
 {{#*inline "kitDamageBonuses"}}
 {{#if (or damage.tier1 damage.tier2 damage.tier3)}}
-+{{damage.tier1}} / +{{damage.tier2}} / +{{damage.tier3}}
+{{numberFormat damage.tier1 sign=true}} / {{numberFormat damage.tier2 sign=true}} / {{numberFormat damage.tier3 sign=true}}
 {{/if}}
 {{/inline}}
 
