@@ -26,6 +26,8 @@
 
 ### Changed
 - Updated the view of the features tab to match the style of the abilities tab
+- The kit section will only be visible if the actor's class allows kits or there's kits on the actor.
+- Made the kit swap dialog more clear on why you need to swap kits.
 
 
 ## 0.6 Initial Release
