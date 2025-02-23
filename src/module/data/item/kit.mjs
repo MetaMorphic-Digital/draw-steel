@@ -85,6 +85,36 @@ export default class KitModel extends BaseItemModel {
   }
 
   /**
+   * @override
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    const embed = document.createElement("div");
+    embed.classList.add("kit");
+    embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    const context = {
+      system: this,
+      systemFields: this.schema.fields,
+      config: ds.CONFIG,
+      showDescription: true // used to prevent showing the description on the details tab of the kit sheet
+    };
+    context.enrichedDescription = await TextEditor.enrichHTML(
+      this.description.value,
+      {
+        secrets: this.parent.isOwner,
+        rollData: this.parent.getRollData(),
+        relativeTo: this.parent
+      }
+    );
+    this.getSheetContext(context);
+    //TODO: Once kits provide a signature item, add the ability embed or link to the item
+    const kitBody = await await renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
+    embed.insertAdjacentHTML("beforeend", kitBody);
+    return embed;
+  }
+
+  /**
    * Prompt the user for which kit to replace when the actor is already at the maximum.
    * @returns {Promise<void|false>}
    */
@@ -136,5 +166,9 @@ export default class KitModel extends BaseItemModel {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({value, label}));
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({value, label}))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
+
+    const weaponFormatter = game.i18n.getListFormatter({type: "unit"});
+    const weaponList = Array.from(this.equipment.weapon).map(w => ds.CONFIG.equipment.weapon[w]?.label ?? w);
+    context.weaponLabel = weaponFormatter.format(weaponList);
   }
 }
