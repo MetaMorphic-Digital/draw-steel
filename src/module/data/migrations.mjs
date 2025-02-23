@@ -5,8 +5,7 @@ import {systemID} from "../constants.mjs";
  * Run and awaited in the `ready` hook before `ds.ready` is called.
  */
 export async function migrateWorld() {
-  // TODO: In v13 simplify to the new getter
-  if (!game.users.activeGM?.isSelf) {
+  if (!game.user.isActiveGM) {
     console.log("Not the active GM");
     return;
   }

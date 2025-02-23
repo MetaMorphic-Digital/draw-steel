@@ -51,9 +51,6 @@ Hooks.once("init", function () {
     CONFIG.statusEffects.push({id, ...value});
   }
 
-  // Necessary until foundry makes this default behavior in v13
-  CONFIG.ActiveEffect.legacyTransferral = false;
-
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelCharacterSheet, {
