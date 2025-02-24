@@ -125,7 +125,7 @@ export default class KitModel extends BaseItemModel {
     if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", {kit: this.parent.name})}</strong>`;
+    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", {kit: this.parent.name, actor: this.parent.actor.name})}</strong>`;
     for (const kit of kits) {
       radioButtons += `
         <div class="form-group">
