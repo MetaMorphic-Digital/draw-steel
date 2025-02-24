@@ -109,7 +109,7 @@ export default class KitModel extends BaseItemModel {
     );
     this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
-    const kitBody = await await renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
+    const kitBody = await renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
   }
