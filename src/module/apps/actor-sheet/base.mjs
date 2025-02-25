@@ -1,9 +1,11 @@
 import AbilityModel from "../../data/item/ability.mjs";
+import FeatureModel from "../../data/item/feature.mjs";
 import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {DrawSteelItem} from "../../documents/item.mjs";
 import {DrawSteelItemSheet} from "../item-sheet.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import {ActorSheetItemContext, ActorSheetAbilitiesContext} from "../_types.js" */
 
 const {api, sheets} = foundry.applications;
 
@@ -124,11 +126,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         context.tab = context.tabs[partId];
         break;
       case "features":
-        context.features = this.actor.items.filter(i => i.type === "feature").sort((a, b) => a.sort - b.sort);
+        context.features = await this._prepareFeaturesContext();
+        context.featureFields = FeatureModel.schema.fields;
         context.tab = context.tabs[partId];
         break;
       case "abilities":
         context.abilities = await this._prepareAbilitiesContext();
+        context.abilityFields = AbilityModel.schema.fields;
         context.tab = context.tabs[partId];
         break;
       case "biography":
@@ -271,15 +275,40 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * @typedef ActiveEffectCategory
-   * @property {string} type                 - The type of category
-   * @property {string} label                - The localized name of the category
-   * @property {Array<ActiveEffect>} effects - The effects in the category
+   * Generate the context data shared between item types
+   * @param {DrawSteelItem} item
+   * @returns {ActorSheetItemContext}
    */
+  async _prepareItemContext(item) {
+    const context = {
+      item,
+      expanded: this.#expanded.has(item.id)
+    };
+
+    // only generate the item embed when it's expanded
+    if (context.expanded) context.embed = await item.system.toEmbed({});
+
+    return context;
+  }
+
+  /**
+   * Prepare the context for features
+   * @returns {Array<ActorSheetItemContext>}
+   */
+  async _prepareFeaturesContext() {
+    const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const feature of features) {
+      context.push(await this._prepareItemContext(feature));
+    }
+
+    return context;
+  }
 
   /**
    * Prepare the context for ability categories and individual abilities
-   * @returns {Record<string, object>}
+   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", ActorSheetAbilitiesContext>}
    */
   async _prepareAbilitiesContext() {
     const context = {};
@@ -292,30 +321,22 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
       context[type] = {
         label: config.label,
-        abilities: [],
-        fields: AbilityModel.schema.fields
+        abilities: []
       };
     }
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
-      abilities: [],
-      fields: AbilityModel.schema.fields
+      abilities: []
     };
 
     // Prepare the context for each individual ability
     for (const ability of abilities) {
       const type = context[ability.system.type] ? ability.system.type : "other";
 
-      const abilityContext = {
-        ability,
-        expanded: this.#expanded.has(ability.id),
-        formattedLabels: ability.system.formattedLabels
-      };
-
-      // only get the embed data when it's relevant and expanded
-      if (this.#expanded.has(ability.id)) abilityContext.embed = await ability.toEmbed({});
+      const abilityContext = await this._prepareItemContext(ability);
+      abilityContext.formattedLabels = ability.system.formattedLabels;
 
       // add the order to the villain action based on the current # of villain actions in the context
       if (type === "villain") {
@@ -328,6 +349,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     return context;
   }
+
+  /**
+   * @typedef ActiveEffectCategory
+   * @property {string} type                 - The type of category
+   * @property {string} label                - The localized name of the category
+   * @property {Array<ActiveEffect>} effects - The effects in the category
+   */
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
@@ -392,6 +420,57 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getItemButtonContextOptions() {
     // name is auto-localized
     return [
+      //Ability specific options
+      {
+        name: "DRAW_STEEL.Item.Ability.SwapUsage.ToMelee",
+        icon: "",
+        condition: ([target]) => {
+          let item = this._getEmbeddedDocument(target);
+          return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "ranged");
+        },
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.update({"system.damageDisplay": "melee"});
+          await this.render();
+        }
+      },
+      {
+        name: "DRAW_STEEL.Item.Ability.SwapUsage.ToRanged",
+        icon: "",
+        condition: ([target]) => {
+          let item = this._getEmbeddedDocument(target);
+          return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
+        },
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.update({"system.damageDisplay": "ranged"});
+          await this.render();
+        }
+      },
+      // Kit specific options
+      {
+        name: "DRAW_STEEL.Item.Kit.PreferredKit.MakePreferred",
+        icon: "",
+        condition: ([target]) => this._getEmbeddedDocument(target)?.type === "kit",
+        callback: async ([target]) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await this.actor.update({"system.hero.preferredKit": item.id});
+          await this.render();
+        }
+      },
+      // All applicable options
       {
         name: "View",
         icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",

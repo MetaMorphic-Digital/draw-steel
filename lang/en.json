@@ -440,9 +440,6 @@
             "characteristics": {
               "label": "Characteristics"
             },
-            "potencyCharacteristic": {
-              "label": "Potency Characteristic"
-            },
             "tier": {
               "type": {
                 "label" : "Effect Type"
@@ -460,7 +457,8 @@
                 }
               },
               "display": {
-                "label": "Display Text"
+                "label": "Display Text",
+                "hint": "{{potency}} will be replaced with the derived potency info (i.e M<2). {{damage}} will be replaced with the derived damage number based on kits and other effects."
               },
               "damage": {
                 "label": "Damage",
@@ -713,7 +711,11 @@
         "Restricted": "A condition or ability effect is restricting the usage of this ability.",
         "AddTierEffect": "Add Tier Effect",
         "RemoveTierEffect": "Remove Tier Effect",
-        "Order": "Order"
+        "Order": "Order",
+        "SwapUsage": {
+          "ToMelee": "Swap to Melee Usage",
+          "ToRanged": "Swap to Ranged Usage"
+        }
       },
       "Ancestry": {
         "FIELDS": {}
@@ -971,8 +973,13 @@
         "Swap": {
           "Title": "Choose Kit to Replace",
           "Button": "Confirm Kit Swap",
-          "Header": "Choose which kit to replace with the {kit} kit."
-        }
+          "Header": "{actor} already has the maximum number kits and must replace one. Choose which kit to replace with the {kit} kit."
+        },
+        "PreferredKit": {
+          "Label": "Preferred Kit",
+          "MakePreferred": "Make Preferred Kit"
+        },
+        "StaminaEmbed": "{number} per echelon"
       }
     },
     "Effect": {
