@@ -30,5 +30,7 @@
 - The kit section will only be visible if the actor's class allows kits or there's kits on the actor.
 - Made the kit swap dialog more clear on why you need to swap kits.
 
+### Fixed
+- Fixed kit stability not increasing character stability
 
 ## 0.6 Initial Release

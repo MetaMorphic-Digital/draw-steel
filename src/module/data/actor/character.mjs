@@ -97,7 +97,7 @@ export default class CharacterModel extends BaseActorModel {
       const bonuses = kit.system.bonuses;
       kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
       kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
-      kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
+      kitBonuses.stability = Math.max(kitBonuses.stability, bonuses.stability);
 
       const abiBonuses = ["melee.distance", "ranged.distance"];
 
