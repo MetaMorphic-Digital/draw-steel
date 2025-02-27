@@ -244,6 +244,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
           tab.id = "features";
           tab.label += "Features";
           break;
+        case "equipment":
+          tab.id = "equipment";
+          tab.label += "Equipment";
+          break;
         case "stats":
           tab.id = "stats";
           tab.label += "Stats";
