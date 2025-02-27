@@ -53,7 +53,7 @@
 
   {{! Equipments List}}
   {{#each equipment as |equipmentCategory|}}
-  {{!-- Don't show the "Other" category if there's no other abilities --}}
+  {{!-- Don't show the "Other" category if there's no other equipment --}}
   {{#if (or (ne @key "other") (and (eq @key "other") (gte equipmentCategory.equipment.length 1)))}}
   <section class="item-list-container equipment-list-container">
     <div class="item-header">
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="item-embed">
-          {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
+          {{#if equipmentContext.expanded}}{{{equipmentContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
       {{/each}}
