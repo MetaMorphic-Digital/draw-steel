@@ -4,11 +4,8 @@
 {{/if}}
 {{/inline}}
 
-{{! Features Tab }}
-<section class="tab features {{tab.cssClass}}" data-group="primary" data-tab="features">
-  {{! Features List}}
-  {{> "systems/draw-steel/templates/actor/shared/features-list.hbs"}}
-
+{{! Equipment Tab }}
+<section class="tab equipment {{tab.cssClass}}" data-group="primary" data-tab="equipment">
   {{! Kits List}}
   {{#if (or system.class.system.kits kits.length)}}
   <section class="item-list-container kit-list-container">
@@ -53,4 +50,49 @@
     </ol>
   </section>
   {{/if}}
+
+  {{! Equipments List}}
+  {{#each equipment as |equipmentCategory|}}
+  {{!-- Don't show the "Other" category if there's no other equipment --}}
+  {{#if (or (ne @key "other") (and (eq @key "other") (gte equipmentCategory.equipment.length 1)))}}
+  <section class="item-list-container equipment-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{equipmentCategory.label}}</div>
+      <div class="item-column item-echelon">{{@root.equipmentFields.echelon.label}}</div>
+      <div class="item-column item-controls">
+        {{#unless (eq @key "other")}}
+        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.equipment")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="equipment" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+        {{/unless}}
+      </div>
+    </div>
+    <ol class="item-list2 equipment-list">
+      {{#each equipmentCategory.equipment as |equipmentContext|}}
+      <li class="item equipment draggable" data-item-id="{{equipmentContext.item.id}}" data-document-class="Item">
+        <div class="item-row">
+          <div class="item-column item-name">
+            <img class="item-image" src="{{equipmentContext.item.img}}" alt="{{equipmentContext.item.name}}">
+            <div class="name">
+              <div class="label">{{equipmentContext.item.name}}</div>
+            </div>
+          </div>
+          <div class="item-column item-echelon">{{localize (concat "DRAW_STEEL.Echelon." equipmentContext.item.system.echelon)}}</div>
+          <div class="item-column item-controls">
+            <a data-action="toggleItemEmbed">
+              <i class="fa-solid fa-angle-{{ifThen equipmentContext.expanded "down" "right"}}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="item-embed">
+          {{#if equipmentContext.expanded}}{{{equipmentContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+  {{/if}}
+  {{/each}}
 </section>

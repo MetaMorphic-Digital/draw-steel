@@ -25,6 +25,7 @@
 - Added an option to the ability's right click context menu to swap between melee/ranged usage on weapons with a distance of melee or ranged.
 - Added an embed for kits used for viewing on the actor sheet, viewing in play mode on the kit sheet, and posting to chat. (#239)
 - Added place to set class level (#172).
+- Added an equipment tab and moved the kits to this tab instead of the features tab. (#250)
 
 ### Changed
 - Updated the view of the features tab to match the style of the abilities tab (#153).
