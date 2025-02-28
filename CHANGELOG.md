@@ -33,6 +33,7 @@
 
 ### Fixed
 - Added zero-width spaces after "/" in names to ensure they linebreak properly (#241).
+- Fixed kit stability not increasing character stability.
 
 ## 0.6.1
 
