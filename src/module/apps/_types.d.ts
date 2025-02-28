@@ -49,3 +49,8 @@ export interface ActorSheetAbilitiesContext {
   label: string;
   abilities: ActorSheetAbilityContext[]
 }
+
+export interface ActorSheetEquipmentContext {
+  label: string;
+  equipment: ActorSheetItemContext[]
+}
