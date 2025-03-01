@@ -9,10 +9,10 @@
       {{#if (eq @key "villain")}}
       <div class="item-column item-order">{{localize "DRAW_STEEL.Item.Ability.Order"}}</div>
       {{else}}
-      <div class="item-column item-cost">{{abilityType.fields.resource.label}}</div>
+      <div class="item-column item-cost">{{@root.abilityFields.resource.label}}</div>
       {{/if}}
-      <div class="item-column item-distance">{{abilityType.fields.distance.label}}</div>
-      <div class="item-column item-target">{{abilityType.fields.target.label}}</div>
+      <div class="item-column item-distance">{{@root.abilityFields.distance.label}}</div>
+      <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
       <div class="item-column item-controls">
         {{#unless (eq @key "other")}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
@@ -25,17 +25,17 @@
     </div>
     <ol class="item-list2 abilities-list">
       {{#each abilityType.abilities as |abilityContext|}}
-      <li class="item ability draggable" data-item-id="{{abilityContext.ability.id}}" data-document-class="Item">
+      <li class="item ability draggable" data-item-id="{{abilityContext.item.id}}" data-document-class="Item">
         <div class="item-row">
           <div class="item-column item-name" data-action="useAbility">
-            <img class="item-image" src="{{abilityContext.ability.img}}" alt="{{abilityContext.ability.name}}">
-            {{#if abilityContext.ability.system.restricted}}
+            <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
+            {{#if abilityContext.item.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             {{/if}}
             <div class="name">
-              <div class="label">{{abilityContext.ability.name}}</div>
+              <div class="label">{{abilityContext.item.name}}</div>
               <div class="keywords">{{abilityContext.formattedLabels.keywords}}</div>
             </div>
           </div>
@@ -45,8 +45,8 @@
           </div>
           {{else}}
           <div class="item-column item-cost">
-            {{#if abilityContext.ability.system.resource}}
-            {{abilityContext.ability.system.resource}} {{@root.system.coreResource.name}}
+            {{#if abilityContext.item.system.resource}}
+            {{abilityContext.item.system.resource}} {{@root.system.coreResource.name}}
             {{/if}}
           </div>
           {{/if}}
