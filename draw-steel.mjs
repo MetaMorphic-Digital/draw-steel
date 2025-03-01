@@ -27,7 +27,8 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  const templates = ["templates/item/embeds/ability.hbs"].map(t => DS_CONST.systemPath(t));
+  helpers.registerHandlebars();
+  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {

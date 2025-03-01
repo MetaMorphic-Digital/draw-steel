@@ -1,0 +1,45 @@
+{{! Features Tab }}
+<section class="tab features {{tab.cssClass}}" data-group="primary" data-tab="features">
+  <section class="item-list-container feature-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{localize "TYPES.Item.feature"}}</div>
+      <div class="item-column item-type">{{featureFields.type.fields.value.label}}</div>
+      <div class="item-column item-type">{{featureFields.type.fields.subtype.label}}</div>
+      <div class="item-column item-controls">
+        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.feature")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="feature" data-render-sheet="true" data-tooltip="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+      </div>
+    </div>
+    <ol class="item-list2 feature-list">
+      {{#each features as |featureContext|}}
+      <li class="item feature draggable" data-item-id="{{featureContext.item.id}}" data-document-class="Item">
+        <div class="item-row">
+          <div class="item-column item-name" data-action="useAbility">
+            <img class="item-image" src="{{featureContext.item.img}}" alt="{{featureContext.item.name}}">
+            <div class="name">
+              <div class="label">{{featureContext.item.name}}</div>
+            </div>
+          </div>
+          {{#with (lookup @root.config.features.types featureContext.item.system.type.value) as |typeConfig|}}
+          {{#with (lookup typeConfig.subtypes featureContext.item.system.type.subtype) as |subtypeConfig|}}
+          <div class="item-column item-type">{{typeConfig.label}}</div>
+          <div class="item-column item-subtype">{{subtypeConfig.label}}</div>
+          {{/with}}
+          {{/with}}
+          <div class="item-column item-controls">
+            <a data-action="toggleItemEmbed">
+              <i class="fa-solid fa-angle-{{ifThen featureContext.expanded "down" "right"}}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="item-embed">
+          {{#if featureContext.expanded}}{{{featureContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+</section>

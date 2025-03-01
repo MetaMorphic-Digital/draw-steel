@@ -1,6 +1,8 @@
 import {systemID, systemPath} from "../../constants.mjs";
+import {EquipmentModel, KitModel} from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
+/** @import {ActorSheetItemContext} from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
@@ -25,7 +27,11 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""]
     },
     features: {
-      template: systemPath("templates/actor/character/features.hbs"),
+      template: systemPath("templates/actor/shared/features.hbs"),
+      scrollable: [""]
+    },
+    equipment: {
+      template: systemPath("templates/actor/character/equipment.hbs"),
       scrollable: [""]
     },
     abilities: {
@@ -49,8 +55,12 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       case "stats":
         context.skills = this._getSkillList();
         break;
-      case "features":
-        context.kits = this.actor.system.kits.sort((a, b) => a.sort - b.sort);
+      case "equipment":
+        context.kits = await this._prepareKitsContext();
+        context.kitFields = KitModel.schema.fields;
+        context.equipment = await this._prepareEquipmentContext();
+        context.equipmentFields = EquipmentModel.schema.fields;
+        context.tab = context.tabs[partId];
         break;
     }
     return context;
@@ -68,6 +78,53 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }, []);
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
+  }
+
+  /**
+   * Prepare the context for features
+   * @returns {Array<ActorSheetItemContext>}
+   */
+  async _prepareKitsContext() {
+    const kits = this.actor.itemTypes.kit.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const kit of kits) {
+      context.push(await this._prepareItemContext(kit));
+    }
+
+    return context;
+  }
+
+  /**
+   * Prepare the context for equipment categories and individual equipment items
+   * @returns {Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}
+   */
+  async _prepareEquipmentContext() {
+    const context = {};
+    const equipment = this.actor.itemTypes.equipment.toSorted((a, b) => a.sort - b.sort);
+
+    // Prepare ability categories for each ability type
+    for (const [category, config] of Object.entries(ds.CONFIG.equipment.categories)) {
+      context[category] = {
+        label: config.label,
+        equipment: []
+      };
+    }
+
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    context["other"] = {
+      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      equipment: []
+    };
+
+    // Prepare the context for each individual equipment item
+    for (const item of equipment) {
+      const category = context[item.system.category] ? item.system.category : "other";
+
+      context[category].equipment.push(await this._prepareItemContext(item));
+    }
+
+    return context;
   }
 
   /* -------------------------------------------------- */
