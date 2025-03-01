@@ -271,8 +271,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
     if (damage === 0) {
-      // TODO: V13 allows the format option to be passed. Notification could be updated to include the damaged actor's name
-      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", {localize: true});
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", {format: {name: this.parent.name}});
       return this.parent;
     }
 
