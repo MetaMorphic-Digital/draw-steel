@@ -1,4 +1,5 @@
 export * from "./actor-sheet/_module.mjs";
+export * from "./core/_module.mjs";
 export * as hooks from "./hooks/_module.mjs";
 export {DrawSteelItemSheet} from "./item-sheet.mjs";
 export {PowerRollDialog} from "./power-roll-dialog.mjs";

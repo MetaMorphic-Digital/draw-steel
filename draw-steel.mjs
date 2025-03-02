@@ -70,6 +70,11 @@ Hooks.once("init", function () {
     label: "DRAW_STEEL.Sheet.Labels.Item"
   });
 
+  // Register replacements for core UI elements
+  Object.assign(CONFIG.ui, {
+    combat: applications.DrawSteelCombatTracker
+  });
+
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 });
@@ -127,7 +132,6 @@ Hooks.once("ready", async function () {
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
 Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
 

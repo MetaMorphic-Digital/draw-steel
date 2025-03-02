@@ -1,27 +1,37 @@
+.theme-light .combat-sidebar li.combatant {
+  // Light theme washes out low opacity
+  --combatantAlpha: 0.2;
+  &.active {
+    --combatantAlpha: 0.5
+  }
+}
+
 .combat-sidebar {
   li.combatant {
-    .token-initiative {
-      &.PARTY {
-        background-color: rgba(51, 188, 78, 0.3);
-      }
-      &.SECRET {
-        background-color: rgba(166, 18, 212, 0.3);
-      }
-      &.HOSTILE {
-        background-color: rgba(231, 33, 36, 0.3);
-      }
-      &.NEUTRAL {
-        background-color: rgba(241, 216, 54, 0.3);
-      }
-      &.FRIENDLY {
-        background-color: rgba(67, 223, 223, 0.3);
-      }
-      &.OTHER {
-        background-color: rgba(85, 85, 85, 0.3);
-      }
-      .activate-combatant {
-        font-size: 24px;
-      }
+    --combatantAlpha: 0.1;
+    &.active {
+      --combatantAlpha: 0.3;
+    }
+    &.PARTY {
+      background-color: rgba(51, 188, 78, var(--combatantAlpha));
+    }
+    &.SECRET {
+      background-color: rgba(166, 18, 212, var(--combatantAlpha));
+    }
+    &.HOSTILE {
+      background-color: rgba(231, 33, 36, var(--combatantAlpha));
+    }
+    &.NEUTRAL {
+      background-color: rgba(241, 216, 54, var(--combatantAlpha));
+    }
+    &.FRIENDLY {
+      background-color: rgba(67, 223, 223, var(--combatantAlpha));
+    }
+    &.OTHER {
+      background-color: rgba(85, 85, 85, var(--combatantAlpha));
+    }
+    .activate-combatant {
+      font-size: 24px;
     }
   }
 }
