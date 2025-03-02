@@ -39,10 +39,8 @@
 
     {{!-- Initiative --}}
     <div class="token-initiative">
-      <a class="activate-combatant" data-action="activateCombatant" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.{{ifThen initiative "Act" "Restore"}}">
-        {{ifThen (gt initiative 1) (concat initiative " ") ""}}
-        {{!-- Initiative is a string so "0" is truthy --}}
-        <i class="fa-solid {{ifThen (gt initiative 0) "fa-arrow-right" "fa-clock-rotate-left"}}"></i>
+      <a class="activate-combatant" data-action="activateCombatant" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.{{activateTooltip}}">
+        {{initiativeCount}} <i class="fa-solid {{initiativeSymbol}}"></i>
       </a>
     </div>
   </li>

@@ -78,26 +78,19 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
 
-    let dispositionColor = " PARTY";
+    let dispositionColor = "PARTY";
+
     if (!combatant.hasPlayerOwner) {
-      switch (combatant.disposition) {
-        case -2:
-          dispositionColor = " SECRET";
-          break;
-        case -1:
-          dispositionColor = " HOSTILE";
-          break;
-        case 0:
-          dispositionColor = " NEUTRAL";
-          break;
-        case 1:
-          dispositionColor = " FRIENDLY";
-          break;
-        default:
-          dispositionColor = " OTHER";
-      }
+      const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
+      dispositionColor = invertedDisposition[combatant.disposition] ?? "OTHER";
     }
-    turn.css += dispositionColor;
+    turn.css += " " + dispositionColor;
+
+    turn.activateTooltip = combatant.initiative ? "Act" : "Restore";
+
+    turn.initiativeCount = combatant.initiative > 1 ? combatant.initiative : "";
+
+    turn.initiativeSymbol = combatant.initiative ? "fa-arrow-right" : "fa-clock-rotate-left";
 
     return turn;
   }
