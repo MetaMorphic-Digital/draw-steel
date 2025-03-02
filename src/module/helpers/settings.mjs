@@ -24,7 +24,7 @@ export default class DrawSteelSettingsHandler {
       initiativeMode: {
         name: "DRAW_STEEL.Combat.Initiative.Modes.Label",
         hint: "DRAW_STEEL.Combat.Initiative.Modes.Hint",
-        type: new fields.StringField({choices: ds.CONST.initiativeModes, initial: "default"}),
+        type: new fields.StringField({choices: ds.CONST.initiativeModes, initial: "default", required: true}),
         config: true,
         scope: "world"
       },

@@ -6,7 +6,7 @@ import {systemID} from "../constants.mjs";
  */
 export async function migrateWorld() {
   if (!game.user.isActiveGM) {
-    console.log("Not the active GM");
+    console.debug("Not the active GM");
     return;
   }
   const migrationVersion = game.settings.get(systemID, "migrationVersion");
