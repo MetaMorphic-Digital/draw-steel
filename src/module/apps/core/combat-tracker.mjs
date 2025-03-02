@@ -7,6 +7,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   /** @override */
   static DEFAULT_OPTIONS = {
     actions: {
+      rollFirst: this.#rollFirst,
       activateCombatant: this.#onActivateCombatant
     }
   };
@@ -24,6 +25,9 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     /** Inherited, only used for "alternative" combats */
     footer: {
       template: "templates/sidebar/tabs/combat/footer.hbs"
+    },
+    dsHeader: {
+      template: systemPath("templates/combat/header.hbs")
     },
     dsTracker: {
       template: systemPath("templates/combat/tracker.hbs")
@@ -43,9 +47,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const parts = super._configureRenderParts(options);
 
     if (game.settings.get(systemID, "initiativeMode") === "default") {
+      delete parts.header;
       delete parts.tracker;
       delete parts.footer;
     } else {
+      delete parts.dsHeader;
       delete parts.dsTracker;
       delete parts.dsFooter;
     }
@@ -57,6 +63,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
+      case "dsHeader":
       case "dsFooter":
         await this._prepareCombatContext(context, options);
         break;
@@ -110,6 +117,16 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
+
+  /**
+   * Roll to determine who will go first.
+   * @this DrawSteelCombatTracker
+   * @param {PointerEvent} event The triggering event.
+   * @param {HTMLElement} target The action target element.
+   */
+  static async #rollFirst(event, target) {
+    this.viewed.rollFirst();
+  }
 
   /**
    * Cycle through the combatant's activation status

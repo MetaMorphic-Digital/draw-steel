@@ -1,4 +1,5 @@
 import {systemID} from "../constants.mjs";
+import {DSRoll} from "../rolls/base.mjs";
 /** @import {MaliceModel} from "../data/settings/malice.mjs" */
 /** @import {DrawSteelCombatant} from "./combatant.mjs" */
 
@@ -7,6 +8,20 @@ export class DrawSteelCombat extends Combat {
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatData", this);
+  }
+
+  /**
+   * Roll a d10 to determine who goes first. On a 6+, heroes do.
+   */
+  async rollFirst() {
+    const roll = new DSRoll("1d10");
+    await roll.evaluate();
+
+    const resultMessage = roll.total >= 6 ? "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Heroes" : "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Enemies";
+
+    roll.toMessage({
+      flavor: game.i18n.localize(resultMessage)
+    }, {rollMode: CONST.DICE_ROLL_MODES.PUBLIC});
   }
 
   /** @override */
