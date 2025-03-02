@@ -1,4 +1,4 @@
-.theme-light .combat-sidebar li.combatant {
+.theme-light .combat-tracker.ds-default li.combatant {
   // Light theme washes out low opacity
   --combatantAlpha: 0.2;
   &.active {
@@ -6,7 +6,7 @@
   }
 }
 
-.combat-sidebar {
+.combat-tracker.ds-default {
   li.combatant {
     --combatantAlpha: 0.1;
     &.active {
@@ -29,6 +29,9 @@
     }
     &.OTHER {
       background-color: rgba(85, 85, 85, var(--combatantAlpha));
+    }
+    .token-initiative {
+      flex: 0 0 2.5rem;
     }
     .activate-combatant {
       font-size: 24px;
