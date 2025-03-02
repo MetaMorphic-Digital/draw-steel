@@ -1,7 +1,10 @@
 import {systemID, systemPath} from "../../constants.mjs";
 
+/**
+ * A custom combat tracker that supports Draw Steel's initiative system
+ */
 export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
-
+  /** @override */
   static DEFAULT_OPTIONS = {
     actions: {
       activateCombatant: this.#onActivateCombatant
@@ -29,6 +32,10 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       template: systemPath("templates/combat/footer.hbs")
     }
   };
+
+  /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
 
   /** @override */
   _configureRenderParts(options) {
@@ -88,6 +95,22 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return turn;
   }
 
+  /** @override */
+  _getEntryContextOptions() {
+    const entryOptions = super._getEntryContextOptions();
+
+    if (game.settings.get(systemID, "initiativeMode") === "default") {
+      entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
+      entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
+    }
+
+    return entryOptions;
+  }
+
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
+
   /**
    * Cycle through the combatant's activation status
    * @this DrawSteelCombatTracker
@@ -98,12 +121,13 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const {combatantId} = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
-    console.log(this, event, target, combatant);
+
     const combat = this.viewed;
     const oldValue = combatant.initiative;
     const newValue = oldValue ? oldValue - 1 : (combatant.actor?.system.combat?.turns ?? 1);
-    console.log(oldValue, newValue);
+
     await combatant.update({initiative: newValue});
+
     if (oldValue) {
       const newTurn = combat.turns.findIndex((c) => c === combatant);
       combat.update({turn: newTurn}, {direction: 1});

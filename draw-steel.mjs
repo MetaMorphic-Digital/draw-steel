@@ -132,7 +132,6 @@ Hooks.once("ready", async function () {
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
 
 /**
