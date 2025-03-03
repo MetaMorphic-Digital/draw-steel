@@ -986,6 +986,34 @@
           "MakePreferred": "Make Preferred Kit"
         },
         "StaminaEmbed": "{number} per echelon"
+      },
+      "Project": {
+        "FIELDS": {
+          "prerequisites": {
+            "label": "Item Prerequisites"
+          },
+          "projectSource": {
+            "label": "Project Source"
+          },
+          "rollCharacteristic": {
+            "label": "Project Roll Characteristics"
+          },
+          "goal": {
+            "label": "Project Goal"
+          },
+          "yield": {
+            "item": {
+              "label": "Yield Item UUID"
+            },
+            "amount": {
+              "label": "Yield Amount"
+            },
+            "display": {
+              "label": "Yield Display"
+            }
+          }
+        },
+        "CraftItemName": "Craft {name}"
       }
     },
     "Effect": {
@@ -1297,7 +1325,8 @@
       "culture": "Culture",
       "feature": "Feature",
       "equipment": "Equipment",
-      "kit": "Kit"
+      "kit": "Kit",
+      "project": "Project"
     }
   },
   "USER": {
