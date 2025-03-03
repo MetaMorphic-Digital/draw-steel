@@ -1,0 +1,21 @@
+<section class="project-info">
+  <p class="prerequisites">
+    <strong>{{systemFields.prerequisites.label}}:</strong> {{system.prerequisites}}
+  </p>
+  <p class="source">
+    <strong>{{systemFields.projectSource.label}}:</strong> {{system.projectSource}}
+  </p>
+  <p class="characteristics">
+    <strong>{{systemFields.rollCharacteristic.label}}:</strong> {{formattedCharacteristics}}
+  </p>
+  <p class="goal">
+    <strong>{{systemFields.goal.label}}:</strong> {{system.goal}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}
+  </p>
+  {{#if itemLink}}
+  <p class="item-link">
+    <strong>{{localize "DOCUMENT.Item"}}:</strong> {{{itemLink}}}
+  </p>
+  {{/if}}
+
+  {{{enrichedDescription}}}
+</section>

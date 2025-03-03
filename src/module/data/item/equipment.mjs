@@ -31,9 +31,8 @@ export default class EquipmentModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
 
-    schema.prerequisites = new fields.StringField({required: true});
-
     schema.project = new fields.SchemaField({
+      prerequisites: new fields.StringField({required: true}),
       source: new fields.StringField({required: true}),
       rollCharacteristic: new fields.SetField(setOptions()),
       goal: new fields.NumberField(),
