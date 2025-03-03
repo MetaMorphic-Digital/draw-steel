@@ -15,7 +15,9 @@ ______                      _____ _            _
 `;
 
 export const initiativeModes = Object.freeze({
+  /** Players and Enemies alternate */
   default: "DRAW_STEEL.Combat.Initiative.Modes.Default",
+  /** Traditional "roll a die and go in roll order" */
   alternative: "DRAW_STEEL.Combat.Initiative.Modes.Alternative"
 });
 

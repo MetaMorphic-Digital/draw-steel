@@ -326,7 +326,7 @@
         }
       },
       "DamageNotification": {
-        "ImmunityReducedToZero": "The actor's immunities have reduced the damage to zero."
+        "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
       }
     },
     "Combat": {
@@ -338,6 +338,11 @@
           "Alternative": "Alternative"
         },
         "Actions": {
+          "RollFirst": {
+            "Tooltip": "Roll a d10 to determine which side goes first",
+            "Heroes": "Heroes Go First!",
+            "Enemies": "Enemies Go First!"
+          },
           "Act": "Act",
           "Restore": "Restore Action"
         }

@@ -27,6 +27,7 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
+  helpers.registerHandlebars();
   const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
@@ -51,9 +52,6 @@ Hooks.once("init", function () {
     CONFIG.statusEffects.push({id, ...value});
   }
 
-  // Necessary until foundry makes this default behavior in v13
-  CONFIG.ActiveEffect.legacyTransferral = false;
-
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelCharacterSheet, {
@@ -70,6 +68,11 @@ Hooks.once("init", function () {
   Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item"
+  });
+
+  // Register replacements for core UI elements
+  Object.assign(CONFIG.ui, {
+    combat: applications.DrawSteelCombatTracker
   });
 
   // Register dice rolls
@@ -129,8 +132,6 @@ Hooks.once("ready", async function () {
 Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
-Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
 
 /**
