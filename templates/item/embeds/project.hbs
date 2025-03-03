@@ -11,5 +11,9 @@
   <p class="goal">
     <strong>{{systemFields.goal.label}}:</strong> {{system.goal}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}
   </p>
-  {{!-- TODO: Add content link to the item --}}
+  {{#if itemLink}}
+  <p class="item-link">
+    <strong>{{localize "DOCUMENT.Item"}}:</strong> {{{itemLink}}}
+  </p>
+  {{/if}}
 </section>

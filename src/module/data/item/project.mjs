@@ -94,5 +94,7 @@ export default class ProjectModel extends BaseItemModel {
     const characteristicFormatter = game.i18n.getListFormatter({type: "disjunction"});
     const characteristicList = Array.from(this.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
     context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
+
+    if (this.yield.item) context.itemLink = await TextEditor.enrichHTML(`@UUID[${this.yield.item}]`);
   }
 }
