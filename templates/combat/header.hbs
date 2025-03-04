@@ -44,7 +44,16 @@
   <div class="encounter-controls {{#if hasCombat}}combat{{/if}}">
 
     <button type="button" class="inline-control combat-control icon fa-solid fa-dice-d10" data-action="rollFirst" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Tooltip" aria-label="{{ localize "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Tooltip" }}"></button>
-    <button type="button" class="inline-control combat-control icon fa-solid fa-users-rectangle" data-action="createGroup" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.CreateGroup.Tooltip" aria-label="{{localize "DRAW_STEEL.Combat.Initiative.Actions.CreateGroup.Tooltip"}}"></button>
+    {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
+    <button
+      type="button"
+      class="inline-control combat-control icon fa-solid fa-users-rectangle"
+      data-action="createGroup"
+      {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+      data-tooltip="{{localize "DOCUMENT.Create" type=(localize "DOCUMENT.CombatantGroup")}}"
+      {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+      aria-label="{{localize "DOCUMENT.Create" type=(localize "DOCUMENT.CombatantGroup")}}">
+    </button>
 
     {{!-- Combat Status --}}
     <strong class="encounter-title">
