@@ -32,7 +32,8 @@ Hooks.once("init", function () {
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
-    if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
+    // Temp patch for 13.337
+    if (!CONST.ALL_DOCUMENT_TYPES.includes(doc) && (doc !== "CombatantGroup")) continue;
     for (const modelCls of Object.values(models)) {
       if (modelCls.metadata?.type) CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
