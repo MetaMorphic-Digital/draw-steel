@@ -1,4 +1,5 @@
 import {systemID, systemPath} from "../../constants.mjs";
+import {DrawSteelCombatantGroup} from "../../documents/combatant-group.mjs";
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -8,6 +9,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
+      createGroup: this.#createGroup,
       activateCombatant: this.#onActivateCombatant
     }
   };
@@ -119,6 +121,16 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   static async #rollFirst(event, target) {
     this.viewed.rollFirst();
+  }
+
+  /**
+   * Create a Combatant Group
+   * @this DrawSteelCombatTracker
+   * @param {PointerEvent} event The triggering event.
+   * @param {HTMLElement} target The action target element.
+   */
+  static async #createGroup(event, target) {
+    DrawSteelCombatantGroup.createDialog({}, {parent: this.viewed});
   }
 
   /**
