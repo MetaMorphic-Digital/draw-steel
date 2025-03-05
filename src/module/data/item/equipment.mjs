@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -36,7 +37,10 @@ export default class EquipmentModel extends BaseItemModel {
       source: new fields.StringField({required: true}),
       rollCharacteristic: new fields.SetField(setOptions()),
       goal: new fields.NumberField(),
-      yield: new fields.StringField({required: true})
+      yield: new fields.SchemaField({
+        amount: new FormulaField({initial: "1"}),
+        display: new fields.StringField({required: true})
+      })
     });
 
     return schema;

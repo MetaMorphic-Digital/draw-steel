@@ -58,7 +58,8 @@ export default class ProjectModel extends BaseItemModel {
         projectSource: source,
         yield: {
           item: itemUUID,
-          display: yieldItem.system.project.yield
+          amount: yieldItem.system.project.yield.amount,
+          display: yieldItem.system.project.yield.display
         }
       });
       const name = game.i18n.format("DRAW_STEEL.Item.Project.CraftItemName", {name: yieldItem.name});
