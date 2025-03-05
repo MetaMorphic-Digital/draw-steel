@@ -27,11 +27,11 @@ export default class ProjectModel extends BaseItemModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    schema.prerequisites = new fields.StringField();
-    schema.projectSource = new fields.StringField();
+    schema.prerequisites = new fields.StringField({required: true});
+    schema.projectSource = new fields.StringField({required: true});
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = new fields.NumberField({integer: true, positive: true});
-    schema.progress = new fields.NumberField({integer: true});
+    schema.goal = new fields.NumberField({required: true, integer: true, positive: true, initial: 1});
+    schema.progress = new fields.NumberField({required: true, integer: true, min: 0, initial: 0});
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({initial: "1"}),
