@@ -55,7 +55,7 @@ export class MaliceModel extends foundry.abstract.DataModel {
       victories += foundry.utils.getProperty(character, "system.hero.victories") ?? 0;
       return victories;
     }, 0);
-    const avgVictories = Math.floor(totalVictories / heroes.length);
+    const avgVictories = Math.floor(totalVictories / heroes.length) || 0;
     // Also work in the first round of combat bonus
     return game.settings.set(systemID, "malice", {value: avgVictories + 1 + heroes.length});
   }
