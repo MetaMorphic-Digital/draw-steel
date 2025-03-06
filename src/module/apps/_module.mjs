@@ -1,3 +1,4 @@
+export {DrawSteelActiveEffectConfig} from "./active-effect-config.mjs";
 export * from "./actor-sheet/_module.mjs";
 export * from "./core/_module.mjs";
 export * as hooks from "./hooks/_module.mjs";

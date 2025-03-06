@@ -69,6 +69,11 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item"
   });
+  foundry.applications.apps.DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.DrawSteelActiveEffectConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect"
+  });
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
@@ -129,7 +134,6 @@ Hooks.once("ready", async function () {
 /**
  * Render hooks
  */
-Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);

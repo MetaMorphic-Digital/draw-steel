@@ -1,0 +1,37 @@
+<section class="tab{{#if tab.active}} active{{/if}}" data-group="{{tab.group}}" data-tab="{{tab.id}}">
+  {{!-- System Fields --}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.Effect.Ends.Label"}}</legend>
+    {{formGroup systemFields.end.fields.type value=source.system.end.type options=durationOptions blank=""}}
+    {{formGroup systemFields.end.fields.roll value=source.system.end.roll}}
+  </fieldset>
+
+  <hr>
+
+  {{!-- Core Fields --}}
+  <fieldset>
+    {{formGroup fields.duration.fields.seconds value=source.duration.seconds rootId=rootId}}
+    {{formGroup fields.duration.fields.startTime value=source.duration.startTime rootId=rootId}}
+  </fieldset>
+
+  <fieldset>
+    <div class="form-group">
+      <label>{{localize "EFFECT.DurationTurns"}}</label>
+      <div class="form-fields">
+        <label for="{{rootId}}-duration.rounds">{{localize "COMBAT.Rounds"}}</label>
+        {{formInput fields.duration.fields.rounds value=source.duration.rounds id=(concat rootId "-duration.rounds")}}
+        <label for="{{rootId}}-duration.turns">{{localize "COMBAT.Turns"}}</label>
+        {{formInput fields.duration.fields.turns value=source.duration.turns id=(concat rootId "-duration.turns")}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label>{{localize "EFFECT.StartTurns"}}</label>
+      <div class="form-fields">
+        <label for="{{rootId}}-duration.startRound">{{localize "COMBAT.Round"}}</label>
+        {{formInput fields.duration.fields.startRound value=source.duration.startRound id=(concat rootId "-duration.startRound")}}
+        <label for="{{rootId}}-duration.startTurn">{{localize "COMBAT.Turn"}}</label>
+        {{formInput fields.duration.fields.startTurn value=source.duration.startTurn id=(concat rootId "-duration.startTurn")}}
+      </div>
+    </div>
+  </fieldset>
+</section>
