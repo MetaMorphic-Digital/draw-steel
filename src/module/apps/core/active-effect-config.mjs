@@ -1,16 +1,16 @@
-import {systemPath} from "../constants.mjs";
-
-const {sheets} = foundry.applications;
+import {systemPath} from "../../constants.mjs";
 
 /**
  * The Application responsible for configuring a single ActiveEffect document within a parent Actor or Item.
  */
-export class DrawSteelActiveEffectConfig extends sheets.ActiveEffectConfig {
+export default class DrawSteelActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
+  /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel"]
   };
 
+  /** @override */
   static PARTS = {
     header: {
       template: "templates/sheets/active-effect-config/header.hbs"
@@ -32,6 +32,7 @@ export class DrawSteelActiveEffectConfig extends sheets.ActiveEffectConfig {
     }
   };
 
+  /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.systemFields = this.document.system.schema.fields;
