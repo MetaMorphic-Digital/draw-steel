@@ -222,6 +222,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic
    * @param {number} [options.edges]                    Base edges for the roll
    * @param {number} [options.banes]                    Base banes for the roll
+   * @param {number} [options.bonuses]                  Base bonuses for the roll
+   * @returns {Promise<DrawSteelChatMessage>}
    */
   async rollCharacteristic(characteristic, options = {}) {
     const types = options.types ?? ["test"];
