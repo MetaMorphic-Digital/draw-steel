@@ -46,11 +46,11 @@
     </div>
   </div>
   {{/each}}
-  {{#if skills}}
+  {{#if skillOptions}}
   <label>
     <span>{{localize "DRAW_STEEL.Actor.Character.FIELDS.hero.skills.label"}}</span>
-    <select name="skills">
-      {{selectOptions skills blank=(localize "None")}}
+    <select name="skill">
+      {{selectOptions skillOptions blank=(localize "None") selected=skill}}
     </select>
   </label>
   {{/if}}
