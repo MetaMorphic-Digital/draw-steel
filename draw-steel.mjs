@@ -1,3 +1,4 @@
+import * as canvas from "./src/module/canvas/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
 import * as applications from "./src/module/apps/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
@@ -7,6 +8,7 @@ import {DRAW_STEEL} from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
+  canvas,
   documents,
   applications,
   helpers,
@@ -40,8 +42,8 @@ Hooks.once("init", function () {
   }
 
   // Assign canvas-related classes
-  CONFIG.Token.objectClass = data.canvas.DrawSteelToken;
-  CONFIG.Token.rulerClass = data.canvas.DrawSteelTokenRuler;
+  CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
+  CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
 
   loadTemplates(templates);
 
