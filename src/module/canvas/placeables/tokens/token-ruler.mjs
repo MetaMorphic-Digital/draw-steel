@@ -2,6 +2,8 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   /** @inheritdoc */
   _getWaypointLabel(waypoint) {
     let {text, alpha, scale} = super._getWaypointLabel(waypoint);
+    if (waypoint.stage === "passed") return {text, alpha, scale};
+
     const points = this.token._rulerData?.[game.user.id]?.foundPath ?? [];
     const freeStrikes = this.token.document.getHostileTokensFromPoints(points);
     text = [
