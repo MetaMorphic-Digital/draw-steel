@@ -1,6 +1,7 @@
 /** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {PowerRoll} from "../../rolls/power.mjs";
 import {damageTypes, requiredInteger, setOptions} from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
@@ -242,6 +243,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     }
     const skills = this.hero?.skills ?? null;
 
+    const evaluation = "evaluate";
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
@@ -250,7 +252,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       banes: options.banes ?? 0,
       bonuses: options.bonuses ?? 0
     };
-    return PowerRoll.prompt({type, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
+
+    const rolls = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
+    return DrawSteelChatMessage.create({
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
+      rolls
+    });
   }
 
   /**
