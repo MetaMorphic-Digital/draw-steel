@@ -486,8 +486,8 @@ DRAW_STEEL.languages = {
   axiomatic: {
     label: "DRAW_STEEL.Languages.Axiomatic"
   },
-  caeliah: {
-    label: "DRAW_STEEL.Languages.Caeliah"
+  caelian: {
+    label: "DRAW_STEEL.Languages.Caelian"
   },
   filliaric: {
     label: "DRAW_STEEL.Languages.Filliaric"
