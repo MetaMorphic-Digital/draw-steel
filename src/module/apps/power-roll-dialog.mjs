@@ -14,6 +14,9 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   /** @override */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "power-roll-dialog"],
+    position: {
+      width: 400
+    },
     tag: "form",
     form: {
       closeOnSubmit: true
@@ -79,7 +82,8 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
-        banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE)
+        banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE),
+        bonuses: target.modifiers.bonuses + context.modifiers.bonuses
       };
     }
   }
