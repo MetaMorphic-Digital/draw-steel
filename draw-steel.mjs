@@ -39,6 +39,10 @@ Hooks.once("init", function () {
     }
   }
 
+  // Assign canvas-related classes
+  CONFIG.Token.objectClass = data.canvas.DrawSteelToken;
+  CONFIG.Token.rulerClass = data.canvas.DrawSteelTokenRuler;
+
   loadTemplates(templates);
 
   //Remove Status Effects Not Available in DrawSteel
