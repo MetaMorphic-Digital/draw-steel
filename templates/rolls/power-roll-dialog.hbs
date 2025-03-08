@@ -14,6 +14,10 @@
           {{selectOptions modChoices selected=modifiers.banes}}
         </select>
       </label>
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Bonuses"}}</span>
+        {{numberInput modifiers.bonuses name="modifiers.bonuses" step=1}}
+      </label>
     </div>
   </div>
   {{#each targets as |target|}}
@@ -33,6 +37,11 @@
           {{selectOptions @root.modChoices selected=target.modifiers.banes}}
         </select>
         <span class="total-banes">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
+      </label>
+      <label>
+        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Bonuses"}}</span>
+        {{numberInput target.modifiers.bonuses name=(concat "targets." @index ".modifiers.bonuses") step=1}}
+        <span class="total-bonuses">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.bonuses}}</span>
       </label>
     </div>
   </div>

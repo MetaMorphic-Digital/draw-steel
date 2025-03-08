@@ -20,13 +20,28 @@ export class PowerRoll extends DSRoll {
     if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability or test");
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
-    if (!options.appliedModifier && (Math.abs(this.netBoon) === 1)) {
-      const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
-      const number = new foundry.dice.terms.NumericTerm({
-        number: 2,
-        flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane")
-      });
-      this.terms.push(operation, number);
+    if (!options.appliedModifier) {
+
+      // Add edges/banes to formula
+      if (Math.abs(this.netBoon === 1)) {
+        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+        const number = new foundry.dice.terms.NumericTerm({
+          number: 2,
+          flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane")
+        });
+        this.terms.push(operation, number);
+      }
+
+      // add bonuses to formula
+      if (this.options.bonuses) {
+        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.options.bonuses > 0 ? "+" : "-")});
+        const number = new foundry.dice.terms.NumericTerm({
+          number: Math.abs(this.options.bonuses),
+          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses")
+        });
+        this.terms.push(operation, number);
+      }
+
       this.resetFormula();
       this.options.appliedModifier = true;
     }
@@ -36,7 +51,8 @@ export class PowerRoll extends DSRoll {
     type: "test",
     criticalThreshold: 19,
     banes: 0,
-    edges: 0
+    edges: 0,
+    bonuses: 0
   });
 
   static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
@@ -119,8 +135,10 @@ export class PowerRoll extends DSRoll {
     const type = options.type ?? "test";
     const evaluation = options.evaluation ?? "message";
     const formula = options.formula ?? "2d10";
+    options.modifiers ??= {};
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
+    options.modifiers.bonuses ??= 0;
     options.actor ??= DrawSteelChatMessage.getSpeakerActor(DrawSteelChatMessage.getSpeaker());
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
