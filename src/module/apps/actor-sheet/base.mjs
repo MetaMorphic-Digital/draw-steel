@@ -39,6 +39,22 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   };
 
+  /** @override */
+  static TABS = {
+    primary: {
+      tabs: [
+        {id: "stats"},
+        {id: "features"},
+        {id: "equipment"},
+        {id: "abilities"},
+        {id: "effects"},
+        {id: "biography"}
+      ],
+      initial: "stats",
+      labelPrefix: "DRAW_STEEL.Actor.Tabs"
+    }
+  };
+
   /**
    * Available sheet modes.
    * @enum {number}
@@ -90,10 +106,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _prepareContext(options) {
-    const context = {
+    const context = foundry.utils.mergeObject(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
-      editable: this.isEditable,
       owner: this.document.isOwner,
       limited: this.document.limited,
       gm: game.user.isGM,
@@ -105,12 +120,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       flags: this.actor.flags,
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
-      tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
-      fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
       datasets: this._getDatasets()
-    };
+    });
 
     return context;
   }
@@ -122,20 +135,16 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.tab = context.tabs[partId];
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
         context.featureFields = FeatureModel.schema.fields;
-        context.tab = context.tabs[partId];
         break;
       case "abilities":
         context.abilities = await this._prepareAbilitiesContext();
         context.abilityFields = AbilityModel.schema.fields;
-        context.tab = context.tabs[partId];
         break;
       case "biography":
-        context.tab = context.tabs[partId];
         context.languages = this._getLanguages();
         context.enrichedBiography = await TextEditor.enrichHTML(
           this.actor.system.biography.value,
@@ -155,10 +164,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         );
         break;
       case "effects":
-        context.tab = context.tabs[partId];
         context.effects = this.prepareActiveEffectCategories();
         break;
     }
+    if (partId in context.tabs) context.tab = context.tabs[partId];
     return context;
   }
 
@@ -207,63 +216,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
     };
-  }
-
-  /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
-  _getTabs(parts) {
-    // If you have sub-tabs this is necessary to change
-    const tabGroup = "primary";
-    // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = this.document.limited ? "biography" : "stats";
-    return parts.reduce((tabs, partId) => {
-      const tab = {
-        cssClass: "",
-        group: tabGroup,
-        // Matches tab property to
-        id: "",
-        // FontAwesome Icon, if you so choose
-        icon: "",
-        // Run through localization
-        label: "DRAW_STEEL.Actor.Tabs."
-      };
-      switch (partId) {
-        case "header":
-        case "tabs":
-          return tabs;
-        case "biography":
-          tab.id = "biography";
-          tab.label += "Biography";
-          break;
-        case "features":
-          tab.id = "features";
-          tab.label += "Features";
-          break;
-        case "equipment":
-          tab.id = "equipment";
-          tab.label += "Equipment";
-          break;
-        case "stats":
-          tab.id = "stats";
-          tab.label += "Stats";
-          break;
-        case "abilities":
-          tab.id = "abilities";
-          tab.label += "Abilities";
-          break;
-        case "effects":
-          tab.id = "effects";
-          tab.label += "Effects";
-          break;
-      }
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = "active";
-      tabs[partId] = tab;
-      return tabs;
-    }, {});
   }
 
   /**
