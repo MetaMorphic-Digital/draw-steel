@@ -50,6 +50,8 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
     if (context.targets) await this._prepareTargets(context);
 
+    if (context.skills?.size > 0) this._prepareSkillOptions(context);
+
     return context;
   }
 
@@ -89,6 +91,19 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 
   /**
+   * Prepare the skill select options
+   * @param {object} context The context from _prepareContext
+   */
+  _prepareSkillOptions(context) {
+    const {list, groups} = ds.CONFIG.skills;
+    context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
+      const {label, group} = list[value];
+      accumulator.push({label, group: groups[group].label, value});
+      return accumulator;
+    }, []);
+  }
+
+  /**
    * Amend the global modifiers and target specific modifiers based on changed values
    * @override
    */
@@ -99,6 +114,15 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, {overwrite: true, recursive: true});
     if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
     if (formData["damage-selection"]) this.options.context.damage = formData["damage-selection"];
+
+    if ("skill" in formData) {
+      const previousSkill = this.options.context.skill ?? "";
+      const newSkill = formData.skill;
+      if ((previousSkill === "") && (newSkill !== "")) this.options.context.modifiers.bonuses += 2;
+      else if ((previousSkill !== "") && (newSkill === "")) this.options.context.modifiers.bonuses -= 2;
+
+      this.options.context.skill = newSkill;
+    }
 
     this.render(true);
   }
@@ -122,6 +146,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     if (formData["damage-selection"]) this.promptValue.damage = formData["damage-selection"];
+    if (formData.skill) this.promptValue.skill = formData.skill;
 
     super._onSubmitForm(formConfig, event);
   }

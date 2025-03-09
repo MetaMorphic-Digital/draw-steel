@@ -143,7 +143,7 @@ export class PowerRoll extends DSRoll {
     if (!this.VALID_TYPES.has(type)) throw new Error("The `type` parameter must be 'ability' or 'test'");
     if (!["none", "evaluate", "message"].includes(evaluation)) throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     const typeLabel = game.i18n.localize(this.TYPES[type].label);
-    const flavor = options.flavor ?? typeLabel;
+    let flavor = options.flavor ?? typeLabel;
 
     this.getActorModifiers(options);
     const context = {
@@ -153,18 +153,7 @@ export class PowerRoll extends DSRoll {
     };
 
     if (options.ability) context.ability = options.ability;
-
-    if (options.skills) {
-      context.skills = options.skills.reduce((obj, skill) => {
-        const label = ds.CONFIG.skills.list[skill]?.label;
-        if (!label) {
-          console.warn("Could not find skill" + skill);
-          return obj;
-        }
-        obj[skill] = label;
-        return obj;
-      }, {});
-    }
+    if (options.skills) context.skills = options.skills;
 
     const promptValue = await PowerRollDialog.prompt({
       context,
@@ -175,7 +164,7 @@ export class PowerRoll extends DSRoll {
 
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {baseRoll: true, damageSelection: promptValue.damage});
+    const baseRoll = new this(formula, options.data, {baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill});
     await baseRoll.evaluate();
 
     const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
@@ -187,6 +176,7 @@ export class PowerRoll extends DSRoll {
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
+      if (promptValue.skill) flavor = `${flavor} - ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
       const roll = new this(formula, options.data, {flavor, ...context});
       roll.terms[0] = firstTerm;
       switch (evaluation) {
