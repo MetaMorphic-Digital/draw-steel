@@ -31,6 +31,7 @@ interface PowerRollDialogModifiers {
 
 export interface PowerRollDialogPrompt {
   rolls: PowerRollDialogModifiers[];
+  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
   damage?: string;
 }
 

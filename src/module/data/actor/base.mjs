@@ -223,7 +223,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {number} [options.edges]                    Base edges for the roll
    * @param {number} [options.banes]                    Base banes for the roll
    * @param {number} [options.bonuses]                  Base bonuses for the roll
-   * @returns {Promise<DrawSteelChatMessage>}
+   * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
     const types = options.types ?? ["test"];
@@ -255,12 +255,18 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       bonuses: options.bonuses ?? 0
     };
 
-    const rolls = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
-    return DrawSteelChatMessage.create({
+    const promptValue = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
+
+    if (!promptValue) return null;
+    const {rollMode, powerRolls} = promptValue;
+
+    const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.parent}),
-      rolls,
+      rolls: powerRolls,
       sound: CONFIG.sounds.dice
-    });
+    };
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    return DrawSteelChatMessage.create(messageData);
   }
 
   /**

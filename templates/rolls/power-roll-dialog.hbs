@@ -68,5 +68,12 @@
     <button type="submit">
       <i class="fa-solid fa-dice"></i> {{localize "DRAW_STEEL.Roll.Power.Prompt.Button"}}
     </button>
+    <div class="roll-mode-buttons">
+      {{#each rollModes as |rollMode|}}
+      <button type="button" class="{{ifThen (eq @root.rollMode @key) "selected" ""}}" data-action="setRollMode" data-roll-mode="{{@key}}" data-tooltip="{{rollMode.label}}">
+        <i class="{{rollMode.icon}}"></i>
+      </button>
+      {{/each}}
+    </div>
   </footer>
 </div>
