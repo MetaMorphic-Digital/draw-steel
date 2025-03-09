@@ -50,7 +50,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
     if (context.targets) await this._prepareTargets(context);
 
-    if (context.skills && (context.skills.size > 0)) this._prepareSkillOptions(context);
+    if (context.skills?.size > 0) this._prepareSkillOptions(context);
 
     return context;
   }

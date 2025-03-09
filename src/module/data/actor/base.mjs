@@ -258,7 +258,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const rolls = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
     return DrawSteelChatMessage.create({
       speaker: DrawSteelChatMessage.getSpeaker({actor: this.parent}),
-      rolls
+      rolls,
+      sound: CONFIG.sounds.dice
     });
   }
 
