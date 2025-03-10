@@ -464,8 +464,6 @@ export default class AbilityModel extends BaseItemModel {
     // TODO: Figure out how to better handle invocations when this.actor is null
     await this.actor?.system.updateResource(resourceSpend * -1);
 
-    DrawSteelChatMessage.applyRollMode(messageData, "roll");
-
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
@@ -477,7 +475,7 @@ export default class AbilityModel extends BaseItemModel {
       this.getActorModifiers(options);
 
       // Get the power rolls made per target, or if no targets, then just one power roll
-      const powerRolls = await PowerRoll.prompt({
+      const promptValue = await PowerRoll.prompt({
         type: "ability",
         formula,
         data: rollData,
@@ -494,7 +492,10 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       });
 
-      if (!powerRolls) return null;
+      if (!promptValue) return null;
+      const {rollMode, powerRolls} = promptValue;
+
+      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
       const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
