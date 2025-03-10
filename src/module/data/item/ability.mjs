@@ -335,15 +335,7 @@ export default class AbilityModel extends BaseItemModel {
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
 
     // Add the data for subtabs for the power roll tiers
-    if (context.tab?.id === "details") {
-      context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
-        cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
-        group: "powerRoll",
-        id: tier,
-        label
-      }));
-      context.subtab = context.subtabs.find(subtab => subtab.cssClass === "active");
-    }
+    if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
   }
 
   /** @override */
