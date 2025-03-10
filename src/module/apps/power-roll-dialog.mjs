@@ -171,7 +171,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
    */
   static setRollMode(event, target) {
     this.options.context.rollMode = target.dataset.rollMode;
-    this.render(true);
+    this.render();
   }
 
   /* -------------------------------------------- */
