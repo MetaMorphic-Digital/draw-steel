@@ -6,11 +6,29 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     }
 
     let {text, alpha, scale} = super._getWaypointLabel(waypoint);
-    const points = this.token._rulerData?.[game.user.id]?.foundPath ?? [];
-    const freeStrikes = this.token.document.getHostileTokensFromPoints(points, {ignoreFirst: true});
+    const segments = this.token.segmentizedFoundPath;
+    const tokens = new Set();
+    const ignored = new Set();
+    for (const [i, segment] of segments.entries()) {
+      const strikes = this.token.document.getHostileTokensFromPoints(segment);
+      for (const token of strikes) {
+        if (!i) ignored.add(token);
+        else if (!ignored.has(token)) tokens.add(token);
+      }
+      Object.assign(segment, {count: tokens.size});
+    }
+    segments.shift(); // Dont care about the first singleton.
+
+    let index = segments.length - 1;
+    let next = waypoint;
+    while (next.next) {
+      next = next.next;
+      index--;
+    }
+
     text = [
       text,
-      freeStrikes.length ? `⚔ ${freeStrikes.length}` : null
+      segments[index]?.count ? `⚔ ${segments[index].count}` : null
     ].filterJoin(" ");
     return {text, alpha, scale};
   }
