@@ -28,7 +28,7 @@ Hooks.once("init", function () {
   }
 
   helpers.registerHandlebars();
-  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs", "templates/item/embeds/project.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -69,6 +69,11 @@ Hooks.once("init", function () {
   Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item"
+  });
+  foundry.applications.apps.DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.DrawSteelActiveEffectConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect"
   });
 
   // Register replacements for core UI elements
@@ -130,7 +135,6 @@ Hooks.once("ready", async function () {
 /**
  * Render hooks
  */
-Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);

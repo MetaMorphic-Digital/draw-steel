@@ -14,13 +14,28 @@ export class ProjectRoll extends DSRoll {
     });
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
-    if (!options.appliedModifier && this.netBoon) {
-      const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
-      const number = new foundry.dice.terms.NumericTerm({
-        number: Math.min(4, 2 * Math.abs(this.netBoon)),
-        flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`)
-      });
-      this.terms.push(operation, number);
+
+    if (!options.appliedModifier) {
+      // Add edges/banes to formula
+      if (this.netBoon) {
+        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+        const number = new foundry.dice.terms.NumericTerm({
+          number: Math.min(4, 2 * Math.abs(this.netBoon)),
+          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`)
+        });
+        this.terms.push(operation, number);
+      }
+
+      // Add bonuses to formula
+      if (this.options.bonuses !== 0) {
+        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.options.bonuses > 0 ? "+" : "-")});
+        const number = new foundry.dice.terms.NumericTerm({
+          number: Math.abs(this.options.bonuses),
+          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses")
+        });
+        this.terms.push(operation, number);
+      }
+
       this.resetFormula();
       this.options.appliedModifier = true;
     }
@@ -29,7 +44,8 @@ export class ProjectRoll extends DSRoll {
   static DEFAULT_OPTIONS = Object.freeze({
     criticalThreshold: 19,
     banes: 0,
-    edges: 0
+    edges: 0,
+    bonuses: 0
   });
 
   static CHAT_TEMPLATE = systemPath("templates/rolls/project.hbs");

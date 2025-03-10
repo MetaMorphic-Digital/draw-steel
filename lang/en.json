@@ -5,7 +5,8 @@
       "Labels": {
         "Character": "Draw Steel Character Sheet",
         "NPC": "Draw Steel NPC Sheet",
-        "Item": "Draw Steel Item Sheet"
+        "Item": "Draw Steel Item Sheet",
+        "ActiveEffect": "Draw Steel Active Effect Config"
       },
       "Add": "+ Add {itemName}",
       "Play": "Play",
@@ -809,11 +810,11 @@
           "keywords": {
             "label": "Keywords"
           },
-          "prerequisites": {
-            "label": "Item Prerequisites"
-          },
           "project": {
             "label": "Project",
+            "prerequisites": {
+              "label": "Item Prerequisites"
+            },
             "source": {
               "label": "Project Source"
             },
@@ -824,7 +825,12 @@
               "label": "Project Goal"
             },
             "yield": {
-              "label": "Project Yield"
+              "amount": {
+                "label": "Yield Amount"
+              },
+              "display": {
+                "label": "Yield Display"
+              }
             }
           }
         },
@@ -987,6 +993,37 @@
           "MakePreferred": "Make Preferred Kit"
         },
         "StaminaEmbed": "{number} per echelon"
+      },
+      "Project": {
+        "FIELDS": {
+          "prerequisites": {
+            "label": "Item Prerequisites"
+          },
+          "projectSource": {
+            "label": "Project Source"
+          },
+          "rollCharacteristic": {
+            "label": "Project Roll Characteristics"
+          },
+          "goal": {
+            "label": "Project Goal"
+          },
+          "progress": {
+            "label": "Project Progress"
+          },
+          "yield": {
+            "item": {
+              "label": "Yield Item UUID"
+            },
+            "amount": {
+              "label": "Yield Amount"
+            },
+            "display": {
+              "label": "Yield Display"
+            }
+          }
+        },
+        "CraftItemName": "Craft {name}"
       }
     },
     "Effect": {
@@ -998,6 +1035,7 @@
       "Inactive": "Inactive Effects",
       "Applied": "Applied Effects",
       "Ends": {
+        "Label": "Ending Effects",
         "Turn": {
           "Label": "End of Turn",
           "Abbr": "EoT"
@@ -1109,6 +1147,7 @@
           "Edges": "Edges",
           "Bane": "Bane",
           "Banes": "Banes",
+          "Bonuses": "Bonuses/Penalties",
           "Label": "{number} {mod}"
         },
         "BaseRoll": "Base Power Roll"
@@ -1223,7 +1262,7 @@
     "Languages": {
       "Anjali": "Anjali",
       "Axiomatic": "Axiomatic",
-      "Caeliah": "Caeliah",
+      "Caelian": "Caelian",
       "Filliaric": "Filliaric",
       "Higaran": "Higaran",
       "HighKuric": "High Kuric",
@@ -1304,7 +1343,8 @@
       "culture": "Culture",
       "feature": "Feature",
       "equipment": "Equipment",
-      "kit": "Kit"
+      "kit": "Kit",
+      "project": "Project"
     }
   },
   "USER": {

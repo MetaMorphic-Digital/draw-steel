@@ -1,6 +1,7 @@
 /** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
 import {PowerRoll} from "../../rolls/power.mjs";
 import {damageTypes, requiredInteger, setOptions} from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
@@ -221,6 +222,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic
    * @param {number} [options.edges]                    Base edges for the roll
    * @param {number} [options.banes]                    Base banes for the roll
+   * @param {number} [options.bonuses]                  Base bonuses for the roll
+   * @returns {Promise<DrawSteelChatMessage>}
    */
   async rollCharacteristic(characteristic, options = {}) {
     const types = options.types ?? ["test"];
@@ -240,10 +243,24 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         rejectClose: true
       });
     }
+    const skills = this.hero?.skills ?? null;
+
+    const evaluation = "evaluate";
     const formula = `2d10 + @${characteristic}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
-    return PowerRoll.prompt({type, formula, data, flavor, modifiers: {edges: options.edges, banes: options.banes}, actor: this.parent, characteristic});
+    const modifiers = {
+      edges: options.edges ?? 0,
+      banes: options.banes ?? 0,
+      bonuses: options.bonuses ?? 0
+    };
+
+    const rolls = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
+    return DrawSteelChatMessage.create({
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.parent}),
+      rolls,
+      sound: CONFIG.sounds.dice
+    });
   }
 
   /**

@@ -25,6 +25,7 @@ export interface AdvancementTypeConfiguration {
 export interface PowerRollModifiers {
   edges: number;
   banes: number;
+  bonuses: number;
 }
 
 export interface PowerRollTargets {

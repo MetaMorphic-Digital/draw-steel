@@ -472,6 +472,7 @@ export default class AbilityModel extends BaseItemModel {
       options.modifiers ??= {};
       options.modifiers.banes ??= 0;
       options.modifiers.edges ??= 0;
+      options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
 
@@ -561,7 +562,8 @@ export default class AbilityModel extends BaseItemModel {
   getTargetModifiers(target) {
     const modifiers = {
       banes: 0,
-      edges: 0
+      edges: 0,
+      bonuses: 0
     };
 
     //TODO: ALL CONDITION CHECKS

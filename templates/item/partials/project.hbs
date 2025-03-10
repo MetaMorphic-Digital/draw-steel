@@ -1,0 +1,17 @@
+{{#if isPlay}}
+{{> "systems/draw-steel/templates/item/embeds/project.hbs"}}
+{{else}}
+<fieldset>
+  <legend>{{localize "TYPES.Item.project"}}</legend>
+  {{formGroup systemFields.prerequisites value=system.prerequisites}}
+  {{formGroup systemFields.projectSource value=system.projectSource}}
+  {{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic options=characteristics}}
+  {{formGroup systemFields.goal value=system.goal}}
+  {{#if item.isOwned}}
+  {{formGroup systemFields.progress value=system.progress}}
+  {{/if}}
+  {{formGroup systemFields.yield.fields.item value=system.yield.item}}
+  {{formGroup systemFields.yield.fields.amount value=system.yield.amount}}
+  {{formGroup systemFields.yield.fields.display value=system.yield.display}}
+</fieldset>
+{{/if}}
