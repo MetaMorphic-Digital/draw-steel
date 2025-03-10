@@ -60,7 +60,6 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         context.kitFields = KitModel.schema.fields;
         context.equipment = await this._prepareEquipmentContext();
         context.equipmentFields = EquipmentModel.schema.fields;
-        context.tab = context.tabs[partId];
         break;
     }
     return context;
