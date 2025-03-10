@@ -106,7 +106,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _prepareContext(options) {
-    const context = foundry.utils.mergeObject(await super._prepareContext(options), {
+    const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
       owner: this.document.isOwner,
