@@ -674,6 +674,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    *
    * @param {DragEvent} event
    * @param {ActiveEffect} effect
+   * @returns {Promise<void>}
    */
   async _onSortActiveEffect(event, effect) {
     /** @type {HTMLElement} */
@@ -726,7 +727,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
 
     // Update on the main actor
-    return this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
+    this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
   /** @override */
@@ -740,7 +741,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         return item;
       })
     );
-    return this.actor.createEmbeddedDocuments("Item", droppedItemData);
+    this.actor.createEmbeddedDocuments("Item", droppedItemData);
   }
 
   /* -------------------------------------------------- */
