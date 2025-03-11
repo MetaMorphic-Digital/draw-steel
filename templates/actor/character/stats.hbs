@@ -157,23 +157,28 @@
   {{/if}}
   {{#if isPlay}}
   <div class="immunities-weaknesses flexrow">
-    {{#if damage.immunities}}
     <fieldset>
       <legend>{{systemFields.damage.fields.immunities.label}}</legend>
       <span class="play">
-        {{damage.immunities}}
+        {{#each damage.immunities as |immunity|}}
+        <span class="immunity">{{lookup @root.damage.labels @key}} {{immunity}}</span>{{#unless @last}}, {{/unless}}
+        {{else}}
+        {{localize "None"}}
+        {{/each}}
+        {{#unless damage.immunities}}{{localize "None"}}{{/unless}}
       </span>
     </fieldset>
-    {{/if}}
 
-    {{#if damage.weaknesses}}
     <fieldset>
       <legend>{{systemFields.damage.fields.weaknesses.label}}</legend>
       <span class="play">
-        {{damage.weaknesses}}
+        {{#each damage.weaknesses as |weakness|}}
+        <span class="weakness">{{lookup @root.damage.labels @key}} {{weakness}}</span>{{#unless @last}}, {{/unless}}
+        {{else}}
+        {{localize "None"}}
+        {{/each}}
       </span>
     </fieldset>
-    {{/if}}
   </div>
   {{else}}
   <fieldset class="immunities flexrow">

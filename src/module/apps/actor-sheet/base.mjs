@@ -230,12 +230,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       }, {})
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `${labels[damageType]} ${value}`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `${labels[damageType]} ${value}`);
+    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0);
 
     return {
-      immunities: immunities.join(", "),
-      weaknesses: weaknesses.join(", "),
+      immunities: Object.fromEntries(immunities),
+      weaknesses: Object.fromEntries(weaknesses),
       labels
     };
   }
