@@ -17,6 +17,9 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     position: {
       width: 400
     },
+    actions: {
+      setRollMode: this.setRollMode
+    },
     tag: "form",
     form: {
       closeOnSubmit: true
@@ -37,12 +40,20 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
   promptValue;
 
   /** @override */
+  _initializeApplicationOptions(options) {
+    options.context.rollMode = game.settings.get("core", "rollMode");
+
+    return super._initializeApplicationOptions(options);
+  }
+
+  /** @override */
   async _prepareContext(options) {
     const context = {
       modChoices: Array.fromRange(3).reduce((obj, number) => {
         obj[number] = number;
         return obj;
       }, {}),
+      rollModes: CONFIG.Dice.rollModes,
       ...this.options.context
     };
 
@@ -148,7 +159,19 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     if (formData["damage-selection"]) this.promptValue.damage = formData["damage-selection"];
     if (formData.skill) this.promptValue.skill = formData.skill;
 
+    this.promptValue.rollMode = this.options.context.rollMode;
+
     super._onSubmitForm(formConfig, event);
+  }
+
+  /**
+  * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static setRollMode(event, target) {
+    this.options.context.rollMode = target.dataset.rollMode;
+    this.render();
   }
 
   /* -------------------------------------------- */

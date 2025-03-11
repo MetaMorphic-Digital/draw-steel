@@ -28,6 +28,29 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}]
   };
 
+  /** @override */
+  static TABS = {
+    primary: {
+      tabs: [
+        {id: "description"},
+        {id: "details"},
+        {id: "advancement"},
+        {id: "effects"}
+      ],
+      initial: "description",
+      labelPrefix: "DRAW_STEEL.Item.Tabs"
+    },
+    powerRollEffects: {
+      tabs: [
+        {id: "tier1"},
+        {id: "tier2"},
+        {id: "tier3"}
+      ],
+      initial: "tier1",
+      labelPrefix: "DRAW_STEEL.Item.Tabs"
+    }
+  };
+
   /* -------------------------------------------- */
 
   /** @override */
@@ -87,27 +110,33 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
+  _configureRenderParts(options) {
+    const {header, tabs, description, details, advancement, effects} = super._configureRenderParts(options);
+
+    const parts = {header, tabs};
+    // Don't re-render the description tab if there's an active editor
+    if (!this.#editor) parts.description = description;
+    if (this.document.limited) return;
+    if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
+    if (this.item.system.constructor.metadata.hasAdvancements) parts.advancement = advancement;
+    parts.effects = effects;
+
+    return parts;
+  }
+
+  /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
-    // TODO: Refactor to use _configureRenderParts in v13
-    options.parts = ["header", "tabs"];
-    // Don't re-render the description tab if there's an active editor
-    if (!this.#editor) options.parts.push("description");
-    if (this.document.limited) return;
-    if (this.item.system.constructor.metadata.detailsPartial) options.parts.push("details");
-    if (this.item.system.constructor.metadata.hasAdvancements) options.parts.push("advancement");
-    options.parts.push("effects");
   }
 
   /* -------------------------------------------- */
 
   /** @override */
   async _prepareContext(options) {
-    const context = {
+    const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
-      editable: this.isEditable,
       owner: this.document.isOwner,
       limited: this.document.limited,
       gm: game.user.isGM,
@@ -120,20 +149,21 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
       // You can factor out context construction to helper functions
-      tabs: this._getTabs(options.parts),
+      tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
       // Necessary for formInput and formFields helpers
-      fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields
-    };
+    });
+
     return context;
   }
 
   /** @override */
   async _preparePartContext(partId, context) {
+    if (partId in context.tabs) context.tab = context.tabs[partId];
+
     switch (partId) {
       case "description":
-        context.tab = context.tabs[partId];
         context.enrichedDescription = await TextEditor.enrichHTML(
           this.item.system.description.value,
           {
@@ -152,67 +182,25 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         );
         break;
       case "details":
-        context.tab = context.tabs[partId];
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
         await this.item.system.getSheetContext(context);
         break;
-      case "advancement":
-        context.tab = context.tabs[partId];
-        break;
       case "effects":
-        context.tab = context.tabs[partId];
         context.effects = this.prepareActiveEffectCategories();
         break;
     }
     return context;
   }
 
-  /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
-  _getTabs(parts) {
-    const sheetTabs = parts.filter(p => !["header", "tabs"].includes(p));
-    // The description tab may get intentionally left out of re-renders if there's an active #editor
-    // Which means we need to add it *back* to the tabs
-    if (!sheetTabs.includes("description")) sheetTabs.unshift("description");
-    const tabGroup = "primary";
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = "description";
-    return sheetTabs.reduce((tabs, partId) => {
-      const tab = {
-        cssClass: "",
-        group: tabGroup,
-        // Matches tab property to
-        id: "",
-        // FontAwesome Icon, if you so choose
-        icon: "",
-        // Run through localization
-        label: "DRAW_STEEL.Item.Tabs."
-      };
-      switch (partId) {
-        case "description":
-          tab.id = "description";
-          tab.label += "Description";
-          break;
-        case "details":
-          tab.id = "details";
-          tab.label += "Details";
-          break;
-        case "advancement":
-          tab.id = "advancement";
-          tab.label += "Advancement";
-          break;
-        case "effects":
-          tab.id = "effects";
-          tab.label += "Effects";
-          break;
-      }
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = "active";
-      tabs[partId] = tab;
-      return tabs;
-    }, {});
+  /** @override */
+  _prepareTabs(group) {
+    const tabs = super._prepareTabs(group);
+    if (group === "primary") {
+      if (!this.item.system.constructor.metadata.detailsPartial) delete tabs.details;
+      if (!this.item.system.constructor.metadata.hasAdvancements) delete tabs.advancement;
+    }
+
+    return tabs;
   }
 
   /**
@@ -268,12 +256,11 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after any render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
    */
-  _onRender(context, options) {
+  async _onRender(context, options) {
     this.#dragDrop.forEach((d) => d.bind(this.element));
 
     // Bubble editor active class state to containing formGroup

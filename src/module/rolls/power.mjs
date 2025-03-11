@@ -3,7 +3,7 @@ import {systemPath} from "../constants.mjs";
 import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
 import {DSRoll} from "./base.mjs";
 
-/** @import {PowerRollModifiers, PowerRollPromptOptions} from "../_types.js" */
+/** @import {PowerRollPrompt, PowerRollPromptOptions} from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -129,7 +129,7 @@ export class PowerRoll extends DSRoll {
   /**
    * Prompt the user with a roll configuration dialog
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
-   * @return {Promise<Array<PowerRoll | DrawSteelChatMessage | object>>} Based on evaluation made can either return an array of power rolls or chat messages
+   * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
@@ -187,11 +187,11 @@ export class PowerRoll extends DSRoll {
           rolls.push(await roll.evaluate());
           break;
         case "message":
-          rolls.push(await roll.toMessage({speaker}));
+          rolls.push(await roll.toMessage({speaker}, {rollMode: promptValue.rollMode}));
           break;
       }
     }
-    return rolls;
+    return {rollMode: promptValue.rollMode, powerRolls: rolls};
   }
 
   /**

@@ -4,6 +4,8 @@ import "./documents/_types";
 import { DrawSteelActor } from "./documents/actor.mjs";
 
 import Advancement from "./documents/advancement/advancement.mjs";
+import { DrawSteelChatMessage } from "./documents/chat-message.mjs";
+import { PowerRoll } from "./rolls/power.mjs";
 
 export interface AdvancementTypeConfiguration {
   /**
@@ -44,4 +46,9 @@ export interface PowerRollPromptOptions {
   targets: PowerRollTargets[],
   ability?: string,
   characteristic?: string
+}
+
+export interface PowerRollPrompt {
+  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
+  powerRolls: Array<PowerRoll | DrawSteelChatMessage | object>;
 }

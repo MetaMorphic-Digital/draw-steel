@@ -167,15 +167,8 @@ export default class AbilityModel extends BaseItemModel {
 
       effects.display = effects.map(effect => effect.display).join("; ");
     }
-  }
 
-  /**
-   * Adds kit bonuses as native "active effect" like adjustments.
-   * Also selects the highest characteristic from the options.
-   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
-   * @protected
-   */
-  _prepareCharacterData() {
+    // Set the highest characteristic amongst the power roll characteristics
     this.powerRoll.characteristic = null;
     for (const characteristic of this.powerRoll.characteristics) {
       if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
@@ -183,7 +176,14 @@ export default class AbilityModel extends BaseItemModel {
       const actorCharacteristics = this.actor.system.characteristics;
       if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
     }
+  }
 
+  /**
+   * Adds kit bonuses as native "active effect" like adjustments.
+   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
+   * @protected
+   */
+  _prepareCharacterData() {
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
@@ -335,15 +335,7 @@ export default class AbilityModel extends BaseItemModel {
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
 
     // Add the data for subtabs for the power roll tiers
-    if (context.tab?.id === "details") {
-      context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
-        cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
-        group: "powerRoll",
-        id: tier,
-        label
-      }));
-      context.subtab = context.subtabs.find(subtab => subtab.cssClass === "active");
-    }
+    if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
   }
 
   /** @override */
@@ -464,8 +456,6 @@ export default class AbilityModel extends BaseItemModel {
     // TODO: Figure out how to better handle invocations when this.actor is null
     await this.actor?.system.updateResource(resourceSpend * -1);
 
-    DrawSteelChatMessage.applyRollMode(messageData, "roll");
-
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
@@ -477,7 +467,7 @@ export default class AbilityModel extends BaseItemModel {
       this.getActorModifiers(options);
 
       // Get the power rolls made per target, or if no targets, then just one power roll
-      const powerRolls = await PowerRoll.prompt({
+      const promptValue = await PowerRoll.prompt({
         type: "ability",
         formula,
         data: rollData,
@@ -494,7 +484,10 @@ export default class AbilityModel extends BaseItemModel {
         }, [])
       });
 
-      if (!powerRolls) return null;
+      if (!promptValue) return null;
+      const {rollMode, powerRolls} = promptValue;
+
+      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
       const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success

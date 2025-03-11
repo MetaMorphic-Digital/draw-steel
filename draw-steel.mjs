@@ -137,7 +137,7 @@ Hooks.once("ready", async function () {
  */
 Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
+Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /**
  * Other hooks

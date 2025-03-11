@@ -38,7 +38,7 @@
 {{/inline}}
 
 {{#*inline "powerRoll"}}
-<fieldset class="tab {{ifThen (eq field.name subtab.id) "active" "" }}" data-group="powerRoll" data-tab="{{field.name}}">
+<fieldset class="tab {{subtab.cssClass}}" data-group="{{subtab.group}}" data-tab="{{subtab.id}}">
   <legend>{{field.label}}</legend>
   <div>
     <button class="modify-tier-effect" data-tier="{{field.name}}" data-operation="add">
@@ -108,9 +108,9 @@
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
 {{> "templates/generic/tab-navigation.hbs" tabs=subtabs}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1 subtab=(lookup subtabs "tier1")}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2 subtab=(lookup subtabs "tier2")}}
+{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3 subtab=(lookup subtabs "tier3")}}
 {{/if}}
 <fieldset>
   <legend>{{systemFields.spend.label}}</legend>

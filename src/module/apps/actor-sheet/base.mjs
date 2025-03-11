@@ -32,10 +32,24 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       useAbility: this._useAbility,
       toggleItemEmbed: this._toggleItemEmbed
     },
-    // Custom property that's merged into `this.options`
-    dragDrop: [{dragSelector: ".draggable", dropSelector: null}],
     form: {
       submitOnChange: true
+    }
+  };
+
+  /** @override */
+  static TABS = {
+    primary: {
+      tabs: [
+        {id: "stats"},
+        {id: "features"},
+        {id: "equipment"},
+        {id: "abilities"},
+        {id: "effects"},
+        {id: "biography"}
+      ],
+      initial: "stats",
+      labelPrefix: "DRAW_STEEL.Actor.Tabs"
     }
   };
 
@@ -90,10 +104,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   async _prepareContext(options) {
-    const context = {
+    const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
-      editable: this.isEditable,
       owner: this.document.isOwner,
       limited: this.document.limited,
       gm: game.user.isGM,
@@ -105,12 +118,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       flags: this.actor.flags,
       // Adding a pointer to ds.CONFIG
       config: ds.CONFIG,
-      tabs: this._getTabs(options.parts),
       // Necessary for formInput and formFields helpers
-      fields: this.document.schema.fields,
       systemFields: this.document.system.schema.fields,
       datasets: this._getDatasets()
-    };
+    });
 
     return context;
   }
@@ -122,20 +133,16 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.tab = context.tabs[partId];
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
         context.featureFields = FeatureModel.schema.fields;
-        context.tab = context.tabs[partId];
         break;
       case "abilities":
         context.abilities = await this._prepareAbilitiesContext();
         context.abilityFields = AbilityModel.schema.fields;
-        context.tab = context.tabs[partId];
         break;
       case "biography":
-        context.tab = context.tabs[partId];
         context.languages = this._getLanguages();
         context.enrichedBiography = await TextEditor.enrichHTML(
           this.actor.system.biography.value,
@@ -155,10 +162,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         );
         break;
       case "effects":
-        context.tab = context.tabs[partId];
         context.effects = this.prepareActiveEffectCategories();
         break;
     }
+    if (partId in context.tabs) context.tab = context.tabs[partId];
     return context;
   }
 
@@ -207,63 +214,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
     };
-  }
-
-  /**
-   * Generates the data for the generic tab navigation template
-   * @param {string[]} parts An array of named template parts to render
-   * @returns {Record<string, Partial<ApplicationTab>>}
-   * @protected
-   */
-  _getTabs(parts) {
-    // If you have sub-tabs this is necessary to change
-    const tabGroup = "primary";
-    // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = this.document.limited ? "biography" : "stats";
-    return parts.reduce((tabs, partId) => {
-      const tab = {
-        cssClass: "",
-        group: tabGroup,
-        // Matches tab property to
-        id: "",
-        // FontAwesome Icon, if you so choose
-        icon: "",
-        // Run through localization
-        label: "DRAW_STEEL.Actor.Tabs."
-      };
-      switch (partId) {
-        case "header":
-        case "tabs":
-          return tabs;
-        case "biography":
-          tab.id = "biography";
-          tab.label += "Biography";
-          break;
-        case "features":
-          tab.id = "features";
-          tab.label += "Features";
-          break;
-        case "equipment":
-          tab.id = "equipment";
-          tab.label += "Equipment";
-          break;
-        case "stats":
-          tab.id = "stats";
-          tab.label += "Stats";
-          break;
-        case "abilities":
-          tab.id = "abilities";
-          tab.label += "Abilities";
-          break;
-        case "effects":
-          tab.id = "effects";
-          tab.label += "Effects";
-          break;
-      }
-      if (this.tabGroups[tabGroup] === tab.id) tab.cssClass = "active";
-      tabs[partId] = tab;
-      return tabs;
-    }, {});
   }
 
   /**
@@ -404,7 +354,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after a first render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
@@ -532,14 +481,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after any render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
    * @override
    */
-  _onRender(context, options) {
-    this.#dragDrop.forEach((d) => d.bind(this.element));
+  async _onRender(context, options) {
+    await super._onRender(context, options);
     this.#disableOverrides();
   }
 
@@ -710,90 +658,17 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Define whether a user is able to begin a dragstart workflow for a given drag selector
-   * @param {string} selector       The candidate HTML selector for dragging
-   * @returns {boolean}             Can the current user drag this selector?
+   * Handle a dropped Active Effect on the Actor Sheet.
+   * The default implementation creates an Active Effect embedded document on the Actor.
+   * @param {DragEvent} event       The initiating drop event
+   * @param {ActiveEffect} effect   The dropped ActiveEffect document
+   * @returns {Promise<void>}
    * @protected
    */
-  _canDragStart(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /**
-   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
-   * @param {string} selector       The candidate HTML selector for the drop target
-   * @returns {boolean}             Can the current user drop on this selector?
-   * @protected
-   */
-  _canDragDrop(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /**
-   * Callback actions which occur at the beginning of a drag start workflow.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragStart(event) {
-    const docRow = event.currentTarget.closest("[data-document-class]");
-    if ("link" in event.target.dataset) return;
-
-    // Chained operation
-    let dragData = this._getEmbeddedDocument(docRow)?.toDragData();
-
-    if (!dragData) return;
-
-    // Set data transfer
-    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
-  }
-
-  /**
-   * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  _onDragOver(event) {}
-
-  /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
-   * @protected
-   */
-  async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event);
-    const actor = this.actor;
-    const allowed = Hooks.call("dropActorSheetData", actor, this, data);
-    if (allowed === false) return;
-
-    // Handle different data types
-    switch (data.type) {
-      case "ActiveEffect":
-        return this._onDropActiveEffect(event, data);
-      case "Actor":
-        return this._onDropActor(event, data);
-      case "Item":
-        return this._onDropItem(event, data);
-      case "Folder":
-        return this._onDropFolder(event, data);
-    }
-  }
-
-  /**
-   * Handle the dropping of ActiveEffect data onto an Actor Sheet
-   * @param {DragEvent} event                  The concluding DragEvent which contains drop data
-   * @param {object} data                      The data transfer extracted from the event
-   * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
-   * @protected
-   */
-  async _onDropActiveEffect(event, data) {
-    const aeCls = getDocumentClass("ActiveEffect");
-    const effect = await aeCls.fromDropData(data);
-    if (!this.actor.isOwner || !effect) return false;
-    if (effect.target === this.actor)
-      return this._onSortActiveEffect(event, effect);
-    return aeCls.create(effect, {parent: this.actor});
+  async _onDropActiveEffect(event, effect) {
+    if (!this.actor.isOwner || !effect) return;
+    if (effect.target === this.actor) await this._onSortActiveEffect(event, effect);
+    else await super._onDropActiveEffect(event, effect);
   }
 
   /**
@@ -801,6 +676,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    *
    * @param {DragEvent} event
    * @param {ActiveEffect} effect
+   * @returns {Promise<void>}
    */
   async _onSortActiveEffect(event, effect) {
     /** @type {HTMLElement} */
@@ -853,50 +729,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
 
     // Update on the main actor
-    return this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
+    this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
-  /**
-   * Handle dropping of an Actor data onto another Actor sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
-   * @returns {Promise<object|boolean>}  A data object which describes the result of the drop, or false if the drop was
-   *                                     not permitted.
-   * @protected
-   */
-  async _onDropActor(event, data) {
-    if (!this.actor.isOwner) return false;
-  }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Handle dropping of an item reference or item data onto an Actor Sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
-   * @returns {Promise<Item[]|boolean>}  The created or updated Item instances, or false if the drop was not permitted.
-   * @protected
-   */
-  async _onDropItem(event, data) {
-    if (!this.actor.isOwner) return false;
-    const item = await DrawSteelItem.fromDropData(data);
-
-    // Handle item sorting within the same Actor
-    if (this.actor.uuid === item.parent?.uuid)
-      return this._onSortItem(event, item);
-
-    // Create the owned item
-    return this._onDropItemCreate(item, event);
-  }
-
-  /**
-   * Handle dropping of a Folder on an Actor Sheet.
-   * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data
-   * @param {object} data         The data transfer extracted from the event
-   * @returns {Promise<Item[]>}
-   * @protected
-   */
+  /** @override */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);
@@ -907,94 +743,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         return item;
       })
     );
-    return this._onDropItemCreate(droppedItemData, event);
+    this.actor.createEmbeddedDocuments("Item", droppedItemData);
   }
-
-  /**
-   * Handle the final creation of dropped Item data on the Actor.
-   * This method is factored out to allow downstream classes the opportunity to override item creation behavior.
-   * @param {object[]|object} itemData      The item data requested for creation
-   * @param {DragEvent} event               The concluding DragEvent which provided the drop data
-   * @returns {Promise<Item[]>}
-   * @private
-   */
-  async _onDropItemCreate(itemData, event) {
-    itemData = itemData instanceof Array ? itemData : [itemData];
-    return this.actor.createEmbeddedDocuments("Item", itemData);
-  }
-
-  /**
-   * Handle a drop event for an existing embedded Item to sort that Item relative to its siblings
-   * @param {Event} event
-   * @param {Item} item
-   * @private
-   */
-  _onSortItem(event, item) {
-    // Get the drag source and drop target
-    const items = this.actor.items;
-    const dropTarget = event.target.closest("[data-item-id]");
-    if (!dropTarget) return;
-    const target = items.get(dropTarget.dataset.itemId);
-
-    // Don't sort on yourself
-    if (item.id === target.id) return;
-
-    // Identify sibling items based on adjacent HTML elements
-    const siblings = [];
-    for (let el of dropTarget.parentElement.children) {
-      const siblingId = el.dataset.itemId;
-      if (siblingId && (siblingId !== item.id))
-        siblings.push(items.get(el.dataset.itemId));
-    }
-
-    // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(item, {
-      target,
-      siblings
-    });
-    const updateData = sortUpdates.map((u) => {
-      const update = u.update;
-      update._id = u.target._id;
-      return update;
-    });
-
-    // Perform the update
-    return this.actor.updateEmbeddedDocuments("Item", updateData);
-  }
-
-  /** The following pieces set up drag handling and are unlikely to need modification  */
-
-  /**
-   * Returns an array of DragDrop instances
-   * @type {DragDrop[]}
-   */
-  get dragDrop() {
-    return this.#dragDrop;
-  }
-
-  /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this)
-      };
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this)
-      };
-      return new DragDrop(d);
-    });
-  }
-
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop = this.#createDragDropHandlers();
 
   /* -------------------------------------------------- */
   /*   Actor Override Handling                         */
