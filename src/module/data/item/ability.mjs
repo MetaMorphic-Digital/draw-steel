@@ -167,15 +167,8 @@ export default class AbilityModel extends BaseItemModel {
 
       effects.display = effects.map(effect => effect.display).join("; ");
     }
-  }
 
-  /**
-   * Adds kit bonuses as native "active effect" like adjustments.
-   * Also selects the highest characteristic from the options.
-   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
-   * @protected
-   */
-  _prepareCharacterData() {
+    // Set the highest characteristic amongst the power roll characteristics
     this.powerRoll.characteristic = null;
     for (const characteristic of this.powerRoll.characteristics) {
       if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
@@ -183,7 +176,14 @@ export default class AbilityModel extends BaseItemModel {
       const actorCharacteristics = this.actor.system.characteristics;
       if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
     }
+  }
 
+  /**
+   * Adds kit bonuses as native "active effect" like adjustments.
+   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
+   * @protected
+   */
+  _prepareCharacterData() {
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
