@@ -218,7 +218,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
+   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels
    * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
    */
   _getImmunitiesWeaknesses() {
