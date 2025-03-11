@@ -155,6 +155,34 @@
     {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
   </fieldset>
   {{/if}}
+  {{#if isPlay}}
+  <fieldset class="immunities-weaknesses flexcol">
+    <legend>{{systemFields.damage.fields.immunities.label}}/{{systemFields.damage.fields.weaknesses.label}}</legend>
+    {{#if damage.immunities}}
+    <span class="play">
+      {{systemFields.damage.fields.immunities.label}}: {{damage.immunities}}
+    </span>
+    {{/if}}
+    {{#if damage.weaknesses}}
+    <span class="play">
+      {{systemFields.damage.fields.weaknesses.label}}: {{damage.weaknesses}}
+    </span>
+    {{/if}}
+  </fieldset>
+  {{else}}
+  <fieldset class="immunities flexrow">
+    <legend>{{systemFields.damage.fields.immunities.label}}</legend>
+    {{#each systemFields.damage.fields.immunities.fields as |field|}}
+    {{formGroup field value=(lookup @root.systemSource.damage.immunities field.name) rootId=@root.actor.uuid dataset=@root.datasets.isSource label=(lookup @root.damage.labels field.name)}}
+    {{/each}}
+  </fieldset>
+  <fieldset class="weaknesses flexrow">
+    <legend>{{systemFields.damage.fields.weaknesses.label}}</legend>
+    {{#each systemFields.damage.fields.weaknesses.fields as |field|}}
+    {{formGroup field value=(lookup @root.systemSource.damage.weaknesses field.name) rootId=@root.actor.uuid dataset=@root.datasets.isSource label=(lookup @root.damage.labels field.name)}}
+    {{/each}}
+  </fieldset>
+  {{/if}}
   <fieldset class="skills flexrow">
     <legend>{{systemFields.hero.fields.skills.label}}</legend>
     {{#if isPlay}}
