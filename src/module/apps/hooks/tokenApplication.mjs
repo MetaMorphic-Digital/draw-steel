@@ -1,7 +1,7 @@
 /** @import {DrawSteelActor} from "../../documents/actor.mjs" */
 
 /** @typedef {InstanceType<foundry["applications"]["sheets"]["PrototypeTokenConfig"]>} PrototypeTokenConfig */
-/** @typedef {InstanceType<foundry["applications"]["sheets"]["TokenConfig"]>} TokenConfig*/
+/** @typedef {InstanceType<foundry["applications"]["sheets"]["TokenConfig"]>} TokenConfig */
 
 /**
  * A hook event that fires when the TokenConfig application is rendered
