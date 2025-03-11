@@ -1,19 +1,23 @@
 /** @import {DrawSteelActor} from "../../documents/actor.mjs" */
 
+/** @typedef {InstanceType<foundry["applications"]["sheets"]["PrototypeTokenConfig"]>} PrototypeTokenConfig */
+/** @typedef {InstanceType<foundry["applications"]["sheets"]["TokenConfig"]>} TokenConfig */
+
 /**
  * A hook event that fires when the TokenConfig application is rendered
- * @param {TokenConfig} app             The Application instance being rendered
- * @param {JQuery<HTMLElement>} jquery  The inner HTML of the document that will be displayed and may be modified
+ * @param {PrototypeTokenConfig | TokenConfig} app             The Application instance being rendered
+ * @param {HTMLElement>} html  The inner HTML of the document that will be displayed and may be modified
  * @param {Record<string, any>} context The object of data used when rendering the application
+ * @param {ApplicationRenderOptions} options
  */
-export function renderTokenConfig(app, [html], context) {
+export function renderTokenApplication(app, html, context, options) {
   /** @type {DrawSteelActor} */
-  const actor = app.document.actor;
+  const actor = app.actor;
   // Replace option labels with schema-derived props
   if (actor) {
     const schema = actor.system.schema;
     /** @type {HTMLSelectElement[]} */
-    const bars = html.querySelectorAll(".bar-attribute");
+    const bars = html.querySelectorAll("select[name^='bar']");
     for (const bar of bars) {
       const groups = {};
       const options = [...bar.options];
