@@ -156,19 +156,25 @@
   </fieldset>
   {{/if}}
   {{#if isPlay}}
-  <fieldset class="immunities-weaknesses flexcol">
-    <legend>{{systemFields.damage.fields.immunities.label}}/{{systemFields.damage.fields.weaknesses.label}}</legend>
+  <div class="immunities-weaknesses flexrow">
     {{#if damage.immunities}}
-    <span class="play">
-      {{systemFields.damage.fields.immunities.label}}: {{damage.immunities}}
-    </span>
+    <fieldset>
+      <legend>{{systemFields.damage.fields.immunities.label}}</legend>
+      <span class="play">
+        {{damage.immunities}}
+      </span>
+    </fieldset>
     {{/if}}
+
     {{#if damage.weaknesses}}
-    <span class="play">
-      {{systemFields.damage.fields.weaknesses.label}}: {{damage.weaknesses}}
-    </span>
+    <fieldset>
+      <legend>{{systemFields.damage.fields.weaknesses.label}}</legend>
+      <span class="play">
+        {{damage.weaknesses}}
+      </span>
+    </fieldset>
     {{/if}}
-  </fieldset>
+  </div>
   {{else}}
   <fieldset class="immunities flexrow">
     <legend>{{systemFields.damage.fields.immunities.label}}</legend>

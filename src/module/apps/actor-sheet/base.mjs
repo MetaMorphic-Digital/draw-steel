@@ -133,7 +133,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.damage = this._getImmunitiesWeakness("immunities");
+        context.damage = this._getImmunitiesWeaknesses("immunities");
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
@@ -221,7 +221,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
    * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
    */
-  _getImmunitiesWeakness() {
+  _getImmunitiesWeaknesses() {
     const labels = {
       all: game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
       ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, {label}]) => {
