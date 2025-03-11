@@ -15,9 +15,11 @@ import {
   ChatMessage as ChatMessageModels,
   Combat as CombatModels,
   Combatant as CombatantModels,
+  CombatantGroup as CombatantGroupModels,
   Item as ItemModels
 } from "../data/_module.mjs"
 import { DrawSteelActiveEffect } from "./active-effect.mjs"
+import DrawSteelCombatantGroup from "./combatant-group.mjs"
 import { DrawSteelCombatant } from "./combatant.mjs"
 import { DrawSteelItem } from "./item.mjs"
 
@@ -53,10 +55,12 @@ declare global {
     type: "base";
     system: CombatModels.BaseCombatModel;
     combatants: Collection<string, DrawSteelCombatant>;
+    groups: Collection<string, DrawSteelCombatantGroup>
   }
 
   interface CombatantGroup extends CombatantGroupData {
-    type: "base" | ""
+    type: "base" | "";
+    system: CombatantGroupModels.BaseCombatantGroupModel | CombatantGroupModels.SquadModel;
   }
 
   interface Combatant extends CombatantData {

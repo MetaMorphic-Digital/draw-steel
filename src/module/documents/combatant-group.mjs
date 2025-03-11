@@ -1,6 +1,6 @@
 /** @import {CombatantGroupData} from "../../../foundry/common/types.mjs"; */
 
-export class DrawSteelCombatantGroup extends CombatantGroup {
+export default class DrawSteelCombatantGroup extends CombatantGroup {
   /**
      * Present a Dialog form to create a new Document of this type.
      * Choose a name and a type from a select menu of types.
@@ -14,11 +14,6 @@ export class DrawSteelCombatantGroup extends CombatantGroup {
      * @override Adapted from 13.337 function
      */
   static async createDialog(data = {}, createOptions = {}, {types, template, ...dialogOptions} = {}) {
-    const applicationOptions = {
-      top: "position", left: "position", width: "position", height: "position", scale: "position", zIndex: "position",
-      title: "window", id: "", classes: "", jQuery: ""
-    };
-
     const cls = this.implementation;
 
     const {parent, pack} = createOptions;
