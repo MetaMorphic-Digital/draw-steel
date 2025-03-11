@@ -256,12 +256,11 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after any render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
    */
-  _onRender(context, options) {
+  async _onRender(context, options) {
     this.#dragDrop.forEach((d) => d.bind(this.element));
 
     // Bubble editor active class state to containing formGroup

@@ -354,7 +354,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after a first render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
@@ -482,7 +481,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after any render of the Application.
-   * Post-render steps are not awaited by the render process.
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
@@ -660,8 +658,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Core doesn't sort active effects, so if target is this actor, sort the effects
-   * @override
+   * Handle a dropped Active Effect on the Actor Sheet.
+   * The default implementation creates an Active Effect embedded document on the Actor.
+   * @param {DragEvent} event       The initiating drop event
+   * @param {ActiveEffect} effect   The dropped ActiveEffect document
+   * @returns {Promise<void>}
+   * @protected
    */
   async _onDropActiveEffect(event, effect) {
     if (!this.actor.isOwner || !effect) return;
