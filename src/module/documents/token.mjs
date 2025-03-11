@@ -11,18 +11,14 @@ export default class DrawSteelTokenDocument extends TokenDocument {
 
   /**
    * Get hostile tokens within range of movement.
-   * @param {Point[]} [points]                An array of points describing a segment of movement.
-   * @param {object} [options]
-   * @param {boolean} [options.ignoreFirst]   Ignore any tokens that were in range of the first point.
-   * @returns {DrawSteelTokenDocument[]}      Hostile tokens.
+   * @param {Point[]} [points]              An array of points describing a segment of movement.
+   * @returns {DrawSteelTokenDocument[]}    Hostile tokens.
    */
-  getHostileTokensFromPoints(points = [], {ignoreFirst = false} = {}) {
+  getHostileTokensFromPoints(points = []) {
     if (!points.length) return [];
     const tokens = new Set();
 
-    const firsts = new Set();
-
-    for (let [i, point] of points.entries()) {
+    for (let point of points) {
       point = canvas.grid.getCenterPoint(point);
       const rect = new PIXI.Rectangle(
         point.x - canvas.scene.grid.size * 1.5,
@@ -33,12 +29,8 @@ export default class DrawSteelTokenDocument extends TokenDocument {
       const found = canvas.tokens.quadtree.getObjects(rect);
       for (const token of found) {
         if (!token.canStrike(this) || tokens.has(token.document)) continue;
-        if (ignoreFirst && firsts.has(token.id)) continue;
         const distance = canvas.grid.measurePath([point, {...token.center, elevation: token.document.elevation}]).distance;
-        if (distance <= 1) {
-          if (i || !ignoreFirst) tokens.add(token.document);
-          if (!i) firsts.add(token.id);
-        }
+        if (distance <= 1) tokens.add(token.document);
       }
     }
     return Array.from(tokens);

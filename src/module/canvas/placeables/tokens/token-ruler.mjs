@@ -7,16 +7,26 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
     let {text, alpha, scale} = super._getWaypointLabel(waypoint);
     const segments = this.token.segmentizedFoundPath;
-    const tokens = new Set();
-    const ignored = new Set();
+
     for (const [i, segment] of segments.entries()) {
-      const strikes = this.token.document.getHostileTokensFromPoints(segment);
-      for (const token of strikes) {
-        if (!i) ignored.add(token);
-        else if (!ignored.has(token)) tokens.add(token);
-      }
-      Object.assign(segment, {count: tokens.size});
+      // Enemies you started nearby.
+      const startedNear = segments[i - 1]?.endpointEnemies ?? new Set();
+
+      // Enemies you ended near.
+      const endpointEnemies = new Set(this.token.document.getHostileTokensFromPoints([segment.at(-1)]));
+
+      // All tokens you passed by (and started near).
+      const passedBy = new Set(this.token.document.getHostileTokensFromPoints(segment)).union(startedNear);
+
+      // The number of strikes is equal to the number of tokens you passed by but did not end near.
+      const strikes = passedBy.difference(endpointEnemies).size;
+
+      Object.assign(segment, {
+        endpointEnemies, strikes,
+        count: strikes + (segments[i - 1]?.count ?? 0)
+      });
     }
+
     segments.shift(); // Dont care about the first singleton.
 
     let index = segments.length - 1;
