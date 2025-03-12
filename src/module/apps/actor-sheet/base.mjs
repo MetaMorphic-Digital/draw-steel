@@ -133,7 +133,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
-        context.damage = this._getImmunitiesWeaknesses("immunities");
+        context.damageIW = this._getImmunitiesWeaknesses();
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
@@ -230,12 +230,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       }, {})
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0);
+    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
+    const formatter = game.i18n.getListFormatter({type: "unit"});
     return {
-      immunities: Object.fromEntries(immunities),
-      weaknesses: Object.fromEntries(weaknesses),
+      immunities: formatter.format(immunities),
+      weaknesses: formatter.format(weaknesses),
       labels
     };
   }
