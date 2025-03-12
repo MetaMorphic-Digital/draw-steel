@@ -1,7 +1,7 @@
 import {systemID} from "../constants.mjs";
 import {DSRoll} from "../rolls/base.mjs";
 /** @import {MaliceModel} from "../data/settings/malice.mjs" */
-/** @import {DrawSteelCombatant} from "./combatant.mjs" */
+/** @import {DrawSteelCombatant, DrawSteelCombatantGroup} from "./_module.mjs" */
 
 export class DrawSteelCombat extends Combat {
   /** @override */
@@ -71,8 +71,8 @@ export class DrawSteelCombat extends Combat {
   }
 
   /**
-   * @param {DrawSteelCombatant} a Some combatant
-   * @param {DrawSteelCombatant} b Some other combatant
+   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant
+   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} b Some other combatant
    * @returns {number} The sort for an {@link Array#sort} callback
    * @protected
    * @override

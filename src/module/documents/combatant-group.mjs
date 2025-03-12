@@ -2,6 +2,12 @@
 
 export default class DrawSteelCombatantGroup extends CombatantGroup {
   /**
+   * Is this group currently expanded in the combat tracker?
+   * @type {boolean}
+   */
+  _expanded = false;
+
+  /**
      * Present a Dialog form to create a new Document of this type.
      * Choose a name and a type from a select menu of types.
      * @param {CombatantGroupData} data                Document creation data
@@ -83,5 +89,14 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
         }
       }
     }, dialogOptions));
+  }
+
+  /**
+   * The disposition for this combatant group.
+   * Returns the value for Secret if there are no members.
+   * @returns {number}
+   */
+  get disposition() {
+    return this.members.first()?.disposition ?? CONST.TOKEN_DISPOSITIONS.SECRET;
   }
 }

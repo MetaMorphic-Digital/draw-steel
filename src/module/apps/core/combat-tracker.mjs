@@ -1,5 +1,6 @@
 import {systemID, systemPath} from "../../constants.mjs";
-import {DrawSteelCombatantGroup} from "../../documents/combatant-group.mjs";
+import DrawSteelCombatantGroup from "../../documents/combatant-group.mjs";
+/** @import { DrawSteelCombatant } from "../../documents/_module.mjs"; */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -10,6 +11,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     actions: {
       rollFirst: this.#rollFirst,
       createGroup: this.#createGroup,
+      toggleGroupExpand: this.#toggleGroupExpand,
       activateCombatant: this.#onActivateCombatant
     }
   };
@@ -32,7 +34,8 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       template: systemPath("templates/combat/header.hbs")
     },
     dsTracker: {
-      template: systemPath("templates/combat/tracker.hbs")
+      template: systemPath("templates/combat/tracker.hbs"),
+      templates: [systemPath("templates/combat/turn.hbs")]
     },
     dsFooter: {
       template: systemPath("templates/combat/footer.hbs")
@@ -77,8 +80,77 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   }
 
   /** @override */
+  async _prepareTrackerContext(context, options) {
+    await super._prepareTrackerContext(context, options);
+
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+
+    const combat = this.viewed;
+
+    /** @type {Array<Array>} */
+    const [noGroup, grouped] = context.turns.partition(c => !!c.group);
+
+    /** @type {Record<string, Array>} */
+    const groups = Object.groupBy(grouped, c => c.group.id);
+
+    /** @type {DrawSteelCombatant} */
+    const currentTurn = combat.turns[combat.turn];
+
+    context.groupTurns = combat.groups.reduce((acc, cg) => {
+      const {_expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img} = cg;
+      const turns = groups[id] ?? [];
+      const active = turns.some(t => t.id === currentTurn.id);
+
+      const turn = {
+        isGroup: true,
+        id,
+        name,
+        isOwner,
+        isDefeated,
+        hidden,
+        disposition,
+        initiative,
+        turns,
+        img,
+        active
+      };
+
+      turn.activateTooltip = cg.initiative ? "Act" : "Restore";
+
+      turn.initiativeCount = cg.initiative > 1 ? cg.initiative : "";
+
+      turn.initiativeSymbol = cg.initiative ? "fa-arrow-right" : "fa-clock-rotate-left";
+
+      let dispositionColor = "PARTY";
+
+      if (!cg.hasPlayerOwner) {
+        const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
+        dispositionColor = invertedDisposition[disposition] ?? "OTHER";
+      }
+
+      turn.css = [
+        dispositionColor,
+        _expanded ? "expanded" : null,
+        active ? "active" : null,
+        hidden ? "hide" : null,
+        isDefeated ? "defeated" : null
+      ].filterJoin(" ");
+
+      acc.push(turn);
+
+      return acc;
+    }, noGroup);
+
+    context.groupTurns.sort(combat._sortCombatants);
+
+    console.log(context.groupTurns);
+  }
+
+  /** @override */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
+
+    turn.disposition = combatant.disposition;
 
     let dispositionColor = "PARTY";
 
@@ -93,6 +165,8 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     turn.initiativeCount = combatant.initiative > 1 ? combatant.initiative : "";
 
     turn.initiativeSymbol = combatant.initiative ? "fa-arrow-right" : "fa-clock-rotate-left";
+
+    turn.group = combatant.group;
 
     return turn;
   }
@@ -131,6 +205,21 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   static async #createGroup(event, target) {
     DrawSteelCombatantGroup.createDialog({}, {parent: this.viewed});
+  }
+
+  /**
+   * Toggle a Combatant Group
+   * @this DrawSteelCombatTracker
+   * @param {PointerEvent} event The triggering event.
+   * @param {HTMLElement} target The action target element.
+   */
+  static async #toggleGroupExpand(event, target) {
+    const combat = this.viewed;
+    const group = combat.groups.get(target.dataset.groupId);
+
+    group._expanded = !group._expanded;
+
+    this.render({parts: ["dsTracker"]});
   }
 
   /**
