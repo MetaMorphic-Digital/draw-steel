@@ -47,7 +47,8 @@
         "equipment": "Equipment",
         "stats": "Stats",
         "abilities": "Abilities",
-        "effects": "Effects"
+        "effects": "Effects",
+        "projects": "Projects"
       },
       "characteristics": {
         "might": {
@@ -998,6 +999,9 @@
       },
       "Project": {
         "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
           "prerequisites": {
             "label": "Item Prerequisites"
           },
@@ -1024,6 +1028,11 @@
               "label": "Yield Display"
             }
           }
+        },
+        "Types": {
+          "Crafting": "Crafting",
+          "Research": "Research",
+          "Other": "Other"
         },
         "CraftItemName": "Craft {name}"
       }

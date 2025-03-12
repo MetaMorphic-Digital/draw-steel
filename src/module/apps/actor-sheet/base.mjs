@@ -44,6 +44,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         {id: "stats"},
         {id: "features"},
         {id: "equipment"},
+        {id: "projects"},
         {id: "abilities"},
         {id: "effects"},
         {id: "biography"}
@@ -91,13 +92,19 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /** @override */
+  _configureRenderParts(options) {
+    const {header, tabs, stats, features, equipment, projects, abilities, effects, biography} = super._configureRenderParts(options);
+
+    if (this.document.limited) return {header, tabs, biography};
+
+    if (this.document.type === "character") return {header, tabs, stats, features, equipment, projects, abilities, effects, biography};
+    else return {header, tabs, stats, features, abilities, effects, biography};
+  }
+
+  /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
-    // TODO: Refactor to use _configureRenderParts in v13
-    if (this.document.limited) {
-      options.parts = ["header", "tabs", "biography"];
-    }
   }
 
   /* -------------------------------------------- */
@@ -124,6 +131,17 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     });
 
     return context;
+  }
+
+  /** @override */
+  _prepareTabs(group) {
+    const tabs = super._prepareTabs(group);
+    if ((group === "primary") && (this.document.type !== "character")) {
+      delete tabs.equipment;
+      delete tabs.projects;
+    }
+
+    return tabs;
   }
 
   /** @override */

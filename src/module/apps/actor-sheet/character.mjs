@@ -1,5 +1,5 @@
 import {systemID, systemPath} from "../../constants.mjs";
-import {EquipmentModel, KitModel} from "../../data/item/_module.mjs";
+import {EquipmentModel, KitModel, ProjectModel} from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
 /** @import {ActorSheetItemContext} from "../_types.js" */
@@ -34,6 +34,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       template: systemPath("templates/actor/character/equipment.hbs"),
       scrollable: [""]
     },
+    projects: {
+      template: systemPath("templates/actor/character/projects.hbs")
+    },
     abilities: {
       template: systemPath("templates/actor/shared/abilities.hbs"),
       scrollable: [""]
@@ -60,6 +63,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         context.kitFields = KitModel.schema.fields;
         context.equipment = await this._prepareEquipmentContext();
         context.equipmentFields = EquipmentModel.schema.fields;
+        break;
+      case "projects":
+        context.projects = await this._prepareProjectsContext();
+        context.projectFields = ProjectModel.schema.fields;
         break;
     }
     return context;
@@ -96,7 +103,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for equipment categories and individual equipment items
-   * @returns {Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}
+   * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareEquipmentContext() {
     const context = {};
@@ -121,6 +128,21 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       const category = context[item.system.category] ? item.system.category : "other";
 
       context[category].equipment.push(await this._prepareItemContext(item));
+    }
+
+    return context;
+  }
+
+  /**
+   * Prepare the context for equipment categories and individual equipment items
+   * @returns {Array<ActorSheetItemContext>}
+   */
+  async _prepareProjectsContext() {
+    const projects = this.actor.itemTypes.project.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const project of projects) {
+      context.push(await this._prepareItemContext(project));
     }
 
     return context;

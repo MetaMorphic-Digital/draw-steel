@@ -27,6 +27,7 @@ export default class ProjectModel extends BaseItemModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
+    schema.type = new fields.StringField({required: true});
     schema.prerequisites = new fields.StringField({required: true});
     schema.projectSource = new fields.StringField({required: true});
     schema.rollCharacteristic = new fields.SetField(setOptions());
@@ -90,6 +91,7 @@ export default class ProjectModel extends BaseItemModel {
 
   /** @override */
   async getSheetContext(context) {
+    context.typeOptions = Object.entries(ds.CONFIG.projects.types).map(([value, {label}]) => ({value, label}));
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
 
     const characteristicFormatter = game.i18n.getListFormatter({type: "disjunction"});

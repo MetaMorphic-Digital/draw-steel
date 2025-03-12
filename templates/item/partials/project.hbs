@@ -3,6 +3,7 @@
 {{else}}
 <fieldset>
   <legend>{{localize "TYPES.Item.project"}}</legend>
+  {{formGroup systemFields.type value=system.type options=typeOptions blank=""}}
   {{formGroup systemFields.prerequisites value=system.prerequisites}}
   {{formGroup systemFields.projectSource value=system.projectSource}}
   {{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic options=characteristics}}
