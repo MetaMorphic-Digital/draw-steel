@@ -1,6 +1,7 @@
 import {systemID, systemPath} from "../../constants.mjs";
 import DrawSteelCombatantGroup from "../../documents/combatant-group.mjs";
-/** @import { DrawSteelCombatant } from "../../documents/_module.mjs"; */
+/** @import {DrawSteelCombatant} from "../../documents/_module.mjs"; */
+/** @import {ContextMenuEntry} from "../../../../foundry/client-esm/applications/ui/context.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -142,8 +143,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     }, noGroup);
 
     context.groupTurns.sort(combat._sortCombatants);
-
-    console.log(context.groupTurns);
   }
 
   /** @override */
@@ -171,6 +170,13 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return turn;
   }
 
+  _attachFrameListeners() {
+    super._attachFrameListeners();
+
+    // TODO: Revise in 13.338
+    if (game.user.isGM) foundry.applications.ui.ContextMenu.create(this, this.element, ".combatant-group", {jQuery: false, hookName: "GroupContext", fixed: true});
+  }
+
   /** @override */
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
@@ -181,6 +187,25 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     }
 
     return entryOptions;
+  }
+
+  /**
+   * Get the context menu entries for Combatant Groups in the tracker.
+   * @returns {ContextMenuEntry[]}
+   */
+  _getGroupContextOptions() {
+    const getCombatantGroup = li => {console.log(this, li); return this.viewed.groups.get(li.dataset.groupId);};
+    return [{
+      name: game.i18n.format("DOCUMENT.Update", {type: game.i18n.localize("DOCUMENT.CombatantGroup")}),
+      icon: "<i class=\"fa-solid fa-edit\"></i>",
+      callback: li => getCombatantGroup(li)?.sheet.render({
+        force: true,
+        position: {
+          top: Math.min(li.offsetTop, window.innerHeight - 350),
+          left: window.innerWidth - 720
+        }
+      })
+    }];
   }
 
   /* -------------------------------------------------- */
