@@ -7,4 +7,5 @@ export {DrawSteelCombat} from "./combat.mjs";
 export {default as DrawSteelCombatantGroup} from "./combatant-group.mjs";
 export {DrawSteelCombatant} from "./combatant.mjs";
 export {DrawSteelItem} from "./item.mjs";
+export {default as DrawSteelTokenDocument} from "./token.mjs";
 export {DrawSteelUser} from "./user.mjs";

@@ -133,6 +133,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       case "stats":
         context.characteristics = this._getCharacteristics();
         context.movement = this._getMovement();
+        context.damageIW = this._getImmunitiesWeaknesses();
         break;
       case "features":
         context.features = await this._prepareFeaturesContext();
@@ -213,6 +214,30 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return {
       list: formatter.format(languageList),
       options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
+    };
+  }
+
+  /**
+   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels
+   * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
+   */
+  _getImmunitiesWeaknesses() {
+    const labels = {
+      all: game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
+      ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, {label}]) => {
+        acc[type] = label;
+        return acc;
+      }, {})
+    };
+
+    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+
+    const formatter = game.i18n.getListFormatter({type: "unit"});
+    return {
+      immunities: formatter.format(immunities),
+      weaknesses: formatter.format(weaknesses),
+      labels
     };
   }
 

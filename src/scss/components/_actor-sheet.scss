@@ -178,6 +178,24 @@ section.tab {
   }
 }
 
+.immunities-weaknesses {
+  align-items: stretch;
+
+  .immunity,
+  .weakness {
+    white-space: nowrap;
+  }
+}
+
+.immunities,
+.weaknesses {
+  gap: 5px;
+
+  .form-group {
+    flex: 1 1 100px;
+  }
+}
+
 .tab {
   .item-header {
     line-height: 24px;
