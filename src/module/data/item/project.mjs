@@ -119,7 +119,7 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and create any yielded items if goal is met
-   * @param {Partial<PowerRollModifiers} [options={}]
+   * @param {Partial<PowerRollModifiers>} [options={}]
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(options = {}) {
