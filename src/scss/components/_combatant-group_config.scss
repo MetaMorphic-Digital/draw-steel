@@ -1,0 +1,27 @@
+.window-content {
+  padding-top: 0;
+}
+
+header.img-name {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  flex-basis: 64px;
+  img {
+    height: 64px;
+    flex: 0 0 64px;
+    object-fit: contain;
+  }
+  input {
+    flex: 1;
+    font-size: var(--font-size-32);
+    height: initial;
+  }
+}
+
+section.sheet-body {
+  margin-bottom: 7px;
+  .form-group {
+    margin-bottom: 3px;
+  }
+}

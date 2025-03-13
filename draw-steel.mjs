@@ -81,6 +81,10 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.ActiveEffect"
   });
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.CombatantGroupConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup"
+  });
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
