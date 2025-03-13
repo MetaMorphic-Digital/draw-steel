@@ -93,12 +93,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @override */
   _configureRenderParts(options) {
-    const {header, tabs, stats, features, equipment, projects, abilities, effects, biography} = super._configureRenderParts(options);
+    const parts = super._configureRenderParts(options);
 
-    if (this.document.limited) return {header, tabs, biography};
+    if (this.document.limited) {
+      const {header, tabs, biography} = parts;
+      return {header, tabs, biography};
+    }
 
-    if (this.document.type === "character") return {header, tabs, stats, features, equipment, projects, abilities, effects, biography};
-    else return {header, tabs, stats, features, abilities, effects, biography};
+    return parts;
   }
 
   /** @override */
@@ -136,9 +138,18 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @override */
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
-    if ((group === "primary") && (this.document.type !== "character")) {
-      delete tabs.equipment;
-      delete tabs.projects;
+
+    if (group === "primary") {
+      if (this.document.limited) {
+        tabs.biography.active = true;
+        tabs.biography.cssClass = "active";
+        return {biography: tabs.biography};
+      }
+
+      if (this.document.type !== "character") {
+        delete tabs.equipment;
+        delete tabs.projects;
+      }
     }
 
     return tabs;

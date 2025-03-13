@@ -138,12 +138,15 @@ declare module "./equipment.mjs" {
     category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
     echelon: keyof typeof ds["CONFIG"]["echelons"];
     keywords: Set<string>;
-    prerequisites: string;
     project: {
+      prerequisites: string;
       source: string;
       rollCharacteristic: Set<string>;
       goal: number;
-      yield: string;
+      yield: {
+        amount: string;
+        display: string
+      }
     }
   }
 }
@@ -185,6 +188,22 @@ declare module "./kit.mjs" {
         damage: DamageSchema;
         distance: number;
       }
+    }
+  }
+}
+
+declare module "./project.mjs" {
+
+  export default interface ProjectModel {
+    type: keyof typeof ds["CONFIG"]["projects"]["types"];
+    prerequisites: string;
+    projectSource: string;
+    rollCharacteristic: Set<string>;
+    goal: number;
+    yield: {
+      item: string;
+      amount: string;
+      display: string
     }
   }
 }

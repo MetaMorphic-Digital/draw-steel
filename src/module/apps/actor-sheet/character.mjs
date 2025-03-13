@@ -2,13 +2,14 @@ import {systemID, systemPath} from "../../constants.mjs";
 import {EquipmentModel, KitModel, ProjectModel} from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
-/** @import {ActorSheetItemContext} from "../_types.js" */
+/** @import {ActorSheetItemContext, ActorSheetEquipmentContext} from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
-      gainSurges: this._gainSurges
+      gainSurges: this._gainSurges,
+      rollProject: this._rollProject
     }
   };
 
@@ -103,7 +104,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for equipment categories and individual equipment items
-   * @returns {Array<ActorSheetItemContext>}
+   * @returns {{Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}}
    */
   async _prepareEquipmentContext() {
     const context = {};
@@ -179,5 +180,16 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         this.actor.update({"system.hero.surges": this.actor.system.hero.surges + 2});
       }
     }
+  }
+
+  /**
+   * Spend a hero token to gain a surge
+   * @this DrawSteelNPCSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _rollProject(event, target) {
+    const project = this._getEmbeddedDocument(target);
+    await project.system.roll();
   }
 }

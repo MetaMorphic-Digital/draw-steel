@@ -1,7 +1,12 @@
 import {systemPath} from "../../constants.mjs";
+import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import {DSRoll} from "../../rolls/base.mjs";
+import {ProjectRoll} from "../../rolls/project.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
+
+/** @import {PowerRollModifiers} from  "../../_types.js"*/
 
 const fields = foundry.data.fields;
 
@@ -43,6 +48,20 @@ export default class ProjectModel extends BaseItemModel {
   }
 
   /** @override */
+  preparePostActorPrepData() {
+    super.preparePostActorPrepData();
+
+    // Set the highest characteristic amongst the roll characteristics
+    this.characteristic = null;
+    for (const characteristic of this.rollCharacteristic) {
+      if (this.characteristic === null) this.characteristic = characteristic;
+
+      const actorCharacteristics = this.actor.system.characteristics;
+      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.characteristic].value) this.characteristic = characteristic;
+    }
+  }
+
+  /** @override */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -63,7 +82,7 @@ export default class ProjectModel extends BaseItemModel {
           display: yieldItem.system.project.yield.display
         }
       });
-      const name = game.i18n.format("DRAW_STEEL.Item.Project.CraftItemName", {name: yieldItem.name});
+      const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: yieldItem.name});
       this.parent.updateSource({name});
     }
   }
@@ -99,5 +118,58 @@ export default class ProjectModel extends BaseItemModel {
     context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
 
     if (this.yield.item) context.itemLink = await TextEditor.enrichHTML(`@UUID[${this.yield.item}]`);
+  }
+
+  /**
+   * Make a project roll for this project and create any yielded items if goal is met
+   * @param {Partials<PowerRollModifiers} options
+   * @returns {Promise<DrawSteelChatMessage | null>}
+   */
+  async roll(options = {}) {
+    if (!this.actor) return null;
+
+    const rollData = this.parent.getRollData();
+    const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
+
+    const promptValue = await ProjectRoll.prompt({
+      formula: rollKey ? `2d10 + @${rollKey}` : "2d10",
+      modifiers: options.modifiers ?? {},
+      actor: this.actor,
+      evaluation: "evaluate",
+      data: rollData,
+      flavor: this.parent.name
+    });
+
+    if (!promptValue) return null;
+    const {rollMode, projectRoll} = promptValue;
+
+    const total = projectRoll.total;
+    const updatedProgress = this.progress + total;
+    await this.parent.update({"system.progress": updatedProgress});
+
+    // If the project has been completed and there is a yield item, roll the amount formula and add that many of the item.
+    if ((updatedProgress >= this.goal) && this.yield.item) {
+      const item = await fromUuid(this.yield.item);
+      const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
+      const amount = yieldRoll.total;
+      const itemArray = Array(amount).fill(item.toObject());
+
+      await this.actor.createEmbeddedDocuments("Item", itemArray);
+      ui.notifications.info("DRAW_STEEL.Item.Project.Craft.Notification", {format: {
+        actor: this.actor.name,
+        amount,
+        item: item.name
+      }});
+    }
+
+    const messageData = {
+      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
+      rolls: [projectRoll],
+      content: this.parent.name,
+      flavor: game.i18n.localize("DRAW_STEEL.Roll.Project.Label")
+    };
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+
+    return DrawSteelChatMessage.create(messageData);
   }
 }
