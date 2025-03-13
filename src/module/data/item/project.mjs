@@ -148,7 +148,7 @@ export default class ProjectModel extends BaseItemModel {
     // If the project has been completed and there is a yield item, notify the user.
     // If there is a yielded item, roll the amount formula and add that many of the item.
     if (updatedProgress >= this.goal) {
-      ui.notifications.info("DRAW_STEEL.Item.Project.CompletedNotification", {format: {
+      ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {format: {
         actor: this.actor.name,
         project: this.parent.name
       }});
@@ -160,7 +160,7 @@ export default class ProjectModel extends BaseItemModel {
         const itemArray = Array(amount).fill(item.toObject());
 
         await this.actor.createEmbeddedDocuments("Item", itemArray);
-        ui.notifications.info("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {format: {
+        ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {format: {
           actor: this.actor.name,
           amount,
           item: item.name
