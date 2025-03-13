@@ -71,6 +71,7 @@ export default class ProjectModel extends BaseItemModel {
     if (yieldItem?.type === "equipment") {
       const {prerequisites, rollCharacteristic, goal, source} = yieldItem.system.project;
       this.updateSource({
+        type: "crafting",
         prerequisites,
         rollCharacteristic,
         goal,
