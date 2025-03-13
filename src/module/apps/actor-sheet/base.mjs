@@ -791,9 +791,17 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);
     if (folder.type !== "Item") return [];
+    const projectDropTarget = event.target.closest("[data-application-part='projects'");
     const droppedItemData = await Promise.all(
       folder.contents.map(async (item) => {
         if (!(document instanceof Item)) item = await fromUuid(item.uuid);
+
+        // If it's an equipment dropped on the project tab, create the item as a project
+        if (projectDropTarget && (item.type === "equipment")) {
+          const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: item.name});
+          item = {name, type: "project", "system.yield.item": item.uuid};
+        }
+
         return item;
       })
     );

@@ -70,18 +70,15 @@ export default class ProjectModel extends BaseItemModel {
     const yieldItem = await fromUuid(itemUUID);
     if (yieldItem?.type === "equipment") {
       const {prerequisites, rollCharacteristic, goal, source} = yieldItem.system.project;
-      this.parent.updateSource({
-        name: game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: yieldItem.name}),
-        system: {
-          prerequisites,
-          rollCharacteristic,
-          goal,
-          projectSource: source,
-          yield: {
-            item: itemUUID,
-            amount: yieldItem.system.project.yield.amount,
-            display: yieldItem.system.project.yield.display
-          }
+      this.updateSource({
+        prerequisites,
+        rollCharacteristic,
+        goal,
+        projectSource: source,
+        yield: {
+          item: itemUUID,
+          amount: yieldItem.system.project.yield.amount,
+          display: yieldItem.system.project.yield.display
         }
       });
     }

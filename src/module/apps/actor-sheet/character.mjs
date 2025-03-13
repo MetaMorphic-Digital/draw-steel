@@ -193,4 +193,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const project = this._getEmbeddedDocument(target);
     await project.system.roll();
   }
+
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
+
+  /** @override */
+  async _onDropItem(event, item) {
+    // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
+    const projectDropTarget = event.target.closest("[data-application-part='projects'");
+    if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
+      await item.system.createProject(this.actor);
+    } else {
+      await super._onDropItem(event, item);
+    }
+  }
 }
