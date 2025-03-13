@@ -133,7 +133,7 @@ export class ProjectRoll extends DSRoll {
   }
 
   /**
-   * Total project progress accrued from this roll
+   * Total project points accrued from this roll
    * @returns {number | undefined}
    */
   get product() {

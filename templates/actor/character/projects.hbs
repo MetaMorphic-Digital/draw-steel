@@ -3,7 +3,7 @@
   <section class="item-list-container project-list-container">
     <div class="item-header">
       <div class="item-column item-name">{{localize "TYPES.Item.project"}}</div>
-      <div class="item-column item-progress">{{projectFields.progress.label}}</div>
+      <div class="item-column item-points">{{projectFields.points.label}}</div>
       <div class="item-column item-type">{{projectFields.type.label}}</div>
       <div class="item-column item-controls">
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.project")) as |addItemTooltip|}}
@@ -23,7 +23,7 @@
               <div class="label">{{projectContext.item.name}}</div>
             </div>
           </div>
-          <div class="item-column item-progress">{{projectContext.item.system.progress}} / {{projectContext.item.system.goal}}</div>
+          <div class="item-column item-points">{{ifThen projectContext.item.system.points projectContext.item.system.points "0"}} / {{projectContext.item.system.goal}}</div>
           <div class="item-column item-type">{{lookup (lookup @root.config.projects.types projectContext.item.system.type) "label"}}</div>
           <div class="item-column item-controls">
             <a data-action="toggleItemEmbed">

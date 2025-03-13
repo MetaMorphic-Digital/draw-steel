@@ -36,7 +36,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.projectSource = new fields.StringField({required: true});
     schema.rollCharacteristic = new fields.SetField(setOptions());
     schema.goal = new fields.NumberField({required: true, integer: true, positive: true, initial: 1});
-    schema.progress = new fields.NumberField({required: true, integer: true, min: 0, initial: 0});
+    schema.points = new fields.NumberField({required: true, integer: true, min: 0, initial: 0});
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({initial: "1"}),
@@ -142,12 +142,12 @@ export default class ProjectModel extends BaseItemModel {
     const {rollMode, projectRoll} = promptValue;
 
     const total = projectRoll.total;
-    const updatedProgress = this.progress + total;
-    await this.parent.update({"system.progress": updatedProgress});
+    const updatedPoints = this.points + total;
+    await this.parent.update({"system.points": updatedPoints});
 
     // If the project has been completed and there is a yield item, notify the user.
     // If there is a yielded item, roll the amount formula and add that many of the item.
-    if (updatedProgress >= this.goal) {
+    if (updatedPoints >= this.goal) {
       ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {format: {
         actor: this.actor.name,
         project: this.parent.name

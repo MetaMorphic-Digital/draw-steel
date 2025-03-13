@@ -184,7 +184,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   }
 
   /**
-   * Make a project roll and track the progress
+   * Make a project roll and track the project points
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
