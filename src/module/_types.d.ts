@@ -5,8 +5,7 @@ import { DrawSteelActor } from "./documents/actor.mjs";
 
 import Advancement from "./documents/advancement/advancement.mjs";
 import { DrawSteelChatMessage } from "./documents/chat-message.mjs";
-import { PowerRoll } from "./rolls/power.mjs";
-import { ProjectRoll } from "./rolls/project.mjs";
+import { PowerRoll, ProjectRoll } from "./rolls/_module.mjs";
 
 export interface AdvancementTypeConfiguration {
   /**
@@ -36,7 +35,7 @@ export interface PowerRollTargets {
   modifiers: PowerRollModifiers;
 }
 
-export interface RollDialogOptions {
+export interface RollPromptOptions {
   evaluation: "none" | "evaluate" | "message";
   modifiers: PowerRollModifiers;
   formula: string;
@@ -45,7 +44,7 @@ export interface RollDialogOptions {
   skills: Set<string>;
 }
 
-export interface PowerRollPromptOptions extends RollDialogOptions {
+export interface PowerRollPromptOptions extends RollPromptOptions {
   type: "ability" | "test";
   targets: PowerRollTargets[],
   ability?: string
@@ -58,5 +57,5 @@ export interface PowerRollPrompt {
 
 export interface ProjectRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
-  projectRoll: ProjectRoll | DrawSteelChatMessage | object;
+  projectRoll: ProjectRoll | DrawSteelChatMessage;
 }

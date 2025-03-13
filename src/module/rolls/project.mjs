@@ -66,7 +66,7 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {Parial<RollPromptOptions}
+   * @param {Partial<RollPromptOptions}
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {
@@ -83,9 +83,9 @@ export class ProjectRoll extends DSRoll {
     options.skills ??= options.actor?.system.hero?.skills ?? null;
 
     const context = {
-      modifiers: options.modifiers
+      modifiers: options.modifiers,
+      skills: options.skills
     };
-    if (options.skills) context.skills = options.skills;
 
     const promptValue = await PowerRollDialog.prompt({
       context,

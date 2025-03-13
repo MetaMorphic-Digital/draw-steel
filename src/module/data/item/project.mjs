@@ -1,7 +1,6 @@
 import {systemPath} from "../../constants.mjs";
 import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
-import {DSRoll} from "../../rolls/base.mjs";
-import {ProjectRoll} from "../../rolls/project.mjs";
+import {DSRoll, ProjectRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -71,19 +70,20 @@ export default class ProjectModel extends BaseItemModel {
     const yieldItem = await fromUuid(itemUUID);
     if (yieldItem?.type === "equipment") {
       const {prerequisites, rollCharacteristic, goal, source} = yieldItem.system.project;
-      this.updateSource({
-        prerequisites,
-        rollCharacteristic,
-        goal,
-        projectSource: source,
-        yield: {
-          item: itemUUID,
-          amount: yieldItem.system.project.yield.amount,
-          display: yieldItem.system.project.yield.display
+      this.parent.updateSource({
+        name: game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: yieldItem.name}),
+        system: {
+          prerequisites,
+          rollCharacteristic,
+          goal,
+          projectSource: source,
+          yield: {
+            item: itemUUID,
+            amount: yieldItem.system.project.yield.amount,
+            display: yieldItem.system.project.yield.display
+          }
         }
       });
-      const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: yieldItem.name});
-      this.parent.updateSource({name});
     }
   }
 
@@ -122,7 +122,7 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * Make a project roll for this project and create any yielded items if goal is met
-   * @param {Partials<PowerRollModifiers} options
+   * @param {Partial<PowerRollModifiers} [options={}]
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(options = {}) {
@@ -147,19 +147,27 @@ export default class ProjectModel extends BaseItemModel {
     const updatedProgress = this.progress + total;
     await this.parent.update({"system.progress": updatedProgress});
 
-    // If the project has been completed and there is a yield item, roll the amount formula and add that many of the item.
-    if ((updatedProgress >= this.goal) && this.yield.item) {
-      const item = await fromUuid(this.yield.item);
-      const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
-      const amount = yieldRoll.total;
-      const itemArray = Array(amount).fill(item.toObject());
-
-      await this.actor.createEmbeddedDocuments("Item", itemArray);
-      ui.notifications.info("DRAW_STEEL.Item.Project.Craft.Notification", {format: {
+    // If the project has been completed and there is a yield item, notify the user.
+    // If there is a yielded item, roll the amount formula and add that many of the item.
+    if (updatedProgress >= this.goal) {
+      ui.notifications.info("DRAW_STEEL.Item.Project.CompletedNotification", {format: {
         actor: this.actor.name,
-        amount,
-        item: item.name
+        project: this.parent.name
       }});
+
+      if (this.yield.item) {
+        const item = await fromUuid(this.yield.item);
+        const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
+        const amount = yieldRoll.total;
+        const itemArray = Array(amount).fill(item.toObject());
+
+        await this.actor.createEmbeddedDocuments("Item", itemArray);
+        ui.notifications.info("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {format: {
+          actor: this.actor.name,
+          amount,
+          item: item.name
+        }});
+      }
     }
 
     const messageData = {
