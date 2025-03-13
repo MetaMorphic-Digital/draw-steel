@@ -66,7 +66,7 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {Partial<RollPromptOptions}
+   * @param {Partial<RollPromptOptions>}
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {

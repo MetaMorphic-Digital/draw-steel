@@ -34,57 +34,46 @@
     padding-left: 5px;
     flex: 0 0 200px;
     height: 100px;
-
     .class {
       flex: 1;
-
       .click-element {
         height: 100%;
-
         [data-action='deleteDoc'] {
           flex: 0 0 20px;
         }
       }
-
       .label {
         display: inline-block;
         line-height: 50px;
         height: 100%;
         font-size: var(--font-h3-size);
-
         &.unfilled {
           width: 100%;
           text-align: center;
         }
       }
     }
-
     .victories {
       flex: 0 0 30px;
       line-height: 30px;
-
       input {
         height: 30px;
         width: 40px;
       }
     }
-
     .item-img {
       display: inline-block;
       border: none;
       height: 36px;
       flex: 0 0 36px;
     }
-
     .monster-data {
       gap: 3px;
-
       .actor-source {
         margin-top: 5px;
         font-family: var(--font-h6);
         font-size: var(--font-size-18);
       }
-
       .malice {
         text-align: center;
         flex: 0 0 40px;
@@ -111,7 +100,6 @@ section.tab {
       width: 60px;
       flex: 0 0 50px;
     }
-
     &.heroic label {
       text-align: right;
     }
@@ -141,7 +129,6 @@ section.tab {
 
 .free-strike {
   flex: 0 0 120px;
-
   .free-strike-body {
     text-align: center;
     height: 100%;

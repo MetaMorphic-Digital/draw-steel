@@ -105,7 +105,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for equipment categories and individual equipment items
-   * @returns {{Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}}
+   * @returns {Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}
    */
   async _prepareEquipmentContext() {
     const context = {};
@@ -156,7 +156,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a hero token to gain a surge
-   * @this DrawSteelNPCSheet
+   * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
@@ -184,8 +184,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   }
 
   /**
-   * Spend a hero token to gain a surge
-   * @this DrawSteelNPCSheet
+   * Make a project roll and track the progress
+   * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
