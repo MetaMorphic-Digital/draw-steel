@@ -44,6 +44,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         {id: "stats"},
         {id: "features"},
         {id: "equipment"},
+        {id: "projects"},
         {id: "abilities"},
         {id: "effects"},
         {id: "biography"}
@@ -90,14 +91,22 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return this.#mode === DrawSteelActorSheet.MODES.EDIT;
   }
 
+  /** @inheritdoc */
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+
+    if (this.document.limited) {
+      const {header, tabs, biography} = parts;
+      return {header, tabs, biography};
+    }
+
+    return parts;
+  }
+
   /** @override */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
-    // TODO: Refactor to use _configureRenderParts in v13
-    if (this.document.limited) {
-      options.parts = ["header", "tabs", "biography"];
-    }
   }
 
   /* -------------------------------------------- */
@@ -124,6 +133,26 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     });
 
     return context;
+  }
+
+  /** @inheritdoc */
+  _prepareTabs(group) {
+    const tabs = super._prepareTabs(group);
+
+    if (group === "primary") {
+      if (this.document.limited) {
+        tabs.biography.active = true;
+        tabs.biography.cssClass = "active";
+        return {biography: tabs.biography};
+      }
+
+      if (this.document.type !== "character") {
+        delete tabs.equipment;
+        delete tabs.projects;
+      }
+    }
+
+    return tabs;
   }
 
   /** @override */
@@ -762,9 +791,17 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);
     if (folder.type !== "Item") return [];
+    const projectDropTarget = event.target.closest("[data-application-part='projects'");
     const droppedItemData = await Promise.all(
       folder.contents.map(async (item) => {
         if (!(document instanceof Item)) item = await fromUuid(item.uuid);
+
+        // If it's an equipment dropped on the project tab, create the item as a project
+        if (projectDropTarget && (item.type === "equipment")) {
+          const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: item.name});
+          item = {name, type: "project", "system.yield.item": item.uuid};
+        }
+
         return item;
       })
     );

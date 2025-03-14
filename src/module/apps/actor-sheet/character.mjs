@@ -1,14 +1,15 @@
 import {systemID, systemPath} from "../../constants.mjs";
-import {EquipmentModel, KitModel} from "../../data/item/_module.mjs";
+import {EquipmentModel, KitModel, ProjectModel} from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./base.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
-/** @import {ActorSheetItemContext} from "../_types.js" */
+/** @import {ActorSheetItemContext, ActorSheetEquipmentContext} from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
-      gainSurges: this._gainSurges
+      gainSurges: this._gainSurges,
+      rollProject: this._rollProject
     }
   };
 
@@ -32,6 +33,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     },
     equipment: {
       template: systemPath("templates/actor/character/equipment.hbs"),
+      scrollable: [""]
+    },
+    projects: {
+      template: systemPath("templates/actor/character/projects.hbs"),
       scrollable: [""]
     },
     abilities: {
@@ -60,6 +65,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         context.kitFields = KitModel.schema.fields;
         context.equipment = await this._prepareEquipmentContext();
         context.equipmentFields = EquipmentModel.schema.fields;
+        break;
+      case "projects":
+        context.projects = await this._prepareProjectsContext();
+        context.projectFields = ProjectModel.schema.fields;
         break;
     }
     return context;
@@ -126,13 +135,28 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     return context;
   }
 
+  /**
+   * Prepare the context for equipment categories and individual equipment items
+   * @returns {Array<ActorSheetItemContext>}
+   */
+  async _prepareProjectsContext() {
+    const projects = this.actor.itemTypes.project.toSorted((a, b) => a.sort - b.sort);
+    const context = [];
+
+    for (const project of projects) {
+      context.push(await this._prepareItemContext(project));
+    }
+
+    return context;
+  }
+
   /* -------------------------------------------------- */
   /*   Actions                                          */
   /* -------------------------------------------------- */
 
   /**
    * Spend a hero token to gain a surge
-   * @this DrawSteelNPCSheet
+   * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
@@ -156,6 +180,32 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       if (valid !== false) {
         this.actor.update({"system.hero.surges": this.actor.system.hero.surges + 2});
       }
+    }
+  }
+
+  /**
+   * Make a project roll and track the project points
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _rollProject(event, target) {
+    const project = this._getEmbeddedDocument(target);
+    await project.system.roll();
+  }
+
+  /* -------------------------------------------------- */
+  /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDropItem(event, item) {
+    // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
+    const projectDropTarget = event.target.closest("[data-application-part='projects'");
+    if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
+      await item.system.createProject(this.actor);
+    } else {
+      await super._onDropItem(event, item);
     }
   }
 }

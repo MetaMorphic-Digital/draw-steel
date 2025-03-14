@@ -1,4 +1,5 @@
 import {systemPath} from "../../constants.mjs";
+import {DrawSteelActor} from "../../documents/actor.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
@@ -63,5 +64,16 @@ export default class EquipmentModel extends BaseItemModel {
         context.keywords.push({value, label});
       }
     }
+  }
+
+  /**
+   * Creates the provided equipment item as a project on a given actor
+   * @param {DrawSteelActor} actor
+   */
+  async createProject(actor) {
+    if (!actor) return;
+
+    const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: this.parent.name});
+    await Item.create({name, type: "project", "system.yield.item": this.parent.uuid}, {parent: actor});
   }
 }

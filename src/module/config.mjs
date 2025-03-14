@@ -123,12 +123,12 @@ preLocalize("damageTypes", {key: "label"});
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
  * @type {Record<string, {
- *  img: string, 
- *  name: string, 
- *  rule: string, 
- *  targeted? boolean, 
- *  maxSources?: number, 
- *  defaultSpeed?: number, 
+ *  img: string,
+ *  name: string,
+ *  rule: string,
+ *  targeted? boolean,
+ *  maxSources?: number,
+ *  defaultSpeed?: number,
  *  restrictions?: Record<string, Set<string>>
  * }>}
  */
@@ -1374,3 +1374,18 @@ DRAW_STEEL.features = {
 preLocalize("features.types", {key: "label"});
 preLocalize("features.types.perk.subtypes", {key: "label"});
 preLocalize("features.types.title.subtypes", {key: "label"});
+
+DRAW_STEEL.projects = {
+  types: {
+    crafting: {
+      label: "DRAW_STEEL.Item.Project.Types.Crafting"
+    },
+    research: {
+      label: "DRAW_STEEL.Item.Project.Types.Research"
+    },
+    other: {
+      label: "DRAW_STEEL.Item.Project.Types.Other"
+    }
+  }
+};
+preLocalize("projects.types", {key: "label"});
