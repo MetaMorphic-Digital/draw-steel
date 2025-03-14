@@ -7,7 +7,7 @@ const fields = foundry.data.fields;
  * A data model to manage Hero Tokens in Draw Steel
  */
 export class HeroTokenModel extends foundry.abstract.DataModel {
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
       value: new fields.NumberField({nullable: false, initial: 0, integer: true, min: 0})

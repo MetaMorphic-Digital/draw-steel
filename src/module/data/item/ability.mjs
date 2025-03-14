@@ -14,21 +14,21 @@ const fields = foundry.data.fields;
  * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
  */
 export default class AbilityModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "ability",
     detailsPartial: [systemPath("templates/item/partials/ability.hbs")]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Ability"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
     const config = ds.CONFIG.abilities;
@@ -131,7 +131,7 @@ export default class AbilityModel extends BaseItemModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   static itemDescription() {
     const description = super.itemDescription();
     description.flavor = new fields.StringField({required: true, blank: true});
@@ -140,14 +140,14 @@ export default class AbilityModel extends BaseItemModel {
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
-  /** @override */
+  /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
 
@@ -250,7 +250,7 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -303,7 +303,7 @@ export default class AbilityModel extends BaseItemModel {
     return labels;
   }
 
-  /** @override */
+  /** @inheritdoc */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
@@ -338,7 +338,7 @@ export default class AbilityModel extends BaseItemModel {
     if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
   }
 
-  /** @override */
+  /** @inheritdoc */
   _attachPartListeners(htmlElement, options) {
     // Add or delete a power roll tier effect
     const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
@@ -355,7 +355,7 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 

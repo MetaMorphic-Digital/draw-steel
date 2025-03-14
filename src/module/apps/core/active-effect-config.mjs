@@ -5,12 +5,12 @@ import {systemPath} from "../../constants.mjs";
  */
 export default class DrawSteelActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
 
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel"]
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: "templates/sheets/active-effect-config/header.hbs"
@@ -32,7 +32,7 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.systemFields = this.document.system.schema.fields;

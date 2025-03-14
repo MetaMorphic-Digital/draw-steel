@@ -8,7 +8,7 @@ const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
  * Prompt application for configuring the actor UUID that is causing a targeted condition
  */
 export class TargetedConditionPrompt extends HandlebarsApplicationMixin(ApplicationV2) {
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "targeted-condition-prompt"],
     tag: "form",
@@ -17,14 +17,14 @@ export class TargetedConditionPrompt extends HandlebarsApplicationMixin(Applicat
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     content: {
       template: systemPath("templates/active-effect/targeted-condition-prompt.hbs")
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = {
       ...this.options.context,
@@ -35,8 +35,8 @@ export class TargetedConditionPrompt extends HandlebarsApplicationMixin(Applicat
     return context;
   }
 
-  /** 
-   * The first target in the user targets 
+  /**
+   * The first target in the user targets
    * @type {Token}
    */
   target = game.user.targets.first();
@@ -52,31 +52,31 @@ export class TargetedConditionPrompt extends HandlebarsApplicationMixin(Applicat
     return CONFIG.statusEffects.find(condition => condition.id === this.options.context.statusId)?.name ?? "";
   }
 
-  /** @override */
+  /** @inheritdoc */
   get title() {
     return game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
       condition: this.condition
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   _onFirstRender(context, options) {
     this.hook = Hooks.on("targetToken", (user, token, active) => {
       if (!active) return;
-      
+
       this.target = token;
       this.render(true);
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   _onClose(options) {
     Hooks.off("targetToken", this.hook);
   }
 
-  /** 
-   * Set a final context for resolving the prompt, then close the dialog 
-   * @override
+  /**
+   * Set a final context for resolving the prompt, then close the dialog
+   * @inheritdoc
    */
   async _onSubmitForm(formConfig, event) {
     this.promptValue = this.target?.actor?.uuid;

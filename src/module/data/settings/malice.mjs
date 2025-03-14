@@ -8,7 +8,7 @@ const fields = foundry.data.fields;
  * A data model to manage Malice in Draw Steel
  */
 export class MaliceModel extends foundry.abstract.DataModel {
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
       value: new fields.NumberField({nullable: false, initial: 0, integer: true})

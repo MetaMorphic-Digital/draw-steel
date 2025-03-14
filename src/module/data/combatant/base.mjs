@@ -10,10 +10,10 @@ export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
     type: "base"
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Combatant.base"];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
       disposition: new fields.NumberField({nullable: true, choices: Object.values(CONST.TOKEN_DISPOSITIONS),

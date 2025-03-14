@@ -11,7 +11,7 @@ const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
  */
 export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "power-roll-dialog"],
     position: {
@@ -26,7 +26,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     content: {
       template: systemPath("templates/rolls/power-roll-dialog.hbs")
@@ -39,14 +39,14 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
    */
   promptValue;
 
-  /** @override */
+  /** @inheritdoc */
   _initializeApplicationOptions(options) {
     options.context.rollMode = game.settings.get("core", "rollMode");
 
     return super._initializeApplicationOptions(options);
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = {
       modChoices: Array.fromRange(3).reduce((obj, number) => {
@@ -116,7 +116,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
   /**
    * Amend the global modifiers and target specific modifiers based on changed values
-   * @override
+   * @inheritdoc
    */
   _onChangeForm(formConfig, event) {
     super._onChangeForm(formConfig, event);
@@ -140,7 +140,7 @@ export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
   /**
    * Set a final context for resolving the prompt, then close the dialog
-   * @override
+   * @inheritdoc
    */
   async _onSubmitForm(formConfig, event) {
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);

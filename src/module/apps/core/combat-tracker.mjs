@@ -4,7 +4,7 @@ import {systemID, systemPath} from "../../constants.mjs";
  * A custom combat tracker that supports Draw Steel's initiative system
  */
 export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
@@ -12,7 +12,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     /** Inherited */
     header: {
@@ -41,7 +41,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderParts(options) {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
@@ -59,7 +59,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return parts;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -74,7 +74,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return context;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
 
@@ -95,7 +95,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return turn;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 

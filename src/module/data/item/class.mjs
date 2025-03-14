@@ -7,7 +7,7 @@ import AdvancementModel from "./advancement.mjs";
  * Classes provide the bulk of a hero's features and abilities
  */
 export default class ClassModel extends AdvancementModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "class",
@@ -15,7 +15,7 @@ export default class ClassModel extends AdvancementModel {
     detailsPartial: [systemPath("templates/item/partials/class.hbs")]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
@@ -23,7 +23,7 @@ export default class ClassModel extends AdvancementModel {
     "DRAW_STEEL.Item.Class"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -59,13 +59,13 @@ export default class ClassModel extends AdvancementModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
     context.kitOptions = Array.fromRange(3).map(number => ({label: number, value: number}));
   }
 
-  /** @override */
+  /** @inheritdoc */
   _onCreate(data, options, userId) {
     if (this.actor && (this.actor.type === "character") && (game.userId === userId)) {
       this.actor.update({"system.hero.recoveries.value": this.recoveries});

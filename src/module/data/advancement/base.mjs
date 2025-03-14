@@ -30,7 +30,7 @@ export default class BaseAdvancement extends SparseDataModel {
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
       _id: new DocumentIdField({initial: () => foundry.utils.randomID()}),

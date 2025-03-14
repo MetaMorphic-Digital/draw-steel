@@ -2,7 +2,7 @@ import {TargetedConditionPrompt} from "../apps/targeted-condition-prompt.mjs";
 import {DrawSteelActor} from "./actor.mjs";
 
 export class DrawSteelActiveEffect extends ActiveEffect {
-  /** @override */
+  /** @inheritdoc */
   static async _fromStatusEffect(statusId, effectData, options) {
     if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;
     if (ds.CONFIG.conditions[statusId]?.targeted) await this.targetedConditionPrompt(statusId, effectData);
@@ -48,7 +48,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Automatically deactivate effects with expired durations
-   * @override
+   * @inheritdoc
    * @type {Boolean}
    */
   get isSuppressed() {
@@ -58,7 +58,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     return false;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActiveEffectData", this);
@@ -70,7 +70,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    * Compute derived data related to active effect duration.
    * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData>}
    * @protected
-   * @override
+   * @inheritdoc
    */
   _prepareDuration() {
     return this.system._prepareDuration ?? super._prepareDuration();
@@ -78,13 +78,13 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
-   * @override
+   * @inheritdoc
    */
   get isTemporary() {
     return this.system._isTemporary ?? super.isTemporary;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _applyAdd(actor, change, current, delta, changes) {
     // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array.
     // If it does exist, convert the Set to an Array.
@@ -107,7 +107,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   _applyOverride(actor, change, current, delta, changes) {
     // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);

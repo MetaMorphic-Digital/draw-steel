@@ -15,7 +15,7 @@ const {api, sheets} = foundry.applications;
 export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   sheets.ActorSheetV2
 ) {
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "actor"],
     position: {
@@ -37,7 +37,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
@@ -103,7 +103,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return parts;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
@@ -111,7 +111,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
@@ -155,7 +155,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return tabs;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -538,7 +538,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {ApplicationRenderContext} context      Prepared context data
    * @param {RenderOptions} options                 Provided render options
    * @protected
-   * @override
+   * @inheritdoc
    */
   async _onRender(context, options) {
     await super._onRender(context, options);
@@ -786,7 +786,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return [];
     const folder = await Folder.implementation.fromDropData(data);

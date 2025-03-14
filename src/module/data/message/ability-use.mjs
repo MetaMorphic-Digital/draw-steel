@@ -61,7 +61,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     } else console.warn("Invalid configuration");
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
     buttons.push(...this._constructDamageFooterButtons());
@@ -100,7 +100,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     return damageButtons;
   }
 
-  /** @override */
+  /** @inheritdoc */
   addListeners(html) {
     const damageButtons = html.querySelectorAll(".apply-damage");
     for (const damageButton of damageButtons) {

@@ -11,10 +11,10 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     type: "base"
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Effect.base"];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const config = ds.CONFIG;

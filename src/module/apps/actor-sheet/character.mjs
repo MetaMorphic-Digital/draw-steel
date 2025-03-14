@@ -13,7 +13,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/actor/character/header.hbs"),
@@ -53,7 +53,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }
   };
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {

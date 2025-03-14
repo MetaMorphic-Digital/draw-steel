@@ -1,14 +1,14 @@
 import BaseItemModel from "./base.mjs";
 
 export default class AdvancementModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "",
     hasAdvancements: true
   });
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();

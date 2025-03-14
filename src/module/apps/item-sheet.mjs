@@ -9,7 +9,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
 
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "item"],
     actions: {
@@ -28,7 +28,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     dragDrop: [{dragSelector: ".draggable", dropSelector: null}]
   };
 
-  /** @override */
+  /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
@@ -53,7 +53,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/item/header.hbs"),
@@ -109,7 +109,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.#mode === DrawSteelItemSheet.MODES.EDIT;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderParts(options) {
     const {header, tabs, description, details, advancement, effects} = super._configureRenderParts(options);
 
@@ -124,7 +124,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return parts;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     if (options.mode && this.isEditable) this.#mode = options.mode;
@@ -132,7 +132,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
@@ -158,7 +158,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context) {
     if (partId in context.tabs) context.tab = context.tabs[partId];
 
@@ -192,7 +192,7 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
     if (group === "primary") {
@@ -286,13 +286,13 @@ export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   _onClose(options) {
     super._onClose(options);
     if (this.#editor) this.#saveEditor();
   }
 
-  /** @override */
+  /** @inheritdoc */
   _attachPartListeners(partId, htmlElement, options) {
     super._attachPartListeners(partId, htmlElement, options);
 

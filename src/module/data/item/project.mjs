@@ -13,21 +13,21 @@ const fields = foundry.data.fields;
  * Projects are activities (crafting, research, or other) characters can accomplish during downtime.
  */
 export default class ProjectModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "project",
     detailsPartial: [systemPath("templates/item/partials/project.hbs")]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Project"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
 
@@ -60,7 +60,7 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -86,7 +86,7 @@ export default class ProjectModel extends BaseItemModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */

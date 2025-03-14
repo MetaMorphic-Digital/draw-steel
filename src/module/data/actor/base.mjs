@@ -16,7 +16,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    */
   static metadata = Object.freeze({});
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const characteristic = {min: -5, max: 5, initial: 0, integer: true};
     const schema = {};
@@ -74,7 +74,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     };
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
@@ -94,7 +94,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     };
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
@@ -156,7 +156,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {Record<string, unknown>} changes
    * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
    * @param {User} user
@@ -174,7 +174,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {object} changed            The differential data that was changed relative to the documents prior values
    * @param {object} options            Additional options which modify the update request
    * @param {string} userId             The id of the User requesting the document update

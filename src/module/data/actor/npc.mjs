@@ -10,19 +10,19 @@ import SourceModel from "../models/source.mjs";
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     type: "npc"
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.NPC"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -49,7 +49,7 @@ export default class NPCModel extends BaseActorModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get level() {
     return this.monster.level;
   }
@@ -59,7 +59,7 @@ export default class NPCModel extends BaseActorModel {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
-  /** @override */
+  /** @inheritdoc */
   get coreResource() {
     return {
       name: game.i18n.localize("DRAW_STEEL.Setting.Malice.Label"),
@@ -112,7 +112,7 @@ export default class NPCModel extends BaseActorModel {
     return freeStrike;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async updateResource(delta) {
     if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
     /** @type {MaliceModel} */

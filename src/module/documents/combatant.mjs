@@ -18,7 +18,7 @@ export class DrawSteelCombatant extends Combatant {
     return disposition;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preUpdate(changes, options, user) {
     const allowed = await super._preUpdate(changes, options, user);
     if (allowed === false) return false;
@@ -26,7 +26,7 @@ export class DrawSteelCombatant extends Combatant {
     if (("initiative" in changes) && (changes.initiative < this.initiative)) await this.actor?.system._onStartTurn(this);
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);

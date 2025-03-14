@@ -1,5 +1,5 @@
 export class DrawSteelUser extends User {
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareUserData", this);

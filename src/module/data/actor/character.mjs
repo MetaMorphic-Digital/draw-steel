@@ -11,18 +11,18 @@ const fields = foundry.data.fields;
  * Characters are controlled by players and have heroic resources and advancement
  */
 export default class CharacterModel extends BaseActorModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     type: "character"
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.Character"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
 
@@ -43,7 +43,7 @@ export default class CharacterModel extends BaseActorModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   static actorBiography() {
     const bio = super.actorBiography();
 
@@ -62,7 +62,7 @@ export default class CharacterModel extends BaseActorModel {
     return bio;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
@@ -118,7 +118,7 @@ export default class CharacterModel extends BaseActorModel {
     this.combat.stability += kitBonuses["stability"];
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
@@ -138,7 +138,7 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareDerivedData();
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -154,13 +154,13 @@ export default class CharacterModel extends BaseActorModel {
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({"system.hero.primary.value": this.hero.victories});
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _onStartTurn(combatant) {
     await super._onStartTurn(combatant);
     const characterClass = this.class;
@@ -197,17 +197,17 @@ export default class CharacterModel extends BaseActorModel {
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get coreResource() {
     return {
       name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
@@ -263,7 +263,7 @@ export default class CharacterModel extends BaseActorModel {
     return ds.CONFIG.hero.xp_track[this.class.system.level];
   }
 
-  /** @override */
+  /** @inheritdoc */
   async updateResource(delta) {
     this.parent.update({"system.hero.primary.value": this.hero.primary.value + delta});
   }

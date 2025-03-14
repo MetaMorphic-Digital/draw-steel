@@ -5,14 +5,14 @@ import AdvancementModel from "./advancement.mjs";
  * A complication is an optional feature that provides both a positive benefit and a negative drawback
  */
 export default class ComplicationModel extends AdvancementModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "complication",
     invalidActorTypes: ["npc"]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",

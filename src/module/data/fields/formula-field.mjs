@@ -31,7 +31,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /*  Active Effect Integration                         */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _castChangeDelta(delta) {
     // super just calls `_cast`
     return this._cast(delta).trim();
@@ -39,7 +39,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeAdd(value, delta, model, change) {
     if (!value) return delta;
     const operator = delta.startsWith("-") ? "-" : "+";
@@ -49,7 +49,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeMultiply(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;
@@ -59,7 +59,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeUpgrade(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;
@@ -69,7 +69,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeDowngrade(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;

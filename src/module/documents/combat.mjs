@@ -4,7 +4,7 @@ import {DSRoll} from "../rolls/base.mjs";
 /** @import {DrawSteelCombatant} from "./combatant.mjs" */
 
 export class DrawSteelCombat extends Combat {
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatData", this);
@@ -24,7 +24,7 @@ export class DrawSteelCombat extends Combat {
     }, {rollMode: CONST.DICE_ROLL_MODES.PUBLIC});
   }
 
-  /** @override */
+  /** @inheritdoc */
   async startCombat() {
     for (const combatant of this.combatants) {
       await combatant.actor?.system.startCombat(combatant);
@@ -39,7 +39,7 @@ export class DrawSteelCombat extends Combat {
   }
 
   /**
-   * @override In Draw Steel's default initiative, non-GM users cannot change the round
+   * @inheritdoc In Draw Steel's default initiative, non-GM users cannot change the round
    * @param {User} user The user attempting to change the round
    * @returns {boolean} Is the user allowed to change the round?
    */
@@ -48,7 +48,7 @@ export class DrawSteelCombat extends Combat {
     return user.isGM;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async nextRound() {
     await super.nextRound();
 
@@ -57,7 +57,7 @@ export class DrawSteelCombat extends Combat {
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 
-  /** @override */
+  /** @inheritdoc */
   async endCombat() {
     const deletedCombat = await super.endCombat();
 
@@ -75,7 +75,7 @@ export class DrawSteelCombat extends Combat {
    * @param {DrawSteelCombatant} b Some other combatant
    * @returns {number} The sort for an {@link Array#sort} callback
    * @protected
-   * @override
+   * @inheritdoc
    */
   _sortCombatants(a, b) {
     let dc = 0;
@@ -85,7 +85,7 @@ export class DrawSteelCombat extends Combat {
     return super._sortCombatants(a, b);
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _onStartRound() {
     /** @type {MaliceModel} */
     const malice = game.settings.get(systemID, "malice");

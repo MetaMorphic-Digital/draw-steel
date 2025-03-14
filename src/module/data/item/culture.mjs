@@ -4,14 +4,14 @@ import AdvancementModel from "./advancement.mjs";
  * Culture describes the community that raised a hero
  */
 export default class CultureModel extends AdvancementModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "culture",
     invalidActorTypes: ["npc"]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",

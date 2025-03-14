@@ -1,6 +1,6 @@
 export class DrawSteelItem extends Item {
 
-  /** @override */
+  /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
 
@@ -14,7 +14,7 @@ export class DrawSteelItem extends Item {
     return rollData;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareItemData", this);

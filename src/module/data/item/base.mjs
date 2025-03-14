@@ -15,7 +15,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     invalidActorTypes: []
   });
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = {};
 
@@ -51,7 +51,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     return this.parent.actor;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
@@ -61,7 +61,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   preparePostActorPrepData() {}
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -72,7 +72,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */

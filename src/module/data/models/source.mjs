@@ -8,7 +8,7 @@ const fields = foundry.data.fields;
  * Data model
  */
 export default class SourceModel extends foundry.abstract.DataModel {
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
       book: new fields.StringField({required: true}),
@@ -76,7 +76,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
     this.slug = this.value.slugify({strict: true});
   }
 
-  /** @override */
+  /** @inheritdoc */
   toString() {
     return this.label;
   }

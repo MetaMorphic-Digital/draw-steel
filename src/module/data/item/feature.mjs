@@ -5,21 +5,21 @@ import BaseItemModel from "./base.mjs";
  * Passive benefits usually granted by other items
  */
 export default class FeatureModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "feature",
     detailsPartial: [systemPath("templates/item/partials/feature.hbs")]
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Feature"
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -37,7 +37,7 @@ export default class FeatureModel extends BaseItemModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   getSheetContext(context) {
     const featureConfig = ds.CONFIG.features;
 

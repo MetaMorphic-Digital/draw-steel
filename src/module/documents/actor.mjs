@@ -1,5 +1,5 @@
 export class DrawSteelActor extends Actor {
-  /** @override */
+  /** @inheritdoc */
   getRollData() {
     // Shallow copy
     const rollData = {...this.system, flags: this.flags, name: this.name, statuses: {}};
@@ -15,7 +15,7 @@ export class DrawSteelActor extends Actor {
     return rollData;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActorData", this);
