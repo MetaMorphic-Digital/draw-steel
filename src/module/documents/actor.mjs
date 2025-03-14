@@ -1,5 +1,13 @@
 export class DrawSteelActor extends Actor {
-  /** @override */
+  /**
+   * Is this actor a minion?
+   * @returns {boolean}
+   */
+  get isMinion() {
+    return foundry.utils.getProperty(this, "system.monster.organization") === "minion";
+  }
+
+  /** @inheritdoc */
   getRollData() {
     // Shallow copy
     const rollData = {...this.system, flags: this.flags, name: this.name, statuses: {}};
@@ -15,7 +23,7 @@ export class DrawSteelActor extends Actor {
     return rollData;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActorData", this);

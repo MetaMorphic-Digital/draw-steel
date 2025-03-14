@@ -1,13 +1,12 @@
 import {systemID, systemPath} from "../../constants.mjs";
-import DrawSteelCombatantGroup from "../../documents/combatant-group.mjs";
-/** @import {DrawSteelCombatant} from "../../documents/_module.mjs"; */
+import {DrawSteelCombatant, DrawSteelCombatantGroup} from "../../documents/_module.mjs";
 /** @import {ContextMenuEntry} from "../../../../foundry/client-esm/applications/ui/context.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
  */
 export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
-  /** @override */
+  /** @inheritDoc */
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
@@ -17,7 +16,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     }
   };
 
-  /** @override */
+  /** @inheritDoc */
   static PARTS = {
     /** Inherited */
     header: {
@@ -47,7 +46,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritDoc */
   _configureRenderParts(options) {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
@@ -65,7 +64,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return parts;
   }
 
-  /** @override */
+  /** @inheritDoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -80,7 +79,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return context;
   }
 
-  /** @override */
+  /** @inheritDoc */
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
 
@@ -145,7 +144,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     context.groupTurns.sort(combat._sortCombatants);
   }
 
-  /** @override */
+  /** @inheritDoc */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
 
@@ -170,6 +169,81 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return turn;
   }
 
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    new DragDrop({
+      dragSelector: ".combatant",
+      dropSelector: ".combatant-group, .combat-tracker",
+      permissions: {
+        dragstart: () => game.user.isGM,
+        drop: () => game.user.isGM
+      },
+      callbacks: {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this)
+      }
+    }).bind(this.element);
+  }
+
+  /**
+   * An event that occurs when a drag workflow begins for a draggable combatant on the combat tracker.
+   * @param {DragEvent} event       The initiating drag start event
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onDragStart(event) {
+    const li = event.currentTarget;
+    const combatant = this.viewed.combatants.get(li.dataset.combatantId);
+    if (!combatant) return;
+    const dragData = combatant.toDragData();
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+  }
+
+  /**
+   * An event that occurs when a drag workflow moves over a drop target.
+   * @param {DragEvent} event
+   * @protected
+   */
+  _onDragOver(event) {
+    // TODO: Highlight the drop target?
+    // console.log(this, event);
+  }
+
+  /**
+   * An event that occurs when data is dropped into a drop target.
+   * @param {DragEvent} event
+   * @returns {Promise<void>}
+   * @protected
+   */
+  async _onDrop(event) {
+    // Combat Tracker contains combatant groups, which means this would fire twice
+    event.stopPropagation();
+    const data = TextEditor.getDragEventData(event);
+    /** @type {DrawSteelCombatant} */
+    const combatant = await DrawSteelCombatant.fromDropData(data);
+    /** @type {HTMLLIElement | null} */
+    const groupLI = event.target.closest(".combatant-group");
+    if (groupLI) {
+      /** @type {DrawSteelCombatantGroup} */
+      const group = this.viewed.groups.get(groupLI.dataset.groupId);
+      if ((!!combatant.actor?.isMinion === (group.type === "squad"))) {
+        combatant.update({group});
+      }
+      else {
+        const message = "DRAW_STEEL.CombatantGroup.Error." + (group.type === "squad" ? "SquadOnlyMinion" : "MinionMustSquad");
+        ui.notifications.error(message, {localize: true});
+      }
+    }
+    else {
+      combatant.update({group: null});
+    }
+  }
+
+  /** @inheritDoc */
   _attachFrameListeners() {
     super._attachFrameListeners();
 
@@ -177,7 +251,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     if (game.user.isGM) foundry.applications.ui.ContextMenu.create(this, this.element, ".combatant-group", {jQuery: false, hookName: "GroupContext", fixed: true});
   }
 
-  /** @override */
+  /** @inheritDoc */
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 
@@ -194,7 +268,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @returns {ContextMenuEntry[]}
    */
   _getGroupContextOptions() {
-    const getCombatantGroup = li => {console.log(this, li); return this.viewed.groups.get(li.dataset.groupId);};
+    const getCombatantGroup = li => this.viewed.groups.get(li.dataset.groupId);
     return [{
       name: game.i18n.format("DOCUMENT.Update", {type: game.i18n.localize("DOCUMENT.CombatantGroup")}),
       icon: "<i class=\"fa-solid fa-edit\"></i>",
