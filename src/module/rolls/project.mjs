@@ -90,7 +90,7 @@ export class ProjectRoll extends DSRoll {
     const promptValue = await PowerRollDialog.prompt({
       context,
       window: {
-        title: game.i18n.localize("DRAW_STEEL.Roll.Project.Label")
+        title: "DRAW_STEEL.Roll.Project.Label"
       }
     });
 

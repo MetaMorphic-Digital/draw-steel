@@ -91,7 +91,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return this.#mode === DrawSteelActorSheet.MODES.EDIT;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderParts(options) {
     const parts = super._configureRenderParts(options);
 
@@ -135,7 +135,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
 

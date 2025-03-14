@@ -46,7 +46,7 @@ export default class ProjectModel extends BaseItemModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
 
@@ -106,7 +106,7 @@ export default class ProjectModel extends BaseItemModel {
     return embed;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async getSheetContext(context) {
     context.typeOptions = Object.entries(ds.CONFIG.projects.types).map(([value, {label}]) => ({value, label}));
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
@@ -124,7 +124,10 @@ export default class ProjectModel extends BaseItemModel {
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async roll(options = {}) {
-    if (!this.actor) return null;
+    if (!this.actor) {
+      console.error("To roll a project, it must have an actor owner");
+      return null;
+    }
 
     const rollData = this.parent.getRollData();
     const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
@@ -174,6 +177,7 @@ export default class ProjectModel extends BaseItemModel {
       content: this.parent.name,
       flavor: game.i18n.localize("DRAW_STEEL.Roll.Project.Label")
     };
+
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
 
     return DrawSteelChatMessage.create(messageData);

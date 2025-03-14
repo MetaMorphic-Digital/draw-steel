@@ -198,7 +198,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /*   Drag and Drop                                    */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   async _onDropItem(event, item) {
     // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
     const projectDropTarget = event.target.closest("[data-application-part='projects'");
