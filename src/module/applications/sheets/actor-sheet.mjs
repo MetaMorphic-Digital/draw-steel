@@ -426,7 +426,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       //Ability specific options
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToMelee",
-        icon: "",
+        icon: "fa-solid fa-sword",
         condition: (target) => {
           let item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "ranged");
@@ -443,7 +443,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       },
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToRanged",
-        icon: "",
+        icon: "fa-solid fa-bow-arrow",
         condition: (target) => {
           let item = this._getEmbeddedDocument(target);
           return (item?.type === "ability") && (item?.system.distance.type === "meleeRanged") && (item?.system.damageDisplay === "melee");
