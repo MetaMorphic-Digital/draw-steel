@@ -1,39 +1,26 @@
-import * as documents from "../documents/_module.mjs";
-import * as data from "../data/_module.mjs";
-declare module "./actor-sheet/base.mjs" {
+import * as documents from "../../documents/_module.mjs";
+import * as data from "../../data/_module.mjs";
+
+declare module "./actor-sheet.mjs" {
   export default interface DrawSteelActorSheet {
     actor: documents.DrawSteelActor;
   }
 }
-declare module "./actor-sheet/character.mjs" {
+declare module "./character.mjs" {
   export default interface DrawSteelActorSheet {
     actor: documents.DrawSteelActor & {system: data.Actor.CharacterModel};
   }
 }
-declare module "./actor-sheet/npc.mjs" {
+declare module "./npc.mjs" {
   export default interface DrawSteelActorSheet {
     actor: documents.DrawSteelActor & {system: data.Actor.NPCModel};
   }
 }
 
 declare module "./item-sheet.mjs" {
-  export interface DrawSteelItemSheet {
+  export default interface DrawSteelItemSheet {
     item: documents.DrawSteelItem;
   }
-}
-
-interface PowerRollDialogModifiers {
-  edges: number;
-  banes: number;
-  bonuses: number;
-  ability?: string;
-  target?: string;
-}
-
-export interface PowerRollDialogPrompt {
-  rolls: PowerRollDialogModifiers[];
-  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
-  damage?: string;
 }
 
 export interface ActorSheetItemContext {

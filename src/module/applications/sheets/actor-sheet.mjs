@@ -1,11 +1,9 @@
-import AbilityModel from "../../data/item/ability.mjs";
-import FeatureModel from "../../data/item/feature.mjs";
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
-import {DrawSteelItem} from "../../documents/item.mjs";
-import {DrawSteelItemSheet} from "../item-sheet.mjs";
+import {AbilityModel, FeatureModel} from "../../data/item/_module.mjs";
+import {DrawSteelChatMessage, DrawSteelItem} from "../../documents/_module.mjs";
+import DrawSteelItemSheet from "./item-sheet.mjs";
 
 /** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {ActorSheetItemContext, ActorSheetAbilitiesContext} from "../_types.js" */
+/** @import {ActorSheetItemContext, ActorSheetAbilitiesContext} from "./_types.js" */
 
 const {api, sheets} = foundry.applications;
 

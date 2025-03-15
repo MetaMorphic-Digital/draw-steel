@@ -1,7 +1,7 @@
-import {systemPath} from "../constants.mjs";
-import {PowerRoll} from "../rolls/power.mjs";
+import {systemPath} from "../../constants.mjs";
+import {PowerRoll} from "../../rolls/power.mjs";
 
-/** @import {ApplicationConfiguration} from "../../../foundry/client-esm/applications/_types.mjs" */
+/** @import {ApplicationConfiguration} from "../../../../foundry/client-esm/applications/_types.mjs" */
 /** @import {PowerRollDialogPrompt} from "./_types" */
 
 const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
@@ -9,7 +9,7 @@ const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
 /**
  * AppV2-based sheet Power Roll modifications
  */
-export class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+export default class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {

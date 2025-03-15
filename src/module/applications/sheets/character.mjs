@@ -1,6 +1,6 @@
 import {systemID, systemPath} from "../../constants.mjs";
 import {EquipmentModel, KitModel, ProjectModel} from "../../data/item/_module.mjs";
-import DrawSteelActorSheet from "./base.mjs";
+import DrawSteelActorSheet from "./actor-sheet.mjs";
 /** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
 /** @import {ActorSheetItemContext, ActorSheetEquipmentContext} from "../_types.js" */
 

@@ -1,4 +1,4 @@
-import "./apps/_types";
+import "./applications/_types";
 import "./data/_types";
 import "./documents/_types";
 import { DrawSteelActor } from "./documents/actor.mjs";

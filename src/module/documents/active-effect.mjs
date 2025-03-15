@@ -1,4 +1,4 @@
-import {TargetedConditionPrompt} from "../apps/targeted-condition-prompt.mjs";
+import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
 import {DrawSteelActor} from "./actor.mjs";
 
 export class DrawSteelActiveEffect extends ActiveEffect {

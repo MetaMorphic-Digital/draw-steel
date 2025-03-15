@@ -71,11 +71,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     if (!this._dsid) this.updateSource({_dsid: data.name.slugify({strict: true})});
   }
 
-  /**
-   * @inheritdoc
-   * @param {DocumentHTMLEmbedConfig} config
-   * @param {EnrichmentOptions} options
-   */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
     options.rollData ??= this.parent.getRollData();

@@ -1,4 +1,4 @@
-import {systemPath} from "../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 
 /** @import {ApplicationConfiguration} from "../../../foundry/client-esm/applications/_types.mjs" */
 
@@ -7,7 +7,7 @@ const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
 /**
  * Prompt application for configuring the actor UUID that is causing a targeted condition
  */
-export class TargetedConditionPrompt extends HandlebarsApplicationMixin(ApplicationV2) {
+export default class TargetedConditionPrompt extends HandlebarsApplicationMixin(ApplicationV2) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "targeted-condition-prompt"],

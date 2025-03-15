@@ -1,11 +1,11 @@
-import {systemPath} from "../constants.mjs";
+import {systemPath} from "../../constants.mjs";
 
 const {api, sheets} = foundry.applications;
 
 /**
  * AppV2-based sheet for all item classes
  */
-export class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
+export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   sheets.ItemSheetV2
 ) {
 
