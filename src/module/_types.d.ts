@@ -4,7 +4,7 @@ import "./documents/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage
-} from "./documents/actor.mjs";
+} from "./documents/_module.mjs";
 
 import Advancement from "./documents/advancement/advancement.mjs";
 import {

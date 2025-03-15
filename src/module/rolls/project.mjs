@@ -1,7 +1,7 @@
-import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
-import {systemPath} from "../constants.mjs";
-import DrawSteelChatMessage from "../documents/chat-message.mjs";
 import {DSRoll} from "./base.mjs";
+import {systemPath} from "../constants.mjs";
+import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
 /** @import {RollPromptOptions, ProjectRollPrompt} from "../_types.js" */
 
@@ -66,7 +66,7 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {Partial<RollPromptOptions>}
+   * @param {Partial<RollPromptOptions>} [options]
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {

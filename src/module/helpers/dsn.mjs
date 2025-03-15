@@ -1,4 +1,4 @@
-/** @import {DrawSteelUser} from "../documents/user.mjs"; */
+/** @import DrawSteelUser from "../documents/user.mjs"; */
 /** @import {DSRoll} from "../rolls/base.mjs"; */
 
 /**
