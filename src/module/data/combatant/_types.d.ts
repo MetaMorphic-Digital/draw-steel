@@ -1,4 +1,4 @@
-import { DrawSteelCombatant } from "../../documents/combatant.mjs";
+import DrawSteelCombatant from "../../documents/combatant.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseCombatantModel {

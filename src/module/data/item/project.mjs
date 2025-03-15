@@ -1,5 +1,5 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import {DSRoll, ProjectRoll} from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";

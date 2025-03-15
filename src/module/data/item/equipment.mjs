@@ -1,8 +1,9 @@
 import {systemPath} from "../../constants.mjs";
-import {DrawSteelActor} from "../../documents/actor.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import {setOptions} from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
+
+/** @import {DrawSteelActor} from "../../documents/_module.mjs"; */
 
 /**
  * Equipment covers all physical items that provide special benefits beyond the base kit

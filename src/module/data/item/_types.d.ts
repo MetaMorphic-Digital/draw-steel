@@ -1,5 +1,5 @@
 import { PowerRollModifiers } from "../../_types.js";
-import { DrawSteelItem } from "../../documents/item.mjs";
+import DrawSteelItem from "../../documents/item.mjs";
 import SourceModel from "../models/source.mjs";
 
 export type ItemMetaData = Readonly<{

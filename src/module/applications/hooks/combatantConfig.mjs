@@ -1,4 +1,4 @@
-/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs" */
+/** @import DrawSteelCombatant from "../../documents/combatant.mjs" */
 /** @import {ApplicationRenderOptions} from "../../../../foundry/client-esm/applications/_types.mjs"*/
 
 /** @typedef {InstanceType<foundry["applications"]["sheets"]["CombatantConfig"]>} CombatantConfig */

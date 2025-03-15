@@ -1,3 +1,6 @@
+/**
+ * Draw Steel implementation of the core token ruler
+ */
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
   _getWaypointLabel(waypoint) {

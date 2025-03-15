@@ -1,4 +1,7 @@
-export class DrawSteelItem extends Item {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
+ */
+export default class DrawSteelItem extends Item {
 
   /** @inheritdoc */
   getRollData() {

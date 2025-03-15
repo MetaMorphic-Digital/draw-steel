@@ -1,9 +1,12 @@
 import {systemID} from "../constants.mjs";
 import {DSRoll} from "../rolls/base.mjs";
 /** @import {MaliceModel} from "../data/settings/malice.mjs" */
-/** @import {DrawSteelCombatant} from "./combatant.mjs" */
+/** @import DrawSteelCombatant from "./combatant.mjs" */
 
-export class DrawSteelCombat extends Combat {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
+ */
+export default class DrawSteelCombat extends Combat {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

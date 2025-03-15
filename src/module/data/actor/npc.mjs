@@ -2,7 +2,8 @@ import {systemID} from "../../constants.mjs";
 import {requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
-/** @import {DrawSteelItem} from "../../documents/_module.mjs"; */
+
+/** @import DrawSteelItem from "../../documents/item.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs"; */
 /** @import {MaliceModel} from "../settings/_module.mjs"; */
 

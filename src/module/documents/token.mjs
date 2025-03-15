@@ -1,3 +1,6 @@
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass
+ */
 export default class DrawSteelTokenDocument extends TokenDocument {
   /**
    * Is the token's movement currently shifting?

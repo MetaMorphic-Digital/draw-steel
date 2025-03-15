@@ -1,4 +1,4 @@
-import { DrawSteelActor } from "../../documents/actor.mjs";
+import DrawSteelActor from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
 import SizeModel from "../models/size.mjs";
 import { DamageSchema } from "../item/kit.mjs";

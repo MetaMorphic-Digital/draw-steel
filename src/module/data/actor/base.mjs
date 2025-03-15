@@ -1,10 +1,12 @@
-/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
-/** @import AbilityModel from "../item/ability.mjs" */
-/** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import {PowerRoll} from "../../rolls/power.mjs";
 import {damageTypes, requiredInteger, setOptions} from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
+
+/** @import DrawSteelCombatant from "../../documents/combatant.mjs"; */
+/** @import AbilityModel from "../item/ability.mjs" */
+/** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
+
 const fields = foundry.data.fields;
 
 /**

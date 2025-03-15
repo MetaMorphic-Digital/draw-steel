@@ -1,7 +1,10 @@
 import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
-import {DrawSteelActor} from "./actor.mjs";
+/** @import DrawSteelActor from "./actor.mjs"; */
 
-export class DrawSteelActiveEffect extends ActiveEffect {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass
+ */
+export default class DrawSteelActiveEffect extends ActiveEffect {
   /** @inheritdoc */
   static async _fromStatusEffect(statusId, effectData, options) {
     if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;

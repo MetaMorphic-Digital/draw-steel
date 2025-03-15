@@ -1,5 +1,5 @@
 import {systemID} from "../constants.mjs";
-import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
 export default class DrawSteelSocketHandler {
   constructor() {

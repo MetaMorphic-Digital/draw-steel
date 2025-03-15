@@ -1,9 +1,9 @@
-import {DrawSteelActor} from "../../documents/actor.mjs";
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import {DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
 import {DSRoll} from "../../rolls/base.mjs";
 import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
-/** @import {DrawSteelItem} from "../../documents/item.mjs" */
+
+/** @import DrawSteelItem from "../../documents/item.mjs" */
 
 const fields = foundry.data.fields;
 

@@ -1,6 +1,6 @@
 import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
 import {systemPath} from "../constants.mjs";
-import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
 import {DSRoll} from "./base.mjs";
 
 /** @import {PowerRollPrompt, PowerRollPromptOptions} from "../_types.js" */

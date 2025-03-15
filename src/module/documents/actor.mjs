@@ -1,4 +1,7 @@
-export class DrawSteelActor extends Actor {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
+ */
+export default class DrawSteelActor extends Actor {
   /** @inheritdoc */
   getRollData() {
     // Shallow copy
