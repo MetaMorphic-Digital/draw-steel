@@ -1,4 +1,4 @@
-import {systemID, systemPath} from "../../constants.mjs";
+import {systemID, systemPath} from "../../../constants.mjs";
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system

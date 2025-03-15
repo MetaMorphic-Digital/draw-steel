@@ -83,7 +83,7 @@ Hooks.once("init", function () {
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
-    combat: applications.sidebar.DrawSteelCombatTracker
+    combat: applications.sidebar.tabs.DrawSteelCombatTracker
   });
 
   // Register dice rolls
