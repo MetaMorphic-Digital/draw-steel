@@ -1,5 +1,4 @@
 
-
 declare module "./size.mjs" {
   export default interface SizeModel {
     value: number;

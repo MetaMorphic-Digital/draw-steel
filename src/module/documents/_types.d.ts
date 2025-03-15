@@ -6,7 +6,7 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData
-} from "../../../foundry/common/types.mjs"
+} from "../../../foundry/common/types.mjs";
 import Collection from "../../../foundry/common/utils/collection.mjs";
 import {
   ActiveEffect as ActiveEffectModels,

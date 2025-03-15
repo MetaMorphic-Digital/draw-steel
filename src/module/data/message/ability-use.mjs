@@ -2,7 +2,7 @@ import {constructHTMLButton} from "../../helpers/utils.mjs";
 import {DamageRoll} from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 /** @import AbilityModel from "../item/ability.mjs" */
-/** @import { DrawSteelItem } from "../../documents/_module.mjs" */
+/** @import {DrawSteelItem} from "../../documents/_module.mjs" */
 
 const fields = foundry.data.fields;
 

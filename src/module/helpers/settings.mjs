@@ -6,10 +6,12 @@ import {HeroTokenModel, MaliceModel} from "../data/settings/_module.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Helper class for setting registration
+ * Helper class for setting registration.
+ * Never actually constructed, only used to group static methods.
  */
 export default class DrawSteelSettingsHandler {
   /**
+   * All settings associated with the system.
    * @type {Record<string, SettingConfig>}
    */
   static get systemSettings() {
@@ -46,6 +48,9 @@ export default class DrawSteelSettingsHandler {
     };
   }
 
+  /**
+   * Helper function called in the `init` hook.
+   */
   static registerSettings() {
     for (const [key, value] of Object.entries(this.systemSettings)) {
       game.settings.register(systemID, key, value);
