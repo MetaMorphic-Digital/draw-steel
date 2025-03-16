@@ -1,10 +1,12 @@
-/** @import {DrawSteelCombatant} from "../../documents/combatant.mjs"; */
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import { PowerRoll } from "../../rolls/power.mjs";
+import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
+import SizeModel from "../models/size.mjs";
+
+/** @import DrawSteelCombatant from "../../documents/combatant.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
-import {PowerRoll} from "../../rolls/power.mjs";
-import {damageTypes, requiredInteger, setOptions} from "../helpers.mjs";
-import SizeModel from "../models/size.mjs";
+
 const fields = foundry.data.fields;
 
 /**
@@ -16,46 +18,46 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    */
   static metadata = Object.freeze({});
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
-    const characteristic = {min: -5, max: 5, initial: 0, integer: true};
+    const characteristic = { min: -5, max: 5, initial: 0, integer: true };
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({initial: 20, nullable: false, integer: true}),
-      max: new fields.NumberField({initial: 20, nullable: false, integer: true}),
-      temporary: new fields.NumberField({integer: true})
+      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      temporary: new fields.NumberField({ integer: true }),
     });
 
     schema.characteristics = new fields.SchemaField(
-      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, {label, hint}]) => {
+      Object.entries(ds.CONFIG.characteristics).reduce((obj, [chc, { label, hint }]) => {
         obj[chc] = new fields.SchemaField({
-          value: new fields.NumberField({...characteristic, label, hint})
+          value: new fields.NumberField({ ...characteristic, label, hint }),
         });
         return obj;
-      }, {})
+      }, {}),
     );
 
     schema.combat = new fields.SchemaField({
       size: new fields.EmbeddedDataField(SizeModel),
-      stability: requiredInteger({initial: 0}),
-      turns: requiredInteger({initial: 1})
+      stability: requiredInteger({ initial: 0 }),
+      turns: requiredInteger({ initial: 1 }),
     });
 
     schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
-      walk: new fields.NumberField({integer: true, min: 0, initial: 5}),
-      burrow: new fields.NumberField({integer: true, min: 0}),
-      climb: new fields.NumberField({integer: true, min: 0}),
-      swim: new fields.NumberField({integer: true, min: 0}),
-      fly: new fields.NumberField({integer: true, min: 0}),
-      teleport: new fields.NumberField({integer: true, min: 0})
+      walk: new fields.NumberField({ integer: true, min: 0, initial: 5 }),
+      burrow: new fields.NumberField({ integer: true, min: 0 }),
+      climb: new fields.NumberField({ integer: true, min: 0 }),
+      swim: new fields.NumberField({ integer: true, min: 0 }),
+      fly: new fields.NumberField({ integer: true, min: 0 }),
+      teleport: new fields.NumberField({ integer: true, min: 0 }),
     });
 
     schema.damage = new fields.SchemaField({
-      immunities: damageTypes(requiredInteger, {all: true}),
-      weaknesses: damageTypes(requiredInteger, {all: true})
+      immunities: damageTypes(requiredInteger, { all: true }),
+      weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
     return schema;
@@ -70,31 +72,31 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     return {
       value: new fields.HTMLField(),
       gm: new fields.HTMLField(),
-      languages: new fields.SetField(setOptions())
+      languages: new fields.SetField(setOptions()),
     };
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
     this.potency = {
-      bonuses: 0
+      bonuses: 0,
     };
 
     this.statuses = {
       slowed: {
-        speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed
-      }
+        speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
+      },
     };
 
     this.restrictions = {
       type: new Set(),
-      dsid: new Set()
+      dsid: new Set(),
     };
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
@@ -156,7 +158,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {Record<string, unknown>} changes
    * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
    * @param {User} user
@@ -167,14 +169,14 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       foundry.utils.mergeObject(changes, {
         prototypeToken: {
           width: newSize,
-          height: newSize
-        }
+          height: newSize,
+        },
       });
     }
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {object} changed            The differential data that was changed relative to the documents prior values
    * @param {object} options            Additional options which modify the update request
    * @param {string} userId             The id of the User requesting the document update
@@ -196,7 +198,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       threshold = Number(threshold);
 
       const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
-      await this.parent.toggleStatusEffect(key, {active});
+      await this.parent.toggleStatusEffect(key, { active });
     }
   }
 
@@ -205,7 +207,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {DrawSteelCombatant} combatant The combatant representation
    */
   async startCombat(combatant) {
-    await combatant.update({initiative: this.combat.turns});
+    await combatant.update({ initiative: this.combat.turns });
   }
 
   /**
@@ -232,15 +234,15 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     if (types.length > 1) {
       const buttons = types.reduce((b, action) => {
-        const {label, icon} = PowerRoll.TYPES[action];
-        b.push({label, icon, action});
+        const { label, icon } = PowerRoll.TYPES[action];
+        b.push({ label, icon, action });
         return b;
       }, []);
       type = await foundry.applications.api.DialogV2.wait({
-        window: {title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title")},
+        window: { title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title") },
         content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
         buttons,
-        rejectClose: true
+        rejectClose: true,
       });
     }
     const skills = this.hero?.skills ?? null;
@@ -252,18 +254,18 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const modifiers = {
       edges: options.edges ?? 0,
       banes: options.banes ?? 0,
-      bonuses: options.bonuses ?? 0
+      bonuses: options.bonuses ?? 0,
     };
 
-    const promptValue = await PowerRoll.prompt({type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills});
+    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills });
 
     if (!promptValue) return null;
-    const {rollMode, powerRolls} = promptValue;
+    const { rollMode, powerRolls } = promptValue;
 
     const messageData = {
-      speaker: DrawSteelChatMessage.getSpeaker({actor: this.parent}),
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       rolls: powerRolls,
-      sound: CONFIG.sounds.dice
+      sound: CONFIG.sounds.dice,
     };
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);
@@ -294,7 +296,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
     if (damage === 0) {
-      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", {format: {name: this.parent.name}});
+      ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
       return this.parent;
     }
 
@@ -306,7 +308,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({"system.stamina": staminaUpdates});
+    return this.parent.update({ "system.stamina": staminaUpdates });
   }
 
   /**

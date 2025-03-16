@@ -1,6 +1,7 @@
 import BaseItemModel from "../item/base.mjs";
+
 /** @import BasePackage from "../../../../foundry/common/packages/base-package.mjs"; */
-/** @import {DrawSteelActor, DrawSteelItem} from "../../documents/_module.mjs" */
+/** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -8,13 +9,13 @@ const fields = foundry.data.fields;
  * Data model
  */
 export default class SourceModel extends foundry.abstract.DataModel {
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
-      book: new fields.StringField({required: true}),
-      page: new fields.StringField({required: true}),
-      license: new fields.StringField({required: true}),
-      revision: new fields.NumberField({initial: 1})
+      book: new fields.StringField({ required: true }),
+      page: new fields.StringField({ required: true }),
+      license: new fields.StringField({ required: true }),
+      revision: new fields.NumberField({ initial: 1 }),
     };
   }
 
@@ -69,14 +70,14 @@ export default class SourceModel extends foundry.abstract.DataModel {
     if (!this.book) this.book = this.bookPlaceholder;
 
     const page = Number.isNumeric(this.page)
-      ? game.i18n.format("DRAW_STEEL.Source.Display.Page", {page: this.page}) : (this.page ?? "");
-    this.label = game.i18n.format("DRAW_STEEL.Source.Display.Full", {book: this.book, page}).trim();
+      ? game.i18n.format("DRAW_STEEL.Source.Display.Page", { page: this.page }) : (this.page ?? "");
+    this.label = game.i18n.format("DRAW_STEEL.Source.Display.Full", { book: this.book, page }).trim();
 
     this.value = this.book || (pkg?.title ?? "");
-    this.slug = this.value.slugify({strict: true});
+    this.slug = this.value.slugify({ strict: true });
   }
 
-  /** @override */
+  /** @inheritdoc */
   toString() {
     return this.label;
   }
@@ -90,11 +91,11 @@ export default class SourceModel extends foundry.abstract.DataModel {
     /** @type {HTMLDivElement[]} */
     const formGroups = [];
     for (const [key, field] of Object.entries(this.schema.fields)) {
-      formGroups.push(field.toFormGroup({}, {value: this[key]}));
+      formGroups.push(field.toFormGroup({}, { value: this[key] }));
     }
     if (this.parent instanceof BaseItemModel) {
       const field = this.parent.schema.getField("_dsid");
-      formGroups.push(field.toFormGroup({}, {value: this.parent._dsid}));
+      formGroups.push(field.toFormGroup({}, { value: this.parent._dsid }));
     }
 
     /** @type {FormDataExtended} */
@@ -102,16 +103,16 @@ export default class SourceModel extends foundry.abstract.DataModel {
       content: formGroups.map(e => e.outerHTML).join(" "),
       window: {
         title: "DRAW_STEEL.Source.UpdateTitle",
-        icon: "fa-solid fa-book"
+        icon: "fa-solid fa-book",
       },
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
         callback: (event, button, dialog) => {
           return new FormDataExtended(button.form);
-        }
+        },
       },
-      rejectClose: false
+      rejectClose: false,
     });
 
     if (!fd) return;

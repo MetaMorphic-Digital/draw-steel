@@ -1,8 +1,11 @@
-export class DrawSteelActor extends Actor {
-  /** @override */
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
+ */
+export default class DrawSteelActor extends Actor {
+  /** @inheritdoc */
   getRollData() {
     // Shallow copy
-    const rollData = {...this.system, flags: this.flags, name: this.name, statuses: {}};
+    const rollData = { ...this.system, flags: this.flags, name: this.name, statuses: {} };
 
     for (const status of this.statuses) {
       rollData.statuses[status] = 1;
@@ -15,7 +18,7 @@ export class DrawSteelActor extends Actor {
     return rollData;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActorData", this);

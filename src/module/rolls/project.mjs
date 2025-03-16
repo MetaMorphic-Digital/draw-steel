@@ -1,9 +1,9 @@
-import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
-import {systemPath} from "../constants.mjs";
-import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
-import {DSRoll} from "./base.mjs";
+import { DSRoll } from "./base.mjs";
+import { systemPath } from "../constants.mjs";
+import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
-/** @import {RollPromptOptions, ProjectRollPrompt} from "../_types.js" */
+/** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
  * Special test used during downtime
@@ -14,7 +14,7 @@ export class ProjectRoll extends DSRoll {
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
       insertKeys: true,
       insertValues: true,
-      overwrite: false
+      overwrite: false,
     });
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
@@ -22,20 +22,20 @@ export class ProjectRoll extends DSRoll {
     if (!options.appliedModifier) {
       // Add edges/banes to formula
       if (this.netBoon) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.min(4, 2 * Math.abs(this.netBoon)),
-          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`)
+          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
         });
         this.terms.push(operation, number);
       }
 
       // Add bonuses to formula
       if (this.options.bonuses !== 0) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.options.bonuses > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses")
+          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses"),
         });
         this.terms.push(operation, number);
       }
@@ -49,7 +49,7 @@ export class ProjectRoll extends DSRoll {
     criticalThreshold: 19,
     banes: 0,
     edges: 0,
-    bonuses: 0
+    bonuses: 0,
   });
 
   static CHAT_TEMPLATE = systemPath("templates/rolls/project.hbs");
@@ -66,7 +66,7 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {Partial<RollPromptOptions>}
+   * @param {Partial<RollPromptOptions>} [options]
    * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {
@@ -84,20 +84,20 @@ export class ProjectRoll extends DSRoll {
 
     const context = {
       modifiers: options.modifiers,
-      skills: options.skills
+      skills: options.skills,
     };
 
     const promptValue = await PowerRollDialog.prompt({
       context,
       window: {
-        title: "DRAW_STEEL.Roll.Project.Label"
-      }
+        title: "DRAW_STEEL.Roll.Project.Label",
+      },
     });
 
     if (!promptValue) return null;
 
-    const roll = new this(formula, options.data, {flavor, ...promptValue.rolls[0]});
-    const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
+    const roll = new this(formula, options.data, { flavor, ...promptValue.rolls[0] });
+    const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
 
     let projectRoll;
     switch (evaluation) {
@@ -108,11 +108,11 @@ export class ProjectRoll extends DSRoll {
         projectRoll = await roll.evaluate();
         break;
       case "message":
-        projectRoll = await roll.toMessage({speaker}, {rollMode: promptValue.rollMode});
+        projectRoll = await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode });
         break;
     }
 
-    return {rollMode: promptValue.rollMode, projectRoll};
+    return { rollMode: promptValue.rollMode, projectRoll };
   }
 
   /**
@@ -175,8 +175,8 @@ export class ProjectRoll extends DSRoll {
     return this.isCritical;
   }
 
-  async _prepareContext({flavor, isPrivate}) {
-    const context = await super._prepareContext({flavor, isPrivate});
+  async _prepareContext({ flavor, isPrivate }) {
+    const context = await super._prepareContext({ flavor, isPrivate });
 
     let modString = "";
 
@@ -197,7 +197,7 @@ export class ProjectRoll extends DSRoll {
 
     context.modifier = {
       number: Math.abs(this.netBoon),
-      mod: game.i18n.localize(modString)
+      mod: game.i18n.localize(modString),
     };
 
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";

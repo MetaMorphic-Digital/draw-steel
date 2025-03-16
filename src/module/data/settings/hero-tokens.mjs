@@ -1,5 +1,5 @@
-import {systemID} from "../../constants.mjs";
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import { systemID } from "../../constants.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 
 const fields = foundry.data.fields;
 
@@ -7,10 +7,10 @@ const fields = foundry.data.fields;
  * A data model to manage Hero Tokens in Draw Steel
  */
 export class HeroTokenModel extends foundry.abstract.DataModel {
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {
-      value: new fields.NumberField({nullable: false, initial: 0, integer: true, min: 0})
+      value: new fields.NumberField({ nullable: false, initial: 0, integer: true, min: 0 }),
     };
   }
 
@@ -30,7 +30,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
    */
   async spendToken(spendType, options = {}) {
     if (!game.users.activeGM) {
-      ui.notifications.error("DRAW_STEEL.Setting.NoActiveGM", {localize: true});
+      ui.notifications.error("DRAW_STEEL.Setting.NoActiveGM", { localize: true });
       return false;
     }
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
@@ -40,18 +40,18 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     }
     const currentTokens = game.settings.get(systemID, "heroTokens").value;
     if (currentTokens < tokenSpendConfiguration.tokens) {
-      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", {localize: true});
+      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", { localize: true });
       return false;
     }
     // Just directly execute if the current user is a game master
     if (game.user.isGM) {
-      await game.settings.set(systemID, "heroTokens", {value: currentTokens - tokenSpendConfiguration.tokens});
+      await game.settings.set(systemID, "heroTokens", { value: currentTokens - tokenSpendConfiguration.tokens });
       await DrawSteelChatMessage.create({
         author: game.userId,
         content: tokenSpendConfiguration.messageContent,
-        flavor: options.flavor ?? game.user.character?.name
+        flavor: options.flavor ?? game.user.character?.name,
       });
     }
-    else game.system.socketHandler.emit("spendHeroToken", {userId: game.userId, spendType, flavor: options.flavor});
+    else game.system.socketHandler.emit("spendHeroToken", { userId: game.userId, spendType, flavor: options.flavor });
   }
 }

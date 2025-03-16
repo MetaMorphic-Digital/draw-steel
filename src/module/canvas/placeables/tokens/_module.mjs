@@ -1,1 +1,1 @@
-export {default as DrawSteelTokenRuler} from "./token-ruler.mjs";
+export { default as DrawSteelTokenRuler } from "./token-ruler.mjs";

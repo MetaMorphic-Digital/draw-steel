@@ -1,4 +1,4 @@
-/** @import {DrawSteelActor} from "../../documents/actor.mjs" */
+/** @import DrawSteelActor from "../../documents/actor.mjs" */
 
 /** @typedef {InstanceType<foundry["applications"]["sheets"]["PrototypeTokenConfig"]>} PrototypeTokenConfig */
 /** @typedef {InstanceType<foundry["applications"]["sheets"]["TokenConfig"]>} TokenConfig */

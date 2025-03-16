@@ -29,7 +29,7 @@ export default class AdvancementField extends foundry.data.fields.ObjectField {
   /** @inheritDoc */
   initialize(value, model, options = {}) {
     const cls = this.getModelForType(value.type);
-    if (cls) return new cls(value, {parent: model, ...options});
+    if (cls) return new cls(value, { parent: model, ...options });
     return foundry.utils.deepClone(value);
   }
 

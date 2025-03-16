@@ -1,5 +1,5 @@
-import {DSRoll} from "./base.mjs";
-import {systemPath} from "../constants.mjs";
+import { DSRoll } from "./base.mjs";
+import { systemPath } from "../constants.mjs";
 
 /**
  * Usually a flat d10 roll to shake free of a persistent condition
@@ -41,14 +41,14 @@ export class SavingThrowRoll extends DSRoll {
    * @param {boolean} [options.isPrivate] Is the Roll displayed privately?
    * @returns An object to be used in `renderTemplate`
    */
-  async _prepareContext({flavor, isPrivate}) {
+  async _prepareContext({ flavor, isPrivate }) {
     return {
       formula: isPrivate ? "???" : this._formula,
       flavor: isPrivate ? null : flavor ?? this.options.flavor ?? game.i18n.localize("DRAW_STEEL.Roll.Save.Label"),
       user: game.user.id,
       tooltip: isPrivate ? "" : await this.getTooltip(),
       total: isPrivate ? "?" : Math.round(this.total * 100) / 100,
-      result: this.product ? "critical" : "failure"
+      result: this.product ? "critical" : "failure",
     };
   }
 }

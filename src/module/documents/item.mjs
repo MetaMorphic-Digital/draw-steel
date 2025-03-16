@@ -1,11 +1,14 @@
-export class DrawSteelItem extends Item {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
+ */
+export default class DrawSteelItem extends Item {
 
-  /** @override */
+  /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
 
     // Shallow copy
-    rollData.item = {...this.system, flags: this.flags, name: this.name};
+    rollData.item = { ...this.system, flags: this.flags, name: this.name };
 
     if (this.system.modifyRollData instanceof Function) {
       this.system.modifyRollData(rollData);
@@ -14,7 +17,7 @@ export class DrawSteelItem extends Item {
     return rollData;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareItemData", this);

@@ -1,1 +1,1 @@
-export {default as Advancement} from "./advancement.mjs";
+export { default as Advancement } from "./advancement.mjs";

@@ -1,6 +1,6 @@
 import * as canvas from "./src/module/canvas/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
-import * as applications from "./src/module/apps/_module.mjs";
+import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
@@ -60,30 +60,30 @@ Hooks.once("init", function () {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelCharacterSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Character"
   });
-  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelNPCSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.NPC"
   });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
+  Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item"
   });
   foundry.applications.apps.DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.DrawSteelActiveEffectConfig, {
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.ActiveEffect"
   });
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
-    combat: applications.DrawSteelCombatTracker
+    combat: applications.sidebar.tabs.DrawSteelCombatTracker
   });
 
   // Register dice rolls

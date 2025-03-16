@@ -1,47 +1,47 @@
-import {systemID, systemPath} from "../../constants.mjs";
+import { systemID, systemPath } from "../../../constants.mjs";
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
  */
 export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
-  /** @override */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
-      activateCombatant: this.#onActivateCombatant
-    }
+      activateCombatant: this.#onActivateCombatant,
+    },
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     /** Inherited */
     header: {
-      template: "templates/sidebar/tabs/combat/header.hbs"
+      template: "templates/sidebar/tabs/combat/header.hbs",
     },
     /** Inherited, only used for "alternative" combat */
     tracker: {
-      template: "templates/sidebar/tabs/combat/tracker.hbs"
+      template: "templates/sidebar/tabs/combat/tracker.hbs",
     },
     /** Inherited, only used for "alternative" combats */
     footer: {
-      template: "templates/sidebar/tabs/combat/footer.hbs"
+      template: "templates/sidebar/tabs/combat/footer.hbs",
     },
     dsHeader: {
-      template: systemPath("templates/combat/header.hbs")
+      template: systemPath("templates/combat/header.hbs"),
     },
     dsTracker: {
-      template: systemPath("templates/combat/tracker.hbs")
+      template: systemPath("templates/combat/tracker.hbs"),
     },
     dsFooter: {
-      template: systemPath("templates/combat/footer.hbs")
-    }
+      template: systemPath("templates/combat/footer.hbs"),
+    },
   };
 
   /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _configureRenderParts(options) {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
@@ -59,7 +59,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return parts;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -74,7 +74,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return context;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
 
@@ -95,7 +95,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return turn;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 
@@ -128,7 +128,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @param {HTMLElement} target The action target element.
    */
   static async #onActivateCombatant(event, target) {
-    const {combatantId} = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
 
@@ -136,11 +136,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const oldValue = combatant.initiative;
     const newValue = oldValue ? oldValue - 1 : (combatant.actor?.system.combat?.turns ?? 1);
 
-    await combatant.update({initiative: newValue});
+    await combatant.update({ initiative: newValue });
 
     if (oldValue) {
       const newTurn = combat.turns.findIndex((c) => c === combatant);
-      combat.update({turn: newTurn}, {direction: 1});
+      combat.update({ turn: newTurn }, { direction: 1 });
     }
   }
 }

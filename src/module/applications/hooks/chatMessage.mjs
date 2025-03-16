@@ -1,4 +1,4 @@
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
+import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 
 /**
  * A hook event that fires for each ChatMessage which is rendered for addition to the ChatLog.

@@ -1,4 +1,4 @@
-import {DSRoll} from "./base.mjs";
+import { DSRoll } from "./base.mjs";
 
 /**
  * Contains damage-specific info like damage types

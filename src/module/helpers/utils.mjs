@@ -7,7 +7,7 @@
    * @param {string} [config.icon=""]
    * @returns {HTMLButtonElement}
    */
-export function constructHTMLButton({label, dataset = {}, classes = [], icon = ""}) {
+export function constructHTMLButton({ label, dataset = {}, classes = [], icon = "" }) {
   const button = document.createElement("button");
 
   for (const [key, value] of Object.entries(dataset)) {
@@ -58,9 +58,9 @@ const _preLocalizationRegistrations = {};
  *                                        if multiple are provided.
  * @param {boolean} [options.sort=false]  Sort this config enum, using the key if set.
  */
-export function preLocalize(configKeyPath, {key, keys = [], sort = false} = {}) {
+export function preLocalize(configKeyPath, { key, keys = [], sort = false } = {}) {
   if (key) keys.unshift(key);
-  _preLocalizationRegistrations[configKeyPath] = {keys, sort};
+  _preLocalizationRegistrations[configKeyPath] = { keys, sort };
 }
 
 /* -------------------------------------------- */
@@ -80,7 +80,7 @@ export function performPreLocalization(config) {
   // Localize & sort status effects
   CONFIG.statusEffects.forEach(s => s.name = game.i18n.localize(s.name));
   CONFIG.statusEffects.sort((lhs, rhs) =>
-    lhs.id === "dead" ? -1 : rhs.id === "dead" ? 1 : lhs.name.localeCompare(rhs.name, game.i18n.lang)
+    lhs.id === "dead" ? -1 : rhs.id === "dead" ? 1 : lhs.name.localeCompare(rhs.name, game.i18n.lang),
   );
 }
 
@@ -102,13 +102,13 @@ function _localizeObject(obj, keys) {
 
     if (type !== "object") {
       console.error(new Error(
-        `Pre-localized configuration values must be a string or object, ${type} found for "${k}" instead.`
+        `Pre-localized configuration values must be a string or object, ${type} found for "${k}" instead.`,
       ));
       continue;
     }
     if (!keys?.length) {
       console.error(new Error(
-        "Localization keys must be provided for pre-localizing when target is an object."
+        "Localization keys must be provided for pre-localizing when target is an object.",
       ));
       continue;
     }
