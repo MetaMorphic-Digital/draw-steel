@@ -1,4 +1,4 @@
-import {DrawSteelActiveEffect, DrawSteelCombat} from "../../documents/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombat } from "../../documents/_module.mjs";
 
 declare module "./base.mjs" {
   export default interface BaseEffectModel {

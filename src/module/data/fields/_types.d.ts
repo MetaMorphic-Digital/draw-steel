@@ -1,4 +1,4 @@
-import type {StringFieldOptions} from "../../../../foundry/common/data/fields.mjs";
+import type { StringFieldOptions } from "../../../../foundry/common/data/fields.mjs";
 
 export interface FormulaFieldOptions extends StringFieldOptions {
   /**

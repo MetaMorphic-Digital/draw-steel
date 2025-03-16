@@ -4,9 +4,9 @@
  */
 export class DSRoll extends foundry.dice.Roll {
   /** @inheritdoc */
-  async render({flavor, template = this.constructor.CHAT_TEMPLATE, isPrivate = false} = {}) {
-    if (!this._evaluated) await this.evaluate({allowInteractive: !isPrivate});
-    const chatData = await this._prepareContext({flavor, isPrivate});
+  async render({ flavor, template = this.constructor.CHAT_TEMPLATE, isPrivate = false } = {}) {
+    if (!this._evaluated) await this.evaluate({ allowInteractive: !isPrivate });
+    const chatData = await this._prepareContext({ flavor, isPrivate });
     return renderTemplate(template, chatData);
   }
 
@@ -17,13 +17,13 @@ export class DSRoll extends foundry.dice.Roll {
    * @param {boolean} [options.isPrivate] Is the Roll displayed privately?
    * @returns An object to be used in `renderTemplate`
    */
-  async _prepareContext({flavor, isPrivate}) {
+  async _prepareContext({ flavor, isPrivate }) {
     return {
       formula: isPrivate ? "???" : this._formula,
       flavor: isPrivate ? null : flavor ?? this.options.flavor,
       user: game.user.id,
       tooltip: isPrivate ? "" : await this.getTooltip(),
-      total: isPrivate ? "?" : Math.round(this.total * 100) / 100
+      total: isPrivate ? "?" : Math.round(this.total * 100) / 100,
     };
   }
 }

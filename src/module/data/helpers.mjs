@@ -1,4 +1,4 @@
-const {NumberField, SchemaField, StringField} = foundry.data.fields;
+const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
  * Constructs a schema field with a value and max attribute
@@ -7,8 +7,8 @@ const {NumberField, SchemaField, StringField} = foundry.data.fields;
  * @returns A Schema with a value and max
  */
 export const barAttribute = (initial, min) => new SchemaField({
-  value: new NumberField({initial, min, nullable: false, integer: true}),
-  max: new NumberField({initial, min, nullable: false, integer: true})
+  value: new NumberField({ initial, min, nullable: false, integer: true }),
+  max: new NumberField({ initial, min, nullable: false, integer: true }),
 });
 
 /**
@@ -18,7 +18,7 @@ export const barAttribute = (initial, min) => new SchemaField({
  * @param {string} [options.label] Label for the field
  * @returns A number field that is non-nullable and always defined
  */
-export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({initial, label, required: true, nullable: false, integer: true, min: 0});
+export const requiredInteger = ({ initial = 0, label } = {}) => new NumberField({ initial, label, required: true, nullable: false, integer: true, min: 0 });
 
 /**
  * Constructs a string field for use inside of a SetField
@@ -27,7 +27,7 @@ export const requiredInteger = ({initial = 0, label} = {}) => new NumberField({i
  * @param {Function} [options.validate] A validator function for field values
  * @returns A string field that is always truthy
  */
-export const setOptions = ({choices, validate} = {}) => new StringField({required: true, blank: false, choices, validate});
+export const setOptions = ({ choices, validate } = {}) => new StringField({ required: true, blank: false, choices, validate });
 
 /**
  * @callback DamageTypeCallback
@@ -40,14 +40,14 @@ export const setOptions = ({choices, validate} = {}) => new StringField({require
  * @param {DamageTypeCallback} inner Callback that returns a field
  * @returns A Schema with entries for each damage type
  */
-export const damageTypes = (inner, {all = false} = {}) => {
+export const damageTypes = (inner, { all = false } = {}) => {
   const schema = {};
   const config = ds.CONFIG;
 
   if (all) schema.all = inner();
 
   Object.entries(config.damageTypes).reduce((obj, [type, value]) => {
-    obj[type] = inner({label: value.label});
+    obj[type] = inner({ label: value.label });
     return obj;
   }, schema);
 

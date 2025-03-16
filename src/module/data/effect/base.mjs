@@ -8,7 +8,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * Key information about this ActiveEffect subtype
    */
   static metadata = Object.freeze({
-    type: "base"
+    type: "base",
   });
 
   /** @inheritdoc */
@@ -20,9 +20,9 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     const config = ds.CONFIG;
     return {
       end: new fields.SchemaField({
-        type: new fields.StringField({choices: Object.keys(config.effectEnds), blank: true, required: true}),
-        roll: new FormulaField({initial: "1d10"})
-      })
+        type: new fields.StringField({ choices: Object.keys(config.effectEnds), blank: true, required: true }),
+        roll: new FormulaField({ initial: "1d10" }),
+      }),
     };
   }
 
@@ -44,7 +44,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     return ds.CONFIG.effectEnds[this.end.type]?.abbreviation ?? "";
   }
 
-  /** @import {ActiveEffectDuration, EffectDurationData} from "./_types" */
+  /** @import { ActiveEffectDuration, EffectDurationData } from "./_types" */
 
   /**
    * Subtype specific duration calculations
@@ -57,7 +57,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
       type: "draw-steel",
       duration: null,
       remaining: null,
-      label: this.durationLabel
+      label: this.durationLabel,
     };
   }
 }

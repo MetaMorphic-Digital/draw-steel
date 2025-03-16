@@ -13,7 +13,7 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
 
   /** @inheritDoc */
   static get _defaults() {
-    return foundry.utils.mergeObject(super._defaults, {required: true});
+    return foundry.utils.mergeObject(super._defaults, { required: true });
   }
 
   /**
@@ -47,7 +47,7 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
 
     // Use the defined defaults
     const defaults = this.getDefaults();
-    return foundry.utils.mergeObject(defaults, value, {inplace: false});
+    return foundry.utils.mergeObject(defaults, value, { inplace: false });
   }
 
   /* -------------------------------------------- */
@@ -55,7 +55,7 @@ export default class AdvancementDataField extends foundry.data.fields.ObjectFiel
   /** @inheritDoc */
   initialize(value, model, options = {}) {
     const cls = this.getModel();
-    if (cls) return new cls(value, {parent: model, ...options});
+    if (cls) return new cls(value, { parent: model, ...options });
     return foundry.utils.deepClone(value);
   }
 

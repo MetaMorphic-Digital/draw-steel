@@ -7,8 +7,8 @@ export default class SizeModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
   static defineSchema() {
     return {
-      value: new fields.NumberField({initial: 1, required: true, nullable: false, integer: true, min: 1}),
-      letter: new fields.StringField({initial: "M", choices: ds.CONFIG.sizes})
+      value: new fields.NumberField({ initial: 1, required: true, nullable: false, integer: true, min: 1 }),
+      letter: new fields.StringField({ initial: "M", choices: ds.CONFIG.sizes }),
     };
   }
 

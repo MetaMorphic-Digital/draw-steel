@@ -1,6 +1,6 @@
-import {systemID} from "../constants.mjs";
-import {DSRoll} from "../rolls/base.mjs";
-/** @import {MaliceModel} from "../data/settings/malice.mjs" */
+import { systemID } from "../constants.mjs";
+import { DSRoll } from "../rolls/base.mjs";
+/** @import { MaliceModel } from "../data/settings/malice.mjs" */
 /** @import DrawSteelCombatant from "./combatant.mjs" */
 
 /**
@@ -23,8 +23,8 @@ export default class DrawSteelCombat extends Combat {
     const resultMessage = roll.total >= 6 ? "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Heroes" : "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Enemies";
 
     roll.toMessage({
-      flavor: game.i18n.localize(resultMessage)
-    }, {rollMode: CONST.DICE_ROLL_MODES.PUBLIC});
+      flavor: game.i18n.localize(resultMessage),
+    }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
   }
 
   /** @inheritdoc */
@@ -56,7 +56,7 @@ export default class DrawSteelCombat extends Combat {
     await super.nextRound();
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    const combatantUpdates = this.combatants.map(c => ({_id: c.id, initiative: c.actor?.system.combat.turns ?? 1}));
+    const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.combat.turns ?? 1 }));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
 

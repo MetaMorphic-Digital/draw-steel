@@ -1,10 +1,10 @@
-import {systemPath} from "../../constants.mjs";
-import {PowerRoll} from "../../rolls/power.mjs";
+import { systemPath } from "../../constants.mjs";
+import { PowerRoll } from "../../rolls/power.mjs";
 
-/** @import {ApplicationConfiguration} from "../../../../foundry/client-esm/applications/_types.mjs" */
-/** @import {PowerRollDialogPrompt} from "./_types" */
+/** @import { ApplicationConfiguration } from "../../../../foundry/client-esm/applications/_types.mjs" */
+/** @import { PowerRollDialogPrompt } from "./_types" */
 
-const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
+const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
 /**
  * AppV2-based sheet Power Roll modifications
@@ -15,22 +15,22 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "power-roll-dialog"],
     position: {
-      width: 400
+      width: 400,
     },
     actions: {
-      setRollMode: this.setRollMode
+      setRollMode: this.setRollMode,
     },
     tag: "form",
     form: {
-      closeOnSubmit: true
-    }
+      closeOnSubmit: true,
+    },
   };
 
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/rolls/power-roll-dialog.hbs")
-    }
+      template: systemPath("templates/rolls/power-roll-dialog.hbs"),
+    },
   };
 
   /**
@@ -54,7 +54,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
         return obj;
       }, {}),
       rollModes: CONFIG.Dice.rollModes,
-      ...this.options.context
+      ...this.options.context,
     };
 
     if (context.type === "ability") await this._prepareAbilityContext(context);
@@ -80,7 +80,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
       const effect = context.ability.system.powerRoll[tier].find(effect => (effect.type === "damage") && (effect.types.size > 1));
       if (!effect || context.damageOptions) continue;
 
-      context.damageOptions = Object.entries(ds.CONFIG.damageTypes).filter(([type, data]) => effect.types.has(type)).map(([value, {label}]) => ({value, label}));
+      context.damageOptions = Object.entries(ds.CONFIG.damageTypes).filter(([type, data]) => effect.types.has(type)).map(([value, { label }]) => ({ value, label }));
       break;
     }
   }
@@ -96,7 +96,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),
         banes: Math.clamp(target.modifiers.banes + context.modifiers.banes, 0, PowerRoll.MAX_BANE),
-        bonuses: target.modifiers.bonuses + context.modifiers.bonuses
+        bonuses: target.modifiers.bonuses + context.modifiers.bonuses,
       };
     }
   }
@@ -106,10 +106,10 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
    * @param {object} context The context from _prepareContext
    */
   _prepareSkillOptions(context) {
-    const {list, groups} = ds.CONFIG.skills;
+    const { list, groups } = ds.CONFIG.skills;
     context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
-      const {label, group} = list[value];
-      accumulator.push({label, group: groups[group].label, value});
+      const { label, group } = list[value];
+      accumulator.push({ label, group: groups[group].label, value });
       return accumulator;
     }, []);
   }
@@ -122,8 +122,8 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     super._onChangeForm(formConfig, event);
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
 
-    this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, {overwrite: true, recursive: true});
-    if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {overwrite: true, recursive: true});
+    this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, { overwrite: true, recursive: true });
+    if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, { overwrite: true, recursive: true });
     if (formData["damage-selection"]) this.options.context.damage = formData["damage-selection"];
 
     if ("skill" in formData) {
@@ -146,14 +146,14 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
 
     const targets = this.options.context.targets;
-    if (!targets || (targets.length === 0)) this.promptValue = {rolls: [this.options.context.modifiers]};
+    if (!targets || (targets.length === 0)) this.promptValue = { rolls: [this.options.context.modifiers] };
     else {
       const rolls = targets.reduce((accumulator, target) => {
-        accumulator.push({...target.combinedModifiers, target: target.uuid});
+        accumulator.push({ ...target.combinedModifiers, target: target.uuid });
         return accumulator;
       }, []);
 
-      this.promptValue = {rolls};
+      this.promptValue = { rolls };
     }
 
     if (formData["damage-selection"]) this.promptValue.damage = formData["damage-selection"];
@@ -188,9 +188,9 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
       dialog.addEventListener("close", event => {
         if (dialog.promptValue) resolve(dialog.promptValue);
         else resolve(null);
-      }, {once: true});
+      }, { once: true });
 
-      dialog.render({force: true});
+      dialog.render({ force: true });
     });
   }
 }

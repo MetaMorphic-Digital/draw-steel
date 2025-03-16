@@ -8,4 +8,4 @@ import * as elements from "./elements/_module.mjs";
 window.customElements.define("ds-checkbox", elements.CheckboxElement);
 window.customElements.define("slide-toggle", elements.SlideToggleElement);
 
-export {elements};
+export { elements };

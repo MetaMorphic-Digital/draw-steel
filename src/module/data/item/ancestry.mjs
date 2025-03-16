@@ -8,7 +8,7 @@ export default class AncestryModel extends AdvancementModel {
   static metadata = Object.freeze({
     ...super.metadata,
     type: "ancestry",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
   });
 
   /** @inheritdoc */
@@ -16,6 +16,6 @@ export default class AncestryModel extends AdvancementModel {
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.advancement",
-    "DRAW_STEEL.Item.Ancestry"
+    "DRAW_STEEL.Item.Ancestry",
   ];
 }

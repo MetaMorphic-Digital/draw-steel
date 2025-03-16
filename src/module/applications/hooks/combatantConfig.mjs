@@ -1,5 +1,5 @@
 /** @import DrawSteelCombatant from "../../documents/combatant.mjs" */
-/** @import {ApplicationRenderOptions} from "../../../../foundry/client-esm/applications/_types.mjs"*/
+/** @import { ApplicationRenderOptions } from "../../../../foundry/client-esm/applications/_types.mjs"*/
 
 /** @typedef {InstanceType<foundry["applications"]["sheets"]["CombatantConfig"]>} CombatantConfig */
 
@@ -18,11 +18,11 @@ export function renderCombatantConfig(app, html, context, options) {
 
   if (combatant.type !== "base") return;
 
-  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS).map(([key, value]) => ({value, label: game.i18n.localize(`TOKEN.DISPOSITION.${key}`)}));
+  const dispositions = Object.entries(CONST.TOKEN_DISPOSITIONS).map(([key, value]) => ({ value, label: game.i18n.localize(`TOKEN.DISPOSITION.${key}`) }));
 
   const dispositionInput = combatant.system.schema.getField("disposition").toFormGroup(
     {},
-    {options: dispositions, value: combatant.system.disposition, blank: game.i18n.localize("DRAW_STEEL.Combatant.base.FIELDS.disposition.blank"), dataset: {dtype: "Number"}}
+    { options: dispositions, value: combatant.system.disposition, blank: game.i18n.localize("DRAW_STEEL.Combatant.base.FIELDS.disposition.blank"), dataset: { dtype: "Number" } },
   );
 
   const formGroups = html.querySelectorAll("form .form-group");

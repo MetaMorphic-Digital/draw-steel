@@ -1,4 +1,4 @@
-import {systemID, systemPath} from "../../../constants.mjs";
+import { systemID, systemPath } from "../../../constants.mjs";
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -8,33 +8,33 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
-      activateCombatant: this.#onActivateCombatant
-    }
+      activateCombatant: this.#onActivateCombatant,
+    },
   };
 
   /** @inheritdoc */
   static PARTS = {
     /** Inherited */
     header: {
-      template: "templates/sidebar/tabs/combat/header.hbs"
+      template: "templates/sidebar/tabs/combat/header.hbs",
     },
     /** Inherited, only used for "alternative" combat */
     tracker: {
-      template: "templates/sidebar/tabs/combat/tracker.hbs"
+      template: "templates/sidebar/tabs/combat/tracker.hbs",
     },
     /** Inherited, only used for "alternative" combats */
     footer: {
-      template: "templates/sidebar/tabs/combat/footer.hbs"
+      template: "templates/sidebar/tabs/combat/footer.hbs",
     },
     dsHeader: {
-      template: systemPath("templates/combat/header.hbs")
+      template: systemPath("templates/combat/header.hbs"),
     },
     dsTracker: {
-      template: systemPath("templates/combat/tracker.hbs")
+      template: systemPath("templates/combat/tracker.hbs"),
     },
     dsFooter: {
-      template: systemPath("templates/combat/footer.hbs")
-    }
+      template: systemPath("templates/combat/footer.hbs"),
+    },
   };
 
   /* -------------------------------------------------- */
@@ -128,7 +128,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @param {HTMLElement} target The action target element.
    */
   static async #onActivateCombatant(event, target) {
-    const {combatantId} = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
 
@@ -136,11 +136,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const oldValue = combatant.initiative;
     const newValue = oldValue ? oldValue - 1 : (combatant.actor?.system.combat?.turns ?? 1);
 
-    await combatant.update({initiative: newValue});
+    await combatant.update({ initiative: newValue });
 
     if (oldValue) {
       const newTurn = combat.turns.findIndex((c) => c === combatant);
-      combat.update({turn: newTurn}, {direction: 1});
+      combat.update({ turn: newTurn }, { direction: 1 });
     }
   }
 }

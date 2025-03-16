@@ -1,24 +1,24 @@
-import {AbilityModel, FeatureModel} from "../../data/item/_module.mjs";
-import {DrawSteelChatMessage, DrawSteelItem} from "../../documents/_module.mjs";
+import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
+import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 
-/** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {ActorSheetItemContext, ActorSheetAbilitiesContext} from "./_types.js" */
+/** @import { FormSelectOption } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
 
-const {api, sheets} = foundry.applications;
+const { api, sheets } = foundry.applications;
 
 /**
  * AppV2-based sheet for all actor classes
  */
 export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
-  sheets.ActorSheetV2
+  sheets.ActorSheetV2,
 ) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "actor"],
     position: {
       width: 600,
-      height: 600
+      height: 600,
     },
     actions: {
       toggleMode: this._toggleMode,
@@ -28,28 +28,28 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       toggleEffect: this._toggleEffect,
       roll: this._onRoll,
       useAbility: this._useAbility,
-      toggleItemEmbed: this._toggleItemEmbed
+      toggleItemEmbed: this._toggleItemEmbed,
     },
     form: {
-      submitOnChange: true
-    }
+      submitOnChange: true,
+    },
   };
 
   /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
-        {id: "stats"},
-        {id: "features"},
-        {id: "equipment"},
-        {id: "projects"},
-        {id: "abilities"},
-        {id: "effects"},
-        {id: "biography"}
+        { id: "stats" },
+        { id: "features" },
+        { id: "equipment" },
+        { id: "projects" },
+        { id: "abilities" },
+        { id: "effects" },
+        { id: "biography" },
       ],
       initial: "stats",
-      labelPrefix: "DRAW_STEEL.Actor.Tabs"
-    }
+      labelPrefix: "DRAW_STEEL.Actor.Tabs",
+    },
   };
 
   /**
@@ -58,7 +58,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static MODES = Object.freeze({
     PLAY: 1,
-    EDIT: 2
+    EDIT: 2,
   });
 
   /**
@@ -94,8 +94,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     const parts = super._configureRenderParts(options);
 
     if (this.document.limited) {
-      const {header, tabs, biography} = parts;
-      return {header, tabs, biography};
+      const { header, tabs, biography } = parts;
+      return { header, tabs, biography };
     }
 
     return parts;
@@ -127,7 +127,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       config: ds.CONFIG,
       // Necessary for formInput and formFields helpers
       systemFields: this.document.system.schema.fields,
-      datasets: this._getDatasets()
+      datasets: this._getDatasets(),
     });
 
     return context;
@@ -141,7 +141,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       if (this.document.limited) {
         tabs.biography.active = true;
         tabs.biography.cssClass = "active";
-        return {biography: tabs.biography};
+        return { biography: tabs.biography };
       }
 
       if (this.document.type !== "character") {
@@ -177,16 +177,16 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
           {
             secrets: this.document.isOwner,
             rollData: this.actor.getRollData(),
-            relativeTo: this.actor
-          }
+            relativeTo: this.actor,
+          },
         );
         context.enrichedGMNotes = await TextEditor.enrichHTML(
           this.actor.system.biography.gm,
           {
             secrets: this.document.isOwner,
             rollData: this.actor.getRollData(),
-            relativeTo: this.actor
-          }
+            relativeTo: this.actor,
+          },
         );
         break;
       case "effects":
@@ -210,7 +210,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`)
+        value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`),
       };
       return obj;
     }, {});
@@ -224,7 +224,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
       if (mvmt !== null) obj[key] = {
         field: this.actor.system.schema.getField(["movement", key]),
-        value: mvmt
+        value: mvmt,
       };
       return obj;
     }, {});
@@ -235,12 +235,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {{list: string, options: FormSelectOption[]}}
    */
   _getLanguages() {
-    if (!this.actor.system.schema.getField("biography.languages")) return {list: "", options: []};
+    if (!this.actor.system.schema.getField("biography.languages")) return { list: "", options: [] };
     const formatter = game.i18n.getListFormatter();
     const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
     return {
       list: formatter.format(languageList),
-      options: Object.entries(ds.CONFIG.languages).map(([value, {label}]) => ({value, label}))
+      options: Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label })),
     };
   }
 
@@ -251,20 +251,20 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   _getImmunitiesWeaknesses() {
     const labels = {
       all: game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.all.label"),
-      ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, {label}]) => {
+      ...Object.entries(ds.CONFIG.damageTypes).reduce((acc, [type, { label }]) => {
         acc[type] = label;
         return acc;
-      }, {})
+      }, {}),
     };
 
     const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
     const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
-    const formatter = game.i18n.getListFormatter({type: "unit"});
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
     return {
       immunities: formatter.format(immunities),
       weaknesses: formatter.format(weaknesses),
-      labels
+      labels,
     };
   }
 
@@ -274,8 +274,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getDatasets() {
     return {
-      isSource: {source: true},
-      notSource: {source: false}
+      isSource: { source: true },
+      notSource: { source: false },
     };
   }
 
@@ -287,7 +287,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _prepareItemContext(item) {
     const context = {
       item,
-      expanded: this.#expanded.has(item.id)
+      expanded: this.#expanded.has(item.id),
     };
 
     // only generate the item embed when it's expanded
@@ -326,14 +326,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
       context[type] = {
         label: config.label,
-        abilities: []
+        abilities: [],
       };
     }
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
-      abilities: []
+      abilities: [],
     };
 
     // Prepare the context for each individual ability
@@ -372,18 +372,18 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       temporary: {
         type: "temporary",
         label: game.i18n.localize("DRAW_STEEL.Effect.Temporary"),
-        effects: []
+        effects: [],
       },
       passive: {
         type: "passive",
         label: game.i18n.localize("DRAW_STEEL.Effect.Passive"),
-        effects: []
+        effects: [],
       },
       inactive: {
         type: "inactive",
         label: game.i18n.localize("DRAW_STEEL.Effect.Inactive"),
-        effects: []
-      }
+        effects: [],
+      },
     };
 
     // Iterate over active effects, classifying them into categories
@@ -412,7 +412,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", {hookName: "ItemButtonContext", jQuery: false, fixed: true});
+    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", { hookName: "ItemButtonContext", jQuery: false, fixed: true });
   }
 
   /**
@@ -437,9 +437,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.update({"system.damageDisplay": "melee"});
+          await item.update({ "system.damageDisplay": "melee" });
           await this.render();
-        }
+        },
       },
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToRanged",
@@ -454,9 +454,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.update({"system.damageDisplay": "ranged"});
+          await item.update({ "system.damageDisplay": "ranged" });
           await this.render();
-        }
+        },
       },
       // Kit specific options
       {
@@ -469,9 +469,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await this.actor.update({"system.hero.preferredKit": item.id});
+          await this.actor.update({ "system.hero.preferredKit": item.id });
           await this.render();
-        }
+        },
       },
       // All applicable options
       {
@@ -484,8 +484,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.PLAY});
-        }
+          await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
+        },
       },
       {
         name: "Edit",
@@ -497,8 +497,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             console.error("Could not find item");
             return;
           }
-          await item.sheet.render({force: true, mode: DrawSteelItemSheet.MODES.EDIT});
-        }
+          await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
+        },
       },
       {
         name: "DRAW_STEEL.Item.base.share",
@@ -511,9 +511,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
           }
           await DrawSteelChatMessage.create({
             content: `@Embed[${item.uuid} caption=false]`,
-            speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor})
+            speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
           });
-        }
+        },
       },
       {
         name: "Delete",
@@ -526,8 +526,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             return;
           }
           await item.deleteDialog();
-        }
-      }
+        },
+      },
     ];
   }
 
@@ -577,7 +577,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       console.error("Could not find document");
       return;
     }
-    await doc.sheet.render({force: true, mode: this.#mode});
+    await doc.sheet.render({ force: true, mode: this.#mode });
   }
 
   /**
@@ -604,7 +604,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   static async _createDoc(event, target) {
     const docCls = getDocumentClass(target.dataset.documentClass);
     const docData = {
-      name: docCls.defaultName({type: target.dataset.type, parent: this.actor})
+      name: docCls.defaultName({ type: target.dataset.type, parent: this.actor }),
     };
     // Loop through the dataset and add it to our docData
     for (const [dataKey, value] of Object.entries(target.dataset)) {
@@ -614,7 +614,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       foundry.utils.setProperty(docData, dataKey, value);
     }
 
-    await docCls.create(docData, {parent: this.actor, renderSheet: target.dataset.renderSheet});
+    await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
 
   /**
@@ -627,7 +627,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   static async _toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
-    await effect.update({disabled: !effect.disabled});
+    await effect.update({ disabled: !effect.disabled });
   }
 
   /**
@@ -663,7 +663,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       console.error("This is not an ability!", item);
       return;
     }
-    await item.system.use({event});
+    await item.system.use({ event });
   }
 
   /**
@@ -675,13 +675,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   static async _toggleItemEmbed(event, target) {
-    const {itemId} = target.closest(".item").dataset;
+    const { itemId } = target.closest(".item").dataset;
 
     if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
     else this.#expanded.add(itemId);
 
     const part = target.closest("[data-application-part]").dataset.applicationPart;
-    this.render({parts: [part]});
+    this.render({ parts: [part] });
   }
 
   /** Helper Functions */
@@ -755,7 +755,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     // Perform the sort
     const sortUpdates = SortingHelpers.performIntegerSort(effect, {
       target,
-      siblings
+      siblings,
     });
 
     // Split the updates up by parent document
@@ -763,7 +763,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     const grandchildUpdateData = sortUpdates.reduce((items, u) => {
       const parentId = u.target.parent.id;
-      const update = {_id: u.target.id, ...u.update};
+      const update = { _id: u.target.id, ...u.update };
       if (parentId === this.actor.id) {
         directUpdates.push(update);
         return items;
@@ -796,12 +796,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
         // If it's an equipment dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "equipment")) {
-          const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", {name: item.name});
-          item = {name, type: "project", "system.yield.item": item.uuid};
+          const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", { name: item.name });
+          item = { name, type: "project", "system.yield.item": item.uuid };
         }
 
         return item;
-      })
+      }),
     );
     this.actor.createEmbeddedDocuments("Item", droppedItemData);
   }

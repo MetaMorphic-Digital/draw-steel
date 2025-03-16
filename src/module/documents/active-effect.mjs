@@ -21,18 +21,18 @@ export default class DrawSteelActiveEffect extends ActiveEffect {
    */
   static async targetedConditionPrompt(statusId, effectData) {
     try {
-      let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
+      let imposingActorUuid = await TargetedConditionPrompt.prompt({ context: { statusId } });
 
       if (foundry.utils.parseUuid(imposingActorUuid)) {
         effectData.changes = this.changes ?? [];
         effectData.changes.push({
           key: `system.statuses.${statusId}.sources`,
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          value: imposingActorUuid
+          value: imposingActorUuid,
         });
       }
     } catch (error) {
-      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", {localize: true});
+      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", { localize: true });
     }
   }
 
@@ -67,7 +67,7 @@ export default class DrawSteelActiveEffect extends ActiveEffect {
     Hooks.callAll("ds.prepareActiveEffectData", this);
   }
 
-  /** @import {ActiveEffectDuration, EffectDurationData} from "../data/effect/_types" */
+  /** @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types" */
 
   /**
    * Compute derived data related to active effect duration.

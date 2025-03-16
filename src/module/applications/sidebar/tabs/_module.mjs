@@ -1,1 +1,1 @@
-export {default as DrawSteelCombatTracker} from "./combat-tracker.mjs";
+export { default as DrawSteelCombatTracker } from "./combat-tracker.mjs";

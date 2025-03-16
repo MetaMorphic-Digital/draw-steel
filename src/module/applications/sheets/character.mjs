@@ -1,57 +1,57 @@
-import {systemID, systemPath} from "../../constants.mjs";
-import {EquipmentModel, KitModel, ProjectModel} from "../../data/item/_module.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
+import { EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
-/** @import {HeroTokenModel} from "../../data/settings/hero-tokens.mjs"; */
-/** @import {ActorSheetItemContext, ActorSheetEquipmentContext} from "../_types.js" */
+/** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
+/** @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "../_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
       gainSurges: this._gainSurges,
-      rollProject: this._rollProject
-    }
+      rollProject: this._rollProject,
+    },
   };
 
   /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/actor/character/header.hbs"),
-      templates: ["templates/actor/character/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
+      templates: ["templates/actor/character/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs"
+      template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
       template: systemPath("templates/actor/character/stats.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     features: {
       template: systemPath("templates/actor/shared/features.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     equipment: {
       template: systemPath("templates/actor/character/equipment.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     projects: {
       template: systemPath("templates/actor/character/projects.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     abilities: {
       template: systemPath("templates/actor/shared/abilities.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     effects: {
       template: systemPath("templates/actor/shared/effects.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     biography: {
       template: systemPath("templates/actor/character/biography.hbs"),
-      scrollable: [""]
-    }
+      scrollable: [""],
+    },
   };
 
   /** @inheritdoc */
@@ -116,14 +116,14 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     for (const [category, config] of Object.entries(ds.CONFIG.equipment.categories)) {
       context[category] = {
         label: config.label,
-        equipment: []
+        equipment: [],
       };
     }
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
-      equipment: []
+      equipment: [],
     };
 
     // Prepare the context for each individual equipment item
@@ -168,18 +168,18 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const spend = await foundry.applications.api.DialogV2.confirm({
       window: {
         title: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
-        icon: "fa-solid fa-bolt-lightning"
+        icon: "fa-solid fa-bolt-lightning",
       },
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GainSurges.dialogContent", {
-        value: heroTokens.value
+        value: heroTokens.value,
       })}</p>`,
-      rejectClose: false
+      rejectClose: false,
     });
 
     if (spend) {
-      const valid = await heroTokens.spendToken("gainSurges", {flavor: this.actor.name});
+      const valid = await heroTokens.spendToken("gainSurges", { flavor: this.actor.name });
       if (valid !== false) {
-        this.actor.update({"system.hero.surges": this.actor.system.hero.surges + 2});
+        this.actor.update({ "system.hero.surges": this.actor.system.hero.surges + 2 });
       }
     }
   }

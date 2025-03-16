@@ -7,14 +7,14 @@ import AdoptedStyleSheetMixin from "./adopted-stylesheet-mixin.mjs";
  * @extends {AbstractFormInputElement}
  */
 export default class CheckboxElement extends AdoptedStyleSheetMixin(
-  foundry.applications.elements.AbstractFormInputElement
+  foundry.applications.elements.AbstractFormInputElement,
 ) {
   constructor(...args) {
     super(...args);
     this._internals.role = "checkbox";
     this._value = this.getAttribute("value");
     this.#defaultValue = this._value;
-    if (this.constructor.useShadowRoot) this.#shadowRoot = this.attachShadow({mode: "closed"});
+    if (this.constructor.useShadowRoot) this.#shadowRoot = this.attachShadow({ mode: "closed" });
   }
 
   /* -------------------------------------------- */
@@ -129,8 +129,8 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   set checked(checked) {
     this.toggleAttribute("checked", checked);
-    this.dispatchEvent(new Event("input", {bubbles: true, cancelable: true}));
-    this.dispatchEvent(new Event("change", {bubbles: true, cancelable: true}));
+    this.dispatchEvent(new Event("input", { bubbles: true, cancelable: true }));
+    this.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
     this._refresh();
   }
 
@@ -220,9 +220,9 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /** @inheritdoc */
   _activateListeners() {
-    const {signal} = this._controller = new AbortController();
-    this.addEventListener("click", this._onClick.bind(this), {signal});
-    this.addEventListener("keydown", event => event.key === " " ? this._onClick(event) : null, {signal});
+    const { signal } = this._controller = new AbortController();
+    this.addEventListener("click", this._onClick.bind(this), { signal });
+    this.addEventListener("keydown", event => event.key === " " ? this._onClick(event) : null, { signal });
   }
 
   /* -------------------------------------------- */

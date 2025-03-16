@@ -1,6 +1,6 @@
-import {DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {DSRoll} from "../../rolls/base.mjs";
-import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
+import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import { DSRoll } from "../../rolls/base.mjs";
+import { barAttribute, requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 /** @import DrawSteelItem from "../../documents/item.mjs" */
@@ -13,13 +13,13 @@ const fields = foundry.data.fields;
 export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
   static metadata = Object.freeze({
-    type: "character"
+    type: "character",
   });
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Actor.base",
-    "DRAW_STEEL.Actor.Character"
+    "DRAW_STEEL.Actor.Character",
   ];
 
   /** @inheritdoc */
@@ -28,16 +28,16 @@ export default class CharacterModel extends BaseActorModel {
 
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
-        value: new fields.NumberField({initial: 0, integer: true, nullable: false})
+        value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
       // Epic resources are not part of public license yet
-      surges: requiredInteger({initial: 0}),
-      xp: requiredInteger({initial: 0}),
+      surges: requiredInteger({ initial: 0 }),
+      xp: requiredInteger({ initial: 0 }),
       recoveries: barAttribute(8, 0),
-      victories: requiredInteger({initial: 0}),
-      renown: requiredInteger({initial: 0}),
+      victories: requiredInteger({ initial: 0 }),
+      renown: requiredInteger({ initial: 0 }),
       skills: new fields.SetField(setOptions()),
-      preferredKit: new fields.DocumentIdField({readonly: false})
+      preferredKit: new fields.DocumentIdField({ readonly: false }),
     });
 
     return schema;
@@ -48,16 +48,16 @@ export default class CharacterModel extends BaseActorModel {
     const bio = super.actorBiography();
 
     bio.height = new fields.SchemaField({
-      value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blank: false})
+      value: new fields.NumberField({ min: 0 }),
+      units: new fields.StringField({ blank: false }),
     });
 
     bio.weight = new fields.SchemaField({
-      value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blank: false})
+      value: new fields.NumberField({ min: 0 }),
+      units: new fields.StringField({ blank: false }),
     });
 
-    bio.age = new fields.StringField({blank: false});
+    bio.age = new fields.StringField({ blank: false });
 
     return bio;
   }
@@ -71,13 +71,13 @@ export default class CharacterModel extends BaseActorModel {
     Object.assign(this.potency, {
       weak: 0,
       average: 0,
-      strong: 0
+      strong: 0,
     });
 
     const kitBonuses = {
       stamina: 0,
       speed: 0,
-      stability: 0
+      stability: 0,
     };
 
     /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
@@ -85,12 +85,12 @@ export default class CharacterModel extends BaseActorModel {
     this.abilityBonuses = {
       /** @type {{ distance: number, damage?: DamageSchema}} */
       melee: {
-        distance: 0
+        distance: 0,
       },
       /** @type {{ distance: number, damage?: DamageSchema}} */
       ranged: {
-        distance: 0
-      }
+        distance: 0,
+      },
     };
 
     for (const kit of this.kits) {
@@ -148,16 +148,16 @@ export default class CharacterModel extends BaseActorModel {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
         sight: {
-          enabled: true
-        }
-      }
+          enabled: true,
+        },
+      },
     });
   }
 
   /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
-    await this.parent.update({"system.hero.primary.value": this.hero.victories});
+    await this.parent.update({ "system.hero.primary.value": this.hero.victories });
   }
 
   /** @inheritdoc */
@@ -166,11 +166,11 @@ export default class CharacterModel extends BaseActorModel {
     const characterClass = this.class;
     if (characterClass && characterClass.system.turnGain) {
       const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
-        flavor: this.class.system.primary
+        flavor: this.class.system.primary,
       });
       await recoveryRoll.toMessage({
-        speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
-        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
+        speaker: DrawSteelChatMessage.getSpeaker({ token: combatant.token }),
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain"),
       });
       await this.updateResource(recoveryRoll.total);
     }
@@ -185,15 +185,15 @@ export default class CharacterModel extends BaseActorModel {
       system: {
         hero: {
           recoveries: {
-            value: this.hero.recoveries.max
+            value: this.hero.recoveries.max,
           },
           victories: 0,
-          xp: this.hero.xp + this.hero.victories
+          xp: this.hero.xp + this.hero.victories,
         },
         stamina: {
-          value: this.stamina.max
-        }
-      }
+          value: this.stamina.max,
+        },
+      },
     });
   }
 
@@ -212,7 +212,7 @@ export default class CharacterModel extends BaseActorModel {
     return {
       name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
       target: this.parent,
-      path: "system.hero.primary.value"
+      path: "system.hero.primary.value",
     };
   }
   /**
@@ -265,6 +265,6 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @inheritdoc */
   async updateResource(delta) {
-    this.parent.update({"system.hero.primary.value": this.hero.primary.value + delta});
+    this.parent.update({ "system.hero.primary.value": this.hero.primary.value + delta });
   }
 }

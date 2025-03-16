@@ -1,8 +1,8 @@
-import {systemPath} from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
 
-/** @import {ApplicationConfiguration} from "../../../foundry/client-esm/applications/_types.mjs" */
+/** @import { ApplicationConfiguration } from "../../../foundry/client-esm/applications/_types.mjs" */
 
-const {HandlebarsApplicationMixin, ApplicationV2} = foundry.applications.api;
+const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 
 /**
  * Prompt application for configuring the actor UUID that is causing a targeted condition
@@ -13,15 +13,15 @@ export default class TargetedConditionPrompt extends HandlebarsApplicationMixin(
     classes: ["draw-steel", "targeted-condition-prompt"],
     tag: "form",
     form: {
-      closeOnSubmit: true
-    }
+      closeOnSubmit: true,
+    },
   };
 
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/active-effect/targeted-condition-prompt.hbs")
-    }
+      template: systemPath("templates/active-effect/targeted-condition-prompt.hbs"),
+    },
   };
 
   /** @inheritdoc */
@@ -29,7 +29,7 @@ export default class TargetedConditionPrompt extends HandlebarsApplicationMixin(
     const context = {
       ...this.options.context,
       target: this.target,
-      condition: this.condition
+      condition: this.condition,
     };
 
     return context;
@@ -55,7 +55,7 @@ export default class TargetedConditionPrompt extends HandlebarsApplicationMixin(
   /** @inheritdoc */
   get title() {
     return game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
-      condition: this.condition
+      condition: this.condition,
     });
   }
 
@@ -92,9 +92,9 @@ export default class TargetedConditionPrompt extends HandlebarsApplicationMixin(
   static async prompt(options) {
     return new Promise((resolve, reject) => {
       const dialog = new this(options);
-      dialog.addEventListener("close", event => resolve(dialog.promptValue), {once: true});
+      dialog.addEventListener("close", event => resolve(dialog.promptValue), { once: true });
 
-      dialog.render({force: true});
+      dialog.render({ force: true });
     });
   }
 }

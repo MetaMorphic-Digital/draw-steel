@@ -1,12 +1,12 @@
-import {systemPath} from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
 
-const {api, sheets} = foundry.applications;
+const { api, sheets } = foundry.applications;
 
 /**
  * AppV2-based sheet for all item classes
  */
 export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
-  sheets.ItemSheetV2
+  sheets.ItemSheetV2,
 ) {
 
   /** @inheritdoc */
@@ -19,36 +19,36 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       viewDoc: this._viewEffect,
       createDoc: this._createEffect,
       deleteDoc: this._deleteEffect,
-      toggleEffect: this._toggleEffect
+      toggleEffect: this._toggleEffect,
     },
     form: {
-      submitOnChange: true
+      submitOnChange: true,
     },
     // Custom property that's merged into `this.options`
-    dragDrop: [{dragSelector: ".draggable", dropSelector: null}]
+    dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
   };
 
   /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
-        {id: "description"},
-        {id: "details"},
-        {id: "advancement"},
-        {id: "effects"}
+        { id: "description" },
+        { id: "details" },
+        { id: "advancement" },
+        { id: "effects" },
       ],
       initial: "description",
-      labelPrefix: "DRAW_STEEL.Item.Tabs"
+      labelPrefix: "DRAW_STEEL.Item.Tabs",
     },
     powerRollEffects: {
       tabs: [
-        {id: "tier1"},
-        {id: "tier2"},
-        {id: "tier3"}
+        { id: "tier1" },
+        { id: "tier2" },
+        { id: "tier3" },
       ],
       initial: "tier1",
-      labelPrefix: "DRAW_STEEL.Item.Tabs"
-    }
+      labelPrefix: "DRAW_STEEL.Item.Tabs",
+    },
   };
 
   /* -------------------------------------------- */
@@ -57,25 +57,25 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   static PARTS = {
     header: {
       template: systemPath("templates/item/header.hbs"),
-      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
+      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs"
+      template: "templates/generic/tab-navigation.hbs",
     },
     description: {
-      template: systemPath("templates/item/description.hbs")
+      template: systemPath("templates/item/description.hbs"),
     },
     details: {
       template: systemPath("templates/item/details.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     advancement: {
-      template: systemPath("templates/item/advancement.hbs")
+      template: systemPath("templates/item/advancement.hbs"),
     },
     effects: {
-      template: systemPath("templates/item/effects.hbs")
-    }
+      template: systemPath("templates/item/effects.hbs"),
+    },
   };
 
   /**
@@ -84,7 +84,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    */
   static MODES = Object.freeze({
     PLAY: 1,
-    EDIT: 2
+    EDIT: 2,
   });
 
   /**
@@ -111,9 +111,9 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
   /** @inheritdoc */
   _configureRenderParts(options) {
-    const {header, tabs, description, details, advancement, effects} = super._configureRenderParts(options);
+    const { header, tabs, description, details, advancement, effects } = super._configureRenderParts(options);
 
-    const parts = {header, tabs};
+    const parts = { header, tabs };
     // Don't re-render the description tab if there's an active editor
     if (!this.#editor) parts.description = description;
     if (this.document.limited) return;
@@ -152,7 +152,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
       // Necessary for formInput and formFields helpers
-      systemFields: this.document.system.schema.fields
+      systemFields: this.document.system.schema.fields,
     });
 
     return context;
@@ -169,16 +169,16 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
           {
             secrets: this.document.isOwner,
             rollData: this.item.getRollData(),
-            relativeTo: this.item
-          }
+            relativeTo: this.item,
+          },
         );
         context.enrichedGMNotes = await TextEditor.enrichHTML(
           this.item.system.description.gm,
           {
             secrets: this.document.isOwner,
             rollData: this.item.getRollData(),
-            relativeTo: this.item
-          }
+            relativeTo: this.item,
+          },
         );
         break;
       case "details":
@@ -220,23 +220,23 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       temporary: {
         type: "temporary",
         label: game.i18n.localize("DRAW_STEEL.Effect.Temporary"),
-        effects: []
+        effects: [],
       },
       passive: {
         type: "passive",
         label: game.i18n.localize("DRAW_STEEL.Effect.Passive"),
-        effects: []
+        effects: [],
       },
       inactive: {
         type: "inactive",
         label: game.i18n.localize("DRAW_STEEL.Effect.Inactive"),
-        effects: []
+        effects: [],
       },
       applied: {
         type: "applied",
         label: game.i18n.localize("DRAW_STEEL.Effect.Applied"),
-        effects: []
-      }
+        effects: [],
+      },
     };
 
     // Iterate over active effects, classifying them into categories
@@ -347,7 +347,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     this.#editor = null;
     const currentValue = foundry.utils.getProperty(this.item, fieldName);
     if (newValue !== currentValue) {
-      await this.item.update({[fieldName]: newValue});
+      await this.item.update({ [fieldName]: newValue });
     } else await this.render();
   }
 
@@ -377,12 +377,12 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       plugins: {
         menu: ProseMirror.ProseMirrorMenu.build(ProseMirror.defaultSchema, {
           destroyOnSave: true,
-          onSave: this.#saveEditor.bind(this)
+          onSave: this.#saveEditor.bind(this),
         }),
         keyMaps: ProseMirror.ProseMirrorKeyMaps.build(ProseMirror.defaultSchema, {
-          onSave: this.#saveEditor.bind(this)
-        })
-      }
+          onSave: this.#saveEditor.bind(this),
+        }),
+      },
     });
   }
 
@@ -423,7 +423,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   static async _createEffect(event, target) {
     const aeCls = getDocumentClass("ActiveEffect");
     const effectData = {
-      name: aeCls.defaultName({type: target.dataset.type, parent: this.item})
+      name: aeCls.defaultName({ type: target.dataset.type, parent: this.item }),
     };
     for (const [dataKey, value] of Object.entries(target.dataset)) {
       if (["action", "documentClass"].includes(dataKey)) continue;
@@ -431,7 +431,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       foundry.utils.setProperty(effectData, dataKey, value);
     }
 
-    await aeCls.create(effectData, {parent: this.item});
+    await aeCls.create(effectData, { parent: this.item });
   }
 
   /**
@@ -444,7 +444,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    */
   static async _toggleEffect(event, target) {
     const effect = this._getEffect(target);
-    await effect.update({disabled: !effect.disabled});
+    await effect.update({ disabled: !effect.disabled });
   }
 
   /** Helper Functions */
@@ -558,7 +558,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
     if (this.item.uuid === effect.parent?.uuid)
       return this._onEffectSort(event, effect);
-    return aeCls.create(effect, {parent: this.item});
+    return aeCls.create(effect, { parent: this.item });
   }
 
   /**
@@ -587,7 +587,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     // Perform the sort
     const sortUpdates = SortingHelpers.performIntegerSort(effect, {
       target,
-      siblings
+      siblings,
     });
     const updateData = sortUpdates.map((u) => {
       const update = u.update;
@@ -659,12 +659,12 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.options.dragDrop.map((d) => {
       d.permissions = {
         dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this)
+        drop: this._canDragDrop.bind(this),
       };
       d.callbacks = {
         dragstart: this._onDragStart.bind(this),
         dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this)
+        drop: this._onDrop.bind(this),
       };
       return new DragDrop(d);
     });

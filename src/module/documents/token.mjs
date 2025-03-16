@@ -27,12 +27,12 @@ export default class DrawSteelTokenDocument extends TokenDocument {
         point.x - canvas.scene.grid.size * 1.5,
         point.y - canvas.scene.grid.size * 1.5,
         3 * canvas.scene.grid.size,
-        3 * canvas.scene.grid.size
+        3 * canvas.scene.grid.size,
       );
       const found = canvas.tokens.quadtree.getObjects(rect);
       for (const token of found) {
         if (!token.canStrike(this) || tokens.has(token.document)) continue;
-        const distance = canvas.grid.measurePath([point, {...token.center, elevation: token.document.elevation}]).distance;
+        const distance = canvas.grid.measurePath([point, { ...token.center, elevation: token.document.elevation }]).distance;
         if (distance <= 1) tokens.add(token.document);
       }
     }

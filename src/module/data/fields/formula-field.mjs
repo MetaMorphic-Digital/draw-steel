@@ -1,4 +1,4 @@
-/** @import {FormulaFieldOptions} from "./_types" */
+/** @import { FormulaFieldOptions } from "./_types" */
 
 /**
  * Special case StringField which represents a formula.
@@ -12,7 +12,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   static get _defaults() {
     return foundry.utils.mergeObject(super._defaults, {
       required: true,
-      deterministic: false
+      deterministic: false,
     });
   }
 

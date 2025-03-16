@@ -1,4 +1,4 @@
-import {systemID} from "../constants.mjs";
+import { systemID } from "../constants.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
 export default class DrawSteelSocketHandler {
@@ -13,7 +13,7 @@ export default class DrawSteelSocketHandler {
    * Sets up socket reception
    */
   registerSocketHandlers() {
-    game.socket.on(this.identifier, ({type, payload}) => {
+    game.socket.on(this.identifier, ({ type, payload }) => {
       switch (type) {
         case "spendHeroToken":
           this.spendHeroToken(payload);
@@ -32,7 +32,7 @@ export default class DrawSteelSocketHandler {
    * @param {object} payload
    */
   emit(type, payload) {
-    game.socket.emit(this.identifier, {type, payload});
+    game.socket.emit(this.identifier, { type, payload });
   }
 
   /**
@@ -42,7 +42,7 @@ export default class DrawSteelSocketHandler {
    * @param {string} payload.spendType
    * @param {string} payload.flavor
    */
-  async spendHeroToken({userId, spendType, flavor}) {
+  async spendHeroToken({ userId, spendType, flavor }) {
     if (!game.user.isActiveGM) return;
     const sendingUser = game.users.get(userId);
     const sendingUsername = sendingUser?.name ?? userId;
@@ -54,14 +54,14 @@ export default class DrawSteelSocketHandler {
     const settingName = "heroTokens";
     const heroTokens = game.settings.get(systemID, settingName).value;
     if (heroTokens < tokenSpendConfiguration.tokens) {
-      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {format: {name: sendingUsername}});
+      ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", { format: { name: sendingUsername } });
       return;
     }
-    await game.settings.set(systemID, settingName, {value: heroTokens - tokenSpendConfiguration.tokens});
+    await game.settings.set(systemID, settingName, { value: heroTokens - tokenSpendConfiguration.tokens });
     await DrawSteelChatMessage.create({
       author: userId,
       content: tokenSpendConfiguration.messageContent,
-      flavor: flavor ?? sendingUser?.character?.name
+      flavor: flavor ?? sendingUser?.character?.name,
     });
   }
 }

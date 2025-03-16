@@ -1,7 +1,7 @@
 import DrawSteelActor from "../../documents/actor.mjs";
-import {BarAttribute} from "../_types";
+import { BarAttribute } from "../_types";
 import SizeModel from "../models/size.mjs";
-import {DamageSchema} from "../item/kit.mjs";
+import { DamageSchema } from "../item/kit.mjs";
 import SourceModel from "../models/source.mjs";
 
 declare module "./base.mjs" {

@@ -1,5 +1,5 @@
 /** @import DrawSteelUser from "../documents/user.mjs"; */
-/** @import {DSRoll} from "../rolls/base.mjs"; */
+/** @import { DSRoll } from "../rolls/base.mjs"; */
 
 /**
  * Called when a 3D roll starts from the hook of the Chat message or when showForRoll is called directly from the API.

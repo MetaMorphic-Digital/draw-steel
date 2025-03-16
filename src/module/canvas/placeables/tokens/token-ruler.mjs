@@ -8,7 +8,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       return super._getWaypointLabel(waypoint);
     }
 
-    let {text, alpha, scale} = super._getWaypointLabel(waypoint);
+    let { text, alpha, scale } = super._getWaypointLabel(waypoint);
     const segments = this.token.segmentizedFoundPath;
 
     for (const [i, segment] of segments.entries()) {
@@ -26,7 +26,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
       Object.assign(segment, {
         endpointEnemies, strikes,
-        count: strikes + (segments[i - 1]?.count ?? 0)
+        count: strikes + (segments[i - 1]?.count ?? 0),
       });
     }
 
@@ -41,9 +41,9 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
     text = [
       text,
-      segments[index]?.count ? `⚔ ${segments[index].count}` : null
+      segments[index]?.count ? `⚔ ${segments[index].count}` : null,
     ].filterJoin(" ");
-    return {text, alpha, scale};
+    return { text, alpha, scale };
   }
 
   /* -------------------------------------------------- */
@@ -55,7 +55,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     const points = state.plannedMovement?.[game.user.id]?.foundPath ?? [];
     const tokens = this.token.document.getHostileTokensFromPoints(points);
 
-    for (const {object: token} of tokens) {
+    for (const { object: token } of tokens) {
       // TODO: add a PIXI element near hostile tokens.
       // const {x, y} = token.center;
       // const circle = new PIXI.Circle(x, y, 10);

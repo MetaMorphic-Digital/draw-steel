@@ -5,7 +5,7 @@ export default class AdvancementModel extends BaseItemModel {
   static metadata = Object.freeze({
     ...super.metadata,
     type: "",
-    hasAdvancements: true
+    hasAdvancements: true,
   });
 
   /** @inheritdoc */

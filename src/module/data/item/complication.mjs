@@ -1,4 +1,4 @@
-import {systemPath} from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -9,7 +9,7 @@ export default class ComplicationModel extends AdvancementModel {
   static metadata = Object.freeze({
     ...super.metadata,
     type: "complication",
-    invalidActorTypes: ["npc"]
+    invalidActorTypes: ["npc"],
   });
 
   /** @inheritdoc */
@@ -17,6 +17,6 @@ export default class ComplicationModel extends AdvancementModel {
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.advancement",
-    "DRAW_STEEL.Item.Complication"
+    "DRAW_STEEL.Item.Complication",
   ];
 }

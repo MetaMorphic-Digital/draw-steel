@@ -1,4 +1,4 @@
-import {requiredInteger} from "../helpers.mjs";
+import { requiredInteger } from "../helpers.mjs";
 
 const fields = foundry.data.fields;
 
@@ -7,7 +7,7 @@ export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
    * Key information about this Combatant subtype
    */
   static metadata = Object.freeze({
-    type: "base"
+    type: "base",
   });
 
   /** @inheritdoc */
@@ -16,9 +16,9 @@ export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
   static defineSchema() {
     return {
-      disposition: new fields.NumberField({nullable: true, choices: Object.values(CONST.TOKEN_DISPOSITIONS),
-        validationError: "must be a value in CONST.TOKEN_DISPOSITIONS"
-      })
+      disposition: new fields.NumberField({ nullable: true, choices: Object.values(CONST.TOKEN_DISPOSITIONS),
+        validationError: "must be a value in CONST.TOKEN_DISPOSITIONS",
+      }),
     };
   }
 }
