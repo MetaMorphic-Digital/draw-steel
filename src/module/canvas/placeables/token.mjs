@@ -31,13 +31,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     return segments;
   }
 
-  /**
-     * Draw a single resource bar, given provided data
-     * @param {number} number       The Bar number
-     * @param {PIXI.Graphics} bar   The Bar container
-     * @param {Object} data         Resource data for this bar
-     * @protected
-     */
+  /** @inheritdoc*/
   _drawBar(number, bar, data) {
     if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
 

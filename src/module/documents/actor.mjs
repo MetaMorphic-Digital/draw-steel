@@ -35,15 +35,7 @@ export default class DrawSteelActor extends Actor {
     throw new Error(`Actors of type ${this.type} cannot roll characteristics`);
   }
 
-  /**
-   * Handle how changes to a Token attribute bar are applied to the Actor.
-   * This allows for game systems to override this behavior and deploy special logic.
-   * @param {string} attribute    The attribute path
-   * @param {number} value        The target attribute value
-   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
-   * @param {boolean} isBar       Whether the new value is part of an attribute bar, or just a direct value
-   * @returns {Promise<documents.Actor>}  The updated Actor document
-   */
+  /** @inheritdoc*/
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     if (attribute !== "stamina") return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
 
