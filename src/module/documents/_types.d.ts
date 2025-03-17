@@ -7,8 +7,8 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData
-} from "../../../foundry/common/types.mjs"
-import Collection from "../../../foundry/common/utils/collection.mjs"
+} from "../../../foundry/common/types.mjs";
+import Collection from "../../../foundry/common/utils/collection.mjs";
 import {
   ActiveEffect as ActiveEffectModels,
   Actor as ActorModels,
@@ -17,11 +17,8 @@ import {
   Combatant as CombatantModels,
   CombatantGroup as CombatantGroupModels,
   Item as ItemModels
-} from "../data/_module.mjs"
-import { DrawSteelActiveEffect } from "./active-effect.mjs"
-import DrawSteelCombatantGroup from "./combatant-group.mjs"
-import { DrawSteelCombatant } from "./combatant.mjs"
-import { DrawSteelItem } from "./item.mjs"
+} from "../data/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
 
 // Collator for the types
 type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
@@ -32,10 +29,8 @@ declare global {
   interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
-    items: Collection < string,
-    DrawSteelItem > ;
-    effects: Collection < string,
-    DrawSteelActiveEffect > ;
+    items: Collection < string, DrawSteelItem > ;
+    effects: Collection < string, DrawSteelActiveEffect > ;
   }
 
   interface Item < Model extends ItemModel = ItemModel > extends ItemData {
@@ -73,7 +68,6 @@ declare global {
 
   interface JournalEntryPage extends JournalEntryPageData {
     type: "text" | "image" | "pdf" | "video";
-    system: Record < string,
-    unknown > ;
+    system: Record < string, unknown > ;
   }
 }

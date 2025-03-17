@@ -1,33 +1,34 @@
-import {systemPath} from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
+
 /** @import {FormFooterButton} from "../../../../foundry/client-esm/applications/_types.mjs" */
 
-const {HandlebarsApplicationMixin, DocumentSheetV2} = foundry.applications.api;
+const { HandlebarsApplicationMixin, DocumentSheetV2 } = foundry.applications.api;
 
 /**
  * Application documentation here.
  */
 export default class CombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheetV2) {
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "combatant-group-config", "standard-form"],
-    position: {width: 420},
+    position: { width: 420 },
     actions: {
-    }
+    },
   };
 
   /** @override */
   static PARTS = {
     header: {
-      template: systemPath("templates/combat/group-config/header.hbs")
+      template: systemPath("templates/combat/group-config/header.hbs"),
     },
     body: {
-      template: systemPath("templates/combat/group-config/body.hbs")
+      template: systemPath("templates/combat/group-config/body.hbs"),
     },
     footer: {
       // Core template
-      template: "templates/generic/form-footer.hbs"
-    }
+      template: "templates/generic/form-footer.hbs",
+    },
   };
 
   /** @override */
@@ -36,7 +37,7 @@ export default class CombatantGroupConfig extends HandlebarsApplicationMixin(Doc
     const systemModel = this.document.system;
     return Object.assign(context, {
       system: systemModel,
-      systemFields: systemModel.schema.fields
+      systemFields: systemModel.schema.fields,
     });
   }
 
@@ -59,9 +60,9 @@ export default class CombatantGroupConfig extends HandlebarsApplicationMixin(Doc
     const buttons = [
       {
         type: "submit",
-        label: game.i18n.format("DOCUMENT.Update", {type: game.i18n.localize("DOCUMENT.CombatantGroup")}),
-        icon: "fa-solid fa-save"
-      }
+        label: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        icon: "fa-solid fa-save",
+      },
     ];
 
     context.buttons = buttons;
