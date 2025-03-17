@@ -1,1 +1,1 @@
-export {default as BaseEffectModel} from "./base.mjs";
+export { default as BaseEffectModel } from "./base.mjs";

@@ -3,7 +3,7 @@
  */
 export function registerHandlebars() {
   Handlebars.registerHelper({
-    wordBreaker
+    wordBreaker,
   });
 }
 

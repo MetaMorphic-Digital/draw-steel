@@ -1,5 +1,9 @@
-import {DSRoll} from "./base.mjs";
-import {systemPath} from "../constants.mjs";
+import { DSRoll } from "./base.mjs";
+import { systemPath } from "../constants.mjs";
+import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
+
+/** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
  * Special test used during downtime
@@ -10,7 +14,7 @@ export class ProjectRoll extends DSRoll {
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
       insertKeys: true,
       insertValues: true,
-      overwrite: false
+      overwrite: false,
     });
     this.options.edges = Math.clamp(this.options.edges, 0, this.constructor.MAX_EDGE);
     this.options.banes = Math.clamp(this.options.banes, 0, this.constructor.MAX_BANE);
@@ -18,20 +22,20 @@ export class ProjectRoll extends DSRoll {
     if (!options.appliedModifier) {
       // Add edges/banes to formula
       if (this.netBoon) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.min(4, 2 * Math.abs(this.netBoon)),
-          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`)
+          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
         });
         this.terms.push(operation, number);
       }
 
       // Add bonuses to formula
       if (this.options.bonuses !== 0) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.options.bonuses > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses")
+          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses"),
         });
         this.terms.push(operation, number);
       }
@@ -45,7 +49,7 @@ export class ProjectRoll extends DSRoll {
     criticalThreshold: 19,
     banes: 0,
     edges: 0,
-    bonuses: 0
+    bonuses: 0,
   });
 
   static CHAT_TEMPLATE = systemPath("templates/rolls/project.hbs");
@@ -62,13 +66,8 @@ export class ProjectRoll extends DSRoll {
 
   /**
    * Prompt the user with a roll configuration dialog
-   * @param {object} [options] Options for the dialog
-   * @param {"none"|"evaluate"|"message"} [options.evaluation="message"] How will the roll be evaluated and returned?
-   * @param {number} [options.edges]                  Base edges for the roll
-   * @param {number} [options.banes]                  Base banes for the roll
-   * @param {string} [options.formula="2d10"]         Roll formula
-   * @param {Record<string, unknown>} [options.data]  Roll data to be parsed by the formula
-   * @param {string[]} [options.skills]               An array of skills that might be chosen
+   * @param {Partial<RollPromptOptions>} [options]
+   * @returns {Promise<ProjectRollPrompt | null>}
    */
   static async prompt(options = {}) {
     const evaluation = options.evaluation ?? "message";
@@ -77,56 +76,43 @@ export class ProjectRoll extends DSRoll {
       throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     }
     const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.Roll.Project.Label");
+    options.modifiers ??= {};
+    options.modifiers.edges ??= 0;
+    options.modifiers.banes ??= 0;
+    options.modifiers.bonuses ??= 0;
+    options.skills ??= options.actor?.system.hero?.skills ?? null;
 
-    const dialogContext = {
-      modChoices: Array.fromRange(3).reduce((obj, number) => {
-        obj[number] = number;
-        return obj;
-      }, {}),
-      bane: options.banes ?? 0,
-      edges: options.edges ?? 0
+    const context = {
+      modifiers: options.modifiers,
+      skills: options.skills,
     };
 
-    if (options.skills) {
-      dialogContext.skills = options.skills.reduce((obj, skill) => {
-        const label = ds.CONFIG.skills.list[skill]?.label;
-        if (!label) {
-          console.warn("Could not find skill" + skill);
-          return obj;
-        }
-        obj[skill] = label;
-        return obj;
-      }, {});
-    }
-
-    const content = await renderTemplate(systemPath("templates/rolls/prompt.hbs"), dialogContext);
-
-    const rollContext = await foundry.applications.api.DialogV2.prompt({
-      window: {title: "DRAW_STEEL.Roll.Project.Label"},
-      content,
-      ok: {
-        callback: (event, button, dialog) => {
-          const output = Array.from(button.form.elements).reduce((obj, input) => {
-            if (input.name) obj[input.name] = input.value;
-            return obj;
-          }, {});
-
-          return output;
-        }
+    const promptValue = await PowerRollDialog.prompt({
+      context,
+      window: {
+        title: "DRAW_STEEL.Roll.Project.Label",
       },
-      rejectClose: true
     });
 
-    const roll = new this(formula, options.data, {flavor, ...rollContext});
+    if (!promptValue) return null;
 
+    const roll = new this(formula, options.data, { flavor, ...promptValue.rolls[0] });
+    const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
+
+    let projectRoll;
     switch (evaluation) {
       case "none":
-        return roll;
+        projectRoll = roll;
+        break;
       case "evaluate":
-        return roll.evaluate();
+        projectRoll = await roll.evaluate();
+        break;
       case "message":
-        return roll.toMessage();
+        projectRoll = await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode });
+        break;
     }
+
+    return { rollMode: promptValue.rollMode, projectRoll };
   }
 
   /**
@@ -147,7 +133,7 @@ export class ProjectRoll extends DSRoll {
   }
 
   /**
-   * Total project progress accrued from this roll
+   * Total project points accrued from this roll
    * @returns {number | undefined}
    */
   get product() {
@@ -189,8 +175,8 @@ export class ProjectRoll extends DSRoll {
     return this.isCritical;
   }
 
-  async _prepareContext({flavor, isPrivate}) {
-    const context = await super._prepareContext({flavor, isPrivate});
+  async _prepareContext({ flavor, isPrivate }) {
+    const context = await super._prepareContext({ flavor, isPrivate });
 
     let modString = "";
 
@@ -211,7 +197,7 @@ export class ProjectRoll extends DSRoll {
 
     context.modifier = {
       number: Math.abs(this.netBoon),
-      mod: game.i18n.localize(modString)
+      mod: game.i18n.localize(modString),
     };
 
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";

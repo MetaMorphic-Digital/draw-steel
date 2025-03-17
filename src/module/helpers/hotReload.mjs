@@ -1,4 +1,4 @@
-import {systemPath} from "../constants.mjs";
+import { systemPath } from "../constants.mjs";
 
 /**
  * A hook event that fires when a package that is being watched by the hot reload system has a file changed.
@@ -17,7 +17,7 @@ export function hotReload(data) {
       // Repeat the i18n process from Localization.#localizeDataModels
       for (const documentName of CONST.ALL_DOCUMENT_TYPES) {
         for (const model of Object.values(CONFIG[documentName].dataModels ?? {})) {
-          Localization.localizeDataModel(model, {prefixPath: "system."});
+          Localization.localizeDataModel(model, { prefixPath: "system." });
         }
       }
       // Render all apps again.

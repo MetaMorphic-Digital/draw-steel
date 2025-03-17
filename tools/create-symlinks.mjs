@@ -10,7 +10,7 @@ if (fs.existsSync("foundry-config.yaml")) {
     const fc = await fs.promises.readFile("foundry-config.yaml", "utf-8");
 
     const foundryConfig = yaml.load(fc);
-  
+
     fileRoot = path.join(foundryConfig.installPath, "resources", "app");
   } catch (err) {
     console.error(`Error reading foundry-config.yaml: ${err}`);

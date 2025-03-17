@@ -1,52 +1,53 @@
-import {systemID, systemPath} from "../../constants.mjs";
-import {DrawSteelCombatant, DrawSteelCombatantGroup} from "../../documents/_module.mjs";
+import { systemID, systemPath } from "../../../constants.mjs";
+import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
+
 /** @import {ContextMenuEntry} from "../../../../foundry/client-esm/applications/ui/context.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
  */
 export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
-  /** @inheritDoc */
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
       createGroup: this.#createGroup,
       toggleGroupExpand: this.#toggleGroupExpand,
-      activateCombatant: this.#onActivateCombatant
-    }
+      activateCombatant: this.#onActivateCombatant,
+    },
   };
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   static PARTS = {
     /** Inherited */
     header: {
-      template: "templates/sidebar/tabs/combat/header.hbs"
+      template: "templates/sidebar/tabs/combat/header.hbs",
     },
     /** Inherited, only used for "alternative" combat */
     tracker: {
-      template: "templates/sidebar/tabs/combat/tracker.hbs"
+      template: "templates/sidebar/tabs/combat/tracker.hbs",
     },
     /** Inherited, only used for "alternative" combats */
     footer: {
-      template: "templates/sidebar/tabs/combat/footer.hbs"
+      template: "templates/sidebar/tabs/combat/footer.hbs",
     },
     dsHeader: {
-      template: systemPath("templates/combat/header.hbs")
+      template: systemPath("templates/combat/header.hbs"),
     },
     dsTracker: {
       template: systemPath("templates/combat/tracker.hbs"),
-      templates: [systemPath("templates/combat/turn.hbs")]
+      templates: [systemPath("templates/combat/turn.hbs")],
     },
     dsFooter: {
-      template: systemPath("templates/combat/footer.hbs")
-    }
+      template: systemPath("templates/combat/footer.hbs"),
+    },
   };
 
   /* -------------------------------------------------- */
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _configureRenderParts(options) {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
@@ -64,7 +65,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return parts;
   }
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -79,7 +80,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     return context;
   }
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
 
@@ -97,7 +98,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const currentTurn = combat.turns[combat.turn];
 
     context.groupTurns = combat.groups.reduce((acc, cg) => {
-      const {_expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img} = cg;
+      const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
       const active = turns.some(t => t.id === currentTurn.id);
 
@@ -112,7 +113,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
         initiative,
         turns,
         img,
-        active
+        active,
       };
 
       turn.activateTooltip = cg.initiative ? "Act" : "Restore";
@@ -133,7 +134,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
         _expanded ? "expanded" : null,
         active ? "active" : null,
         hidden ? "hide" : null,
-        isDefeated ? "defeated" : null
+        isDefeated ? "defeated" : null,
       ].filterJoin(" ");
 
       acc.push(turn);
@@ -144,7 +145,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     context.groupTurns.sort(combat._sortCombatants);
   }
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
 
@@ -179,13 +180,13 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       dropSelector: ".combatant-group, .combat-tracker",
       permissions: {
         dragstart: () => game.user.isGM,
-        drop: () => game.user.isGM
+        drop: () => game.user.isGM,
       },
       callbacks: {
         dragstart: this._onDragStart.bind(this),
         dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this)
-      }
+        drop: this._onDrop.bind(this),
+      },
     }).bind(this.element);
   }
 
@@ -231,27 +232,27 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       /** @type {DrawSteelCombatantGroup} */
       const group = this.viewed.groups.get(groupLI.dataset.groupId);
       if ((!!combatant.actor?.isMinion === (group.type === "squad"))) {
-        combatant.update({group});
+        combatant.update({ group });
       }
       else {
         const message = "DRAW_STEEL.CombatantGroup.Error." + (group.type === "squad" ? "SquadOnlyMinion" : "MinionMustSquad");
-        ui.notifications.error(message, {localize: true});
+        ui.notifications.error(message, { localize: true });
       }
     }
     else {
-      combatant.update({group: null});
+      combatant.update({ group: null });
     }
   }
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _attachFrameListeners() {
     super._attachFrameListeners();
 
     // TODO: Revise in 13.338
-    if (game.user.isGM) foundry.applications.ui.ContextMenu.create(this, this.element, ".combatant-group", {jQuery: false, hookName: "GroupContext", fixed: true});
+    if (game.user.isGM) foundry.applications.ui.ContextMenu.create(this, this.element, ".combatant-group", { jQuery: false, hookName: "GroupContext", fixed: true });
   }
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 
@@ -270,15 +271,15 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   _getGroupContextOptions() {
     const getCombatantGroup = li => this.viewed.groups.get(li.dataset.groupId);
     return [{
-      name: game.i18n.format("DOCUMENT.Update", {type: game.i18n.localize("DOCUMENT.CombatantGroup")}),
+      name: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
       icon: "<i class=\"fa-solid fa-edit\"></i>",
       callback: li => getCombatantGroup(li)?.sheet.render({
         force: true,
         position: {
           top: Math.min(li.offsetTop, window.innerHeight - 350),
-          left: window.innerWidth - 720
-        }
-      })
+          left: window.innerWidth - 720,
+        },
+      }),
     }];
   }
 
@@ -303,7 +304,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @param {HTMLElement} target The action target element.
    */
   static async #createGroup(event, target) {
-    DrawSteelCombatantGroup.createDialog({}, {parent: this.viewed});
+    DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed });
   }
 
   /**
@@ -318,7 +319,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     group._expanded = !group._expanded;
 
-    this.render({parts: ["dsTracker"]});
+    this.render({ parts: ["dsTracker"] });
   }
 
   /**
@@ -328,7 +329,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @param {HTMLElement} target The action target element.
    */
   static async #onActivateCombatant(event, target) {
-    const {combatantId} = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
 
@@ -336,11 +337,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const oldValue = combatant.initiative;
     const newValue = oldValue ? oldValue - 1 : (combatant.actor?.system.combat?.turns ?? 1);
 
-    await combatant.update({initiative: newValue});
+    await combatant.update({ initiative: newValue });
 
     if (oldValue) {
       const newTurn = combat.turns.findIndex((c) => c === combatant);
-      combat.update({turn: newTurn}, {direction: 1});
+      combat.update({ turn: newTurn }, { direction: 1 });
     }
   }
 }

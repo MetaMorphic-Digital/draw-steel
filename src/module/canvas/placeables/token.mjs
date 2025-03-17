@@ -1,3 +1,6 @@
+/**
+ * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass
+ */
 export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /**
    * Does this token visibly show its ability to strike when another token is moving?

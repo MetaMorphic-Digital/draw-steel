@@ -1,5 +1,7 @@
-
-export class DrawSteelCombatant extends Combatant {
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.Combatant.documentClass
+ */
+export default class DrawSteelCombatant extends Combatant {
   /**
    * The disposition for this combatant. In priority,
    * 1. Manually specified for this combatant
@@ -18,7 +20,7 @@ export class DrawSteelCombatant extends Combatant {
     return disposition;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preUpdate(changes, options, user) {
     const allowed = await super._preUpdate(changes, options, user);
     if (allowed === false) return false;
@@ -26,7 +28,7 @@ export class DrawSteelCombatant extends Combatant {
     if (("initiative" in changes) && (changes.initiative < this.initiative)) await this.actor?.system._onStartTurn(this);
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);

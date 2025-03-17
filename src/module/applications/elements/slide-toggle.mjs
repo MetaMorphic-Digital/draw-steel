@@ -14,12 +14,12 @@ export default class SlideToggleElement extends CheckboxElement {
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static tagName = "slide-toggle";
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static useShadowRoot = false;
 
   /* -------------------------------------------- */

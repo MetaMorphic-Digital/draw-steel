@@ -1,27 +1,27 @@
-import {systemPath} from "../../constants.mjs";
-import {setOptions} from "../helpers.mjs";
+import { systemPath } from "../../constants.mjs";
+import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /**
  * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
  */
 export default class KitModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "kit",
     invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/kit.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/kit.hbs")],
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Kit"
+    "DRAW_STEEL.Item.Kit",
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -30,31 +30,31 @@ export default class KitModel extends BaseItemModel {
     // schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 
     schema.equipment = new fields.SchemaField({
-      armor: new fields.StringField({required: true, blank: true}),
+      armor: new fields.StringField({ required: true, blank: true }),
       weapon: new fields.SetField(setOptions()),
-      shield: new fields.BooleanField()
+      shield: new fields.BooleanField(),
       // implement: new fields.StringField({choices: config.equipment.implement})
     });
 
     const damageSchema = () => ({
-      tier1: new fields.NumberField({initial: 0, integer: true}),
-      tier2: new fields.NumberField({initial: 0, integer: true}),
-      tier3: new fields.NumberField({initial: 0, integer: true})
+      tier1: new fields.NumberField({ initial: 0, integer: true }),
+      tier2: new fields.NumberField({ initial: 0, integer: true }),
+      tier3: new fields.NumberField({ initial: 0, integer: true }),
     });
 
     schema.bonuses = new fields.SchemaField({
-      stamina: new fields.NumberField({integer: true}),
-      speed: new fields.NumberField({integer: true}),
-      stability: new fields.NumberField({integer: true}),
+      stamina: new fields.NumberField({ integer: true }),
+      speed: new fields.NumberField({ integer: true }),
+      stability: new fields.NumberField({ integer: true }),
       melee: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),
-        distance: new fields.NumberField({integer: true})
+        distance: new fields.NumberField({ integer: true }),
       }),
       ranged: new fields.SchemaField({
         damage: new fields.SchemaField(damageSchema()),
-        distance: new fields.NumberField({integer: true})
+        distance: new fields.NumberField({ integer: true }),
       }),
-      disengage: new fields.NumberField({integer: true})
+      disengage: new fields.NumberField({ integer: true }),
     });
 
     // schema.signature = new fields.SchemaField({
@@ -65,7 +65,7 @@ export default class KitModel extends BaseItemModel {
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -74,7 +74,7 @@ export default class KitModel extends BaseItemModel {
     if (actor) {
       const actorClass = actor.system.class;
       if (actorClass?.system.kits === 0) {
-        const message = game.i18n.format("DRAW_STEEL.Item.Kit.NotAllowedByClass", {class: actorClass.name});
+        const message = game.i18n.format("DRAW_STEEL.Item.Kit.NotAllowedByClass", { class: actorClass.name });
         ui.notifications.error(message);
         return false;
       }
@@ -85,7 +85,7 @@ export default class KitModel extends BaseItemModel {
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -97,15 +97,15 @@ export default class KitModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
-      showDescription: true // used to prevent showing the description on the details tab of the kit sheet
+      showDescription: true, // used to prevent showing the description on the details tab of the kit sheet
     };
     context.enrichedDescription = await TextEditor.enrichHTML(
       this.description.value,
       {
         secrets: this.parent.isOwner,
         rollData: this.parent.getRollData(),
-        relativeTo: this.parent
-      }
+        relativeTo: this.parent,
+      },
     );
     this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
@@ -125,7 +125,7 @@ export default class KitModel extends BaseItemModel {
     if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", {kit: this.parent.name, actor: this.parent.actor.name})}</strong>`;
+    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", { kit: this.parent.name, actor: this.parent.actor.name })}</strong>`;
     for (const kit of kits) {
       radioButtons += `
         <div class="form-group">
@@ -142,32 +142,32 @@ export default class KitModel extends BaseItemModel {
       content: radioButtons,
       window: {
         icon: "fa-solid fa-arrow-right-arrow-left",
-        title: "DRAW_STEEL.Item.Kit.Swap.Title"
+        title: "DRAW_STEEL.Item.Kit.Swap.Title",
       },
       position: {
-        width: 400
+        width: 400,
       },
       ok: {
         label: "DRAW_STEEL.Item.Kit.Swap.Button",
         icon: "fa-solid fa-arrow-right-arrow-left",
         callback: (event, button, dialog) => {
           return new FormDataExtended(button.form);
-        }
+        },
       },
-      rejectClose: false
+      rejectClose: false,
     });
     if (!fd?.object.kit) return false;
 
     await actor.deleteEmbeddedDocuments("Item", [fd.object.kit]);
   }
 
-  /** @override */
+  /** @inheritdoc */
   getSheetContext(context) {
-    context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, {label}]) => ({value, label}));
-    context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, {label}]) => ({value, label}))
+    context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, { label }]) => ({ value, label }));
+    context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, { label }]) => ({ value, label }))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
 
-    const weaponFormatter = game.i18n.getListFormatter({type: "unit"});
+    const weaponFormatter = game.i18n.getListFormatter({ type: "unit" });
     const weaponList = Array.from(this.equipment.weapon).map(w => ds.CONFIG.equipment.weapon[w]?.label ?? w);
     context.weaponLabel = weaponFormatter.format(weaponList);
   }

@@ -1,11 +1,16 @@
-import "./apps/_types";
+import "./applications/_types";
 import "./data/_types";
 import "./documents/_types";
-import { DrawSteelActor } from "./documents/actor.mjs";
+import {
+  DrawSteelActor,
+  DrawSteelChatMessage
+} from "./documents/_module.mjs";
 
 import Advancement from "./documents/advancement/advancement.mjs";
-import { DrawSteelChatMessage } from "./documents/chat-message.mjs";
-import { PowerRoll } from "./rolls/power.mjs";
+import {
+  PowerRoll,
+  ProjectRoll
+} from "./rolls/_module.mjs";
 
 export interface AdvancementTypeConfiguration {
   /**
@@ -16,12 +21,12 @@ export interface AdvancementTypeConfiguration {
   /**
    * What item types this advancement can be used with.
    */
-  validItemTypes: Set<string>;
+  validItemTypes: Set < string > ;
 
   /**
    * Should this advancement type be hidden in the selection dialog?
    */
-  hidden?: boolean;
+  hidden ? : boolean;
 }
 
 export interface PowerRollModifiers {
@@ -35,20 +40,27 @@ export interface PowerRollTargets {
   modifiers: PowerRollModifiers;
 }
 
-export interface PowerRollPromptOptions {
-  type: "ability" | "test";
+export interface RollPromptOptions {
   evaluation: "none" | "evaluate" | "message";
   modifiers: PowerRollModifiers;
   formula: string;
   actor: DrawSteelActor;
-  data: Record<string, unknown>;
-  skills: string[];
+  data: Record < string, unknown > ;
+  skills: Set < string > ;
+}
+
+export interface PowerRollPromptOptions extends RollPromptOptions {
+  type: "ability" | "test";
   targets: PowerRollTargets[],
-  ability?: string,
-  characteristic?: string
+  ability ? : string
 }
 
 export interface PowerRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
-  powerRolls: Array<PowerRoll | DrawSteelChatMessage | object>;
+  powerRolls: Array < PowerRoll | DrawSteelChatMessage | object > ;
+}
+
+export interface ProjectRollPrompt {
+  rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
+  projectRoll: ProjectRoll | DrawSteelChatMessage;
 }

@@ -1,7 +1,8 @@
-import {systemID, systemPath} from "../../constants.mjs";
-import DrawSteelActorSheet from "./base.mjs";
-/** @import {FormSelectOption} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {DrawSteelActor} from "../../documents/actor.mjs"; */
+import { systemID, systemPath } from "../../constants.mjs";
+import DrawSteelActorSheet from "./actor-sheet.mjs";
+
+/** @import { FormSelectOption } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import DrawSteelActor from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
@@ -9,43 +10,43 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     actions: {
       updateSource: this._updateSource,
       editMonsterMetadata: this._editMonsterMetadata,
-      freeStrike: this._freeStrike
-    }
+      freeStrike: this._freeStrike,
+    },
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/actor/npc/header.hbs"),
-      templates: ["templates/actor/npc/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t))
+      templates: ["templates/actor/npc/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
-      template: "templates/generic/tab-navigation.hbs"
+      template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
       template: systemPath("templates/actor/npc/stats.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     features: {
       template: systemPath("templates/actor/shared/features.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     abilities: {
       template: systemPath("templates/actor/shared/abilities.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     effects: {
       template: systemPath("templates/actor/shared/effects.hbs"),
-      scrollable: [""]
+      scrollable: [""],
     },
     biography: {
       template: systemPath("templates/actor/npc/biography.hbs"),
-      scrollable: [""]
-    }
+      scrollable: [""],
+    },
   };
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
@@ -70,7 +71,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
-    const formatter = game.i18n.getListFormatter({type: "unit"});
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
     const keywords = Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
     return formatter.format(keywords);
   }
@@ -97,7 +98,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * Fetches the label for the monster's Encounter Value
    */
   _getEVLabel() {
-    const data = {value: this.actor.system.monster.ev};
+    const data = { value: this.actor.system.monster.ev };
     if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
     else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
   }
@@ -121,9 +122,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       return arr;
     }, []);
     return {
-      list: Object.entries(motivations).map(([value, {label}]) => ({value, label})),
+      list: Object.entries(motivations).map(([value, { label }]) => ({ value, label })),
       currentMotivations: formatter.format(currentMotivations),
-      currentPitfalls: formatter.format(currentPitfalls)
+      currentPitfalls: formatter.format(currentPitfalls),
     };
   }
 
@@ -140,7 +141,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       maliceInput.addEventListener("change", (ev) => {
         ev.preventDefault();
         ev.stopPropagation();
-        game.settings.set(systemID, "malice", {value: ev.target.value});
+        game.settings.set(systemID, "malice", { value: ev.target.value });
       });
     }
   }
@@ -173,18 +174,18 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     const keywordInput = schema.getField("monster.keywords").toFormGroup({}, {
       value: monsterData.keywords,
-      options: Object.entries(monsterConfig.keywords).map(([value, {label, group}]) => ({value, label, group}))
+      options: Object.entries(monsterConfig.keywords).map(([value, { label, group }]) => ({ value, label, group })),
     });
-    const levelInput = schema.getField("monster.level").toFormGroup({}, {value: monsterData.level});
+    const levelInput = schema.getField("monster.level").toFormGroup({}, { value: monsterData.level });
     const organizationInput = schema.getField("monster.organization").toFormGroup({}, {
       value: monsterData.organization,
-      options: Object.entries(monsterConfig.organizations).map(([value, {label}]) => ({value, label}))
+      options: Object.entries(monsterConfig.organizations).map(([value, { label }]) => ({ value, label })),
     });
     const roleInput = schema.getField("monster.role").toFormGroup({}, {
       value: monsterData.role,
-      options: Object.entries(monsterConfig.roles).map(([value, {label}]) => ({value, label}))
+      options: Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label })),
     });
-    const evInput = schema.getField("monster.ev").toFormGroup({}, {value: monsterData.ev});
+    const evInput = schema.getField("monster.ev").toFormGroup({}, { value: monsterData.ev });
 
     htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
 
@@ -194,14 +195,14 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       classes: ["draw-steel", "monster-metadata"],
       window: {
         title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
-        icon: "fa-solid fa-spaghetti-monster-flying"
+        icon: "fa-solid fa-spaghetti-monster-flying",
       },
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
-        callback: (event, button, dialog) => new FormDataExtended(button.form)
+        callback: (event, button, dialog) => new FormDataExtended(button.form),
       },
-      rejectClose: false
+      rejectClose: false,
     });
     if (fd) {
       await this.actor.update(fd.object);
@@ -218,25 +219,25 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     /** @type {Array<DrawSteelActor>} */
     const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
     if (!targets.length) {
-      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", {localize: true});
+      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", { localize: true });
       return;
     }
     const freeStrike = this.actor.system.freeStrike;
 
     const damageLabel = game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
       value: freeStrike.value,
-      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? ""
+      type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
     });
-    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
     const keywordList = freeStrike.keywords.toObject().map(k => ds.CONFIG.abilities.keywords[k]?.label);
 
     let content = `<span>${keywordFormatter.format([damageLabel, ...keywordList])}</span>`;
 
     content += targets.map(a => {
-      const checkboxInput = foundry.applications.fields.createCheckboxInput({name: a.uuid, value: true});
+      const checkboxInput = foundry.applications.fields.createCheckboxInput({ name: a.uuid, value: true });
       const formGroup = foundry.applications.fields.createFormGroup({
         label: a.name,
-        input: checkboxInput
+        input: checkboxInput,
       });
       // style fix
       const label = formGroup.querySelector("label");
@@ -247,13 +248,13 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     /** @type {FormDataExtended} */
     const fd = await foundry.applications.api.DialogV2.prompt({
-      window: {title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst"},
+      window: { title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
       content,
       rejectClose: false,
       ok: {
         label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
-        callback: (event, button, dialog) => new FormDataExtended(button.form)
-      }
+        callback: (event, button, dialog) => new FormDataExtended(button.form),
+      },
     });
 
     if (fd) {
@@ -261,7 +262,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         if (bool) {
           /** @type {DrawSteelActor} */
           const actor = fromUuidSync(uuid);
-          actor.system.takeDamage(freeStrike.value, {type: freeStrike.type});
+          actor.system.takeDamage(freeStrike.value, { type: freeStrike.type });
         }
       }
     }

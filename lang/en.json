@@ -49,7 +49,8 @@
         "equipment": "Equipment",
         "stats": "Stats",
         "abilities": "Abilities",
-        "effects": "Effects"
+        "effects": "Effects",
+        "projects": "Projects"
       },
       "characteristics": {
         "might": {
@@ -1011,6 +1012,9 @@
       },
       "Project": {
         "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
           "prerequisites": {
             "label": "Item Prerequisites"
           },
@@ -1023,10 +1027,11 @@
           "goal": {
             "label": "Project Goal"
           },
-          "progress": {
-            "label": "Project Progress"
+          "points": {
+            "label": "Project Points"
           },
           "yield": {
+            "label": "Yield",
             "item": {
               "label": "Yield Item UUID"
             },
@@ -1038,7 +1043,16 @@
             }
           }
         },
-        "CraftItemName": "Craft {name}"
+        "Types": {
+          "Crafting": "Crafting",
+          "Research": "Research",
+          "Other": "Other"
+        },
+        "CompletedNotification": "{actor} has achieved enough project points to complete the {project} project.",
+        "Craft": {
+          "ItemName": "Craft {name}",
+          "CompletedNotification": "{actor} successfully crafted {amount} {item}(s)."
+        }
       }
     },
     "Effect": {

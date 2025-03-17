@@ -1,9 +1,9 @@
-import {PowerRollDialog} from "../apps/power-roll-dialog.mjs";
-import {systemPath} from "../constants.mjs";
-import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
-import {DSRoll} from "./base.mjs";
+import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
+import { systemPath } from "../constants.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
+import { DSRoll } from "./base.mjs";
 
-/** @import {PowerRollPrompt, PowerRollPromptOptions} from "../_types.js" */
+/** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
@@ -14,7 +14,7 @@ export class PowerRoll extends DSRoll {
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
       insertKeys: true,
       insertValues: true,
-      overwrite: false
+      overwrite: false,
     });
 
     if (!PowerRoll.VALID_TYPES.has(this.options.type)) throw new Error("Power rolls must be an ability or test");
@@ -24,20 +24,20 @@ export class PowerRoll extends DSRoll {
 
       // Add edges/banes to formula
       if (Math.abs(this.netBoon === 1)) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.netBoon > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: 2,
-          flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane")
+          flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane"),
         });
         this.terms.push(operation, number);
       }
 
       // add bonuses to formula
       if (this.options.bonuses) {
-        const operation = new foundry.dice.terms.OperatorTerm({operator: (this.options.bonuses > 0 ? "+" : "-")});
+        const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses")
+          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses"),
         });
         this.terms.push(operation, number);
       }
@@ -52,7 +52,7 @@ export class PowerRoll extends DSRoll {
     criticalThreshold: 19,
     banes: 0,
     edges: 0,
-    bonuses: 0
+    bonuses: 0,
   });
 
   static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
@@ -69,12 +69,12 @@ export class PowerRoll extends DSRoll {
   static #TYPES = Object.freeze({
     ability: {
       label: "DRAW_STEEL.Roll.Power.Types.Ability",
-      icon: "fa-solid fa-bolt"
+      icon: "fa-solid fa-bolt",
     },
     test: {
       label: "DRAW_STEEL.Roll.Power.Types.Test",
-      icon: "fa-solid fa-dice"
-    }
+      icon: "fa-solid fa-dice",
+    },
   });
 
   /**
@@ -114,16 +114,16 @@ export class PowerRoll extends DSRoll {
   static #RESULT_TIERS = {
     tier1: {
       label: "DRAW_STEEL.Roll.Power.Tiers.One",
-      threshold: -Infinity
+      threshold: -Infinity,
     },
     tier2: {
       label: "DRAW_STEEL.Roll.Power.Tiers.Two",
-      threshold: 12
+      threshold: 12,
     },
     tier3: {
       label: "DRAW_STEEL.Roll.Power.Tiers.Three",
-      threshold: 17
-    }
+      threshold: 17,
+    },
   };
 
   /**
@@ -149,7 +149,7 @@ export class PowerRoll extends DSRoll {
     const context = {
       modifiers: options.modifiers,
       targets: options.targets,
-      type
+      type,
     };
 
     if (options.ability) context.ability = options.ability;
@@ -158,26 +158,26 @@ export class PowerRoll extends DSRoll {
     const promptValue = await PowerRollDialog.prompt({
       context,
       window: {
-        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", {typeLabel})
-      }
+        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", { typeLabel }),
+      },
     });
 
     if (!promptValue) return null;
 
-    const baseRoll = new this(formula, options.data, {baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill});
+    const baseRoll = new this(formula, options.data, { baseRoll: true, damageSelection: promptValue.damage, skill: promptValue.skill });
     await baseRoll.evaluate();
 
-    const speaker = DrawSteelChatMessage.getSpeaker({actor: options.actor});
+    const speaker = DrawSteelChatMessage.getSpeaker({ actor: options.actor });
     const rolls = [baseRoll];
     // DSN support - ensure that only the base power roll is displayed on screen
     const termData = baseRoll.terms[0].toJSON();
     // Ensures `termData.options` is a copy instead of reference
-    termData.options = {...termData.options, rollOrder: 999};
+    termData.options = { ...termData.options, rollOrder: 999 };
     const firstTerm = foundry.dice.terms.RollTerm.fromData(termData);
     for (const context of promptValue.rolls) {
       if (options.ability) context.ability = options.ability;
       if (promptValue.skill) flavor = `${flavor} - ${ds.CONFIG.skills.list[promptValue.skill]?.label ?? promptValue.skill}`;
-      const roll = new this(formula, options.data, {flavor, ...context});
+      const roll = new this(formula, options.data, { flavor, ...context });
       roll.terms[0] = firstTerm;
       switch (evaluation) {
         case "none":
@@ -187,11 +187,11 @@ export class PowerRoll extends DSRoll {
           rolls.push(await roll.evaluate());
           break;
         case "message":
-          rolls.push(await roll.toMessage({speaker}, {rollMode: promptValue.rollMode}));
+          rolls.push(await roll.toMessage({ speaker }, { rollMode: promptValue.rollMode }));
           break;
       }
     }
-    return {rollMode: promptValue.rollMode, powerRolls: rolls};
+    return { rollMode: promptValue.rollMode, powerRolls: rolls };
   }
 
   /**
@@ -220,7 +220,7 @@ export class PowerRoll extends DSRoll {
     // Crits are always a tier 3 result
     if (this.isCritical) return 3;
 
-    const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, {threshold}) => t + Number(this.total >= threshold), 0);
+    const tier = Object.values(this.constructor.RESULT_TIERS).reduce((t, { threshold }) => t + Number(this.total >= threshold), 0);
     // Adjusts tiers for double edge/bane
     const adjustment = this.netBoon - Math.sign(this.netBoon);
     return Math.clamp(tier + adjustment, 1, 3);
@@ -262,12 +262,12 @@ export class PowerRoll extends DSRoll {
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
 
-  async _prepareContext({flavor, isPrivate}) {
-    const context = await super._prepareContext({flavor, isPrivate});
+  async _prepareContext({ flavor, isPrivate }) {
+    const context = await super._prepareContext({ flavor, isPrivate });
 
     context.tier = {
       label: game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
-      class: this.tier
+      class: this.tier,
     };
 
     let modString = "";
@@ -289,7 +289,7 @@ export class PowerRoll extends DSRoll {
 
     context.modifier = {
       number: Math.abs(this.netBoon),
-      mod: game.i18n.localize(modString)
+      mod: game.i18n.localize(modString),
     };
 
     if (this.options.target) context.target = await fromUuid(this.options.target);

@@ -24,7 +24,7 @@ export async function createDocMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: {"draw-steel.itemMacro": true}
+      flags: { "draw-steel.itemMacro": true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);
@@ -40,7 +40,7 @@ export function rollItemMacro(itemUuid) {
   // Reconstruct the drop data so that we can load the item.
   const dropData = {
     type: "Item",
-    uuid: itemUuid
+    uuid: itemUuid,
   };
   // Load the item from the uuid.
   Item.fromDropData(dropData).then((item) => {

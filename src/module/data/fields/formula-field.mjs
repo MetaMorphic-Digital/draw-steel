@@ -1,4 +1,4 @@
-/** @import {FormulaFieldOptions} from "./_types" */
+/** @import { FormulaFieldOptions } from "./_types" */
 
 /**
  * Special case StringField which represents a formula.
@@ -12,7 +12,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   static get _defaults() {
     return foundry.utils.mergeObject(super._defaults, {
       required: true,
-      deterministic: false
+      deterministic: false,
     });
   }
 
@@ -20,8 +20,8 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /** @inheritDoc */
   _validateType(value) {
-    if (this.options.deterministic) {
-      const roll = new Roll(value);
+    if (this.deterministic) {
+      const roll = new foundry.dice.Roll(value);
       if (!roll.isDeterministic) throw new Error("must not contain dice terms");
     }
     super._validateType(value);
@@ -31,7 +31,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /*  Active Effect Integration                         */
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _castChangeDelta(delta) {
     // super just calls `_cast`
     return this._cast(delta).trim();
@@ -39,7 +39,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeAdd(value, delta, model, change) {
     if (!value) return delta;
     const operator = delta.startsWith("-") ? "-" : "+";
@@ -49,7 +49,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeMultiply(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;
@@ -59,7 +59,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeUpgrade(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;
@@ -69,7 +69,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _applyChangeDowngrade(value, delta, model, change) {
     if (!value) return delta;
     const terms = new Roll(value).terms;

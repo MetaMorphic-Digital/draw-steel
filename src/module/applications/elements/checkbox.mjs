@@ -7,19 +7,19 @@ import AdoptedStyleSheetMixin from "./adopted-stylesheet-mixin.mjs";
  * @extends {AbstractFormInputElement}
  */
 export default class CheckboxElement extends AdoptedStyleSheetMixin(
-  foundry.applications.elements.AbstractFormInputElement
+  foundry.applications.elements.AbstractFormInputElement,
 ) {
   constructor(...args) {
     super(...args);
     this._internals.role = "checkbox";
     this._value = this.getAttribute("value");
     this.#defaultValue = this._value;
-    if (this.constructor.useShadowRoot) this.#shadowRoot = this.attachShadow({mode: "closed"});
+    if (this.constructor.useShadowRoot) this.#shadowRoot = this.attachShadow({ mode: "closed" });
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static tagName = "ds-checkbox";
 
   /* -------------------------------------------- */
@@ -31,7 +31,7 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   static CSS = `
     :host {
       cursor: pointer;
@@ -129,14 +129,14 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   set checked(checked) {
     this.toggleAttribute("checked", checked);
-    this.dispatchEvent(new Event("input", {bubbles: true, cancelable: true}));
-    this.dispatchEvent(new Event("change", {bubbles: true, cancelable: true}));
+    this.dispatchEvent(new Event("input", { bubbles: true, cancelable: true }));
+    this.dispatchEvent(new Event("change", { bubbles: true, cancelable: true }));
     this._refresh();
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   get value() {
     return super.value;
   }
@@ -144,13 +144,13 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
   /**
    * Override AbstractFormInputElement#value setter because we want to emit input/change events when the checked state
    * changes, and not when the value changes.
-   * @override
+   * @inheritdoc
    */
   set value(value) {
     this._setValue(value);
   }
 
-  /** @override */
+  /** @inheritdoc */
   _getValue() {
     // Workaround for FormElementExtended only checking the value property and not the checked property.
     if (typeof this._value === "string") return this._value;
@@ -161,7 +161,7 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
   /*  Element Lifecycle                           */
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   connectedCallback() {
     this._adoptStyleSheet(this._getStyleSheet());
     const elements = this._buildElements();
@@ -173,21 +173,21 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   disconnectedCallback() {
     this._controller.abort();
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _adoptStyleSheet(sheet) {
     this.#shadowRoot.adoptedStyleSheets = [sheet];
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _buildElements() {
     const container = document.createElement("div");
     container.innerHTML = `
@@ -218,16 +218,16 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _activateListeners() {
-    const {signal} = this._controller = new AbortController();
-    this.addEventListener("click", this._onClick.bind(this), {signal});
-    this.addEventListener("keydown", event => event.key === " " ? this._onClick(event) : null, {signal});
+    const { signal } = this._controller = new AbortController();
+    this.addEventListener("click", this._onClick.bind(this), { signal });
+    this.addEventListener("keydown", event => event.key === " " ? this._onClick(event) : null, { signal });
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _refresh() {
     super._refresh();
     this._internals.ariaChecked = `${this.hasAttribute("checked")}`;
@@ -235,7 +235,7 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   _onClick(event) {
     event.preventDefault();
     this.checked = !this.checked;

@@ -1,1 +1,1 @@
-export {default as BaseCombatModel} from "./base.mjs";
+export { default as BaseCombatModel } from "./base.mjs";
