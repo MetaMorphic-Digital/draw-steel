@@ -174,8 +174,10 @@ export default class ProjectModel extends BaseItemModel {
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
+      title: this.parent.name,
       content: this.parent.name,
       flavor: game.i18n.localize("DRAW_STEEL.Roll.Project.Label"),
+      flags: { core: { canPopout: true } },
     };
 
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
