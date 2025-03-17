@@ -1,7 +1,7 @@
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
 
-/** @import {ContextMenuEntry} from "../../../../foundry/client-esm/applications/ui/context.mjs" */
+/** @import { ContextMenuEntry } from "../../../../foundry/client-esm/applications/ui/context.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system

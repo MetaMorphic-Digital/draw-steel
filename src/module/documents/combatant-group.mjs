@@ -1,4 +1,4 @@
-/** @import {CombatantGroupData} from "../../../foundry/common/types.mjs"; */
+/** @import { CombatantGroupData } from "../../../foundry/common/types.mjs"; */
 
 export default class DrawSteelCombatantGroup extends CombatantGroup {
   /**
@@ -19,10 +19,10 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
      *                                     closed.
      * @override Adapted from 13.337 function
      */
-  static async createDialog(data = {}, createOptions = {}, {types, template, ...dialogOptions} = {}) {
+  static async createDialog(data = {}, createOptions = {}, { types, template, ...dialogOptions } = {}) {
     const cls = this.implementation;
 
-    const {parent, pack} = createOptions;
+    const { parent, pack } = createOptions;
     if (types?.length === 0) throw new Error("The array of sub-types to restrict to must not be empty");
 
     const documentTypes = [];
@@ -35,7 +35,7 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
       if (types && !types.includes(type)) continue;
       let label = CONFIG[this.documentName]?.typeLabels?.[type];
       label = label && game.i18n.has(label) ? game.i18n.localize(label) : type;
-      documentTypes.push({value: type, label});
+      documentTypes.push({ value: type, label });
       if (type === defaultType) defaultTypeAllowed = true;
     }
     if (!documentTypes.length) throw new Error("No document types were permitted to be created");
@@ -52,7 +52,7 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
 
     // Collect Data
     const label = game.i18n.localize(this.metadata.label);
-    const title = game.i18n.format("DOCUMENT.Create", {type: label});
+    const title = game.i18n.format("DOCUMENT.Create", { type: label });
     const type = data.type || defaultType;
 
     // Render the document creation form
@@ -60,22 +60,22 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
     const html = await renderTemplate(template, {
       hasTypes, type,
       name: data.name || "",
-      defaultName: cls.defaultName({type, parent, pack}),
+      defaultName: cls.defaultName({ type, parent, pack }),
       folder: data.folder,
       hasFolders: false,
-      types: documentTypes
+      types: documentTypes,
     });
 
     // Render the confirmation dialog window
     return foundry.applications.api.DialogV2.prompt(foundry.utils.mergeObject({
       content: html,
-      window: {title},
-      position: {width: 360},
+      window: { title },
+      position: { width: 360 },
       render: (event, dialog) => {
         if (!hasTypes) return;
         dialog.querySelector("[name=\"type\"]").addEventListener("change", e => {
           const nameInput = dialog.querySelector("[name=\"name\"]");
-          nameInput.placeholder = cls.defaultName({type: e.target.value, parent, pack});
+          nameInput.placeholder = cls.defaultName({ type: e.target.value, parent, pack });
         });
       },
       ok: {
@@ -84,10 +84,10 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
           const fd = new FormDataExtended(button.form);
           foundry.utils.mergeObject(data, fd.object);
           if (!data.folder) delete data.folder;
-          if (!data.name?.trim()) data.name = cls.defaultName({type: data.type, parent, pack});
-          return cls.create(data, {renderSheet: true, ...createOptions});
-        }
-      }
+          if (!data.name?.trim()) data.name = cls.defaultName({ type: data.type, parent, pack });
+          return cls.create(data, { renderSheet: true, ...createOptions });
+        },
+      },
     }, dialogOptions));
   }
 

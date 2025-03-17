@@ -25,11 +25,11 @@ export function renderCombatantConfig(app, html, context, options) {
     { options: dispositions, value: combatant.system.disposition, blank: game.i18n.localize("DRAW_STEEL.Combatant.base.FIELDS.disposition.blank"), dataset: { dtype: "Number" } },
   );
 
-  const groups = combatant.parent.groups.map(g => ({value: g.id, label: g.name}));
+  const groups = combatant.parent.groups.map(g => ({ value: g.id, label: g.name }));
 
   const groupInput = combatant.schema.getField("group").toFormGroup(
-    {label: "DOCUMENT.CombatantGroup", localize: true},
-    {options: groups, value: combatant.group?.id, blank: ""}
+    { label: "DOCUMENT.CombatantGroup", localize: true },
+    { options: groups, value: combatant.group?.id, blank: "" },
   );
 
   const formGroups = html.querySelectorAll("form .form-group");

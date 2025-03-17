@@ -8,12 +8,12 @@ const fields = foundry.data.fields;
 export default class SquadModel extends BaseCombatantGroupModel {
   /** @override */
   static metadata = Object.freeze({
-    type: "squad"
+    type: "squad",
   });
 
   /** @override */
   static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.CombatantGroup.squad"
+    "DRAW_STEEL.CombatantGroup.squad",
   ];
 
   static defineSchema() {
@@ -21,8 +21,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
 
     return Object.assign(schema, {
       stamina: new fields.SchemaField({
-        value: new fields.NumberField({initial: 0, nullable: false, integer: true})
-      })
+        value: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
+      }),
     });
   }
 }
