@@ -4,11 +4,17 @@
  * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass
  */
 export default class DrawSteelCombatantGroup extends CombatantGroup {
+
+  static DEFAULT_ICON = "icons/environment/people/charge.webp";
+
   /**
-   * Is this group currently expanded in the combat tracker?
-   * @type {boolean}
+   * Determine default artwork based on the provided combatant group data.
+   * @param {CombatantGroupData} createData The source combatant group data.
+   * @returns {{img: string}}               Candidate combatant group image.
    */
-  _expanded = false;
+  static getDefaultArtwork(createData) {
+    return { img: this.DEFAULT_ICON };
+  }
 
   /**
      * Present a Dialog form to create a new Document of this type.
@@ -95,11 +101,26 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
   }
 
   /**
+   * Is this group currently expanded in the combat tracker?
+   * @type {boolean}
+   */
+  _expanded = false;
+
+  /**
    * The disposition for this combatant group.
    * Returns the value for Secret if there are no members.
    * @returns {number}
    */
   get disposition() {
     return this.members.first()?.disposition ?? CONST.TOKEN_DISPOSITIONS.SECRET;
+  }
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    // Provide a default image
+    if (!data.img) this.updateSource(this.constructor.getDefaultArtwork(data));
   }
 }

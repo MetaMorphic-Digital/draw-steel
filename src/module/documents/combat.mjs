@@ -84,8 +84,14 @@ export default class DrawSteelCombat extends Combat {
   _sortCombatants(a, b) {
     let dc = 0;
     // Sort by Players then Neutrals then Hostiles
-    if (game.settings.get(systemID, "initiativeMode") === "default") dc = b.disposition - a.disposition;
-    if (dc !== 0) return dc;
+    if (game.settings.get(systemID, "initiativeMode") === "default") {
+      dc = b.disposition - a.disposition;
+      if (!dc && (a.group === b.group) && (a.group?.type === "squad")) {
+        if (!a.actor?.isMinion) return -1;
+        else if (!b.actor?.isMinion) return 1;
+      }
+    }
+    if (dc) return dc;
     return super._sortCombatants(a, b);
   }
 

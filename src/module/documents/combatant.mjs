@@ -33,4 +33,13 @@ export default class DrawSteelCombatant extends Combatant {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);
   }
+
+  /**
+   * Re-implements group prep to remove initiative override
+   * @inheritdoc
+   */
+  _prepareGroup() {
+    super._prepareGroup();
+    this.initiative = this._source.initiative;
+  }
 }

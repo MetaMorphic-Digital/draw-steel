@@ -14,6 +14,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       createGroup: this.#createGroup,
       toggleGroupExpand: this.#toggleGroupExpand,
       activateCombatant: this.#onActivateCombatant,
+      activateGroup: this.#onActivateGroup,
     },
   };
 
@@ -115,6 +116,10 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
         img,
         active,
       };
+
+      if (cg.type === "squad") {
+        turn.stamina = { value: cg.system.staminaValue, max: cg.system.staminaMax };
+      }
 
       turn.activateTooltip = cg.initiative ? "Act" : "Restore";
 
@@ -274,17 +279,34 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   _getGroupContextOptions() {
     const getCombatantGroup = li => this.viewed.groups.get(li.dataset.groupId);
-    return [{
-      name: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
-      icon: "<i class=\"fa-solid fa-edit\"></i>",
-      callback: li => getCombatantGroup(li)?.sheet.render({
-        force: true,
-        position: {
-          top: Math.min(li.offsetTop, window.innerHeight - 350),
-          left: window.innerWidth - 720,
+    return [
+      {
+        name: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        icon: "<i class=\"fa-solid fa-edit\"></i>",
+        callback: li => getCombatantGroup(li)?.sheet.render({
+          force: true,
+          position: {
+            top: Math.min(li.offsetTop, window.innerHeight - 350),
+            left: window.innerWidth - 720,
+          },
+        }),
+      },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ResetSquadHP",
+        icon: "<i class=\"fa-solid fa-rotate\"></i>",
+        condition: li => getCombatantGroup(li).type === "squad",
+        callback: li => {
+          /** @type {DrawSteelCombatantGroup} */
+          const group = getCombatantGroup(li);
+          group.update({ "system.staminaValue": group.system.staminaMax });
         },
-      }),
-    }];
+      },
+      {
+        name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        icon: "<i class=\"fa-solid fa-trash\"></i>",
+        callback: li => getCombatantGroup(li).delete(),
+      },
+    ];
   }
 
   /* -------------------------------------------------- */
@@ -334,11 +356,14 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   static async #onActivateCombatant(event, target) {
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    const combat = this.viewed;
+
+    if (!combat) return;
+
     /** @type {DrawSteelCombatant} */
-    const combatant = this.viewed?.combatants.get(combatantId);
+    const combatant = combat.combatants.get(combatantId);
     if (!combatant) return;
 
-    const combat = this.viewed;
     const oldValue = combatant.initiative;
     const newValue = oldValue ? oldValue - 1 : (combatant.actor?.system.combat?.turns ?? 1);
 
@@ -348,5 +373,27 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       const newTurn = combat.turns.findIndex((c) => c === combatant);
       combat.update({ turn: newTurn }, { direction: 1 });
     }
+  }
+
+  /**
+   * Cycle through the combatant group's activation status
+   * @this DrawSteelCombatTracker
+   * @param {PointerEvent} event The triggering event.
+   * @param {HTMLElement} target The action target element.
+   */
+  static async #onActivateGroup(event, target) {
+    const { groupId } = target.closest("[data-group-id]")?.dataset ?? {};
+
+    /** @type {DrawSteelCombatantGroup} */
+    const group = this.viewed?.groups.get(groupId);
+    if (!group) return;
+
+    const oldValue = group.initiative;
+    const newValue = oldValue ? oldValue - 1 : 1;
+
+    if (oldValue) group._expanded = true;
+
+    await group.update({ initiative: newValue });
+
   }
 }

@@ -13,12 +13,6 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
 
   /** @inheritdoc */
   static defineSchema() {
-    return {
-      initiative: new fields.NumberField({ required: true, label: "COMBAT.CombatantInitiative" }),
-    };
-  }
-
-  activate() {
-    console.log("Activating ", this.parent.name);
+    return { };
   }
 }

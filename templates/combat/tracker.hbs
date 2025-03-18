@@ -6,6 +6,14 @@
       <img class="token-image" src="{{ img }}" alt="{{ name }}" loading="lazy">
       <div class="token-name">
         <strong class="name">{{ name }}</strong>
+        {{#if stamina}}
+        <div class="squad-stamina">{{stamina.value}} / {{stamina.max}}</div>
+        {{/if}}
+      </div>
+      <div class="token-initiative">
+        <a class="activate-combatant" data-action="activateGroup" data-tooltip="DRAW_STEEL.Combat.Initiative.Actions.{{activateTooltip}}">
+          {{initiativeCount}} <i class="fa-solid {{initiativeSymbol}}"></i>
+        </a>
       </div>
     </header>
     <ol class="group-turns">
