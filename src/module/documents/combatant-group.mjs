@@ -1,5 +1,8 @@
 /** @import { CombatantGroupData } from "../../../foundry/common/types.mjs"; */
 
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass
+ */
 export default class DrawSteelCombatantGroup extends CombatantGroup {
   /**
    * Is this group currently expanded in the combat tracker?

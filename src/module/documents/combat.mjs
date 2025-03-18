@@ -5,7 +5,7 @@ import { DSRoll } from "../rolls/base.mjs";
 /** @import { DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs" */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Combat.documentClass
  */
 export default class DrawSteelCombat extends Combat {
   /** @inheritdoc */

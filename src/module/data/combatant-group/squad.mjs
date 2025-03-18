@@ -1,5 +1,7 @@
 import BaseCombatantGroupModel from "./base.mjs";
 
+/** @import DrawSteelActor from "../../documents/actor.mjs"; */
+
 const fields = foundry.data.fields;
 
 /**
@@ -11,18 +13,37 @@ export default class SquadModel extends BaseCombatantGroupModel {
     type: "squad",
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.CombatantGroup.squad",
   ];
 
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
 
     return Object.assign(schema, {
-      stamina: new fields.SchemaField({
-        value: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
-      }),
+      staminaValue: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
+  }
+
+  /**
+   * Finds the captain
+   * @type {DrawSteelActor | null}
+   */
+  get captain() {
+    return this.parent.members.find(c => !c.actor?.isMinion)?.actor ?? null;
+  }
+
+  /**
+   * The max stamina for the minions in this squad.
+   * Implemented as a getter for data prep order reasons.
+   * @type {number}
+   */
+  get staminaMax() {
+    return this.parent.members.reduce((maxStam, c) => {
+      if (c.actor?.isMinion) maxStam += foundry.utils.getProperty(c, "actor.system.stamina.max") ?? 0;
+      return maxStam;
+    }, 0);
   }
 }

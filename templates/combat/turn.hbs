@@ -1,5 +1,5 @@
 {{! <!--  eslint-disable @html-eslint/require-li-container --> }}
-<li class="combatant {{ css }}" data-combatant-id="{{ id }}" data-action="activateCombatant">
+<li class="combatant {{ css }}" data-combatant-id="{{ id }}">
   {{!-- Foundry TODO: Targets --}}
 
   {{!-- Image --}}
@@ -7,7 +7,10 @@
 
   {{!-- Name & Controls --}}
   <div class="token-name">
-    <strong class="name">{{ name }}</strong>
+    <strong class="name">
+      {{#if captain}}<i class="fa-solid fa-helmet-battle"></i>{{/if}}
+      {{ name }}
+    </strong>
     <div class="combatant-controls">
       {{#if @root.user.isGM}}
       <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}" data-action="toggleHidden" data-tooltip="COMBAT.ToggleVis" aria-label="{{ localize " COMBAT.ToggleVis" }}">

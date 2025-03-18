@@ -1,3 +1,5 @@
+const fields = foundry.data.fields;
+
 /**
  * Baseline model for Combatant Group subtype-specific behavior
  */
@@ -9,7 +11,14 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
     type: "base",
   });
 
+  /** @inheritdoc */
   static defineSchema() {
-    return {};
+    return {
+      initiative: new fields.NumberField({ required: true, label: "COMBAT.CombatantInitiative" }),
+    };
+  }
+
+  activate() {
+    console.log("Activating ", this.parent.name);
   }
 }

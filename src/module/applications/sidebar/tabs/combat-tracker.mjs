@@ -1,5 +1,5 @@
 import { systemID, systemPath } from "../../../constants.mjs";
-import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
+import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
 /** @import { ContextMenuEntry } from "../../../../foundry/client-esm/applications/ui/context.mjs" */
 
@@ -167,6 +167,8 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     turn.group = combatant.group;
 
+    if ((turn.group?.type === "squad") && !combatant.actor?.isMinion) turn.captain = true;
+
     return turn;
   }
 
@@ -231,12 +233,14 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     if (groupLI) {
       /** @type {DrawSteelCombatantGroup} */
       const group = this.viewed.groups.get(groupLI.dataset.groupId);
-      if ((!!combatant.actor?.isMinion === (group.type === "squad"))) {
-        combatant.update({ group });
+      if (group.system.captain && !combatant.actor?.isMinion) {
+        ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.SquadOneCaptain", { localize: true });
+      }
+      else if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
+        ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.MinionMustSquad", { localize: true });
       }
       else {
-        const message = "DRAW_STEEL.CombatantGroup.Error." + (group.type === "squad" ? "SquadOnlyMinion" : "MinionMustSquad");
-        ui.notifications.error(message, { localize: true });
+        combatant.update({ group });
       }
     }
     else {
@@ -330,6 +334,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   static async #onActivateCombatant(event, target) {
     const { combatantId } = target.closest("[data-combatant-id]")?.dataset ?? {};
+    /** @type {DrawSteelCombatant} */
     const combatant = this.viewed?.combatants.get(combatantId);
     if (!combatant) return;
 

@@ -1,13 +1,14 @@
-import { DrawSteelCombatantGroup } from "../../documents/combatant-group.mjs";
+import DrawSteelCombatantGroup from "../../documents/combatant-group.mjs";
 
 declare module "./base.mjs" {
-  export default interface BaseCombatantModel {
+  export default interface BaseCombatantGroupModel {
     parent: DrawSteelCombatantGroup;
+    initiative: number;
   }
 }
 
 declare module "./squad.mjs" {
   export default interface SquadModel {
-
+    staminaValue: number;
   }
 }
