@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 
-/** @import { ApplicationConfiguration } from "../../../foundry/client-esm/applications/_types.mjs" */
+/** @import { ApplicationConfiguration } from "../../../../foundry/client/applications/_types.mjs" */
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 

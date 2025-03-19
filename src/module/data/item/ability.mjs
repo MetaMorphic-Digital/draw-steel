@@ -5,7 +5,7 @@ import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { FormInputConfig } from "../../../../foundry/common/data/_types.mjs" */
 /** @import { PowerRollModifiers } from "../../_types.js" */
 
 const fields = foundry.data.fields;
@@ -386,7 +386,8 @@ export default class AbilityModel extends BaseItemModel {
 
       /**
        * Range picker config is ignored by the checkbox element
-       * @type {FormInputConfig} */
+       * @type {FormInputConfig}
+       */
       const spendInputConfig = {
         name: "spend",
         min: 0,

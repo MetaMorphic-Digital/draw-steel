@@ -1,7 +1,7 @@
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
  */
-export default class DrawSteelItem extends Item {
+export default class DrawSteelItem extends foundry.documents.Item {
 
   /** @inheritdoc */
   getRollData() {

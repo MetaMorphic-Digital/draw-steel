@@ -6,7 +6,7 @@ import { DSRoll } from "../rolls/base.mjs";
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
  */
-export default class DrawSteelCombat extends Combat {
+export default class DrawSteelCombat extends foundry.documents.Combat {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

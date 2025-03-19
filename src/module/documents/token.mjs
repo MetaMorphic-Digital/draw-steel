@@ -1,7 +1,7 @@
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass
  */
-export default class DrawSteelTokenDocument extends TokenDocument {
+export default class DrawSteelTokenDocument extends foundry.documents.TokenDocument {
   /**
    * Is the token's movement currently shifting?
    * @type {boolean}

@@ -28,7 +28,6 @@ if (fs.existsSync("foundry-config.yaml")) {
 
   // Javascript files
   for (const p of ["client", "common"]) {
-    console.log(path.join(fileRoot, p), path.join("foundry", p));
     try {
       await fs.promises.symlink(path.join(fileRoot, p), path.join("foundry", p));
     } catch (e) {
