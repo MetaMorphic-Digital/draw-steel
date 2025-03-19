@@ -11,7 +11,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   static DEFAULT_OPTIONS = {
     actions: {
       rollFirst: this.#rollFirst,
-      createGroup: this.#createGroup,
       toggleGroupExpand: this.#toggleGroupExpand,
       activateCombatant: this.#onActivateCombatant,
       activateGroup: this.#onActivateGroup,
@@ -32,9 +31,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     footer: {
       template: "templates/sidebar/tabs/combat/footer.hbs",
     },
-    dsHeader: {
-      template: systemPath("templates/combat/header.hbs"),
-    },
     dsTracker: {
       template: systemPath("templates/combat/tracker.hbs"),
       templates: [systemPath("templates/combat/turn.hbs")],
@@ -54,11 +50,9 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const parts = super._configureRenderParts(options);
 
     if (game.settings.get(systemID, "initiativeMode") === "default") {
-      delete parts.header;
       delete parts.tracker;
       delete parts.footer;
     } else {
-      delete parts.dsHeader;
       delete parts.dsTracker;
       delete parts.dsFooter;
     }
@@ -70,7 +64,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
-      case "dsHeader":
       case "dsFooter":
         await this._prepareCombatContext(context, options);
         break;
@@ -182,7 +175,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     await super._onRender(context, options);
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    new DragDrop({
+    new foundry.applications.ux.DragDrop({
       dragSelector: ".combatant",
       dropSelector: ".combatant-group, .combat-tracker",
       permissions: {
@@ -283,11 +276,19 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const entryOptions = super._getCombatContextOptions();
 
     if (game.settings.get(systemID, "initiativeMode") === "default") {
+      entryOptions.findSplice(o => o.name === "COMBAT.RollAll");
+      entryOptions.findSplice(o => o.name === "COMBAT.RollNPC");
+
       entryOptions.unshift({
-        name: "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Tooltip",
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
+        icon: "<i class=\"fa-solid fa-users-rectangle\"></i>",
+        callback: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
+      }, {
+        name: "COMBAT.InitiativeRoll",
         icon: "<i class=\"fa-solid fa-dice-d10\"></i>",
         callback: () => this.viewed.rollFirst(),
-      }, {});
+      });
+
     }
 
     return entryOptions;
@@ -295,9 +296,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
   /**
    * Get the context menu entries for Combatant Groups in the tracker.
+   * Only available to game masters.
    * @returns {ContextMenuEntry[]}
    */
   _getGroupContextOptions() {
+    /** @type {(li: HTMLElement) => DrawSteelCombatantGroup} */
     const getCombatantGroup = li => this.viewed.groups.get(li.dataset.groupId);
     return [
       {
@@ -316,10 +319,14 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
         icon: "<i class=\"fa-solid fa-rotate\"></i>",
         condition: li => getCombatantGroup(li).type === "squad",
         callback: li => {
-          /** @type {DrawSteelCombatantGroup} */
           const group = getCombatantGroup(li);
           group.update({ "system.staminaValue": group.system.staminaMax });
         },
+      },
+      {
+        name: "COMBAT.ClearMovementHistories",
+        icon: "<i class=\"fa-solid fa-shoe-prints\"></i>",
+        callback: li => getCombatantGroup(li).clearMovementHistories(),
       },
       {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
@@ -341,16 +348,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   static async #rollFirst(event, target) {
     this.viewed.rollFirst();
-  }
-
-  /**
-   * Create a Combatant Group
-   * @this DrawSteelCombatTracker
-   * @param {PointerEvent} event The triggering event.
-   * @param {HTMLElement} target The action target element.
-   */
-  static async #createGroup(event, target) {
-    DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed });
   }
 
   /**
@@ -406,6 +403,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     /** @type {DrawSteelCombatantGroup} */
     const group = this.viewed?.groups.get(groupId);
+
     if (!group) return;
 
     const oldValue = group.initiative;

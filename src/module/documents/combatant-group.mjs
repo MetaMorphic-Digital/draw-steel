@@ -3,7 +3,7 @@
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass
  */
-export default class DrawSteelCombatantGroup extends CombatantGroup {
+export default class DrawSteelCombatantGroup extends foundry.documents.CombatantGroup {
 
   static DEFAULT_ICON = "icons/environment/people/charge.webp";
 
@@ -17,17 +17,17 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
   }
 
   /**
-     * Present a Dialog form to create a new Document of this type.
-     * Choose a name and a type from a select menu of types.
-     * @param {CombatantGroupData} data                Document creation data
-     * @param {DatabaseCreateOperation} [createOptions]  Document creation options.
-     * @param {object} [context={}]        Options forwarded to DialogV2.prompt
-     * @param {string[]} [context.types]   A restriction of the selectable sub-types of the Dialog.
-     * @param {string} [context.template]  A template to use for the dialog contents instead of the default.
-     * @returns {Promise<Document|null>}   A Promise which resolves to the created Document, or null if the dialog was
-     *                                     closed.
-     * @override Adapted from 13.337 function
-     */
+   * Present a Dialog form to create a new Document of this type.
+   * Choose a name and a type from a select menu of types.
+   * @param {CombatantGroupData} data                Document creation data
+   * @param {DatabaseCreateOperation} [createOptions]  Document creation options.
+   * @param {object} [context={}]        Options forwarded to DialogV2.prompt
+   * @param {string[]} [context.types]   A restriction of the selectable sub-types of the Dialog.
+   * @param {string} [context.template]  A template to use for the dialog contents instead of the default.
+   * @returns {Promise<Document|null>}   A Promise which resolves to the created Document, or null if the dialog was
+   *                                     closed.
+   * @override Adapted from ClientDocumentMixin
+   */
   static async createDialog(data = {}, createOptions = {}, { types, template, ...dialogOptions } = {}) {
     const cls = this.implementation;
 
@@ -90,7 +90,7 @@ export default class DrawSteelCombatantGroup extends CombatantGroup {
       ok: {
         label: title,
         callback: (event, button) => {
-          const fd = new FormDataExtended(button.form);
+          const fd = new foundry.applications.ux.FormDataExtended(button.form);
           foundry.utils.mergeObject(data, fd.object);
           if (!data.folder) delete data.folder;
           if (!data.name?.trim()) data.name = cls.defaultName({ type: data.type, parent, pack });

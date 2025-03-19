@@ -17,7 +17,7 @@ export default class CombatantGroupConfig extends HandlebarsApplicationMixin(Doc
     },
   };
 
-  /** @override */
+  /** @inheritdoc */
   static PARTS = {
     header: {
       template: systemPath("templates/combat/group-config/header.hbs"),
@@ -31,7 +31,7 @@ export default class CombatantGroupConfig extends HandlebarsApplicationMixin(Doc
     },
   };
 
-  /** @override */
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     const systemModel = this.document.system;
@@ -41,7 +41,7 @@ export default class CombatantGroupConfig extends HandlebarsApplicationMixin(Doc
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preparePartContext(partId, context, option) {
     context = await super._preparePartContext(partId, context, option);
     switch (partId) {

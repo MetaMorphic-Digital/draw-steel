@@ -95,6 +95,64 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     return super._sortCombatants(a, b);
   }
 
+  /**
+     * Actions taken after descendant documents have been created and changes have been applied to client data.
+     * @param {DrawSteelCombat} parent         The direct parent of the created Documents, may be this Document or a child
+     * @param {string} collection       The collection within which documents were created
+     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of created Documents
+     * @param {object[]} data           The source data for new documents that were created
+     * @param {object} options          Options which modified the creation operation
+     * @param {string} userId           The ID of the User who triggered the operation
+     * @protected
+     * @override
+     */
+  _onCreateDescendantDocuments(parent, collection, documents, data, options, userId) {
+    super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
+    if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
+  }
+
+  /**
+     * Actions taken after descendant documents have been updated and changes have been applied to client data.
+     * @param {DrawSteelCombat} parent         The direct parent of the updated Documents, may be this Document or a child
+     * @param {string} collection       The collection within which documents were updated
+     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of updated Documents
+     * @param {object[]} changes        The array of differential Document updates which were applied
+     * @param {object} options          Options which modified the update operation
+     * @param {string} userId           The ID of the User who triggered the operation
+     * @protected
+     * @override
+     */
+  _onUpdateDescendantDocuments(parent, collection, documents, data, options, userId) {
+    super._onUpdateDescendantDocuments(parent, collection, documents, data, options, userId);
+    if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
+  }
+
+  /**
+     * Actions taken after descendant documents have been deleted and those deletions have been applied to client data.
+     * @param {Document} parent         The direct parent of the deleted Documents, may be this Document or a child
+     * @param {string} collection       The collection within which documents were deleted
+     * @param {Document[]} documents    The array of Documents which were deleted
+     * @param {string[]} ids            The array of document IDs which were deleted
+     * @param {object} options          Options which modified the deletion operation
+     * @param {string} userId           The ID of the User who triggered the operation
+     * @protected
+     * @override
+     */
+  _onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId) {
+    super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
+    if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
+  }
+
+  /**
+   * Shared actions taken when CombatantGroups are modified within this Combat document.
+   * @param {DrawSteelCombat} parent              The direct parent of the created Documents, may be this Document or a child
+   * @param {DrawSteelCombatantGroup[]} documents The array of created Documents
+   * @param {object} options                      Options which modified the operation
+   */
+  #onModifyCombatantGroups(parent, documents, options) {
+    if ((ui.combat.viewed === parent) && (options.render !== false)) ui.combat.render();
+  }
+
   /** @inheritdoc */
   async _onStartRound() {
     /** @type {MaliceModel} */

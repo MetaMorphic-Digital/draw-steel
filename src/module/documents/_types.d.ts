@@ -1,3 +1,4 @@
+import Document from "../../../foundry/common/abstract/document.mjs";
 import {
   ActiveEffectData,
   ActorData,
@@ -26,14 +27,14 @@ type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemMod
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 
 declare module "../../../foundry/client/documents/_module.mjs" {
-  interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
+  interface Actor < Model extends ActorModel = ActorModel > extends ActorData, Document {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
     items: Collection < string, DrawSteelItem > ;
     effects: Collection < string, DrawSteelActiveEffect > ;
   }
 
-  interface Item < Model extends ItemModel = ItemModel > extends ItemData {
+  interface Item < Model extends ItemModel = ItemModel > extends ItemData, Document {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
     effects: Collection < string,
@@ -44,20 +45,20 @@ declare module "../../../foundry/client/documents/_module.mjs" {
     type: "base";
     system: ActiveEffectModels.BaseEffectModel;
   }
-  interface ChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData {
+  interface ChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData, Document {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
   }
 
-  interface Combat extends CombatData {
+  interface Combat extends CombatData, Document {
     type: "base";
     system: CombatModels.BaseCombatModel;
     combatants: Collection<string, DrawSteelCombatant>;
     groups: Collection<string, DrawSteelCombatantGroup>
   }
 
-  interface CombatantGroup extends CombatantGroupData {
-    type: "base" | "";
+  interface CombatantGroup extends CombatantGroupData, Document {
+    type: "base" | "squad";
     system: CombatantGroupModels.BaseCombatantGroupModel | CombatantGroupModels.SquadModel;
   }
 
@@ -66,7 +67,7 @@ declare module "../../../foundry/client/documents/_module.mjs" {
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface JournalEntryPage extends JournalEntryPageData {
+  interface JournalEntryPage extends JournalEntryPageData, Document {
     type: "text" | "image" | "pdf" | "video";
     system: Record < string, unknown > ;
   }
