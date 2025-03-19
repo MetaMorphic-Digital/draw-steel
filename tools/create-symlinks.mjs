@@ -11,7 +11,11 @@ if (fs.existsSync("foundry-config.yaml")) {
 
     const foundryConfig = yaml.load(fc);
 
-    fileRoot = path.join(foundryConfig.installPath, "resources", "app");
+    // As of 13.338, the Node install is *not* nested but electron installs *are*
+    const nested = fs.existsSync(path.join(foundryConfig.installPath, "resources", "app"));
+
+    if (nested) fileRoot = path.join(foundryConfig.installPath, "resources", "app");
+    else fileRoot = foundryConfig.installPath;
   } catch (err) {
     console.error(`Error reading foundry-config.yaml: ${err}`);
   }
@@ -23,7 +27,8 @@ if (fs.existsSync("foundry-config.yaml")) {
   }
 
   // Javascript files
-  for (const p of ["client", "client-esm", "common"]) {
+  for (const p of ["client", "common"]) {
+    console.log(path.join(fileRoot, p), path.join("foundry", p));
     try {
       await fs.promises.symlink(path.join(fileRoot, p), path.join("foundry", p));
     } catch (e) {
