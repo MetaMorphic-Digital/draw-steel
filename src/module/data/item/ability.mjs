@@ -278,7 +278,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     this.getSheetContext(context);
-    const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
   }
@@ -417,16 +417,11 @@ export default class AbilityModel extends BaseItemModel {
 
       content += spendGroup.outerHTML;
 
-      configuration = await foundry.applications.api.DialogV2.prompt({
+      configuration = await foundry.applications.api.DialogV2.input({
         content,
         window: {
           title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear",
-        },
-        ok: {
-          callback: (event, button, dialog) => {
-            return new FormDataExtended(button.form).object;
-          },
         },
         rejectClose: false,
       });
