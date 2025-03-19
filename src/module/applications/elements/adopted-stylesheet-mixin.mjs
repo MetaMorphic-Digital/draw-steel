@@ -22,7 +22,7 @@ export default function AdoptedStyleSheetMixin(Base) {
 
     /* -------------------------------------------- */
 
-    /** @inheritDoc */
+    /** @inheritdoc */
     adoptedCallback() {
       const sheet = this._getStyleSheet();
       if (sheet) this._adoptStyleSheet(this._getStyleSheet());

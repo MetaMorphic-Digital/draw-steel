@@ -6,7 +6,7 @@ import CheckboxElement from "./checkbox.mjs";
  * @fires change
  */
 export default class SlideToggleElement extends CheckboxElement {
-  /** @inheritDoc */
+  /** @inheritdoc */
   constructor() {
     super();
     this._internals.role = "switch";
@@ -28,7 +28,7 @@ export default class SlideToggleElement extends CheckboxElement {
 
   /**
    * Activate the element when it is attached to the DOM.
-   * @inheritDoc
+   * @inheritdoc
    */
   connectedCallback() {
     this.replaceChildren(...this._buildElements());

@@ -8,7 +8,7 @@
  */
 export default class FormulaField extends foundry.data.fields.StringField {
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   static get _defaults() {
     return foundry.utils.mergeObject(super._defaults, {
       required: true,
@@ -18,7 +18,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
 
   /* -------------------------------------------------- */
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _validateType(value) {
     if (this.deterministic) {
       const roll = new foundry.dice.Roll(value);

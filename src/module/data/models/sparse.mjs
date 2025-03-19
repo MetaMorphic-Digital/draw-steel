@@ -4,7 +4,7 @@
  * Copied from dnd5e.
  */
 export default class SparseDataModel extends foundry.abstract.DataModel {
-  /** @inheritDoc */
+  /** @inheritdoc */
   toObject(source = true) {
     if (!source) return super.toObject(source);
     const clone = foundry.utils.flattenObject(this._source);

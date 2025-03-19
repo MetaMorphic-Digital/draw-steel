@@ -42,7 +42,7 @@ export default class Advancement extends BaseAdvancement {
 
   /* -------------------------------------------- */
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _initialize(options) {
     super._initialize(options);
     return this.prepareData();
