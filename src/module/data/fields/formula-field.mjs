@@ -52,7 +52,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /** @inheritdoc */
   _applyChangeMultiply(value, delta, model, change) {
     if (!value) return delta;
-    const terms = new Roll(value).terms;
+    const terms = new foundry.dice.Roll(value).terms;
     if (terms.length > 1) return `(${value}) * ${delta}`;
     return `${value} * ${delta}`;
   }
@@ -62,7 +62,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /** @inheritdoc */
   _applyChangeUpgrade(value, delta, model, change) {
     if (!value) return delta;
-    const terms = new Roll(value).terms;
+    const terms = new foundry.dice.Roll(value).terms;
     if ((terms.length === 1) && (terms[0].fn === "max")) return current.replace(/\)$/, `, ${delta})`);
     return `max(${value}, ${delta})`;
   }
@@ -72,7 +72,7 @@ export default class FormulaField extends foundry.data.fields.StringField {
   /** @inheritdoc */
   _applyChangeDowngrade(value, delta, model, change) {
     if (!value) return delta;
-    const terms = new Roll(value).terms;
+    const terms = new foundry.dice.Roll(value).terms;
     if ((terms.length === 1) && (terms[0].fn === "min")) return current.replace(/\)$/, `, ${delta})`);
     return `min(${value}, ${delta})`;
   }

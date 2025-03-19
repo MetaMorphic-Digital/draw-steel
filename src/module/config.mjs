@@ -1,6 +1,6 @@
 import { preLocalize } from "./helpers/utils.mjs";
 
-/** @import { FormSelectOption } from "../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { FormSelectOption } from "../../foundry/client/applications/forms/fields.mjs" */
 
 export const DRAW_STEEL = {};
 

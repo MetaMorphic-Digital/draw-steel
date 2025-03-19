@@ -1,7 +1,7 @@
 import { systemPath } from "../../constants.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
 
-/** @import { ApplicationConfiguration } from "../../../../foundry/client-esm/applications/_types.mjs" */
+/** @import { ApplicationConfiguration } from "../../../../foundry/client/applications/_types.mjs" */
 /** @import { PowerRollDialogPrompt } from "./_types" */
 
 const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
@@ -120,7 +120,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
    */
   _onChangeForm(formConfig, event) {
     super._onChangeForm(formConfig, event);
-    const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
+    const formData = foundry.utils.expandObject(new foundry.applications.ux.FormDataExtended(this.element).object);
 
     this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, { overwrite: true, recursive: true });
     if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, { overwrite: true, recursive: true });
@@ -143,7 +143,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
    * @inheritdoc
    */
   async _onSubmitForm(formConfig, event) {
-    const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
+    const formData = foundry.utils.expandObject(new foundry.applications.ux.FormDataExtended(this.element).object);
 
     const targets = this.options.context.targets;
     if (!targets || (targets.length === 0)) this.promptValue = { rolls: [this.options.context.modifiers] };

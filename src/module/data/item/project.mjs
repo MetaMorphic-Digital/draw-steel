@@ -101,7 +101,7 @@ export default class ProjectModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("project");
     embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const projectBody = await renderTemplate(systemPath("templates/item/embeds/project.hbs"), context);
+    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/project.hbs"), context);
     embed.insertAdjacentHTML("beforeend", projectBody);
     return embed;
   }

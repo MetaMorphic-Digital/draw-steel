@@ -26,7 +26,7 @@ import {
 type ActorModel = typeof ActorModels[Exclude < keyof typeof ActorModels, "BaseActorModel" > ];
 type ItemModel = typeof ItemModels[Exclude < keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel" > ];
 
-declare global {
+declare module "../../../foundry/client/documents/_module.mjs" {
   interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;

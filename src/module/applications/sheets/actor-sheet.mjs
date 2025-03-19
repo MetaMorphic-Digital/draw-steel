@@ -2,7 +2,7 @@ import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 
-/** @import { FormSelectOption } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
 
 const { api, sheets } = foundry.applications;
@@ -412,7 +412,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-    foundry.applications.ui.ContextMenu.create(this, this.element, "[data-document-class]", { hookName: "ItemButtonContext", jQuery: false, fixed: true });
+
+    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]", { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true });
   }
 
   /**
