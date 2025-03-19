@@ -8,7 +8,7 @@
  */
 export async function createDocMacro(data, slot) {
   // First, determine if this is a valid owned item.
-  if (!data.uuid.includes("Actor.") && !data.uuid.includes("Token.")) {
+  if (!data.uuid.includes("Actor.")) {
     return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Create.NotOwnedItem", { localize: true });
   }
   // If it is, retrieve it based on the uuid.
@@ -49,15 +49,7 @@ export async function rollItemMacro(itemUuid) {
   const item = await fromUuid(itemUuid);
   if (!item) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoItem", { localize: true });
   if (!item.parent) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NotOwnedItem", { format: { item: item.name } });
+  if (!(item.system.roll instanceof Function)) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoRoll", { format: { item: item.name } });
 
-  switch (item.type) {
-    case "ability":
-      item.system.use();
-      break;
-    case "project":
-      item.system.roll();
-      break;
-    default:
-      return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoRoll", { format: { item: item.name } });
-  }
+  item.system.roll();
 }

@@ -538,6 +538,14 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /**
+   * An alias of use.
+   * @see {AbilityModel#use}
+   */
+  async roll(options = {}) {
+    this.use(options);
+  }
+
+  /**
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
    * @param {Partial<AbilityUseOptions>} options Options for the dialog
    */
