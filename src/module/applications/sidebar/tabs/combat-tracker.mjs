@@ -83,18 +83,18 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const combat = this.viewed;
 
     /** @type {Array<Array>} */
-    const [noGroup, grouped] = context.turns.partition(c => !!c.group);
+    const [noGroup, grouped] = (context.turns ?? []).partition(c => !!c?.group);
 
     /** @type {Record<string, Array>} */
     const groups = Object.groupBy(grouped, c => c.group.id);
 
-    /** @type {DrawSteelCombatant} */
+    /** @type {DrawSteelCombatant | undefined} */
     const currentTurn = combat.turns[combat.turn];
 
     context.groupTurns = combat.groups.reduce((acc, cg) => {
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
-      const active = turns.some(t => t.id === currentTurn.id);
+      const active = turns.some(t => t.id === currentTurn?.id);
 
       const turn = {
         isGroup: true,
