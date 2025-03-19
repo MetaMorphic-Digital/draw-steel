@@ -5,9 +5,9 @@ import { systemPath } from "../../constants.mjs";
 const { HandlebarsApplicationMixin, DocumentSheetV2 } = foundry.applications.api;
 
 /**
- * Application documentation here.
+ * Basic sheet for Combatant Groups
  */
-export default class CombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheetV2) {
+export default class DrawSteelCombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheetV2) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {

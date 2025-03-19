@@ -35,7 +35,7 @@ Hooks.once("init", function () {
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
     // Temp patch for 13.337
-    if (!CONST.ALL_DOCUMENT_TYPES.includes(doc) && (doc !== "CombatantGroup")) continue;
+    if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
     for (const modelCls of Object.values(models)) {
       if (modelCls.metadata?.type) CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
@@ -81,9 +81,9 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
   });
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.CombatantGroupConfig, {
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup"
+    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",
   });
 
   // Register replacements for core UI elements
