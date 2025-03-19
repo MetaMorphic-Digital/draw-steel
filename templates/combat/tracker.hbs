@@ -7,7 +7,10 @@
       <div class="token-name">
         <strong class="name">{{ name }}</strong>
         {{#if stamina}}
-        <div class="squad-stamina">{{stamina.value}} / {{stamina.max}}</div>
+        <div class="squad-stamina">
+          {{stamina.value}} / {{stamina.max}}
+          {{#if stamina.threshold}}({{stamina.threshold}}){{/if}}
+        </div>
         {{/if}}
       </div>
       <div class="token-initiative">

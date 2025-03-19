@@ -13,8 +13,7 @@
     </strong>
     <div class="combatant-controls">
       {{#if @root.user.isGM}}
-      <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}" data-action="toggleHidden" data-tooltip="COMBAT.ToggleVis" aria-label="{{ localize " COMBAT.ToggleVis" }}">
-      </button>
+      <button type="button" class="inline-control combatant-control icon fa-solid fa-eye-slash {{#if hidden}}active{{/if}}" data-action="toggleHidden" data-tooltip="COMBAT.ToggleVis" aria-label="{{ localize " COMBAT.ToggleVis" }}"></button>
       <button type="button" class="inline-control combatant-control icon fa-solid fa-skull {{#if isDefeated}}active{{/if}}" data-action="toggleDefeated" data-tooltip="COMBAT.ToggleDead" aria-label="{{ localize " COMBAT.ToggleDead" }}"></button>
       {{/if}}
       {{#if canPing}}

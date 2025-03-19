@@ -112,6 +112,17 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
       if (cg.type === "squad") {
         turn.stamina = { value: cg.system.staminaValue, max: cg.system.staminaMax };
+        for (const t of turns) {
+          /** @type {DrawSteelCombatant} */
+          const actor = this.viewed.combatants.get(t.id)?.actor;
+          if (!actor?.isMinion) continue;
+          const threshold = foundry.utils.getProperty(actor, "system.stamina.max");
+          if (!("threshold" in turn.stamina)) turn.stamina.threshold = threshold;
+          else if (turn.stamina.threshold !== threshold) {
+            turn.stamina.threshold = null;
+            break;
+          }
+        }
       }
 
       turn.activateTooltip = cg.initiative ? "Act" : "Restore";
@@ -211,7 +222,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    */
   _onDragOver(event) {
     // TODO: Highlight the drop target?
-    // console.log(this, event);
+    // console.debug(this, event);
   }
 
   /**
@@ -357,6 +368,10 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
    * @param {HTMLElement} target The action target element.
    */
   static async #toggleGroupExpand(event, target) {
+    // Don't proceed if the click event was actually on one of the combatants
+    const entry = event.target.closest("[data-combatant-id]");
+    if (entry) return;
+
     const combat = this.viewed;
     const group = combat.groups.get(target.dataset.groupId);
 
