@@ -4,7 +4,7 @@ import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
-import {DRAW_STEEL} from "./src/module/config.mjs";
+import { DRAW_STEEL } from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
@@ -15,7 +15,7 @@ globalThis.ds = {
   rolls,
   data,
   CONST: DS_CONST,
-  CONFIG: DRAW_STEEL
+  CONFIG: DRAW_STEEL,
 };
 
 Hooks.once("init", function () {
@@ -46,40 +46,40 @@ Hooks.once("init", function () {
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
 
-  loadTemplates(templates);
+  foundry.applications.handlebars.loadTemplates(templates);
 
   //Remove Status Effects Not Available in DrawSteel
   const toRemove = ["bleeding", "bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
-    CONFIG.statusEffects.push({id, ...value});
+    CONFIG.statusEffects.push({ id, ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
-    CONFIG.statusEffects.push({id, ...value});
+    CONFIG.statusEffects.push({ id, ...value });
   }
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
+  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  foundry.documents.collections.Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Character"
+    label: "DRAW_STEEL.Sheet.Labels.Character",
   });
-  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
+  foundry.documents.collections.Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.NPC"
+    label: "DRAW_STEEL.Sheet.Labels.NPC",
   });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
+  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  foundry.documents.collections.Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Item"
+    label: "DRAW_STEEL.Sheet.Labels.Item",
   });
   foundry.applications.apps.DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect"
+    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
   });
   foundry.applications.apps.DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.CombatantGroupConfig, {
     makeDefault: true,
@@ -88,7 +88,7 @@ Hooks.once("init", function () {
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
-    combat: applications.sidebar.tabs.DrawSteelCombatTracker
+    combat: applications.sidebar.tabs.DrawSteelCombatTracker,
   });
 
   // Register dice rolls
@@ -105,7 +105,7 @@ Hooks.once("i18nInit", () => {
     /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
     const characteristicSchema = model.schema.getField("characteristics");
     if (characteristicSchema) {
-      for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
+      for (const [characteristic, { label, hint }] of Object.entries(ds.CONFIG.characteristics)) {
         const field = characteristicSchema.getField(`${characteristic}.value`);
         if (!field) continue;
         field.label = label;
@@ -118,12 +118,12 @@ Hooks.once("i18nInit", () => {
     if (damageSchema) {
       for (const field of Object.values(damageSchema.fields.immunities.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", {type: game.i18n.localize(field.label)});
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", { type: game.i18n.localize(field.label) });
         }
       }
       for (const field of Object.values(damageSchema.fields.weaknesses.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", {type: game.i18n.localize(field.label)});
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", { type: game.i18n.localize(field.label) });
         }
       }
     }

@@ -98,8 +98,8 @@ export default class SourceModel extends foundry.abstract.DataModel {
       formGroups.push(field.toFormGroup({}, { value: this.parent._dsid }));
     }
 
-    /** @type {FormDataExtended} */
-    const fd = await foundry.applications.api.DialogV2.prompt({
+    /** @type {object} */
+    const fd = await foundry.applications.api.DialogV2.input({
       content: formGroups.map(e => e.outerHTML).join(" "),
       window: {
         title: "DRAW_STEEL.Source.UpdateTitle",
@@ -108,14 +108,11 @@ export default class SourceModel extends foundry.abstract.DataModel {
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
-        callback: (event, button, dialog) => {
-          return new FormDataExtended(button.form);
-        },
       },
       rejectClose: false,
     });
 
     if (!fd) return;
-    return this.document.update(fd.object);
+    return this.document.update(fd);
   }
 }

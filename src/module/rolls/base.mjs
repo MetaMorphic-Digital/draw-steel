@@ -7,7 +7,7 @@ export class DSRoll extends foundry.dice.Roll {
   async render({ flavor, template = this.constructor.CHAT_TEMPLATE, isPrivate = false } = {}) {
     if (!this._evaluated) await this.evaluate({ allowInteractive: !isPrivate });
     const chatData = await this._prepareContext({ flavor, isPrivate });
-    return renderTemplate(template, chatData);
+    return foundry.applications.handlebars.renderTemplate(template, chatData);
   }
 
   /**

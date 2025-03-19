@@ -1,7 +1,7 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
-/** @import { FormSelectOption } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mjs" */
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
@@ -189,8 +189,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
 
-    /** @type {FormDataExtended | null} */
-    const fd = await foundry.applications.api.DialogV2.prompt({
+    /** @type {object | null} */
+    const fd = await foundry.applications.api.DialogV2.input({
       content: htmlContainer.outerHTML,
       classes: ["draw-steel", "monster-metadata"],
       window: {
@@ -200,12 +200,11 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       ok: {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
-        callback: (event, button, dialog) => new FormDataExtended(button.form),
       },
       rejectClose: false,
     });
     if (fd) {
-      await this.actor.update(fd.object);
+      await this.actor.update(fd);
     }
   }
 
@@ -246,19 +245,18 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       return formGroup.outerHTML;
     }).join("");
 
-    /** @type {FormDataExtended} */
-    const fd = await foundry.applications.api.DialogV2.prompt({
+    /** @type {object} */
+    const fd = await foundry.applications.api.DialogV2.input({
       window: { title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
       content,
       rejectClose: false,
       ok: {
         label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
-        callback: (event, button, dialog) => new FormDataExtended(button.form),
       },
     });
 
     if (fd) {
-      for (const [uuid, bool] of Object.entries(fd.object)) {
+      for (const [uuid, bool] of Object.entries(fd)) {
         if (bool) {
           /** @type {DrawSteelActor} */
           const actor = fromUuidSync(uuid);

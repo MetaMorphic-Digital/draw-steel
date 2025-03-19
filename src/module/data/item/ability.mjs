@@ -5,7 +5,7 @@ import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
+/** @import { FormInputConfig } from "../../../../foundry/common/data/_types.mjs" */
 /** @import { PowerRollModifiers } from "../../_types.js" */
 
 const fields = foundry.data.fields;
@@ -278,7 +278,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     this.getSheetContext(context);
-    const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
   }
@@ -386,7 +386,8 @@ export default class AbilityModel extends BaseItemModel {
 
       /**
        * Range picker config is ignored by the checkbox element
-       * @type {FormInputConfig} */
+       * @type {FormInputConfig}
+       */
       const spendInputConfig = {
         name: "spend",
         min: 0,
@@ -416,16 +417,11 @@ export default class AbilityModel extends BaseItemModel {
 
       content += spendGroup.outerHTML;
 
-      configuration = await foundry.applications.api.DialogV2.prompt({
+      configuration = await foundry.applications.api.DialogV2.input({
         content,
         window: {
           title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear",
-        },
-        ok: {
-          callback: (event, button, dialog) => {
-            return new FormDataExtended(button.form).object;
-          },
         },
         rejectClose: false,
       });
@@ -437,10 +433,12 @@ export default class AbilityModel extends BaseItemModel {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       type: "abilityUse",
       rolls: [],
+      title: this.parent.name,
       content: this.parent.name,
       system: {
         uuid: this.parent.uuid,
       },
+      flags: { core: { canPopout: true } },
     };
 
     if (configuration) {

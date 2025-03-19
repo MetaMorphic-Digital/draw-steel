@@ -264,8 +264,10 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
+      title: flavor,
       rolls: powerRolls,
       sound: CONFIG.sounds.dice,
+      flags: { core: { canPopout: true } },
     };
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
     return DrawSteelChatMessage.create(messageData);

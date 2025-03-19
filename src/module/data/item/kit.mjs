@@ -109,7 +109,7 @@ export default class KitModel extends BaseItemModel {
     );
     this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
-    const kitBody = await renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
+    const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
   }
@@ -137,8 +137,8 @@ export default class KitModel extends BaseItemModel {
       `;
     }
 
-    /** @type {FormDataExtended | null} */
-    const fd = await foundry.applications.api.DialogV2.prompt({
+    /** @type {object | null} */
+    const fd = await foundry.applications.api.DialogV2.input({
       content: radioButtons,
       window: {
         icon: "fa-solid fa-arrow-right-arrow-left",
@@ -150,13 +150,10 @@ export default class KitModel extends BaseItemModel {
       ok: {
         label: "DRAW_STEEL.Item.Kit.Swap.Button",
         icon: "fa-solid fa-arrow-right-arrow-left",
-        callback: (event, button, dialog) => {
-          return new FormDataExtended(button.form);
-        },
       },
       rejectClose: false,
     });
-    if (!fd?.object.kit) return false;
+    if (!fd?.kit) return false;
 
     await actor.deleteEmbeddedDocuments("Item", [fd.object.kit]);
   }

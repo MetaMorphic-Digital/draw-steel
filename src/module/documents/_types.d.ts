@@ -25,7 +25,7 @@ type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActo
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 
-declare global {
+declare module "../../../foundry/client/documents/_module.mjs" {
   interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;

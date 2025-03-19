@@ -1,7 +1,6 @@
 /** @import DrawSteelCombatant from "../../documents/combatant.mjs" */
-/** @import { ApplicationRenderOptions } from "../../../../foundry/client-esm/applications/_types.mjs"*/
-
-/** @typedef {InstanceType<foundry["applications"]["sheets"]["CombatantConfig"]>} CombatantConfig */
+/** @import { ApplicationRenderOptions } from "../../../../foundry/client/applications/_types.mjs" */
+/** @import CombatantConfig from "../../../../foundry/client/applications/sheets/combatant-config.mjs" */
 
 /**
  * A hook event that fires when the CombatantConfig application is rendered

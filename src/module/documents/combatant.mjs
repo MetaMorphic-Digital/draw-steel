@@ -1,7 +1,7 @@
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Combatant.documentClass
  */
-export default class DrawSteelCombatant extends Combatant {
+export default class DrawSteelCombatant extends foundry.documents.Combatant {
   /**
    * The disposition for this combatant. In priority,
    * 1. Manually specified for this combatant
