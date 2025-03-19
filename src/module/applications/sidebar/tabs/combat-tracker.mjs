@@ -254,11 +254,16 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   }
 
   /** @inheritdoc */
-  _attachFrameListeners() {
-    super._attachFrameListeners();
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
 
-    // TODO: Revise in 13.338
-    if (game.user.isGM) foundry.applications.ui.ContextMenu.create(this, this.element, ".combatant-group", { jQuery: false, hookName: "GroupContext", fixed: true });
+    if (game.user.isGM) {
+      this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
+        hookName: "getCombatantGroupContextOptions",
+        fixed: true,
+        parentClassHooks: false,
+      });
+    }
   }
 
   /** @inheritdoc */
@@ -268,6 +273,21 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     if (game.settings.get(systemID, "initiativeMode") === "default") {
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
+    }
+
+    return entryOptions;
+  }
+
+  /** @inheritdoc */
+  _getCombatContextOptions() {
+    const entryOptions = super._getCombatContextOptions();
+
+    if (game.settings.get(systemID, "initiativeMode") === "default") {
+      entryOptions.unshift({
+        name: "DRAW_STEEL.Combat.Initiative.Actions.RollFirst.Tooltip",
+        icon: "<i class=\"fa-solid fa-dice-d10\"></i>",
+        callback: () => this.viewed.rollFirst(),
+      }, {});
     }
 
     return entryOptions;
