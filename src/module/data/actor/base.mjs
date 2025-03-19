@@ -3,7 +3,7 @@ import { PowerRoll } from "../../rolls/power.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 
-/** @import DrawSteelCombatant from "../../documents/combatant.mjs"; */
+/** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
 /** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
 
@@ -158,6 +158,14 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * Is this actor a minion?
+   * @returns {boolean}
+   */
+  get isMinion() {
+    return false;
+  }
+
+  /**
    * @inheritdoc
    * @param {Record<string, unknown>} changes
    * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
@@ -279,7 +287,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @param {object} [options] Options to modify the damage application
    * @param {string} [options.type]   Valid damage type
    * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore
-   * @returns {Promise<Actor>}
+   * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
    */
   async takeDamage(damage, options = {}) {
     // Determine highest weakness between all weakness and the damage's type weakness
@@ -302,6 +310,23 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       return this.parent;
     }
 
+    if (this.isMinion) {
+      /** @type {DrawSteelCombatant[]} */
+      const combatants = game.combat.getCombatantsByActor(this.parent);
+      const sameGroup = combatants.every((c) => c.group === combatants[0].group);
+      if ((combatants.length > 0) && sameGroup) {
+        /** @type {DrawSteelCombatantGroup} */
+        const group = combatants[0].group;
+        if (group) return group.update({ "system.staminaValue": group.system.staminaValue - damage });
+        else ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
+      }
+      else if (combatants.length === 0) {
+        ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
+      }
+      else {
+        ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.TooManySquad", { localize: true });
+      }
+    }
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
     const staminaUpdates = {};
     const damageToTempStamina = Math.min(damage, this.stamina.temporary);

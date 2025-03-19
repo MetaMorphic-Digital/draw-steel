@@ -113,7 +113,7 @@ export default class AbilityUseModel extends BaseMessageModel {
         if (event.shiftKey) amount = Math.floor(amount / 2);
 
         for (const token of canvas.tokens.controlled) {
-          token.actor?.system.takeDamage(amount, { type });
+          await token.actor?.system.takeDamage(amount, { type });
         }
       });
     }

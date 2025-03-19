@@ -86,6 +86,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     // Sort by Players then Neutrals then Hostiles
     if (game.settings.get(systemID, "initiativeMode") === "default") {
       dc = b.disposition - a.disposition;
+      if (!dc && a.active) return -1;
+      else if (!dc && b.active) return 1;
       if (!dc && (a.group === b.group) && (a.group?.type === "squad")) {
         if (!a.actor?.isMinion) return -1;
         else if (!b.actor?.isMinion) return 1;

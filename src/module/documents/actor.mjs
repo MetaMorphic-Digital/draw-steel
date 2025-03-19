@@ -7,7 +7,7 @@ export default class DrawSteelActor extends foundry.documents.Actor {
    * @returns {boolean}
    */
   get isMinion() {
-    return foundry.utils.getProperty(this, "system.monster.organization") === "minion";
+    return !!this.system.isMinion;
   }
 
   /** @inheritdoc */
