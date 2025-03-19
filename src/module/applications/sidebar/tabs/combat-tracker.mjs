@@ -2,6 +2,7 @@ import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
 /** @import { ContextMenuEntry } from "../../../../foundry/client-esm/applications/ui/context.mjs" */
+/** @import DrawSteelCombat from "../../../documents/combat.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -80,6 +81,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
 
+    /** @type {DrawSteelCombat} */
     const combat = this.viewed;
 
     /** @type {Array<Array>} */
@@ -89,9 +91,9 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     const groups = Object.groupBy(grouped, c => c.group.id);
 
     /** @type {DrawSteelCombatant | undefined} */
-    const currentTurn = combat.turns[combat.turn];
+    const currentTurn = combat?.turns[combat.turn];
 
-    context.groupTurns = combat.groups.reduce((acc, cg) => {
+    context.groupTurns = combat?.groups.reduce((acc, cg) => {
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
       const active = turns.some(t => t.id === currentTurn?.id);
@@ -151,7 +153,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       return acc;
     }, noGroup);
 
-    context.groupTurns.sort(combat._sortCombatants);
+    context.groupTurns?.sort(combat._sortCombatants);
   }
 
   /** @inheritdoc */
