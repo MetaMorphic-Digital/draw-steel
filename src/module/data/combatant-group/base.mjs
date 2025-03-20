@@ -13,6 +13,6 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
 
   /** @inheritdoc */
   static defineSchema() {
-    return { };
+    return {};
   }
 }
