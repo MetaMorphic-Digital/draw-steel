@@ -99,7 +99,7 @@
 <fieldset>
   <legend>{{systemFields.target.label}}</legend>
   {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
-  {{#if (ne system.target.type "self")}}
+  {{#if (and (ne system.target.type "self") (ne system.target.type "special"))}}
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
   {{/if}}
 </fieldset>
