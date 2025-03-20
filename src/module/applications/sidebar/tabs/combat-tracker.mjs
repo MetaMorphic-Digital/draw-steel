@@ -35,6 +35,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     dsTracker: {
       template: systemPath("templates/combat/tracker.hbs"),
       templates: [systemPath("templates/combat/turn.hbs")],
+      scrollable: [""],
     },
     dsFooter: {
       template: systemPath("templates/combat/footer.hbs"),
@@ -379,7 +380,9 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     group._expanded = !group._expanded;
 
-    this.render({ parts: ["dsTracker"] });
+    const tracker = this.isPopout ? ui.combat : this;
+
+    tracker.render({ parts: ["dsTracker"] });
   }
 
   /**
