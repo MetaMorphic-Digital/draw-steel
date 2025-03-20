@@ -86,10 +86,18 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
       position: { width: 360 },
       render: (event, dialog) => {
         if (!hasTypes) return;
-        dialog.querySelector("[name=\"type\"]").addEventListener("change", e => {
+        /** @type {HTMLInputElement} */
+        const typeInput = dialog.querySelector("[name=\"type\"]");
+        typeInput.addEventListener("change", e => {
           const nameInput = dialog.querySelector("[name=\"name\"]");
           nameInput.placeholder = cls.defaultName({ type: e.target.value, parent, pack });
         });
+        // On-render addition to avoid having to use a new template
+        const hint = document.createElement("p");
+        hint.className = "hint";
+        hint.innerText = game.i18n.localize("DRAW_STEEL.CombatantGroup.TypeHint");
+        const group = typeInput.closest(".form-group");
+        group.append(hint);
       },
       ok: {
         label: title,
