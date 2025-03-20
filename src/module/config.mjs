@@ -1058,6 +1058,10 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.Ability.Target.Self",
       embedLabel: "DRAW_STEEL.Item.Ability.Target.Self",
     },
+    special: {
+      label: "DRAW_STEEL.Item.Ability.Target.Special",
+      embedLabel: "DRAW_STEEL.Item.Ability.Target.Special",
+    },
   },
   forcedMovement: {
     push: {
