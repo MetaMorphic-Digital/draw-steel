@@ -5,6 +5,10 @@
  */
 export default class DrawSteelCombatantGroup extends foundry.documents.CombatantGroup {
 
+  /**
+   * The default icon used for newly created CombatantGroup documents.
+   * @type {string}
+   */
   static DEFAULT_ICON = "icons/environment/people/charge.webp";
 
   /**

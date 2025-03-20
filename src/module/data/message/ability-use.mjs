@@ -113,6 +113,7 @@ export default class AbilityUseModel extends BaseMessageModel {
         if (event.shiftKey) amount = Math.floor(amount / 2);
 
         for (const token of canvas.tokens.controlled) {
+          // TODO: What if multiple linked tokens belonging to the same actor?
           await token.actor?.system.takeDamage(amount, { type });
         }
       });

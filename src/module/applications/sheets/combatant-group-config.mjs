@@ -13,8 +13,6 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "combatant-group-config", "standard-form"],
     position: { width: 420 },
-    actions: {
-    },
   };
 
   /** @inheritdoc */

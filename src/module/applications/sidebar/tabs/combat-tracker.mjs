@@ -2,7 +2,7 @@ import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
 /** @import { ContextMenuEntry } from "../../../../foundry/client-esm/applications/ui/context.mjs" */
-/** @import DrawSteelCombat from "../../../documents/combat.mjs" */
+/** @import { DrawSteelActor, DrawSteelCombat } from "../../../documents/_module.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -115,7 +115,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       if (cg.type === "squad") {
         turn.stamina = { value: cg.system.staminaValue, max: cg.system.staminaMax };
         for (const t of turns) {
-          /** @type {DrawSteelCombatant} */
+          /** @type {DrawSteelActor} */
           const actor = this.viewed.combatants.get(t.id)?.actor;
           if (!actor?.isMinion) continue;
           const threshold = foundry.utils.getProperty(actor, "system.stamina.max");

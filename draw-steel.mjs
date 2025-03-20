@@ -58,29 +58,33 @@ Hooks.once("init", function () {
     CONFIG.statusEffects.push({ id, ...value });
   }
 
+  // Destructuring some pieces for simplification
+  const { Actors, Items } = foundry.documents.collections;
+  const { DocumentSheetConfig } = foundry.applications.apps;
+
   // Register sheet application classes
-  foundry.documents.collections.Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
-  foundry.documents.collections.Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
+  Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Character",
   });
-  foundry.documents.collections.Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.NPC",
   });
-  foundry.documents.collections.Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
-  foundry.documents.collections.Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
+  Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item",
   });
-  foundry.applications.apps.DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
+  DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
   });
-  foundry.applications.apps.DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
+  DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",
   });
