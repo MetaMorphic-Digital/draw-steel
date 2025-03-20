@@ -132,7 +132,12 @@ Hooks.once("i18nInit", () => {
 Hooks.once("ready", async function () {
   await data.migrations.migrateWorld();
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  // Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => {
+    if (data.type === "Item") {
+      helpers.macros.createDocMacro(data, slot);
+      return false;
+    }
+  });
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
