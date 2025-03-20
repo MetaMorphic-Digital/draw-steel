@@ -49,9 +49,7 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     return context;
   }
 
-  _prepareBodyContext(context) {
-
-  }
+  _prepareBodyContext(context) {}
 
   _prepareFooterContext(context) {
     /** @type {FormFooterButton[]} */
