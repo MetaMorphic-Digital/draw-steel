@@ -153,7 +153,7 @@ Hooks.once("ready", async function () {
 /**
  * Render hooks
  */
-Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
+Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
