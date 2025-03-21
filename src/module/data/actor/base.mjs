@@ -26,7 +26,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.stamina = new fields.SchemaField({
       value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
       max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
-      temporary: new fields.NumberField({ integer: true }),
+      temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
 
     schema.characteristics = new fields.SchemaField(
@@ -312,7 +312,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
     if (this.isMinion) {
       /** @type {DrawSteelCombatant[]} */
-      const combatants = game.combat.getCombatantsByActor(this.parent);
+      const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
       const sameGroup = combatants.every((c) => c.group === combatants[0].group);
       if ((combatants.length > 0) && sameGroup) {
         /** @type {DrawSteelCombatantGroup} */
