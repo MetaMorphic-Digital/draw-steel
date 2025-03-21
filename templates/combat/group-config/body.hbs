@@ -1,0 +1,6 @@
+<section class="sheet-body">
+  {{formGroup fields.initiative value=source.initiative label="COMBAT.CombatantInitiative" localize=true}}
+  {{#if (eq document.type "squad")}}
+  {{formGroup systemFields.staminaValue value=source.system.staminaValue}}
+  {{/if}}
+</section>

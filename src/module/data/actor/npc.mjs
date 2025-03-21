@@ -55,6 +55,11 @@ export default class NPCModel extends BaseActorModel {
     return this.monster.level;
   }
 
+  /** @inheritdoc */
+  get isMinion() {
+    return foundry.utils.getProperty(this, "monster.organization") === "minion";
+  }
+
   prepareDerivedData() {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);

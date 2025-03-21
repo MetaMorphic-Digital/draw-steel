@@ -1,5 +1,3 @@
-import { requiredInteger } from "../helpers.mjs";
-
 const fields = foundry.data.fields;
 
 export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {

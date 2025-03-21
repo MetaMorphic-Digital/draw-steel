@@ -2,6 +2,14 @@
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
  */
 export default class DrawSteelActor extends foundry.documents.Actor {
+  /**
+   * Is this actor a minion?
+   * @returns {boolean}
+   */
+  get isMinion() {
+    return this.system.isMinion ?? false;
+  }
+
   /** @inheritdoc */
   getRollData() {
     // Shallow copy
