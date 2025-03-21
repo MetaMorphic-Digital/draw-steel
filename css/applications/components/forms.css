@@ -1,0 +1,90 @@
+.draw-steel {
+  .item-form {
+    font-family: var(--font-primary);
+  }
+
+  .sheet-header {
+    flex: 0 0 100px;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+    .profile-img {
+      flex: 0 0 100px;
+      height: 100px;
+      margin-right: 10px;
+      border: none;
+    }
+
+    .header-center {
+      height: 100%;
+      max-width: calc(100% - 235px);
+      .document-name {
+        height: 60px;
+        line-height: 60px;
+        input, h2 {
+          font-family: var(--font-h2);
+          font-size: var(--font-h2-size);
+          margin: 0;
+          padding: 0;
+          border: 0;
+          text-shadow: none;
+          display: inline-block;
+        }
+        input {
+          height: 100%;
+        }
+        h2 {
+          vertical-align: middle;
+        }
+      }
+      .origins {
+        height: 40px;
+        div {
+          text-align: center;
+        }
+        .filled {
+          font-weight: 700;
+
+        }
+        /* .unfilled { } */
+      }
+    }
+
+    .mode-toggle {
+      gap: 7px;
+      .mode-slider {
+        flex: 0 0 40px;
+        --slide-toggle-track-color-unchecked: green;
+        --slide-toggle-track-color-checked: orange;
+      }
+      .label {
+        &.play {
+          text-align: right;
+        }
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .sheet-tabs {
+    flex: 0;
+  }
+
+  .tab {
+    overflow: auto;
+
+    .biography {
+      flex: 1;
+
+      .editor {
+        height: 100%;
+      }
+    }
+  }
+}

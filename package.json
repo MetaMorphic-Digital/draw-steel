@@ -7,7 +7,7 @@
     "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
     "unpack": "npm run pushLDBtoJSON",
-    "build": "npm run build:packs && npm run build:css && npm run build:code",
+    "build": "npm run build:packs && npm run build:code",
     "build:packs": "npm run pullJSONtoLDB",
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",

@@ -77,7 +77,12 @@
     "verified": "13.338"
   },
   "esmodules": ["draw-steel.mjs"],
-  "styles": ["css/draw-steel.css"],
+  "styles": [
+    "css/draw-steel.css",
+    { "src": "css/variables/_variables.css", "layer": "variables" },
+    { "src": "css/elements/_elements.css", "layer": "elements" },
+    { "src": "css/applications/_applications.css", "layer": "applications" }
+  ],
   "languages": [{
     "lang": "en",
     "name": "English",
