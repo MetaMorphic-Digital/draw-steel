@@ -107,7 +107,10 @@ export default class AbilityModel extends BaseItemModel {
             fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
             if (field === "display") fieldSchema.hint = game.i18n.localize(`${baseLabel}.${field}.hint`);
           }
-          else fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
+          else {
+            fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
+            if (["success", "failure"].includes(field)) fieldSchema.hint = game.i18n.localize(`${baseLabel}.${type}.${field}.hint`);
+          }
         });
       });
 
