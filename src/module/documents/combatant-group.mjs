@@ -1,4 +1,4 @@
-/** @import { CombatantGroupData } from "../../../foundry/common/types.mjs"; */
+/** @import { CombatantGroupData } from "@common/types.mjs"; */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass

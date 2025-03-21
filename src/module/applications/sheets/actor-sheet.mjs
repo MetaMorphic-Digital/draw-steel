@@ -2,7 +2,7 @@ import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 
-/** @import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mjs" */
+/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
 
 const { api, sheets } = foundry.applications;
@@ -198,7 +198,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * @typedef {import("../../../../foundry/common/data/fields.mjs").NumberField} NumberField
+   * @typedef {import("@common/data/fields.mjs").NumberField} NumberField
    */
 
   /**

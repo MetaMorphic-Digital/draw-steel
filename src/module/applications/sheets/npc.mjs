@@ -1,7 +1,7 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
-/** @import { FormSelectOption } from "../../../../foundry/client/applications/forms/fields.mjs" */
+/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {

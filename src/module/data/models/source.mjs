@@ -1,6 +1,6 @@
 import BaseItemModel from "../item/base.mjs";
 
-/** @import BasePackage from "../../../../foundry/common/packages/base-package.mjs"; */
+/** @import BasePackage from "@common/packages/base-package.mjs"; */
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
 
 const fields = foundry.data.fields;
