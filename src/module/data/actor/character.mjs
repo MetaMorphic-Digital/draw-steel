@@ -136,6 +136,9 @@ export default class CharacterModel extends BaseActorModel {
     this.potency.strong += highestCharacteristic;
 
     super.prepareDerivedData();
+
+    // Winded is set in the base classes derived data, so this needs to run after
+    this.stamina.min = -this.stamina.winded;
   }
 
   /** @inheritdoc */
