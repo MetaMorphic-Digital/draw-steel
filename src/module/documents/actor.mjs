@@ -52,7 +52,7 @@ export default class DrawSteelActor extends foundry.documents.Actor {
     if (update === current) return this;
 
     // Determine the updates to make to the actor data
-    const updates = { "system.stamina.value": Math.clamp(update, -this.system.stamina.winded, this.system.stamina.max) };
+    const updates = { "system.stamina.value": Math.clamp(update, this.system.stamina.min, this.system.stamina.max) };
 
     // Allow a hook to override these changes
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);

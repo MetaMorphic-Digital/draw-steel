@@ -94,6 +94,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       type: new Set(),
       dsid: new Set(),
     };
+
+    this.stamina.min = 0;
   }
 
   /** @inheritdoc */
