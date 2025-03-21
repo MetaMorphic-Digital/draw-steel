@@ -78,6 +78,14 @@
         .item-name {
           gap: 5px;
 
+          &.rollable {
+            cursor: pointer;
+
+            &:hover .label {
+              text-shadow: 0 0 8px var(--color-shadow-primary);
+            }
+          }
+
           .name {
             .label {
               font-weight: bold;

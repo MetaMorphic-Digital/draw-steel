@@ -1,28 +1,29 @@
-import {systemID} from "../../constants.mjs";
-import {requiredInteger, setOptions} from "../helpers.mjs";
+import { systemID } from "../../constants.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
-/** @import {DrawSteelItem} from "../../documents/_module.mjs"; */
+
+/** @import DrawSteelItem from "../../documents/item.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs"; */
-/** @import {MaliceModel} from "../settings/_module.mjs"; */
+/** @import { MaliceModel } from "../settings/_module.mjs"; */
 
 /**
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
-    type: "npc"
+    type: "npc",
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Actor.base",
-    "DRAW_STEEL.Actor.NPC"
+    "DRAW_STEEL.Actor.NPC",
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
@@ -30,28 +31,33 @@ export default class NPCModel extends BaseActorModel {
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     schema.negotiation = new fields.SchemaField({
-      interest: requiredInteger({initial: 5}),
-      patience: requiredInteger({initial: 5}),
+      interest: requiredInteger({ initial: 5 }),
+      patience: requiredInteger({ initial: 5 }),
       motivations: new fields.SetField(setOptions()),
       pitfalls: new fields.SetField(setOptions()),
-      impression: requiredInteger({initial: 1})
+      impression: requiredInteger({ initial: 1 }),
     });
 
     schema.monster = new fields.SchemaField({
-      freeStrike: requiredInteger({initial: 0}),
+      freeStrike: requiredInteger({ initial: 0 }),
       keywords: new fields.SetField(setOptions()),
-      level: requiredInteger({initial: 1}),
-      ev: requiredInteger({initial: 4}),
-      role: new fields.StringField({required: true}),
-      organization: new fields.StringField({required: true})
+      level: requiredInteger({ initial: 1 }),
+      ev: requiredInteger({ initial: 4 }),
+      role: new fields.StringField({ required: true }),
+      organization: new fields.StringField({ required: true }),
     });
 
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get level() {
     return this.monster.level;
+  }
+
+  /** @inheritdoc */
+  get isMinion() {
+    return foundry.utils.getProperty(this, "monster.organization") === "minion";
   }
 
   prepareDerivedData() {
@@ -59,13 +65,13 @@ export default class NPCModel extends BaseActorModel {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
-  /** @override */
+  /** @inheritdoc */
   get coreResource() {
     return {
       name: game.i18n.localize("DRAW_STEEL.Setting.Malice.Label"),
       /** @type {MaliceModel} */
       target: game.settings.get(systemID, "malice"),
-      path: "value"
+      path: "value",
     };
   }
 
@@ -93,8 +99,8 @@ export default class NPCModel extends BaseActorModel {
       type: signature?.system.powerRoll.tier1.damage.type ?? "",
       range: {
         melee: 1,
-        ranged: 5
-      }
+        ranged: 5,
+      },
     };
     switch (signature?.system.distance.type) {
       case "melee":
@@ -112,12 +118,12 @@ export default class NPCModel extends BaseActorModel {
     return freeStrike;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async updateResource(delta) {
     if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
     /** @type {MaliceModel} */
     const malice = game.settings.get(systemID, "malice");
-    await game.settings.set(systemID, "malice", {value: malice.value + delta});
+    await game.settings.set(systemID, "malice", { value: malice.value + delta });
   }
 }
 

@@ -3,13 +3,13 @@ export default class BaseCombatModel extends foundry.abstract.TypeDataModel {
    * Key information about this Combat subtype
    */
   static metadata = Object.freeze({
-    type: "base"
+    type: "base",
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Combat.base"];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     return {};
   }

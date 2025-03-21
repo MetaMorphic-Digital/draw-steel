@@ -178,6 +178,24 @@ section.tab {
   }
 }
 
+.immunities-weaknesses {
+  align-items: stretch;
+
+  .immunity,
+  .weakness {
+    white-space: nowrap;
+  }
+}
+
+.immunities,
+.weaknesses {
+  gap: 5px;
+
+  .form-group {
+    flex: 1 1 100px;
+  }
+}
+
 .tab {
   .item-header {
     line-height: 24px;
@@ -198,12 +216,6 @@ section.tab {
 
   .item-row {
     .item-name {
-      cursor: pointer;
-
-      &:hover .label {
-        text-shadow: 0 0 8px var(--color-shadow-primary);
-      }
-
       .name {
         .keywords {
           font-size: var(--font-size-12);
@@ -238,5 +250,15 @@ section.tab {
     .item-echelon {
       width: 100px;
     }
+  }
+}
+
+.tab.projects .item-list-container {
+  .item-type {
+    width: 75px;
+  }
+
+  .item-points {
+    width: 100px;
   }
 }

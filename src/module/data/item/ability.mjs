@@ -1,12 +1,12 @@
-import {systemPath} from "../../constants.mjs";
-import {DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage} from "../../documents/_module.mjs";
-import {DamageRoll, DSRoll, PowerRoll} from "../../rolls/_module.mjs";
+import { systemPath } from "../../constants.mjs";
+import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import { DamageRoll, DSRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import {setOptions} from "../helpers.mjs";
+import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import {FormInputConfig} from "../../../../foundry/client-esm/applications/forms/fields.mjs" */
-/** @import {PowerRollModifiers} from "../../_types.js" */
+/** @import { FormInputConfig } from "@common/data/_types.mjs" */
+/** @import { PowerRollModifiers } from "../../_types.js" */
 
 const fields = foundry.data.fields;
 
@@ -14,50 +14,50 @@ const fields = foundry.data.fields;
  * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
  */
 export default class AbilityModel extends BaseItemModel {
-  /** @override */
+  /** @inheritdoc */
   static metadata = Object.freeze({
     ...super.metadata,
     type: "ability",
-    detailsPartial: [systemPath("templates/item/partials/ability.hbs")]
+    detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Source",
     "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Ability"
+    "DRAW_STEEL.Item.Ability",
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
     const config = ds.CONFIG.abilities;
 
     schema.keywords = new fields.SetField(setOptions());
-    schema.type = new fields.StringField({required: true, blank: false, initial: "action"});
-    schema.category = new fields.StringField({required: true});
-    schema.resource = new fields.NumberField({initial: null, min: 1, integer: true});
-    schema.trigger = new fields.StringField({required: true});
+    schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
+    schema.category = new fields.StringField({ required: true });
+    schema.resource = new fields.NumberField({ initial: null, min: 1, integer: true });
+    schema.trigger = new fields.StringField({ required: true });
     schema.distance = new fields.SchemaField({
-      type: new fields.StringField({required: true, blank: false, initial: "self"}),
-      primary: new fields.NumberField({integer: true, min: 0}),
-      secondary: new fields.NumberField({integer: true, min: 0}),
-      tertiary: new fields.NumberField({integer: true, min: 0})
+      type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      primary: new fields.NumberField({ integer: true, min: 0 }),
+      secondary: new fields.NumberField({ integer: true, min: 0 }),
+      tertiary: new fields.NumberField({ integer: true, min: 0 }),
     });
-    schema.damageDisplay = new fields.StringField({choices: {
+    schema.damageDisplay = new fields.StringField({ choices: {
       melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
-      ranged: "DRAW_STEEL.Item.Ability.Keywords.Ranged"
-    }, initial: "melee", required: true, blank: false});
+      ranged: "DRAW_STEEL.Item.Ability.Keywords.Ranged",
+    }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
-      type: new fields.StringField({required: true, blank: false, initial: "self"}),
-      value: new fields.NumberField({integer: true})
+      type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      value: new fields.NumberField({ integer: true }),
     });
 
     const potencySchema = (initialPotency) => {
       const schema = {
-        enabled: new fields.BooleanField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label"}),
-        characteristic: new fields.StringField({label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label"}),
-        value: new FormulaField({deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label"})
+        enabled: new fields.BooleanField({ label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label" }),
+        characteristic: new fields.StringField({ label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label" }),
+        value: new FormulaField({ deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label" }),
       };
 
       // Localize potencySchema - TODO: Update in V13 onces arrays localize inner fields
@@ -66,36 +66,36 @@ export default class AbilityModel extends BaseItemModel {
       return schema;
     };
 
-    const powerRollSchema = ({initialPotency}) => {
+    const powerRollSchema = ({ initialPotency }) => {
       const schema = new fields.TypedSchemaField({
         damage: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "damage", blank: false}),
+          type: new fields.StringField({ required: true, initial: "damage", blank: false }),
           value: new FormulaField(),
-          types: new fields.SetField(new fields.StringField({required: true})),
+          types: new fields.SetField(new fields.StringField({ required: true })),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true})
+          display: new fields.StringField({ required: true }),
         }),
         ae: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "ae", blank: false}),
-          always: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
-          success: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
-          failure: new fields.SetField(setOptions({validate: foundry.data.validators.isValidId})),
+          type: new fields.StringField({ required: true, initial: "ae", blank: false }),
+          always: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
+          success: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
+          failure: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true})
+          display: new fields.StringField({ required: true }),
         }),
         forced: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "forced", blank: false}),
-          types: new fields.SetField(new fields.StringField({choices: config.forcedMovement, blank: false})),
+          type: new fields.StringField({ required: true, initial: "forced", blank: false }),
+          types: new fields.SetField(new fields.StringField({ choices: config.forcedMovement, blank: false })),
           value: new fields.NumberField(),
           vertical: new fields.BooleanField(),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true})
+          display: new fields.StringField({ required: true }),
         }),
         other: new fields.SchemaField({
-          type: new fields.StringField({required: true, initial: "other", blank: false}),
+          type: new fields.StringField({ required: true, initial: "other", blank: false }),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({required: true})
-        })
+          display: new fields.StringField({ required: true }),
+        }),
       });
 
       // Localize powerRollSchema - TODO: Update in V13 onces arrays localize inner fields
@@ -107,7 +107,10 @@ export default class AbilityModel extends BaseItemModel {
             fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
             if (field === "display") fieldSchema.hint = game.i18n.localize(`${baseLabel}.${field}.hint`);
           }
-          else fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
+          else {
+            fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
+            if (["success", "failure"].includes(field)) fieldSchema.hint = game.i18n.localize(`${baseLabel}.${type}.${field}.hint`);
+          }
         });
       });
 
@@ -116,38 +119,38 @@ export default class AbilityModel extends BaseItemModel {
 
     schema.powerRoll = new fields.SchemaField({
       enabled: new fields.BooleanField(),
-      formula: new FormulaField({blank: false, initial: "@chr"}),
+      formula: new FormulaField({ blank: false, initial: "@chr" }),
       characteristics: new fields.SetField(setOptions()),
-      tier1: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.weak"})),
-      tier2: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.average"})),
-      tier3: new fields.ArrayField(powerRollSchema({initialPotency: "@potency.strong"}))
+      tier1: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.weak" })),
+      tier2: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.average" })),
+      tier3: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.strong" })),
     });
-    schema.effect = new fields.StringField({required: true});
+    schema.effect = new fields.StringField({ required: true });
     schema.spend = new fields.SchemaField({
-      value: new fields.NumberField({integer: true}),
-      text: new fields.StringField({required: true})
+      value: new fields.NumberField({ integer: true }),
+      text: new fields.StringField({ required: true }),
     });
 
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   static itemDescription() {
     const description = super.itemDescription();
-    description.flavor = new fields.StringField({required: true, blank: true});
+    description.flavor = new fields.StringField({ required: true, blank: true });
     return description;
   }
 
   /* -------------------------------------------- */
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
-  /** @override */
+  /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
 
@@ -167,15 +170,8 @@ export default class AbilityModel extends BaseItemModel {
 
       effects.display = effects.map(effect => effect.display).join("; ");
     }
-  }
 
-  /**
-   * Adds kit bonuses as native "active effect" like adjustments.
-   * Also selects the highest characteristic from the options.
-   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
-   * @protected
-   */
-  _prepareCharacterData() {
+    // Set the highest characteristic amongst the power roll characteristics
     this.powerRoll.characteristic = null;
     for (const characteristic of this.powerRoll.characteristics) {
       if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
@@ -183,7 +179,14 @@ export default class AbilityModel extends BaseItemModel {
       const actorCharacteristics = this.actor.system.characteristics;
       if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
     }
+  }
 
+  /**
+   * Adds kit bonuses as native "active effect" like adjustments.
+   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
+   * @protected
+   */
+  _prepareCharacterData() {
     /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
@@ -229,7 +232,7 @@ export default class AbilityModel extends BaseItemModel {
 
             firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
               value: bonuses[distance].damage[tier],
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
             });
           }
         }
@@ -245,12 +248,12 @@ export default class AbilityModel extends BaseItemModel {
   toPotencyEmbed(potencyData) {
     return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
-      value: new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total
+      value: new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total,
     });
   }
 
   /**
-   * @override
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -272,13 +275,13 @@ export default class AbilityModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
-      resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label")
+      resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
     };
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     this.getSheetContext(context);
-    const abilityBody = await renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
   }
@@ -289,21 +292,21 @@ export default class AbilityModel extends BaseItemModel {
    */
   get formattedLabels() {
     const labels = {};
-    const keywordFormatter = game.i18n.getListFormatter({type: "unit"});
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
     labels.keywords = keywordFormatter.format(keywordList);
 
-    labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, {...this.distance});
+    labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
-    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? {embedLabel: "Unknown"};
+    const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
     labels.target = this.target.value === null ?
       targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, {value: this.target.value});
+      game.i18n.format(targetConfig.embedLabel, { value: this.target.value });
 
     return labels;
   }
 
-  /** @override */
+  /** @inheritdoc */
   getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
@@ -311,59 +314,51 @@ export default class AbilityModel extends BaseItemModel {
     context.resourceName = this.actor?.system.coreResource?.name ?? "";
 
     context.keywordList = formattedLabels.keywords;
-    context.actionTypes = Object.entries(config.types).map(([value, {label}]) => ({value, label}));
-    context.abilityCategories = Object.entries(config.categories).map(([value, {label}]) => ({value, label}));
+    context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
+    context.abilityCategories = Object.entries(config.categories).map(([value, { label }]) => ({ value, label }));
 
     context.triggeredAction = !!config.types[this.type]?.triggered;
 
     context.distanceLabel = formattedLabels.distance;
-    context.distanceTypes = Object.entries(config.distances).map(([value, {label}]) => ({value, label}));
+    context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
     context.primaryDistance = config.distances[this.distance.type].primary;
     context.secondaryDistance = config.distances[this.distance.type].secondary;
     context.tertiaryDistance = config.distances[this.distance.type].tertiary;
 
     context.targetLabel = formattedLabels.target;
-    context.targetTypes = Object.entries(config.targets).map(([value, {label}]) => ({value, label}));
+    context.targetTypes = Object.entries(config.targets).map(([value, { label }]) => ({ value, label }));
 
     context.showDamageDisplay = this.keywords.has("melee") && this.keywords.has("ranged");
 
-    context.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, {label}]) => ({value, label}));
-    context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({label: e.name, value: e.id}));
+    context.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([value, { label }]) => ({ value, label }));
+    context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({ label: e.name, value: e.id }));
 
-    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, {label}]) => ({value, label}));
+    context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, {label}]) => ({value, label}));
+    context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
 
     // Add the data for subtabs for the power roll tiers
-    if (context.tab?.id === "details") {
-      context.subtabs = Object.entries(PowerRoll.RESULT_TIERS).map(([tier, {label}]) => ({
-        cssClass: ((!context.tabGroups.powerRoll && (tier === "tier1")) || (context.tabGroups.powerRoll === tier)) ? "active" : "",
-        group: "powerRoll",
-        id: tier,
-        label
-      }));
-      context.subtab = context.subtabs.find(subtab => subtab.cssClass === "active");
-    }
+    if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
   }
 
-  /** @override */
+  /** @inheritdoc */
   _attachPartListeners(htmlElement, options) {
     // Add or delete a power roll tier effect
     const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
     for (const button of modifyEffectButtons) {
       button.addEventListener("click", async (event) => {
-        const {tier, operation, index} = event.target.dataset;
+        const { tier, operation, index } = event.target.dataset;
         const current = foundry.utils.duplicate(this._source.powerRoll[tier]);
         let updateData = current;
-        if (operation === "add") updateData = [...current, {type: "damage"}];
+        if (operation === "add") updateData = [...current, { type: "damage" }];
         else if (operation === "delete") updateData.splice(index, 1);
 
-        await this.parent.update({[`system.powerRoll.${tier}`]: updateData});
+        await this.parent.update({ [`system.powerRoll.${tier}`]: updateData });
       });
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
@@ -394,12 +389,13 @@ export default class AbilityModel extends BaseItemModel {
 
       /**
        * Range picker config is ignored by the checkbox element
-       * @type {FormInputConfig} */
+       * @type {FormInputConfig}
+       */
       const spendInputConfig = {
         name: "spend",
         min: 0,
         max: foundry.utils.getProperty(coreResource.target, coreResource.path),
-        step: 1
+        step: 1,
       };
 
       // Nullish value with text means X spend
@@ -410,9 +406,9 @@ export default class AbilityModel extends BaseItemModel {
       const spendGroup = foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
-          name: coreResource.name
+          name: coreResource.name,
         }),
-        input: spendInput
+        input: spendInput,
       });
 
       // Style fix
@@ -424,31 +420,28 @@ export default class AbilityModel extends BaseItemModel {
 
       content += spendGroup.outerHTML;
 
-      configuration = await foundry.applications.api.DialogV2.prompt({
+      configuration = await foundry.applications.api.DialogV2.input({
         content,
         window: {
           title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
-          icon: "fa-solid fa-gear"
+          icon: "fa-solid fa-gear",
         },
-        ok: {
-          callback: (event, button, dialog) => {
-            return new FormDataExtended(button.form).object;
-          }
-        },
-        rejectClose: false
+        rejectClose: false,
       });
 
       if (!configuration) return null;
     }
 
     const messageData = {
-      speaker: DrawSteelChatMessage.getSpeaker({actor: this.actor}),
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       type: "abilityUse",
       rolls: [],
+      title: this.parent.name,
       content: this.parent.name,
       system: {
-        uuid: this.parent.uuid
-      }
+        uuid: this.parent.uuid,
+      },
+      flags: { core: { canPopout: true } },
     };
 
     if (configuration) {
@@ -456,7 +449,7 @@ export default class AbilityModel extends BaseItemModel {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
         messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
-          name: coreResource.name
+          name: coreResource.name,
         });
       }
     }
@@ -464,19 +457,18 @@ export default class AbilityModel extends BaseItemModel {
     // TODO: Figure out how to better handle invocations when this.actor is null
     await this.actor?.system.updateResource(resourceSpend * -1);
 
-    DrawSteelChatMessage.applyRollMode(messageData, "roll");
-
     if (this.powerRoll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
       options.modifiers.banes ??= 0;
       options.modifiers.edges ??= 0;
+      options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
 
       // Get the power rolls made per target, or if no targets, then just one power roll
-      const powerRolls = await PowerRoll.prompt({
+      const promptValue = await PowerRoll.prompt({
         type: "ability",
         formula,
         data: rollData,
@@ -487,13 +479,16 @@ export default class AbilityModel extends BaseItemModel {
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             uuid: target.actor.uuid,
-            modifiers: this.getTargetModifiers(target.actor)
+            modifiers: this.getTargetModifiers(target.actor),
           });
           return accumulator;
-        }, [])
+        }, []),
       });
 
-      if (!powerRolls) return null;
+      if (!promptValue) return null;
+      const { rollMode, powerRolls } = promptValue;
+
+      DrawSteelChatMessage.applyRollMode(messageData, rollMode);
       const baseRoll = powerRolls.findSplice(powerRoll => powerRoll.options.baseRoll);
 
       // Power Rolls grouped by tier of success
@@ -521,8 +516,8 @@ export default class AbilityModel extends BaseItemModel {
             if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
             else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
             const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", {type: damageLabel});
-            const damageRoll = new DamageRoll(damageEffect.value, rollData, {flavor, type: damageType});
+            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
+            const damageRoll = new DamageRoll(damageEffect.value, rollData, { flavor, type: damageType });
             await damageRoll.evaluate();
             // DSN integration to make damage roll after power roll
             for (const die of damageRoll.dice) {
@@ -539,6 +534,14 @@ export default class AbilityModel extends BaseItemModel {
       return Promise.allSettled(messages);
     }
     else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
+  }
+
+  /**
+   * An alias of use.
+   * @see {AbilityModel#use}
+   */
+  async roll(options = {}) {
+    this.use(options);
   }
 
   /**
@@ -561,7 +564,8 @@ export default class AbilityModel extends BaseItemModel {
   getTargetModifiers(target) {
     const modifiers = {
       banes: 0,
-      edges: 0
+      edges: 0,
+      bonuses: 0,
     };
 
     //TODO: ALL CONDITION CHECKS

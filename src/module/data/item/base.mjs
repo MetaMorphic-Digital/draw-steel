@@ -12,10 +12,10 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   static metadata = Object.freeze({
     type: "base",
-    invalidActorTypes: []
+    invalidActorTypes: [],
   });
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = {};
 
@@ -26,7 +26,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField({blank: false});
+    schema._dsid = new fields.StringField({ blank: false });
 
     return schema;
   }
@@ -39,7 +39,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   static itemDescription() {
     return {
       value: new foundry.data.fields.HTMLField(),
-      gm: new foundry.data.fields.HTMLField()
+      gm: new foundry.data.fields.HTMLField(),
     };
   }
 
@@ -51,7 +51,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     return this.parent.actor;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
@@ -61,21 +61,17 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   preparePostActorPrepData() {}
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
     if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
 
-    if (!this._dsid) this.updateSource({_dsid: data.name.slugify({strict: true})});
+    if (!this._dsid) this.updateSource({ _dsid: data.name.slugify({ strict: true }) });
   }
 
-  /**
-   * @override
-   * @param {DocumentHTMLEmbedConfig} config
-   * @param {EnrichmentOptions} options
-   */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
     options.rollData ??= this.parent.getRollData();

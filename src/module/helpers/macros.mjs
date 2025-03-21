@@ -8,49 +8,48 @@
  */
 export async function createDocMacro(data, slot) {
   // First, determine if this is a valid owned item.
-  if (data.type !== "Item") return;
-  if (!data.uuid.includes("Actor.") && !data.uuid.includes("Token.")) {
-    return ui.notifications.warn("You can only create macro buttons for owned Items");
+  if (!data.uuid.includes("Actor.")) {
+    return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Create.NotOwnedItem", { localize: true });
   }
   // If it is, retrieve it based on the uuid.
   const item = await Item.fromDropData(data);
 
   // Create the macro command using the uuid.
-  const command = `ds.helpers.macros.rollItemMacro("${data.uuid}");`;
+  let command;
+  let name;
+  switch (item.type) {
+    case "ability":
+    case "project":
+      command = `ds.helpers.macros.rollItemMacro("${data.uuid}");`;
+      name = item.name;
+      break;
+    default:
+      command = `await Hotbar.toggleDocumentSheet("${item.uuid}");`;
+      name = `${game.i18n.localize("Display")} ${item.name}`;
+      break;
+  }
   let macro = game.macros.find((m) => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
-      name: item.name,
+      name,
       type: "script",
       img: item.img,
-      command: command,
-      flags: {"draw-steel.itemMacro": true}
+      command,
+      flags: { "draw-steel.itemMacro": true },
     });
   }
   game.user.assignHotbarMacro(macro, slot);
-  return false;
 }
 
 /**
- * Create a Macro from an Item drop.
- * Get an existing item macro if one exists, otherwise create a new one.
+ * Call an item's roll method
  * @param {string} itemUuid
  */
-export function rollItemMacro(itemUuid) {
-  // Reconstruct the drop data so that we can load the item.
-  const dropData = {
-    type: "Item",
-    uuid: itemUuid
-  };
-  // Load the item from the uuid.
-  Item.fromDropData(dropData).then((item) => {
-    // Determine if the item loaded and if it's an owned item.
-    if (!item || !item.parent) {
-      const itemName = item?.name ?? itemUuid;
-      return ui.notifications.warn(`Could not find item ${itemName}. You may need to delete and recreate this macro.`);
-    }
+export async function rollItemMacro(itemUuid) {
+  const item = await fromUuid(itemUuid);
+  if (!item) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoItem", { localize: true });
+  if (!item.parent) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NotOwnedItem", { format: { item: item.name } });
+  if (!(item.system.roll instanceof Function)) return ui.notifications.warn("DRAW_STEEL.Macro.Warnings.Roll.NoRoll", { format: { item: item.name } });
 
-    // Trigger the item roll
-    item.roll();
-  });
+  item.system.roll();
 }

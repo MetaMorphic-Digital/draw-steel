@@ -14,14 +14,14 @@ await compilePacksRecursivly();
  */
 async function compilePacksRecursivly() {
   const packs = (await fs.readdir(BASE_SRC_PATH, {withFileTypes: true})).filter(file => file.isDirectory());
-  
+
   for (const pack of packs) {
     const srcPath = path.join(BASE_SRC_PATH, pack.name);
     const destPath = path.join(BASE_DEST_PATH, pack.name);
     console.log("Packing " + srcPath + " to " + destPath);
     await compilePack(
       `${SYSTEM_ID}/${srcPath}`,
-      `${SYSTEM_ID}/${destPath}`, 
+      `${SYSTEM_ID}/${destPath}`,
       {recursive: true, log: true}
     );
   }

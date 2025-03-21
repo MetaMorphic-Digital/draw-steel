@@ -12,8 +12,8 @@
     "build:css": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --no-source-map",
     "build:css:watch": "sass src/scss/draw-steel.scss css/draw-steel.css --style=expanded --source-map --watch",
     "build:code": "rollup -c --sourcemap",
-    "lint": "eslint src/module/**.mjs",
-    "lint:fix": "eslint --fix src/module/**.mjs",
+    "lint": "eslint src/module/**/*.mjs",
+    "lint:fix": "eslint --fix src/module/**/*.mjs",
     "postinstall": "npm run build:css && npm run createSymlinks",
     "prepareRelease": "npm run build:packs && npm run build:code"
   },
@@ -27,7 +27,7 @@
     "@html-eslint/eslint-plugin": "^0.26.0",
     "@html-eslint/parser": "^0.26.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "rollup": "^4.9.1",
     "sass": "^1.53.0"
   }

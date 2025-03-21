@@ -4,7 +4,9 @@
       "Labels": {
         "Character": "Draw Steel Character Sheet",
         "NPC": "Draw Steel NPC Sheet",
-        "Item": "Draw Steel Item Sheet"
+        "Item": "Draw Steel Item Sheet",
+        "ActiveEffect": "Draw Steel Active Effect Config",
+        "CombatantGroup": "Draw Steel Combatant Group Config"
       },
       "Add": "+ Add {itemName}",
       "Play": "Play",
@@ -41,12 +43,13 @@
     },
     "Actor": {
       "Tabs": {
-        "Biography": "Biography",
-        "Features": "Features",
-        "Equipment": "Equipment",
-        "Stats": "Stats",
-        "Abilities": "Abilities",
-        "Effects": "Effects"
+        "biography": "Biography",
+        "features": "Features",
+        "equipment": "Equipment",
+        "stats": "Stats",
+        "abilities": "Abilities",
+        "effects": "Effects",
+        "projects": "Projects"
       },
       "characteristics": {
         "might": {
@@ -361,13 +364,31 @@
         }
       }
     },
+    "CombatantGroup": {
+      "squad": {
+        "FIELDS": {
+          "staminaValue.label": "Current Stamina"
+        }
+      },
+      "TypeHint": "A Base combatant group can have any number of non-minion members. A Squad can have any number of minions plus up to one non-minion captain.",
+      "ResetSquadHP": "Reset Squad HP To Max",
+      "Error": {
+        "MinionMustSquad": "Minions can only be added to Squad groups.",
+        "SquadOneCaptain": "A squad can only have one captain.",
+        "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
+        "TooManySquad": "Applying damage directly to a minion because it's in multiple squads."
+      }
+    },
     "Item": {
       "Tabs": {
-        "Attributes": "Attributes",
-        "Description": "Description",
-        "Details": "Details",
-        "Advancement": "Advancement",
-        "Effects": "Effects"
+        "attributes": "Attributes",
+        "description": "Description",
+        "details": "Details",
+        "advancement": "Advancement",
+        "effects": "Effects",
+        "tier1": "Tier 1",
+        "tier2": "Tier 2",
+        "tier3": "Tier 3"
       },
       "base": {
         "FIELDS": {
@@ -481,10 +502,12 @@
                   "label": "Applied Effects"
                 },
                 "success": {
-                  "label": "Potency Success Effects"
+                  "label": "Potency Success Effects",
+                  "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
                 },
                 "failure": {
-                  "label": "Potency Failure Effects"
+                  "label": "Potency Failure Effects",
+                  "hint": "Effects that apply when the target's characteristic is less than the potency value."
                 }
               },
               "forced": {
@@ -692,7 +715,8 @@
           "Ally": "Ally",
           "AllyEmbed": "{value} allies",
           "AllAllies": "All allies",
-          "Self": "Self"
+          "Self": "Self",
+          "Special": "Special"
         },
         "DamageFlavor": "{type} Damage",
         "ForcedMovement": {
@@ -808,11 +832,11 @@
           "keywords": {
             "label": "Keywords"
           },
-          "prerequisites": {
-            "label": "Item Prerequisites"
-          },
           "project": {
             "label": "Project",
+            "prerequisites": {
+              "label": "Item Prerequisites"
+            },
             "source": {
               "label": "Project Source"
             },
@@ -823,7 +847,12 @@
               "label": "Project Goal"
             },
             "yield": {
-              "label": "Project Yield"
+              "amount": {
+                "label": "Yield Amount"
+              },
+              "display": {
+                "label": "Yield Display"
+              }
             }
           }
         },
@@ -986,6 +1015,50 @@
           "MakePreferred": "Make Preferred Kit"
         },
         "StaminaEmbed": "{number} per echelon"
+      },
+      "Project": {
+        "FIELDS": {
+          "type": {
+            "label": "Type"
+          },
+          "prerequisites": {
+            "label": "Item Prerequisites"
+          },
+          "projectSource": {
+            "label": "Project Source"
+          },
+          "rollCharacteristic": {
+            "label": "Project Roll Characteristics"
+          },
+          "goal": {
+            "label": "Project Goal"
+          },
+          "points": {
+            "label": "Project Points"
+          },
+          "yield": {
+            "label": "Yield",
+            "item": {
+              "label": "Yield Item UUID"
+            },
+            "amount": {
+              "label": "Yield Amount"
+            },
+            "display": {
+              "label": "Yield Display"
+            }
+          }
+        },
+        "Types": {
+          "Crafting": "Crafting",
+          "Research": "Research",
+          "Other": "Other"
+        },
+        "CompletedNotification": "{actor} has achieved enough project points to complete the {project} project.",
+        "Craft": {
+          "ItemName": "Craft {name}",
+          "CompletedNotification": "{actor} successfully crafted {amount} {item}(s)."
+        }
       }
     },
     "Effect": {
@@ -997,6 +1070,7 @@
       "Inactive": "Inactive Effects",
       "Applied": "Applied Effects",
       "Ends": {
+        "Label": "Ending Effects",
         "Turn": {
           "Label": "End of Turn",
           "Abbr": "EoT"
@@ -1108,6 +1182,7 @@
           "Edges": "Edges",
           "Bane": "Bane",
           "Banes": "Banes",
+          "Bonuses": "Bonuses/Penalties",
           "Label": "{number} {mod}"
         },
         "BaseRoll": "Base Power Roll"
@@ -1222,7 +1297,7 @@
     "Languages": {
       "Anjali": "Anjali",
       "Axiomatic": "Axiomatic",
-      "Caeliah": "Caeliah",
+      "Caelian": "Caelian",
       "Filliaric": "Filliaric",
       "Higaran": "Higaran",
       "HighKuric": "High Kuric",
@@ -1281,12 +1356,30 @@
         },
         "NoTokenSelected": "You must have at least one token selected"
       }
+    },
+    "Macro": {
+      "Warnings": {
+        "Create": {
+          "NotOwnedItem": "You can only create macro buttons for owned Items."
+        },
+        "Roll": {
+          "NoItem": "Could not find item. You may need to delete and recreate this macro.",
+          "NotOwnedItem": "{item} is not an owned item. Only owned items may be rolled.",
+          "NoRoll": "{item} does not have a roll function."
+        }
+      }
     }
   },
   "TYPES": {
     "Actor": {
       "character": "Character",
       "npc": "NPC"
+    },
+    "ChatMessage": {
+      "abilityUse": "Ability Use"
+    },
+    "CombatantGroup": {
+      "squad": "Squad"
     },
     "Item": {
       "ability": "Ability",
@@ -1297,7 +1390,8 @@
       "culture": "Culture",
       "feature": "Feature",
       "equipment": "Equipment",
-      "kit": "Kit"
+      "kit": "Kit",
+      "project": "Project"
     }
   },
   "USER": {

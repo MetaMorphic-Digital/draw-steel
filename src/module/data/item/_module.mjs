@@ -1,11 +1,12 @@
-export {default as AbilityModel} from "./ability.mjs";
-export {default as AdvancementModel} from "./advancement.mjs"
-export {default as AncestryModel} from "./ancestry.mjs";
-export {default as BaseItemModel} from "./base.mjs";
-export {default as CareerModel} from "./career.mjs";
-export {default as ClassModel} from "./class.mjs";
-export {default as ComplicationModel} from "./complication.mjs";
-export {default as CultureModel} from "./culture.mjs";
-export {default as FeatureModel} from "./feature.mjs";
-export {default as EquipmentModel} from "./equipment.mjs";
-export {default as KitModel} from "./kit.mjs";
+export { default as AbilityModel } from "./ability.mjs";
+export { default as AdvancementModel } from "./advancement.mjs";
+export { default as AncestryModel } from "./ancestry.mjs";
+export { default as BaseItemModel } from "./base.mjs";
+export { default as CareerModel } from "./career.mjs";
+export { default as ClassModel } from "./class.mjs";
+export { default as ComplicationModel } from "./complication.mjs";
+export { default as CultureModel } from "./culture.mjs";
+export { default as FeatureModel } from "./feature.mjs";
+export { default as EquipmentModel } from "./equipment.mjs";
+export { default as KitModel } from "./kit.mjs";
+export { default as ProjectModel } from "./project.mjs";
