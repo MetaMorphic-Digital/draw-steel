@@ -16,7 +16,7 @@
     &.editorActive {
       .prosemirror.editor {
         &:not(.active) {
-          display: none;
+          display: none !important;
         }
 
         .label-action {
