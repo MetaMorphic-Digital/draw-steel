@@ -1,0 +1,16 @@
+{{#if editable}}
+{{formGroup
+systemFields.biography.fields.value
+enriched=enrichedBiography
+value=systemSource.biography.value
+documentUUID=actor.uuid
+collaborate=true
+toggled=isPlay
+height=200
+}}
+{{else}}
+<fieldset>
+  <legend>{{systemFields.biography.fields.value.label}}</legend>
+  {{{enrichedBiography}}}
+</fieldset>
+{{/if}}

@@ -1,0 +1,17 @@
+{{#if gm}}
+{{#if editable}}
+{{formGroup
+systemFields.biography.fields.gm
+enriched=enrichedGMNotes
+value=systemSource.biography.gm
+documentUUID=actor.uuid
+toggled=isPlay
+height=300
+}}
+{{else}}
+<fieldset>
+  <legend>{{systemFields.biography.fields.gm.label}}</legend>
+  {{{enrichedGMNotes}}}
+</fieldset>
+{{/if}}
+{{/if}}
