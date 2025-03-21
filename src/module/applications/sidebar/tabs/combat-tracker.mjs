@@ -380,9 +380,8 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     group._expanded = !group._expanded;
 
-    const tracker = this.isPopout ? ui.combat : this;
-
-    tracker.render({ parts: ["dsTracker"] });
+    // Main sidebar renders are automatically propagated to popouts
+    await ui.combat.render({ parts: ["dsTracker"] });
   }
 
   /**
