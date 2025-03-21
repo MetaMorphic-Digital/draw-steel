@@ -1,4 +1,3 @@
-import Document from "../../../foundry/common/abstract/document.mjs";
 import {
   ActiveEffectData,
   ActorData,
@@ -8,8 +7,8 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData
-} from "../../../foundry/common/types.mjs";
-import Collection from "../../../foundry/common/utils/collection.mjs";
+} from "@common/types.mjs";
+import Collection from "@common/utils/collection.mjs";
 import {
   ActiveEffect as ActiveEffectModels,
   Actor as ActorModels,
@@ -26,15 +25,15 @@ type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActo
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 
-declare module "../../../foundry/client/documents/_module.mjs" {
-  interface Actor < Model extends ActorModel = ActorModel > extends ActorData, Document {
+declare module "@client/documents/_module.mjs" {
+  interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
     items: Collection < string, DrawSteelItem > ;
     effects: Collection < string, DrawSteelActiveEffect > ;
   }
 
-  interface Item < Model extends ItemModel = ItemModel > extends ItemData, Document {
+  interface Item < Model extends ItemModel = ItemModel > extends ItemData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
     effects: Collection < string,
@@ -45,19 +44,19 @@ declare module "../../../foundry/client/documents/_module.mjs" {
     type: "base";
     system: ActiveEffectModels.BaseEffectModel;
   }
-  interface ChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData, Document {
+  interface ChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
   }
 
-  interface Combat extends CombatData, Document {
+  interface Combat extends CombatData {
     type: "base";
     system: CombatModels.BaseCombatModel;
     combatants: Collection<string, DrawSteelCombatant>;
     groups: Collection<string, DrawSteelCombatantGroup>
   }
 
-  interface CombatantGroup extends CombatantGroupData, Document {
+  interface CombatantGroup extends CombatantGroupData {
     type: "base" | "squad";
     system: CombatantGroupModels.BaseCombatantGroupModel | CombatantGroupModels.SquadModel;
   }
@@ -67,7 +66,7 @@ declare module "../../../foundry/client/documents/_module.mjs" {
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface JournalEntryPage extends JournalEntryPageData, Document {
+  interface JournalEntryPage extends JournalEntryPageData {
     type: "text" | "image" | "pdf" | "video";
     system: Record < string, unknown > ;
   }

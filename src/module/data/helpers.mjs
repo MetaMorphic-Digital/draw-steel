@@ -32,7 +32,7 @@ export const setOptions = ({ choices, validate } = {}) => new StringField({ requ
 /**
  * @callback DamageTypeCallback
  * @param {{label: string}} damageConfig
- * @returns {import("../../../foundry/common/data/fields.mjs").DataField} The SchemaField entry
+ * @returns {import("@common/data/fields.mjs").DataField} The SchemaField entry
  */
 
 /**

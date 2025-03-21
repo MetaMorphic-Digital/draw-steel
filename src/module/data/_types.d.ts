@@ -1,4 +1,3 @@
-import { DataFieldContext, StringFieldOptions } from "../../../foundry/common/data/fields.mjs";
 import "./actor/_types";
 import "./advancement/_types";
 import "./combat/_types";

@@ -5,7 +5,7 @@ import SizeModel from "../models/size.mjs";
 
 /** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
-/** @import DataModel from "../../../../foundry/common/abstract/data.mjs" */
+/** @import DataModel from "@common/abstract/data.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -168,7 +168,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   /**
    * @inheritdoc
    * @param {Record<string, unknown>} changes
-   * @param {import("../../../../foundry/common/abstract/_types.mjs").DatabaseUpdateOperation} operation
+   * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
    * @param {User} user
    */
   _preUpdate(changes, operation, user) {

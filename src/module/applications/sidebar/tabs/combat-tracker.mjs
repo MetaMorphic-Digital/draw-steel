@@ -1,8 +1,8 @@
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
-/** @import { ContextMenuEntry } from "../../../../foundry/client-esm/applications/ui/context.mjs" */
-/** @import { DrawSteelActor, DrawSteelCombat } from "../../../documents/_module.mjs" */
+/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
+/** @import DrawSteelActor from "../../../documents/actor.mjs" */
 
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
@@ -82,7 +82,6 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
 
-    /** @type {DrawSteelCombat} */
     const combat = this.viewed;
 
     /** @type {Array<Array>} */

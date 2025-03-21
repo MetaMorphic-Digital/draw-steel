@@ -5,7 +5,7 @@ import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "../../../../foundry/common/data/_types.mjs" */
+/** @import { FormInputConfig } from "@common/data/_types.mjs" */
 /** @import { PowerRollModifiers } from "../../_types.js" */
 
 const fields = foundry.data.fields;

@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 
-/** @import {FormFooterButton} from "../../../../foundry/client-esm/applications/_types.mjs" */
+/** @import { FormFooterButton } from "@client/applications/_types.mjs" */
 
 const { HandlebarsApplicationMixin, DocumentSheetV2 } = foundry.applications.api;
 
