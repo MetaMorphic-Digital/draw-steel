@@ -1,4 +1,3 @@
-{{! Sheet Header }}
 <header class="sheet-header">
   {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
@@ -7,10 +6,10 @@
     alt="{{actor.name}}"
     data-edit="img"
     {{#if isPlay}}
-    data-action="showPortraitArtwork"
+      data-action="showPortraitArtwork"
     {{else}}
-    {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
-    data-action="editImage"
+      {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+      data-action="editImage"
     {{/if}}
     title="{{actor.name}}"
     height="100"
@@ -19,13 +18,13 @@
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{{wordBreaker actor.name}}}</h2>
+        <h2>{{{wordBreaker actor.name}}}</h2>
       {{else}}
-      {{formInput
-      fields.name
-      value=actor._source.name
-      placeholder=(localize "Name")
-      }}
+        {{formInput
+          fields.name
+          value=actor._source.name
+          placeholder=(localize "Name")
+        }}
       {{/if}}
     </div>
     <div class="keywords">
@@ -38,19 +37,19 @@
       <div class="monster-metadata">
         <div class="actor-source">
           {{#if isPlay}}
-          {{system.source.label}}
+            {{system.source.label}}
           {{else}}
-          <a data-action="updateSource">
-            <i class="fa-solid fa-book"></i>
-            {{actor.system.source.label}}
-          </a>
+            <a data-action="updateSource">
+              <i class="fa-solid fa-book"></i>
+              {{actor.system.source.label}}
+            </a>
           {{/if}}
         </div>
         <div class="monster-info">
           {{#unless isPlay}}
-          <a data-action="editMonsterMetadata">
-            <i class="fa-solid fa-gear"></i>
-          </a>
+            <a data-action="editMonsterMetadata">
+              <i class="fa-solid fa-gear"></i>
+            </a>
           {{/unless}}
           {{systemFields.monster.fields.level.label}} {{system.monster.level}}
           {{organizationLabel}} {{rolesLabel}}
@@ -60,12 +59,12 @@
         </div>
       </div>
       {{#if showMalice}}
-      <div class="malice form-group stacked">
-        <label>{{malice.label}}</label>
-        <div class="form-fields">
-          <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+        <div class="malice form-group stacked">
+          <label>{{malice.label}}</label>
+          <div class="form-fields">
+            <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+          </div>
         </div>
-      </div>
       {{/if}}
     </div>
   </div>

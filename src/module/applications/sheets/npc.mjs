@@ -7,10 +7,12 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
+    // We add togglePlayMode to the list of recognized actions:
     actions: {
       updateSource: this._updateSource,
       editMonsterMetadata: this._editMonsterMetadata,
       freeStrike: this._freeStrike,
+      togglePlayMode: this._onTogglePlayMode
     },
   };
 
@@ -51,6 +53,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
+
+    // Provide isPlay to every part (especially "header") so our template can show the correct UI.
+    context.isPlay = this.actor.getFlag("draw-steel", "isPlay") ?? false;
+
     switch (partId) {
       case "header":
         context.monsterKeywords = this._getMonsterKeywords();
@@ -80,7 +86,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Fetches the label for the monster's organization
-   * @returns {{list: FormSelectOption[], current: string}}
+   * @returns {string}
    */
   _getOrganizationLabel() {
     const organizations = ds.CONFIG.monsters.organizations;
@@ -89,7 +95,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Fetches the label for the monster's role
-   * @returns {{list: FormSelectOption[], current: string}}
+   * @returns {string}
    */
   _getRoleLabel() {
     const roles = ds.CONFIG.monsters.roles;
@@ -101,8 +107,11 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   _getEVLabel() {
     const data = { value: this.actor.system.monster.ev };
-    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
-    else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
+    if (this.actor.system.monster.organization === "minion") {
+      return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
+    } else {
+      return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
+    }
   }
 
   /**
@@ -211,7 +220,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   }
 
   /**
-   * Open a dialog to edit the monster metadata
+   * Perform a free strike on all targeted actors
    * @this DrawSteelNPCSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
@@ -266,5 +275,19 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         }
       }
     }
+  }
+
+  /**
+   * Toggle between "play" mode and "edit" mode on this NPC sheet.
+   * This sets an `isPlay` flag on the actor, which the template then references.
+   * @this DrawSteelNPCSheet
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target
+   */
+  static async _onTogglePlayMode(event, target) {
+    event.preventDefault();
+    event.stopPropagation();
+    const current = this.actor.getFlag("draw-steel", "isPlay") ?? false;
+    await this.actor.setFlag("draw-steel", "isPlay", !current);
   }
 }

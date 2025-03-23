@@ -21,6 +21,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       height: 600,
     },
     actions: {
+      // We expose a toggleMode action so the partial’s button can call it
       toggleMode: this._toggleMode,
       viewDoc: this._viewDoc,
       createDoc: this._createDoc,
@@ -111,6 +112,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /** @inheritdoc */
   async _prepareContext(options) {
+    // Provide isPlay: whether we’re in play mode or not.
     const context = Object.assign(await super._prepareContext(options), {
       isPlay: this.isPlayMode,
       // Validates both permissions and compendium status
@@ -206,6 +208,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
   _getCharacteristics() {
+    // If we are in Play Mode, we read final computed values from `this.actor`.
+    // If Edit Mode, we read from `_source` so we can see changes immediately.
     const data = this.isPlayMode ? this.actor : this.actor._source;
     return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       obj[chc] = {
@@ -222,10 +226,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   _getMovement() {
     return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
-      if (mvmt !== null) obj[key] = {
-        field: this.actor.system.schema.getField(["movement", key]),
-        value: mvmt,
-      };
+      if (mvmt !== null) {
+        obj[key] = {
+          field: this.actor.system.schema.getField(["movement", key]),
+          value: mvmt,
+        };
+      }
       return obj;
     }, {});
   }
@@ -257,8 +263,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       }, {}),
     };
 
-    const immunities = Object.entries(this.actor.system.damage.immunities).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
-    const weaknesses = Object.entries(this.actor.system.damage.weaknesses).filter(([damageType, value]) => value > 0).map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
+    const immunities = Object.entries(this.actor.system.damage.immunities)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="immunity">${labels[damageType]} ${value}</span>`);
+    const weaknesses = Object.entries(this.actor.system.damage.weaknesses)
+      .filter(([damageType, value]) => value > 0)
+      .map(([damageType, value]) => `<span class="weakness">${labels[damageType]} ${value}</span>`);
 
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     return {
@@ -292,7 +302,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     // only generate the item embed when it's expanded
     if (context.expanded) context.embed = await item.system.toEmbed({});
-
     return context;
   }
 
@@ -303,11 +312,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _prepareFeaturesContext() {
     const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
     const context = [];
-
     for (const feature of features) {
       context.push(await this._prepareItemContext(feature));
     }
-
     return context;
   }
 
@@ -323,51 +330,38 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     for (const [type, config] of Object.entries(ds.CONFIG.abilities.types)) {
       // Don't show villain actions on non-NPC sheets
       if ((type === "villain") && (this.actor.type !== "npc")) continue;
-
       context[type] = {
         label: config.label,
         abilities: [],
       };
     }
 
-    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    // “other” category for any we don’t recognize
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
     };
 
-    // Prepare the context for each individual ability
     for (const ability of abilities) {
       const type = context[ability.system.type] ? ability.system.type : "other";
-
       const abilityContext = await this._prepareItemContext(ability);
       abilityContext.formattedLabels = ability.system.formattedLabels;
-
       // add the order to the villain action based on the current # of villain actions in the context
       if (type === "villain") {
         const villainActionCount = context[type].abilities.length;
         abilityContext.order = villainActionCount + 1;
       }
-
       context[type].abilities.push(abilityContext);
     }
-
     return context;
   }
-
-  /**
-   * @typedef ActiveEffectCategory
-   * @property {string} type                 - The type of category
-   * @property {string} label                - The localized name of the category
-   * @property {Array<ActiveEffect>} effects - The effects in the category
-   */
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
    */
   prepareActiveEffectCategories() {
-    /** @type {Record<string, ActiveEffectCategory>} */
+    /** @type {Record<string, {type: string, label: string, effects: ActiveEffect[]}>} */
     const categories = {
       temporary: {
         type: "temporary",
@@ -386,7 +380,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       },
     };
 
-    // Iterate over active effects, classifying them into categories
+    // Iterate over active effects, classifying them
     for (const e of this.actor.allApplicableEffects()) {
       if (!e.active) categories.inactive.effects.push(e);
       else if (e.isTemporary) categories.temporary.effects.push(e);
@@ -406,25 +400,24 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after a first render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
    */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
-
-    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]", { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true });
+    this._createContextMenu(
+      this._getItemButtonContextOptions,
+      "[data-document-class]",
+      { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true },
+    );
   }
 
   /**
    * Get context menu entries for item buttons.
    * @returns {ContextMenuEntry[]}
-   * @protected
    */
   _getItemButtonContextOptions() {
     // name is auto-localized
     return [
-      //Ability specific options
+      // Ability usage swap
       {
         name: "DRAW_STEEL.Item.Ability.SwapUsage.ToMelee",
         icon: "<i class=\"fa-solid fa-fw fa-sword\"></i>",
@@ -434,10 +427,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         },
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await item.update({ "system.damageDisplay": "melee" });
           await this.render();
         },
@@ -451,81 +441,66 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         },
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await item.update({ "system.damageDisplay": "ranged" });
           await this.render();
         },
       },
-      // Kit specific options
+      // Kit
       {
         name: "DRAW_STEEL.Item.Kit.PreferredKit.MakePreferred",
         icon: "<i class=\"fa-solid fa-star\"></i>",
         condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await this.actor.update({ "system.hero.preferredKit": item.id });
           await this.render();
         },
       },
-      // All applicable options
+      // All item “View” action
       {
         name: "View",
         icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
         condition: () => this.isPlayMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
         },
       },
+      // All item “Edit” action
       {
         name: "Edit",
         icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
         condition: () => this.isEditMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
         },
       },
+      // Share
       {
         name: "DRAW_STEEL.Item.base.share",
         icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await DrawSteelChatMessage.create({
             content: `@Embed[${item.uuid} caption=false]`,
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
           });
         },
       },
+      // Delete
       {
         name: "Delete",
         icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
         condition: () => this.actor.isOwner,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return;
           await item.deleteDialog();
         },
       },
@@ -534,10 +509,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Actions performed after any render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
-   * @inheritdoc
    */
   async _onRender(context, options) {
     await super._onRender(context, options);
@@ -549,28 +520,28 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /* -------------------------------------------------- */
 
   /**
-   * Toggle Edit vs. Play mode
+   * Toggle Edit vs. Play mode. This must remain an instance-level method
+   * so we can access `this.#mode`.
    *
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async _toggleMode(event, target) {
+    event.preventDefault();
+    event.stopPropagation();
     if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      console.error("Cannot switch to Edit mode if the sheet is not editable.");
       return;
     }
+    // Flip #mode
     this.#mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
+    // Rerender with the new mode
     this.render();
   }
 
   /**
    * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
    */
   static async _viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
@@ -583,11 +554,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handles item deletion
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
    */
   static async _deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
@@ -595,55 +561,38 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
+   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data
    */
   static async _createDoc(event, target) {
     const docCls = getDocumentClass(target.dataset.documentClass);
     const docData = {
       name: docCls.defaultName({ type: target.dataset.type, parent: this.actor }),
     };
-    // Loop through the dataset and add it to our docData
+    // Loop through dataset
     for (const [dataKey, value] of Object.entries(target.dataset)) {
-      // These data attributes are reserved for the action handling
       if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
-      // Nested properties use dot notation like `data-system.prop`
       foundry.utils.setProperty(docData, dataKey, value);
     }
-
     await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
 
   /**
-   * Determines effect parent to pass to helper
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
+   * Toggle an effect on/off
    */
   static async _toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
+    if (!effect) return;
     await effect.update({ disabled: !effect.disabled });
   }
 
   /**
    * Handle clickable rolls.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
    */
   static async _onRoll(event, target) {
     event.preventDefault();
     const dataset = target.dataset;
 
-    // Handle item rolls.
+    // Characteristic roll
     switch (dataset.rollType) {
       case "characteristic":
         return this.actor.rollCharacteristic(dataset.characteristic);
@@ -651,33 +600,22 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Handle clickable rolls.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
+   * Use an ability
    */
   static async _useAbility(event, target) {
     const item = this._getEmbeddedDocument(target);
     if (item?.type !== "ability") {
-      console.error("This is not an ability!", item);
+      console.error("Not an ability item!", item);
       return;
     }
     await item.system.use({ event });
   }
 
   /**
-   * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @protected
+   * Toggle the item embed between visible and hidden
    */
   static async _toggleItemEmbed(event, target) {
     const { itemId } = target.closest(".item").dataset;
-
     if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
     else this.#expanded.add(itemId);
 
@@ -689,9 +627,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Fetches the embedded document representing the containing HTML element
-   *
-   * @param {HTMLElement} target    The element subject to search
-   * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
     const docRow = target.closest("[data-document-class]");
@@ -703,7 +638,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
           ? this.actor
           : this.actor.items.get(docRow?.dataset.parentId);
       return parent.effects.get(docRow?.dataset.effectId);
-    } else return console.warn("Could not find document class");
+    }
+    return console.warn("Could not find document class");
   }
 
   /* -------------------------------------------------- */
@@ -712,11 +648,6 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
   /**
    * Handle a dropped Active Effect on the Actor Sheet.
-   * The default implementation creates an Active Effect embedded document on the Actor.
-   * @param {DragEvent} event       The initiating drop event
-   * @param {ActiveEffect} effect   The dropped ActiveEffect document
-   * @returns {Promise<void>}
-   * @protected
    */
   async _onDropActiveEffect(event, effect) {
     if (!this.actor.isOwner || !effect) return;
@@ -725,22 +656,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
-   *
-   * @param {DragEvent} event
-   * @param {ActiveEffect} effect
-   * @returns {Promise<void>}
+   * Handle a drop event for an existing embedded Active Effect to sort that effect
    */
   async _onSortActiveEffect(event, effect) {
-    /** @type {HTMLElement} */
     const dropTarget = event.target.closest("[data-effect-id]");
     if (!dropTarget) return;
     const target = this._getEmbeddedDocument(dropTarget);
-
-    // Don't sort on yourself
     if (effect.uuid === target.uuid) return;
 
-    // Identify sibling items based on adjacent HTML elements
     const siblings = [];
     for (const el of dropTarget.parentElement.children) {
       const siblingId = el.dataset.effectId;
@@ -753,35 +676,30 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         siblings.push(this._getEmbeddedDocument(el));
     }
 
-    // Perform the sort
     const sortUpdates = SortingHelpers.performIntegerSort(effect, {
       target,
       siblings,
     });
 
-    // Split the updates up by parent document
     const directUpdates = [];
-
     const grandchildUpdateData = sortUpdates.reduce((items, u) => {
       const parentId = u.target.parent.id;
       const update = { _id: u.target.id, ...u.update };
       if (parentId === this.actor.id) {
         directUpdates.push(update);
-        return items;
+      } else {
+        if (items[parentId]) items[parentId].push(update);
+        else items[parentId] = [update];
       }
-      if (items[parentId]) items[parentId].push(update);
-      else items[parentId] = [update];
       return items;
     }, {});
 
-    // Effects-on-items updates
     for (const [itemId, updates] of Object.entries(grandchildUpdateData)) {
       await this.actor.items
         .get(itemId)
         .updateEmbeddedDocuments("ActiveEffect", updates);
     }
 
-    // Update on the main actor
     this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
@@ -791,16 +709,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     const folder = await Folder.implementation.fromDropData(data);
     if (folder.type !== "Item") return [];
     const projectDropTarget = event.target.closest("[data-application-part='projects'");
+
     const droppedItemData = await Promise.all(
       folder.contents.map(async (item) => {
         if (!(document instanceof Item)) item = await fromUuid(item.uuid);
-
-        // If it's an equipment dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "equipment")) {
           const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", { name: item.name });
           item = { name, type: "project", "system.yield.item": item.uuid };
         }
-
         return item;
       }),
     );
