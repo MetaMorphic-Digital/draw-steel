@@ -18,6 +18,35 @@
 ### Known Issues
 -->
 
+## 0.7.0 Foundry v13 Alpha
+
+### Added
+- Implemented Combatant Groups. (#131)
+  - You can create Combatant Groups from the ellipsis (three-dot) menu in the top right of the Combat display.
+    - A Base combatant group can have any number of non-minion members.
+    - A Squad can have any number of minions plus up to one non-minion captain.
+  - You can drag and drop or use the "Update Combatant" form to adjust combatant group membership.
+- Added new item subtype: Project. (#257)
+- Numerous improvements to the Power Roll Dialog.
+  - Added roll mode configuration. (#143)
+  - Added general roll modifier input. (#276)
+  - Added skill selection. (#277)
+- Added immunities and weaknesses section to the actor sheets. (#184)
+- Added "Special" target type. (#275)
+- Dragging an owned ability or project item to the hotbar will create a macro to use/roll it. (#313)
+
+### Changed
+- Changed system minimum to v13.338
+- Updated application overrides and hooks to v13 UI overhaul compatibility. (#226, #229, #230, #231, #232, #233, #255, #298)
+- Negative stamina now has unique colors in bar. (#315)
+- Switched various fontAwesome icons to pro-exclusives. (#274)
+- Various repository refactors. (#253, #290, #301, #325)
+
+### Fixed
+- Fixed an error preventing combat start if no player-owned characters are in the combat. (#266)
+- Fixed typos in the CONFIG.DRAW_STEEL. (#269)
+- Fixed token resource bar not allowing negative stamina values. (#236)
+
 ## 0.6.2
 
 ### Added

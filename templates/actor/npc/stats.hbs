@@ -62,64 +62,15 @@
       </div>
     </fieldset>
   </div>
-  <fieldset class="characteristics flexrow">
-    <legend>{{systemFields.characteristics.label}}</legend>
-    {{#each characteristics as |chr key|}}
-    {{#if @root.isPlay}}
-    <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip="{{localize "DRAW_STEEL.Roll.Prompt" prompt=chr.field.hint}}">
-      {{chr.field.label}} {{numberFormat chr.value sign=true}}
-    </a>
-    {{else}}
-    <label class="characteristic edit" data-tooltip="{{chr.field.label}}">
-      <span class="label">{{chr.field.hint}}</span>
-      <input type="text" name="system.characteristics.{{key}}.value" value="{{numberFormat chr.value sign=true}}" data-dtype="Number" data-source="true">
-    </label>
-    {{/if}}
-    {{/each}}
-  </fieldset>
+  {{> "systems/draw-steel/templates/actor/shared/partials/stats/characteristics.hbs"}}
   {{#if isPlay}}
   <div class="flexrow">
-    <fieldset class="combat flexrow">
-      <legend>{{systemFields.combat.label}}</legend>
-      <span class="play">
-        {{systemFields.combat.fields.size.label}} {{system.combat.size}}
-      </span>
-      <span class="play">
-        {{localize "DRAW_STEEL.Item.Ability.Distance.Melee"}} {{system.reach}}
-      </span>
-      <span class="play">
-        {{systemFields.combat.fields.stability.label}} {{system.combat.stability}}
-      </span>
-    </fieldset>
-    <fieldset class="movement flexrow">
-      <legend>{{systemFields.movement.label}}</legend>
-      {{#each movement as |mvmt key|}}
-      <span class="play">
-        {{mvmt.field.label}} {{mvmt.value}}
-      </span>
-      {{/each}}
-    </fieldset>
+    {{> "systems/draw-steel/templates/actor/shared/partials/stats/combat.hbs"}}
+    {{> "systems/draw-steel/templates/actor/shared/partials/stats/movement.hbs"}}
   </div>
   {{else}}
-  <fieldset class="combat flexrow">
-    <legend>{{systemFields.combat.label}}</legend>
-    <div class="size flexrow">
-      <label class="size">{{systemFields.combat.fields.size.label}}</label>
-      {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=actor.uuid dataset=datasets.isSource}}
-      {{#if (eq system.combat.size.value 1)}}
-      {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
-      {{/if}}
-    </div>
-    {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
-  </fieldset>
-  <fieldset class="movement flexrow">
-    <legend>{{systemFields.movement.label}}</legend>
-    {{formGroup systemFields.movement.fields.walk value=systemSource.movement.walk rootId=actor.uuid dataset=datasets.isSource}}
-    {{formGroup systemFields.movement.fields.burrow value=systemSource.movement.burrow rootId=actor.uuid dataset=datasets.isSource}}
-    {{formGroup systemFields.movement.fields.climb value=systemSource.movement.climb rootId=actor.uuid dataset=datasets.isSource}}
-    {{formGroup systemFields.movement.fields.swim value=systemSource.movement.swim rootId=actor.uuid dataset=datasets.isSource}}
-    {{formGroup systemFields.movement.fields.fly value=systemSource.movement.fly rootId=actor.uuid dataset=datasets.isSource}}
-    {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
-  </fieldset>
+  {{> "systems/draw-steel/templates/actor/shared/partials/stats/combat.hbs"}}
+  {{> "systems/draw-steel/templates/actor/shared/partials/stats/movement.hbs"}}
   {{/if}}
+  {{> "systems/draw-steel/templates/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
 </section>

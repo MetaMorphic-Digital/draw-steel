@@ -1,0 +1,20 @@
+{{#if isPlay}}
+<fieldset class="movement flexrow">
+  <legend>{{systemFields.movement.label}}</legend>
+  {{#each movement as |mvmt key|}}
+  <span class="play">
+    {{mvmt.field.label}} {{mvmt.value}}
+  </span>
+  {{/each}}
+</fieldset>
+{{else}}
+<fieldset class="movement flexrow">
+  <legend>{{systemFields.movement.label}}</legend>
+  {{formGroup systemFields.movement.fields.walk value=systemSource.movement.walk rootId=actor.uuid dataset=datasets.isSource}}
+  {{formGroup systemFields.movement.fields.burrow value=systemSource.movement.burrow rootId=actor.uuid dataset=datasets.isSource}}
+  {{formGroup systemFields.movement.fields.climb value=systemSource.movement.climb rootId=actor.uuid dataset=datasets.isSource}}
+  {{formGroup systemFields.movement.fields.swim value=systemSource.movement.swim rootId=actor.uuid dataset=datasets.isSource}}
+  {{formGroup systemFields.movement.fields.fly value=systemSource.movement.fly rootId=actor.uuid dataset=datasets.isSource}}
+  {{formGroup systemFields.movement.fields.teleport value=systemSource.movement.teleport rootId=actor.uuid dataset=datasets.isSource}}
+</fieldset>
+{{/if}}

@@ -1,0 +1,26 @@
+{{#if isPlay}}
+<fieldset class="combat flexrow">
+  <legend>{{systemFields.combat.label}}</legend>
+  <span class="play">
+    {{systemFields.combat.fields.size.label}} {{system.combat.size}}
+  </span>
+  <span class="play">
+    {{localize "DRAW_STEEL.Item.Ability.Distance.Melee"}} {{system.reach}}
+  </span>
+  <span class="play">
+    {{systemFields.combat.fields.stability.label}} {{system.combat.stability}}
+  </span>
+</fieldset>
+{{else}}
+<fieldset class="combat flexrow">
+  <legend>{{systemFields.combat.label}}</legend>
+  <div class="size flexrow">
+    <label class="size">{{systemFields.combat.fields.size.label}}</label>
+    {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=actor.uuid dataset=datasets.isSource}}
+    {{#if (eq system.combat.size.value 1)}}
+    {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
+    {{/if}}
+  </div>
+  {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
+</fieldset>
+{{/if}}

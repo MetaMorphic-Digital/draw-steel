@@ -1,0 +1,37 @@
+{{#if isPlay}}
+<div class="immunities-weaknesses flexrow">
+  <fieldset>
+    <legend>{{systemFields.damage.fields.immunities.label}}</legend>
+    <span class="play">
+      {{#if damageIW.immunities}}
+      {{{damageIW.immunities}}}
+      {{else}}
+      {{localize "None"}}
+      {{/if}}
+    </span>
+  </fieldset>
+  <fieldset>
+    <legend>{{systemFields.damage.fields.weaknesses.label}}</legend>
+    <span class="play">
+      {{#if damageIW.weaknesses}}
+      {{{damageIW.weaknesses}}}
+      {{else}}
+      {{localize "None"}}
+      {{/if}}
+    </span>
+  </fieldset>
+</div>
+{{else}}
+<fieldset class="immunities flexrow">
+  <legend>{{systemFields.damage.fields.immunities.label}}</legend>
+  {{#each systemFields.damage.fields.immunities.fields as |field|}}
+  {{formGroup field value=(lookup @root.systemSource.damage.immunities field.name) rootId=@root.actor.uuid dataset=@root.datasets.isSource label=(lookup @root.damageIW.labels field.name)}}
+  {{/each}}
+</fieldset>
+<fieldset class="weaknesses flexrow">
+  <legend>{{systemFields.damage.fields.weaknesses.label}}</legend>
+  {{#each systemFields.damage.fields.weaknesses.fields as |field|}}
+  {{formGroup field value=(lookup @root.systemSource.damage.weaknesses field.name) rootId=@root.actor.uuid dataset=@root.datasets.isSource label=(lookup @root.damageIW.labels field.name)}}
+  {{/each}}
+</fieldset>
+{{/if}}
