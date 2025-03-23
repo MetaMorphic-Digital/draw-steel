@@ -2,6 +2,8 @@ import "./apps/monster-metadata.css";
 import "./apps/power-roll-dialog.css";
 import "./apps/targeted-condition-prompt.css";
 
+import "./canvas/measurement.css";
+
 import "./components/effects.css";
 import "./components/embeds.css";
 import "./components/forms.css";
