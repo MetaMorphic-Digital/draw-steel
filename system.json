@@ -58,7 +58,7 @@
   "flags": {
     "hotReload": {
       "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["css", "lang", "templates"]
+      "paths": ["src/styles", "lang", "templates"]
     }
   },
   "url": "https://github.com/MetaMorphic-Digital/draw-steel",
@@ -78,10 +78,9 @@
   },
   "esmodules": ["draw-steel.mjs"],
   "styles": [
-    "css/draw-steel.css",
-    { "src": "css/variables/_variables.css", "layer": "variables" },
-    { "src": "css/elements/_elements.css", "layer": "elements" },
-    { "src": "css/applications/_applications.css", "layer": "applications" }
+    { "src": "src/styles/draw-steel.css", "layer": "system" },
+    { "src": "src/styles/variables/_variables.css", "layer": "variables" },
+    { "src": "src/styles/elements/_elements.css", "layer": "elements" }
   ],
   "languages": [{
     "lang": "en",
