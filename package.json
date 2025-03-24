@@ -7,14 +7,14 @@
     "pullJSONtoLDB": "node ./tools/pullJSONtoLDB.mjs",
     "pushLDBtoJSON": "node ./tools/pushLDBtoJSON.mjs",
     "unpack": "npm run pushLDBtoJSON",
-    "build": "npm run build:packs && npm run build:code",
+    "build": "npm run build:packs && npm run build:css && npm run build:code",
     "build:packs": "npm run pullJSONtoLDB",
     "build:css": "rollup --config rollup.cssconfig.mjs",
     "build:css:watch": "rollup --config rollup.cssconfig.mjs --watch",
     "build:code": "rollup -c --sourcemap",
     "lint": "eslint src/module/**/*.mjs",
     "lint:fix": "eslint --fix src/module/**/*.mjs",
-    "postinstall": "npm run createSymlinks",
+    "postinstall": "npm run build:css && npm run createSymlinks",
     "prepareRelease": "npm run build:packs && npm run build:code"
   },
   "browserslist": [
