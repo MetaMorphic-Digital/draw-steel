@@ -6,7 +6,7 @@ Please ensure there is an open issue about whatever contribution you are submitt
 
 ## Developer Tooling
 
-To start, clone this repository and either place it in or symlink it to your `Data/systems/draw-steel` user data directory. The CSS file referenced by `system.json` is derived from the SCSS files committed to the repository, so you must perform the following instructions to be able to load the repository in Foundry from the committed source.
+To start, clone this repository and either place it in or symlink it to your `Data/systems/draw-steel` user data directory. The CSS file referenced by `system.json` is derived from the CSS files in `src/styles` committed to the repository, so you must perform the following instructions to be able to load the repository in Foundry from the committed source.
 
 To provide type and i18n support, this repository uses a postinstall script that symlinks your local Foundry installation. For this to work, copy `example-foundry-config.yaml` and rename it to `foundry-config.yaml`, then replace the value of the `installPath` field.
 

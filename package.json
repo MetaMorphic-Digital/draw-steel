@@ -9,6 +9,8 @@
     "unpack": "npm run pushLDBtoJSON",
     "build": "npm run build:packs && npm run build:code",
     "build:packs": "npm run pullJSONtoLDB",
+    "build:css": "rollup --config rollup.cssconfig.mjs",
+    "build:css:watch": "rollup --config rollup.cssconfig.mjs --watch",
     "build:code": "rollup -c --sourcemap",
     "lint": "eslint src/module/**/*.mjs",
     "lint:fix": "eslint --fix src/module/**/*.mjs",
@@ -26,6 +28,7 @@
     "@html-eslint/parser": "^0.26.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "eslint": "^8.57.1",
-    "rollup": "^4.9.1"
+    "rollup": "^4.9.1",
+    "rollup-plugin-import-css": "^3.5.8"
   }
 }
