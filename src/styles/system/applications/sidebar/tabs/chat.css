@@ -1,0 +1,56 @@
+.chat-sidebar {
+  .chat-message {
+    .powerResult {
+      .potency {
+        color: red;
+      }
+    }
+
+    footer {
+      button {
+        margin-top: 3px;
+      }
+    }
+
+    .dice-roll {
+      border: 1px solid var(--color-border-light-2);
+      padding: 5px;
+      border-radius: 5px;
+
+      .header {
+        flex-basis: 100%;
+        text-align: center;
+        font-size: var(--font-size-16);
+        font-weight: bold;
+      }
+
+      .dice-result {
+        .critical {
+          color: green;
+        }
+
+        .failure {
+          color: red;
+        }
+      }
+
+      .potency {
+        flex-basis: 100%;
+
+        .label {
+          font-weight: bold;
+        }
+
+        .result {
+          &.Success {
+            color: var(--draw-steel-c-success);
+          }
+
+          &.Failure {
+            color: var(--draw-steel-c-failure);
+          }
+        }
+      }
+    }
+  }
+}

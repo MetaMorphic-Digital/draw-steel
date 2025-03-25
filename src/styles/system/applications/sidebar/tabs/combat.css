@@ -1,0 +1,63 @@
+.combat-sidebar {
+  .theme-light .combat-tracker.ds-default li.combatant {
+    /* Light theme washes out low opacity */
+    --combatantAlpha: 0.2;
+    &.active {
+      --combatantAlpha: 0.5
+    }
+  }
+
+  .combat-tracker.ds-default {
+    li.combatant, li.combatant-group {
+      --combatantAlpha: 0.1;
+      &.active {
+        --combatantAlpha: 0.3;
+      }
+      &.PARTY {
+        background-color: rgba(51, 188, 78, var(--combatantAlpha));
+      }
+      &.SECRET {
+        background-color: rgba(166, 18, 212, var(--combatantAlpha));
+      }
+      &.HOSTILE {
+        background-color: rgba(231, 33, 36, var(--combatantAlpha));
+      }
+      &.NEUTRAL {
+        background-color: rgba(241, 216, 54, var(--combatantAlpha));
+      }
+      &.FRIENDLY {
+        background-color: rgba(67, 223, 223, var(--combatantAlpha));
+      }
+      &.OTHER {
+        background-color: rgba(85, 85, 85, var(--combatantAlpha));
+      }
+      .token-initiative {
+        flex: 0 0 2.5rem;
+      }
+      .activate-combatant {
+        font-size: 24px;
+      }
+    }
+    li.combatant-group {
+      color: var(--color-text-primary);
+      display: flex;
+      flex-direction: column;
+      padding: var(--element-spacing);
+      margin: 0;
+      cursor: var(--cursor-pointer);
+      border-radius: 4px;
+      .group-header {
+        display: flex;
+        align-items: center;
+        gap: var(--element-spacing);
+      }
+      .group-turns {
+        padding: 0;
+      }
+      &:not(.expanded) .group-turns {
+        display: none;
+      }
+    }
+  }
+
+}
