@@ -10,7 +10,7 @@ export default [{
 }, {
   input: "./src/styles/system/_system.mjs",
   output: {
-    file: "./css/draw-steel-system.mjs",
+    file: "./public/css/draw-steel-system.mjs",
     format: "esm",
     assetFileNames: "draw-steel-system.css",
   },
@@ -18,7 +18,7 @@ export default [{
 }, {
   input: "./src/styles/variables/_variables.mjs",
   output: {
-    file: "./css/draw-steel-variables.mjs",
+    file: "./public/css/draw-steel-variables.mjs",
     format: "esm",
     assetFileNames: "draw-steel-variables.css",
   },
@@ -26,7 +26,7 @@ export default [{
 }, {
   input: "./src/styles/elements/_elements.mjs",
   output: {
-    file: "./css/draw-steel-elements.mjs",
+    file: "./public/css/draw-steel-elements.mjs",
     format: "esm",
     assetFileNames: "draw-steel-elements.css",
   },
