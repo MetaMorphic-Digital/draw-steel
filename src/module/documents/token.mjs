@@ -38,18 +38,4 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
     }
     return Array.from(tokens);
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _preUpdateMovement(movement, operation = {}) {
-    const nextSegment = movement.passed;
-    const tokens = this.getHostileTokensFromPoints(nextSegment);
-
-    if (tokens.length) {
-      // TODO: Prompt to confirm the movement.
-      const allowed = true;
-      if (allowed === false) return false;
-    }
-  }
 }
