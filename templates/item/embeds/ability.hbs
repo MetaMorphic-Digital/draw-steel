@@ -25,6 +25,11 @@
       <strong>{{systemFields.target.label}}:</strong> {{targetLabel}}
     </p>
   </div>
+  {{#if triggeredAction}}
+  <p class="trigger">
+    <strong>{{systemFields.trigger.label}}:</strong> {{system.trigger}}
+  </p>
+  {{/if}}
 </section>
 {{#if (or tier1 tier2 tier3)}}
 <section class="powerResult">
