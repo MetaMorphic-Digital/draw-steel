@@ -10,7 +10,7 @@ To start, clone this repository and either place it in or symlink it to your `Da
 
 To provide type and i18n support, this repository uses a postinstall script that symlinks your local Foundry installation. For this to work, copy `example-foundry-config.yaml` and rename it to `foundry-config.yaml`, then replace the value of the `installPath` field.
 
-Once this is done you can run `npm install` to install all relevant dependencies as well as compile the CSS file. These include `eslint` and `sass`, which provide formatting and styling support.
+Once this is done you can run `npm install` to install all relevant dependencies. This includes `eslint`, which provides formatting support.
 
 For vscode, you will need to create a `.vscode/settings.json` file with the following:
 
