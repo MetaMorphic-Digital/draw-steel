@@ -67,7 +67,7 @@
         <label>{{systemFields.hero.fields.xp.label}}:</label>
         {{#if isPlay}}
         <span class="value">
-          {{system.hero.xp}}
+          <span class="resource-curent">{{system.hero.xp}}</span>
           <span class="resource-divider"> / </span>
           <span class="resource-max">{{system.nextLevelXP}}</span>
         </span>
@@ -79,13 +79,9 @@
         <label>{{systemFields.hero.fields.victories.label}}:</label>
         {{#if isPlay}}
         <span class="value">
-          <span class="resource-current">
-            {{system.hero.victories}}
-          </span>
+          <span class="resource-current">{{system.hero.victories}}</span>
           <span class="resource-divider"> / </span>
-          <span class="resource-max">
-            {{system.victoriesMax}}
-          </span>
+          <span class="resource-max">{{system.victoriesMax}}</span>
         </span>
         {{else}}
         {{formInput systemFields.hero.fields.victories value=systemSource.hero.victories}}
