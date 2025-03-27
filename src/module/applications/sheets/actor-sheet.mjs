@@ -17,8 +17,11 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "actor"],
     position: {
-      width: 600,
+      width: 850,
       height: 600,
+    },
+    window: {
+      resizable: true,
     },
     actions: {
       toggleMode: this._toggleMode,
@@ -29,6 +32,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       roll: this._onRoll,
       useAbility: this._useAbility,
       toggleItemEmbed: this._toggleItemEmbed,
+      takeRespite: this._takeRespite,
     },
     form: {
       submitOnChange: true,
@@ -683,6 +687,10 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     const part = target.closest("[data-application-part]").dataset.applicationPart;
     this.render({ parts: [part] });
+  }
+
+  static async _takeRespite(event, target) {
+    await this.actor.system.takeRespite();
   }
 
   /** Helper Functions */

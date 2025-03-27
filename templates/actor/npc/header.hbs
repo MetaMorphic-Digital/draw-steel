@@ -5,66 +5,78 @@
     class="profile-img"
     src="{{actor.img}}"
     alt="{{actor.name}}"
-    data-edit="img"
-    {{#if isPlay}}
-    data-action="showPortraitArtwork"
-    {{else}}
-    {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
-    data-action="editImage"
-    {{/if}}
+    data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
     title="{{actor.name}}"
-    height="100"
-    width="100"
-  />
+  >
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
       <h2>{{{wordBreaker actor.name}}}</h2>
       {{else}}
-      {{formInput
-      fields.name
-      value=actor._source.name
-      placeholder=(localize "Name")
-      }}
+      {{formInput fields.name value=source.name placeholder=(localize "Name") }}
       {{/if}}
     </div>
-    <div class="keywords">
-      {{monsterKeywords}}
+    <div class="tags flexrow">
+      {{!-- Keyword Tags --}}
+      {{#each system.monster.keywords as |keyword|}}
+      <div class="tag">
+        {{lookup (lookup @root.config.monsters.keywords keyword) "label"}}
+      </div>
+      {{/each}}
+      {{#unless system.monster.keywords}}
+      {{/unless}}
+
+      {{!-- Organization/Role Tags --}}
+      {{#if system.monster.organization}}
+      <div class="tag">
+        {{lookup (lookup config.monsters.organizations system.monster.organization) "label"}}
+      </div>
+      {{/if}}
+      {{#if system.monster.role}}
+      <div class="tag">
+        {{lookup (lookup config.monsters.roles system.monster.role) "label"}}
+      </div>
+      {{/if}}
+      {{#unless isPlay}}
+      <a data-action="editMonsterMetadata">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+      {{/unless}}
     </div>
   </div>
   <div class="header-right flexcol">
     {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
-    <div class="monster-data flexrow">
-      <div class="monster-metadata">
-        <div class="actor-source">
-          {{#if isPlay}}
-          {{system.source.label}}
+    <div class="actor-source">
+      {{#if isPlay}}
+      {{system.source.label}}
+      {{else}}
+      <a data-action="updateSource">
+        <i class="fa-solid fa-book"></i>
+        {{actor.system.source.label}}
+      </a>
+      {{/if}}
+    </div>
+    <div class="actor-data monster-data">
+      <div class="level">
+        <label>{{systemFields.monster.fields.level.label}}: </label>
+        <span class="value">
+          {{systemSource.monster.level}}
+        </span>
+      </div>
+      <div class="ev">
+        <label>{{localize "DRAW_STEEL.Actor.NPC.EVLabel.Label"}}:</label>
+        <span class="value">
+          {{#if (eq system.monster.organization "minion")}}
+          {{localize "DRAW_STEEL.Actor.NPC.EVLabel.Minion" value=systemSource.monster.ev}}
           {{else}}
-          <a data-action="updateSource">
-            <i class="fa-solid fa-book"></i>
-            {{actor.system.source.label}}
-          </a>
+          {{systemSource.monster.ev}}
           {{/if}}
-        </div>
-        <div class="monster-info">
-          {{#unless isPlay}}
-          <a data-action="editMonsterMetadata">
-            <i class="fa-solid fa-gear"></i>
-          </a>
-          {{/unless}}
-          {{systemFields.monster.fields.level.label}} {{system.monster.level}}
-          {{organizationLabel}} {{rolesLabel}}
-        </div>
-        <div class="ev">
-          {{evLabel}}
-        </div>
+        </span>
       </div>
       {{#if showMalice}}
-      <div class="malice form-group stacked">
-        <label>{{malice.label}}</label>
-        <div class="form-fields">
-          <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
-        </div>
+      <div class="malice">
+        <label>{{malice.label}}:</label>
+        <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
       </div>
       {{/if}}
     </div>

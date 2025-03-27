@@ -32,53 +32,83 @@
 
   .sheet-header {
     .header-right {
-      padding-left: 5px;
-      flex: 0 0 200px;
-      height: 100px;
-      .class {
-        flex: 1;
-        .click-element {
-          height: 100%;
-          [data-action='deleteDoc'] {
-            flex: 0 0 20px;
+
+    }
+  }
+
+  .sheet-header {
+    .profile-img {
+      width: 125px;
+      height: 125px;
+    }
+    .header-center {
+      /* 305px is the width of the image, header-right, and the gaps */
+      max-width: calc(100% - 305px);
+      gap: 5px;
+      .tags {
+        gap: 5px;
+        .tag {
+          background: var(--draw-steel-c-faint);
+          border: 1px solid var(--draw-steel-c-beige);
+          color: var(--draw-steel-c-dark);
+          border-radius: 5px;
+          padding: 5px;
+          font-size: var(--font-size-13);
+          font-weight: 600;
+          flex-grow: 0;
+          text-wrap: nowrap;
+          font-variant-caps: small-caps;
+          span a[data-action="deleteDoc"] {
+            margin-left: 5px;
+          }
+          a.unfilled {
+            font-weight: normal;
           }
         }
-        .label {
-          display: inline-block;
-          line-height: 50px;
-          height: 100%;
-          font-size: var(--font-h3-size);
-          &.unfilled {
-            width: 100%;
-            text-align: center;
-          }
+        a[data-action="editMonsterMetadata"] {
+          text-align: right;
         }
       }
-      .victories {
-        flex: 0 0 30px;
-        line-height: 30px;
+    }
+    .header-right {
+      width: 160px;
+      div.mode-toggle  {
+        flex-grow: 1;
+        align-items: start;
+      }
+      &:has(.actor-source) {
+        div.mode-toggle  {
+          flex-grow: 0;
+        }
+      }
+      .actor-source {
+        margin-top: 5px;
+        font-family: var(--font-h6);
+        font-size: var(--font-size-16);
+        flex-grow: 1;
+        align-items: start;
+        text-align: center;
+      }
+      div.actor-data > div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 5px;
+        font-size: var(--font-size-15);
         input {
-          height: 30px;
-          width: 40px;
+          width: 50%;
+        }
+        &:has(input) label {
+          width: 50%;
+        }
+        .value {
+          text-align: right;
+          flex-grow: 1;
         }
       }
-      .item-img {
-        display: inline-block;
-        border: none;
-        height: 36px;
-        flex: 0 0 36px;
-      }
-      .monster-data {
-        gap: 3px;
-        .actor-source {
-          margin-top: 5px;
-          font-family: var(--font-h6);
-          font-size: var(--font-size-18);
-        }
-        .malice {
-          text-align: center;
-          flex: 0 0 40px;
-        }
+      div.take-respite  {
+        text-align: center;
+        margin-top: 5px;
       }
     }
   }

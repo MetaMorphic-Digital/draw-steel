@@ -259,11 +259,18 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /**
+   * Returns the total xp required for the next level
+   */
+  get nextLevelXP() {
+    if (!this.class) return 0;
+    return ds.CONFIG.hero.xp_track[this.level];
+  }
+
+  /**
    * Returns the number of victories required to ascend to the next level
    */
   get victoriesMax() {
-    if (!this.class) return 0;
-    return ds.CONFIG.hero.xp_track[this.class.system.level];
+    return Math.max(0, this.nextLevelXP - this.hero.xp);
   }
 
   /** @inheritdoc */
