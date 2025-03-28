@@ -1,3 +1,4 @@
+import { systemPath } from "./constants.mjs";
 import { preLocalize } from "./helpers/utils.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
@@ -83,6 +84,62 @@ DRAW_STEEL.sizes = {
   },
 };
 preLocalize("sizes", { key: "label" });
+
+/**
+ * Copied from @client/config.mjs
+ * @typedef TokenMovementAction
+ * @property {string} label    The label of the movement action
+ * @property {string} icon     The icon of the movement action
+ * @property {boolean} [speedOption] Whether or not to include this as an option on the actor sheet
+ * @property {(nonDerivedDifficulties: {[action: string]: number}) => number} [deriveDifficulty]
+ *   If set, this function is used to derive the terrain difficulty from from nonderived difficulties,
+ *   which are those that do not have `deriveDifficulty` set.
+ *   Used by {@link foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType}.
+ *   Derived terrain difficulties are not configurable via the behavior UI.
+ */
+
+/** @type {Record<string, TokenMovementAction} */
+DRAW_STEEL.movementTypes = {
+  walk: {
+    label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
+    icon: "fa-solid fa-person-walking",
+    speedOption: true,
+  },
+  burrow: {
+    label: "TOKEN.MOVEMENT.ACTIONS.burrow.label",
+    icon: "fa-solid fa-shovel",
+    speedOption: true,
+  },
+  climb: {
+    label: "TOKEN.MOVEMENT.ACTIONS.climb.label",
+    icon: "fa-solid fa-monkey",
+    speedOption: true,
+  },
+  crawl: {
+    label: "TOKEN.MOVEMENT.ACTIONS.crawl.label",
+    icon: "fa-solid fa-worm",
+  },
+  jump: {
+    label: "TOKEN.MOVEMENT.ACTIONS.jump.label",
+    icon: "fa-solid fa-person-ski-jumping",
+  },
+  swim: {
+    label: "TOKEN.MOVEMENT.ACTIONS.swim.label",
+    icon: "fa-solid fa-fish",
+    speedOption: true,
+  },
+  fly: {
+    label: "TOKEN.MOVEMENT.ACTIONS.fly.label",
+    icon: "fa-solid fa-dove",
+    speedOption: true,
+  },
+  teleport: {
+    label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
+    icon: "fa-solid fa-transporter",
+    speedOption: true,
+  },
+};
+// Not prelocalizing because expectation is waypoint template will do so
 
 /**
  * Configuration information for damage types

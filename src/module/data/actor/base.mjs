@@ -47,12 +47,9 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
-      walk: new fields.NumberField({ integer: true, min: 0, initial: 5 }),
-      burrow: new fields.NumberField({ integer: true, min: 0 }),
-      climb: new fields.NumberField({ integer: true, min: 0 }),
-      swim: new fields.NumberField({ integer: true, min: 0 }),
-      fly: new fields.NumberField({ integer: true, min: 0 }),
-      teleport: new fields.NumberField({ integer: true, min: 0 }),
+      value: new fields.NumberField({ integer: true, min: 0, initial: 5 }),
+      types: new fields.SetField(setOptions(), { initial: ["walk"] }),
+      hover: new fields.BooleanField(),
     });
 
     schema.damage = new fields.SchemaField({
