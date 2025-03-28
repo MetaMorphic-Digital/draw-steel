@@ -55,7 +55,7 @@
     {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
     <div class="actor-data character-data">
       <div class="level">
-        <label>{{localize "DRAW_STEEL.Item.Class.FIELDS.level.label"}}:</label>
+        <label>{{localize "DRAW_STEEL.Item.Class.FIELDS.level.label"}}</label>
         <span class="value">{{system.level}}</span>
         {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
         <span class="level-up" data-tooltip="Level Up Available">
@@ -64,7 +64,7 @@
         {{/if}}
       </div>
       <div class="xp">
-        <label>{{systemFields.hero.fields.xp.label}}:</label>
+        <label>{{systemFields.hero.fields.xp.label}}</label>
         {{#if isPlay}}
         <span class="value">
           <span class="resource-curent">{{system.hero.xp}}</span>
@@ -76,7 +76,7 @@
         {{/if}}
       </div>
       <div class="victories">
-        <label>{{systemFields.hero.fields.victories.label}}:</label>
+        <label>{{systemFields.hero.fields.victories.label}}</label>
         {{#if isPlay}}
         <span class="value">
           <span class="resource-current">{{system.hero.victories}}</span>
