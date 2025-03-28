@@ -100,11 +100,6 @@ preLocalize("sizes", { key: "label" });
 
 /** @type {Record<string, DrawSteelTokenMovementAction} */
 DRAW_STEEL.movementTypes = {
-  walk: {
-    label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
-    icon: "fa-solid fa-person-walking",
-    speedOption: true,
-  },
   burrow: {
     label: "TOKEN.MOVEMENT.ACTIONS.burrow.label",
     icon: "fa-solid fa-shovel",
@@ -118,9 +113,7 @@ DRAW_STEEL.movementTypes = {
   crawl: {
     label: "TOKEN.MOVEMENT.ACTIONS.crawl.label",
     icon: "fa-solid fa-worm",
-    deriveDifficulty: (nonDerivedDifficulties) => {
-      return nonDerivedDifficulties.walk;
-    },
+    deriveDifficulty: ({ walk }) => walk,
   },
   jump: {
     label: "TOKEN.MOVEMENT.ACTIONS.jump.label",
@@ -139,6 +132,11 @@ DRAW_STEEL.movementTypes = {
   teleport: {
     label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
     icon: "fa-solid fa-transporter",
+    speedOption: true,
+  },
+  walk: {
+    label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
+    icon: "fa-solid fa-person-walking",
     speedOption: true,
   },
 };
