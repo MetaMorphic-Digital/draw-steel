@@ -1,27 +1,24 @@
 .draw-steel {
 
   .sheet-header {
-    flex: 0 0 100px;
-    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     margin-bottom: 10px;
+    gap: 10px;
 
     .profile-img {
       flex: 0 0 100px;
       height: 100px;
-      margin-right: 10px;
-      border: none;
     }
 
     .header-center {
       height: 100%;
+      /* 235px is the width of the image, header-right, and the gaps */
       max-width: calc(100% - 235px);
+      flex-grow: 1;
+      justify-content: center;
       .document-name {
-        height: 60px;
-        line-height: 60px;
+        max-height: 65px;
+        line-height: 65px;
         input, h2 {
           font-family: var(--font-h2);
           font-size: var(--font-h2-size);
@@ -35,24 +32,12 @@
           height: 100%;
         }
         h2 {
+          max-height: 100%;
+        }
+        h2 {
           vertical-align: middle;
-
-          /* Light theme fixes
-          .theme-light & {
-            color: var(--color-dark-2);
-          } */
+          overflow: hidden;
         }
-      }
-      .origins {
-        height: 40px;
-        div {
-          text-align: center;
-        }
-        .filled {
-          font-weight: 700;
-
-        }
-        /* .unfilled { } */
       }
     }
 

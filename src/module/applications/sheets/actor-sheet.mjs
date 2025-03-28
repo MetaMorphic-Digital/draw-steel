@@ -17,8 +17,11 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "actor"],
     position: {
-      width: 600,
+      width: 850,
       height: 600,
+    },
+    window: {
+      resizable: true,
     },
     actions: {
       toggleMode: this._toggleMode,
