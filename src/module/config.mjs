@@ -102,41 +102,41 @@ preLocalize("sizes", { key: "label" });
 DRAW_STEEL.movementTypes = {
   burrow: {
     label: "TOKEN.MOVEMENT.ACTIONS.burrow.label",
-    icon: "fa-solid fa-shovel",
+    icon: "fa-solid fa-fw fa-shovel",
     speedOption: true,
   },
   climb: {
     label: "TOKEN.MOVEMENT.ACTIONS.climb.label",
-    icon: "fa-solid fa-monkey",
+    icon: "fa-solid fa-fw fa-monkey",
     speedOption: true,
   },
   crawl: {
     label: "TOKEN.MOVEMENT.ACTIONS.crawl.label",
-    icon: "fa-solid fa-worm",
+    icon: "fa-solid fa-fw fa-worm",
     deriveDifficulty: ({ walk }) => walk,
   },
   jump: {
     label: "TOKEN.MOVEMENT.ACTIONS.jump.label",
-    icon: "fa-solid fa-person-ski-jumping",
+    icon: "fa-solid fa-fw fa-person-ski-jumping",
   },
   swim: {
     label: "TOKEN.MOVEMENT.ACTIONS.swim.label",
-    icon: "fa-solid fa-fish",
+    icon: "fa-solid fa-fw fa-fish",
     speedOption: true,
   },
   fly: {
     label: "TOKEN.MOVEMENT.ACTIONS.fly.label",
-    icon: "fa-solid fa-dove",
+    icon: "fa-solid fa-fw fa-dove",
     speedOption: true,
   },
   teleport: {
     label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
-    icon: "fa-solid fa-transporter",
+    icon: "fa-solid fa-fw fa-transporter",
     speedOption: true,
   },
   walk: {
     label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
-    icon: "fa-solid fa-person-walking",
+    icon: "fa-solid fa-fw fa-person-walking",
     speedOption: true,
   },
 };

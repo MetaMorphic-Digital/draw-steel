@@ -6,11 +6,11 @@
   left: 8px;
   .movement-modes {
     --movement-columns: 2;
-    --movement-size: 36px;
+    --movement-size: 150px;
     visibility: hidden;
     position: absolute;
     top: -140px;
-    left: -100px;
+    left: calc(-1* var(--column-width) - 260px);
     display: grid;
     grid-template-columns: repeat(var(--movement-columns), var(--movement-size));
     padding: 3px;
@@ -24,9 +24,11 @@
       visibility: visible;
     }
     .control-icon {
+      text-align: left;
       cursor: var(--cursor-pointer);
       color: var(--button-text-color);
       opacity: 0.5;
+      width: inherit;
       &.active, &:hover {
         opacity: 1;
       }
