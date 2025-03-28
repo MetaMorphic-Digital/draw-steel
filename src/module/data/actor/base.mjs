@@ -93,6 +93,9 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     };
 
     this.stamina.min = 0;
+
+    // Teleport speeds are unaffected by conditions and effects
+    this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
   }
 
   /** @inheritdoc */
@@ -105,13 +108,9 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const isSlowed = this.parent.statuses.has("slowed");
     const isGrabbedOrRestrained = this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained");
     if (isSlowed || isGrabbedOrRestrained) {
-      for (const movement in this.movement) {
-        // If slowed, set all speeds to slowed speed
-        if (isSlowed && (this.movement[movement] > this.statuses.slowed.speed)) this.movement[movement] = this.statuses.slowed.speed;
-
-        // If grabbed or restrained, set non-teleport speeds to 0
-        if (isGrabbedOrRestrained && (movement !== "teleport")) this.movement[movement] = 0;
-      }
+      // If slowed, set all speeds to slowed speed
+      if (isSlowed && (this.movement.value > this.statuses.slowed.speed)) this.movement.value = this.statuses.slowed.speed;
+      if (isGrabbedOrRestrained) this.movement.value = 0;
     }
 
     // prepare derived item data that relies on derived actor values (i.e. ability potencies)

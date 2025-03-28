@@ -25,6 +25,7 @@ declare module "./base.mjs" {
       value: number;
       types: Set<string>;
       hover: boolean;
+      teleport: number | null;
     }
     damage: {
       immunities: Record<string, number>;
