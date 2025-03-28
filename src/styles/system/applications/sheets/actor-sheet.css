@@ -75,6 +75,22 @@
           flex-grow: 0;
         }
       }
+      dl {
+        display: flex;
+        flex-flow: row wrap;
+        dt, dd {
+          margin: 0;
+          color: inherit;
+        }
+        dt {
+          text-shadow: none;
+          flex-basis: 40px
+        }
+        dd {
+          flex: 1 0 110px;
+          text-align: right;
+        }
+      }
       .actor-source {
         margin-top: 5px;
         font-family: var(--font-h6);
@@ -83,7 +99,8 @@
         align-items: start;
         text-align: center;
       }
-      div.actor-data > div {
+      div.actor-data > div,
+      .malice {
         display: flex;
         align-items: center;
         gap: 5px;

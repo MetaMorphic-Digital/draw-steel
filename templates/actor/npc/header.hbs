@@ -56,27 +56,24 @@
       </a>
       {{/if}}
     </div>
-    <div class="actor-data monster-data">
-      <div class="level">
-        <label>{{systemFields.monster.fields.level.label}}: </label>
-        <span class="value">{{systemSource.monster.level}}</span>
-      </div>
-      <div class="ev">
-        <label>{{localize "DRAW_STEEL.Actor.NPC.EVLabel.Label"}}:</label>
-        <span class="value">
-          {{#if (eq system.monster.organization "minion")}}
-          {{localize "DRAW_STEEL.Actor.NPC.EVLabel.Minion" value=systemSource.monster.ev}}
-          {{else}}
-          {{systemSource.monster.ev}}
-          {{/if}}
-        </span>
-      </div>
-      {{#if showMalice}}
-      <div class="malice">
-        <label>{{malice.label}}:</label>
-        <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
-      </div>
-      {{/if}}
+    <dl>
+      <dt class="level">{{systemFields.monster.fields.level.label}}:</dt>
+      <dd class="level">{{systemSource.monster.level}}</dd>
+
+      <dt class="ev">{{localize "DRAW_STEEL.Actor.NPC.EVLabel.Label"}}:</dt>
+      <dd class="ev">
+        {{#if (eq system.monster.organization "minion")}}
+        {{localize "DRAW_STEEL.Actor.NPC.EVLabel.Minion" value=systemSource.monster.ev}}
+        {{else}}
+        {{systemSource.monster.ev}}
+        {{/if}}
+      </dd>
+    </dl>
+    {{#if showMalice}}
+    <div class="malice">
+      <label>{{malice.label}}:</label>
+      <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
     </div>
+    {{/if}}
   </div>
 </header>
