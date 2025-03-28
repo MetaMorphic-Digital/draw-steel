@@ -13,7 +13,11 @@ import { systemID, systemPath } from "../../constants.mjs";
  */
 export async function renderTokenHUD(app, html, context, options) {
   // We don't have to add in a separate set of listeners if we leverage the actions
-  if (!("changeMovement" in app.options.actions)) Object.assign(app.options.actions, { toggleMovementTray, changeMovement, shifting });
+  if (!("changeMovement" in app.options.actions)) Object.assign(app.options.actions, {
+    toggleMovementTray: { handler: toggleMovementTray, buttons: [0, 2] },
+    changeMovement,
+    shifting,
+  });
 
   /** @type {DrawSteelTokenDocument} */
   const tokenDocument = app.document;
@@ -51,19 +55,22 @@ function changeMovement(event, target) {
 }
 
 /**
- * Open the movement tray
+ * Open the movement tray on left click, reset to walk on right
  * @this TokenHUD
  * @param {PointerEvent} event   The originating click event
  * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
  */
 function toggleMovementTray(event, target) {
-  let active = !this._movementTrayActive;
-  this._movementTrayActive = active;
-  const button = this.element.querySelector(".control-icon[data-action=toggleMovementTray]");
-  button.classList.toggle("active", active);
-  const palette = this.element.querySelector(".movement-modes");
-  palette.classList.toggle("active", active);
-  canvas.app.view.focus(); // Return focus to the canvas so keyboard movement is honored
+  if (event.button === 0) {
+    let active = !this._movementTrayActive;
+    this._movementTrayActive = active;
+    const button = this.element.querySelector(".control-icon[data-action=toggleMovementTray]");
+    button.classList.toggle("active", active);
+    const palette = this.element.querySelector(".movement-modes");
+    palette.classList.toggle("active", active);
+    canvas.app.view.focus(); // Return focus to the canvas so keyboard movement is honored
+  }
+  else this.document.setFlag(systemID, "movementType", CONFIG.Token.movement.defaultAction);
 }
 
 /**
