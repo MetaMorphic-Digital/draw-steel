@@ -1,3 +1,5 @@
+import { systemID } from "../constants.mjs";
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass
  */
@@ -8,6 +10,16 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
    */
   get isShifting() {
     return false; // TODO
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The token's current movement action.
+   * @type {string}
+   */
+  get movementType() {
+    return this.getFlag(systemID, "movementType") ?? "walk";
   }
 
   /* -------------------------------------------------- */
