@@ -1,0 +1,7 @@
+<div class="token-movement">
+  {{#each movementModes}}
+    <button type="button" class="control-icon {{active}}" data-action="changeMovement" data-type="{{type}}" data-tooltip="{{label}}">
+        <i class="{{icon}}"></i>
+    </button>
+  {{/each}}
+</div>

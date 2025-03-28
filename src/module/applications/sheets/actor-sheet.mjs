@@ -227,7 +227,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     const actorMovement = this.actor.system.movement;
     const flying = actorMovement.types.has("fly");
-    const movementList = Array.from(actorMovement.types).map(m => game.i18n.localize(CONFIG.Token.movement.actions[m]?.label ?? m));
+    const movementList = Array.from(actorMovement.types).map(m => game.i18n.localize(ds.CONFIG.movementTypes[m]?.label ?? m));
     if (flying && actorMovement.hover) movementList.push(game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
     return {
       flying,

@@ -86,11 +86,11 @@ DRAW_STEEL.sizes = {
 preLocalize("sizes", { key: "label" });
 
 /**
- * Copied from @client/config.mjs
- * @typedef TokenMovementAction
+ * @typedef DrawSteelTokenMovementAction
  * @property {string} label    The label of the movement action
  * @property {string} icon     The icon of the movement action
  * @property {boolean} [speedOption] Whether or not to include this as an option on the actor sheet
+ * @property {string} [reference] UUID link to a journal page describing the movement type
  * @property {(nonDerivedDifficulties: {[action: string]: number}) => number} [deriveDifficulty]
  *   If set, this function is used to derive the terrain difficulty from from nonderived difficulties,
  *   which are those that do not have `deriveDifficulty` set.
@@ -98,7 +98,7 @@ preLocalize("sizes", { key: "label" });
  *   Derived terrain difficulties are not configurable via the behavior UI.
  */
 
-/** @type {Record<string, TokenMovementAction} */
+/** @type {Record<string, DrawSteelTokenMovementAction} */
 DRAW_STEEL.movementTypes = {
   walk: {
     label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
