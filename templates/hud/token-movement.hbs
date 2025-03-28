@@ -1,7 +1,15 @@
 <div class="token-movement">
-  {{#each movementModes}}
-    <button type="button" class="control-icon {{active}}" data-action="changeMovement" data-type="{{type}}" data-tooltip="{{label}}">
-        <i class="{{icon}}"></i>
-    </button>
-  {{/each}}
+  <button type="button" class="control-icon" data-action="toggleMovementTray" data-tooltip="TOKEN.MOVEMENT.SelectType">
+      <i class="{{currentMovement.icon}}"></i>
+  </button>
+  <div class="movement-modes {{movementTray}}">
+    {{#each movementModes}}
+      <div type="button" class="control-icon {{active}}" data-action="changeMovement" data-type="{{type}}" data-tooltip="{{label}}">
+          <i class="{{icon}}"></i>
+      </div>
+    {{/each}}
+  </div>
+  <button type="button" class="control-icon {{shifting}}" data-action="shifting" data-tooltip="TOKEN.MOVEMENT.ToggleShift">
+      <i class="fa-solid fa-hood-cloak"></i>
+  </button>
 </div>

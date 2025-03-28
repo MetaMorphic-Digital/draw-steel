@@ -1,4 +1,5 @@
 import "./applications/_types";
+import "./canvas/_types";
 import "./data/_types";
 import "./documents/_types";
 import {

@@ -118,6 +118,9 @@ DRAW_STEEL.movementTypes = {
   crawl: {
     label: "TOKEN.MOVEMENT.ACTIONS.crawl.label",
     icon: "fa-solid fa-worm",
+    deriveDifficulty: (nonDerivedDifficulties) => {
+      return nonDerivedDifficulties.walk;
+    },
   },
   jump: {
     label: "TOKEN.MOVEMENT.ACTIONS.jump.label",

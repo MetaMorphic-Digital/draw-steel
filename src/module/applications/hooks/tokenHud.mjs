@@ -13,11 +13,12 @@ import { systemID, systemPath } from "../../constants.mjs";
  */
 export async function renderTokenHUD(app, html, context, options) {
   // We don't have to add in a separate set of listeners if we leverage the actions
-  if (!("changeMovement" in app.options.actions)) app.options.actions.changeMovement = changeMovement;
+  if (!("changeMovement" in app.options.actions)) Object.assign(app.options.actions, { toggleMovementTray, changeMovement, shifting });
 
   /** @type {DrawSteelTokenDocument} */
   const tokenDocument = app.document;
-  const movementType = tokenDocument.getFlag(systemID, "movementType") ?? "walk";
+
+  const movementType = tokenDocument.movementType;
 
   const movement = ds.CONFIG.movementTypes;
 
@@ -26,7 +27,12 @@ export async function renderTokenHUD(app, html, context, options) {
     return { type, label, icon, active };
   });
 
-  const tokenMovement = await foundry.applications.handlebars.renderTemplate(systemPath("templates/hud/token-movement.hbs"), { movementModes });
+  const tokenMovement = await foundry.applications.handlebars.renderTemplate(systemPath("templates/hud/token-movement.hbs"), {
+    movementModes,
+    movementTray: app._movementTrayActive ? "active" : "",
+    currentMovement: movement[movementType],
+    shifting: tokenDocument.isShifting ? "active" : "",
+  });
 
   html.insertAdjacentHTML("afterbegin", tokenMovement);
 }
@@ -42,4 +48,33 @@ function changeMovement(event, target) {
   /** @type {DrawSteelTokenDocument} */
   const tokenDocument = this.document;
   tokenDocument.setFlag(systemID, "movementType", newType);
+}
+
+/**
+ * Open the movement tray
+ * @this TokenHUD
+ * @param {PointerEvent} event   The originating click event
+ * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+ */
+function toggleMovementTray(event, target) {
+  let active = !this._movementTrayActive;
+  this._movementTrayActive = active;
+  const button = this.element.querySelector(".control-icon[data-action=toggleMovementTray]");
+  button.classList.toggle("active", active);
+  const palette = this.element.querySelector(".movement-modes");
+  palette.classList.toggle("active", active);
+  canvas.app.view.focus(); // Return focus to the canvas so keyboard movement is honored
+}
+
+/**
+ * Toggle shifting status
+ * @this TokenHUD
+ * @param {PointerEvent} event   The originating click event
+ * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+ */
+function shifting(event, target) {
+  /** @type {DrawSteelTokenDocument} */
+  const tokenDocument = this.document;
+  const isShifting = !tokenDocument.isShifting;
+  tokenDocument.setFlag(systemID, "shifting", isShifting);
 }

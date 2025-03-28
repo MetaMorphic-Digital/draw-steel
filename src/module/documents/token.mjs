@@ -9,7 +9,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
    * @type {boolean}
    */
   get isShifting() {
-    return false; // TODO
+    return !!this.getFlag(systemID, "shifting");
   }
 
   /* -------------------------------------------------- */
