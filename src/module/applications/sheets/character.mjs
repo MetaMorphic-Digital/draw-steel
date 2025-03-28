@@ -11,6 +11,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     actions: {
       gainSurges: this._gainSurges,
       rollProject: this._rollProject,
+      takeRespite: this._takeRespite,
     },
   };
 
@@ -195,6 +196,16 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static async _rollProject(event, target) {
     const project = this._getEmbeddedDocument(target);
     await project.system.roll();
+  }
+
+  /**
+   * Take a respite, converting victories to XP and resetting stamina and recoveries to max
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _takeRespite(event, target) {
+    await this.actor.system.takeRespite();
   }
 
   /* -------------------------------------------------- */
