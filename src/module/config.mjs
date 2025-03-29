@@ -92,7 +92,7 @@ preLocalize("sizes", { key: "label" });
  * @property {boolean} [speedOption] Whether or not to include this as an option on the actor sheet
  * @property {string} [reference] UUID link to a journal page describing the movement type
  * @property {(nonDerivedDifficulties: {[action: string]: number}) => number} [deriveDifficulty]
- *   If set, this function is used to derive the terrain difficulty from from nonderived difficulties,
+ *   If set, this function is used to derive the terrain difficulty from nonderived difficulties,
  *   which are those that do not have `deriveDifficulty` set.
  *   Used by {@link foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType}.
  *   Derived terrain difficulties are not configurable via the behavior UI.
