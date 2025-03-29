@@ -26,6 +26,7 @@
     - A Base combatant group can have any number of non-minion members.
     - A Squad can have any number of minions plus up to one non-minion captain.
   - You can drag and drop or use the "Update Combatant" form to adjust combatant group membership.
+  - Only GMs can create, update, or delete combatant groups.
 - Added new item subtype: Project. (#257)
 - Numerous improvements to the Power Roll Dialog.
   - Added roll mode configuration. (#143)
@@ -40,7 +41,7 @@
 - Updated application overrides and hooks to v13 UI overhaul compatibility. (#226, #229, #230, #231, #232, #233, #255, #298)
 - Negative stamina now has unique colors in bar. (#315)
 - Switched various fontAwesome icons to pro-exclusives. (#274)
-- Various repository refactors. (#253, #290, #301, #325)
+- Various repository refactors. (#253, #290, #301, #325, #338)
 
 ### Fixed
 - Fixed an error preventing combat start if no player-owned characters are in the combat. (#266)
