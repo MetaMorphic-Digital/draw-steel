@@ -44,6 +44,7 @@ Hooks.once("init", function () {
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
+  CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
   // This is a direct object reference so any later adjustments to either will be mirrored
   CONFIG.Token.movement.actions = DRAW_STEEL.movementTypes;
 
@@ -159,7 +160,6 @@ Hooks.once("ready", async function () {
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
-Hooks.on("renderTokenHUD", applications.hooks.renderTokenHUD);
 
 /**
  * Other hooks
