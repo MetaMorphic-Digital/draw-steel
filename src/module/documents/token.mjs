@@ -19,7 +19,9 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
    * @type {string}
    */
   get movementType() {
-    return this.getFlag(systemID, "movementType") ?? CONFIG.Token.movement.defaultAction;
+    const type = this.getFlag(systemID, "movementType");
+    if (type in CONFIG.Token.movement.actions) return type;
+    else return CONFIG.Token.movement.defaultAction;
   }
 
   /* -------------------------------------------------- */
