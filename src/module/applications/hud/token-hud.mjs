@@ -86,7 +86,7 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
    */
   static async #toggleMovementTray(event, target) {
     if (event.button === 0) {
-      let active = !this.#movementTrayActive;
+      const active = !this.#movementTrayActive;
       this.#movementTrayActive = active;
       const button = this.element.querySelector(".control-icon[data-action=toggleMovementTray]");
       button.classList.toggle("active", active);
@@ -109,5 +109,4 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
     const isShifting = !tokenDocument.isShifting;
     tokenDocument.setFlag(systemID, "shifting", isShifting);
   }
-
 }
