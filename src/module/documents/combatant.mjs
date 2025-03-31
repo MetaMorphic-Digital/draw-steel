@@ -28,6 +28,24 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     if (("initiative" in changes) && (changes.initiative < this.initiative)) await this.actor?.system._onStartTurn(this);
   }
 
+  _onUpdate(changed, userId) {
+    super._onUpdate(changed, userId);
+
+    if ("group" in changed) {
+      for (const group of this.combat.groups) {
+        group.system.refreshTokens();
+      }
+      this.token?.object?.renderFlags.set({ refreshBars: true });
+    }
+  }
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+
+    this.group?.system.refreshTokens();
+  }
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

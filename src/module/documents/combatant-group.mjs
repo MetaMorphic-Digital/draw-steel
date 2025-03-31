@@ -135,4 +135,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     // Provide a default image
     if (!data.img) this.updateSource(this.constructor.getDefaultArtwork(data));
   }
+
+  _onUpdate(changed, options, userId) {
+    if (changed.system && ("staminaValue" in changed.system)) this.system.refreshTokens();
+  }
 }

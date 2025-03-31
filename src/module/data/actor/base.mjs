@@ -164,6 +164,29 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * Returns a Set of all combatant groups this actor is a part of
+   * @returns {Set<DrawSteelCombatantGroup>}
+   */
+  get combatGroups() {
+    const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
+    const groups = new Set();
+    combatants.forEach(c => groups.add(c.group));
+
+    return groups;
+  }
+
+  /**
+   * Returns the combatant group if the actor is only a part of one. If they are in multiple, return null;
+   * @returns {DrawSteelCombatantGroup | null}
+   */
+  get combatGroup() {
+    const groups = this.combatGroups;
+    const [group] = groups;
+
+    return (groups.size === 1) ? group : null;
+  }
+
+  /**
    * @inheritdoc
    * @param {Record<string, unknown>} changes
    * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
@@ -309,16 +332,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     }
 
     if (this.isMinion) {
-      /** @type {DrawSteelCombatant[]} */
-      const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
-      const sameGroup = combatants.every((c) => c.group === combatants[0].group);
-      if ((combatants.length > 0) && sameGroup) {
-        /** @type {DrawSteelCombatantGroup} */
-        const group = combatants[0].group;
-        if (group) return group.update({ "system.staminaValue": group.system.staminaValue - damage });
-        else ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
+      const combatGroups = this.combatGroups;
+      if (combatGroups.size === 1) {
+        const [group] = combatGroups;
+        return group.update({ "system.staminaValue": group.system.staminaValue - damage });
       }
-      else if (combatants.length === 0) {
+      else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
       }
       else {

@@ -47,8 +47,12 @@ export default class DrawSteelActor extends foundry.documents.Actor {
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     if (attribute !== "stamina") return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
 
-    const current = this.system.stamina.value;
+    const combatGroup = this.system.combatGroup;
+    const current = (this.isMinion && combatGroup) ? combatGroup.system.staminaValue : this.system.stamina.value;
     const update = isDelta ? current + value : value;
+
+    if (this.isMinion && combatGroup) return combatGroup.update({ "system.staminaValue": update });
+
     if (update === current) return this;
 
     // Determine the updates to make to the actor data

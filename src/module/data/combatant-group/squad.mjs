@@ -46,4 +46,9 @@ export default class SquadModel extends BaseCombatantGroupModel {
       return maxStam;
     }, 0);
   }
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    this.refreshTokens();
+  }
 }
