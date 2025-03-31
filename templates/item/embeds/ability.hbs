@@ -33,6 +33,9 @@
 </section>
 {{#if (or tier1 tier2 tier3)}}
 <section class="powerResult">
+  <p>
+    <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusCharacteristics" characteristics=powerRollCharacteristicsList}}}</strong>
+  </p>
   {{#if tier1}}
   <p>
     <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}:</strong> {{{system.powerRoll.tier1.display}}}
