@@ -88,8 +88,7 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
     if (event.button === 0) {
       const active = !this.#movementTrayActive;
       this.#movementTrayActive = active;
-      const button = this.element.querySelector(".control-icon[data-action=toggleMovementTray]");
-      button.classList.toggle("active", active);
+      target.classList.toggle("active", active);
       const palette = this.element.querySelector(".movement-modes");
       palette.classList.toggle("active", active);
       canvas.app.view.focus(); // Return focus to the canvas so keyboard movement is honored
