@@ -45,6 +45,14 @@ export default class DrawSteelSettingsHandler {
         default: { value: 0 },
         onChange: MaliceModel.onChange,
       },
+      showPlayerMalice: {
+        name: "DRAW_STEEL.Setting.ShowPlayerMalice.Label",
+        hint: "DRAW_STEEL.Setting.ShowPlayerMalice.Hint",
+        type: new fields.BooleanField(),
+        config: true,
+        scope: "world",
+        onChange: () => ui.players.render({ force: true }),
+      },
     };
   }
 
