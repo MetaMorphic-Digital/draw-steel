@@ -49,6 +49,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
 
   /** @inheritdoc */
   _onDelete(options, userId) {
+    super._onDelete(options, userId);
+
     this.refreshTokens();
   }
 }
