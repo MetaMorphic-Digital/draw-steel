@@ -120,23 +120,14 @@
           },
           "movement": {
             "label": "Movement",
-            "walk": {
-              "label": "Walk"
+            "value": {
+              "label": "Speed"
             },
-            "burrow": {
-              "label": "Burrow"
+            "types": {
+              "label": "Movement Types"
             },
-            "climb": {
-              "label": "Climb"
-            },
-            "swim": {
-              "label": "Swim"
-            },
-            "fly": {
-              "label": "Fly"
-            },
-            "teleport": {
-              "label": "Teleport"
+            "hover": {
+              "label": "Hover"
             }
           },
           "damage": {
@@ -1394,6 +1385,33 @@
       "equipment": "Equipment",
       "kit": "Kit",
       "project": "Project"
+    }
+  },
+  "TOKEN.MOVEMENT":{
+    "SelectType": "Select Movement Type",
+    "ToggleShift": "Toggle Shifting",
+    "ACTIONS": {
+        "burrow": {
+          "label": "Burrow"
+        },
+        "climb": {
+          "label": "Climb"
+        },
+        "crawl": {
+          "label": "Crawl"
+        },
+        "jump": {
+          "label": "Jump"
+        },
+        "swim": {
+          "label": "Swim"
+        },
+        "fly": {
+          "label": "Fly"
+        },
+        "teleport": {
+          "label": "Teleport"
+        }
     }
   },
   "USER": {

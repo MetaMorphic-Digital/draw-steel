@@ -3,6 +3,7 @@ import "./apps/power-roll-dialog.css";
 import "./apps/targeted-condition-prompt.css";
 
 import "./canvas/measurement.css";
+import "./canvas/token-hud.css";
 
 import "./components/effects.css";
 import "./components/embeds.css";

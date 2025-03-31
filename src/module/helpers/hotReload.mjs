@@ -17,7 +17,7 @@ export function hotReload(data) {
       // Repeat the i18n process from Localization.#localizeDataModels
       for (const documentName of CONST.ALL_DOCUMENT_TYPES) {
         for (const model of Object.values(CONFIG[documentName].dataModels ?? {})) {
-          Localization.localizeDataModel(model, { prefixPath: "system." });
+          foundry.helpers.Localization.localizeDataModel(model, { prefixPath: "system." });
         }
       }
       // Render all apps again.

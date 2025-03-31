@@ -22,11 +22,9 @@ declare module "./base.mjs" {
       languages: Set<string>;
     }
     movement: {
-      walk: number | null;
-      burrow: number | null;
-      climb: number | null;
-      swim: number | null;
-      fly: number | null;
+      value: number;
+      types: Set<string>;
+      hover: boolean;
       teleport: number | null;
     }
     damage: {

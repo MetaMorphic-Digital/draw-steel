@@ -44,11 +44,14 @@ Hooks.once("init", function () {
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
+  CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
+  // This is a direct object reference so any later adjustments to either will be mirrored
+  CONFIG.Token.movement.actions = DRAW_STEEL.movementTypes;
 
   foundry.applications.handlebars.loadTemplates(templates);
 
   //Remove Status Effects Not Available in DrawSteel
-  const toRemove = ["bleeding", "bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
+  const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
@@ -103,6 +106,7 @@ Hooks.once("init", function () {
  */
 Hooks.once("i18nInit", () => {
   helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+
   // These fields are not auto-localized due to having a different location in en.json
   for (const model of Object.values(CONFIG.Actor.dataModels)) {
     /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */

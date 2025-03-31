@@ -220,17 +220,24 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /**
-   * Constructs a record of valid, non-null movements
-   * @returns {Record<string, {field: NumberField, value: number}>}
+   * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions
+   * @returns {{flying: boolean, list: string, options: FormSelectOption[]}}
    */
   _getMovement() {
-    return Object.entries(this.actor.system.movement).reduce((obj, [key, mvmt]) => {
-      if (mvmt !== null) obj[key] = {
-        field: this.actor.system.schema.getField(["movement", key]),
-        value: mvmt,
-      };
-      return obj;
-    }, {});
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    const actorMovement = this.actor.system.movement;
+    const flying = actorMovement.types.has("fly");
+    const movementList = Array.from(actorMovement.types).map(m => {
+      let label = game.i18n.localize(ds.CONFIG.movementTypes[m]?.label ?? m);
+      if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
+      return label;
+    });
+    if (flying && actorMovement.hover) movementList.push(game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
+    return {
+      flying,
+      list: formatter.format(movementList),
+      options: Object.entries(ds.CONFIG.movementTypes).filter(([_key, a]) => a.speedOption).map(([value, { label }]) => ({ value, label })),
+    };
   }
 
   /**
