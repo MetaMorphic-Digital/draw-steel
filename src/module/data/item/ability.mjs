@@ -335,6 +335,13 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
+    const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+    const characteristicList = this.powerRoll.characteristics.map(characteristic => {
+      const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
+      return (characteristic === this.powerRoll.characteristic) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
+    });
+    context.powerRollCharacteristicsList = characteristicsFormatter.format(Array.from(characteristicList));
+
     context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
 
     // Add the data for subtabs for the power roll tiers

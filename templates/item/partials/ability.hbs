@@ -69,8 +69,9 @@
   {{/each}}
 </fieldset>
 {{/inline}}
+
 {{#if isPlay}}
-{{> "systems/draw-steel/templates/item/embeds/ability.hbs"}}
+{{> "systems/draw-steel/templates/item/embeds/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
 {{else}}
 {{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
