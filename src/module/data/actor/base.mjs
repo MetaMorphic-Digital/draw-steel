@@ -177,12 +177,12 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Returns the combatant group if the actor is only a part of one. If they are in multiple, return null;
-   * @returns {DrawSteelCombatantGroup | undefined}
+   * @returns {DrawSteelCombatantGroup | null}
    */
   get combatGroup() {
     const groups = this.combatGroups;
 
-    return (group.size === 1) ? groups.first() : undefined;
+    return (group.size === 1) ? groups.first() : null;
   }
 
   /**
