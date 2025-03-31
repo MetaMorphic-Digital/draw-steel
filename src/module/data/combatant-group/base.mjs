@@ -24,7 +24,6 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
     for (const combatant of this.parent.members) {
       combatant.token?.object?.renderFlags.set({ refreshBars: true });
     }
-    const [firstCombatant] = this.parent.members;
-    firstCombatant?.combat._refreshTokenHUD(this.parent.members);
+    this.parent.parent._refreshTokenHUD(this.parent.members);
   }
 }
