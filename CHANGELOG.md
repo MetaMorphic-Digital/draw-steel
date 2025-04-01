@@ -27,6 +27,7 @@
     - A Squad can have any number of minions plus up to one non-minion captain.
   - You can drag and drop or use the "Update Combatant" form to adjust combatant group membership.
   - Only GMs can create, update, or delete combatant groups.
+  - Damage to minions will automatically be transferred to squads, if possible. (#357)
 - Implemented Draw Steel Token Ruler. (#273)
   - Moving a token will show the number of opportunity attacks provoked by movement.
   - The token HUD has two new icons on top: One to select the movement type, the other to toggle shifting.
