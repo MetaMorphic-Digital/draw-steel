@@ -17,3 +17,5 @@ import "./sheets/item-sheet.css";
 
 import "./sidebar/tabs/chat.css";
 import "./sidebar/tabs/combat.css";
+
+import "./ui/players.css";
