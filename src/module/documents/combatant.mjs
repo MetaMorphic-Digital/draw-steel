@@ -29,6 +29,25 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   }
 
   /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    if ("group" in changed) {
+      for (const group of this.combat.groups) {
+        group.system.refreshTokens();
+      }
+      this.token?.object?.renderFlags.set({ refreshBars: true });
+    }
+  }
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+
+    this.group?.system.refreshTokens();
+  }
+
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);
