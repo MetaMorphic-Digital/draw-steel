@@ -22,6 +22,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
@@ -35,6 +37,8 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
 
     this.element.insertAdjacentHTML("beforeend", metaCurrencyDisplay);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Context menu entries for the Hero Token menu button

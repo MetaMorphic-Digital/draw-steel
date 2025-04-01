@@ -30,6 +30,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     return game.i18n.localize(this.constructor.hint);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Send a socket message to the Director to spend a hero token
    * Necessary because only game masters can modify world settings
@@ -57,7 +59,6 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     if (game.user.isGM) {
       await game.settings.set(systemID, "heroTokens", { value: currentTokens - tokenSpendConfiguration.tokens });
       await DrawSteelChatMessage.create({
-        author: game.userId,
         content: tokenSpendConfiguration.messageContent,
         flavor: options.flavor ?? game.user.character?.name,
       });
@@ -65,11 +66,13 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     else game.system.socketHandler.emit("spendHeroToken", { userId: game.userId, spendType, flavor: options.flavor });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Give out hero tokens
-   * @param {number} [count] Default 1
+   * @param {number} [count=1] How many tokens to give out (default: `1`)
    * @param {object} [options]  Options.
-   * @param {boolean} [options.chatMessage=true]  Should a chat message be created?
+   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`)
    * @returns {number} The new number of hero tokens
    */
   async giveToken(count = 1, { chatMessage = true } = {}) {
@@ -86,21 +89,24 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     return value;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Reset tokens to the number of heroes in the party
+   * @param {object} [options]  Options.
+   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`)
    */
-  async resetTokens() {
+  async resetTokens({ chatMessage = true } = {}) {
     if (!game.user.isGM) {
       console.error("Only a GM can reset hero tokens");
       return;
     }
 
-    // TODO: Establish some kind of primary party after we make a "group" actor
+    // TODO: Revisit after #369
 
     const nonGM = game.users.filter(u => !u.isGM);
     await game.settings.set(systemID, "heroTokens", { value: nonGM.length });
-    await DrawSteelChatMessage.create({
-      author: game.userId,
+    if (chatMessage) await DrawSteelChatMessage.create({
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length })}</p>`,
     });
   }
