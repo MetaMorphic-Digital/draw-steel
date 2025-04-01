@@ -1,12 +1,13 @@
 <div id="meta-currency">
   <div class="hero-tokens">
-    <span>{{heroTokens.value}}</span>
-    <label>{{heroTokens.label}}</label>
+    <span>{{heroTokens.value}} <label>{{heroTokens.label}}</label></span>
+    {{#if gm}}
+    <button class="context-menu icon fa-solid fa-ellipsis-vertical" type="button"></button>
+    {{/if}}
   </div>
   {{#if showMalice}}
   <div class="malice">
-    <span>{{malice.value}}</span>
-    <label>{{malice.label}}</label>
+    <span>{{malice.value}} <label>{{malice.label}}</label></span>
   </div>
   {{/if}}
 </div>

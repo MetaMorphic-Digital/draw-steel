@@ -36,6 +36,7 @@ export default class DrawSteelSettingsHandler {
         type: HeroTokenModel,
         scope: "world",
         default: { value: 0 },
+        onChange: () => ui.players.render(),
       },
       malice: {
         name: MaliceModel.label,

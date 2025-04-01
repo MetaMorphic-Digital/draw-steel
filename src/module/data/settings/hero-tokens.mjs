@@ -64,4 +64,43 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     }
     else game.system.socketHandler.emit("spendHeroToken", { userId: game.userId, spendType, flavor: options.flavor });
   }
+
+  /**
+   * Give out hero tokens
+   * @param {number} [count] Default 1
+   * @returns {number} The new number of hero tokens
+   */
+  async giveToken(count = 1) {
+    if (!game.user.isGM) {
+      console.error("Only a GM can give tokens");
+      return;
+    }
+    const currentTokens = game.settings.get(systemID, "heroTokens").value;
+    const value = currentTokens + count;
+    await game.settings.set(systemID, "heroTokens", { value });
+    await DrawSteelChatMessage.create({
+      author: game.userId,
+      content: game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count }),
+    });
+    return value;
+  }
+
+  /**
+   * Reset tokens to the number of heroes in the party
+   */
+  async resetTokens() {
+    if (!game.user.isGM) {
+      console.error("Only a GM can reset hero tokens");
+      return;
+    }
+
+    // TODO: Establish some kind of primary party after we make a "group" actor
+
+    const nonGM = game.users.filter(u => !u.isGM);
+    await game.settings.set(systemID, "heroTokens", { value: nonGM.length });
+    await DrawSteelChatMessage.create({
+      author: game.userId,
+      content: game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length }),
+    });
+  }
 }
