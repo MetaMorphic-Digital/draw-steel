@@ -68,9 +68,11 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /**
    * Give out hero tokens
    * @param {number} [count] Default 1
+   * @param {object} [options]  Options.
+   * @param {boolean} [options.chatMessage=true]  Should a chat message be created?
    * @returns {number} The new number of hero tokens
    */
-  async giveToken(count = 1) {
+  async giveToken(count = 1, { chatMessage = true } = {}) {
     if (!game.user.isGM) {
       console.error("Only a GM can give tokens");
       return;
@@ -78,9 +80,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     const currentTokens = game.settings.get(systemID, "heroTokens").value;
     const value = currentTokens + count;
     await game.settings.set(systemID, "heroTokens", { value });
-    await DrawSteelChatMessage.create({
-      author: game.userId,
-      content: game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count }),
+    if (chatMessage) await DrawSteelChatMessage.create({
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.GrantedTokens", { count })}</p>`,
     });
     return value;
   }
@@ -100,7 +101,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
     await game.settings.set(systemID, "heroTokens", { value: nonGM.length });
     await DrawSteelChatMessage.create({
       author: game.userId,
-      content: game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length }),
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.StartSession", { count: nonGM.length })}</p>`,
     });
   }
 }

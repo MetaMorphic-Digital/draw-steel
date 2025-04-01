@@ -7,6 +7,7 @@ import { systemID, systemPath } from "../../constants.mjs";
  * An extension of the core Players display that adds controls for hero tokens and malice
  */
 export default class DrawSteelPlayers extends foundry.applications.ui.Players {
+  /** @inheritdoc */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
