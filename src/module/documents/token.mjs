@@ -63,9 +63,9 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
     barData.min = this.actor.system.stamina.min;
 
     // Set minion specific stamina bar data based on their combat squad
-    const combatGroup = this.actor.system.combatGroup;
-    if (!this.actor.isMinion || !combatGroup) return barData;
+    if (!this.actor.isMinion || (this.actor.system.combatGroups.size !== 1)) return barData;
 
+    const combatGroup = this.actor.system.combatGroup;
     barData.min = 0;
     barData.max = combatGroup.system.staminaMax;
     barData.value = combatGroup.system.staminaValue;

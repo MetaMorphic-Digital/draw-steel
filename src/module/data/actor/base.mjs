@@ -168,21 +168,15 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @returns {Set<DrawSteelCombatantGroup>}
    */
   get combatGroups() {
-    const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
-    const groups = new Set();
-    combatants.forEach(c => groups.add(c.group));
-
-    return groups;
+    return new Set(game.combat?.getCombatantsByActor(this.parent).map(c => c.group) ?? []);
   }
 
   /**
-   * Returns the combatant group if the actor is only a part of one. If they are in multiple, return null;
+   * Returns the first combatant group in all of the actor's combatant groups.
    * @returns {DrawSteelCombatantGroup | null}
    */
   get combatGroup() {
-    const groups = this.combatGroups;
-
-    return (group.size === 1) ? groups.first() : null;
+    return this.combatGroups.first() || null;
   }
 
   /**
@@ -333,7 +327,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return combatGroups.first().update({ "system.staminaValue": group.system.staminaValue - damage });
+        return this.combatGroup.update({ "system.staminaValue": group.system.staminaValue - damage });
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
