@@ -85,3 +85,13 @@ declare module "./npc.mjs" {
     }
   }
 }
+
+interface FreeStrike {
+  value: number;
+  keywords: Set<string>;
+  type: string;
+  range: {
+    melee: number;
+    ranged: number;
+  };
+}

@@ -50,7 +50,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       console.error("Invalid spendType");
       return false;
     }
-    const currentTokens = game.settings.get(systemID, "heroTokens").value;
+    const currentTokens = game.actors.heroTokens.value;
     if (currentTokens < tokenSpendConfiguration.tokens) {
       ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.NoHeroTokens", { localize: true });
       return false;
@@ -80,7 +80,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
       console.error("Only a GM can give tokens");
       return;
     }
-    const currentTokens = game.settings.get(systemID, "heroTokens").value;
+    const currentTokens = game.actors.heroTokens.value;
     const value = currentTokens + count;
     await game.settings.set(systemID, "heroTokens", { value });
     if (chatMessage) await DrawSteelChatMessage.create({

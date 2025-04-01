@@ -41,6 +41,9 @@ Hooks.once("init", function () {
     }
   }
 
+  // Custom collections
+  CONFIG.Actor.collection = documents.collections.DrawSteelActors;
+
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;

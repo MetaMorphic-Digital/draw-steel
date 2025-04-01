@@ -29,9 +29,9 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     await super._onRender(context, options);
 
     const metaCurrencyDisplay = await foundry.applications.handlebars.renderTemplate(systemPath("templates/ui/players.hbs"), {
-      heroTokens: game.settings.get(systemID, "heroTokens"),
-      malice: game.settings.get(systemID, "malice"),
-      showMalice: game.user.isGM || game.settings.get(systemID, "showPlayerMalice"),
+      heroTokens: game.actors.heroTokens,
+      malice: game.actors.malice,
+      showMalice: game.settings.get(systemID, "showPlayerMalice"),
       gm: game.user.isGM,
     });
 
@@ -52,7 +52,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
         condition: li => game.user.isGM,
         callback: async li => {
           /** @type {HeroTokenModel} */
-          const heroTokens = game.settings.get(systemID, "heroTokens");
+          const heroTokens = game.actors.heroTokens;
           await heroTokens.giveToken();
         },
       },
@@ -62,7 +62,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
         condition: li => game.user.isGM,
         callback: async li => {
           /** @type {HeroTokenModel} */
-          const heroTokens = game.settings.get(systemID, "heroTokens");
+          const heroTokens = game.actors.heroTokens;
           await heroTokens.resetTokens();
         },
       },
