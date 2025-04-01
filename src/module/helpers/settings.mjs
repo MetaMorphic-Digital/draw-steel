@@ -52,7 +52,7 @@ export default class DrawSteelSettingsHandler {
         type: new fields.BooleanField(),
         config: true,
         scope: "world",
-        onChange: () => ui.players.render({ force: true }),
+        onChange: () => ui.players.render(),
       },
     };
   }

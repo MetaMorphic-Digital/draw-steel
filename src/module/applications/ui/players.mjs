@@ -1,4 +1,6 @@
 import { systemID, systemPath } from "../../constants.mjs";
+
+/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
 /** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
 
 /**
@@ -33,10 +35,14 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     this.element.insertAdjacentHTML("beforeend", metaCurrencyDisplay);
   }
 
+  /**
+   * Context menu entries for the Hero Token menu button
+   * @returns {ContextMenuEntry}
+   */
   _heroTokenContextMenuOptions() {
     return [
       {
-        name: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.GiveToken"),
+        name: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
         icon: "<i class=\"fa-solid fa-plus\"></i>",
         condition: li => game.user.isGM,
         callback: async li => {
@@ -46,7 +52,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
         },
       },
       {
-        name: game.i18n.localize("DRAW_STEEL.Setting.HeroTokens.ResetToken"),
+        name: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
         icon: "<i class=\"fa-solid fa-rotate\"></i>",
         condition: li => game.user.isGM,
         callback: async li => {
