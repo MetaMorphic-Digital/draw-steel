@@ -36,7 +36,9 @@
   - Added general roll modifier input. (#276)
   - Added skill selection. (#277)
 - Added immunities and weaknesses section to the actor sheets. (#184)
-- Added "Special" target type. (#275)
+- Various ability sheet improvements
+  - Added "Special" target type. (#275)
+  - Added Power Roll section to the item sheet. (#366)
 - Dragging an owned ability or project item to the hotbar will create a macro to use/roll it. (#313)
 - Negative stamina now has unique colors in bar. (#315)
 - Added display for hero tokens and malice below the Players list. (#156)
