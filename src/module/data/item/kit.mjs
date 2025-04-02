@@ -91,7 +91,7 @@ export default class KitModel extends BaseItemModel {
    */
   async toEmbed(config, options = {}) {
     const embed = document.createElement("div");
-    embed.classList.add("kit");
+    embed.classList.add("draw-steel", "kit");
     embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
     const context = {
       system: this,
