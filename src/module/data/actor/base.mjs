@@ -270,7 +270,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     const skills = this.hero?.skills ?? null;
 
     const evaluation = "evaluate";
-    const formula = `2d10 + @${characteristic}`;
+    const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     const modifiers = {
