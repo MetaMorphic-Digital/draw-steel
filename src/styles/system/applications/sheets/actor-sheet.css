@@ -75,22 +75,6 @@
           flex-grow: 0;
         }
       }
-      dl {
-        display: flex;
-        flex-flow: row wrap;
-        dt, dd {
-          margin: 0;
-          color: inherit;
-        }
-        dt {
-          text-shadow: none;
-          flex-basis: 40px
-        }
-        dd {
-          flex: 1 0 110px;
-          text-align: right;
-        }
-      }
       .actor-source {
         margin-top: 5px;
         font-family: var(--font-h6);
@@ -105,20 +89,16 @@
         align-items: center;
         gap: 5px;
         margin-top: 5px;
-        font-size: var(--font-size-15);
-        input {
-          width: 50%;
+        label,
+        .form-fields {
+          flex: 0 0 50%;
         }
-        &:has(input) label {
-          width: 50%;
-        }
-        .value {
-          text-align: right;
-          flex-grow: 1;
+        label {
+          font-weight: bold;
         }
       }
-      dt, label {
-        font-weight: bold;
+      dd {
+        text-align: right;
       }
       div.take-respite  {
         text-align: center;

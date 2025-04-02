@@ -1,21 +1,26 @@
 <section class="project-info">
-  <p class="prerequisites">
-    <strong>{{systemFields.prerequisites.label}}:</strong> {{system.prerequisites}}
-  </p>
-  <p class="source">
-    <strong>{{systemFields.projectSource.label}}:</strong> {{system.projectSource}}
-  </p>
-  <p class="characteristics">
-    <strong>{{systemFields.rollCharacteristic.label}}:</strong> {{formattedCharacteristics}}
-  </p>
-  <p class="goal">
-    <strong>{{systemFields.goal.label}}:</strong> {{system.goal}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}
-  </p>
-  {{#if itemLink}}
-  <p class="item-link">
-    <strong>{{localize "DOCUMENT.Item"}}:</strong> {{{itemLink}}}
-  </p>
-  {{/if}}
+  <dl>
+    <dt class="prerequisites">{{systemFields.prerequisites.label}}</dt>
+    <dd class="prerequisites">{{ifThen system.prerequisites system.prerequisites (localize "None")}}</dd>
 
+    <dt class="source">{{systemFields.projectSource.label}}</dt>
+    <dd class="source">{{system.projectSource}}</dd>
+
+    <dt class="characteristics">{{systemFields.rollCharacteristic.label}}</dt>
+    <dd class="characteristics">{{formattedCharacteristics}}</dd>
+
+    <dt class="goal">{{systemFields.goal.label}}</dt>
+    <dd class="goal">{{system.goal}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}</dd>
+
+    {{#if system.points}}
+    <dt class="points">{{systemFields.points.label}}</dt>
+    <dd class="points">{{system.points}}</dd>
+    {{/if}}
+
+    {{#if itemLink}}
+    <dt class="item-link">{{localize "DOCUMENT.Item"}}</dt>
+    <dd class="item-link">{{{itemLink}}}</dd>
+    {{/if}}
+  </dl>
   {{{enrichedDescription}}}
 </section>

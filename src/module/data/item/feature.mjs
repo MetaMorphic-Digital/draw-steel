@@ -38,7 +38,7 @@ export default class FeatureModel extends BaseItemModel {
   }
 
   /** @inheritdoc */
-  getSheetContext(context) {
+  async getSheetContext(context) {
     const featureConfig = ds.CONFIG.features;
 
     context.featureTypes = Object.entries(featureConfig.types).map(([value, entry]) => ({ value, label: entry.label }));

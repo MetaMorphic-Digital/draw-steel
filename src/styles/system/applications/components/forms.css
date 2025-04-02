@@ -74,4 +74,20 @@
       }
     }
   }
+
+  /* Description Lists */
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin: 10px 0px;
+    dt, dd {
+      margin: 0;
+      color: inherit;
+    }
+    dt {
+      text-shadow: none;
+      font-weight: bold;
+    }
+  }
 }

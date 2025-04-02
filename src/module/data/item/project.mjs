@@ -96,7 +96,7 @@ export default class ProjectModel extends BaseItemModel {
       systemFields: this.schema.fields,
       config: ds.CONFIG,
     };
-    this.getSheetContext(context);
+    await this.getSheetContext(context);
 
     const embed = document.createElement("div");
     embed.classList.add("project");
