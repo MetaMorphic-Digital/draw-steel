@@ -58,7 +58,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.roleLabel = this._getRoleLabel();
         context.evLabel = this._getEVLabel();
         context.showMalice = game.user.isGM && (this.actor.system.monster.organization !== "minion");
-        context.malice = game.settings.get(systemID, "malice");
+        context.malice = game.actors.malice;
         break;
       case "biography":
         context.motivations = this._getMotivations();

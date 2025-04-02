@@ -36,6 +36,7 @@ export default class DrawSteelSettingsHandler {
         type: HeroTokenModel,
         scope: "world",
         default: { value: 0 },
+        onChange: () => ui.players.render(),
       },
       malice: {
         name: MaliceModel.label,
@@ -44,6 +45,14 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         default: { value: 0 },
         onChange: MaliceModel.onChange,
+      },
+      showPlayerMalice: {
+        name: "DRAW_STEEL.Setting.ShowPlayerMalice.Label",
+        hint: "DRAW_STEEL.Setting.ShowPlayerMalice.Hint",
+        type: new fields.BooleanField(),
+        config: true,
+        scope: "world",
+        onChange: () => ui.players.render(),
       },
     };
   }

@@ -166,7 +166,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    */
   static async _gainSurges(event, target) {
     /** @type {HeroTokenModel} */
-    const heroTokens = game.settings.get(systemID, "heroTokens");
+    const heroTokens = game.actors.heroTokens;
 
     const spend = await foundry.applications.api.DialogV2.confirm({
       window: {

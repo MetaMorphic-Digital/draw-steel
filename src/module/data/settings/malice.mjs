@@ -39,6 +39,7 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * @param {string} userId     The id of the User requesting the document update
    */
   static onChange(value, options, userId) {
+    ui.players.render();
     for (const [index, app] of foundry.applications.instances) {
       if (app instanceof DrawSteelNPCSheet) {
         app.render({ parts: ["header"] });

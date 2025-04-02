@@ -308,7 +308,7 @@ DRAW_STEEL.skills = {
       label: "DRAW_STEEL.Skill.List.Architecture",
       group: "crafting",
     },
-    blacskmithing: {
+    blacksmithing: {
       label: "DRAW_STEEL.Skill.List.Blacksmithing",
       group: "crafting",
     },

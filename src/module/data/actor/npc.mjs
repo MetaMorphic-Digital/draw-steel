@@ -70,7 +70,7 @@ export default class NPCModel extends BaseActorModel {
     return {
       name: game.i18n.localize("DRAW_STEEL.Setting.Malice.Label"),
       /** @type {MaliceModel} */
-      target: game.settings.get(systemID, "malice"),
+      target: game.actors.malice,
       path: "value",
     };
   }
@@ -78,15 +78,7 @@ export default class NPCModel extends BaseActorModel {
   /**
    * Fetch the traits of this creature's free strike.
    * The value is stored in `this.monster.freeStrike`
-   * @returns {{
-   *   value: number;
-   *   keywords: Set<string>;
-   *   type: string;
-   *   range: {
-   *     melee: number;
-   *     ranged: number;
-   *   };
-   * }}
+   * @returns {import("./_types").FreeStrike}
    */
   get freeStrike() {
     /** @type {DrawSteelItem & {system: AbilityModel}} */
@@ -122,9 +114,7 @@ export default class NPCModel extends BaseActorModel {
   async updateResource(delta) {
     if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
     /** @type {MaliceModel} */
-    const malice = game.settings.get(systemID, "malice");
+    const malice = game.actors.malice;
     await game.settings.set(systemID, "malice", { value: malice.value + delta });
   }
 }
-
-/** @typedef {ReturnType<NPCModel["freeStrike"]>} FreeStrike */

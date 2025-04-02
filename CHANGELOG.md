@@ -27,6 +27,7 @@
     - A Squad can have any number of minions plus up to one non-minion captain.
   - You can drag and drop or use the "Update Combatant" form to adjust combatant group membership.
   - Only GMs can create, update, or delete combatant groups.
+  - Damage to minions will automatically be transferred to squads, if possible. (#357)
 - Implemented Draw Steel Token Ruler. (#273)
   - Moving a token will show the number of opportunity attacks provoked by movement.
   - The token HUD has two new icons on top: One to select the movement type, the other to toggle shifting.
@@ -36,9 +37,12 @@
   - Added general roll modifier input. (#276)
   - Added skill selection. (#277)
 - Added immunities and weaknesses section to the actor sheets. (#184)
-- Added "Special" target type. (#275)
+- Various ability sheet improvements
+  - Added "Special" target type. (#275)
+  - Added Power Roll section to the item sheet. (#366)
 - Dragging an owned ability or project item to the hotbar will create a macro to use/roll it. (#313)
 - Negative stamina now has unique colors in bar. (#315)
+- Added display for hero tokens and malice below the Players list. (#156)
 
 ### Changed
 - Changed system minimum to v13.339, verified system for v13 generally.
