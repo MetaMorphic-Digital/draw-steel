@@ -9,54 +9,50 @@
     <em>{{system.description.flavor}}</em>
   </p>
   {{/if}}
-  <div class="info-row usage">
-    <p class="keywords">
-      <strong>{{systemFields.keywords.label}}:</strong> {{keywordList}}
-    </p>
-    <p class="type">
-      <strong>{{systemFields.type.label}}:</strong> {{lookup (lookup config.abilities.types system.type) "label"}}
-    </p>
-  </div>
-  <div class="info-row targeting">
-    <p class="distance">
-      <strong>{{systemFields.distance.label}}:</strong> {{distanceLabel}}
-    </p>
-    <p class="target">
-      <strong>{{systemFields.target.label}}:</strong> {{targetLabel}}
-    </p>
-  </div>
-  {{#if triggeredAction}}
-  <p class="trigger">
-    <strong>{{systemFields.trigger.label}}:</strong> {{system.trigger}}
-  </p>
-  {{/if}}
+  <dl>
+    <dt class="keywords">{{systemFields.keywords.label}}</dt>
+    <dd class="keywords">{{keywordList}}</dd>
+
+    <dt class="type">{{systemFields.type.label}}</dt>
+    <dd class="type">{{lookup (lookup config.abilities.types system.type) "label"}}</dd>
+
+    <dt class="distance">{{systemFields.distance.label}}</dt>
+    <dd class="distance">{{distanceLabel}}</dd>
+
+    <dt class="target">{{systemFields.target.label}}</dt>
+    <dd class="target">{{targetLabel}}</dd>
+
+    {{#if triggeredAction}}
+    <dt class="trigger">{{systemFields.trigger.label}}</dt>
+    <dd class="trigger">{{system.trigger}}</dd>
+    {{/if}}
+  </dl>
 </section>
-{{#if (or tier1 tier2 tier3)}}
+{{#if (or tier1 tier2 tier3 system.effect)}}
 <section class="powerResult">
   <p>
     <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusCharacteristics" characteristics=powerRollCharacteristicsList}}}</strong>
   </p>
-  {{#if tier1}}
-  <p>
-    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}:</strong> {{{system.powerRoll.tier1.display}}}
-  </p>
-  {{/if}}
-  {{#if tier2}}
-  <p>
-    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}:</strong> {{{system.powerRoll.tier2.display}}}
-  </p>
-  {{/if}}
-  {{#if tier3}}
-  <p>
-    <strong>{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}:</strong> {{{system.powerRoll.tier3.display}}}
-  </p>
-  {{/if}}
-</section>
-{{/if}}
-{{#if system.effect}}
-<section class="effect">
-  <p>
-    <strong>{{systemFields.effect.label}}</strong> {{system.effect}}
-  </p>
+  <dl class="power-roll-display">
+    {{#if tier1}}
+    <dt class="tier1">{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}</dt>
+    <dd class="tier1">{{{system.powerRoll.tier1.display}}}</dd>
+    {{/if}}
+
+    {{#if tier2}}
+    <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}</dt>
+    <dd class="tier3">{{{system.powerRoll.tier2.display}}}</dd>
+    {{/if}}
+
+    {{#if tier3}}
+    <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}</dt>
+    <dd class="tier3">{{{system.powerRoll.tier3.display}}}</dd>
+    {{/if}}
+
+    {{#if system.effect}}
+    <dt class="effect">{{systemFields.effect.label}}</dt>
+    <dd class="effect">{{system.effect}}</dd>
+    {{/if}}
+  </dl>
 </section>
 {{/if}}

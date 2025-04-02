@@ -53,41 +53,40 @@
   </div>
   <div class="header-right flexcol">
     {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
-    <div class="actor-data character-data">
-      <div class="level">
-        <label>{{localize "DRAW_STEEL.Item.Class.FIELDS.level.label"}}</label>
-        <span class="value">{{system.level}}</span>
+
+    <dl>
+      <dt class="level">{{localize "DRAW_STEEL.Item.Class.FIELDS.level.label"}}</dt>
+      <dd class="level">
+        {{system.level}}
         {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
         <span class="level-up" data-tooltip="DRAW_STEEL.Sheet.LevelUp">
           <i class="fa-solid fa-up-long"></i>
         </span>
         {{/if}}
-      </div>
-      <div class="xp">
-        <label>{{systemFields.hero.fields.xp.label}}</label>
-        {{#if isPlay}}
-        <span class="value">
-          <span class="resource-curent">{{system.hero.xp}}</span>
-          <span class="resource-divider"> / </span>
-          <span class="resource-max">{{system.nextLevelXP}}</span>
-        </span>
-        {{else}}
-        {{formInput systemFields.hero.fields.xp value=systemSource.hero.xp}}
-        {{/if}}
-      </div>
-      <div class="victories">
-        <label>{{systemFields.hero.fields.victories.label}}</label>
-        {{#if isPlay}}
-        <span class="value">
-          <span class="resource-current">{{system.hero.victories}}</span>
-          <span class="resource-divider"> / </span>
-          <span class="resource-max">{{system.victoriesMax}}</span>
-        </span>
-        {{else}}
-        {{formInput systemFields.hero.fields.victories value=systemSource.hero.victories}}
-        {{/if}}
-      </div>
+      </dd>
+
+      {{#if isPlay}}
+      <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
+      <dd class="xp">
+        <span class="resource-curent">{{system.hero.xp}}</span>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.nextLevelXP}}</span>
+      </dd>
+
+      <dt>{{systemFields.hero.fields.victories.label}}</dt>
+      <dd>
+        <span class="resource-current">{{system.hero.victories}}</span>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.victoriesMax}}</span>
+      </dd>
+      {{/if}}
+    </dl>
+    {{#unless isPlay}}
+    <div class="actor-data character-data">
+      {{formGroup systemFields.hero.fields.xp value=systemSource.hero.xp classes="xp"}}
+      {{formGroup systemFields.hero.fields.victories value=systemSource.hero.victories classes="victories"}}
     </div>
+    {{/unless}}
     {{#if isPlay}}
     <div class="take-respite">
       <a data-action="takeRespite">
