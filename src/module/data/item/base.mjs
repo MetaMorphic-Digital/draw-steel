@@ -78,7 +78,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     const enriched = await TextEditor.enrichHTML(this.description.value, options);
 
     const embed = document.createElement("div");
-    embed.classList.add(this.parent.type);
+    embed.classList.add("draw-steel", this.parent.type);
     embed.innerHTML = enriched;
 
     return embed;
