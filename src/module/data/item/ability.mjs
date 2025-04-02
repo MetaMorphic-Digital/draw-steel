@@ -280,7 +280,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
-    this.getSheetContext(context);
+    await this.getSheetContext(context);
     const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
@@ -307,7 +307,7 @@ export default class AbilityModel extends BaseItemModel {
   }
 
   /** @inheritdoc */
-  getSheetContext(context) {
+  async getSheetContext(context) {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 

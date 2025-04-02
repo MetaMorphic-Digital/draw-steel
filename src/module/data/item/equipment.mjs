@@ -49,7 +49,7 @@ export default class EquipmentModel extends BaseItemModel {
   }
 
   /** @inheritdoc */
-  getSheetContext(context) {
+  async getSheetContext(context) {
     context.categories = Object.entries(ds.CONFIG.equipment.categories).map(([value, { label }]) => ({ value, label }));
 
     context.kinds = Object.entries(ds.CONFIG.equipment.kinds).map(([value, { label }]) => ({ value, label }));

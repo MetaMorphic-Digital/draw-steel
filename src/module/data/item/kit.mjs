@@ -107,7 +107,7 @@ export default class KitModel extends BaseItemModel {
         relativeTo: this.parent,
       },
     );
-    this.getSheetContext(context);
+    await this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
     const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
@@ -159,7 +159,7 @@ export default class KitModel extends BaseItemModel {
   }
 
   /** @inheritdoc */
-  getSheetContext(context) {
+  async getSheetContext(context) {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, { label }]) => ({ value, label }));
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, { label }]) => ({ value, label }))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
