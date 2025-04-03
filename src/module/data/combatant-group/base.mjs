@@ -27,12 +27,12 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
   }
 
   /**
-   * Refresh the token bars and HUD for each token within the group.
+   * Refresh the token resource bars, token HUD, and actor sheets for each combatant within the group.
    * Is triggered on stamina updates and each combatants updates and deletions.
    */
-  refreshTokens() {
+  refreshSquad() {
     for (const combatant of this.parent.members) {
-      combatant.token?.object?.renderFlags.set({ refreshBars: true });
+      combatant.refreshCombatant();
     }
     this.combat?._refreshTokenHUD(this.parent.members);
   }

@@ -18,12 +18,16 @@
             }}
           </div>
           <div class="resource-current">
+            {{#if isSingleSquadMinion}}
+            {{formGroup combatGroup.system.schema.fields.staminaValue value=combatGroup.system.staminaValue name="squadStaminaValue" classes="paired"}}
+            {{else}}
             {{formGroup
             systemFields.stamina.fields.value
             value=system.stamina.value
             dataset=datasets.notSource
             classes="paired"
             }}
+            {{/if}}
           </div>
           {{/if}}
           <span class="resource-max">
