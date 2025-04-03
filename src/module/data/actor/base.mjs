@@ -324,10 +324,19 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       return this.parent;
     }
 
+    // If there's damage left after weakness/immunities, apply damage to temporary stamina first
+    const staminaUpdates = {};
+    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
+    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
+    const remainingDamage = Math.max(0, damage - damageToTempStamina);
+
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": group.system.staminaValue - damage });
+        if (damageToTempStamina) await this.parent.update({ "system.stamina": staminaUpdates });
+        if (remainingDamage === 0) return this;
+
+        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - remainingDamage });
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -336,12 +345,8 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.TooManySquad", { localize: true });
       }
     }
-    // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    const staminaUpdates = {};
-    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
-    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
 
-    const remainingDamage = Math.max(0, damage - damageToTempStamina);
+    // If there's damage left after temporary stamina, then apply it to current stamina
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
     return this.parent.update({ "system.stamina": staminaUpdates });
