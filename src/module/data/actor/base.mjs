@@ -168,7 +168,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
    * @returns {Set<DrawSteelCombatantGroup>}
    */
   get combatGroups() {
-    return new Set(game.combat?.getCombatantsByActor(this.parent).map(c => c.group) ?? []);
+    return new Set(game.combat?.getCombatantsByActor(this.parent).map(c => c.group).filter(group => !!group) ?? []);
   }
 
   /**

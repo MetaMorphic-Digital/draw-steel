@@ -34,9 +34,9 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
     if ("group" in changed) {
       for (const group of this.combat.groups) {
-        group.system.refreshTokens();
+        group.system.refreshSquad();
       }
-      this.token?.object?.renderFlags.set({ refreshBars: true });
+      this.refreshCombatant();
     }
   }
 
@@ -44,7 +44,8 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   _onDelete(options, userId) {
     super._onDelete(options, userId);
 
-    this.group?.system.refreshTokens();
+    this.group?.system.refreshSquad();
+    this.refreshCombatant();
   }
 
   /** @inheritdoc */
@@ -61,5 +62,14 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     super._prepareGroup();
     this.initiative = this._source.initiative;
     if (typeof this.group === "string") this.group = null;
+  }
+
+  /**
+   * Refreshes the combatants token resources bar and actor stats tab
+   * Needed when the squad stamina changes or the combatant is added or removed from a squad to ensure correct stamina value and inputs are used
+   */
+  refreshCombatant() {
+    this.token?.object?.renderFlags.set({ refreshBars: true });
+    this.actor?.sheet.render({ parts: ["stats"] });
   }
 }

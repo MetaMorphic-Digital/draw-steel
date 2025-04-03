@@ -51,6 +51,6 @@ export default class SquadModel extends BaseCombatantGroupModel {
   _onDelete(options, userId) {
     super._onDelete(options, userId);
 
-    this.refreshTokens();
+    this.refreshSquad();
   }
 }

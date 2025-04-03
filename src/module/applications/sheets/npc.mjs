@@ -60,6 +60,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         context.showMalice = game.user.isGM && (this.actor.system.monster.organization !== "minion");
         context.malice = game.actors.malice;
         break;
+      case "stats":
+        context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
+        if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
+        break;
       case "biography":
         context.motivations = this._getMotivations();
         break;
@@ -144,6 +148,16 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
         ev.preventDefault();
         ev.stopPropagation();
         game.settings.set(systemID, "malice", { value: ev.target.value });
+      });
+    }
+
+    /** @type {HTMLInputElement} */
+    const squadStaminaInput = this.element.querySelector("[name=\"squadStaminaValue\"]");
+    if (squadStaminaInput) {
+      squadStaminaInput.addEventListener("change", (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.actor.system.combatGroup.update({ "system.staminaValue": ev.target.value });
       });
     }
   }

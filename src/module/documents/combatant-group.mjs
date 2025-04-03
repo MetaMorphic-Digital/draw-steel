@@ -140,6 +140,6 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
 
-    if (changed.system && ("staminaValue" in changed.system)) this.system.refreshTokens();
+    if (changed.system && ("staminaValue" in changed.system)) this.system.refreshSquad();
   }
 }
