@@ -37,7 +37,12 @@
                 {{systemFields.stamina.fields.max.label}}
               </label>
               <div class="input-placeholder">
+                {{#if isSingleSquadMinion}}
+                {{combatGroup.system.staminaMax}}
+                {{else}}
                 {{system.stamina.max}}
+                {{/if}}
+
               </div>
             </div>
             {{else}}
