@@ -334,7 +334,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
         if (damageToTempStamina) await this.parent.update({ "system.stamina": staminaUpdates });
-        if (remainingDamage === 0) return this;
+        if (remainingDamage === 0) return this.combatGroup;
 
         return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - remainingDamage });
       }
