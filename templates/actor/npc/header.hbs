@@ -11,7 +11,7 @@
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{{wordBreaker actor.name}}}</h2>
+      <h2>{{actor.name}}</h2>
       {{else}}
       {{formInput fields.name value=source.name placeholder=(localize "Name") }}
       {{/if}}
