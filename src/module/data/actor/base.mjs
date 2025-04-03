@@ -327,7 +327,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": group.system.staminaValue - damage });
+        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage });
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
