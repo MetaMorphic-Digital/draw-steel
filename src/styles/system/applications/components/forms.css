@@ -11,11 +11,11 @@
     }
 
     .header-center {
-      height: 100%;
+      overflow-y: auto;
       /* 235px is the width of the image, header-right, and the gaps */
       max-width: calc(100% - 235px);
       flex-grow: 1;
-      justify-content: center;
+
       .document-name {
         max-height: 65px;
         line-height: 65px;
@@ -62,8 +62,12 @@
     flex: 0;
   }
 
-  .tab {
+  section.tab {
     overflow: auto;
+
+    &.standard-form {
+      padding-top: 0.5rem;
+    }
 
     .biography {
       flex: 1;

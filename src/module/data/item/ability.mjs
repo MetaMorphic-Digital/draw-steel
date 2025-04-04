@@ -71,7 +71,7 @@ export default class AbilityModel extends BaseItemModel {
         damage: new fields.SchemaField({
           type: new fields.StringField({ required: true, initial: "damage", blank: false }),
           value: new FormulaField(),
-          types: new fields.SetField(new fields.StringField({ required: true })),
+          types: new fields.SetField(setOptions()),
           potency: new fields.SchemaField(potencySchema(initialPotency)),
           display: new fields.StringField({ required: true }),
         }),

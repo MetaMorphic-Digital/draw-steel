@@ -9,7 +9,7 @@
 
 {{!-- Partial for tier damage effects --}}
 {{#*inline "damage"}}
-{{formGroup fields.types name=(concat fieldPath "types") value=effect.types options=@root.damageTypes blank=""}}
+{{formGroup fields.types name=(concat fieldPath "types") value=effect.types options=@root.damageTypes}}
 {{formGroup fields.value name=(concat fieldPath "value") value=effect.value }}
 {{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
 {{/inline}}
