@@ -58,22 +58,25 @@
 
   [data-tab="details"] {
     &[data-subtype="kit"] {
-      .damage-bonus {
-        margin: 0.2rem 0 0.1rem;
-        font-size: 1.15rem;
-      }
-
-      .form-group.damage-part {
-        display: inline-flex;
-        width: 135px;
-
+      .number-bonus {
         label {
           text-align: center;
         }
-
         .form-fields {
-          flex: 0 0 40px;
+          flex: 0 0 50px;
+        }
+      }
+
+      .damage-bonus {
+        margin: 0.2rem 0 0.1rem;
+      }
+
+      .distance {
+        label {
           text-align: right;
+        }
+        .form-fields {
+          flex: 0 0 70px;
         }
       }
     }
