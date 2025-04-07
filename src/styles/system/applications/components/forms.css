@@ -1,19 +1,14 @@
 .draw-steel {
-
   .sheet-header {
     display: flex;
     margin-bottom: 10px;
-    gap: 10px;
 
     .profile-img {
-      flex: 0 0 100px;
-      height: 100px;
+      cursor: var(--cursor-pointer);
     }
 
     .header-center {
       overflow-y: auto;
-      /* 235px is the width of the image, header-right, and the gaps */
-      max-width: calc(100% - 235px);
       flex-grow: 1;
 
       .document-name {

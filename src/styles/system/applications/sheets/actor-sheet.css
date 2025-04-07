@@ -1,4 +1,6 @@
 .draw-steel.actor {
+  min-width: 560px;
+
   .form-group {
     .input-placeholder {
       line-height: var(--input-height);
@@ -31,13 +33,11 @@
   }
 
   .sheet-header {
+    gap: 10px;
     .profile-img {
       width: 125px;
-      height: 125px;
     }
     .header-center {
-      /* 305px is the width of the image, header-right, and the gaps */
-      max-width: calc(100% - 305px);
       gap: 5px;
       justify-content: center;
       .tags {
@@ -66,7 +66,7 @@
       }
     }
     .header-right {
-      width: 160px;
+      flex: 0 0 160px;
       div.mode-toggle  {
         flex-grow: 1;
         align-items: start;

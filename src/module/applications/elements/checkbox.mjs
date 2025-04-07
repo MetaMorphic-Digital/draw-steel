@@ -34,7 +34,7 @@ export default class CheckboxElement extends AdoptedStyleSheetMixin(
   /** @inheritdoc */
   static CSS = `
     :host {
-      cursor: pointer;
+      cursor: var(--cursor-pointer);
       display: inline-block;
       width: var(--checkbox-size, 18px);
       height: var(--checkbox-size, 18px);
