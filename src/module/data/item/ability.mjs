@@ -270,7 +270,7 @@ export default class AbilityModel extends BaseItemModel {
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", "ability");
-    embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
+    if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
     const context = {
       system: this,
       systemFields: this.schema.fields,

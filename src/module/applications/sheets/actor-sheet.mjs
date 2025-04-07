@@ -301,7 +301,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     };
 
     // only generate the item embed when it's expanded
-    if (context.expanded) context.embed = await item.system.toEmbed({});
+    if (context.expanded) context.embed = await item.system.toEmbed({ includeName: false });
 
     return context;
   }
