@@ -1,4 +1,5 @@
 .draw-steel {
+
   .sheet-header {
     display: flex;
     margin-bottom: 10px;
@@ -53,10 +54,6 @@
     }
   }
 
-  .sheet-tabs {
-    flex: 0;
-  }
-
   section.tab {
     overflow: auto;
 
@@ -64,12 +61,12 @@
       padding-top: 0.5rem;
     }
 
-    .biography {
-      flex: 1;
-
-      .editor {
-        height: 100%;
-      }
+    > nav.tabs {
+      border-top-color: var(--color-fieldset-border);
+      border-bottom-color: var(--color-fieldset-border);
+      border-style: groove none;
+      border-width: 2px;
+      margin: 0 1rem;
     }
   }
 
@@ -91,5 +88,29 @@
 
   fieldset {
     padding: revert;
+  }
+
+  .form-group {
+
+
+    &.paired {
+      gap: 10px;
+
+      label {
+        flex: 1;
+        text-align: right;
+        line-height: var(--input-height);
+      }
+
+      .form-fields,
+      .input-placeholder {
+        flex: 1;
+        justify-content: left;
+      }
+
+      .input-placeholder {
+        text-align: left;
+      }
+    }
   }
 }
