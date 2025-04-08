@@ -1,25 +1,21 @@
 {{! Biography Tab }}
-<section class="tab biography {{tab.cssClass}}" data-group="primary" data-tab="biography">
+<section class="tab biography standard-form {{tab.cssClass}}" data-group="primary" data-tab="biography">
   {{> "systems/draw-steel/templates/actor/shared/partials/biography/languages.hbs"}}
-  <fieldset>
+  <fieldset class="negotiation">
     <legend>{{systemFields.negotiation.label}}</legend>
     {{#if isPlay}}
     <div class="flexrow">
-      {{formGroup systemFields.negotiation.fields.interest value=system.negotiation.interest classes="paired"}}
-      {{formGroup systemFields.negotiation.fields.patience value=system.negotiation.patience classes="paired"}}
+      {{formGroup systemFields.negotiation.fields.interest value=system.negotiation.interest dataset=datasets.notSource classes="paired slim"}}
+      {{formGroup systemFields.negotiation.fields.patience value=system.negotiation.patience dataset=datasets.notSource classes="paired slim"}}
     </div>
-    <p>
-      <strong>{{systemFields.negotiation.fields.impression.label}}:</strong>
-      {{system.negotiation.impression}}
-    </p>
-    <p>
-      <strong>{{systemFields.negotiation.fields.motivations.label}}:</strong>
-      {{motivations.currentMotivations}}
-    </p>
-    <p>
-      <strong>{{systemFields.negotiation.fields.pitfalls.label}}:</strong>
-      {{motivations.currentPitfalls}}
-    </p>
+    <dl class="fixed-stats">
+      <dt>{{systemFields.negotiation.fields.impression.label}}</dt>
+      <dd>{{system.negotiation.impression}}</dd>
+      <dt>{{systemFields.negotiation.fields.motivations.label}}</dt>
+      <dd>{{motivations.currentMotivations}}</dd>
+      <dt>{{systemFields.negotiation.fields.pitfalls.label}}</dt>
+      <dd>{{motivations.currentPitfalls}}</dd>
+    </dl>
     {{else}}
     {{formGroup systemFields.negotiation.fields.impression value=system.negotiation.impression}}
     {{formGroup systemFields.negotiation.fields.motivations value=system.negotiation.motivations options=motivations.list}}

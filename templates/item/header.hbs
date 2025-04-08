@@ -1,9 +1,9 @@
 <header class="sheet-header">
-  <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="editImage" title="{{item.name}}" alt="{{item.name}}">
+  <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="{{ifThen isPlay "showImage" "editImage"}}" title="{{item.name}}" alt="{{item.name}}">
   <div class="header-center">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{{wordBreaker item.name}}}</h2>
+      <h2>{{item.name}}</h2>
       {{else}}
       {{formInput
       fields.name

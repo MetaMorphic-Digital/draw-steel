@@ -1,12 +1,18 @@
 .draw-steel.item {
+  min-width: 440px;
+
   .sheet-header {
+    gap: 10px;
+    .profile-img {
+      width: 75px;
+    }
     .header-right {
       flex: 0 0 125px;
       height: 100%;
 
       .item-source {
         margin: 5px 5px;
-        font-family: var(--font-h6);
+        font-family: var(--font-h4);
         font-size: var(--font-size-18);
       }
     }
@@ -52,22 +58,25 @@
 
   [data-tab="details"] {
     &[data-subtype="kit"] {
-      .damage-bonus {
-        margin: 0.2rem 0 0.1rem;
-        font-size: 1.15rem;
-      }
-
-      .form-group.damage-part {
-        display: inline-flex;
-        width: 135px;
-
+      .number-bonus {
         label {
           text-align: center;
         }
-
         .form-fields {
-          flex: 0 0 40px;
+          flex: 0 0 50px;
+        }
+      }
+
+      .damage-bonus {
+        margin: 0.2rem 0 0.1rem;
+      }
+
+      .distance {
+        label {
           text-align: right;
+        }
+        .form-fields {
+          flex: 0 0 70px;
         }
       }
     }
@@ -79,6 +88,10 @@
         padding: 5px;
         background-color: rgba(255, 255, 255, 0.02);
         margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
       }
     }
   }

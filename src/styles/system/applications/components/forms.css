@@ -3,19 +3,15 @@
   .sheet-header {
     display: flex;
     margin-bottom: 10px;
-    gap: 10px;
 
     .profile-img {
-      flex: 0 0 100px;
-      height: 100px;
+      cursor: var(--cursor-pointer);
     }
 
     .header-center {
-      height: 100%;
-      /* 235px is the width of the image, header-right, and the gaps */
-      max-width: calc(100% - 235px);
+      overflow-y: auto;
       flex-grow: 1;
-      justify-content: center;
+
       .document-name {
         max-height: 65px;
         line-height: 65px;
@@ -33,8 +29,7 @@
         }
         h2 {
           max-height: 100%;
-        }
-        h2 {
+          max-width: 100%;
           vertical-align: middle;
           overflow: hidden;
         }
@@ -59,19 +54,19 @@
     }
   }
 
-  .sheet-tabs {
-    flex: 0;
-  }
-
-  .tab {
+  section.tab {
     overflow: auto;
 
-    .biography {
-      flex: 1;
+    &.standard-form {
+      padding-top: 0.5rem;
+    }
 
-      .editor {
-        height: 100%;
-      }
+    > nav.tabs {
+      border-top-color: var(--color-fieldset-border);
+      border-bottom-color: var(--color-fieldset-border);
+      border-style: groove none;
+      border-width: 2px;
+      margin: 0 1rem;
     }
   }
 
@@ -88,6 +83,34 @@
     dt {
       text-shadow: none;
       font-weight: bold;
+    }
+  }
+
+  fieldset {
+    padding: revert;
+  }
+
+  .form-group {
+
+
+    &.paired {
+      gap: 10px;
+
+      label {
+        flex: 1;
+        text-align: right;
+        line-height: var(--input-height);
+      }
+
+      .form-fields,
+      .input-placeholder {
+        flex: 1;
+        justify-content: left;
+      }
+
+      .input-placeholder {
+        text-align: left;
+      }
     }
   }
 }

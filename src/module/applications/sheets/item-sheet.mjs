@@ -12,8 +12,12 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "item"],
+    window: {
+      resizable: true,
+    },
     actions: {
       toggleMode: this._toggleMode,
+      showImage: this._showImage,
       updateSource: this._updateSource,
       editHTML: this._editHTML,
       viewDoc: this._viewEffect,
@@ -318,6 +322,18 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     if (this.isPlayMode && this.#editor) await this.#saveEditor();
     this.render();
+  }
+
+  /**
+   * Display the item image
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _showImage(event, target) {
+    const { img, name, uuid } = this.item;
+    new foundry.applications.apps.ImagePopout({ src: img, uuid, window: { title: name } }).render({ force: true });
   }
 
   /**
