@@ -147,13 +147,17 @@ export default class AbilityModel extends BaseItemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    if (!this.actor) this._preparePowerRollDisplay();
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
-  /** @inheritdoc */
-  preparePostActorPrepData() {
-    super.preparePostActorPrepData();
-
+  /**
+   * Replaces the entered values of each effect's `display` property
+   * and derives the overall display value for each tier.
+   * Called by {@link prepareDerivedData} if there is not an actor,
+   * or {@link preparePostActorPrepData} if there is.
+   */
+  _preparePowerRollDisplay() {
     for (const tier of PowerRoll.TIER_NAMES) {
       const effects = this.powerRoll[tier];
       for (const effect of effects) {
@@ -170,6 +174,13 @@ export default class AbilityModel extends BaseItemModel {
 
       effects.display = effects.map(effect => effect.display).join("; ");
     }
+  }
+
+  /** @inheritdoc */
+  preparePostActorPrepData() {
+    super.preparePostActorPrepData();
+
+    this._preparePowerRollDisplay();
 
     // Set the highest characteristic amongst the power roll characteristics
     this.powerRoll.characteristic = null;
@@ -248,7 +259,7 @@ export default class AbilityModel extends BaseItemModel {
   toPotencyEmbed(potencyData) {
     return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
-      value: new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total,
+      value: this.actor ? new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total : potencyData.value,
     });
   }
 
@@ -275,7 +286,6 @@ export default class AbilityModel extends BaseItemModel {
       system: this,
       systemFields: this.schema.fields,
       config: ds.CONFIG,
-      resourceName: this.actor?.system.coreResource.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
     };
     if (config.tier1) context.tier1 = true;
     if (config.tier2) context.tier2 = true;
@@ -311,7 +321,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    context.resourceName = this.actor?.system.coreResource?.name ?? "";
+    context.resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
 
     context.keywordList = formattedLabels.keywords;
     context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
