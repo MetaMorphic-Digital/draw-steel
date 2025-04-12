@@ -1,3 +1,5 @@
+/** @import { TokenCompleteMovementWaypoint } from "@client/types.mjs" */
+
 /**
  * Draw Steel implementation of the core token ruler
  */
@@ -11,6 +13,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   _prepareWaypointData(waypoints) {
     const result = super._prepareWaypointData(waypoints);
 
+    /** @type {TokenCompleteMovementWaypoint[][]} */
     const segments = this.token.document.getCompleteMovementPath(waypoints).reduce((acc, waypoint) => {
       acc.at(-1).push(waypoint);
       if (!waypoint.intermediate) acc.push([]);
@@ -22,13 +25,15 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       const startedNear = segments[i - 1]?.endPointEnemies ?? new Set();
       const endPointEnemies = new Set(this.token.document.getHostileTokensFromPoints([segment.at(-1)]));
       const passedBy = new Set(this.token.document.getHostileTokensFromPoints(segment)).union(startedNear);
-      const strikes = passedBy.difference(endPointEnemies).size;
+      const noStrike = segment[0]?.teleport || segment[0]?.forced;
+      const strikes = noStrike ? 0 : passedBy.difference(endPointEnemies).size;
       Object.assign(segment, {
         endPointEnemies, strikes,
         count: strikes + (segments[i - 1]?.count ?? 0),
       });
 
-      if (i > 0) {
+      // There may not be a result at this spot if Keyboard movement was used to create a path without a waypoint
+      if ((i > 0) && result[i - 1]) {
         Object.assign(result[i - 1], {
           strikes: {
             total: segment.count,

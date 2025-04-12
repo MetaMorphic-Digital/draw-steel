@@ -1,3 +1,5 @@
+/** @import DrawSteelTokenDocument from "../../documents/token.mjs" */
+
 /**
  * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass
  */
