@@ -28,7 +28,8 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
         count: strikes + (segments[i - 1]?.count ?? 0),
       });
 
-      if (i > 0) {
+      // There may not be a result at this spot if Keyboard movement was used to create a path without a waypoint
+      if ((i > 0) && result[i - 1]) {
         Object.assign(result[i - 1], {
           strikes: {
             total: segment.count,
