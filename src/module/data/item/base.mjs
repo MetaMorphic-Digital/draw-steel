@@ -1,5 +1,7 @@
 import SourceModel from "../models/source.mjs";
 
+/** @import DrawSteelActor from "../../documents/actor.mjs" */
+
 const fields = foundry.data.fields;
 
 /**
@@ -44,8 +46,8 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
-   * Convenient access to the item's actor.
-   * @returns {import("../../documents/actor.mjs").DrawSteelActor}
+   * Convenient access to the item's actor, if it exists.
+   * @returns {DrawSteelActor | null}
    */
   get actor() {
     return this.parent.actor;

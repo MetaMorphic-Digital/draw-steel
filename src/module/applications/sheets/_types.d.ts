@@ -26,7 +26,7 @@ declare module "./item-sheet.mjs" {
 export interface ActorSheetItemContext {
   item: documents.DrawSteelItem;
   expanded: boolean;
-  embed?: HTMLDivElement
+  embed?: HTMLDivElement;
 }
 
 interface ActorSheetAbilityContext extends ActorSheetItemContext {

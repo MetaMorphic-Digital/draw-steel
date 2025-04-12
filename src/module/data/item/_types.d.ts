@@ -29,30 +29,44 @@ declare module "./base.mjs" {
 declare module "./ability.mjs" {
 
   export interface Potency {
-    potency: {
-      enabled: boolean,
-      value: string | number;
-      characteristic: string;
-    }
-  }
-  export interface PotencyData extends Potency {
-    embed: string
+    enabled: boolean,
+    value: string;
+    characteristic: string;
   }
 
-  type PowerRoll = {
-    damage: {
-      value: string;
-      type: string;
-    }
-    ae: string;
+  type DamagePowerRoll = {
+    type: "damage";
+    value: string;
+    types: Set<string>;
     potency: Potency;
-    forced: {
-      type: string;
-      value: number;
-      vertical: boolean;
-    }
-    description: string;
+    display: string;
   }
+
+  type AEPowerRoll = {
+    type: "ae";
+    always: Set<string>;
+    success: Set<string>;
+    failure: Set<string>;
+    potency: Potency;
+    display: string;
+  }
+
+  type ForcedPowerRoll = {
+    type: "forced";
+    types: Set<string>;
+    value: number;
+    vertical: boolean;
+    potency: Potency;
+    display: string;
+  }
+
+  type OtherPowerRoll = {
+    type: "other";
+    potency: Potency;
+    display: string;
+  }
+
+  type PowerRoll = DamagePowerRoll | AEPowerRoll | ForcedPowerRoll | OtherPowerRoll;
 
   export default interface AbilityModel {
     description: {
@@ -83,9 +97,9 @@ declare module "./ability.mjs" {
       /** The highest characteristic of those available. Not set if there's no parent actor. */
       characteristic?: string;
       formula: string;
-      tier1: PowerRoll;
-      tier2: PowerRoll;
-      tier3: PowerRoll;
+      tier1: PowerRoll[] & { display?: string };
+      tier2: PowerRoll[] & { display?: string };
+      tier3: PowerRoll[] & { display?: string };
     }
     spend: {
       value: number;

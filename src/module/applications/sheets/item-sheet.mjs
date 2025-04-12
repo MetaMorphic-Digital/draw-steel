@@ -12,6 +12,10 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "item"],
+    position: {
+      // Allows "Their Lack of Focus is Their Undoing" to fit in two lines
+      width: 540,
+    },
     window: {
       resizable: true,
     },

@@ -30,9 +30,11 @@
 </section>
 {{#if (or tier1 tier2 tier3 system.effect)}}
 <section class="powerResult">
+  {{#if system.powerRoll.enabled}}
   <p>
-    <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusCharacteristics" characteristics=powerRollCharacteristicsList}}}</strong>
+    <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
   </p>
+  {{/if}}
   <dl class="power-roll-display">
     {{#if tier1}}
     <dt class="tier1">{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}</dt>
