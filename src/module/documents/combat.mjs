@@ -71,6 +71,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       /** @type {MaliceModel} */
       const malice = game.actors.malice;
       await malice.endCombat();
+
+      await this.awardVictories();
     }
 
     return deletedCombat;
@@ -165,5 +167,40 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       .filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
       .map(c => c.actor);
     await malice._onStartRound(this, aliveHeroes);
+  }
+
+  /**
+   * Prompt the GM for a number of victories to award and then award each character that many victories
+   */
+  async awardVictories() {
+    // TODO: Once encounter difficulty math is implemented, default victory value to the victories for that difficulty
+    const input = foundry.applications.fields.createNumberInput({ name: "victories", value: 1 });
+    const victoryGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Combat.AwardVictories.Title",
+      hint: "DRAW_STEEL.Combat.AwardVictories.Hint",
+      input: input,
+      localize: true,
+    });
+
+    const fd = await foundry.applications.api.DialogV2.input({
+      content: victoryGroup.outerHTML,
+      classes: ["draw-steel", "award-victories"],
+      window: {
+        title: "DRAW_STEEL.Combat.AwardVictories.Title",
+      },
+      ok: {
+        label: "DRAW_STEEL.Combat.AwardVictories.Button",
+      },
+      rejectClose: false,
+    });
+
+    if (fd) {
+      for (const combatant of this.combatants.values()) {
+        const actor = combatant.actor;
+        if (!actor || (actor.type !== "character")) continue;
+
+        await actor.update({ "system.hero.victories": actor.system.hero.victories + fd.victories });
+      }
+    }
   }
 }
