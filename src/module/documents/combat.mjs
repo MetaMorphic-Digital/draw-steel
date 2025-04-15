@@ -195,7 +195,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     });
 
     if (fd) {
-      for (const combatant of this.combatants.values()) {
+      for (const combatant of this.combatants) {
         const actor = combatant.actor;
         if (!actor || (actor.type !== "character")) continue;
 
