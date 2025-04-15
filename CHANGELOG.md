@@ -43,6 +43,7 @@
 - Dragging an owned ability or project item to the hotbar will create a macro to use/roll it. (#313)
 - Negative stamina now has unique colors in bar. (#315)
 - Added display for hero tokens and malice below the Players list. (#156)
+- Added a prompt at the end of combat to award victories to each character in the combat. (#388)
 
 ### Changed
 - Changed system minimum to v13.339, verified system for v13 generally.
