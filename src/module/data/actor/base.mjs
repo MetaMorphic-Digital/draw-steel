@@ -296,6 +296,20 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
   }
 
   /**
+   * Regain stamina equal to the provided value
+   * @param {number} stamina
+   * @returns {DrawSteelActor}
+   */
+  async regainStamina(stamina) {
+    if (!Number.isNumeric(stamina)) {
+      console.error("stamina is required to be a number.");
+      return this.parent;
+    }
+
+    return this.parent.update({ "system.stamina.value": this.stamina.value + stamina });
+  }
+
+  /**
    * Deal damage to the actor, accounting for immunities and resistances
    * @param {number} damage    The amount of damage to take
    * @param {object} [options] Options to modify the damage application

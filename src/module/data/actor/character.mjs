@@ -201,20 +201,6 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /**
-   * Regain stamina equal to the provided value
-   * @param {number} stamina
-   * @returns {DrawSteelActor}
-   */
-  async regainStamina(stamina) {
-    if (!Number.isNumeric(stamina)) {
-      console.error("stamina is required to be a number.");
-      return this.parent;
-    }
-
-    return this.parent.update({ "system.stamina.value": this.stamina.value + stamina });
-  }
-
-  /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
    * @returns {Promise<DrawSteelActor}
    */
