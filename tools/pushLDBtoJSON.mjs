@@ -70,6 +70,7 @@ async function unpackToPath(collection, packName) {
     `${SYSTEM_ID}/${packName}`,
     `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
     {
+      transformEntry,
       transformName: entry => {
         const filename = transformName(entry);
         if (entry._id in collection) {
@@ -80,6 +81,24 @@ async function unpackToPath(collection, packName) {
       },
     },
   );
+}
+
+/**
+ * Remove text content from wiki journal
+ * @param {object} entry The entry data
+ * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
+ */
+async function transformEntry(entry) {
+  if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
+
+  for (const jep of entry.pages) {
+    const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
+    // Additional newline is included to minimize churn from pack/unpack operation
+    await fs.writeFile(docsPath, jep.text.markdown + "\n", {
+      encoding: "utf8",
+    });
+    jep.text = { format: 2 };
+  }
 }
 
 /**

@@ -21,5 +21,3 @@ Foundry's rolls support variable substitution through roll data, as explained in
 ## Item Roll Data
 
 ### Abilities
-
-

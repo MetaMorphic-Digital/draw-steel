@@ -2,4 +2,4 @@
 
 ## Item Embeds
 
-All items support the `@Embed[uuid]` syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
+All items support the @Embed<s></s>[uuid] syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
