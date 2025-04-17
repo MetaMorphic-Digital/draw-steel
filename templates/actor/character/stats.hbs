@@ -4,7 +4,7 @@
     <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
     <div class="resource stamina">
       <label class="resource-label">
-        {{systemFields.stamina.label}}
+        <a data-action="spendStaminaHeroToken" data-tooltip="DRAW_STEEL.Sheet.HeroTokenRegainStamina" data-tooltip-direction="UP">{{systemFields.stamina.label}}</a>
       </label>
       <div class="resource-content flexrow">
         {{#if isPlay}}
@@ -43,7 +43,7 @@
     </div>
     <div class="resource recoveries">
       <label class="resource-label">
-        {{systemFields.hero.fields.recoveries.label}}
+        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Sheet.SpendRecovery" data-tooltip-direction="UP">{{systemFields.hero.fields.recoveries.label}}</a>
       </label>
       <div class="resource-content flexrow">
         {{#if isPlay}}

@@ -200,6 +200,49 @@ export default class CharacterModel extends BaseActorModel {
     });
   }
 
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @returns {Promise<DrawSteelActor}
+   */
+  async spendRecovery() {
+    if (this.hero.recoveries.value === 0) {
+      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      return this.parent;
+    }
+
+    ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    await this.parent.update({ "system.hero.recoveries.value": this.hero.recoveries.value - 1 });
+
+    return this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+  }
+
+  /**
+   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
+   * @returns {DrawSteelActor}
+   */
+  async spendStaminaHeroToken() {
+    /** @type {HeroTokenModel} */
+    const heroTokens = game.actors.heroTokens;
+
+    const spend = await foundry.applications.api.DialogV2.confirm({
+      window: {
+        title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
+      },
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
+        value: heroTokens.value,
+      })}</p>`,
+      rejectClose: false,
+    });
+
+    if (spend) {
+      const valid = await heroTokens.spendToken("regainStamina", { flavor: this.parent.name });
+      if (valid !== false) {
+        await this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+      }
+    }
+    return this.parent;
+  }
+
   /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;

@@ -12,6 +12,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       gainSurges: this._gainSurges,
       rollProject: this._rollProject,
       takeRespite: this._takeRespite,
+      spendRecovery: this._spendRecovery,
+      spendStaminaHeroToken: this._spendStaminaHeroToken,
     },
   };
 
@@ -206,6 +208,26 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    */
   static async _takeRespite(event, target) {
     await this.actor.system.takeRespite();
+  }
+
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _spendRecovery(event, target) {
+    await this.actor.system.spendRecovery();
+  }
+
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _spendStaminaHeroToken() {
+    await this.actor.system.spendStaminaHeroToken();
   }
 
   /* -------------------------------------------------- */
