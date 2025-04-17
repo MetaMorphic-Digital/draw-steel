@@ -213,7 +213,7 @@ export default class CharacterModel extends BaseActorModel {
     ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
     await this.parent.update({ "system.hero.recoveries.value": this.hero.recoveries.value - 1 });
 
-    return await this.regainStamina(this.hero.recoveries.recoveryValue);
+    return this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
   }
 
   /**
@@ -237,7 +237,7 @@ export default class CharacterModel extends BaseActorModel {
     if (spend) {
       const valid = await heroTokens.spendToken("regainStamina", { flavor: this.parent.name });
       if (valid !== false) {
-        await this.regainStamina(this.hero.recoveries.recoveryValue);
+        await this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
       }
     }
     return this.parent;
