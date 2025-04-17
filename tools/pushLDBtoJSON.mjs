@@ -1,5 +1,5 @@
-import {extractPack} from "@foundryvtt/foundryvtt-cli";
-import {promises as fs} from "fs";
+import { extractPack } from "@foundryvtt/foundryvtt-cli";
+import { promises as fs } from "fs";
 import path from "path";
 
 const SYSTEM_ID = process.cwd();
@@ -12,7 +12,7 @@ await extractPacks();
  * Unpacks all compendium packs located in the basePath
  */
 async function extractPacks() {
-  const dirents = await fs.readdir(BASE_LDB_PATH, {withFileTypes: true, recursive: true});
+  const dirents = await fs.readdir(BASE_LDB_PATH, { withFileTypes: true, recursive: true });
   const packs = dirents.filter((dirent) => dirent.isDirectory());
 
   const folders = {};
@@ -37,11 +37,11 @@ async function extractAllFoldersFromPackFile(collection, packName) {
     {
       transformEntry: (entry) => {
         if (entry._key.startsWith("!folders")) {
-          collection[entry._id] = {name: slugify(entry.name), parentFolder: entry.folder};
+          collection[entry._id] = { name: slugify(entry.name), parentFolder: entry.folder };
         }
         return false;
-      }
-    }
+      },
+    },
   );
 }
 
@@ -77,8 +77,8 @@ async function unpackToPath(collection, packName) {
         }
         const parent = collection[entry.folder];
         return path.join(parent?.path ?? "", filename);
-      }
-    }
+      },
+    },
   );
 }
 
