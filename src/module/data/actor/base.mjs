@@ -306,7 +306,7 @@ export default class BaseActorModel extends foundry.abstract.TypeDataModel {
       return this.parent;
     }
 
-    return this.parent.update({ "system.stamina.value": this.stamina.value + stamina });
+    return this.parent.modifyTokenAttribute("stamina", stamina, true);
   }
 
   /**
