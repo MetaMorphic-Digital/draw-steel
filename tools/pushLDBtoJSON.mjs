@@ -1,5 +1,5 @@
-import {extractPack} from "@foundryvtt/foundryvtt-cli";
-import {promises as fs} from "fs";
+import { extractPack } from "@foundryvtt/foundryvtt-cli";
+import { promises as fs } from "fs";
 import path from "path";
 
 const SYSTEM_ID = process.cwd();
@@ -12,7 +12,7 @@ await extractPacks();
  * Unpacks all compendium packs located in the basePath
  */
 async function extractPacks() {
-  const dirents = await fs.readdir(BASE_LDB_PATH, {withFileTypes: true, recursive: true});
+  const dirents = await fs.readdir(BASE_LDB_PATH, { withFileTypes: true, recursive: true });
   const packs = dirents.filter((dirent) => dirent.isDirectory());
 
   const folders = {};
@@ -37,11 +37,11 @@ async function extractAllFoldersFromPackFile(collection, packName) {
     {
       transformEntry: (entry) => {
         if (entry._key.startsWith("!folders")) {
-          collection[entry._id] = {name: slugify(entry.name), parentFolder: entry.folder};
+          collection[entry._id] = { name: slugify(entry.name), parentFolder: entry.folder };
         }
         return false;
-      }
-    }
+      },
+    },
   );
 }
 
@@ -70,6 +70,7 @@ async function unpackToPath(collection, packName) {
     `${SYSTEM_ID}/${packName}`,
     `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
     {
+      transformEntry,
       transformName: entry => {
         const filename = transformName(entry);
         if (entry._id in collection) {
@@ -77,9 +78,27 @@ async function unpackToPath(collection, packName) {
         }
         const parent = collection[entry.folder];
         return path.join(parent?.path ?? "", filename);
-      }
-    }
+      },
+    },
   );
+}
+
+/**
+ * Remove text content from wiki journal
+ * @param {object} entry The entry data
+ * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
+ */
+async function transformEntry(entry) {
+  if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
+
+  for (const jep of entry.pages) {
+    const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
+    // Additional newline is included to minimize churn from pack/unpack operation
+    await fs.writeFile(docsPath, jep.text.markdown + "\n", {
+      encoding: "utf8",
+    });
+    jep.text = { format: 2 };
+  }
 }
 
 /**
