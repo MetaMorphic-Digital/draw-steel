@@ -13,6 +13,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       rollProject: this._rollProject,
       takeRespite: this._takeRespite,
       spendRecovery: this._spendRecovery,
+      spendStaminaHeroToken: this._spendStaminaHeroToken,
     },
   };
 
@@ -211,37 +212,22 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
-   * Shift + Click: Spend two hero tokens for a free recovery
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async _spendRecovery(event, target) {
-    // If shift clicked prompt for spending hero tokens.
-    if (event.shiftKey) {
-      /** @type {HeroTokenModel} */
-      const heroTokens = game.actors.heroTokens;
-
-      const spend = await foundry.applications.api.DialogV2.confirm({
-        window: {
-          title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
-        },
-        content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
-          value: heroTokens.value,
-        })}</p>`,
-        rejectClose: false,
-      });
-
-      if (spend) {
-        const valid = await heroTokens.spendToken("regainStamina", { flavor: this.actor.name });
-        if (valid !== false) {
-          await this.actor.system.spendRecovery({ free: true });
-        }
-      }
-      return;
-    }
-
     await this.actor.system.spendRecovery();
+  }
+
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async _spendStaminaHeroToken() {
+    await this.actor.system.spendStaminaHeroToken();
   }
 
   /* -------------------------------------------------- */

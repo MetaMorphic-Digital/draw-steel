@@ -201,26 +201,60 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /**
+   * Regain stamina equal to the provided value
+   * @param {number} stamina
+   * @returns {DrawSteelActor}
+   */
+  async regainStamina(stamina) {
+    if (!Number.isNumeric(stamina)) {
+      console.error("stamina is required to be a number.");
+      return this.parent;
+    }
+
+    return this.parent.update({ "system.stamina.value": this.stamina.value + stamina });
+  }
+
+  /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
-   * @param {object} [options]
-   * @param {boolean} [options.free] Should this character gain the recovery value without spending a recovery
    * @returns {Promise<DrawSteelActor}
    */
-  async spendRecovery({ free = false } = {}) {
-    if (!free && (this.hero.recoveries.value === 0)) {
-      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecovery", { format: { actor: this.parent.name } });
+  async spendRecovery() {
+    if (this.hero.recoveries.value === 0) {
+      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
       return this.parent;
     }
 
     ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    await this.parent.update({ "system.hero.recoveries.value": this.hero.recoveries.value - 1 });
 
-    const recoveryToSpend = free ? 0 : 1;
-    return this.parent.update({
-      system: {
-        stamina: { value: this.stamina.value + this.hero.recoveries.recoveryValue },
-        hero: { recoveries: { value: this.hero.recoveries.value - recoveryToSpend } },
+    return await this.regainStamina(this.hero.recoveries.recoveryValue);
+  }
+
+  /**
+   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
+   * @returns {DrawSteelActor}
+   */
+  async spendStaminaHeroToken() {
+    /** @type {HeroTokenModel} */
+    const heroTokens = game.actors.heroTokens;
+
+    const spend = await foundry.applications.api.DialogV2.confirm({
+      window: {
+        title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
       },
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
+        value: heroTokens.value,
+      })}</p>`,
+      rejectClose: false,
     });
+
+    if (spend) {
+      const valid = await heroTokens.spendToken("regainStamina", { flavor: this.parent.name });
+      if (valid !== false) {
+        await this.regainStamina(this.hero.recoveries.recoveryValue);
+      }
+    }
+    return this.parent;
   }
 
   /** @inheritdoc */

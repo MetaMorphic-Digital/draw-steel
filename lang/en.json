@@ -15,7 +15,8 @@
       "Other": "Other",
       "TakeRespite": "Take Respite",
       "LevelUp": "Level Up Available",
-      "SpendRecovery": "Spend a recovery to gain recovery value.<br><strong>Shift+Click:</strong> Spend 2 hero tokens to gain recovery without spending a recovery."
+      "SpendRecovery": "Spend a recovery to regain stamina.",
+      "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens"
     },
     "Source": {
       "FIELDS": {
@@ -213,8 +214,8 @@
         "HeroicResourceGain": "Start of turn resource gain",
         "SpendRecovery": {
           "Notifications": {
-            "NoRecovery": "{actor} does not have any recoveries to spend",
-            "Success": "{actor} has regained stamina equal to their recovery value."
+            "NoRecoveries": "{actor} does not have any recoveries to spend.",
+            "Success": "{actor} has spent a recovery to regain stamina."
           }
         }
       },
