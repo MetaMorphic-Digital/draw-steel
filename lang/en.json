@@ -14,7 +14,8 @@
       "Resources": "Resources",
       "Other": "Other",
       "TakeRespite": "Take Respite",
-      "LevelUp": "Level Up Available"
+      "LevelUp": "Level Up Available",
+      "SpendRecovery": "Spend a recovery to gain recovery value.<br><strong>Shift+Click:</strong> Spend 2 hero tokens to gain recovery without spending a recovery."
     },
     "Source": {
       "FIELDS": {
@@ -209,7 +210,13 @@
             }
           }
         },
-        "HeroicResourceGain": "Start of turn resource gain"
+        "HeroicResourceGain": "Start of turn resource gain",
+        "SpendRecovery": {
+          "Notifications": {
+            "NoRecovery": "{actor} does not have any recoveries to spend",
+            "Success": "{actor} has regained stamina equal to their recovery value."
+          }
+        }
       },
       "NPC": {
         "FIELDS": {
@@ -1220,7 +1227,8 @@
         },
         "RegainStamina": {
           "label": "Regain Stamina",
-          "messageContent": "Spends two hero tokens to regain stamina equal to their recovery value."
+          "messageContent": "Spends two hero tokens to regain stamina equal to their recovery value.",
+          "dialogContent": "Spend two of {value} hero tokens to regain stamina equal to recovery value."
         }
       },
       "Malice": {

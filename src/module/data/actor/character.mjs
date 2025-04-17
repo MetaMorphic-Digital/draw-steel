@@ -200,6 +200,29 @@ export default class CharacterModel extends BaseActorModel {
     });
   }
 
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @param {object} [options]
+   * @param {boolean} [options.free] Should this character gain the recovery value without spending a recovery
+   * @returns {Promise<DrawSteelActor}
+   */
+  async spendRecovery({ free = false } = {}) {
+    if (!free && (this.hero.recoveries.value === 0)) {
+      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecovery", { format: { actor: this.parent.name } });
+      return this.parent;
+    }
+
+    ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+
+    const recoveryToSpend = free ? 0 : 1;
+    return this.parent.update({
+      system: {
+        stamina: { value: this.stamina.value + this.hero.recoveries.recoveryValue },
+        hero: { recoveries: { value: this.hero.recoveries.value - recoveryToSpend } },
+      },
+    });
+  }
+
   /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
