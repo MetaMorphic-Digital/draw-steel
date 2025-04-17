@@ -46,6 +46,8 @@ The core system will only support english-language compendium content. [Babele](
 
 The pages for the wiki are maintained in `src/docs`. These files also double as the markdown source for the System Documentation journal entry. Updates to this journal will be propagated back to the relevant files by the compendium unpack operation, and updates to these files will be included whenever the journals are rebuilt.
 
+Not all wiki pages are included in the System Documentation journal. To add a mirrored page to the journal, create a new page inside foundry and set the `flags.draw-steel.wikiPath` property to the name of the file, then unpack the compendiums. Otherwise, files inside `src/docs` will be wiki-exclusive.
+
 ## Issues
 
 Check that your Issue isn't a duplicate (also check the closed issues, as sometimes work which has not been released closes an issue). Issues which are assigned to a Milestone are considered "Prioritized." This assignment is not permanent and issues might be pushed out of milestones if the milestone is approaching a releaseable state without that work being done.
