@@ -1,4 +1,4 @@
-/** @import { TokenCompleteMovementWaypoint } from "@client/types.mjs" */
+/** @import { TokenCompleteMovementWaypoint, TokenMovementActionConfig } from "@client/_types.mjs" */
 
 /**
  * Draw Steel implementation of the core token ruler
@@ -6,6 +6,67 @@
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
   static WAYPOINT_TEMPLATE = "systems/draw-steel/templates/hud/waypoint-labels.hbs";
+
+  /**
+   * Helper function called in `init` hook
+   * @internal
+   */
+  static applyDSMovementConfig() {
+    // Adjusting `Blink (Teleport)` to just be Teleport and maintain its use elsewhere
+    foundry.utils.mergeObject(CONFIG.Token.movement.actions, {
+      "-=blink": null,
+      /** @type {TokenMovementActionConfig} */
+      burrow: {
+        getCostFunction: (token, _options) => {
+          if (token.movementTypes.has("burrow")) return cost => cost;
+          else return cost => cost * 3;
+        },
+      },
+      /** @type {TokenMovementActionConfig} */
+      climb: {
+        canSelect: (token) => !token.hasStatusEffect("prone"),
+        getCostFunction: (token, _options) => {
+          if (token.movementTypes.has("climb")) return cost => cost;
+          else return cost => cost * 2;
+        },
+      },
+      /** @type {TokenMovementActionConfig} */
+      crawl: {
+        canSelect: (token) => token.hasStatusEffect("prone"),
+      },
+      /** @type {TokenMovementActionConfig} */
+      fly: {
+        canSelect: (token) => !token.hasStatusEffect("prone"),
+      },
+      /** @type {TokenMovementActionConfig} */
+      jump: {
+        canSelect: (token) => !token.hasStatusEffect("prone"),
+        // default for jump is cost * 2
+        getCostFunction: () => cost => cost,
+      },
+      /** @type {TokenMovementActionConfig} */
+      swim: {
+        canSelect: (token) => !token.hasStatusEffect("prone"),
+        getCostFunction: (token, _options) => {
+          if (token.movementTypes.has("swim")) return cost => cost;
+          else return cost => cost * 2;
+        },
+      },
+      /** @type {TokenMovementActionConfig} */
+      teleport: {
+        label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
+        icon: "fa-solid fa-fw fa-transporter",
+        order: 7,
+        teleport: true,
+        getAnimationOptions: () => ({ duration: 0 }),
+        deriveTerrainDifficulty: () => 1,
+      },
+      /** @type {TokenMovementActionConfig} */
+      walk: {
+        canSelect: (token) => !token.hasStatusEffect("prone"),
+      },
+    }, { performDeletions: true });
+  }
 
   /* -------------------------------------------------- */
 

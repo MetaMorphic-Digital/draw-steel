@@ -228,7 +228,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     const actorMovement = this.actor.system.movement;
     const flying = actorMovement.types.has("fly");
     const movementList = Array.from(actorMovement.types).map(m => {
-      let label = game.i18n.localize(ds.CONFIG.movementTypes[m]?.label ?? m);
+      let label = game.i18n.localize(CONFIG.Token.movement.actions[m]?.label ?? m);
       if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
       return label;
     });
@@ -236,7 +236,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return {
       flying,
       list: formatter.format(movementList),
-      options: Object.entries(ds.CONFIG.movementTypes).filter(([_key, a]) => a.speedOption).map(([value, { label }]) => ({ value, label })),
+      options: Object.entries(CONFIG.Token.movement.actions)
+        .filter(([key, _action]) => ds.CONFIG.speedOptions.includes(key))
+        .map(([value, { label }]) => ({ value, label })),
     };
   }
 

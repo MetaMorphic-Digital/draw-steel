@@ -15,13 +15,11 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /**
-   * The token's current movement action.
-   * @type {string}
+   * Convenient reference to the movement types on the associated actor
+   * @type {Set<string>}
    */
-  get movementType() {
-    const type = this.getFlag(systemID, "movementType");
-    if (type in CONFIG.Token.movement.actions) return type;
-    else return CONFIG.Token.movement.defaultAction;
+  get movementTypes() {
+    return this.actor?.system.movement?.types ?? new Set();
   }
 
   /* -------------------------------------------------- */
