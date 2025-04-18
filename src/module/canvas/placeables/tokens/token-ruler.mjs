@@ -5,16 +5,21 @@
  */
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
-  static WAYPOINT_TEMPLATE = "systems/draw-steel/templates/hud/waypoint-labels.hbs";
+  static WAYPOINT_LABEL_TEMPLATE = "systems/draw-steel/templates/hud/waypoint-label.hbs";
+
+  /* -------------------------------------------------- */
 
   /**
    * Helper function called in `init` hook
    * @internal
    */
   static applyDSMovementConfig() {
+    const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
+
     // Adjusting `Blink (Teleport)` to just be Teleport and maintain its use elsewhere
     foundry.utils.mergeObject(CONFIG.Token.movement.actions, {
       "-=blink": null,
+      teleport,
       /** @type {TokenMovementActionConfig} */
       burrow: {
         getCostFunction: (token, _options) => {
@@ -53,15 +58,6 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
         },
       },
       /** @type {TokenMovementActionConfig} */
-      teleport: {
-        label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
-        icon: "fa-solid fa-fw fa-transporter",
-        order: 7,
-        teleport: true,
-        getAnimationOptions: () => ({ duration: 0 }),
-        deriveTerrainDifficulty: () => 1,
-      },
-      /** @type {TokenMovementActionConfig} */
       walk: {
         canSelect: (token) => !token.hasStatusEffect("prone"),
       },
@@ -69,6 +65,19 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _getWaypointLabelContext(waypoint, state) {
+    const context = super._getWaypointLabelContext(waypoint, state);
+
+    if (!this.token.inCombat) return context;
+
+    console.log(this, waypoint, state);
+
+    // TODO: Move the strike calculation inside here
+
+    return context;
+  }
 
   /** @inheritdoc */
   _prepareWaypointData(waypoints) {
