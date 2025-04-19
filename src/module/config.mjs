@@ -1,4 +1,3 @@
-import { systemPath } from "./constants.mjs";
 import { preLocalize } from "./helpers/utils.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
@@ -86,10 +85,11 @@ DRAW_STEEL.sizes = {
 preLocalize("sizes", { key: "label" });
 
 /**
- * Keys in `CONFIG.Token.movement.actions` to include as valid movement tag options for the Actor sheet
+ * Keys in `CONFIG.Token.movement.actions` to include as valid movement tag options for the Actor sheet.
+ * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction
  * @type {string[]}
  */
-DRAW_STEEL.speedOptions = ["burrow", "climb", "swim", "fly", "teleport", "walk"];
+DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
 
 /**
  * Configuration information for damage types

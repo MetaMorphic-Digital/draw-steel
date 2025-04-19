@@ -26,6 +26,19 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  _inferMovementAction() {
+    // Teleporting creatures should always prefer it
+    if (this.movementTypes.has("teleport")) return "teleport";
+    else if (this.hasStatusEffect("prone")) return "crawl";
+    else {
+      for (const action of ds.CONFIG.speedOptions) if (this.movementTypes.has(action)) return action;
+      return super._inferMovementAction();
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Get hostile tokens within range of movement.
    * @param {Point[]} [points]              An array of points describing a segment of movement.
