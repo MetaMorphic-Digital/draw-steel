@@ -73,21 +73,11 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   _getWaypointLabelContext(waypoint, state) {
     const context = super._getWaypointLabelContext(waypoint, state);
 
-    if (!this.token.inCombat || !context) return context;
+    if (!this.token.inCombat || !waypoint.previous) return context;
 
-    const path = [waypoint];
+    const points = this.token.document.getCompleteMovementPath([waypoint.previous, waypoint]);
 
-    let prevWaypoint = waypoint.previous;
-
-    while (prevWaypoint) {
-      path.push(prevWaypoint);
-      // Go until you hit an explicit, inclusive
-      prevWaypoint = prevWaypoint.explicit ? null : prevWaypoint.previous;
-    }
-
-    const points = this.token.document.getCompleteMovementPath(path);
-
-    const startedNear = new Set(this.token.document.getHostileTokensFromPoints([points.at(0)]));
+    const startedNear = waypoint.previous?.endPointEnemies ?? new Set();
     const endPointEnemies = new Set(this.token.document.getHostileTokensFromPoints([points.at(-1)]));
     const passedBy = new Set(this.token.document.getHostileTokensFromPoints(points)).union(startedNear);
     const delta = waypoint.actionConfig.teleport ? 0 : passedBy.difference(endPointEnemies).size;
@@ -98,7 +88,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
     Object.assign(waypoint, { endPointEnemies, strikes });
 
-    Object.assign(context, { strikes });
+    if (context) Object.assign(context, { strikes });
 
     return context;
   }

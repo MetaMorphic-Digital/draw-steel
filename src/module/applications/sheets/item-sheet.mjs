@@ -172,7 +172,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
     switch (partId) {
       case "description":
-        context.enrichedDescription = await TextEditor.enrichHTML(
+        context.enrichedDescription = await CONFIG.ux.TextEditor.enrichHTML(
           this.item.system.description.value,
           {
             secrets: this.document.isOwner,
@@ -180,7 +180,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.item,
           },
         );
-        context.enrichedGMNotes = await TextEditor.enrichHTML(
+        context.enrichedGMNotes = await CONFIG.ux.TextEditor.enrichHTML(
           this.item.system.description.gm,
           {
             secrets: this.document.isOwner,

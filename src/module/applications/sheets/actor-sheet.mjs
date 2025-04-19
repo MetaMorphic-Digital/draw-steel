@@ -175,7 +175,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "biography":
         context.languages = this._getLanguages();
-        context.enrichedBiography = await TextEditor.enrichHTML(
+        context.enrichedBiography = await CONFIG.ux.TextEditor.enrichHTML(
           this.actor.system.biography.value,
           {
             secrets: this.document.isOwner,
@@ -183,7 +183,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.actor,
           },
         );
-        context.enrichedGMNotes = await TextEditor.enrichHTML(
+        context.enrichedGMNotes = await CONFIG.ux.TextEditor.enrichHTML(
           this.actor.system.biography.gm,
           {
             secrets: this.document.isOwner,
