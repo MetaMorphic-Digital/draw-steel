@@ -1,5 +1,7 @@
 import { systemID } from "../constants.mjs";
 
+/** @import DrawSteelToken from "../canvas/placeables/token.mjs"; */
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass
  */
@@ -30,7 +32,11 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
    * @returns {DrawSteelTokenDocument[]}    Hostile tokens.
    */
   getHostileTokensFromPoints(points = []) {
-    if (!points.length) return [];
+    // Neutral and secret tokens don't have hostile tokens
+    const polarized = (/** @type {DrawSteelTokenDocument} */ tokenDoc) =>
+      [CONST.TOKEN_DISPOSITIONS.FRIENDLY, CONST.TOKEN_DISPOSITIONS.HOSTILE].includes(tokenDoc.disposition);
+
+    if (!points.length || !polarized(this)) return [];
     const tokens = new Set();
 
     for (let point of points) {
@@ -41,9 +47,11 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
         3 * canvas.scene.grid.size,
         3 * canvas.scene.grid.size,
       );
+      /** @type {Set<DrawSteelToken>} */
       const found = canvas.tokens.quadtree.getObjects(rect);
       for (const token of found) {
-        if (!token.canStrike(this) || tokens.has(token.document)) continue;
+        const opposedDispositions = polarized(token.document) && (this.disposition !== token.document.disposition);
+        if (!token.canStrike(this) || tokens.has(token.document) || !opposedDispositions) continue;
         const distance = canvas.grid.measurePath([point, { ...token.center, elevation: token.document.elevation }]).distance;
         if (distance <= 1) tokens.add(token.document);
       }
