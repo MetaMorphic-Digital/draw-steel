@@ -1,4 +1,4 @@
-/** @import { TokenCompleteMovementWaypoint, TokenMovementActionConfig } from "@client/_types.mjs" */
+/** @import { TokenCompleteMovementWaypoint, TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
 
 /**
  * Draw Steel implementation of the core token ruler
@@ -66,15 +66,28 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {TokenRulerWaypoint} waypoint
+   * @param {object} state
+   * @inheritdoc */
   _getWaypointLabelContext(waypoint, state) {
     const context = super._getWaypointLabelContext(waypoint, state);
 
     if (!this.token.inCombat || !context) return context;
 
-    const points = this.token.document.getCompleteMovementPath([waypoint, waypoint.previous]);
+    const path = [waypoint];
 
-    const startedNear = new Set(this.token.document.getHostileTokensFromPoints([points[0]]));
+    let prevWaypoint = waypoint.previous;
+
+    while (prevWaypoint) {
+      path.push(prevWaypoint);
+      // Go until you hit an explicit, inclusive
+      prevWaypoint = prevWaypoint.explicit ? null : prevWaypoint.previous;
+    }
+
+    const points = this.token.document.getCompleteMovementPath(path);
+
+    const startedNear = new Set(this.token.document.getHostileTokensFromPoints([points.at(0)]));
     const endPointEnemies = new Set(this.token.document.getHostileTokensFromPoints([points.at(-1)]));
     const passedBy = new Set(this.token.document.getHostileTokensFromPoints(points)).union(startedNear);
     const delta = waypoint.actionConfig.teleport ? 0 : passedBy.difference(endPointEnemies).size;
