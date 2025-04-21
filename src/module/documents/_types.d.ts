@@ -6,8 +6,9 @@ import {
   CombatantGroupData,
   CombatData,
   ItemData,
-  JournalEntryPageData
-} from "@common/types.mjs";
+  JournalEntryPageData,
+  TokenData
+} from "@common/documents/_types.mjs";
 import Collection from "@common/utils/collection.mjs";
 import {
   ActiveEffect as ActiveEffectModels,
@@ -70,4 +71,6 @@ declare module "@client/documents/_module.mjs" {
     type: "text" | "image" | "pdf" | "video";
     system: Record < string, unknown > ;
   }
+
+  interface TokenDocument extends TokenData {}
 }

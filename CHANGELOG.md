@@ -30,7 +30,7 @@
   - Damage to minions will automatically be transferred to squads, if possible. (#357)
 - Implemented Draw Steel Token Ruler. (#273)
   - Moving a token will show the number of opportunity attacks provoked by movement.
-  - The token HUD has two new icons on top: One to select the movement type, the other to toggle shifting.
+  - Available movement types and the cost modifications are determined by appropriate properties, such as preventing a prone creature from flying.
 - Added new item subtype: Project. (#257)
 - Numerous improvements to the Power Roll Dialog.
   - Added roll mode configuration. (#143)
@@ -57,7 +57,7 @@
 
 ### Fixed
 - Fixed an error preventing combat start if no player-owned characters are in the combat. (#266)
-- Fixed typos in the CONFIG.DRAW_STEEL. (#269)
+- Fixed typos in CONFIG.DRAW_STEEL. (#269)
 - Fixed token resource bar not allowing negative stamina values. (#236)
 
 ## 0.6.2

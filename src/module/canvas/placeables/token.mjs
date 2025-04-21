@@ -61,24 +61,4 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     bar.position.set(0, posY);
     return true;
   }
-
-  /** @inheritdoc */
-  _getKeyboardMovementAction() {
-    return this.document.movementType;
-  }
-
-  /** @inheritdoc */
-  _getHUDMovementAction() {
-    return this.document.movementType;
-  }
-
-  /** @inheritdoc */
-  _getDragWaypointProperties() {
-    const action = this.document.movementType;
-    return {
-      action,
-      teleport: action === "teleport",
-    };
-  }
-
 }

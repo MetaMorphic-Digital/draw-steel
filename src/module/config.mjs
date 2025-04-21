@@ -1,4 +1,3 @@
-import { systemPath } from "./constants.mjs";
 import { preLocalize } from "./helpers/utils.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
@@ -86,61 +85,11 @@ DRAW_STEEL.sizes = {
 preLocalize("sizes", { key: "label" });
 
 /**
- * @typedef DrawSteelTokenMovementAction
- * @property {string} label    The label of the movement action
- * @property {string} icon     The icon of the movement action
- * @property {boolean} [speedOption] Whether or not to include this as an option on the actor sheet
- * @property {string} [reference] UUID link to a journal page describing the movement type
- * @property {(nonDerivedDifficulties: {[action: string]: number}) => number} [deriveDifficulty]
- *   If set, this function is used to derive the terrain difficulty from nonderived difficulties,
- *   which are those that do not have `deriveDifficulty` set.
- *   Used by {@link foundry.data.regionBehaviors.ModifyMovementCostRegionBehaviorType}.
- *   Derived terrain difficulties are not configurable via the behavior UI.
+ * Keys in `CONFIG.Token.movement.actions` to include as valid movement tag options for the Actor sheet.
+ * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction
+ * @type {string[]}
  */
-
-/** @type {Record<string, DrawSteelTokenMovementAction} */
-DRAW_STEEL.movementTypes = {
-  burrow: {
-    label: "TOKEN.MOVEMENT.ACTIONS.burrow.label",
-    icon: "fa-solid fa-fw fa-shovel",
-    speedOption: true,
-  },
-  climb: {
-    label: "TOKEN.MOVEMENT.ACTIONS.climb.label",
-    icon: "fa-solid fa-fw fa-monkey",
-    speedOption: true,
-  },
-  crawl: {
-    label: "TOKEN.MOVEMENT.ACTIONS.crawl.label",
-    icon: "fa-solid fa-fw fa-worm",
-    deriveDifficulty: ({ walk }) => walk,
-  },
-  jump: {
-    label: "TOKEN.MOVEMENT.ACTIONS.jump.label",
-    icon: "fa-solid fa-fw fa-person-ski-jumping",
-  },
-  swim: {
-    label: "TOKEN.MOVEMENT.ACTIONS.swim.label",
-    icon: "fa-solid fa-fw fa-fish",
-    speedOption: true,
-  },
-  fly: {
-    label: "TOKEN.MOVEMENT.ACTIONS.fly.label",
-    icon: "fa-solid fa-fw fa-dove",
-    speedOption: true,
-  },
-  teleport: {
-    label: "TOKEN.MOVEMENT.ACTIONS.teleport.label",
-    icon: "fa-solid fa-fw fa-transporter",
-    speedOption: true,
-  },
-  walk: {
-    label: "TOKEN.MOVEMENT.ACTIONS.walk.label",
-    icon: "fa-solid fa-fw fa-person-walking",
-    speedOption: true,
-  },
-};
-// Not prelocalizing because expectation is waypoint template will do so
+DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
 
 /**
  * Configuration information for damage types
