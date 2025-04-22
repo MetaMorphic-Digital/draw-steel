@@ -14,9 +14,9 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
    * @internal
    */
   static applyDSMovementConfig() {
-    const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
-
     // Adjusting `Blink (Teleport)` to just be Teleport and maintain its use elsewhere
+    const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
+    // Optional chaining on canSelect until https://github.com/foundryvtt/foundryvtt/issues/12603 is resolved
     foundry.utils.mergeObject(CONFIG.Token.movement.actions, {
       "-=blink": null,
       teleport,
@@ -29,7 +29,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       climb: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !token?.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("climb")) return cost => cost;
           else return cost => cost * 2;
@@ -37,21 +37,21 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       crawl: {
-        canSelect: (token) => token.hasStatusEffect("prone"),
+        canSelect: (token) => token?.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       fly: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !token?.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       jump: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !token?.hasStatusEffect("prone"),
         // default for jump is cost * 2
         getCostFunction: () => cost => cost,
       },
       /** @type {TokenMovementActionConfig} */
       swim: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !token?.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("swim")) return cost => cost;
           else return cost => cost * 2;
@@ -59,7 +59,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       walk: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !token?.hasStatusEffect("prone"),
       },
     }, { performDeletions: true });
   }
