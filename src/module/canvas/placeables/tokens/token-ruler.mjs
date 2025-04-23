@@ -70,7 +70,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   /**
    * @typedef WaypointLabelState
    * @property {TokenRulerWaypoint[]} segmentWaypoints
-   * @property  {Set<DrawSteelTokenDocument>} endPointEnemies
+   * @property {Set<DrawSteelTokenDocument>} endPointEnemies
    * @property {object} strikes
    * @property {number} strikes.delta
    * @property {number} strikes.total
