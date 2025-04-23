@@ -236,7 +236,7 @@ export default class AbilityModel extends BaseItemModel {
 
         if (distance) {
           // All three tier.damage.value fields should be identical, so their apply change should be identical
-          const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "value"]);
+          const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "damage", "value"]);
           for (const tier of PowerRoll.TIER_NAMES) {
             const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
             if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;

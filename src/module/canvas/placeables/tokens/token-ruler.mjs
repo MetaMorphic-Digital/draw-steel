@@ -1,4 +1,5 @@
-/** @import { TokenCompleteMovementWaypoint, TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
+/** @import { TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
+/** @import DrawSteelTokenDocument from "../../../documents/token.mjs"; */
 
 /**
  * Draw Steel implementation of the core token ruler
@@ -14,9 +15,9 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
    * @internal
    */
   static applyDSMovementConfig() {
-    const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
-
     // Adjusting `Blink (Teleport)` to just be Teleport and maintain its use elsewhere
+    const teleport = { ...CONFIG.Token.movement.actions.blink, label: "TOKEN.MOVEMENT.ACTIONS.teleport.label" };
+    // Optional chaining on canSelect until https://github.com/foundryvtt/foundryvtt/issues/12603 is resolved
     foundry.utils.mergeObject(CONFIG.Token.movement.actions, {
       "-=blink": null,
       teleport,
@@ -29,7 +30,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       climb: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("climb")) return cost => cost;
           else return cost => cost * 2;
@@ -37,21 +38,21 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       crawl: {
-        canSelect: (token) => token.hasStatusEffect("prone"),
+        canSelect: (token) => (token instanceof TokenDocument) && token.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       fly: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
       },
       /** @type {TokenMovementActionConfig} */
       jump: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
         // default for jump is cost * 2
         getCostFunction: () => cost => cost,
       },
       /** @type {TokenMovementActionConfig} */
       swim: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {
           if (token.movementTypes.has("swim")) return cost => cost;
           else return cost => cost * 2;
@@ -59,7 +60,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       },
       /** @type {TokenMovementActionConfig} */
       walk: {
-        canSelect: (token) => !token.hasStatusEffect("prone"),
+        canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
       },
     }, { performDeletions: true });
   }
@@ -67,28 +68,44 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   /* -------------------------------------------------- */
 
   /**
-   * @param {TokenRulerWaypoint} waypoint
-   * @param {object} state
-   * @inheritdoc */
+   * @typedef WaypointLabelState
+   * @property {TokenRulerWaypoint[]} segmentWaypoints
+   * @property {Set<DrawSteelTokenDocument>} endPointEnemies
+   * @property {object} strikes
+   * @property {number} strikes.delta
+   * @property {number} strikes.total
+   */
+
+  /**
+   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint
+   * @param {WaypointLabelState} state
+   * @inheritdoc
+   */
   _getWaypointLabelContext(waypoint, state) {
     const context = super._getWaypointLabelContext(waypoint, state);
 
-    if (!this.token.inCombat || !waypoint.previous) return context;
+    if (!this.token.inCombat) return context;
 
-    const points = this.token.document.getCompleteMovementPath([waypoint.previous, waypoint]);
+    state.segmentWaypoints ??= [];
+    state.segmentWaypoints.push(waypoint);
 
-    const startedNear = waypoint.previous?.endPointEnemies ?? new Set();
+    if (!context) return;
+
+    const points = this.token.document.getCompleteMovementPath(state.segmentWaypoints);
+
+    const startedNear = state.endPointEnemies ?? new Set();
     const endPointEnemies = new Set(this.token.document.getHostileTokensFromPoints([points.at(-1)]));
     const passedBy = new Set(this.token.document.getHostileTokensFromPoints(points)).union(startedNear);
     const delta = waypoint.actionConfig.teleport ? 0 : passedBy.difference(endPointEnemies).size;
     const strikes = {
       delta,
-      total: delta + (waypoint.previous?.strikes?.total ?? 0),
+      total: delta + (state.strikes?.total ?? 0),
     };
 
-    Object.assign(waypoint, { endPointEnemies, strikes });
-
-    if (context) Object.assign(context, { strikes });
+    state.endPointEnemies = endPointEnemies;
+    state.strikes = strikes;
+    state.segmentWaypoints = [waypoint];
+    context.strikes = strikes;
 
     return context;
   }

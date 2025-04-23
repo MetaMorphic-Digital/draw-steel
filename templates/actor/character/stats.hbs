@@ -86,7 +86,9 @@
       {{/if}}
       <div class="form-group">
         <label>
-          <a data-action="gainSurges">{{systemFields.hero.fields.surges.label}}</a>
+          <a data-action="gainSurges" data-tooltip="DRAW_STEEL.Sheet.GainSurges">
+            {{systemFields.hero.fields.surges.label}}
+          </a>
         </label>
         <div class="form-fields">
           {{formInput systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
