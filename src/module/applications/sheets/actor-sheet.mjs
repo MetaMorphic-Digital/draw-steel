@@ -159,6 +159,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
+    const TextEditor = foundry.applications.ux.TextEditor.implementation;
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
@@ -175,7 +176,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "biography":
         context.languages = this._getLanguages();
-        context.enrichedBiography = await CONFIG.ux.TextEditor.enrichHTML(
+        context.enrichedBiography = await TextEditor.enrichHTML(
           this.actor.system.biography.value,
           {
             secrets: this.document.isOwner,
@@ -183,7 +184,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.actor,
           },
         );
-        context.enrichedGMNotes = await CONFIG.ux.TextEditor.enrichHTML(
+        context.enrichedGMNotes = await TextEditor.enrichHTML(
           this.actor.system.biography.gm,
           {
             secrets: this.document.isOwner,

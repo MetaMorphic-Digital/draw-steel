@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 
-const { api, sheets } = foundry.applications;
+const { api, sheets, ux } = foundry.applications;
 
 /**
  * AppV2-based sheet for all item classes
@@ -172,7 +172,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
     switch (partId) {
       case "description":
-        context.enrichedDescription = await CONFIG.ux.TextEditor.enrichHTML(
+        context.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(
           this.item.system.description.value,
           {
             secrets: this.document.isOwner,
@@ -180,7 +180,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
             relativeTo: this.item,
           },
         );
-        context.enrichedGMNotes = await CONFIG.ux.TextEditor.enrichHTML(
+        context.enrichedGMNotes = await ux.TextEditor.implementation.enrichHTML(
           this.item.system.description.gm,
           {
             secrets: this.document.isOwner,
@@ -686,7 +686,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
         dragover: this._onDragOver.bind(this),
         drop: this._onDrop.bind(this),
       };
-      return new foundry.applications.ux.DragDrop(d);
+      return new ux.DragDrop.implementation(d);
     });
   }
 
