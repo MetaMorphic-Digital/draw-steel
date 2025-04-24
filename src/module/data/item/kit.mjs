@@ -99,7 +99,7 @@ export default class KitModel extends BaseItemModel {
       config: ds.CONFIG,
       showDescription: true, // used to prevent showing the description on the details tab of the kit sheet
     };
-    context.enrichedDescription = await CONFIG.ux.TextEditor.enrichHTML(
+    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
       this.description.value,
       {
         secrets: this.parent.isOwner,

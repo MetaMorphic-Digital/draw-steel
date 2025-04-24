@@ -77,7 +77,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
   async toEmbed(config, options = {}) {
 
     options.rollData ??= this.parent.getRollData();
-    const enriched = await CONFIG.ux.TextEditor.enrichHTML(this.description.value, options);
+    const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.description.value, options);
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);

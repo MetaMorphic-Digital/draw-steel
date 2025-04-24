@@ -188,7 +188,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     await super._onRender(context, options);
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    new foundry.applications.ux.DragDrop({
+    new foundry.applications.ux.DragDrop.implementation({
       dragSelector: ".combatant",
       dropSelector: ".combatant-group, .combat-tracker",
       permissions: {

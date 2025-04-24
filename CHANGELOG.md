@@ -44,6 +44,7 @@
 - Negative stamina now has unique colors in bar. (#315)
 - Added display for hero tokens and malice below the Players list. (#156)
 - Added a prompt at the end of combat to award victories to each character in the combat. (#388)
+- Added ways to spend hero tokens from the character sheet (#54)
 
 ### Changed
 - Changed system minimum to v13.339, verified system for v13 generally.
@@ -54,6 +55,7 @@
   - `teleport` has been preserved as a calculated value from the base speed, prior to active effects and conditions
 - Switched various fontAwesome icons to pro-exclusives. (#274)
 - Various repository refactors. (#253, #290, #301, #325, #338)
+- Made various sheet actions hard private (#397)
 
 ### Fixed
 - Fixed an error preventing combat start if no player-owned characters are in the combat. (#266)

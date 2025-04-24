@@ -9,11 +9,11 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
-      gainSurges: this._gainSurges,
-      rollProject: this._rollProject,
-      takeRespite: this._takeRespite,
-      spendRecovery: this._spendRecovery,
-      spendStaminaHeroToken: this._spendStaminaHeroToken,
+      gainSurges: this.#gainSurges,
+      rollProject: this.#rollProject,
+      takeRespite: this.#takeRespite,
+      spendRecovery: this.#spendRecovery,
+      spendStaminaHeroToken: this.#spendStaminaHeroToken,
     },
   };
 
@@ -166,7 +166,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _gainSurges(event, target) {
+  static async #gainSurges(event, target) {
     /** @type {HeroTokenModel} */
     const heroTokens = game.actors.heroTokens;
 
@@ -195,7 +195,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _rollProject(event, target) {
+  static async #rollProject(event, target) {
     const project = this._getEmbeddedDocument(target);
     await project.system.roll();
   }
@@ -206,7 +206,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _takeRespite(event, target) {
+  static async #takeRespite(event, target) {
     await this.actor.system.takeRespite();
   }
 
@@ -216,7 +216,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _spendRecovery(event, target) {
+  static async #spendRecovery(event, target) {
     await this.actor.system.spendRecovery();
   }
 
@@ -226,7 +226,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _spendStaminaHeroToken() {
+  static async #spendStaminaHeroToken() {
     await this.actor.system.spendStaminaHeroToken();
   }
 

@@ -8,9 +8,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
     actions: {
-      updateSource: this._updateSource,
-      editMonsterMetadata: this._editMonsterMetadata,
-      freeStrike: this._freeStrike,
+      updateSource: this.#updateSource,
+      editMonsterMetadata: this.#editMonsterMetadata,
+      freeStrike: this.#freeStrike,
     },
   };
 
@@ -172,7 +172,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _updateSource(event, target) {
+  static async #updateSource(event, target) {
     this.actor.system.source.updateDialog();
   }
 
@@ -182,7 +182,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _editMonsterMetadata(event, target) {
+  static async #editMonsterMetadata(event, target) {
     const htmlContainer = document.createElement("div");
     const schema = this.actor.system.schema;
     const monsterData = this.actor.system.monster;
@@ -230,7 +230,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _freeStrike(event, target) {
+  static async #freeStrike(event, target) {
     /** @type {Array<DrawSteelActor>} */
     const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
     if (!targets.length) {

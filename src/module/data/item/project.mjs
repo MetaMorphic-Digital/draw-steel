@@ -115,7 +115,7 @@ export default class ProjectModel extends BaseItemModel {
     const characteristicList = Array.from(this.rollCharacteristic).map(c => ds.CONFIG.characteristics[c]?.label ?? c);
     context.formattedCharacteristics = characteristicFormatter.format(characteristicList);
 
-    if (this.yield.item) context.itemLink = await CONFIG.ux.TextEditor.enrichHTML(`@UUID[${this.yield.item}]`);
+    if (this.yield.item) context.itemLink = await foundry.applications.ux.TextEditor.implementation.enrichHTML(`@UUID[${this.yield.item}]`);
   }
 
   /**
