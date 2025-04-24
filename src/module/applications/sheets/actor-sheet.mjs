@@ -24,14 +24,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       resizable: true,
     },
     actions: {
-      toggleMode: this._toggleMode,
-      viewDoc: this._viewDoc,
-      createDoc: this._createDoc,
-      deleteDoc: this._deleteDoc,
-      toggleEffect: this._toggleEffect,
-      roll: this._onRoll,
-      useAbility: this._useAbility,
-      toggleItemEmbed: this._toggleItemEmbed,
+      toggleMode: this.#toggleMode,
+      viewDoc: this.#viewDoc,
+      createDoc: this.#createDoc,
+      deleteDoc: this.#deleteDoc,
+      toggleEffect: this.#toggleEffect,
+      roll: this.#onRoll,
+      useAbility: this.#useAbility,
+      toggleItemEmbed: this.#toggleItemEmbed,
     },
     form: {
       submitOnChange: true,
@@ -568,7 +568,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _toggleMode(event, target) {
+  static async #toggleMode(event, target) {
     if (!this.isEditable) {
       console.error("You can't switch to Edit mode if the sheet is uneditable");
       return;
@@ -585,7 +585,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _viewDoc(event, target) {
+  static async #viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     if (!doc) {
       console.error("Could not find document");
@@ -602,7 +602,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _deleteDoc(event, target) {
+  static async #deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     await doc.deleteDialog();
   }
@@ -615,7 +615,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _createDoc(event, target) {
+  static async #createDoc(event, target) {
     const docCls = getDocumentClass(target.dataset.documentClass);
     const docData = {
       name: docCls.defaultName({ type: target.dataset.type, parent: this.actor }),
@@ -639,7 +639,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _toggleEffect(event, target) {
+  static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     await effect.update({ disabled: !effect.disabled });
   }
@@ -652,7 +652,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _onRoll(event, target) {
+  static async #onRoll(event, target) {
     event.preventDefault();
     const dataset = target.dataset;
 
@@ -671,7 +671,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _useAbility(event, target) {
+  static async #useAbility(event, target) {
     const item = this._getEmbeddedDocument(target);
     if (item?.type !== "ability") {
       console.error("This is not an ability!", item);
@@ -688,7 +688,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _toggleItemEmbed(event, target) {
+  static async #toggleItemEmbed(event, target) {
     const { itemId } = target.closest(".item").dataset;
 
     if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);

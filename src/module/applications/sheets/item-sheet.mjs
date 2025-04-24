@@ -20,14 +20,14 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       resizable: true,
     },
     actions: {
-      toggleMode: this._toggleMode,
-      showImage: this._showImage,
-      updateSource: this._updateSource,
-      editHTML: this._editHTML,
-      viewDoc: this._viewEffect,
-      createDoc: this._createEffect,
-      deleteDoc: this._deleteEffect,
-      toggleEffect: this._toggleEffect,
+      toggleMode: this.#toggleMode,
+      showImage: this.#showImage,
+      updateSource: this.#updateSource,
+      editHTML: this.#editHTML,
+      viewDoc: this.#viewEffect,
+      createDoc: this.#createEffect,
+      deleteDoc: this.#deleteEffect,
+      toggleEffect: this.#toggleEffect,
     },
     form: {
       submitOnChange: true,
@@ -318,7 +318,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _toggleMode(event, target) {
+  static async #toggleMode(event, target) {
     if (!this.isEditable) {
       console.error("You can't switch to Edit mode if the sheet is uneditable");
       return;
@@ -335,7 +335,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _showImage(event, target) {
+  static async #showImage(event, target) {
     const { img, name, uuid } = this.item;
     new foundry.applications.apps.ImagePopout({ src: img, uuid, window: { title: name } }).render({ force: true });
   }
@@ -347,7 +347,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _updateSource(event, target) {
+  static async #updateSource(event, target) {
     this.item.system.source.updateDialog();
   }
 
@@ -379,7 +379,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _editHTML(event, target) {
+  static async #editHTML(event, target) {
     /** @type {HTMLDivElement} */
     const tab = target.closest("section.tab");
     /** @type {HTMLDivElement} */
@@ -414,7 +414,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _viewEffect(event, target) {
+  static async #viewEffect(event, target) {
     const effect = this._getEffect(target);
     effect.sheet.render(true);
   }
@@ -427,7 +427,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _deleteEffect(event, target) {
+  static async #deleteEffect(event, target) {
     const effect = this._getEffect(target);
     await effect.delete();
   }
@@ -440,7 +440,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _createEffect(event, target) {
+  static async #createEffect(event, target) {
     const aeCls = getDocumentClass("ActiveEffect");
     const effectData = {
       name: aeCls.defaultName({ type: target.dataset.type, parent: this.item }),
@@ -462,7 +462,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _toggleEffect(event, target) {
+  static async #toggleEffect(event, target) {
     const effect = this._getEffect(target);
     await effect.update({ disabled: !effect.disabled });
   }

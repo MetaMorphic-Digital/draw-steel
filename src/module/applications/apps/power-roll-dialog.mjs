@@ -19,7 +19,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
       width: 400,
     },
     actions: {
-      setRollMode: this.setRollMode,
+      setRollMode: this.#setRollMode,
     },
     tag: "form",
     form: {
@@ -170,7 +170,7 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static setRollMode(event, target) {
+  static #setRollMode(event, target) {
     this.options.context.rollMode = target.dataset.rollMode;
     this.render();
   }
