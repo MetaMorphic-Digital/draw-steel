@@ -26,6 +26,13 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
     return this.parent.parent;
   }
 
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
+  }
+
   /**
    * Refresh the token resource bars, token HUD, and actor sheets for each combatant within the group.
    * Is triggered on stamina updates and each combatants updates and deletions.
