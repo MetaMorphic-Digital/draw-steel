@@ -93,6 +93,8 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     /** @type {DrawSteelCombatant | undefined} */
     const currentTurn = combat?.turns[combat.turn];
 
+    const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
+
     context.groupTurns = combat?.groups.reduce((acc, cg) => {
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
@@ -133,12 +135,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
 
       turn.initiativeSymbol = cg.initiative ? "fa-arrow-right" : "fa-clock-rotate-left";
 
-      let dispositionColor = "PARTY";
-
-      if (!cg.hasPlayerOwner) {
-        const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
-        dispositionColor = invertedDisposition[disposition] ?? "OTHER";
-      }
+      const dispositionColor = cg.hasPlayerOwner ? "PARTY" : invertedDisposition[disposition] ?? "OTHER";
 
       turn.css = [
         dispositionColor,
@@ -263,13 +260,11 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    if (game.user.isGM) {
-      this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
-        hookName: "getCombatantGroupContextOptions",
-        fixed: true,
-        parentClassHooks: false,
-      });
-    }
+    this._createContextMenu(this._getGroupContextOptions, ".combatant-group", {
+      hookName: "getCombatantGroupContextOptions",
+      fixed: true,
+      parentClassHooks: false,
+    });
   }
 
   /** @inheritdoc */
@@ -319,6 +314,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       {
         name: game.i18n.format("DOCUMENT.Update", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-edit\"></i>",
+        condition: li => getCombatantGroup(li).isOwner,
         callback: li => getCombatantGroup(li)?.sheet.render({
           force: true,
           position: {
@@ -330,7 +326,10 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       {
         name: "DRAW_STEEL.CombatantGroup.ResetSquadHP",
         icon: "<i class=\"fa-solid fa-rotate\"></i>",
-        condition: li => getCombatantGroup(li).type === "squad",
+        condition: li => {
+          const group = getCombatantGroup(li);
+          return ((group.type === "squad") && group.isOwner);
+        },
         callback: li => {
           const group = getCombatantGroup(li);
           group.update({ "system.staminaValue": group.system.staminaMax });
@@ -339,12 +338,26 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
       {
         name: "COMBAT.ClearMovementHistories",
         icon: "<i class=\"fa-solid fa-shoe-prints\"></i>",
+        condition: li => game.user.isGM,
         callback: li => getCombatantGroup(li).clearMovementHistories(),
       },
       {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-trash\"></i>",
+        condition: li => game.user.isGM,
         callback: li => getCombatantGroup(li).delete(),
+      },
+      {
+        name: "OWNERSHIP.Configure",
+        icon: "<i class=\"fa-solid fa-lock\"></i>",
+        condition: game.user.isGM,
+        callback: li => new foundry.applications.apps.DocumentOwnershipConfig({
+          document: getCombatantGroup(li),
+          position: {
+            top: Math.min(li.offsetTop, window.innerHeight - 350),
+            left: window.innerWidth - 720,
+          },
+        }).render({ force: true }),
       },
     ];
   }
