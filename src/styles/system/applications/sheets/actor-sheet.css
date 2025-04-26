@@ -1,5 +1,8 @@
 .draw-steel.actor {
-  min-width: 560px;
+
+  &:not(.minimizing, .maximizing, .minimized) {
+    min-width: 560px;
+  }
 
   .form-group {
     .input-placeholder {

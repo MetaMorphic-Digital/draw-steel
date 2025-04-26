@@ -1,5 +1,8 @@
 .draw-steel.item {
-  min-width: 440px;
+
+  &:not(.minimizing, .maximizing, .minimized) {
+    min-width: 440px;
+  }
 
   .sheet-header {
     gap: 10px;
