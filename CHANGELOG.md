@@ -26,7 +26,7 @@
     - A Base combatant group can have any number of non-minion members.
     - A Squad can have any number of minions plus up to one non-minion captain.
   - You can drag and drop or use the "Update Combatant" form to adjust combatant group membership.
-  - Only GMs can create, update, or delete combatant groups.
+  - Only GMs can create or delete combatant groups, but they can grant individual edit permissions to players (#354).
   - Damage to minions will automatically be transferred to squads, if possible. (#357)
 - Implemented Draw Steel Token Ruler. (#273)
   - Moving a token will show the number of opportunity attacks provoked by movement.
@@ -45,6 +45,7 @@
 - Added display for hero tokens and malice below the Players list. (#156)
 - Added a prompt at the end of combat to award victories to each character in the combat. (#388)
 - Added ways to spend hero tokens from the character sheet (#54)
+- Added a number of generic icons for different monster roles under `systems/draw-steel/assets/roles`.
 
 ### Changed
 - Changed system minimum to v13.339, verified system for v13 generally.

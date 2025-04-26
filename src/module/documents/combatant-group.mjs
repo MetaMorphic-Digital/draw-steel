@@ -70,7 +70,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
 
     // Render the document creation form
     template ??= "templates/sidebar/document-create.html";
-    const html = await renderTemplate(template, {
+    const html = await foundry.applications.handlebars.renderTemplate(template, {
       hasTypes, type,
       name: data.name || "",
       defaultName: cls.defaultName({ type, parent, pack }),
@@ -87,9 +87,9 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
       render: (event, dialog) => {
         if (!hasTypes) return;
         /** @type {HTMLInputElement} */
-        const typeInput = dialog.querySelector("[name=\"type\"]");
+        const typeInput = dialog.element.querySelector("[name=\"type\"]");
         typeInput.addEventListener("change", e => {
-          const nameInput = dialog.querySelector("[name=\"name\"]");
+          const nameInput = dialog.element.querySelector("[name=\"name\"]");
           nameInput.placeholder = cls.defaultName({ type: e.target.value, parent, pack });
         });
         // On-render addition to avoid having to use a new template
@@ -134,12 +134,5 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
 
     // Provide a default image
     if (!data.img) this.updateSource(this.constructor.getDefaultArtwork(data));
-  }
-
-  /** @inheritdoc */
-  _onUpdate(changed, options, userId) {
-    super._onUpdate(changed, options, userId);
-
-    if (changed.system && ("staminaValue" in changed.system)) this.system.refreshSquad();
   }
 }
