@@ -13,19 +13,19 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: "templates/sheets/active-effect-config/header.hbs",
+      template: "templates/sheets/active-effect/header.hbs",
     },
     tabs: {
       template: "templates/generic/tab-navigation.hbs",
     },
     details: {
-      template: "templates/sheets/active-effect-config/details.hbs",
+      template: "templates/sheets/active-effect/details.hbs",
     },
     duration: {
       template: systemPath("templates/active-effect/config-duration.hbs"),
     },
     changes: {
-      template: "templates/sheets/active-effect-config/changes.hbs",
+      template: "templates/sheets/active-effect/changes.hbs",
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
