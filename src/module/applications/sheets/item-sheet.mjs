@@ -1,23 +1,21 @@
 import { systemPath } from "../../constants.mjs";
+import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 
-const { api, sheets, ux } = foundry.applications;
+const { sheets, ux } = foundry.applications;
 
 /**
  * AppV2-based sheet for all item classes
  */
-export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
+export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
   sheets.ItemSheetV2,
 ) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel", "item"],
+    classes: ["item"],
     position: {
       // Allows "Their Lack of Focus is Their Undoing" to fit in two lines
       width: 540,
-    },
-    window: {
-      resizable: true,
     },
     actions: {
       toggleMode: this.#toggleMode,
@@ -28,9 +26,6 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
-    },
-    form: {
-      submitOnChange: true,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -86,36 +81,12 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     },
   };
 
-  /**
-   * Available sheet modes.
-   * @enum {number}
-   */
-  static MODES = Object.freeze({
-    PLAY: 1,
-    EDIT: 2,
-  });
+  /* -------------------------------------------------- */
 
-  /**
-   * The mode the sheet is currently in.
-   * @type {DrawSteelItemSheet.MODES}
-   */
-  #mode = this.isEditable ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+  /** @inheritdoc */
+  _mode = this.isEditable ? this.constructor.MODES.EDIT : this.constructor.MODES.PLAY;
 
-  /**
-   * Is this sheet in Play Mode?
-   * @returns {boolean}
-   */
-  get isPlayMode() {
-    return this.#mode === DrawSteelItemSheet.MODES.PLAY;
-  }
-
-  /**
-   * Is this sheet in Edit Mode?
-   * @returns {boolean}
-   */
-  get isEditMode() {
-    return this.#mode === DrawSteelItemSheet.MODES.EDIT;
-  }
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _configureRenderParts(options) {
@@ -132,39 +103,21 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return parts;
   }
 
-  /** @inheritdoc */
-  _configureRenderOptions(options) {
-    super._configureRenderOptions(options);
-    if (options.mode && this.isEditable) this.#mode = options.mode;
-  }
-
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareContext(options) {
-    const context = Object.assign(await super._prepareContext(options), {
-      isPlay: this.isPlayMode,
-      // Validates both permissions and compendium status
-      owner: this.document.isOwner,
-      limited: this.document.limited,
-      gm: game.user.isGM,
-      // Add the item document.
-      item: this.item,
-      // Adding system and flags for easier access
-      system: this.isPlayMode ? this.item.system : this.item.system._source,
-      systemSource: this.item.system._source,
-      flags: this.item.flags,
-      // Adding a pointer to ds.CONFIG
-      config: ds.CONFIG,
-      // You can factor out context construction to helper functions
+    const context = await super._prepareContext(options);
+    Object.assign(context, {
+      item: context.document,
+      system: context.isPlay ? context.system : context.systemSource,
       tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
-      // Necessary for formInput and formFields helpers
-      systemFields: this.document.system.schema.fields,
     });
-
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preparePartContext(partId, context) {
@@ -200,6 +153,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
@@ -210,6 +165,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
 
     return tabs;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @typedef ActiveEffectCategory
@@ -269,6 +226,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
    * @protected
    */
   async _onRender(context, options) {
+    await super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));
 
     // Bubble editor active class state to containing formGroup
@@ -294,11 +252,15 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _onClose(options) {
     super._onClose(options);
     if (this.#editor) this.#saveEditor();
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _attachPartListeners(partId, htmlElement, options) {
@@ -323,10 +285,12 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       console.error("You can't switch to Edit mode if the sheet is uneditable");
       return;
     }
-    this.#mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
+    this._mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     if (this.isPlayMode && this.#editor) await this.#saveEditor();
     this.render();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Display the item image
@@ -340,6 +304,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     new foundry.applications.apps.ImagePopout({ src: img, uuid, window: { title: name } }).render({ force: true });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Open the update source dialog
    *
@@ -351,11 +317,15 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     this.item.system.source.updateDialog();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Active editor instance in the description tab
    * @type {ProseMirrorEditor}
    */
   #editor = null;
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle saving the editor content.
@@ -370,6 +340,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       await this.item.update({ [fieldName]: newValue });
     } else await this.render();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Create a TextEditor instance that takes up the whole tab
@@ -406,6 +378,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Renders an embedded document's sheet
    *
@@ -419,6 +393,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     effect.sheet.render(true);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Handles item deletion
    *
@@ -431,6 +407,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     const effect = this._getEffect(target);
     await effect.delete();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
@@ -454,6 +432,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     await aeCls.create(effectData, { parent: this.item });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determines effect parent to pass to helper
    *
@@ -467,7 +447,9 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     await effect.update({ disabled: !effect.disabled });
   }
 
-  /** Helper Functions */
+  /* -------------------------------------------------- */
+  /*   Helper Functions                                 */
+  /* -------------------------------------------------- */
 
   /**
    * Fetches the row with the data for the rendered embedded document
@@ -480,11 +462,9 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.item.effects.get(li?.dataset?.effectId);
   }
 
-  /**
-   *
-   * DragDrop
-   *
-   */
+  /* -------------------------------------------------- */
+  /*   DragDrop                                         */
+  /* -------------------------------------------------- */
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector
@@ -497,6 +477,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.isEditable;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
    * @param {string} selector       The candidate HTML selector for the drop target
@@ -507,6 +489,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     // game.user fetches the current user
     return this.isEditable;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Callback actions which occur at the beginning of a drag start workflow.
@@ -530,6 +514,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     // Set data transfer
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Callback actions which occur when a dragged element is over a drop target.
@@ -562,7 +548,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Handle the dropping of ActiveEffect data onto an Actor Sheet
@@ -580,6 +566,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       return this._onEffectSort(event, effect);
     return aeCls.create(effect, { parent: this.item });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Sorts an Active Effect based on its surrounding attributes
@@ -619,7 +607,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     return this.item.updateEmbeddedDocuments("ActiveEffect", updateData);
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Handle dropping of an Actor data onto another Actor sheet
@@ -633,7 +621,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     if (!this.item.isOwner) return false;
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Handle dropping of an item reference or item data onto an Actor Sheet
@@ -646,7 +634,7 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     if (!this.item.isOwner) return false;
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Handle dropping of a Folder on an Actor Sheet.
@@ -660,6 +648,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
     if (!this.item.isOwner) return [];
   }
 
+  /* -------------------------------------------------- */
+
   /** The following pieces set up drag handling and are unlikely to need modification  */
 
   /**
@@ -669,6 +659,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
   get dragDrop() {
     return this.#dragDrop;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Create drag-and-drop workflow handlers for this Application
@@ -689,6 +681,8 @@ export default class DrawSteelItemSheet extends api.HandlebarsApplicationMixin(
       return new ux.DragDrop.implementation(d);
     });
   }
+
+  /* -------------------------------------------------- */
 
   // This is marked as private because there's no real need
   // for subclasses or external hooks to mess with it directly
