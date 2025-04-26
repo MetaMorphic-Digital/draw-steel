@@ -8,7 +8,7 @@
   {{else}}
   <label class="characteristic edit" data-tooltip="{{chr.field.label}}">
     <span class="label">{{chr.field.hint}}</span>
-    <input type="text" name="system.characteristics.{{key}}.value" value="{{numberFormat chr.value sign=true}}" data-dtype="Number" data-source="true">
+    {{formInput chr.field value=chr.value type="number" placeholder="0"}}
   </label>
   {{/if}}
   {{/each}}
