@@ -74,9 +74,9 @@ export default base => {
         document: this.document,
         system: this.document.system,
         systemSource: this.document.system._source,
+        systemFields: this.document.system.schema.fields,
         flags: this.document.flags,
         config: ds.CONFIG,
-        systemFields: this.document.system.schema.fields,
       });
       return context;
     }
