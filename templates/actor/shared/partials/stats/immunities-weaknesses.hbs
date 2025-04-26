@@ -28,7 +28,7 @@
   {{formGroup
   field
   value=(lookup @root.systemSource.damage.immunities field.name)
-  rootId=@root.actor.uuid
+  rootId=@root.document.uuid
   dataset=@root.datasets.isSource
   label=(lookup @root.damageIW.labels field.name)
   classes="stacked"
@@ -41,7 +41,7 @@
   {{formGroup
   field
   value=(lookup @root.systemSource.damage.weaknesses field.name)
-  rootId=@root.actor.uuid
+  rootId=@root.document.uuid
   dataset=@root.datasets.isSource
   label=(lookup @root.damageIW.labels field.name)
   classes="stacked"

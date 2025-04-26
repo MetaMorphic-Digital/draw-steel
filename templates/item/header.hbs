@@ -1,14 +1,14 @@
 <header class="sheet-header">
-  <img class="profile-img" src="{{item.img}}" data-edit="img" data-action="{{ifThen isPlay "showImage" "editImage"}}" title="{{item.name}}" alt="{{item.name}}">
+  <img class="profile-img" src="{{document.img}}" data-edit="img" data-action="{{ifThen isPlay "showImage" "editImage"}}" title="{{document.name}}" alt="{{document.name}}">
   <div class="header-center">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{item.name}}</h2>
+      <h2>{{document.name}}</h2>
       {{else}}
       {{formInput
       fields.name
       name="name"
-      value=item._source.name
+      value=document._source.name
       placeholder=(localize "Name")
       }}
       {{/if}}
@@ -22,7 +22,7 @@
       {{else}}
       <a data-action="updateSource">
         <i class="fa-solid fa-book"></i>
-        {{item.system.source.label}}
+        {{document.system.source.label}}
       </a>
       {{/if}}
     </div>
