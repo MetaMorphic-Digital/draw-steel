@@ -1,4 +1,3 @@
-import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
 import { systemPath } from "../constants.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
 import { DSRoll } from "./base.mjs";
@@ -155,7 +154,7 @@ export class PowerRoll extends DSRoll {
     if (options.ability) context.ability = options.ability;
     if (options.skills) context.skills = options.skills;
 
-    const promptValue = await PowerRollDialog.prompt({
+    const promptValue = await ds.applications.apps.PowerRollDialog.prompt({
       context,
       window: {
         title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", { typeLabel }),

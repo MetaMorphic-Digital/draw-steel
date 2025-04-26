@@ -1,5 +1,3 @@
-import BaseItemModel from "../item/base.mjs";
-
 /** @import BasePackage from "@common/packages/base-package.mjs"; */
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
 
@@ -93,7 +91,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
     for (const [key, field] of Object.entries(this.schema.fields)) {
       formGroups.push(field.toFormGroup({}, { value: this[key] }));
     }
-    if (this.parent instanceof BaseItemModel) {
+    if (this.document?.documentName === "Item") {
       const field = this.parent.schema.getField("_dsid");
       formGroups.push(field.toFormGroup({}, { value: this.parent._dsid }));
     }
