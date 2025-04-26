@@ -210,11 +210,13 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
   _getCharacteristics() {
-    const data = this.isPlayMode ? this.actor : this.actor._source;
+    const isPlay = this.isPlayMode;
+    const data = isPlay ? this.actor : this.actor._source;
     return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
+      const value = foundry.utils.getProperty(data, `system.characteristics.${chc}.value`);
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`),
+        value: isPlay ? (value ?? 0) : (value || null),
       };
       return obj;
     }, {});
