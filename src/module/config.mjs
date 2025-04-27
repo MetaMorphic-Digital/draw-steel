@@ -1,4 +1,4 @@
-import { preLocalize } from "./helpers/utils.mjs";
+import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
