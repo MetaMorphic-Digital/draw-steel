@@ -108,9 +108,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-
-    const enrichment = { relativeTo: this.document, rollData: this.document.getRollData() };
-
     Object.assign(context, {
       system: context.isPlay ? context.system : context.systemSource,
       tabs: this._prepareTabs("primary"),
