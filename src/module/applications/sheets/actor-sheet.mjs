@@ -11,9 +11,7 @@ const { sheets } = foundry.applications;
 /**
  * AppV2-based sheet for all actor classes
  */
-export default class DrawSteelActorSheet extends DSDocumentSheetMixin(
-  sheets.ActorSheetV2,
-) {
+export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.ActorSheetV2) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["actor"],
@@ -32,6 +30,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(
       toggleItemEmbed: this.#toggleItemEmbed,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static TABS = {
@@ -83,7 +83,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     Object.assign(context, {
-      actor: context.document,
       datasets: this._getDatasets(),
     });
     return context;

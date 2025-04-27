@@ -23,32 +23,32 @@
   {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
     class="profile-img"
-    src="{{actor.img}}"
-    alt="{{actor.name}}"
+    src="{{document.img}}"
+    alt="{{document.name}}"
     data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
     data-edit="img"
-    title="{{actor.name}}"
+    title="{{document.name}}"
   >
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{actor.name}}</h2>
+      <h2>{{document.name}}</h2>
       {{else}}
       {{formInput fields.name value=source.name placeholder=(localize "Name")}}
       {{/if}}
     </div>
     <div class="origins tags flexrow">
       <div class="ancestry tag">
-        {{> headerTag originDoc=actor.system.ancestry originType="ancestry"}}
+        {{> headerTag originDoc=document.system.ancestry originType="ancestry"}}
       </div>
       <div class="culture tag">
-        {{> headerTag originDoc=actor.system.culture originType="culture"}}
+        {{> headerTag originDoc=document.system.culture originType="culture"}}
       </div>
       <div class="career tag">
-        {{> headerTag originDoc=actor.system.career originType="career"}}
+        {{> headerTag originDoc=document.system.career originType="career"}}
       </div>
       <div class="class tag">
-        {{> headerTag originDoc=actor.system.class originType="class"}}
+        {{> headerTag originDoc=document.system.class originType="class"}}
       </div>
     </div>
   </div>

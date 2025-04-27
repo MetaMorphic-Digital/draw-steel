@@ -6,9 +6,7 @@ const { sheets, ux } = foundry.applications;
 /**
  * AppV2-based sheet for all item classes
  */
-export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
-  sheets.ItemSheetV2,
-) {
+export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheetV2) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -30,6 +28,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static TABS = {
@@ -109,7 +109,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     Object.assign(context, {
-      item: context.document,
       system: context.isPlay ? context.system : context.systemSource,
       tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
@@ -218,6 +217,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
     }
     return categories;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Actions performed after any render of the Application.
@@ -523,6 +524,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(
    * @protected
    */
   _onDragOver(event) {}
+
+  /* -------------------------------------------------- */
 
   /**
    * Callback actions which occur when a dragged element is dropped on a target.

@@ -3,16 +3,16 @@
   {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
     class="profile-img"
-    src="{{actor.img}}"
-    alt="{{actor.name}}"
+    src="{{document.img}}"
+    alt="{{document.name}}"
     data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
     data-edit="img"
-    title="{{actor.name}}"
+    title="{{document.name}}"
   >
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{actor.name}}</h2>
+      <h2>{{document.name}}</h2>
       {{else}}
       {{formInput fields.name value=source.name placeholder=(localize "Name") }}
       {{/if}}
@@ -53,7 +53,7 @@
       {{else}}
       <a data-action="updateSource">
         <i class="fa-solid fa-book"></i>
-        {{actor.system.source.label}}
+        {{document.system.source.label}}
       </a>
       {{/if}}
     </div>

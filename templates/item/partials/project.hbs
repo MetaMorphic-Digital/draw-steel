@@ -6,7 +6,7 @@
 {{formGroup systemFields.projectSource value=system.projectSource}}
 {{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic options=characteristics}}
 {{formGroup systemFields.goal value=system.goal}}
-{{#if item.isOwned}}
+{{#if document.isOwned}}
 {{formGroup systemFields.points value=system.points}}
 {{/if}}
 <fieldset>
