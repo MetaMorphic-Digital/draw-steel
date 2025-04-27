@@ -4,6 +4,7 @@ import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
+import * as utils from "./src/module/utils/_module.mjs";
 import { DRAW_STEEL } from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
@@ -14,6 +15,7 @@ globalThis.ds = {
   helpers,
   rolls,
   data,
+  utils,
   CONST: DS_CONST,
   CONFIG: DRAW_STEEL,
 };
@@ -107,7 +109,7 @@ Hooks.once("init", function () {
  * Perform one-time pre-localization and sorting of some configuration objects
  */
 Hooks.once("i18nInit", () => {
-  helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+  helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
 
   // These fields are not auto-localized due to having a different location in en.json
   for (const model of Object.values(CONFIG.Actor.dataModels)) {

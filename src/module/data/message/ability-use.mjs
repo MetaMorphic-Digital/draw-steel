@@ -1,4 +1,3 @@
-import { constructHTMLButton } from "../../helpers/utils.mjs";
 import { DamageRoll } from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 
@@ -80,7 +79,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const damageRolls = this.parent.rolls.filter(roll => roll instanceof DamageRoll);
     for (const roll of damageRolls) {
       const typeLabel = ds.CONFIG.damageTypes[roll.options.type]?.label ?? "";
-      const button = constructHTMLButton({
+      const button = ds.utils.constructHTMLButton({
         label: game.i18n.format("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Label", {
           type: typeLabel ? " " + typeLabel : "",
           amount: roll.total,
@@ -112,9 +111,8 @@ export default class AbilityUseModel extends BaseMessageModel {
         let amount = Number(event.target.dataset.amount);
         if (event.shiftKey) amount = Math.floor(amount / 2);
 
-        for (const token of canvas.tokens.controlled) {
-          // TODO: What if multiple linked tokens belonging to the same actor?
-          await token.actor?.system.takeDamage(amount, { type });
+        for (const actor of ds.utils.selectedActors()) {
+          await actor.system.takeDamage(amount, { type });
         }
       });
     }
