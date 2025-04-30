@@ -22,11 +22,13 @@ export class PowerRoll extends DSRoll {
     if (!options.appliedModifier) {
 
       // Add edges/banes to formula
-      if (Math.abs(this.netBoon === 1)) {
+      if (Math.abs(this.netBoon) === 1) {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: 2,
-          flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane"),
+          options: {
+            flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane"),
+          },
         });
         this.terms.push(operation, number);
       }
@@ -36,7 +38,9 @@ export class PowerRoll extends DSRoll {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses"),
+          options: {
+            flavor: game.i18n.localize(this.options.bonuses > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Bonus" : "DRAW_STEEL.Roll.Power.Modifier.Penalty"),
+          },
         });
         this.terms.push(operation, number);
       }

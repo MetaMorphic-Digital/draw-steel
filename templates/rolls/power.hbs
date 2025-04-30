@@ -1,30 +1,27 @@
+{{#unless baseRoll}}
 <div class="dice-roll" data-action="expandRoll">
+  {{#if target}}
   <div class="header" data-uuid="{{target.uuid}}">
-    {{#if baseRoll}}
-    {{localize "DRAW_STEEL.Roll.Power.BaseRoll"}}
-    {{else if target}}
     {{target.name}}
-    {{/if}}
   </div>
+  {{/if}}
 
-  {{#unless baseRoll}}
   <div class="tier {{tier.class}}">
     {{tier.label}}
     {{#if modifier.number}}
     <em>({{localize "DRAW_STEEL.Roll.Power.Modifier.Label" number=modifier.number mod=modifier.mod}})</em>
     {{/if}}
   </div>
-  {{/unless}}
   {{#if flavor}}
   <div class="dice-flavor">{{flavor}}</div>
   {{/if}}
   <div class="dice-result">
-    {{#if baseRoll}}
-    <div class="dice-formula">{{formula}}</div>
+    <div class="inline-result">
+      <div class="dice-formula">{{formula}}</div>
+      <div class="dice-total {{critical}}">{{total}}</div>
+    </div>
     {{{tooltip}}}
-    {{/if}}
-    {{#unless baseRoll}}
-    <h4 class="dice-total {{critical}}">{{total}}</h4>
-    {{/unless}}
   </div>
+
 </div>
+{{/unless}}
