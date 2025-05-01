@@ -270,6 +270,7 @@ export class PowerRoll extends DSRoll {
    * @returns {string}
    */
   get flavorlessFormula() {
+    // Didn't use this.clone as the formula is already fully derived and doesn't need the roll data or options
     const flavorlessRoll = new this.constructor(this.formula);
     for (const term of flavorlessRoll.terms) term.options.flavor = "";
     return flavorlessRoll.formula;
