@@ -15,9 +15,9 @@
   {{#if flavor}}
   <div class="dice-flavor">{{flavor}}</div>
   {{/if}}
-  <div class="dice-result">
+  <div class="dice-result" data-tooltip="{{formula}}">
     <div class="inline-result">
-      <div class="dice-formula">{{formula}}</div>
+      <div class="dice-formula">{{flavorlessFormula}}</div>
       <div class="dice-total {{critical}}">{{total}}</div>
     </div>
     {{{tooltip}}}

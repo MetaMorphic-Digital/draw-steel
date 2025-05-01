@@ -265,6 +265,16 @@ export class PowerRoll extends DSRoll {
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
 
+  /**
+   * Return a version of the formula that doesn't have the flavor text.
+   * @returns {string}
+   */
+  get flavorlessFormula() {
+    const flavorlessRoll = new this.constructor(this.formula);
+    for (const term of flavorlessRoll.terms) term.options.flavor = "";
+    return flavorlessRoll.formula;
+  }
+
   async _prepareContext({ flavor, isPrivate }) {
     const context = await super._prepareContext({ flavor, isPrivate });
 
@@ -299,6 +309,7 @@ export class PowerRoll extends DSRoll {
 
     context.baseRoll = this.options.baseRoll ?? false;
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
+    context.flavorlessFormula = this.flavorlessFormula;
 
     return context;
   }
