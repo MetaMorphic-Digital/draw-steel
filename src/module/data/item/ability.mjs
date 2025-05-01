@@ -67,7 +67,6 @@ export default class AbilityModel extends BaseItemModel {
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
     });
 
-    // TODO: move these into `power`?
     schema.effect = new fields.StringField({ required: true });
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
