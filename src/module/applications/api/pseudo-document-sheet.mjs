@@ -36,15 +36,6 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static PARTS = {
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-  };
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   static TABS = {
     primary: {
       tabs: [
