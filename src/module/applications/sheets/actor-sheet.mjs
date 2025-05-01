@@ -402,7 +402,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]", {
+    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
       hookName: "getItemButtonContextOptions",
       parentClassHooks: false,
       fixed: true,
