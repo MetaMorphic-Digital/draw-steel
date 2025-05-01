@@ -1,8 +1,9 @@
+import BaseDocumentMixin from "./base-document-mixin.mjs";
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
  */
-export default class DrawSteelItem extends foundry.documents.Item {
-
+export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
@@ -16,6 +17,8 @@ export default class DrawSteelItem extends foundry.documents.Item {
 
     return rollData;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   prepareDerivedData() {

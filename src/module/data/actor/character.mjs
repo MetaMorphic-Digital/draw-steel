@@ -12,9 +12,13 @@ const fields = foundry.data.fields;
  */
 export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "character",
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "character",
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

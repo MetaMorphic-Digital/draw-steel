@@ -5,11 +5,14 @@ import AdvancementModel from "./advancement.mjs";
  */
 export default class AncestryModel extends AdvancementModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "ancestry",
-    invalidActorTypes: ["npc"],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "ancestry",
+      invalidActorTypes: ["npc"],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

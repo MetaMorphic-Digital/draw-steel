@@ -2,6 +2,7 @@ import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import SourceModel from "../models/source.mjs";
 
+// TODO: this should extend SubtypeMetadata
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
   type: string;

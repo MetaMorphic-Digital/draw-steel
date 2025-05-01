@@ -1,7 +1,9 @@
+import BaseDocumentMixin from "./base-document-mixin.mjs";
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
  */
-export default class DrawSteelActor extends foundry.documents.Actor {
+export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.Actor) {
   /**
    * Is this actor a minion?
    * @returns {boolean}

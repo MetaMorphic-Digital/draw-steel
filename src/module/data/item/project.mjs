@@ -14,11 +14,14 @@ const fields = foundry.data.fields;
  */
 export default class ProjectModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "project",
-    detailsPartial: [systemPath("templates/item/partials/project.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "project",
+      detailsPartial: [systemPath("templates/item/partials/project.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

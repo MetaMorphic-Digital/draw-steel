@@ -6,11 +6,14 @@ import AdvancementModel from "./advancement.mjs";
  */
 export default class ComplicationModel extends AdvancementModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "complication",
-    invalidActorTypes: ["npc"],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "complication",
+      invalidActorTypes: ["npc"],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

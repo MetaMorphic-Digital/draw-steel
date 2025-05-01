@@ -7,12 +7,15 @@ import BaseItemModel from "./base.mjs";
  */
 export default class KitModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "kit",
-    invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/kit.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "kit",
+      invalidActorTypes: ["npc"],
+      detailsPartial: [systemPath("templates/item/partials/kit.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

@@ -13,3 +13,8 @@ export type BarAttribute = {
   value: number,
   max: number
 }
+
+export type SubtypeMetadata = {
+  /* Record of document names of pseudo-documents and the path to the collection. */
+  embedded: Record<string, string>
+}

@@ -2,6 +2,7 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
+import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
 /** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -12,12 +13,7 @@ const fields = foundry.data.fields;
 /**
  * A base actor model that provides common properties for both characters and npcs
  */
-export default class BaseActorModel extends foundry.abstract.TypeDataModel {
-  /**
-   * Key information about this Actor subtype
-   */
-  static metadata = Object.freeze({});
-
+export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /** @inheritdoc */
   static defineSchema() {
     const characteristic = { min: -5, max: 5, initial: 0, integer: true };

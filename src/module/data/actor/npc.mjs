@@ -12,9 +12,13 @@ import SourceModel from "../models/source.mjs";
  */
 export default class NPCModel extends BaseActorModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "npc",
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "npc",
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
