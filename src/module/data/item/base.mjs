@@ -1,4 +1,5 @@
 import SourceModel from "../models/source.mjs";
+import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
 /** @import DrawSteelActor from "../../documents/actor.mjs" */
 
@@ -7,15 +8,17 @@ const fields = foundry.data.fields;
 /**
  * A base item model that provides basic description and source metadata for an item instance
  */
-export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**
    * Key information about this item subtype
    * @type {import("./_types").ItemMetaData}
    */
-  static metadata = Object.freeze({
-    type: "base",
-    invalidActorTypes: [],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "base",
+      invalidActorTypes: [],
+    });
+  }
 
   /** @inheritdoc */
   static defineSchema() {

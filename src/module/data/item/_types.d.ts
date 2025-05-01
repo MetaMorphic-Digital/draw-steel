@@ -11,7 +11,7 @@ export type ItemMetaData = Readonly<{
   detailsPartial?: string[];
   /** Does this item have advancements? */
   hasAdvancements?: boolean;
-}>
+} & SubtypeMetadata>
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {

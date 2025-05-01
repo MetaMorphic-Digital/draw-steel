@@ -15,11 +15,14 @@ const fields = foundry.data.fields;
  */
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "ability",
-    detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "ability",
+      detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

@@ -2,11 +2,14 @@ import BaseItemModel from "./base.mjs";
 
 export default class AdvancementModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "",
-    hasAdvancements: true,
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "",
+      hasAdvancements: true,
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
