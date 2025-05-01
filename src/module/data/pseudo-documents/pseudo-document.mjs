@@ -16,14 +16,6 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Registered sheets.
-   * @type {Map<string, PseudoDocumentSheet>}
-   */
-  static #sheets = new Map();
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   static defineSchema() {
     return {
@@ -98,25 +90,10 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Reference to the sheet of this pseudo-document, registered in a static map.
    * A pseudo-document is temporary, unlike regular documents, so the relation here
    * is not one-to-one.
-   * @type {PseudoDocumentSheet|null}
+   * @type {ds.applications.api.PseudoDocumentSheet|null}
    */
   get sheet() {
-    if (!PseudoDocument.#sheets.has(this.uuid)) {
-      const Cls = this.constructor.metadata.sheetClass;
-      if (!Cls) return null;
-      PseudoDocument.#sheets.set(this.uuid, new Cls({ document: this }));
-    }
-    return PseudoDocument.#sheets.get(this.uuid);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Destroy a sheet.
-   * @param {string} uuid   The uuid of the pseudo-document.
-   */
-  static _removeSheet(uuid) {
-    PseudoDocument.#sheets.delete(uuid);
+    return ds.applications.api.PseudoDocumentSheet._registerSheet(this);
   }
 
   /* -------------------------------------------------- */
@@ -124,8 +101,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _initialize(...args) {
-    super._initialize(...args);
+  _initialize(options = {}) {
+    super._initialize(options);
     this.prepareData();
   }
 
