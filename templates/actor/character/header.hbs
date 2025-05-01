@@ -12,9 +12,15 @@
   {{/unless}}
 </span>
 {{else}}
+{{#if isPlay}}
+<span class="unfilled">
+  {{localize "DRAW_STEEL.Sheet.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
+</span>
+{{else}}
 <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="{{originType}}" data-render-sheet="true">
   {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize (concat "TYPES.Item." originType))}}
 </a>
+{{/if}}
 {{/if}}
 {{/inline}}
 
