@@ -1,4 +1,5 @@
-.chat-sidebar {
+.chat-sidebar,
+#chat-notifications {
   .chat-message {
     .powerResult {
       .potency {
@@ -22,6 +23,22 @@
         text-align: center;
         font-size: var(--font-size-16);
         font-weight: bold;
+      }
+
+      .inline-result {
+        display: flex;
+        margin-bottom: 5px;
+
+        .dice-formula {
+          flex: 1 0 calc(100% - 50px);
+          border-radius: 3px 0px 0px 3px;
+          margin-bottom: 0px;
+        }
+
+        .dice-total {
+          flex: 0 0 50px;
+          border-radius: 0px 3px 3px 0px;
+        }
       }
 
       .dice-result {
