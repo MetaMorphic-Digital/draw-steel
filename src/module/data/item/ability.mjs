@@ -19,6 +19,9 @@ export default class AbilityModel extends BaseItemModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "ability",
       detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
+      embedded: {
+        PowerRollEffect: "system.power.effects",
+      },
     });
   }
 
@@ -34,7 +37,6 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
-    const config = ds.CONFIG.abilities;
 
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
@@ -56,78 +58,16 @@ export default class AbilityModel extends BaseItemModel {
       value: new fields.NumberField({ integer: true }),
     });
 
-    const potencySchema = (initialPotency) => {
-      const schema = {
-        enabled: new fields.BooleanField({ label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.enabled.label" }),
-        characteristic: new fields.StringField({ label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.characteristic.label" }),
-        value: new FormulaField({ deterministic: true, initial: initialPotency, label: "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.value.label" }),
-      };
-
-      // Localize potencySchema - TODO: Update in V13 onces arrays localize inner fields
-      Object.entries(schema).forEach(([field, fieldSchema]) => fieldSchema.label = game.i18n.localize(`DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier.potency.${field}.label`));
-
-      return schema;
-    };
-
-    const powerRollSchema = ({ initialPotency }) => {
-      const schema = new fields.TypedSchemaField({
-        damage: new fields.SchemaField({
-          type: new fields.StringField({ required: true, initial: "damage", blank: false }),
-          value: new FormulaField(),
-          types: new fields.SetField(setOptions()),
-          potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({ required: true }),
-        }),
-        ae: new fields.SchemaField({
-          type: new fields.StringField({ required: true, initial: "ae", blank: false }),
-          always: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
-          success: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
-          failure: new fields.SetField(setOptions({ validate: foundry.data.validators.isValidId })),
-          potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({ required: true }),
-        }),
-        forced: new fields.SchemaField({
-          type: new fields.StringField({ required: true, initial: "forced", blank: false }),
-          types: new fields.SetField(new fields.StringField({ choices: config.forcedMovement, blank: false })),
-          value: new fields.NumberField(),
-          vertical: new fields.BooleanField(),
-          potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({ required: true }),
-        }),
-        other: new fields.SchemaField({
-          type: new fields.StringField({ required: true, initial: "other", blank: false }),
-          potency: new fields.SchemaField(potencySchema(initialPotency)),
-          display: new fields.StringField({ required: true }),
-        }),
-      });
-
-      // Localize powerRollSchema - TODO: Update in V13 onces arrays localize inner fields
-      const baseLabel = "DRAW_STEEL.Item.Ability.FIELDS.powerRoll.tier";
-      Object.entries(schema.types).forEach(([type, typeSchema]) => {
-        schema.types[type].label = game.i18n.localize(`${baseLabel}.${type}.label`);
-        Object.entries(typeSchema.fields).forEach(([field, fieldSchema]) => {
-          if (["type", "display"].includes(field)) {
-            fieldSchema.label = game.i18n.localize(`${baseLabel}.${field}.label`);
-            if (field === "display") fieldSchema.hint = game.i18n.localize(`${baseLabel}.${field}.hint`);
-          }
-          else {
-            fieldSchema.label = game.i18n.localize(`${baseLabel}.${type}.${field}.label`);
-            if (["success", "failure"].includes(field)) fieldSchema.hint = game.i18n.localize(`${baseLabel}.${type}.${field}.hint`);
-          }
-        });
-      });
-
-      return schema;
-    };
-
-    schema.powerRoll = new fields.SchemaField({
-      enabled: new fields.BooleanField(),
-      formula: new FormulaField({ blank: false, initial: "@chr" }),
-      characteristics: new fields.SetField(setOptions()),
-      tier1: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.weak" })),
-      tier2: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.average" })),
-      tier3: new fields.ArrayField(powerRollSchema({ initialPotency: "@potency.strong" })),
+    schema.power = new fields.SchemaField({
+      roll: new fields.SchemaField({
+        flat: new fields.BooleanField(),
+        formula: new FormulaField({ blank: true, initial: "@chr" }),
+        characteristics: new fields.SetField(setOptions()),
+      }),
+      effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
     });
+
+    // TODO: move these into `power`?
     schema.effect = new fields.StringField({ required: true });
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
@@ -136,6 +76,8 @@ export default class AbilityModel extends BaseItemModel {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static itemDescription() {
@@ -348,19 +290,20 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    context.powerRollBonus = this.powerRoll.formula;
+    // TODO: reconfigure.
+    // context.powerRollBonus = this.powerRoll.formula;
 
-    if (this.powerRoll.formula.includes("@chr")) {
-      const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
-      const characteristicList = this.powerRoll.characteristics.map(characteristic => {
-        const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
-        return (characteristic === this.powerRoll.characteristic) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
-      });
+    // if (this.powerRoll.formula.includes("@chr")) {
+    //   const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+    //   const characteristicList = this.powerRoll.characteristics.map(characteristic => {
+    //     const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
+    //     return (characteristic === this.powerRoll.characteristic) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
+    //   });
 
-      context.powerRollBonus = this.powerRoll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
-    }
+    //   context.powerRollBonus = this.powerRoll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
+    // }
 
-    context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
+    // context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
 
     // Add the data for subtabs for the power roll tiers
     if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
@@ -388,7 +331,8 @@ export default class AbilityModel extends BaseItemModel {
     super.modifyRollData(rollData);
 
     if (this.actor) {
-      rollData.chr = this.actor.system.characteristics[this.powerRoll.characteristic]?.value;
+      // TODO: this is a set, should be a value?
+      rollData.chr = this.actor.system.characteristics[this.power.roll.characteristic]?.value;
     }
   }
 
