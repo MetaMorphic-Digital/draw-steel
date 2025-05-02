@@ -4,3 +4,5 @@ export { default as DrawSteelCharacterSheet } from "./character.mjs";
 export { default as DrawSteelCombatantGroupConfig } from "./combatant-group-config.mjs";
 export { default as DrawSteelItemSheet } from "./item-sheet.mjs";
 export { default as DrawSteelNPCSheet } from "./npc.mjs";
+
+export * as pseudoDocuments from "./pseudo-documents/_module.mjs";
