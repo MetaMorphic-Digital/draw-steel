@@ -76,8 +76,8 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
           placeholder: (n === 1)
             ? "1"
             : (n === 2)
-              ? (context.fields.tier1.damage.value.src || Math.ceil(context.fields.tier1.damage.value.placeholder * 1.5))
-              : (context.fields.tier2.damage.value.src || Math.ceil(context.fields.tier2.damage.value.placeholder * 1.5)),
+              ? 2 * context.fields.tier1.damage.value.value
+              : 3 * context.fields.tier1.damage.value.value,
         }),
         types: this._prepareField(`damage.tier${n}.types`),
       };

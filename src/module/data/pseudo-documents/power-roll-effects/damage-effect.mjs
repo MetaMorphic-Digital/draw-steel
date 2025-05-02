@@ -33,9 +33,9 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.damage.tier1.value ||= 1;
-    this.damage.tier2.value ||= Math.ceil(1.5 * this.damage.tier1.value);
-    this.damage.tier3.value ||= Math.ceil(1.5 * this.damage.tier2.value);
+    this.damage.tier1.value ??= 1;
+    this.damage.tier2.value ??= 2 * this.damage.tier1.value;
+    this.damage.tier3.value ??= 3 * this.damage.tier1.value;
 
     this.text ||= "{{damage}}";
   }
