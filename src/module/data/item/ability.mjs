@@ -85,54 +85,41 @@ export default class AbilityModel extends BaseItemModel {
     return description;
   }
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+    for (const effect of this.power.effects) effect.prepareBaseData();
+  }
+
   /* -------------------------------------------- */
 
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
-
-    if (!this.actor) this._preparePowerRollDisplay();
+    for (const effect of this.power.effects) effect.prepareDerivedData();
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
-  /**
-   * Replaces the entered values of each effect's `display` property
-   * and derives the overall display value for each tier.
-   * Called by {@link prepareDerivedData} if there is not an actor,
-   * or {@link preparePostActorPrepData} if there is.
-   */
-  _preparePowerRollDisplay() {
-    for (const tier of PowerRoll.TIER_NAMES) {
-      const effects = this.powerRoll[tier];
-      for (const effect of effects) {
-
-        // Replace {{damage}} with derived damage formula. Allows for showing damage with kit damage included
-        if (effect.type === "damage") effect.display = effect.display.replaceAll("{{damage}}", effect.value);
-
-        // Replace {{potency}} with appropriate string (i.e. M < 1)
-        if (effect.potency.enabled) {
-          const potencyEmbed = `<span class="potency">${this.toPotencyEmbed(effect.potency)}</span>`;
-          effect.display = effect.display.replaceAll("{{potency}}", potencyEmbed);
-        }
-      }
-
-      effects.display = effects.map(effect => effect.display).join("; ");
-    }
-  }
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
 
-    this._preparePowerRollDisplay();
+    this.power.characteristic = {
+      key: "",
+      value: null,
+    };
 
-    // Set the highest characteristic amongst the power roll characteristics
-    this.powerRoll.characteristic = null;
-    for (const characteristic of this.powerRoll.characteristics) {
-      if (this.powerRoll.characteristic === null) this.powerRoll.characteristic = characteristic;
-
-      const actorCharacteristics = this.actor.system.characteristics;
-      if (actorCharacteristics[characteristic].value > actorCharacteristics[this.powerRoll.characteristic].value) this.powerRoll.characteristic = characteristic;
+    for (const chr of this.power.roll.characteristics) {
+      const c = this.actor.system.characteristics[chr];
+      if (!c) continue;
+      if (c.value > this.power.characteristic.value) {
+        this.power.characteristic.key = chr;
+        this.power.characteristic.value = c.value;
+      }
     }
   }
 
@@ -179,17 +166,18 @@ export default class AbilityModel extends BaseItemModel {
         const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
 
         if (distance) {
-          // All three tier.damage.value fields should be identical, so their apply change should be identical
-          const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "damage", "value"]);
-          for (const tier of PowerRoll.TIER_NAMES) {
-            const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
-            if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;
+          // TODO
+          // // All three tier.damage.value fields should be identical, so their apply change should be identical
+          // const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "damage", "value"]);
+          // for (const tier of PowerRoll.TIER_NAMES) {
+          //   const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
+          //   if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;
 
-            firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
-              value: bonuses[distance].damage[tier],
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-            });
-          }
+          //   firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
+          //     value: bonuses[distance].damage[tier],
+          //     mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+          //   });
+          // }
         }
       }
     }

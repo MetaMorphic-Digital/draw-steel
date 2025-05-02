@@ -139,6 +139,9 @@ Hooks.once("i18nInit", () => {
       }
     }
   }
+
+  // Localize pseudo-documents: THIS DOES NOT WORK WAARGGGG
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.DamagePowerRollEffect);
 });
 
 /* -------------------------------------------- */
