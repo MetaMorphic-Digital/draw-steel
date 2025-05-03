@@ -37,7 +37,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       this.damage[`tier${n}`].value ??= this.#defaultDamageValue(n);
     }
 
-    this.text ||= "{{damage}}";
+    // this.text ||= "{{damage}}";
   }
 
   /* -------------------------------------------------- */
