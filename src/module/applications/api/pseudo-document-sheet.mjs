@@ -50,8 +50,8 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
-   * Registered sheets.
-   * @type {Map<string, PseudoDocumentSheet>}
+   * Registered sheets. A map of documents to a map of pseudo-document uuids and their sheets.
+   * @type {Map<foundry.abstract.Document, Map<string, PseudoDocumentSheet>>}
    */
   static #sheets = new Map();
 
@@ -60,15 +60,27 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /**
    * Retrieve or register a new instance of a pseudo-document sheet.
    * @param {ds.data.pseudoDocuments.PseudoDocument} pseudoDocument   The pseudo-document.
+   * @param {boolean} [watch=false]   Whether to watch for re-renders.
    * @returns {PseudoDocumentSheet|null}    A new or already registered sheet.
    */
-  static _registerSheet(pseudoDocument) {
-    if (!PseudoDocumentSheet.#sheets.has(pseudoDocument.uuid)) {
+  static _registerSheet(pseudoDocument, watch = false) {
+    const root = pseudoDocument.document;
+
+    if (!PseudoDocumentSheet.#sheets.has(root)) {
+      PseudoDocumentSheet.#sheets.set(root, new Map());
+    }
+
+    const sheets = PseudoDocumentSheet.#sheets.get(root);
+    if (!sheets.get(pseudoDocument.uuid)) {
       const Cls = pseudoDocument.constructor.metadata.sheetClass;
       if (!Cls) return null;
-      PseudoDocumentSheet.#sheets.set(pseudoDocument.uuid, new Cls({ document: pseudoDocument }));
+
+      const sheet = new Cls({ document: pseudoDocument });
+      if (watch) sheets.set(pseudoDocument.uuid, sheet);
+      return sheet;
     }
-    return PseudoDocumentSheet.#sheets.get(pseudoDocument.uuid);
+
+    return PseudoDocumentSheet.#sheets.get(root).get(pseudoDocument.uuid);
   }
 
   /* -------------------------------------------------- */
@@ -142,6 +154,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /** @inheritdoc */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
+    PseudoDocumentSheet._registerSheet(this.pseudoDocument, true);
     this.document.apps[this.id] = this;
   }
 
@@ -150,7 +163,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /** @inheritdoc */
   _onClose(options) {
     super._onClose(options);
-    PseudoDocumentSheet.#sheets.delete(this.#pseudoUuid);
+    PseudoDocumentSheet.#sheets.get(this.document)?.delete(this.#pseudoUuid);
     delete this.document.apps[this.id];
   }
 

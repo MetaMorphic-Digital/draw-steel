@@ -41,4 +41,13 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       tier3: new SchemaField(fieldsFn()),
     });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Implement rendering context for tiers 1-3.
+   * @param {object} context    Rendering context. **will be mutated**
+   * @returns {Promise<void>}   A promise that resolves once the rendering context has been mutated.
+   */
+  async _tierRenderingContext(context) {}
 }
