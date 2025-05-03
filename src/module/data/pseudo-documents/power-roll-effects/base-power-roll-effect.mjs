@@ -1,5 +1,7 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
+const { SchemaField, StringField } = foundry.data.fields;
+
 export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
   static get metadata() {
@@ -14,7 +16,29 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT"];
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {});
+    return Object.assign(super.defineSchema(), {
+      text: new StringField({ required: true }),
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Utility method to duplicate fields across three tiers.
+   * @param {Function} fieldsFn   A method that returns an object of data fields.
+   * @returns {SchemaField}       A constructed schema field with three tiers.
+   */
+  static duplicateTierSchema(fieldsFn) {
+    return new SchemaField({
+      tier1: new SchemaField(fieldsFn()),
+      tier2: new SchemaField(fieldsFn()),
+      tier3: new SchemaField(fieldsFn()),
+    });
   }
 }

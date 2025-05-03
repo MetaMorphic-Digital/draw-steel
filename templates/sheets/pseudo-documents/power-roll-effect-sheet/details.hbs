@@ -1,0 +1,7 @@
+<section class="{{tabs.details.cssClass}}" data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}">
+  {{> "templates/generic/tab-navigation.hbs" tabs=tabTiers}}
+
+  {{> "systems/draw-steel/templates/sheets/pseudo-documents/power-roll-effect-sheet/details-tiers.hbs" tab=tabTiers.tier1 tierFields=fields.tier1}}
+  {{> "systems/draw-steel/templates/sheets/pseudo-documents/power-roll-effect-sheet/details-tiers.hbs" tab=tabTiers.tier2 tierFields=fields.tier2}}
+  {{> "systems/draw-steel/templates/sheets/pseudo-documents/power-roll-effect-sheet/details-tiers.hbs" tab=tabTiers.tier3 tierFields=fields.tier3}}
+</section>
