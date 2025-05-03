@@ -100,33 +100,17 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   /*   Data preparation                                 */
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _initialize(options = {}) {
-    super._initialize(options);
-    this.prepareData();
-  }
-
-  /* -------------------------------------------------- */
-
   /**
-   * Prepare data.
-   */
-  prepareData() {
-    this.prepareBaseData();
-    this.prepareDerivedData();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Prepase base data.
+   * Prepase base data. This method is not called automatically; it is the responsibility
+   * of the parent document to ensure pseudo-documents prepare base and derived data.
    */
   prepareBaseData() {}
 
   /* -------------------------------------------------- */
 
   /**
-   * Prepare derived data.
+   * Prepare derived data. This method is not called automatically; it is the responsibility
+   * of the parent document to ensure pseudo-documents prepare base and derived data.
    */
   prepareDerivedData() {}
 
