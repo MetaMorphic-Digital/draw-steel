@@ -1,8 +1,6 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
-const {
-  SchemaField, StringField,
-} = foundry.data.fields;
+const { SchemaField, StringField } = foundry.data.fields;
 
 export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
@@ -38,9 +36,9 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    */
   static duplicateTierSchema(fieldsFn) {
     return new SchemaField({
-      tier1: new SchemaField({ ...fieldsFn() }),
-      tier2: new SchemaField({ ...fieldsFn() }),
-      tier3: new SchemaField({ ...fieldsFn() }),
+      tier1: new SchemaField(fieldsFn()),
+      tier2: new SchemaField(fieldsFn()),
+      tier3: new SchemaField(fieldsFn()),
     });
   }
 }
