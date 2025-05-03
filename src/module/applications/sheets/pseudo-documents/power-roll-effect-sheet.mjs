@@ -52,36 +52,8 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     // TODO: add placeholder equal to the "default" text this effect would display
     context.fields.text = this._prepareField("text");
 
-    switch (context.pseudo.type) {
-      case "damage":
-        await this.#prepareDamageFields(context);
-        break;
-    }
+    await context.pseudo._tierRenderingContext?.(context);
 
     return context;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Prepare fields specific to the `damage` effect.
-   * @param {object} context    Rendering context. **will be mutated**
-   * @returns {Promise<void>}   A promise that resolves once the context has been mutated.
-   */
-  async #prepareDamageFields(context) {
-    context.fields.text.placeholder = "{{damage}}";
-    for (const n of [1, 2, 3]) {
-      context.fields[`tier${n}`].damage = {
-        value: Object.assign(this._prepareField(`damage.tier${n}.value`), {
-          placeholder: (n === 1)
-            ? "1"
-            : (n === 2)
-              ? 2 * context.fields.tier1.damage.value.value
-              : 3 * context.fields.tier1.damage.value.value,
-        }),
-        types: this._prepareField(`damage.tier${n}.types`),
-      };
-    }
-    context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
   }
 }

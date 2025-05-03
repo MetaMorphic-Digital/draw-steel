@@ -33,10 +33,55 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    this.damage.tier1.value ??= 1;
-    this.damage.tier2.value ??= 2 * this.damage.tier1.value;
-    this.damage.tier3.value ??= 3 * this.damage.tier1.value;
+    for (const n of [1, 2, 3]) {
+      this.damage[`tier${n}`].value ??= this.#defaultDamageValue(n);
+    }
 
-    this.text ||= "{{damage}}";
+    // this.text ||= "{{damage}}";
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Helper method to derive default damage value used for both derived data
+   * and for placeholders when rendering.
+   * @param {1|2|3} n     The tier.
+   * @returns {number}    The default value.
+   */
+  #defaultDamageValue(n) {
+    switch (n) {
+      case 1:
+        return 1;
+      case 2:
+        return 2 * this.damage.tier1.value;
+      case 3:
+        return 3 * this.damage.tier1.value;
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _tierRenderingContext(context) {
+    context.fields.text.placeholder = "{{damage}}";
+    for (const n of [1, 2, 3]) {
+      const path = `damage.tier${n}`;
+      context.fields[`tier${n}`].damage = {
+        value: {
+          field: this.schema.getField(`${path}.value`),
+          value: this.damage[`tier${n}`].value,
+          src: this._source.damage[`tier${n}`].value,
+          name: `${path}.value`,
+          placeholder: this.#defaultDamageValue(n),
+        },
+        types: {
+          field: this.schema.getField(`${path}.types`),
+          value: this.damage[`tier${n}`].types,
+          src: this._source.damage[`tier${n}`].types,
+          name: `${path}.types`,
+        },
+      };
+    }
+    context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
   }
 }
