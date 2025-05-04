@@ -12,47 +12,46 @@ Foundry's rolls support variable substitution through roll data, as explained in
 
 # Actor Roll Data
 
-## Characteristics and Potencies
-
+## Characteristics
 + Agility value -`@characteristics.agility.value`
 + Intuition value - `@characteristics.intuition.value`
-+ Might value - `Acharacteristics.might.value`
++ Might value - `@characteristics.might.value`
 + Presence value - `@characteristics.presence.value`
 + Reason value - `@characteristics.reason.value`
 
 ## Potencies
 + Strong Potency (= highest characteristic) - `@potency.strong`
 + Average Potency (= highest characteristic -1) - `@potency.average`
-+ Weak Potency (= highest characteristic -2) - `potency.weak`
-+ Bonus to Potency - `potency.bonuses`
++ Weak Potency (= highest characteristic -2) - `@potency.weak`
++ Bonus to Potency - `@potency.bonuses`
 
-## Hero specific roll data and values
-### Heroic Resource
-+ Heroic resource label - `@hero.primary.label`
-+ Heroic resource value - `@hero.primary.value`
-
-### Stamina
+## Stamina
 + Maximum Stamina - `@stamina.max`
 + Temporary Stamina - `@stamina.temporary`
 + Current Stamina value - `@stamina.value`
 + Winded (<50%) Stamina Value - `@stamina.winded`
 + Is currently winded? (1/yes, 0/no) - `@statuses.winded`
 
+## Hero specific roll data and values
+### Heroic Resource
++ Heroic resource label - `@hero.primary.label`
++ Heroic resource value - `@hero.primary.value`
+
 ### Recoveries
 + Recovery value - `@hero.recoveries.value`
 + Maximum amnount of recoveries - `@hero.recoveries.max`
 + Bonus to max ammount - `@hero.recoveries.bonus`
-+ Current recovery amount - `hero.recoveries.recoveryValue`
++ Current recovery amount - `@hero.recoveries.recoveryValue`
 
 ### Other Hero values
 + Renown - `@hero.renown`
 + Skills - `@hero.skills`
 + Current amount of Surges - `@hero.surges`
-+ Current Vicotry Points - `@hero.victories`
-+ Accumulated XP - `hero.xp`
++ Current Victory Points - `@hero.victories`
++ Accumulated XP - `@hero.xp`
 
 ### Movement speeds
-+ Speed - `@movementvalue`
++ Speed - `@movement.value`
 + Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
 
 The below bonuses come from a kit, but can be addressed this way in any case:
@@ -86,7 +85,7 @@ The below roll datas entries work add damage immunities and weaknesses, for exam
 + Sonic Damage - `@damage.immunities.sonic`
 #### Weaknesses
 + Acid - `@damage.weaknesses.acid`
-+ All damage (including untyped) -	`damage.weaknesses.all:			0`
++ All damage (including untyped) - `@damage.weaknesses.all`
 + Cold damage -	`@damage.weaknesses.cold`
 + Corruption damage - `@damage.weaknesses.corruption`
 + Fire damage - `@damage.weaknesses.fire`
@@ -119,8 +118,8 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Winded - `@statuses.winded`
 
 ## Echelon
-+ Actor Echelon - `@echelon`
-+ Item Echelon - `@item.echelon`
++ Echelon - `@echelon`
+
 
 ## Item Roll Data
 **First example: a craftable consumable**
