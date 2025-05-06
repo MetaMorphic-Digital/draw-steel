@@ -60,4 +60,19 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
       label: this.durationLabel,
     };
   }
+
+  /** @inheritdoc */
+  async toEmbed(config, options = {}) {
+
+    // TODO: Figure out what roll data is "supposed" to be for effects
+
+    const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.parent.description, options);
+
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", this.parent.type);
+    embed.innerHTML = enriched;
+
+    return embed;
+  }
+
 }
