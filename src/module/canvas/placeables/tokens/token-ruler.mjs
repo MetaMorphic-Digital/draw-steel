@@ -118,14 +118,28 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   _getSegmentStyle(waypoint) {
     const segment = super._getSegmentStyle(waypoint);
 
-    const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
-
-    // green for up to 1x, yellow for up to 2x, red for 3x
+    // color order
     const colors = [0x33BC4E, 0xF1D836, 0xE72124];
 
-    const index = Math.min(2, Math.floor(waypoint.measurement.cost / value));
+    if (waypoint.actionConfig.teleport) {
+      // Teleports on creatures without a teleport speed are ignored for distance calculations
+      // It's possible we should be also subtracting them for mixed paths
+      if (!this.token.document.movementTypes.has("teleport")) return segment;
 
-    segment.color = colors[index];
+      const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.teleport") ?? 0;
+
+      // Teleport yes/no are evaluated per segment
+      const index = waypoint.cost > value ? 2 : 0;
+      segment.color = colors[index];
+    }
+    else {
+      const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
+
+      // Total cost, up to 1x is green, up to 2x is yellow, up to 3x is green
+      const index = Math.min(2, Math.floor(waypoint.measurement.cost / value));
+
+      segment.color = colors[index];
+    }
 
     return segment;
   }
