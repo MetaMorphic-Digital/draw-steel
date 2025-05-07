@@ -84,4 +84,22 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  toText(tier) {
+    const { value, types } = this.damage[`tier${tier}`];
+
+    let damageTypes;
+    let i18nString = "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formatted";
+    if (types.size) {
+      damageTypes = new Intl.ListFormat(game.i18n.lang, {
+        style: "long", type: "disjunction",
+      }).format(Array.from(types).map(type => ds.CONFIG.damageTypes[type].label));
+    } else {
+      i18nString += "Typeless";
+    }
+    return game.i18n.format(i18nString, { value, damageTypes });
+  }
 }

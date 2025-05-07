@@ -116,7 +116,7 @@ export default class AbilityModel extends BaseItemModel {
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
       if (!c) continue;
-      if (c.value > this.power.characteristic.value) {
+      if (c.value >= this.power.characteristic.value) {
         this.power.characteristic.key = chr;
         this.power.characteristic.value = c.value;
       }
@@ -206,9 +206,7 @@ export default class AbilityModel extends BaseItemModel {
 
     // If unspecified assume all three tiers are desired for display
     if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
-      config.tier1 = this.powerRoll.enabled;
-      config.tier2 = this.powerRoll.enabled;
-      config.tier3 = this.powerRoll.enabled;
+      config.tier1 = config.tier2 = config.tier3 = this.power.effects.size > 0;
     }
 
     const embed = document.createElement("div");
@@ -276,6 +274,13 @@ export default class AbilityModel extends BaseItemModel {
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({ label: e.name, value: e.id }));
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
+
+    context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
+      `tier${tier}`,
+      { text: this.power.effects.contents.map(effect => effect.toText(tier)) },
+    ]));
+    context.powerRolls = this.power.effects.size > 0;
+    context.powerRollBonus = ds.CONFIG.characteristics[this.power.characteristic.key]?.label;
 
     // TODO: reconfigure.
     // context.powerRollBonus = this.powerRoll.formula;
@@ -413,7 +418,7 @@ export default class AbilityModel extends BaseItemModel {
     // TODO: Figure out how to better handle invocations when this.actor is null
     await this.actor?.system.updateResource(resourceSpend * -1);
 
-    if (this.powerRoll.enabled) {
+    if (this.power.roll.enabled) {
       const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
