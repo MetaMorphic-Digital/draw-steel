@@ -98,6 +98,8 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    this.power.roll.enabled = this.power.effects.size > 0;
     for (const effect of this.power.effects) effect.prepareDerivedData();
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
@@ -419,7 +421,7 @@ export default class AbilityModel extends BaseItemModel {
     await this.actor?.system.updateResource(resourceSpend * -1);
 
     if (this.power.roll.enabled) {
-      const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
+      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
       options.modifiers.banes ??= 0;
@@ -467,26 +469,22 @@ export default class AbilityModel extends BaseItemModel {
         for (const powerRoll of groupedRolls[tierNumber]) {
           messageDataCopy.rolls.push(powerRoll);
         }
-        const tier = this.powerRoll[`tier${tierNumber}`];
 
-        const damageEffects = tier.filter(effect => effect.type === "damage");
-        if (damageEffects.length) {
-          for (const damageEffect of damageEffects) {
-            // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-            let damageType = "";
-            if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-            else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-            const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
-            const damageRoll = new DamageRoll(damageEffect.value, rollData, { flavor, type: damageType });
-            await damageRoll.evaluate();
-            // DSN integration to make damage roll after power roll
-            for (const die of damageRoll.dice) {
-              die.options.rollOrder = 1;
-            }
-            messageDataCopy.rolls.push(damageRoll);
-          }
+        const damageEffects = this.power.effects.getByType("damage").map(effect => effect.damage[`tier${tierNumber}`]);
+
+        for (const damageEffect of damageEffects) {
+          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
+          let damageType = "";
+          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
+          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
+
+          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
+          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
+          await damageRoll.evaluate();
+          messageDataCopy.rolls.push(damageRoll);
         }
+
         if (messages.length > 0) messageDataCopy.system.embedText = false;
 
         messages.push(DrawSteelChatMessage.create(messageDataCopy));
