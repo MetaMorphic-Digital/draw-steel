@@ -1,4 +1,5 @@
 /** @import { TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
+/** @import { DeepReadonly } from "@common/_types.mjs" */
 /** @import DrawSteelTokenDocument from "../../../documents/token.mjs"; */
 
 /**
@@ -108,5 +109,24 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     context.strikes = strikes;
 
     return context;
+  }
+
+  /**
+   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint
+   * @inheritdoc
+   */
+  _getSegmentStyle(waypoint) {
+    const segment = super._getSegmentStyle(waypoint);
+
+    const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
+
+    // green for up to 1x, yellow for up to 2x, red for 3x
+    const colors = [0x33BC4E, 0xF1D836, 0xE72124];
+
+    const index = Math.min(2, Math.floor(waypoint.measurement.cost / value));
+
+    segment.color = colors[index];
+
+    return segment;
   }
 }
