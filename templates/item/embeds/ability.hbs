@@ -28,28 +28,20 @@
     {{/if}}
   </dl>
 </section>
-{{#if (or tier1 tier2 tier3 system.effect)}}
+{{#if powerRolls}}
 <section class="powerResult">
-  {{#if system.powerRoll.enabled}}
   <p>
     <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
   </p>
-  {{/if}}
   <dl class="power-roll-display">
-    {{#if tier1}}
     <dt class="tier1">{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}</dt>
-    <dd class="tier1">{{{system.powerRoll.tier1.display}}}</dd>
-    {{/if}}
+    <dd class="tier1">{{{powerRollEffects.tier1.text}}}</dd>
 
-    {{#if tier2}}
-    <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}</dt>
-    <dd class="tier3">{{{system.powerRoll.tier2.display}}}</dd>
-    {{/if}}
+    <dt class="tier2">{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}</dt>
+    <dd class="tier2">{{{powerRollEffects.tier2.text}}}</dd>
 
-    {{#if tier3}}
     <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}</dt>
-    <dd class="tier3">{{{system.powerRoll.tier3.display}}}</dd>
-    {{/if}}
+    <dd class="tier3">{{{powerRollEffects.tier3.text}}}</dd>
 
     {{#if system.effect}}
     <dt class="effect">{{systemFields.effect.label}}</dt>

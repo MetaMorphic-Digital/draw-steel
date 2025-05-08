@@ -98,6 +98,8 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    this.power.roll.enabled = this.power.effects.size > 0;
     for (const effect of this.power.effects) effect.prepareDerivedData();
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
@@ -116,7 +118,7 @@ export default class AbilityModel extends BaseItemModel {
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
       if (!c) continue;
-      if (c.value > this.power.characteristic.value) {
+      if (c.value >= this.power.characteristic.value) {
         this.power.characteristic.key = chr;
         this.power.characteristic.value = c.value;
       }
@@ -206,9 +208,7 @@ export default class AbilityModel extends BaseItemModel {
 
     // If unspecified assume all three tiers are desired for display
     if (!(("tier1" in config) || ("tier2" in config) || ("tier3" in config))) {
-      config.tier1 = this.powerRoll.enabled;
-      config.tier2 = this.powerRoll.enabled;
-      config.tier3 = this.powerRoll.enabled;
+      config.tier1 = config.tier2 = config.tier3 = this.power.effects.size > 0;
     }
 
     const embed = document.createElement("div");
@@ -276,6 +276,13 @@ export default class AbilityModel extends BaseItemModel {
     context.appliedEffects = this.parent.effects.filter(e => !e.transfer).map(e => ({ label: e.name, value: e.id }));
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
+
+    context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
+      `tier${tier}`,
+      { text: this.power.effects.contents.map(effect => effect.toText(tier)) },
+    ]));
+    context.powerRolls = this.power.effects.size > 0;
+    context.powerRollBonus = ds.CONFIG.characteristics[this.power.characteristic.key]?.label;
 
     // TODO: reconfigure.
     // context.powerRollBonus = this.powerRoll.formula;
@@ -413,8 +420,8 @@ export default class AbilityModel extends BaseItemModel {
     // TODO: Figure out how to better handle invocations when this.actor is null
     await this.actor?.system.updateResource(resourceSpend * -1);
 
-    if (this.powerRoll.enabled) {
-      const formula = this.powerRoll.formula ? `2d10 + ${this.powerRoll.formula}` : "2d10";
+    if (this.power.roll.enabled) {
+      const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
       options.modifiers.banes ??= 0;
@@ -462,26 +469,22 @@ export default class AbilityModel extends BaseItemModel {
         for (const powerRoll of groupedRolls[tierNumber]) {
           messageDataCopy.rolls.push(powerRoll);
         }
-        const tier = this.powerRoll[`tier${tierNumber}`];
 
-        const damageEffects = tier.filter(effect => effect.type === "damage");
-        if (damageEffects.length) {
-          for (const damageEffect of damageEffects) {
-            // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
-            let damageType = "";
-            if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
-            else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
-            const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-            const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
-            const damageRoll = new DamageRoll(damageEffect.value, rollData, { flavor, type: damageType });
-            await damageRoll.evaluate();
-            // DSN integration to make damage roll after power roll
-            for (const die of damageRoll.dice) {
-              die.options.rollOrder = 1;
-            }
-            messageDataCopy.rolls.push(damageRoll);
-          }
+        const damageEffects = this.power.effects.getByType("damage").map(effect => effect.damage[`tier${tierNumber}`]);
+
+        for (const damageEffect of damageEffects) {
+          // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.
+          let damageType = "";
+          if (damageEffect.types.size === 1) damageType = damageEffect.types.first();
+          else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
+
+          const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
+          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
+          await damageRoll.evaluate();
+          messageDataCopy.rolls.push(damageRoll);
         }
+
         if (messages.length > 0) messageDataCopy.system.embedText = false;
 
         messages.push(DrawSteelChatMessage.create(messageDataCopy));

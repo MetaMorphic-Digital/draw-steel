@@ -50,4 +50,14 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @returns {Promise<void>}   A promise that resolves once the rendering context has been mutated.
    */
   async _tierRenderingContext(context) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Define how an effect renders on sheets and embeds.
+   * @param {number} tier   The specific tier.
+   * @returns {string}
+   * @abstract
+   */
+  toText(tier) {}
 }
