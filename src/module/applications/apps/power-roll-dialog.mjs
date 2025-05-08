@@ -78,10 +78,13 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     // Find the first instance of multiple damage types and create the options to provide a select
     context.damageOptions = null;
     for (const tier of PowerRoll.TIER_NAMES) {
-      const effect = context.ability.system.powerRoll[tier].find(effect => (effect.type === "damage") && (effect.types.size > 1));
-      if (!effect || context.damageOptions) continue;
 
-      context.damageOptions = Object.entries(ds.CONFIG.damageTypes).filter(([type, data]) => effect.types.has(type)).map(([value, { label }]) => ({ value, label }));
+      const effect = context.ability.system.power.effects.getByType("damage").find(e => e.damage[tier].types.size > 1);
+      if (!effect) continue;
+
+      context.damageOptions = Object.entries(ds.CONFIG.damageTypes)
+        .filter(([type]) => effect.damage[tier].types.has(type))
+        .map(([type, { label }]) => ({ value: type, label }));
       break;
     }
   }
