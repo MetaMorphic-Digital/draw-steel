@@ -64,8 +64,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
-    // TODO: Figure out what roll data is "supposed" to be for effects
-
+    options.rollData ??= this.parent.getRollData();
     const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.parent.description, options);
 
     const embed = document.createElement("div");
