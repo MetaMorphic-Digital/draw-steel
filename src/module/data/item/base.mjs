@@ -1,3 +1,4 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import SourceModel from "../models/source.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
@@ -78,9 +79,13 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
 
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
-
-    options.rollData ??= this.parent.getRollData();
-    const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.description.value, options);
+    // Override document-related options with this document's info so it's consistent wherever embedded
+    const enriched = await enrichHTML(this.description.value, {
+      ...options,
+      relativeTo: this.parent,
+      rollData: this.parent.getRollData(),
+      secrets: this.parent.isOwner,
+    });
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);

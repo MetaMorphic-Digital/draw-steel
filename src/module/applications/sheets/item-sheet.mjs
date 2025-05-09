@@ -1,4 +1,5 @@
 import { systemPath } from "../../constants.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 
 const { sheets, ux } = foundry.applications;
@@ -124,22 +125,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
     switch (partId) {
       case "description":
-        context.enrichedDescription = await ux.TextEditor.implementation.enrichHTML(
-          this.item.system.description.value,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.item.getRollData(),
-            relativeTo: this.item,
-          },
-        );
-        context.enrichedGMNotes = await ux.TextEditor.implementation.enrichHTML(
-          this.item.system.description.gm,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.item.getRollData(),
-            relativeTo: this.item,
-          },
-        );
+        context.enrichedDescription = await enrichHTML(this.item.system.description.value, { relativeTo: this.item });
+        context.enrichedGMNotes = await enrichHTML(this.item.system.description.gm, { relativeTo: this.item });
         break;
       case "details":
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;

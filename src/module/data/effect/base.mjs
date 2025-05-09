@@ -1,3 +1,4 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
 /**
@@ -64,8 +65,13 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
-    options.rollData ??= this.parent.getRollData();
-    const enriched = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.parent.description, options);
+    // Override document-related options with this document's info so it's consistent wherever embedded
+    const enriched = await enrichHTML(this.description.value, {
+      ...options,
+      relativeTo: this.parent,
+      rollData: this.parent.getRollData(),
+      secrets: this.parent.isOwner,
+    });
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);
