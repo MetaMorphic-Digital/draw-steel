@@ -520,7 +520,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @protected
    */
   async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event);
+    const data = ux.TextEditor.implementation.getDragEventData(event);
     const item = this.item;
     const allowed = Hooks.call("dropItemSheetData", item, this, data);
     if (allowed === false) return;

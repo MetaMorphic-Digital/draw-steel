@@ -8,10 +8,11 @@
  * @returns {Promise<string>}               The enriched HTML content
  */
 export default async function enrichHTML(content, options = {}) {
+  // Override document-related options with the relative document's info
   if (options.relativeTo) {
-    options.secrets ??= relativeTo.isOwner;
-    // can provide function or call it. Proviidng function
-    options.rollData ??= relativeTo.getRollData;
+    // allow secrets=false to prevent secret display
+    options.secrets &&= options.relativeTo.isOwner;
+    if (options.relativeTo.getRollData instanceof Function) options.rollData = options.relativeTo.getRollData();
   }
   return foundry.applications.ux.TextEditor.implementation.enrichHTML(content, options);
 }

@@ -103,13 +103,7 @@ export default class KitModel extends BaseItemModel {
       config: ds.CONFIG,
       showDescription: true, // used to prevent showing the description on the details tab of the kit sheet
     };
-    // Override document-related options with this document's info so it's consistent wherever embedded
-    context.enrichedDescription = await enrichHTML(this.description.value, {
-      ...options,
-      relativeTo: this.parent,
-      rollData: this.parent.getRollData(),
-      secrets: this.parent.isOwner,
-    });
+    context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
     await this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
     const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
