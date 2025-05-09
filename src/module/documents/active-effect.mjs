@@ -122,4 +122,28 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     super._applyOverride(actor, change, current, delta, changes);
   }
+
+  /**
+   * Return a data object which defines the data schema against which dice rolls can be evaluated.
+   * Potentially usable in the future. May also want to adjust details to care about
+   * @returns {object}
+   */
+  getRollData() {
+    // Will naturally have actor data at the base & `item` for any relevant item data
+    const rollData = this.parent?.getRollData() ?? {};
+
+    // Shallow copy
+    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name };
+
+    // Statuses provided by *this* active effect
+    for (const status of this.statuses) {
+      rollData.effect.statuses[status] = 1;
+    }
+
+    if (this.system.modifyRollData instanceof Function) {
+      this.system.modifyRollData(rollData);
+    }
+
+    return rollData;
+  }
 }

@@ -4,10 +4,12 @@ import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/
 /** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
 /** @import DrawSteelActor from "../../../documents/actor.mjs" */
 
+const { ux, sidebar } = foundry.applications;
+
 /**
  * A custom combat tracker that supports Draw Steel's initiative system
  */
-export default class DrawSteelCombatTracker extends foundry.applications.sidebar.tabs.CombatTracker {
+export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
@@ -185,7 +187,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
     await super._onRender(context, options);
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
-    new foundry.applications.ux.DragDrop.implementation({
+    new ux.DragDrop.implementation({
       dragSelector: ".combatant",
       dropSelector: ".combatant-group, .combat-tracker",
       permissions: {
@@ -233,7 +235,7 @@ export default class DrawSteelCombatTracker extends foundry.applications.sidebar
   async _onDrop(event) {
     // Combat Tracker contains combatant groups, which means this would fire twice
     event.stopPropagation();
-    const data = TextEditor.getDragEventData(event);
+    const data = ux.TextEditor.implementation.getDragEventData(event);
     /** @type {DrawSteelCombatant} */
     const combatant = await DrawSteelCombatant.fromDropData(data);
     /** @type {HTMLLIElement | null} */

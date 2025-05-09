@@ -1,4 +1,5 @@
 import { systemPath } from "../../constants.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -102,14 +103,7 @@ export default class KitModel extends BaseItemModel {
       config: ds.CONFIG,
       showDescription: true, // used to prevent showing the description on the details tab of the kit sheet
     };
-    context.enrichedDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-      this.description.value,
-      {
-        secrets: this.parent.isOwner,
-        rollData: this.parent.getRollData(),
-        relativeTo: this.parent,
-      },
-    );
+    context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
     await this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
     const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);

@@ -1,6 +1,7 @@
 /**
  * Mixin for common functions used across most or all document classes in this system.
  * @mixin
+ *
  */
 export default base => {
   return class DrawSteelDocument extends base {

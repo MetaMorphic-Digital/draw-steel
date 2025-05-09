@@ -1,3 +1,4 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
 /**
@@ -60,4 +61,17 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
       label: this.durationLabel,
     };
   }
+
+  /** @inheritdoc */
+  async toEmbed(config, options = {}) {
+
+    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", this.parent.type);
+    embed.innerHTML = enriched;
+
+    return embed;
+  }
+
 }
