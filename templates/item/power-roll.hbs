@@ -1,8 +1,9 @@
 <section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="powerRoll" data-subtype="{{document.type}}">
   <div class="power-roll-data">
-    {{formGroup systemFields.power.fields.roll.fields.flat value=system.power.roll.flat}}
-    {{formGroup systemFields.power.fields.roll.fields.formula value=system.power.roll.formula}}
-    {{formGroup systemFields.power.fields.roll.fields.characteristics value=system.power.roll.characteristics}}
+    {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
+    {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial}}
+    {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics}}
+    {{/with}}
   </div>
   <div class="power-roll-list">
     {{#each system.power.effects as |effect|}}
