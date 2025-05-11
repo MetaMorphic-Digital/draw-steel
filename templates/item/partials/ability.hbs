@@ -104,15 +104,16 @@
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
   {{/if}}
 </fieldset>
-{{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
-{{#if system.powerRoll.enabled}}
+{{!-- TODO: Remove --}}
+{{!-- {{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}} --}}
+{{!-- {{#if system.powerRoll.enabled}}
 {{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
 {{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
 {{> "templates/generic/tab-navigation.hbs" tabs=subtabs}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1 subtab=(lookup subtabs "tier1")}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2 subtab=(lookup subtabs "tier2")}}
 {{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3 subtab=(lookup subtabs "tier3")}}
-{{/if}}
+{{/if}} --}}
 <fieldset>
   <legend>{{systemFields.spend.label}}</legend>
   {{formGroup systemFields.spend.fields.value value=system.spend.value}}
