@@ -105,7 +105,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     /** @type {Record<string, string>} */
     const embeddedPseudoDocuments = this.item.system.constructor.metadata.embedded;
     if ("Advancement" in embeddedPseudoDocuments) parts.advancement = advancement;
-    if ("PowerRollEffect" in embeddedPseudoDocuments) parts.powerRollEffects = powerRoll;
+    if ("PowerRollEffect" in embeddedPseudoDocuments) parts.powerRoll = powerRoll;
     parts.effects = effects;
 
     return parts;

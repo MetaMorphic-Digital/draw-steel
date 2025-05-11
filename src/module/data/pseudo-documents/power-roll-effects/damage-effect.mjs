@@ -94,7 +94,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     let damageTypes;
     let i18nString = "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formatted";
     if (types.size) {
-      const formatter = game.i18n.getListFormatter({ type: "disjunction" })
+      const formatter = game.i18n.getListFormatter({ type: "disjunction" });
       damageTypes = formatter.format(Array.from(types).map(type => ds.CONFIG.damageTypes[type].label));
     } else {
       i18nString += "Typeless";

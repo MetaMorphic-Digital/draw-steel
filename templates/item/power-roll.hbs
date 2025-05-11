@@ -1,3 +1,27 @@
-<section class="tab {{tab.cssClass}}" data-group="primary" data-tab="powerRoll" data-subtype="{{document.type}}">
-  <h3>Under Construction!</h3>
+<section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="powerRoll" data-subtype="{{document.type}}">
+  <div class="power-roll-data">
+    {{formGroup systemFields.power.fields.roll.fields.flat value=system.power.roll.flat}}
+    {{formGroup systemFields.power.fields.roll.fields.formula value=system.power.roll.formula}}
+    {{formGroup systemFields.power.fields.roll.fields.characteristics value=system.power.roll.characteristics}}
+  </div>
+  <div class="power-roll-list">
+    {{#each system.power.effects as |effect|}}
+    <button type="button" class="flexrow filled" data-action="editPowerRollEffect" data-id="{{effect._id}}">
+      <label>{{effect.type}}</label>
+      <div class="controls">
+        {{#if (and (not @root.isPlay) @root.editable)}}
+        <a class="deleteControl" data-action="deletePowerRollEffect">
+          <i class="fa-solid fa-trash"></i>
+        </a>
+        {{/if}}
+      </div>
+    </button>
+    {{/each}}
+    {{#if editable}}
+    <button type="button" class="unfilled" data-action="createPowerRollEffect">
+      <i class="fa-solid fa-plus"></i>
+      {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
+    </button>
+    {{/if}}
+  </div>
 </section>

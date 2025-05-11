@@ -468,156 +468,17 @@
               "label": "Value"
             }
           },
-          "powerRoll": {
+          "power": {
             "label": "Power Roll",
-            "enabled": {
-              "label": "Has Power Roll"
-            },
-            "formula": {
-              "label": "Roll Bonus"
-            },
-            "characteristics": {
-              "label": "Characteristics"
-            },
-            "tier": {
-              "type": {
-                "label" : "Effect Type"
+            "roll": {
+              "flat": {
+                "label": "Flat"
               },
-             "potency": {
-                "label": "Potency",
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "characteristic": {
-                  "label": "Potency Characteristic"
-                },
-                "value": {
-                  "label": "Potency Value"
-                }
+              "formula": {
+                "label": "Roll Bonus"
               },
-              "display": {
-                "label": "Display Text",
-                "hint": "{{potency}} will be replaced with the derived potency info (i.e M<2). {{damage}} will be replaced with the derived damage number based on kits and other effects."
-              },
-              "damage": {
-                "label": "Damage",
-                "types": {
-                  "label": "Damage Types"
-                },
-                "value": {
-                  "label": "Damage Formula"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects",
-                "always": {
-                  "label": "Applied Effects"
-                },
-                "success": {
-                  "label": "Potency Success Effects",
-                  "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
-                },
-                "failure": {
-                  "label": "Potency Failure Effects",
-                  "hint": "Effects that apply when the target's characteristic is less than the potency value."
-                }
-              },
-              "forced": {
-                "label": "Forced Movement",
-                "types": {
-                  "label": "Types"
-                },
-                "value": {
-                  "label": "Distance"
-                },
-                "vertical": {
-                  "label": "Vertical Movement"
-                }
-              },
-              "other": {
-                "label": "Other"
-              }
-            },
-            "tier1": {
-              "label": "Tier 1 Result",
-              "damage": {
-                "label": "Damage",
-                "type": {
-                  "label": "Effect Type"
-                },
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "subtype": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
-              }
-            },
-            "tier2": {
-              "label": "Tier 2 Result",
-              "damage": {
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "type": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
-              }
-            },
-            "tier3": {
-              "label": "Tier 3 Result",
-              "damage": {
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "type": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
+              "characteristics": {
+                "label": "Characteristics"
               }
             }
           },
