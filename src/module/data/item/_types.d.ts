@@ -1,3 +1,4 @@
+import { SubtypeMetadata } from "../_types.js";
 import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
@@ -11,8 +12,6 @@ export type ItemMetaData = Readonly<{
   invalidActorTypes: string[];
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
-  /** Does this item have advancements? */
-  hasAdvancements?: boolean;
 } & SubtypeMetadata>
 
 declare module "./base.mjs" {

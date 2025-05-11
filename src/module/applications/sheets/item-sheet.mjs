@@ -7,7 +7,7 @@ const { sheets, ux } = foundry.applications;
 /**
  * AppV2-based sheet for all item classes
  */
-export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheetV2) {
+export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheet) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -39,6 +39,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         { id: "description" },
         { id: "details" },
         { id: "advancement" },
+        { id: "powerRoll" },
         { id: "effects" },
       ],
       initial: "description",
@@ -77,6 +78,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     advancement: {
       template: systemPath("templates/item/advancement.hbs"),
     },
+    powerRoll: {
+      template: systemPath("templates/item/power-roll.hbs"),
+    },
     effects: {
       template: systemPath("templates/item/effects.hbs"),
     },
@@ -91,14 +95,17 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   _configureRenderParts(options) {
-    const { header, tabs, description, details, advancement, effects } = super._configureRenderParts(options);
+    const { header, tabs, description, details, advancement, powerRoll, effects } = super._configureRenderParts(options);
 
     const parts = { header, tabs };
     // Don't re-render the description tab if there's an active editor
     if (!this.#editor) parts.description = description;
     if (this.document.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
-    if (this.item.system.constructor.metadata.hasAdvancements) parts.advancement = advancement;
+    /** @type {Record<string, string>} */
+    const embeddedPseudoDocuments = this.item.system.constructor.metadata.embedded;
+    if ("Advancement" in embeddedPseudoDocuments) parts.advancement = advancement;
+    if ("PowerRollEffect" in embeddedPseudoDocuments) parts.powerRollEffects = powerRoll;
     parts.effects = effects;
 
     return parts;
@@ -145,8 +152,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
     if (group === "primary") {
+      /** @type {Record<string, string>} */
+      const embeddedPseudoDocuments = this.item.system.constructor.metadata.embedded;
       if (!this.item.system.constructor.metadata.detailsPartial) delete tabs.details;
-      if (!this.item.system.constructor.metadata.hasAdvancements) delete tabs.advancement;
+      if (!("Advancement" in embeddedPseudoDocuments)) delete tabs.advancement;
+      if (!("PowerRollEffect" in embeddedPseudoDocuments)) delete tabs.powerRoll;
     }
 
     return tabs;
