@@ -21,7 +21,7 @@ export default class ModelCollection extends foundry.utils.Collection {
 
   /**
    * The data models that originate from this parent document.
-   * @type {PseudoDocument[]}
+   * @type {Model[]}
    */
   get sourceContents() {
     return this.filter(model => model.isSource);
@@ -43,7 +43,7 @@ export default class ModelCollection extends foundry.utils.Collection {
   /**
    * Fetch an array of data models of a certain type.
    * @param {string} type     The subtype of the data models.
-   * @returns {DataModel[]}   The data models of this type.
+   * @returns {Model[]}   The data models of this type.
    */
   getByType(type) {
     return Array.from(this.#types.get(type) ?? []).map(key => this.get(key));
