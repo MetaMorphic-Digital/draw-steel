@@ -91,11 +91,14 @@ export default class ProjectModel extends BaseItemModel {
   /**
    * @inheritdoc
    */
-  async _preUpdate(changes, operation, user) {
-    const allowed = await super._preUpdate(changes, operation, user);
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
     if (allowed === false) return false;
 
-    if (("system" in changes) && ("points" in changes.system)) changes.system.points = Math.min(changes.system.points, this.goal);
+    if (("system" in changes) && ("points" in changes.system)) {
+      // Mark the project for completion only if the points meet the goal and it hasn't already been completed.
+      options.completeProject = (changes.system.points >= this.goal) && (this.points < this.goal);
+    }
   }
 
   /**
@@ -105,7 +108,7 @@ export default class ProjectModel extends BaseItemModel {
     super._onUpdate(changed, options, userId);
 
     // When the project is completed, notify the user and create any yielded item.
-    if (("system" in changed) && ("points" in changed.system) && (changed.system.points === this.goal)) {
+    if (options.completeProject) {
       ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {
         format: {
           actor: this.actor.name,
@@ -204,7 +207,7 @@ export default class ProjectModel extends BaseItemModel {
     const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
     if (!careerPoints) return console.log("No career points available.");
 
-    const pointsToCompletion = this.goal - this.points;
+    const pointsToCompletion = Math.max(0, this.goal - this.points);
     if (!pointsToCompletion) return console.log("Project already completed");
 
     const input = foundry.applications.elements.HTMLRangePickerElement.create({

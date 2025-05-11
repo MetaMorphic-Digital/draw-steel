@@ -464,7 +464,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           if (item.type !== "project") return false;
 
           const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
-          const pointsToCompletion = item.system.goal - item.system.points;
+          const pointsToCompletion = Math.max(0, item.system.goal - item.system.points);
 
           return careerPoints && pointsToCompletion;
         },
