@@ -91,6 +91,11 @@ export default class AbilityModel extends BaseItemModel {
   prepareBaseData() {
     super.prepareBaseData();
     for (const effect of this.power.effects) effect.prepareBaseData();
+
+    this.power.characteristic = {
+      key: "",
+      value: null,
+    };
   }
 
   /* -------------------------------------------- */
@@ -109,11 +114,6 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
-
-    this.power.characteristic = {
-      key: "",
-      value: null,
-    };
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];

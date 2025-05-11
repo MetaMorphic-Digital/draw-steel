@@ -1,6 +1,8 @@
 import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
+import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
+import { DamagePowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs"
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -34,39 +36,41 @@ declare module "./ability.mjs" {
     characteristic: string;
   }
 
-  type DamagePowerRoll = {
-    type: "damage";
-    value: string;
-    types: Set<string>;
-    potency: Potency;
-    display: string;
-  }
+  // type DamagePowerRoll = {
+  //   type: "damage";
+  //   value: string;
+  //   types: Set<string>;
+  //   potency: Potency;
+  //   display: string;
+  // }
 
-  type AEPowerRoll = {
-    type: "ae";
-    always: Set<string>;
-    success: Set<string>;
-    failure: Set<string>;
-    potency: Potency;
-    display: string;
-  }
+  // type AEPowerRoll = {
+  //   type: "ae";
+  //   always: Set<string>;
+  //   success: Set<string>;
+  //   failure: Set<string>;
+  //   potency: Potency;
+  //   display: string;
+  // }
 
-  type ForcedPowerRoll = {
-    type: "forced";
-    types: Set<string>;
-    value: number;
-    vertical: boolean;
-    potency: Potency;
-    display: string;
-  }
+  // type ForcedPowerRoll = {
+  //   type: "forced";
+  //   types: Set<string>;
+  //   value: number;
+  //   vertical: boolean;
+  //   potency: Potency;
+  //   display: string;
+  // }
 
-  type OtherPowerRoll = {
-    type: "other";
-    potency: Potency;
-    display: string;
-  }
+  // type OtherPowerRoll = {
+  //   type: "other";
+  //   potency: Potency;
+  //   display: string;
+  // }
 
-  type PowerRoll = DamagePowerRoll | AEPowerRoll | ForcedPowerRoll | OtherPowerRoll;
+  // type PowerRoll = DamagePowerRoll | AEPowerRoll | ForcedPowerRoll | OtherPowerRoll;
+
+  type PowerRollEffects = DamagePowerRollEffect;
 
   export default interface AbilityModel {
     description: {
@@ -90,16 +94,21 @@ declare module "./ability.mjs" {
       /** Null value indicates "all"*/
       value: number | null;
     }
-    powerRoll: {
-      enabled: boolean;
-      /** The set of characteristics available to this power roll */
-      characteristics: Set<string>;
-      /** The highest characteristic of those available. Not set if there's no parent actor. */
-      characteristic?: string;
-      formula: string;
-      tier1: PowerRoll[] & { display?: string };
-      tier2: PowerRoll[] & { display?: string };
-      tier3: PowerRoll[] & { display?: string };
+    power: {
+      /** Added during base data prep, not a schema value */
+      characteristic: {
+        key: string;
+        /** Null value during data prep or if no parent actor */
+        value: null | number;
+      }
+      roll: {
+        /** Added during data prep */
+        enabled: boolean;
+        flat: boolean;
+        formula: string;
+        characteristics: Set<string>;
+      }
+      effects: ModelCollection<PowerRollEffects>;
     }
     spend: {
       value: number;
