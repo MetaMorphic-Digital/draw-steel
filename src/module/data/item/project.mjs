@@ -95,7 +95,7 @@ export default class ProjectModel extends BaseItemModel {
     const allowed = await super._preUpdate(changes, options, user);
     if (allowed === false) return false;
 
-    if (("system" in changes) && ("points" in changes.system)) {
+    if (foundry.utils.hasProperty(changes, "system.points") && this.actor) {
       // Mark the project for completion only if the points meet the goal and it hasn't already been completed.
       options.completeProject = (changes.system.points >= this.goal) && (this.points < this.goal);
     }
@@ -108,7 +108,7 @@ export default class ProjectModel extends BaseItemModel {
     super._onUpdate(changed, options, userId);
 
     // When the project is completed, notify the user and create any yielded item.
-    if (options.completeProject) {
+    if ((game.userId === userId) && options.completeProject) {
       ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {
         format: {
           actor: this.actor.name,
@@ -204,6 +204,9 @@ export default class ProjectModel extends BaseItemModel {
    * Spend a variable amount of the actor's project points from their career on this project
    */
   async spendCareerPoints() {
+    if (!this.actor) return console.error("This project has no owner actor.");
+    if (!this.actor.system.career) return console.error("The project owner has no career.");
+
     const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
     if (!careerPoints) return console.log("No career points available.");
 
@@ -247,6 +250,8 @@ export default class ProjectModel extends BaseItemModel {
    * Perform the creation of the yielded item(s) when a crafting project is completed.
    */
   async completeCraftingProject() {
+    if (!this.actor) return console.error("This project has no owner actor.");
+
     const item = await fromUuid(this.yield.item);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;

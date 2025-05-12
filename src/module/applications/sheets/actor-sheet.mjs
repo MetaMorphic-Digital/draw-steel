@@ -463,7 +463,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           const item = this._getEmbeddedDocument(target);
           if (item.type !== "project") return false;
 
-          const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
+          const careerPoints = foundry.utils.getProperty(this.actor, "system.career.system.projectPoints") ?? 0;
           const pointsToCompletion = Math.max(0, item.system.goal - item.system.points);
 
           return careerPoints && pointsToCompletion;
