@@ -90,6 +90,38 @@ export default class ProjectModel extends BaseItemModel {
 
   /**
    * @inheritdoc
+   */
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
+    if (foundry.utils.hasProperty(changes, "system.points") && this.actor) {
+      // Mark the project for completion only if the points meet the goal and it hasn't already been completed.
+      options.completeProject = (changes.system.points >= this.goal) && (this.points < this.goal);
+    }
+  }
+
+  /**
+   * @inheritdoc
+   */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    // When the project is completed, notify the user and create any yielded item.
+    if ((game.userId === userId) && options.completeProject) {
+      ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {
+        format: {
+          actor: this.actor.name,
+          project: this.parent.name,
+        },
+      });
+
+      if (this.yield.item) this.completeCraftingProject();
+    }
+  }
+
+  /**
+   * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
    */
@@ -125,7 +157,7 @@ export default class ProjectModel extends BaseItemModel {
   }
 
   /**
-   * Make a project roll for this project and create any yielded items if goal is met
+   * Make a project roll for this project and update the project points progress.
    * @param {Partial<PowerRollModifiers>} [options={}]
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
@@ -154,29 +186,6 @@ export default class ProjectModel extends BaseItemModel {
     const updatedPoints = this.points + total;
     await this.parent.update({ "system.points": updatedPoints });
 
-    // If the project has been completed and there is a yield item, notify the user.
-    // If there is a yielded item, roll the amount formula and add that many of the item.
-    if (updatedPoints >= this.goal) {
-      ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", { format: {
-        actor: this.actor.name,
-        project: this.parent.name,
-      } });
-
-      if (this.yield.item) {
-        const item = await fromUuid(this.yield.item);
-        const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
-        const amount = yieldRoll.total;
-        const itemArray = Array(amount).fill(item.toObject());
-
-        await this.actor.createEmbeddedDocuments("Item", itemArray);
-        ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", { format: {
-          actor: this.actor.name,
-          amount,
-          item: item.name,
-        } });
-      }
-    }
-
     const messageData = {
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
@@ -189,5 +198,72 @@ export default class ProjectModel extends BaseItemModel {
     DrawSteelChatMessage.applyRollMode(messageData, rollMode);
 
     return DrawSteelChatMessage.create(messageData);
+  }
+
+  /**
+   * Spend a variable amount of the actor's project points from their career on this project
+   */
+  async spendCareerPoints() {
+    if (!this.actor) return console.error("This project has no owner actor.");
+    if (!this.actor.system.career) return console.error("The project owner has no career.");
+
+    const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
+    if (!careerPoints) return console.log("No career points available.");
+
+    const pointsToCompletion = Math.max(0, this.goal - this.points);
+    if (!pointsToCompletion) return console.log("Project already completed");
+
+    const input = foundry.applications.elements.HTMLRangePickerElement.create({
+      min: 0,
+      name: "spendPoints",
+      max: Math.min(careerPoints, pointsToCompletion),
+      step: 1,
+    });
+
+    const formGroup = new foundry.applications.fields.createFormGroup({
+      input,
+      classes: ["stacked"],
+      label: "DRAW_STEEL.Item.Project.SpendCareerPoints.Label",
+      localize: true,
+    });
+
+    const fd = await foundry.applications.api.DialogV2.input({
+      content: formGroup.outerHTML,
+      window: { title: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title" },
+    });
+
+    if (fd?.spendPoints > 0) {
+      await this.parent.update({ "system.points": this.points + fd.spendPoints });
+      await this.actor.system.career.update({ "system.projectPoints": careerPoints - fd.spendPoints });
+
+      ui.notifications.success("DRAW_STEEL.Item.Project.SpendCareerPoints.Success", {
+        format: {
+          actor: this.actor.name,
+          points: fd.spendPoints,
+          project: this.parent.name,
+        },
+      });
+    }
+  }
+
+  /**
+   * Perform the creation of the yielded item(s) when a crafting project is completed.
+   */
+  async completeCraftingProject() {
+    if (!this.actor) return console.error("This project has no owner actor.");
+
+    const item = await fromUuid(this.yield.item);
+    const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
+    const amount = yieldRoll.total;
+    const itemArray = Array(amount).fill(item.toObject());
+
+    await this.actor.createEmbeddedDocuments("Item", itemArray);
+    ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {
+      format: {
+        actor: this.actor.name,
+        amount,
+        item: item.name,
+      },
+    });
   }
 }

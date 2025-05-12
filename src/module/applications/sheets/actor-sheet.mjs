@@ -455,6 +455,29 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           await this.render();
         },
       },
+      // Project specific options
+      {
+        name: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title",
+        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (item.type !== "project") return false;
+
+          const careerPoints = foundry.utils.getProperty(this.actor, "system.career.system.projectPoints") ?? 0;
+          const pointsToCompletion = Math.max(0, item.system.goal - item.system.points);
+
+          return careerPoints && pointsToCompletion;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.system.spendCareerPoints();
+          await this.render();
+        },
+      },
       // All applicable options
       {
         name: "View",
