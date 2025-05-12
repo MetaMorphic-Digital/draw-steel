@@ -46,6 +46,7 @@
 - Added a prompt at the end of combat to award victories to each character in the combat. (#388)
 - Added ways to spend hero tokens from the character sheet (#54)
 - Added a number of generic icons for different monster roles under `systems/draw-steel/assets/roles`.
+- Added basic embed functionality for active effects.
 
 ### Changed
 - Changed system minimum to v13.339, verified system for v13 generally.

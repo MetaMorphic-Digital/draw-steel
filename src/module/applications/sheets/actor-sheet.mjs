@@ -2,6 +2,7 @@ import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
@@ -115,7 +116,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
-    const TextEditor = foundry.applications.ux.TextEditor.implementation;
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
@@ -132,22 +132,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         break;
       case "biography":
         context.languages = this._getLanguages();
-        context.enrichedBiography = await TextEditor.enrichHTML(
-          this.actor.system.biography.value,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.actor.getRollData(),
-            relativeTo: this.actor,
-          },
-        );
-        context.enrichedGMNotes = await TextEditor.enrichHTML(
-          this.actor.system.biography.gm,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.actor.getRollData(),
-            relativeTo: this.actor,
-          },
-        );
+        context.enrichedBiography = await enrichHTML(this.actor.system.biography.value, { relativeTo: this.actor });
+        context.enrichedGMNotes = await enrichHTML(this.actor.system.biography.gm, { relativeTo: this.actor });
         break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();
@@ -466,6 +452,29 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
             return;
           }
           await this.actor.update({ "system.hero.preferredKit": item.id });
+          await this.render();
+        },
+      },
+      // Project specific options
+      {
+        name: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title",
+        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (item.type !== "project") return false;
+
+          const careerPoints = foundry.utils.getProperty(this.actor, "system.career.system.projectPoints") ?? 0;
+          const pointsToCompletion = Math.max(0, item.system.goal - item.system.points);
+
+          return careerPoints && pointsToCompletion;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.system.spendCareerPoints();
           await this.render();
         },
       },

@@ -68,8 +68,7 @@ Hooks.once("init", function () {
   const { Actors, Items } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
-  // Register sheet application classes
-  Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  // Register sheet application classes  
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
@@ -79,8 +78,7 @@ Hooks.once("init", function () {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.NPC",
-  });
-  Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  });  
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item",

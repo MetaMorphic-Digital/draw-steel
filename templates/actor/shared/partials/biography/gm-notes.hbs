@@ -1,17 +1,13 @@
-{{#if gm}}
-{{#if editable}}
-{{formGroup
-systemFields.biography.fields.gm
-enriched=enrichedGMNotes
-value=systemSource.biography.gm
-documentUUID=document.uuid
-toggled=isPlay
-height=300
-}}
-{{else}}
 <fieldset>
   <legend>{{systemFields.biography.fields.gm.label}}</legend>
+  {{#if (and gm editable (not isPlay))}}
+  {{formInput
+  systemFields.biography.fields.gm
+  value=systemSource.biography.gm
+  documentUUID=document.uuid
+  height=200
+  }}
+  {{else}}
   {{{enrichedGMNotes}}}
+  {{/if}}
 </fieldset>
-{{/if}}
-{{/if}}

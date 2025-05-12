@@ -31,7 +31,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     const metaCurrencyDisplay = await foundry.applications.handlebars.renderTemplate(systemPath("templates/ui/players.hbs"), {
       heroTokens: game.actors.heroTokens,
       malice: game.actors.malice,
-      showMalice: game.settings.get(systemID, "showPlayerMalice"),
+      showMalice: (game.settings.get(systemID, "showPlayerMalice") || game.user.isGM) && game.combat,
       gm: game.user.isGM,
     });
 
