@@ -8,6 +8,7 @@ const fields = foundry.data.fields;
 
 /**
  * A base item model that provides basic description and source metadata for an item instance
+ * @extends foundry.abstract.TypeDataModel
  */
 export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**
@@ -25,7 +26,10 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
   static defineSchema() {
     const schema = {};
 
-    schema.description = new fields.SchemaField(this.itemDescription());
+    schema.description = new fields.SchemaField({
+      value: new fields.HTMLField(),
+      gm: new fields.HTMLField(),
+    });
 
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
@@ -35,18 +39,6 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     schema._dsid = new fields.StringField({ blank: false });
 
     return schema;
-  }
-
-  /**
-   * Helper function to fill in the `description` property
-   * @protected
-   * @returns {Record<string, fields["DataField"]}
-   */
-  static itemDescription() {
-    return {
-      value: new foundry.data.fields.HTMLField(),
-      gm: new foundry.data.fields.HTMLField(),
-    };
   }
 
   /**

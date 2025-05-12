@@ -7,7 +7,10 @@ import "./effect/_types";
 import "./item/_types";
 import "./message/_types";
 import "./models/_types";
+import "./models/_types";
 import "./settings/_types";
+
+import type PseudoDocument from "./pseudo-documents/pseudo-document.mjs";
 
 export type BarAttribute = {
   value: number,
@@ -22,10 +25,12 @@ export type SubtypeMetadata = {
 export type PseudoDocumentMetadata = {
   /* The document name of this pseudo-document. */
   documentName: string,
+  /** The localization string for this pseudo-document */
+  label: string;
+  /** The font-awesome icon for this pseudo-document type */
+  icon: string;
   /* Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>,
-  /* A record of this pseudo-document's base class and subtypes. */
-  types?: Record<string, typeof PseudoDocument>,
   /* The class used to render this pseudo-document. */
   sheetClass?: PseudoDocumentSheet,
 }
