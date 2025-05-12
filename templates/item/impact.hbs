@@ -2,28 +2,34 @@
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.Ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
-    {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics}}
-    {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial}}
+    {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics disabled=@root.isPlay}}
+    {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial disabled=@root.isPlay}}
     {{/with}}
-    <div class="power-roll-list">
-      {{!-- Using document.system to ensure initialized values in edit mode --}}
-      {{#each document.system.power.effects as |effect|}}
-      <button type="button" class="power-roll flexrow" data-action="editPowerRollEffect" data-id="{{effect.id}}">
-        {{localize effect.typeLabel}}
-      </button>
-      {{/each}}
-      {{#if editable}}
-      <button type="button" data-action="createPowerRollEffect">
-        <i class="fa-solid fa-plus"></i>
-        {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
-      </button>
-      {{/if}}
+
+  </fieldset>
+
+  <fieldset class="power-roll-list">
+    <legend>{{systemFields.power.fields.effects.label}}</legend>
+    {{#unless isPlay}}
+    <button type="button" data-action="createPowerRollEffect">
+      <i class="fa-solid fa-plus"></i>
+      {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
+    </button>
+    {{/unless}}
+    {{!-- Using document.system to ensure initialized values in edit mode --}}
+    {{#each document.system.power.effects as |effect|}}
+    <div class="form-group power-roll" data-id="{{effect.id}}">
+      <label>{{localize effect.typeLabel}}</label>
+      <div class="form-fields">
+        <button type="button" class="icon fa-solid fa-fw fa-cog" data-action="editPowerRollEffect"></button>
+      </div>
     </div>
+    {{/each}}
   </fieldset>
   <fieldset>
     <legend>{{systemFields.spend.label}}</legend>
-    {{formGroup systemFields.spend.fields.value value=system.spend.value}}
-    {{formGroup systemFields.spend.fields.text value=system.spend.text}}
+    {{formGroup systemFields.spend.fields.value value=system.spend.value disabled=@root.isPlay}}
+    {{formGroup systemFields.spend.fields.text value=system.spend.text disabled=@root.isPlay}}
   </fieldset>
   {{#if isPlay}}
   {{{enrichedEffect}}}
