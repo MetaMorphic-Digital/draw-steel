@@ -50,7 +50,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
    * @type {string}
    */
   get typeLabel() {
-    return ds.CONFIG[this.constructor.metadata.documentName][this.type]?.label;
+    return ds.CONFIG[this.constructor.metadata.documentName][this.type].label;
   }
 
   /* -------------------------------------------------- */
@@ -67,11 +67,11 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /**
    * Create a new instance of this pseudo-document with a prompt to choose the type.
-   * @param {object} [data]                                 The data used for the creation.
-   * @param {object} [createOptions]                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @param {object} [data]                                     The data used for the creation.
+   * @param {object} createOptions                              The context of the operation.
+   * @param {foundry.abstract.Document} createOptions.parent    The parent of this document.
    * @param {TypedPseudoDocumentCreateDialogOptions} [options={}]
-   * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
+   * @returns {Promise<foundry.abstract.Document>}              A promise that resolves to the updated document.
    */
   static async createDialog(data = {}, createOptions = {}, options = {}) {
     /** @type {TypedPseudoDocumentCreateDialogOptions} */

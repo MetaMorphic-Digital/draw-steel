@@ -246,7 +246,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     return [
       {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.PowerRollEffect") }),
-        icon: "<i class=\"fa-solid fa-trash-can\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
         condition: () => this.isEditable,
         callback: (target) => {
           const powerRollEffect = this._getPowerRoll(target);
