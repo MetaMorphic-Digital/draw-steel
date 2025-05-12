@@ -8,8 +8,9 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     return {
       ...super.metadata,
       documentName: "PowerRollEffect",
+      label: "DOCUMENT.PowerRollEffect",
+      icon: "fa-solid fa-dice-d10",
       sheetClass: ds.applications.sheets.pseudoDocuments.PowerRollEffectSheet,
-      types: ds.data.pseudoDocuments.powerRollEffects,
     };
   }
 

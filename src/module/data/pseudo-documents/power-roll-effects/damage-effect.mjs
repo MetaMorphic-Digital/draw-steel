@@ -1,7 +1,8 @@
+import FormulaField from "../../fields/formula-field.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 const {
-  NumberField, SetField, StringField,
+  SetField, StringField,
 } = foundry.data.fields;
 
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
@@ -9,7 +10,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
-        value: new NumberField({ nullable: true, initial: 3, integer: true, min: 1 }),
+        value: new FormulaField({ initial: "2 + @chr" }),
         types: new SetField(new StringField()),
       })),
     });
@@ -36,8 +37,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     for (const n of [1, 2, 3]) {
       this.damage[`tier${n}`].value ??= this.#defaultDamageValue(n);
     }
-
-    // this.text ||= "{{damage}}";
   }
 
   /* -------------------------------------------------- */
@@ -46,16 +45,16 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * Helper method to derive default damage value used for both derived data
    * and for placeholders when rendering.
    * @param {1|2|3} n     The tier.
-   * @returns {number}    The default value.
+   * @returns {string}    The default value.
    */
   #defaultDamageValue(n) {
     switch (n) {
       case 1:
-        return 1;
+        return "2 + @chr";
       case 2:
-        return 2 * this.damage.tier1.value;
+        return this.damage.tier1.value;
       case 3:
-        return 3 * this.damage.tier1.value;
+        return this.damage.tier1.value;
     }
   }
 

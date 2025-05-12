@@ -6,9 +6,10 @@
     {{/with}}
   </div>
   <div class="power-roll-list">
-    {{#each system.power.effects as |effect|}}
-    <button type="button" class="flexrow filled" data-action="editPowerRollEffect" data-id="{{effect._id}}">
-      <label>{{effect.type}}</label>
+    {{!-- Using document.system to ensure initialized values in edit mode --}}
+    {{#each document.system.power.effects as |effect|}}
+    <button type="button" class="power-roll flexrow filled" data-action="editPowerRollEffect" data-id="{{effect._id}}">
+      <label>{{localize effect.typeLabel}}</label>
       <div class="controls">
         {{#if (and (not @root.isPlay) @root.editable)}}
         <a class="deleteControl" data-action="deletePowerRollEffect">

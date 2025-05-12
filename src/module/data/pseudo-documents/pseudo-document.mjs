@@ -1,6 +1,8 @@
+/** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
+
 const { DocumentIdField } = foundry.data.fields;
 
-/** @import { PseudoDocumentMetadata } from "../../_types" */
+/** @import { PseudoDocumentMetadata } from "../_types" */
 
 export default class PseudoDocument extends foundry.abstract.DataModel {
   /**
@@ -10,6 +12,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   static get metadata() {
     return {
       documentName: null,
+      label: "",
+      icon: "",
       embedded: {},
     };
   }
@@ -22,6 +26,10 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
       _id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
     };
   }
+
+  /* -------------------------------------------------- */
+
+  static LOCALIZATION_PREFIXES = ["DOCUMENT"];
 
   /* -------------------------------------------------- */
 
@@ -90,7 +98,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Reference to the sheet of this pseudo-document, registered in a static map.
    * A pseudo-document is temporary, unlike regular documents, so the relation here
    * is not one-to-one.
-   * @type {ds.applications.api.PseudoDocumentSheet|null}
+   * @type {PseudoDocumentSheet | null}
    */
   get sheet() {
     return ds.applications.api.PseudoDocumentSheet._registerSheet(this);
