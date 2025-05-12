@@ -1,7 +1,7 @@
 {{#if isPlay}}
 {{> "systems/draw-steel/templates/item/embeds/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
 {{else}}
-{{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
+{{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{formGroup systemFields.category value=system.category options=abilityCategories blank=""}}
@@ -32,10 +32,4 @@
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
   {{/if}}
 </fieldset>
-<fieldset>
-  <legend>{{systemFields.spend.label}}</legend>
-  {{formGroup systemFields.spend.fields.value value=system.spend.value}}
-  {{formGroup systemFields.spend.fields.text value=system.spend.text}}
-</fieldset>
-{{formGroup systemFields.effect value=system.effect}}
 {{/if}}

@@ -38,6 +38,10 @@ export default class AbilityModel extends BaseItemModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
+    // Items don't have descriptions
+    delete schema.description;
+
+    schema.story = new fields.StringField({ required: true, blank: true });
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
     schema.category = new fields.StringField({ required: true });
@@ -66,22 +70,13 @@ export default class AbilityModel extends BaseItemModel {
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
     });
 
-    schema.effect = new fields.StringField({ required: true });
+    schema.effect = new fields.HTMLField();
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
       text: new fields.StringField({ required: true }),
     });
 
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static itemDescription() {
-    const description = super.itemDescription();
-    description.flavor = new fields.StringField({ required: true, blank: true });
-    return description;
   }
 
   /* -------------------------------------------------- */
@@ -297,9 +292,6 @@ export default class AbilityModel extends BaseItemModel {
     // }
 
     // context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
-
-    // Add the data for subtabs for the power roll tiers
-    if (context.tab?.id === "details") context.subtabs = this.parent.sheet._prepareTabs("powerRollEffects");
   }
 
   /** @inheritdoc */

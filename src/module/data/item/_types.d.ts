@@ -72,11 +72,7 @@ declare module "./ability.mjs" {
   type PowerRollEffects = DamagePowerRollEffect;
 
   export default interface AbilityModel {
-    description: {
-      value: string;
-      gm: string;
-      flavor: string;
-    }
+    description: never;
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
     category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";

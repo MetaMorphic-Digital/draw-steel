@@ -4,7 +4,8 @@ import enrichHTML from "../../utils/enrichHTML.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 
 /** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"; */
+/** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs" */
+/** @import BaseItemModel from "../../data/item/base.mjs" */
 
 const { sheets, ux } = foundry.applications;
 
@@ -46,19 +47,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         { id: "description" },
         { id: "details" },
         { id: "advancement" },
-        { id: "powerRoll" },
+        { id: "impact" },
         { id: "effects" },
       ],
       initial: "description",
-      labelPrefix: "DRAW_STEEL.Item.Tabs",
-    },
-    powerRollEffects: {
-      tabs: [
-        { id: "tier1" },
-        { id: "tier2" },
-        { id: "tier3" },
-      ],
-      initial: "tier1",
       labelPrefix: "DRAW_STEEL.Item.Tabs",
     },
   };
@@ -85,8 +77,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     advancement: {
       template: systemPath("templates/item/advancement.hbs"),
     },
-    powerRoll: {
-      template: systemPath("templates/item/power-roll.hbs"),
+    impact: {
+      template: systemPath("templates/item/impact.hbs"),
     },
     effects: {
       template: systemPath("templates/item/effects.hbs"),
@@ -102,17 +94,19 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   _configureRenderParts(options) {
-    const { header, tabs, description, details, advancement, powerRoll, effects } = super._configureRenderParts(options);
+    const { header, tabs, description, details, advancement, impact, effects } = super._configureRenderParts(options);
 
     const parts = { header, tabs };
+
+    /** @type {typeof BaseItemModel} */
+    const itemModel = this.item.system.constructor;
+
     // Don't re-render the description tab if there's an active editor
-    if (!this.#editor) parts.description = description;
+    if (!this.#editor && itemModel.schema.has("description")) parts.description = description;
     if (this.document.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
-    /** @type {Record<string, string>} */
-    const embeddedPseudoDocuments = this.item.system.constructor.metadata.embedded;
-    if ("Advancement" in embeddedPseudoDocuments) parts.advancement = advancement;
-    if ("PowerRollEffect" in embeddedPseudoDocuments) parts.powerRoll = powerRoll;
+    if ("Advancement" in itemModel.metadata.embedded) parts.advancement = advancement;
+    if ("PowerRollEffect" in itemModel.metadata.embedded) parts.impact = impact;
     parts.effects = effects;
 
     return parts;
@@ -122,10 +116,15 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   async _prepareContext(options) {
+    console.log(this.tabGroups);
+    // If there's no description, set the active tab to details
+    if ((this.tabGroups.primary === "description") && !this.item.system.constructor.schema.has("description")) this.tabGroups.primary = "details";
+
+    // One tab group means ApplicationV2#_prepareContext will populate `tabs`
     const context = await super._prepareContext(options);
+
     Object.assign(context, {
       system: context.isPlay ? context.system : context.systemSource,
-      tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
     });
     return context;
@@ -146,6 +145,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
         await this.item.system.getSheetContext(context);
         break;
+      case "impact":
+        context.enrichedEffect = await enrichHTML(this.item.system.effect, { relativeTo: this.item });
+        break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();
         break;
@@ -159,11 +161,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
     if (group === "primary") {
-      /** @type {Record<string, string>} */
-      const embeddedPseudoDocuments = this.item.system.constructor.metadata.embedded;
-      if (!this.item.system.constructor.metadata.detailsPartial) delete tabs.details;
-      if (!("Advancement" in embeddedPseudoDocuments)) delete tabs.advancement;
-      if (!("PowerRollEffect" in embeddedPseudoDocuments)) delete tabs.powerRoll;
+      /** @type {typeof BaseItemModel} */
+      const itemModel = this.item.system.constructor;
+      if (!itemModel.schema.has("description")) delete tabs.description;
+      if (!itemModel.metadata.detailsPartial) delete tabs.details;
+      if (!("Advancement" in itemModel.metadata.embedded)) delete tabs.advancement;
+      if (!("PowerRollEffect" in itemModel.metadata.embedded)) delete tabs.impact;
     }
 
     return tabs;
