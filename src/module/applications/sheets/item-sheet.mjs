@@ -1,13 +1,18 @@
 import { systemPath } from "../../constants.mjs";
+import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 import enrichHTML from "../../utils/enrichHTML.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
+
+/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
+/** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs" */
+/** @import BaseItemModel from "../../data/item/base.mjs" */
 
 const { sheets, ux } = foundry.applications;
 
 /**
  * AppV2-based sheet for all item classes
  */
-export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheetV2) {
+export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheet) {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -25,6 +30,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
+      editPowerRollEffect: this.#editPowerRoll,
+      deletePowerRollEffect: this.#deletePowerRoll,
+      createPowerRollEffect: this.#createPowerRoll,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -39,18 +47,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         { id: "description" },
         { id: "details" },
         { id: "advancement" },
+        { id: "impact" },
         { id: "effects" },
       ],
       initial: "description",
-      labelPrefix: "DRAW_STEEL.Item.Tabs",
-    },
-    powerRollEffects: {
-      tabs: [
-        { id: "tier1" },
-        { id: "tier2" },
-        { id: "tier3" },
-      ],
-      initial: "tier1",
       labelPrefix: "DRAW_STEEL.Item.Tabs",
     },
   };
@@ -77,6 +77,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     advancement: {
       template: systemPath("templates/item/advancement.hbs"),
     },
+    impact: {
+      template: systemPath("templates/item/impact.hbs"),
+    },
     effects: {
       template: systemPath("templates/item/effects.hbs"),
     },
@@ -91,14 +94,19 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   _configureRenderParts(options) {
-    const { header, tabs, description, details, advancement, effects } = super._configureRenderParts(options);
+    const { header, tabs, description, details, advancement, impact, effects } = super._configureRenderParts(options);
 
     const parts = { header, tabs };
+
+    /** @type {typeof BaseItemModel} */
+    const itemModel = this.item.system.constructor;
+
     // Don't re-render the description tab if there's an active editor
-    if (!this.#editor) parts.description = description;
+    if (!this.#editor && itemModel.schema.has("description")) parts.description = description;
     if (this.document.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
-    if (this.item.system.constructor.metadata.hasAdvancements) parts.advancement = advancement;
+    if ("Advancement" in itemModel.metadata.embedded) parts.advancement = advancement;
+    if ("PowerRollEffect" in itemModel.metadata.embedded) parts.impact = impact;
     parts.effects = effects;
 
     return parts;
@@ -108,10 +116,14 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   async _prepareContext(options) {
+    // If there's no description, set the active tab to details
+    if ((this.tabGroups.primary === "description") && !this.item.system.constructor.schema.has("description")) this.tabGroups.primary = "details";
+
+    // One tab group means ApplicationV2#_prepareContext will populate `tabs`
     const context = await super._prepareContext(options);
+
     Object.assign(context, {
       system: context.isPlay ? context.system : context.systemSource,
-      tabs: this._prepareTabs("primary"),
       tabGroups: this.tabGroups,
     });
     return context;
@@ -132,6 +144,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
         await this.item.system.getSheetContext(context);
         break;
+      case "impact":
+        context.enrichedEffect = await enrichHTML(this.item.system.effect, { relativeTo: this.item });
+        break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();
         break;
@@ -145,8 +160,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   _prepareTabs(group) {
     const tabs = super._prepareTabs(group);
     if (group === "primary") {
-      if (!this.item.system.constructor.metadata.detailsPartial) delete tabs.details;
-      if (!this.item.system.constructor.metadata.hasAdvancements) delete tabs.advancement;
+      /** @type {typeof BaseItemModel} */
+      const itemModel = this.item.system.constructor;
+      if (!itemModel.schema.has("description")) delete tabs.description;
+      if (!itemModel.metadata.detailsPartial) delete tabs.details;
+      if (!("Advancement" in itemModel.metadata.embedded)) delete tabs.advancement;
+      if (!("PowerRollEffect" in itemModel.metadata.embedded)) delete tabs.impact;
     }
 
     return tabs;
@@ -207,12 +226,42 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._powerRollContextOptions, ".power-roll-list .power-roll", {
+      hookName: "getPowerRollEffectContextOptions",
+      fixed: true,
+      parentClassHooks: false,
+    });
+  }
+
   /**
-   * Actions performed after any render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
+   * Context menu entries for power rolls
+   * @returns {ContextMenuEntry}
    */
+  _powerRollContextOptions() {
+    return [
+      {
+        name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.PowerRollEffect") }),
+        icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const powerRollEffect = this._getPowerRoll(target);
+          ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
+            pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
+            id: powerRollEffect.id,
+            type: powerRollEffect.type,
+            name: this.item.name,
+          } });
+          powerRollEffect.delete();
+        },
+      },
+    ];
+  }
+
+  /** @inheritdoc*/
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));
@@ -436,6 +485,50 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * Edits a power roll pseudo document
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async #editPowerRoll(event, target) {
+    const powerRollEffect = this._getPowerRoll(target);
+    powerRollEffect.sheet.render({ force: true });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Deletes a power roll pseudo document
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async #deletePowerRoll(event, target) {
+    const powerRollEffect = this._getPowerRoll(target);
+    powerRollEffect.delete();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Creates a power roll pseudo document
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async #createPowerRoll(event, target) {
+    BasePowerRollEffect.createDialog({}, { parent: this.item });
+  }
+
+  /* -------------------------------------------------- */
   /*   Helper Functions                                 */
   /* -------------------------------------------------- */
 
@@ -443,11 +536,21 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * Fetches the row with the data for the rendered embedded document
    *
    * @param {HTMLElement} target  The element with the action
-   * @returns {HTMLLIElement} The document's row
+   * @returns {DrawSteelActiveEffect} The document's row
    */
   _getEffect(target) {
     const li = target.closest(".effect");
     return this.item.effects.get(li?.dataset?.effectId);
+  }
+
+  /**
+   * Fetches a Power Roll Effect pseudo-document
+   * @param {HTMLElement} target The element with the action
+   * @returns {BasePowerRollEffect} The document
+   */
+  _getPowerRoll(target) {
+    const btn = target.closest(".power-roll");
+    return this.item.getEmbeddedDocument("PowerRollEffect", btn?.dataset?.id);
   }
 
   /* -------------------------------------------------- */

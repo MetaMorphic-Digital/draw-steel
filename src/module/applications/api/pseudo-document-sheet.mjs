@@ -50,8 +50,8 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
-   * Registered sheets.
-   * @type {Map<string, PseudoDocumentSheet>}
+   * Registered sheets. A map of documents to a map of pseudo-document uuids and their sheets.
+   * @type {Map<foundry.abstract.Document, Map<string, PseudoDocumentSheet>>}
    */
   static #sheets = new Map();
 
@@ -60,15 +60,20 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /**
    * Retrieve or register a new instance of a pseudo-document sheet.
    * @param {ds.data.pseudoDocuments.PseudoDocument} pseudoDocument   The pseudo-document.
-   * @returns {PseudoDocumentSheet|null}    A new or already registered sheet.
+   * @returns {PseudoDocumentSheet|null}    An existing or new instance of a sheet, or null if the pseudo-
+   *                                        document does not have a sheet class.
    */
-  static _registerSheet(pseudoDocument) {
-    if (!PseudoDocumentSheet.#sheets.has(pseudoDocument.uuid)) {
+  static getSheet(pseudoDocument) {
+    const doc = pseudoDocument.document;
+    if (!PseudoDocumentSheet.#sheets.get(doc)) {
+      PseudoDocumentSheet.#sheets.set(doc, new Map());
+    }
+    if (!PseudoDocumentSheet.#sheets.get(doc).get(pseudoDocument.uuid)) {
       const Cls = pseudoDocument.constructor.metadata.sheetClass;
       if (!Cls) return null;
-      PseudoDocumentSheet.#sheets.set(pseudoDocument.uuid, new Cls({ document: pseudoDocument }));
+      PseudoDocumentSheet.#sheets.get(doc).set(pseudoDocument.uuid, new Cls({ document: pseudoDocument }));
     }
-    return PseudoDocumentSheet.#sheets.get(pseudoDocument.uuid);
+    return PseudoDocumentSheet.#sheets.get(doc).get(pseudoDocument.uuid);
   }
 
   /* -------------------------------------------------- */
@@ -150,7 +155,6 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /** @inheritdoc */
   _onClose(options) {
     super._onClose(options);
-    PseudoDocumentSheet.#sheets.delete(this.#pseudoUuid);
     delete this.document.apps[this.id];
   }
 
