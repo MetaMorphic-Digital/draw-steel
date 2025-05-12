@@ -3,6 +3,7 @@ import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/
 import enrichHTML from "../../utils/enrichHTML.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 
+/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
 /** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"; */
 
 const { sheets, ux } = foundry.applications;
@@ -223,12 +224,42 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._powerRollContextOptions, ".power-roll-list .power-roll", {
+      hookName: "getPowerRollEffectContextOptions",
+      fixed: true,
+      parentClassHooks: false,
+    });
+  }
+
   /**
-   * Actions performed after any render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
-   * @protected
+   * Context menu entries for power rolls
+   * @returns {ContextMenuEntry}
    */
+  _powerRollContextOptions() {
+    return [
+      {
+        name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.PowerRollEffect") }),
+        icon: "<i class=\"fa-solid fa-trash-can\"></i>",
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const powerRollEffect = this._getPowerRoll(target);
+          ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
+            pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
+            id: powerRollEffect.id,
+            type: powerRollEffect.type,
+            name: this.item.name,
+          } });
+          powerRollEffect.delete();
+        },
+      },
+    ];
+  }
+
+  /** @inheritdoc*/
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));

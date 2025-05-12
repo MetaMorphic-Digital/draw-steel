@@ -8,19 +8,12 @@
   <div class="power-roll-list">
     {{!-- Using document.system to ensure initialized values in edit mode --}}
     {{#each document.system.power.effects as |effect|}}
-    <button type="button" class="power-roll flexrow filled" data-action="editPowerRollEffect" data-id="{{effect._id}}">
-      <label>{{localize effect.typeLabel}}</label>
-      <div class="controls">
-        {{#if (and (not @root.isPlay) @root.editable)}}
-        <a class="deleteControl" data-action="deletePowerRollEffect">
-          <i class="fa-solid fa-trash"></i>
-        </a>
-        {{/if}}
-      </div>
+    <button type="button" class="power-roll flexrow" data-action="editPowerRollEffect" data-id="{{effect.id}}">
+      {{localize effect.typeLabel}}
     </button>
     {{/each}}
     {{#if editable}}
-    <button type="button" class="unfilled" data-action="createPowerRollEffect">
+    <button type="button" data-action="createPowerRollEffect">
       <i class="fa-solid fa-plus"></i>
       {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
     </button>
