@@ -116,7 +116,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /** @inheritdoc */
   async _prepareContext(options) {
-    console.log(this.tabGroups);
     // If there's no description, set the active tab to details
     if ((this.tabGroups.primary === "description") && !this.item.system.constructor.schema.has("description")) this.tabGroups.primary = "details";
 
