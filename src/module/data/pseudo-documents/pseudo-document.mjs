@@ -93,7 +93,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @type {ds.applications.api.PseudoDocumentSheet|null}
    */
   get sheet() {
-    return ds.applications.api.PseudoDocumentSheet._registerSheet(this);
+    return ds.applications.api.PseudoDocumentSheet.getSheet(this);
   }
 
   /* -------------------------------------------------- */
