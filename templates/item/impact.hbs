@@ -25,9 +25,11 @@
     {{formGroup systemFields.spend.fields.value value=system.spend.value}}
     {{formGroup systemFields.spend.fields.text value=system.spend.text}}
   </fieldset>
-  {{#if isPlay}}
-  {{{enrichedEffect}}}
-  {{else}}
-  {{formGroup systemFields.effect value=system.effect height="200"}}
-  {{/if}}
+  <div class="effect">
+    {{#if isPlay}}
+    {{{enrichedEffect}}}
+    {{else}}
+    {{formGroup systemFields.effect value=system.effect height="200"}}
+    {{/if}}
+  </div>
 </section>
