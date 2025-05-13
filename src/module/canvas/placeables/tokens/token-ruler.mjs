@@ -111,17 +111,19 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    * @param {DeepReadonly<TokenRulerWaypoint>} waypoint
    */
   _getSegmentStyle(waypoint) {
     const style = super._getSegmentStyle(waypoint);
-
-    this._speedValueStyle(style, waypoint);
-
+    this.#speedValueStyle(style, waypoint);
     return style;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -130,11 +132,11 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
    */
   _getGridHighlightStyle(waypoint, offset) {
     const style = super._getGridHighlightStyle(waypoint, offset);
-
-    this._speedValueStyle(style, waypoint);
-
+    this.#speedValueStyle(style, waypoint);
     return style;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Adjusts the grid or segment style based on the token's movement characteristics
@@ -142,8 +144,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
    * @param {DeepReadonly<TokenRulerWaypoint>} waypoint - The waypoint being adjusted
    * @protected
    */
-  _speedValueStyle(style, waypoint) {
-
+  #speedValueStyle(style, waypoint) {
     // color order
     const colors = [0x33BC4E, 0xF1D836, 0xE72124];
 
@@ -151,19 +152,15 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       // Teleports on creatures without a teleport speed are ignored for distance calculations
       // It's possible we should be also subtracting them for mixed paths
       if (!this.token.document.movementTypes.has("teleport")) return style;
-
       const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.teleport") ?? 0;
-
       // Teleport yes/no are evaluated per segment
       const index = waypoint.cost > value ? 2 : 0;
       style.color = colors[index];
     }
     else {
       const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
-
       // Total cost, up to 1x is green, up to 2x is yellow, up to 3x is green
       const index = Math.clamp(Math.floor((waypoint.measurement.cost - 1) / value), 0, 2);
-
       style.color = colors[index];
     }
   }
