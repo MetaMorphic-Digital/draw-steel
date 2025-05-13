@@ -482,7 +482,7 @@ preLocalize("skills.list", { key: "label" });
 
 Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   /** @type {FormSelectOption[]} */
-  get: function () {
+  get: function() {
     const config = ds.CONFIG.skills;
     return Object.entries(config.list).reduce((arr, [value, { label, group }]) => {
       arr.push({ label, group: config.groups[group].label, value });
@@ -1102,7 +1102,7 @@ preLocalize("abilities.forcedMovement", { key: "label" });
 
 Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   /** @type {FormSelectOption[]} */
-  get: function () {
+  get: function() {
     const sortedKeywords = Object.entries(ds.CONFIG.abilities.keywords).sort(([keyA, valueA], [keyB, valueB]) => {
       // When no group, sort between their keys
       if ((valueA.group === undefined) && (valueB.group === undefined)) return keyA.localeCompare(keyB);
