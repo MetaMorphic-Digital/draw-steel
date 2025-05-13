@@ -10,15 +10,10 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       text: this.duplicateTierSchema(() => ({
-        value: new StringField({ required: true }),
+        value: new StringField({ required: true, label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.text.label" }),
       })),
     });
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES];
 
   /* -------------------------------------------------- */
 

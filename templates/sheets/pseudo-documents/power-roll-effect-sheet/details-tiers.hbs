@@ -1,6 +1,9 @@
 <section class="tab {{tab.cssClass}}" data-tab="{{tab.id}}" data-group="{{tab.group}}">
   {{#with tierFields.damage}}
-  {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder label="Damage"}}
-  {{formGroup types.field value=types.src name=types.name label="Damage Types" options=@root.fields.damageTypes}}
+  {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder localize=true}}
+  {{formGroup types.field value=types.src name=types.name options=@root.fields.damageTypes localize=true}}
+  {{/with}}
+  {{#with tierFields.text}}
+  {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder localize=true}}
   {{/with}}
 </section>

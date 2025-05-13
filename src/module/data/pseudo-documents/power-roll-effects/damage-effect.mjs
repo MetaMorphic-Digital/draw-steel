@@ -9,18 +9,14 @@ const { SetField, StringField } = foundry.data.fields;
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
+    // TODO: Remove manual label assignment when localization bug is fixed
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
-        value: new FormulaField({ initial: "2 + @chr" }),
-        types: new SetField(new StringField()),
+        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+        types: new SetField(new StringField(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
       })),
     });
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES];
 
   /* -------------------------------------------------- */
 
