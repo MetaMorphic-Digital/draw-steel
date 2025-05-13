@@ -1124,6 +1124,10 @@ DRAW_STEEL.PowerRollEffect = {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
   },
+  other: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",
+    documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
+  },
 };
 preLocalize("PowerRollEffect", { key: "label" });
 

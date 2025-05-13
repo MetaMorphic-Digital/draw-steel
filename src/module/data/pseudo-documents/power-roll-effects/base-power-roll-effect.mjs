@@ -4,6 +4,9 @@ import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
 const { SchemaField, StringField } = foundry.data.fields;
 
+/**
+ * Pseudodocument used by abilities to represent the tiered results of a power roll.
+ */
 export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
   static get metadata() {
@@ -26,7 +29,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      text: new StringField({ required: true }),
+      name: new StringField({ required: true }),
     });
   }
 
@@ -63,6 +66,14 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    */
   get actor() {
     return this.item?.actor;
+  }
+
+  /* -------------------------------------------------- */
+
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    this.name ||= this.typeLabel;
   }
 
   /* -------------------------------------------------- */

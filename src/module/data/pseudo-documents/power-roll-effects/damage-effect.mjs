@@ -3,6 +3,9 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 const { SetField, StringField } = foundry.data.fields;
 
+/**
+ * For abilities that do damage
+ */
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
@@ -60,7 +63,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
-    context.fields.text.placeholder = "{{damage}}";
     for (const n of [1, 2, 3]) {
       const path = `damage.tier${n}`;
       context.fields[`tier${n}`].damage = {

@@ -1,6 +1,6 @@
 declare module "./base-power-roll-effect.mjs" {
   export default interface BasePowerRollEffect {
-    text: string;
+    name: string;
   }
 }
 
@@ -16,6 +16,20 @@ declare module "./damage-effect.mjs" {
       tier1: DamageSchema;
       tier2: DamageSchema;
       tier3: DamageSchema;
+    }
+  }
+}
+
+export type OtherSchema = {
+  value: string;
+}
+
+declare module "./other-effect.mjs" {
+  export default interface OtherPowerRollEffect {
+    text: {
+      tier1: OtherSchema;
+      tier2: OtherSchema;
+      tier3: OtherSchema;
     }
   }
 }
