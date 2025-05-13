@@ -22,7 +22,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
    */
   static async targetedConditionPrompt(statusId, effectData) {
     try {
-      let imposingActorUuid = await TargetedConditionPrompt.prompt({ context: { statusId } });
+      let imposingActorUuid = await TargetedConditionPrompt.create({ context: { statusId } });
 
       if (foundry.utils.parseUuid(imposingActorUuid)) {
         effectData.changes = this.changes ?? [];
