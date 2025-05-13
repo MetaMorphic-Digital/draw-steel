@@ -1,4 +1,7 @@
 {
+  "DOCUMENT": {
+    "PowerRollEffect": "Power Roll Effect"
+  },
   "DRAW_STEEL": {
     "Sheet": {
       "Labels": {
@@ -9,6 +12,7 @@
         "CombatantGroup": "Draw Steel Combatant Group Config"
       },
       "Add": "+ Add {itemName}",
+      "NoDocument": "No {documentName}",
       "Play": "Play",
       "Edit": "Edit",
       "Resources": "Resources",
@@ -16,7 +20,8 @@
       "TakeRespite": "Take Respite",
       "LevelUp": "Level Up Available",
       "SpendRecovery": "Spend a recovery to regain stamina.",
-      "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens"
+      "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens",
+      "GainSurges": "Spend a hero token to gain two surges."
     },
     "Source": {
       "FIELDS": {
@@ -391,6 +396,7 @@
         "description": "Description",
         "details": "Details",
         "advancement": "Advancement",
+        "impact": "Impact",
         "effects": "Effects",
         "tier1": "Tier 1",
         "tier2": "Tier 2",
@@ -418,16 +424,8 @@
       },
       "Ability": {
         "FIELDS": {
-          "description": {
-            "flavor": {
-              "label": "Story Text"
-            },
-            "value": {
-              "label": "Description"
-            },
-            "gm": {
-              "label": "GM Notes"
-            }
+          "story": {
+            "label": "Story Text"
           },
           "keywords": {
             "label": "Keywords"
@@ -462,156 +460,17 @@
               "label": "Value"
             }
           },
-          "powerRoll": {
+          "power": {
             "label": "Power Roll",
-            "enabled": {
-              "label": "Has Power Roll"
-            },
-            "formula": {
-              "label": "Roll Bonus"
-            },
-            "characteristics": {
-              "label": "Characteristics"
-            },
-            "tier": {
-              "type": {
-                "label" : "Effect Type"
+            "roll": {
+              "flat": {
+                "label": "Flat"
               },
-             "potency": {
-                "label": "Potency",
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "characteristic": {
-                  "label": "Potency Characteristic"
-                },
-                "value": {
-                  "label": "Potency Value"
-                }
+              "formula": {
+                "label": "Roll Bonus"
               },
-              "display": {
-                "label": "Display Text",
-                "hint": "{{potency}} will be replaced with the derived potency info (i.e M<2). {{damage}} will be replaced with the derived damage number based on kits and other effects."
-              },
-              "damage": {
-                "label": "Damage",
-                "types": {
-                  "label": "Damage Types"
-                },
-                "value": {
-                  "label": "Damage Formula"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects",
-                "always": {
-                  "label": "Applied Effects"
-                },
-                "success": {
-                  "label": "Potency Success Effects",
-                  "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
-                },
-                "failure": {
-                  "label": "Potency Failure Effects",
-                  "hint": "Effects that apply when the target's characteristic is less than the potency value."
-                }
-              },
-              "forced": {
-                "label": "Forced Movement",
-                "types": {
-                  "label": "Types"
-                },
-                "value": {
-                  "label": "Distance"
-                },
-                "vertical": {
-                  "label": "Vertical Movement"
-                }
-              },
-              "other": {
-                "label": "Other"
-              }
-            },
-            "tier1": {
-              "label": "Tier 1 Result",
-              "damage": {
-                "label": "Damage",
-                "type": {
-                  "label": "Effect Type"
-                },
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "subtype": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
-              }
-            },
-            "tier2": {
-              "label": "Tier 2 Result",
-              "damage": {
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "type": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
-              }
-            },
-            "tier3": {
-              "label": "Tier 3 Result",
-              "damage": {
-                "value": {
-                  "label": "Damage Formula"
-                },
-                "type": {
-                  "label": "Damage Type"
-                }
-              },
-              "ae": {
-                "label": "Applied Effects"
-              },
-              "potency": {
-                "enabled": {
-                  "label": "Has Potency"
-                },
-                "value": {
-                  "label": "Potency Value"
-                },
-                "label": "Potency"
-              },
-              "description": {
-                "label": "Description"
+              "characteristics": {
+                "label": "Characteristics"
               }
             }
           },
@@ -1064,6 +923,11 @@
         "Craft": {
           "ItemName": "Craft {name}",
           "CompletedNotification": "{actor} successfully crafted {amount} {item}(s)."
+        },
+        "SpendCareerPoints": {
+          "Title": "Spend Career Points",
+          "Label": "How many points do you want to spend?",
+          "Success": "{actor} has spent {points} project points from their career on {project}."
         }
       }
     },
@@ -1155,6 +1019,38 @@
       "Psychic": "Psychic",
       "Sonic": "Sonic"
     },
+    "PSEUDO": {
+      "POWER_ROLL_EFFECT": {
+        "FIELDS": {
+          "damage": {
+            "label": "Damage"
+          },
+          "types": {
+            "label": "Damage Types"
+          }
+        },
+        "TYPES": {
+          "damage": "Damage"
+        },
+        "DAMAGE": {
+          "formatted": "{value} {damageTypes} damage",
+          "formattedTypeless": "{value} damage"
+        }
+      },
+      "SHEET": {
+        "baseConfiguration": "Base Configuration",
+        "TABS": {
+          "details": "Details",
+          "identity": "Identity",
+          "tier1": "Tier 1",
+          "tier2": "Tier 2",
+          "tier3": "Tier 3"
+        }
+      },
+      "Notifications": {
+        "DeletedInfo": "Deleted {pseudoName} {id} with type {type} from {name}"
+      }
+    },
     "Roll": {
       "Prompt": "Roll {prompt}",
       "Power": {
@@ -1189,6 +1085,8 @@
           "Bane": "Bane",
           "Banes": "Banes",
           "Bonuses": "Bonuses/Penalties",
+          "Bonus": "Bonus",
+          "Penalty": "Penalty",
           "Label": "{number} {mod}"
         },
         "BaseRoll": "Base Power Roll",

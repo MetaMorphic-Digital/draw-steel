@@ -37,8 +37,7 @@ declare module "@client/documents/_module.mjs" {
   interface Item < Model extends ItemModel = ItemModel > extends ItemData {
     type: Model["metadata"]["type"];
     system: InstanceType < Model > ;
-    effects: Collection < string,
-    DrawSteelActiveEffect > ;
+    effects: Collection < string, DrawSteelActiveEffect > ;
   }
 
   interface ActiveEffect extends ActiveEffectData {

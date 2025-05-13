@@ -6,12 +6,15 @@ import AdvancementModel from "./advancement.mjs";
  */
 export default class CareerModel extends AdvancementModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "career",
-    invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/career.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "career",
+      invalidActorTypes: ["npc"],
+      detailsPartial: [systemPath("templates/item/partials/career.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

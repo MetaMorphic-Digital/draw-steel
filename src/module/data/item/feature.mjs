@@ -6,11 +6,14 @@ import BaseItemModel from "./base.mjs";
  */
 export default class FeatureModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "feature",
-    detailsPartial: [systemPath("templates/item/partials/feature.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "feature",
+      detailsPartial: [systemPath("templates/item/partials/feature.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

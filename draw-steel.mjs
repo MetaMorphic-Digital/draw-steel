@@ -4,6 +4,7 @@ import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
+import * as utils from "./src/module/utils/_module.mjs";
 import { DRAW_STEEL } from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
@@ -14,6 +15,7 @@ globalThis.ds = {
   helpers,
   rolls,
   data,
+  utils,
   CONST: DS_CONST,
   CONFIG: DRAW_STEEL,
 };
@@ -66,8 +68,7 @@ Hooks.once("init", function () {
   const { Actors, Items } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
-  // Register sheet application classes
-  Actors.unregisterSheet("core", foundry.appv1.sheets.ActorSheet);
+  // Register sheet application classes  
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
@@ -77,8 +78,7 @@ Hooks.once("init", function () {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.NPC",
-  });
-  Items.unregisterSheet("core", foundry.appv1.sheets.ItemSheet);
+  });  
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item",
@@ -107,7 +107,7 @@ Hooks.once("init", function () {
  * Perform one-time pre-localization and sorting of some configuration objects
  */
 Hooks.once("i18nInit", () => {
-  helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+  helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
 
   // These fields are not auto-localized due to having a different location in en.json
   for (const model of Object.values(CONFIG.Actor.dataModels)) {
@@ -137,6 +137,9 @@ Hooks.once("i18nInit", () => {
       }
     }
   }
+
+  // Localize pseudo-documents: THIS DOES NOT WORK WAARGGGG
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.DamagePowerRollEffect);
 });
 
 /* -------------------------------------------- */

@@ -5,11 +5,14 @@ import AdvancementModel from "./advancement.mjs";
  */
 export default class CultureModel extends AdvancementModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "culture",
-    invalidActorTypes: ["npc"],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "culture",
+      invalidActorTypes: ["npc"],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

@@ -1,42 +1,38 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
+import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
 
-const { api, sheets } = foundry.applications;
+const { sheets } = foundry.applications;
 
 /**
  * AppV2-based sheet for all actor classes
  */
-export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
-  sheets.ActorSheetV2,
-) {
+export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.ActorSheetV2) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel", "actor"],
+    classes: ["actor"],
     position: {
       width: 700,
       height: 600,
     },
-    window: {
-      resizable: true,
-    },
     actions: {
-      toggleMode: this._toggleMode,
-      viewDoc: this._viewDoc,
-      createDoc: this._createDoc,
-      deleteDoc: this._deleteDoc,
-      toggleEffect: this._toggleEffect,
-      roll: this._onRoll,
-      useAbility: this._useAbility,
-      toggleItemEmbed: this._toggleItemEmbed,
-    },
-    form: {
-      submitOnChange: true,
+      toggleMode: this.#toggleMode,
+      viewDoc: this.#viewDoc,
+      createDoc: this.#createDoc,
+      deleteDoc: this.#deleteDoc,
+      toggleEffect: this.#toggleEffect,
+      roll: this.#onRoll,
+      useAbility: this.#useAbility,
+      toggleItemEmbed: this.#toggleItemEmbed,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static TABS = {
@@ -55,20 +51,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     },
   };
 
-  /**
-   * Available sheet modes.
-   * @enum {number}
-   */
-  static MODES = Object.freeze({
-    PLAY: 1,
-    EDIT: 2,
-  });
+  /* -------------------------------------------------- */
 
-  /**
-   * The mode the sheet is currently in.
-   * @type {DrawSteelActorSheet.MODES}
-   */
-  #mode = DrawSteelActorSheet.MODES.PLAY;
+  /** @inheritdoc */
+  _mode = this.constructor.MODES.PLAY;
+
+  /* -------------------------------------------------- */
 
   /**
    * A set of the currently expanded item ids
@@ -76,21 +64,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    */
   #expanded = new Set();
 
-  /**
-   * Is this sheet in Play Mode?
-   * @returns {boolean}
-   */
-  get isPlayMode() {
-    return this.#mode === DrawSteelActorSheet.MODES.PLAY;
-  }
-
-  /**
-   * Is this sheet in Edit Mode?
-   * @returns {boolean}
-   */
-  get isEditMode() {
-    return this.#mode === DrawSteelActorSheet.MODES.EDIT;
-  }
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _configureRenderParts(options) {
@@ -104,37 +78,18 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return parts;
   }
 
-  /** @inheritdoc */
-  _configureRenderOptions(options) {
-    super._configureRenderOptions(options);
-    if (options.mode && this.isEditable) this.#mode = options.mode;
-  }
-
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareContext(options) {
-    const context = Object.assign(await super._prepareContext(options), {
-      isPlay: this.isPlayMode,
-      // Validates both permissions and compendium status
-      owner: this.document.isOwner,
-      limited: this.document.limited,
-      gm: game.user.isGM,
-      // Add the actor document.
-      actor: this.actor,
-      // Add the actor's data to context.data for easier access, as well as flags.
-      system: this.actor.system,
-      systemSource: this.actor.system._source,
-      flags: this.actor.flags,
-      // Adding a pointer to ds.CONFIG
-      config: ds.CONFIG,
-      // Necessary for formInput and formFields helpers
-      systemFields: this.document.system.schema.fields,
+    const context = await super._prepareContext(options);
+    Object.assign(context, {
       datasets: this._getDatasets(),
     });
-
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _prepareTabs(group) {
@@ -156,6 +111,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     return tabs;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
@@ -175,22 +132,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
         break;
       case "biography":
         context.languages = this._getLanguages();
-        context.enrichedBiography = await CONFIG.ux.TextEditor.enrichHTML(
-          this.actor.system.biography.value,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.actor.getRollData(),
-            relativeTo: this.actor,
-          },
-        );
-        context.enrichedGMNotes = await CONFIG.ux.TextEditor.enrichHTML(
-          this.actor.system.biography.gm,
-          {
-            secrets: this.document.isOwner,
-            rollData: this.actor.getRollData(),
-            relativeTo: this.actor,
-          },
-        );
+        context.enrichedBiography = await enrichHTML(this.actor.system.biography.value, { relativeTo: this.actor });
+        context.enrichedGMNotes = await enrichHTML(this.actor.system.biography.gm, { relativeTo: this.actor });
         break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();
@@ -199,6 +142,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     if (partId in context.tabs) context.tab = context.tabs[partId];
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @typedef {import("@common/data/fields.mjs").NumberField} NumberField
@@ -209,15 +154,19 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @returns {Record<string, {field: NumberField, value: number}>}
    */
   _getCharacteristics() {
-    const data = this.isPlayMode ? this.actor : this.actor._source;
+    const isPlay = this.isPlayMode;
+    const data = isPlay ? this.actor : this.actor._source;
     return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
+      const value = foundry.utils.getProperty(data, `system.characteristics.${chc}.value`);
       obj[chc] = {
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: foundry.utils.getProperty(data, `system.characteristics.${chc}.value`),
+        value: isPlay ? (value ?? 0) : (value || null),
       };
       return obj;
     }, {});
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions
@@ -242,6 +191,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
    * @returns {{list: string, options: FormSelectOption[]}}
@@ -255,6 +206,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
       options: Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label })),
     };
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Constructs an object with the formatted immunities and weaknesses with a list of damage labels
@@ -280,6 +233,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Helper to compose datasets available in the hbs
    * @returns {Record<string, unknown>}
@@ -291,10 +246,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Generate the context data shared between item types
    * @param {DrawSteelItem} item
-   * @returns {ActorSheetItemContext}
+   * @returns {Promise<ActorSheetItemContext>}
    */
   async _prepareItemContext(item) {
     const context = {
@@ -307,6 +264,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the context for features
@@ -322,6 +281,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the context for ability categories and individual abilities
@@ -366,6 +327,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @typedef ActiveEffectCategory
@@ -425,8 +388,14 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class]", { hookName: "getItemButtonContextOptions", parentClassHooks: false, fixed: true });
+    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
+      hookName: "getItemButtonContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+    });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Get context menu entries for item buttons.
@@ -483,6 +452,29 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
             return;
           }
           await this.actor.update({ "system.hero.preferredKit": item.id });
+          await this.render();
+        },
+      },
+      // Project specific options
+      {
+        name: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title",
+        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (item.type !== "project") return false;
+
+          const careerPoints = foundry.utils.getProperty(this.actor, "system.career.system.projectPoints") ?? 0;
+          const pointsToCompletion = Math.max(0, item.system.goal - item.system.points);
+
+          return careerPoints && pointsToCompletion;
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.system.spendCareerPoints();
           await this.render();
         },
       },
@@ -544,6 +536,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     ];
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Actions performed after any render of the Application.
    * @param {ApplicationRenderContext} context      Prepared context data
@@ -567,14 +561,16 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
-  static async _toggleMode(event, target) {
+  static async #toggleMode(event, target) {
     if (!this.isEditable) {
       console.error("You can't switch to Edit mode if the sheet is uneditable");
       return;
     }
-    this.#mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
+    this._mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
     this.render();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode
@@ -584,14 +580,16 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _viewDoc(event, target) {
+  static async #viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     if (!doc) {
       console.error("Could not find document");
       return;
     }
-    await doc.sheet.render({ force: true, mode: this.#mode });
+    await doc.sheet.render({ force: true, mode: this._mode });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handles item deletion
@@ -601,10 +599,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _deleteDoc(event, target) {
+  static async #deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
     await doc.deleteDialog();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
@@ -614,7 +614,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _createDoc(event, target) {
+  static async #createDoc(event, target) {
     const docCls = getDocumentClass(target.dataset.documentClass);
     const docData = {
       name: docCls.defaultName({ type: target.dataset.type, parent: this.actor }),
@@ -630,6 +630,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determines effect parent to pass to helper
    *
@@ -638,10 +640,12 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async _toggleEffect(event, target) {
+  static async #toggleEffect(event, target) {
     const effect = this._getEmbeddedDocument(target);
     await effect.update({ disabled: !effect.disabled });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle clickable rolls.
@@ -651,7 +655,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _onRoll(event, target) {
+  static async #onRoll(event, target) {
     event.preventDefault();
     const dataset = target.dataset;
 
@@ -662,6 +666,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Handle clickable rolls.
    *
@@ -670,7 +676,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _useAbility(event, target) {
+  static async #useAbility(event, target) {
     const item = this._getEmbeddedDocument(target);
     if (item?.type !== "ability") {
       console.error("This is not an ability!", item);
@@ -678,6 +684,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     }
     await item.system.use({ event });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
@@ -687,7 +695,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @protected
    */
-  static async _toggleItemEmbed(event, target) {
+  static async #toggleItemEmbed(event, target) {
     const { itemId } = target.closest(".item").dataset;
 
     if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
@@ -697,7 +705,9 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.render({ parts: [part] });
   }
 
-  /** Helper Functions */
+  /* -------------------------------------------------- */
+  /*   Helper Functions                                 */
+  /* -------------------------------------------------- */
 
   /**
    * Fetches the embedded document representing the containing HTML element
@@ -735,6 +745,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     if (effect.target === this.actor) await this._onSortActiveEffect(event, effect);
     else await super._onDropActiveEffect(event, effect);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
@@ -797,6 +809,8 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
     this.actor.updateEmbeddedDocuments("ActiveEffect", directUpdates);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onDropFolder(event, data) {
     if (!this.actor.isOwner) return [];
@@ -820,7 +834,7 @@ export default class DrawSteelActorSheet extends api.HandlebarsApplicationMixin(
   }
 
   /* -------------------------------------------------- */
-  /*   Actor Override Handling                         */
+  /*   Actor Override Handling                          */
   /* -------------------------------------------------- */
 
   /**

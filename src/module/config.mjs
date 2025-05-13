@@ -1,4 +1,5 @@
-import { preLocalize } from "./helpers/utils.mjs";
+import { pseudoDocuments } from "./data/_module.mjs";
+import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
@@ -1113,6 +1114,18 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
     }, []);
   },
 });
+
+/**
+ * Valid types for the PowerRollEffect pseudo-document
+ * @type {Record<string, { label: string; documentClass: pseudoDocuments.powerRollEffects.BasePowerRollEffect }>}
+ */
+DRAW_STEEL.PowerRollEffect = {
+  damage: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
+    documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
+  },
+};
+preLocalize("PowerRollEffect", { key: "label" });
 
 /**
  * Configuration details for Culture items

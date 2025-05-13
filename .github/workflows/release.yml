@@ -116,7 +116,7 @@ jobs:
         result-encoding: string
         script: |
           const manifest = {
-            includes: ["assets/", "templates/", "CHANGELOG.md", "LICENSE.md"]
+            includes: ["assets/", "templates/", "packs/" "CHANGELOG.md", "LICENSE.md"]
           };
           if ( process.env.ESMODULES ) manifest.esmodules = JSON.parse(process.env.ESMODULES);
           if ( process.env.LANGUAGES ) manifest.languages = JSON.parse(process.env.LANGUAGES);
@@ -128,7 +128,6 @@ jobs:
             ...(manifest.esmodules?.map(s => `${s}.map`) ?? []),
             ...(manifest.styles?.map(s => s.src) ?? []),
             ...(manifest.languages?.map(l => l.path) ?? []),
-            ...(manifest.packs?.map(p => p.path) ?? []),
             ...(manifest.includes ?? [])
           ];
           return includes.join(" ");

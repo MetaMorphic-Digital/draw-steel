@@ -1,4 +1,6 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import SourceModel from "../models/source.mjs";
+import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
 /** @import DrawSteelActor from "../../documents/actor.mjs" */
 
@@ -6,22 +8,28 @@ const fields = foundry.data.fields;
 
 /**
  * A base item model that provides basic description and source metadata for an item instance
+ * @extends foundry.abstract.TypeDataModel
  */
-export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**
    * Key information about this item subtype
    * @type {import("./_types").ItemMetaData}
    */
-  static metadata = Object.freeze({
-    type: "base",
-    invalidActorTypes: [],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "base",
+      invalidActorTypes: [],
+    });
+  }
 
   /** @inheritdoc */
   static defineSchema() {
     const schema = {};
 
-    schema.description = new fields.SchemaField(this.itemDescription());
+    schema.description = new fields.SchemaField({
+      value: new fields.HTMLField(),
+      gm: new fields.HTMLField(),
+    });
 
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
@@ -31,18 +39,6 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
     schema._dsid = new fields.StringField({ blank: false });
 
     return schema;
-  }
-
-  /**
-   * Helper function to fill in the `description` property
-   * @protected
-   * @returns {Record<string, fields["DataField"]}
-   */
-  static itemDescription() {
-    return {
-      value: new foundry.data.fields.HTMLField(),
-      gm: new foundry.data.fields.HTMLField(),
-    };
   }
 
   /**
@@ -75,9 +71,7 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
 
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
-
-    options.rollData ??= this.parent.getRollData();
-    const enriched = await CONFIG.ux.TextEditor.enrichHTML(this.description.value, options);
+    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);

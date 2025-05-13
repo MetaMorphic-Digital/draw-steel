@@ -8,12 +8,15 @@ import AdvancementModel from "./advancement.mjs";
  */
 export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "class",
-    invalidActorTypes: ["npc"],
-    detailsPartial: [systemPath("templates/item/partials/class.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "class",
+      invalidActorTypes: ["npc"],
+      detailsPartial: [systemPath("templates/item/partials/class.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

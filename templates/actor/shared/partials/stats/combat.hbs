@@ -16,11 +16,11 @@
   <legend>{{systemFields.combat.label}}</legend>
   <div class="size flexrow">
     <label class="size">{{systemFields.combat.fields.size.label}}</label>
-    {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=actor.uuid dataset=datasets.isSource}}
+    {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=document.uuid dataset=datasets.isSource}}
     {{#if (eq system.combat.size.value 1)}}
-    {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=actor.uuid dataset=datasets.isSource}}
+    {{formInput systemFields.combat.fields.size.fields.letter value=systemSource.combat.size.letter rootId=document.uuid dataset=datasets.isSource}}
     {{/if}}
   </div>
-  {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=actor.uuid}}
+  {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=document.uuid}}
 </fieldset>
 {{/if}}

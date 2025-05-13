@@ -10,3 +10,5 @@ export { default as DrawSteelCombatant } from "./combatant.mjs";
 export { default as DrawSteelItem } from "./item.mjs";
 export { default as DrawSteelTokenDocument } from "./token.mjs";
 export { default as DrawSteelUser } from "./user.mjs";
+
+export { default as BaseDocumentMixin } from "./base-document-mixin.mjs";

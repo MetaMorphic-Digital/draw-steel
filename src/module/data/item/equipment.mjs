@@ -10,11 +10,14 @@ import BaseItemModel from "./base.mjs";
  */
 export default class EquipmentModel extends BaseItemModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "equipment",
-    detailsPartial: [systemPath("templates/item/partials/equipment.hbs")],
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "equipment",
+      detailsPartial: [systemPath("templates/item/partials/equipment.hbs")],
+    });
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [

@@ -1,5 +1,8 @@
 .draw-steel.item {
-  min-width: 440px;
+
+  &:not(.minimizing, .maximizing, .minimized) {
+    min-width: 440px;
+  }
 
   .sheet-header {
     gap: 10px;
@@ -56,7 +59,7 @@
     }
   }
 
-  [data-tab="details"] {
+  section[data-tab="details"] {
     &[data-subtype="kit"] {
       .number-bonus {
         label {
@@ -93,6 +96,22 @@
         flex-wrap: nowrap;
         gap: 0.5rem;
       }
+    }
+  }
+
+  section[data-tab="advancements"] {
+    padding-top: 0.5rem;
+  }
+
+  section[data-tab="impact"] {
+    .power-roll-data {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .power-roll-list {
+      display: flex;
+      gap: 0.5rem;
     }
   }
 }
