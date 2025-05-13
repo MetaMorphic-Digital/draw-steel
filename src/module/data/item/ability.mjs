@@ -3,6 +3,7 @@ import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../
 import { DamageRoll, DSRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { FormInputConfig } from "@common/data/_types.mjs" */
@@ -33,6 +34,8 @@ export default class AbilityModel extends BaseItemModel {
     "DRAW_STEEL.Item.base",
     "DRAW_STEEL.Item.Ability",
   ];
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -119,9 +122,10 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
-   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
    * @protected
    */
   _prepareCharacterData() {
@@ -162,22 +166,24 @@ export default class AbilityModel extends BaseItemModel {
         const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
 
         if (distance) {
-          // TODO
-          // // All three tier.damage.value fields should be identical, so their apply change should be identical
-          // const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "damage", "value"]);
-          // for (const tier of PowerRoll.TIER_NAMES) {
-          //   const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
-          //   if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;
-
-          //   firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
-          //     value: bonuses[distance].damage[tier],
-          //     mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          //   });
-          // }
+          // All three tier.damage.value fields should be identical, so their apply change should be identical
+          const formulaField = DamagePowerRollEffect.schema.getField(["damage", "tier1", "value"]);
+          const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
+          if (!firstDamageEffect) return;
+          for (const tier of PowerRoll.TIER_NAMES) {
+            const bonus = foundry.utils.getProperty(bonuses, `${distance}.damage.${tier}`);
+            if (!bonus) continue;
+            firstDamageEffect.damage[tier].value = formulaField.applyChange(firstDamageEffect.damage[tier].value, this, {
+              value: bonus,
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            });
+          }
         }
       }
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Convert a tier effects potency data to an embed string (i.e. M < 2)
@@ -190,6 +196,8 @@ export default class AbilityModel extends BaseItemModel {
       value: this.actor ? new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total : potencyData.value,
     });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -222,6 +230,8 @@ export default class AbilityModel extends BaseItemModel {
     return embed;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The formatted text strings for keywords, distance, and target for use in the ability embed and actor sheet.
    * @returns {Record<"keywords" | "distance" | "target", string>}
@@ -241,6 +251,8 @@ export default class AbilityModel extends BaseItemModel {
 
     return labels;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {
@@ -271,28 +283,28 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
+    const powerRollEffectFormatter = game.i18n.getListFormatter({ type: "unit" });
+
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.contents.map(effect => effect.toText(tier)) },
+      { text: powerRollEffectFormatter.format(this.power.effects.contents.map(effect => effect.toText(tier))) },
     ]));
     context.powerRolls = this.power.effects.size > 0;
-    context.powerRollBonus = ds.CONFIG.characteristics[this.power.characteristic.key]?.label;
 
-    // TODO: reconfigure.
-    // context.powerRollBonus = this.powerRoll.formula;
+    context.powerRollBonus = this.power.roll.formula;
 
-    // if (this.powerRoll.formula.includes("@chr")) {
-    //   const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
-    //   const characteristicList = this.powerRoll.characteristics.map(characteristic => {
-    //     const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
-    //     return (characteristic === this.powerRoll.characteristic) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
-    //   });
+    if (this.power.roll.formula.includes("@chr")) {
+      const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+      const characteristicList = this.power.roll.characteristics.map(characteristic => {
+        const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
+        return (characteristic === this.power.characteristic.key) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
+      });
 
-    //   context.powerRollBonus = this.powerRoll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
-    // }
-
-    // context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
+      context.powerRollBonus = this.power.roll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
+    }
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _attachPartListeners(htmlElement, options) {
@@ -311,15 +323,18 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
     if (this.actor) {
-      // TODO: this is a set, should be a value?
-      rollData.chr = this.actor.system.characteristics[this.power.roll.characteristic]?.value;
+      rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
@@ -486,6 +501,8 @@ export default class AbilityModel extends BaseItemModel {
     else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * An alias of use.
    * @see {AbilityModel#use}
@@ -493,6 +510,8 @@ export default class AbilityModel extends BaseItemModel {
   async roll(options = {}) {
     this.use(options);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
@@ -505,6 +524,8 @@ export default class AbilityModel extends BaseItemModel {
     // Restrained conditions check
     if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
@@ -532,6 +553,8 @@ export default class AbilityModel extends BaseItemModel {
 
     return modifiers;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Determine if an Active Effect or a status is restricting this ability.

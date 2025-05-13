@@ -1,9 +1,7 @@
 import FormulaField from "../../fields/formula-field.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
-const {
-  SetField, StringField,
-} = foundry.data.fields;
+const { SetField, StringField } = foundry.data.fields;
 
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
@@ -35,7 +33,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     super.prepareDerivedData();
 
     for (const n of [1, 2, 3]) {
-      this.damage[`tier${n}`].value ??= this.#defaultDamageValue(n);
+      this.damage[`tier${n}`].value ||= this.#defaultDamageValue(n);
     }
   }
 

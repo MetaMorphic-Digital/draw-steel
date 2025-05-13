@@ -208,10 +208,10 @@ export default class ProjectModel extends BaseItemModel {
     if (!this.actor.system.career) return console.error("The project owner has no career.");
 
     const careerPoints = this.actor.system.career.system.projectPoints ?? 0;
-    if (!careerPoints) return console.log("No career points available.");
+    if (!careerPoints) return console.warn("No career points available.");
 
     const pointsToCompletion = Math.max(0, this.goal - this.points);
-    if (!pointsToCompletion) return console.log("Project already completed");
+    if (!pointsToCompletion) return console.warn("Project already completed");
 
     const input = foundry.applications.elements.HTMLRangePickerElement.create({
       min: 0,

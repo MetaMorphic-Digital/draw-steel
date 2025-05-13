@@ -85,16 +85,11 @@
     }
 
     &[data-subtype="ability"] {
-      .power-roll-effect {
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 5px;
-        background-color: rgba(255, 255, 255, 0.02);
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        gap: 0.5rem;
+      dd.effect {
+        :first-child {
+          margin-top: 0;
+          padding-top: 0;
+        }
       }
     }
   }

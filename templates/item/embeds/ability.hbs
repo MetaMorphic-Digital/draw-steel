@@ -35,18 +35,22 @@
   </p>
   <dl class="power-roll-display">
     <dt class="tier1">{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}</dt>
-    <dd class="tier1">{{{powerRollEffects.tier1.text}}}</dd>
+    <dd class="tier1">{{powerRollEffects.tier1.text}}</dd>
 
     <dt class="tier2">{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}</dt>
-    <dd class="tier2">{{{powerRollEffects.tier2.text}}}</dd>
+    <dd class="tier2">{{powerRollEffects.tier2.text}}</dd>
 
     <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}</dt>
-    <dd class="tier3">{{{powerRollEffects.tier3.text}}}</dd>
+    <dd class="tier3">{{powerRollEffects.tier3.text}}</dd>
 
+  </dl>
+</section>
+{{/if}}
+<section class="">
+  <dl>
     {{#if system.effect}}
     <dt class="effect">{{systemFields.effect.label}}</dt>
     <dd class="effect">{{{system.effect}}}</dd>
     {{/if}}
   </dl>
 </section>
-{{/if}}

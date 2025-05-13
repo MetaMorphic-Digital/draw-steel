@@ -1,8 +1,7 @@
 /** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
+/** @import { PseudoDocumentMetadata } from "../_types" */
 
 const { DocumentIdField } = foundry.data.fields;
-
-/** @import { PseudoDocumentMetadata } from "../_types" */
 
 export default class PseudoDocument extends foundry.abstract.DataModel {
   /**
