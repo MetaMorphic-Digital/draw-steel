@@ -8,7 +8,7 @@
 
   </fieldset>
 
-  <fieldset class="power-roll-list">
+  <fieldset>
     <legend>{{systemFields.power.fields.effects.label}}</legend>
     {{#unless isPlay}}
     <button type="button" data-action="createPowerRollEffect">
@@ -17,14 +17,13 @@
     </button>
     {{/unless}}
     {{!-- Using document.system to ensure initialized values in edit mode --}}
-    {{#each document.system.power.effects as |effect|}}
-    <div class="form-group power-roll" data-id="{{effect.id}}">
-      <label>{{localize effect.typeLabel}}</label>
-      <div class="form-fields">
-        <button type="button" class="icon fa-solid fa-fw fa-cog" data-action="editPowerRollEffect"></button>
-      </div>
+    <div class="power-roll-list">
+      {{#each document.system.power.effects as |effect|}}
+      <button type="button" class="power-roll" data-action="editPowerRollEffect" data-id="{{effect.id}}">
+        {{localize effect.typeLabel}}
+      </button>
+      {{/each}}
     </div>
-    {{/each}}
   </fieldset>
   <fieldset>
     <legend>{{systemFields.spend.label}}</legend>

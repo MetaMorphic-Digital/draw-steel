@@ -107,8 +107,11 @@
     .power-roll-data {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
     }
-    .power-roll-list {}
+    .power-roll-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.5rem;
+    }
   }
 }
