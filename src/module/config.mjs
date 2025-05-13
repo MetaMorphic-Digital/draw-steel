@@ -99,30 +99,39 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 DRAW_STEEL.damageTypes = {
   acid: {
     label: "DRAW_STEEL.DamageTypes.Acid",
+    color: "#14ff14",
   },
   cold: {
     label: "DRAW_STEEL.DamageTypes.Cold",
+    color: "#14ffd0",
   },
   corruption: {
     label: "DRAW_STEEL.DamageTypes.Corruption",
+    color: "#7b00a8",
   },
   fire: {
     label: "DRAW_STEEL.DamageTypes.Fire",
+    color: "#ff870f",
   },
   holy: {
     label: "DRAW_STEEL.DamageTypes.Holy",
+    color: "#ffed61",
   },
   lightning: {
     label: "DRAW_STEEL.DamageTypes.Lightning",
+    color: "yellow",
   },
   poison: {
     label: "DRAW_STEEL.DamageTypes.Poison",
+    color: "#008500",
   },
   psychic: {
     label: "DRAW_STEEL.DamageTypes.Psychic",
+    color: "#d40cc3",
   },
   sonic: {
     label: "DRAW_STEEL.DamageTypes.Sonic",
+    color: "#999",
   },
 };
 preLocalize("damageTypes", { key: "label" });
@@ -473,7 +482,7 @@ preLocalize("skills.list", { key: "label" });
 
 Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   /** @type {FormSelectOption[]} */
-  get: function() {
+  get: function () {
     const config = ds.CONFIG.skills;
     return Object.entries(config.list).reduce((arr, [value, { label, group }]) => {
       arr.push({ label, group: config.groups[group].label, value });
@@ -1093,7 +1102,7 @@ preLocalize("abilities.forcedMovement", { key: "label" });
 
 Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   /** @type {FormSelectOption[]} */
-  get: function() {
+  get: function () {
     const sortedKeywords = Object.entries(ds.CONFIG.abilities.keywords).sort(([keyA, valueA], [keyB, valueB]) => {
       // When no group, sort between their keys
       if ((valueA.group === undefined) && (valueB.group === undefined)) return keyA.localeCompare(keyB);

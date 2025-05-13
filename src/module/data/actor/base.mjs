@@ -3,6 +3,7 @@ import { PowerRoll } from "../../rolls/power.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
+import { showFloatyText } from "../../helpers/tokenUtils.mjs";
 
 /** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -233,7 +234,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {DrawSteelCombatant} combatant The combatant representation
    * @abstract
    */
-  async _onStartTurn(combatant) {}
+  async _onStartTurn(combatant) { }
 
   /**
    * Prompt the user for what types
@@ -315,8 +316,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
+    const damageColor = options.type ? ds.CONFIG.damageTypes[options.type].color : null;
+
     if (damage === 0) {
       ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
+      showFloatyText(this.parent, 0, damageColor);
       return this.parent;
     }
 
@@ -339,6 +343,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
+
+    showFloatyText(this.parent, damage, damageColor);
 
     return this.parent.update({ "system.stamina": staminaUpdates });
   }
