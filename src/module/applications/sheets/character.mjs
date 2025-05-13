@@ -170,7 +170,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     /** @type {HeroTokenModel} */
     const heroTokens = game.actors.heroTokens;
 
-    const spend = await foundry.applications.api.DialogV2.confirm({
+    const spend = await ds.applications.api.DSDialog.confirm({
       window: {
         title: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
         icon: "fa-solid fa-bolt-lightning",

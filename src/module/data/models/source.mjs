@@ -97,7 +97,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
     }
 
     /** @type {object} */
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       content: formGroups.map(e => e.outerHTML).join(" "),
       window: {
         title: "DRAW_STEEL.Source.UpdateTitle",
@@ -107,7 +107,6 @@ export default class SourceModel extends foundry.abstract.DataModel {
         label: "Save",
         icon: "fa-solid fa-floppy-disk",
       },
-      rejectClose: false,
     });
 
     if (!fd) return;

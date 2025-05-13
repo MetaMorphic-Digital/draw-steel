@@ -389,13 +389,12 @@ export default class AbilityModel extends BaseItemModel {
 
       content += spendGroup.outerHTML;
 
-      configuration = await foundry.applications.api.DialogV2.input({
+      configuration = await ds.applications.api.DSDialog.input({
         content,
         window: {
           title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear",
         },
-        rejectClose: false,
       });
 
       if (!configuration) return null;

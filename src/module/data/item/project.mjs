@@ -227,7 +227,7 @@ export default class ProjectModel extends BaseItemModel {
       localize: true,
     });
 
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       content: formGroup.outerHTML,
       window: { title: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title" },
     });

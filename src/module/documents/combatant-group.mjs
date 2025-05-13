@@ -80,7 +80,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     });
 
     // Render the confirmation dialog window
-    return foundry.applications.api.DialogV2.prompt(foundry.utils.mergeObject({
+    return ds.applications.api.DSDialog.prompt(foundry.utils.mergeObject({
       content: html,
       window: { title },
       position: { width: 360 },
