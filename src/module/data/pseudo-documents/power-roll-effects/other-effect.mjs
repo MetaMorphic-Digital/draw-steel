@@ -9,6 +9,7 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
+      // TODO: Remove manual label assignment when localization bug is fixed
       text: this.duplicateTierSchema(() => ({
         value: new StringField({ required: true, label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.text.label" }),
       })),

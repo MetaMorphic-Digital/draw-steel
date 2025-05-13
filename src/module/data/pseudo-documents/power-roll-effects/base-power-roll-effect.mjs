@@ -71,6 +71,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
 
