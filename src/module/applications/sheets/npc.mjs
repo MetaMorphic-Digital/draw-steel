@@ -206,7 +206,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
 
     /** @type {object | null} */
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       content: htmlContainer.outerHTML,
       classes: ["draw-steel", "monster-metadata"],
       window: {
@@ -262,10 +262,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     }).join("");
 
     /** @type {object} */
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       window: { title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
       content,
-      rejectClose: false,
       ok: {
         label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
       },

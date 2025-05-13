@@ -256,7 +256,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         b.push({ label, icon, action });
         return b;
       }, []);
-      type = await foundry.applications.api.DialogV2.wait({
+      type = await ds.applications.api.DSDialog.wait({
         window: { title: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Title") },
         content: game.i18n.localize("DRAW_STEEL.Roll.Power.ChooseType.Content"),
         buttons,

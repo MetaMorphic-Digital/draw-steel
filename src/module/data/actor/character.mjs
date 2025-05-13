@@ -228,14 +228,13 @@ export default class CharacterModel extends BaseActorModel {
     /** @type {HeroTokenModel} */
     const heroTokens = game.actors.heroTokens;
 
-    const spend = await foundry.applications.api.DialogV2.confirm({
+    const spend = await ds.applications.api.DSDialog.confirm({
       window: {
         title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
       },
       content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
         value: heroTokens.value,
       })}</p>`,
-      rejectClose: false,
     });
 
     if (spend) {

@@ -182,16 +182,15 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       localize: true,
     });
 
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       content: victoryGroup.outerHTML,
-      classes: ["draw-steel", "award-victories"],
+      classes: ["award-victories"],
       window: {
         title: "DRAW_STEEL.Combat.AwardVictories.Title",
       },
       ok: {
         label: "DRAW_STEEL.Combat.AwardVictories.Button",
       },
-      rejectClose: false,
     });
 
     if (fd) {

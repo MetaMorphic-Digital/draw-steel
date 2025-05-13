@@ -135,20 +135,16 @@ export default class KitModel extends BaseItemModel {
     }
 
     /** @type {object | null} */
-    const fd = await foundry.applications.api.DialogV2.input({
+    const fd = await ds.applications.api.DSDialog.input({
       content: radioButtons,
       window: {
         icon: "fa-solid fa-arrow-right-arrow-left",
         title: "DRAW_STEEL.Item.Kit.Swap.Title",
       },
-      position: {
-        width: 400,
-      },
       ok: {
         label: "DRAW_STEEL.Item.Kit.Swap.Button",
         icon: "fa-solid fa-arrow-right-arrow-left",
       },
-      rejectClose: false,
     });
     if (!fd?.kit) return false;
 
