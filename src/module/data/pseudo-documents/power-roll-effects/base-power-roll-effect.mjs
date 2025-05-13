@@ -52,7 +52,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @type {DrawSteelItem}
    */
   get item() {
-    return this.parent?.parent ?? null;
+    return this.document;
   }
 
   /**
