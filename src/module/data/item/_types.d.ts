@@ -99,7 +99,6 @@ declare module "./ability.mjs" {
       roll: {
         /** Added during data prep */
         enabled: boolean;
-        flat: boolean;
         formula: string;
         characteristics: Set<string>;
       }

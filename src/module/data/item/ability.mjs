@@ -121,7 +121,6 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
-   * TODO: Consider adding an `overrides` like property if that makes sense for the item sheet handling
    * @protected
    */
   _prepareCharacterData() {
@@ -271,27 +270,25 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
+    const powerRollEffectFormatter = game.i18n.getListFormatter({ type: "unit" });
+
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.contents.map(effect => effect.toText(tier)) },
+      { text: powerRollEffectFormatter.format(this.power.effects.contents.map(effect => effect.toText(tier))) },
     ]));
     context.powerRolls = this.power.effects.size > 0;
-    context.powerRollBonus = ds.CONFIG.characteristics[this.power.characteristic.key]?.label;
 
-    // TODO: reconfigure.
-    // context.powerRollBonus = this.powerRoll.formula;
+    context.powerRollBonus = this.power.roll.formula;
 
-    // if (this.powerRoll.formula.includes("@chr")) {
-    //   const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
-    //   const characteristicList = this.powerRoll.characteristics.map(characteristic => {
-    //     const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
-    //     return (characteristic === this.powerRoll.characteristic) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
-    //   });
+    if (this.power.roll.formula.includes("@chr")) {
+      const characteristicsFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+      const characteristicList = this.power.roll.characteristics.map(characteristic => {
+        const localizedCharacteristic = ds.CONFIG.characteristics[characteristic]?.label ?? characteristic;
+        return (characteristic === this.power.characteristic.key) ? `<em>${localizedCharacteristic}</em>` : localizedCharacteristic;
+      });
 
-    //   context.powerRollBonus = this.powerRoll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
-    // }
-
-    // context.powerRollEffectOptions = Object.entries(this.schema.fields.powerRoll.fields.tier1.element.types).map(([value, { label }]) => ({ value, label }));
+      context.powerRollBonus = this.power.roll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
+    }
   }
 
   /** @inheritdoc */
@@ -316,8 +313,7 @@ export default class AbilityModel extends BaseItemModel {
     super.modifyRollData(rollData);
 
     if (this.actor) {
-      // TODO: this is a set, should be a value?
-      rollData.chr = this.actor.system.characteristics[this.power.roll.characteristic]?.value;
+      rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
 
