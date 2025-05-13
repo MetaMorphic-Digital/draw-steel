@@ -55,6 +55,8 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     return this.document;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Reference to the great-grandparent actor
    * @type {DrawSteelActor}

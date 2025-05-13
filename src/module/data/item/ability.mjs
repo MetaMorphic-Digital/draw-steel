@@ -35,6 +35,8 @@ export default class AbilityModel extends BaseItemModel {
     "DRAW_STEEL.Item.Ability",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
@@ -120,6 +122,8 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Adds kit bonuses as native "active effect" like adjustments.
    * @protected
@@ -179,6 +183,8 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Convert a tier effects potency data to an embed string (i.e. M < 2)
    * @param {object} potencyData
@@ -190,6 +196,8 @@ export default class AbilityModel extends BaseItemModel {
       value: this.actor ? new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total : potencyData.value,
     });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -222,6 +230,8 @@ export default class AbilityModel extends BaseItemModel {
     return embed;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The formatted text strings for keywords, distance, and target for use in the ability embed and actor sheet.
    * @returns {Record<"keywords" | "distance" | "target", string>}
@@ -241,6 +251,8 @@ export default class AbilityModel extends BaseItemModel {
 
     return labels;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {
@@ -292,6 +304,8 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _attachPartListeners(htmlElement, options) {
     // Add or delete a power roll tier effect
@@ -309,6 +323,8 @@ export default class AbilityModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
@@ -317,6 +333,8 @@ export default class AbilityModel extends BaseItemModel {
       rollData.chr = this.actor.system.characteristics[this.power.characteristic.key]?.value;
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Use an ability, generating a chat message and potentially making a power roll
@@ -483,6 +501,8 @@ export default class AbilityModel extends BaseItemModel {
     else return Promise.allSettled([DrawSteelChatMessage.create(messageData)]);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * An alias of use.
    * @see {AbilityModel#use}
@@ -490,6 +510,8 @@ export default class AbilityModel extends BaseItemModel {
   async roll(options = {}) {
     this.use(options);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
@@ -502,6 +524,8 @@ export default class AbilityModel extends BaseItemModel {
     // Restrained conditions check
     if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
@@ -529,6 +553,8 @@ export default class AbilityModel extends BaseItemModel {
 
     return modifiers;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Determine if an Active Effect or a status is restricting this ability.
