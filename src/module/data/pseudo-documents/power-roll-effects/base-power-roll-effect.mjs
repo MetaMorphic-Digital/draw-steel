@@ -1,5 +1,7 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
+/** @import {DrawSteelActor, DrawSteelItem} from "../../../documents/_module.mjs"; */
+
 const { SchemaField, StringField } = foundry.data.fields;
 
 export default class BasePowerRollEffect extends TypedPseudoDocument {
@@ -41,6 +43,24 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       tier2: new SchemaField(fieldsFn()),
       tier3: new SchemaField(fieldsFn()),
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Reference to the grandparent item
+   * @type {DrawSteelItem}
+   */
+  get item() {
+    return this.parent?.parent ?? null;
+  }
+
+  /**
+   * Reference to the great-grandparent actor
+   * @type {DrawSteelActor}
+   */
+  get actor() {
+    return this.item?.actor;
   }
 
   /* -------------------------------------------------- */

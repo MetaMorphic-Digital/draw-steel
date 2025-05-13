@@ -3,6 +3,7 @@ import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../
 import { DamageRoll, DSRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
+import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { FormInputConfig } from "@common/data/_types.mjs" */
@@ -161,18 +162,18 @@ export default class AbilityModel extends BaseItemModel {
         const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
 
         if (distance) {
-          // TODO
-          // // All three tier.damage.value fields should be identical, so their apply change should be identical
-          // const formulaField = this.schema.getField(["powerRoll", "tier1", "damage", "damage", "value"]);
-          // for (const tier of PowerRoll.TIER_NAMES) {
-          //   const firstDamageEffect = this.powerRoll[tier].find(effect => effect.type === "damage");
-          //   if (!firstDamageEffect || !bonuses[distance]?.damage?.[tier]) continue;
-
-          //   firstDamageEffect.value = formulaField.applyChange(firstDamageEffect.value, this, {
-          //     value: bonuses[distance].damage[tier],
-          //     mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          //   });
-          // }
+          // All three tier.damage.value fields should be identical, so their apply change should be identical
+          const formulaField = DamagePowerRollEffect.schema.getField(["damage", "tier1", "value"]);
+          const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
+          if (!firstDamageEffect) return;
+          for (const tier of PowerRoll.TIER_NAMES) {
+            const bonus = foundry.utils.getProperty(bonuses, `${distance}.damage.${tier}`);
+            if (!bonus) continue;
+            firstDamageEffect.damage[tier].value = formulaField.applyChange(firstDamageEffect.damage[tier].value, this, {
+              value: bonus,
+              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            });
+          }
         }
       }
     }

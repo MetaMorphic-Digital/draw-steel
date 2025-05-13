@@ -1,6 +1,6 @@
 import PseudoDocument from "./pseudo-document.mjs";
 
-/** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types.mjs" */
+/** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types.js" */
 
 const { StringField } = foundry.data.fields;
 
