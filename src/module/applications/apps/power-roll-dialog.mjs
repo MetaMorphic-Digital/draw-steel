@@ -1,31 +1,26 @@
 import { systemPath } from "../../constants.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
+import DSApplication from "../api/application.mjs";
 
-/** @import { ApplicationConfiguration } from "@client/applications/_types.mjs" */
-/** @import { PowerRollDialogPrompt } from "./_types" */
-
-const { HandlebarsApplicationMixin, ApplicationV2 } = foundry.applications.api;
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
  * AppV2-based sheet Power Roll modifications
  */
-export default class PowerRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
-
+export default class PowerRollDialog extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["draw-steel", "power-roll-dialog"],
+    classes: ["power-roll-dialog"],
     position: {
       width: 400,
     },
     actions: {
       setRollMode: this.#setRollMode,
     },
-    tag: "form",
-    form: {
-      closeOnSubmit: true,
-    },
+    context: null,
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static PARTS = {
@@ -34,18 +29,16 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     },
   };
 
-  /**
-   * The final prompt value to return to the requester
-   * @type {Array<object>}
-   */
-  promptValue;
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _initializeApplicationOptions(options) {
+    options.context ??= {};
     options.context.rollMode = game.settings.get("core", "rollMode");
-
     return super._initializeApplicationOptions(options);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareContext(options) {
@@ -66,6 +59,8 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the ability context by generating the ability Item and damageOptions
@@ -89,6 +84,8 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Prepare targets by adding the actor and combinging modifiers
    * @param {object} context The context from _prepareContext
@@ -105,6 +102,8 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Prepare the skill select options
    * @param {object} context The context from _prepareContext
@@ -118,6 +117,8 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     }, []);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Amend the global modifiers and target specific modifiers based on changed values
    * @inheritdoc
@@ -126,8 +127,16 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
     super._onChangeForm(formConfig, event);
     const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
 
-    this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, { overwrite: true, recursive: true });
-    if (this.options.context.targets) this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, { overwrite: true, recursive: true });
+    this.options.context.modifiers = foundry.utils.mergeObject(this.options.context.modifiers, formData.modifiers, {
+      overwrite: true, recursive: true,
+    });
+
+    if (this.options.context.targets) {
+      this.options.context.targets = foundry.utils.mergeObject(this.options.context.targets, formData.targets, {
+        overwrite: true, recursive: true,
+      });
+    }
+
     if (formData["damage-selection"]) this.options.context.damage = formData["damage-selection"];
 
     if ("skill" in formData) {
@@ -139,62 +148,46 @@ export default class PowerRollDialog extends HandlebarsApplicationMixin(Applicat
       this.options.context.skill = newSkill;
     }
 
-    this.render(true);
+    this.render();
   }
 
-  /**
-   * Set a final context for resolving the prompt, then close the dialog
-   * @inheritdoc
-   */
-  async _onSubmitForm(formConfig, event) {
-    const formData = foundry.utils.expandObject(new FormDataExtended(this.element).object);
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _processFormData(event, form, formData) {
+    formData = super._processFormData(event, form, formData);
+
+    const config = {
+      rolls: [],
+      damage: null,
+      skill: null,
+      rollMode: this.options.context.rollMode,
+    };
 
     const targets = this.options.context.targets;
-    if (!targets || (targets.length === 0)) this.promptValue = { rolls: [this.options.context.modifiers] };
+    if (!targets || (targets.length === 0)) config.rolls.push(this.options.context.modifiers);
     else {
-      const rolls = targets.reduce((accumulator, target) => {
-        accumulator.push({ ...target.combinedModifiers, target: target.uuid });
-        return accumulator;
-      }, []);
-
-      this.promptValue = { rolls };
+      for (const target of targets) {
+        config.rolls.push({ ...target.combinedModifiers, target: target.uuid });
+      }
     }
 
-    if (formData["damage-selection"]) this.promptValue.damage = formData["damage-selection"];
-    if (formData.skill) this.promptValue.skill = formData.skill;
+    if (formData["damage-selection"]) config.damage = formData["damage-selection"];
+    if (formData.skill) config.skill = formData.skill;
 
-    this.promptValue.rollMode = this.options.context.rollMode;
-
-    super._onSubmitForm(formConfig, event);
+    return config;
   }
 
+  /* -------------------------------------------------- */
+
   /**
-  * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * Change and store the picked roll mode.
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event    The originating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
   static #setRollMode(event, target) {
     this.options.context.rollMode = target.dataset.rollMode;
     this.render();
-  }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Spawn a PowerRollDialog and wait for it to be rolled or closed.
-   * @param {Partial<ApplicationConfiguration>} [options]
-   * @returns {Promise<PowerRollDialogPrompt | null>}      Resolves to the final context to use for one or more power rolls.
-   *                                                       If the dialog was closed without rolling, it resolves to null.
-   */
-  static async prompt(options) {
-    return new Promise((resolve, reject) => {
-      const dialog = new this(options);
-      dialog.addEventListener("close", event => {
-        if (dialog.promptValue) resolve(dialog.promptValue);
-        else resolve(null);
-      }, { once: true });
-
-      dialog.render({ force: true });
-    });
   }
 }
