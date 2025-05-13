@@ -5,7 +5,7 @@ import PseudoDocument from "./pseudo-document.mjs";
 const { StringField } = foundry.data.fields;
 
 /**
- * A variant of PseudoDocument that allows for polymorphism across different values of `type`
+ * A variant of PseudoDocument that allows for polymorphism across different values of `type`.
  */
 export default class TypedPseudoDocument extends PseudoDocument {
   /** @inheritdoc */
