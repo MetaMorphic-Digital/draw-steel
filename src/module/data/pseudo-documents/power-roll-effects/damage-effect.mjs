@@ -3,21 +3,20 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 const { SetField, StringField } = foundry.data.fields;
 
+/**
+ * For abilities that do damage
+ */
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
+    // TODO: Remove manual label assignment when localization bug is fixed
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
-        value: new FormulaField({ initial: "2 + @chr" }),
-        types: new SetField(new StringField()),
+        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+        types: new SetField(new StringField(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
       })),
     });
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES];
 
   /* -------------------------------------------------- */
 
@@ -60,7 +59,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
-    context.fields.text.placeholder = "{{damage}}";
     for (const n of [1, 2, 3]) {
       const path = `damage.tier${n}`;
       context.fields[`tier${n}`].damage = {

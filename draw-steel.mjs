@@ -68,7 +68,7 @@ Hooks.once("init", function () {
   const { Actors, Items } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
-  // Register sheet application classes  
+  // Register sheet application classes
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
@@ -78,7 +78,7 @@ Hooks.once("init", function () {
     types: ["npc"],
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.NPC",
-  });  
+  });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.Item",
@@ -111,7 +111,7 @@ Hooks.once("i18nInit", () => {
 
   // These fields are not auto-localized due to having a different location in en.json
   for (const model of Object.values(CONFIG.Actor.dataModels)) {
-    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    /** @type {foundry.data.fields.SchemaField} */
     const characteristicSchema = model.schema.getField("characteristics");
     if (characteristicSchema) {
       for (const [characteristic, { label, hint }] of Object.entries(ds.CONFIG.characteristics)) {
@@ -122,7 +122,7 @@ Hooks.once("i18nInit", () => {
       }
     }
     // Allows CONFIG.damageTypes to only have to define the name of the damage type once
-    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    /** @type {foundry.data.fields.SchemaField} */
     const damageSchema = model.schema.getField("damage");
     if (damageSchema) {
       for (const field of Object.values(damageSchema.fields.immunities.fields)) {

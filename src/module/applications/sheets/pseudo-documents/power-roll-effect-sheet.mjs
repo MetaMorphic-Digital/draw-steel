@@ -43,14 +43,17 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       pseudo: this.pseudoDocument,
       document: this.document,
       fields: {
+        name: {
+          field: this.pseudoDocument.schema.getField("name"),
+          src: this.pseudoDocument._source.name,
+          name: "name",
+          placeholder: this.pseudoDocument.typeLabel,
+        },
         tier1: {},
         tier2: {},
         tier3: {},
       },
     };
-
-    // TODO: add placeholder equal to the "default" text this effect would display
-    context.fields.text = this._prepareField("text");
 
     await context.pseudo._tierRenderingContext?.(context);
 

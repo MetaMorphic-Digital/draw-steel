@@ -3,6 +3,9 @@
 
 const { DocumentIdField } = foundry.data.fields;
 
+/**
+ * A special subclass of data model that can be treated as a system-defined embedded document.
+ */
 export default class PseudoDocument extends foundry.abstract.DataModel {
   /**
    * Pseudo-document metadata.
@@ -108,7 +111,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Prepase base data. This method is not called automatically; it is the responsibility
+   * Prepare base data. This method is not called automatically; it is the responsibility
    * of the parent document to ensure pseudo-documents prepare base and derived data.
    */
   prepareBaseData() {}

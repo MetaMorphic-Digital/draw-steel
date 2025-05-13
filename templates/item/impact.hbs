@@ -1,3 +1,4 @@
+{{! Impact Tab }}
 <section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="impact" data-subtype="{{document.type}}">
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.Ability.FIELDS.power.label"}}</legend>
@@ -5,7 +6,6 @@
     {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics disabled=@root.isPlay}}
     {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial disabled=@root.isPlay}}
     {{/with}}
-
   </fieldset>
 
   <fieldset>
@@ -20,16 +20,18 @@
     <div class="power-roll-list">
       {{#each document.system.power.effects as |effect|}}
       <button type="button" class="power-roll" data-action="editPowerRollEffect" data-id="{{effect.id}}">
-        {{localize effect.typeLabel}}
+        {{localize effect.name}}
       </button>
       {{/each}}
     </div>
   </fieldset>
+
   <fieldset>
     <legend>{{systemFields.spend.label}}</legend>
     {{formGroup systemFields.spend.fields.value value=system.spend.value disabled=@root.isPlay}}
     {{formGroup systemFields.spend.fields.text value=system.spend.text disabled=@root.isPlay}}
   </fieldset>
+
   <div class="effect">
     {{#if isPlay}}
     {{{enrichedEffect}}}

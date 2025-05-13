@@ -4,6 +4,9 @@ import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
 const { SchemaField, StringField } = foundry.data.fields;
 
+/**
+ * Pseudodocument used by abilities to represent the tiered results of a power roll.
+ */
 export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
   static get metadata() {
@@ -19,14 +22,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT"];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT");
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      text: new StringField({ required: true }),
+      // TODO: Remove manual label assignment when localization bug is fixed
+      name: new StringField({ required: true, label: "DOCUMENT.FIELDS.name.label" }),
     });
   }
 
@@ -63,6 +67,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    */
   get actor() {
     return this.item?.actor;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    this.name ||= this.typeLabel;
   }
 
   /* -------------------------------------------------- */
