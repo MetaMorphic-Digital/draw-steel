@@ -15,7 +15,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
-      ae: this.duplicateTierSchema((n) => ({
+      applied: this.duplicateTierSchema((n) => ({
         display: new StringField({
           required: true,
           label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
@@ -45,7 +45,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   static get TYPE() {
-    return "ae";
+    return "applied";
   }
 
   /* -------------------------------------------------- */
@@ -55,7 +55,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     super.prepareDerivedData();
 
     for (const n of [1, 2, 3]) {
-      this.ae[`tier${n}`].potency.value ||= this.schema.getField(["ae", `tier${n}`, "potency", "value"]).initial;
+      this.applied[`tier${n}`].potency.value ||= this.schema.getField(["applied", `tier${n}`, "potency", "value"]).initial;
     }
   }
 
@@ -64,45 +64,45 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   async _tierRenderingContext(context) {
     for (const n of [1, 2, 3]) {
-      const path = `ae.tier${n}`;
-      context.fields[`tier${n}`].ae = {
+      const path = `applied.tier${n}`;
+      context.fields[`tier${n}`].applied = {
         effectOptions: this.item.effects.filter(e => !e.transfer).map(e => ({ value: e.id, label: e.name })),
         display: {
           field: this.schema.getField(`${path}.display`),
-          value: this.ae[`tier${n}`].display,
-          src: this._source.ae[`tier${n}`].display,
+          value: this.applied[`tier${n}`].display,
+          src: this._source.applied[`tier${n}`].display,
           name: `${path}.display`,
         },
         always: {
           field: this.schema.getField(`${path}.always`),
-          value: this.ae[`tier${n}`].always,
-          src: this._source.ae[`tier${n}`].always,
+          value: this.applied[`tier${n}`].always,
+          src: this._source.applied[`tier${n}`].always,
           name: `${path}.always`,
         },
         success: {
           field: this.schema.getField(`${path}.success`),
-          value: this.ae[`tier${n}`].success,
-          src: this._source.ae[`tier${n}`].success,
+          value: this.applied[`tier${n}`].success,
+          src: this._source.applied[`tier${n}`].success,
           name: `${path}.success`,
         },
         failure: {
           field: this.schema.getField(`${path}.failure`),
-          value: this.ae[`tier${n}`].failure,
-          src: this._source.ae[`tier${n}`].failure,
+          value: this.applied[`tier${n}`].failure,
+          src: this._source.applied[`tier${n}`].failure,
           name: `${path}.failure`,
         },
         potency: {
           field: this.schema.getField(`${path}.potency`),
           value: {
             field: this.schema.getField(`${path}.potency.value`),
-            value: this.ae[`tier${n}`].potency.value,
-            src: this._source.ae[`tier${n}`].potency.value,
+            value: this.applied[`tier${n}`].potency.value,
+            src: this._source.applied[`tier${n}`].potency.value,
             name: `${path}.potency.value`,
           },
           characteristic: {
             field: this.schema.getField(`${path}.potency.characteristic`),
-            value: this.ae[`tier${n}`].potency.characteristic,
-            src: this._source.ae[`tier${n}`].potency.characteristic,
+            value: this.applied[`tier${n}`].potency.characteristic,
+            src: this._source.applied[`tier${n}`].potency.characteristic,
             name: `${path}.potency.characteristic`,
             options: Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })),
           },
@@ -113,10 +113,12 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {1 | 2 | 3} tier
+   * @inheritdoc
+   */
   toText(tier) {
-    /** @type {import("./_types").AppliedEffectSchema} */
-    const tierValue = this.ae[`tier${tier}`];
+    const tierValue = this.applied[`tier${tier}`];
     let potencyValue = tierValue.potency.value;
     if (this.actor) {
       potencyValue = new DSRoll(potencyValue, this.actor.getRollData()).evaluateSync({ strict: false }).total;
@@ -125,6 +127,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,
     });
-    return this.ae[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    return this.applied[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }

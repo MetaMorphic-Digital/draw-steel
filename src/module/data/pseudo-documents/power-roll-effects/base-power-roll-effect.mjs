@@ -92,7 +92,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Define how an effect renders on sheets and embeds.
-   * @param {number} tier   The specific tier.
+   * @param {1 | 2 | 3} tier   The specific tier.
    * @returns {string}
    * @abstract
    */

@@ -82,7 +82,10 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {1 | 2 | 3} tier
+   * @inheritdoc
+   */
   toText(tier) {
     const { value, types } = this.damage[`tier${tier}`];
 

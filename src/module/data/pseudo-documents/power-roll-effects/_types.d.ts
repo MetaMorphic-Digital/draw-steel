@@ -47,7 +47,7 @@ export type AppliedEffectSchema = {
 
 declare module "./applied-effect.mjs" {
   export default interface AppliedPowerRollEffect {
-    ae: {
+    applied: {
       tier1: AppliedEffectSchema;
       tier2: AppliedEffectSchema;
       tier3: AppliedEffectSchema;

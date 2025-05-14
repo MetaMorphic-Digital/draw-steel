@@ -41,7 +41,10 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
   }
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {1 | 2 | 3} tier
+   * @inheritdoc
+   */
   toText(tier) {
     return this.text[`tier${tier}`].value;
   }
