@@ -39,7 +39,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Utility method to duplicate fields across three tiers.
-   * @param {(number) => DataSchema} fieldsFn   A method that returns an object of data fields.
+   * @param {(n: number) => DataSchema} fieldsFn   A method that returns an object of data fields.
    * @returns {foundry.data.fields.SchemaField}       A constructed schema field with three tiers.
    */
   static duplicateTierSchema(fieldsFn) {
