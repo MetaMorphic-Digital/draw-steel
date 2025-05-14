@@ -186,20 +186,6 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Convert a tier effects potency data to an embed string (i.e. M < 2)
-   * @param {object} potencyData
-   * @returns {string} The potency embed string (i.e. M < 2)
-   */
-  toPotencyEmbed(potencyData) {
-    return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
-      value: this.actor ? new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total : potencyData.value,
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options

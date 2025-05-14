@@ -75,6 +75,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     this.potency = {
       bonuses: 0,
+      weak: 0,
+      average: 0,
+      strong: 0,
     };
 
     this.statuses = {
@@ -99,6 +102,12 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
+
+    const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
+
+    this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;
+    this.potency.average += highestCharacteristic - 1 + this.potency.bonuses;
+    this.potency.strong += highestCharacteristic + this.potency.bonuses;
 
     // Set movement speeds when affected by grabbed, restrained, or slowed
     const isSlowed = this.parent.statuses.has("slowed");
