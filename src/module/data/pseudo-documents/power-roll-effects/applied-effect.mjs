@@ -1,3 +1,4 @@
+import { DSRoll } from "../../../rolls/base.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
@@ -10,6 +11,8 @@ const { BooleanField, SetField, StringField, SchemaField } = foundry.data.fields
 export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
+    const potencyFormula = [null, "@potency.weak", "@potency.average", "@potency.strong"];
+
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
       ae: this.duplicateTierSchema((n) => ({
@@ -31,8 +34,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.hint" },
         ),
         potency: new SchemaField({
-          enabled: new BooleanField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.enabled.label" }),
-          value: new FormulaField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
+          value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({ required: true, label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label" }),
         }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
       })),
@@ -44,6 +46,17 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static get TYPE() {
     return "ae";
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+
+    for (const n of [1, 2, 3]) {
+      this.ae[`tier${n}`].potency.value ||= this.schema.getField(["ae", `tier${n}`, "potency", "value"]).initial;
+    }
   }
 
   /* -------------------------------------------------- */
@@ -80,12 +93,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         },
         potency: {
           field: this.schema.getField(`${path}.potency`),
-          enabled: {
-            field: this.schema.getField(`${path}.potency.enabled`),
-            value: this.ae[`tier${n}`].potency.enabled,
-            src: this._source.ae[`tier${n}`].potency.enabled,
-            name: `${path}.potency.enabled`,
-          },
           value: {
             field: this.schema.getField(`${path}.potency.value`),
             value: this.ae[`tier${n}`].potency.value,
@@ -107,6 +114,16 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   toText(tier) {
-    return this.ae[`tier${tier}`].display;
+    /** @type {import("./_types").AppliedEffectSchema} */
+    const tierValue = this.ae[`tier${tier}`];
+    let potencyValue = tierValue.potency.value;
+    if (this.actor) {
+      potencyValue = new DSRoll(potencyValue, this.actor.getRollData()).evaluateSync({ strict: false }).total;
+    }
+    const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+      characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
+      value: potencyValue,
+    });
+    return this.ae[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }

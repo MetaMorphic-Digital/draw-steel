@@ -14,9 +14,8 @@
   {{#with potency}}
   <fieldset>
     <legend>{{localize field.label}}</legend>
-    {{formGroup enabled.field value=enabled.src name=enabled.name localize=true}}
-    {{formGroup value.field value=value.src name=value.name localize=true}}
-    {{formGroup characteristic.field value=characteristic.src name=characteristic.name options=characteristics.options localize=true}}
+    {{formGroup value.field value=value.src name=value.name placeholder=value.field.initial localize=true}}
+    {{formGroup characteristic.field value=characteristic.src name=characteristic.name options=characteristic.options localize=true}}
   </fieldset>
   {{/with}}
   {{/with}}
