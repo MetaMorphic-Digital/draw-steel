@@ -38,7 +38,6 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
         },
       };
     }
-    context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
   }
   /* -------------------------------------------------- */
 
