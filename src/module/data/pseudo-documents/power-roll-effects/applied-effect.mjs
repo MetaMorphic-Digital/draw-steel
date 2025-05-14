@@ -110,6 +110,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       };
     }
   }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
