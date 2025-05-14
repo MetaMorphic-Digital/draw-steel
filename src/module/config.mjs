@@ -1075,12 +1075,15 @@ DRAW_STEEL.abilities = {
   forcedMovement: {
     push: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Push",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPush",
     },
     pull: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Pull",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPull",
     },
     slide: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Slide",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalSlide",
     },
   },
 };

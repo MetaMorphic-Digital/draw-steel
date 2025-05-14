@@ -68,7 +68,7 @@ export type ForcedMovementSchema = {
 
 declare module "./forced-movement-effect.mjs" {
   export default interface ForcedMovementPowerRollEffect {
-    applied: {
+    forced: {
       tier1: ForcedMovementSchema;
       tier2: ForcedMovementSchema;
       tier3: ForcedMovementSchema;

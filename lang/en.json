@@ -589,12 +589,12 @@
         "DamageFlavor": "{type} Damage",
         "ForcedMovement": {
           "Push": "Push",
-          "PushX": "Push {x}",
+          "VerticalPush": "Vertical Push",
           "Pull": "Pull",
-          "PullX": "Pull {x}",
+          "VerticalPull": "Vertical Pull",
           "Slide": "Slide",
-          "SlideX": "Slide {x}",
-          "Vertical": "Vertical"
+          "VerticalSlide": "Vertical Slide",
+          "Display": "{movement} {distance}"
         },
         "EmbedFail": "Failed to find item for this ability roll",
         "Potency": {
@@ -1045,7 +1045,8 @@
           },
           "display": {
             "label": "Display",
-            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2)."
+            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
+            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{distance}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
           },
           "always": {
             "label": "Always",

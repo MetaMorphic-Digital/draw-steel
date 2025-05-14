@@ -7,7 +7,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 const { BooleanField, SchemaField, SetField, StringField } = foundry.data.fields;
 
 /**
- * General fallback type for a simple text description
+ * For abilities that inflict forced movement.
  */
 export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
@@ -20,7 +20,8 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         display: new StringField({
           required: true,
           label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
-          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
+          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hintForced",
+          initial: "{{forced}}",
         }),
         movement: new SetField(
           setOptions(),
@@ -133,13 +134,24 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   toText(tier) {
     const tierValue = this.forced[`tier${tier}`];
     let potencyValue = tierValue.potency.value;
+    let distanceValue = tierValue.distance;
     if (this.actor) {
-      potencyValue = new DSRoll(potencyValue, this.actor.getRollData()).evaluateSync({ strict: false }).total;
+      potencyValue = new DSRoll(potencyValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
+      distanceValue = new DSRoll(distanceValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
     }
     const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,
     });
-    return this.forced[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    const formatter = game.i18n.getListFormatter({ type: "disjunction" });
+    const distanceString = game.i18n.format("DRAW_STEEL.Item.Ability.ForcedMovement.Display", {
+      movement: formatter.format(tierValue.movement.map(v => {
+        const config = ds.CONFIG.abilities.forcedMovement[v];
+        return tierValue.vertical ? config.vertical : config.label;
+      })),
+      distance: distanceValue,
+    });
+    let finalText = this.forced[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    return finalText.replaceAll("{{forced}}", distanceString);
   }
 }
