@@ -55,7 +55,10 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     super.prepareDerivedData();
 
     for (const n of [1, 2, 3]) {
-      this.applied[`tier${n}`].potency.value ||= this.schema.getField(["applied", `tier${n}`, "potency", "value"]).initial;
+      const tierValue = this.applied[`tier${n}`];
+      tierValue.potency.value ||= this.schema.getField(["applied", `tier${n}`, "potency", "value"]).initial;
+      const prevDisplay = (n > 1) && foundry.utils.getProperty(this, `applied.tier${n - 1}.display`);
+      if (prevDisplay) tierValue.display ||= prevDisplay;
     }
   }
 
@@ -71,6 +74,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           field: this.schema.getField(`${path}.display`),
           value: this.applied[`tier${n}`].display,
           src: this._source.applied[`tier${n}`].display,
+          placeholder: n > 1 ? this.applied[`tier${n - 1}`].display : "",
           name: `${path}.display`,
         },
         always: {
