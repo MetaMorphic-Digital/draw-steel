@@ -29,6 +29,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         ),
         distance: new FormulaField({ initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
         vertical: new BooleanField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.vertical.label" }),
+        ignoreStability: new BooleanField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.ignoreStability.label" }),
         potency: new SchemaField({
           value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({
@@ -85,22 +86,28 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
         },
         movement: {
           field: this.schema.getField(`${path}.movement`),
-          movement: this.forced[`tier${n}`].movement,
+          value: this.forced[`tier${n}`].movement,
           src: this._source.forced[`tier${n}`].movement,
           name: `${path}.movement`,
           options: Object.entries(ds.CONFIG.abilities.forcedMovement).map(([value, { label }]) => ({ value, label })),
         },
         distance: {
           field: this.schema.getField(`${path}.distance`),
-          distance: this.forced[`tier${n}`].distance,
+          value: this.forced[`tier${n}`].distance,
           src: this._source.forced[`tier${n}`].distance,
           name: `${path}.distance`,
         },
         vertical: {
           field: this.schema.getField(`${path}.vertical`),
-          vertical: this.forced[`tier${n}`].vertical,
+          value: this.forced[`tier${n}`].vertical,
           src: this._source.forced[`tier${n}`].vertical,
           name: `${path}.vertical`,
+        },
+        ignoreStability: {
+          field: this.schema.getField(`${path}.ignoreStability`),
+          value: this.forced[`tier${n}`].ignoreStability,
+          src: this._source.forced[`tier${n}`].ignoreStability,
+          name: `${path}.ignoreStability`,
         },
         potency: {
           field: this.schema.getField(`${path}.potency`),

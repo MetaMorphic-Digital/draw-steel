@@ -1031,11 +1031,17 @@
           "types": {
             "label": "Damage Types"
           },
+          "display": {
+            "label": "Display",
+            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
+            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
+          },
+          "always": {
+            "label": "Always",
+            "hint": "Effects that apply regardless of potency checks."
+          },
           "movement": {
             "label": "Forced Movement Type"
-          },
-          "text": {
-            "label": "Text"
           },
           "distance": {
             "label": "Distance"
@@ -1043,14 +1049,8 @@
           "vertical": {
             "label": "Vertical"
           },
-          "display": {
-            "label": "Display",
-            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
-            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{distance}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
-          },
-          "always": {
-            "label": "Always",
-            "hint": "Effects that apply regardless of potency checks."
+          "ignoreStability": {
+            "label": "Ignore Stability"
           },
           "potency": {
             "label": "Potency",
@@ -1068,6 +1068,9 @@
             "success": {
               "label": "Success",
               "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
+            },
+            "text": {
+              "label": "Text"
             }
           }
         },
