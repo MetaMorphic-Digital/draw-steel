@@ -1129,6 +1129,10 @@ DRAW_STEEL.PowerRollEffect = {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
   },
+  forced: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.forced",
+    documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
+  },
   other: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",
     documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
