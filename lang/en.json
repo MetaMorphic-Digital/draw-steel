@@ -1042,26 +1042,27 @@
             "label": "Always",
             "hint": "Effects that apply regardless of potency checks."
           },
-          "success": {
-            "label": "Success",
-            "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
-          },
-          "failure": {
-            "label": "Failure",
-            "hint": "Effects that apply when the target's characteristic is less than the potency value."
-          },
           "potency": {
             "label": "Potency",
             "value": {
               "label": "Potency Value"
             },
             "characteristic": {
-              "label": "Potency Characteristic"
+              "label": "Potency Characteristic",
+              "hint": "Tiers 2 and 3 will default to the chosen characteristic of the prior tier."
+            },
+            "failure": {
+              "label": "Failure",
+              "hint": "Effects that apply when the target's characteristic is less than the potency value."
+            },
+            "success": {
+              "label": "Success",
+              "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
             }
           }
         },
         "TYPES": {
-          "ae": "Applied Effect",
+          "applied": "Applied Effect",
           "damage": "Damage",
           "other": "Other"
         },

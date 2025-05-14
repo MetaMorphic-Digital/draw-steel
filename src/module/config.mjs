@@ -10,6 +10,7 @@ export const DRAW_STEEL = {};
  * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
  * The `label` is the full name (e.g. Might).
  * The `hint` is the short form in all caps (e.g. M).
+ * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
 DRAW_STEEL.characteristics = {

@@ -12,7 +12,14 @@
   {{#with potency}}
   <fieldset>
     <legend>{{localize field.label}}</legend>
-    {{formGroup characteristic.field value=characteristic.src name=characteristic.name options=characteristic.options localize=true}}
+    {{formGroup
+    characteristic.field
+    value=characteristic.src
+    name=characteristic.name
+    options=characteristic.options
+    blank=characteristic.blank
+    localize=true
+    }}
     {{formGroup value.field value=value.src name=value.name placeholder=value.field.initial localize=true}}
     {{formGroup failure.field value=failure.src name=failure.name options=../effectOptions localize=true}}
     {{formGroup success.field value=success.src name=success.name options=../effectOptions localize=true}}
