@@ -1093,7 +1093,7 @@ preLocalize("abilities.categories", { key: "label" });
 // Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
 preLocalize("abilities.distances", { keys: ["label", "primary", "secondary", "tertiary"] });
 preLocalize("abilities.targets", { keys: ["label", "all"] });
-preLocalize("abilities.forcedMovement", { key: "label" });
+preLocalize("abilities.forcedMovement", { keys: ["label", "vertical"] });
 
 Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   /** @type {FormSelectOption[]} */
