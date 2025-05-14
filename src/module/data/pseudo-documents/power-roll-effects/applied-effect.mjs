@@ -23,19 +23,19 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         }),
         always: new SetField(
           setOptions({ validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.label" },
-        ),
-        success: new SetField(
-          setOptions({ validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.hint" },
-        ),
-        failure: new SetField(setOptions(
-          { validate: foundry.data.validators.isValidId }),
-        { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.hint" },
+          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.hint" },
         ),
         potency: new SchemaField({
           value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({ required: true, label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label" }),
+          success: new SetField(
+            setOptions({ validate: foundry.data.validators.isValidId }),
+            { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.hint" },
+          ),
+          failure: new SetField(setOptions(
+            { validate: foundry.data.validators.isValidId }),
+          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.hint" },
+          ),
         }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
       })),
     });
@@ -83,18 +83,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           src: this._source.applied[`tier${n}`].always,
           name: `${path}.always`,
         },
-        success: {
-          field: this.schema.getField(`${path}.success`),
-          value: this.applied[`tier${n}`].success,
-          src: this._source.applied[`tier${n}`].success,
-          name: `${path}.success`,
-        },
-        failure: {
-          field: this.schema.getField(`${path}.failure`),
-          value: this.applied[`tier${n}`].failure,
-          src: this._source.applied[`tier${n}`].failure,
-          name: `${path}.failure`,
-        },
         potency: {
           field: this.schema.getField(`${path}.potency`),
           value: {
@@ -109,6 +97,18 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
             src: this._source.applied[`tier${n}`].potency.characteristic,
             name: `${path}.potency.characteristic`,
             options: Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })),
+          },
+          success: {
+            field: this.schema.getField(`${path}.potency.success`),
+            value: this.applied[`tier${n}`].potency.success,
+            src: this._source.applied[`tier${n}`].potency.success,
+            name: `${path}.potency.success`,
+          },
+          failure: {
+            field: this.schema.getField(`${path}.potency.failure`),
+            value: this.applied[`tier${n}`].potency.failure,
+            src: this._source.applied[`tier${n}`].potency.failure,
+            name: `${path}.potency.failure`,
           },
         },
       };
