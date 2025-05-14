@@ -38,11 +38,13 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
         },
       };
     }
-    context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
   }
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {1 | 2 | 3} tier
+   * @inheritdoc
+   */
   toText(tier) {
     return this.text[`tier${tier}`].value;
   }

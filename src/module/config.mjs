@@ -10,6 +10,7 @@ export const DRAW_STEEL = {};
  * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
  * The `label` is the full name (e.g. Might).
  * The `hint` is the short form in all caps (e.g. M).
+ * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
 DRAW_STEEL.characteristics = {
@@ -1123,6 +1124,10 @@ DRAW_STEEL.PowerRollEffect = {
   damage: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
+  },
+  applied: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
+    documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
   },
   other: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",

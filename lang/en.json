@@ -1033,9 +1033,36 @@
           },
           "text": {
             "label": "Text"
+          },
+          "display": {
+            "label": "Display",
+            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2)."
+          },
+          "always": {
+            "label": "Always",
+            "hint": "Effects that apply regardless of potency checks."
+          },
+          "potency": {
+            "label": "Potency",
+            "value": {
+              "label": "Potency Value"
+            },
+            "characteristic": {
+              "label": "Potency Characteristic",
+              "hint": "Tiers 2 and 3 will default to the chosen characteristic of the prior tier."
+            },
+            "failure": {
+              "label": "Failure",
+              "hint": "Effects that apply when the target's characteristic is less than the potency value."
+            },
+            "success": {
+              "label": "Success",
+              "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
+            }
           }
         },
         "TYPES": {
+          "applied": "Applied Effect",
           "damage": "Damage",
           "other": "Other"
         },

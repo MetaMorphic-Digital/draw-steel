@@ -1,6 +1,7 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
-/** @import {DrawSteelActor, DrawSteelItem} from "../../../documents/_module.mjs"; */
+/** @import { DataSchema } from "@common/abstract/_types.mjs" */
+/** @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs"; */
 
 const { SchemaField, StringField } = foundry.data.fields;
 
@@ -38,14 +39,14 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Utility method to duplicate fields across three tiers.
-   * @param {Function} fieldsFn   A method that returns an object of data fields.
-   * @returns {SchemaField}       A constructed schema field with three tiers.
+   * @param {(n: number) => DataSchema} fieldsFn   A method that returns an object of data fields.
+   * @returns {foundry.data.fields.SchemaField}       A constructed schema field with three tiers.
    */
   static duplicateTierSchema(fieldsFn) {
     return new SchemaField({
-      tier1: new SchemaField(fieldsFn()),
-      tier2: new SchemaField(fieldsFn()),
-      tier3: new SchemaField(fieldsFn()),
+      tier1: new SchemaField(fieldsFn(1)),
+      tier2: new SchemaField(fieldsFn(2)),
+      tier3: new SchemaField(fieldsFn(3)),
     });
   }
 
@@ -91,7 +92,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Define how an effect renders on sheets and embeds.
-   * @param {number} tier   The specific tier.
+   * @param {1 | 2 | 3} tier   The specific tier.
    * @returns {string}
    * @abstract
    */
