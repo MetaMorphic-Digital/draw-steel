@@ -142,7 +142,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const tierValue = this.applied[`tier${tier}`];
     let potencyValue = tierValue.potency.value;
     if (this.actor) {
-      potencyValue = new DSRoll(potencyValue, this.actor.getRollData()).evaluateSync({ strict: false }).total;
+      potencyValue = new DSRoll(potencyValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
     }
     const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",

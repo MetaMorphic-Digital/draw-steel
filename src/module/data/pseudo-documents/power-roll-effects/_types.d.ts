@@ -37,11 +37,11 @@ declare module "./other-effect.mjs" {
 export type AppliedEffectSchema = {
   display: string;
   always: Set<string>;
-  success: Set<string>;
-  failure: Set<string>;
   potency: {
     value: string;
     characteristic: string;
+    success: Set<string>;
+    failure: Set<string>;
   }
 }
 
@@ -51,6 +51,27 @@ declare module "./applied-effect.mjs" {
       tier1: AppliedEffectSchema;
       tier2: AppliedEffectSchema;
       tier3: AppliedEffectSchema;
+    }
+  }
+}
+
+export type ForcedMovementSchema = {
+  display: string;
+  movement: Set<string>;
+  distance: number;
+  vertical: boolean;
+  potency: {
+    value: string;
+    characteristic: string;
+  }
+}
+
+declare module "./forced-movement-effect.mjs" {
+  export default interface ForcedMovementPowerRollEffect {
+    forced: {
+      tier1: ForcedMovementSchema;
+      tier2: ForcedMovementSchema;
+      tier3: ForcedMovementSchema;
     }
   }
 }

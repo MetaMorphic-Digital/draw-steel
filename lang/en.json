@@ -589,12 +589,12 @@
         "DamageFlavor": "{type} Damage",
         "ForcedMovement": {
           "Push": "Push",
-          "PushX": "Push {x}",
+          "VerticalPush": "Vertical Push",
           "Pull": "Pull",
-          "PullX": "Pull {x}",
+          "VerticalPull": "Vertical Pull",
           "Slide": "Slide",
-          "SlideX": "Slide {x}",
-          "Vertical": "Vertical"
+          "VerticalSlide": "Vertical Slide",
+          "Display": "{movement} {distance}"
         },
         "EmbedFail": "Failed to find item for this ability roll",
         "Potency": {
@@ -1031,16 +1031,26 @@
           "types": {
             "label": "Damage Types"
           },
-          "text": {
-            "label": "Text"
-          },
           "display": {
             "label": "Display",
-            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2)."
+            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
+            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
           },
           "always": {
             "label": "Always",
             "hint": "Effects that apply regardless of potency checks."
+          },
+          "movement": {
+            "label": "Forced Movement Type"
+          },
+          "distance": {
+            "label": "Distance"
+          },
+          "vertical": {
+            "label": "Vertical"
+          },
+          "ignoreStability": {
+            "label": "Ignore Stability"
           },
           "potency": {
             "label": "Potency",
@@ -1058,12 +1068,16 @@
             "success": {
               "label": "Success",
               "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
+            },
+            "text": {
+              "label": "Text"
             }
           }
         },
         "TYPES": {
           "applied": "Applied Effect",
           "damage": "Damage",
+          "forced": "Forced Movement",
           "other": "Other"
         },
         "DAMAGE": {
