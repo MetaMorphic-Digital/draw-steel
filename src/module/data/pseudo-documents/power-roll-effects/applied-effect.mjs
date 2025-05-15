@@ -109,10 +109,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
             value: this.applied[`tier${n}`].potency.characteristic,
             src: this._source.applied[`tier${n}`].potency.characteristic,
             name: `${path}.potency.characteristic`,
-            options: Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
-              value: "none",
-              label: "None",
-            }]),
             blank: n > 1 ? "Default" : false,
           },
           success: {
@@ -130,6 +126,11 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         },
       };
     }
+
+    context.fields.characteristic = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
+      value: "none",
+      label: "None",
+    }]);
   }
 
   /* -------------------------------------------------- */

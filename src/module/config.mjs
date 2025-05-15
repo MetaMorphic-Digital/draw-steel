@@ -1121,12 +1121,17 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 
 /**
  * Valid types for the PowerRollEffect pseudo-document
- * @type {Record<string, { label: string; documentClass: pseudoDocuments.powerRollEffects.BasePowerRollEffect }>}
+ * @type {Record<string, { label: string; documentClass: pseudoDocuments.powerRollEffects.BasePowerRollEffect, properties?: Record<string, { label: string; }> }>}
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
+    properties: {
+      ignoresImmunity: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
+      },
+    },
   },
   applied: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
@@ -1135,6 +1140,14 @@ DRAW_STEEL.PowerRollEffect = {
   forced: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.forced",
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
+    properties: {
+      ignoresImmunity: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.IgnoresStability",
+      },
+      vertical: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.Vertical",
+      },
+    },
   },
   other: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",

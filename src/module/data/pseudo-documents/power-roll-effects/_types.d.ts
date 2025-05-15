@@ -7,6 +7,7 @@ declare module "./base-power-roll-effect.mjs" {
 export type DamageSchema = {
   value: string;
   types: Set<string>;
+  properties: Set<string>;
 }
 
 declare module "./damage-effect.mjs" {
@@ -59,11 +60,11 @@ export type ForcedMovementSchema = {
   display: string;
   movement: Set<string>;
   distance: number;
-  vertical: boolean;
   potency: {
     value: string;
     characteristic: string;
   }
+  properties: Set<string>;
 }
 
 declare module "./forced-movement-effect.mjs" {
