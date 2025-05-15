@@ -4,10 +4,16 @@ declare module "./base-power-roll-effect.mjs" {
   }
 }
 
+type PotencySchema = {
+  value: string;
+  characteristic: string;
+}
+
 export type DamageSchema = {
   value: string;
   types: Set<string>;
   properties: Set<string>;
+  potency: PotencySchema;
 }
 
 declare module "./damage-effect.mjs" {
@@ -22,7 +28,8 @@ declare module "./damage-effect.mjs" {
 }
 
 export type OtherSchema = {
-  value: string;
+  text: string;
+  potency: PotencySchema;
 }
 
 declare module "./other-effect.mjs" {
@@ -38,12 +45,9 @@ declare module "./other-effect.mjs" {
 export type AppliedEffectSchema = {
   display: string;
   always: Set<string>;
-  potency: {
-    value: string;
-    characteristic: string;
-    success: Set<string>;
-    failure: Set<string>;
-  }
+  success: Set<string>;
+  failure: Set<string>;
+  potency: PotencySchema;
 }
 
 declare module "./applied-effect.mjs" {
@@ -60,10 +64,7 @@ export type ForcedMovementSchema = {
   display: string;
   movement: Set<string>;
   distance: number;
-  potency: {
-    value: string;
-    characteristic: string;
-  }
+  potency: PotencySchema;
   properties: Set<string>;
 }
 

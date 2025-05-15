@@ -3,6 +3,20 @@
   {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder localize=true}}
   {{formGroup types.field value=types.src name=types.name options=@root.fields.damageTypes localize=true}}
   {{formGroup properties.field value=properties.src name=properties.name options=@root.fields.properties localize=true}}
+  {{#with potency}}
+  <fieldset>
+    <legend>{{localize field.label}}</legend>
+    {{formGroup
+    characteristic.field
+    value=characteristic.src
+    name=characteristic.name
+    options=@root.fields.characteristic
+    blank=characteristic.blank
+    localize=true
+    }}
+    {{formGroup value.field value=value.src name=value.name placeholder=value.field.initial localize=true}}
+  </fieldset>
+  {{/with}}
   {{/with}}
   {{#with tierFields.applied}}
   {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
@@ -19,8 +33,10 @@
     localize=true
     }}
     {{formGroup value.field value=value.src name=value.name placeholder=value.field.initial localize=true}}
-    {{formGroup failure.field value=failure.src name=failure.name options=../effectOptions localize=true}}
-    {{formGroup success.field value=success.src name=success.name options=../effectOptions localize=true}}
+    {{#with ../../tierFields.applied}}
+    {{formGroup failure.field value=failure.src name=failure.name options=../../effectOptions localize=true}}
+    {{formGroup success.field value=success.src name=success.name options=../../effectOptions localize=true}}
+    {{/with}}
   </fieldset>
   {{/with}}
   {{/with}}
@@ -44,7 +60,21 @@
   </fieldset>
   {{/with}}
   {{/with}}
-  {{#with tierFields.text}}
-  {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder localize=true}}
+  {{#with tierFields.other}}
+  {{formGroup text.field value=text.src name=text.name placeholder=text.placeholder localize=true}}
+  {{#with potency}}
+  <fieldset>
+    <legend>{{localize field.label}}</legend>
+    {{formGroup
+    characteristic.field
+    value=characteristic.src
+    name=characteristic.name
+    options=@root.fields.characteristic
+    blank=characteristic.blank
+    localize=true
+    }}
+    {{formGroup value.field value=value.src name=value.name placeholder=value.field.initial localize=true}}
+  </fieldset>
+  {{/with}}
   {{/with}}
 </section>
