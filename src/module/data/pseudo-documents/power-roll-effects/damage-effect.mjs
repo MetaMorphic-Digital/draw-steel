@@ -1,4 +1,5 @@
 import FormulaField from "../../fields/formula-field.mjs";
+import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 const { SetField, StringField } = foundry.data.fields;
@@ -13,7 +14,8 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
         value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
-        types: new SetField(new StringField(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
+        types: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }
@@ -75,9 +77,16 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
           src: this._source.damage[`tier${n}`].types,
           name: `${path}.types`,
         },
+        properties: {
+          field: this.schema.getField(`${path}.properties`),
+          value: this.damage[`tier${n}`].properties,
+          src: this._source.damage[`tier${n}`].properties,
+          name: `${path}.properties`,
+        },
       };
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
+    context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.damage.properties).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */

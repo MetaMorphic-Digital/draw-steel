@@ -1046,12 +1046,6 @@
           "distance": {
             "label": "Distance"
           },
-          "vertical": {
-            "label": "Vertical"
-          },
-          "ignoreStability": {
-            "label": "Ignore Stability"
-          },
           "potency": {
             "label": "Potency",
             "value": {
@@ -1072,6 +1066,9 @@
             "text": {
               "label": "Text"
             }
+          },
+          "properties": {
+            "label": "Properties"
           }
         },
         "TYPES": {
@@ -1082,7 +1079,16 @@
         },
         "DAMAGE": {
           "formatted": "{value} {damageTypes} damage",
-          "formattedTypeless": "{value} damage"
+          "formattedTypeless": "{value} damage",
+          "Properties": {
+            "IgnoresImmunity": "Ignores Immunities"
+          }
+        },
+        "FORCED": {
+          "Properties": {
+            "IgnoresStability": "Ignores Stability",
+            "Vertical": "Vertical"
+          }
         }
       },
       "SHEET": {

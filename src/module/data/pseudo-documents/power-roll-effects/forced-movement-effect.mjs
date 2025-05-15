@@ -29,8 +29,6 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
           { initial: ["push"], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.movement.label" },
         ),
         distance: new FormulaField({ initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
-        vertical: new BooleanField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.vertical.label" }),
-        ignoreStability: new BooleanField({ label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.ignoreStability.label" }),
         potency: new SchemaField({
           value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({
@@ -41,6 +39,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
             hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.hint",
           }),
         }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }
@@ -90,25 +89,12 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
           value: this.forced[`tier${n}`].movement,
           src: this._source.forced[`tier${n}`].movement,
           name: `${path}.movement`,
-          options: Object.entries(ds.CONFIG.abilities.forcedMovement).map(([value, { label }]) => ({ value, label })),
         },
         distance: {
           field: this.schema.getField(`${path}.distance`),
           value: this.forced[`tier${n}`].distance,
           src: this._source.forced[`tier${n}`].distance,
           name: `${path}.distance`,
-        },
-        vertical: {
-          field: this.schema.getField(`${path}.vertical`),
-          value: this.forced[`tier${n}`].vertical,
-          src: this._source.forced[`tier${n}`].vertical,
-          name: `${path}.vertical`,
-        },
-        ignoreStability: {
-          field: this.schema.getField(`${path}.ignoreStability`),
-          value: this.forced[`tier${n}`].ignoreStability,
-          src: this._source.forced[`tier${n}`].ignoreStability,
-          name: `${path}.ignoreStability`,
         },
         potency: {
           field: this.schema.getField(`${path}.potency`),
@@ -123,14 +109,23 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
             value: this.forced[`tier${n}`].potency.characteristic,
             src: this._source.forced[`tier${n}`].potency.characteristic,
             name: `${path}.potency.characteristic`,
-            options: Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
-              value: "none",
-              label: "None",
-            }]),
             blank: n > 1 ? "Default" : false,
           },
         },
+        properties: {
+          field: this.schema.getField(`${path}.properties`),
+          value: this.forced[`tier${n}`].properties,
+          src: this._source.forced[`tier${n}`].properties,
+          name: `${path}.properties`,
+        },
       };
+
+      context.fields.movement = Object.entries(ds.CONFIG.abilities.forcedMovement).map(([value, { label }]) => ({ value, label }));
+      context.fields.characteristic = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
+        value: "none",
+        label: "None",
+      }]);
+      context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.forced.properties).map(([value, { label }]) => ({ value, label }));
     }
   }
 
@@ -156,7 +151,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     const distanceString = game.i18n.format("DRAW_STEEL.Item.Ability.ForcedMovement.Display", {
       movement: formatter.format(tierValue.movement.map(v => {
         const config = ds.CONFIG.abilities.forcedMovement[v];
-        return tierValue.vertical ? config.vertical : config.label;
+        return tierValue.properties.has("vertical") ? config.vertical : config.label;
       })),
       distance: distanceValue,
     });
