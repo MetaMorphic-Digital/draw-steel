@@ -1120,8 +1120,20 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 });
 
 /**
+ * @typedef PowerRollEffectProperty
+ * @property {string} label
+ */
+
+/**
+ * @typedef PowerRollEffectType
+ * @property {string} label
+ * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass
+ * @property {Record<string, PowerRollEffectProperty} [properties]
+ */
+
+/**
  * Valid types for the PowerRollEffect pseudo-document
- * @type {Record<string, { label: string; documentClass: pseudoDocuments.powerRollEffects.BasePowerRollEffect, properties?: Record<string, { label: string; }> }>}
+ * @type {Record<string, PowerRollEffectType> }>}
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
