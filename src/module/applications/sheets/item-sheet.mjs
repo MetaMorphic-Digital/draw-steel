@@ -19,7 +19,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     classes: ["item"],
     position: {
       // Allows "Their Lack of Focus is Their Undoing" to fit in two lines
-      width: 540,
+      // Also ensures the prosemirror editor bar doesn't overflow to a second line when selecting a paragraph element
+      width: 560,
     },
     actions: {
       toggleMode: this.#toggleMode,
