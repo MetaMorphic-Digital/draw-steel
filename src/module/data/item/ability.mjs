@@ -1,8 +1,9 @@
 import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { DamageRoll, DSRoll, PowerRoll } from "../../rolls/_module.mjs";
+import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -73,7 +74,10 @@ export default class AbilityModel extends BaseItemModel {
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
     });
 
-    schema.effect = new fields.HTMLField();
+    schema.effect = new fields.SchemaField({
+      before: new fields.HTMLField(),
+      after: new fields.HTMLField(),
+    });
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
       text: new fields.StringField({ required: true }),
@@ -288,6 +292,9 @@ export default class AbilityModel extends BaseItemModel {
 
       context.powerRollBonus = this.power.roll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
     }
+
+    context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
+    context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
   }
 
   /* -------------------------------------------------- */

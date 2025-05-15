@@ -21,7 +21,7 @@
     }
   }
 
-  section[data-tab="description"] {
+  [data-application-part="description"] {
     &.editorActive {
       .prosemirror.editor {
         &:not(.active) {
@@ -40,7 +40,7 @@
 
     .description-label {
       display: block;
-      line-height: var(--form-field-height);
+      line-height: 2rem;
       font-family: var(--font-h4);
       font-size: var(--font-h4-size);
 
@@ -54,9 +54,12 @@
       height: 300px;
     }
 
-    .description {
+    .prosemirror.editor > .description {
       padding: 0.25rem;
+      position: inherit;
+      flex: 1;
     }
+
   }
 
   section[data-tab="details"] {
