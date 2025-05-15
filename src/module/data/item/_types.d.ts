@@ -68,7 +68,10 @@ declare module "./ability.mjs" {
       value: number;
       text: string;
     };
-    effect: string;
+    effect: {
+      before: string;
+      after: string;
+    };
   }
 
   export interface AbilityUseOptions {

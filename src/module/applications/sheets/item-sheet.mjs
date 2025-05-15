@@ -146,7 +146,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         await this.item.system.getSheetContext(context);
         break;
       case "impact":
-        context.enrichedEffect = await enrichHTML(this.item.system.effect, { relativeTo: this.item });
+        context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
+        context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();

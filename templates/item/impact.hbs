@@ -1,5 +1,12 @@
 {{! Impact Tab }}
 <section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="impact" data-subtype="{{document.type}}">
+  <div class="effect">
+    {{#if isPlay}}
+    {{{enrichedBeforeEffect}}}
+    {{else}}
+    {{formGroup systemFields.effect.fields.before value=system.effect.before height="200"}}
+    {{/if}}
+  </div>
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.Ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
@@ -34,9 +41,9 @@
 
   <div class="effect">
     {{#if isPlay}}
-    {{{enrichedEffect}}}
+    {{{enrichedAfterEffect}}}
     {{else}}
-    {{formGroup systemFields.effect value=system.effect height="200"}}
+    {{formGroup systemFields.effect.fields.after value=system.effect.after height="200"}}
     {{/if}}
   </div>
 </section>
