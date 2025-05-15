@@ -54,7 +54,7 @@
   - Power roll, spend, and effects have been moved to the new Impact tab
   - Power roll effects are now organized by type first (e.g. Damage)
     - Each type has data for each tier
-  - The Effect line is now a full rich text editor
+  - The Effect line has been split into two rich text editors for before & after the power roll.
 - Changed system minimum to v13.340, verified system for v13 generally.
 - Updated application overrides and hooks to v13 UI overhaul compatibility. (#226, #229, #230, #231, #232, #233, #255, #298)
 - [BREAKING] Actor `system.movement` has been refactored from values for each type to `system.movement.value` and `system.movement.types`
