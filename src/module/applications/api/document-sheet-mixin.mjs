@@ -64,6 +64,24 @@ export default base => {
     /* -------------------------------------------------- */
 
     /** @inheritdoc */
+    async _renderFrame(options) {
+      const frame = await super._renderFrame(options);
+      const buttons = [`
+        <button type="button" class="header-control icon fa-solid fa-user-lock" data-action="toggleMode" data-tooltip="DRAW_STEEL.Sheet.ToggleMode"></button>
+      `];
+      if (this.document.system.source) {
+        buttons.push(`
+          <button type="button" class="header-control icon fa-solid fa-book" data-action="updateSource" data-tooltip="DRAW_STEEL.Sheet.UpdateSource"></button>
+        `);
+      }
+      this.window.controls.insertAdjacentHTML("afterend", buttons.join(""));
+
+      return frame;
+    }
+
+    /* -------------------------------------------------- */
+
+    /** @inheritdoc */
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
       Object.assign(context, {

@@ -62,7 +62,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   static PARTS = {
     header: {
       template: systemPath("templates/item/header.hbs"),
-      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
+      templates: ["templates/item/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
