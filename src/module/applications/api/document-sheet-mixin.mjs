@@ -73,7 +73,7 @@ export default base => {
       if (this.document.system.source) {
         buttons.push(constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-book"], dataset: { action: "updateSource", tooltip: "DRAW_STEEL.Sheet.UpdateSource" } }));
       }
-      this.window.controls.insertAdjacentHTML("afterend", buttons.map(b => b.outerHTML).join(""));
+      this.window.controls.after(...buttons);
 
       return frame;
     }
