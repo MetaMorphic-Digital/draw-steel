@@ -10,6 +10,15 @@ When you click on any of your characteristics on your character sheet while in �
 
 ***2d10 + characteristic (+ 2 (Skill bonus) ± Edges/Banes)***
 
+
+## Stamina and negative Stamina
+
+To set a heroes stamina to a negatyive value, either
+
+- set the stamina value on the character sheet as [-value]. If Stamina is `5` and the entered value is `-10`, then the resulting stamina will be `-10`
+
+- use the token HUD for a relative change of stamina. If stamina is `5` and the entered value is `-10` then the resulting stamina will be `-5`.
+
 ## Recoveries, Respites, and Hero Tokens
 
 ### Recoveries
@@ -24,7 +33,7 @@ On the character sheet is a button for taking a `Respite`, that automatically co
 
 When clicking on the `Stamina` label on the character sheet, a prompt will appear to spend 2 Hero Tokens - if available - instead of a Recovery to regain stamina worth the actor’s recovery value.
 
-## Hero Tokens and Malice display
+### Hero Tokens and Malice display
 
 Both Hero Token count  and Director’s Malice total are displayed in a little display as part of/below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
 
