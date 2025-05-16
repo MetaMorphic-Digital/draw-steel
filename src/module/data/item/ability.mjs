@@ -273,8 +273,6 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    const powerRollEffectFormatter = game.i18n.getListFormatter({ type: "unit" });
-
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
       { text: this.power.effects.contents.map(effect => effect.toText(tier)).join("; ") },
