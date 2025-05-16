@@ -184,7 +184,7 @@ If the `Taunted` status effect is applied to an actor, while another actor is ta
 
 ### Winded
 
-If the stamina falls below zero, it automatically if replaced with the `dying` status.
+If the stamina falls below zero, it is automatically replaced with the `dying` status.
 
 
 
