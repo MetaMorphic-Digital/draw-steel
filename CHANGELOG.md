@@ -64,6 +64,7 @@
 - Switched various fontAwesome icons to pro-exclusives. (#274)
 - Various repository refactors. (#253, #290, #301, #325, #338)
 - Made various sheet actions hard private (#397)
+- Moved the play/edit mode toggle and the item/npc update source buttons to the sheet header (#413)
 
 ### Fixed
 - Fixed an error preventing combat start if no player-owned characters are in the combat. (#266)
