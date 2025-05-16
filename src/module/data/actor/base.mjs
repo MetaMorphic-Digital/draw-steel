@@ -190,7 +190,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
    * @param {User} user
    */
-  _preUpdate(changes, operation, user) {
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
     const newSize = foundry.utils.getProperty(changes, "system.combat.size.value");
     if ((newSize !== undefined) && (this.combat.size.value !== newSize)) {
       foundry.utils.mergeObject(changes, {
