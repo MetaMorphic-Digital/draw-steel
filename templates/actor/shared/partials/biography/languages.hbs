@@ -1,0 +1,8 @@
+<fieldset>
+  <legend>{{systemFields.biography.fields.languages.label}}</legend>
+  {{#if isPlay}}
+  {{languages.list}}
+  {{else}}
+  {{formInput systemFields.biography.fields.languages value=systemSource.biography.languages disabled=(not editable) dataset=datasets.isSource options=languages.options}}
+  {{/if}}
+</fieldset>

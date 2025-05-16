@@ -6,11 +6,11 @@ Please ensure there is an open issue about whatever contribution you are submitt
 
 ## Developer Tooling
 
-To start, clone this repository and either place it in or symlink it to your `Data/systems/draw-steel` user data directory. The CSS file referenced by `system.json` is derived from the SCSS files committed to the repository, so you must perform the following instructions to be able to load the repository in Foundry from the committed source.
+To start, clone this repository and either place it in or symlink it to your `Data/systems/draw-steel` user data directory.
 
 To provide type and i18n support, this repository uses a postinstall script that symlinks your local Foundry installation. For this to work, copy `example-foundry-config.yaml` and rename it to `foundry-config.yaml`, then replace the value of the `installPath` field.
 
-Once this is done you can run `npm install` to install all relevant dependencies as well as compile the CSS file. These include `eslint` and `sass`, which provide formatting and styling support.
+Once this is done you can run `npm install` to install all relevant dependencies. This includes `eslint`, which provides formatting support.
 
 For vscode, you will need to create a `.vscode/settings.json` file with the following:
 
@@ -41,6 +41,12 @@ The system is still under construction and not ready for compendium content yet!
 ### Translations
 
 The core system will only support english-language compendium content. [Babele](https://foundryvtt.com/packages/babele) integrations should be provided by separate translation modules.
+
+## Wiki
+
+The pages for the wiki are maintained in `src/docs`. These files also double as the markdown source for the System Documentation journal entry. Updates to this journal will be propagated back to the relevant files by the compendium unpack operation, and updates to these files will be included whenever the journals are rebuilt.
+
+Not all wiki pages are included in the System Documentation journal. To add a mirrored page to the journal, create a new page inside foundry and set the `flags.draw-steel.wikiPath` property to the name of the file, then unpack the compendiums. Otherwise, files inside `src/docs` will be wiki-exclusive.
 
 ## Issues
 

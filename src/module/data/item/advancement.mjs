@@ -1,17 +1,25 @@
 import BaseItemModel from "./base.mjs";
 
 export default class AdvancementModel extends BaseItemModel {
-  /** @override */
-  static metadata = Object.freeze({
-    ...super.metadata,
-    type: "",
-    hasAdvancements: true
-  });
+  /** @inheritdoc */
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "",
+      embedded: {
+        Advancement: "system.advancements",
+      },
+    });
+  }
 
-  /** @override */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
-    const schema = super.defineSchema();
+    const schema = super.defineSchema({
+      // TODO: Add the appropriate embedded data models in 0.8
+      // advancements: new ds.data.fields.CollectionField(),
+    });
 
     return schema;
   }

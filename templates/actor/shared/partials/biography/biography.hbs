@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>{{systemFields.biography.fields.value.label}}</legend>
+  {{#if (and editable (not isPlay))}}
+  {{formInput
+  systemFields.biography.fields.value
+  value=systemSource.biography.value
+  documentUUID=document.uuid
+  collaborate=true
+  height=200
+  }}
+  {{else}}
+  {{{enrichedBiography}}}
+  {{/if}}
+</fieldset>

@@ -1,3 +1,4 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
 /**
@@ -8,21 +9,21 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
    * Key information about this ActiveEffect subtype
    */
   static metadata = Object.freeze({
-    type: "base"
+    type: "base",
   });
 
-  /** @override */
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Effect.base"];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const config = ds.CONFIG;
     return {
       end: new fields.SchemaField({
-        type: new fields.StringField({choices: Object.keys(config.effectEnds), blank: true, required: true}),
-        roll: new FormulaField({initial: "1d10"})
-      })
+        type: new fields.StringField({ choices: Object.keys(config.effectEnds), blank: true, required: true }),
+        roll: new FormulaField({ initial: "1d10" }),
+      }),
     };
   }
 
@@ -44,7 +45,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     return ds.CONFIG.effectEnds[this.end.type]?.abbreviation ?? "";
   }
 
-  /** @import {ActiveEffectDuration, EffectDurationData} from "./_types" */
+  /** @import { ActiveEffectDuration, EffectDurationData } from "./_types" */
 
   /**
    * Subtype specific duration calculations
@@ -57,7 +58,20 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
       type: "draw-steel",
       duration: null,
       remaining: null,
-      label: this.durationLabel
+      label: this.durationLabel,
     };
   }
+
+  /** @inheritdoc */
+  async toEmbed(config, options = {}) {
+
+    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", this.parent.type);
+    embed.innerHTML = enriched;
+
+    return embed;
+  }
+
 }

@@ -1,6 +1,9 @@
+import { SubtypeMetadata } from "../_types.js";
 import { PowerRollModifiers } from "../../_types.js";
-import { DrawSteelItem } from "../../documents/item.mjs";
+import DrawSteelItem from "../../documents/item.mjs";
+import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
+import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs"
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -9,9 +12,7 @@ export type ItemMetaData = Readonly<{
   invalidActorTypes: string[];
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
-  /** Does this item have advancements? */
-  hasAdvancements?: boolean;
-}>
+} & SubtypeMetadata>
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {
@@ -28,38 +29,10 @@ declare module "./base.mjs" {
 
 declare module "./ability.mjs" {
 
-  export interface Potency {
-    potency: {
-      enabled: boolean,
-      value: string | number;
-      characteristic: string;
-    }
-  }
-  export interface PotencyData extends Potency {
-    embed: string
-  }
-
-  type PowerRoll = {
-    damage: {
-      value: string;
-      type: string;
-    }
-    ae: string;
-    potency: Potency;
-    forced: {
-      type: string;
-      value: number;
-      vertical: boolean;
-    }
-    description: string;
-  }
+  type PowerRollEffects = DamagePowerRollEffect | OtherPowerRollEffect;
 
   export default interface AbilityModel {
-    description: {
-      value: string;
-      gm: string;
-      flavor: string;
-    }
+    description: never;
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
     category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";
@@ -76,22 +49,29 @@ declare module "./ability.mjs" {
       /** Null value indicates "all"*/
       value: number | null;
     }
-    powerRoll: {
-      enabled: boolean;
-      /** The set of characteristics available to this power roll */
-      characteristics: Set<string>;
-      /** The highest characteristic of those available. Not set if there's no parent actor. */
-      characteristic?: string;
-      formula: string;
-      tier1: PowerRoll;
-      tier2: PowerRoll;
-      tier3: PowerRoll;
+    power: {
+      /** Added during base data prep, not a schema value */
+      characteristic: {
+        key: string;
+        /** Null value during data prep or if no parent actor */
+        value: null | number;
+      }
+      roll: {
+        /** Added during data prep */
+        enabled: boolean;
+        formula: string;
+        characteristics: Set<string>;
+      }
+      effects: ModelCollection<PowerRollEffects>;
     }
     spend: {
       value: number;
       text: string;
     };
-    effect: string;
+    effect: {
+      before: string;
+      after: string;
+    };
   }
 
   export interface AbilityUseOptions {
@@ -138,12 +118,15 @@ declare module "./equipment.mjs" {
     category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
     echelon: keyof typeof ds["CONFIG"]["echelons"];
     keywords: Set<string>;
-    prerequisites: string;
     project: {
+      prerequisites: string;
       source: string;
       rollCharacteristic: Set<string>;
       goal: number;
-      yield: string;
+      yield: {
+        amount: string;
+        display: string
+      }
     }
   }
 }
@@ -185,6 +168,22 @@ declare module "./kit.mjs" {
         damage: DamageSchema;
         distance: number;
       }
+    }
+  }
+}
+
+declare module "./project.mjs" {
+
+  export default interface ProjectModel {
+    type: keyof typeof ds["CONFIG"]["projects"]["types"];
+    prerequisites: string;
+    projectSource: string;
+    rollCharacteristic: Set<string>;
+    goal: number;
+    yield: {
+      item: string;
+      amount: string;
+      display: string
     }
   }
 }

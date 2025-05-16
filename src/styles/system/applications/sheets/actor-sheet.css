@@ -1,0 +1,281 @@
+.draw-steel.actor {
+
+  &:not(.minimizing, .maximizing, .minimized) {
+    min-width: 560px;
+  }
+
+  .form-group {
+    .input-placeholder {
+      line-height: var(--input-height);
+      font-size: var(--font-size-16);
+    }
+  }
+
+  .form-fields {
+    justify-content: center;
+  }
+
+  .sheet-header {
+    gap: 10px;
+    .profile-img {
+      width: 125px;
+    }
+    .header-center {
+      gap: 5px;
+      justify-content: center;
+      .tags {
+        gap: 5px;
+        .tag {
+          background: var(--draw-steel-c-faint);
+          border: 1px solid var(--draw-steel-c-beige);
+          color: var(--draw-steel-c-dark);
+          border-radius: 5px;
+          padding: 5px;
+          font-size: var(--font-size-13);
+          font-weight: 600;
+          flex-grow: 0;
+          text-wrap: nowrap;
+          font-variant-caps: small-caps;
+          span a[data-action="deleteDoc"] {
+            margin-left: 5px;
+          }
+          a.unfilled {
+            font-weight: normal;
+          }
+        }
+        a[data-action="editMonsterMetadata"] {
+          text-align: right;
+        }
+      }
+    }
+    .header-right {
+      flex: 0 0 160px;
+      .actor-source {
+        margin-top: 5px;
+        font-family: var(--font-h4);
+        font-size: var(--font-size-16);
+        flex-grow: 1;
+        align-items: start;
+        text-align: center;
+      }
+      div.actor-data > div,
+      .malice {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 5px;
+        label,
+        .form-fields {
+          flex: 0 0 50%;
+        }
+        label {
+          font-weight: bold;
+        }
+      }
+      dd {
+        text-align: right;
+      }
+      div.take-respite  {
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  section.tab {
+    height: 100%
+  }
+
+  .flexrow.fieldgroup {
+    align-items: stretch;
+  }
+
+  .resources {
+    .form-group.stacked {
+      flex-direction: column-reverse;
+    }
+
+    .resource {
+      input[type=number] {
+        width: 60px;
+        flex: 0 0 50px;
+      }
+      &.heroic label {
+        text-align: right;
+      }
+    }
+
+    .resource-label {
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .resource-current {
+      text-align: center;
+    }
+
+    .resource-divider {
+      flex: 0 0 20px;
+      text-align: center;
+    }
+
+    .resource-max {
+      /* font-size: large; */
+      text-align: center;
+    }
+  }
+
+  .free-strike {
+    flex: 0 0 120px;
+    .free-strike-body {
+      text-align: center;
+      height: 100%;
+      padding: 10px 0;
+    }
+  }
+
+  .characteristics {
+    .characteristic {
+      font-size: large;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .edit {
+      input {
+        width: 60px;
+        text-align: center;
+      }
+    }
+  }
+
+  .combat,
+  .movement {
+    .play {
+      text-align: center;
+    }
+
+    .size {
+      input {
+        margin: 0 10px;
+      }
+
+      select {
+        flex-basis: 70px;
+      }
+    }
+
+    .form-group {
+      text-align: center;
+      margin: 0;
+
+      .form-fields {
+        flex: 1 1 20px;
+      }
+    }
+  }
+
+  .immunities-weaknesses {
+    align-items: stretch;
+
+    .immunity,
+    .weakness {
+      white-space: nowrap;
+    }
+  }
+
+  .immunities,
+  .weaknesses {
+    gap: 5px;
+
+    .form-group {
+      flex: 1 1 100px;
+    }
+  }
+
+  .tab {
+    .item-header {
+      line-height: 24px;
+    }
+  }
+
+  .tab.abilities .item-list-container {
+
+    .item-cost,
+    .item-distance,
+    .item-target {
+      width: 100px;
+    }
+
+    .item-order {
+      width: 50px;
+    }
+
+    .item-row {
+      .item-name {
+        .name {
+          .keywords {
+            font-size: var(--font-size-12);
+          }
+        }
+      }
+    }
+
+    .item-embed {
+      padding: 1px 5px;
+
+      .metadata dl {
+        grid-template-columns: auto 1fr auto 1fr;
+      }
+    }
+  }
+
+  .tab.features {
+
+    .feature-list-container {
+
+      .item-type,
+      .item-subtype {
+        width: 100px;
+      }
+    }
+  }
+
+  .tab.equipment {
+    .kit-list-container {
+
+      .item-melee-bonus,
+      .item-ranged-bonus {
+        width: 150px;
+      }
+    }
+
+    .equipment-list-container {
+
+      .item-echelon {
+        width: 100px;
+      }
+    }
+  }
+
+  .tab.projects .item-list-container {
+    .item-type {
+      width: 75px;
+    }
+
+    .item-points {
+      width: 100px;
+    }
+  }
+
+  .tab.biography {
+    .negotiation {
+      .fixed-stats {
+        margin-top: 0;
+      }
+    }
+  }
+}

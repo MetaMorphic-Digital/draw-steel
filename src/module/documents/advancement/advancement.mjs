@@ -23,9 +23,9 @@ class AdvancementError extends Error {
  * @abstract
  */
 export default class Advancement extends BaseAdvancement {
-  constructor(data, {parent = null, ...options} = {}) {
+  constructor(data, { parent = null, ...options } = {}) {
     if (parent instanceof Item) parent = parent.system;
-    super(data, {parent, ...options});
+    super(data, { parent, ...options });
 
     /**
      * A collection of Application instances which should be re-rendered whenever this document is updated.
@@ -36,13 +36,13 @@ export default class Advancement extends BaseAdvancement {
     Object.defineProperty(this, "apps", {
       value: {},
       writable: false,
-      enumerable: false
+      enumerable: false,
     });
   }
 
   /* -------------------------------------------- */
 
-  /** @inheritDoc */
+  /** @inheritdoc */
   _initialize(options) {
     super._initialize(options);
     return this.prepareData();
@@ -65,7 +65,7 @@ export default class Advancement extends BaseAdvancement {
       apps: {
         // config: AdvancementConfig,
         // flow: AdvancementFlow
-      }
+      },
     };
   }
 
@@ -154,7 +154,7 @@ export default class Advancement extends BaseAdvancement {
     if (!["class", "subclass"].includes(this.item.type)
       || foundry.utils.hasProperty(data, "level")
       || this.constructor.metadata.multiLevel) return;
-    this.updateSource({level: 1});
+    this.updateSource({ level: 1 });
   }
 
   /* -------------------------------------------- */
@@ -268,7 +268,7 @@ export default class Advancement extends BaseAdvancement {
    * @returns {object}  An object of drag data.
    */
   toDragData() {
-    const dragData = {type: "Advancement"};
+    const dragData = { type: "Advancement" };
     if (this.id) dragData.uuid = this.uuid;
     else dragData.data = this.toObject();
     return dragData;
@@ -318,12 +318,12 @@ export default class Advancement extends BaseAdvancement {
   async createItemData(uuid, id) {
     const source = await fromUuid(uuid);
     if (!source) return null;
-    const {_stats} = game.items.fromCompendium(source);
+    const { _stats } = game.items.fromCompendium(source);
     return source.clone({
       _stats,
       _id: id ?? foundry.utils.randomID(),
       "flags.draw-steel.sourceId": uuid,
-      "flags.draw-steel.advancementOrigin": `${this.item.id}.${this.id}`
-    }, {keepId: true}).toObject();
+      "flags.draw-steel.advancementOrigin": `${this.item.id}.${this.id}`,
+    }, { keepId: true }).toObject();
   }
 }

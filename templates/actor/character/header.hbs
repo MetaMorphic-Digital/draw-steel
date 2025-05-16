@@ -1,131 +1,104 @@
+{{!-- Partial for header tags --}}
+{{#*inline "headerTag"}}
+{{#if originDoc}}
+<span data-document-class="Item" data-item-id="{{lookup originDoc "id"}}">
+  <a class="filled" data-action="viewDoc">
+    {{lookup originDoc "name"}}
+  </a>
+  {{#unless isPlay}}
+  <a data-action="deleteDoc">
+    <i class="fa-solid fa-trash-can"></i>
+  </a>
+  {{/unless}}
+</span>
+{{else}}
+{{#if isPlay}}
+<span class="unfilled">
+  {{localize "DRAW_STEEL.Sheet.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
+</span>
+{{else}}
+<a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="{{originType}}" data-render-sheet="true">
+  {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize (concat "TYPES.Item." originType))}}
+</a>
+{{/if}}
+{{/if}}
+{{/inline}}
+
 {{! Sheet Header }}
 <header class="sheet-header">
   {{! <!-- eslint-disable-next-line @html-eslint/attrs-newline --> }}
   <img
     class="profile-img"
-    src="{{actor.img}}"
-    alt="{{actor.name}}"
+    src="{{document.img}}"
+    alt="{{document.name}}"
+    data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
     data-edit="img"
-    {{#if isPlay}}
-    data-action="showPortraitArtwork"
-    {{else}}
-    {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
-    data-action="editImage"
-    {{/if}}
-    title="{{actor.name}}"
-    height="100"
-    width="100"
-  />
+    title="{{document.name}}"
+  >
   <div class="header-center flexcol">
     <div class="document-name">
       {{#if isPlay}}
-      <h2>{{wordBreaker actor.name}}</h2>
+      <h2>{{document.name}}</h2>
       {{else}}
-      {{formInput
-      fields.name
-      value=actor._source.name
-      placeholder=(localize "Name")
-      }}
+      {{formInput fields.name value=source.name placeholder=(localize "Name")}}
       {{/if}}
     </div>
-    <div class="origins flexrow">
-      <div class="ancestry">
-        {{#if actor.system.ancestry}}
-        <span data-document-class="Item" data-item-id="{{actor.system.ancestry.id}}">
-          <a class="filled" data-action="viewDoc">
-            {{{wordBreaker actor.system.ancestry.name}}}
-          </a>
-          {{#unless isPlay}}
-          <a data-action="deleteDoc">
-            <i class="fa-solid fa-trash-can"></i>
-          </a>
-          {{/unless}}
-        </span>
-        {{else}}
-        <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="ancestry" data-render-sheet="true">
-          {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ancestry")}}
-        </a>
-        {{/if}}
+    <div class="origins tags flexrow">
+      <div class="ancestry tag">
+        {{> headerTag originDoc=document.system.ancestry originType="ancestry"}}
       </div>
-      <div class="culture">
-        {{#if actor.system.culture}}
-        <span data-document-class="Item" data-item-id="{{actor.system.culture.id}}">
-          <a class="filled" data-action="viewDoc">
-            {{{wordBreaker actor.system.culture.name}}}
-          </a>
-          {{#unless isPlay}}
-          <a data-action="deleteDoc">
-            <i class="fa-solid fa-trash-can"></i>
-          </a>
-          {{/unless}}
-        </span>
-        {{else}}
-        <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="culture" data-render-sheet="true">
-          {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.culture")}}
-        </a>
-        {{/if}}
+      <div class="culture tag">
+        {{> headerTag originDoc=document.system.culture originType="culture"}}
       </div>
-      <div class="career">
-        {{#if actor.system.career}}
-        <span data-document-class="Item" data-item-id="{{actor.system.career.id}}">
-          <a class="filled" data-action="viewDoc">
-            {{{wordBreaker actor.system.career.name}}}
-          </a>
-          {{#unless isPlay}}
-          <a data-action="deleteDoc">
-            <i class="fa-solid fa-trash-can"></i>
-          </a>
-          {{/unless}}
-        </span>
-        {{else}}
-        <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="career" data-render-sheet="true">
-          {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.career")}}
-        </a>
-        {{/if}}
+      <div class="career tag">
+        {{> headerTag originDoc=document.system.career originType="career"}}
+      </div>
+      <div class="class tag">
+        {{> headerTag originDoc=document.system.class originType="class"}}
       </div>
     </div>
   </div>
   <div class="header-right flexcol">
-    {{> "systems/draw-steel/templates/parts/mode-toggle.hbs"}}
-    <div class="class">
-      {{#if actor.system.class}}
-      <span class="click-element flexrow" data-document-class="Item" data-item-id="{{actor.system.class.id}}">
-        <a class="flexrow" data-action="viewDoc">
-          <img class="item-img" src="{{actor.system.class.img}}" alt="{{actor.system.class.name}}">
-          <span class="label filled">
-            {{actor.system.class.name}} {{actor.system.class.system.level}}
-          </span>
-        </a>
-        {{#unless isPlay}}
-        <a data-action="deleteDoc">
-          <i class="fa-solid fa-trash-can"></i>
-        </a>
-        {{/unless}}
-      </span>
-      {{else}}
-      <a class="click-element" data-action="createDoc" data-document-class="Item" data-type="class" data-render-sheet="true">
-        <span class="label unfilled">
-          {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.class")}}
+    <dl>
+      <dt class="level">{{localize "DRAW_STEEL.Item.Class.FIELDS.level.label"}}</dt>
+      <dd class="level">
+        {{system.level}}
+        {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
+        <span class="level-up" data-tooltip="DRAW_STEEL.Sheet.LevelUp">
+          <i class="fa-solid fa-up-long"></i>
         </span>
-      </a>
-      {{/if}}
-    </div>
-    <div class="victories">
-      <label>{{systemFields.hero.fields.victories.label}}</label>
+        {{/if}}
+      </dd>
+
       {{#if isPlay}}
-      <span class="resource-current">
-        {{system.hero.victories}}
-      </span>
-      <span class="resource-divider"> / </span>
-      <span class="resource-max">
-        {{system.victoriesMax}}
-      </span>
-      {{else}}
-      {{formInput
-      systemFields.hero.fields.victories
-      value=systemSource.hero.victories
-      }}
+      <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
+      <dd class="xp">
+        <span class="resource-curent">{{system.hero.xp}}</span>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.nextLevelXP}}</span>
+      </dd>
+
+      <dt>{{systemFields.hero.fields.victories.label}}</dt>
+      <dd>
+        <span class="resource-current">{{system.hero.victories}}</span>
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.victoriesMax}}</span>
+      </dd>
       {{/if}}
+    </dl>
+    {{#unless isPlay}}
+    <div class="actor-data character-data">
+      {{formGroup systemFields.hero.fields.xp value=systemSource.hero.xp classes="xp"}}
+      {{formGroup systemFields.hero.fields.victories value=systemSource.hero.victories classes="victories"}}
     </div>
+    {{/unless}}
+    {{#if isPlay}}
+    <div class="take-respite">
+      <a data-action="takeRespite">
+        <i class="fa-solid fa-bed"></i>
+        {{localize "DRAW_STEEL.Sheet.TakeRespite"}}
+      </a>
+    </div>
+    {{/if}}
   </div>
 </header>

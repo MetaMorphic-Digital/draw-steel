@@ -1,0 +1,41 @@
+{{! Projects Tab }}
+<section class="tab projects {{tab.cssClass}}" data-group="primary" data-tab="projects">
+  <section class="item-list-container project-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{localize "TYPES.Item.project"}}</div>
+      <div class="item-column item-points">{{projectFields.points.label}}</div>
+      <div class="item-column item-type">{{projectFields.type.label}}</div>
+      <div class="item-column item-controls">
+        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.project")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="project" data-render-sheet="true" data-tooltip="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+      </div>
+    </div>
+    <ol class="item-list2 project-list">
+      {{#each projects as |projectContext|}}
+      <li class="item project draggable" data-item-id="{{projectContext.item.id}}" data-document-class="Item">
+        <div class="item-row">
+          <div class="item-column item-name rollable" data-action="rollProject">
+            <img class="item-image" src="{{projectContext.item.img}}" alt="{{projectContext.item.name}}">
+            <div class="name">
+              <div class="label">{{projectContext.item.name}}</div>
+            </div>
+          </div>
+          <div class="item-column item-points">{{ifThen projectContext.item.system.points projectContext.item.system.points "0"}} / {{projectContext.item.system.goal}}</div>
+          <div class="item-column item-type">{{lookup (lookup @root.config.projects.types projectContext.item.system.type) "label"}}</div>
+          <div class="item-column item-controls">
+            <a data-action="toggleItemEmbed">
+              <i class="fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="item-embed">
+          {{#if projectContext.expanded}}{{{projectContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+</section>

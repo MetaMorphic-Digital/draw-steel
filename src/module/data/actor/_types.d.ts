@@ -1,4 +1,4 @@
-import { DrawSteelActor } from "../../documents/actor.mjs";
+import DrawSteelActor from "../../documents/actor.mjs";
 import { BarAttribute } from "../_types";
 import SizeModel from "../models/size.mjs";
 import { DamageSchema } from "../item/kit.mjs";
@@ -22,11 +22,9 @@ declare module "./base.mjs" {
       languages: Set<string>;
     }
     movement: {
-      walk: number | null;
-      burrow: number | null;
-      climb: number | null;
-      swim: number | null;
-      fly: number | null;
+      value: number;
+      types: Set<string>;
+      hover: boolean;
       teleport: number | null;
     }
     damage: {
@@ -86,4 +84,14 @@ declare module "./npc.mjs" {
       organization: string;
     }
   }
+}
+
+interface FreeStrike {
+  value: number;
+  keywords: Set<string>;
+  type: string;
+  range: {
+    melee: number;
+    ranged: number;
+  };
 }

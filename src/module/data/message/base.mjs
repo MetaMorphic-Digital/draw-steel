@@ -7,7 +7,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * Key information about this ChatMessage subtype
    */
   static metadata = Object.freeze({
-    type: "base"
+    type: "base",
   });
 
   static defineSchema() {
@@ -16,7 +16,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Perform subtype-specific alterations to the final chat message html
-   * Called by the renderChatMessage hook
+   * Called by the renderChatMessageHTML hook
    * @param {HTMLLIElement} html The pending HTML
    */
   async alterMessageHTML(html) {
@@ -39,7 +39,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Add event listeners. Guaranteed to run after all alterations in {@link alterMessageHTML}
-   * Called by the renderChatMessage hook
+   * Called by the renderChatMessageHTML hook
    * @param {HTMLLIElement} html The pending HTML
    */
   addListeners(html) {}

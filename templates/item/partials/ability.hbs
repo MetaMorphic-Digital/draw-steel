@@ -1,78 +1,7 @@
-{{!-- Partial for potency configuration on a tiers effect --}}
-{{#*inline "potency"}}
-{{formGroup fields.enabled name=(concat fieldPath "potency.enabled") value=potency.enabled}}
-{{#if potency.enabled}}
-{{formGroup fields.characteristic name=(concat fieldPath "potency.characteristic") value=potency.characteristic options=@root.characteristics}}
-{{formGroup fields.value name=(concat fieldPath "potency.value") value=potency.value placeholder=fields.value.initial}}
-{{/if}}
-{{/inline}}
-
-{{!-- Partial for tier damage effects --}}
-{{#*inline "damage"}}
-{{formGroup fields.types name=(concat fieldPath "types") value=effect.types options=@root.damageTypes blank=""}}
-{{formGroup fields.value name=(concat fieldPath "value") value=effect.value }}
-{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
-{{/inline}}
-
-{{!-- Partial for tier AE effects --}}
-{{#*inline "ae"}}
-{{> potency fields=fields.potency.fields value=effect.potency name=name potency=effect.potency}}
-{{#if effect.potency.enabled}}
-{{formGroup fields.success name=(concat fieldPath "success") value=effect.success options=@root.appliedEffects}}
-{{formGroup fields.failure name=(concat fieldPath "failure") value=effect.failure options=@root.appliedEffects}}
-{{else}}
-{{formGroup fields.always name=(concat fieldPath "always") value=effect.always options=@root.appliedEffects}}
-{{/if}}
-{{/inline}}
-
-{{!-- Partial for tier forced movement effects --}}
-{{#*inline "forced"}}
-{{formGroup fields.types name=(concat fieldPath "types") value=effect.types}}
-{{formGroup fields.value name=(concat fieldPath "value") value=effect.value}}
-{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
-{{/inline}}
-
-{{!-- Partial for tier other/bespoke effects --}}
-{{#*inline "other"}}
-{{> potency fields=fields.potency.fields value=effect.potency fieldPath=fieldPath potency=effect.potency}}
-{{/inline}}
-
-{{#*inline "powerRoll"}}
-<fieldset class="tab {{ifThen (eq field.name subtab.id) "active" "" }}" data-group="powerRoll" data-tab="{{field.name}}">
-  <legend>{{field.label}}</legend>
-  <div>
-    <button class="modify-tier-effect" data-tier="{{field.name}}" data-operation="add">
-      <i class="fa-solid fa-plus"></i>
-      {{localize "DRAW_STEEL.Item.Ability.AddTierEffect"}}
-    </button>
-  </div>
-  {{#each value as |effect|}}
-  <div class="power-roll-effect">
-    {{!-- effectFields will be equal to the fields under that effect type --}}
-    {{#with (lookup (lookup ../field.element.types effect.type) "fields") as |effectFields|}}
-    {{!-- The type selection will be shown on all effect types --}}
-    {{formGroup effectFields.type name=(concat "system.powerRoll." ../../field.name "." @index ".type") value=effect.type options=@root.powerRollEffectOptions}}
-
-    {{!-- Dynamically access the relevant partial based on effect type --}}
-    {{> (lookup effect "type") fieldPath=(concat "system.powerRoll." ../../field.name "." @index ".") fields=effectFields effect=effect}}
-
-    {{!-- The display field will be shown on all effect types --}}
-    {{formGroup effectFields.display name=(concat "system.powerRoll." ../../field.name "." @index ".display") value=effect.display}}
-    {{/with}}
-    <div>
-      <button class="modify-tier-effect" data-tier="{{../field.name}}" data-index="{{@index}}" data-operation="delete">
-        <i class="fa-solid fa-trash-can"></i>
-        {{localize "DRAW_STEEL.Item.Ability.RemoveTierEffect"}}
-      </button>
-    </div>
-  </div>
-  {{/each}}
-</fieldset>
-{{/inline}}
 {{#if isPlay}}
-{{> "systems/draw-steel/templates/item/embeds/ability.hbs"}}
+{{> "systems/draw-steel/templates/item/embeds/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
 {{else}}
-{{formGroup systemFields.description.fields.flavor value=system.description.flavor}}
+{{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}
 {{formGroup systemFields.category value=system.category options=abilityCategories blank=""}}
@@ -99,23 +28,8 @@
 <fieldset>
   <legend>{{systemFields.target.label}}</legend>
   {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
-  {{#if (ne system.target.type "self")}}
+  {{#if (and (ne system.target.type "self") (ne system.target.type "special"))}}
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.Ability.Target.All")}}
   {{/if}}
 </fieldset>
-{{formGroup systemFields.powerRoll.fields.enabled value=system.powerRoll.enabled}}
-{{#if system.powerRoll.enabled}}
-{{formGroup systemFields.powerRoll.fields.characteristics value=system.powerRoll.characteristics options=characteristics}}
-{{formGroup systemFields.powerRoll.fields.formula value=system.powerRoll.formula placeholder=systemFields.powerRoll.fields.formula.initial}}
-{{> "templates/generic/tab-navigation.hbs" tabs=subtabs}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier1 value=system.powerRoll.tier1}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier2 value=system.powerRoll.tier2}}
-{{> powerRoll field=systemFields.powerRoll.fields.tier3 value=system.powerRoll.tier3}}
-{{/if}}
-<fieldset>
-  <legend>{{systemFields.spend.label}}</legend>
-  {{formGroup systemFields.spend.fields.value value=system.spend.value}}
-  {{formGroup systemFields.spend.fields.text value=system.spend.text}}
-</fieldset>
-{{formGroup systemFields.effect value=system.effect}}
 {{/if}}

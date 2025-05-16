@@ -1,0 +1,137 @@
+.draw-steel {
+  /* Section Header */
+  .effects-header {
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: var(--border-groove);
+    font-weight: bold;
+    > * {
+      font-size: 14px;
+      text-align: center;
+    }
+    .effect-name {
+      font-weight: bold;
+      padding-left: 5px;
+      text-align: left;
+      display: flex;
+      /* font-size: 16px; */
+    }
+  }
+
+  /* -----------------------------------------
+  /* Items Lists
+  /* ----------------------------------------- */
+
+  .effects-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: var(--draw-steel-c-tan);
+
+    /* Child lists */
+    .effect-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Item Name */
+    .effect-name {
+      flex: 2;
+      margin: 0;
+      overflow: hidden;
+      font-size: 13px;
+      text-align: left;
+      align-items: center;
+      display: flex;
+      h3, h4 {
+        margin: 0;
+        white-space: nowrap;
+        overflow-x: hidden;
+      }
+    }
+
+    /* Control Buttons */
+    .effect-controls {
+      display: flex;
+      flex: 0 0 100px;
+      justify-content: flex-end;
+      a {
+        font-size: 12px;
+        text-align: center;
+        margin: 0 6px;
+      }
+    }
+
+    /* Individual Item */
+    .effect {
+      align-items: center;
+      padding: 0 2px; /* to align with the header border */
+      border-bottom: 1px solid var(--draw-steel-c-faint);
+      &:last-child { border-bottom: none; }
+      .effect-name {
+        color: var(--draw-steel-c-dark);
+        .effect-image {
+          flex: 0 0 30px;
+          height: 30px;
+          background-size: 30px;
+          border: none;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .effect-prop {
+      text-align: center;
+      border-left: 1px solid #c9c7b8;
+      border-right: 1px solid #c9c7b8;
+      font-size: 12px;
+    }
+
+    /* Section Header */
+    .effects-header {
+      height: 28px;
+      margin: 2px 0;
+      padding: 0;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.05);
+      border: var(--border-groove);
+      font-weight: bold;
+      > * {
+        font-size: 12px;
+        text-align: center;
+      }
+      .effect-name {
+        padding-left: 5px;
+        text-align: left;
+        /* font-size: 16px; */
+      }
+    }
+  }
+
+  /* Example style for DrawSteel (can be removed if not needed). */
+  .effect-formula {
+    flex: 0 0 200px;
+    padding: 0 8px;
+  }
+
+  .effects .item {
+    .effect-source,
+    .effect-duration,
+    .effect-controls {
+      text-align: center;
+      border-left: 1px solid #c9c7b8;
+      border-right: 1px solid #c9c7b8;
+      font-size: 12px;
+    }
+
+    .effect-controls {
+      border: none;
+    }
+  }
+}

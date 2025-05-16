@@ -99,6 +99,9 @@ jobs:
         npm run prepareRelease
         mv --force public/draw-steel.mjs draw-steel.mjs
         mv --force public/draw-steel.mjs.map draw-steel.mjs.map
+        mv --force public/css/draw-steel-system.css css/draw-steel-system.css
+        mv --force public/css/draw-steel-elements.css css/draw-steel-elements.css
+        mv --force public/css/draw-steel-variables.css css/draw-steel-variables.css
 
 
     - name: Determine archive contents
@@ -113,7 +116,7 @@ jobs:
         result-encoding: string
         script: |
           const manifest = {
-            includes: ["assets/", "templates/", "CHANGELOG.md", "LICENSE.md"]
+            includes: ["assets/", "templates/", "packs/", "CHANGELOG.md", "LICENSE.md"]
           };
           if ( process.env.ESMODULES ) manifest.esmodules = JSON.parse(process.env.ESMODULES);
           if ( process.env.LANGUAGES ) manifest.languages = JSON.parse(process.env.LANGUAGES);
@@ -123,9 +126,8 @@ jobs:
             "${{ env.PACKAGE_TYPE }}.json",
             ...(manifest.esmodules ?? []),
             ...(manifest.esmodules?.map(s => `${s}.map`) ?? []),
-            ...(manifest.styles ?? []),
+            ...(manifest.styles?.map(s => s.src) ?? []),
             ...(manifest.languages?.map(l => l.path) ?? []),
-            ...(manifest.packs?.map(p => p.path) ?? []),
             ...(manifest.includes ?? [])
           ];
           return includes.join(" ");

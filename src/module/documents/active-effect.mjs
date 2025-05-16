@@ -1,8 +1,12 @@
-import {TargetedConditionPrompt} from "../apps/targeted-condition-prompt.mjs";
-import {DrawSteelActor} from "./actor.mjs";
+import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
 
-export class DrawSteelActiveEffect extends ActiveEffect {
-  /** @override */
+/** @import DrawSteelActor from "./actor.mjs"; */
+
+/**
+ * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass
+ */
+export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffect {
+  /** @inheritdoc */
   static async _fromStatusEffect(statusId, effectData, options) {
     if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;
     if (ds.CONFIG.conditions[statusId]?.targeted) await this.targetedConditionPrompt(statusId, effectData);
@@ -18,18 +22,18 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    */
   static async targetedConditionPrompt(statusId, effectData) {
     try {
-      let imposingActorUuid = await TargetedConditionPrompt.prompt({context: {statusId}});
+      let imposingActorUuid = await TargetedConditionPrompt.create({ context: { statusId } });
 
       if (foundry.utils.parseUuid(imposingActorUuid)) {
         effectData.changes = this.changes ?? [];
         effectData.changes.push({
           key: `system.statuses.${statusId}.sources`,
           mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          value: imposingActorUuid
+          value: imposingActorUuid,
         });
       }
     } catch (error) {
-      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", {localize: true});
+      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", { localize: true });
     }
   }
 
@@ -41,14 +45,14 @@ export class DrawSteelActiveEffect extends ActiveEffect {
    * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    if(!affected.statuses.has(statusId)) return null;
+    if (!affected.statuses.has(statusId)) return null;
 
     return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
   }
 
   /**
    * Automatically deactivate effects with expired durations
-   * @override
+   * @inheritdoc
    * @type {Boolean}
    */
   get isSuppressed() {
@@ -58,19 +62,19 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     return false;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActiveEffectData", this);
   }
 
-  /** @import {ActiveEffectDuration, EffectDurationData} from "../data/effect/_types" */
+  /** @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types" */
 
   /**
    * Compute derived data related to active effect duration.
    * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData>}
    * @protected
-   * @override
+   * @inheritdoc
    */
   _prepareDuration() {
     return this.system._prepareDuration ?? super._prepareDuration();
@@ -78,13 +82,13 @@ export class DrawSteelActiveEffect extends ActiveEffect {
 
   /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
-   * @override
+   * @inheritdoc
    */
   get isTemporary() {
     return this.system._isTemporary ?? super.isTemporary;
   }
 
-  /** @override */
+  /** @inheritdoc */
   _applyAdd(actor, change, current, delta, changes) {
     // If the change is setting a condition source and it doesn't exist on the actor, set the current value to an empty array.
     // If it does exist, convert the Set to an Array.
@@ -107,7 +111,7 @@ export class DrawSteelActiveEffect extends ActiveEffect {
     }
   }
 
-  /** @override */
+  /** @inheritdoc */
   _applyOverride(actor, change, current, delta, changes) {
     // If the property is a condition or a Set, convert the delta to a Set
     const match = change.key.match(/^system\.statuses\.(?<condition>[a-z]+)\.sources$/);
@@ -120,20 +124,26 @@ export class DrawSteelActiveEffect extends ActiveEffect {
   }
 
   /**
-   * TODO: REMOVE IN V13
-   * Fix bug where _applyUpgrade can set value to undefined
-   * @override
+   * Return a data object which defines the data schema against which dice rolls can be evaluated.
+   * Potentially usable in the future. May also want to adjust details to care about
+   * @returns {object}
    */
-  _applyUpgrade(actor, change, current, delta, changes) {
-    let update = current;
-    const ct = foundry.utils.getType(current);
-    switch (ct) {
-      case "boolean":
-      case "number":
-        if ((change.mode === CONST.ACTIVE_EFFECT_MODES.UPGRADE) && (delta > current)) update = delta;
-        else if ((change.mode === CONST.ACTIVE_EFFECT_MODES.DOWNGRADE) && (delta < current)) update = delta;
-        break;
+  getRollData() {
+    // Will naturally have actor data at the base & `item` for any relevant item data
+    const rollData = this.parent?.getRollData() ?? {};
+
+    // Shallow copy
+    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name };
+
+    // Statuses provided by *this* active effect
+    for (const status of this.statuses) {
+      rollData.effect.statuses[status] = 1;
     }
-    changes[change.key] = update;
+
+    if (this.system.modifyRollData instanceof Function) {
+      this.system.modifyRollData(rollData);
+    }
+
+    return rollData;
   }
 }

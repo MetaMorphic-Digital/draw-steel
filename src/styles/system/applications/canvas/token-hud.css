@@ -1,0 +1,37 @@
+#token-hud .token-movement {
+  position: absolute;
+  display: flex;
+  gap: 5px;
+  top: -90px;
+  left: 8px;
+  .movement-modes {
+    --movement-columns: 2;
+    --movement-size: 150px;
+    visibility: hidden;
+    position: absolute;
+    top: -140px;
+    left: calc(-1* var(--column-width) - 260px);
+    display: grid;
+    grid-template-columns: repeat(var(--movement-columns), var(--movement-size));
+    padding: 3px;
+    gap: 3px;
+    background: var(--color-cool-5-90);
+    box-shadow: 0 0 15px #000;
+    border: 1px solid var(--color-cool-4);
+    border-radius: 4px;
+    pointer-events: all;
+    &.active {
+      visibility: visible;
+    }
+    .control-icon {
+      text-align: left;
+      cursor: var(--cursor-pointer);
+      color: var(--button-text-color);
+      opacity: 0.5;
+      width: inherit;
+      &.active, &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

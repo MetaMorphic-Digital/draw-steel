@@ -1,57 +1,56 @@
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import SourceModel from "../models/source.mjs";
+import SubtypeModelMixin from "../subtype-model-mixin.mjs";
+
+/** @import DrawSteelActor from "../../documents/actor.mjs" */
 
 const fields = foundry.data.fields;
 
 /**
  * A base item model that provides basic description and source metadata for an item instance
+ * @extends foundry.abstract.TypeDataModel
  */
-export default class BaseItemModel extends foundry.abstract.TypeDataModel {
+export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**
    * Key information about this item subtype
    * @type {import("./_types").ItemMetaData}
    */
-  static metadata = Object.freeze({
-    type: "base",
-    invalidActorTypes: []
-  });
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "base",
+      invalidActorTypes: [],
+    });
+  }
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = {};
 
-    schema.description = new fields.SchemaField(this.itemDescription());
+    schema.description = new fields.SchemaField({
+      value: new fields.HTMLField(),
+      // gmOnly doesn't do anything client-side currently, handled in system.json declaration
+      gm: new fields.HTMLField({ gmOnly: true }),
+    });
 
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     /**
      * The Draw Steel ID, indicating a unique game rules element
      */
-    schema._dsid = new fields.StringField({blank: false});
+    schema._dsid = new fields.StringField({ blank: false });
 
     return schema;
   }
 
   /**
-   * Helper function to fill in the `description` property
-   * @protected
-   * @returns {Record<string, fields["DataField"]}
-   */
-  static itemDescription() {
-    return {
-      value: new foundry.data.fields.HTMLField(),
-      gm: new foundry.data.fields.HTMLField()
-    };
-  }
-
-  /**
-   * Convenient access to the item's actor.
-   * @returns {import("../../documents/actor.mjs").DrawSteelActor}
+   * Convenient access to the item's actor, if it exists.
+   * @returns {DrawSteelActor | null}
    */
   get actor() {
     return this.parent.actor;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
@@ -61,28 +60,22 @@ export default class BaseItemModel extends foundry.abstract.TypeDataModel {
    */
   preparePostActorPrepData() {}
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
     if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
 
-    if (!this._dsid) this.updateSource({_dsid: data.name.slugify({strict: true})});
+    if (!this._dsid) this.updateSource({ _dsid: data.name.slugify({ strict: true }) });
   }
 
-  /**
-   * @override
-   * @param {DocumentHTMLEmbedConfig} config
-   * @param {EnrichmentOptions} options
-   */
+  /** @inheritdoc */
   async toEmbed(config, options = {}) {
-
-    options.rollData ??= this.parent.getRollData();
-    const enriched = await TextEditor.enrichHTML(this.description.value, options);
+    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
 
     const embed = document.createElement("div");
-    embed.classList.add(this.parent.type);
+    embed.classList.add("draw-steel", this.parent.type);
     embed.innerHTML = enriched;
 
     return embed;

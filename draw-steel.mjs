@@ -1,19 +1,23 @@
+import * as canvas from "./src/module/canvas/_module.mjs";
 import * as documents from "./src/module/documents/_module.mjs";
-import * as applications from "./src/module/apps/_module.mjs";
+import * as applications from "./src/module/applications/_module.mjs";
 import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
-import {DRAW_STEEL} from "./src/module/config.mjs";
+import * as utils from "./src/module/utils/_module.mjs";
+import { DRAW_STEEL } from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
+  canvas,
   documents,
   applications,
   helpers,
   rolls,
   data,
+  utils,
   CONST: DS_CONST,
-  CONFIG: DRAW_STEEL
+  CONFIG: DRAW_STEEL,
 };
 
 Hooks.once("init", function () {
@@ -28,7 +32,7 @@ Hooks.once("init", function () {
   }
 
   helpers.registerHandlebars();
-  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs", "templates/item/embeds/project.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -39,38 +43,60 @@ Hooks.once("init", function () {
     }
   }
 
-  loadTemplates(templates);
+  // Custom collections
+  CONFIG.Actor.collection = documents.collections.DrawSteelActors;
+
+  // Assign canvas-related classes
+  CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
+  CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
+  canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
+
+  foundry.applications.handlebars.loadTemplates(templates);
 
   //Remove Status Effects Not Available in DrawSteel
-  const toRemove = ["bleeding", "bless", "burrow", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
+  const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
-    CONFIG.statusEffects.push({id, ...value});
+    CONFIG.statusEffects.push({ id, ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
-    CONFIG.statusEffects.push({id, ...value});
+    CONFIG.statusEffects.push({ id, ...value });
   }
 
-  // Necessary until foundry makes this default behavior in v13
-  CONFIG.ActiveEffect.legacyTransferral = false;
+  // Destructuring some pieces for simplification
+  const { Actors, Items } = foundry.documents.collections;
+  const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelCharacterSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Character"
+    label: "DRAW_STEEL.Sheet.Labels.Character",
   });
-  Actors.registerSheet(DS_CONST.systemID, applications.DrawSteelNPCSheet, {
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.NPC"
+    label: "DRAW_STEEL.Sheet.Labels.NPC",
   });
-  Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet(DS_CONST.systemID, applications.DrawSteelItemSheet, {
+  Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Item"
+    label: "DRAW_STEEL.Sheet.Labels.Item",
+  });
+  DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
+  DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
+  });
+  DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",
+  });
+
+  // Register replacements for core UI elements
+  Object.assign(CONFIG.ui, {
+    combat: applications.sidebar.tabs.DrawSteelCombatTracker,
+    players: applications.ui.DrawSteelPlayers,
   });
 
   // Register dice rolls
@@ -81,13 +107,14 @@ Hooks.once("init", function () {
  * Perform one-time pre-localization and sorting of some configuration objects
  */
 Hooks.once("i18nInit", () => {
-  helpers.utils.performPreLocalization(CONFIG.DRAW_STEEL);
+  helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
+
   // These fields are not auto-localized due to having a different location in en.json
   for (const model of Object.values(CONFIG.Actor.dataModels)) {
-    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    /** @type {foundry.data.fields.SchemaField} */
     const characteristicSchema = model.schema.getField("characteristics");
     if (characteristicSchema) {
-      for (const [characteristic, {label, hint}] of Object.entries(ds.CONFIG.characteristics)) {
+      for (const [characteristic, { label, hint }] of Object.entries(ds.CONFIG.characteristics)) {
         const field = characteristicSchema.getField(`${characteristic}.value`);
         if (!field) continue;
         field.label = label;
@@ -95,21 +122,24 @@ Hooks.once("i18nInit", () => {
       }
     }
     // Allows CONFIG.damageTypes to only have to define the name of the damage type once
-    /** @type {InstanceType<foundry["data"]["fields"]["SchemaField"]>} */
+    /** @type {foundry.data.fields.SchemaField} */
     const damageSchema = model.schema.getField("damage");
     if (damageSchema) {
       for (const field of Object.values(damageSchema.fields.immunities.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", {type: game.i18n.localize(field.label)});
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.immunities.format", { type: game.i18n.localize(field.label) });
         }
       }
       for (const field of Object.values(damageSchema.fields.weaknesses.fields)) {
         if (field.label) {
-          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", {type: game.i18n.localize(field.label)});
+          field.label = game.i18n.format("DRAW_STEEL.Actor.base.FIELDS.damage.weaknesses.format", { type: game.i18n.localize(field.label) });
         }
       }
     }
   }
+
+  // Localize pseudo-documents: THIS DOES NOT WORK WAARGGGG
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.DamagePowerRollEffect);
 });
 
 /* -------------------------------------------- */
@@ -119,7 +149,12 @@ Hooks.once("i18nInit", () => {
 Hooks.once("ready", async function () {
   await data.migrations.migrateWorld();
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  // Hooks.on("hotbarDrop", (bar, data, slot) => helpers.macros.createDocMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => {
+    if (data.type === "Item") {
+      helpers.macros.createDocMacro(data, slot);
+      return false;
+    }
+  });
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
@@ -127,12 +162,9 @@ Hooks.once("ready", async function () {
 /**
  * Render hooks
  */
-Hooks.on("renderActiveEffectConfig", applications.hooks.renderActiveEffectConfig);
-Hooks.on("renderChatMessage", applications.hooks.renderChatMessage);
+Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
-Hooks.on("renderCombatTracker", applications.hooks.renderCombatTracker);
-Hooks.on("getCombatTrackerEntryContext", applications.hooks.getCombatTrackerEntryContext);
-Hooks.on("renderTokenConfig", applications.hooks.renderTokenConfig);
+Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /**
  * Other hooks

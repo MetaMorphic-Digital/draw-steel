@@ -1,70 +1,81 @@
-import {systemID} from "../constants.mjs";
-import {DrawSteelChatMessage} from "../documents/chat-message.mjs";
+import { systemID } from "../constants.mjs";
+import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
 export default class DrawSteelSocketHandler {
   constructor() {
-    this.identifier = "system.draw-steel";
-    this.registerSocketHandlers();
+    this.#registerQueries();
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Sets up socket reception
+   * Register queries.
    */
-  registerSocketHandlers() {
-    game.socket.on(this.identifier, ({type, payload}) => {
+  #registerQueries() {
+    CONFIG.queries[systemID] = ({ type, config }) => {
       switch (type) {
         case "spendHeroToken":
-          this.spendHeroToken(payload);
-          break;
-        default:
-          throw new Error("Unknown type");
+          return this.#spendHeroToken(config);
       }
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Tell the GM to spend a hero token.
+   * @param {object} payload
+   * @param {string} payload.userId
+   * @param {string} payload.spendType
+   * @param {string} payload.flavor
+   */
+  async spendHeroToken({ userId, spendType, flavor }) {
+    const user = game.users.activeGM;
+    if (!user) {
+      return void ui.notifications.error("DRAW_STEEL.SOCKET.WARNING.noActiveGM", { localize: true });
+    }
+
+    if (user.isSelf) return this.#spendHeroToken({ userId, spendType, flavor });
+    return user.query("draw-steel", {
+      type: "spendHeroToken",
+      config: { userId, spendType, flavor },
     });
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Emits a socket message to all other connected clients
-   * @param {string} type
-   * @param {object} payload
-   */
-  emit(type, payload) {
-    game.socket.emit(this.identifier, {type, payload});
-  }
-
-  /**
-   * Tell the GM to spend a hero token
+   * Spend a hero token.
    * @param {object} payload
    * @param {string} payload.userId
    * @param {string} payload.spendType
    * @param {string} payload.flavor
    */
-  async spendHeroToken({userId, spendType, flavor}) {
-    // TODO: Refactor in v13 to just call isActiveGM
-    if (!game.users.activeGM?.isSelf) return;
+  #spendHeroToken({ userId, spendType, flavor }) {
     const sendingUser = game.users.get(userId);
-    const sendingUsername = sendingUser?.name ?? userId;
+    const userName = sendingUser?.name ?? userId;
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
+
     if (!tokenSpendConfiguration) {
-      console.error(`Invalid spendType ${spendType} send by ${sendingUsername}`);
-      return;
+      return void ui.notifications.error("DRAW_STEEL.SOCKET.WARNING.invalidSpendType", {
+        format: { spendType, name: userName },
+      });
     }
+
     const settingName = "heroTokens";
     const heroTokens = game.settings.get(systemID, settingName).value;
-    if (heroTokens < tokenSpendConfiguration.tokens) {
-      // TODO: Refactor in v13 to use notification formatting
-      const message = game.i18n.format("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {name: sendingUsername});
-      ui.notifications.error(message);
-      return;
+
+    if (heroTokens < tokenSpendConfiguration.token) {
+      return void ui.notifications.error("DRAW_STEEL.Setting.HeroTokens.WarnDirectorBadSpend", {
+        format: { name: userName },
+      });
     }
-    await game.settings.set(systemID, settingName, {value: heroTokens - tokenSpendConfiguration.tokens});
-    await DrawSteelChatMessage.create({
+
+    game.settings.set(systemID, settingName, { value: heroTokens - tokenSpendConfiguration.tokens });
+    DrawSteelChatMessage.create({
       author: userId,
       content: tokenSpendConfiguration.messageContent,
-      flavor: flavor ?? sendingUser?.character?.name
+      flavor: flavor ?? sendingUser?.character?.name,
     });
   }
 }

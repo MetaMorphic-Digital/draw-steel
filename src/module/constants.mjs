@@ -15,8 +15,10 @@ ______                      _____ _            _
 `;
 
 export const initiativeModes = Object.freeze({
+  /** Players and Enemies alternate */
   default: "DRAW_STEEL.Combat.Initiative.Modes.Default",
-  alternative: "DRAW_STEEL.Combat.Initiative.Modes.Alternative"
+  /** Traditional "roll a die and go in roll order" */
+  alternative: "DRAW_STEEL.Combat.Initiative.Modes.Alternative",
 });
 
 /**
@@ -27,11 +29,11 @@ export const staminaEffects = Object.freeze({
   dying: {
     name: "DRAW_STEEL.Effect.StaminaEffects.Dying",
     img: "icons/svg/stoned.svg",
-    threshold: 0
+    threshold: 0,
   },
   winded: {
     name: "DRAW_STEEL.Effect.StaminaEffects.Winded",
     img: "icons/svg/windmill.svg",
-    threshold: "system.stamina.winded"
-  }
+    threshold: "system.stamina.winded",
+  },
 });

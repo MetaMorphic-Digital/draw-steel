@@ -1,8 +1,10 @@
 {{#*inline "damageBonus"}}
 <h6 class="damage-bonus">{{damageField.label}}</h6>
-{{formGroup damageField.fields.tier1 value=value.tier1 classes="damage-part"}}
-{{formGroup damageField.fields.tier2 value=value.tier2 classes="damage-part"}}
-{{formGroup damageField.fields.tier3 value=value.tier3 classes="damage-part"}}
+<div class="flexrow">
+  {{formGroup damageField.fields.tier1 value=value.tier1 classes="number-bonus slim"}}
+  {{formGroup damageField.fields.tier2 value=value.tier2 classes="number-bonus slim"}}
+  {{formGroup damageField.fields.tier3 value=value.tier3 classes="number-bonus slim"}}
+</div>
 {{/inline}}
 {{#if isPlay}}
 {{> "systems/draw-steel/templates/item/embeds/kit.hbs"}}
@@ -15,13 +17,17 @@
 </fieldset>
 <fieldset>
   <legend>{{systemFields.bonuses.label}}</legend>
-  {{formGroup systemFields.bonuses.fields.stamina value=system.bonuses.stamina}}
-  {{formGroup systemFields.bonuses.fields.speed value=system.bonuses.speed}}
-  {{formGroup systemFields.bonuses.fields.stability value=system.bonuses.stability}}
-  {{formGroup systemFields.bonuses.fields.disengage value=system.bonuses.disengage}}
+  <div class="flexrow">
+    {{formGroup systemFields.bonuses.fields.stamina value=system.bonuses.stamina classes="number-bonus slim"}}
+    {{formGroup systemFields.bonuses.fields.speed value=system.bonuses.speed classes="number-bonus slim"}}
+  </div>
+  <div class="flexrow">
+    {{formGroup systemFields.bonuses.fields.stability value=system.bonuses.stability classes="number-bonus slim"}}
+    {{formGroup systemFields.bonuses.fields.disengage value=system.bonuses.disengage classes="number-bonus slim"}}
+  </div>
   {{> damageBonus damageField=systemFields.bonuses.fields.melee.fields.damage value=system.bonuses.melee.damage}}
-  {{formGroup systemFields.bonuses.fields.melee.fields.distance value=system.bonuses.melee.distance}}
+  {{formGroup systemFields.bonuses.fields.melee.fields.distance value=system.bonuses.melee.distance classes="distance slim"}}
   {{> damageBonus damageField=systemFields.bonuses.fields.ranged.fields.damage value=system.bonuses.ranged.damage}}
-  {{formGroup systemFields.bonuses.fields.ranged.fields.distance value=system.bonuses.ranged.distance}}
+  {{formGroup systemFields.bonuses.fields.ranged.fields.distance value=system.bonuses.ranged.distance classes="distance slim"}}
 </fieldset>
 {{/if}}

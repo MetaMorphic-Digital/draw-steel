@@ -19,40 +19,55 @@
     "ChatMessage": {
       "abilityUse": {}
     },
+    "CombatantGroup": {
+      "squad": {}
+    },
     "Item": {
       "ability": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["effect.before", "effect.after"]
       },
       "ancestry": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "career": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "class": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "complication": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "culture": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "equipment": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "feature": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       },
       "kit": {
-        "htmlFields": ["description.value", "description.gm"]
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
+      },
+      "project": {
+        "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
       }
     }
   },
   "flags": {
     "hotReload": {
       "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["css", "lang", "templates"]
+      "paths": ["css", "src/styles", "lang", "templates"]
     }
   },
   "url": "https://github.com/MetaMorphic-Digital/draw-steel",
@@ -65,13 +80,17 @@
     "url": "systems/draw-steel/assets/anvil-impact.png",
     "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
   }],
-  "version": "0.6.2",
+  "version": "0.7.0",
   "compatibility": {
-    "minimum": "12.328",
-    "verified": "12.331"
+    "minimum": "13.340",
+    "verified": "13"
   },
   "esmodules": ["draw-steel.mjs"],
-  "styles": ["css/draw-steel.css"],
+  "styles": [
+    { "src": "css/draw-steel-system.css", "layer": "system" },
+    { "src": "css/draw-steel-variables.css", "layer": "variables" },
+    { "src": "css/draw-steel-elements.css", "layer": "elements" }
+  ],
   "languages": [{
     "lang": "en",
     "name": "English",
@@ -93,7 +112,7 @@
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.6.2/draw-steel-release-0.6.2.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.7.0/draw-steel-release-0.7.0.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,

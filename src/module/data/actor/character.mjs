@@ -1,9 +1,9 @@
-import {DrawSteelActor} from "../../documents/actor.mjs";
-import {DrawSteelChatMessage} from "../../documents/chat-message.mjs";
-import {DSRoll} from "../../rolls/base.mjs";
-import {barAttribute, requiredInteger, setOptions} from "../helpers.mjs";
+import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
+import { DSRoll } from "../../rolls/base.mjs";
+import { barAttribute, requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
-/** @import {DrawSteelItem} from "../../documents/item.mjs" */
+
+/** @import DrawSteelItem from "../../documents/item.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -11,73 +11,71 @@ const fields = foundry.data.fields;
  * Characters are controlled by players and have heroic resources and advancement
  */
 export default class CharacterModel extends BaseActorModel {
-  /** @override */
-  static metadata = Object.freeze({
-    type: "character"
-  });
+  /** @inheritdoc */
+  static get metadata() {
+    return foundry.utils.mergeObject(super.metadata, {
+      type: "character",
+    });
+  }
 
-  /** @override */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Actor.base",
-    "DRAW_STEEL.Actor.Character"
+    "DRAW_STEEL.Actor.Character",
   ];
 
-  /** @override */
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
 
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
-        value: new fields.NumberField({initial: 0, integer: true, nullable: false})
+        value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
       // Epic resources are not part of public license yet
-      surges: requiredInteger({initial: 0}),
-      xp: requiredInteger({initial: 0}),
+      surges: requiredInteger({ initial: 0 }),
+      xp: requiredInteger({ initial: 0 }),
       recoveries: barAttribute(8, 0),
-      victories: requiredInteger({initial: 0}),
-      renown: requiredInteger({initial: 0}),
+      victories: requiredInteger({ initial: 0 }),
+      renown: requiredInteger({ initial: 0 }),
       skills: new fields.SetField(setOptions()),
-      preferredKit: new fields.DocumentIdField({readonly: false})
+      preferredKit: new fields.DocumentIdField({ readonly: false }),
     });
 
     return schema;
   }
 
-  /** @override */
+  /** @inheritdoc */
   static actorBiography() {
     const bio = super.actorBiography();
 
     bio.height = new fields.SchemaField({
-      value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blank: false})
+      value: new fields.NumberField({ min: 0 }),
+      units: new fields.StringField({ blank: false }),
     });
 
     bio.weight = new fields.SchemaField({
-      value: new fields.NumberField({min: 0}),
-      units: new fields.StringField({blank: false})
+      value: new fields.NumberField({ min: 0 }),
+      units: new fields.StringField({ blank: false }),
     });
 
-    bio.age = new fields.StringField({blank: false});
+    bio.age = new fields.StringField({ blank: false });
 
     return bio;
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
 
     this.hero.recoveries.bonus = 0;
 
-    Object.assign(this.potency, {
-      weak: 0,
-      average: 0,
-      strong: 0
-    });
-
     const kitBonuses = {
       stamina: 0,
       speed: 0,
-      stability: 0
+      stability: 0,
     };
 
     /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
@@ -85,12 +83,12 @@ export default class CharacterModel extends BaseActorModel {
     this.abilityBonuses = {
       /** @type {{ distance: number, damage?: DamageSchema}} */
       melee: {
-        distance: 0
+        distance: 0,
       },
       /** @type {{ distance: number, damage?: DamageSchema}} */
       ranged: {
-        distance: 0
-      }
+        distance: 0,
+      },
     };
 
     for (const kit of this.kits) {
@@ -118,7 +116,7 @@ export default class CharacterModel extends BaseActorModel {
     this.combat.stability += kitBonuses["stability"];
   }
 
-  /** @override */
+  /** @inheritdoc */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
@@ -128,17 +126,13 @@ export default class CharacterModel extends BaseActorModel {
       // this.hero.secondary.label = this.class.system.secondary;
     }
 
-    const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
-
-    // potency.bonus is handled as part of Ability calculations to accommodate NPCs not having a base shared potency
-    this.potency.weak += highestCharacteristic - 2;
-    this.potency.average += highestCharacteristic - 1;
-    this.potency.strong += highestCharacteristic;
-
     super.prepareDerivedData();
+
+    // Winded is set in the base classes derived data, so this needs to run after
+    this.stamina.min = -this.stamina.winded;
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
@@ -148,29 +142,29 @@ export default class CharacterModel extends BaseActorModel {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
         sight: {
-          enabled: true
-        }
-      }
+          enabled: true,
+        },
+      },
     });
   }
 
-  /** @override */
+  /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
-    await this.parent.update({"system.hero.primary.value": this.hero.victories});
+    await this.parent.update({ "system.hero.primary.value": this.hero.victories });
   }
 
-  /** @override */
+  /** @inheritdoc */
   async _onStartTurn(combatant) {
     await super._onStartTurn(combatant);
     const characterClass = this.class;
     if (characterClass && characterClass.system.turnGain) {
       const recoveryRoll = new DSRoll(characterClass.system.turnGain, characterClass.getRollData(), {
-        flavor: this.class.system.primary
+        flavor: this.class.system.primary,
       });
       await recoveryRoll.toMessage({
-        speaker: DrawSteelChatMessage.getSpeaker({token: combatant.token}),
-        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain")
+        speaker: DrawSteelChatMessage.getSpeaker({ token: combatant.token }),
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain"),
       });
       await this.updateResource(recoveryRoll.total);
     }
@@ -185,34 +179,76 @@ export default class CharacterModel extends BaseActorModel {
       system: {
         hero: {
           recoveries: {
-            value: this.hero.recoveries.max
+            value: this.hero.recoveries.max,
           },
           victories: 0,
-          xp: this.hero.xp + this.hero.victories
+          xp: this.hero.xp + this.hero.victories,
         },
         stamina: {
-          value: this.stamina.max
-        }
-      }
+          value: this.stamina.max,
+        },
+      },
     });
   }
 
-  /** @override */
+  /**
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * @returns {Promise<DrawSteelActor}
+   */
+  async spendRecovery() {
+    if (this.hero.recoveries.value === 0) {
+      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      return this.parent;
+    }
+
+    ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    await this.parent.update({ "system.hero.recoveries.value": this.hero.recoveries.value - 1 });
+
+    return this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+  }
+
+  /**
+   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
+   * @returns {DrawSteelActor}
+   */
+  async spendStaminaHeroToken() {
+    /** @type {HeroTokenModel} */
+    const heroTokens = game.actors.heroTokens;
+
+    const spend = await ds.applications.api.DSDialog.confirm({
+      window: {
+        title: "DRAW_STEEL.Setting.HeroTokens.RegainStamina.label",
+      },
+      content: `<p>${game.i18n.format("DRAW_STEEL.Setting.HeroTokens.RegainStamina.dialogContent", {
+        value: heroTokens.value,
+      })}</p>`,
+    });
+
+    if (spend) {
+      const valid = await heroTokens.spendToken("regainStamina", { flavor: this.parent.name });
+      if (valid !== false) {
+        await this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+      }
+    }
+    return this.parent;
+  }
+
+  /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
   }
 
-  /** @override */
+  /** @inheritdoc */
   get coreResource() {
     return {
       name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
       target: this.parent,
-      path: "system.hero.primary.value"
+      path: "system.hero.primary.value",
     };
   }
   /**
@@ -256,15 +292,22 @@ export default class CharacterModel extends BaseActorModel {
   }
 
   /**
+   * Returns the total xp required for the next level
+   */
+  get nextLevelXP() {
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
+    return ds.CONFIG.hero.xp_track[this.level];
+  }
+
+  /**
    * Returns the number of victories required to ascend to the next level
    */
   get victoriesMax() {
-    if (!this.class) return 0;
-    return ds.CONFIG.hero.xp_track[this.class.system.level];
+    return Math.max(0, this.nextLevelXP - this.hero.xp);
   }
 
-  /** @override */
+  /** @inheritdoc */
   async updateResource(delta) {
-    this.parent.update({"system.hero.primary.value": this.hero.primary.value + delta});
+    this.parent.update({ "system.hero.primary.value": this.hero.primary.value + delta });
   }
 }

@@ -9,14 +9,14 @@
       <div class="effect-source">
         {{localize "DRAW_STEEL.Effect.Source"}}
       </div>
-      <div class="effect-source">{{localize "EFFECT.TabDuration"}}</div>
+      <div class="effect-source">{{localize "EFFECT.TABS.duration"}}</div>
       <div class="effect-controls flexrow">
         <!-- eslint-disable-next-line @html-eslint/attrs-newline -->
         <a
           class="effect-control"
           data-action="createDoc"
           data-document-class="ActiveEffect"
-          data-origin="{{@root.actor.uuid}}"
+          data-origin="{{@root.document.uuid}}"
           data-img="icons/svg/aura.svg"
           {{#if (eq section.type "inactive")}}
           data-disabled="true"
@@ -26,7 +26,7 @@
           {{/if}}
           data-tooltip="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.Effect.Name")}}"
           >
-          <i class="fas fa-plus"></i>
+          <i class="fa-solid fa-plus"></i>
           {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.Effect.Name")}}
         </a>
       </div>
@@ -48,11 +48,11 @@
           </a>
           {{/if}}
           <a class="effect-control" data-action="viewDoc" data-tooltip="{{localize "DOCUMENT.Update" type="Effect"}}">
-            <i class="fas fa-edit"></i>
+            <i class="fa-solid fa-edit"></i>
           </a>
           {{#if @root.editable}}
           <a class="effect-control" data-action="deleteDoc" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}">
-            <i class="fas fa-trash"></i>
+            <i class="fa-solid fa-trash"></i>
           </a>
           {{/if}}
         </div>

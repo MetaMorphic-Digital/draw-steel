@@ -1,0 +1,99 @@
+.draw-steel {
+
+  .sheet-header {
+    display: flex;
+    margin-bottom: 10px;
+
+    .profile-img {
+      cursor: var(--cursor-pointer);
+    }
+
+    .header-center {
+      overflow-y: auto;
+      flex-grow: 1;
+
+      .document-name {
+        max-height: 65px;
+        line-height: 65px;
+        input, h2 {
+          font-family: var(--font-h2);
+          font-size: var(--font-h2-size);
+          margin: 0;
+          padding: 0;
+          border: 0;
+          text-shadow: none;
+          display: inline-block;
+        }
+        input {
+          height: 100%;
+        }
+        h2 {
+          max-height: 100%;
+          max-width: 100%;
+          vertical-align: middle;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  section.tab {
+    overflow: auto;
+
+    &.standard-form {
+      padding-top: 0.5rem;
+    }
+
+    > nav.tabs {
+      border-top-color: var(--color-fieldset-border);
+      border-bottom-color: var(--color-fieldset-border);
+      border-style: groove none;
+      border-width: 2px;
+      margin: 0 1rem;
+    }
+  }
+
+  /* Description Lists */
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin: 10px 0px;
+    dt, dd {
+      margin: 0;
+      color: inherit;
+    }
+    dt {
+      text-shadow: none;
+      font-weight: bold;
+    }
+  }
+
+  fieldset {
+    padding: revert;
+  }
+
+  .form-group {
+
+
+    &.paired {
+      gap: 10px;
+
+      label {
+        flex: 1;
+        text-align: right;
+        line-height: var(--input-height);
+      }
+
+      .form-fields,
+      .input-placeholder {
+        flex: 1;
+        justify-content: left;
+      }
+
+      .input-placeholder {
+        text-align: left;
+      }
+    }
+  }
+}

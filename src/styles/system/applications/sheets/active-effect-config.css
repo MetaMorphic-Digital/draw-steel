@@ -1,0 +1,8 @@
+.draw-steel.active-effect-config {
+  /* Needed because there's a weird overflow on the x-axis of the details tab. Core styling sets the overflow to hidden on the .window-content */
+  .tab {
+    overflow-x: inherit;
+  }
+}
+
+

@@ -27,7 +27,7 @@
       {{#each abilityType.abilities as |abilityContext|}}
       <li class="item ability draggable" data-item-id="{{abilityContext.item.id}}" data-document-class="Item">
         <div class="item-row">
-          <div class="item-column item-name" data-action="useAbility">
+          <div class="item-column item-name rollable" data-action="useAbility">
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
             {{#if abilityContext.item.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
@@ -58,7 +58,7 @@
             </a>
           </div>
         </div>
-        <div class="item-embed">
+        <div class="item-embed content-embed">
           {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>

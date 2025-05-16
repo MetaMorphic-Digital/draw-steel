@@ -20,10 +20,6 @@
   "ignorePatterns": ["foundry/**/*"],
   "rules": {
     "indent": ["error", 2, {"SwitchCase": 1}],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
     "quotes": [
       "error",
       "double"
@@ -33,7 +29,7 @@
     "array-bracket-newline": ["error", "consistent"],
     "no-unused-vars": 0,
     "key-spacing": "error",
-    "comma-dangle": "error",
+    "comma-dangle": ["error", "always-multiline"],
     "space-in-parens": ["error", "never"],
     "space-infix-ops": 2,
     "keyword-spacing": 2,
@@ -43,7 +39,7 @@
     "no-whitespace-before-property": 2,
     "space-unary-ops": 2,
     "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 0}],
-    "object-curly-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
     "comma-spacing": ["error"],
     "no-undef": "off",
     "space-before-blocks": 2,
