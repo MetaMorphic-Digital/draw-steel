@@ -68,7 +68,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
 
     for (const n of [1, 2, 3]) {
       const path = `forced.tier${n}`;
-      context.fields[`tier${n}`].forced = foundry.utils.mergeObject(context.fields[`tier${n}`].forced, {
+      Object.assign(context.fields[`tier${n}`].forced, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.forced[`tier${n}`].display,

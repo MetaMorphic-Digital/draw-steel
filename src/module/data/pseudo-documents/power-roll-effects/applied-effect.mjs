@@ -73,7 +73,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     for (const n of [1, 2, 3]) {
       const path = `applied.tier${n}`;
-      context.fields[`tier${n}`].applied = foundry.utils.mergeObject(context.fields[`tier${n}`].applied, {
+      Object.assign(context.fields[`tier${n}`].applied, {
         effectOptions: this.item.effects.filter(e => !e.transfer).map(e => ({ value: e.id, label: e.name })),
         display: {
           field: this.schema.getField(`${path}.display`),

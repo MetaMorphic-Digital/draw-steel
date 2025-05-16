@@ -66,7 +66,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     for (const n of [1, 2, 3]) {
       const path = `damage.tier${n}`;
-      context.fields[`tier${n}`].damage = foundry.utils.mergeObject(context.fields[`tier${n}`].damage, {
+      Object.assign(context.fields[`tier${n}`].damage, {
         value: {
           field: this.schema.getField(`${path}.value`),
           value: this.damage[`tier${n}`].value,

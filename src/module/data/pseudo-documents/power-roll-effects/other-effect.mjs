@@ -35,7 +35,7 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
 
     for (const n of [1, 2, 3]) {
       const path = `other.tier${n}`;
-      context.fields[`tier${n}`].other = foundry.utils.mergeObject(context.fields[`tier${n}`].other, {
+      Object.assign(context.fields[`tier${n}`].other, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.other[`tier${n}`].display,
