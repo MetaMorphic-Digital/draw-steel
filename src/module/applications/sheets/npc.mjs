@@ -18,7 +18,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static PARTS = {
     header: {
       template: systemPath("templates/actor/npc/header.hbs"),
-      templates: ["templates/actor/npc/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
+      templates: ["templates/actor/npc/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template

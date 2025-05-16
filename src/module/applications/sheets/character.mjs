@@ -21,7 +21,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static PARTS = {
     header: {
       template: systemPath("templates/actor/character/header.hbs"),
-      templates: ["templates/actor/character/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
+      templates: ["templates/actor/character/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
