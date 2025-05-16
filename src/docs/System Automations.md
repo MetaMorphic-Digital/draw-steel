@@ -106,7 +106,9 @@ Damage Immunities and Weaknesses can be added via the respective section the the
 
 ## Automated Status Effects
 
-Certain status effects and their function are automated, with some requiring a targeted actor to act as a source
+Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
+
+Additionally, each effect is documented in the system compendiums.
 
 ### Dazed
 
@@ -145,9 +147,27 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed. 
 
-# FutureAutomation (Version 0.7)
+# Future Automations
+
+The following automations planned for the near or distant future.
+
+## Negotiations
+
+An application is planned to support directors when running Negotiations
+
+## Compendium Browser
+
+Once there is multiple sources of content, a compendium browser migth become helpful.
+
+## Actor Type - Retainers
+
+Currently there are only 2 Actor types, Characters and NPCs. An additional actor type is planned for retainers to support their implementation as a mix of character and monster features.
 
 ## Automated Status Effects
+
+### Bleeding
+When an actor has the `Bleeding` status effect, it automatically loses `1d6` stamina henever they make a test using Might or Agility, make a strike, or use an action, maneuver, or a triggered action.
+
 
 ### Taunted
 
