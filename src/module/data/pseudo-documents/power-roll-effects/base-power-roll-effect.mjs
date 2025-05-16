@@ -103,16 +103,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Helper method to derive default potency characteristic used for both derived data
-   * and for placeholders when rendering.
+   * Helper method to derive default potency characteristic for tiers 2 and 3.
    * @param {1|2|3} n     The tier.
    * @returns {string}    The default characteristic.
    */
-  #defaultPotencyCharacteristic(n) {
-    const tierValue = this[`${this.constructor.TYPE}`][`tier${n}`];
+  #defaultPotencyCharacteristic(tier) {
+    const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];
     let potencyCharacteristic = tierValue.potency.characteristic;
-    if (n > 1) {
-      const prevTier = this[`${this.constructor.TYPE}`][`tier${n - 1}`];
+    if (tier > 1) {
+      const prevTier = this[`${this.constructor.TYPE}`][`tier${tier - 1}`];
       if (prevTier.potency.characteristic) potencyCharacteristic ||= prevTier.potency.characteristic;
     }
 
