@@ -277,7 +277,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: powerRollEffectFormatter.format(this.power.effects.contents.map(effect => effect.toText(tier))) },
+      { text: this.power.effects.contents.map(effect => effect.toText(tier)).join("; ") },
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
