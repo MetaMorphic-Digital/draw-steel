@@ -17,7 +17,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
 
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
-      forced: this.duplicateTierSchema((n) => ({
+      forced: this.duplicateTierSchema(() => ({
         display: new StringField({
           required: true,
           label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
@@ -29,16 +29,6 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
           { initial: ["push"], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.movement.label" },
         ),
         distance: new FormulaField({ initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
-        potency: new SchemaField({
-          value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
-          characteristic: new StringField({
-            required: true,
-            initial: n > 1 ? "" : "none",
-            blank: n > 1,
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label",
-            hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.hint",
-          }),
-        }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
         properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
@@ -74,9 +64,11 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
+    await super._tierRenderingContext(context);
+
     for (const n of [1, 2, 3]) {
       const path = `forced.tier${n}`;
-      context.fields[`tier${n}`].forced = {
+      Object.assign(context.fields[`tier${n}`].forced, {
         display: {
           field: this.schema.getField(`${path}.display`),
           value: this.forced[`tier${n}`].display,
@@ -96,35 +88,15 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
           src: this._source.forced[`tier${n}`].distance,
           name: `${path}.distance`,
         },
-        potency: {
-          field: this.schema.getField(`${path}.potency`),
-          value: {
-            field: this.schema.getField(`${path}.potency.value`),
-            value: this.forced[`tier${n}`].potency.value,
-            src: this._source.forced[`tier${n}`].potency.value,
-            name: `${path}.potency.value`,
-          },
-          characteristic: {
-            field: this.schema.getField(`${path}.potency.characteristic`),
-            value: this.forced[`tier${n}`].potency.characteristic,
-            src: this._source.forced[`tier${n}`].potency.characteristic,
-            name: `${path}.potency.characteristic`,
-            blank: n > 1 ? "Default" : false,
-          },
-        },
         properties: {
           field: this.schema.getField(`${path}.properties`),
           value: this.forced[`tier${n}`].properties,
           src: this._source.forced[`tier${n}`].properties,
           name: `${path}.properties`,
         },
-      };
+      });
 
       context.fields.movement = Object.entries(ds.CONFIG.abilities.forcedMovement).map(([value, { label }]) => ({ value, label }));
-      context.fields.characteristic = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
-        value: "none",
-        label: "None",
-      }]);
       context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.forced.properties).map(([value, { label }]) => ({ value, label }));
     }
   }
@@ -137,16 +109,11 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const tierValue = this.forced[`tier${tier}`];
-    let potencyValue = tierValue.potency.value;
     let distanceValue = tierValue.distance;
     if (this.actor) {
-      potencyValue = new DSRoll(potencyValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
       distanceValue = new DSRoll(distanceValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
     }
-    const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
-      value: potencyValue,
-    });
+    const potencyString = this.toPotencyText(tier);
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
     const distanceString = game.i18n.format("DRAW_STEEL.Item.Ability.ForcedMovement.Display", {
       movement: formatter.format(tierValue.movement.map(v => {

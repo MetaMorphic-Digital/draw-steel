@@ -10,8 +10,12 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
-      text: this.duplicateTierSchema(() => ({
-        value: new StringField({ required: true, label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.text.label" }),
+      other: this.duplicateTierSchema(() => ({
+        display: new StringField({
+          required: true,
+          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
+          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
+        }),
       })),
     });
   }
@@ -27,16 +31,18 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
+    await super._tierRenderingContext(context);
+
     for (const n of [1, 2, 3]) {
-      const path = `text.tier${n}`;
-      context.fields[`tier${n}`].text = {
-        value: {
-          field: this.schema.getField(`${path}.value`),
-          value: this.text[`tier${n}`].value,
-          src: this._source.text[`tier${n}`].value,
-          name: `${path}.value`,
+      const path = `other.tier${n}`;
+      Object.assign(context.fields[`tier${n}`].other, {
+        display: {
+          field: this.schema.getField(`${path}.display`),
+          value: this.other[`tier${n}`].display,
+          src: this._source.other[`tier${n}`].display,
+          name: `${path}.display`,
         },
-      };
+      });
     }
   }
   /* -------------------------------------------------- */
@@ -46,6 +52,7 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    return this.text[`tier${tier}`].value;
+    const potencyString = this.toPotencyText(tier);
+    return this.other[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }

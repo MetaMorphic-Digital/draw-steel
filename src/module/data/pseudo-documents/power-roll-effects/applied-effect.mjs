@@ -17,7 +17,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
-      applied: this.duplicateTierSchema((n) => ({
+      applied: this.duplicateTierSchema(() => ({
         display: new StringField({
           required: true,
           label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
@@ -27,24 +27,14 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           setOptions({ validate: foundry.data.validators.isValidId }),
           { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.hint" },
         ),
-        potency: new SchemaField({
-          value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
-          characteristic: new StringField({
-            required: true,
-            initial: n > 1 ? "" : "none",
-            blank: n > 1,
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label",
-            hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.hint",
-          }),
-          failure: new SetField(setOptions(
-            { validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.failure.hint" },
-          ),
-          success: new SetField(
-            setOptions({ validate: foundry.data.validators.isValidId }),
-            { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.success.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.success.hint" },
-          ),
-        }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
+        failure: new SetField(
+          setOptions({ validate: foundry.data.validators.isValidId }),
+          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.hint" },
+        ),
+        success: new SetField(
+          setOptions({ validate: foundry.data.validators.isValidId }),
+          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.hint" },
+        ),
       })),
     });
   }
@@ -79,9 +69,11 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
+    await super._tierRenderingContext(context);
+
     for (const n of [1, 2, 3]) {
       const path = `applied.tier${n}`;
-      context.fields[`tier${n}`].applied = {
+      Object.assign(context.fields[`tier${n}`].applied, {
         effectOptions: this.item.effects.filter(e => !e.transfer).map(e => ({ value: e.id, label: e.name })),
         display: {
           field: this.schema.getField(`${path}.display`),
@@ -96,41 +88,20 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           src: this._source.applied[`tier${n}`].always,
           name: `${path}.always`,
         },
-        potency: {
-          field: this.schema.getField(`${path}.potency`),
-          value: {
-            field: this.schema.getField(`${path}.potency.value`),
-            value: this.applied[`tier${n}`].potency.value,
-            src: this._source.applied[`tier${n}`].potency.value,
-            name: `${path}.potency.value`,
-          },
-          characteristic: {
-            field: this.schema.getField(`${path}.potency.characteristic`),
-            value: this.applied[`tier${n}`].potency.characteristic,
-            src: this._source.applied[`tier${n}`].potency.characteristic,
-            name: `${path}.potency.characteristic`,
-            blank: n > 1 ? "Default" : false,
-          },
-          success: {
-            field: this.schema.getField(`${path}.potency.success`),
-            value: this.applied[`tier${n}`].potency.success,
-            src: this._source.applied[`tier${n}`].potency.success,
-            name: `${path}.potency.success`,
-          },
-          failure: {
-            field: this.schema.getField(`${path}.potency.failure`),
-            value: this.applied[`tier${n}`].potency.failure,
-            src: this._source.applied[`tier${n}`].potency.failure,
-            name: `${path}.potency.failure`,
-          },
+        success: {
+          field: this.schema.getField(`${path}.success`),
+          value: this.applied[`tier${n}`].success,
+          src: this._source.applied[`tier${n}`].success,
+          name: `${path}.success`,
         },
-      };
+        failure: {
+          field: this.schema.getField(`${path}.failure`),
+          value: this.applied[`tier${n}`].failure,
+          src: this._source.applied[`tier${n}`].failure,
+          name: `${path}.failure`,
+        },
+      });
     }
-
-    context.fields.characteristic = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label })).concat([{
-      value: "none",
-      label: "None",
-    }]);
   }
 
   /* -------------------------------------------------- */
@@ -140,15 +111,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    const tierValue = this.applied[`tier${tier}`];
-    let potencyValue = tierValue.potency.value;
-    if (this.actor) {
-      potencyValue = new DSRoll(potencyValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
-    }
-    const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
-      value: potencyValue,
-    });
+    const potencyString = this.toPotencyText(tier);
     return this.applied[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }
