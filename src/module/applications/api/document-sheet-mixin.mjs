@@ -1,3 +1,5 @@
+import constructHTMLButton from "../../utils/construct-html-button.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default base => {
@@ -66,15 +68,12 @@ export default base => {
     /** @inheritdoc */
     async _renderFrame(options) {
       const frame = await super._renderFrame(options);
-      const buttons = [`
-        <button type="button" class="header-control icon fa-solid fa-user-lock" data-action="toggleMode" data-tooltip="DRAW_STEEL.Sheet.ToggleMode"></button>
-      `];
+      const buttons = [constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-user-lock"], dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.Sheet.ToggleMode" } })];
+
       if (this.document.system.source) {
-        buttons.push(`
-          <button type="button" class="header-control icon fa-solid fa-book" data-action="updateSource" data-tooltip="DRAW_STEEL.Sheet.UpdateSource"></button>
-        `);
+        buttons.push(constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-book"], dataset: { action: "updateSource", tooltip: "DRAW_STEEL.Sheet.UpdateSource" } }));
       }
-      this.window.controls.insertAdjacentHTML("afterend", buttons.join(""));
+      this.window.controls.insertAdjacentHTML("afterend", buttons.map(b => b.outerHTML).join(""));
 
       return frame;
     }
