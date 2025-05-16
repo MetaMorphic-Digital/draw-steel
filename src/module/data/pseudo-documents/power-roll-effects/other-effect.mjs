@@ -11,10 +11,10 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
       other: this.duplicateTierSchema(() => ({
-        text: new StringField({
+        display: new StringField({
           required: true,
-          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.text.label",
-          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.text.hint",
+          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
+          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
         }),
       })),
     });
@@ -36,11 +36,11 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
     for (const n of [1, 2, 3]) {
       const path = `other.tier${n}`;
       context.fields[`tier${n}`].other = foundry.utils.mergeObject(context.fields[`tier${n}`].other, {
-        text: {
-          field: this.schema.getField(`${path}.text`),
-          value: this.other[`tier${n}`].text,
-          src: this._source.other[`tier${n}`].text,
-          name: `${path}.text`,
+        display: {
+          field: this.schema.getField(`${path}.display`),
+          value: this.other[`tier${n}`].display,
+          src: this._source.other[`tier${n}`].display,
+          name: `${path}.display`,
         },
       });
     }
@@ -53,6 +53,6 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const potencyString = this.toPotencyText(tier);
-    return this.other[`tier${tier}`].text.replaceAll("{{potency}}", potencyString);
+    return this.other[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }
