@@ -50,15 +50,6 @@
     }
     .header-right {
       flex: 0 0 160px;
-      div.mode-toggle  {
-        flex-grow: 1;
-        align-items: start;
-      }
-      &:has(.actor-source) {
-        div.mode-toggle  {
-          flex-grow: 0;
-        }
-      }
       .actor-source {
         margin-top: 5px;
         font-family: var(--font-h4);
