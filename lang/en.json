@@ -21,7 +21,9 @@
       "LevelUp": "Level Up Available",
       "SpendRecovery": "Spend a recovery to regain stamina.",
       "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens",
-      "GainSurges": "Spend a hero token to gain two surges."
+      "GainSurges": "Spend a hero token to gain two surges.",
+      "ToggleMode": "Toggle Play/Edit Mode",
+      "UpdateSource": "Update Source Information"
     },
     "Source": {
       "FIELDS": {
@@ -478,7 +480,13 @@
             }
           },
           "effect": {
-            "label": "Effect"
+            "label": "Effect",
+            "before": {
+              "label": "Effect (Before Power Roll)"
+            },
+            "after": {
+              "label": "Effect (After Power Roll)"
+            }
           },
           "spend": {
             "label": "Spend",
@@ -589,12 +597,12 @@
         "DamageFlavor": "{type} Damage",
         "ForcedMovement": {
           "Push": "Push",
-          "PushX": "Push {x}",
+          "VerticalPush": "Vertical Push",
           "Pull": "Pull",
-          "PullX": "Pull {x}",
+          "VerticalPull": "Vertical Pull",
           "Slide": "Slide",
-          "SlideX": "Slide {x}",
-          "Vertical": "Vertical"
+          "VerticalSlide": "Vertical Slide",
+          "Display": "{movement} {distance}"
         },
         "EmbedFail": "Failed to find item for this ability roll",
         "Potency": {
@@ -1030,14 +1038,63 @@
           },
           "types": {
             "label": "Damage Types"
+          },
+          "display": {
+            "label": "Display",
+            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
+            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
+          },
+          "always": {
+            "label": "Always",
+            "hint": "Effects that apply regardless of potency checks."
+          },
+          "failure": {
+            "label": "Failure",
+            "hint": "Effects that apply when the target's characteristic is less than the potency value."
+          },
+          "success": {
+            "label": "Success",
+            "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
+          },
+          "movement": {
+            "label": "Forced Movement Type"
+          },
+          "distance": {
+            "label": "Distance"
+          },
+          "potency": {
+            "label": "Potency",
+            "value": {
+              "label": "Potency Value"
+            },
+            "characteristic": {
+              "label": "Potency Characteristic",
+              "hint": "Tiers 2 and 3 will default to the chosen characteristic of the prior tier."
+            }
+          },
+          "properties": {
+            "label": "Properties"
           }
         },
         "TYPES": {
-          "damage": "Damage"
+          "applied": "Applied Effect",
+          "damage": "Damage",
+          "forced": "Forced Movement",
+          "other": "Other"
         },
         "DAMAGE": {
           "formatted": "{value} {damageTypes} damage",
-          "formattedTypeless": "{value} damage"
+          "formattedTypeless": "{value} damage",
+          "formattedPotency": "{potency} {damage}",
+          "Properties": {
+            "IgnoresImmunity": "Ignores Immunities"
+          }
+        },
+        "FORCED": {
+          "Properties": {
+            "IgnoresStability": "Ignores Stability",
+            "Vertical": "Vertical"
+          }
         }
       },
       "SHEET": {
@@ -1144,6 +1201,12 @@
       "MigrationVersion": {
         "Label": "Migration Version",
         "Hint": "Last Performed Migration"
+      }
+    },
+    "SOCKET": {
+      "WARNING": {
+        "noActiveGM": "No active GM was found to be able to handle the request.",
+        "invalidSpendType": "The spend type [{spendType}] requested by [{name}] is not valid for hero tokens."
       }
     },
     "Skill": {

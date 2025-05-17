@@ -10,6 +10,7 @@ export const DRAW_STEEL = {};
  * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
  * The `label` is the full name (e.g. Might).
  * The `hint` is the short form in all caps (e.g. M).
+ * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
 DRAW_STEEL.characteristics = {
@@ -1083,12 +1084,15 @@ DRAW_STEEL.abilities = {
   forcedMovement: {
     push: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Push",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPush",
     },
     pull: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Pull",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPull",
     },
     slide: {
       label: "DRAW_STEEL.Item.Ability.ForcedMovement.Slide",
+      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalSlide",
     },
   },
 };
@@ -1098,7 +1102,7 @@ preLocalize("abilities.categories", { key: "label" });
 // Embed labels intentionally not pre-localized because they rely on `format` instead of `localize`
 preLocalize("abilities.distances", { keys: ["label", "primary", "secondary", "tertiary"] });
 preLocalize("abilities.targets", { keys: ["label", "all"] });
-preLocalize("abilities.forcedMovement", { key: "label" });
+preLocalize("abilities.forcedMovement", { keys: ["label", "vertical"] });
 
 Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   /** @type {FormSelectOption[]} */
@@ -1125,13 +1129,50 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 });
 
 /**
+ * @typedef PowerRollEffectProperty
+ * @property {string} label
+ */
+
+/**
+ * @typedef PowerRollEffectType
+ * @property {string} label
+ * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass
+ * @property {Record<string, PowerRollEffectProperty} [properties]
+ */
+
+/**
  * Valid types for the PowerRollEffect pseudo-document
- * @type {Record<string, { label: string; documentClass: pseudoDocuments.powerRollEffects.BasePowerRollEffect }>}
+ * @type {Record<string, PowerRollEffectType> }>}
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
+    properties: {
+      ignoresImmunity: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
+      },
+    },
+  },
+  applied: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
+    documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
+  },
+  forced: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.forced",
+    documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
+    properties: {
+      ignoresImmunity: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.IgnoresStability",
+      },
+      vertical: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.Vertical",
+      },
+    },
+  },
+  other: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",
+    documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
   },
 };
 preLocalize("PowerRollEffect", { key: "label" });

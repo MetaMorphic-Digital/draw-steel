@@ -63,7 +63,7 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
         flavor: options.flavor ?? game.user.character?.name,
       });
     }
-    else game.system.socketHandler.emit("spendHeroToken", { userId: game.userId, spendType, flavor: options.flavor });
+    else game.system.socketHandler.spendHeroToken({ userId: game.userId, spendType, flavor: options.flavor });
   }
 
   /* -------------------------------------------------- */

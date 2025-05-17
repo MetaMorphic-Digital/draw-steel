@@ -1,5 +1,8 @@
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
+/** @import Document from "@common/abstract/document.mjs" */
+/** @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs" */
+
 export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Application) {
   constructor(options) {
     super(options);

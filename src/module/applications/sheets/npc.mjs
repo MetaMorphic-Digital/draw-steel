@@ -18,7 +18,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static PARTS = {
     header: {
       template: systemPath("templates/actor/npc/header.hbs"),
-      templates: ["templates/actor/npc/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
+      templates: ["templates/actor/npc/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
@@ -138,8 +138,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  _onRender(context, options) {
-    super._onRender(context, options);
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
 
     /** @type {HTMLInputElement} */
     const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");

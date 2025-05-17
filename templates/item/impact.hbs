@@ -1,11 +1,22 @@
+{{! Impact Tab }}
 <section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="impact" data-subtype="{{document.type}}">
+  <div class="effect form-group stacked">
+    <label>{{systemFields.effect.fields.before.label}}</label>
+    {{#if isPlay}}
+    {{{enrichedBeforeEffect}}}
+    {{else}}
+    <div class="form-fields">
+      {{formInput systemFields.effect.fields.before value=system.effect.before height="200"}}
+    </div>
+    {{/if}}
+  </div>
+
   <fieldset class="power-roll-data">
     <legend>{{localize "DRAW_STEEL.Item.Ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
     {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics disabled=@root.isPlay}}
     {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial disabled=@root.isPlay}}
     {{/with}}
-
   </fieldset>
 
   <fieldset>
@@ -20,21 +31,26 @@
     <div class="power-roll-list">
       {{#each document.system.power.effects as |effect|}}
       <button type="button" class="power-roll" data-action="editPowerRollEffect" data-id="{{effect.id}}">
-        {{localize effect.typeLabel}}
+        {{localize effect.name}}
       </button>
       {{/each}}
     </div>
   </fieldset>
+
   <fieldset>
     <legend>{{systemFields.spend.label}}</legend>
     {{formGroup systemFields.spend.fields.value value=system.spend.value disabled=@root.isPlay}}
     {{formGroup systemFields.spend.fields.text value=system.spend.text disabled=@root.isPlay}}
   </fieldset>
-  <div class="effect">
+
+  <div class="effect form-group stacked">
+    <label>{{systemFields.effect.fields.after.label}}</label>
     {{#if isPlay}}
-    {{{enrichedEffect}}}
+    {{{enrichedAfterEffect}}}
     {{else}}
-    {{formGroup systemFields.effect value=system.effect height="200"}}
+    <div class="form-fields">
+      {{formInput systemFields.effect.fields.after value=system.effect.after height="200"}}
+    </div>
     {{/if}}
   </div>
 </section>

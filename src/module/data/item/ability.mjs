@@ -1,8 +1,9 @@
 import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { DamageRoll, DSRoll, PowerRoll } from "../../rolls/_module.mjs";
+import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
+import enrichHTML from "../../utils/enrichHTML.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -73,7 +74,10 @@ export default class AbilityModel extends BaseItemModel {
       effects: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect),
     });
 
-    schema.effect = new fields.HTMLField();
+    schema.effect = new fields.SchemaField({
+      before: new fields.HTMLField(),
+      after: new fields.HTMLField(),
+    });
     schema.spend = new fields.SchemaField({
       value: new fields.NumberField({ integer: true }),
       text: new fields.StringField({ required: true }),
@@ -186,20 +190,6 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Convert a tier effects potency data to an embed string (i.e. M < 2)
-   * @param {object} potencyData
-   * @returns {string} The potency embed string (i.e. M < 2)
-   */
-  toPotencyEmbed(potencyData) {
-    return game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
-      characteristic: game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${potencyData.characteristic}.abbreviation`),
-      value: this.actor ? new DSRoll(potencyData.value, this.parent.getRollData()).evaluateSync().total : potencyData.value,
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
    * @param {EnrichmentOptions} options
@@ -283,11 +273,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    const powerRollEffectFormatter = game.i18n.getListFormatter({ type: "unit" });
-
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: powerRollEffectFormatter.format(this.power.effects.contents.map(effect => effect.toText(tier))) },
+      { text: this.power.effects.contents.map(effect => effect.toText(tier)).join("; ") },
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -302,6 +290,9 @@ export default class AbilityModel extends BaseItemModel {
 
       context.powerRollBonus = this.power.roll.formula.replace("@chr", characteristicsFormatter.format(Array.from(characteristicList)));
     }
+
+    context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
+    context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
   }
 
   /* -------------------------------------------------- */

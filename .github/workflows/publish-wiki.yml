@@ -1,5 +1,7 @@
 name: Publish wiki
 on:
+  workflow_dispatch:
+    inputs: {}
   push:
     tags:
       - 'release-*'

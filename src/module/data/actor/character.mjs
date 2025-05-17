@@ -72,12 +72,6 @@ export default class CharacterModel extends BaseActorModel {
 
     this.hero.recoveries.bonus = 0;
 
-    Object.assign(this.potency, {
-      weak: 0,
-      average: 0,
-      strong: 0,
-    });
-
     const kitBonuses = {
       stamina: 0,
       speed: 0,
@@ -131,13 +125,6 @@ export default class CharacterModel extends BaseActorModel {
       this.hero.primary.label = heroClass.system.primary;
       // this.hero.secondary.label = this.class.system.secondary;
     }
-
-    const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
-
-    // potency.bonus is handled as part of Ability calculations to accommodate NPCs not having a base shared potency
-    this.potency.weak += highestCharacteristic - 2;
-    this.potency.average += highestCharacteristic - 1;
-    this.potency.strong += highestCharacteristic;
 
     super.prepareDerivedData();
 

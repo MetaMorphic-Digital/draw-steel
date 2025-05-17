@@ -19,7 +19,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     classes: ["item"],
     position: {
       // Allows "Their Lack of Focus is Their Undoing" to fit in two lines
-      width: 540,
+      // Also ensures the prosemirror editor bar doesn't overflow to a second line when selecting a paragraph element
+      width: 560,
     },
     actions: {
       toggleMode: this.#toggleMode,
@@ -61,7 +62,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   static PARTS = {
     header: {
       template: systemPath("templates/item/header.hbs"),
-      templates: ["templates/item/header.hbs", "templates/parts/mode-toggle.hbs"].map(t => systemPath(t)),
+      templates: ["templates/item/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
@@ -146,7 +147,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         await this.item.system.getSheetContext(context);
         break;
       case "impact":
-        context.enrichedEffect = await enrichHTML(this.item.system.effect, { relativeTo: this.item });
+        context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
+        context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
       case "effects":
         context.effects = this.prepareActiveEffectCategories();

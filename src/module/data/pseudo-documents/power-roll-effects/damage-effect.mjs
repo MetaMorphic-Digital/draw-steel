@@ -1,23 +1,25 @@
+import { DSRoll } from "../../../rolls/base.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
+import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
-const { SetField, StringField } = foundry.data.fields;
+const { SetField, SchemaField, StringField } = foundry.data.fields;
 
+/**
+ * For abilities that do damage
+ */
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
+    // TODO: Remove manual label assignment when localization bug is fixed
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
-        value: new FormulaField({ initial: "2 + @chr" }),
-        types: new SetField(new StringField()),
+        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+        types: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [...super.LOCALIZATION_PREFIXES];
 
   /* -------------------------------------------------- */
 
@@ -60,10 +62,11 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
   /** @inheritdoc */
   async _tierRenderingContext(context) {
-    context.fields.text.placeholder = "{{damage}}";
+    await super._tierRenderingContext(context);
+
     for (const n of [1, 2, 3]) {
       const path = `damage.tier${n}`;
-      context.fields[`tier${n}`].damage = {
+      Object.assign(context.fields[`tier${n}`].damage, {
         value: {
           field: this.schema.getField(`${path}.value`),
           value: this.damage[`tier${n}`].value,
@@ -77,16 +80,26 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
           src: this._source.damage[`tier${n}`].types,
           name: `${path}.types`,
         },
-      };
+        properties: {
+          field: this.schema.getField(`${path}.properties`),
+          value: this.damage[`tier${n}`].properties,
+          src: this._source.damage[`tier${n}`].properties,
+          name: `${path}.properties`,
+        },
+      });
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
+    context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.damage.properties).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
+  /**
+   * @param {1 | 2 | 3} tier
+   * @inheritdoc
+   */
   toText(tier) {
-    const { value, types } = this.damage[`tier${tier}`];
+    const { value, types, potency } = this.damage[`tier${tier}`];
 
     let damageTypes;
     let i18nString = "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formatted";
@@ -96,6 +109,14 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     } else {
       i18nString += "Typeless";
     }
-    return game.i18n.format(i18nString, { value, damageTypes });
+    const formattedDamageString = game.i18n.format(i18nString, { value, damageTypes });
+    if (potency.characteristic === "none") return formattedDamageString;
+
+    const potencyString = this.toPotencyText(tier);
+
+    return game.i18n.format("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
+      damage: formattedDamageString,
+      potency: potencyString,
+    });
   }
 }

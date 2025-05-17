@@ -3,7 +3,7 @@ import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
-import { DamagePowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs"
+import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs"
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -29,47 +29,7 @@ declare module "./base.mjs" {
 
 declare module "./ability.mjs" {
 
-  export interface Potency {
-    enabled: boolean,
-    value: string;
-    characteristic: string;
-  }
-
-  // type DamagePowerRoll = {
-  //   type: "damage";
-  //   value: string;
-  //   types: Set<string>;
-  //   potency: Potency;
-  //   display: string;
-  // }
-
-  // type AEPowerRoll = {
-  //   type: "ae";
-  //   always: Set<string>;
-  //   success: Set<string>;
-  //   failure: Set<string>;
-  //   potency: Potency;
-  //   display: string;
-  // }
-
-  // type ForcedPowerRoll = {
-  //   type: "forced";
-  //   types: Set<string>;
-  //   value: number;
-  //   vertical: boolean;
-  //   potency: Potency;
-  //   display: string;
-  // }
-
-  // type OtherPowerRoll = {
-  //   type: "other";
-  //   potency: Potency;
-  //   display: string;
-  // }
-
-  // type PowerRoll = DamagePowerRoll | AEPowerRoll | ForcedPowerRoll | OtherPowerRoll;
-
-  type PowerRollEffects = DamagePowerRollEffect;
+  type PowerRollEffects = DamagePowerRollEffect | OtherPowerRollEffect;
 
   export default interface AbilityModel {
     description: never;
@@ -108,7 +68,10 @@ declare module "./ability.mjs" {
       value: number;
       text: string;
     };
-    effect: string;
+    effect: {
+      before: string;
+      after: string;
+    };
   }
 
   export interface AbilityUseOptions {

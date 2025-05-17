@@ -1,3 +1,5 @@
+import constructHTMLButton from "../../utils/construct-html-button.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default base => {
@@ -59,6 +61,21 @@ export default base => {
     _configureRenderOptions(options) {
       super._configureRenderOptions(options);
       if (options.mode && this.isEditable) this._mode = options.mode;
+    }
+
+    /* -------------------------------------------------- */
+
+    /** @inheritdoc */
+    async _renderFrame(options) {
+      const frame = await super._renderFrame(options);
+      const buttons = [constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-user-lock"], dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.Sheet.ToggleMode" } })];
+
+      if (this.document.system.source) {
+        buttons.push(constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-book"], dataset: { action: "updateSource", tooltip: "DRAW_STEEL.Sheet.UpdateSource" } }));
+      }
+      this.window.controls.after(...buttons);
+
+      return frame;
     }
 
     /* -------------------------------------------------- */

@@ -28,6 +28,14 @@
     {{/if}}
   </dl>
 </section>
+{{#if system.effect.before}}
+<section class="effect before">
+  <dl>
+    <dt class="effect">{{systemFields.effect.label}}</dt>
+    <dd class="effect">{{{enrichedBeforeEffect}}}</dd>
+  </dl>
+</section>
+{{/if}}
 {{#if powerRolls}}
 <section class="powerResult">
   <p>
@@ -46,11 +54,11 @@
   </dl>
 </section>
 {{/if}}
-<section class="">
+{{#if system.effect.after}}
+<section class="effect after">
   <dl>
-    {{#if system.effect}}
     <dt class="effect">{{systemFields.effect.label}}</dt>
-    <dd class="effect">{{{system.effect}}}</dd>
-    {{/if}}
+    <dd class="effect">{{{enrichedAfterEffect}}}</dd>
   </dl>
 </section>
+{{/if}}
