@@ -204,7 +204,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       });
     }
 
-    this.displayStaminaChange(changes);
+    if(changes.system?.stamina) this.displayStaminaChange(changes);
   }
 
   /**
