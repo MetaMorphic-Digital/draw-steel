@@ -3,7 +3,6 @@ import { PowerRoll } from "../../rolls/power.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
-import { showFloatyText } from "../../helpers/tokenUtils.mjs";
 
 /** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -279,7 +278,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {DrawSteelCombatant} combatant The combatant representation
    * @abstract
    */
-  async _onStartTurn(combatant) {}
+  async _onStartTurn(combatant) { }
 
   /**
    * Prompt the user for what types
