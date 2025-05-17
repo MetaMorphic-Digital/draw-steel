@@ -95,7 +95,7 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 
 /**
  * Configuration information for damage types
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, {label: string, color: string}>}
  */
 DRAW_STEEL.damageTypes = {
   acid: {
