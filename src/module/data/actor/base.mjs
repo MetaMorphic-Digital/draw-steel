@@ -278,7 +278,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {DrawSteelCombatant} combatant The combatant representation
    * @abstract
    */
-  async _onStartTurn(combatant) { }
+  async _onStartTurn(combatant) {}
 
   /**
    * Prompt the user for what types
