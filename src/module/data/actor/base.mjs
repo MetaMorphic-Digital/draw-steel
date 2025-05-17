@@ -204,7 +204,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       });
     }
 
-    if(changes.system?.stamina) this.displayStaminaChange(changes);
+    this.displayStaminaChange(changes);
   }
 
   /**
@@ -240,13 +240,17 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {object} changes The change object
    */
   async displayStaminaChange(changes) {
-    if (!canvas.scene) {
+    if (!canvas.scene || !changes.system?.stamina) {
+      return;
+    }
+
+    const diff = this.stamina.value - changes.system.stamina.value;
+
+    if (diff === 0) {
       return;
     }
 
     const tokens = this.parent.getActiveTokens();
-
-    const diff = this.stamina.value - changes.system.stamina.value;
 
     tokens.forEach((token) => {
       const defaultFill = (diff < 0 ? "lightgreen" : "white");
