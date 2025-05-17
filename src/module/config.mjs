@@ -95,35 +95,44 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 
 /**
  * Configuration information for damage types
- * @type {Record<string, {label: string}>}
+ * @type {Record<string, {label: string, color: string}>}
  */
 DRAW_STEEL.damageTypes = {
   acid: {
     label: "DRAW_STEEL.DamageTypes.Acid",
+    color: "#14ff14",
   },
   cold: {
     label: "DRAW_STEEL.DamageTypes.Cold",
+    color: "#14ffd0",
   },
   corruption: {
     label: "DRAW_STEEL.DamageTypes.Corruption",
+    color: "#7b00a8",
   },
   fire: {
     label: "DRAW_STEEL.DamageTypes.Fire",
+    color: "#ff870f",
   },
   holy: {
     label: "DRAW_STEEL.DamageTypes.Holy",
+    color: "#ffed61",
   },
   lightning: {
     label: "DRAW_STEEL.DamageTypes.Lightning",
+    color: "yellow",
   },
   poison: {
     label: "DRAW_STEEL.DamageTypes.Poison",
+    color: "#008500",
   },
   psychic: {
     label: "DRAW_STEEL.DamageTypes.Psychic",
+    color: "#d40cc3",
   },
   sonic: {
     label: "DRAW_STEEL.DamageTypes.Sonic",
+    color: "#999",
   },
 };
 preLocalize("damageTypes", { key: "label" });
