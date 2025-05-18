@@ -542,6 +542,7 @@ export default class AbilityModel extends BaseItemModel {
 
     // Restrained condition check - targeting restrained gets an edge
     if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+
     // Flanking checks
     if (this.keywords.has("melee") && this.keywords.has("strike") && token && token.isFlanking(target)) modifiers.edges += 1;
 

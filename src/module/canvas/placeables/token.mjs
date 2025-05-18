@@ -22,7 +22,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /* -------------------------------------------------- */
 
   /**
-   * Does the actor have restrictions preventing flanking ability
+   * Can the token's actor flank? Effects that restrict the ability to take triggered actions block flanking.
    * @type {boolean}
    */
   get canFlank() {
@@ -30,13 +30,17 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     return !this.actor.system.restrictions.type.has("triggered");
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Can the actor be flanked?
+   * Can the token's actor be flanked?
    * @type {boolean}
    */
   get canBeFlanked() {
     return this.actor.system.flankable ?? true;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * An array of inset vertices for each of the token's grid spaces.
@@ -60,6 +64,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     return vertices;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determine if any of the token's occupied squares are adjacent to any of the target's occupied squares.
    * @param {DrawSteelToken} target
@@ -79,6 +85,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     return false;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Return all allies adjacent to the target with line of effect
    * @param {*} target
@@ -95,6 +103,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
     return alliedTokens;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Does this token have line of effect to the target token
@@ -113,6 +123,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     return false;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Are this token and the ally on opposite sides or corners of the target.
    * @param {DrawSteelToken} target
@@ -129,6 +141,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
     return onOppositeSides || onOppositeCorners;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Is the token flanking the target with an ally.
