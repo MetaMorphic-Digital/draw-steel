@@ -114,9 +114,11 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @returns {boolean}
    */
   hasLineOfEffect(target) {
-    // TODO: Add flag to walls for "blocks line of effect" that defaults to true.
-    for (const tokenVertex of this.insetVertices) {
-      for (const targetVertex of target.insetVertices) {
+    const tokenInsetVertices = this.insetVertices;
+    const targetInsetVertices = target.insetVertices;
+
+    for (const tokenVertex of tokenInsetVertices) {
+      for (const targetVertex of targetInsetVertices) {
         const collsions = CONFIG.Canvas.polygonBackends.move.testCollision(tokenVertex, targetVertex, { type: "move", mode: "all" });
         const hasCollisions = collsions.some(c => c.edges.some(e => e.object?.document?.blocksLineOfEffect ?? true));
         if (!hasCollisions) return true;
