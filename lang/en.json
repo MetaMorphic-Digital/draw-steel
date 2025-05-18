@@ -9,7 +9,8 @@
         "NPC": "Draw Steel NPC Sheet",
         "Item": "Draw Steel Item Sheet",
         "ActiveEffect": "Draw Steel Active Effect Config",
-        "CombatantGroup": "Draw Steel Combatant Group Config"
+        "CombatantGroup": "Draw Steel Combatant Group Config",
+        "WallDocument": "Draw Steel Wall Config"
       },
       "Add": "+ Add {itemName}",
       "NoDocument": "No {documentName}",
@@ -1346,6 +1347,15 @@
           "NoItem": "Could not find item. You may need to delete and recreate this macro.",
           "NotOwnedItem": "{item} is not an owned item. Only owned items may be rolled.",
           "NoRoll": "{item} does not have a roll function."
+        }
+      }
+    },
+    "Wall": {
+      "Config": {
+        "Legend": "Draw Steel Configuration",
+        "BlocksLineOfEffect": {
+          "label": "Blocks Line of Effect",
+          "hint": "Should this wall block line of effect between tokens?"
         }
       }
     }

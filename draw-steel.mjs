@@ -88,6 +88,11 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
   });
+  DocumentSheetConfig.unregisterSheet(WallDocument, "core", foundry.applications.sheets.WallConfig);
+  DocumentSheetConfig.registerSheet(WallDocument, DS_CONST.systemID, applications.sheets.DrawSteelWallConfig, {
+    makeDefault: true,
+    label: "DRAW_STEEL.Sheet.Labels.WallDocument",
+  });
   DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
     label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",

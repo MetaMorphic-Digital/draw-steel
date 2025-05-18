@@ -26,6 +26,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @type {boolean}
    */
   get canFlank() {
+    if (!this.actor) return true;
     // Checking if active effects have restricted triggered abilities
     return !this.actor.system.restrictions.type.has("triggered");
   }
@@ -37,6 +38,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @type {boolean}
    */
   get canBeFlanked() {
+    if (!this.actor) return true;
     return this.actor.system.flankable ?? true;
   }
 
@@ -53,7 +55,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     for (const offset of this.document.getOccupiedGridSpaceOffsets(this.center)) {
       const topLeftPoint = { x: (offset.j - 1) * canvas.grid.size, y: (offset.i - 1) * canvas.grid.size };
 
-      const topLeft = { x: topLeftPoint + 1, y: topLeftPoint + 1 };
+      const topLeft = { x: topLeftPoint.x + 1, y: topLeftPoint.y + 1 };
       const topRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y };
       const bottomLeft = { x: topLeftPoint.x, y: topLeftPoint.y + canvas.grid.size - 1 };
       const bottomRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y + canvas.grid.size - 1 };
@@ -115,7 +117,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     // TODO: Add flag to walls for "blocks line of effect" that defaults to true.
     for (const tokenVertex of this.insetVertices) {
       for (const targetVertex of target.insetVertices) {
-        const hasCollisions = CONFIG.Canvas.polygonBackends.move.testCollision(tokenVertex, targetVertex, { type: "move", mode: "any" });
+        const collsions = CONFIG.Canvas.polygonBackends.move.testCollision(tokenVertex, targetVertex, { type: "move", mode: "all" });
+        const hasCollisions = collsions.some(c => c.edges.some(e => e.object?.document?.blocksLineOfEffect ?? true));
         if (!hasCollisions) return true;
       }
     }
@@ -159,7 +162,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     for (const ally of adjacentAllies) {
       if (!ally.canFlank) continue;
       // Some features allow you to provide flanking while just adjacent to the target
-      if (ally.actor.system.adjacentFlanking) return true;
+      if (ally.actor?.system.adjacentFlanking) return true;
       if (this.onOppositeSideOrCorner(target, ally)) return true;
     }
 
