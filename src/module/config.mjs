@@ -100,39 +100,39 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 DRAW_STEEL.damageTypes = {
   acid: {
     label: "DRAW_STEEL.DamageTypes.Acid",
-    color: "#14ff14",
+    color: foundry.utils.Color.fromString("#14ff14"),
   },
   cold: {
     label: "DRAW_STEEL.DamageTypes.Cold",
-    color: "#14ffd0",
+    color: foundry.utils.Color.fromString("#14ffd0"),
   },
   corruption: {
     label: "DRAW_STEEL.DamageTypes.Corruption",
-    color: "#7b00a8",
+    color: foundry.utils.Color.fromString("#7b00a8"),
   },
   fire: {
     label: "DRAW_STEEL.DamageTypes.Fire",
-    color: "#ff870f",
+    color: foundry.utils.Color.fromString("#ff870f"),
   },
   holy: {
     label: "DRAW_STEEL.DamageTypes.Holy",
-    color: "#ffed61",
+    color: foundry.utils.Color.fromString("#ffed61"),
   },
   lightning: {
     label: "DRAW_STEEL.DamageTypes.Lightning",
-    color: "yellow",
+    color: foundry.utils.Color.fromString("#ffff00"),
   },
   poison: {
     label: "DRAW_STEEL.DamageTypes.Poison",
-    color: "#008500",
+    color: foundry.utils.Color.fromString("#008500"),
   },
   psychic: {
     label: "DRAW_STEEL.DamageTypes.Psychic",
-    color: "#d40cc3",
+    color: foundry.utils.Color.fromString("#d40cc3"),
   },
   sonic: {
     label: "DRAW_STEEL.DamageTypes.Sonic",
-    color: "#999",
+    color: foundry.utils.Color.fromString("#999999"),
   },
 };
 preLocalize("damageTypes", { key: "label" });

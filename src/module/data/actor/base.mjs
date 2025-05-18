@@ -204,7 +204,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       });
     }
 
-    this.displayStaminaChange(changes);
+    if (changes.system?.stamina) {
+      options.ds ??= {};
+      options.ds.previousStamina = { ...this.stamina };
+    }
   }
 
   /**
@@ -219,6 +222,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super._onUpdate(changed, options, userId);
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
+
+    if (options.ds?.previousStamina) this.displayStaminaChange(changed, options);
   }
 
   /**
@@ -239,18 +244,13 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    *
    * @param {object} changes The change object
    */
-  async displayStaminaChange(changes) {
-    if (!canvas.scene || !changes.system?.stamina) {
-      return;
-    }
-
-    const diff = this.stamina.value - changes.system.stamina.value;
-
-    if (diff === 0) {
+  async displayStaminaChange(changes, options) {
+    if (!canvas.scene) {
       return;
     }
 
     const tokens = this.parent.getActiveTokens();
+    const diff = options.ds.previousStamina.value - changes.system.stamina.value;
 
     tokens.forEach((token) => {
       const defaultFill = (diff < 0 ? "lightgreen" : "white");
@@ -258,7 +258,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         token.center,
         Math.abs(diff),
         {
-          fill: changes.damageColor ? changes.damageColor : defaultFill,
+          fill: options.ds?.damageColor ? options.ds.damageColor : defaultFill,
           fontSize: 32,
           stroke: 0x000000,
           strokeThickness: 4,
@@ -391,7 +391,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates, "damageColor": damageColor });
+    return this.parent.update({ "system.stamina": staminaUpdates }, { ds: { damageColor } });
   }
 
   /**
