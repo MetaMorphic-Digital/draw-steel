@@ -56,8 +56,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
       const topLeftPoint = { x: (offset.j - 1) * canvas.grid.size, y: (offset.i - 1) * canvas.grid.size };
 
       const topLeft = { x: topLeftPoint.x + 1, y: topLeftPoint.y + 1 };
-      const topRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y };
-      const bottomLeft = { x: topLeftPoint.x, y: topLeftPoint.y + canvas.grid.size - 1 };
+      const topRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y + 1 };
+      const bottomLeft = { x: topLeftPoint.x + 1, y: topLeftPoint.y + canvas.grid.size - 1 };
       const bottomRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y + canvas.grid.size - 1 };
 
       vertices.push(topLeft, topRight, bottomLeft, bottomRight);
