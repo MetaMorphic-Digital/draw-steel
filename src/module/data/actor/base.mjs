@@ -391,7 +391,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates }, { ds: { damageColor } });
+    options.ds ??= {};
+    options.ds.damageColor = damageColor;
+    return this.parent.update({ "system.stamina": staminaUpdates }, options);
   }
 
   /**
