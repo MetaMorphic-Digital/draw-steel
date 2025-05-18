@@ -438,7 +438,7 @@ export default class AbilityModel extends BaseItemModel {
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
             uuid: target.actor.uuid,
-            modifiers: this.getTargetModifiers(target.actor),
+            modifiers: this.getTargetModifiers(target),
           });
           return accumulator;
         }, []),
@@ -528,18 +528,22 @@ export default class AbilityModel extends BaseItemModel {
       edges: 0,
       bonuses: 0,
     };
+    const targetActor = target.actor;
+    const token = canvas.tokens.controlled[0]?.actor === this.actor ? canvas.tokens.controlled[0] : null;
 
     //TODO: ALL CONDITION CHECKS
 
     // Frightened condition checks
-    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
-    if (DrawSteelActiveEffect.isStatusSource(target, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
+    if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
     // Grabbed condition check - targeting a non-source adds a bane
-    if (DrawSteelActiveEffect.isStatusSource(this.actor, target, "grabbed") === false) modifiers.banes += 1;
+    if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
 
     // Restrained condition check - targeting restrained gets an edge
-    if (target.statuses.has("restrained")) modifiers.edges += 1;
+    if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+    // Flanking checks
+    if (this.keywords.has("melee") && this.keywords.has("strike") && token && token.isFlanking(target)) modifiers.edges += 1;
 
     return modifiers;
   }
