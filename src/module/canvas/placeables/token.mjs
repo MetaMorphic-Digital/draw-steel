@@ -27,16 +27,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    */
   get canFlank() {
     // Checking if active effects have restricted triggered abilities
-    if (this.actor.system.restrictions.type.has("triggered")) return false;
-
-    // Checking if statuses have restricted triggered abilities
-    for (const effect of CONFIG.statusEffects) {
-      if (!this.actor.statuses.has(effect.id) || !effect.restrictions) continue;
-
-      if (effect.restrictions.type?.has("triggered")) return false;
-    }
-
-    return true;
+    return !this.actor.system.restrictions.type.has("triggered");
   }
 
   /**
@@ -152,6 +143,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     if (adjacentAllies.length === 0) return false;
 
     for (const ally of adjacentAllies) {
+      if (!ally.canFlank) continue;
       // Some features allow you to provide flanking while just adjacent to the target
       if (ally.actor.system.adjacentFlanking) return true;
       if (this.onOppositeSideOrCorner(target, ally)) return true;

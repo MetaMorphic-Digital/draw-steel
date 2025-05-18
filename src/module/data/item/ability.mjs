@@ -562,14 +562,6 @@ export default class AbilityModel extends BaseItemModel {
     if (restrictions.type.has(this.type)) return true;
     if (restrictions.dsid.has(this._dsid)) return true;
 
-    // Checking if statuses have restricted this ability based on type or _dsid
-    for (const effect of CONFIG.statusEffects) {
-      if (!this.actor.statuses.has(effect.id) || !effect.restrictions) continue;
-
-      if (effect.restrictions.type?.has(this.type)) return true;
-      if (effect.restrictions.dsid?.has(this._dsid)) return true;
-    }
-
     return false;
   }
 }
