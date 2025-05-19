@@ -2,8 +2,6 @@
 
 This page is dedicated to pointing out all current Automation in the Draw Steel System, and gives a preview of future automation.
 
-# Current Automation (Version 0.7)
-
 ## Characteristic Rolls and Skills
 
 When you click on any of your characteristics on your character sheet while in ‘play’ mode, it will automatically prompt to roll a power roll as a test for said characteristi. This prompted power roll opens a new input prompt, that allows to add skills, and situational bonuses, like edges and banes. The power roll follows the formula (situational bonuses and skills in parentheses):
@@ -13,13 +11,13 @@ When you click on any of your characteristics on your character sheet while in �
 
 ## Stamina and negative Stamina
 
-To set a heroes stamina to a negatyive value, either
+To set a heroes stamina to a negative value, either
 
 - set the stamina value on the character sheet as [-value]. If Stamina is `5` and the entered value is `-10`, then the resulting stamina will be `-10`
 
 - use the token HUD for a relative change of stamina. If stamina is `5` and the entered value is `-10` then the resulting stamina will be `-5`.
 
-## Recoveries, Respites, and Hero Tokens
+## Recoveries, Respites, Surges and Hero Tokens
 
 ### Recoveries
 
@@ -33,9 +31,13 @@ On the character sheet is a button for taking a `Respite`, that automatically co
 
 When clicking on the `Stamina` label on the character sheet, a prompt will appear to spend 2 Hero Tokens - if available - instead of a Recovery to regain stamina worth the actor’s recovery value.
 
+### Surges through Hero Tokens
+
+When clicking on the `Surges` label on the character sheet, a prompt will appear to spend 1 Hero Token - if available - to gain 2 surges for the actor.
+
 ### Hero Tokens and Malice display
 
-Both Hero Token count  and Director’s Malice total are displayed in a little display as part of/below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
+Both Hero Token count  and Director’s Malice total are displayed in a display below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
 
 The three dot menu in line with hero tokens allows for awarding Hero Tokens to the party (increasing the count), and resetting them to the current player count. 
 
@@ -154,37 +156,7 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 ### Winded
 
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
-If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed. 
-
-# Future Automations
-
-The following automations planned for the near or distant future.
-
-## Negotiations
-
-An application is planned to support directors when running Negotiations
-
-## Compendium Browser
-
-Once there is multiple sources of content, a compendium browser migth become helpful.
-
-## Actor Type - Retainers
-
-Currently there are only 2 Actor types, Characters and NPCs. An additional actor type is planned for retainers to support their implementation as a mix of character and monster features.
-
-## Automated Status Effects
-
-### Bleeding
-When an actor has the `Bleeding` status effect, it automatically loses `1d6` stamina henever they make a test using Might or Agility, make a strike, or use an action, maneuver, or a triggered action.
-
-
-### Taunted
-
-If the `Taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Taunt and abilities that are targeted at the actors other than the source actor automatically have a bane.
-
-### Winded
-
-If the stamina falls below zero, it is automatically replaced with the `dying` status.
+If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
 
 
 
