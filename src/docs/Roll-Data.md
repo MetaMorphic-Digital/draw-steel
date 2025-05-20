@@ -170,7 +170,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Draw Steel ID - `@item._dsid`
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
-+ Ability Story Text - `@item.description.flavor`
++ Ability Story Text - `@item.story`
 + Ability GM description - `@item.description.gm`
 + Ability description - `@item.description.value`
 + Ability primary distance (distance/AoE size eg Burst **5**) - `@item.distance.primary`
