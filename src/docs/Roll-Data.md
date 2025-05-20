@@ -171,13 +171,12 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
 + Ability Story Text - `@item.story`
-+ Ability GM description - `@item.description.gm`
-+ Ability description - `@item.description.value`
 + Ability primary distance (distance/AoE size eg Burst **5**) - `@item.distance.primary`
 + Ability secondary distance (AoE distance eg. Cube 3 within **10**) - `@item.distance.secondary`
-+ Ability tertiary distance (secondary AoE distance eg. 1x10 line within **1**- `@item.distance.tertiary`
++ Ability tertiary distance (secondary AoE distance eg. 1x10 line within **1**)- `@item.distance.tertiary`
 + Ability Distance type - `@item.distance.type`
-+ Ability Effect - `@item.effect`
++ Ability Effect (Before) - `@item.effect.before`
++ Ability Effect (After) - `@item.effect.after`
 + Ability Name - `@item.name`
 + Ability Power Roll Characteristic - `@item.powerRoll.characteristics`
 + Ability has Power Roll (true/false) - `@item.powerRoll.enabled`
