@@ -57,8 +57,6 @@ export default class ClassModel extends AdvancementModel {
 
     schema.kits = new fields.NumberField({ required: true, initial: 1 });
 
-    // TODO: Potency
-
     return schema;
   }
 

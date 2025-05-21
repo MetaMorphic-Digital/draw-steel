@@ -22,6 +22,7 @@
 
 ### Fixed
 - Fix setting the power roll characteristic if all applicable characteristics are negative.
+- Fixed missing story text from ability embeds. (#506)
 
 ## 0.7.0 Foundry v13 Alpha
 
