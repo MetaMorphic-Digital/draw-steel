@@ -112,7 +112,7 @@ export default class CharacterModel extends BaseActorModel {
     }
 
     this.stamina.max += kitBonuses["stamina"] * this.echelon;
-    this.movement.walk += kitBonuses["speed"];
+    this.movement.value += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
   }
 

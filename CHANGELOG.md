@@ -20,9 +20,15 @@
 
 ## 0.7.1
 
+### Added
+- Automated flanking bonuses when requirements are met. (#451)
+- Added a flag to the wall documents to configure if a wall should block of line of effect.
+
 ### Fixed
-- Fix setting the power roll characteristic if all applicable characteristics are negative.
+- Using the Enter key to submit a character or item sheet will no longer also toggle the sheet mode. (#501)
+- Fixed setting the power roll characteristic if all applicable characteristics are negative.
 - Fixed missing story text from ability embeds. (#506)
+- Fixed kit speed bonuses not applying. (#511)
 
 ## 0.7.0 Foundry v13 Alpha
 
