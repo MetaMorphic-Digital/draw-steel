@@ -5,10 +5,12 @@
  * @param {Record<string, string>} [config.dataset={}]
  * @param {string[]} [config.classes=[]]
  * @param {string} [config.icon=""]
+ * @param {"button" | "submit"} [config.type="button"]
  * @returns {HTMLButtonElement}
  */
-export default function constructHTMLButton({ label, dataset = {}, classes = [], icon = "" }) {
+export default function constructHTMLButton({ label, dataset = {}, classes = [], icon = "", type = "button" }) {
   const button = document.createElement("button");
+  button.type = type;
 
   for (const [key, value] of Object.entries(dataset)) {
     button.dataset[key] = value;
