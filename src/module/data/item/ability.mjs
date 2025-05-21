@@ -550,9 +550,9 @@ export default class AbilityModel extends BaseItemModel {
 
       //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "taunted") === false) {
-        const taunter = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
-        for (const taunterToken of taunter.getActiveTokens()) {
-          if (token.hasLineOfEffect(taunterToken)) {
+        const tauntedSource = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
+        for (const tauntedSourceToken of tauntedSource.getActiveTokens()) {
+          if (token.hasLineOfEffect(tauntedSourceToken)) {
             modifiers.banes += 2;
             break;
           }
