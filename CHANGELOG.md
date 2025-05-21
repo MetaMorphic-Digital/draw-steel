@@ -26,6 +26,7 @@
 
 ### Fixed
 - Fix setting the power roll characteristic if all applicable characteristics are negative.
+- Fixed kit speed bonuses not applying. (#511)
 
 ## 0.7.0 Foundry v13 Alpha
 
