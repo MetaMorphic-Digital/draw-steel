@@ -39,7 +39,7 @@ When clicking on the `Surges` label on the character sheet, a prompt will appear
 
 Both Hero Token count  and Director’s Malice total are displayed in a display below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
 
-The three dot menu in line with hero tokens allows for awarding Hero Tokens to the party (increasing the count), and resetting them to the current player count. 
+The three dot menu in line with hero tokens allows for awarding Hero Tokens to the party (increasing the count), and resetting them to the current player count.
 
 ## Heroic Resource/Malice generation and consumption
 
@@ -149,6 +149,10 @@ If the `Restrained` status effect is applied to an actor the ability power rolls
 
 If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***) Traits such as Humans` `Perseverance` can be activated via Active Effects, which allows to set the “slowed” speed to 3 instead of 2.
 
+### Taunted
+
+If the `Taunted` status effect is applied to an actor, the actor will take a double bane when attacking a different actor than the source of the `Taunted` status and having Line of Effect to the `Taunted` source. This does require having the attacking token selected.
+
 ### Weakend
 
 If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
@@ -158,5 +162,9 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
 
+## Other Combat Automation
 
+### Flanking
+
+When attacking an enemy, the actor will gain an edge from `Flanking` if they have an ally (token with the same disposition) on either the opposite side or the opposite corners. This does require having the attacking token selected.
 

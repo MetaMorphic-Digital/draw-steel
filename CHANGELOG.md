@@ -23,6 +23,7 @@
 ### Added
 - Automated flanking bonuses when requirements are met. (#451)
 - Added a flag to the wall documents to configure if a wall should block of line of effect.
+- Automated the double bane applied when attacking a target other than the source of the taunted status effect while in line of effect to the taunted source.
 
 ### Fixed
 - Using the Enter key to submit a character or item sheet will no longer also toggle the sheet mode. (#501)
