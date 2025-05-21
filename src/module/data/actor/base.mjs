@@ -143,6 +143,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }
 
     rollData.echelon = this.echelon;
+    rollData.level = this.level;
   }
 
   /**
