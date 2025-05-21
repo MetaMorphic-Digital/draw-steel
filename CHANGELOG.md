@@ -20,6 +20,10 @@
 
 ## 0.7.1
 
+### Added
+- Automated flanking bonuses when requirements are met (#451)
+- Added a flag to the wall documents to configure if a wall should block of line of effect.
+
 ### Fixed
 - Fix setting the power roll characteristic if all applicable characteristics are negative.
 
