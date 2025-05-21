@@ -53,7 +53,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     const vertices = [];
 
     for (const offset of this.document.getOccupiedGridSpaceOffsets()) {
-      const topLeftPoint = { x: (offset.j - 1) * canvas.grid.size, y: (offset.i - 1) * canvas.grid.size };
+      const topLeftPoint = { x: offset.j * canvas.grid.size, y: offset.i * canvas.grid.size };
 
       const topLeft = { x: topLeftPoint.x + 1, y: topLeftPoint.y + 1 };
       const topRight = { x: topLeftPoint.x + canvas.grid.size - 1, y: topLeftPoint.y + 1 };
