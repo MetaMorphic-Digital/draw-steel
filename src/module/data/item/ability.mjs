@@ -95,7 +95,7 @@ export default class AbilityModel extends BaseItemModel {
 
     this.power.characteristic = {
       key: "",
-      value: null,
+      value: -5,
     };
   }
 
