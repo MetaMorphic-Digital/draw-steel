@@ -18,6 +18,11 @@
 ### Known Issues
 -->
 
+## 0.7.1
+
+### Fixed
+- Fix setting the power roll characteristic if all applicable characteristics are negative.
+
 ## 0.7.0 Foundry v13 Alpha
 
 ### Added
