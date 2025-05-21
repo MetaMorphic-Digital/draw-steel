@@ -91,7 +91,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
   /**
    * Return all allies adjacent to the target with line of effect
-   * @param {*} target
+   * @param {DrawSteelToken} target
    * @returns {DrawSteelToken[]}
    */
   getAdjacentAllies(target) {
