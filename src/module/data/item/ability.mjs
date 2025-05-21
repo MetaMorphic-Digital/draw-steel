@@ -543,8 +543,22 @@ export default class AbilityModel extends BaseItemModel {
     // Restrained condition check - targeting restrained gets an edge
     if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
 
-    // Flanking checks
-    if (this.keywords.has("melee") && this.keywords.has("strike") && token && token.isFlanking(target)) modifiers.edges += 1;
+    // Conditions requiring a controlled token
+    if (token) {
+      // Flanking checks
+      if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
+
+      //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source
+      if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "taunted") === false) {
+        const taunter = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
+        for (const taunterToken of taunter.getActiveTokens()) {
+          if (token.hasLineOfEffect(taunterToken)) {
+            modifiers.banes += 2;
+            break;
+          }
+        }
+      }
+    }
 
     return modifiers;
   }
