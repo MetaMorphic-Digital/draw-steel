@@ -519,7 +519,7 @@ export default class AbilityModel extends BaseItemModel {
 
   /**
    * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelActor} target A target of the Ability Roll
+   * @param {DrawSteelToken} target A target of the Ability Roll
    * @returns {PowerRollModifiers}
    */
   getTargetModifiers(target) {
