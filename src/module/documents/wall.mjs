@@ -3,6 +3,6 @@
  */
 export default class DrawSteelWallDocument extends foundry.documents.WallDocument {
   get blocksLineOfEffect() {
-    return foundry.utils.getProperty(this.flags, "draw-steel.blocksLineOfEffect") ?? true;
+    return this.getFlag("draw-steel", "blocksLineOfEffect") ?? true;
   }
 }
