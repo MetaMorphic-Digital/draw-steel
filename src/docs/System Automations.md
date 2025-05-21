@@ -4,7 +4,7 @@ This page is dedicated to pointing out all current Automation in the Draw Steel 
 
 ## Characteristic Rolls and Skills
 
-When you click on any of your characteristics on your character sheet while in ‘play’ mode, it will automatically prompt to roll a power roll as a test for said characteristi. This prompted power roll opens a new input prompt, that allows to add skills, and situational bonuses, like edges and banes. The power roll follows the formula (situational bonuses and skills in parentheses):
+When you click on any of your characteristics on your character sheet while in ‘play’ mode, it will automatically prompt to roll a power roll as a test for said characteristic. This prompted power roll opens a new input prompt, that allows to add skills, and situational bonuses, like edges and banes. The power roll follows the formula (situational bonuses and skills in parentheses):
 
 ***2d10 + characteristic (+ 2 (Skill bonus) ± Edges/Banes)***
 
