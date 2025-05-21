@@ -52,7 +52,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   get insetVertices() {
     const vertices = [];
 
-    for (const offset of this.document.getOccupiedGridSpaceOffsets(this.center)) {
+    for (const offset of this.document.getOccupiedGridSpaceOffsets()) {
       const topLeftPoint = { x: (offset.j - 1) * canvas.grid.size, y: (offset.i - 1) * canvas.grid.size };
 
       const topLeft = { x: topLeftPoint.x + 1, y: topLeftPoint.y + 1 };
@@ -74,8 +74,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @returns {boolean}
    */
   isAdjacentTo(target) {
-    const tokenOffsets = this.document.getOccupiedGridSpaceOffsets(this.center);
-    const targetOffsets = target.document.getOccupiedGridSpaceOffsets(target.center);
+    const tokenOffsets = this.document.getOccupiedGridSpaceOffsets();
+    const targetOffsets = target.document.getOccupiedGridSpaceOffsets();
 
     for (const tokenOffset of tokenOffsets) {
       for (const targetOffset of targetOffsets) {
