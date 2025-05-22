@@ -187,6 +187,11 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     await super._onRender(context, options);
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+
+    // These buttons/methods are inappropriate for default initiative handling
+    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
+    this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
+
     new ux.DragDrop.implementation({
       dragSelector: ".combatant",
       dropSelector: ".combatant-group, .combat-tracker",
