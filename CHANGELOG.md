@@ -23,13 +23,20 @@
 ### Added
 - Automated flanking bonuses when requirements are met. (#451)
 - Added a flag to the wall documents to configure if a wall should block of line of effect.
+- Add level to actor roll data. (#514)
 - Automated the double bane applied when attacking a target other than the source of the taunted status effect while in line of effect to the taunted source. (#167)
+
+## Changed
+- Removed the "Roll All" and "Roll NPC" buttons from the combat tracker while using the default Draw Steel initiative. (#491)
 
 ### Fixed
 - Using the Enter key to submit a character or item sheet will no longer also toggle the sheet mode. (#501)
 - Fixed setting the power roll characteristic if all applicable characteristics are negative.
 - Fixed missing story text from ability embeds. (#506)
 - Fixed kit speed bonuses not applying. (#511)
+- Added missing skills. (#518)
+- Fixed Active Effect embeds not working.
+- Fixed doubled roll display for characteristic rolls from Dice So Nice. (#522)
 
 ## 0.7.0 Foundry v13 Alpha
 
