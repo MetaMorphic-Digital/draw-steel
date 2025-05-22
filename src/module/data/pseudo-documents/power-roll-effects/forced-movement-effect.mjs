@@ -111,7 +111,13 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     const tierValue = this.forced[`tier${tier}`];
     let distanceValue = tierValue.distance;
     if (this.actor) {
-      distanceValue = new DSRoll(distanceValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
+      try {
+        const evaluatedDistance = new DSRoll(distanceValue, this.item.getRollData()).evaluateSync().total;
+        distanceValue = evaluatedDistance;
+      }
+      catch (e) {
+        console.error(`Failed to evaluate formula ${distanceValue} in ${this.uuid}`, e);
+      }
     }
     const potencyString = this.toPotencyText(tier);
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
