@@ -148,7 +148,7 @@ export default class KitModel extends BaseItemModel {
     });
     if (!fd?.kit) return false;
 
-    await actor.deleteEmbeddedDocuments("Item", [fd.object.kit]);
+    await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
   }
 
   /** @inheritdoc */
