@@ -25,6 +25,9 @@
 - Added a flag to the wall documents to configure if a wall should block of line of effect.
 - Add level to actor roll data
 
+## Changed
+- Removed the "Roll All" and "Roll NPC" buttons from the combat tracker while using the default Draw Steel initiative. (#491)
+
 ### Fixed
 - Using the Enter key to submit a character or item sheet will no longer also toggle the sheet mode. (#501)
 - Fixed setting the power roll characteristic if all applicable characteristics are negative.
