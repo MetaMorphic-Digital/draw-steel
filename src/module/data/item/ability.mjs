@@ -437,7 +437,7 @@ export default class AbilityModel extends BaseItemModel {
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
-            uuid: target.actor.uuid,
+            uuid: target.actor?.uuid ?? "",
             modifiers: this.getTargetModifiers(target),
           });
           return accumulator;
@@ -533,29 +533,37 @@ export default class AbilityModel extends BaseItemModel {
 
     //TODO: ALL CONDITION CHECKS
 
-    // Frightened condition checks
-    if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
-    if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
+    // Modifiers requiring just the targeted token to have an actor
+    if (targetActor) {
+      // Frightened condition checks
+      if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "frightened")) modifiers.banes += 1; // Attacking the target frightening the actor
+      if (DrawSteelActiveEffect.isStatusSource(targetActor, this.actor, "frightened")) modifiers.edges += 1; // Attacking the target the actor has frightened
 
-    // Grabbed condition check - targeting a non-source adds a bane
-    if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
+      // Grabbed condition check - targeting a non-source adds a bane
+      if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
 
-    // Restrained condition check - targeting restrained gets an edge
-    if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+      // Restrained condition check - targeting restrained gets an edge
+      if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+    }
 
-    // Conditions requiring a controlled token
+    // Modifiers requiring just a controlled token
     if (token) {
       // Flanking checks
       if (this.keywords.has("melee") && this.keywords.has("strike") && token.isFlanking(target)) modifiers.edges += 1;
+    }
 
-      //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source
+    // Modifiers requiring both a controlled token and the targeted token to have an actor
+    if (token && targetActor) {
+      //Taunted checks - attacking a token other than the taunted source while having LOE to the taunted source gets a double bane
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "taunted") === false) {
         const tauntedSource = fromUuidSync(this.actor.system.statuses.taunted.sources.first());
-        for (const tauntedSourceToken of tauntedSource.getActiveTokens()) {
-          if (token.hasLineOfEffect(tauntedSourceToken)) {
-            modifiers.banes += 2;
-            break;
-          }
+        const activeTokens = tauntedSource?.getActiveTokens?.() ?? [];
+
+        for (const tauntedSourceToken of activeTokens) {
+          if (!token.hasLineOfEffect(tauntedSourceToken)) continue;
+
+          modifiers.banes += 2;
+          break;
         }
       }
     }

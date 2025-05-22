@@ -45,9 +45,9 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
    * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    if (!affected.statuses.has(statusId)) return null;
+    if (!affected?.statuses.has(statusId)) return null;
 
-    return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
+    return affected.system.statuses?.[statusId]?.sources.has(source.uuid) ?? null;
   }
 
   /**
