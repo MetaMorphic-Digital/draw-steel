@@ -263,6 +263,14 @@ DRAW_STEEL.skills = {
       label: "DRAW_STEEL.Skill.List.Blacksmithing",
       group: "crafting",
     },
+    carpentry: {
+      label: "DRAW_STEEL.Skill.List.Carpentry",
+      group: "crafting",
+    },
+    cooking: {
+      label: "DRAW_STEEL.Skill.List.Cooking",
+      group: "crafting",
+    },
     fletching: {
       label: "DRAW_STEEL.Skill.List.Fletching",
       group: "crafting",
@@ -461,6 +469,10 @@ DRAW_STEEL.skills = {
     },
     society: {
       label: "DRAW_STEEL.Skill.List.Society",
+      group: "lore",
+    },
+    strategy: {
+      label: "DRAW_STEEL.Skill.List.Strategy",
       group: "lore",
     },
     timescape: {
