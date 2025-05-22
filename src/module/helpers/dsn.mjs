@@ -11,8 +11,8 @@
  * @param {boolean} context.blind If the roll is blind for the current user
  */
 export function diceSoNiceRollStart(messageId, context) {
-  const message = game.messages.get(messageId);
-  if (message?.type !== "abilityUse") return;
+  // `rollOrder === 999` as a special-case way we check for "Don't display these rolls"
+  // Added by the PowerRoll.prompt factory method
   if (game.settings.get("dice-so-nice", "enabledSimultaneousRollForMessage")) {
     const terms = context.roll.terms.filter((t, i, arr) => {
       if (t.options.rollOrder === 999) return false;
