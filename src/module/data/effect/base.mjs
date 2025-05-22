@@ -65,7 +65,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
-    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+    const enriched = await enrichHTML(this.parent.description, { ...options, relativeTo: this.parent });
 
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);

@@ -133,7 +133,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     const rollData = this.parent?.getRollData() ?? {};
 
     // Shallow copy
-    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name };
+    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name, statuses: {} };
 
     // Statuses provided by *this* active effect
     for (const status of this.statuses) {
