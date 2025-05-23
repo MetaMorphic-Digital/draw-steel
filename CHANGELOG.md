@@ -31,7 +31,7 @@
 
 ### Fixed
 - Fixed swapping kits on characters with the maximum.
-- Fixed the ability sheet failing to render if it has a forced movement power roll effect with no movement tags. (#500)
+- Fixed the ability sheet failing to render if it has a forced movement power roll effect with a bad roll formula. (#500)
 - Using the Enter key to submit a character or item sheet will no longer also toggle the sheet mode. (#501)
 - Fixed setting the power roll characteristic if all applicable characteristics are negative.
 - Fixed missing story text from ability embeds. (#506)

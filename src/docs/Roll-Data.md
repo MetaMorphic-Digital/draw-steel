@@ -117,9 +117,9 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Weakened - `@statuses.weakened`
 + Winded - `@statuses.winded`
 
-## Echelon
+## Echelon and Level
 + Echelon - `@echelon`
-
++ Level - `@level`
 
 ## Item Roll Data
 **First example: a craftable consumable**

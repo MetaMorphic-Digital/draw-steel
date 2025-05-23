@@ -1,4 +1,3 @@
-import { DSRoll } from "../../../rolls/base.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
@@ -51,7 +50,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       tiersSchema[`tier${n}`] = new SchemaField({
         ...fieldsFn(n),
         potency: new SchemaField({
-          value: new FormulaField({ initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
+          value: new FormulaField({ deterministic: true, initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({
             required: true,
             initial: n > 1 ? "" : "none",
@@ -163,10 +162,9 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    */
   toPotencyText(tier) {
     const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];
-    let potencyValue = tierValue.potency.value;
-    if (this.actor) {
-      potencyValue = new DSRoll(potencyValue, this.item.getRollData()).evaluateSync({ strict: false }).total;
-    }
+    const potencyValue = this.actor
+      ? ds.utils.evaluateUserFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
+      : tierValue.potency.value;
     const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,

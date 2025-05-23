@@ -1,4 +1,3 @@
-import { DSRoll } from "../../../rolls/base.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
@@ -28,7 +27,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
           setOptions(),
           { initial: ["push"], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.movement.label" },
         ),
-        distance: new FormulaField({ initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
+        distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
         properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
@@ -109,16 +108,10 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const tierValue = this.forced[`tier${tier}`];
-    let distanceValue = tierValue.distance;
-    if (this.actor) {
-      try {
-        const evaluatedDistance = new DSRoll(distanceValue, this.item.getRollData()).evaluateSync().total;
-        distanceValue = evaluatedDistance;
-      }
-      catch (e) {
-        console.error(`Failed to evaluate formula ${distanceValue} in ${this.uuid}`, e);
-      }
-    }
+
+    const distanceValue = this.actor
+      ? ds.utils.evaluateUserFormula(tierValue.distance, this.item.getRollData(), { contextName: this.uuid })
+      : tierValue.distance;
     const potencyString = this.toPotencyText(tier);
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
     const distanceString = game.i18n.format("DRAW_STEEL.Item.Ability.ForcedMovement.Display", {
