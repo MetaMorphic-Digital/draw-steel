@@ -26,7 +26,7 @@
 - Add level to actor roll data. (#514)
 - Automated the double bane applied when attacking a target other than the source of the taunted status effect while in line of effect to the taunted source. (#167)
 
-## Changed
+### Changed
 - Removed the "Roll All" and "Roll NPC" buttons from the combat tracker while using the default Draw Steel initiative. (#491)
 
 ### Fixed
