@@ -1,4 +1,4 @@
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
 /**

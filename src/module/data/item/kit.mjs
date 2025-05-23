@@ -1,5 +1,5 @@
 import { systemPath } from "../../constants.mjs";
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 

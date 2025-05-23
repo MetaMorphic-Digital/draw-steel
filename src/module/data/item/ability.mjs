@@ -3,7 +3,7 @@ import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../
 import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { setOptions } from "../helpers.mjs";
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
