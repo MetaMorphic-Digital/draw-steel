@@ -45,9 +45,9 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
    * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
-    if (!affected.statuses.has(statusId)) return null;
+    if (!affected?.statuses.has(statusId)) return null;
 
-    return !!affected.system.statuses?.[statusId]?.sources.has(source.uuid);
+    return affected.system.statuses?.[statusId]?.sources.has(source.uuid) ?? null;
   }
 
   /**
@@ -133,7 +133,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     const rollData = this.parent?.getRollData() ?? {};
 
     // Shallow copy
-    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name };
+    rollData.effect = { ...this.system, duration: this.duration, flags: this.flags, name: this.name, statuses: {} };
 
     // Statuses provided by *this* active effect
     for (const status of this.statuses) {

@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 
 /** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */

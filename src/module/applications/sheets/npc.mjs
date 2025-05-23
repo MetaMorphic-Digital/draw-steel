@@ -138,8 +138,9 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  _onRender(context, options) {
-    super._onRender(context, options);
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
 
     /** @type {HTMLInputElement} */
     const maliceInput = this.element.querySelector("[data-setting=\"malice\"]");

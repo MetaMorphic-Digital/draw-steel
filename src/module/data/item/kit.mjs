@@ -1,5 +1,5 @@
 import { systemPath } from "../../constants.mjs";
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
@@ -148,7 +148,7 @@ export default class KitModel extends BaseItemModel {
     });
     if (!fd?.kit) return false;
 
-    await actor.deleteEmbeddedDocuments("Item", [fd.object.kit]);
+    await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
   }
 
   /** @inheritdoc */

@@ -109,6 +109,14 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     this.potency.average += highestCharacteristic - 1 + this.potency.bonuses;
     this.potency.strong += highestCharacteristic + this.potency.bonuses;
 
+    // Add restrictions based on status effects
+    for (const effect of CONFIG.statusEffects) {
+      if (!this.parent.statuses.has(effect.id) || !effect.restrictions) continue;
+
+      effect.restrictions.type?.forEach(t => this.restrictions.type.add(t));
+      effect.restrictions.dsid?.forEach(d => this.restrictions.dsid.add(d));
+    }
+
     // Set movement speeds when affected by grabbed, restrained, or slowed
     const isSlowed = this.parent.statuses.has("slowed");
     const isGrabbedOrRestrained = this.parent.statuses.has("grabbed") || this.parent.statuses.has("restrained");
@@ -135,6 +143,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }
 
     rollData.echelon = this.echelon;
+    rollData.level = this.level;
   }
 
   /**
@@ -190,7 +199,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {import("@common/abstract/_types.mjs").DatabaseUpdateOperation} operation
    * @param {User} user
    */
-  _preUpdate(changes, operation, user) {
+  async _preUpdate(changes, options, user) {
+    const allowed = await super._preUpdate(changes, options, user);
+    if (allowed === false) return false;
+
     const newSize = foundry.utils.getProperty(changes, "system.combat.size.value");
     if ((newSize !== undefined) && (this.combat.size.value !== newSize)) {
       foundry.utils.mergeObject(changes, {

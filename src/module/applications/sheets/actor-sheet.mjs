@@ -2,7 +2,7 @@ import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
 import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
