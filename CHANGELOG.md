@@ -24,6 +24,7 @@
 - Automated flanking bonuses when requirements are met. (#451)
 - Added a flag to the wall documents to configure if a wall should block of line of effect.
 - Add level to actor roll data. (#514)
+- Automated the double bane applied when attacking a target other than the source of the taunted status effect while in line of effect to the taunted source. (#167)
 
 ## Changed
 - Removed the "Roll All" and "Roll NPC" buttons from the combat tracker while using the default Draw Steel initiative. (#491)
