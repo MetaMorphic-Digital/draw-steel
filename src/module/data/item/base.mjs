@@ -1,4 +1,4 @@
-import enrichHTML from "../../utils/enrichHTML.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 import SourceModel from "../models/source.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
