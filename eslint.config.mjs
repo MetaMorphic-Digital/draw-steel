@@ -116,6 +116,8 @@ export default defineConfig([
 
     rules: {
       "@stylistic/space-in-parens": ["error", "never"],
+      "@stylistic/key-spacing": "error",
+      "@stylistic/type-generic-spacing": "error"
     }
   },
 ]);

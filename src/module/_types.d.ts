@@ -22,7 +22,7 @@ export interface AdvancementTypeConfiguration {
   /**
    * What item types this advancement can be used with.
    */
-  validItemTypes: Set < string >;
+  validItemTypes: Set <string>;
 
   /**
    * Should this advancement type be hidden in the selection dialog?
@@ -46,8 +46,8 @@ export interface RollPromptOptions {
   modifiers: PowerRollModifiers;
   formula: string;
   actor: DrawSteelActor;
-  data: Record < string, unknown >;
-  skills: Set < string >;
+  data: Record <string, unknown>;
+  skills: Set <string>;
 }
 
 export interface PowerRollPromptOptions extends RollPromptOptions {
@@ -58,7 +58,7 @@ export interface PowerRollPromptOptions extends RollPromptOptions {
 
 export interface PowerRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
-  powerRolls: Array < PowerRoll | DrawSteelChatMessage | object >;
+  powerRolls: Array <PowerRoll | DrawSteelChatMessage | object>;
 }
 
 export interface ProjectRollPrompt {

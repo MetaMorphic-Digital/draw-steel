@@ -17,6 +17,7 @@
           data-document-class="ActiveEffect"
           data-origin="{{@root.document.uuid}}"
           data-img="icons/svg/aura.svg"
+          {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
           {{#if (eq section.type "inactive")}}
           data-disabled="true"
           {{else if (eq section.type "temporary")}}
