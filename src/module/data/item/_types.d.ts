@@ -3,7 +3,7 @@ import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
-import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs"
+import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -12,7 +12,7 @@ export type ItemMetaData = Readonly<{
   invalidActorTypes: string[];
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
-} & SubtypeMetadata>
+} & SubtypeMetadata>;
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {
@@ -81,11 +81,11 @@ declare module "./ability.mjs" {
 }
 
 declare module "./ancestry.mjs" {
-  export default interface AncestryModel { }
+  // export default interface AncestryModel { }
 }
 
 declare module "./career.mjs" {
-  export default interface CareerModel { }
+  // export default interface CareerModel { }
 }
 
 declare module "./class.mjs" {
@@ -105,11 +105,11 @@ declare module "./class.mjs" {
 }
 
 declare module "./complication.mjs" {
-  export default interface ComplicationModel { }
+  // export default interface ComplicationModel { }
 }
 
 declare module "./culture.mjs" {
-  export default interface CultureModel { }
+  // export default interface CultureModel { }
 }
 
 declare module "./equipment.mjs" {
@@ -146,7 +146,7 @@ declare module "./kit.mjs" {
     tier1: number;
     tier2: number;
     tier3: number;
-  }
+  };
 
   export default interface KitModel {
     type: string;
