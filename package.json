@@ -10,8 +10,8 @@
     "build": "npm run build:packs && npm run build:code",
     "build:packs": "npm run pullJSONtoLDB",
     "build:code": "rollup -c",
-    "lint": "eslint draw-steel.mjs src/module/**/*",
-    "lint:fix": "eslint --fix draw-steel.mjs src/module/**/*",
+    "lint": "eslint draw-steel.mjs src/module/**/* templates/**/*",
+    "lint:fix": "eslint --fix draw-steel.mjs src/module/**/* templates/**/*",
     "postinstall": "npm run createSymlinks",
     "prepareRelease": "npm run build:packs && npm run build:code"
   },

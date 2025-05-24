@@ -88,13 +88,6 @@ export default defineConfig([
           "instanceof",
         ]],
       }],
-
-      "@html-eslint/attrs-newline": ["off", {
-        closeStyle: "sameline",
-        ifAttrsMoreThan: 9,
-      }],
-
-      "@html-eslint/indent": ["error", 2],
     },
   }, {
     files: ["**/*.hbs", "**/*.html"],
@@ -103,6 +96,15 @@ export default defineConfig([
     languageOptions: {
       parser: parser,
     },
+
+    rules: {
+      "@html-eslint/attrs-newline": ["off", {
+        closeStyle: "sameline",
+        ifAttrsMoreThan: 9,
+      }],
+
+      "@html-eslint/indent": ["error", 2],
+    }
   },
   {
     files: ["**/*.ts"],
