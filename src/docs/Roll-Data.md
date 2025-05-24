@@ -49,6 +49,7 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Current amount of Surges - `@hero.surges`
 + Current Victory Points - `@hero.victories`
 + Accumulated XP - `@hero.xp`
++ Character Level - `@level`
 
 ### Movement speeds
 + Speed - `@movement.value`
