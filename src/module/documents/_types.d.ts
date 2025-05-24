@@ -7,7 +7,7 @@ import {
   CombatData,
   ItemData,
   JournalEntryPageData,
-  TokenData
+  TokenData,
 } from "@common/documents/_types.mjs";
 import Collection from "@common/utils/collection.mjs";
 import {
@@ -17,7 +17,7 @@ import {
   Combat as CombatModels,
   Combatant as CombatantModels,
   CombatantGroup as CombatantGroupModels,
-  Item as ItemModels
+  Item as ItemModels,
 } from "../data/_module.mjs";
 import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
 
@@ -29,15 +29,15 @@ type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 declare module "@client/documents/_module.mjs" {
   interface Actor < Model extends ActorModel = ActorModel > extends ActorData {
     type: Model["metadata"]["type"];
-    system: InstanceType < Model > ;
-    items: Collection < string, DrawSteelItem > ;
-    effects: Collection < string, DrawSteelActiveEffect > ;
+    system: InstanceType < Model >;
+    items: Collection < string, DrawSteelItem >;
+    effects: Collection < string, DrawSteelActiveEffect >;
   }
 
   interface Item < Model extends ItemModel = ItemModel > extends ItemData {
     type: Model["metadata"]["type"];
-    system: InstanceType < Model > ;
-    effects: Collection < string, DrawSteelActiveEffect > ;
+    system: InstanceType < Model >;
+    effects: Collection < string, DrawSteelActiveEffect >;
   }
 
   interface ActiveEffect extends ActiveEffectData {
@@ -68,8 +68,9 @@ declare module "@client/documents/_module.mjs" {
 
   interface JournalEntryPage extends JournalEntryPageData {
     type: "text" | "image" | "pdf" | "video";
-    system: Record < string, unknown > ;
+    system: Record < string, unknown >;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface TokenDocument extends TokenData {}
 }
