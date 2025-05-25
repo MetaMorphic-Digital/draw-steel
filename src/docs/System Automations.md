@@ -168,11 +168,5 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
 
-## Other Combat Automation
-
-### Flanking
-
-When attacking an enemy, the actor will gain an edge from `Flanking` if they have an ally (token with the same disposition) on either the opposite side or the opposite corners. This does require having the attacking token selected.
-
 
 
