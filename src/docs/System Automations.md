@@ -77,6 +77,12 @@ With the implementation of the token ruler in Foundry V13 the system automatical
 
 Choosing one of the displayed movement types, such as climbing, crawling, or swimming automatically adjusts the available movement distance.
 
+## Flanking
+
+Flanking occurs on melee strikes when both entities are adjacent and on opposite sides/corners of the target. While flanking an enemy, actor gains an edge on melee strikes against them.
+
+Flanking requires line of effect (no walls, concealment) and the ability to take triggered actions (eg. not dazed.)
+
 ## Kits and Kit Bonuses
 
 If a kit is set up with any bonuses applied to it (stamina, damage bonuses, stability, etc) these will automatically be applied to the displayed values that they correlate to.
@@ -151,7 +157,7 @@ If the `Slowed` status effect is applied to an actor, the displayed maximum spee
 
 ### Taunted
 
-If the `Taunted` status effect is applied to an actor, the actor will take a double bane when attacking a different actor than the source of the `Taunted` status and having Line of Effect to the `Taunted` source. This does require having the attacking token selected.
+If the `taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the `taunt` and afterwards abilities that are targeted at actors other than the `taunted` source actor automatically have a double bane while in line of effect to the `taunted` source. 
 
 ### Weakend
 
@@ -161,12 +167,6 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
-
-## Other Combat Automation
-
-### Flanking
-
-When attacking an enemy, the actor will gain an edge from `Flanking` if they have an ally (token with the same disposition) on either the opposite side or the opposite corners. This does require having the attacking token selected.
 
 
 
