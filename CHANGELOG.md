@@ -18,6 +18,11 @@
 ### Known Issues
 -->
 
+### 0.7.2
+
+### Fixed
+- Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
+
 ## 0.7.1
 
 ### Added

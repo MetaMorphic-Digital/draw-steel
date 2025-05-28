@@ -16,7 +16,7 @@ const fields = foundry.data.fields;
 export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /** @inheritdoc */
   static defineSchema() {
-    const characteristic = { min: -5, max: 5, initial: 0, integer: true };
+    const characteristic = { min: -5, max: 5, initial: 0, integer: true, nullable: false };
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
