@@ -1,8 +1,9 @@
 import { systemID } from "../constants.mjs";
+import BaseEffectModel from "../data/effect/base.mjs";
 import { DSRoll } from "../rolls/base.mjs";
 
 /** @import { MaliceModel } from "../data/settings/malice.mjs" */
-/** @import { DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs" */
+/** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs" */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Combat.documentClass
@@ -157,6 +158,31 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
    */
   #onModifyCombatantGroups(parent, documents, options) {
     if ((ui.combat.viewed === parent) && (options.render !== false)) ui.combat.render();
+  }
+
+  /**
+   * Handle Draw Steel effect expiration logic
+   * @inheritdoc
+   */
+  async _onEndTurn(combatant, context) {
+    /** @type {DrawSteelActor} */
+    const actor = combatant.actor;
+    if (!actor) return;
+    /** @type {import("@common/documents/_types.mjs").ActiveEffectData[]} */
+    const updates = [];
+    for (const effect of actor.appliedEffects) {
+      if (!(effect.system instanceof BaseEffectModel)) continue;
+      switch (effect.system.end.type) {
+        case "turn":
+          updates.push({ _id: effect.id, disabled: true });
+          break;
+        case "save":
+          // Not awaited, the roll save method is expected to handle the update
+          effect.system.rollSave();
+          break;
+      }
+    }
+    actor.updateEmbeddedDocuments("ActiveEffect", updates);
   }
 
   /** @inheritdoc */

@@ -1,5 +1,9 @@
+import SavingThrowRollDialog from "../../applications/apps/saving-throw-dialog.mjs";
+import { SavingThrowRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
+
+/** @import DrawSteelChatMessage from "../../documents/chat-message.mjs" */
 
 /**
  * A data model used by default effects with properties to control the expiration behavior
@@ -74,4 +78,30 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     return embed;
   }
 
+  /**
+   * Rolls a saving throw for the actor and disables the effect if it passes
+   * @param {object} [rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}
+   * @param {object} [dialogOptions={}]   Options forwarded to {@linkcode SavingThrowRollDialog.create}
+   * @param {object} [messageData={}]     The data object to use when creating the message
+   * @param {object} [messageOptions={}]  Additional options which modify the created message.
+   * @returns {Promise<DrawSteelChatMessage|object>} A promise which resolves to the created ChatMessage document if create is
+   *                                                 true, or the Object of prepared chatData otherwise.
+   */
+  async rollSave(rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
+    const fd = await SavingThrowRollDialog.create(dialogOptions);
+
+    if (!fd) return;
+
+    let formula = this.end.roll;
+
+    if (fd.rollBonus) formula += ` + ${fd.rollBonus}`;
+
+    const roll = new SavingThrowRoll(formula, this.parent.getRollData(), rollOptions);
+
+    await roll.evaluate();
+
+    if (roll.product) await this.parent.update({ disabled: true });
+
+    return roll.toMessage(messageData, messageOptions);
+  }
 }

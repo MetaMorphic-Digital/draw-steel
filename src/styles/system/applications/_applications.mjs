@@ -1,5 +1,7 @@
 import "./applications.css";
 
+import "./api/roll-dialog.css";
+
 import "./apps/monster-metadata.css";
 import "./apps/power-roll-dialog.css";
 import "./apps/targeted-condition-prompt.css";

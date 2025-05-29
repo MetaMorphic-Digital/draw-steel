@@ -1,23 +1,19 @@
 import { systemPath } from "../../constants.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
-import DSApplication from "../api/application.mjs";
+import RollDialog from "../api/roll-dialog.mjs";
 
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
  * AppV2-based sheet Power Roll modifications
  */
-export default class PowerRollDialog extends DSApplication {
+export default class PowerRollDialog extends RollDialog {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["power-roll-dialog"],
     position: {
       width: 400,
     },
-    actions: {
-      setRollMode: this.#setRollMode,
-    },
-    context: null,
   };
 
   /* -------------------------------------------------- */
@@ -27,35 +23,27 @@ export default class PowerRollDialog extends DSApplication {
     content: {
       template: systemPath("templates/rolls/power-roll-dialog.hbs"),
     },
+    footer: super.PARTS.footer,
   };
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _initializeApplicationOptions(options) {
-    options.context ??= {};
-    options.context.rollMode = game.settings.get("core", "rollMode");
-    return super._initializeApplicationOptions(options);
-  }
+  async _preparePartContext(partId, context, options) {
+    context = await super._preparePartContext(partId, context, options);
 
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _prepareContext(options) {
-    const context = {
-      modChoices: Array.fromRange(3).reduce((obj, number) => {
+    if (partId === "content") {
+      context.modChoices = Array.fromRange(3).reduce((obj, number) => {
         obj[number] = number;
         return obj;
-      }, {}),
-      rollModes: CONFIG.Dice.rollModes,
-      ...this.options.context,
-    };
+      }, {});
 
-    if (context.type === "ability") await this._prepareAbilityContext(context);
+      if (context.type === "ability") await this._prepareAbilityContext(context);
 
-    if (context.targets) await this._prepareTargets(context);
+      if (context.targets) await this._prepareTargets(context);
 
-    if (context.skills?.size > 0) this._prepareSkillOptions(context);
+      if (context.skills?.size > 0) this._prepareSkillOptions(context);
+    }
 
     return context;
   }
@@ -176,18 +164,5 @@ export default class PowerRollDialog extends DSApplication {
     if (formData.skill) config.skill = formData.skill;
 
     return config;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Change and store the picked roll mode.
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event    The originating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static #setRollMode(event, target) {
-    this.options.context.rollMode = target.dataset.rollMode;
-    this.render();
   }
 }
