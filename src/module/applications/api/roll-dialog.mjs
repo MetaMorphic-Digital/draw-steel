@@ -9,6 +9,9 @@ export default class RollDialog extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["roll-dialog"],
+    window: {
+      icon: "fa-solid fa-dice-d10",
+    },
     actions: {
       setRollMode: this.#setRollMode,
     },

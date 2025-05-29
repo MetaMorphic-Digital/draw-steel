@@ -1,4 +1,4 @@
-import SavingThrowRollDialog from "../../applications/apps/saving-throw-dialog.mjs";
+import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
 import { SavingThrowRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
@@ -81,22 +81,29 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /**
    * Rolls a saving throw for the actor and disables the effect if it passes
    * @param {object} [rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}
-   * @param {object} [dialogOptions={}]   Options forwarded to {@linkcode SavingThrowRollDialog.create}
+   * @param {object} [dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}
    * @param {object} [messageData={}]     The data object to use when creating the message
    * @param {object} [messageOptions={}]  Additional options which modify the created message.
    * @returns {Promise<DrawSteelChatMessage|object>} A promise which resolves to the created ChatMessage document if create is
    *                                                 true, or the Object of prepared chatData otherwise.
    */
   async rollSave(rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
-    const fd = await SavingThrowRollDialog.create(dialogOptions);
+    const rollData = this.parent.getRollData();
+
+    let formula = SavingThrowRoll.replaceFormulaData(this.end.roll, rollData);
+
+    dialogOptions.context ??= {};
+    dialogOptions.context.effectFormula = formula;
+    dialogOptions.context.successThreshold = rollOptions.successThreshold ?? 6;
+
+    const fd = await SavingThrowDialog.create(dialogOptions);
 
     if (!fd) return;
 
-    let formula = this.end.roll;
+    if (fd.situationalBonus) formula += ` + ${fd.situationalBonus}`;
+    rollOptions.successThreshold = fd.successThreshold;
 
-    if (fd.rollBonus) formula += ` + ${fd.rollBonus}`;
-
-    const roll = new SavingThrowRoll(formula, this.parent.getRollData(), rollOptions);
+    const roll = new SavingThrowRoll(formula, rollData, rollOptions);
 
     await roll.evaluate();
 

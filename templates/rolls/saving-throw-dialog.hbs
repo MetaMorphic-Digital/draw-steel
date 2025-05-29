@@ -1,4 +1,15 @@
 <section>
-  Roll Bonus
-  <input type="text" name="rollBonus">
+  <div class="form-group">
+    <label>{{localize "DRAW_STEEL.Roll.Save.Prompt.SituationalBonus.Label"}}</label>
+    <div class="form-fields">
+      <input type="text" name="situationalBonus" value="{{situationalBonus}}" placeholder="{{localize "DRAW_STEEL.Roll.Save.Prompt.SituationalBonus.PlaceHolder"}}">
+    </div>
+    <p class="hint">{{localize "DRAW_STEEL.Roll.Save.Prompt.SituationalBonus.Hint" formula=effectFormula}}</p>
+  </div>
+  <div class="form-group">
+    <label>{{localize "DRAW_STEEL.Roll.Save.Prompt.SuccessThreshold.Label"}}</label>
+    <div class="form-fields">
+      <range-picker name="successThreshold" value="{{successThreshold}}" step="1" min="1" max="10"></range-picker>
+    </div>
+  </div>
 </section>
