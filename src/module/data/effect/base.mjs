@@ -26,7 +26,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     return {
       end: new fields.SchemaField({
         type: new fields.StringField({ choices: Object.keys(config.effectEnds), blank: true, required: true }),
-        roll: new FormulaField({ initial: "1d10" }),
+        roll: new FormulaField({ initial: "1d10 + @combat.save.bonus" }),
       }),
     };
   }

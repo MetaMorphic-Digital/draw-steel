@@ -15,6 +15,9 @@ declare module "./base.mjs" {
     combat: {
       size: SizeModel;
       stability: number;
+      turns: number;
+      saveThreshold: number;
+      saveBonus: string;
     }
     biography: {
       value: string;

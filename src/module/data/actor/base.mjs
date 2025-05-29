@@ -1,5 +1,6 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
@@ -35,6 +36,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     );
 
     schema.combat = new fields.SchemaField({
+      save: new fields.SchemaField({
+        threshold: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, max: 10, initial: 6 }),
+        bonus: new FormulaField(),
+      }),
       size: new fields.EmbeddedDataField(SizeModel),
       stability: requiredInteger({ initial: 0 }),
       turns: requiredInteger({ initial: 1 }),
