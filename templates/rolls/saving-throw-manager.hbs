@@ -1,0 +1,9 @@
+<ol>
+  {{#each users}}
+  <li class="flexrow" data-user-id="{{user.id}}">
+    <img class="avatar" src="{{user.avatar}}" alt="{{localize "PLAYERS.PlayerAvatar"}}">
+    <div>{{user.name}}</div>
+    <button type="button" class="icon fa-solid fa-dice-d10" data-action="rollSave"></button>
+  </li>
+  {{/each}}
+</ol>

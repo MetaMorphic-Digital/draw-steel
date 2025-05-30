@@ -3,7 +3,7 @@ import { SavingThrowRoll } from "../../rolls/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
-/** @import DrawSteelChatMessage from "../../documents/chat-message.mjs" */
+/** @import { DrawSteelChatMessage } from "../../documents/_module.mjs" */
 
 /**
  * A data model used by default effects with properties to control the expiration behavior

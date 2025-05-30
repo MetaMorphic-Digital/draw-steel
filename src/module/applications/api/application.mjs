@@ -1,7 +1,8 @@
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
 /**
- * A stock application meant for async behavior using templates.
+ * A stock form application meant for async behavior using templates.
+ * @abstract
  */
 export default class DSApplication extends HandlebarsApplicationMixin(Application) {
   /** @inheritdoc */

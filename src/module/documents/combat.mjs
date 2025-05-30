@@ -1,3 +1,4 @@
+import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
 import { DSRoll } from "../rolls/base.mjs";
@@ -179,8 +180,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
           updates.push({ _id: effect.id, disabled: true });
           break;
         case "save":
-          // Not awaited, the roll save method is expected to handle the update
-          effect.system.rollSave();
+          SavingThrowManager.delegateSavingThrow(effect);
           break;
       }
     }
