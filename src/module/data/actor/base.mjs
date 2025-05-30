@@ -108,6 +108,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
+    // Presents better if there's a 0 instead of blank
+    this.combat.save.bonus ||= "0";
+
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
     this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;

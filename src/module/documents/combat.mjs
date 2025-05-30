@@ -3,6 +3,7 @@ import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
 import { DSRoll } from "../rolls/base.mjs";
 
+/** @import ActiveEffectData from "@common/documents/_types.mjs" */
 /** @import { MaliceModel } from "../data/settings/malice.mjs" */
 /** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs" */
 
@@ -15,6 +16,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatData", this);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Roll a d10 to determine who goes first. On a 6+, heroes do.
@@ -30,6 +33,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     }, { rollMode: CONST.DICE_ROLL_MODES.PUBLIC });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async startCombat() {
     for (const combatant of this.combatants) {
@@ -44,6 +49,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     return super.startCombat();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc In Draw Steel's default initiative, non-GM users cannot change the round
    * @param {User} user The user attempting to change the round
@@ -53,6 +60,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (game.settings.get(systemID, "initiativeMode") !== "default") return super._canChangeRound(user);
     return user.isGM;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async nextRound() {
@@ -64,6 +73,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.combat.turns ?? 1 }));
     this.updateEmbeddedDocuments("Combatant", combatantUpdates);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async endCombat() {
@@ -79,6 +90,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
     return deletedCombat;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant
@@ -103,6 +116,28 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     return super._sortCombatants(a, b);
   }
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    if (!game.user.isActiveGM) return;
+
+    for (const combatant of this.combatants) {
+      const actor = combatant.actor;
+      if (!actor) continue;
+      /** @type {ActiveEffectData[]} */
+      const updates = [];
+      for (const effect of actor.appliedEffects) {
+        if (!(effect.system instanceof BaseEffectModel)) continue;
+        if (effect.system.end.type === "encounter") updates.push({ _id: effect.id, disabled: true });
+      }
+      actor.updateEmbeddedDocuments("ActiveEffect", updates);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
      * Actions taken after descendant documents have been created and changes have been applied to client data.
      * @param {DrawSteelCombat} parent         The direct parent of the created Documents, may be this Document or a child
@@ -118,6 +153,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     super._onCreateDescendantDocuments(parent, collection, documents, data, options, userId);
     if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
   }
+
+  /* -------------------------------------------------- */
 
   /**
      * Actions taken after descendant documents have been updated and changes have been applied to client data.
@@ -135,6 +172,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
   }
 
+  /* -------------------------------------------------- */
+
   /**
      * Actions taken after descendant documents have been deleted and those deletions have been applied to client data.
      * @param {Document} parent         The direct parent of the deleted Documents, may be this Document or a child
@@ -150,6 +189,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     super._onDeleteDescendantDocuments(parent, collection, documents, ids, options, userId);
     if (collection === "groups") this.#onModifyCombatantGroups(parent, documents, options);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Shared actions taken when CombatantGroups are modified within this Combat document.
@@ -169,10 +210,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     /** @type {DrawSteelActor} */
     const actor = combatant.actor;
     if (!actor) return;
-    /** @type {import("@common/documents/_types.mjs").ActiveEffectData[]} */
+    /** @type {ActiveEffectData[]} */
     const updates = [];
-    /** @type {string[]} */
-    const saveUuids = [];
     for (const effect of actor.appliedEffects) {
       if (!(effect.system instanceof BaseEffectModel)) continue;
       switch (effect.system.end.type) {
@@ -187,6 +226,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     actor.updateEmbeddedDocuments("ActiveEffect", updates);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onStartRound() {
     /** @type {MaliceModel} */
@@ -196,6 +237,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       .map(c => c.actor);
     await malice._onStartRound(this, aliveHeroes);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the GM for a number of victories to award and then award each character that many victories

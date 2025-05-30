@@ -20,6 +20,12 @@
 
 ### 0.7.2
 
+### Added
+- Added support for the automatic end of effects
+  - End of Turn will automatically self-disable when an affected actor ends their turn.
+  - Saving Throws will create prompts for owners. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
+  - End of Encounter effects will automatically self-disable alongside the encounter.
+
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
 

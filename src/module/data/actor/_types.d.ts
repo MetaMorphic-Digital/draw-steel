@@ -16,8 +16,10 @@ declare module "./base.mjs" {
       size: SizeModel;
       stability: number;
       turns: number;
-      saveThreshold: number;
-      saveBonus: string;
+      save: {
+        bonus: string;
+        threshold: number;
+      }
     }
     biography: {
       value: string;
