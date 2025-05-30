@@ -170,6 +170,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (!actor) return;
     /** @type {import("@common/documents/_types.mjs").ActiveEffectData[]} */
     const updates = [];
+    /** @type {string[]} */
+    const saveUuids = [];
     for (const effect of actor.appliedEffects) {
       if (!(effect.system instanceof BaseEffectModel)) continue;
       switch (effect.system.end.type) {
