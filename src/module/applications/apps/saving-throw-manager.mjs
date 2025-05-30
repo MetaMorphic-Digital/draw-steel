@@ -1,13 +1,13 @@
 import { systemPath } from "../../constants.mjs";
-import QueryManager from "../api/query-manager.mjs";
+import RollManager from "../api/roll-manager.mjs";
 
 /** @import { DrawSteelActiveEffect, DrawSteelChatMessage, DrawSteelUser } from "../../documents/_module.mjs" */
 
 /**
  * A class for managing a saving throw roll
- * @extends QueryManager<boolean>
+ * @extends RollManager<boolean>
  */
-export default class SavingThrowManager extends QueryManager {
+export default class SavingThrowManager extends RollManager {
   /**
    * Determine the appropriate user to roll a saving throw.
    * @param {DrawSteelActiveEffect} effect The effect to save against
@@ -39,12 +39,6 @@ export default class SavingThrowManager extends QueryManager {
   static DEFAULT_OPTIONS = {
     classes: ["saving-throw-manager"],
     effect: null,
-    window: {
-      icon: "fa-solid fa-dice-d10",
-    },
-    actions: {
-      rollSave: this.#rollSave,
-    },
   };
 
   /* -------------------------------------------------- */
@@ -74,15 +68,8 @@ export default class SavingThrowManager extends QueryManager {
 
   /* -------------------------------------------------- */
 
-  /**
-   *
-   * @this SavingThrowManager
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   */
-  static async #rollSave(event, target) {
-    const user = game.users.get(target.closest("[data-user-id]").dataset.userId);
-
+  /** @inheritdoc */
+  async _handleRoll(user, target) {
     game.system.socketHandler.rollSave(this.effect, user).then(messageData => {
       if (!messageData) {
         delete this.queryResult[user.id];
