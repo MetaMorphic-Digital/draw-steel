@@ -29,7 +29,7 @@ export default class SavingThrowManager extends QueryManager {
     else {
       const activeOwners = game.users.filter(u => effect.testUserPermission(u, "OWNER") && u.active);
       const queryResult = await this.create({ users: activeOwners, effect });
-      return Object.values(queryResult)[0];
+      return Object.values(queryResult).filter(r => typeof r === "boolean")[0];
     }
   }
 
@@ -83,15 +83,23 @@ export default class SavingThrowManager extends QueryManager {
   static async #rollSave(event, target) {
     const user = game.users.get(target.closest("[data-user-id]").dataset.userId);
 
-    const messageData = await game.system.socketHandler.rollSave(this.effect, user);
+    game.system.socketHandler.rollSave(this.effect, user).then(messageData => {
+      if (!messageData) {
+        delete this.queryResult[user.id];
+        return this.render();
+      }
 
-    if (!messageData) return;
+      /** @type {DrawSteelChatMessage} */
+      const message = game.messages.get(messageData._id);
 
-    /** @type {DrawSteelChatMessage} */
-    const message = game.messages.get(messageData._id);
+      this.queryResult[user.id] = message.rolls[0].product;
 
-    this.queryResult[user.id] = message.rolls[0].product;
+      this.close();
+    });
 
-    this.close();
+    // Need non-boolean but truthy result
+    this.queryResult[user.id] = "processing";
+
+    this.render();
   }
 }

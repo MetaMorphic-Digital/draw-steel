@@ -3,7 +3,13 @@
   <li class="flexrow" data-user-id="{{user.id}}">
     <img class="avatar" src="{{user.avatar}}" alt="{{localize "PLAYERS.PlayerAvatar"}}">
     <div>{{user.name}}</div>
+    {{#if query}}
+    <div class="pending">
+      <i class="fa-solid fa-hourglass-half"></i>
+    </div>
+    {{else}}
     <button type="button" class="icon fa-solid fa-dice-d10" data-action="rollSave"></button>
+    {{/if}}
   </li>
   {{/each}}
 </ol>
