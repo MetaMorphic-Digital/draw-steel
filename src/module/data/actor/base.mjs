@@ -250,7 +250,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @param {int} diff The amount the actor's stamina has changed.
    * @param {string} damageType (optional) The type of damage being dealt.
    */
-  async displayStaminaChange(diff, damageType) {
+  async displayStaminaChange(diff, damageType = "") {
     if (!canvas.scene) {
       return;
     }

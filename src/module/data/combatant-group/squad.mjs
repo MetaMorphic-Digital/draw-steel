@@ -36,6 +36,14 @@ export default class SquadModel extends BaseCombatantGroupModel {
   }
 
   /**
+   * Finds all the minions in the squad
+   * @type {Set<DrawSteelActor>}
+   */
+  get minions() {
+    return this.parent.members.filter(c => c.actor?.isMinion);
+  }
+
+  /**
    * The max stamina for the minions in this squad.
    * Implemented as a getter for data prep order reasons.
    * @type {number}
@@ -45,6 +53,32 @@ export default class SquadModel extends BaseCombatantGroupModel {
       if (c.actor?.isMinion) maxStam += foundry.utils.getProperty(c, "actor.system.stamina.max") ?? 0;
       return maxStam;
     }, 0);
+  }
+
+  /** @inheritdoc */
+  async _preUpdate(changed, options, userId) {
+    const allowed = await super._preUpdate(changed, options, userId);
+    if (allowed === false) return false;
+
+    if (changed.system?.staminaValue) {
+      options.ds ??= {};
+      options.ds.staminaDiff = this.staminaValue - changed.system.staminaValue;
+    }
+  }
+
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+    console.log(options);
+
+    if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
+    if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff);
+  }
+
+  displayMinionStaminaChange(diff) {
+    this.minions.forEach((minion) => {
+      minion.actor?.system.displayStaminaChange(diff);
+    });
   }
 
   /** @inheritdoc */
