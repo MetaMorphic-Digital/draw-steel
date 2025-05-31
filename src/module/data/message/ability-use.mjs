@@ -7,7 +7,7 @@ import BaseMessageModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Chat messages representing the result of {@link AbilityModel#use}
+ * Chat messages representing the result of {@linkcode AbilityModel.use}
  */
 export default class AbilityUseModel extends BaseMessageModel {
   static metadata = Object.freeze({
@@ -102,6 +102,7 @@ export default class AbilityUseModel extends BaseMessageModel {
 
   /** @inheritdoc */
   addListeners(html) {
+    super.addListeners(html);
     const damageButtons = html.querySelectorAll(".apply-damage");
     for (const damageButton of damageButtons) {
       damageButton.addEventListener("click", async (event) => {

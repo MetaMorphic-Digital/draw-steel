@@ -9,5 +9,12 @@ declare module "./base.mjs" {
 declare module "./ability-use.mjs" {
   export default interface AbilityUseModel {
     uuid: string;
+    embedText: boolean;
+  }
+}
+
+declare module "./saving-throw.mjs" {
+  export default interface SavingThrowModel {
+    effect: string;
   }
 }
