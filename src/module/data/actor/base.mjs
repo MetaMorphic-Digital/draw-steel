@@ -212,6 +212,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         },
       });
     }
+
+    if (changes.system?.stamina) {
+      options.ds ??= {};
+      options.ds.previousStamina = { ...this.stamina };
+    }
   }
 
   /**
@@ -226,6 +231,13 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super._onUpdate(changed, options, userId);
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
+
+    if (options.ds?.previousStamina) {
+      const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
+      const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
+      const diff = stamDiff + tempDiff;
+      this.displayStaminaChange(diff, options.ds.damageType);
+    }
   }
 
   /**
@@ -239,6 +251,43 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
       await this.parent.toggleStatusEffect(key, { active });
     }
+  }
+
+  /**
+   * Display actor stamina changes on active tokens.
+   *
+   * @param {int} diff The amount the actor's stamina has changed.
+   * @param {string} damageType (optional) The type of damage being dealt.
+   */
+  async displayStaminaChange(diff, damageType = "") {
+    if (!canvas.scene) {
+      return;
+    }
+
+    const damageColor = ds.CONFIG.damageTypes[damageType]?.color ?? null;
+    const tokens = this.parent.getActiveTokens();
+    const displayedDiff = Math.abs(diff);
+    const defaultFill = (diff < 0 ? "lightgreen" : "white");
+    const displayArgs = {
+      fill: damageColor ?? defaultFill,
+      fontSize: 32,
+      stroke: 0x000000,
+      strokeThickness: 4,
+    };
+
+    tokens.forEach((token) => {
+      if (!token.visible || token.document.isSecret) {
+        return;
+      }
+
+      const scrollingTextArgs = [
+        token.center,
+        displayedDiff,
+        displayArgs,
+      ];
+
+      canvas.interface.createScrollingText(...scrollingTextArgs);
+    });
   }
 
   /**
@@ -361,7 +410,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates });
+    options.ds ??= {};
+    options.ds.damageType = options.type;
+    return this.parent.update({ "system.stamina": staminaUpdates }, options);
   }
 
   /**
