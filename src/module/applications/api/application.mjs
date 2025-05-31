@@ -16,6 +16,7 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
       width: 450,
       height: "auto",
     },
+    timeout: null,
     tag: "form",
     window: {
       contentClasses: ["standard-form"],
@@ -54,6 +55,26 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
     application.addEventListener("close", () => resolve(application.config), { once: true });
     application.render({ force: true });
     return promise;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onFirstRender(context, options) {
+    const timeout = this.options.timeout;
+
+    if (timeout) setTimeout(() => {
+      ui.notifications.error("DRAW_STEEL.SOCKET.WARNING.Timeout", {
+        format: {
+          label: this.constructor.name,
+          seconds: timeout / 1000,
+        },
+      });
+      this.close();
+    }, timeout);
+
+    await super._onFirstRender(context, options);
+
   }
 
   /* -------------------------------------------------- */

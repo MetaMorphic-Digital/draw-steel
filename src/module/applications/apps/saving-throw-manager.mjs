@@ -82,6 +82,10 @@ export default class SavingThrowManager extends RollManager {
       this.queryResult[user.id] = message.rolls[0].product;
 
       this.close();
+    }, reason => {
+      console.error(reason);
+      delete this.queryResult[user.id];
+      return this.render();
     });
 
     // Need non-boolean but truthy result

@@ -14,12 +14,12 @@ export default class DrawSteelSocketHandler {
    * Register queries.
    */
   #registerQueries() {
-    CONFIG.queries[systemID] = async ({ type, config }) => {
+    CONFIG.queries[systemID] = async ({ type, config }, queryOptions) => {
       switch (type) {
         case "spendHeroToken":
           return this.#spendHeroToken(config);
         case "rollSave":
-          return this.#rollSave(config);
+          return this.#rollSave(config, queryOptions);
       }
     };
   }
@@ -114,7 +114,7 @@ export default class DrawSteelSocketHandler {
         messageData,
         messageOptions,
       },
-    });
+    }, { timeout: 30 * 1000 });
   }
 
   /**
@@ -126,9 +126,13 @@ export default class DrawSteelSocketHandler {
    * @param {object} [payload.dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}
    * @param {object} [payload.messageData={}]     The data object to use when creating the message
    * @param {object} [payload.messageOptions={}]  Additional options which modify the created message.
+   * @param {object} [queryOptions]                    The query options
+   * @param {number} [queryOptions.timeout]            The timeout in milliseconds
    * @returns {object} The constructed message data
   */
-  async #rollSave({ userId, effectUuid, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {} }) {
+  async #rollSave({ userId, effectUuid, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {} }, { timeout }) {
+    dialogOptions.timeout = timeout;
+
     /**
      * Effect should almost always be in-world anyways but we can safely fromUuid
      * @type {DrawSteelActiveEffect}
