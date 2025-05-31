@@ -69,7 +69,6 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /** @inheritdoc */
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
-    console.log(options);
 
     if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
     if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff);
