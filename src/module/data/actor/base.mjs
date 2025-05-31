@@ -223,7 +223,12 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
 
-    if (options.ds?.previousStamina) this.displayStaminaChange(changed, options);
+    if (options.ds?.previousStamina) {
+      const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
+      const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
+      const diff = stamDiff + tempDiff;
+      this.displayStaminaChange(diff, options.ds.damageType);
+    }
   }
 
   /**
@@ -242,30 +247,37 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /**
    * Display actor stamina changes on active tokens.
    *
-   * @param {object} changes The change object
+   * @param {int} diff The amount the actor's stamina has changed.
+   * @param {string} damageType (optional) The type of damage being dealt.
    */
-  async displayStaminaChange(changes, options) {
+  async displayStaminaChange(diff, damageType) {
     if (!canvas.scene) {
       return;
     }
 
+    const damageColor = ds.CONFIG.damageTypes[damageType]?.color ?? null;
     const tokens = this.parent.getActiveTokens();
-    const diff = options.ds.previousStamina.value - changes.system.stamina.value;
+    const displayedDiff = Math.abs(diff);
+    const defaultFill = (diff < 0 ? "lightgreen" : "white");
+    const displayArgs = {
+      fill: damageColor ?? defaultFill,
+      fontSize: 32,
+      stroke: 0x000000,
+      strokeThickness: 4,
+    };
 
     tokens.forEach((token) => {
-      const defaultFill = (diff < 0 ? "lightgreen" : "white");
+      if (!token.visible || token.document.isSecret) {
+        return;
+      }
+
       const scrollingTextArgs = [
         token.center,
-        Math.abs(diff),
-        {
-          fill: options.ds?.damageColor ? options.ds.damageColor : defaultFill,
-          fontSize: 32,
-          stroke: 0x000000,
-          strokeThickness: 4,
-        },
+        displayedDiff,
+        displayArgs,
       ];
 
-      canvas.interface?.createScrollingText(...scrollingTextArgs);
+      canvas.interface.createScrollingText(...scrollingTextArgs);
     });
   }
 
@@ -364,8 +376,6 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     damage = Math.max(0, damage + weaknessAmount - immunityAmount);
 
-    const damageColor = options.type ? ds.CONFIG.damageTypes[options.type].color : null;
-
     if (damage === 0) {
       ui.notifications.info("DRAW_STEEL.Actor.DamageNotification.ImmunityReducedToZero", { format: { name: this.parent.name } });
       return this.parent;
@@ -392,7 +402,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
     options.ds ??= {};
-    options.ds.damageColor = damageColor;
+    options.ds.damageType = options.type;
     return this.parent.update({ "system.stamina": staminaUpdates }, options);
   }
 
