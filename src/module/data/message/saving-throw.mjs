@@ -13,41 +13,85 @@ export default class SavingThrowModel extends BaseMessageModel {
     type: "savingThrow",
   });
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
     // Fully Mandatory field
-    schema.effect = new fields.DocumentUUIDField({ nullable: false, type: "ActiveEffect" });
+    schema.effectUuid = new fields.DocumentUUIDField({ nullable: false, type: "ActiveEffect" });
     return schema;
   }
+
+  /**
+   * Fetches the effect from the UUID. Can return null if the effect no longer exists.
+   * @returns {DrawSteelActiveEffect | null}
+   */
+  get effect() {
+    return fromUuidSync(this.effectUuid);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async alterMessageHTML(html) {
+    await super.alterMessageHTML(html);
+
+    const effect = this.effect;
+
+    if (!effect) return;
+
+    /** @type {HTMLDivElement} */
+    const content = html.querySelector(".message-content");
+
+    const embed = await effect.toEmbed({
+      caption: true,
+      // Needed to avoid extra "null", see https://github.com/foundryvtt/foundryvtt/issues/12935
+      captionPosition: "",
+    });
+
+    content.insertAdjacentElement("afterbegin", embed);
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
 
-    /** @type {DrawSteelActiveEffect} */
-    const effect = await fromUuid(this.effect);
+    const effect = this.effect;
 
-    const heroToken = ds.utils.constructHTMLButton({
-      label: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Label"),
-      icon: "fa-solid fa-shield",
-      classes: ["hero-token"],
-      dataset: {
-        tooltip: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Tooltip"),
-      },
-      disabled: effect.disabled,
-    });
+    if (!effect) return buttons;
 
-    buttons.push(heroToken);
+    if (effect.hasPlayerOwner) {
+      const heroToken = ds.utils.constructHTMLButton({
+        label: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Label"),
+        icon: "fa-solid fa-shield",
+        classes: ["hero-token"],
+        dataset: {
+          tooltip: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Tooltip"),
+        },
+        disabled: effect.disabled,
+      });
+
+      buttons.push(heroToken);
+    }
 
     return buttons;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   addListeners(html) {
     super.addListeners(html);
-    html.querySelector(".hero-token").addEventListener("click", async (event) => {
-      const effect = await fromUuid(this.effect);
+    html.querySelector(".hero-token")?.addEventListener("click", async (event) => {
+      const effect = this.effect;
+
+      if (!effect) {
+        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoEffect", { localize: true });
+        return;
+      }
 
       const token = await game.actors.heroTokens.spendToken("succeedSave");
 

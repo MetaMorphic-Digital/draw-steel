@@ -24,6 +24,7 @@
 - Added support for the automatic end of effects
   - End of Turn will automatically self-disable when an affected actor ends their turn.
   - Saving Throws will create prompts for owners. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
+    - The roll message has a button to spend a hero token to automatically succeed
   - End of Encounter effects will automatically self-disable alongside the encounter.
 
 ### Fixed

@@ -15,6 +15,6 @@ declare module "./ability-use.mjs" {
 
 declare module "./saving-throw.mjs" {
   export default interface SavingThrowModel {
-    effect: string;
+    effectUuid: string;
   }
 }
