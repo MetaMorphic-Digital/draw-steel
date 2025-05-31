@@ -63,7 +63,8 @@ export default class SavingThrowModel extends BaseMessageModel {
 
     if (!effect) return buttons;
 
-    if (effect.hasPlayerOwner) {
+    // Strictly GM-owned characters shouldn't have this option, and should only show if you have effect perms
+    if (effect.hasPlayerOwner && effect.isOwner) {
       const heroToken = ds.utils.constructHTMLButton({
         label: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Label"),
         icon: "fa-solid fa-shield",
