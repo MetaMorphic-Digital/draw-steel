@@ -93,6 +93,10 @@ export default class SavingThrowModel extends BaseMessageModel {
         ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoEffect", { localize: true });
         return;
       }
+      if (!effect.isOwner) {
+        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoOwner", { localize: true });
+        return;
+      }
 
       const token = await game.actors.heroTokens.spendToken("succeedSave");
 
