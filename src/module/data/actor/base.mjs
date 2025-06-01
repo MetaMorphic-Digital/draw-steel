@@ -223,7 +223,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
 
-    if (options.ds?.previousStamina) {
+    if (options.ds?.previousStamina && changed.system?.stamina) {
       const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
       const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
       const diff = stamDiff + tempDiff;
@@ -248,7 +248,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * Display actor stamina changes on active tokens.
    *
    * @param {int} diff The amount the actor's stamina has changed.
-   * @param {string} damageType (optional) The type of damage being dealt.
+   * @param {string} [damageType=""] The type of damage being dealt.
    */
   async displayStaminaChange(diff, damageType = "") {
     if (!canvas.scene) {
