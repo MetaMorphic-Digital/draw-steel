@@ -23,7 +23,7 @@ export default class Progression extends PseudoDocument {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      point: new NumberField({ nullable: false, integer: true, min: 0 }),
+      // TODO: Implement schema that the progression holds for undoing more than item grants
     });
   }
 
@@ -82,6 +82,7 @@ export default class Progression extends PseudoDocument {
   /* -------------------------------------------------- */
 
   async #undoAdvancement() {
+    // TODO: Undo more than just items.
     const itemIds = this.getItemChain().map(item => item.id);
     await this.document.deleteEmbeddedDocuments("Item", itemIds);
   }
