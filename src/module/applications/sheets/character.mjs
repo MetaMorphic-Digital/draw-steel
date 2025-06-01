@@ -240,8 +240,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const projectDropTarget = event.target.closest("[data-application-part='projects'");
     if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
       await item.system.createProject(this.actor);
-    } else {
-      await super._onDropItem(event, item);
+      return;
     }
+
+    // Dropping an item that supports advancements trigger a different workflow.
+    if (item.supportsAdvancements) {
+      // TODO: implement class getter
+      if ((item.type === "class") && this.document.class && (this.document.class.identifier !== item.system.dsid)) {
+        ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
+      }
+      await ds.data.pseudoDocuments.advancements.BaseAdvancement.performChanges(this.document, item);
+      return;
+    }
+
+    return super._onDropItem(event, item);
   }
 }

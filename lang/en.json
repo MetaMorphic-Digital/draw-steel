@@ -1,8 +1,32 @@
 {
   "DOCUMENT": {
-    "PowerRollEffect": "Power Roll Effect"
+    "Advancement": "Advancement",
+    "PowerRollEffect": "Power Roll Effect",
+    "Progression": "Progression"
   },
   "DRAW_STEEL": {
+    "ADVANCEMENT": {
+      "FIELDS": {
+        "name": {
+          "label": "Name"
+        },
+        "img": {
+          "label": "Image"
+        },
+        "requirements": {
+          "level": {
+            "label": "Level",
+            "hint": "The level at which this advancement is acquired."
+          }
+        }
+      },
+      "SHEET": {
+        "requirements": "Requirements"
+      },
+      "WARNING": {
+        "cannotAddNewClass": "You cannot add a new class to a character that already has one."
+      }
+    },
     "Sheet": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
@@ -1400,6 +1424,9 @@
     "Actor": {
       "character": "Character",
       "npc": "NPC"
+    },
+    "Advancement": {
+      "itemGrant": "Item Grant"
     },
     "ChatMessage": {
       "abilityUse": "Ability Use"

@@ -1,0 +1,36 @@
+<section class="{{tabs.details.cssClass}}" data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}">
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
+    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" placeholder="1"}}
+  </fieldset>
+
+  <section class="drop-target-area">
+    {{#if ctx.itemPool.length}}
+    <table class="item-grant">
+      <thead>
+        <tr>
+          <th class="item-grant-item">Item</th>
+          <th class="item-grant-optional">Optional</th>
+          <th class="item-grant-control"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ctx.itemPool}}
+        <tr data-pool-index="{{index}}">
+          <td class="item-grant-item">
+            {{{link.outerHTML}}}
+            <input type="hidden" name="pool.{{index}}.uuid" value="{{uuid}}" readonly>
+          </td>
+          <td class="item-grant-optional">
+            <input type="checkbox" name="pool.{{index}}.optional" {{checked optional}}>
+          </td>
+          <td class="item-grant-control">
+            <button type="button" data-action="deletePoolItem" class="icon fa-solid fa-trash"></button>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{/if}}
+  </section>
+</section>

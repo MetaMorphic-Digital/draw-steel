@@ -1180,6 +1180,15 @@ DRAW_STEEL.PowerRollEffect = {
 };
 preLocalize("PowerRollEffect", { key: "label" });
 
+/* -------------------------------------------------- */
+
+DRAW_STEEL.Advancement = {
+  itemGrant: {
+    label: "TYPES.Advancement.itemGrant",
+    documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
+  },
+};
+
 /**
  * Configuration details for Culture items
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}
