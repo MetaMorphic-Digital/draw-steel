@@ -27,6 +27,9 @@
     - The roll message has a button to spend a hero token to automatically succeed
   - End of Encounter effects will automatically self-disable alongside the encounter.
 
+### Changed
+- Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply.
+
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
 
