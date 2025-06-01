@@ -248,6 +248,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       // TODO: implement class getter
       if ((item.type === "class") && this.document.class && (this.document.class.identifier !== item.system.dsid)) {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
+        return;
       }
       await ds.data.pseudoDocuments.advancements.BaseAdvancement.performChanges(this.document, item);
       return;
