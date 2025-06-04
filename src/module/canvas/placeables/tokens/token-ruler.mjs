@@ -1,3 +1,5 @@
+import { systemPath } from "../../../constants.mjs";
+
 /** @import { TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
 /** @import { DeepReadonly } from "@common/_types.mjs" */
 /** @import DrawSteelTokenDocument from "../../../documents/token.mjs"; */
@@ -7,7 +9,7 @@
  */
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
-  static WAYPOINT_LABEL_TEMPLATE = "systems/draw-steel/templates/hud/waypoint-label.hbs";
+  static WAYPOINT_LABEL_TEMPLATE = systemPath("templates/hud/waypoint-label.hbs");
 
   /* -------------------------------------------------- */
 
