@@ -43,6 +43,7 @@ export default class SavingThrowManager extends RollManager {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static PARTS = {
     body: {
       template: systemPath("templates/rolls/saving-throw-manager.hbs"),

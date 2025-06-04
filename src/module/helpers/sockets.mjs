@@ -83,6 +83,8 @@ export default class DrawSteelSocketHandler {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Call for a saving throw from a specific user
    * @param {string | DrawSteelActiveEffect} effect   An effect instance or UUID
@@ -95,6 +97,8 @@ export default class DrawSteelSocketHandler {
    */
   async rollSave(effect, user, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
     if (typeof user === "string") user = game.users.get(user);
+
+    if (!user) throw new Error("No user found for DrawSteelSocketHandler#rollSave");
 
     if (user.isSelf) {
       if (typeof effect === "string") effect = await fromUuid(effect);
@@ -116,6 +120,8 @@ export default class DrawSteelSocketHandler {
       },
     }, { timeout: 30 * 1000 });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Query a user for a saving throw roll

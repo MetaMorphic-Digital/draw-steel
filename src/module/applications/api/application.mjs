@@ -74,7 +74,6 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
     }, timeout);
 
     await super._onFirstRender(context, options);
-
   }
 
   /* -------------------------------------------------- */
