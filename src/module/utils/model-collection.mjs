@@ -12,6 +12,14 @@ export default class ModelCollection extends foundry.utils.Collection {
   /* -------------------------------------------------- */
 
   /**
+   * Pseudo-document base model.
+   * @type {typeof ds.data.pseudoDocuments.PseudoDocument}
+   */
+  documentClass;
+
+  /* -------------------------------------------------- */
+
+  /**
    * Pre-organized arrays of data models by type.
    * @type {Map<string, Set<string>>}
    */
