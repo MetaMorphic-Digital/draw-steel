@@ -51,4 +51,13 @@ export class SavingThrowRoll extends DSRoll {
       result: this.product ? "critical" : "failure",
     };
   }
+
+  /** @inheritdoc */
+  async toMessage(messageData, messageOptions) {
+    // Saving throws always create savingThrow messages
+    // `system.effect` is expected to be passed; if not it will throw in construction
+    messageData.type = "savingThrow";
+
+    return super.toMessage(messageData, messageOptions);
+  }
 }

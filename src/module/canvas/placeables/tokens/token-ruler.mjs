@@ -161,7 +161,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
     }
     else {
       const value = foundry.utils.getProperty(this, "token.document.actor.system.movement.value") ?? Infinity;
-      // Total cost, up to 1x is green, up to 2x is yellow, up to 3x is green
+      // Total cost, up to 1x is green, up to 2x is yellow, over that is red
       const index = Math.clamp(Math.floor((waypoint.measurement.cost - 1) / value), 0, 2);
       style.color = colors[index];
     }

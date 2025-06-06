@@ -126,6 +126,14 @@
             },
             "turns": {
               "label": "Turns Per Round"
+            },
+            "save": {
+              "bonus": {
+                "label": "Save Bonus"
+              },
+              "threshold": {
+                "label": "Save Threshold"
+              }
             }
           },
           "movement": {
@@ -1114,13 +1122,13 @@
     },
     "Roll": {
       "Prompt": "Roll {prompt}",
+      "Button": "Roll",
       "Power": {
         "Prompt": {
           "Title": "{typeLabel} Power Roll",
           "Total": "Total: {number}",
           "GlobalModifiers": "Global Modifiers",
-          "DamageSelectionLabel": "Damage Type",
-          "Button": "Roll"
+          "DamageSelectionLabel": "Damage Type"
         },
         "Tiers": {
           "One": "Tier 1",
@@ -1158,7 +1166,21 @@
         "Breakthrough": "Breakthrough!"
       },
       "Save": {
-        "Label": "Saving Throw"
+        "Label": "Saving Throw",
+        "Manager": {
+          "Title": "Saving Throw Manager: {name}"
+        },
+        "Prompt": {
+          "Title": "Roll Saving Throw",
+          "SituationalBonus": {
+            "Label": "Situational Bonus",
+            "PlaceHolder": "e.g. 3 or @I",
+            "Hint": "Formula: {formula}"
+          },
+          "SuccessThreshold": {
+            "Label": "Success Threshold"
+          }
+        }
       }
     },
     "Setting": {
@@ -1207,7 +1229,8 @@
     "SOCKET": {
       "WARNING": {
         "noActiveGM": "No active GM was found to be able to handle the request.",
-        "invalidSpendType": "The spend type [{spendType}] requested by [{name}] is not valid for hero tokens."
+        "invalidSpendType": "The spend type [{spendType}] requested by [{name}] is not valid for hero tokens.",
+        "Timeout": "{label} timed out after {seconds}s"
       }
     },
     "Skill": {
@@ -1339,6 +1362,16 @@
           }
         },
         "NoTokenSelected": "You must have at least one token selected"
+      },
+      "SavingThrow": {
+        "Buttons": {
+          "HeroToken": {
+            "Label": "Hero Token",
+            "Tooltip": "Succeed by spending a Hero Token",
+            "NoEffect": "This effect no longer exists.",
+            "NoOwner": "You no longer have update permissions for this effect."
+          }
+        }
       }
     },
     "Macro": {

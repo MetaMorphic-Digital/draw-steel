@@ -49,7 +49,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     for (const n of [1, 2, 3]) {
       /** @type {ForcedMovementSchema} */
       const tierValue = this.forced[`tier${n}`];
-      tierValue.potency.value ||= this.schema.getField(["forced", `tier${n}`, "potency", "value"]).initial;
+      tierValue.potency.value ||= this.schema.getField(["forced", `tier${n}`, "potency", "value"]).getInitialValue({});
       if (n > 1) {
         /** @type {ForcedMovementSchema} */
         const prevTier = this.forced[`tier${n - 1}`];
