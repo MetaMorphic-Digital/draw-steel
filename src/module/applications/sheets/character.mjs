@@ -245,8 +245,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
     // Dropping an item that supports advancements trigger a different workflow.
     if (item.supportsAdvancements) {
-      // TODO: implement class getter
-      if ((item.type === "class") && this.document.class && (this.document.class.identifier !== item.system.dsid)) {
+      // TODO: Level up when dropping an existing class.
+      if ((item.type === "class") && this.document.itemTypes.class.length) {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
         return;
       }
