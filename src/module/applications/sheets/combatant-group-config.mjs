@@ -2,13 +2,12 @@ import { systemPath } from "../../constants.mjs";
 
 /** @import { FormFooterButton } from "@client/applications/_types.mjs" */
 
-const { HandlebarsApplicationMixin, DocumentSheetV2 } = foundry.applications.api;
+const { HandlebarsApplicationMixin, DocumentSheet } = foundry.applications.api;
 
 /**
  * Basic sheet for Combatant Groups
  */
-export default class DrawSteelCombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheetV2) {
-
+export default class DrawSteelCombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheet) {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel", "combatant-group-config", "standard-form"],
