@@ -25,7 +25,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
       name: new StringField({ required: true }),
       img: new FilePathField({ categories: ["IMAGE"], initial: this.metadata.defaultImage || null, nullable: true }),
       requirements: new SchemaField({
-        // The level requiremente for this advancement
+        // The level requirement for this advancement
         level: new NumberField({ integer: true, min: 1, nullable: false, initial: 1 }),
       }),
     });
@@ -106,7 +106,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
 
   /**
    * Find all items on an actor that would be removed were this advancement undone (e.g. the item deleted).
-   * @returns {foundry.documents.Item[]}    An array of to-be-deleted items.
+   * @returns {Set<foundry.documents.Item>}   An set of to-be-deleted items.
    */
   grantedItemsChain() {
     const items = this.grantedItems();
@@ -116,7 +116,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
         items.push(...advancement.grantedItemsChain());
       }
     }
-    return items;
+    return new Set(items);
   }
 
   /* -------------------------------------------------- */
@@ -137,62 +137,41 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Retrieve and prepare items to be created on an actor. The data is prepared in such a way that
+   * Retrieve items and construct data to be created on an actor. The data is prepared in such a way that
    * the items should be created with `keepId: true`.
    * @param {foundry.documents.Actor} actor   The actor on which to create the items.
    * @param {foundry.documents.Item} item     The root item. If a path item, this is not created.
    * @param {AdvancementChain[]} [roots=[]]   The fully configured advancement chains.
    * @returns {Promise<object[]>}             A promise that resolves to the prepared item data and other updates.
    */
-  static async prepareUpdates(actor, item, roots = []) {
+  static async constructUpdates(actor, item, roots = []) {
     // Mapping of items' original id to the current item data. Used to find and set `itemId`.
     const items = new foundry.utils.Collection();
     let actorUpdate = {};
-
-    // If this is a path item, second-level items created should point to the created progression.
-    let progressionId = null;
 
     // The item being prepared and the advancement that granted it.
     const prepareItem = (item, advancement = null) => {
       const data = game.items.fromCompendium(item, { keepId: true });
       if (actor.items.has(data._id)) data._id = foundry.utils.randomID();
 
+      // `stored` does not exist for the "root" item.
       const stored = items.get(advancement?.document.id);
-
-      foundry.utils.mergeObject(data, {
-        "flags.draw-steel.advancement": stored
-          ? { advancementId: advancement.id, itemId: stored._id }
-          : { progressionId },
-      });
+      if (stored) {
+        foundry.utils.mergeObject(data, {
+          "flags.draw-steel.advancement": { advancementId: advancement.id, itemId: stored._id },
+        });
+      }
       items.set(item.id, data);
     };
 
-    // The root item itself is created as well unless it is a Class item.
-    if (item.type === "class") {
-      const level = actor.system.class?.level ?? 0;
-
-      progressionId = foundry.utils.randomID();
-
-      actorUpdate = {
-        "system.class": {
-          label: item.name,
-          level: level + 1, // increase the level
-        },
-        "system.progressions": { [progressionId]: {
-          level, // store the original level (useful? dunno yet)
-          _id: progressionId,
-        } },
-      };
-    } else {
-      prepareItem(item, null);
-    }
+    // The root item itself is created as well.
+    prepareItem(item, null);
 
     // Traverse the chains to gather all items.
     for (const root of roots)
       for (const node of root.active())
-        for (const { item, selected } of node.pool) {
+        for (const { item, selected } of node.pool)
           if (selected) prepareItem(item, node.advancement);
-        }
 
     const itemData = Array.from(items.values());
 
@@ -209,7 +188,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
 
     // TODO: pop UI to configure the chains here
 
-    const { itemData, actorUpdate } = await BaseAdvancement.prepareUpdates(actor, item, chains);
+    const { itemData, actorUpdate } = await BaseAdvancement.constructUpdates(actor, item, chains);
 
     return Promise.all([
       foundry.utils.isEmpty(itemData) ? null : actor.createEmbeddedDocuments("Item", itemData, { keepId: true }),

@@ -15,9 +15,6 @@ export default class CharacterModel extends BaseActorModel {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "character",
-      embedded: {
-        Progression: "system.progressions",
-      },
     });
   }
 
@@ -46,8 +43,6 @@ export default class CharacterModel extends BaseActorModel {
       skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField({ readonly: false }),
     });
-
-    schema.progressions = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.progressions.Progression);
 
     return schema;
   }

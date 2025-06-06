@@ -51,7 +51,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   get hasGrantedItems() {
     if (!this.supportsAdvancements) return false;
     for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      if (advancement.grantedItemsChain().length) return true;
+      if (advancement.grantedItemsChain().size) return true;
     }
     return false;
   }
