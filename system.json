@@ -36,7 +36,9 @@
         "gmOnlyFields": ["description.gm"]
       },
       "class": {
-        "filePathFields": ["advancements.*.img"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"]
+        },
         "htmlFields": ["description.value", "description.gm"],
         "gmOnlyFields": ["description.gm"]
       },
