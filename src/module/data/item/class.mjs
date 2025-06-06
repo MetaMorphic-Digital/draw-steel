@@ -13,9 +13,6 @@ export default class ClassModel extends AdvancementModel {
       type: "class",
       invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/item/partials/class.hbs")],
-      embedded: {
-        Advancement: "system.advancements",
-      },
     });
   }
 
@@ -34,8 +31,6 @@ export default class ClassModel extends AdvancementModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
     const config = ds.CONFIG;
-
-    schema.advancements = new ds.data.fields.CollectionField(ds.data.pseudoDocuments.advancements.BaseAdvancement);
 
     schema.level = new fields.NumberField({
       initial: 0,

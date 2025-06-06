@@ -77,7 +77,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
    */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
     const select = foundry.applications.fields.createFormGroup({
-      label: "Type",
+      label: game.i18n.localize("Type"),
       input: foundry.applications.fields.createSelectInput({
         blank: false,
         name: "type",
@@ -90,6 +90,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
     const result = await ds.applications.api.DSDialog.input({
       window: {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
+        icon: this.metadata.icon,
       },
       content: `<fieldset>${select}</fieldset>`,
     });
