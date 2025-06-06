@@ -6,6 +6,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
+/** @import { DrawSteelActiveEffect } from "../../documents/_module.mjs" */
 
 const { sheets } = foundry.applications;
 
@@ -713,7 +714,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * Fetches the embedded document representing the containing HTML element
    *
    * @param {HTMLElement} target    The element subject to search
-   * @returns {Item | ActiveEffect} The embedded Item or ActiveEffect
+   * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect
    */
   _getEmbeddedDocument(target) {
     const docRow = target.closest("[data-document-class]");
