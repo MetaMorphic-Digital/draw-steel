@@ -6,6 +6,7 @@ import SourceModel from "../models/source.mjs";
 /** @import DrawSteelItem from "../../documents/item.mjs"; */
 /** @import AbilityModel from "../item/ability.mjs"; */
 /** @import { MaliceModel } from "../settings/_module.mjs"; */
+/** @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs"; */
 
 /**
  * NPCs are created and controlled by the director
@@ -90,10 +91,14 @@ export default class NPCModel extends BaseActorModel {
     const signature = this.parent.items.find(i => (i.type === "ability") && (i.system.category === "signature"));
     /** @type {Set<string>} */
     const keywords = signature ? new Set(["magic", "psionic", "weapon"]).intersection(signature.system.keywords) : new Set();
+
+    /** @type {DamagePowerRollEffect} */
+    const firstDamage = signature?.system.power.effects.find(e => e.type === "damage");
+
     const freeStrike = {
       value: this.monster.freeStrike,
       keywords: keywords.add("strike"),
-      type: signature?.system.powerRoll.tier1.damage.type ?? "",
+      type: firstDamage?.damage.tier1.types.first() ?? "",
       range: {
         melee: 1,
         ranged: 5,
