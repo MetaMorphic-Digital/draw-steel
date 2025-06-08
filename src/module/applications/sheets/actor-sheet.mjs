@@ -3,6 +3,7 @@ import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
+import DocumentInput from "../api/document-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
@@ -699,32 +700,30 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   static async #editCombat(event, target) {
-    const htmlContainer = document.createElement("div");
-    const schema = this.actor.system.schema;
-    const combatData = this.actor.system.combat;
+    const combatContent = function () {
 
-    const turnInput = schema.getField("combat.turns").toFormGroup({ classes: ["slim"] }, { value: combatData.turns });
-    const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
-    const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
+      const htmlContainer = document.createElement("div");
+      const schema = this.actor.system.schema;
+      const combatData = this.actor.system.combat;
 
-    htmlContainer.append(turnInput, saveBonusInput, saveThresholdInput);
+      const turnInput = schema.getField("combat.turns").toFormGroup({ classes: ["slim"] }, { value: combatData.turns });
+      const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
+      const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
 
-    const fd = await ds.applications.api.DSDialog.input({
-      content: htmlContainer,
-      classes: ["draw-steel", "actor-combat"],
+      htmlContainer.append(turnInput, saveBonusInput, saveThresholdInput);
+
+      return htmlContainer.innerHTML;
+    };
+
+    new DocumentInput({
+      document: this.document,
+      contentFunc: combatContent.bind(this),
+      classes: ["actor-combat"],
       window: {
         title: "DRAW_STEEL.Actor.base.NicheCombatDialog.Title",
         icon: "fa-solid fa-swords",
       },
-      ok: {
-        label: "Save",
-        icon: "fa-solid fa-floppy-disk",
-      },
-      rejectClose: false,
-    });
-    if (fd) {
-      await this.actor.update(fd);
-    }
+    }).render({ force: true });
   }
 
   /* -------------------------------------------------- */
