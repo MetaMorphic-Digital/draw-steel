@@ -206,9 +206,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
 
-    /** @type {object | null} */
     const fd = await ds.applications.api.DSDialog.input({
-      content: htmlContainer.outerHTML,
+      content: htmlContainer,
       classes: ["draw-steel", "monster-metadata"],
       window: {
         title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",

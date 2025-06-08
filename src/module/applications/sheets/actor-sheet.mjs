@@ -28,6 +28,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       deleteDoc: this.#deleteDoc,
       toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
+      editCombat: this.#editCombat,
       useAbility: this.#useAbility,
       toggleItemEmbed: this.#toggleItemEmbed,
     },
@@ -120,6 +121,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
+        context.combatTooltip = game.i18n.format("DRAW_STEEL.Actor.base.combatTooltip", {});
         context.movement = this._getMovement();
         context.damageIW = this._getImmunitiesWeaknesses();
         break;
@@ -664,6 +666,43 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     switch (dataset.rollType) {
       case "characteristic":
         return this.actor.rollCharacteristic(dataset.characteristic);
+    }
+  }
+
+  /**
+   * Open a dialog to edit niche combat data.
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async #editCombat(event, target) {
+    const htmlContainer = document.createElement("div");
+    const schema = this.actor.system.schema;
+    const combatData = this.actor.system.combat;
+
+    const turnInput = schema.getField("combat.turns").toFormGroup({}, { value: combatData.turns });
+    const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
+    const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
+
+    htmlContainer.append(turnInput, saveBonusInput, saveThresholdInput);
+
+    const fd = await ds.applications.api.DSDialog.input({
+      content: htmlContainer,
+      classes: ["draw-steel", "actor-combat"],
+      window: {
+        title: "DRAW_STEEL.Actor.base.NicheCombatDialog.Title",
+        icon: "fa-solid fa-swords",
+      },
+      ok: {
+        label: "Save",
+        icon: "fa-solid fa-floppy-disk",
+      },
+      rejectClose: false,
+    });
+    if (fd) {
+      await this.actor.update(fd);
     }
   }
 
