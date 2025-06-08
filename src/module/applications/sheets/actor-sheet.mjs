@@ -121,7 +121,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     switch (partId) {
       case "stats":
         context.characteristics = this._getCharacteristics();
-        context.combatTooltip = game.i18n.format("DRAW_STEEL.Actor.base.combatTooltip", {});
+        context.combatTooltip = this._getCombatTooltip();
         context.movement = this._getMovement();
         context.damageIW = this._getImmunitiesWeaknesses();
         break;
@@ -155,6 +155,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Constructs a record of valid characteristics and their associated field
    * @returns {Record<string, {field: NumberField, value: number}>}
+   * @protected
    */
   _getCharacteristics() {
     const isPlay = this.isPlayMode;
@@ -169,11 +170,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     }, {});
   }
 
+  /**
+   * Constructs a tooltip of data paths
+   */
+  _getCombatTooltip() {
+    const dataPaths = ["turns", "save.bonus", "save.threshold"];
+    let tooltip = "";
+    for (const p of dataPaths) {
+      const current = foundry.utils.getProperty(this.actor.system.combat, p);
+      const field = this.actor.system.schema.fields.combat.getField(p);
+      if (current !== field.getInitialValue()) {
+        tooltip += `<p>${field.label}: ${current}</p>`;
+      }
+    }
+    return tooltip;
+  }
+
   /* -------------------------------------------------- */
 
   /**
    * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions
    * @returns {{flying: boolean, list: string, options: FormSelectOption[]}}
+   * @protected
    */
   _getMovement() {
     const formatter = game.i18n.getListFormatter({ type: "unit" });
@@ -199,6 +217,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
    * @returns {{list: string, options: FormSelectOption[]}}
+   * @protected
    */
   _getLanguages() {
     if (!this.actor.system.schema.getField("biography.languages")) return { list: "", options: [] };
@@ -215,6 +234,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Constructs an object with the formatted immunities and weaknesses with a list of damage labels
    * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
+   * @protected
    */
   _getImmunitiesWeaknesses() {
     const labels = {
@@ -241,6 +261,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Helper to compose datasets available in the hbs
    * @returns {Record<string, unknown>}
+   * @protected
    */
   _getDatasets() {
     return {
@@ -682,7 +703,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     const schema = this.actor.system.schema;
     const combatData = this.actor.system.combat;
 
-    const turnInput = schema.getField("combat.turns").toFormGroup({}, { value: combatData.turns });
+    const turnInput = schema.getField("combat.turns").toFormGroup({ classes: ["slim"] }, { value: combatData.turns });
     const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
     const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
 
