@@ -709,8 +709,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       const turnInput = schema.getField("combat.turns").toFormGroup({ classes: ["slim"] }, { value: combatData.turns });
       const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
       const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
-
-      htmlContainer.append(turnInput, saveBonusInput, saveThresholdInput);
+      if (this.actor.type !== "character") htmlContainer.append(turnInput);
+      htmlContainer.append(saveBonusInput, saveThresholdInput);
 
       return htmlContainer.innerHTML;
     };

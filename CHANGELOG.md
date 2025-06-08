@@ -31,6 +31,7 @@
 
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)
+- The Monster Metadata and Source forms now perform live updates instead of using a save button.
 
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
