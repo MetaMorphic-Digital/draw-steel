@@ -1,3 +1,5 @@
+import DocumentInput from "../../applications/api/document-input.mjs";
+
 /** @import BasePackage from "@common/packages/base-package.mjs"; */
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
 
@@ -86,30 +88,27 @@ export default class SourceModel extends foundry.abstract.DataModel {
    * @returns {DrawSteelActor | DrawSteelItem}
    */
   async updateDialog() {
-    /** @type {HTMLDivElement[]} */
-    const formGroups = [];
-    for (const [key, field] of Object.entries(this.schema.fields)) {
-      formGroups.push(field.toFormGroup({}, { value: this[key] }));
-    }
-    if (this.document?.documentName === "Item") {
-      const field = this.parent.schema.getField("_dsid");
-      formGroups.push(field.toFormGroup({}, { value: this.parent._dsid }));
-    }
+    const dialogContent = function () {
+      const htmlContainer = document.createElement("div");
+      for (const [key, field] of Object.entries(this.schema.fields)) {
+        htmlContainer.append(field.toFormGroup({}, { value: this[key] }));
+      }
+      if (this.document?.documentName === "Item") {
+        const field = this.parent.schema.getField("_dsid");
+        htmlContainer.append(field.toFormGroup({}, { value: this.parent._dsid }));
+      }
 
-    /** @type {object} */
-    const fd = await ds.applications.api.DSDialog.input({
-      content: formGroups.map(e => e.outerHTML).join(" "),
+      return htmlContainer.innerHTML;
+    };
+
+    new DocumentInput({
+      document: this.document,
+      contentFunc: dialogContent.bind(this),
+      classes: ["document-source"],
       window: {
         title: "DRAW_STEEL.Source.UpdateTitle",
         icon: "fa-solid fa-book",
       },
-      ok: {
-        label: "Save",
-        icon: "fa-solid fa-floppy-disk",
-      },
-    });
-
-    if (!fd) return;
-    return this.document.update(fd);
+    }).render({ force: true });
   }
 }

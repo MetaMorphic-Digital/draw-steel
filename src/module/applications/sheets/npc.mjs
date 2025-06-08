@@ -1,5 +1,6 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
+import DocumentInput from "../api/document-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
@@ -184,44 +185,41 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #editMonsterMetadata(event, target) {
-    const htmlContainer = document.createElement("div");
-    const schema = this.actor.system.schema;
-    const monsterData = this.actor.system.monster;
-    const monsterConfig = ds.CONFIG.monsters;
+    const monsterMetadataContent = function () {
+      const htmlContainer = document.createElement("div");
+      const schema = this.actor.system.schema;
+      const monsterData = this.actor.system.monster;
+      const monsterConfig = ds.CONFIG.monsters;
 
-    const keywordInput = schema.getField("monster.keywords").toFormGroup({}, {
-      value: monsterData.keywords,
-      options: Object.entries(monsterConfig.keywords).map(([value, { label, group }]) => ({ value, label, group })),
-    });
-    const levelInput = schema.getField("monster.level").toFormGroup({}, { value: monsterData.level });
-    const organizationInput = schema.getField("monster.organization").toFormGroup({}, {
-      value: monsterData.organization,
-      options: Object.entries(monsterConfig.organizations).map(([value, { label }]) => ({ value, label })),
-    });
-    const roleInput = schema.getField("monster.role").toFormGroup({}, {
-      value: monsterData.role,
-      options: Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label })),
-    });
-    const evInput = schema.getField("monster.ev").toFormGroup({}, { value: monsterData.ev });
+      const keywordInput = schema.getField("monster.keywords").toFormGroup({}, {
+        value: monsterData.keywords,
+        options: Object.entries(monsterConfig.keywords).map(([value, { label, group }]) => ({ value, label, group })),
+      });
+      const levelInput = schema.getField("monster.level").toFormGroup({}, { value: monsterData.level });
+      const organizationInput = schema.getField("monster.organization").toFormGroup({}, {
+        value: monsterData.organization,
+        options: Object.entries(monsterConfig.organizations).map(([value, { label }]) => ({ value, label })),
+      });
+      const roleInput = schema.getField("monster.role").toFormGroup({}, {
+        value: monsterData.role,
+        options: Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label })),
+      });
+      const evInput = schema.getField("monster.ev").toFormGroup({}, { value: monsterData.ev });
 
-    htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
+      htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
 
-    const fd = await ds.applications.api.DSDialog.input({
-      content: htmlContainer,
-      classes: ["draw-steel", "monster-metadata"],
+      return htmlContainer.innerHTML;
+    };
+
+    new DocumentInput({
+      document: this.document,
+      contentFunc: monsterMetadataContent.bind(this),
+      classes: ["monster-metadata"],
       window: {
         title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
         icon: "fa-solid fa-spaghetti-monster-flying",
       },
-      ok: {
-        label: "Save",
-        icon: "fa-solid fa-floppy-disk",
-      },
-      rejectClose: false,
-    });
-    if (fd) {
-      await this.actor.update(fd);
-    }
+    }).render({ force: true });
   }
 
   /**
