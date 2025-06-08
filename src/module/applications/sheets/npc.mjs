@@ -231,6 +231,11 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #freeStrike(event, target) {
+    try { game.user.targets.map(t => t.actor); } catch (e) {
+      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.MultiLinked", { localize: true });
+      throw (e);
+    }
+
     /** @type {Array<DrawSteelActor>} */
     const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
     if (!targets.length) {
@@ -253,6 +258,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       const formGroup = foundry.applications.fields.createFormGroup({
         label: a.name,
         input: checkboxInput,
+        classes: ["inline"],
       });
       // style fix
       const label = formGroup.querySelector("label");
