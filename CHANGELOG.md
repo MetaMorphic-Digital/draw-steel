@@ -26,6 +26,7 @@
   - Saving Throws will create prompts for owners. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
     - The roll message has a button to spend a hero token to automatically succeed
   - End of Encounter effects will automatically self-disable alongside the encounter.
+- Added Disengage to Stats tab in the movement section and integrated the Kit Bonus (#519).
 
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply.
