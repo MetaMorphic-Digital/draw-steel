@@ -48,9 +48,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
-      value: new fields.NumberField({ integer: true, min: 0, initial: 5 }),
+      value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 5 }),
       types: new fields.SetField(setOptions(), { initial: ["walk"] }),
       hover: new fields.BooleanField(),
+      disengage: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 1 }),
     });
 
     schema.damage = new fields.SchemaField({
