@@ -29,6 +29,8 @@
 - Added Disengage to Stats tab in the movement section and integrated the Kit Bonus. (#519)
 - Added UI for configuring an actor's turns per round, save bonus, and save threshold. (#532)
   - These are also readable in a hover tooltip on the "Combat" legend in the Stats tab.
+- Added spend line to the displayed power content (#398)
+  - Note: Expect future breaking changes with how Spend is configured to account for variations that the current data does not represent.
 
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)
@@ -36,7 +38,7 @@
 
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
-- Fixed free strikes not applying (#544)
+- Fixed free strikes not applying. (#544)
 
 ## 0.7.1
 
