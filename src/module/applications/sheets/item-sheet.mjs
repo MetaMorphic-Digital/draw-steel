@@ -2,6 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
+import DocumentSourceInput from "../apps/document-source-input.mjs";
 
 /** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
 /** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs" */
@@ -354,7 +355,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #updateSource(event, target) {
-    this.item.system.source.updateDialog();
+    new DocumentSourceInput({ document: this.document }).render({ force: true });
   }
 
   /* -------------------------------------------------- */

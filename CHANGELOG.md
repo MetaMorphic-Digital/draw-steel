@@ -21,18 +21,22 @@
 ### 0.7.2
 
 ### Added
-- Added support for the automatic end of effects
+- Added support for the automatic end of effects. (#551)
   - End of Turn will automatically self-disable when an affected actor ends their turn.
   - Saving Throws will create prompts for owners. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
     - The roll message has a button to spend a hero token to automatically succeed
   - End of Encounter effects will automatically self-disable alongside the encounter.
-- Added Disengage to Stats tab in the movement section and integrated the Kit Bonus (#519).
+- Added Disengage to Stats tab in the movement section and integrated the Kit Bonus. (#519)
+- Added UI for configuring an actor's turns per round, save bonus, and save threshold. (#532)
+  - These are also readable in a hover tooltip on the "Combat" legend in the Stats tab.
 
 ### Changed
-- Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply.
+- Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)
+- The Monster Metadata and Source forms now perform live updates instead of using a save button.
 
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
+- Fixed free strikes not applying (#544)
 
 ## 0.7.1
 
