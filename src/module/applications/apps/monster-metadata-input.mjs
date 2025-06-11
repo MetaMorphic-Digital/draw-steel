@@ -6,6 +6,15 @@ import DocumentInput from "../api/document-input.mjs";
  */
 export default class MonsterMetadataInput extends DocumentInput {
   /** @inheritdoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["monster-metadata"],
+    window: {
+      title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
+      icon: "fa-solid fa-spaghetti-monster-flying",
+    },
+  };
+
+  /** @inheritdoc */
   static PARTS = {
     body: {
       template: systemPath("templates/sheets/document-input/monster-metadata-input.hbs"),

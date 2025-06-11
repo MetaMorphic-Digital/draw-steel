@@ -82,20 +82,4 @@ export default class SourceModel extends foundry.abstract.DataModel {
   toString() {
     return this.label;
   }
-
-  /**
-   * Render a DialogV2 instance to update the SourceModel.
-   * If the document is an Item it also adds a field for _dsid
-   * @returns {DrawSteelActor | DrawSteelItem}
-   */
-  async updateDialog() {
-    new DocumentSourceInput({
-      document: this.document,
-      classes: ["document-source"],
-      window: {
-        title: "DRAW_STEEL.Source.UpdateTitle",
-        icon: "fa-solid fa-book",
-      },
-    }).render({ force: true });
-  }
 }

@@ -6,6 +6,15 @@ import DocumentInput from "../api/document-input.mjs";
  */
 export default class DocumentSourceInput extends DocumentInput {
   /** @inheritdoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["document-source"],
+    window: {
+      title: "DRAW_STEEL.Source.UpdateTitle",
+      icon: "fa-solid fa-book",
+    },
+  };
+
+  /** @inheritdoc */
   static PARTS = {
     body: {
       template: systemPath("templates/sheets/document-input/document-source-input.hbs"),

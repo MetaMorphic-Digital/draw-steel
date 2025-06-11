@@ -700,14 +700,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   static async #editCombat(event, target) {
-    new ActorCombatStatsInput({
-      document: this.document,
-      classes: ["actor-combat"],
-      window: {
-        title: "DRAW_STEEL.Actor.base.NicheCombatDialog.Title",
-        icon: "fa-solid fa-swords",
-      },
-    }).render({ force: true });
+    new ActorCombatStatsInput({ document: this.document }).render({ force: true });
   }
 
   /* -------------------------------------------------- */

@@ -1,7 +1,6 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
-import DocumentInput from "../api/document-input.mjs";
-import MonsterMetadataInput from "../apps/monster-metadata-input.mjs";
+import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
@@ -176,7 +175,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #updateSource(event, target) {
-    this.actor.system.source.updateDialog();
+    new DocumentSourceInput({ document: this.document }).render({ force: true });
   }
 
   /**
@@ -186,14 +185,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #editMonsterMetadata(event, target) {
-    new MonsterMetadataInput({
-      document: this.document,
-      classes: ["monster-metadata"],
-      window: {
-        title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
-        icon: "fa-solid fa-spaghetti-monster-flying",
-      },
-    }).render({ force: true });
+    new MonsterMetadataInput({ document: this.document }).render({ force: true });
   }
 
   /**
