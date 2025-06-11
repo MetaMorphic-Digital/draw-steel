@@ -13,6 +13,18 @@ export default class CollectionField extends TypedObjectField {
       : new EmbeddedDataField(model);
     options.validateKey ||= ((key) => foundry.data.validators.isValidId(key));
     super(field, options, context);
+    this.#documentClass = model;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The pseudo-document class.
+   * @type {typeof ds.data.pseudoDocuments.PseudoDocument}
+   */
+  #documentClass;
+  get documentClass() {
+    return this.#documentClass;
   }
 
   /* -------------------------------------------------- */
@@ -28,6 +40,7 @@ export default class CollectionField extends TypedObjectField {
         collection.setInvalid(model);
       }
     }
+    collection.documentClass = this.documentClass;
     return collection;
   }
 }
