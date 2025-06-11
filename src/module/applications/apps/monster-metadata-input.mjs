@@ -1,13 +1,18 @@
 import { systemPath } from "../../constants.mjs";
 import DocumentInput from "../api/document-input.mjs";
 
+/**
+ * Simple live-updating input for monster metadata
+ */
 export default class MonsterMetadataInput extends DocumentInput {
+  /** @inheritdoc */
   static PARTS = {
     body: {
       template: systemPath("templates/sheets/document-input/monster-metadata-input.hbs"),
     },
   };
 
+  /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 

@@ -1,14 +1,11 @@
-import { systemPath } from "../../constants.mjs";
-
 const { HandlebarsApplicationMixin, DocumentSheet } = foundry.applications.api;
 
 /**
  * A reusable document sheet that performs live updates of provided fields.
- * Construction requires passing a `contentFunc` method that constructs the inner HTML.
+ * @abstract
  */
 export default class DocumentInput extends HandlebarsApplicationMixin(DocumentSheet) {
   static DEFAULT_OPTIONS = {
-    contentFunc: null,
     sheetConfig: false,
     classes: ["draw-steel"],
     form: {
