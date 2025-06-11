@@ -88,6 +88,11 @@
     }
 
     &[data-subtype="ability"] {
+      /* Margin is unnecessary here due to gap property */
+      dl {
+        margin: 0;
+      }
+
       dd.effect {
         :first-child {
           margin-top: 0;

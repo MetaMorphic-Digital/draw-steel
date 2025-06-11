@@ -1,4 +1,4 @@
-import type { StringFieldOptions } from "@common/data/fields.mjs";
+import type { StringFieldOptions } from "@common/data/_types.mjs";
 
 export interface FormulaFieldOptions extends StringFieldOptions {
   /**
