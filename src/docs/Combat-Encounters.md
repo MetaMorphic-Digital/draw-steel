@@ -74,7 +74,7 @@ Actors may be added to a combatant group by click&dragging them into the group, 
 #### Right-click context menu
 
 Right-clicking a combatant group will open a context menu that allows to `Update Combatant Group`, `Reset Squad HP To Max`, `Clear Movement Histories`, `Delete Combatant Group`, or `Configure Ownership`.
-+ `Update Combatant Group` allows to change the name of a combatant group, its thumbnail image, its initiative value, and it's current Stamina.
++ `Update Combatant Group` allows to change the name of a combatant group, its thumbnail image, its initiative value, and its current Stamina.
 + If the combatant group is a `Squad`, then the menu option `Reset Squad HP To Max` is available and it resets the Squad's Stamina to the maximum value determined by the sum of max Stamina of all the squad's minions.
 + `Delete Combatant Group` removes a combatant group from the tracker and displays the group's previous members as individual combatants again.
 + `Configure Ownership` gives the option to give players certain ownership rights over a combatant group, similar to an Actor or Item. If the ownership is set to `Owner` for a player, the Combatant Group becomes an ally of the Heroes.
