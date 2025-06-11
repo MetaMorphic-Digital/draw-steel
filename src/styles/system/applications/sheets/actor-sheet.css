@@ -231,6 +231,16 @@
       .metadata dl {
         grid-template-columns: auto 1fr auto 1fr;
       }
+
+      .draw-steel.ability {
+        dd.effect {
+          :first-child {
+            /* Ensures the text lines up with the dt element */
+            margin-top: 0;
+            padding-top: 0;
+          }
+        }
+      }
     }
   }
 
