@@ -30,6 +30,7 @@ declare module "./base.mjs" {
       value: number;
       types: Set<string>;
       hover: boolean;
+      disengage: number;
       teleport: number | null;
     }
     damage: {
