@@ -1,7 +1,14 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
+/** @import { Constructor } from "@common/_types.mjs" */
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
+/**
+ * Augments a Document Sheet with Draw-Steel specific behavior
+ * @template {Constructor<foundry.applications.api.DocumentSheet>} BaseDocumentSheet
+ * @param {BaseDocumentSheet} base
+ */
 export default base => {
   return class DSDocumentSheet extends HandlebarsApplicationMixin(base) {
     /** @inheritdoc */

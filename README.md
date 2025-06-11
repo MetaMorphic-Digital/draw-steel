@@ -1,16 +1,19 @@
 # Draw Steel!
 
-![Foundry v12](https://img.shields.io/badge/foundry-v12-green)
+![Foundry v13](https://img.shields.io/badge/foundry-v13-green)
 
 > The Draw Steel System for Foundry Virtual Tabletop is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL © 2024 MCDM Productions, LLC.
 
+This system is still early in development. Feature requests can be made in the [issues](https://github.com/MetaMorphic-Digital/draw-steel/issues) tab.
+
 ## Installation Instructions
 
-This system is still in early development and is not listed in the official Foundry package listing, but is available through the repository's [Releases](https://github.com/MetaMorphic-Digital/draw-steel/releases) page. You can install the system by pasting the following URL into the **Install System** dialog on the Setup menu of the application.
+The latest version of the system can be installed through the in-app System Browser and searching for "Draw Steel".
 
-https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json
-
-You can also perform a manual install by downloading one of the .zip archives from the Releases page and extracting it into your foundry Data folder, under `Data/systems/draw-steel`.
+You can also use one of the following alternative installation methods:
+1. Pasting `https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json` into the **Install System** dialog on the Setup menu of the application.
+2. Browsing the repository's [Releases](https://github.com/MetaMorphic-Digital/draw-steel/releases) page, where you can copy any system.json link for use in the Install System dialog.
+3. Downloading one of the .zip archives from the Releases page and extracting it into your foundry Data folder, under `Data/systems/draw-steel`.
 
 ## Frequently Asked Questions
 

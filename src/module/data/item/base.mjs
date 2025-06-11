@@ -8,7 +8,6 @@ const fields = foundry.data.fields;
 
 /**
  * A base item model that provides basic description and source metadata for an item instance
- * @extends foundry.abstract.TypeDataModel
  */
 export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**

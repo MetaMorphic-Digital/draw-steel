@@ -5,7 +5,6 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
- * @extends Actor
  */
 export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.Actor) {
   /**

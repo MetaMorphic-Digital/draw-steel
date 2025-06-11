@@ -10,8 +10,8 @@
     "build": "npm run build:packs && npm run build:code",
     "build:packs": "npm run pullJSONtoLDB",
     "build:code": "rollup -c",
-    "lint": "eslint src/module/**/*.mjs",
-    "lint:fix": "eslint --fix src/module/**/*.mjs",
+    "lint": "eslint draw-steel.mjs src/module/**/* templates/**/*",
+    "lint:fix": "eslint --fix draw-steel.mjs src/module/**/* templates/**/*",
     "postinstall": "npm run createSymlinks",
     "prepareRelease": "npm run build:packs && npm run build:code"
   },
@@ -21,13 +21,17 @@
   "author": "Joseph Meehan",
   "private": true,
   "devDependencies": {
+    "@eslint/js": "^9.27.0",
     "@foundryvtt/foundryvtt-cli": "^1.0.3",
     "@html-eslint/eslint-plugin": "^0.26.0",
     "@html-eslint/parser": "^0.26.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "eslint": "^8.57.1",
+    "@stylistic/eslint-plugin": "^4.3.0",
+    "eslint": "^9.27.0",
     "rollup": "^4.9.1",
     "rollup-plugin-import-css": "^3.5.8",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.1"
   }
 }

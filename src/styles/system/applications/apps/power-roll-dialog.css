@@ -23,34 +23,4 @@
     }
   }
 
-  footer {
-    display: flex;
-    gap: 5px;
-    margin-top: 5px;
-
-    .roll-mode-buttons {
-      display: flex;
-
-      button.selected {
-        background: var(--button-hover-background-color);
-        color: var(--button-hover-text-color)
-      }
-
-      button:not(:first-of-type, :last-of-type) {
-        border-radius: 0px;
-      }
-
-      button:first-of-type {
-        border-radius: 5px 0px 0px 5px;
-      }
-
-      button:last-of-type {
-        border-radius: 0px 5px 5px 0px;
-      }
-    }
-
-    &>button {
-      flex: 1;
-    }
-  }
 }

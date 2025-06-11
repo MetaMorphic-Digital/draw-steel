@@ -11,10 +11,15 @@ declare module "./base.mjs" {
       temporary: number;
       winded: number;
     },
-    characteristics: Record<string, {value: number}>;
+    characteristics: Record<string, { value: number }>;
     combat: {
       size: SizeModel;
       stability: number;
+      turns: number;
+      save: {
+        bonus: string;
+        threshold: number;
+      }
     }
     biography: {
       value: string;
@@ -25,6 +30,7 @@ declare module "./base.mjs" {
       value: number;
       types: Set<string>;
       hover: boolean;
+      disengage: number;
       teleport: number | null;
     }
     damage: {
@@ -41,7 +47,7 @@ declare module "./character.mjs" {
   type HeroicResource = {
     value: number;
     label?: string;
-  }
+  };
 
   export default interface CharacterModel {
     hero: {
@@ -61,6 +67,16 @@ declare module "./character.mjs" {
       weak: number;
       average: number;
       strong: number;
+    }
+    abilityBonuses: {
+      melee: {
+        distance: number;
+        damage?: DamageSchema;
+      }
+      ranged: {
+        distance: number;
+        damage?: DamageSchema;
+      }
     }
   }
 }

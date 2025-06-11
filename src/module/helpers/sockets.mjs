@@ -1,6 +1,8 @@
 import { systemID } from "../constants.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
 
+/** @import { DrawSteelActiveEffect, DrawSteelUser } from "../documents/_module.mjs"; */
+
 export default class DrawSteelSocketHandler {
   constructor() {
     this.#registerQueries();
@@ -12,10 +14,12 @@ export default class DrawSteelSocketHandler {
    * Register queries.
    */
   #registerQueries() {
-    CONFIG.queries[systemID] = ({ type, config }) => {
+    CONFIG.queries[systemID] = async ({ type, config }, queryOptions) => {
       switch (type) {
         case "spendHeroToken":
           return this.#spendHeroToken(config);
+        case "rollSave":
+          return this.#rollSave(config, queryOptions);
       }
     };
   }
@@ -36,7 +40,7 @@ export default class DrawSteelSocketHandler {
     }
 
     if (user.isSelf) return this.#spendHeroToken({ userId, spendType, flavor });
-    return user.query("draw-steel", {
+    return user.query(systemID, {
       type: "spendHeroToken",
       config: { userId, spendType, flavor },
     });
@@ -51,7 +55,7 @@ export default class DrawSteelSocketHandler {
    * @param {string} payload.spendType
    * @param {string} payload.flavor
    */
-  #spendHeroToken({ userId, spendType, flavor }) {
+  async #spendHeroToken({ userId, spendType, flavor }) {
     const sendingUser = game.users.get(userId);
     const userName = sendingUser?.name ?? userId;
     const tokenSpendConfiguration = ds.CONFIG.hero.tokenSpends[spendType];
@@ -77,5 +81,72 @@ export default class DrawSteelSocketHandler {
       content: tokenSpendConfiguration.messageContent,
       flavor: flavor ?? sendingUser?.character?.name,
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Call for a saving throw from a specific user
+   * @param {string | DrawSteelActiveEffect} effect   An effect instance or UUID
+   * @param {string | DrawSteelUser} user             A user instance or ID
+   * @param {object} rollOptions
+   * @param {object} dialogOptions
+   * @param {object} messageData
+   * @param {object} messageOptions
+   * @returns {object} The constructed message data
+   */
+  async rollSave(effect, user, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
+    if (typeof user === "string") user = game.users.get(user);
+
+    if (!user) throw new Error("No user found for DrawSteelSocketHandler#rollSave");
+
+    if (user.isSelf) {
+      if (typeof effect === "string") effect = await fromUuid(effect);
+      const message = effect.system.rollSave(rollOptions, dialogOptions, messageData, messageOptions);
+      return message instanceof DrawSteelChatMessage ? message.toObject() : message;
+    }
+
+    const effectUuid = typeof effect === "string" ? effect : effect.uuid;
+
+    return user.query(systemID, {
+      type: "rollSave",
+      config: {
+        userId: game.userId,
+        effectUuid,
+        rollOptions,
+        dialogOptions,
+        messageData,
+        messageOptions,
+      },
+    }, { timeout: 30 * 1000 });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Query a user for a saving throw roll
+   * @param {Object} payload
+   * @param {string} payload.userId               The ID of the user who sent the save request
+   * @param {string} payload.effectUuid           The effect to save on
+   * @param {object} [payload.rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}
+   * @param {object} [payload.dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}
+   * @param {object} [payload.messageData={}]     The data object to use when creating the message
+   * @param {object} [payload.messageOptions={}]  Additional options which modify the created message.
+   * @param {object} [queryOptions]                    The query options
+   * @param {number} [queryOptions.timeout]            The timeout in milliseconds
+   * @returns {object} The constructed message data
+  */
+  async #rollSave({ userId, effectUuid, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {} }, { timeout }) {
+    dialogOptions.timeout = timeout;
+
+    /**
+     * Effect should almost always be in-world anyways but we can safely fromUuid
+     * @type {DrawSteelActiveEffect}
+     */
+    const effect = await fromUuid(effectUuid);
+
+    const message = await effect.system.rollSave(rollOptions, dialogOptions, messageData, messageOptions);
+
+    return message instanceof DrawSteelChatMessage ? message.toObject() : message;
   }
 }
