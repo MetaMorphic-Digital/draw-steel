@@ -249,7 +249,9 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    context.resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
+
+    context.resourceName = resourceName;
 
     context.keywordList = formattedLabels.keywords;
     context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
@@ -293,6 +295,11 @@ export default class AbilityModel extends BaseItemModel {
 
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
+
+    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+      value: this.spend.value ?? "",
+      name: resourceName,
+    });
   }
 
   /* -------------------------------------------------- */
