@@ -1,6 +1,7 @@
 import { systemID, systemPath } from "../../constants.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 import DocumentInput from "../api/document-input.mjs";
+import MonsterMetadataInput from "../apps/monster-metadata-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
@@ -185,35 +186,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    */
   static async #editMonsterMetadata(event, target) {
-    const monsterMetadataContent = function () {
-      const htmlContainer = document.createElement("div");
-      const schema = this.actor.system.schema;
-      const monsterData = this.actor.system.monster;
-      const monsterConfig = ds.CONFIG.monsters;
-
-      const keywordInput = schema.getField("monster.keywords").toFormGroup({}, {
-        value: monsterData.keywords,
-        options: Object.entries(monsterConfig.keywords).map(([value, { label, group }]) => ({ value, label, group })),
-      });
-      const levelInput = schema.getField("monster.level").toFormGroup({}, { value: monsterData.level });
-      const organizationInput = schema.getField("monster.organization").toFormGroup({}, {
-        value: monsterData.organization,
-        options: Object.entries(monsterConfig.organizations).map(([value, { label }]) => ({ value, label })),
-      });
-      const roleInput = schema.getField("monster.role").toFormGroup({}, {
-        value: monsterData.role,
-        options: Object.entries(monsterConfig.roles).map(([value, { label }]) => ({ value, label })),
-      });
-      const evInput = schema.getField("monster.ev").toFormGroup({}, { value: monsterData.ev });
-
-      htmlContainer.append(keywordInput, levelInput, organizationInput, roleInput, evInput);
-
-      return htmlContainer.innerHTML;
-    };
-
-    new DocumentInput({
+    new MonsterMetadataInput({
       document: this.document,
-      contentFunc: monsterMetadataContent.bind(this),
       classes: ["monster-metadata"],
       window: {
         title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",

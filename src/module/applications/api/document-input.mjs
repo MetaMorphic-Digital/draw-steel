@@ -23,37 +23,22 @@ export default class DocumentInput extends HandlebarsApplicationMixin(DocumentSh
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static PARTS = {
-    body: {
-      template: systemPath("templates/sheets/document-input.hbs"),
-    },
-  };
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   get title() {
     return game.i18n.localize(this.options.window.title) || super.title;
   }
 
   /* -------------------------------------------------- */
 
-  /**
-   * A function that assembles the HTML content to display.
-   * It is acceptable for `this` to be bound to something other than the DocumentInput sheet.
-   * @type {() => Promise<string>}
-   */
-  get contentFunc() {
-    if (!(this.options.contentFunc instanceof Function)) console.error("You must pass a contentFunc");
-    return this.options.contentFunc;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   async _prepareContext(options) {
-    return {
-      content: await this.contentFunc(),
-    };
+    const context = await super._prepareContext(options);
+
+    context.system = this.document.system;
+
+    context.systemSource = this.document.system._source;
+
+    context.systemFields = this.document.system.schema.fields;
+
+    return context;
   }
 }

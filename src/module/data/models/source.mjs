@@ -1,4 +1,5 @@
 import DocumentInput from "../../applications/api/document-input.mjs";
+import DocumentSourceInput from "../../applications/apps/document-source-input.mjs";
 
 /** @import BasePackage from "@common/packages/base-package.mjs"; */
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
@@ -88,22 +89,8 @@ export default class SourceModel extends foundry.abstract.DataModel {
    * @returns {DrawSteelActor | DrawSteelItem}
    */
   async updateDialog() {
-    const dialogContent = function () {
-      const htmlContainer = document.createElement("div");
-      for (const [key, field] of Object.entries(this.schema.fields)) {
-        htmlContainer.append(field.toFormGroup({}, { value: this[key] }));
-      }
-      if (this.document?.documentName === "Item") {
-        const field = this.parent.schema.getField("_dsid");
-        htmlContainer.append(field.toFormGroup({}, { value: this.parent._dsid }));
-      }
-
-      return htmlContainer.innerHTML;
-    };
-
-    new DocumentInput({
+    new DocumentSourceInput({
       document: this.document,
-      contentFunc: dialogContent.bind(this),
       classes: ["document-source"],
       window: {
         title: "DRAW_STEEL.Source.UpdateTitle",

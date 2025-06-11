@@ -3,7 +3,7 @@ import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import DocumentInput from "../api/document-input.mjs";
+import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
@@ -700,24 +700,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   static async #editCombat(event, target) {
-    const combatContent = function () {
-
-      const htmlContainer = document.createElement("div");
-      const schema = this.actor.system.schema;
-      const combatData = this.actor.system.combat;
-
-      const turnInput = schema.getField("combat.turns").toFormGroup({ classes: ["slim"] }, { value: combatData.turns });
-      const saveBonusInput = schema.getField("combat.save.bonus").toFormGroup({}, { value: combatData.save.bonus });
-      const saveThresholdInput = schema.getField("combat.save.threshold").toFormGroup({}, { value: combatData.save.threshold });
-      if (this.actor.type !== "character") htmlContainer.append(turnInput);
-      htmlContainer.append(saveBonusInput, saveThresholdInput);
-
-      return htmlContainer.innerHTML;
-    };
-
-    new DocumentInput({
+    new ActorCombatStatsInput({
       document: this.document,
-      contentFunc: combatContent.bind(this),
       classes: ["actor-combat"],
       window: {
         title: "DRAW_STEEL.Actor.base.NicheCombatDialog.Title",
