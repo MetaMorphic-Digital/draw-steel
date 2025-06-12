@@ -39,6 +39,7 @@
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
 - Fixed free strikes not applying. (#544)
+- Minions which have unlinked tokens in a squad but are not themselves in a squad will not display as if they are in a squad. (#561)
 
 ## 0.7.1
 

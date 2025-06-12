@@ -191,7 +191,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @returns {Set<DrawSteelCombatantGroup>}
    */
   get combatGroups() {
-    return new Set(game.combat?.getCombatantsByActor(this.parent).map(c => c.group).filter(group => !!group) ?? []);
+    const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
+    // The root actor will match to *all* unlinked tokens, so need to check against that
+    const actorMatches = combatants.filter(c => c.actor === this.parent);
+    const groups = actorMatches.map(c => c.group).filter(g => !!g);
+    return new Set(groups);
   }
 
   /**
