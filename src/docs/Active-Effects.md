@@ -1,6 +1,6 @@
 Draw Steel fully supports the use of active effects to modify actor attributes.
 
- The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has more info on the basics of active effects; this page is focused on system-specific information.
+The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has more info on the basics of active effects; this page is focused on system-specific information.
 
 ## Legend
 
@@ -22,22 +22,22 @@ While the [Actor's Rolldata](https://github.com/MetaMorphic-Digital/draw-steel/b
 
 |Change Mode|Description|
 |:-----------:|--------|
-|Add|Adds the provided value to the specified attribute. For numerical attributes, this can be used to both add and subtract from a particular value by specifying `1` or `-1` as the value to add.|
-|Multiply|Multiplies the defined attribute by the numeric value in the Effect Value field.|
-|Override|Replaces the defined attribute with the value provided in the Effect Value field. If applied to a text value such as a name or description a pair of curly brackets like `{}` can be used to include the value being overridden in the final output. So overriding on the name of "Breastplate" with `Arcane Propulsive {}` will result in the final name of "Arcane Propulsive Breastplate".|
-|Downgrade|Reduces the defined attribute only in cases where the current value of that attribute would be greater than value specified in the Effect Value field.|
+|Add|Adds the provided value to the specified attribute. For attributes, this can be used to both add and subtract from a particular value by specifying `1` or `-1` as the value to add.|
+|Multiply|Multiplies the defined attribute by the value in the Effect Value field.|
+|Override|Replaces the defined attribute with the value provided in the Effect Value field.|
+|Downgrade|Reduces the defined attribute only in cases where the current the value of that attribute would be greater than value specified in the Effect Value field.|
 |Upgrade|Increases the defined attribute only in cases where the current value of that attribute would be less than value specified in the Effect Value field.|
-|Custom|The Custom change mode applies logic defined by a game system or add-on module. The dnd5e system does not utilize the Custom Change Mode.|  
+|Custom|The Custom change mode applies logic defined by a game system or add-on module. The Draw Steel system does not utilize the Custom Change Mode.|  
 
 ## Duration
 
-Draw Steel has two different predefined effect durations `End of Turn (EoT)` and `save ends`. Additionally, the `save ends` duration allows to define the saving throw formula, the default is `1d10`.
+Draw Steel has two different predefined effect durations `End of Turn (EoT)` and `save ends`. Additionally, the `save ends` duration allows for defining the saving throw formula. The default is `1d10`.
 
 Currently these are only for book keeping and the effect will not end if either of those two conditions is reached.
 
 ### Characteristic Keys
 
-|Characteristic|system. address|
+|Characteristic|Attribute Key|
 |:---:|---|
 |Agility value |`system.characteristics.agility.value`|
 |Intuition value | `system.characteristics.intuition.value`|
@@ -47,7 +47,7 @@ Currently these are only for book keeping and the effect will not end if either 
 
 ### Common bonus effect examples
 
-|Value Name|system. address|
+|Value Name|Attribute Key|
 |:---:|---|
 |Save Bonus|`system.combat.save.bonus`|
 |Actor Size (on sheet, not token size)|`system.combat.size`|
@@ -57,19 +57,19 @@ Currently these are only for book keeping and the effect will not end if either 
 |Current Stamina|`system.stamina.value`|
 |Temporary Stamina|`system.stamina.temporary`|
 |Speed|`system.movement.value`|
-|Bonus to Tier X Melee Damage (X=1/2/3)|`system.abilityBonuses.melee.damage.tierX`|
+|Bonus to Tier X Melee Damage (X=1, 2, 3)|`system.abilityBonuses.melee.damage.tierX`|
 |Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
-|Bonus to Tier X Ranged Damage (X=1/2/3)|`system.abilityBonuses.ranged.damage.tierX`|
+|Bonus to Tier X Ranged Damage (X=1, 2, 3)|`system.abilityBonuses.ranged.damage.tierX`|
 |Bonus to Ranged Distance|`system.abilityBonuses.ranged.distance`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >
-> |Damage Type|Active Effect address|
+> |Damage Type|Active Effect Attribute Key|
 > |:---:|---|
-> |Acid damage|`acid`
 > |All damage (including untyped)|`all`
+> |Acid damage|`acid`
 > |Cold damage|`cold`
 > |Corruption damage|`corruption`
 > |Fire damage|`fire`
@@ -81,7 +81,7 @@ Currently these are only for book keeping and the effect will not end if either 
 >
 >An Example to add fire immunity 3 would be
 >
-> |system.damage.immunities.fire|Add|`3`|
+> |`system.damage.immunities.fire`|Add|`3`|
 > |---|---|---|
 >
 ></details>
