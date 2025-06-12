@@ -125,14 +125,17 @@
               "label": "Stability"
             },
             "turns": {
-              "label": "Turns Per Round"
+              "label": "Turns Per Round",
+              "hint": "Some monsters get additional turns every round."
             },
             "save": {
               "bonus": {
-                "label": "Save Bonus"
+                "label": "Save Bonus",
+                "hint": "By default, saving throws roll '1d10 + @combat.save.bonus'."
               },
               "threshold": {
-                "label": "Save Threshold"
+                "label": "Save Threshold",
+                "hint": "The total necessary to end a (Save Ends) effect."
               }
             }
           },
@@ -173,6 +176,10 @@
           "S": "Small",
           "M": "Medium",
           "L": "Large"
+        },
+        "NicheCombatDialog": {
+          "EditTooltip": "Edit Specialized Combat Data",
+          "Title": "Specialized Combat Data"
         }
       },
       "Character": {

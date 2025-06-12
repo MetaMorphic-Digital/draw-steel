@@ -1,6 +1,6 @@
 {{#if isPlay}}
 <fieldset class="combat flexrow">
-  <legend>{{systemFields.combat.label}}</legend>
+  <legend data-tooltip="{{combatTooltip}}">{{systemFields.combat.label}}</legend>
   <span class="play">
     {{systemFields.combat.fields.size.label}} {{system.combat.size}}
   </span>
@@ -13,7 +13,7 @@
 </fieldset>
 {{else}}
 <fieldset class="combat flexrow">
-  <legend>{{systemFields.combat.label}}</legend>
+  <legend data-tooltip="{{combatTooltip}}">{{systemFields.combat.label}}</legend>
   <div class="size flexrow">
     <label class="size">{{systemFields.combat.fields.size.label}}</label>
     {{formInput systemFields.combat.fields.size.fields.value value=systemSource.combat.size.value rootId=document.uuid dataset=datasets.isSource}}
@@ -22,5 +22,6 @@
     {{/if}}
   </div>
   {{formGroup systemFields.combat.fields.stability value=systemSource.combat.stability rootId=document.uuid}}
+  <button type="button" class="icon fa-solid fa-gear" data-action="editCombat" data-tooltip="{{localize "DRAW_STEEL.Actor.base.NicheCombatDialog.EditTooltip"}}"></button>
 </fieldset>
 {{/if}}

@@ -1,0 +1,9 @@
+<section class="standard-form">
+  {{formGroup sourceFields.book value=sourceValues.book}}
+  {{formGroup sourceFields.page value=sourceValues.page}}
+  {{formGroup sourceFields.license value=sourceValues.license}}
+  {{formGroup sourceFields.revision value=sourceValues.revision}}
+  {{#if systemFields._dsid}}
+  {{formGroup systemFields._dsid value=systemSource._dsid}}
+  {{/if}}
+</section>
