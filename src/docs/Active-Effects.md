@@ -24,7 +24,7 @@ While the [Actor's Rolldata](https://github.com/MetaMorphic-Digital/draw-steel/b
 |:-----------:|--------|
 |Add|Adds the provided value to the specified attribute. For numerical attributes, this can be used to both add and subtract from a particular value by specifying `1` or `-1` as the value to add.|
 |Multiply|Multiplies the defined attribute by the numeric value in the Effect Value field.|
-|Override|Replaces the defined attribute with the value provided in the Effect Value field. If applied to a text value such as a name or description a pair of curly brackets like `{}` can be used to include the value being overriden in the final output. So overriding on the name of "Breastplate" with `Arcane Propulsive {}` will result in the final name of "Arcane Propulsive Breastplate".|
+|Override|Replaces the defined attribute with the value provided in the Effect Value field. If applied to a text value such as a name or description a pair of curly brackets like `{}` can be used to include the value being overridden in the final output. So overriding on the name of "Breastplate" with `Arcane Propulsive {}` will result in the final name of "Arcane Propulsive Breastplate".|
 |Downgrade|Reduces the defined attribute only in cases where the current value of that attribute would be greater than value specified in the Effect Value field.|
 |Upgrade|Increases the defined attribute only in cases where the current value of that attribute would be less than value specified in the Effect Value field.|
 |Custom|The Custom change mode applies logic defined by a game system or add-on module. The dnd5e system does not utilize the Custom Change Mode.|  
@@ -56,7 +56,7 @@ Currently these are only for book keeping and the effect will not end if either 
 |Maximum Stamina|`system.stamina.max`|
 |Current Stamina|`system.stamina.value`|
 |Temporary Stamina|`system.stamina.temporary`|
-|Speed|`system.movment.value`|
+|Speed|`system.movement.value`|
 |Bonus to Tier X Melee Damage (X=1/2/3)|`system.abilityBonuses.melee.damage.tierX`|
 |Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
 |Bonus to Tier X Ranged Damage (X=1/2/3)|`system.abilityBonuses.ranged.damage.tierX`|
