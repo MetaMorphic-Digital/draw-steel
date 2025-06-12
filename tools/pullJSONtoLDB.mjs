@@ -4,9 +4,8 @@ import path from "path";
 import Showdown from "showdown";
 
 const SYSTEM_ID = process.cwd();
-
-const BASE_SRC_PATH = "src/packs";
-const BASE_DEST_PATH = "packs";
+const yaml = false;
+const folders = true;
 
 // Options copied from foundry's constants.mjs
 const converter = new Showdown.Converter({
@@ -18,24 +17,15 @@ const converter = new Showdown.Converter({
   tablesHeaderId: true,
 });
 
-await compilePacksRecursively();
-
-/**
- * Compiles all packs in the given base path
- */
-async function compilePacksRecursively() {
-  const packs = (await fs.readdir(BASE_SRC_PATH, { withFileTypes: true })).filter(file => file.isDirectory());
-
-  for (const pack of packs) {
-    const srcPath = path.join(BASE_SRC_PATH, pack.name);
-    const destPath = path.join(BASE_DEST_PATH, pack.name);
-    console.log("Packing " + srcPath + " to " + destPath);
-    await compilePack(
-      `${SYSTEM_ID}/${srcPath}`,
-      `${SYSTEM_ID}/${destPath}`,
-      { recursive: true, log: true, transformEntry },
-    );
-  }
+const packs = await fs.readdir("./src/packs");
+for (const pack of packs) {
+  if (pack === ".gitattributes") continue;
+  console.log("Packing " + pack);
+  await compilePack(
+    `${SYSTEM_ID}/src/packs/${pack}`,
+    `${SYSTEM_ID}/packs/${pack}`,
+    { yaml, recursive: folders, transformEntry },
+  );
 }
 
 /**

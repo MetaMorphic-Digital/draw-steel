@@ -3,84 +3,63 @@ import { promises as fs } from "fs";
 import path from "path";
 
 const SYSTEM_ID = process.cwd();
-const BASE_LDB_PATH = "packs";
-const BASE_SRC_PATH = "src";
+const yaml = false;
+const expandAdventures = true;
+const folders = true;
 
-await extractPacks();
-
-/**
- * Unpacks all compendium packs located in the basePath
- */
-async function extractPacks() {
-  const dirents = await fs.readdir(BASE_LDB_PATH, { withFileTypes: true, recursive: true });
-  const packs = dirents.filter((dirent) => dirent.isDirectory());
-
-  const folders = {};
-  for (const pack of packs) {
-    const packName = path.join(pack.path, pack.name);
-    console.log("Unpacking " + packName);
-    await extractAllFoldersFromPackFile(folders, packName);
-    Object.values(folders).forEach(folder => buildAndAddPath(folders, folder));
-    await unpackToPath(folders, packName);
+const packs = await fs.readdir("./packs");
+for (const pack of packs) {
+  if ((pack === ".gitattributes") || (pack === ".DS_Store")) continue;
+  console.log("Unpacking " + pack);
+  const directory = `./src/packs/${pack}`;
+  try {
+    for (const file of await fs.readdir(directory)) {
+      const filePath = path.join(directory, file);
+      if (file.endsWith(yaml ? ".yml" : ".json")) await fs.unlink(filePath);
+      else fs.rm(filePath, { recursive: true });
+    }
+  } catch (error) {
+    if (error.code === "ENOENT") console.log("No files inside of " + pack);
+    else console.log(error);
   }
-}
-
-/**
- * Reads all folders inside a pack and adds it to a collection of folders
- * @param {ref} collection - Reference to the collection of folders
- * @param {string} packName - Path to the pack ldb folder
- */
-async function extractAllFoldersFromPackFile(collection, packName) {
   await extractPack(
-    `${SYSTEM_ID}/${packName}`,
-    `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
+    `${SYSTEM_ID}/packs/${pack}`,
+    `${SYSTEM_ID}/src/packs/${pack}`,
     {
-      transformEntry: (entry) => {
-        if (entry._key.startsWith("!folders")) {
-          collection[entry._id] = { name: slugify(entry.name), parentFolder: entry.folder };
-        }
-        return false;
-      },
-    },
-  );
-}
-
-/**
- * Adds a path to each folder in the collection
- * @param {ref} collection - Reference to the collection of folders
- * @param {object} folderEntry - An entry from the folders collection
- */
-function buildAndAddPath(collection, folderEntry) {
-  let parent = collection[folderEntry.parentFolder];
-  folderEntry.path = folderEntry.name;
-  while (parent) {
-    folderEntry.path = path.join(parent.path, folderEntry.path);
-    parent = collection[parent.parentFolder];
-  }
-}
-
-/**
- * Unpacks all files and folder from the given packName path
- * Files are unpacked into their respective compendium folders
- * @param {ref} collection - Reference to the collection of folders
- * @param {string} packName - Path to the pack ldb folder
- */
-async function unpackToPath(collection, packName) {
-  await extractPack(
-    `${SYSTEM_ID}/${packName}`,
-    `${SYSTEM_ID}/${BASE_SRC_PATH}/${packName}`,
-    {
+      yaml,
+      transformName,
       transformEntry,
-      transformName: entry => {
-        const filename = transformName(entry);
-        if (entry._id in collection) {
-          return path.join(collection[entry._id].path, filename);
-        }
-        const parent = collection[entry.folder];
-        return path.join(parent?.path ?? "", filename);
-      },
+      expandAdventures,
+      folders,
     },
   );
+}
+/**
+ * Prefaces the document with its type
+ * @param {object} doc - The document data
+ */
+function transformName(doc, context) {
+  const safeFileName = doc.name.replace(/[^a-zA-Z0-9А-я]/g, "_");
+  let type = doc._key?.split("!")[1];
+  if (!type) {
+    if ("playing" in doc)
+      type = "playlist";
+    else if (doc.sorting)
+      type = `folder_${doc.type}`;
+    else if (doc.walls)
+      type = "scene";
+    else if (doc.results)
+      type = "rollTable";
+    else if (doc.pages)
+      type = "journal";
+    else
+      type = doc.type;
+  }
+  const prefix = ["actors", "items"].includes(type) ? doc.type : type;
+
+  let name = `${doc.name ? `${prefix}_${safeFileName}_${doc._id}` : doc._id}.${yaml ? "yml" : "json"}`;
+  if (context.folder) name = path.join(context.folder, name);
+  return name;
 }
 
 /**
@@ -99,25 +78,4 @@ async function transformEntry(entry) {
     });
     jep.text = { format: 2 };
   }
-}
-
-/**
- * Prefaces the document with its type
- * @param {object} doc - The document data
- */
-function transformName(doc) {
-  const safeFileName = doc.name.replace(/[^a-zA-Z0-9А-я]/g, "_");
-  const type = doc._key.split("!")[1];
-  const prefix = ["actors", "items"].includes(type) ? doc.type : type;
-
-  return `${doc.name ? `${prefix}_${safeFileName}_${doc._id}` : doc._id}.json`;
-}
-
-/**
- * Standardize name format.
- * @param {string} name
- * @returns {string}
- */
-function slugify(name) {
-  return name.toLowerCase().replace("'", "").replace(/[^a-z0-9]+/gi, " ").trim().replace(/\s+|-{2,}/g, "-");
 }
