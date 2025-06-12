@@ -691,18 +691,31 @@ preLocalize("negotiation.motivations", { key: "label" });
 DRAW_STEEL.hero = {
   /** Items added to new heroes in _preCreate */
   defaultItems: new Set([
+    // Aid Attack
     "Compendium.draw-steel.abilities.Item.Xb3S5N1fZyICD58D",
+    // Catch Breath
     "Compendium.draw-steel.abilities.Item.nYPJN8Ce2dX9H09K",
+    // Charge
     "Compendium.draw-steel.abilities.Item.wNqJWJbgAbnJBqZf",
+    // Defend
     "Compendium.draw-steel.abilities.Item.fjtY7RKBGWx2u5tK",
+    // Escape Grab
     "Compendium.draw-steel.abilities.Item.iD1SlB15GXJFALya",
+    // Grab
     "Compendium.draw-steel.abilities.Item.oxaISpgVoCfo6fmt",
+    // Heal
     "Compendium.draw-steel.abilities.Item.2qWHDVB7SBS9anLB",
+    // Hide
     "Compendium.draw-steel.abilities.Item.JykB1rELpGBeAVe6",
+    // Knockback
     "Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu",
+    // Melee Free Strike
     "Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6",
+    // Ranged Free Strike
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
+    // Search for Hidden Creatures
     "Compendium.draw-steel.abilities.Item.zQ83mlzlRtflpD3w",
+    // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
   ]),
   /**

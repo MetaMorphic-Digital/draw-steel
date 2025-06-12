@@ -154,7 +154,6 @@ export default class CharacterModel extends BaseActorModel {
 
     if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
       const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
-      console.log(items);
       updates.items = items.map(i => i.toObject());
     }
 
