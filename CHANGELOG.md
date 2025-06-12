@@ -37,10 +37,12 @@
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)
 - The Monster Metadata and Source forms now perform live updates instead of using a save button.
+- Added a `dsid` getter on the Item class, made the initialized version of _dsid read only (you can still perform updates but not apply active effects). (#389)
 
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
 - Fixed free strikes not applying. (#544)
+- Minions which have unlinked tokens in a squad but are not themselves in a squad will not display as if they are in a squad. (#561)
 
 ## 0.7.1
 

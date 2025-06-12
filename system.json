@@ -10,10 +10,12 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "htmlFields": ["biography.value", "biography.gm"]
+        "htmlFields": ["biography.value", "biography.gm"],
+        "gmOnlyFields": ["biography.gm"]
       },
       "npc": {
-        "htmlFields": ["biography.value", "biography.gm"]
+        "htmlFields": ["biography.value", "biography.gm"],
+        "gmOnlyFields": ["biography.gm"]
       }
     },
     "ChatMessage": {

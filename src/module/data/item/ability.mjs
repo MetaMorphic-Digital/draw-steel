@@ -588,7 +588,7 @@ export default class AbilityModel extends BaseItemModel {
     // Checking if active effects have restricted this ability based on type or _dsid
     const restrictions = this.actor.system.restrictions;
     if (restrictions.type.has(this.type)) return true;
-    if (restrictions.dsid.has(this._dsid)) return true;
+    if (restrictions.dsid.has(this.parent.dsid)) return true;
 
     return false;
   }
