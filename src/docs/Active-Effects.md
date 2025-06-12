@@ -6,7 +6,7 @@ Draw Steel fully supports the use of active effects to modify actor attributes.
 
 `[number]` - These square brackets mean "replace this with your value of the type within the brackets". So this example: `[number]` would mean you input `3`. If roll data is allowed, you can input any roll data that would _evaluate_ to a number (no dice allowed).
 
-`[formula]` - When `formula` is mentioned in this document it means this value can be populated with any dice formula. For example, an ability could adds an effect with the Effect Value of `1d6`. These fields always allow for the use of roll data.
+`[formula]` - When `formula` is mentioned in this document it means this value can be populated with any dice formula. For example, an ability could add an effect with the Effect Value of `1d6`. These fields always allow for the use of roll data.
 
   > **Sheet Modes**
 > The Actor and Item sheets in the system support both Play and Edit modes. One important difference between the two is that the Edit mode prioritizes showing the "source" data, which is *before* active effects are applied. To see values with active effects calculated, switch back to play mode.
