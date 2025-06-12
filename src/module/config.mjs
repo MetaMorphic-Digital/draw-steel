@@ -686,9 +686,25 @@ DRAW_STEEL.negotiation = {
 preLocalize("negotiation.motivations", { key: "label" });
 
 /**
- * Configuration information for heros
+ * Configuration information for heroes
  */
 DRAW_STEEL.hero = {
+  /** Items added to new heroes in _preCreate */
+  defaultItems: new Set([
+    "Compendium.draw-steel.abilities.Item.Xb3S5N1fZyICD58D",
+    "Compendium.draw-steel.abilities.Item.nYPJN8Ce2dX9H09K",
+    "Compendium.draw-steel.abilities.Item.wNqJWJbgAbnJBqZf",
+    "Compendium.draw-steel.abilities.Item.fjtY7RKBGWx2u5tK",
+    "Compendium.draw-steel.abilities.Item.iD1SlB15GXJFALya",
+    "Compendium.draw-steel.abilities.Item.oxaISpgVoCfo6fmt",
+    "Compendium.draw-steel.abilities.Item.2qWHDVB7SBS9anLB",
+    "Compendium.draw-steel.abilities.Item.JykB1rELpGBeAVe6",
+    "Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu",
+    "Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6",
+    "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
+    "Compendium.draw-steel.abilities.Item.zQ83mlzlRtflpD3w",
+    "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
+  ]),
   /**
    * XP progression for heroes
    * @type {number[]}
