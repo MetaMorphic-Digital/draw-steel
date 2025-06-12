@@ -35,6 +35,7 @@
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)
 - The Monster Metadata and Source forms now perform live updates instead of using a save button.
+- Added a `dsid` getter on the Item class, made the initialized version of _dsid read only (you can still perform updates but not apply active effects). (#389)
 
 ### Fixed
 - Fixed an issue that allowed characteristics to become null, instead of defaulting back to 0.
