@@ -129,7 +129,6 @@ Value indicates if actor currently has status (1/yes, 0/no)
 ## Item Roll Data
 **First example: a craftable consumable**
 #### Item Descriptors
-+ Draw Steel ID - `@item._dsid`
 + Item category - `@item.category `
 + Item GM description - `@item.description.gm`
 + Item Type - `@item.kind`
@@ -172,7 +171,6 @@ Value indicates if actor currently has status (1/yes, 0/no)
 
 ### Abilities
 
-+ Draw Steel ID - `@item._dsid`
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
 + Ability Story Text - `@item.story`
