@@ -33,6 +33,7 @@
   - Note: Expect future breaking changes with how Spend is configured to account for variations that the current data does not represent.
 - Added Ability compendium with basic actions and maneuvers.
   - Creating a new character will give them those basic actions and maneuvers. (#56)
+- Stamina changes now display as floating damage number. The color depends on the type of damage dealt. (#417)
 
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)

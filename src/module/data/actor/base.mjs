@@ -279,7 +279,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
     const damageColor = ds.CONFIG.damageTypes[damageType]?.color ?? null;
     const tokens = this.parent.getActiveTokens();
-    const displayedDiff = Math.abs(diff);
+    const displayedDiff = (-1 * diff).signedString();
     const defaultFill = (diff < 0 ? "lightgreen" : "white");
     const displayArgs = {
       fill: damageColor ?? defaultFill,
