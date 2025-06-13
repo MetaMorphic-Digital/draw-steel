@@ -1,0 +1,106 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Grab",
+  "type": "ability",
+  "img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "grab",
+    "keywords": [
+      "melee"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You gain an edge on the power roll if the creature’s size is smaller than yours. You can grab only one creature at a time this way.</p>"
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "You attempt to grab a creature using the following ability.",
+    "power": {
+      "roll": {
+        "characteristics": [
+          "might"
+        ],
+        "formula": "@chr"
+      },
+      "effects": {
+        "VTYdHGLzFvmGyupC": {
+          "type": "other",
+          "_id": "VTYdHGLzFvmGyupC",
+          "other": {
+            "tier1": {
+              "display": "No effect",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "You can grab the target, but if you do, they can make a melee free strike against you right before they become grabbed by you.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "The target is grabbed by you.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          },
+          "name": "Grab"
+        }
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "4a033d9089b28c791f28ff59d3c5b757f27adb81",
+      "sourceId": "Item.ztGXx0pOJxFGBlNf",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702845310,
+    "modifiedTime": 1749703774298,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "oxaISpgVoCfo6fmt",
+  "sort": 600000,
+  "_key": "!items!oxaISpgVoCfo6fmt"
+}

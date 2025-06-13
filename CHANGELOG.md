@@ -31,6 +31,8 @@
   - These are also readable in a hover tooltip on the "Combat" legend in the Stats tab.
 - Added spend line to the displayed power content. (#398)
   - Note: Expect future breaking changes with how Spend is configured to account for variations that the current data does not represent.
+- Added Ability compendium with basic actions and maneuvers.
+  - Creating a new character will give them those basic actions and maneuvers. (#56)
 
 ### Changed
 - Aligned the system's active effect suppression checks with core v13 behavior, allowing the system model to also apply. (#541)

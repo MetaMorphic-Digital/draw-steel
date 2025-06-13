@@ -1,0 +1,116 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Melee Free Strike",
+  "type": "ability",
+  "img": "icons/skills/melee/hand-grip-sword-strike-orange.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "melee-free-strike",
+    "keywords": [
+      "charge",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "freeStrike",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "power": {
+      "roll": {
+        "characteristics": [
+          "might",
+          "agility"
+        ],
+        "formula": "@chr"
+      },
+      "effects": {
+        "uMnGIJk7i9wqGwXp": {
+          "type": "damage",
+          "_id": "uMnGIJk7i9wqGwXp",
+          "damage": {
+            "tier2": {
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.average"
+              },
+              "value": "5 + @chr",
+              "types": [],
+              "properties": []
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.strong"
+              },
+              "value": "7 + @chr",
+              "types": [],
+              "properties": []
+            },
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            }
+          },
+          "name": ""
+        }
+      }
+    },
+    "story": ""
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "bffa27c7db1502fd4f2b90a1420f470837b907d0",
+      "sourceId": "Item.U7BDh9DDhRyhQSM9",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702850267,
+    "modifiedTime": 1749703168450,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "wU69Y06G9lYFrvp6",
+  "sort": 1100000,
+  "_key": "!items!wU69Y06G9lYFrvp6"
+}

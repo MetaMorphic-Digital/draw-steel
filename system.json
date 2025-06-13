@@ -101,6 +101,11 @@
   }],
   "packs": [
     {
+      "name": "abilities",
+      "label": "Abilities",
+      "type": "Item"
+    },
+    {
       "name": "journals",
       "label": "System Journals",
       "type": "JournalEntry"
@@ -110,7 +115,7 @@
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["journals"]
+      "packs": ["abilities", "journals"]
     }
   ],
   "socket": true,
