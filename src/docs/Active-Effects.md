@@ -31,19 +31,23 @@ While the [Actor's Rolldata](https://github.com/MetaMorphic-Digital/draw-steel/b
 
 ## Duration
 
-Draw Steel has two different predefined effect durations `End of Turn (EoT)` and `save ends`. Additionally, the `save ends` duration allows for defining the saving throw formula. The default is `1d10`.
+Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `save ends`, and `End of Encounter`.
+Additionally, the `save ends` duration allows for defining the saving throw formula. The default is `1d10`.
 
++ End of Turn will automatically self-disable when an affected actor ends their turn.
++ Saving Throws will create prompts for owners that allow to change the save threshhold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
++ End of Encounter effects will automatically self-disable alongside the encounter.
 Currently these are only for book keeping and the effect will not end if either of those two conditions is reached.
 
 ### Characteristic Keys
 
 |Characteristic|Attribute Key|
 |:---:|---|
-|Agility value |`system.characteristics.agility.value`|
-|Intuition value | `system.characteristics.intuition.value`|
-| Might value | `system.characteristics.might.value`|
-| Presence value | `system.characteristics.presence.value`|
-|Reason value| `system.characteristics.reason.value`|
+|Agility value|`system.characteristics.agility.value`|
+|Intuition value|`system.characteristics.intuition.value`|
+|Might value|`system.characteristics.might.value`|
+|Presence value|`system.characteristics.presence.value`|
+|Reason value|`system.characteristics.reason.value`|
 
 ### Common bonus effect examples
 
@@ -54,8 +58,8 @@ Currently these are only for book keeping and the effect will not end if either 
 |Stability|`system.combat.stability`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
-|Current Stamina|`system.stamina.value`|
-|Temporary Stamina|`system.stamina.temporary`|
+|Current Stamina **!**|`system.stamina.value`|
+|Temporary Stamina **!**|`system.stamina.temporary`|
 |Speed|`system.movement.value`|
 |Bonus to Tier X Melee Damage (X=1, 2, 3)|`system.abilityBonuses.melee.damage.tierX`|
 |Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
@@ -63,6 +67,8 @@ Currently these are only for book keeping and the effect will not end if either 
 |Bonus to Ranged Distance|`system.abilityBonuses.ranged.distance`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
+
+**!**: `Current Stamina` and `Tempoorary Stamina` must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >
@@ -79,7 +85,7 @@ Currently these are only for book keeping and the effect will not end if either 
 > |Psychic Damage|`psychic`
 > |Sonic Damage|`sonic`
 >
->An Example to add fire immunity 3 would be
+> An Example to add fire immunity 3 would be
 >
 > |`system.damage.immunities.fire`|Add|`3`|
 > |---|---|---|
