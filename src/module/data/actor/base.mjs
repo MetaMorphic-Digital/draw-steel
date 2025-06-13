@@ -225,6 +225,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         },
       });
     }
+
+    if (changes.system?.stamina) {
+      options.ds ??= {};
+      options.ds.previousStamina = { ...this.stamina };
+    }
   }
 
   /**
@@ -239,6 +244,13 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super._onUpdate(changed, options, userId);
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
+
+    if (options.ds?.previousStamina && changed.system?.stamina) {
+      const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
+      const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
+      const diff = stamDiff + tempDiff;
+      this.displayStaminaChange(diff, options.ds.damageType);
+    }
   }
 
   /**
@@ -252,6 +264,43 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
       await this.parent.toggleStatusEffect(key, { active });
     }
+  }
+
+  /**
+   * Display actor stamina changes on active tokens.
+   *
+   * @param {number} diff The amount the actor's stamina has changed.
+   * @param {string} [damageType=""] The type of damage being dealt.
+   */
+  async displayStaminaChange(diff, damageType = "") {
+    if (!diff || !canvas.scene) {
+      return;
+    }
+
+    const damageColor = ds.CONFIG.damageTypes[damageType]?.color ?? null;
+    const tokens = this.parent.getActiveTokens();
+    const displayedDiff = Math.abs(diff);
+    const defaultFill = (diff < 0 ? "lightgreen" : "white");
+    const displayArgs = {
+      fill: damageColor ?? defaultFill,
+      fontSize: 32,
+      stroke: 0x000000,
+      strokeThickness: 4,
+    };
+
+    tokens.forEach((token) => {
+      if (!token.visible || token.document.isSecret) {
+        return;
+      }
+
+      const scrollingTextArgs = [
+        token.center,
+        displayedDiff,
+        displayArgs,
+      ];
+
+      canvas.interface.createScrollingText(...scrollingTextArgs);
+    });
   }
 
   /**
@@ -354,10 +403,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       return this.parent;
     }
 
+    const damageTypeOption = { ds: { damageType: options.type } };
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage });
+        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage }, damageTypeOption);
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -374,7 +424,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates });
+    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }
 
   /**
