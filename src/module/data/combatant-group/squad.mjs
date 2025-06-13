@@ -71,12 +71,18 @@ export default class SquadModel extends BaseCombatantGroupModel {
     super._onUpdate(changed, options, userId);
 
     if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
-    if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff);
+    if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff, options.ds.damageType);
   }
 
-  displayMinionStaminaChange(diff) {
+  /**
+   * Displays a change in stamina over each minion in a group.
+   *
+   * @param {number} diff The amount of stamina that has changed.
+   * @param {string} [damageType=""] The type of damage being dealt.
+   */
+  displayMinionStaminaChange(diff, damageType = "") {
     this.minions.forEach((minion) => {
-      minion.actor?.system.displayStaminaChange(diff);
+      minion.actor?.system.displayStaminaChange(diff, damageType);
     });
   }
 

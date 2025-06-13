@@ -95,7 +95,7 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 
 /**
  * Configuration information for damage types
- * @type {Record<string, {label: string, color: Color}>}
+ * @type {Record<string, {label: string, color: foundry.utils.Color}>}
  */
 DRAW_STEEL.damageTypes = {
   acid: {

@@ -381,10 +381,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       return this.parent;
     }
 
+    const damageTypeOption = { ds: { damageType: options.type } };
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage });
+        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage }, damageTypeOption);
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -401,7 +402,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates }, { ds: { damageType: options.type } });
+    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }
 
   /**
