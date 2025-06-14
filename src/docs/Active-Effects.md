@@ -64,7 +64,7 @@ Additionally, the Save Ends duration allows for defining the saving throw formul
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
 > Common Mistakes
-> **!**: Current Stamina (`system.stamina.value`) and Tempoorary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
+> **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >

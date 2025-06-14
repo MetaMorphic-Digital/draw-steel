@@ -12,3 +12,4 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 ## Helpers
 * [[Enrichers]]
 * [[Roll Data]]
+* [[System Automation]]
