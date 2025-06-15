@@ -19,12 +19,4 @@ export default class AdvancementModel extends BaseItemModel {
       advancements: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.advancements.BaseAdvancement),
     });
   }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  prepareDerivedData() {
-    super.prepareDerivedData();
-    for (const advancement of this.advancements) advancement.prepareDerivedData();
-  }
 }
