@@ -38,6 +38,14 @@ export default class BaseAdvancement extends TypedPseudoDocument {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    this.name = game.i18n.localize(`TYPES.Advancement.${this.type}`);
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Determine inheritance chain for item granting.
    * @param {AdvancementChain|null} [parent=null]   The 'parent' link in the chain.

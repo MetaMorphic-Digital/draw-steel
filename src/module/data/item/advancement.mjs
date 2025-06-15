@@ -20,4 +20,11 @@ export default class AdvancementModel extends BaseItemModel {
     });
   }
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    for (const advancement of this.advancements) advancement.prepareDerivedData();
+  }
 }
