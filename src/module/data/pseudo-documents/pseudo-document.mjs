@@ -148,7 +148,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @param {string} id                   The id of the embedded pseudo-document.
    * @param {object} [options]            Retrieval options.
    * @param {boolean} [options.invalid]   Retrieve an invalid pseudo-document?
-   * @param {boolean} [options.strinct]   Throw an error if the embedded pseudo-document does not exist?
+   * @param {boolean} [options.strict]    Throw an error if the embedded pseudo-document does not exist?
    * @returns {PseudoDocument|null}
    */
   getEmbeddedDocument(embeddedName, id, { invalid = false, strict = false } = {}) {
