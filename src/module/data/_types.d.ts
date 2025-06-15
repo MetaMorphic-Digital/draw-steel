@@ -10,17 +10,15 @@ import "./models/_types";
 import "./models/_types";
 import "./settings/_types";
 
-import type PseudoDocument from "./pseudo-documents/pseudo-document.mjs";
-
 export type BarAttribute = {
   value: number,
   max: number
-}
+};
 
 export type SubtypeMetadata = {
   /* Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>
-}
+};
 
 export type PseudoDocumentMetadata = {
   /* The document name of this pseudo-document. */
@@ -33,4 +31,4 @@ export type PseudoDocumentMetadata = {
   embedded: Record<string, string>,
   /* The class used to render this pseudo-document. */
   sheetClass?: PseudoDocumentSheet,
-}
+};

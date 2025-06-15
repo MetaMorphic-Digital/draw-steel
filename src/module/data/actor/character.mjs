@@ -76,6 +76,7 @@ export default class CharacterModel extends BaseActorModel {
       stamina: 0,
       speed: 0,
       stability: 0,
+      disengage: 0,
     };
 
     /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
@@ -96,6 +97,7 @@ export default class CharacterModel extends BaseActorModel {
       kitBonuses.stamina = Math.max(kitBonuses.stamina, bonuses.stamina);
       kitBonuses.speed = Math.max(kitBonuses.speed, bonuses.speed);
       kitBonuses.stability = Math.max(kitBonuses.stability, bonuses.stability);
+      kitBonuses.disengage = Math.max(kitBonuses.disengage, bonuses.disengage);
 
       const abiBonuses = ["melee.distance", "ranged.distance"];
 
@@ -114,6 +116,7 @@ export default class CharacterModel extends BaseActorModel {
     this.stamina.max += kitBonuses["stamina"] * this.echelon;
     this.movement.value += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
+    this.movement.disengage += kitBonuses["disengage"];
   }
 
   /** @inheritdoc */
@@ -137,7 +140,7 @@ export default class CharacterModel extends BaseActorModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    this.parent.updateSource({
+    const updates = {
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
@@ -145,7 +148,17 @@ export default class CharacterModel extends BaseActorModel {
           enabled: true,
         },
       },
-    });
+    };
+
+    const stats = this.parent._stats;
+
+    if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
+      const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
+      // updateSource will merge the arrays for embedded collections
+      updates.items = items.map(i => game.items.fromCompendium(i));
+    }
+
+    this.parent.updateSource(updates);
   }
 
   /** @inheritdoc */

@@ -19,7 +19,13 @@
           </div>
           <div class="resource-current">
             {{#if isSingleSquadMinion}}
-            {{formGroup combatGroup.system.schema.fields.staminaValue value=combatGroup.system.staminaValue name="squadStaminaValue" classes="paired"}}
+            {{formGroup
+            combatGroup.system.schema.fields.staminaValue
+            value=combatGroup.system.staminaValue
+            name="squadStaminaValue"
+            classes="paired"
+            label=(localize "TYPES.CombatantGroup.squad")
+            }}
             {{else}}
             {{formGroup
             systemFields.stamina.fields.value

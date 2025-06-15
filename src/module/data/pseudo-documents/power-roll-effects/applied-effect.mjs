@@ -55,7 +55,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     for (const n of [1, 2, 3]) {
       /** @type {AppliedEffectSchema} */
       const tierValue = this.applied[`tier${n}`];
-      tierValue.potency.value ||= this.schema.getField(["applied", `tier${n}`, "potency", "value"]).initial;
+      tierValue.potency.value ||= this.schema.getField(["applied", `tier${n}`, "potency", "value"]).getInitialValue({});
       if (n > 1) {
         /** @type {AppliedEffectSchema} */
         const prevTier = this.applied[`tier${n - 1}`];

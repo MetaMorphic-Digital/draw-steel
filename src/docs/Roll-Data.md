@@ -19,6 +19,13 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Presence value - `@characteristics.presence.value`
 + Reason value - `@characteristics.reason.value`
 
+### Combat Data
++ Save Bonus - `@combat.save.bonus`
++ Save Threshold - `@combat.save.threshold`
++ Size (1/2/3/4) `@combat.size.value`
++ Stability - `@combat.stability`
++ Total amount of turns per round of specific actor (e.g. Solos would have 2) `@combat.turns`
+
 ## Potencies
 + Strong Potency (= highest characteristic) - `@potency.strong`
 + Average Potency (= highest characteristic -1) - `@potency.average`
@@ -32,6 +39,10 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Winded (<50%) Stamina Value - `@stamina.winded`
 + Is currently winded? (1/yes, 0/no) - `@statuses.winded`
 
+### Movement speeds
++ Speed - `@movement.value`
++ Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
+
 ## Hero specific roll data and values
 ### Heroic Resource
 + Heroic resource label - `@hero.primary.label`
@@ -39,8 +50,8 @@ Foundry's rolls support variable substitution through roll data, as explained in
 
 ### Recoveries
 + Recovery value - `@hero.recoveries.value`
-+ Maximum amnount of recoveries - `@hero.recoveries.max`
-+ Bonus to max ammount - `@hero.recoveries.bonus`
++ Maximum amount of recoveries - `@hero.recoveries.max`
++ Bonus to max amount - `@hero.recoveries.bonus`
 + Current recovery amount - `@hero.recoveries.recoveryValue`
 
 ### Other Hero values
@@ -50,10 +61,7 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Current Victory Points - `@hero.victories`
 + Accumulated XP - `@hero.xp`
 
-### Movement speeds
-+ Speed - `@movement.value`
-+ Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
-
+### Kit
 The below bonuses come from a kit, but can be addressed this way in any case:
 + Bonus to Tier 1 Melee damage - `@abilityBonuses.melee.damage.tier1`
 + Bonus to Tier 2 Melee damage - `@abilityBonuses.melee.damage.tier2`
@@ -64,14 +72,10 @@ The below bonuses come from a kit, but can be addressed this way in any case:
 + Bonus to melee distance - `@abilityBonuses.melee.distance`
 + Bonus to ranged distance - `@abilityBonuses.ranged.distance`
 
-The below roll data refers to the actors size, and values such as stability and number of turns per combat
-+ Combat Size letter, such as 1T/1S/1M/1L - `@combat.size.letter`
-+ Combat Size (1/2/3/4) `@combat.size.value`
-+ Hero Stabiltiy - `@combat.stability`
-+ Total amount of turns per round of specific actor (e.g. Solos would have 2) `@combat.turns`
 
 ### Immunities and Weaknesses
-The below roll datas entries work add damage immunities and weaknesses, for example added in effects. The numerical value determines how much of a weakness of immunity the actor has
+The below roll data entries work add damage immunities and weaknesses, for example added in effects. The numerical value determines how much of a weakness of immunity the actor has
+
 #### Immunities
 + Acid damage -`@damage.immunities.acid`
 + All damage (including untyped)- `@damage.immunities.all`
@@ -83,6 +87,7 @@ The below roll datas entries work add damage immunities and weaknesses, for exam
 + Poison damage - `@damage.immunities.poison`
 + Psychic Damage - `@damage.immunities.psychic`
 + Sonic Damage - `@damage.immunities.sonic`
+
 #### Weaknesses
 + Acid - `@damage.weaknesses.acid`
 + All damage (including untyped) - `@damage.weaknesses.all`
@@ -99,7 +104,7 @@ The below roll datas entries work add damage immunities and weaknesses, for exam
 Value indicates if actor currently has status (1/yes, 0/no)
 + Asleep -`@statuses.sleep`
 + Bleeding - `@statuses.bleeding`
-+ Bruning - `@statuses.burning`
++ Burning - `@statuses.burning`
 + Dazed - `@statuses.dazed`
 + Dead - `@statuses.dead`
 + Deaf - `@statuses.deaf`
@@ -111,7 +116,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Marked - `@statuses.eye`
 + Prone - `@statuses.prone`
 + Restrained - `@statuses.restrained`
-+ Slowed - `@tatuses.slowed`
++ Slowed - `@statuses.slowed`
 + Targeted - `@statuses.target`
 + Taunted - `@statuses.taunted`
 + Weakened - `@statuses.weakened`
@@ -124,7 +129,6 @@ Value indicates if actor currently has status (1/yes, 0/no)
 ## Item Roll Data
 **First example: a craftable consumable**
 #### Item Descriptors
-+ Draw Steel ID - `@item._dsid`
 + Item category - `@item.category `
 + Item GM description - `@item.description.gm`
 + Item Type - `@item.kind`
@@ -132,7 +136,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 #### Downtime Project roll data
 + Project Prerequisites - `@item.prerequisites`
 + Project Goal - `@item.project.goal`
-+ Project Roll Characteristric - `@item.project.rollCharacteristic`
++ Project Roll Characteristic - `@item.project.rollCharacteristic`
 + Project Source - `@item.project.source`
 + Project Yield - `@item.project.yield`
 #### Source data
@@ -167,7 +171,6 @@ Value indicates if actor currently has status (1/yes, 0/no)
 
 ### Abilities
 
-+ Draw Steel ID - `@item._dsid`
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
 + Ability Story Text - `@item.story`

@@ -1,5 +1,6 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { PowerRoll } from "../../rolls/power.mjs";
+import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
@@ -16,7 +17,7 @@ const fields = foundry.data.fields;
 export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /** @inheritdoc */
   static defineSchema() {
-    const characteristic = { min: -5, max: 5, initial: 0, integer: true };
+    const characteristic = { min: -5, max: 5, initial: 0, integer: true, nullable: false };
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
@@ -35,6 +36,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     );
 
     schema.combat = new fields.SchemaField({
+      save: new fields.SchemaField({
+        threshold: new fields.NumberField({ required: true, nullable: false, integer: true, min: 1, max: 10, initial: 6 }),
+        bonus: new FormulaField(),
+      }),
       size: new fields.EmbeddedDataField(SizeModel),
       stability: requiredInteger({ initial: 0 }),
       turns: requiredInteger({ initial: 1 }),
@@ -43,9 +48,10 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     schema.biography = new fields.SchemaField(this.actorBiography());
 
     schema.movement = new fields.SchemaField({
-      value: new fields.NumberField({ integer: true, min: 0, initial: 5 }),
+      value: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 5 }),
       types: new fields.SetField(setOptions(), { initial: ["walk"] }),
       hover: new fields.BooleanField(),
+      disengage: new fields.NumberField({ nullable: false, integer: true, min: 0, initial: 1 }),
     });
 
     schema.damage = new fields.SchemaField({
@@ -64,7 +70,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   static actorBiography() {
     return {
       value: new fields.HTMLField(),
-      gm: new fields.HTMLField(),
+      gm: new fields.HTMLField({ gmOnly: true }),
       languages: new fields.SetField(setOptions()),
     };
   }
@@ -102,6 +108,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super.prepareDerivedData();
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
+
+    // Presents better if there's a 0 instead of blank
+    this.combat.save.bonus ||= "0";
 
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
@@ -182,7 +191,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * @returns {Set<DrawSteelCombatantGroup>}
    */
   get combatGroups() {
-    return new Set(game.combat?.getCombatantsByActor(this.parent).map(c => c.group).filter(group => !!group) ?? []);
+    const combatants = game.combat?.getCombatantsByActor(this.parent) ?? [];
+    // The root actor will match to *all* unlinked tokens, so need to check against that
+    const actorMatches = combatants.filter(c => c.actor === this.parent);
+    const groups = actorMatches.map(c => c.group).filter(g => !!g);
+    return new Set(groups);
   }
 
   /**
@@ -212,6 +225,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         },
       });
     }
+
+    if (changes.system?.stamina) {
+      options.ds ??= {};
+      options.ds.previousStamina = { ...this.stamina };
+    }
   }
 
   /**
@@ -226,6 +244,13 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     super._onUpdate(changed, options, userId);
 
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
+
+    if (options.ds?.previousStamina && changed.system?.stamina) {
+      const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
+      const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
+      const diff = stamDiff + tempDiff;
+      this.displayStaminaChange(diff, options.ds.damageType);
+    }
   }
 
   /**
@@ -239,6 +264,43 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       const active = Number.isNumeric(threshold) && (this.stamina.value <= threshold);
       await this.parent.toggleStatusEffect(key, { active });
     }
+  }
+
+  /**
+   * Display actor stamina changes on active tokens.
+   *
+   * @param {number} diff The amount the actor's stamina has changed.
+   * @param {string} [damageType=""] The type of damage being dealt.
+   */
+  async displayStaminaChange(diff, damageType = "") {
+    if (!diff || !canvas.scene) {
+      return;
+    }
+
+    const damageColor = ds.CONFIG.damageTypes[damageType]?.color ?? null;
+    const tokens = this.parent.getActiveTokens();
+    const displayedDiff = (-1 * diff).signedString();
+    const defaultFill = (diff < 0 ? "lightgreen" : "white");
+    const displayArgs = {
+      fill: damageColor ?? defaultFill,
+      fontSize: 32,
+      stroke: 0x000000,
+      strokeThickness: 4,
+    };
+
+    tokens.forEach((token) => {
+      if (!token.visible || token.document.isSecret) {
+        return;
+      }
+
+      const scrollingTextArgs = [
+        token.center,
+        displayedDiff,
+        displayArgs,
+      ];
+
+      canvas.interface.createScrollingText(...scrollingTextArgs);
+    });
   }
 
   /**
@@ -341,10 +403,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       return this.parent;
     }
 
+    const damageTypeOption = { ds: { damageType: options.type } };
     if (this.isMinion) {
       const combatGroups = this.combatGroups;
       if (combatGroups.size === 1) {
-        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage });
+        return this.combatGroup.update({ "system.staminaValue": this.combatGroup.system.staminaValue - damage }, damageTypeOption);
       }
       else if (combatGroups.size === 0) {
         ui.notifications.warn("DRAW_STEEL.CombatantGroup.Error.MinionNoSquad", { localize: true });
@@ -361,7 +424,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
     if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
 
-    return this.parent.update({ "system.stamina": staminaUpdates });
+    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }
 
   /**

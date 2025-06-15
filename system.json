@@ -10,14 +10,17 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "htmlFields": ["biography.value", "biography.gm"]
+        "htmlFields": ["biography.value", "biography.gm"],
+        "gmOnlyFields": ["biography.gm"]
       },
       "npc": {
-        "htmlFields": ["biography.value", "biography.gm"]
+        "htmlFields": ["biography.value", "biography.gm"],
+        "gmOnlyFields": ["biography.gm"]
       }
     },
     "ChatMessage": {
-      "abilityUse": {}
+      "abilityUse": {},
+      "savingThrow": {}
     },
     "CombatantGroup": {
       "squad": {}
@@ -80,7 +83,7 @@
     "url": "systems/draw-steel/assets/anvil-impact.png",
     "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
   }],
-  "version": "0.7.1",
+  "version": "0.7.2",
   "compatibility": {
     "minimum": "13.340",
     "verified": "13"
@@ -98,6 +101,11 @@
   }],
   "packs": [
     {
+      "name": "abilities",
+      "label": "Abilities",
+      "type": "Item"
+    },
+    {
       "name": "journals",
       "label": "System Journals",
       "type": "JournalEntry"
@@ -107,12 +115,12 @@
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["journals"]
+      "packs": ["abilities", "journals"]
     }
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.7.1/draw-steel-release-0.7.1.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.7.2/draw-steel-release-0.7.2.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,

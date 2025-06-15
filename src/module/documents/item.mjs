@@ -5,7 +5,6 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
- * @extends Item
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
@@ -28,5 +27,17 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareItemData", this);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Return an item's Draw Steel ID
+   * @type {string}
+   */
+  get dsid() {
+    if (this.system._dsid) return this.system._dsid;
+    const dsid = this.name.replaceAll(/(\w+)([\\|/])(\w+)/g, "$1-$3");
+    return dsid.slugify({ strict: true });
   }
 }

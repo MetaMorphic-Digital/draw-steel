@@ -7,13 +7,17 @@ import BaseMessageModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Chat messages representing the result of {@link AbilityModel#use}
+ * Chat messages representing the result of {@linkcode AbilityModel.use}
  */
 export default class AbilityUseModel extends BaseMessageModel {
+  /** @inheritdoc */
   static metadata = Object.freeze({
     type: "abilityUse",
   });
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
     // All ability use messages MUST have a uuid pointing to the relevant document
@@ -22,9 +26,9 @@ export default class AbilityUseModel extends BaseMessageModel {
     return schema;
   }
 
-  /**
-   * @param {HTMLLIElement} html The pending HTML
-   */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   async alterMessageHTML(html) {
     await super.alterMessageHTML(html);
 
@@ -35,6 +39,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     /** @type {1 | 2 | 3} */
     const tier = this.parent.rolls[1]?.product;
 
+    /** @type {HTMLDivElement} */
     const content = html.querySelector(".message-content");
 
     if (this.embedText) {
@@ -61,6 +66,8 @@ export default class AbilityUseModel extends BaseMessageModel {
     } else console.warn("Invalid configuration");
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
@@ -68,6 +75,8 @@ export default class AbilityUseModel extends BaseMessageModel {
 
     return buttons;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Create an array of damage buttons based on each {@link DamageRoll} in this message's rolls.
@@ -100,8 +109,11 @@ export default class AbilityUseModel extends BaseMessageModel {
     return damageButtons;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   addListeners(html) {
+    super.addListeners(html);
     const damageButtons = html.querySelectorAll(".apply-damage");
     for (const damageButton of damageButtons) {
       damageButton.addEventListener("click", async (event) => {

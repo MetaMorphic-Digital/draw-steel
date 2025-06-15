@@ -1,0 +1,122 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Knockback",
+  "type": "ability",
+  "img": "icons/skills/melee/shield-block-bash-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "knockback",
+    "keywords": [
+      "melee",
+      "weapon"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "effect": {
+      "after": "<p>You gain an edge on the power roll if the creature’s size is smaller than yours.</p>",
+      "before": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "power": {
+      "effects": {
+        "qFLB10tC0nvXHhg8": {
+          "type": "forced",
+          "_id": "qFLB10tC0nvXHhg8",
+          "forced": {
+            "tier2": {
+              "distance": "2",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "distance": "3",
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            },
+            "tier1": {
+              "display": "{{forced}}",
+              "movement": [
+                "push"
+              ],
+              "distance": "1",
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            }
+          },
+          "name": ""
+        }
+      },
+      "roll": {
+        "characteristics": [
+          "might"
+        ],
+        "formula": "@chr"
+      }
+    },
+    "story": ""
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "b4a6b6f1280838f59a5cf8660192b88f9e67c84d",
+      "sourceId": "Item.EXcRjz3g5AKGZbZc",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702848693,
+    "modifiedTime": 1749703774298,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "emug9cXuwndDrWzu",
+  "sort": 900000,
+  "_key": "!items!emug9cXuwndDrWzu"
+}

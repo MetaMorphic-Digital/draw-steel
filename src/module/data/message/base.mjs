@@ -10,9 +10,14 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
     type: "base",
   });
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static defineSchema() {
     return {};
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Perform subtype-specific alterations to the final chat message html
@@ -28,6 +33,8 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Build an array of buttons to insert into the footer of the document
    * @returns {HTMLButtonElement[]}
@@ -36,6 +43,8 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   async _constructFooterButtons() {
     return [];
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Add event listeners. Guaranteed to run after all alterations in {@link alterMessageHTML}
