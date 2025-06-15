@@ -2,6 +2,7 @@
 {{formGroup systemFields.kind value=system.kind options=kinds disabled=isPlay}}
 {{formGroup systemFields.echelon value=system.echelon options=echelons disabled=isPlay}}
 {{formGroup systemFields.keywords value=system.keywords options=keywords disabled=isPlay}}
+{{formGroup systemFields.quantity value=system.quantity disabled=isPlay}}
 <fieldset>
   <legend>{{systemFields.project.label}}</legend>
   {{formGroup systemFields.project.fields.prerequisites value=system.project.prerequisites disabled=isPlay}}

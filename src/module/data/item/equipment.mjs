@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { DrawSteelActor } from "../../documents/_module.mjs"; */
@@ -37,6 +37,8 @@ export default class EquipmentModel extends BaseItemModel {
 
     schema.keywords = new fields.SetField(setOptions());
 
+    schema.quantity = requiredInteger({ initial: 1 });
+
     schema.project = new fields.SchemaField({
       prerequisites: new fields.StringField({ required: true }),
       source: new fields.StringField({ required: true }),
@@ -49,6 +51,16 @@ export default class EquipmentModel extends BaseItemModel {
     });
 
     return schema;
+  }
+
+  /** @inheritdoc */
+  _onUpdate(changed, options, userId) {
+    if (this.quantity === 0) {
+      this.parent.delete();
+      return;
+    }
+
+    super._onUpdate(changed, options, userId);
   }
 
   /** @inheritdoc */

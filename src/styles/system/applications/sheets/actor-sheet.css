@@ -269,6 +269,22 @@
       .item-echelon {
         width: 100px;
       }
+
+      .item-quantity {
+        width: 75px;
+
+        &.quantity-controls {
+          display: flex;
+
+          a[data-action="modifyItemQuantity"] {
+            padding: 0px 5px;
+          }
+
+          .quantity {
+            flex-grow: 1;
+          }
+        }
+      }
     }
   }
 
