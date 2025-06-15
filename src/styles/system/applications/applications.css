@@ -1,3 +1,14 @@
 .application.draw-steel {
   max-height: 100vh;
 }
+
+.application.draw-steel .drop-target-area {
+  min-height: 300px;
+  border-radius: 5px;
+  border: 1px dashed var(--draw-steel-c-tan);
+  margin: 1rem;
+
+  &.dragover {
+    border-style: solid;
+  }
+}

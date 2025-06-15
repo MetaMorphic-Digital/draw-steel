@@ -1218,6 +1218,22 @@ DRAW_STEEL.PowerRollEffect = {
 };
 preLocalize("PowerRollEffect", { key: "label" });
 
+/* -------------------------------------------------- */
+
+/**
+ * @typedef AdvancementType
+ * @property {string} label   Human-readable label.
+ * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, AdvancementType>} */
+DRAW_STEEL.Advancement = {
+  itemGrant: {
+    label: "TYPES.Advancement.itemGrant",
+    documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
+  },
+};
+
 /**
  * Configuration details for Culture items
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}

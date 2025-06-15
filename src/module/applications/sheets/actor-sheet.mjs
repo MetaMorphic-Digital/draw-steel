@@ -555,7 +555,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
             console.error("Could not find item");
             return;
           }
-          await item.deleteDialog();
+          if (item.hasGrantedItems) await item.advancementDeletionPrompt();
+          else await item.deleteDialog();
         },
       },
     ];
