@@ -19,5 +19,4 @@ export default class AdvancementModel extends BaseItemModel {
       advancements: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.advancements.BaseAdvancement),
     });
   }
-
 }
