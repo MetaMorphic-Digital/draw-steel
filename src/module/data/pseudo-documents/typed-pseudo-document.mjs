@@ -62,34 +62,32 @@ export default class TypedPseudoDocument extends PseudoDocument {
   }
 
   /**
-   * Create a new instance of this pseudo-document with a prompt to choose the type.
-   * @param {object} [data]                                     The data used for the creation.
-   * @param {object} createOptions                              The context of the operation.
-   * @param {foundry.abstract.Document} createOptions.parent    The parent of this document.
-   * @param {TypedPseudoDocumentCreateDialogOptions} [options={}]
-   * @returns {Promise<foundry.abstract.Document>}              A promise that resolves to the updated document.
+   * Prompt for picking the subtype of this pseudo-document.
+   * @param {object} [data]                                 The data used for the creation.
+   * @param {object} operation                              The context of the operation.
+   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
    */
-  static async createDialog(data = {}, createOptions = {}, options = {}) {
-    /** @type {TypedPseudoDocumentCreateDialogOptions} */
-    const defaultOptions = {
+  static async createDialog(data = {}, { parent, ...operation } = {}) {
+    const select = foundry.applications.fields.createFormGroup({
+      label: game.i18n.localize("Type"),
+      input: foundry.applications.fields.createSelectInput({
+        blank: false,
+        name: "type",
+        options: Object.keys(this.TYPES).map(type => ({
+          value: type,
+          label: game.i18n.localize(`TYPES.${this.metadata.documentName}.${type}`),
+        })),
+      }),
+    }).outerHTML;
+    const result = await ds.applications.api.DSDialog.input({
       window: {
-        title: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize(this.metadata.label) }),
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
         icon: this.metadata.icon,
       },
-      content: this.schema.fields.type.toFormGroup({
-        label: "DOCUMENT.FIELDS.type.label",
-        localize: true,
-      }, {
-        choices: ds.CONFIG[this.metadata.documentName],
-      }).outerHTML,
-    };
-
-    const inputData = await ds.applications.api.DSDialog.input(foundry.utils.mergeObject(defaultOptions, options));
-
-    if (!inputData) return;
-
-    foundry.utils.mergeObject(data, inputData);
-
-    return this.create(data, createOptions);
+      content: `<fieldset>${select}</fieldset>`,
+    });
+    if (!result) return null;
+    return this.create({ ...data, ...result }, { parent, ...operation });
   }
 }

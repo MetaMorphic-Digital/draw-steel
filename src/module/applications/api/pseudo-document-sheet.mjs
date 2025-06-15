@@ -195,6 +195,22 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareContext(options) {
+    const document = this.pseudoDocument;
+
+    const context = {
+      tabs: this._prepareTabs("primary"),
+      document,
+      source: document._source,
+      fields: document.schema.fields,
+    };
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
   /*   Event handlers                                   */
   /* -------------------------------------------------- */
 
