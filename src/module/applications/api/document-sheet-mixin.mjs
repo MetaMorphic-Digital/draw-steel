@@ -21,6 +21,11 @@ export default base => {
       window: {
         resizable: true,
       },
+      actions: {
+        createPseudoDocument: DSDocumentSheet.#createPseudoDocument,
+        deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
+        renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
+      },
     };
 
     /* -------------------------------------------------- */
@@ -108,17 +113,60 @@ export default base => {
     /* -------------------------------------------------- */
 
     /**
-     * Prepare context data for a data field.
-     * @param {string} path             The path to the given field, relative to the root of the document.
-     * @param {object} [additions={}]   Additional properties to add to the field.
-     * @returns {object}
+     * Helper method to retrieve an embedded pseudo-document.
+     * @param {HTMLElement} element   The element with relevant data.
+     * @returns {ds.data.pseudoDocuments.PseudoDocument}
      */
-    _prepareField(path, additions = {}) {
-      const value = foundry.utils.getProperty(this.isPlayMode ? this.document : this.document._source, path);
-      const field = path.startsWith("system")
-        ? this.document.system.schema.getField(path.slice(7))
-        : this.document.schema.getField(path);
-      return { value, field, ...additions };
+    _getPseudoDocument(element) {
+      const documentName = element.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
+      const id = element.closest("[data-pseudo-id]").dataset.pseudoId;
+      return this.document.getEmbeddedDocument(documentName, id);
+    }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Create a pseudo-document.
+     * @this {DSDocumentSheet}
+     * @param {PointerEvent} event    The initiating click event.
+     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+     */
+    static #createPseudoDocument(event, target) {
+      const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
+      const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
+      const Cls = this.document.getEmbeddedPseudoDocumentCollection(documentName).documentClass;
+
+      if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
+        Cls.createDialog({}, { parent: this.document });
+      } else {
+        Cls.create({ type }, { parent: this.document });
+      }
+    }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Delete a pseudo-document.
+     * @this {DSDocumentSheet}
+     * @param {PointerEvent} event    The initiating click event.
+     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+     */
+    static #deletePseudoDocument(event, target) {
+      const doc = this._getPseudoDocument(target);
+      doc.delete();
+    }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Render the sheet of a pseudo-document.
+     * @this {DSDocumentSheet}
+     * @param {PointerEvent} event    The initiating click event.
+     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+     */
+    static #renderPseudoDocumentSheet(event, target) {
+      const doc = this._getPseudoDocument(target);
+      doc.sheet.render({ force: true });
     }
   };
 };
