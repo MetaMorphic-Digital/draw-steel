@@ -54,16 +54,6 @@ export default class EquipmentModel extends BaseItemModel {
   }
 
   /** @inheritdoc */
-  _onUpdate(changed, options, userId) {
-    if (this.quantity === 0) {
-      this.parent.delete();
-      return;
-    }
-
-    super._onUpdate(changed, options, userId);
-  }
-
-  /** @inheritdoc */
   async getSheetContext(context) {
     context.categories = Object.entries(ds.CONFIG.equipment.categories).map(([value, { label }]) => ({ value, label }));
 
