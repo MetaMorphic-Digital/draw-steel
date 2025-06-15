@@ -114,7 +114,14 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Prepare base data. This method is not called automatically; it is the responsibility
    * of the parent document to ensure pseudo-documents prepare base and derived data.
    */
-  prepareBaseData() {}
+  prepareBaseData() {
+    const documentNames = Object.keys(this.constructor.metadata.embedded);
+    for (const documentName of documentNames) {
+      for (const pseudoDocument of this.getEmbeddedPseudoDocumentCollection(documentName)) {
+        pseudoDocument.prepareBaseData();
+      }
+    }
+  }
 
   /* -------------------------------------------------- */
 
@@ -122,7 +129,14 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Prepare derived data. This method is not called automatically; it is the responsibility
    * of the parent document to ensure pseudo-documents prepare base and derived data.
    */
-  prepareDerivedData() {}
+  prepareDerivedData() {
+    const documentNames = Object.keys(this.constructor.metadata.embedded);
+    for (const documentName of documentNames) {
+      for (const pseudoDocument of this.getEmbeddedPseudoDocumentCollection(documentName)) {
+        pseudoDocument.prepareDerivedData();
+      }
+    }
+  }
 
   /* -------------------------------------------------- */
   /*   Instance Methods                                 */
@@ -147,6 +161,34 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * Obtain the embedded collection of a given pseudo-document type.
+   * @param {string} embeddedName   The document name of the embedded collection.
+   * @returns {ModelCollection}     The embedded collection.
+   */
+  getEmbeddedPseudoDocumentCollection(embeddedName) {
+    const collectionPath = this.constructor.metadata.embedded[embeddedName];
+    if (!collectionPath) {
+      throw new Error(`${embeddedName} is not a valid embedded Pseudo-Document within the [${this.type}] ${this.documentName} subtype!`);
+    }
+    return foundry.utils.getProperty(this, collectionPath);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create drag data for storing on initiated drag events.
+   * @returns {object}
+   */
+  toDragData() {
+    return {
+      type: this.documentName,
+      uuid: this.uuid,
+    };
+  }
+
+  /* -------------------------------------------------- */
   /*   CRUD Handlers                                    */
   /* -------------------------------------------------- */
 
@@ -155,7 +197,13 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @type {boolean}
    */
   get isSource() {
-    const source = foundry.utils.getProperty(this.document._source, this.fieldPath);
+    const docName = this.documentName;
+    const fieldPath = this.parent.constructor.metadata.embedded[docName];
+
+    const source = foundry.utils.getProperty(
+      this.parent._source,
+      this.parent instanceof foundry.abstract.TypeDataModel ? fieldPath.slice(7) : fieldPath,
+    );
     if (foundry.utils.getType(source) !== "Object") {
       throw new Error("Source is not an object!");
     }
