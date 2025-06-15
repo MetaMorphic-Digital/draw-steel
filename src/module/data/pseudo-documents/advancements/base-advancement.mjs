@@ -41,7 +41,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.name = game.i18n.localize(`TYPES.Advancement.${this.type}`);
+    this.name ||= game.i18n.localize(`TYPES.Advancement.${this.type}`);
   }
 
   /* -------------------------------------------------- */
