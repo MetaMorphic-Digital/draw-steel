@@ -253,11 +253,19 @@ export default class ProjectModel extends BaseItemModel {
     if (!this.actor) return console.error("This project has no owner actor.");
 
     const item = await fromUuid(this.yield.item);
+    const existingItem = this.actor.items.find(i => i.dsid === item.dsid);
     const yieldRoll = await new DSRoll(this.yield.amount).evaluate();
     const amount = yieldRoll.total;
-    const itemArray = Array(amount).fill(item.toObject());
 
-    await this.actor.createEmbeddedDocuments("Item", itemArray);
+    // If there's an existing item, add the amount to the item's quantity, otherwise create a new item with the quantity amount
+    if (existingItem) {
+      await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
+    } else {
+      const itemData = item.toObject();
+      itemData.system.quantity = amount;
+      await this.actor.createEmbeddedDocuments("Item", [itemData]);
+    }
+
     ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {
       format: {
         actor: this.actor.name,
