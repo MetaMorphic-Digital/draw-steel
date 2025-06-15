@@ -59,6 +59,7 @@
     <div class="item-header">
       <div class="item-column item-name">{{equipmentCategory.label}}</div>
       <div class="item-column item-echelon">{{@root.equipmentFields.echelon.label}}</div>
+      <div class="item-column item-quantity">{{@root.equipmentFields.quantity.label}}</div>
       <div class="item-column item-controls">
         {{#unless (eq @key "other")}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.equipment")) as |addItemTooltip|}}
@@ -80,6 +81,15 @@
             </div>
           </div>
           <div class="item-column item-echelon">{{localize (concat "DRAW_STEEL.Echelon." equipmentContext.item.system.echelon)}}</div>
+          <div class="item-column item-quantity quantity-controls">
+            <a data-action="modifyItemQuantity" data-quantity-modification="decrease">
+              <i class="fa-regular fa-minus"></i>
+            </a>
+            <span class="quantity">{{equipmentContext.item.system.quantity}}</span>
+            <a data-action="modifyItemQuantity" data-quantity-modification="increase">
+              <i class="fa-regular fa-plus"></i>
+            </a>
+          </div>
           <div class="item-column item-controls">
             <a data-action="toggleItemEmbed">
               <i class="fa-solid fa-angle-{{ifThen equipmentContext.expanded "down" "right"}}"></i>
