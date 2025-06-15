@@ -2,7 +2,7 @@ import PseudoDocument from "./pseudo-document.mjs";
 
 /** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types" */
 
-const { StringField } = foundry.data.fields;
+const { DocumentTypeField } = foundry.data.fields;
 
 /**
  * A variant of PseudoDocument that allows for polymorphism across different values of `type`.
@@ -11,14 +11,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      type: new StringField({
-        initial: () => this.TYPE,
-        required: true,
-        blank: false,
-        readonly: true,
-        validate: value => value === this.TYPE,
-        validationError: `Type can only be '${this.TYPE}'.`,
-      }),
+      type: new DocumentTypeField(this),
     });
   }
 
@@ -49,7 +42,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * The localized label for this typed pseudodocument's type
+   * The localized label for this typed pseudodocument's type.
    * @type {string}
    */
   get typeLabel() {
