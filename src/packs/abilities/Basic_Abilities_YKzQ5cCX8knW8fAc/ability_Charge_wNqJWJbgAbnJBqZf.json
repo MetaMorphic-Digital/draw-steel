@@ -1,0 +1,77 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Charge",
+  "type": "ability",
+  "img": "icons/skills/movement/feet-bladed-boots-fire.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "charge",
+    "keywords": [
+      "charge",
+      "melee",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": 1
+    },
+    "effect": {
+      "before": "<p>When you take the Charge action, you move up to your speed in a straight line without shifting, and can then make a @UUID[Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6]{melee free strike} against a creature when you end your move. You can’t move through difficult terrain as part of your movement with this action. You can’t climb, fly, or swim as part of this action unless you have that type of movement as a keyword in your speed.</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "",
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    }
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "d3706faacb9a7bb9808b53620e36a0e8f0a17c13",
+      "sourceId": "Item.lVMhC6MztPXoE3W0",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702843297,
+    "modifiedTime": 1749703114998,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "wNqJWJbgAbnJBqZf",
+  "sort": 300000,
+  "_key": "!items!wNqJWJbgAbnJBqZf"
+}

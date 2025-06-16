@@ -140,7 +140,7 @@ export default class CharacterModel extends BaseActorModel {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
 
-    this.parent.updateSource({
+    const updates = {
       prototypeToken: {
         actorLink: true,
         disposition: CONST.TOKEN_DISPOSITIONS.FRIENDLY,
@@ -148,7 +148,17 @@ export default class CharacterModel extends BaseActorModel {
           enabled: true,
         },
       },
-    });
+    };
+
+    const stats = this.parent._stats;
+
+    if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
+      const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
+      // updateSource will merge the arrays for embedded collections
+      updates.items = items.map(i => game.items.fromCompendium(i));
+    }
+
+    this.parent.updateSource(updates);
   }
 
   /** @inheritdoc */

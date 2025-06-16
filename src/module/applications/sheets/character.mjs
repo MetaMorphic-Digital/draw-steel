@@ -14,6 +14,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
+      modifyItemQuantity: this.#modifyItemQuantity,
     },
   };
 
@@ -228,6 +229,23 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    */
   static async #spendStaminaHeroToken() {
     await this.actor.system.spendStaminaHeroToken();
+  }
+
+  /**
+   * Modify the quantity of a piece of equipment.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async #modifyItemQuantity(event, target) {
+    const quantityModification = target.dataset.quantityModification;
+    const item = this._getEmbeddedDocument(target);
+    if (!item) return;
+
+    const quantity = item.system.quantity ?? 0;
+    const updatedQuantity = (quantityModification === "increase") ? quantity + 1 : quantity - 1;
+
+    item.update({ "system.quantity": updatedQuantity });
   }
 
   /* -------------------------------------------------- */

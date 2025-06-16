@@ -35,8 +35,9 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
 
     /**
      * The Draw Steel ID, indicating a unique game rules element
+     * @remarks `readonly: true` makes this non-iterable
      */
-    schema._dsid = new fields.StringField({ blank: false });
+    schema._dsid = new fields.StringField({ required: true, readonly: true });
 
     return schema;
   }

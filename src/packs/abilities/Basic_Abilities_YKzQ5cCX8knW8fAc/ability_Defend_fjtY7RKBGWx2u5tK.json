@@ -1,0 +1,73 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Defend",
+  "type": "ability",
+  "img": "icons/skills/melee/shield-block-fire-orange.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "defend",
+    "keywords": [],
+    "type": "action",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": null,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "value": null
+    },
+    "effect": {
+      "before": "<p>When you take the Defend action, all ability power rolls made against you have a double bane until the start of your next turn. You gain no benefit from this action while another creature is taunted by you (see <span style=\"text-decoration:underline\"><span style=\"text-decoration:underline\">Conditions</span></span>).</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "",
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    }
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "9a1133f1bc3c1b2c2d28807f17fac5774cf9242f",
+      "sourceId": "Item.XOYqsWhglDcdbzxI",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702844092,
+    "modifiedTime": 1749703168450,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "fjtY7RKBGWx2u5tK",
+  "sort": 400000,
+  "_key": "!items!fjtY7RKBGWx2u5tK"
+}

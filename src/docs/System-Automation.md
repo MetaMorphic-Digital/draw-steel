@@ -8,7 +8,6 @@ When you click on any of your characteristics on your character sheet while in â
 
 ***2d10 + characteristic (+ 2 (Skill bonus) Â± Edges/Banes)***
 
-
 ## Stamina and negative Stamina
 
 To set a heroes stamina to a negative value, either
@@ -58,6 +57,10 @@ The same is true for the Director's Malice generation. Malice is generated at th
 During combat, after the first round Malice is generated at the beginning of a round according to the formula:
 
 ***Malice = (Number of Heroes)+(Number of Rounds>1)***
+
+In both cases, "heroes" are decided by checking if a combatant:
+- is associated with an actor of type "character"
+- that character is owned by at least one player
 
 ##### Malice Consumption
 
@@ -157,7 +160,7 @@ If the `Slowed` status effect is applied to an actor, the displayed maximum spee
 
 ### Taunted
 
-If the `taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the `taunt` and afterwards abilities that are targeted at actors other than the `taunted` source actor automatically have a double bane while in line of effect to the `taunted` source. 
+If the `taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the `taunt` and afterwards abilities that are targeted at actors other than the `taunted` source actor automatically have a double bane while in line of effect to the `taunted` source.
 
 ### Weakend
 
@@ -167,6 +170,3 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
-
-
-

@@ -106,7 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     this.power.roll.enabled = this.power.effects.size > 0;
-    for (const effect of this.power.effects) effect.prepareDerivedData();
     if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
@@ -588,7 +587,7 @@ export default class AbilityModel extends BaseItemModel {
     // Checking if active effects have restricted this ability based on type or _dsid
     const restrictions = this.actor.system.restrictions;
     if (restrictions.type.has(this.type)) return true;
-    if (restrictions.dsid.has(this._dsid)) return true;
+    if (restrictions.dsid.has(this.parent.dsid)) return true;
 
     return false;
   }

@@ -87,7 +87,7 @@ export class ProjectRoll extends DSRoll {
       skills: options.skills,
     };
 
-    const promptValue = await PowerRollDialog.prompt({
+    const promptValue = await PowerRollDialog.create({
       context,
       window: {
         title: "DRAW_STEEL.Roll.Project.Label",

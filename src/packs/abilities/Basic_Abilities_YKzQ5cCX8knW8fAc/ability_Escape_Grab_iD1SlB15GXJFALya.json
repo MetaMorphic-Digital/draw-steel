@@ -1,0 +1,105 @@
+{
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Escape Grab",
+  "type": "ability",
+  "img": "icons/magic/unholy/hand-claw-fog-green.webp",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "escape-grab",
+    "keywords": [],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": 1
+    },
+    "effect": {
+      "before": "<p>While you are grabbed by another creature (see Grab below), you can attempt to escape by making the following test (which can’t have a skill applied). You take a bane on the roll if the creature’s size is larger than yours.</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "You attempt to escape the grab of an Enemy.",
+    "power": {
+      "roll": {
+        "characteristics": [
+          "might",
+          "agility"
+        ],
+        "formula": "@chr"
+      },
+      "effects": {
+        "9IqHcvFKmPUnGT2i": {
+          "type": "other",
+          "_id": "9IqHcvFKmPUnGT2i",
+          "other": {
+            "tier1": {
+              "display": "You fail to escape the grab.",
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "You can escape the grab, but if you do, the creature grabbing you can make a melee free strike against you before you are no longer grabbed.",
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "You are no longer grabbed.",
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          },
+          "name": ""
+        }
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "scene-packer": {
+      "hash": "2f2f5949de9ed84dc515db2fbdc0f6605ed3dd7a",
+      "sourceId": "Item.BU7Xic1FuvhOrbLZ",
+      "defaultPermission": 2
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.345",
+    "systemId": "draw-steel",
+    "systemVersion": "0.7.2",
+    "createdTime": 1749702844706,
+    "modifiedTime": 1749703168450,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "iD1SlB15GXJFALya",
+  "sort": 500000,
+  "_key": "!items!iD1SlB15GXJFALya"
+}
