@@ -311,9 +311,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Prepare the context for ability categories and individual abilities
-   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", ActorSheetAbilitiesContext>}
    */
   async _prepareAbilitiesContext() {
+    /**
+     * @type {Record<string, ActorSheetAbilitiesContext>}
+     */
     const context = {};
     const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
 
@@ -348,6 +350,13 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       }
 
       context[type].abilities.push(abilityContext);
+    }
+
+    // Filter out unused headers for play mode
+    if (this.isPlayMode) {
+      for (const [key, value] of Object.entries(context)) {
+        if (!value.abilities.length) delete context[key];
+      }
     }
 
     return context;
