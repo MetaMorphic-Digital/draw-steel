@@ -28,7 +28,8 @@
 
 ### Changed
 
-- Adjusted display of the actor sheets in play mode:
+- Replaced the default token status menu with a new one that allows applying a status with one of Draw Steel's unique durations. (#261)
+- Adjusted display of the actor sheets in play mode. (#609)
   - Unused ability and equipment sections are no longer displayed in play mode.
   - Add Item buttons only display in edit mode.
 - New actors and items now start in edit mode. Items no longer default to edit mode if opened while editable.
