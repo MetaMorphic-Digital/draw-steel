@@ -27,6 +27,7 @@
 ### Changed
 
 - Unused ability sections are no longer displayed in play mode.
+- "Add Ability" button only displays in edit mode.
 
 ## 0.7.2
 
