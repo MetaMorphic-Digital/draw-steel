@@ -18,7 +18,19 @@
 ### Known Issues
 -->
 
-### 0.7.2
+## 0.7.3
+
+### Added
+
+- Equipment now has a "quantity" property. Completing a project will now add to an equipment's quantity if it already exists on the actor, based on matching `dsid` values. (#558)
+
+### Changed
+
+- Adjusted display of the actor sheets in play mode
+  - Unused ability and equipment sections are no longer displayed in play mode.
+  - Add Item buttons only display in edit mode.
+
+## 0.7.2
 
 ### Added
 - Added support for the automatic end of effects. (#551)
