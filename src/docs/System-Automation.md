@@ -34,6 +34,10 @@ When clicking on the `Stamina` label on the character sheet, a prompt will appea
 
 When clicking on the `Surges` label on the character sheet, a prompt will appear to spend 1 Hero Token - if available - to gain 2 surges for the actor.
 
+### Succeed on Save through Hero Tokens
+
+When a hero has to roll a save to end a condition, they can spend a hero token instead to succeed. The pop-up prompt for the save has a button for this purpose.
+
 ### Hero Tokens and Malice display
 
 Both Hero Token count  and Director’s Malice total are displayed in a display below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
@@ -124,6 +128,10 @@ If an ability is programmed with damage, untyped or typed, then when the ability
 
 Damage Immunities and Weaknesses can be added via the respective section the the actor sheet.. If an ability deals damage that the receiving actor has an active effect that provides immunity or weakness to that damage type, then the value is automatically subtracted when the “Apply Damage” button in the ability’s chat message is pressed. The respective data strings to address the correct immunity or weakness can be found on the ***Roll Data*** page
 
+## Floating Damage Numbers
+
+IF an actor is damaged, a floating damage number will appear, the colour linked to the damage type. Untyped damage is white, this includes if a token's stamina was manually adjusted vie the token HUD, and healing is green.
+
 ## Automated Status Effects
 
 Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
@@ -170,3 +178,19 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
+
+## Active Effects
+
+The above automated conditions are bespoke active effects usable via the token HUD, but may further be enhanced directly via active effects. This is explained in more detail in the `Active Effect` page.
+
+### Linking status effects
+
+If an active effect is created, a status condition can be linked with it at the very bottom of the `Details` page. This has the result that the effect additionally to it's own eefects behaves as if the chosen status condition is activated for the actor. This includes effects such as `Frightened` or `Grabbed` that require a target to be the source of the effect.
+
+### Duration
+
+The second tab of the active effect pop-up is the `Duration` tab. At the top of this page a dropdown menu let's you choose between the typical Draw Steel effect durations `EoT`, `Save Ends`, and `End of Encounter or Dying`. They work as follows:
+
++ `EoT` removes the effect as soon as another actor takes their turn after the affected actor
++ `Save Ends` let's you define a save formula, the default is `1d10`. Once another actor takes their turn after the affected actor, the affected actor will be prompted to roll a save. In this prompt, they can adjust the required number they have to roll and add any situational bonuses. Additionally, they can spend a Hero Token to succeed instead of rolling.
++ `End of Encounter or Dying` ends the effect when combat is ended by the director, or if the actor is marked `Dead`.
