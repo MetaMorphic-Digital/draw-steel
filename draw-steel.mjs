@@ -49,6 +49,7 @@ Hooks.once("init", function () {
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
+  CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
   canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
 
   foundry.applications.handlebars.loadTemplates(templates);
