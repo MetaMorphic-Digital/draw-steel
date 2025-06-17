@@ -14,11 +14,13 @@
       <div class="item-column item-melee-bonus">{{kitFields.bonuses.fields.melee.fields.damage.label}}</div>
       <div class="item-column item-ranged-bonus">{{kitFields.bonuses.fields.ranged.fields.damage.label}}</div>
       <div class="item-column item-controls">
+        {{#unless isPlay}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.kit")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="kit" data-render-sheet="true" data-tooltip="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
+        {{/unless}}
       </div>
     </div>
     <ol class="item-list2 kit-list">
@@ -54,20 +56,20 @@
   {{! Equipments List}}
   {{#each equipment as |equipmentCategory|}}
   {{!-- Don't show the "Other" category if there's no other equipment --}}
-  {{#if (or (ne @key "other") (and (eq @key "other") (gte equipmentCategory.equipment.length 1)))}}
+  {{#if equipmentCategory.showHeader}}
   <section class="item-list-container equipment-list-container">
     <div class="item-header">
       <div class="item-column item-name">{{equipmentCategory.label}}</div>
       <div class="item-column item-echelon">{{@root.equipmentFields.echelon.label}}</div>
       <div class="item-column item-quantity">{{@root.equipmentFields.quantity.label}}</div>
       <div class="item-column item-controls">
-        {{#unless (eq @key "other")}}
+        {{#if equipmentCategory.showAdd}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.equipment")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="equipment" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
-        {{/unless}}
+        {{/if}}
       </div>
     </div>
     <ol class="item-list2 equipment-list">

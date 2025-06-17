@@ -311,9 +311,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Prepare the context for ability categories and individual abilities
-   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", ActorSheetAbilitiesContext>}
    */
   async _prepareAbilitiesContext() {
+    /**
+     * @type {Record<string, ActorSheetAbilitiesContext>}
+     */
     const context = {};
     const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
 
@@ -325,6 +327,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       context[type] = {
         label: config.label,
         abilities: [],
+        showHeader: true,
+        showAdd: this.isEditMode,
       };
     }
 
@@ -332,6 +336,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
+      showAdd: false,
+      // Show "other" if and only if there are abilities of that type
+      showHeader: false,
     };
 
     // Prepare the context for each individual ability
@@ -346,8 +353,16 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         const villainActionCount = context[type].abilities.length;
         abilityContext.order = villainActionCount + 1;
       }
+      context[type].showHeader = true;
 
       context[type].abilities.push(abilityContext);
+    }
+
+    // Filter out unused headers for play mode
+    if (this.isPlayMode) {
+      for (const [key, value] of Object.entries(context)) {
+        if (!value.abilities.length) delete context[key];
+      }
     }
 
     return context;

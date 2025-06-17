@@ -1,8 +1,7 @@
 {{! Abilities Tab }}
 <section class="tab abilities {{tab.cssClass}}" data-group="primary" data-tab="abilities">
   {{#each abilities as |abilityType|}}
-  {{!-- Don't show the "Other" category if there's no other abilities --}}
-  {{#if (or (ne @key "other") (and (eq @key "other") (gte abilityType.abilities.length 1)))}}
+  {{#if abilityType.showHeader}}
   <section class="item-list-container">
     <div class="item-header">
       <div class="item-column item-name">{{abilityType.label}}</div>
@@ -14,13 +13,13 @@
       <div class="item-column item-distance">{{@root.abilityFields.distance.label}}</div>
       <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
       <div class="item-column item-controls">
-        {{#unless (eq @key "other")}}
+        {{#if abilityType.showAdd}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
-        {{/unless}}
+        {{/if}}
       </div>
     </div>
     <ol class="item-list2 abilities-list">

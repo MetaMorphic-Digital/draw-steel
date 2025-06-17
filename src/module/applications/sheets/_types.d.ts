@@ -45,10 +45,13 @@ interface ActorSheetAbilityContext extends ActorSheetItemContext {
 
 export interface ActorSheetAbilitiesContext {
   label: string;
-  abilities: ActorSheetAbilityContext[]
+  abilities: ActorSheetAbilityContext[];
+  showAdd: boolean;
+  showHeader: boolean;
 }
 
 export interface ActorSheetEquipmentContext {
   label: string;
-  equipment: ActorSheetItemContext[]
+  equipment: ActorSheetItemContext[];
+  showAdd: boolean;
 }
