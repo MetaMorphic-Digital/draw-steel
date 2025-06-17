@@ -199,11 +199,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   get isSource() {
     const docName = this.documentName;
     const fieldPath = this.parent.constructor.metadata.embedded[docName];
-
-    const source = foundry.utils.getProperty(
-      this.parent._source,
-      this.parent instanceof foundry.abstract.TypeDataModel ? fieldPath.slice(7) : fieldPath,
-    );
+    const parent = (this.parent instanceof foundry.abstract.TypeDataModel) ? this.parent.parent : this.parent;
+    const source = foundry.utils.getProperty(parent._source, fieldPath);
     if (foundry.utils.getType(source) !== "Object") {
       throw new Error("Source is not an object!");
     }
