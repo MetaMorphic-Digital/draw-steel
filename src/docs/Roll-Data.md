@@ -171,6 +171,15 @@ Value indicates if actor currently has status (1/yes, 0/no)
 
 ### Abilities
 
++ Ability Bonus on Disengage distance - `@abilityBonuses.disengage`
++ Ability Bonus on Melee Damage Tier 1 - `@abilityBonuses.melee.damage.tier1`
++ Ability Bonus on Melee Damage Tier 2 - `@abilityBonuses.melee.damage.tier2`
++ Ability Bonus on Melee Damage Tier 3 - `@abilityBonuses.melee.damage.tier3`
++ Ability Bonus on Melee Distance - `@abilityBonuses.melee.distance`
++ Ability Bonus on Ranged Damage Tier 1 - `@abilityBonuses.ranged.damage.tier1`
++ Ability Bonus on Ranged Damage Tier 2 - `@abilityBonuses.ranged.damage.tier2`
++ Ability Bonus on Ranged Damage Tier 3 - `@abilityBonuses.ranged.damage.tier3`
++ Ability Bonus on Ranged Distance - `@abilityBonuses.ranged.distance`
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
 + Ability Story Text - `@item.story`
