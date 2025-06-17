@@ -26,8 +26,9 @@
 
 ### Changed
 
-- Unused ability sections are no longer displayed in play mode.
-- "Add Ability" button only displays in edit mode.
+- Adjusted display of the actor sheets in play mode
+  - Unused ability and equipment sections are no longer displayed in play mode.
+  - Add Item buttons only display in edit mode.
 
 ## 0.7.2
 
