@@ -327,6 +327,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       context[type] = {
         label: config.label,
         abilities: [],
+        showHeader: true,
+        showAdd: this.isEditMode,
       };
     }
 
@@ -334,6 +336,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
+      showAdd: false,
+      // Show "other" if and only if there are abilities of that type
+      showHeader: false,
     };
 
     // Prepare the context for each individual ability
@@ -348,6 +353,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         const villainActionCount = context[type].abilities.length;
         abilityContext.order = villainActionCount + 1;
       }
+      context[type].showHeader = true;
 
       context[type].abilities.push(abilityContext);
     }

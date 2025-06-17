@@ -123,6 +123,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       context[category] = {
         label: config.label,
         equipment: [],
+        showAdd: this.isEditMode,
+        showHeader: this.isEditMode,
       };
     }
 
@@ -130,12 +132,15 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       equipment: [],
+      showAdd: false,
+      // Show "other" if and only if there is equipment of that category
+      showHeader: false,
     };
 
     // Prepare the context for each individual equipment item
     for (const item of equipment) {
       const category = context[item.system.category] ? item.system.category : "other";
-
+      context[category].showHeader = true;
       context[category].equipment.push(await this._prepareItemContext(item));
     }
 
