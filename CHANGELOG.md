@@ -23,6 +23,7 @@
 ### Added
 
 - Equipment now has a "quantity" property. Completing a project will now add to an equipment's quantity if it already exists on the actor, based on matching `dsid` values. (#558)
+- Added Damage enricher. (#568)
 
 ### Changed
 

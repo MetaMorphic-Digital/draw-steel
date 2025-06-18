@@ -26,6 +26,21 @@
       "ToggleMode": "Toggle Play/Edit Mode",
       "UpdateSource": "Update Source Information"
     },
+    "EDITOR": {
+      "Enrichers": {
+        "DamageHeal": {
+          "FormatString": "{formula} {type}",
+          "ChooseType": {
+            "InputLabel": "Type {index}",
+            "DialogTitle": "Choose Damage Types"
+          },
+          "MessageTitle": {
+            "damage": "Damage Roll",
+            "healing": "Healing Roll"
+          }
+        }
+      }
+    },
     "Source": {
       "FIELDS": {
         "source": {
@@ -1052,6 +1067,10 @@
       "Poison": "Poison",
       "Psychic": "Psychic",
       "Sonic": "Sonic"
+    },
+    "HealingTypes": {
+      "Value": "Stamina",
+      "Temporary": "temporary Stamina"
     },
     "PSEUDO": {
       "POWER_ROLL_EFFECT": {
