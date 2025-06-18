@@ -13,6 +13,8 @@ import DSDialog from "../../api/dialog.mjs";
 /** @type {TextEditorEnricherConfig["id"]} */
 export const id = "ds.roll";
 
+/* -------------------------------------------------- */
+
 /**
  * Valid roll types
  */
@@ -20,6 +22,8 @@ const rollTypes = ["damage", "heal", "healing"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
+
+/* -------------------------------------------------- */
 
 /** @type {TextEditorEnricher} */
 export function enricher(match, options) {
@@ -35,6 +39,8 @@ export function enricher(match, options) {
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
   }
 }
+
+/* -------------------------------------------------- */
 
 /**
  * Parse a roll string into a configuration object.
@@ -59,12 +65,14 @@ function parseConfig(match = "", { multiple = false } = {}) {
   return config;
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Called when the enriched content is added to the DOM
  * @param {HTMLEnrichedContentElement} element
  */
 export async function onRender(element) {
-  const link = element.querySelector("a")
+  const link = element.querySelector("a");
 
   link.addEventListener("click", (ev) => {
     switch (link.dataset.type) {
@@ -94,7 +102,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
     if (c.formula) formulaParts.push(c.formula);
     c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
-      const normalizedValue = value.toLowerCase()
+      const normalizedValue = value.toLowerCase();
       if (normalizedValue in ds.CONFIG.damageTypes) c.type.push(normalizedValue);
       else if (normalizedValue in ds.CONFIG.healingTypes) c.type.push(normalizedValue);
       else if (["heal", "healing"].includes(normalizedValue)) c.type.push("value");
@@ -147,13 +155,15 @@ function enrichDamageHeal(parsedConfig, label, options) {
   return link;
 }
 
+/* -------------------------------------------------- */
+
 /**
  * @param {HTMLAnchorElement} link
  * @param {PointerEvent} event
  */
 async function rollDamageHeal(link, event) {
   let { formulas, rollType, damageTypes } = link.dataset;
-  const configKey = rollType === "damage" ? "damageTypes" : "healingTypes"
+  const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
   const formulaArray = formulas?.split("&") ?? [];
   const damageTypeArray = damageTypes?.split("&") ?? [];
@@ -165,42 +175,42 @@ async function rollDamageHeal(link, event) {
     const types = damageTypeArray[idx]?.split("|") ?? [];
     if (types.length > 1) typeOptions.push({
       index: idx,
-      types
-    })
+      types,
+    });
     return {
       formula,
-      options: { type: types[0], types }
+      options: { type: types[0], types },
     };
-  })
+  });
 
   if (typeOptions.length) {
 
     const content = typeOptions.reduce((htmlString, choices) => {
-      const options = choices.types.map((type) =>({
+      const options = choices.types.map((type) => ({
         value: type,
-        label: ds.CONFIG[configKey][type].label
-      }))
+        label: ds.CONFIG[configKey][type].label,
+      }));
 
       const input = foundry.applications.fields.createSelectInput({
         name: "typeChoice." + choices.index,
         blank: false,
         options,
-        value: choices.types[0]
-      })
+        value: choices.types[0],
+      });
 
-      const label = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.InputLabel", { index: choices.index + 1 })
+      const label = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.InputLabel", { index: choices.index + 1 });
 
-      htmlString += foundry.applications.fields.createFormGroup({ input, label, localize: true }).outerHTML
+      htmlString += foundry.applications.fields.createFormGroup({ input, label, localize: true }).outerHTML;
 
       return htmlString;
-    }, "")
+    }, "");
 
     const typeChoices = await DSDialog.input({
       content,
       window: {
-        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.DialogTitle"
-      }
-    })
+        title: "DRAW_STEEL.EDITOR.Enrichers.DamageHeal.ChooseType.DialogTitle",
+      },
+    });
 
     if (!typeChoices) return;
 
@@ -209,11 +219,11 @@ async function rollDamageHeal(link, event) {
     }
   }
 
-  const rolls = rollPrep.map(({formula, options}) => {
+  const rolls = rollPrep.map(({ formula, options }) => {
     options.flavor = ds.CONFIG[configKey][options.type]?.label;
 
-    return new DamageRoll(formula, {}, options)
-  })
+    return new DamageRoll(formula, {}, options);
+  });
 
   // One by one evaluation to make it easier on users doing manual rolls
   for (const r of rolls) await r.evaluate();
@@ -222,14 +232,12 @@ async function rollDamageHeal(link, event) {
     rolls,
     flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
     flags: { core: { canPopout: true } },
-  })
+  });
 }
 
-/*************************************
- *
- * HTML CONSTRUCTION HELPER FUNCTIONS
- *
- *************************************/
+/**
+ * HTML Construction Helper Functions
+ */
 
 /**
  * Create a rollable link.
@@ -248,6 +256,8 @@ function createRollLink(label, dataset = {}, { classes = "roll-link", tag = "a" 
   _addDataset(link, dataset);
   return link;
 }
+
+/* -------------------------------------------------- */
 
 /**
  * Add a dataset object to the provided element.
