@@ -138,10 +138,10 @@ DRAW_STEEL.damageTypes = {
 preLocalize("damageTypes", { key: "label" });
 
 /**
- * Configuration information for healing types
- * Keys correspond to keys in `system.stamina`
+ * Configuration information for healing types.
+ * Keys correspond to keys in `system.stamina`.
  * This is included in ds.CONFIG not because the top level keys can be customized
- * But because the properties within the object can be customized
+ * but because the properties within the object can be customized.
  */
 DRAW_STEEL.healingTypes = {
   value: {
