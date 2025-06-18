@@ -27,7 +27,19 @@
       "UpdateSource": "Update Source Information"
     },
     "EDITOR": {
-      "DamageHeal": "{formula} {type}"
+      "Enrichers": {
+        "DamageHeal": {
+          "FormatString": "{formula} {type}",
+          "ChooseType": {
+            "InputLabel": "Type {index}",
+            "DialogTitle": "Choose Damage Types"
+          },
+          "MessageTitle": {
+            "damage": "Damage Roll",
+            "healing": "Healing Roll"
+          }
+        }
+      }
     },
     "Source": {
       "FIELDS": {
