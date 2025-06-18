@@ -82,6 +82,8 @@ export async function onRender(element) {
   });
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Damage/Heal Enricher
  */
@@ -234,6 +236,8 @@ async function rollDamageHeal(link, event) {
     flags: { core: { canPopout: true } },
   });
 }
+
+/* -------------------------------------------------- */
 
 /**
  * HTML Construction Helper Functions
