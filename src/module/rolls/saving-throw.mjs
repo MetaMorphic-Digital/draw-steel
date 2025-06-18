@@ -14,7 +14,11 @@ export default class SavingThrowRoll extends DSRoll {
     super(formula, data, options);
   }
 
+  /* -------------------------------------------------- */
+
   static CHAT_TEMPLATE = systemPath("templates/rolls/save.hbs");
+
+  /* -------------------------------------------------- */
 
   /**
    * The total to succeed or higher
@@ -25,6 +29,8 @@ export default class SavingThrowRoll extends DSRoll {
     return this.options.successThreshold ?? 6;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Did the saving throw succeed
    * @returns {boolean}
@@ -33,6 +39,8 @@ export default class SavingThrowRoll extends DSRoll {
     if (this._total === undefined) return undefined;
     return this.total >= this.successThreshold;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareChatRenderContext({ flavor, isPrivate = false, ...options } = {}) {
@@ -44,6 +52,8 @@ export default class SavingThrowRoll extends DSRoll {
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async toMessage(messageData, messageOptions) {

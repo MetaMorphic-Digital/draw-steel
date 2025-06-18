@@ -12,6 +12,8 @@ export default class DamageRoll extends DSRoll {
     return this.options.type ?? "";
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Damage immunities to ignore
    * @type {Array<keyof typeof ds["CONFIG"]["damageTypes"]>}

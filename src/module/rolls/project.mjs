@@ -45,6 +45,8 @@ export default class ProjectRoll extends DSRoll {
     }
   }
 
+  /* -------------------------------------------------- */
+
   static DEFAULT_OPTIONS = Object.freeze({
     criticalThreshold: 19,
     banes: 0,
@@ -52,17 +54,25 @@ export default class ProjectRoll extends DSRoll {
     bonuses: 0,
   });
 
+  /* -------------------------------------------------- */
+
   static CHAT_TEMPLATE = systemPath("templates/rolls/project.hbs");
+
+  /* -------------------------------------------------- */
 
   /**
    * Maximum number of edges
    */
   static MAX_EDGE = 2;
 
+  /* -------------------------------------------------- */
+
   /**
    * Maximum number of banes
    */
   static MAX_BANE = 2;
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the user with a roll configuration dialog
@@ -115,6 +125,8 @@ export default class ProjectRoll extends DSRoll {
     return { rollMode: promptValue.rollMode, projectRoll };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determines if this is a power roll with 2d10 base
    * @returns {boolean}
@@ -124,6 +136,8 @@ export default class ProjectRoll extends DSRoll {
     return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Cancels out edges and banes to get the adjustment
    * @returns {number} An integer from -2 to 2, inclusive
@@ -131,6 +145,8 @@ export default class ProjectRoll extends DSRoll {
   get netBoon() {
     return this.options.edges - this.options.banes;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Total project points accrued from this roll
@@ -141,6 +157,8 @@ export default class ProjectRoll extends DSRoll {
     return Math.max(1, this.total);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns the natural result of the power roll
    * @returns {number | undefined}
@@ -148,6 +166,8 @@ export default class ProjectRoll extends DSRoll {
   get naturalResult() {
     return this.dice[0].total;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Determines if the natural result was a natural 20
@@ -157,6 +177,8 @@ export default class ProjectRoll extends DSRoll {
     if ((this._total === undefined) || !this.isValidProjectRoll) return null;
     return (this.dice[0].total >= 20);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Determines if a project roll was a critical
@@ -168,12 +190,16 @@ export default class ProjectRoll extends DSRoll {
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Semantic alias for this.critical
    */
   get isBreakthrough() {
     return this.isCritical;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareChatRenderContext({ flavor, isPrivate = false, ...options } = {}) {
