@@ -187,10 +187,11 @@ The above automated conditions are bespoke active effects usable via the token H
 
 If an active effect is created, a status condition can be linked with it at the very bottom of the `Details` page. This has the result that the effect additionally to it's own eefects behaves as if the chosen status condition is activated for the actor. This includes effects such as `Frightened` or `Grabbed` that require a target to be the source of the effect.
 
-### Duration
+## Duration
 
-The second tab of the active effect pop-up is the `Duration` tab. At the top of this page a dropdown menu let's you choose between the typical Draw Steel effect durations `EoT`, `Save Ends`, and `End of Encounter or Dying`. They work as follows:
+Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `Save Ends`, and `End of Encounter`.
+Additionally, the Save Ends duration allows for defining the saving throw formula. The default is `1d10 + @combat.save.bonus`.
 
-+ `EoT` removes the effect as soon as another actor takes their turn after the affected actor
-+ `Save Ends` let's you define a save formula, the default is `1d10`. Once another actor takes their turn after the affected actor, the affected actor will be prompted to roll a save. In this prompt, they can adjust the required number they have to roll and add any situational bonuses. Additionally, they can spend a Hero Token to succeed instead of rolling.
-+ `End of Encounter or Dying` ends the effect when combat is ended by the director, or if the actor is marked `Dead`.
++ `EoT` will automatically self-disable when an actor starts their turn after the affected actor had theirs.
++ `Save Ends` will create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
++ End of Encounter effects will automatically self-disable alongside the encounter.

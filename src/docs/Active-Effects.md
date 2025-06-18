@@ -11,12 +11,36 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 > **Sheet Modes**
 > The Actor and Item sheets in the system support both Play and Edit modes. One important difference between the two is that the Edit mode prioritizes showing the "source" data, which is *before* active effects are applied. To see values with active effects calculated, switch back to play mode.
 
-While there are similarities with roll data, active effects generally lead with `system.` instead of `@`. To add a temporary bonus to stability via an active effect, the active effect will need to look as the following example:
+## Active Effect Window
 
-|system.combat.stability|Add|[value]|
-|---|---|---|
+At any given time you can change the icon and name of an active effect.
 
-### Active effect change modes
+### Details
+
+On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves.
+
+At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
+
+For example if an Active Effect is linked to the `Prone` condition and is applied to an actor, this actor's movement becomes crawling and abilities against them gain an edge, and their abilities have a bane.
+
+If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
+
+### Duration
+
+Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `Save Ends`, and `End of Encounter`.
+Additionally, the Save Ends duration allows for defining the saving throw formula. The default is `1d10 + @combat.save.bonus`.
+
++ `EoT` will automatically self-disable when an actor starts their turn after the affected actor had theirs.
++ `Save Ends` will create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
++ End of Encounter effects will automatically self-disable alongside the encounter.
+
+Additional options for duration are timed durations, and durations base don rounds and turns, however, as these are not part of the Draw Steel rules, it is recommended not to utilise these.
+
+### Changes
+
+The last tab includes the Active Effect changes of an effect. Here you can add bonuses and maluses, or stat changes, and determine how they affect a actor.
+
+#### Active effect change modes
 
 |Change Mode|Description|
 |:-----------:|--------|
@@ -27,16 +51,12 @@ While there are similarities with roll data, active effects generally lead with 
 |Upgrade|Increases the defined attribute only in cases where the current value of that attribute would be less than value specified in the Effect Value field.|
 |Custom|The Custom change mode applies logic defined by a game system or add-on module. The Draw Steel system does not utilize the Custom Change Mode.|
 
-## Duration
+While there are similarities with roll data, active effects generally lead with `system.` instead of `@`. To add a temporary bonus to stability via an active effect, the active effect will need to look as the following example:
 
-Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `Save Ends`, and `End of Encounter`.
-Additionally, the Save Ends duration allows for defining the saving throw formula. The default is `1d10 + @combat.save.bonus`.
+|system.combat.stability|Add|[value]|
+|---|---|---|
 
-+ End of Turn will automatically self-disable when an affected actor ends their turn.
-+ Saving Throws will create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
-+ End of Encounter effects will automatically self-disable alongside the encounter.
-
-### Characteristic Keys
+#### Characteristic Keys
 
 |Characteristic|Attribute Key|
 |:---:|---|
@@ -46,7 +66,7 @@ Additionally, the Save Ends duration allows for defining the saving throw formul
 |Presence value|`system.characteristics.presence.value`|
 |Reason value|`system.characteristics.reason.value`|
 
-### Common bonus effect examples
+#### Common bonus effect examples
 
 |Value Name|Attribute Key|
 |:---:|---|
