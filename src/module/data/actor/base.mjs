@@ -429,7 +429,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /**
    * Fetch information about the core resource for this actor subtype.
-   * {@linkcode AbilityModel.use | AbilityModel#use}
+   * @see {@linkcode AbilityModel.use | AbilityModel#use}
    * @abstract
    * @returns {{
    *  name: string;
@@ -443,7 +443,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /**
    * Update the core resource for this actor subtype
-   * {@linkcode AbilityModel.use | AbilityModel#use}
+   * @see {@linkcode AbilityModel.use | AbilityModel#use}
    * @param {number} delta Change in value
    */
   async updateResource(delta) {
