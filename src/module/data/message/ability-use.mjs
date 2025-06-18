@@ -84,29 +84,7 @@ export default class AbilityUseModel extends BaseMessageModel {
    * @protected
    */
   _constructDamageFooterButtons() {
-    const damageButtons = [];
-    const damageRolls = this.parent.rolls.filter(roll => roll instanceof DamageRoll);
-    for (const roll of damageRolls) {
-      const typeLabel = ds.CONFIG.damageTypes[roll.options.type]?.label ?? "";
-      const button = ds.utils.constructHTMLButton({
-        label: game.i18n.format("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Label", {
-          type: typeLabel ? " " + typeLabel : "",
-          amount: roll.total,
-        }),
-        dataset: {
-          type: roll.options.type,
-          amount: roll.total,
-          tooltip: game.i18n.localize("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Tooltip"),
-          tooltipDirection: "UP",
-        },
-        classes: ["apply-damage"],
-        icon: "fa-solid fa-burst",
-      });
-
-      damageButtons.push(button);
-    }
-
-    return damageButtons;
+    return this.parent.rolls.filter(roll => roll instanceof DamageRoll).map(r => r.toRollButton());
   }
 
   /* -------------------------------------------------- */
