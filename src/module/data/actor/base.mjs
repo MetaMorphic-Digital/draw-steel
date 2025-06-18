@@ -1,5 +1,5 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
-import { PowerRoll } from "../../rolls/power.mjs";
+import PowerRoll from "../../rolls/power.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
@@ -429,7 +429,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /**
    * Fetch information about the core resource for this actor subtype.
-   * {@link AbilityModel#use}
+   * {@linkcode AbilityModel.use | AbilityModel#use}
    * @abstract
    * @returns {{
    *  name: string;
@@ -443,7 +443,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /**
    * Update the core resource for this actor subtype
-   * {@link AbilityModel#use}
+   * {@linkcode AbilityModel.use | AbilityModel#use}
    * @param {number} delta Change in value
    */
   async updateResource(delta) {

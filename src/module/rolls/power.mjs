@@ -1,13 +1,13 @@
 import { systemPath } from "../constants.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
-import { DSRoll } from "./base.mjs";
+import DSRoll from "./base.mjs";
 
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
  */
-export class PowerRoll extends DSRoll {
+export default class PowerRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
     super(formula, data, options);
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
@@ -277,8 +277,9 @@ export class PowerRoll extends DSRoll {
     return flavorlessRoll.formula;
   }
 
-  async _prepareContext({ flavor, isPrivate }) {
-    const context = await super._prepareContext({ flavor, isPrivate });
+  /** @inheritdoc */
+  async _prepareChatRenderContext({ flavor, isPrivate = false, ...options } = {}) {
+    const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     context.tier = {
       label: game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),

@@ -1,4 +1,4 @@
-import { DSRoll } from "./base.mjs";
+import DSRoll from "./base.mjs";
 import { systemPath } from "../constants.mjs";
 import PowerRollDialog from "../applications/apps/power-roll-dialog.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
@@ -8,7 +8,7 @@ import DrawSteelChatMessage from "../documents/chat-message.mjs";
 /**
  * Special test used during downtime
  */
-export class ProjectRoll extends DSRoll {
+export default class ProjectRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
     super(formula, data, options);
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
@@ -175,8 +175,9 @@ export class ProjectRoll extends DSRoll {
     return this.isCritical;
   }
 
-  async _prepareContext({ flavor, isPrivate }) {
-    const context = await super._prepareContext({ flavor, isPrivate });
+  /** @inheritdoc */
+  async _prepareChatRenderContext({ flavor, isPrivate = false, ...options } = {}) {
+    const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     let modString = "";
 

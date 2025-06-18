@@ -1,4 +1,4 @@
-import { DamageRoll } from "../../rolls/damage.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -79,7 +79,7 @@ export default class AbilityUseModel extends BaseMessageModel {
   /* -------------------------------------------------- */
 
   /**
-   * Create an array of damage buttons based on each {@link DamageRoll} in this message's rolls.
+   * Create an array of damage buttons based on each {@linkcode DamageRoll} in this message's rolls.
    * @returns {HTMLButtonElement[]}
    * @protected
    */

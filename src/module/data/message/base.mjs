@@ -47,7 +47,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Add event listeners. Guaranteed to run after all alterations in {@link alterMessageHTML}
+   * Add event listeners. Guaranteed to run after all alterations in {@linkcode alterMessageHTML}
    * Called by the renderChatMessageHTML hook
    * @param {HTMLLIElement} html The pending HTML
    */
