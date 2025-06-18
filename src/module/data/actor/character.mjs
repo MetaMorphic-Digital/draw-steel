@@ -1,5 +1,5 @@
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
-import { DSRoll } from "../../rolls/base.mjs";
+import DSRoll from "../../rolls/base.mjs";
 import { barAttribute, requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 

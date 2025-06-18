@@ -1,4 +1,3 @@
-import { DSRoll } from "../../../rolls/base.mjs";
 import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";

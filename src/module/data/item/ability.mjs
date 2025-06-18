@@ -500,8 +500,7 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * An alias of use.
-   * @see {AbilityModel#use}
+   * An alias of {@linkcode use}.
    */
   async roll(options = {}) {
     this.use(options);

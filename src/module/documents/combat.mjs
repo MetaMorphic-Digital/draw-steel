@@ -1,7 +1,7 @@
 import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
-import { DSRoll } from "../rolls/base.mjs";
+import DSRoll from "../rolls/base.mjs";
 
 /** @import ActiveEffectData from "@common/documents/_types.mjs" */
 /** @import { MaliceModel } from "../data/settings/malice.mjs" */
@@ -97,7 +97,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /**
    * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant
    * @param {DrawSteelCombatant | DrawSteelCombatantGroup} b Some other combatant
-   * @returns {number} The sort for an {@link Array#sort} callback
+   * @returns {number} The sort for an {@linkcode Array.sort | Array#sort} callback
    * @protected
    * @inheritdoc
    */

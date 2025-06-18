@@ -1,11 +1,9 @@
-import { DSRoll } from "../../../rolls/base.mjs";
-import FormulaField from "../../fields/formula-field.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /** @import { AppliedEffectSchema } from "./_types" */
 
-const { SetField, StringField, SchemaField } = foundry.data.fields;
+const { SetField, StringField } = foundry.data.fields;
 
 /**
  * For abilities that apply an ActiveEffect

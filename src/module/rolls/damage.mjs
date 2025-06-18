@@ -1,9 +1,9 @@
-import { DSRoll } from "./base.mjs";
+import DSRoll from "./base.mjs";
 
 /**
  * Contains damage-specific info like damage types
  */
-export class DamageRoll extends DSRoll {
+export default class DamageRoll extends DSRoll {
   /**
    * The damage type
    * @type {keyof typeof ds["CONFIG"]["damageTypes"]}
@@ -11,6 +11,8 @@ export class DamageRoll extends DSRoll {
   get type() {
     return this.options.type ?? "";
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Damage immunities to ignore
