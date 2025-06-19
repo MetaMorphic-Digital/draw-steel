@@ -2,13 +2,11 @@
   .status-effects.palette {
     display: flex;
     flex-direction: column;
-    width: 240px;
     section.effect-pane {
       display: grid;
-      grid-template-columns: repeat(2, 110px);
+      grid-template-columns: repeat(2, 100px);
       grid-column-gap: 10px;
       text-align: left;
-      padding-right: 3px;
       div.effect-group {
         opacity: 0.6;
         filter: var(--control-icon-filter);
