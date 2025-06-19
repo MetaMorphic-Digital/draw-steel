@@ -9,7 +9,7 @@ export default class DamageRoll extends DSRoll {
    * @param {PointerEvent} event
    */
   static async applyDamageCallback(event) {
-    if (!canvas.tokens.controlled.length) return ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
+    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
 
     const type = event.target.dataset.type;
     let amount = Number(event.target.dataset.amount);
