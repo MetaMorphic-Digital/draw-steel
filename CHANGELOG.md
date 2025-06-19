@@ -23,12 +23,12 @@
 ### Added
 
 - Equipment now has a "quantity" property. Completing a project will now add to an equipment's quantity if it already exists on the actor, based on matching `dsid` values. (#558)
+- Added Healing enricher, which lets you recover stamina or temporary stamina with `[[/heal]]`. See the wiki for more details. (#559)
 - Added Damage enricher, which lets you add damage rolls to text with `[[/damage]]`. See the wiki for more details. (#568)
-- Added Healing enricher, which lets you recover stamina or temporary stamina with `[[/heal]]`. See the wiki for more details. (#610)
 
 ### Changed
 
-- Adjusted display of the actor sheets in play mode
+- Adjusted display of the actor sheets in play mode:
   - Unused ability and equipment sections are no longer displayed in play mode.
   - Add Item buttons only display in edit mode.
 
