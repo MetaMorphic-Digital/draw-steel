@@ -1,4 +1,3 @@
-import DamageRoll from "../../rolls/damage.mjs";
 import BaseMessageModel from "./base.mjs";
 
 /** @import AbilityModel from "../item/ability.mjs" */
@@ -71,20 +70,7 @@ export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
-    buttons.push(...this._constructDamageFooterButtons());
-
     return buttons;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Create an array of damage buttons based on each {@linkcode DamageRoll} in this message's rolls.
-   * @returns {HTMLButtonElement[]}
-   * @protected
-   */
-  _constructDamageFooterButtons() {
-    return this.parent.rolls.filter(roll => roll instanceof DamageRoll).map(r => r.toRollButton());
   }
 
   /* -------------------------------------------------- */
@@ -92,7 +78,5 @@ export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
   addListeners(html) {
     super.addListeners(html);
-    const damageButtons = html.querySelectorAll(".apply-damage");
-    for (const damageButton of damageButtons) damageButton.addEventListener("click", (event) => DamageRoll.applyDamageCallback(event));
   }
 }
