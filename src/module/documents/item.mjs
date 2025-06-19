@@ -1,8 +1,5 @@
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
-// Necessary for continued type functionality with mixin
-/** @import Item from "@client/documents/item.mjs"; */
-
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
  */
