@@ -53,7 +53,14 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * @protected
    */
   _constructDamageFooterButtons() {
-    return this.parent.rolls.filter(roll => roll instanceof DamageRoll).map(r => r.toRollButton());
+    /** @type {HTMLButtonElement[]} */
+    const buttons = [];
+    for (let i = 0; i < this.parent.rolls.length; i++) {
+      const roll = this.parent.rolls[i];
+      if (roll instanceof DamageRoll) buttons.push(roll.toRollButton(i));
+    }
+
+    return buttons;
   }
 
   /* -------------------------------------------------- */
