@@ -181,7 +181,7 @@ async function rollDamageHeal(link, event) {
     });
     return {
       formula,
-      options: { type: types[0], types },
+      options: { type: types[0], types, isHeal: rollType !== "damage" },
     };
   });
 

@@ -18,9 +18,15 @@ export default class DamageRoll extends DSRoll {
 
     let amount = roll.total;
     if (event.shiftKey) amount = Math.floor(amount / 2);
-
     for (const actor of ds.utils.selectedActors()) {
-      await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
+      if (roll.isHeal) {
+        const isTemp = roll.type !== "value";
+        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.Messages.base.Buttons.ApplyHeal.TempCapped", {
+          format: { name: actor.name },
+        });
+        else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
+      }
+      else await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
     }
   }
 
@@ -29,7 +35,7 @@ export default class DamageRoll extends DSRoll {
    * @type {string}
    */
   get type() {
-    return this.options.type ?? "";
+    return this.options.type ?? (this.isHeal ? "value" : "");
   }
 
   /* -------------------------------------------------- */
@@ -39,6 +45,7 @@ export default class DamageRoll extends DSRoll {
    * @type {string}
    */
   get typeLabel() {
+    if (this.isHeal) return ds.CONFIG.healingTypes[this.type].label;
     return ds.CONFIG.damageTypes[this.type]?.label ?? "";
   }
 
@@ -52,24 +59,40 @@ export default class DamageRoll extends DSRoll {
     return this.options.ignoredImmunities ?? [];
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Does this represent healing?
+   * @type {boolean}
+   */
+  get isHeal() {
+    return this.options.isHeal || false;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Produces a button with relevant data to applying this damage
    * @param {number} index The index of this roll in the `rolls` array of the message
    * @returns {HTMLButtonElement} A button that
    */
   toRollButton(index) {
+    const labelPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Label" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Label";
+
+    const tooltipPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Tooltip";
+
     return ds.utils.constructHTMLButton({
-      label: game.i18n.format("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Label", {
+      label: game.i18n.format(labelPath, {
         type: this.typeLabel ? " " + this.typeLabel : "",
         amount: this.total,
       }),
       dataset: {
         index,
-        tooltip: game.i18n.localize("DRAW_STEEL.Messages.AbilityUse.Buttons.ApplyDamage.Tooltip"),
+        tooltip: game.i18n.localize(tooltipPath),
         tooltipDirection: "UP",
       },
       classes: ["apply-damage"],
-      icon: "fa-solid fa-burst",
+      icon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
     });
   }
 }
