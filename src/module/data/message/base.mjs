@@ -1,3 +1,4 @@
+import DamageRoll from "../../rolls/damage.mjs";
 
 /**
  * A base class for message subtype-specific behavior and data
@@ -41,7 +42,25 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * @protected
    */
   async _constructFooterButtons() {
-    return [];
+    return [...this._constructDamageFooterButtons()];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create an array of damage buttons based on each {@linkcode DamageRoll} in this message's rolls.
+   * @returns {HTMLButtonElement[]}
+   * @protected
+   */
+  _constructDamageFooterButtons() {
+    /** @type {HTMLButtonElement[]} */
+    const buttons = [];
+    for (let i = 0; i < this.parent.rolls.length; i++) {
+      const roll = this.parent.rolls[i];
+      if (roll instanceof DamageRoll) buttons.push(roll.toRollButton(i));
+    }
+
+    return buttons;
   }
 
   /* -------------------------------------------------- */
@@ -51,5 +70,8 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * Called by the renderChatMessageHTML hook
    * @param {HTMLLIElement} html The pending HTML
    */
-  addListeners(html) {}
+  addListeners(html) {
+    const damageButtons = html.querySelectorAll(".apply-damage");
+    for (const damageButton of damageButtons) damageButton.addEventListener("click", (event) => DamageRoll.applyDamageCallback(event));
+  }
 }
