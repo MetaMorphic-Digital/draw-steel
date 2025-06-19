@@ -1070,7 +1070,7 @@
     },
     "HealingTypes": {
       "Value": "Stamina",
-      "Temporary": "temporary Stamina"
+      "Temporary": "Temporary Stamina"
     },
     "PSEUDO": {
       "POWER_ROLL_EFFECT": {
@@ -1387,13 +1387,20 @@
       "4": "4th Echelon"
     },
     "Messages": {
-      "AbilityUse": {
+      "base": {
         "Buttons": {
+          "ApplyHeal": {
+            "Label": "Regain {amount} {type}",
+            "Tooltip": "Shift+Click: Halve Heal",
+            "TempCapped": "{name} already has more temporary Stamina"
+          },
           "ApplyDamage": {
             "Label": "Apply {amount}{type} Damage",
             "Tooltip": "Shift+Click: Halve Damage"
           }
-        },
+        }
+      },
+      "AbilityUse": {
         "NoTokenSelected": "You must have at least one token selected"
       },
       "SavingThrow": {

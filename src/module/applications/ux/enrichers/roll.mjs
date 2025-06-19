@@ -167,6 +167,8 @@ async function rollDamageHeal(link, event) {
   let { formulas, rollType, damageTypes } = link.dataset;
   const configKey = rollType === "damage" ? "damageTypes" : "healingTypes";
 
+  if (!["damage", "healing"].includes(rollType)) throw new Error("The button's roll type must be damage or healing");
+
   const formulaArray = formulas?.split("&") ?? [];
   const damageTypeArray = damageTypes?.split("&") ?? [];
 
@@ -181,7 +183,7 @@ async function rollDamageHeal(link, event) {
     });
     return {
       formula,
-      options: { type: types[0], types },
+      options: { type: types[0], types, isHeal: rollType !== "damage" },
     };
   });
 
