@@ -14,9 +14,9 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    const effectPalette = this.element.querySelector("div[data-palette=\"effects\"]");
+    context.dsEffectEnds = ds.CONFIG.effectEnds;
 
-    console.log(context, options, effectPalette);
+    const effectPalette = this.element.querySelector("div[data-palette=\"effects\"]");
 
     const paletteContents = await foundry.applications.handlebars.renderTemplate(systemPath("templates/hud/effect-palette.hbs"), context);
 

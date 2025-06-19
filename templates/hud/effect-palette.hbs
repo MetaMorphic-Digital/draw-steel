@@ -1,16 +1,13 @@
-<header>
-  <select>
-    <option>None</option>
-    <option>End of Turn</option>
-    <option>Save Ends</option>
-    <option>End of Encounter</option>
+<header class="effect-config">
+  <select data-name="">
+    {{selectOptions dsEffectEnds blank=(localize "Default")}}
   </select>
 </header>
-<ul class="scrollable">
+<section class="effect-pane">
   {{#each statusEffects as |status|}}
-  <li class="flexrow">
+  <div class="effect-group {{status.cssClass}} flexrow" data-action="effect" data-status-id="{{status.id}}">
     <span class="title">{{status.title}}</span>
-    <img class="effect-control {{status.cssClass}}" src="{{status.src}}" data-action="effect" alt="{{status.title}}" data-status-id="{{status.id}}">
-  </li>
+    <img class="effect-control" src="{{status.src}}" alt="{{status.title}}">
+  </div>
   {{/each}}
-</ul>
+</section>
