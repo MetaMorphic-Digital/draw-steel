@@ -5,6 +5,22 @@ import DSRoll from "./base.mjs";
  */
 export default class DamageRoll extends DSRoll {
   /**
+   * Button callback to apply damage to selected actors
+   * @param {PointerEvent} event
+   */
+  static async applyDamageCallback(event) {
+    if (!canvas.tokens.controlled.length) return ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
+
+    const type = event.target.dataset.type;
+    let amount = Number(event.target.dataset.amount);
+    if (event.shiftKey) amount = Math.floor(amount / 2);
+
+    for (const actor of ds.utils.selectedActors()) {
+      await actor.system.takeDamage(amount, { type });
+    }
+  }
+
+  /**
    * The damage type
    * @type {string}
    */

@@ -93,18 +93,6 @@ export default class AbilityUseModel extends BaseMessageModel {
   addListeners(html) {
     super.addListeners(html);
     const damageButtons = html.querySelectorAll(".apply-damage");
-    for (const damageButton of damageButtons) {
-      damageButton.addEventListener("click", async (event) => {
-        if (!canvas.tokens.controlled.length) return ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
-
-        const type = event.target.dataset.type;
-        let amount = Number(event.target.dataset.amount);
-        if (event.shiftKey) amount = Math.floor(amount / 2);
-
-        for (const actor of ds.utils.selectedActors()) {
-          await actor.system.takeDamage(amount, { type });
-        }
-      });
-    }
+    for (const damageButton of damageButtons) damageButton.addEventListener("click", (event) => DamageRoll.applyDamageCallback(event));
   }
 }
