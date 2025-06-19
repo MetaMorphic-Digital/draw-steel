@@ -31,6 +31,7 @@
 - Adjusted display of the actor sheets in play mode:
   - Unused ability and equipment sections are no longer displayed in play mode.
   - Add Item buttons only display in edit mode.
+- New actors and items now start in edit mode. Items no longer default to edit mode if opened while editable.
 
 ## 0.7.2
 
