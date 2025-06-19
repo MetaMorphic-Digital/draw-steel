@@ -56,11 +56,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _mode = this.constructor.MODES.PLAY;
-
-  /* -------------------------------------------------- */
-
   /**
    * A set of the currently expanded item ids
    * @type {Set<string>}

@@ -44,8 +44,9 @@ export default base => {
     /**
      * The mode the sheet is currently in.
      * @type {DSDocumentSheet.MODES}
+     * @protected
      */
-    _mode;
+    _mode = DSDocumentSheet.MODES.PLAY;
 
     /* -------------------------------------------------- */
 
@@ -95,6 +96,10 @@ export default base => {
     /** @inheritdoc */
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
+      // New sheets should always start in edit mode
+      if (["createItem", "createActor"].includes(options.renderContext)) {
+        this._mode = DSDocumentSheet.MODES.EDIT;
+      }
       Object.assign(context, {
         isPlay: this.isPlayMode,
         owner: this.document.isOwner,

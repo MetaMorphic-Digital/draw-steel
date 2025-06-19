@@ -91,11 +91,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _mode = this.isEditable ? this.constructor.MODES.EDIT : this.constructor.MODES.PLAY;
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   _configureRenderParts(options) {
     const { header, tabs, description, details, advancement, impact, effects } = super._configureRenderParts(options);
 
