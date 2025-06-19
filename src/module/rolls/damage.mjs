@@ -45,7 +45,7 @@ export default class DamageRoll extends DSRoll {
    * @type {string}
    */
   get typeLabel() {
-    if (this.isHeal) return ds.CONFIG.healingTypes[this.type].label;
+    if (this.isHeal) return ds.CONFIG.healingTypes[this.type]?.label;
     return ds.CONFIG.damageTypes[this.type]?.label ?? "";
   }
 
