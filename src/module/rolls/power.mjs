@@ -1,13 +1,13 @@
 import { systemPath } from "../constants.mjs";
 import DrawSteelChatMessage from "../documents/chat-message.mjs";
-import { DSRoll } from "./base.mjs";
+import DSRoll from "./base.mjs";
 
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
  * Augments the Roll class with specific functionality for power rolls
  */
-export class PowerRoll extends DSRoll {
+export default class PowerRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
     super(formula, data, options);
     foundry.utils.mergeObject(this.options, this.constructor.DEFAULT_OPTIONS, {
@@ -50,6 +50,8 @@ export class PowerRoll extends DSRoll {
     }
   }
 
+  /* -------------------------------------------------- */
+
   static DEFAULT_OPTIONS = Object.freeze({
     type: "test",
     criticalThreshold: 19,
@@ -58,7 +60,11 @@ export class PowerRoll extends DSRoll {
     bonuses: 0,
   });
 
+  /* -------------------------------------------------- */
+
   static CHAT_TEMPLATE = systemPath("templates/rolls/power.hbs");
+
+  /* -------------------------------------------------- */
 
   /**
    * Types of Power Rolls
@@ -67,6 +73,8 @@ export class PowerRoll extends DSRoll {
   static get TYPES() {
     return PowerRoll.#TYPES;
   }
+
+  /* -------------------------------------------------- */
 
   /** @enum {{label: string; icon: string}} */
   static #TYPES = Object.freeze({
@@ -80,6 +88,8 @@ export class PowerRoll extends DSRoll {
     },
   });
 
+  /* -------------------------------------------------- */
+
   /**
    * Set of power roll types
    * @type {Set<"ability" | "test">}
@@ -88,15 +98,21 @@ export class PowerRoll extends DSRoll {
     return new Set(Object.keys(this.#TYPES));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Maximum number of edges
    */
   static MAX_EDGE = 2;
 
+  /* -------------------------------------------------- */
+
   /**
    * Maximum number of banes
    */
   static MAX_BANE = 2;
+
+  /* -------------------------------------------------- */
 
   /**
    * Power roll result tiers
@@ -105,6 +121,8 @@ export class PowerRoll extends DSRoll {
     return this.#RESULT_TIERS;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Names of the result tiers
    * @type {Array<"tier1" | "tier2" | "tier3">}
@@ -112,6 +130,8 @@ export class PowerRoll extends DSRoll {
   static get TIER_NAMES() {
     return Object.keys(this.#RESULT_TIERS);
   }
+
+  /* -------------------------------------------------- */
 
   /** @enum {{label: string; threshold: number}} */
   static #RESULT_TIERS = {
@@ -128,6 +148,8 @@ export class PowerRoll extends DSRoll {
       threshold: 17,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the user with a roll configuration dialog
@@ -198,6 +220,23 @@ export class PowerRoll extends DSRoll {
     return { rollMode: promptValue.rollMode, powerRolls: rolls };
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Modify the options object based on conditions that apply to all Power Rolls
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
+   */
+  static getActorModifiers(options) {
+    if (!options.actor) return;
+
+    if (options.actor.statuses.has("weakened")) options.modifiers.banes += 1;
+
+    // Restrained condition - might and agility tests take a bane
+    if (options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Determines if this is a power roll with 2d10 base
    * @returns {boolean}
@@ -207,6 +246,8 @@ export class PowerRoll extends DSRoll {
     return (firstTerm instanceof foundry.dice.terms.Die) && (firstTerm.faces === 10) && (firstTerm.number === 2);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Cancels out edges and banes to get the adjustment
    * @returns {number} An integer from -2 to 2, inclusive
@@ -214,6 +255,8 @@ export class PowerRoll extends DSRoll {
   get netBoon() {
     return this.options.edges - this.options.banes;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Produces the tier of a roll as a number
@@ -230,6 +273,8 @@ export class PowerRoll extends DSRoll {
     return Math.clamp(tier + adjustment, 1, 3);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Converts the tier of a roll into a string property
    * @returns {string | undefined} Returns a string for the tier or undefined if this isn't yet evaluated
@@ -239,6 +284,8 @@ export class PowerRoll extends DSRoll {
     return `tier${this.product}`;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns the natural result of the power roll
    * @returns {number | undefined}
@@ -246,6 +293,8 @@ export class PowerRoll extends DSRoll {
   get naturalResult() {
     return this.dice[0].total;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Determines if the natural result was a natural 20
@@ -256,6 +305,8 @@ export class PowerRoll extends DSRoll {
     return (this.dice[0].total >= 20);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determines if a power roll was a critical
    * @returns {boolean | null} Null if not yet evaluated,
@@ -265,6 +316,8 @@ export class PowerRoll extends DSRoll {
     if (this._total === undefined) return null;
     return (this.dice[0].total >= this.options.criticalThreshold);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Return a version of the formula that doesn't have the flavor text.
@@ -277,8 +330,11 @@ export class PowerRoll extends DSRoll {
     return flavorlessRoll.formula;
   }
 
-  async _prepareContext({ flavor, isPrivate }) {
-    const context = await super._prepareContext({ flavor, isPrivate });
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareChatRenderContext({ flavor, isPrivate = false, ...options } = {}) {
+    const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     context.tier = {
       label: game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
@@ -314,18 +370,5 @@ export class PowerRoll extends DSRoll {
     context.flavorlessFormula = this.flavorlessFormula;
 
     return context;
-  }
-
-  /**
-   * Modify the options object based on conditions that apply to all Power Rolls
-   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
-   */
-  static getActorModifiers(options) {
-    if (!options.actor) return;
-
-    if (options.actor.statuses.has("weakened")) options.modifiers.banes += 1;
-
-    // Restrained condition - might and agility tests take a bane
-    if (options.actor.statuses.has("restrained") && (options.type === "test") && ["might", "agility"].includes(options.characteristic)) options.modifiers.banes += 1;
   }
 }

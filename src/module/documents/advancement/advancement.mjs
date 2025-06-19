@@ -1,8 +1,10 @@
 // import AdvancementConfig from "../../applications/advancement/advancement-config.mjs";
 // import AdvancementFlow from "../../applications/advancement/advancement-flow.mjs";
 import BaseAdvancement from "../../data/advancement/base.mjs";
-/** @import { DrawSteelActor } from "../actor.mjs" */
-/** @import { DrawSteelItem } from "../item.mjs" */
+
+/** @import Application from "@client/applications/api/application.mjs" */
+/** @import ClientDocumentMixin from "@client/documents/abstract/client-document.mjs" */
+/** @import { DrawSteelActor, DrawSteelItem } from "../_module.mjs" */
 /** @import { AdvancementMetadata } from "./_types" */
 
 /**
@@ -30,8 +32,8 @@ export default class Advancement extends BaseAdvancement {
     /**
      * A collection of Application instances which should be re-rendered whenever this document is updated.
      * The keys of this object are the application ids and the values are Application instances. Each
-     * Application in this object will have its render method called by {@link Document#render}.
-     * @type {Object<Application>}
+     * Application in this object will have its render method called by {@linkcode ClientDocumentMixin | ClientDocument#render}.
+     * @type {Record<string, Application>}
      */
     Object.defineProperty(this, "apps", {
       value: {},
