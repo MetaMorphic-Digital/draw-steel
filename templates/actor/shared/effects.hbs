@@ -67,8 +67,14 @@
               <a class="effect-control" data-action="deleteDoc" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}">
                 <i class="fa-solid fa-trash"></i>
               </a>
+              <a data-action="toggleEffectDescription">
+                <i class="fa-solid fa-angle-{{ifThen effect.expanded "down" "right"}}"></i>
+              </a>
               {{/if}}
             </div>
+          </div>
+          <div class="effect-embed">
+            {{#if effect.expanded}}{{{effect.enrichedDescription}}}{{/if}}
           </div>
         </li>
         {{/each}}
