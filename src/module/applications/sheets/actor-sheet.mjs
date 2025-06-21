@@ -27,6 +27,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       viewDoc: this.#viewDoc,
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
+      toggleStatus: this.#toggleStatus,
       toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
       editCombat: this.#editCombat,
@@ -386,6 +387,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     /** @type {Record<string, StatusInfo>} */
     const statusInfo = {};
     for (const status of CONFIG.statusEffects) {
+      // Only display if it would show in the token HUD *and* it has an assigned _id
+      if ((!status._id) || (status.hud === false) ||
+        ((foundry.utils.getType(status.hud) === "Object") && (status.hud.actorTypes?.includes(this.actor.type) === false))) {
+        continue;
+      }
       statusInfo[status.id] = {
         name: status.name,
         img: status.img,
@@ -395,7 +401,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
       for (const effect of this.actor.allApplicableEffects()) {
         // If the actor has the status, it's active
-        if (effect.id === status._id) statusInfo[status.id].active = true;
+        if (effect.id === status._id) statusInfo[status.id].active = "active";
         else if (effect.statuses.has(status.id)) {
           // If the actor has the status and it's not from the canonical statusEffect
           // Then we want to force more individual control rather than allow toggleStatusEffect
@@ -717,10 +723,23 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
 
+  /**
+   * Creates or deletes a configured status effect
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async #toggleStatus(event, target) {
+    const status = target.dataset.statusId;
+    await this.actor.toggleStatusEffect(status);
+  }
+
   /* -------------------------------------------------- */
 
   /**
-   * Determines effect parent to pass to helper
+   * Toggles an active effect from disabled to enabled
    *
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event

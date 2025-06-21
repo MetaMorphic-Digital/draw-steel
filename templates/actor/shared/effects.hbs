@@ -2,12 +2,11 @@
 <section class="tab effects flexcol {{tab.cssClass}}" data-group="primary" data-tab="effects">
   <div class="status-effects">
     <h4>{{localize "EFFECT.FIELDS.statuses.label"}}</h4>
-    {{log this}}
-    <div class="flexrow">
+    <div class="status-container flexrow">
       {{#each statuses as |status id|}}
-      <button type="button" class="{{status.active}}" {{status.disabled}} data-status-id="{{id}}" data-tooltip="{{status.tooltip}}">
-        {{!-- <img src="{{status.img}}" alt="{{status.name}}"> --}}
-        {{status.name}}
+      <button type="button" class="status-control {{status.active}}" {{status.disabled}} data-status-id="{{id}}" data-tooltip="{{status.tooltip}}" data-action="toggleStatus">
+        <img src="{{status.img}}" alt="{{status.name}}">
+        <span>{{status.name}}</span>
       </button>
       {{/each}}
 

@@ -11,7 +11,10 @@ const fields = foundry.data.fields;
  * Characters are controlled by players and have heroic resources and advancement
  */
 export default class CharacterModel extends BaseActorModel {
-  /** @inheritdoc */
+  /**
+   * @inheritdoc
+   * @type {import("../_types").SubtypeMetadata}
+   */
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "character",

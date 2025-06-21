@@ -298,7 +298,20 @@
     }
   }
 
-  .tab.biography {
+  [data-application-part="effects"] {
+    .status-container {
+      padding: 0.5rem;
+      gap: 0.5rem;
+      .status-control {
+        padding: 0.25rem 1rem;
+        img {
+          max-height: 100%;
+        }
+      }
+    }
+  }
+
+  [data-application-part="biography"] {
     .negotiation {
       .fixed-stats {
         margin-top: 0;

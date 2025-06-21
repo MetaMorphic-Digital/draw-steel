@@ -16,8 +16,10 @@ export type BarAttribute = {
 };
 
 export type SubtypeMetadata = {
+  /** The registered document subtype in system.json */
+  type: string;
   /* Record of document names of pseudo-documents and the path to the collection. */
-  embedded: Record<string, string>
+  embedded: Record<string, string>;
 };
 
 export type PseudoDocumentMetadata = {
