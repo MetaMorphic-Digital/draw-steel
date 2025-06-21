@@ -147,7 +147,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
       case "effects":
-        context.effects = this.prepareActiveEffectCategories();
+        context.effects = this._prepareActiveEffectCategories();
         break;
     }
     return context;
@@ -182,8 +182,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Item.
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   * @protected
    */
-  prepareActiveEffectCategories() {
+  _prepareActiveEffectCategories() {
     /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {
@@ -239,6 +240,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /**
    * Context menu entries for power rolls
    * @returns {ContextMenuEntry}
+   * @protected
    */
   _powerRollContextOptions() {
     return [

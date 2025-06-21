@@ -135,7 +135,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         context.enrichedGMNotes = await enrichHTML(this.actor.system.biography.gm, { relativeTo: this.actor });
         break;
       case "effects":
-        context.effects = this.prepareActiveEffectCategories();
+        context.statuses = await this._prepareStatusEffects();
+        context.effects = this._prepareActiveEffectCategories();
         break;
     }
     if (partId in context.tabs) context.tab = context.tabs[partId];
@@ -168,6 +169,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Constructs a tooltip of data paths
+   * @protected
    */
   _getCombatTooltip() {
     const dataPaths = ["turns", "save.bonus", "save.threshold"];
@@ -290,6 +292,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Prepare the context for features
    * @returns {Array<ActorSheetItemContext>}
+   * @protected
    */
   async _prepareFeaturesContext() {
     const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
@@ -306,6 +309,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Prepare the context for ability categories and individual abilities
+   * @protected
    */
   async _prepareAbilitiesContext() {
     /**
@@ -366,6 +370,53 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
+   * @typedef StatusInfo
+   * @property {string} name
+   * @property {string} img
+   * @property {"disabled" | ""} disabled
+   * @property {"active" | ""} active
+   * @property {string} [tooltip]
+   */
+
+  /**
+   * Prepare the data structure for status effects and whether they are active.
+   * @protected
+   */
+  async _prepareStatusEffects() {
+    /** @type {Record<string, StatusInfo>} */
+    const statusInfo = {};
+    for (const status of CONFIG.statusEffects) {
+      statusInfo[status.id] = {
+        name: status.name,
+        img: status.img,
+        disabled: "",
+        active: "",
+      };
+
+      for (const effect of this.actor.allApplicableEffects()) {
+        // If the actor has the status, it's active
+        if (effect.id === status._id) statusInfo[status.id].active = true;
+        else if (effect.statuses.has(status.id)) {
+          // If the actor has the status and it's not from the canonical statusEffect
+          // Then we want to force more individual control rather than allow toggleStatusEffect
+          statusInfo[status.id].disabled = "disabled";
+          statusInfo[status.id].active = "active";
+          break;
+        }
+      }
+
+      if (status.rule) {
+        const page = await fromUuid(status.rule);
+        statusInfo[status.id].tooltip = await enrichHTML(page.text.content, { relativeTo: this.actor });
+      }
+    }
+
+    return statusInfo;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * @typedef ActiveEffectCategory
    * @property {string} type                 - The type of category
    * @property {string} label                - The localized name of the category
@@ -375,8 +426,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   * @protected
    */
-  prepareActiveEffectCategories() {
+  _prepareActiveEffectCategories() {
     /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {

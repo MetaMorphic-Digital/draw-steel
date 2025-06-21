@@ -156,6 +156,7 @@ preLocalize("healingTypes", { key: "label" });
 /**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
+ * The `_id` property is handled as part of the merging process
  * @type {Record<string, {
  *  img: string,
  *  name: string,

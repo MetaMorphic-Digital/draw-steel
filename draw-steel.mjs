@@ -59,10 +59,10 @@ Hooks.once("init", function () {
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
-    CONFIG.statusEffects.push({ id, ...value });
+    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
-    CONFIG.statusEffects.push({ id, ...value });
+    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
 
   // Destructuring some pieces for simplification
