@@ -302,7 +302,14 @@
     .status-container {
       padding: 0.5rem;
       gap: 0.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       .status-control {
+        &.active {
+          outline-width: 2px;
+          border-width: 0;
+        }
+
         padding: 0.25rem 1rem;
         img {
           max-height: 100%;
