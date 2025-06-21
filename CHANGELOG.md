@@ -34,6 +34,10 @@
   - Add Item buttons only display in edit mode.
 - New actors and items now start in edit mode. Items no longer default to edit mode if opened while editable.
 
+### Fixed
+
+- Fixed various color issues on sheets that had their theme set individually. (#599)
+
 ## 0.7.2
 
 ### Added
