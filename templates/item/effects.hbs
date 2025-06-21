@@ -15,7 +15,6 @@
           <a
             class="effect-control"
             data-action="createDoc"
-            data-document-class="ActiveEffect"
             data-origin="{{@root.document.uuid}}"
             data-img="icons/svg/aura.svg"
             {{#if (eq section.type "inactive")}}
@@ -35,7 +34,7 @@
       </li>
       <ol class="effect-list">
         {{#each section.effects as |effect|}}
-        <li class="effect draggable" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}" data-document-class="ActiveEffect">
+        <li class="effect draggable" data-effect-id="{{effect.id}}">
           <div class="effect-row">
             <div class="effect-name">
               <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}">
@@ -59,7 +58,13 @@
                 <i class="fa-solid fa-trash"></i>
               </a>
               {{/if}}
+              <a data-action="toggleEffectDescription">
+                <i class="fa-solid fa-angle-{{ifThen effect.expanded "down" "right"}}"></i>
+              </a>
             </div>
+          </div>
+          <div class="effect-description">
+            {{#if effect.expanded}}{{{effect.enrichedDescription}}}{{/if}}
           </div>
         </li>
         {{/each}}

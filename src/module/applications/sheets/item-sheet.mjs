@@ -32,6 +32,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
+      toggleEffectDescription: this.#toggleEffectDescription,
       editPowerRollEffect: this.#editPowerRoll,
       deletePowerRollEffect: this.#deletePowerRoll,
       createPowerRollEffect: this.#createPowerRoll,
@@ -87,6 +88,14 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       template: systemPath("templates/item/effects.hbs"),
     },
   };
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A set of the currently expanded effect IDs
+   * @type {Set<string>}
+   */
+  #expanded = new Set();
 
   /* -------------------------------------------------- */
 
@@ -147,7 +156,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
       case "effects":
-        context.effects = this._prepareActiveEffectCategories();
+        context.effects = await this._prepareActiveEffectCategories();
         break;
     }
     return context;
@@ -184,7 +193,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
    * @protected
    */
-  _prepareActiveEffectCategories() {
+  async _prepareActiveEffectCategories() {
     /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {
@@ -210,11 +219,25 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     };
 
     // Iterate over active effects, classifying them into categories
-    for (const e of this.item.effects) {
-      if (!e.transfer) categories.applied.effects.push(e);
-      else if (!e.active) categories.inactive.effects.push(e);
-      else if (e.isTemporary) categories.temporary.effects.push(e);
-      else categories.passive.effects.push(e);
+    for (const e of this.item.effects) { const effectContext = {
+      id: e.id,
+      name: e.name,
+      img: e.img,
+      sourceName: e.sourceName,
+      duration: e.duration,
+      disabled: e.disabled,
+      expanded: false,
+    };
+
+    if (this.#expanded.has(e.id)) {
+      effectContext.expanded = true;
+      effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+    }
+
+    if (!e.transfer) categories.applied.effects.push(effectContext);
+    else if (!e.active) categories.inactive.effects.push(effectContext);
+    else if (e.isTemporary) categories.temporary.effects.push(effectContext);
+    else categories.passive.effects.push(effectContext);
     }
 
     // Sort each category
@@ -443,7 +466,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    */
   static async #deleteEffect(event, target) {
     const effect = this._getEffect(target);
-    await effect.delete();
+    await effect.deleteDialog();
   }
 
   /* -------------------------------------------------- */
@@ -483,6 +506,26 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   static async #toggleEffect(event, target) {
     const effect = this._getEffect(target);
     await effect.update({ disabled: !effect.disabled });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async #toggleEffectDescription(event, target) {
+    const effect = this._getEffect(target);
+
+    if (this.#expanded.has(effect.id)) this.#expanded.delete(effect.id);
+    else this.#expanded.add(effect.id);
+
+    const part = target.closest("[data-application-part]").dataset.applicationPart;
+    this.render({ parts: [part] });
   }
 
   /* -------------------------------------------------- */
