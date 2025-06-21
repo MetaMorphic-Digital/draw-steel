@@ -1,34 +1,4 @@
 .draw-steel {
-  .item-list {
-    display: grid;
-    --grid-distance: 184px;
-    grid-template-columns: repeat(auto-fit, minmax(var(--grid-distance), 1em));
-    grid-gap: 6px;
-    &.kits {
-      --grid-distance: 267px;
-      margin: 5px 0 0;
-    }
-    .item {
-      width: var(--grid-distance);
-      padding: 3px;
-      .img {
-        flex: 0 0 30px;
-        max-width: 30px;
-        border-color: var(--button-border-color);
-        border-style: outset;
-        border-width: 2px;
-        margin-right: 2px;
-      }
-      .name {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .delete {
-        flex: 0 0 10px;
-      }
-    }
-  }
   .item-list-container {
     margin: 10px 0px;
 
@@ -65,7 +35,7 @@
       justify-content: space-evenly;
     }
 
-    .item-list2 {
+    .item-list {
       list-style: none;
       padding: 0;
       margin: 0;
