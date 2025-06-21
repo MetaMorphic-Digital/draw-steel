@@ -304,25 +304,6 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _attachPartListeners(htmlElement, options) {
-    // Add or delete a power roll tier effect
-    const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
-    for (const button of modifyEffectButtons) {
-      button.addEventListener("click", async (event) => {
-        const { tier, operation, index } = event.target.dataset;
-        const current = foundry.utils.duplicate(this._source.powerRoll[tier]);
-        let updateData = current;
-        if (operation === "add") updateData = [...current, { type: "damage" }];
-        else if (operation === "delete") updateData.splice(index, 1);
-
-        await this.parent.update({ [`system.powerRoll.${tier}`]: updateData });
-      });
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
