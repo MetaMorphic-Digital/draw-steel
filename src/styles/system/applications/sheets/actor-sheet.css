@@ -299,22 +299,26 @@
   }
 
   [data-application-part="effects"] {
+    &.standard-form { padding-top: 0; }
     gap: 0;
 
-    .status-container {
-      padding-top: 0.25rem;
-      gap: 0.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      .status-control {
-        &.active {
-          outline-width: 2px;
-          border-width: 0;
-        }
+    .status-effects {
+      margin-top: 0.5rem;
+      .status-container {
+        padding-top: 0.25rem;
+        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        .status-control {
+          &.active {
+            outline-width: 2px;
+            border-width: 0;
+          }
 
-        padding: 0.25rem 1rem;
-        img {
-          max-height: 100%;
+          padding: 0.25rem 1rem;
+          img {
+            max-height: 100%;
+          }
         }
       }
     }

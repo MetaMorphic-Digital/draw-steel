@@ -34,6 +34,7 @@
     - If you have a status, it will be highlighted in orange
     - If the status is granted by a non-canonical condition, the button will be disabled
   - Hitting "New Effect" in the "Temporary Effects" section will now set the duration to End of Turn, instead of 1 round.
+  - An effect's enriched description is now available by toggling the carat, like already existed for items.
 - Replaced the default token status menu with a new one that allows applying a status with one of Draw Steel's unique durations. (#261)
 - Adjusted display of the actor sheets in play mode. (#609)
   - Unused ability and equipment sections are no longer displayed in play mode.

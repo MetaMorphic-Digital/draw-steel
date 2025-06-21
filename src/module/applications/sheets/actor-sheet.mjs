@@ -33,6 +33,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
       toggleItemEmbed: this.#toggleItemEmbed,
+      toggleEffectDescription: this.#toggleEffectDescription,
     },
   };
 
@@ -62,6 +63,14 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @type {Set<string>}
    */
   #expanded = new Set();
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A set of the currently expanded effect UUIDs
+   * @type {Set<string>}
+   */
+  #expandedDescriptions = new Set();
 
   /* -------------------------------------------------- */
 
@@ -137,7 +146,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         break;
       case "effects":
         context.statuses = await this._prepareStatusEffects();
-        context.effects = this._prepareActiveEffectCategories();
+        context.effects = await this._prepareActiveEffectCategories();
         break;
     }
     if (partId in context.tabs) context.tab = context.tabs[partId];
@@ -434,7 +443,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
    * @protected
    */
-  _prepareActiveEffectCategories() {
+  async _prepareActiveEffectCategories() {
     /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {
@@ -456,9 +465,25 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.allApplicableEffects()) {
-      if (!e.active) categories.inactive.effects.push(e);
-      else if (e.isTemporary) categories.temporary.effects.push(e);
-      else categories.passive.effects.push(e);
+      const effectContext = {
+        id: e.id,
+        name: e.name,
+        img: e.img,
+        parent: e.parent,
+        sourceName: e.sourceName,
+        duration: e.duration,
+        disabled: e.disabled,
+        expanded: false,
+      };
+
+      if (this.#expandedDescriptions.has(e.uuid)) {
+        effectContext.expanded = true;
+        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+      }
+
+      if (!e.active) categories.inactive.effects.push(effectContext);
+      else if (e.isTemporary) categories.temporary.effects.push(effectContext);
+      else categories.passive.effects.push(effectContext);
     }
 
     // Sort each category
@@ -801,6 +826,26 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       return;
     }
     await item.system.use({ event });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async #toggleEffectDescription(event, target) {
+    const effect = this._getEmbeddedDocument(target);
+
+    if (this.#expandedDescriptions.has(effect.uuid)) this.#expandedDescriptions.delete(effect.uuid);
+    else this.#expandedDescriptions.add(effect.uuid);
+
+    const part = target.closest("[data-application-part]").dataset.applicationPart;
+    this.render({ parts: [part] });
   }
 
   /* -------------------------------------------------- */
