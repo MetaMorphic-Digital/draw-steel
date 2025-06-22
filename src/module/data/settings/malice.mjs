@@ -76,7 +76,36 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * Reset malice to 0
    * @returns {Promise<MaliceModel>}
    */
-  async endCombat() {
+  async resetMalice() {
     return game.settings.set(systemID, "malice", { value: 0 });
+  }
+
+  /**
+   * Prompt an input dialog to adjust the current malice value.
+   * @returns {Promise<MaliceModel>}
+   */
+  async adjustMalice() {
+    const input = foundry.applications.fields.createNumberInput({ name: "maliceAdjustment", value: 0 });
+    const adjustmentGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+      hint: "DRAW_STEEL.Setting.Malice.AdjustMalice.hint",
+      input,
+      localize: true,
+    });
+
+    const fd = await ds.applications.api.DSDialog.input({
+      window: { title: "DRAW_STEEL.Setting.Malice.AdjustMalice.label", icon: "fa-solid fa-plus-minus" },
+      content: adjustmentGroup.outerHTML,
+      ok: {
+        label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+        icon: "fa-solid fa-plus-minus",
+      },
+    });
+
+    if (!fd.maliceAdjustment) return this;
+
+    const newMaliceValue = Math.max(0, this.value + fd.maliceAdjustment);
+
+    return game.settings.set(systemID, "malice", { value: newMaliceValue });
   }
 }

@@ -84,7 +84,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (deletedCombat) {
       /** @type {MaliceModel} */
       const malice = game.actors.malice;
-      await malice.endCombat();
+      await malice.resetMalice();
 
       await this.awardVictories();
     }
