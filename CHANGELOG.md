@@ -47,6 +47,7 @@
 ### Fixed
 
 - Fixed various color issues on sheets that had their theme set individually. (#599)
+- Fixed malice generation applying the first round bonus twice.
 
 ## 0.7.2
 
