@@ -4,7 +4,7 @@
     <legend>{{localize "DRAW_STEEL.Effect.StatusConditions"}}</legend>
     <div class="status-container">
       {{#each statuses as |status id|}}
-      <button type="button" class="status-control {{status.active}}" {{status.disabled}} data-status-id="{{id}}" data-tooltip-html="{{status.tooltip}}" data-action="toggleStatus">
+      <button type="button" class="status-control {{status.active}}" {{disabled status.disabled}} data-status-id="{{id}}" data-tooltip-html="{{status.tooltip}}" data-action="toggleStatus">
         <img src="{{status.img}}" alt="{{status.name}}">
         <span>{{status.name}}</span>
       </button>

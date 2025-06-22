@@ -383,7 +383,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @property {string} _id
    * @property {string} name
    * @property {string} img
-   * @property {"disabled" | ""} disabled
+   * @property {boolean} disabled
    * @property {"active" | ""} active
    * @property {string} [tooltip]
    */
@@ -402,7 +402,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         _id: status._id,
         name: status.name,
         img: status.img,
-        disabled: "",
+        disabled: false,
         active: "",
       };
 
@@ -418,7 +418,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       for (const id of effect.statuses) {
         if (!(id in statusInfo)) continue;
         statusInfo[id].active = "active";
-        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = "disabled";
+        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
       }
     }
 
@@ -743,6 +743,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
     await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Creates or deletes a configured status effect

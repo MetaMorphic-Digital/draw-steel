@@ -219,25 +219,26 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     };
 
     // Iterate over active effects, classifying them into categories
-    for (const e of this.item.effects) { const effectContext = {
-      id: e.id,
-      name: e.name,
-      img: e.img,
-      sourceName: e.sourceName,
-      duration: e.duration,
-      disabled: e.disabled,
-      expanded: false,
-    };
+    for (const e of this.item.effects) {
+      const effectContext = {
+        id: e.id,
+        name: e.name,
+        img: e.img,
+        sourceName: e.sourceName,
+        duration: e.duration,
+        disabled: e.disabled,
+        expanded: false,
+      };
 
-    if (this.#expanded.has(e.id)) {
-      effectContext.expanded = true;
-      effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
-    }
+      if (this.#expanded.has(e.id)) {
+        effectContext.expanded = true;
+        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+      }
 
-    if (!e.transfer) categories.applied.effects.push(effectContext);
-    else if (!e.active) categories.inactive.effects.push(effectContext);
-    else if (e.isTemporary) categories.temporary.effects.push(effectContext);
-    else categories.passive.effects.push(effectContext);
+      if (!e.transfer) categories.applied.effects.push(effectContext);
+      else if (!e.active) categories.inactive.effects.push(effectContext);
+      else if (e.isTemporary) categories.temporary.effects.push(effectContext);
+      else categories.passive.effects.push(effectContext);
     }
 
     // Sort each category
