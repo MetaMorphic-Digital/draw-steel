@@ -44,10 +44,12 @@ declare module "./other-effect.mjs" {
 
 export type AppliedEffectSchema = {
   display: string;
-  always: Set<string>;
-  success: Set<string>;
-  failure: Set<string>;
   potency: PotencySchema;
+  effects: Record<string, {
+    condition: string;
+    end: string;
+    properties: Set<string>;
+  }>
 };
 
 declare module "./applied-effect.mjs" {

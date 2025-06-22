@@ -36,7 +36,6 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.systemFields = this.document.system.schema.fields;
-    context.durationOptions = Object.entries(ds.CONFIG.effectEnds).map(([value, { label }]) => ({ value, label }));
 
     return context;
   }

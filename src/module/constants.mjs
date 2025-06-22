@@ -39,3 +39,15 @@ export const staminaEffects = Object.freeze({
     threshold: "system.stamina.winded",
   },
 });
+
+export const potencyConditions = Object.freeze({
+  always: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.always",
+  },
+  failure: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.failure",
+  },
+  success: {
+    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.success",
+  },
+});

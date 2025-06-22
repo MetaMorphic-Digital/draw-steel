@@ -69,7 +69,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Build an array of buttons to insert into the footer of the document
-   * @returns {HTMLButtonElement[]}
+   * @returns {Promise<HTMLButtonElement[]>}
    * @protected
    */
   async _constructFooterButtons() {

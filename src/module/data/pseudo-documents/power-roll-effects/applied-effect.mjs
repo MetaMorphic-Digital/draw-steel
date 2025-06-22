@@ -3,7 +3,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /** @import { AppliedEffectSchema } from "./_types" */
 
-const { SetField, StringField } = foundry.data.fields;
+const { SchemaField, SetField, StringField, TypedObjectField } = foundry.data.fields;
 
 /**
  * For abilities that apply an ActiveEffect
@@ -11,6 +11,8 @@ const { SetField, StringField } = foundry.data.fields;
 export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
+    const config = ds.CONFIG;
+
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
       applied: this.duplicateTierSchema(() => ({
@@ -19,18 +21,11 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
           hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
         }),
-        always: new SetField(
-          setOptions({ validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.always.hint" },
-        ),
-        failure: new SetField(
-          setOptions({ validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.failure.hint" },
-        ),
-        success: new SetField(
-          setOptions({ validate: foundry.data.validators.isValidId }),
-          { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.label", hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.success.hint" },
-        ),
+        effects: new TypedObjectField(new SchemaField({
+          condition: new StringField({ choices: ds.CONST.potencyConditions, initial: "always" }),
+          end: new StringField({ choices: config.effectEnds, blank: true }),
+          properties: new SetField(setOptions()),
+        })),
       })),
     });
   }

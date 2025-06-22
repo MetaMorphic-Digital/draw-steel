@@ -24,10 +24,7 @@
   {{/with}}
   {{#with tierFields.applied}}
   {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
-  {{formGroup always.field value=always.src name=always.name options=effectOptions localize=true}}
-  {{#> potencyFields potency success=success failure=failure effectOptions=effectOptions}}
-  {{formGroup failure.field value=failure.src name=failure.name options=effectOptions localize=true}}
-  {{formGroup success.field value=success.src name=success.name options=effectOptions localize=true}}
+  {{#> potencyFields potency}}
   {{/potencyFields}}
   {{/with}}
   {{#with tierFields.forced}}

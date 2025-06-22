@@ -70,6 +70,24 @@ export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
+    const item = await fromUuid(this.uuid);
+    buttons.push(...this._appliedEffectButtons(item));
+    return buttons;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   *
+   * @param {DrawSteelItem & { system: AbilityModel}} item The ability this model points to
+   * @returns {HTMLButtonElement[]}
+   * @protected
+   */
+  _appliedEffectButtons(item) {
+    const buttons = [];
+    for (const pre of item.system.power.effects) {
+      if (pre.type !== "applied") return;
+    }
     return buttons;
   }
 
