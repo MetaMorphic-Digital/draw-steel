@@ -203,7 +203,7 @@
     }
   }
 
-  .tab.abilities .item-list-container {
+  [data-application-part="abilities"] .item-list-container {
 
     .item-cost,
     .item-distance,
@@ -244,7 +244,7 @@
     }
   }
 
-  .tab.features {
+  [data-application-part="features"] {
 
     .feature-list-container {
 
@@ -255,7 +255,7 @@
     }
   }
 
-  .tab.equipment {
+  [data-application-part="equipment"] {
     .kit-list-container {
 
       .item-melee-bonus,
@@ -288,7 +288,7 @@
     }
   }
 
-  .tab.projects .item-list-container {
+  [data-application-part="projects"] .item-list-container {
     .item-type {
       width: 75px;
     }
@@ -298,7 +298,33 @@
     }
   }
 
-  .tab.biography {
+  [data-application-part="effects"] {
+    &.standard-form { padding-top: 0; }
+    gap: 0;
+
+    .status-effects {
+      margin-top: 0.5rem;
+      .status-container {
+        padding-top: 0.25rem;
+        gap: 0.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        .status-control {
+          &.active {
+            outline-width: 2px;
+            border-width: 0;
+          }
+
+          padding: 0.25rem 1rem;
+          img {
+            max-height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  [data-application-part="biography"] {
     .negotiation {
       .fixed-stats {
         margin-top: 0;

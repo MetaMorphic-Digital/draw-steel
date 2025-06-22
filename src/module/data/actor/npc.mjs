@@ -12,7 +12,10 @@ import SourceModel from "../models/source.mjs";
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
-  /** @inheritdoc */
+  /**
+   * @inheritdoc
+   * @type {import("../_types").SubtypeMetadata}
+   */
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "npc",
