@@ -53,6 +53,7 @@
               {{#if @root.editable}}
               {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
               <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
+              {{/if}}
               <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleEffectDescription"></a>
             </div>
           </div>
