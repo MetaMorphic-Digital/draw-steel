@@ -828,7 +828,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   *
+   * TODO: Refactor re-rendering to instead use CSS transitions
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
@@ -848,7 +848,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
-   *
+   * TODO: Refactor re-rendering to instead use CSS transitions
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]

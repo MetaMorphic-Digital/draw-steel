@@ -512,7 +512,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   *
+   * TODO: Refactor re-rendering to instead use CSS transitions
    * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
