@@ -56,20 +56,12 @@
             <div class="effect-duration">{{effect.duration.label}}</div>
             <div class="effect-controls">
               {{#if @root.editable}}
-              <a class="effect-control" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle">
-                <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
-              </a>
+              <a class="effect-control fa-fw fas fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle"></a>
               {{/if}}
-              <a class="effect-control" data-action="viewDoc" data-tooltip="{{localize "DOCUMENT.Update" type="Effect"}}">
-                <i class="fa-solid fa-edit"></i>
-              </a>
+              <a class="effect-control fa-fw fas fa-edit" data-action="viewDoc" data-tooltip="{{localize "DOCUMENT.Update" type="Effect"}}"></a>
               {{#if @root.editable}}
-              <a class="effect-control" data-action="deleteDoc" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}">
-                <i class="fa-solid fa-trash"></i>
-              </a>
-              <a data-action="toggleEffectDescription">
-                <i class="fa-solid fa-angle-{{ifThen effect.expanded "down" "right"}}"></i>
-              </a>
+              <a class="effect-control fa-fw fas fa-trash" data-action="deleteDoc" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}"></a>
+              <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleEffectDescription"></a>
               {{/if}}
             </div>
           </div>
