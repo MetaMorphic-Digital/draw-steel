@@ -84,7 +84,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (deletedCombat) {
       /** @type {MaliceModel} */
       const malice = game.actors.malice;
-      await malice.endCombat();
+      await malice.resetMalice();
 
       await this.awardVictories();
     }
@@ -120,8 +120,21 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+
+    ui.players.render();
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
+
+    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
+    ui.players.render();
+
     if (!game.user.isActiveGM) return;
 
     for (const combatant of this.combatants) {
@@ -135,6 +148,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       }
       actor.updateEmbeddedDocuments("ActiveEffect", updates);
     }
+
   }
 
   /* -------------------------------------------------- */
