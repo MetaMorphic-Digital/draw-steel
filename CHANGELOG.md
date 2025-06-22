@@ -40,6 +40,7 @@
   - Unused ability and equipment sections are no longer displayed in play mode.
   - Add Item buttons only display in edit mode.
 - New actors and items now start in edit mode. Items no longer default to edit mode if opened while editable.
+- Moved ability bonus calculations to after active effect application. (#613)
 
 ### Fixed
 
