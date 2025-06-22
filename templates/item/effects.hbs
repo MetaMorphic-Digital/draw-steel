@@ -46,13 +46,13 @@
             <div class="effect-duration">{{effect.duration.label}}</div>
             <div class="effect-controls">
               {{#if @root.editable}}
-              <a class="effect-control fa-fw fas fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle"></a>
+              <a class="effect-control fa-fw fa-solid fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle"></a>
               {{/if}}
               {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fas fa-edit" data-action="viewDoc" data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
+              <a class="effect-control fa-fw fa-solid fa-edit" data-action="viewDoc" data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
               {{#if @root.editable}}
               {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fas fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
+              <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
               <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleEffectDescription"></a>
             </div>
           </div>

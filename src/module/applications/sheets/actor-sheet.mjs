@@ -1,5 +1,5 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
-import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
@@ -7,7 +7,6 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
-/** @import { DrawSteelActiveEffect } from "../../documents/_module.mjs" */
 
 const { sheets } = foundry.applications;
 
@@ -381,6 +380,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * @typedef StatusInfo
+   * @property {string} _id
    * @property {string} name
    * @property {string} img
    * @property {"disabled" | ""} disabled
@@ -397,32 +397,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     const statusInfo = {};
     for (const status of CONFIG.statusEffects) {
       // Only display if it would show in the token HUD *and* it has an assigned _id
-      if ((!status._id) || (status.hud === false) ||
-        ((foundry.utils.getType(status.hud) === "Object") && (status.hud.actorTypes?.includes(this.actor.type) === false))) {
-        continue;
-      }
+      if ((!status._id) || !DrawSteelActiveEffect.validHud(status, this.actor)) continue;
       statusInfo[status.id] = {
+        _id: status._id,
         name: status.name,
         img: status.img,
         disabled: "",
         active: "",
       };
 
-      for (const effect of this.actor.allApplicableEffects()) {
-        // If the actor has the status, it's active
-        if (effect.id === status._id) statusInfo[status.id].active = "active";
-        else if (effect.statuses.has(status.id)) {
-          // If the actor has the status and it's not from the canonical statusEffect
-          // Then we want to force more individual control rather than allow toggleStatusEffect
-          statusInfo[status.id].disabled = "disabled";
-          statusInfo[status.id].active = "active";
-          break;
-        }
-      }
-
       if (status.rule) {
         const page = await fromUuid(status.rule);
         statusInfo[status.id].tooltip = await enrichHTML(page.text.content, { relativeTo: this.actor });
+      }
+    }
+
+    // If the actor has the status and it's not from the canonical statusEffect
+    // Then we want to force more individual control rather than allow toggleStatusEffect
+    for (const effect of this.actor.allApplicableEffects()) {
+      for (const id of effect.statuses) {
+        if (!(id in statusInfo)) continue;
+        statusInfo[id].active = "active";
+        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = "disabled";
       }
     }
 

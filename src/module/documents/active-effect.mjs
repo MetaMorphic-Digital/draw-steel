@@ -1,11 +1,22 @@
 import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
 
+/** @import { StatusEffectConfig } from "@client/config.mjs" */
 /** @import DrawSteelActor from "./actor.mjs"; */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass
  */
 export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffect {
+  /**
+   * Checks if a status condition applies to the actor
+   * @param {StatusEffectConfig} status
+   * @param {DrawSteelActor} actor
+   * @returns {boolean} Will be shown on the token hud for the actor
+   */
+  static validHud(status, actor) {
+    return (status.hud !== false) && ((foundry.utils.getType(status.hud) !== "Object") || (status.hud.actorTypes?.includes(actor.type)));
+  }
+
   /** @inheritdoc */
   static async _fromStatusEffect(statusId, effectData, options) {
     if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;
