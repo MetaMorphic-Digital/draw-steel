@@ -16,6 +16,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /** Name for the setting */
   static label = "DRAW_STEEL.Setting.Malice.Label";
 
@@ -24,6 +26,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     return game.i18n.localize(this.constructor.label);
   }
 
+  /* -------------------------------------------------- */
+
   /** Helper text for Malice */
   static hint = "DRAW_STEEL.Setting.Malice.Hint";
 
@@ -31,6 +35,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
   get hint() {
     return game.i18n.localize(this.constructor.hint);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Re-render NPC sheets to synchronize the Malice display
@@ -47,6 +53,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Set malice for the start of combat
    * @param {DrawSteelActor[]} heroes Heroes to tally up victories
@@ -62,6 +70,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     return game.settings.set(systemID, "malice", { value: avgVictories + 1 + heroes.length });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Increase malice on round change
    * @param {DrawSteelCombat} combat The active combat
@@ -72,6 +82,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     return game.settings.set(systemID, "malice", { value: this.value + combat.round + heroes.length });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Reset malice to 0
    * @returns {Promise<MaliceModel>}
@@ -79,6 +91,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
   async resetMalice() {
     return game.settings.set(systemID, "malice", { value: 0 });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt an input dialog to adjust the current malice value.
