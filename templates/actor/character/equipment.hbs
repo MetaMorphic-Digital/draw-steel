@@ -16,7 +16,7 @@
       <div class="item-column item-controls">
         {{#unless isPlay}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.kit")) as |addItemTooltip|}}
-        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="kit" data-render-sheet="true" data-tooltip="{{addItemTooltip}}">
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="kit" data-render-sheet="true" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
@@ -30,7 +30,7 @@
           <div class="item-column item-name" data-action="useAbility">
             <img class="item-image" src="{{kitContext.item.img}}" alt="{{kitContext.item.name}}">
             {{#if (eq @root.system.hero.preferredKit kitContext.item.id)}}
-            <i data-tooltip="{{localize "DRAW_STEEL.Item.Kit.PreferredKit.Label"}}" class="fa-solid fa-star"></i>
+            <i data-tooltip="DRAW_STEEL.Item.Kit.PreferredKit.Label" class="fa-solid fa-star"></i>
             {{/if}}
             <div class="name">
               <div class="label">{{kitContext.item.name}}</div>
@@ -65,7 +65,7 @@
       <div class="item-column item-controls">
         {{#if equipmentCategory.showAdd}}
         {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.equipment")) as |addItemTooltip|}}
-        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="equipment" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip="{{addItemTooltip}}">
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="equipment" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
