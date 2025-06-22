@@ -131,6 +131,10 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
+
+    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
+    ui.players.render();
+
     if (!game.user.isActiveGM) return;
 
     for (const combatant of this.combatants) {
@@ -145,8 +149,6 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       actor.updateEmbeddedDocuments("ActiveEffect", updates);
     }
 
-    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
-    ui.players.render();
   }
 
   /* -------------------------------------------------- */
