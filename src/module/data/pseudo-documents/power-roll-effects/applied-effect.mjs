@@ -11,8 +11,6 @@ const { SetField, StringField } = foundry.data.fields;
 export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
   static defineSchema() {
-    const potencyFormula = [null, "@potency.weak", "@potency.average", "@potency.strong"];
-
     return Object.assign(super.defineSchema(), {
       // TODO: Remove manual label assignment when localization bug is fixed
       applied: this.duplicateTierSchema(() => ({
