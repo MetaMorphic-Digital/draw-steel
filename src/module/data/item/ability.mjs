@@ -106,7 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     this.power.roll.enabled = this.power.effects.size > 0;
-    if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
   /* -------------------------------------------------- */
@@ -114,6 +113,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
+    if (this.actor.type === "character") this._prepareCharacterData();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
