@@ -145,7 +145,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       actor.updateEmbeddedDocuments("ActiveEffect", updates);
     }
 
-    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire to hide the malice value. */
+    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
     ui.players.render();
   }
 

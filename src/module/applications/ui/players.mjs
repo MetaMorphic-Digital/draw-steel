@@ -14,9 +14,9 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
 
     // Can adjust if it makes sense to have hero token controls for non-GMs (e.g. a more generic hero action)
     if (game.user.isGM) {
-      this._createContextMenu(this._heroTokenContextMenuOptions, "#meta-currency .context-menu", {
+      this._createContextMenu(this._metaCurrencyContextMenuOptions, "#meta-currency .context-menu", {
         eventName: "click",
-        hookName: "getHeroTokenContextOptions",
+        hookName: "getMetaCurrencyContextOptions",
         parentClassHooks: false,
         fixed: true,
       });
@@ -45,7 +45,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
    * Context menu entries for the Hero Token menu button
    * @returns {ContextMenuEntry}
    */
-  _heroTokenContextMenuOptions() {
+  _metaCurrencyContextMenuOptions() {
     return [
       {
         name: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
