@@ -1,6 +1,8 @@
 import DrawSteelActiveEffect from "./active-effect.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
+/** @import ClassModel from "../data/item/class.mjs" */
+
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
  */
@@ -48,8 +50,23 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /** @inheritdoc*/
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
-    if (attribute !== "stamina") return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
+    switch (attribute) {
+      case "stamina": return this._modifyStamina(value, isDelta);
+      case "hero.primary.value": return this._modifyHeroicResource(value, isDelta);
+      default: return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
+    }
+  }
 
+  /**
+   * Handle how changes to a Stamina are applied to the Actor.
+   * @param {number} value        The target attribute value
+   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
+   * @returns {Promise<DrawSteelActor>}    The updated Actor document
+   * @protected
+   */
+  async _modifyStamina(value, isDelta) {
+    const attribute = "stamina";
+    const isBar = true;
     const combatGroup = (this.system.combatGroups.size === 1) ? this.system.combatGroup : null;
     const current = (this.isMinion && combatGroup) ? combatGroup.system.staminaValue : this.system.stamina.value;
     const update = isDelta ? current + value : value;
@@ -60,6 +77,35 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
     // Determine the updates to make to the actor data
     const updates = { "system.stamina.value": Math.clamp(update, this.system.stamina.min, this.system.stamina.max) };
+
+    // Allow a hook to override these changes
+    const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);
+    return allowed !== false ? this.update(updates) : this;
+  }
+
+  /**
+   * Handle how changes to Heroic Resources are applied to the Actor.
+   * @param {number} value        The target attribute value
+   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
+   * @returns {Promise<DrawSteelActor>}    The updated Actor document
+   * @protected
+   */
+  async _modifyHeroicResource(value, isDelta) {
+    const attribute = "hero.primary.value";
+    const isBar = false;
+    const current = foundry.utils.getProperty(this.system, attribute);
+    let newValue = isDelta ? current + value : value;
+    if (newValue === current) return this;
+
+    /** @type {ClassModel} */
+    const classModel = this.system.class?.system;
+    if (classModel) {
+      const minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
+      newValue = Math.max(minimum, newValue);
+    }
+
+    // Determine the updates to make to the actor data
+    const updates = { [`system.${attribute}`]: newValue };
 
     // Allow a hook to override these changes
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);
