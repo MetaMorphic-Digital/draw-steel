@@ -11,6 +11,14 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 > **Sheet Modes**
 > The Actor and Item sheets in the system support both Play and Edit modes. One important difference between the two is that the Edit mode prioritizes showing the "source" data, which is *before* active effects are applied. To see values with active effects calculated, switch back to play mode.
 
+## Actor's 'Effects' tab
+
+On the actor sheet, at the top of 'Effects' tab is now a new section with butttons for the DS core conditions. Clicking any of these will aply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
+
+Applying any of these DS core conditions applies a bespoke active effect, details for which can be found in the `System Automations` section.
+
+When creating a new temporary active effect by clicking on the `+ New Effect` button on the right of a active effect section header on this page, the duration is by default set to EoT (End of Turn).
+
 ## Active Effect Window
 
 At any given time you can change the icon and name of an active effect.
