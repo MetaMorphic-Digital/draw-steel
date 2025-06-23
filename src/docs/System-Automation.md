@@ -34,6 +34,10 @@ When clicking on the `Stamina` label on the character sheet, a prompt will appea
 
 When clicking on the `Surges` label on the character sheet, a prompt will appear to spend 1 Hero Token - if available - to gain 2 surges for the actor.
 
+### Succeed on Save through Hero Tokens
+
+When a hero has to roll a save to end a condition, they can spend a hero token instead to succeed. The pop-up prompt for the save has a button for this purpose.
+
 ### Hero Tokens and Malice display
 
 Both Hero Token count  and Director’s Malice total are displayed in a display below the player list in the bottom left corner of the screen. The Director has access to a global setting to hide their Malice count from the players, or have it be visible.
@@ -120,13 +124,27 @@ If a kit provides a bonus other than stamina or damage, these bonuses also get a
 
 If an ability is programmed with damage, untyped or typed, then when the ability is used, a button will appear in the chat window that is showing the power roll result, which will automatically apply the damage to a selected token. This also immediately takes damage weaknesses and immunities into account *(see below)*
 
+## Enrichers and applied damage from chat messages
+
+Details about Enrichers can be found in the "Erichers" section of the System Compendiums/the System Wiki.
+
 ## Damage Immunities and Weaknesses
 
 Damage Immunities and Weaknesses can be added via the respective section the the actor sheet.. If an ability deals damage that the receiving actor has an active effect that provides immunity or weakness to that damage type, then the value is automatically subtracted when the “Apply Damage” button in the ability’s chat message is pressed. The respective data strings to address the correct immunity or weakness can be found on the ***Roll Data*** page
 
+## Floating Damage Numbers
+
+IF an actor is damaged, a floating damage number will appear, the colour linked to the damage type. Untyped damage is white, this includes if a token's stamina was manually adjusted vie the token HUD, and healing is green.
+
 ## Automated Status Effects
 
 Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
+
+Any of the Foundry DS system condition statuses can be applied to a Token via the Token HUD. When doing so, at the veyr top of the conditions window is a drop down menu that let's you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
+
+Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactive it again.
+
+Active statuses are highlighted, while inactive ones are displayed in muted colours.
 
 Additionally, each effect is documented in the system compendiums.
 
