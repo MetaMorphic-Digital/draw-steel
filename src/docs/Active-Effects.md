@@ -15,17 +15,21 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 
 On the actor sheet, at the top of 'Effects' tab is now a new section with butttons for the DS core conditions. Clicking any of these will aply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
 
-Applying any of these DS core conditions applies a bespoke active effect, details for which can be found in the `System Automations` section.
+Applying any of these DS core conditions applies a active effect, details for which can be found in the `System Automations` section.
 
 When creating a new temporary active effect by clicking on the `+ New Effect` button on the right of a active effect section header on this page, the duration is by default set to EoT (End of Turn).
 
-## Active Effect Window
+## Active Effect Config
 
 At any given time you can change the icon and name of an active effect.
 
 ### Details
 
-On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves.
+On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves. Effects are also automatically suppressed if they have a conventional duration (e.g. in rounds & turns) that has run over.
+
+The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if the tickbox is unchecked means the effect is available as an apoplied effect in ability usage, but the system won't have that application handling until 0.8 at least.
+
+#### Linking status effects
 
 At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
 
@@ -40,7 +44,7 @@ Additionally, the Save Ends duration allows for defining the saving throw formul
 
 + `EoT` will automatically self-disable when an actor starts their turn after the affected actor had theirs.
 + `Save Ends` will create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
-+ End of Encounter effects will automatically self-disable alongside the encounter.
++ `End of Encounter` effects will automatically self-disable alongside the encounter.
 
 Additional options for duration are timed durations, and durations base don rounds and turns, however, as these are not part of the Draw Steel rules, it is recommended not to utilise these.
 

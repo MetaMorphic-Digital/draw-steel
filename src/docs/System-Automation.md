@@ -126,7 +126,7 @@ If an ability is programmed with damage, untyped or typed, then when the ability
 
 ## Enrichers and applied damage from chat messages
 
-Code enrichers can be utilised to create damaging effects from effect desciptions or chat massages. A general damage enricher follows the form `[[/{value} {type} damage]]`. If written into the effect description of an ability, this creates a `Apply Damage` button from that effect description if the ability is used. Enrichers also work as embedders for item descriptions, or for healing. Details about Enrichers can be found in the "Erichers" section of the System Compendiums/the System Wiki.
+Details about Enrichers can be found in the "Erichers" section of the System Compendiums/the System Wiki.
 
 ## Damage Immunities and Weaknesses
 
@@ -188,20 +188,3 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 
 If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
 If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
-
-## Active Effects
-
-The above automated conditions are bespoke active effects usable via the token HUD, but may further be enhanced directly via active effects. This is explained in more detail in the `Active Effect` page.
-
-### Linking status effects
-
-If an active effect is created, a status condition can be linked with it at the very bottom of the `Details` page. This has the result that the effect additionally to it's own eefects behaves as if the chosen status condition is activated for the actor. This includes effects such as `Frightened` or `Grabbed` that require a target to be the source of the effect.
-
-## Duration
-
-Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `Save Ends`, and `End of Encounter`.
-Additionally, the Save Ends duration allows for defining the saving throw formula. The default is `1d10 + @combat.save.bonus`.
-
-+ `EoT` will automatically self-disable when an actor starts their turn after the affected actor had theirs.
-+ `Save Ends` will create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
-+ End of Encounter effects will automatically self-disable alongside the encounter.
