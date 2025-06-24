@@ -15,6 +15,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     return this.system.isMinion ?? false;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   getRollData() {
     // Shallow copy
@@ -31,11 +33,15 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     return rollData;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActorData", this);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Rolls a given actor's characteristic
@@ -48,6 +54,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     throw new Error(`Actors of type ${this.type} cannot roll characteristics`);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc*/
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     switch (attribute) {
@@ -56,6 +64,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
       default: return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle how changes to a Stamina are applied to the Actor.
@@ -81,6 +91,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);
     return allowed !== false ? this.update(updates) : this;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle how changes to Heroic Resources are applied to the Actor.
@@ -109,6 +121,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);
     return allowed !== false ? this.update(updates) : this;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Toggle a configured status effect for the Actor.

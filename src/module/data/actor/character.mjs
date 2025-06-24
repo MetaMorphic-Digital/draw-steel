@@ -29,6 +29,8 @@ export default class CharacterModel extends BaseActorModel {
     "DRAW_STEEL.Actor.Character",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
@@ -50,6 +52,8 @@ export default class CharacterModel extends BaseActorModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static actorBiography() {
     const bio = super.actorBiography();
@@ -68,6 +72,8 @@ export default class CharacterModel extends BaseActorModel {
 
     return bio;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   prepareBaseData() {
@@ -138,6 +144,8 @@ export default class CharacterModel extends BaseActorModel {
     this.stamina.min = -this.stamina.winded;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
@@ -164,11 +172,15 @@ export default class CharacterModel extends BaseActorModel {
     this.parent.updateSource(updates);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async startCombat(combatant) {
     await super.startCombat(combatant);
     await this.parent.update({ "system.hero.primary.value": this.hero.victories });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _onStartTurn(combatant) {
@@ -185,6 +197,8 @@ export default class CharacterModel extends BaseActorModel {
       await this.updateResource(recoveryRoll.total);
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Take a respite resetting the character's stamina/recoveries and convert victories to XP
@@ -207,6 +221,8 @@ export default class CharacterModel extends BaseActorModel {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
    * @returns {Promise<DrawSteelActor}
@@ -222,6 +238,8 @@ export default class CharacterModel extends BaseActorModel {
 
     return this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
@@ -249,15 +267,21 @@ export default class CharacterModel extends BaseActorModel {
     return this.parent;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get coreResource() {
@@ -272,6 +296,9 @@ export default class CharacterModel extends BaseActorModel {
       minimum,
     };
   }
+
+  /* -------------------------------------------------- */
+
   /**
    * Finds the actor's current ancestry
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
@@ -279,6 +306,8 @@ export default class CharacterModel extends BaseActorModel {
   get ancestry() {
     return this.parent.items.find(i => i.type === "ancestry");
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Finds the actor's current career
@@ -288,6 +317,8 @@ export default class CharacterModel extends BaseActorModel {
     return this.parent.items.find(i => i.type === "career");
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Finds the actor's current class
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
@@ -295,6 +326,8 @@ export default class CharacterModel extends BaseActorModel {
   get class() {
     return this.parent.items.find(i => i.type === "class");
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Finds the actor's current culture
@@ -304,6 +337,8 @@ export default class CharacterModel extends BaseActorModel {
     return this.parent.items.find(i => i.type === "culture");
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns all of the actor's kits
    * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
@@ -311,6 +346,8 @@ export default class CharacterModel extends BaseActorModel {
   get kits() {
     return this.parent.items.filter(i => i.type === "kit");
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Returns the total xp required for the next level
@@ -320,12 +357,16 @@ export default class CharacterModel extends BaseActorModel {
     return ds.CONFIG.hero.xp_track[this.level];
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns the number of victories required to ascend to the next level
    */
   get victoriesMax() {
     return Math.max(0, this.nextLevelXP - this.hero.xp);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async updateResource(delta) {
