@@ -261,10 +261,15 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @inheritdoc */
   get coreResource() {
+    let minimum = 0;
+    const classModel = this.class?.system;
+    if (classModel) minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
+
     return {
       name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value",
+      minimum,
     };
   }
   /**
@@ -324,6 +329,6 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @inheritdoc */
   async updateResource(delta) {
-    this.parent.update({ "system.hero.primary.value": this.hero.primary.value + delta });
+    this.parent.modifyTokenAttribute("hero.primary.value", delta, true, false);
   }
 }

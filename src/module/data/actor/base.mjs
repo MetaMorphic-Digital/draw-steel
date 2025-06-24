@@ -435,6 +435,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    *  name: string;
    *  target: DataModel;
    *  path: string;
+   *  minimum: number;
    * }}
    */
   get coreResource() {

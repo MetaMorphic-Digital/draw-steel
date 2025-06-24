@@ -81,6 +81,7 @@ export default class NPCModel extends BaseActorModel {
       /** @type {MaliceModel} */
       target: game.actors.malice,
       path: "value",
+      minimum: 0,
     };
   }
 

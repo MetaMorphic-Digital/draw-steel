@@ -51,8 +51,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
   /** @inheritdoc*/
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     switch (attribute) {
-      case "stamina": return this._modifyStamina(value, isDelta);
-      case "hero.primary.value": return this._modifyHeroicResource(value, isDelta);
+      case "stamina": return this.#modifyStamina(value, isDelta);
+      case "hero.primary.value": return this.#modifyHeroicResource(value, isDelta);
       default: return super.modifyTokenAttribute(attribute, value, isDelta, isBar);
     }
   }
@@ -62,9 +62,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * @param {number} value        The target attribute value
    * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
    * @returns {Promise<DrawSteelActor>}    The updated Actor document
-   * @protected
    */
-  async _modifyStamina(value, isDelta) {
+  async #modifyStamina(value, isDelta) {
     const attribute = "stamina";
     const isBar = true;
     const combatGroup = (this.system.combatGroups.size === 1) ? this.system.combatGroup : null;
@@ -88,9 +87,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * @param {number} value        The target attribute value
    * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
    * @returns {Promise<DrawSteelActor>}    The updated Actor document
-   * @protected
    */
-  async _modifyHeroicResource(value, isDelta) {
+  async #modifyHeroicResource(value, isDelta) {
     const attribute = "hero.primary.value";
     const isBar = false;
     const current = foundry.utils.getProperty(this.system, attribute);

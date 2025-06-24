@@ -341,7 +341,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: foundry.utils.getProperty(coreResource.target, coreResource.path),
+        max: foundry.utils.getProperty(coreResource.target, coreResource.path) - coreResource.minimum,
         step: 1,
       };
 
