@@ -1,64 +1,69 @@
 {{! Effects Tab }}
 <section class="tab effects {{tab.cssClass}}" data-group="primary" data-tab="effects">
-  <ol class="effects-list">
-    {{#each effects as |section sid|}}
-    <li class="effects-header flexrow" data-effect-type="{{section.type}}">
-      <div class="effect-name effect-name flexrow">
-        {{localize section.label}}
-      </div>
-      <div class="effect-source">
-        {{localize "DRAW_STEEL.Effect.Source"}}
-      </div>
-      <div class="effect-source">{{localize "EFFECT.TABS.duration"}}</div>
-      <div class="effect-controls effect-controls flexrow">
-        <a
-          class="effect-control"
-          data-action="createDoc"
-          data-document-class="ActiveEffect"
-          data-origin="{{@root.document.uuid}}"
-          data-img="icons/svg/aura.svg"
-          {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
-          {{#if (eq section.type "inactive")}}
-          data-disabled="true"
-          {{else if (eq section.type "temporary")}}
-          data-duration.rounds="1"
-          {{else if (eq section.type "applied")}}
-          data-transfer="false"
-          {{/if}}
-          data-tooltip="{{localize "DOCUMENT.Create" type="Effect"}}"
-          >
-          <i class="fa-solid fa-plus"></i>
-          {{localize "DOCUMENT.New" type="Effect"}}
-        </a>
-      </div>
-    </li>
+  <div class="effect-list-container">
     <ol class="effect-list">
-      {{#each section.effects as |effect|}}
-      <li class="item effect flexrow draggable" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}">
-        <div class="effect-name effect-name flexrow">
-          <img class="effect-image" src="{{effect.img}}" height="24" width="24" alt="{{effect.name}}">
-          <div>{{effect.name}}</div>
+      {{#each effects as |section sid|}}
+      <li class="effect-header" data-effect-type="{{section.type}}">
+        <div class="effect-name flexrow">
+          {{localize section.label}}
         </div>
-        <div class="effect-source">{{effect.sourceName}}</div>
-        <div class="effect-duration">{{effect.duration.label}}</div>
-        <div class="effect-controls effect-controls flexrow">
-          {{#if @root.editable}}
-          <a class="effect-control" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle">
-            <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
+        <div class="effect-source">
+          {{localize "DRAW_STEEL.Effect.Source"}}
+        </div>
+        <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
+        <div class="effect-controls flexrow">
+          <a
+            class="effect-control"
+            data-action="createDoc"
+            data-origin="{{@root.document.uuid}}"
+            data-img="icons/svg/aura.svg"
+            {{#if (eq section.type "inactive")}}
+            data-disabled="true"
+            {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+            {{else if (eq section.type "temporary")}}
+            data-system.end.type="turn"
+            {{else if (eq section.type "applied")}}
+            data-transfer="false"
+            {{/if}}
+            data-tooltip-text="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.Effect.Name")}}"
+          >
+            <i class="fa-solid fa-plus"></i>
+            {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.Effect.Name")}}
           </a>
-          {{/if}}
-          <a class="effect-control" data-action="viewDoc" data-document-class="ActiveEffect" data-tooltip="{{localize "DOCUMENT.Update" type="Effect"}}">
-            <i class="fa-solid fa-edit"></i>
-          </a>
-          {{#if @root.editable}}
-          <a class="effect-control" data-action="deleteDoc" data-document-class="ActiveEffect" data-tooltip="{{localize "DOCUMENT.Delete" type="Effect"}}">
-            <i class="fa-solid fa-trash"></i>
-          </a>
-          {{/if}}
         </div>
       </li>
+      <ol class="effect-list">
+        {{#each section.effects as |effect|}}
+        <li class="effect draggable" data-effect-id="{{effect.id}}">
+          <div class="effect-row">
+            <div class="effect-name">
+              <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}">
+              <div class="name">
+                <div class="label">{{effect.name}}</div>
+              </div>
+            </div>
+            <div class="effect-source">{{effect.sourceName}}</div>
+            <div class="effect-duration">{{effect.duration.label}}</div>
+            <div class="effect-controls">
+              {{#if @root.editable}}
+              <a class="effect-control fa-fw fa-solid fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.Effect.Toggle"></a>
+              {{/if}}
+              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
+              <a class="effect-control fa-fw fa-solid fa-edit" data-action="viewDoc" data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
+              {{#if @root.editable}}
+              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
+              <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.Effect.Name")}}"></a>
+              {{/if}}
+              <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleEffectDescription"></a>
+            </div>
+          </div>
+          <div class="effect-description">
+            {{#if effect.expanded}}{{{effect.enrichedDescription}}}{{/if}}
+          </div>
+        </li>
+        {{/each}}
+      </ol>
       {{/each}}
     </ol>
-    {{/each}}
-  </ol>
+  </div>
 </section>

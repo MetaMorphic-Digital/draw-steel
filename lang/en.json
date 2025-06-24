@@ -26,6 +26,21 @@
       "ToggleMode": "Toggle Play/Edit Mode",
       "UpdateSource": "Update Source Information"
     },
+    "EDITOR": {
+      "Enrichers": {
+        "DamageHeal": {
+          "FormatString": "{formula} {type}",
+          "ChooseType": {
+            "InputLabel": "Type {index}",
+            "DialogTitle": "Choose Damage Types"
+          },
+          "MessageTitle": {
+            "damage": "Damage Roll",
+            "healing": "Healing Roll"
+          }
+        }
+      }
+    },
     "Source": {
       "FIELDS": {
         "source": {
@@ -967,6 +982,7 @@
     },
     "Effect": {
       "Name": "Effect",
+      "StatusConditions": "Status Conditions",
       "Source": "Source",
       "Toggle": "Toggle Effect",
       "Temporary": "Temporary Effects",
@@ -1052,6 +1068,10 @@
       "Poison": "Poison",
       "Psychic": "Psychic",
       "Sonic": "Sonic"
+    },
+    "HealingTypes": {
+      "Value": "Stamina",
+      "Temporary": "Temporary Stamina"
     },
     "PSEUDO": {
       "POWER_ROLL_EFFECT": {
@@ -1229,7 +1249,12 @@
       },
       "Malice": {
         "Label": "Malice",
-        "Hint": "Malice is a resource gained by the Director. You use malice to let enemies in the game activate their most powerful abilities and throw surprises at the heroes during combat."
+        "Hint": "Malice is a resource gained by the Director. You use malice to let enemies in the game activate their most powerful abilities and throw surprises at the heroes during combat.",
+        "AdjustMalice": {
+          "label": "Adjust Malice",
+          "hint": "Positive numbers will increase the value and negative numbers will decrease the value."
+        },
+        "ResetMalice": "Reset Malice"
       },
       "ShowPlayerMalice": {
         "Label": "Show Malice Value To Players",
@@ -1368,13 +1393,20 @@
       "4": "4th Echelon"
     },
     "Messages": {
-      "AbilityUse": {
+      "base": {
         "Buttons": {
+          "ApplyHeal": {
+            "Label": "Regain {amount} {type}",
+            "Tooltip": "Shift+Click: Halve Heal",
+            "TempCapped": "{name} already has more temporary Stamina"
+          },
           "ApplyDamage": {
             "Label": "Apply {amount}{type} Damage",
             "Tooltip": "Shift+Click: Halve Damage"
           }
-        },
+        }
+      },
+      "AbilityUse": {
         "NoTokenSelected": "You must have at least one token selected"
       },
       "SavingThrow": {

@@ -138,8 +138,25 @@ DRAW_STEEL.damageTypes = {
 preLocalize("damageTypes", { key: "label" });
 
 /**
+ * Configuration information for healing types.
+ * Keys correspond to keys in `system.stamina`.
+ * This is included in ds.CONFIG not because the top level keys can be customized
+ * but because the properties within the object can be customized.
+ */
+DRAW_STEEL.healingTypes = {
+  value: {
+    label: "DRAW_STEEL.HealingTypes.Value",
+  },
+  temporary: {
+    label: "DRAW_STEEL.HealingTypes.Temporary",
+  },
+};
+preLocalize("healingTypes", { key: "label" });
+
+/**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
+ * The `_id` property is handled as part of the merging process
  * @type {Record<string, {
  *  img: string,
  *  name: string,

@@ -2,10 +2,14 @@
   <button type="submit">
     <i class="fa-solid fa-dice-d10"></i> {{localize "DRAW_STEEL.Roll.Button"}}
   </button>
-  <div class="roll-mode-buttons">
+  <div class="roll-mode-buttons split-button">
     {{#each rollModes as |rollMode|}}
-    <button type="button" class="{{ifThen (eq @root.rollMode @key) "selected" ""}}" data-action="setRollMode" data-roll-mode="{{@key}}" data-tooltip="{{rollMode.label}}">
-      <i class="{{rollMode.icon}}"></i>
+    <button
+      type="button"
+      class="{{ifThen (eq @root.rollMode @key) "selected" ""}} ui-control icon {{rollMode.icon}}"
+      data-action="setRollMode"
+      data-roll-mode="{{@key}}"
+      data-tooltip="{{rollMode.label}}">
     </button>
     {{/each}}
   </div>

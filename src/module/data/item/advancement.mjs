@@ -6,7 +6,7 @@ export default class AdvancementModel extends BaseItemModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "",
       embedded: {
-        Advancement: "system.advancements",
+        // Advancement: "system.advancements",
       },
     });
   }

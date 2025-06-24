@@ -1,4 +1,4 @@
-import { DSRoll } from "../rolls/base.mjs";
+import DSRoll from "../rolls/base.mjs";
 
 /**
  * Helper function to perform synchronous evaluation of a user-input formula

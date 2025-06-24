@@ -106,7 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     this.power.roll.enabled = this.power.effects.size > 0;
-    if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
   /* -------------------------------------------------- */
@@ -114,6 +113,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
+    if (this.actor.type === "character") this._prepareCharacterData();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -304,25 +304,6 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _attachPartListeners(htmlElement, options) {
-    // Add or delete a power roll tier effect
-    const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
-    for (const button of modifyEffectButtons) {
-      button.addEventListener("click", async (event) => {
-        const { tier, operation, index } = event.target.dataset;
-        const current = foundry.utils.duplicate(this._source.powerRoll[tier]);
-        let updateData = current;
-        if (operation === "add") updateData = [...current, { type: "damage" }];
-        else if (operation === "delete") updateData.splice(index, 1);
-
-        await this.parent.update({ [`system.powerRoll.${tier}`]: updateData });
-      });
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
@@ -500,8 +481,7 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * An alias of use.
-   * @see {AbilityModel#use}
+   * An alias of {@linkcode use}.
    */
   async roll(options = {}) {
     this.use(options);

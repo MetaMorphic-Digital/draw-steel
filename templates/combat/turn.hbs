@@ -23,7 +23,7 @@
       <button type="button" class="inline-control combatant-control icon fa-solid fa-arrows-to-eye" data-action="panToCombatant" data-tooltip="COMBAT.PanToCombatant" aria-label="{{ localize " COMBAT.PanToCombatant" }}"></button>
       {{/unless}}
       {{!-- Foundry TODO: Target Control --}}
-      <div class="token-effects" data-tooltip="{{ effects.tooltip }}">
+      <div class="token-effects" data-tooltip-html="{{ effects.tooltip }}">
         {{#each effects.icons}}
         <img class="token-effect" src="{{ img }}" alt="{{ name }}">
         {{/each}}

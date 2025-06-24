@@ -16,6 +16,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /** Name for the setting */
   static label = "DRAW_STEEL.Setting.Malice.Label";
 
@@ -24,6 +26,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     return game.i18n.localize(this.constructor.label);
   }
 
+  /* -------------------------------------------------- */
+
   /** Helper text for Malice */
   static hint = "DRAW_STEEL.Setting.Malice.Hint";
 
@@ -31,6 +35,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
   get hint() {
     return game.i18n.localize(this.constructor.hint);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Re-render NPC sheets to synchronize the Malice display
@@ -47,6 +53,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Set malice for the start of combat
    * @param {DrawSteelActor[]} heroes Heroes to tally up victories
@@ -58,9 +66,10 @@ export class MaliceModel extends foundry.abstract.DataModel {
       return victories;
     }, 0);
     const avgVictories = Math.floor(totalVictories / heroes.length) || 0;
-    // Also work in the first round of combat bonus
-    return game.settings.set(systemID, "malice", { value: avgVictories + 1 + heroes.length });
+    return game.settings.set(systemID, "malice", { value: avgVictories });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Increase malice on round change
@@ -72,11 +81,44 @@ export class MaliceModel extends foundry.abstract.DataModel {
     return game.settings.set(systemID, "malice", { value: this.value + combat.round + heroes.length });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Reset malice to 0
    * @returns {Promise<MaliceModel>}
    */
-  async endCombat() {
+  async resetMalice() {
     return game.settings.set(systemID, "malice", { value: 0 });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt an input dialog to adjust the current malice value.
+   * @returns {Promise<MaliceModel>}
+   */
+  async adjustMalice() {
+    const input = foundry.applications.fields.createNumberInput({ name: "maliceAdjustment", value: 0 });
+    const adjustmentGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+      hint: "DRAW_STEEL.Setting.Malice.AdjustMalice.hint",
+      input,
+      localize: true,
+    });
+
+    const fd = await ds.applications.api.DSDialog.input({
+      window: { title: "DRAW_STEEL.Setting.Malice.AdjustMalice.label", icon: "fa-solid fa-plus-minus" },
+      content: adjustmentGroup.outerHTML,
+      ok: {
+        label: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+        icon: "fa-solid fa-plus-minus",
+      },
+    });
+
+    if (!fd.maliceAdjustment) return this;
+
+    const newMaliceValue = Math.max(0, this.value + fd.maliceAdjustment);
+
+    return game.settings.set(systemID, "malice", { value: newMaliceValue });
   }
 }

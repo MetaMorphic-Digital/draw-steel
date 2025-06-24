@@ -1,5 +1,5 @@
 import SavingThrowDialog from "../../applications/apps/saving-throw-dialog.mjs";
-import { SavingThrowRoll } from "../../rolls/_module.mjs";
+import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
