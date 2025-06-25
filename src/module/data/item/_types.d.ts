@@ -93,6 +93,7 @@ declare module "./class.mjs" {
     level: number;
     primary: string;
     turnGain: string;
+    minimum: string;
     characteristics: {
       core: Set<string>;
     }

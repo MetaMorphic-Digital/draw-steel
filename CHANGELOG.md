@@ -22,10 +22,11 @@
 
 ### Added
 
+- Added support for heroic resources that can go negative. (#508)
+- Add Adjust Malice and Reset Malice context menu options to the player UI. (#515)
 - Equipment now has a "quantity" property. Completing a project will now add to an equipment's quantity if it already exists on the actor, based on matching `dsid` values. (#558)
 - Added Healing enricher, which lets you recover stamina or temporary stamina with `[[/heal]]`. See the wiki for more details. (#559)
 - Added Damage enricher, which lets you add damage rolls to text with `[[/damage]]`. See the wiki for more details. (#568)
-- Add Adjust Malice and Reset Malice context menu options to the player UI. (#515)
 
 ### Changed
 

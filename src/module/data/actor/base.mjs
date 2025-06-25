@@ -62,6 +62,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Helper function to fill in the `biography` property
    * @protected
@@ -74,6 +76,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       languages: new fields.SetField(setOptions()),
     };
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   prepareBaseData() {
@@ -102,6 +106,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     // Teleport speeds are unaffected by conditions and effects
     this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   prepareDerivedData() {
@@ -141,6 +147,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Perform actor subtype specific modifications to the actor roll data
    * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy
@@ -155,6 +163,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     rollData.level = this.level;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The actor's melee range
    */
@@ -162,12 +172,16 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     return 1;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The actor's level
    */
   get level() {
     return 1;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * The actor's echelon based on their current level
@@ -178,6 +192,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }, 1);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Is this actor a minion?
    * @returns {boolean}
@@ -185,6 +201,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   get isMinion() {
     return false;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Returns a Set of all combatant groups this actor is a part of
@@ -198,6 +216,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     return new Set(groups);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns the first combatant group in all of the actor's combatant groups.
    * @returns {DrawSteelCombatantGroup | null}
@@ -205,6 +225,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   get combatGroup() {
     return this.combatGroups.first() || null;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -232,6 +254,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    * @param {object} changed            The differential data that was changed relative to the documents prior values
@@ -253,6 +277,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Update the stamina effects based on updated stamina values
    */
@@ -265,6 +291,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
       await this.parent.toggleStatusEffect(key, { active });
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Display actor stamina changes on active tokens.
@@ -303,6 +331,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Updates performed at the start of combat
    * @param {DrawSteelCombatant} combatant The combatant representation
@@ -311,12 +341,16 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     await combatant.update({ initiative: this.combat.turns });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Updates performed at the start of this actor's turn
    * @param {DrawSteelCombatant} combatant The combatant representation
    * @abstract
    */
   async _onStartTurn(combatant) {}
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the user for what types
@@ -374,6 +408,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     return DrawSteelChatMessage.create(messageData);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Deal damage to the actor, accounting for immunities and resistances
    * @param {number} damage    The amount of damage to take
@@ -427,6 +463,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
     return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetch information about the core resource for this actor subtype.
    * @see {@linkcode AbilityModel.use | AbilityModel#use}
@@ -435,11 +473,14 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    *  name: string;
    *  target: DataModel;
    *  path: string;
+   *  minimum: number;
    * }}
    */
   get coreResource() {
     return null;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Update the core resource for this actor subtype
