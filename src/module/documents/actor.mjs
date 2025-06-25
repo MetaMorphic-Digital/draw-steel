@@ -68,7 +68,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
   /* -------------------------------------------------- */
 
   /**
-   * Handle how changes to a Stamina are applied to the Actor.
+   * Handle how changes to Stamina are applied to the Actor.
    * @param {number} value        The target attribute value
    * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
    * @returns {Promise<DrawSteelActor>}    The updated Actor document
