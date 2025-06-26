@@ -78,6 +78,20 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     return context;
   }
 
+  async _prepareCombatContext(context, options) {
+    await super._prepareCombatContext(context, options);
+
+    const combat = this.viewed;
+
+    const numberTurn = Number.isNumeric(combat?.turn);
+
+    const isPlayerTurn = combat?.combatant?.players?.includes(game.user);
+    const canControl = numberTurn && combat.canUserModify(game.user, "update", { turn: null });
+
+    context.nullTurn = !numberTurn;
+    context.canEndTurn = isPlayerTurn && canControl;
+  }
+
   /** @inheritdoc */
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
