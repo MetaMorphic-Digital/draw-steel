@@ -1,0 +1,13 @@
+<header class="effect-config">
+  <select data-name="system.end.type">
+    {{selectOptions dsEffectEnds.options selected=dsEffectEnds.selected blank=(localize "Default")}}
+  </select>
+</header>
+<section class="effect-pane">
+  {{#each statusEffects as |status|}}
+  <div class="effect-group {{status.cssClass}} flexrow" data-action="effect" data-status-id="{{status.id}}">
+    <span class="title ellipsis">{{status.title}}</span>
+    <img class="effect-control" src="{{status.src}}" alt="{{status.title}}">
+  </div>
+  {{/each}}
+</section>

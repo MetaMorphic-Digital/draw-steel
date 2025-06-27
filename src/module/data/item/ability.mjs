@@ -106,8 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     this.power.roll.enabled = this.power.effects.size > 0;
-    for (const effect of this.power.effects) effect.prepareDerivedData();
-    if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
   /* -------------------------------------------------- */
@@ -115,6 +113,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
+    if (this.actor.type === "character") this._prepareCharacterData();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -305,25 +304,6 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _attachPartListeners(htmlElement, options) {
-    // Add or delete a power roll tier effect
-    const modifyEffectButtons = htmlElement.querySelectorAll(".modify-tier-effect");
-    for (const button of modifyEffectButtons) {
-      button.addEventListener("click", async (event) => {
-        const { tier, operation, index } = event.target.dataset;
-        const current = foundry.utils.duplicate(this._source.powerRoll[tier]);
-        let updateData = current;
-        if (operation === "add") updateData = [...current, { type: "damage" }];
-        else if (operation === "delete") updateData.splice(index, 1);
-
-        await this.parent.update({ [`system.powerRoll.${tier}`]: updateData });
-      });
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   modifyRollData(rollData) {
     super.modifyRollData(rollData);
 
@@ -354,6 +334,8 @@ export default class AbilityModel extends BaseItemModel {
     if (this.spend.value || this.spend.text) {
       let content = "";
 
+      const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
+
       /**
        * Range picker config is ignored by the checkbox element
        * @type {FormInputConfig}
@@ -361,7 +343,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: foundry.utils.getProperty(coreResource.target, coreResource.path),
+        max: current - coreResource.minimum,
         step: 1,
       };
 
@@ -370,12 +352,21 @@ export default class AbilityModel extends BaseItemModel {
         foundry.applications.fields.createCheckboxInput(spendInputConfig) :
         foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
 
+      let hint = null;
+      if (this.spend.value) {
+        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.Ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.Ability.ConfigureUse.SpendWarning", {
+          value: current,
+          name: coreResource.name,
+        });
+      }
+
       const spendGroup = foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
         input: spendInput,
+        hint,
       });
 
       // Style fix
@@ -501,8 +492,7 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * An alias of use.
-   * @see {AbilityModel#use}
+   * An alias of {@linkcode use}.
    */
   async roll(options = {}) {
     this.use(options);

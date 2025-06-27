@@ -1,11 +1,25 @@
 import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
 
+/** @import { StatusEffectConfig } from "@client/config.mjs" */
 /** @import DrawSteelActor from "./actor.mjs"; */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass
  */
 export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffect {
+  /**
+   * Checks if a status condition applies to the actor
+   * @param {StatusEffectConfig} status An entry in CONFIG.statusEffects
+   * @param {DrawSteelActor} actor      The actor to check against for rendering
+   * @returns {boolean} Will be shown on the token hud for the actor
+   */
+  static validHud(status, actor) {
+    return (status.hud !== false) &&
+      ((foundry.utils.getType(status.hud) !== "Object") || (status.hud.actorTypes?.includes(actor.type)));
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static async _fromStatusEffect(statusId, effectData, options) {
     if (effectData.rule) effectData.description = `@Embed[${effectData.rule} inline]`;
@@ -14,6 +28,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     const effect = await super._fromStatusEffect(statusId, effectData, options);
     return effect;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
@@ -37,6 +53,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Determine if the affected actor has the status and if the source is the one imposing it
    * @param {DrawSteelActor} affected The actor affected by the status
@@ -50,6 +68,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     return affected.system.statuses?.[statusId]?.sources.has(source.uuid) ?? null;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Automatically deactivate effects with expired durations
    * @inheritdoc
@@ -60,11 +80,15 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     else return super.isSuppressed;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareActiveEffectData", this);
   }
+
+  /* -------------------------------------------------- */
 
   /** @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types" */
 
@@ -78,6 +102,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     return this.system._prepareDuration ?? super._prepareDuration();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
    * @inheritdoc
@@ -85,6 +111,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   get isTemporary() {
     return this.system._isTemporary ?? super.isTemporary;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _applyAdd(actor, change, current, delta, changes) {
@@ -109,6 +137,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _applyOverride(actor, change, current, delta, changes) {
     // If the property is a condition or a Set, convert the delta to a Set
@@ -120,6 +150,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     super._applyOverride(actor, change, current, delta, changes);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Return a data object which defines the data schema against which dice rolls can be evaluated.

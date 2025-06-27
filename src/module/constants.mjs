@@ -28,11 +28,13 @@ export const initiativeModes = Object.freeze({
 export const staminaEffects = Object.freeze({
   dying: {
     name: "DRAW_STEEL.Effect.StaminaEffects.Dying",
+    hud: false,
     img: "icons/svg/stoned.svg",
     threshold: 0,
   },
   winded: {
     name: "DRAW_STEEL.Effect.StaminaEffects.Winded",
+    hud: false,
     img: "icons/svg/windmill.svg",
     threshold: "system.stamina.winded",
   },

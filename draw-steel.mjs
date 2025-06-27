@@ -49,6 +49,7 @@ Hooks.once("init", function () {
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
   CONFIG.Token.rulerClass = canvas.placeables.tokens.DrawSteelTokenRuler;
+  CONFIG.Token.hudClass = applications.hud.DrawSteelTokenHUD;
   canvas.placeables.tokens.DrawSteelTokenRuler.applyDSMovementConfig();
 
   foundry.applications.handlebars.loadTemplates(templates);
@@ -58,10 +59,10 @@ Hooks.once("init", function () {
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
   for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
-    CONFIG.statusEffects.push({ id, ...value });
+    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
-    CONFIG.statusEffects.push({ id, ...value });
+    CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
 
   // Destructuring some pieces for simplification
@@ -106,6 +107,9 @@ Hooks.once("init", function () {
 
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
+
+  // Register enrichers
+  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll];
 });
 
 /**

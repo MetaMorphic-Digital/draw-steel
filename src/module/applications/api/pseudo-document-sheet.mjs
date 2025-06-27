@@ -167,21 +167,6 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
 
   /* -------------------------------------------------- */
 
-  /**
-   * Utility context preparation method for individual fields.
-   * @param {string} path   The path to the given field, relative to the root of the pseudo document.
-   * @returns {object}      Field context.
-   */
-  _prepareField(path) {
-    const doc = this.pseudoDocument;
-    const field = doc.schema.getField(path);
-    const value = foundry.utils.getProperty(doc, path);
-    const src = foundry.utils.getProperty(doc._source, path);
-    return { field, value, src, name: path };
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   async _renderFrame(options) {
     const frame = await super._renderFrame(options);

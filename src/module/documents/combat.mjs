@@ -1,7 +1,7 @@
 import SavingThrowManager from "../applications/apps/saving-throw-manager.mjs";
 import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
-import { DSRoll } from "../rolls/base.mjs";
+import DSRoll from "../rolls/base.mjs";
 
 /** @import ActiveEffectData from "@common/documents/_types.mjs" */
 /** @import { MaliceModel } from "../data/settings/malice.mjs" */
@@ -63,6 +63,20 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /* -------------------------------------------------- */
 
+  /**
+   * End the current turn without starting a new one.
+   * @returns {DrawSteelCombat}
+   */
+  async endTurn() {
+    const updateData = { round: this.round, turn: null };
+    const updateOptions = { direction: 1, worldTime: { delta: null }, endTurn: true };
+    Hooks.callAll("combatTurn", this, updateData, updateOptions);
+    await this.update(updateData, updateOptions);
+    return this;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async nextRound() {
     // In memory adjustment that will get committed during the super call
@@ -77,27 +91,10 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async endCombat() {
-    const deletedCombat = await super.endCombat();
-
-    if (deletedCombat) {
-      /** @type {MaliceModel} */
-      const malice = game.actors.malice;
-      await malice.endCombat();
-
-      await this.awardVictories();
-    }
-
-    return deletedCombat;
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant
    * @param {DrawSteelCombatant | DrawSteelCombatantGroup} b Some other combatant
-   * @returns {number} The sort for an {@link Array#sort} callback
+   * @returns {number} The sort for an {@linkcode Array.sort | Array#sort} callback
    * @protected
    * @inheritdoc
    */
@@ -120,9 +117,49 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _onDelete(options, userId) {
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+
+    ui.players.render();
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onUpdate(changed, options, userId) {
+    super._onUpdate(changed, options, userId);
+
+    // Need to special case endTurn setting the turn to null but still triggering end of turn events
+    if (options.endTurn && game.user.isActiveGM) {
+      const prev = this.previous;
+      const combatant = this.combatants.get(prev.combatantId);
+      if (combatant && (this.current.turn === null)) {
+        if (CONFIG.debug.combat) console.debug(` | Combat End Turn: ${combatant.name}`);
+        const context = { round: prev.round, turn: prev.turn, skipped: false };
+        await this._onEndTurn(combatant, context);
+        const token = combatant.token;
+        if (token) {
+          const regionEvents = token.regions.map(r => r._triggerEvent(CONST.REGION_EVENTS.TOKEN_TURN_END, { token, combatant, combat: this, ...context }));
+          await Promise.allSettled(regionEvents);
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDelete(options, userId) {
     super._onDelete(options, userId);
+
     if (!game.user.isActiveGM) return;
+
+    /** @type {MaliceModel} */
+    const malice = game.actors.malice;
+    await malice.resetMalice();
+
+    /** If malice is already 0, the {@linkcode MaliceModel.onChange} won't fire at the end of combat to render the player UI. */
+    await ui.players.render();
 
     for (const combatant of this.combatants) {
       const actor = combatant.actor;
@@ -135,6 +172,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       }
       actor.updateEmbeddedDocuments("ActiveEffect", updates);
     }
+
+    await this.awardVictories();
   }
 
   /* -------------------------------------------------- */
@@ -202,6 +241,8 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   #onModifyCombatantGroups(parent, documents, options) {
     if ((ui.combat.viewed === parent) && (options.render !== false)) ui.combat.render();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle Draw Steel effect expiration logic

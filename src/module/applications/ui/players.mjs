@@ -2,6 +2,7 @@ import { systemID, systemPath } from "../../constants.mjs";
 
 /** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
 /** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
+/** @import { MaliceModel } from "../../data/settings/malice.mjs"; */
 
 /**
  * An extension of the core Players display that adds controls for hero tokens and malice
@@ -13,9 +14,9 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
 
     // Can adjust if it makes sense to have hero token controls for non-GMs (e.g. a more generic hero action)
     if (game.user.isGM) {
-      this._createContextMenu(this._heroTokenContextMenuOptions, ".hero-tokens .context-menu", {
+      this._createContextMenu(this._metaCurrencyContextMenuOptions, "#meta-currency .context-menu", {
         eventName: "click",
-        hookName: "getHeroTokenContextOptions",
+        hookName: "getMetaCurrencyContextOptions",
         parentClassHooks: false,
         fixed: true,
       });
@@ -44,11 +45,11 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
    * Context menu entries for the Hero Token menu button
    * @returns {ContextMenuEntry}
    */
-  _heroTokenContextMenuOptions() {
+  _metaCurrencyContextMenuOptions() {
     return [
       {
         name: "DRAW_STEEL.Setting.HeroTokens.GiveToken",
-        icon: "<i class=\"fa-solid fa-plus\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-plus\"></i>",
         condition: li => game.user.isGM,
         callback: async li => {
           /** @type {HeroTokenModel} */
@@ -58,12 +59,32 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
       },
       {
         name: "DRAW_STEEL.Setting.HeroTokens.ResetToken",
-        icon: "<i class=\"fa-solid fa-rotate\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-rotate\"></i>",
         condition: li => game.user.isGM,
         callback: async li => {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.resetTokens();
+        },
+      },
+      {
+        name: "DRAW_STEEL.Setting.Malice.AdjustMalice.label",
+        icon: "<i class=\"fa-solid fa-fw fa-plus-minus\"></i>",
+        condition: li => game.user.isGM && game.combat,
+        callback: async li => {
+          /** @type {MaliceModel} */
+          const malice = game.actors.malice;
+          await malice.adjustMalice();
+        },
+      },
+      {
+        name: "DRAW_STEEL.Setting.Malice.ResetMalice",
+        icon: "<i class=\"fa-solid fa-fw fa-rotate\"></i>",
+        condition: li => game.user.isGM && game.combat,
+        callback: async li => {
+          /** @type {MaliceModel} */
+          const malice = game.actors.malice;
+          await malice.resetMalice();
         },
       },
     ];

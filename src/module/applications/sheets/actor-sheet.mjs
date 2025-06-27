@@ -1,5 +1,5 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
-import { DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage, DrawSteelItem } from "../../documents/_module.mjs";
 import DrawSteelItemSheet from "./item-sheet.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
@@ -7,7 +7,6 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 /** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
-/** @import { DrawSteelActiveEffect } from "../../documents/_module.mjs" */
 
 const { sheets } = foundry.applications;
 
@@ -27,11 +26,13 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       viewDoc: this.#viewDoc,
       createDoc: this.#createDoc,
       deleteDoc: this.#deleteDoc,
+      toggleStatus: this.#toggleStatus,
       toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
       toggleItemEmbed: this.#toggleItemEmbed,
+      toggleEffectDescription: this.#toggleEffectDescription,
     },
   };
 
@@ -56,16 +57,19 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _mode = this.constructor.MODES.PLAY;
-
-  /* -------------------------------------------------- */
-
   /**
    * A set of the currently expanded item ids
    * @type {Set<string>}
    */
   #expanded = new Set();
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A set of the currently expanded effect UUIDs
+   * @type {Set<string>}
+   */
+  #expandedDescriptions = new Set();
 
   /* -------------------------------------------------- */
 
@@ -140,7 +144,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         context.enrichedGMNotes = await enrichHTML(this.actor.system.biography.gm, { relativeTo: this.actor });
         break;
       case "effects":
-        context.effects = this.prepareActiveEffectCategories();
+        context.statuses = await this._prepareStatusEffects();
+        context.effects = await this._prepareActiveEffectCategories();
         break;
     }
     if (partId in context.tabs) context.tab = context.tabs[partId];
@@ -173,6 +178,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Constructs a tooltip of data paths
+   * @protected
    */
   _getCombatTooltip() {
     const dataPaths = ["turns", "save.bonus", "save.threshold"];
@@ -295,6 +301,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Prepare the context for features
    * @returns {Array<ActorSheetItemContext>}
+   * @protected
    */
   async _prepareFeaturesContext() {
     const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
@@ -311,9 +318,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Prepare the context for ability categories and individual abilities
-   * @returns {Record<keyof typeof ds["CONFIG"]["abilities"]["types"] | "other", ActorSheetAbilitiesContext>}
+   * @protected
    */
   async _prepareAbilitiesContext() {
+    /**
+     * @type {Record<string, ActorSheetAbilitiesContext>}
+     */
     const context = {};
     const abilities = this.actor.itemTypes.ability.toSorted((a, b) => a.sort - b.sort);
 
@@ -325,6 +335,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       context[type] = {
         label: config.label,
         abilities: [],
+        showHeader: true,
+        showAdd: this.isEditMode,
       };
     }
 
@@ -332,6 +344,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       abilities: [],
+      showAdd: false,
+      // Show "other" if and only if there are abilities of that type
+      showHeader: false,
     };
 
     // Prepare the context for each individual ability
@@ -346,11 +361,68 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         const villainActionCount = context[type].abilities.length;
         abilityContext.order = villainActionCount + 1;
       }
+      context[type].showHeader = true;
 
       context[type].abilities.push(abilityContext);
     }
 
+    // Filter out unused headers for play mode
+    if (this.isPlayMode) {
+      for (const [key, value] of Object.entries(context)) {
+        if (!value.abilities.length) delete context[key];
+      }
+    }
+
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @typedef StatusInfo
+   * @property {string} _id
+   * @property {string} name
+   * @property {string} img
+   * @property {boolean} disabled
+   * @property {"active" | ""} active
+   * @property {string} [tooltip]
+   */
+
+  /**
+   * Prepare the data structure for status effects and whether they are active.
+   * @protected
+   */
+  async _prepareStatusEffects() {
+    /** @type {Record<string, StatusInfo>} */
+    const statusInfo = {};
+    for (const status of CONFIG.statusEffects) {
+      // Only display if it would show in the token HUD *and* it has an assigned _id
+      if ((!status._id) || !DrawSteelActiveEffect.validHud(status, this.actor)) continue;
+      statusInfo[status.id] = {
+        _id: status._id,
+        name: status.name,
+        img: status.img,
+        disabled: false,
+        active: "",
+      };
+
+      if (status.rule) {
+        const page = await fromUuid(status.rule);
+        statusInfo[status.id].tooltip = await enrichHTML(page.text.content, { relativeTo: this.actor });
+      }
+    }
+
+    // If the actor has the status and it's not from the canonical statusEffect
+    // Then we want to force more individual control rather than allow toggleStatusEffect
+    for (const effect of this.actor.allApplicableEffects()) {
+      for (const id of effect.statuses) {
+        if (!(id in statusInfo)) continue;
+        statusInfo[id].active = "active";
+        if (!Object.values(statusInfo).some(s => s._id === effect._id)) statusInfo[id].disabled = true;
+      }
+    }
+
+    return statusInfo;
   }
 
   /* -------------------------------------------------- */
@@ -365,8 +437,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
    * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   * @protected
    */
-  prepareActiveEffectCategories() {
+  async _prepareActiveEffectCategories() {
     /** @type {Record<string, ActiveEffectCategory>} */
     const categories = {
       temporary: {
@@ -388,9 +461,25 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.allApplicableEffects()) {
-      if (!e.active) categories.inactive.effects.push(e);
-      else if (e.isTemporary) categories.temporary.effects.push(e);
-      else categories.passive.effects.push(e);
+      const effectContext = {
+        id: e.id,
+        name: e.name,
+        img: e.img,
+        parent: e.parent,
+        sourceName: e.sourceName,
+        duration: e.duration,
+        disabled: e.disabled,
+        expanded: false,
+      };
+
+      if (this.#expandedDescriptions.has(e.uuid)) {
+        effectContext.expanded = true;
+        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+      }
+
+      if (!e.active) categories.inactive.effects.push(effectContext);
+      else if (e.isTemporary) categories.temporary.effects.push(effectContext);
+      else categories.passive.effects.push(effectContext);
     }
 
     // Sort each category
@@ -658,7 +747,22 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Determines effect parent to pass to helper
+   * Creates or deletes a configured status effect
+   *
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @private
+   */
+  static async #toggleStatus(event, target) {
+    const status = target.dataset.statusId;
+    await this.actor.toggleStatusEffect(status);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggles an active effect from disabled to enabled
    *
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
@@ -725,8 +829,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
+   * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
+   * TODO: Refactor re-rendering to instead use CSS transitions
+   * @this DrawSteelActorSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @protected
+   */
+  static async #toggleEffectDescription(event, target) {
+    const effect = this._getEmbeddedDocument(target);
+
+    if (this.#expandedDescriptions.has(effect.uuid)) this.#expandedDescriptions.delete(effect.uuid);
+    else this.#expandedDescriptions.add(effect.uuid);
+
+    const part = target.closest("[data-application-part]").dataset.applicationPart;
+    this.render({ parts: [part] });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
-   *
+   * TODO: Refactor re-rendering to instead use CSS transitions
    * @this DrawSteelActorSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]

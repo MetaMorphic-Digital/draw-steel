@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { DrawSteelActor } from "../../documents/_module.mjs"; */
@@ -36,6 +36,8 @@ export default class EquipmentModel extends BaseItemModel {
     schema.echelon = new fields.NumberField({ initial: 1, integer: true });
 
     schema.keywords = new fields.SetField(setOptions());
+
+    schema.quantity = requiredInteger({ initial: 1 });
 
     schema.project = new fields.SchemaField({
       prerequisites: new fields.StringField({ required: true }),

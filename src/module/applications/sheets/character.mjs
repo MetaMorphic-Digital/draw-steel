@@ -3,7 +3,7 @@ import { EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
-/** @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "../_types.js" */
+/** @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "./_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
@@ -14,6 +14,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
+      modifyItemQuantity: this.#modifyItemQuantity,
     },
   };
 
@@ -111,9 +112,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prepare the context for equipment categories and individual equipment items
-   * @returns {Record<keyof typeof ds["CONFIG"]["equipment"]["categories"] | "other", ActorSheetEquipmentContext>}
    */
   async _prepareEquipmentContext() {
+    /** @type {Record<string, ActorSheetEquipmentContext>} */
     const context = {};
     const equipment = this.actor.itemTypes.equipment.toSorted((a, b) => a.sort - b.sort);
 
@@ -122,6 +123,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       context[category] = {
         label: config.label,
         equipment: [],
+        showAdd: this.isEditMode,
+        showHeader: this.isEditMode,
       };
     }
 
@@ -129,13 +132,23 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
       equipment: [],
+      showAdd: false,
+      // Show "other" if and only if there is equipment of that category
+      showHeader: false,
     };
 
     // Prepare the context for each individual equipment item
     for (const item of equipment) {
       const category = context[item.system.category] ? item.system.category : "other";
-
+      context[category].showHeader = true;
       context[category].equipment.push(await this._prepareItemContext(item));
+    }
+
+    // Filter out unused headers for play mode
+    if (this.isPlayMode) {
+      for (const [key, value] of Object.entries(context)) {
+        if (!value.equipment.length) delete context[key];
+      }
     }
 
     return context;
@@ -228,6 +241,23 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    */
   static async #spendStaminaHeroToken() {
     await this.actor.system.spendStaminaHeroToken();
+  }
+
+  /**
+   * Modify the quantity of a piece of equipment.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async #modifyItemQuantity(event, target) {
+    const quantityModification = target.dataset.quantityModification;
+    const item = this._getEmbeddedDocument(target);
+    if (!item) return;
+
+    const quantity = item.system.quantity ?? 0;
+    const updatedQuantity = (quantityModification === "increase") ? quantity + 1 : quantity - 1;
+
+    item.update({ "system.quantity": updatedQuantity });
   }
 
   /* -------------------------------------------------- */

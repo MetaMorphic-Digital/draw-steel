@@ -12,7 +12,10 @@ import SourceModel from "../models/source.mjs";
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
-  /** @inheritdoc */
+  /**
+   * @inheritdoc
+   * @type {import("../_types").SubtypeMetadata}
+   */
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "npc",
@@ -27,6 +30,8 @@ export default class NPCModel extends BaseActorModel {
     "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.NPC",
   ];
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -55,21 +60,29 @@ export default class NPCModel extends BaseActorModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get level() {
     return this.monster.level;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get isMinion() {
     return foundry.utils.getProperty(this, "monster.organization") === "minion";
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get coreResource() {
@@ -78,8 +91,11 @@ export default class NPCModel extends BaseActorModel {
       /** @type {MaliceModel} */
       target: game.actors.malice,
       path: "value",
+      minimum: 0,
     };
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetch the traits of this creature's free strike.
@@ -119,6 +135,8 @@ export default class NPCModel extends BaseActorModel {
 
     return freeStrike;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async updateResource(delta) {
