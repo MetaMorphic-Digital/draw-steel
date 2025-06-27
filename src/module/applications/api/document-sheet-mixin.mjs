@@ -43,7 +43,7 @@ export default base => {
 
     /**
      * The mode the sheet is currently in.
-     * @type {DSDocumentSheet.MODES}
+     * @type {typeof DSDocumentSheet.MODES}
      * @protected
      */
     _mode = DSDocumentSheet.MODES.PLAY;
