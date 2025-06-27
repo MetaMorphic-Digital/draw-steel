@@ -1249,6 +1249,10 @@ DRAW_STEEL.Advancement = {
     label: "TYPES.Advancement.itemGrant",
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
+  trait: {
+    label: "TYPES.Advancement.trait",
+    documentClass: pseudoDocuments.advancements.TraitAdvancement,
+  },
 };
 
 /**
