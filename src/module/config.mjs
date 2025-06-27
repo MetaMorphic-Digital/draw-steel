@@ -1537,3 +1537,17 @@ DRAW_STEEL.projects = {
   },
 };
 preLocalize("projects.types", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TraitConfiguration
+ * @property {string} label                                           Human-readable label of the trait.
+ * @property {InstanceType<foundry.data.fields.DataField>} [field]    A field used to render the input.
+ */
+
+/**
+ * The options for a trait advancement.
+ * @type {Record<string, TraitConfiguration>}
+ */
+DRAW_STEEL.TRAITS = {};
