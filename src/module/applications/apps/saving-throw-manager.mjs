@@ -19,7 +19,7 @@ export default class SavingThrowManager extends RollManager {
     const activePlayerOwners = game.users.filter(u => !u.isGM && effect.testUserPermission(u, "OWNER") && u.active);
     if (!activePlayerOwners.length) {
       const message = await effect.system.rollSave();
-      return message.rolls[0].product;
+      return !!message?.rolls[0].product;
     }
     else if (activePlayerOwners.length === 1) {
       const messageData = await game.system.socketHandler.rollSave(effect, activePlayerOwners[0]);

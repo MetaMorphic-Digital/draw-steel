@@ -4,8 +4,11 @@
   border-radius: 8px;
   padding: 6px 8px;
   pointer-events: all;
+  display: flex;
+  .currency-values {
+    flex-grow: 1;
+  }
   .context-menu {
-    float: right;
     border: none;
   }
 }

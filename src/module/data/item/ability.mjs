@@ -106,7 +106,6 @@ export default class AbilityModel extends BaseItemModel {
     super.prepareDerivedData();
 
     this.power.roll.enabled = this.power.effects.size > 0;
-    if (this.actor?.type === "character") this._prepareCharacterData();
   }
 
   /* -------------------------------------------------- */
@@ -114,6 +113,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
+    if (this.actor.type === "character") this._prepareCharacterData();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -334,6 +334,8 @@ export default class AbilityModel extends BaseItemModel {
     if (this.spend.value || this.spend.text) {
       let content = "";
 
+      const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
+
       /**
        * Range picker config is ignored by the checkbox element
        * @type {FormInputConfig}
@@ -341,7 +343,7 @@ export default class AbilityModel extends BaseItemModel {
       const spendInputConfig = {
         name: "spend",
         min: 0,
-        max: foundry.utils.getProperty(coreResource.target, coreResource.path),
+        max: current - coreResource.minimum,
         step: 1,
       };
 
@@ -350,12 +352,21 @@ export default class AbilityModel extends BaseItemModel {
         foundry.applications.fields.createCheckboxInput(spendInputConfig) :
         foundry.applications.elements.HTMLRangePickerElement.create(spendInputConfig);
 
+      let hint = null;
+      if (this.spend.value) {
+        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.Ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.Ability.ConfigureUse.SpendWarning", {
+          value: current,
+          name: coreResource.name,
+        });
+      }
+
       const spendGroup = foundry.applications.fields.createFormGroup({
         label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
         input: spendInput,
+        hint,
       });
 
       // Style fix

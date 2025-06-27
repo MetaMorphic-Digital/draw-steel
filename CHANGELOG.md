@@ -18,13 +18,22 @@
 ### Known Issues
 -->
 
+## 0.8.0
+
+### Added
+
+- Advancements
+
 ## 0.7.3
 
 ### Added
 
+- Added support for heroic resources that can go negative. (#508)
+- Add Adjust Malice and Reset Malice context menu options to the player UI. (#515)
 - Equipment now has a "quantity" property. Completing a project will now add to an equipment's quantity if it already exists on the actor, based on matching `dsid` values. (#558)
 - Added Healing enricher, which lets you recover stamina or temporary stamina with `[[/heal]]`. See the wiki for more details. (#559)
 - Added Damage enricher, which lets you add damage rolls to text with `[[/damage]]`. See the wiki for more details. (#568)
+- Added a button in the Combat Tracker footer to end the current combatant's turn without beginning a new one. (#638)
 
 ### Changed
 
@@ -40,10 +49,14 @@
   - Unused ability and equipment sections are no longer displayed in play mode.
   - Add Item buttons only display in edit mode.
 - New actors and items now start in edit mode. Items no longer default to edit mode if opened while editable.
+- Show malice value in the player UI on combat creation instead of only on beginning combat. (#498)
+- Moved ability bonus calculations to after active effect application. (#613)
 
 ### Fixed
 
 - Fixed various color issues on sheets that had their theme set individually. (#599)
+- Fixed malice generation applying the first round bonus twice.
+- The "Award Victories" prompt will no longer appear if you cancel out of ending a combat.
 
 ## 0.7.2
 

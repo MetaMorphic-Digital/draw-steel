@@ -20,6 +20,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     /** Inherited */
@@ -64,6 +66,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     return parts;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
@@ -77,6 +81,25 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     }
     return context;
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareCombatContext(context, options) {
+    await super._prepareCombatContext(context, options);
+
+    const combat = this.viewed;
+
+    const numberTurn = Number.isNumeric(combat?.turn);
+
+    const isPlayerTurn = combat?.combatant?.players?.includes(game.user);
+    const canControl = numberTurn && combat.canUserModify(game.user, "update", { turn: null });
+
+    context.nullTurn = !numberTurn;
+    context.canEndTurn = isPlayerTurn && canControl;
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareTrackerContext(context, options) {
@@ -155,6 +178,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     context.groupTurns?.sort(combat._sortCombatants);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareTurnContext(combat, combatant, index) {
     const turn = await super._prepareTurnContext(combat, combatant, index);
@@ -182,6 +207,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     return turn;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
@@ -207,6 +234,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     }).bind(this.element);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * An event that occurs when a drag workflow begins for a draggable combatant on the combat tracker.
    * @param {DragEvent} event       The initiating drag start event
@@ -221,6 +250,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * An event that occurs when a drag workflow moves over a drop target.
    * @param {DragEvent} event
@@ -230,6 +261,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // TODO: Highlight the drop target?
     // console.debug(this, event);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * An event that occurs when data is dropped into a drop target.
@@ -263,6 +296,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
@@ -273,6 +308,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       parentClassHooks: false,
     });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _getEntryContextOptions() {
@@ -285,6 +322,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
     return entryOptions;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _getCombatContextOptions() {
@@ -308,6 +347,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
     return entryOptions;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Get the context menu entries for Combatant Groups in the tracker.
@@ -383,6 +424,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     this.viewed.rollFirst();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Toggle a Combatant Group
    * @this DrawSteelCombatTracker
@@ -402,6 +445,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // Main sidebar renders are automatically propagated to popouts
     await ui.combat.render({ parts: ["dsTracker"] });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Cycle through the combatant's activation status
@@ -429,6 +474,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       combat.update({ turn: newTurn }, { direction: 1 });
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Cycle through the combatant group's activation status
