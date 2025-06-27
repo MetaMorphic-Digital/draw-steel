@@ -18,6 +18,12 @@
 ### Known Issues
 -->
 
+## 0.8.0
+
+### Added
+
+- Advancements
+
 ## 0.7.3
 
 ### Added
