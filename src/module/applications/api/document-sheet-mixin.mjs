@@ -32,7 +32,6 @@ export default base => {
 
     /**
      * Available sheet modes.
-     * @enum {number}
      */
     static MODES = Object.freeze({
       PLAY: 1,
@@ -43,7 +42,7 @@ export default base => {
 
     /**
      * The mode the sheet is currently in.
-     * @type {DSDocumentSheet.MODES}
+     * @type {typeof DSDocumentSheet.MODES[keyof typeof DSDocumentSheet.MODES]}
      * @protected
      */
     _mode = DSDocumentSheet.MODES.PLAY;
