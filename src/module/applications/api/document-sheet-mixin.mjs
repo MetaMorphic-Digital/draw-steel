@@ -32,7 +32,6 @@ export default base => {
 
     /**
      * Available sheet modes.
-     * @enum {number}
      */
     static MODES = Object.freeze({
       PLAY: 1,
