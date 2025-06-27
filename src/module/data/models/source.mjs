@@ -1,6 +1,3 @@
-import DocumentInput from "../../applications/api/document-input.mjs";
-import DocumentSourceInput from "../../applications/apps/document-source-input.mjs";
-
 /** @import BasePackage from "@common/packages/base-package.mjs"; */
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs" */
 
