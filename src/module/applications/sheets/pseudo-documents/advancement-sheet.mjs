@@ -79,9 +79,10 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     }
 
     else if (context.document.type === "trait") {
-      ctx.traits = context.document.getEmbeddedPseudoDocumentCollection("TraitChoice").map(trait => {
-        return { trait, fields: trait.schema.fields };
-      });
+      ctx.traits = context.document.getEmbeddedPseudoDocumentCollection("TraitChoice").map(trait => ({
+        trait,
+        fields: trait.schema.fields,
+      }));
     }
 
     return context;
