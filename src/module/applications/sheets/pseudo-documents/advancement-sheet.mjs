@@ -65,7 +65,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareDetailsContext(context) {
-    const ctx = context.ctx = { itemPool: [], traits: [] };
+    const ctx = context.ctx = { itemPool: [] };
 
     if (context.document.type === "itemGrant") {
       for (const [i, pool] of context.document.pool.entries()) {
@@ -79,19 +79,9 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     }
 
     else if (context.document.type === "trait") {
-      for (const [k, v] of Object.entries(context.document._source.traits)) {
-        const namePrefix = `traits.${k}.`;
-        ctx.traits.push({
-          traitId: k,
-          namePrefix,
-          values: {
-            label: v.label,
-            value: v.value,
-          },
-          labelPlaceholder: ds.CONFIG.TRAITS[v.trait].label,
-          traitField: ds.CONFIG.TRAITS[v.trait].field ?? context.fields.traits.element.fields.value,
-        });
-      }
+      ctx.traits = context.document.getEmbeddedPseudoDocumentCollection("TraitChoice").map(trait => {
+        return { trait, fields: trait.schema.fields };
+      });
     }
 
     return context;
@@ -157,19 +147,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
   static async #addTrait(event, target) {
-    const options = Object.entries(ds.CONFIG.TRAITS).map(([k, v]) => {
-      return { value: k, label: v.label };
-    });
-    const input = foundry.applications.fields.createSelectInput({
-      options,
-      name: "trait",
-    });
-    const result = await ds.applications.api.DSDialog.input({
-      content: input.outerHTML,
-    });
-    if (result) this.pseudoDocument.update({
-      [`traits.${foundry.utils.randomID()}.trait`]: result.trait,
-    });
+    ds.data.pseudoDocuments.traitChoices.BaseTraitChoice.createDialog({}, { parent: this.pseudoDocument });
   }
 
   /* -------------------------------------------------- */
