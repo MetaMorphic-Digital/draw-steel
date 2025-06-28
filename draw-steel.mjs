@@ -147,8 +147,16 @@ Hooks.once("i18nInit", () => {
     }
   }
 
-  // Localize pseudo-documents: THIS DOES NOT WORK WAARGGGG
-  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.DamagePowerRollEffect);
+  // Localize pseudo-documents.
+  const localizePseudos = record => {
+    for (const cls of Object.values(record)) {
+      foundry.helpers.Localization.localizeDataModel(cls);
+    }
+  };
+
+  localizePseudos(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.TYPES);
+  localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
+  localizePseudos(data.pseudoDocuments.traitChoices.BaseTraitChoice.TYPES);
 });
 
 /* -------------------------------------------- */

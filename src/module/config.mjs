@@ -1256,6 +1256,19 @@ DRAW_STEEL.Advancement = {
   },
 };
 
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TraitChoiceType
+ * @property {string} label   Human-readable label.
+ * @property {pseudoDocuments.traitChoices.BaseTraitChoice} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, TraitChoiceType>} */
+DRAW_STEEL.TraitChoice = {};
+
+/* -------------------------------------------------- */
+
 /**
  * Configuration details for Culture items
  * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}

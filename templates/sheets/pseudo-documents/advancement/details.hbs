@@ -25,14 +25,14 @@
     <span>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.traits"}}</span>
     <button type="button" class="icon fa-solid fa-fw fa-circle-plus" data-action="addTrait"></button>
   </h4>
-  {{log this level="warn"}}
   {{#each ctx.traits}}
-  <div class="form-group" data-trait-id="{{traitId}}">
+  <div class="form-group" data-trait-id="{{trait.id}}">
+    <label>{{localize (concat "TYPES.TraitChoice." trait.type)}}</label>
     <div class="form-fields">
-      {{formGroup @root.fields.traits.element.fields.label label=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.traitLabel") classes="stacked" value=values.label placeholder=labelPlaceholder name=(concat namePrefix "label")}}
-      {{formGroup traitField label=@root.fields.traits.element.fields.value.label classes="stacked" value=values.value name=(concat namePrefix "value")}}
+      {{!-- TODO: add fields depending on TraitChoice subtype --}}
       <button type="button" class="icon fa-solid fa-fw fa-trash" data-action="deleteTrait"></button>
     </div>
+    <p class="hint">{{trait}}</p>
   </div>
   {{/each}}
   {{/if}}
