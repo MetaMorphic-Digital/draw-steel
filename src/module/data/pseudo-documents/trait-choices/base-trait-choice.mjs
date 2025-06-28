@@ -20,10 +20,7 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    ...super.LOCALIZATION_PREFIXES,
-    "DRAW_STEEL.TRAIT_CHOICE",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.TRAIT_CHOICE");
 
   /* -------------------------------------------------- */
 
