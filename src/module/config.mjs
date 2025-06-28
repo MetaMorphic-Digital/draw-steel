@@ -2,6 +2,7 @@ import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
+/** @import { DataField } from "@common/data/fields.mjs" */
 
 export const DRAW_STEEL = {};
 
@@ -1546,8 +1547,8 @@ preLocalize("projects.types", { key: "label" });
 
 /**
  * @typedef TraitConfiguration
- * @property {string} label                                           Human-readable label of the trait.
- * @property {InstanceType<foundry.data.fields.DataField>} [field]    A field used to render the input.
+ * @property {string} label         Human-readable label of the trait.
+ * @property {DataField} [field]    A field used to render the input.
  */
 
 /**

@@ -11,7 +11,7 @@ export default class TraitAdvancement extends BaseAdvancement {
       }),
       traits: new TypedObjectField(new SchemaField({
         label: new StringField({ required: true }),
-        trait: new StringField({ required: true, blank: false, choices: () => ds.CONFIG.TRAITS }),
+        trait: new StringField({ choices: () => ds.CONFIG.TRAITS }),
         value: new StringField({ required: true, blank: true }),
       }), { validateKey: key => foundry.data.validators.isValidId(key) }),
       // If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool
