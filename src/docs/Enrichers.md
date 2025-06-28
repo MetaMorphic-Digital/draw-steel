@@ -31,3 +31,4 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 10]]: If no healing type is specified it will default to current stamina.
 - [&ZeroWidthSpace;[/heal 10 type=temporary]]: Like damage you can specify the healing type. You must be precise and use "value" or "temporary" here.
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
+
