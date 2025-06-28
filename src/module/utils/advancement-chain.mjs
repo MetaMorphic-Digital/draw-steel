@@ -122,11 +122,10 @@ export default class AdvancementChain {
         }
       }
     } else if (advancement.type === "trait") {
-      // This whole section is just a test.
-      for (const k of Object.keys(advancement.traits)) {
-        const choice = node.choices[k] = {
+      for (const trait of advancement.traits) {
+        const choice = node.choices[trait.id] = {
           node,
-          trait: k,
+          trait: trait.id,
           children: {},
         };
 
