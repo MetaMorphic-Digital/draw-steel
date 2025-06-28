@@ -1554,4 +1554,9 @@ preLocalize("projects.types", { key: "label" });
  * The options for a trait advancement.
  * @type {Record<string, TraitConfiguration>}
  */
-DRAW_STEEL.TRAITS = {};
+DRAW_STEEL.TRAITS = {
+  test: {
+    label: "Test Trait",
+    field: new foundry.data.fields.NumberField({ min: 1, max: 5, integer: true, nullable: false }),
+  },
+};

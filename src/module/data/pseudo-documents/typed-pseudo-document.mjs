@@ -52,6 +52,16 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    if (!this.name) {
+      this.name = game.i18n.localize(`TYPES.${this.documentName}.${this.type}`);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   static async create(data = {}, { parent, ...operation } = {}) {
     data = foundry.utils.deepClone(data);
     if (!data.type) data.type = Object.keys(this.TYPES)[0];
@@ -60,6 +70,8 @@ export default class TypedPseudoDocument extends PseudoDocument {
     }
     return super.create(data, { parent, ...operation });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt for picking the subtype of this pseudo-document.

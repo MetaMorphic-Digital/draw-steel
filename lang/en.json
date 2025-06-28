@@ -12,11 +12,40 @@
         },
         "img": {
           "label": "Image"
-        },
-        "requirements": {
-          "level": {
-            "label": "Level",
-            "hint": "The level at which this advancement is acquired."
+        }
+      },
+      "ITEM_GRANT": {
+        "FIELDS": {
+          "requirements": {
+            "level": {
+              "label": "Level",
+              "hint": "The level at which these items can be granted."
+            }
+          },
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          }
+        }
+      },
+      "TRAIT": {
+        "FIELDS": {
+          "requirements": {
+            "level": {
+              "label": "Level",
+              "hint": "The level at which these traits can be granted."
+            }
+          },
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
+          },
+          "traits": {
+            "element": {
+              "value": {
+                "label": "Value"
+              }
+            }
           }
         }
       },
@@ -24,7 +53,11 @@
         "level": "Level {level}"
       },
       "SHEET": {
-        "requirements": "Requirements"
+        "requirements": "Requirements",
+        "chooseAll": "Choose All",
+        "unknownItem": "Unknown Item",
+        "traitLabel": "Label",
+        "traits": "Traits"
       },
       "WARNING": {
         "cannotAddNewClass": "You cannot add a new class to a character that already has one."

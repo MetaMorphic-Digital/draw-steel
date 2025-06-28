@@ -5,6 +5,8 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   static DEFAULT_OPTIONS = {
     actions: {
       deletePoolItem: AdvancementSheet.#deletePoolItem,
+      addTrait: AdvancementSheet.#addTrait,
+      deleteTrait: AdvancementSheet.#deleteTrait,
     },
     classes: ["advancement"],
   };
@@ -63,17 +65,33 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareDetailsContext(context) {
-    context.ctx = {
-      itemPool: [],
-    };
+    const ctx = context.ctx = { itemPool: [], traits: [] };
 
-    for (const [i, pool] of this.pseudoDocument.pool.entries()) {
-      const item = await fromUuid(pool.uuid);
-      context.ctx.itemPool.push({
-        ...pool,
-        index: i,
-        link: item ? item.toAnchor() : "Unknown Item",
-      });
+    if (context.document.type === "itemGrant") {
+      for (const [i, pool] of context.document.pool.entries()) {
+        const item = await fromUuid(pool.uuid);
+        ctx.itemPool.push({
+          ...pool,
+          index: i,
+          link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
+        });
+      }
+    }
+
+    else if (context.document.type === "trait") {
+      for (const [k, v] of Object.entries(context.document._source.traits)) {
+        const namePrefix = `traits.${k}.`;
+        ctx.traits.push({
+          traitId: k,
+          namePrefix,
+          values: {
+            label: v.label,
+            value: v.value,
+          },
+          labelPlaceholder: ds.CONFIG.TRAITS[v.trait].label,
+          traitField: ds.CONFIG.TRAITS[v.trait].field ?? context.fields.traits.element.fields.value,
+        });
+      }
     }
 
     return context;
@@ -128,5 +146,42 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     const pool = foundry.utils.deepClone(this.pseudoDocument._source.pool);
     pool.splice(index, 1);
     this.pseudoDocument.update({ pool });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Add a new trait for a Trait advancement.
+   * @this {AdvancementSheet}
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #addTrait(event, target) {
+    const options = Object.entries(ds.CONFIG.TRAITS).map(([k, v]) => {
+      return { value: k, label: v.label };
+    });
+    const input = foundry.applications.fields.createSelectInput({
+      options,
+      name: "trait",
+    });
+    const result = await ds.applications.api.DSDialog.input({
+      content: input.outerHTML,
+    });
+    if (result) this.pseudoDocument.update({
+      [`traits.${foundry.utils.randomID()}.trait`]: result.trait,
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Delete a trait off a Trait advancement.
+   * @this {AdvancementSheet}
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #deleteTrait(event, target) {
+    const id = target.closest("[data-trait-id]").dataset.traitId;
+    this.pseudoDocument.update({ [`traits.-=${id}`]: null });
   }
 }

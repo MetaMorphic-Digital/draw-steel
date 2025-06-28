@@ -43,8 +43,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   async configureAdvancement(node = null) {
     const items = node ?
