@@ -1,37 +1,39 @@
 <section class="{{tabs.details.cssClass}}" data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}">
   <fieldset>
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
-    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" placeholder="1"}}
+    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level"}}
+    {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
   </fieldset>
 
+  {{!-- ITEM GRANT POOL --}}
+  {{#if (eq document.type "itemGrant")}}
   <section class="drop-target-area">
-    {{#if ctx.itemPool.length}}
-    <table class="item-grant">
-      <thead>
-        <tr>
-          {{!-- TODO: add to i18n --}}
-          <th class="item-grant-item">Item</th>
-          <th class="item-grant-optional">Optional</th>
-          <th class="item-grant-control"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each ctx.itemPool}}
-        <tr data-pool-index="{{index}}">
-          <td class="item-grant-item">
-            {{{link.outerHTML}}}
-            <input type="hidden" name="pool.{{index}}.uuid" value="{{uuid}}" readonly>
-          </td>
-          <td class="item-grant-optional">
-            <input type="checkbox" name="pool.{{index}}.optional" {{checked optional}}>
-          </td>
-          <td class="item-grant-control">
-            <button type="button" data-action="deletePoolItem" class="icon fa-solid fa-trash"></button>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-    {{/if}}
+    {{#each ctx.itemPool}}
+    <div class="form-group" data-pool-index="{{@index}}">
+      <label>{{{link.outerHTML}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deletePoolItem" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
   </section>
+  {{/if}}
+
+  {{!-- TRAIT LIST --}}
+  {{#if (eq document.type "trait")}}
+  <h4 class="section-header">
+    <span>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.traits"}}</span>
+    <button type="button" class="icon fa-solid fa-fw fa-circle-plus" data-action="addTrait"></button>
+  </h4>
+  {{log this level="warn"}}
+  {{#each ctx.traits}}
+  <div class="form-group" data-trait-id="{{traitId}}">
+    <div class="form-fields">
+      {{formGroup @root.fields.traits.element.fields.label label=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.traitLabel") classes="stacked" value=values.label placeholder=labelPlaceholder name=(concat namePrefix "label")}}
+      {{formGroup traitField label=@root.fields.traits.element.fields.value.label classes="stacked" value=values.value name=(concat namePrefix "value")}}
+      <button type="button" class="icon fa-solid fa-fw fa-trash" data-action="deleteTrait"></button>
+    </div>
+  </div>
+  {{/each}}
+  {{/if}}
 </section>
