@@ -119,3 +119,4 @@ While there are similarities with roll data, active effects generally lead with 
 > |---|---|---|
 >
 ></details>
+
