@@ -1,0 +1,146 @@
+{
+  "name": "Try Me Instead",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Backer Packet",
+      "page": "#2",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "tactician-sub-1-2-2b",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "inOTUdFXYJuIR75k": {
+          "type": "damage",
+          "_id": "inOTUdFXYJuIR75k",
+          "name": "",
+          "damage": {
+            "tier1": {
+              "types": [],
+              "value": "2+@chr",
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "properties": []
+            },
+            "tier2": {
+              "types": [],
+              "value": "3+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.average"
+              },
+              "properties": []
+            },
+            "tier3": {
+              "types": [],
+              "value": "4+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.strong"
+              },
+              "properties": []
+            }
+          }
+        },
+        "9EgqMwDRInYiAOXb": {
+          "type": "applied",
+          "_id": "9EgqMwDRInYiAOXb",
+          "name": "",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.weak"
+              },
+              "display": "R < [weak], frightened (save ends)",
+              "always": [],
+              "failure": [],
+              "success": []
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.average"
+              },
+              "display": "R < [average], frightened (save ends)",
+              "always": [],
+              "failure": [],
+              "success": []
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.strong"
+              },
+              "display": "R < [strong], frightened (save ends)",
+              "always": [],
+              "failure": [],
+              "success": []
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "“Try picking on someone MY size."
+  },
+  "effects": [],
+  "folder": "3vTHdH8nZgeuLfMh",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140886742,
+    "modifiedTime": 1751141265513,
+    "lastModifiedBy": "TJSowGV8FgjirefO"
+  },
+  "ownership": {
+    "default": 0,
+    "F1cSR286wTbtHGDL": 3,
+    "TJSowGV8FgjirefO": 3
+  },
+  "_id": "Dtlh3rkTZZ6mNwNu",
+  "sort": 0,
+  "_key": "!items!Dtlh3rkTZZ6mNwNu"
+}

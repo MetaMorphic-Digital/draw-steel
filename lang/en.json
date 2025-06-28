@@ -1,8 +1,73 @@
 {
   "DOCUMENT": {
+    "Advancement": "Advancement",
+    "AdvancementPl": "Advancements",
     "PowerRollEffect": "Power Roll Effect"
   },
   "DRAW_STEEL": {
+    "COMPENDIUMS": {
+      "classes": "Classes",
+      "abilities": "Abilities",
+      "journals": "System Journals"
+    },
+    "ADVANCEMENT": {
+      "FIELDS": {
+        "name": {
+          "label": "Name"
+        },
+        "img": {
+          "label": "Image"
+        }
+      },
+      "ITEM_GRANT": {
+        "FIELDS": {
+          "requirements": {
+            "level": {
+              "label": "Level",
+              "hint": "The level at which these items can be granted."
+            }
+          },
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          }
+        }
+      },
+      "TRAIT": {
+        "FIELDS": {
+          "requirements": {
+            "level": {
+              "label": "Level",
+              "hint": "The level at which these traits can be granted."
+            }
+          },
+          "chooseN": {
+            "label": "Choice",
+            "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
+          },
+          "traits": {
+            "element": {
+              "value": {
+                "label": "Value"
+              }
+            }
+          }
+        }
+      },
+      "HEADERS": {
+        "level": "Level {level}"
+      },
+      "SHEET": {
+        "requirements": "Requirements",
+        "chooseAll": "Choose All",
+        "unknownItem": "Unknown Item",
+        "traitLabel": "Label",
+        "traits": "Traits"
+      },
+      "WARNING": {
+        "cannotAddNewClass": "You cannot add a new class to a character that already has one."
+      }
+    },
     "Sheet": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
@@ -1121,10 +1186,9 @@
         },
         "APPLIED": {
           "CONDITIONS": {
-
-          "always": "Always",
-          "failure": "Failure",
-          "success": "Success"
+            "always": "Always",
+            "failure": "Failure",
+            "success": "Success"
           }
         },
         "DAMAGE": {
@@ -1449,6 +1513,10 @@
       "character": "Character",
       "npc": "NPC"
     },
+    "Advancement": {
+      "itemGrant": "Item Grant",
+      "trait": "Trait"
+    },
     "ChatMessage": {
       "abilityUse": "Ability Use"
     },
@@ -1466,6 +1534,12 @@
       "equipment": "Equipment",
       "kit": "Kit",
       "project": "Project"
+    },
+    "PowerRollEffect": {
+      "applied": "Applied Effect",
+      "damage": "Damage",
+      "forced": "Forced Movement",
+      "other": "Other"
     }
   },
   "TOKEN.MOVEMENT":{

@@ -200,3 +200,4 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Number of targets - `@item.target.value`
 + Trigger (if triggered action) - `@item.trigger`
 + Ability type - `@item.type`
+

@@ -38,6 +38,9 @@
         "gmOnlyFields": ["description.gm"]
       },
       "class": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"]
+        },
         "htmlFields": ["description.value", "description.gm"],
         "gmOnlyFields": ["description.gm"]
       },
@@ -101,13 +104,18 @@
   }],
   "packs": [
     {
+      "name": "classes",
+      "label": "DRAW_STEEL.COMPENDIUMS.classes",
+      "type": "Item"
+    },
+    {
       "name": "abilities",
-      "label": "Abilities",
+      "label": "DRAW_STEEL.COMPENDIUMS.abilities",
       "type": "Item"
     },
     {
       "name": "journals",
-      "label": "System Journals",
+      "label": "DRAW_STEEL.COMPENDIUMS.journals",
       "type": "JournalEntry"
     }
   ],
@@ -115,7 +123,7 @@
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["abilities", "journals"]
+      "packs": ["classes", "abilities", "journals"]
     }
   ],
   "socket": true,

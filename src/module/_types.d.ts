@@ -65,3 +65,41 @@ export interface ProjectRollPrompt {
   rollMode: keyof typeof CONFIG["Dice"]["rollModes"];
   projectRoll: ProjectRoll | DrawSteelChatMessage;
 }
+
+/* -------------------------------------------------- */
+
+export interface AdvancementChainLink {
+  advancement: InstanceType<BaseAdvancement>;
+  parent?: AdvancementChainLink;
+  depth: number;
+  isRoot: boolean;
+  choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
+  selected: Record<string, boolean>;
+
+  // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
+  parentChoice?: AdvancementChainItemGrantLeaf;
+
+  isChosen: boolean;
+  isChoice: boolean;
+  chooseN: number | null;
+  isConfigured: boolean;
+}
+
+export interface AdvancementChainItemGrantLeaf {
+  item: foundry.documents.Item;
+  node: AdvancementChainLink;
+  itemLink: HTMLElement;
+  children: Record<string, AdvancementChainTraitLeaf>;
+
+  // Whether this specific choice has been selected.
+  isChosen: boolean;
+}
+
+export interface AdvancementChainTraitLeaf {
+  node: AdvancementChainLink;
+  trait: string;
+  children: object;
+
+  // Whether this specific choice has been selected.
+  isChosen: boolean;
+}

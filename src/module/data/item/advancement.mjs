@@ -6,7 +6,7 @@ export default class AdvancementModel extends BaseItemModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "",
       embedded: {
-        // Advancement: "system.advancements",
+        Advancement: "system.advancements",
       },
     });
   }
@@ -15,13 +15,8 @@ export default class AdvancementModel extends BaseItemModel {
 
   /** @inheritdoc */
   static defineSchema() {
-    const fields = foundry.data.fields;
-    const schema = super.defineSchema({
-      // TODO: Add the appropriate embedded data models in 0.8
-      // advancements: new ds.data.fields.CollectionField(),
+    return Object.assign(super.defineSchema(), {
+      advancements: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.advancements.BaseAdvancement),
     });
-
-    return schema;
   }
-
 }

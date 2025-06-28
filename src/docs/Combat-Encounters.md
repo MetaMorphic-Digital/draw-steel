@@ -98,3 +98,4 @@ If multiple encounters are open, individual encounters may be deleted with this 
 ## System Settings
 
 If you'd prefer to use a more traditional initiative system like the ones in d20 fantasy games, the "Alternative" initiative system is available as a system setting.
+
