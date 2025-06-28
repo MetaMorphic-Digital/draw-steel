@@ -1205,7 +1205,7 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
+    label: "TYPES.PowerRollEffect.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1214,11 +1214,11 @@ DRAW_STEEL.PowerRollEffect = {
     },
   },
   applied: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
+    label: "TYPES.PowerRollEffect.applied",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
   },
   forced: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.forced",
+    label: "TYPES.PowerRollEffect.forced",
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1230,7 +1230,7 @@ DRAW_STEEL.PowerRollEffect = {
     },
   },
   other: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",
+    label: "TYPES.PowerRollEffect.other",
     documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
   },
 };
