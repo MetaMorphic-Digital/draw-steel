@@ -102,7 +102,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /**
-   *
+   * A helper function to build the contents of the "Applied Effects" fieldset
    * @param {DataField} field
    * @param {FormGroupConfig} groupConfig
    * @param {FormInputConfig<AppliedEffectSchema["effects"]>} inputConfig

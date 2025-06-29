@@ -20,7 +20,10 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
     const fields = foundry.data.fields;
 
     return {
-      targets: new fields.SetField(new fields.DocumentUUIDField({ nullable: false }), { initial: () => Array.from(game.user.targets.map(t => t.document.uuid)) }),
+      targets: new fields.SetField(
+        new fields.DocumentUUIDField({ nullable: false }),
+        { initial: () => Array.from(game.user.targets.map(t => t.document.uuid)) },
+      ),
     };
   }
 
@@ -42,11 +45,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * @returns {Set<DrawSteelActor>}
    */
   get targetActors() {
-    const mapped = new Set();
-    for (const tokenDoc of this.targetTokens) {
-      mapped.add(tokenDoc.actor);
-    }
-    return mapped;
+    return ds.utils.tokensToActors(Array.from(this.targetTokens));
   }
 
   /* -------------------------------------------------- */
