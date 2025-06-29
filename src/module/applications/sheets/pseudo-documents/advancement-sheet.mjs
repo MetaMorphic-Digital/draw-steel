@@ -53,7 +53,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareIdentityContext(context) {
-    context.ctx = {};
+    const ctx = context.ctx = {};
     return context;
   }
 
@@ -65,9 +65,10 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareDetailsContext(context) {
-    const ctx = context.ctx = { itemPool: [] };
+    const ctx = context.ctx = {};
 
     if (context.document.type === "itemGrant") {
+      ctx.itemPool = [];
       for (const [i, pool] of context.document.pool.entries()) {
         const item = await fromUuid(pool.uuid);
         ctx.itemPool.push({
