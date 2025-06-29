@@ -233,7 +233,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     const update = { [`${fieldPath}.${id}`]: { ...data, _id: id } };
     this._configureUpdates("create", parent, update, operation);
     await parent.update(update, operation);
-    if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet.render({ force: true });
+    if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet?.render({ force: true });
     return parent;
   }
 
