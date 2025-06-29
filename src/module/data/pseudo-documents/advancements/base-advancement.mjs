@@ -6,23 +6,17 @@ const { FilePathField, StringField } = foundry.data.fields;
 export default class BaseAdvancement extends TypedPseudoDocument {
   /** @type {import("../../../_types").PseudoDocumentMetadata} */
   static get metadata() {
-    return {
-      ...super.metadata,
+    return foundry.utils.mergeObject(super.metadata, {
       documentName: "Advancement",
-      embedded: {},
       sheetClass: ds.applications.sheets.pseudoDocuments.AdvancementSheet,
-      types: ds.data.pseudoDocuments.advancements,
-    };
+    });
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      name: new StringField({ required: true }),
-      img: new FilePathField({ categories: ["IMAGE"], initial: this.metadata.defaultImage || null, nullable: true }),
-    });
+    return Object.assign(super.defineSchema(), {});
   }
 
   /* -------------------------------------------------- */
