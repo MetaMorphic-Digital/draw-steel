@@ -75,25 +75,9 @@ export default class AbilityUseModel extends BaseMessageModel {
     for (const pre of item.system.power.effects) {
       switch (pre.type) {
         case "applied":
-          // TODO
+          // TODO in next PR
           break;
       }
-    }
-    return buttons;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   *
-   * @param {DrawSteelItem & { system: AbilityModel}} item The ability this model points to
-   * @returns {HTMLButtonElement[]}
-   * @protected
-   */
-  _appliedEffectButtons(item) {
-    const buttons = [];
-    for (const pre of item.system.power.effects) {
-      if (pre.type !== "applied") continue;
     }
     return buttons;
   }
