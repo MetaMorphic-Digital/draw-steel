@@ -41,16 +41,6 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
-  /**
-   * The localized label for this typed pseudodocument's type.
-   * @type {string}
-   */
-  get typeLabel() {
-    return ds.CONFIG[this.constructor.metadata.documentName][this.type].label;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();

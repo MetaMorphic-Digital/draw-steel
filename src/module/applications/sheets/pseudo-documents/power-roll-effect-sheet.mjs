@@ -37,17 +37,18 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
 
   /** @inheritdoc */
   async _prepareContext(options) {
+    const pseudo = this.pseudoDocument;
     const context = {
+      pseudo,
       tabs: this._prepareTabs("primary"),
       tabTiers: this._prepareTabs("tiers"),
-      pseudo: this.pseudoDocument,
       document: this.document,
       fields: {
         name: {
-          field: this.pseudoDocument.schema.getField("name"),
-          src: this.pseudoDocument._source.name,
+          field: pseudo.schema.getField("name"),
+          src: pseudo._source.name,
           name: "name",
-          placeholder: this.pseudoDocument.typeLabel,
+          placeholder: game.i18n.localize(`TYPES.PowerRollEffect.${pseudo.type}`),
         },
         tier1: {},
         tier2: {},
