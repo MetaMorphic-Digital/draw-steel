@@ -110,6 +110,6 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   static async #editAppliedEffect(event, target) {
     const fieldset = target.closest("fieldset");
     const effectId = fieldset.dataset.effectId;
-    this.pseudoDocument.item.effects.get(effectId).sheet.render(true);
+    this.document.effects.get(effectId).sheet.render({ force: true });
   }
 }

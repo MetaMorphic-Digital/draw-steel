@@ -31,7 +31,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
    * @returns {Set<DrawSteelTokenDocument>}
    */
   get targetTokens() {
-    return this.targets.map(uuid => fromUuidSync(uuid));
+    return this.targets.map(uuid => fromUuidSync(uuid)).filter(_ => _);
   }
 
   /* -------------------------------------------------- */
