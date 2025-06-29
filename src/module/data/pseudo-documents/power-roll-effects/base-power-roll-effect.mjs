@@ -91,8 +91,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.value ||= this.schema.getField([`${this.constructor.TYPE}`, `tier${n}`, "potency", "value"]).getInitialValue({});
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.characteristic ||= this.#defaultPotencyCharacteristic(n);
     }
-
-    this.name ||= this.typeLabel;
   }
 
   /* -------------------------------------------------- */
