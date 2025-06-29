@@ -36,23 +36,6 @@ export default base => {
 
     /* -------------------------------------------------- */
 
-    /**
-     * Obtain the embedded collection of a given pseudo-document type.
-     * @param {string} embeddedName   The document name of the embedded collection.
-     * @returns {ModelCollection}     The embedded collection.
-     */
-    getEmbeddedPseudoDocumentCollection(embeddedName) {
-      const collectionPath = this.system?.constructor.metadata.embedded?.[embeddedName];
-      if (!collectionPath) {
-        throw new Error(
-          `${embeddedName} is not a valid embedded Pseudo-Document within the [${this.type}] ${this.documentName} subtype!`,
-        );
-      }
-      return foundry.utils.getProperty(this, collectionPath);
-    }
-
-    /* -------------------------------------------------- */
-
     /** @inheritdoc */
     prepareBaseData() {
       super.prepareBaseData();
