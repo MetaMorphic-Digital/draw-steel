@@ -164,8 +164,11 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
         .toFormGroup({ localize: true }, { value: inputConfig.value[key].condition, localize: true });
       const endGroup = this.schema.getField(`${inputConfig.name}.element.end`)
         .toFormGroup({ localize: true }, { value: inputConfig.value[key].end });
+
+      const propertyOptions = Object.entries(ds.CONFIG.PowerRollEffect.applied.properties).map(([value, { label }]) => ({ label, value }));
+
       const propertyGroup = this.schema.getField(`${inputConfig.name}.element.properties`)
-        .toFormGroup({ localize: true }, { value: inputConfig.value[key].properties });
+        .toFormGroup({ localize: true }, { value: inputConfig.value[key].properties, options: propertyOptions, localize: true });
 
       effectFieldset.append(conditionGroup, endGroup, propertyGroup);
 
