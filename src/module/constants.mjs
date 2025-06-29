@@ -40,6 +40,9 @@ export const staminaEffects = Object.freeze({
   },
 });
 
+/**
+ * Potency end options for {@linkcode ds.data.pseudoDocuments.powerRollEffects.AppliedPowerRollEffect | AppliedPowerRollEffect}
+ */
 export const potencyConditions = Object.freeze({
   always: {
     label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.always",

@@ -27,9 +27,20 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
         }),
         effects: new TypedObjectField(new SchemaField({
-          condition: new StringField({ choices: ds.CONST.potencyConditions, initial: "always" }),
-          end: new StringField({ choices: config.effectEnds, blank: true }),
-          properties: new SetField(setOptions()),
+          condition: new StringField({
+            required: true,
+            choices: ds.CONST.potencyConditions,
+            initial: "always",
+            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.condition.label",
+          }),
+          end: new StringField({
+            choices: config.effectEnds,
+            blank: true,
+            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.end.label",
+          }),
+          properties: new SetField(setOptions(), {
+            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.properties.label",
+          }),
         })),
       })),
     });
@@ -107,10 +118,8 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const effectSelect = document.createElement("select");
     effectSelect.insertAdjacentHTML("afterbegin", "<option></option>");
 
-    effectSelect.dataset = {
-      // Nontraditional select so not using normal `name` attribute
-      name: inputConfig.name,
-    };
+    // Nontraditional select so not using normal `name` attribute
+    effectSelect.dataset["name"] = inputConfig.name;
 
     const customGroup = document.createElement("optgroup");
     customGroup.label = game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects");
@@ -144,8 +153,41 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     widget.insertAdjacentElement("afterbegin", addEffect);
 
-    for (const [key, value] of Object.entries(inputConfig.value)) widget.insertAdjacentHTML("beforeend", `<div>${key}</div>`);
+    for (const [key, value] of Object.entries(inputConfig.value)) {
+      // Check if it's a custom effect, then find the status, and finally assume it's a deleted effect or status from inactive module
+      const effect = this.item.effects.get(key) || CONFIG.statusEffects.find(s => s._id === key) || { name: key, img: "" };
+
+      const effectFieldset = document.createElement("fieldset");
+      effectFieldset.insertAdjacentHTML("afterbegin", `<legend>${effect.name}</legend>`);
+
+      const conditionGroup = this.schema.getField(`${inputConfig.name}.element.condition`)
+        .toFormGroup({ localize: true }, { value: inputConfig.value[key].condition, localize: true });
+      const endGroup = this.schema.getField(`${inputConfig.name}.element.end`)
+        .toFormGroup({ localize: true }, { value: inputConfig.value[key].end });
+      const propertyGroup = this.schema.getField(`${inputConfig.name}.element.properties`)
+        .toFormGroup({ localize: true }, { value: inputConfig.value[key].properties });
+
+      effectFieldset.append(conditionGroup, endGroup, propertyGroup);
+
+      widget.insertAdjacentElement("beforeend", effectFieldset);
+    }
     return widget;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {HTMLElement} html
+   */
+  async onRender(html) {
+    for (const addEffectSelect of html.querySelectorAll("select[data-name]")) {
+      addEffectSelect.addEventListener("change", (ev) => {
+        this.update({ [addEffectSelect.dataset.name]: {
+          [addEffectSelect.value]: { condition: "always" },
+        } });
+      });
+    }
   }
 
   /* -------------------------------------------------- */

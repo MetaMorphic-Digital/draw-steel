@@ -1,6 +1,14 @@
 import { systemPath } from "../../../constants.mjs";
 import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 
+/**
+ * @import BasePowerRollEffect from "../../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+ */
+
+/**
+ *
+ * @extends PseudoDocumentSheet<BasePowerRollEffect>
+ */
 export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   /** @inheritdoc */
   static TABS = {
@@ -58,5 +66,12 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     await context.pseudo._tierRenderingContext?.(context);
 
     return context;
+  }
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    this.pseudoDocument.onRender(this.element);
   }
 }
