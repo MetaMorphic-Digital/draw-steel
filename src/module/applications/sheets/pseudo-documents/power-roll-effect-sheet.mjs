@@ -10,6 +10,13 @@ import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
  * @extends PseudoDocumentSheet<BasePowerRollEffect>
  */
 export default class PowerRollEffectSheet extends PseudoDocumentSheet {
+  static DEFAULT_OPTIONS = {
+    actions: {
+      deleteAppliedEffectEntry: this.#deleteAppliedEffectEntry,
+      editAppliedEffect: this.#editAppliedEffect,
+    },
+  };
+
   /** @inheritdoc */
   static TABS = {
     ...super.TABS,
@@ -68,10 +75,41 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
 
     this.pseudoDocument.onRender(this.element);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Delete an entry in `applied.effects`
+   * @this PowerRollEffectSheet
+   * @param {PointerEvent} event
+   * @param {HTMLButtonElement} target
+   */
+  static async #deleteAppliedEffectEntry(event, target) {
+    const fieldset = target.closest("fieldset");
+    const path = fieldset.dataset.path;
+    const effectId = fieldset.dataset.effectId;
+    this.pseudoDocument.update({ [`${path}.-=${effectId}`]: null });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open the ActiveEffectConfig for an entry in `applied.effects`
+   * @this PowerRollEffectSheet
+   * @param {PointerEvent} event
+   * @param {HTMLButtonElement} target
+   */
+  static async #editAppliedEffect(event, target) {
+    const fieldset = target.closest("fieldset");
+    const effectId = fieldset.dataset.effectId;
+    this.pseudoDocument.item.effects.get(effectId).sheet.render(true);
   }
 }

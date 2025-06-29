@@ -174,6 +174,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       const effectFieldset = document.createElement("fieldset");
       effectFieldset.insertAdjacentHTML("afterbegin", `<legend>${effect.name}${legendButtons}</legend>`);
       effectFieldset.dataset["effectId"] = key;
+      effectFieldset.dataset["path"] = inputConfig.name;
 
       const conditionGroup = this.schema.getField(`${inputConfig.name}.element.condition`)
         .toFormGroup({ localize: true }, { value: srcValue.condition, localize: true });
