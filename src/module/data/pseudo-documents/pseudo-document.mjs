@@ -217,9 +217,10 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @param {object} [data]                                 The data used for the creation.
    * @param {object} operation                              The context of the operation.
    * @param {foundry.abstract.DataModel} operation.parent   The parent of this document.
+   * @param {boolean} [operation.renderSheet]               Render the sheet of the created pseudo-document?
    * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
    */
-  static async create(data = {}, { parent, ...operation } = {}) {
+  static async create(data = {}, { parent, renderSheet = true, ...operation } = {}) {
     if (!parent) {
       throw new Error("A parent document must be specified for the creation of a pseudo-document!");
     }
@@ -234,7 +235,9 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
     const update = { [`${fieldPath}.${id}`]: { ...data, _id: id } };
     this._configureUpdates("create", parent, update, operation);
-    return parent.update(update, operation);
+    await parent.update(update, operation);
+    if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet?.render({ force: true });
+    return parent;
   }
 
   /* -------------------------------------------------- */
