@@ -38,6 +38,9 @@
         "gmOnlyFields": ["description.gm"]
       },
       "class": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"]
+        },
         "htmlFields": ["description.value", "description.gm"],
         "gmOnlyFields": ["description.gm"]
       },
@@ -83,9 +86,9 @@
     "url": "systems/draw-steel/assets/anvil-impact.png",
     "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
   }],
-  "version": "0.7.3",
+  "version": "0.8.0",
   "compatibility": {
-    "minimum": "13.340",
+    "minimum": "13.346",
     "verified": "13"
   },
   "esmodules": ["draw-steel.mjs"],
@@ -101,13 +104,18 @@
   }],
   "packs": [
     {
+      "name": "classes",
+      "label": "DRAW_STEEL.COMPENDIUMS.classes",
+      "type": "Item"
+    },
+    {
       "name": "abilities",
-      "label": "Abilities",
+      "label": "DRAW_STEEL.COMPENDIUMS.abilities",
       "type": "Item"
     },
     {
       "name": "journals",
-      "label": "System Journals",
+      "label": "DRAW_STEEL.COMPENDIUMS.journals",
       "type": "JournalEntry"
     }
   ],
@@ -115,12 +123,12 @@
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["abilities", "journals"]
+      "packs": ["classes", "abilities", "journals"]
     }
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.7.3/draw-steel-release-0.7.3.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.8.0/draw-steel-release-0.8.0.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,

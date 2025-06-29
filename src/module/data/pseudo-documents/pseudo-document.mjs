@@ -213,7 +213,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Create a new instance of this pseudo-document.
    * @param {object} [data]                                 The data used for the creation.
    * @param {object} operation                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @param {foundry.abstract.DataModel} operation.parent   The parent of this document.
    * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
    */
   static async create(data = {}, { parent, ...operation } = {}) {
@@ -222,7 +222,9 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     }
     const id = operation.keepId && foundry.data.validators.isValidId(data._id) ? data._id : foundry.utils.randomID();
 
-    const fieldPath = parent.system.constructor.metadata.embedded?.[this.metadata.documentName];
+    const fieldPath = parent instanceof foundry.abstract.Document
+      ? parent.system.constructor.metadata?.embedded?.[this.metadata.documentName]
+      : parent.constructor.metadata?.embedded?.[this.metadata.documentName];
     if (!fieldPath) {
       throw new Error(`A ${parent.documentName} of type '${parent.type}' does not support ${this.metadata.documentName}!`);
     }

@@ -2,6 +2,7 @@ import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
+/** @import { DataField } from "@common/data/fields.mjs" */
 
 export const DRAW_STEEL = {};
 
@@ -1204,7 +1205,7 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.damage",
+    label: "TYPES.PowerRollEffect.damage",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1213,11 +1214,11 @@ DRAW_STEEL.PowerRollEffect = {
     },
   },
   applied: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.applied",
+    label: "TYPES.PowerRollEffect.applied",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
   },
   forced: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.forced",
+    label: "TYPES.PowerRollEffect.forced",
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1229,11 +1230,44 @@ DRAW_STEEL.PowerRollEffect = {
     },
   },
   other: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.TYPES.other",
+    label: "TYPES.PowerRollEffect.other",
     documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
   },
 };
 preLocalize("PowerRollEffect", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef AdvancementType
+ * @property {string} label   Human-readable label.
+ * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, AdvancementType>} */
+DRAW_STEEL.Advancement = {
+  itemGrant: {
+    label: "TYPES.Advancement.itemGrant",
+    documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
+  },
+  trait: {
+    label: "TYPES.Advancement.trait",
+    documentClass: pseudoDocuments.advancements.TraitAdvancement,
+  },
+};
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TraitChoiceType
+ * @property {string} label   Human-readable label.
+ * @property {pseudoDocuments.traitChoices.BaseTraitChoice} documentClass   The pseudo-document class.
+ */
+
+/** @type {Record<string, TraitChoiceType>} */
+DRAW_STEEL.TraitChoice = {};
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration details for Culture items
@@ -1521,3 +1555,22 @@ DRAW_STEEL.projects = {
   },
 };
 preLocalize("projects.types", { key: "label" });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TraitConfiguration
+ * @property {string} label         Human-readable label of the trait.
+ * @property {DataField} [field]    A field used to render the input.
+ */
+
+/**
+ * The options for a trait advancement.
+ * @type {Record<string, TraitConfiguration>}
+ */
+DRAW_STEEL.TRAITS = {
+  test: {
+    label: "Test Trait",
+    field: new foundry.data.fields.NumberField({ min: 1, max: 5, integer: true, nullable: false }),
+  },
+};
