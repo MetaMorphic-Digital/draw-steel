@@ -6,7 +6,7 @@ import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
  */
 
 /**
- *
+ * A sheet representing power roll effects.
  * @extends PseudoDocumentSheet<BasePowerRollEffect>
  */
 export default class PowerRollEffectSheet extends PseudoDocumentSheet {

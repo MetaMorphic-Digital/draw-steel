@@ -1,4 +1,3 @@
-
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
@@ -112,7 +111,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   #effectWidget(field, groupConfig, inputConfig) {
     const widget = document.createElement("fieldset");
     widget.insertAdjacentHTML("afterbegin", `<legend>${game.i18n.localize("DRAW_STEEL.Effect.Applied")}</legend>`);
-    console.log(field, groupConfig, inputConfig);
 
     // Unconventional select so creating by hand
     const effectSelect = document.createElement("select");
@@ -153,22 +151,39 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
 
     widget.insertAdjacentElement("afterbegin", addEffect);
 
-    for (const [key, value] of Object.entries(inputConfig.value)) {
+    for (const [key, srcValue] of Object.entries(inputConfig.value)) {
       // Check if it's a custom effect, then find the status, and finally assume it's a deleted effect or status from inactive module
       const effect = this.item.effects.get(key) || CONFIG.statusEffects.find(s => s._id === key) || { name: key, img: "" };
 
+      const deleteButton = ds.utils.constructHTMLButton({
+        classes: ["icon", "fa-solid", "fa-trash"],
+        dataset: {
+          action: "deleteAppliedEffectEntry",
+        },
+      });
+
+      const editButton = ds.utils.constructHTMLButton({
+        classes: ["icon", "fa-solid", "fa-edit"],
+        dataset: {
+          action: "editAppliedEffect",
+        },
+      });
+
+      const legendButtons = deleteButton.outerHTML + (effect.documentName === "ActiveEffect" ? editButton.outerHTML : "");
+
       const effectFieldset = document.createElement("fieldset");
-      effectFieldset.insertAdjacentHTML("afterbegin", `<legend>${effect.name}</legend>`);
+      effectFieldset.insertAdjacentHTML("afterbegin", `<legend>${effect.name}${legendButtons}</legend>`);
+      effectFieldset.dataset["effectId"] = key;
 
       const conditionGroup = this.schema.getField(`${inputConfig.name}.element.condition`)
-        .toFormGroup({ localize: true }, { value: inputConfig.value[key].condition, localize: true });
+        .toFormGroup({ localize: true }, { value: srcValue.condition, localize: true });
       const endGroup = this.schema.getField(`${inputConfig.name}.element.end`)
-        .toFormGroup({ localize: true }, { value: inputConfig.value[key].end });
+        .toFormGroup({ localize: true }, { value: srcValue.end });
 
       const propertyOptions = Object.entries(ds.CONFIG.PowerRollEffect.applied.properties).map(([value, { label }]) => ({ label, value }));
 
       const propertyGroup = this.schema.getField(`${inputConfig.name}.element.properties`)
-        .toFormGroup({ localize: true }, { value: inputConfig.value[key].properties, options: propertyOptions, localize: true });
+        .toFormGroup({ localize: true }, { value: srcValue.properties, options: propertyOptions, localize: true });
 
       effectFieldset.append(conditionGroup, endGroup, propertyGroup);
 
