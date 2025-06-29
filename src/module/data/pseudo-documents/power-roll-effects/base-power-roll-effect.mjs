@@ -31,8 +31,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      // TODO: Remove manual label assignment when localization bug is fixed
-      name: new StringField({ required: true, label: "DOCUMENT.FIELDS.name.label" }),
+      name: new StringField({ required: true }),
     });
   }
 

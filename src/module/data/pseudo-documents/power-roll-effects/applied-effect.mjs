@@ -1,7 +1,12 @@
+
 import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
-/** @import { AppliedEffectSchema } from "./_types" */
+/**
+ * @import { AppliedEffectSchema } from "./_types"
+ * @import { DataField } from "@common/data/fields.mjs";
+ * @import { FormGroupConfig, FormInputConfig } from "@common/data/_types.mjs"
+ */
 
 const { SchemaField, SetField, StringField, TypedObjectField } = foundry.data.fields;
 
@@ -73,26 +78,74 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           placeholder: n > 1 ? this.applied[`tier${n - 1}`].display : "",
           name: `${path}.display`,
         },
-        always: {
-          field: this.schema.getField(`${path}.always`),
-          value: this.applied[`tier${n}`].always,
-          src: this._source.applied[`tier${n}`].always,
-          name: `${path}.always`,
-        },
-        success: {
-          field: this.schema.getField(`${path}.success`),
-          value: this.applied[`tier${n}`].success,
-          src: this._source.applied[`tier${n}`].success,
-          name: `${path}.success`,
-        },
-        failure: {
-          field: this.schema.getField(`${path}.failure`),
-          value: this.applied[`tier${n}`].failure,
-          src: this._source.applied[`tier${n}`].failure,
-          name: `${path}.failure`,
+        effects: {
+          field: this.schema.getField(`${path}.effects`),
+          value: this.applied[`tier${n}`].effects,
+          src: this._source.applied[`tier${n}`].effects,
+          widget: this.#effectWidget.bind(this),
+          name: `${path}.effects`,
         },
       });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   *
+   * @param {DataField} field
+   * @param {FormGroupConfig} groupConfig
+   * @param {FormInputConfig<AppliedEffectSchema["effects"]>} inputConfig
+   * @returns {HTMLFieldSetElement}
+   */
+  #effectWidget(field, groupConfig, inputConfig) {
+    const widget = document.createElement("fieldset");
+    widget.insertAdjacentHTML("afterbegin", `<legend>${game.i18n.localize("DRAW_STEEL.Effect.Applied")}</legend>`);
+    console.log(field, groupConfig, inputConfig);
+
+    // Unconventional select so creating by hand
+    const effectSelect = document.createElement("select");
+    effectSelect.insertAdjacentHTML("afterbegin", "<option></option>");
+
+    effectSelect.dataset = {
+      // Nontraditional select so not using normal `name` attribute
+      name: inputConfig.name,
+    };
+
+    const customGroup = document.createElement("optgroup");
+    customGroup.label = game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects");
+    effectSelect.insertAdjacentElement("beforeend", customGroup);
+    for (const e of this.item.effects) {
+      if (e.transfer) continue;
+      const o = document.createElement("option");
+      o.value = e.id;
+      o.innerText = e.name;
+      if (e.id in inputConfig.value) o.disabled = true;
+      customGroup.insertAdjacentElement("beforeend", o);
+    }
+
+    const statusGroup = document.createElement("optgroup");
+    statusGroup.label = game.i18n.localize("DRAW_STEEL.Effect.StatusConditions");
+    effectSelect.insertAdjacentElement("beforeend", statusGroup);
+    for (const s of CONFIG.statusEffects) {
+      if (!s._id || (s.hud === false)) continue;
+      const o = document.createElement("option");
+      o.value = s._id;
+      o.innerText = s.name || s.label;
+      if (s._id in inputConfig.value) o.disabled = true;
+      statusGroup.insertAdjacentElement("beforeend", o);
+    }
+
+    const addEffect = foundry.applications.fields.createFormGroup({
+      input: effectSelect,
+      label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.AddEffect",
+      localize: true,
+    });
+
+    widget.insertAdjacentElement("afterbegin", addEffect);
+
+    for (const [key, value] of Object.entries(inputConfig.value)) widget.insertAdjacentHTML("beforeend", `<div>${key}</div>`);
+    return widget;
   }
 
   /* -------------------------------------------------- */

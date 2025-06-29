@@ -42,14 +42,16 @@ declare module "./other-effect.mjs" {
   }
 }
 
+export type AppliedEffectAdjustmentSchema = {
+  condition: string;
+  end: string;
+  properties: Set<string>;
+};
+
 export type AppliedEffectSchema = {
   display: string;
   potency: PotencySchema;
-  effects: Record<string, {
-    condition: string;
-    end: string;
-    properties: Set<string>;
-  }>
+  effects: Record<string, AppliedEffectAdjustmentSchema>
 };
 
 declare module "./applied-effect.mjs" {

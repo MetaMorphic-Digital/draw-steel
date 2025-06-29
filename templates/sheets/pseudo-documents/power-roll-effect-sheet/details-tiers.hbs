@@ -24,8 +24,8 @@
   {{/with}}
   {{#with tierFields.applied}}
   {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
-  {{#> potencyFields potency}}
-  {{/potencyFields}}
+  {{#> potencyFields potency}}{{/potencyFields}}
+  {{formGroup effects.field value=effects.src name=effects.name widget=effects.widget}}
   {{/with}}
   {{#with tierFields.forced}}
   {{formGroup display.field value=display.src name=display.name placeholder=display.placeholder localize=true}}
