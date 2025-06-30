@@ -118,10 +118,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
           name: `${path}.display`,
         },
         effects: {
-          options: effectOptions.concat(statusOptions).map(o => {
-            o.disabled = o.value in this._source.applied[`tier${n}`].effects;
-            return o;
-          }),
+          options: effectOptions.concat(statusOptions).map(o => ({ ...o, disabled: o.value in this._source.applied[`tier${n}`].effects })),
           entries: effectEntries,
           elementFields: this.schema.getField(`${path}.effects.element`).fields,
           propertyOptions: Object.entries(ds.CONFIG.PowerRollEffect.applied.properties).map(([value, { label }]) => ({ label, value })),

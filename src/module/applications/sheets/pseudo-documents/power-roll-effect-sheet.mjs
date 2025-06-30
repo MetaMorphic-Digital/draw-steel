@@ -2,6 +2,7 @@ import { systemPath } from "../../../constants.mjs";
 import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 
 /**
+ * @import ActiveEffect from "@client/documents/active-effect.mjs"
  * @import BasePowerRollEffect from "../../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
  */
 
@@ -12,6 +13,7 @@ import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   static DEFAULT_OPTIONS = {
     actions: {
+      addAppliedEffect: this.#addAppliedEffect,
       deleteAppliedEffectEntry: this.#deleteAppliedEffectEntry,
       editAppliedEffect: this.#editAppliedEffect,
     },
@@ -73,6 +75,43 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     await context.pseudo._tierRenderingContext?.(context);
 
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Add an entry to `applied.effects`
+   * @this PowerRollEffectSheet
+   * @param {PointerEvent} event
+   * @param {HTMLButtonElement} target
+   */
+  static async #addAppliedEffect(event, target) {
+    const path = target.dataset.path;
+    const createSelect = this.element.querySelector(`select[data-name="${path}"]`);
+    if (createSelect.value) {
+      this.pseudoDocument.update({
+        [path]: {
+          [createSelect.value]: { condition: "failure" },
+        },
+      });
+    }
+    else {
+      const item = this.pseudoDocument.item;
+
+      const effect = await ActiveEffect.implementation.create({
+        name: ActiveEffect.implementation.defaultName({ parent: item }),
+        img: item.img,
+        transfer: false,
+      }, { parent: item });
+
+      if (effect) {
+        this.pseudoDocument.update({
+          [path]: {
+            [effect.id]: { condition: "failure" },
+          },
+        });
+      }
+    }
   }
 
   /* -------------------------------------------------- */

@@ -28,21 +28,17 @@
   <div class="form-group">
     <label>{{localize "DRAW_STEEL.Effect.Applied"}}</label>
     <div class="form-field">
-      <select>
-        {{!-- <option>{{localize "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CreateCustomEffect"}}</option>
-        {{#each effects.options as |o|}}
-        <option value="{{o.value}}" {{disabled o.disabled}}>{{o.label}}</option>
-        {{/each}} --}}
+      <select data-name="{{effects.name}}">
         {{selectOptions effects.options blank=(localize "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CreateCustomEffect")}}
       </select>
     </div>
-    <button type="button" class="icon fa-solid fa-plus" data-action="addAppliedEffect"></button>
+    <button type="button" class="icon fa-solid fa-plus" data-action="addAppliedEffect" data-path="{{effects.name}}"></button>
   </div>
   {{#each effects.entries as |appliedEffect|}}
   <fieldset data-effect-id="{{appliedEffect.id}}" data-path="{{../effects.name}}">
     <legend>
       {{appliedEffect.label}}
-      <button type="button" class="icon fa-solid fa-trash" data-action="deleteAppliedEffect"></button>
+      <button type="button" class="icon fa-solid fa-trash" data-action="deleteAppliedEffectEntry"></button>
       {{#if isEffect}}<button type="button" class="icon fa-solid fa-edit" data-action="editAppliedEffect"></button>{{/if}}
     </legend>
     {{formGroup ../effects.elementFields.condition value=appliedEffect.condition.value name=appliedEffect.condition.name localize=true}}
