@@ -1,7 +1,7 @@
 /** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
 /** @import { PseudoDocumentMetadata } from "../_types" */
 
-const { DocumentIdField } = foundry.data.fields;
+const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
 
 /**
  * A special subclass of data model that can be treated as a system-defined embedded document.

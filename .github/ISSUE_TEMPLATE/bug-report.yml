@@ -1,0 +1,38 @@
+name: Bug Report
+description: File a bug report
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report an issue with the Draw Steel system for FoundryVTT
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: Reproduction Steps
+      description: Keep them simple, include screenshots as needed. Note what System(s) you tested in, if relevant.
+      placeholder: To encounter the bug, first open up...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: What core and system version are you reporting this for?
+      description: You can find these on the "Settings" tab
+      placeholder: FVTT 13.346, Draw Steel 0.8.0
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Bug Checklist
+      options:
+        - label: The issue occurs while all Modules are disabled
+        - label: I am using The Forge for hosting
+    validations:
+      required: true
