@@ -155,14 +155,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Add listeners to elements in the pseudo document sheet specific to this subtype
-   * @param {HTMLElement} html
-   */
-  async onRender(html) {}
-
-  /* -------------------------------------------------- */
-
-  /**
    * A helper method for generating the potency string (i.e M < 2).
    * @param {1|2|3} n     The tier.
    * @returns {string}    The formatted potency string

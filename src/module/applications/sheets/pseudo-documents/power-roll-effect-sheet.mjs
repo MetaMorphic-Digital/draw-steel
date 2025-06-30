@@ -77,15 +77,6 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  async _onRender(context, options) {
-    await super._onRender(context, options);
-
-    this.pseudoDocument.onRender(this.element);
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Delete an entry in `applied.effects`
    * @this PowerRollEffectSheet
