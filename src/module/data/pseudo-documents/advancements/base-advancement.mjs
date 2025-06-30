@@ -1,18 +1,15 @@
 import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
-const { FilePathField, StringField } = foundry.data.fields;
+const { HTMLField } = foundry.data.fields;
 
 export default class BaseAdvancement extends TypedPseudoDocument {
   /** @type {import("../../../_types").PseudoDocumentMetadata} */
   static get metadata() {
-    return {
-      ...super.metadata,
+    return foundry.utils.mergeObject(super.metadata, {
       documentName: "Advancement",
-      embedded: {},
       sheetClass: ds.applications.sheets.pseudoDocuments.AdvancementSheet,
-      types: ds.data.pseudoDocuments.advancements,
-    };
+    });
   }
 
   /* -------------------------------------------------- */
@@ -20,8 +17,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      name: new StringField({ required: true }),
-      img: new FilePathField({ categories: ["IMAGE"], initial: this.metadata.defaultImage || null, nullable: true }),
+      description: new HTMLField(),
     });
   }
 

@@ -15,7 +15,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     return {
       ...super.metadata,
       documentName: "PowerRollEffect",
-      label: "DOCUMENT.PowerRollEffect",
       icon: "fa-solid fa-dice-d10",
       sheetClass: ds.applications.sheets.pseudoDocuments.PowerRollEffectSheet,
     };
@@ -30,9 +29,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      name: new StringField({ required: true }),
-    });
+    return Object.assign(super.defineSchema(), {});
   }
 
   /* -------------------------------------------------- */
@@ -94,8 +91,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.value ||= this.schema.getField([`${this.constructor.TYPE}`, `tier${n}`, "potency", "value"]).getInitialValue({});
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.characteristic ||= this.#defaultPotencyCharacteristic(n);
     }
-
-    this.name ||= this.typeLabel;
   }
 
   /* -------------------------------------------------- */

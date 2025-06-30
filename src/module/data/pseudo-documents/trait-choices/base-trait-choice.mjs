@@ -5,8 +5,6 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       documentName: "TraitChoice",
-      embedded: {},
-      sheetClass: null,
     });
   }
 

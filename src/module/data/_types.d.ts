@@ -18,19 +18,19 @@ export type BarAttribute = {
 export type SubtypeMetadata = {
   /** The registered document subtype in system.json */
   type: string;
-  /* Record of document names of pseudo-documents and the path to the collection. */
+  /** Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>;
 };
 
 export type PseudoDocumentMetadata = {
-  /* The document name of this pseudo-document. */
+  /** The document name of this pseudo-document. */
   documentName: string,
-  /** The localization string for this pseudo-document */
-  label: string;
+  /** File path for a default image. */
+  defaultImage: string | null;
   /** The font-awesome icon for this pseudo-document type */
   icon: string;
-  /* Record of document names of pseudo-documents and the path to the collection. */
+  /** Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>,
-  /* The class used to render this pseudo-document. */
+  /** The class used to render this pseudo-document. */
   sheetClass?: PseudoDocumentSheet,
 };
