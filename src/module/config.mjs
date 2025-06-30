@@ -1216,6 +1216,11 @@ DRAW_STEEL.PowerRollEffect = {
   applied: {
     label: "TYPES.PowerRollEffect.applied",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
+    properties: {
+      stacking: {
+        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.Properties.stacking",
+      },
+    },
   },
   forced: {
     label: "TYPES.PowerRollEffect.forced",

@@ -5,6 +5,7 @@ const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
 /**
  * Generic sheet class to represent a {@linkcode PseudoDocument}
+ * @template {PseudoDocument} TPseudo The type of Pseudodocument this covers
  * @abstract
  */
 export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Application) {
@@ -100,7 +101,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
 
   /**
    * The pseudo-document. This can be null if a parent pseudo-document is removed.
-   * @type {PseudoDocument|null}
+   * @type {TPseudo|null}
    */
   get pseudoDocument() {
     let relative = this.document;

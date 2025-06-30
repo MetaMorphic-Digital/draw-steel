@@ -70,6 +70,15 @@ export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
+    /** @type {DrawSteelItem & { system: AbilityModel}} */
+    const item = await fromUuid(this.uuid);
+    for (const pre of item.system.power.effects) {
+      switch (pre.type) {
+        case "applied":
+          // TODO in next PR
+          break;
+      }
+    }
     return buttons;
   }
 
