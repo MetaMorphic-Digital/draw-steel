@@ -1,7 +1,11 @@
+
 import BaseMessageModel from "./base.mjs";
 
-/** @import AbilityModel from "../item/ability.mjs" */
-/** @import DrawSteelItem from "../../documents/item.mjs" */
+/**
+ * @import AbilityModel from "../item/ability.mjs";
+ * @import AppliedPowerRollEffect from "../pseudo-documents/power-roll-effects/applied-effect.mjs";
+ * @import DrawSteelItem from "../../documents/item.mjs"
+ */
 
 const fields = foundry.data.fields;
 
@@ -25,6 +29,15 @@ export default class AbilityUseModel extends BaseMessageModel {
     return schema;
   }
 
+  /**
+   * The displayed result tier
+   * @type {1 | 2 | 3 | undefined}
+   */
+  get tier() {
+    // First roll is always the base roll, second is the result. Only one tier per message.
+    return this.parent.rolls[1]?.product;
+  }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
@@ -34,9 +47,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     /** @type {DrawSteelItem & { system: AbilityModel}} */
     const item = await fromUuid(this.uuid);
 
-    // First roll is always the base roll, second is the result. Only one tier per message.
-    /** @type {1 | 2 | 3} */
-    const tier = this.parent.rolls[1]?.product;
+    const tier = this.tier;
 
     /** @type {HTMLDivElement} */
     const content = html.querySelector(".message-content");
@@ -70,16 +81,35 @@ export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
+    const tier = this.tier;
+    if (!tier) return buttons;
     /** @type {DrawSteelItem & { system: AbilityModel}} */
     const item = await fromUuid(this.uuid);
     for (const pre of item.system.power.effects) {
-      switch (pre.type) {
-        case "applied":
-          // TODO in next PR
-          break;
-      }
+      const newButtons = await pre.constructButtons(tier);
+      if (newButtons) buttons.push(...newButtons);
     }
     return buttons;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   *
+   * @param {HTMLButtonElement[]} buttons
+   * @param {AppliedPowerRollEffect} pre
+   */
+  async _constructApplyEffectButtons(buttons, pre) {
+    const n = this.tier;
+    const item = await fromUuid(this.uuid);
+    if (n) {
+      for (const [key, data] of Object.entries(pre.applied[`tier${n}`].effects)) {
+        const effect = this.item;
+        ds.utils.constructHTMLButton({
+
+        });
+      }
+    }
   }
 
   /* -------------------------------------------------- */

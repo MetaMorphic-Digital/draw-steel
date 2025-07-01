@@ -23,6 +23,11 @@
 ### Added
 
 - Advancements
+- Added a button to ability use messages to apply effects from the ability. (#214)
+
+### Changed
+
+- Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 
 ## 0.7.3
 
