@@ -11,6 +11,7 @@ import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
  * @extends PseudoDocumentSheet<BasePowerRollEffect>
  */
 export default class PowerRollEffectSheet extends PseudoDocumentSheet {
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     actions: {
       addAppliedEffect: this.#addAppliedEffect,
@@ -18,6 +19,8 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       editAppliedEffect: this.#editAppliedEffect,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static TABS = {
@@ -78,26 +81,20 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     return context;
   }
 
-  /* -------------------------------------------------- */
-
   /**
-   * Add an entry to `applied.effects`
+   * Add an entry to `applied.effects`.
    * @this PowerRollEffectSheet
-   * @param {PointerEvent} event
-   * @param {HTMLButtonElement} target
+   * @param {PointerEvent} event        The initiating click event.
+   * @param {HTMLButtonElement} target  The capturing HTML element which defined a [data-action].
    */
   static async #addAppliedEffect(event, target) {
     const path = target.dataset.path;
     const createSelect = this.element.querySelector(`select[data-name="${path}"]`);
     if (createSelect.value) {
-      this.pseudoDocument.update({
-        [path]: {
-          [createSelect.value]: { condition: "failure" },
-        },
-      });
+      this.pseudoDocument.update({ [`${path}.${createSelect.value}.condition`]: "failure" });
     }
     else {
-      const item = this.pseudoDocument.item;
+      const item = this.document;
 
       const effect = await ActiveEffect.implementation.create({
         name: ActiveEffect.implementation.defaultName({ parent: item }),
@@ -106,11 +103,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       }, { parent: item });
 
       if (effect) {
-        this.pseudoDocument.update({
-          [path]: {
-            [effect.id]: { condition: "failure" },
-          },
-        });
+        this.pseudoDocument.update({ [`${path}.${effect.id}.condition`]: "failure" });
       }
     }
   }
@@ -118,10 +111,10 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Delete an entry in `applied.effects`
+   * Delete an entry in `applied.effects`.
    * @this PowerRollEffectSheet
-   * @param {PointerEvent} event
-   * @param {HTMLButtonElement} target
+   * @param {PointerEvent} event        The initiating click event.
+   * @param {HTMLButtonElement} target  The capturing HTML element which defined a [data-action].
    */
   static async #deleteAppliedEffectEntry(event, target) {
     const fieldset = target.closest("fieldset");
@@ -133,10 +126,10 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open the ActiveEffectConfig for an entry in `applied.effects`
+   * Open the ActiveEffectConfig for an entry in `applied.effects`.
    * @this PowerRollEffectSheet
-   * @param {PointerEvent} event
-   * @param {HTMLButtonElement} target
+   * @param {PointerEvent} event        The initiating click event.
+   * @param {HTMLButtonElement} target  The capturing HTML element which defined a [data-action].
    */
   static async #editAppliedEffect(event, target) {
     const fieldset = target.closest("fieldset");

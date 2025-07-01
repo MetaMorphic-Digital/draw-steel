@@ -30,7 +30,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Retrieves the set of tokens targeted by this message
+   * Retrieves the set of tokens targeted by this message.
    * @returns {Set<DrawSteelTokenDocument>}
    */
   get targetTokens() {
