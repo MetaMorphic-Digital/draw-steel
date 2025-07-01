@@ -31,4 +31,4 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 10]]: If no healing type is specified it will default to current stamina.
 - [&ZeroWidthSpace;[/heal 10 type=temporary]]: Like damage you can specify the healing type. You must be precise and use "value" or "temporary" here.
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
-- [&ZeroWidthSpace;[/heal @hero.recoveries.recoveryValue]]: will provide healing for a heroes recovery value. An item with this code in the description, can function as a healing potion.
+- [&ZeroWidthSpace;[/heal @hero.recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
