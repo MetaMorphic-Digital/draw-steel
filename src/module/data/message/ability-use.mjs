@@ -1,7 +1,9 @@
 
 import BaseMessageModel from "./base.mjs";
+import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
 
 /**
+ * @import { ActiveEffectData } from "@common/documents/_types.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import AppliedPowerRollEffect from "../pseudo-documents/power-roll-effects/applied-effect.mjs";
  * @import DrawSteelItem from "../../documents/item.mjs"
@@ -38,6 +40,16 @@ export default class AbilityUseModel extends BaseMessageModel {
     return this.parent.rolls[1]?.product;
   }
 
+  /**
+   * The key of the tier
+   * @type {"tier1" | "tier2" | "tier3" | null}
+   */
+  get tierKey() {
+    const tier = this.tier;
+    if (tier) return `tier${tier}`;
+    else return null;
+  }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
@@ -47,7 +59,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     /** @type {DrawSteelItem & { system: AbilityModel}} */
     const item = await fromUuid(this.uuid);
 
-    const tier = this.tier;
+    const tierKey = this.tierKey;
 
     /** @type {HTMLDivElement} */
     const content = html.querySelector(".message-content");
@@ -57,7 +69,7 @@ export default class AbilityUseModel extends BaseMessageModel {
       let embed;
       if (item) {
         const embedConfig = {};
-        if (tier) embedConfig[`tier${tier}`] = true;
+        if (tierKey) embedConfig[tierKey] = true;
         embed = await item.toEmbed(embedConfig);
       }
       else {
@@ -68,10 +80,10 @@ export default class AbilityUseModel extends BaseMessageModel {
       // If it's a roll, the roll rendering will replace the message's stored content. Otherwise we need to do it.
       if (this.parent.isRoll) content.insertAdjacentElement("afterbegin", embed);
       else content.innerHTML = embed.outerHTML;
-    } else if (item && tier) {
+    } else if (item && tierKey) {
       content.insertAdjacentHTML("afterbegin", `<p class="powerResult"><strong>${
-        game.i18n.localize(`DRAW_STEEL.Roll.Power.Results.Tier${tier}`)
-      }: </strong>${item.system.powerRoll[`tier${tier}`].display}</p>`,
+        game.i18n.localize(`DRAW_STEEL.Roll.Power.Results.Tier${this.tier}`)
+      }: </strong>${item.system.power.effects.contents.map(effect => effect.toText(this.tier)).join("; ")}</p>`,
       );
     } else console.warn("Invalid configuration");
   }
@@ -82,9 +94,9 @@ export default class AbilityUseModel extends BaseMessageModel {
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
     const tier = this.tier;
-    if (!tier) return buttons;
     /** @type {DrawSteelItem & { system: AbilityModel}} */
     const item = await fromUuid(this.uuid);
+    if (!tier || !item) return buttons;
     for (const pre of item.system.power.effects) {
       const newButtons = await pre.constructButtons(tier);
       if (newButtons) buttons.push(...newButtons);
@@ -94,28 +106,35 @@ export default class AbilityUseModel extends BaseMessageModel {
 
   /* -------------------------------------------------- */
 
-  /**
-   *
-   * @param {HTMLButtonElement[]} buttons
-   * @param {AppliedPowerRollEffect} pre
-   */
-  async _constructApplyEffectButtons(buttons, pre) {
-    const n = this.tier;
-    const item = await fromUuid(this.uuid);
-    if (n) {
-      for (const [key, data] of Object.entries(pre.applied[`tier${n}`].effects)) {
-        const effect = this.item;
-        ds.utils.constructHTMLButton({
-
-        });
-      }
-    }
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   addListeners(html) {
     super.addListeners(html);
+    /** @type {HTMLButtonElement[]} */
+    const effectButtons = html.querySelectorAll(".apply-effect");
+    for (const effectButton of effectButtons) effectButton.addEventListener("click", async (event) => {
+      /** @type {AppliedPowerRollEffect} */
+      const pre = await fromUuid(effectButton.dataset.uuid);
+      if (!pre) return void ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoPRE", { localize: true });
+      const effectId = effectButton.dataset.effectId;
+      const config = pre.applied[this.tierKey].effects[effectId];
+
+      /** @type {DrawSteelActiveEffect} */
+      const tempEffect = effectButton.dataset.type === "custom" ?
+        pre.item.effects.get(effectId).clone() :
+        await DrawSteelActiveEffect.fromStatusEffect(effectId);
+
+      /** @type {ActiveEffectData} */
+      const updates = {
+        transfer: true,
+        origin: pre.uuid,
+        system: {},
+      };
+      if (config.end) updates.system.end = { type: config.end };
+      tempEffect.updateSource(updates);
+
+      for (const actor of ds.utils.tokensToActors()) {
+        actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: true });
+      }
+    });
   }
 }

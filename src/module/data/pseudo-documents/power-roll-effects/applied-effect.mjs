@@ -80,7 +80,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const effectOptions = this.item.effects.filter(e => !e.transfer)
       .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
     const statusOptions = CONFIG.statusEffects.filter(s => (s._id && (s.hud !== false)))
-      .map(s => ({ value: s._id, label: s.name, group: game.i18n.localize("DRAW_STEEL.Effect.StatusConditions") }));
+      .map(s => ({ value: s.id, label: s.name, group: game.i18n.localize("DRAW_STEEL.Effect.StatusConditions") }));
 
     for (const n of [1, 2, 3]) {
       const path = `applied.tier${n}`;
@@ -150,14 +150,15 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const buttons = [];
     for (const [key, data] of Object.entries(this.applied[`tier${tier}`].effects)) {
       const effect = this._getEffect(key);
-      if (!effect._id) continue;
+      if (!effect.id) continue;
       buttons.push(ds.utils.constructHTMLButton({
         label: effect.name,
         icon: "fa-solid fa-snowflake",
+        classes: ["apply-effect"],
         dataset: {
-          action: "applyEffect",
           type: effect.documentName === "ActiveEffect" ? "custom" : "status",
-          effectId: effect._id,
+          effectId: effect.id,
+          uuid: this.uuid,
         },
       }));
     }
@@ -173,6 +174,6 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @protected
    */
   _getEffect(key) {
-    return this.item.effects.get(key) || CONFIG.statusEffects.find(s => key === s._id) || { name: key };
+    return this.item.effects.get(key) || CONFIG.statusEffects.find(s => key === s.id) || { name: key };
   }
 }
