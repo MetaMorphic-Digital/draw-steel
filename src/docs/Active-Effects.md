@@ -42,7 +42,7 @@ If it is one of the automated conditions that require a targeted token as the so
 Draw Steel has three different predefined effect durations `End of Turn (EoT)`, `Save Ends`, and `End of Encounter`.
 Additionally, the Save Ends duration allows for defining the saving throw formula. The default is `1d10 + @combat.save.bonus`.
 
-+ `EoT` will automatically self-disable when an actor ends their turn ny clicking the `End turn` button in the initiative tracker.
++ `EoT` will automatically self-disable when a combatant ends their turn with the `End turn` button in the initiative tracker or a new combatant's turn begins.
 + `Save Ends` will at the end of an actor's turn create prompts for owners that allow to change the save threshold (e.g. due to Ancestry effects) and a text field to enter situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
 + `End of Encounter` effects will automatically self-disable alongside the encounter.
 
