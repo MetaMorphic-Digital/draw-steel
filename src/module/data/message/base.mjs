@@ -1,5 +1,7 @@
 import DamageRoll from "../../rolls/damage.mjs";
 
+/** @import { DrawSteelActor, DrawSteelTokenDocument } from "../../documents/_module.mjs"; */
+
 /**
  * A base class for message subtype-specific behavior and data
  */
@@ -15,7 +17,35 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /** @inheritdoc */
   static defineSchema() {
-    return {};
+    const fields = foundry.data.fields;
+
+    return {
+      targets: new fields.SetField(
+        new fields.DocumentUUIDField({ nullable: false }),
+        { initial: () => Array.from(game.user.targets.map(t => t.document.uuid)) },
+      ),
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Retrieves the set of tokens targeted by this message.
+   * @returns {Set<DrawSteelTokenDocument>}
+   */
+  get targetTokens() {
+    return this.targets.map(uuid => fromUuidSync(uuid)).filter(_ => _);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Retrieves the set of actors targeted by this message.
+   * The size of the set may be different from the targets if multiple copies of a linked token are on the scene.
+   * @returns {Set<DrawSteelActor>}
+   */
+  get targetActors() {
+    return ds.utils.tokensToActors(Array.from(this.targetTokens));
   }
 
   /* -------------------------------------------------- */
@@ -38,7 +68,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
 
   /**
    * Build an array of buttons to insert into the footer of the document
-   * @returns {HTMLButtonElement[]}
+   * @returns {Promise<HTMLButtonElement[]>}
    * @protected
    */
   async _constructFooterButtons() {

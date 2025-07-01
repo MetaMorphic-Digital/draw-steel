@@ -1165,17 +1165,18 @@
             "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
             "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
           },
-          "always": {
-            "label": "Always",
-            "hint": "Effects that apply regardless of potency checks."
-          },
-          "failure": {
-            "label": "Failure",
-            "hint": "Effects that apply when the target's characteristic is less than the potency value."
-          },
-          "success": {
-            "label": "Success",
-            "hint": "Effects that apply when the target's characteristic is equal to or greater than the potency value."
+          "effects": {
+            "element": {
+              "condition": {
+                "label": "Potency Condition"
+              },
+              "end": {
+                "label": "Override End"
+              },
+              "properties": {
+                "label": "Properties"
+              }
+            }
           },
           "movement": {
             "label": "Forced Movement Type"
@@ -1196,6 +1197,19 @@
           "properties": {
             "label": "Properties"
           }
+        },
+        "APPLIED": {
+          "CONDITIONS": {
+            "always": "Always",
+            "failure": "Failure",
+            "success": "Success"
+          },
+          "Properties": {
+            "stacking": "Stacking"
+          },
+          "AddEffect": "Add Effect",
+          "CreateCustomEffect": "Create Custom Effect",
+          "CustomEffects": "Custom Effects"
         },
         "DAMAGE": {
           "formatted": "{value} {damageTypes} damage",

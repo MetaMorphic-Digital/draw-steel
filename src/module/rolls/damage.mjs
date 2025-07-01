@@ -18,7 +18,7 @@ export default class DamageRoll extends DSRoll {
 
     let amount = roll.total;
     if (event.shiftKey) amount = Math.floor(amount / 2);
-    for (const actor of ds.utils.selectedActors()) {
+    for (const actor of ds.utils.tokensToActors()) {
       if (roll.isHeal) {
         const isTemp = roll.type !== "value";
         if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.Messages.base.Buttons.ApplyHeal.TempCapped", {
