@@ -153,7 +153,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       if (!effect.id) continue;
       buttons.push(ds.utils.constructHTMLButton({
         label: effect.name,
-        icon: "fa-solid fa-snowflake",
+        img: effect.img,
         classes: ["apply-effect"],
         dataset: {
           type: effect.documentName === "ActiveEffect" ? "custom" : "status",
