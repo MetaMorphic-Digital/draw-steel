@@ -29,6 +29,11 @@
 
 - Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 
+### Fixed
+
+- Fixed display of popped out ability messages
+- Fixed display of multi-result abilities
+
 ## 0.7.3
 
 ### Added
