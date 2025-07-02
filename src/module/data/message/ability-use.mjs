@@ -31,6 +31,8 @@ export default class AbilityUseModel extends BaseMessageModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The displayed result tier
    * @type {1 | 2 | 3 | undefined}
@@ -136,6 +138,7 @@ export default class AbilityUseModel extends BaseMessageModel {
 
       for (const actor of ds.utils.tokensToActors()) {
         // reusing the ID will block creation if it's already on the actor
+        // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
         actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }
     });
