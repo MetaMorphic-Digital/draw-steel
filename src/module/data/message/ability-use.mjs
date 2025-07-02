@@ -43,7 +43,7 @@ export default class AbilityUseModel extends BaseMessageModel {
   }
 
   /**
-   * The key of the tier
+   * The key of the tier.
    * @type {"tier1" | "tier2" | "tier3" | null}
    */
   get tierKey() {
