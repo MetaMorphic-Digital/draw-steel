@@ -20,7 +20,7 @@ globalThis.ds = {
   CONFIG: DRAW_STEEL,
 };
 
-// Register custom elements
+// Register custom elements.
 for (const element of Object.values(applications.elements)) {
   window.customElements.define(element.tagName, element);
 }

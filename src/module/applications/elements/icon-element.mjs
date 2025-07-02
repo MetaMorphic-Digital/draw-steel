@@ -37,7 +37,7 @@ export default class DSIconElement extends HTMLElement {
       this.innerHTML += clone.outerHTML;
     };
 
-    // Insert element immediately if already available, otherwise wait for fetch
+    // Insert element immediately if already available, otherwise wait for fetch.
     const element = this.constructor.fetch(this.src);
     if (element instanceof Promise) element.then(insertElement);
     else insertElement(element);
