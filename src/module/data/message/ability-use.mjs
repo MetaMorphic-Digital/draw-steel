@@ -34,7 +34,7 @@ export default class AbilityUseModel extends BaseMessageModel {
   /* -------------------------------------------------- */
 
   /**
-   * The displayed result tier
+   * The displayed result tier.
    * @type {1 | 2 | 3 | undefined}
    */
   get tier() {
