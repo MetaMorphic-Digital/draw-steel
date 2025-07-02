@@ -133,7 +133,8 @@ export default class AbilityUseModel extends BaseMessageModel {
       tempEffect.updateSource(updates);
 
       for (const actor of ds.utils.tokensToActors()) {
-        actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: true });
+        // reusing the ID will block creation if it's already on the actor
+        actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: !config.properties.has("stacking") });
       }
     });
   }
