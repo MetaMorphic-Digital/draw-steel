@@ -118,9 +118,11 @@ export default class AbilityUseModel extends BaseMessageModel {
       const effectId = effectButton.dataset.effectId;
       const config = pre.applied[this.tierKey].effects[effectId];
 
+      const noStack = !config.properties.has("stacking");
+
       /** @type {DrawSteelActiveEffect} */
       const tempEffect = effectButton.dataset.type === "custom" ?
-        pre.item.effects.get(effectId).clone() :
+        pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true }) :
         await DrawSteelActiveEffect.fromStatusEffect(effectId);
 
       /** @type {ActiveEffectData} */
@@ -134,7 +136,7 @@ export default class AbilityUseModel extends BaseMessageModel {
 
       for (const actor of ds.utils.tokensToActors()) {
         // reusing the ID will block creation if it's already on the actor
-        actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: !config.properties.has("stacking") });
+        actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }
     });
   }
