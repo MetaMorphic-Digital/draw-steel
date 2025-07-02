@@ -175,4 +175,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @abstract
    */
   toText(tier) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs button for an Ability Use chat message.
+   * @param {1 | 2 | 3} tier    The specific tier.
+   * @returns {HTMLButtonElement[] | null} An array of buttons to add to the footer of the message, or null if there are none.
+   */
+  constructButtons(tier) {
+    return null;
+  }
 }

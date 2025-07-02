@@ -1,5 +1,6 @@
 .chat-sidebar,
-#chat-notifications {
+#chat-notifications,
+.chat-popout {
   .chat-message {
     .powerResult {
       .potency {
@@ -10,6 +11,18 @@
     footer {
       button {
         margin-top: 3px;
+        &.apply-effect {
+          /* Status conditions should be inverted to dark on the light mode chat */
+          /* TODO: Use CSS variables & SVG integration */
+          .themed.theme-light &[data-type="status"] {
+            img {
+              filter: invert(1);
+            }
+          }
+          img {
+            max-height: 1.5rem;
+          }
+        }
       }
     }
 

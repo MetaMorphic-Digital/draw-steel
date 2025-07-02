@@ -3,7 +3,7 @@ import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
-import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
+import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -29,7 +29,7 @@ declare module "./base.mjs" {
 
 declare module "./ability.mjs" {
 
-  type PowerRollEffects = DamagePowerRollEffect | OtherPowerRollEffect;
+  type PowerRollEffects = AppliedPowerRollEffect | DamagePowerRollEffect | ForcedMovementPowerRollEffect | OtherPowerRollEffect;
 
   export default interface AbilityModel {
     description: never;

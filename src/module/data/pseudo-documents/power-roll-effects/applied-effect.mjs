@@ -2,9 +2,9 @@ import { setOptions } from "../../helpers.mjs";
 import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /**
- * @import { AppliedEffectSchema } from "./_types"
- * @import { DataField } from "@common/data/fields.mjs";
- * @import { FormGroupConfig, FormInputConfig } from "@common/data/_types.mjs"
+ * @import { AppliedEffectSchema } from "./_types";
+ * @import DrawSteelActiveEffect from "../../../documents/active-effect.mjs";
+ * @import { StatusEffectConfig } from "@client/config.mjs";
  */
 
 const { SchemaField, SetField, StringField, TypedObjectField } = foundry.data.fields;
@@ -80,13 +80,13 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const effectOptions = this.item.effects.filter(e => !e.transfer)
       .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
     const statusOptions = CONFIG.statusEffects.filter(s => (s._id && (s.hud !== false)))
-      .map(s => ({ value: s._id, label: s.name, group: game.i18n.localize("DRAW_STEEL.Effect.StatusConditions") }));
+      .map(s => ({ value: s.id, label: s.name, group: game.i18n.localize("DRAW_STEEL.Effect.StatusConditions") }));
 
     for (const n of [1, 2, 3]) {
       const path = `applied.tier${n}`;
 
       const effectEntries = Object.entries(this._source.applied[`tier${n}`].effects).map(([key, value]) => {
-        const effect = this.item.effects.get(key) || CONFIG.statusEffects.find(s => key === s._id) || { name: key };
+        const effect = this._getEffect(key);
 
         const entry = {
           id: key,
@@ -137,5 +137,43 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   toText(tier) {
     const potencyString = this.toPotencyText(tier);
     return this.applied[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {1 | 2 | 3} tier
+   */
+  constructButtons(tier) {
+    /** @type {HTMLButtonElement[]} */
+    const buttons = [];
+    for (const [key, data] of Object.entries(this.applied[`tier${tier}`].effects)) {
+      const effect = this._getEffect(key);
+      if (!effect.id) continue;
+      buttons.push(ds.utils.constructHTMLButton({
+        label: effect.name,
+        img: effect.img,
+        classes: ["apply-effect"],
+        dataset: {
+          type: effect.documentName === "ActiveEffect" ? "custom" : "status",
+          effectId: effect.id,
+          uuid: this.uuid,
+        },
+      }));
+    }
+    return buttons;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetch the applicable effect by its key, or fallback to a simple object
+   * @param {string} key
+   * @returns {DrawSteelActiveEffect | StatusEffectConfig | { name: string }}
+   * @protected
+   */
+  _getEffect(key) {
+    return this.item.effects.get(key) || CONFIG.statusEffects.find(s => key === s.id) || { name: key };
   }
 }
