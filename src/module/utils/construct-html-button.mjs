@@ -19,7 +19,7 @@ export default function constructHTMLButton({ label = "", dataset = {}, classes 
   }
   button.classList.add(...classes);
   let image = "";
-  if (img) image = `<img src="${img}" alt=${label} />`;
+  if (img) image = `<img src="${img}" alt="${label}">`;
   else if (icon) image = `<i class="${icon}"></i> `;
   if (disabled) button.disabled = true;
   button.innerHTML = `${image}${label}`;
