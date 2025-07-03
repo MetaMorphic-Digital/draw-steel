@@ -1350,7 +1350,17 @@ DRAW_STEEL.Advancement = {
  */
 
 /** @type {Record<string, TraitChoiceType>} */
-DRAW_STEEL.TraitChoice = {};
+DRAW_STEEL.TraitChoice = {
+  language: {
+    label: "TYPES.TraitChoice.language",
+    documentClass: pseudoDocuments.traitChoices.LanguageChoice,
+  },
+  skill: {
+    label: "TYPES.TraitChoice.skill",
+    documentClass: pseudoDocuments.traitChoices.SkillChoice,
+  },
+};
+preLocalize("TraitChoice", { key: "label" });
 
 /* -------------------------------------------------- */
 
@@ -1662,8 +1672,12 @@ preLocalize("projects.types", { key: "label" });
  * @type {Record<string, TraitConfiguration>}
  */
 DRAW_STEEL.TRAITS = {
-  test: {
-    label: "Test Trait",
+  language: {
+    label: "TYPES.TraitChoice.language",
     field: new foundry.data.fields.NumberField({ min: 1, max: 5, integer: true, nullable: false }),
+  },
+  skill: {
+    label: "TYPES.TraitChoice.skill",
+    field: new foundry.data.fields.BooleanField(),
   },
 };
