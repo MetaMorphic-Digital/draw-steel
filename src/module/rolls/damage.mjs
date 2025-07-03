@@ -30,6 +30,8 @@ export default class DamageRoll extends DSRoll {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The damage type
    * @type {string}

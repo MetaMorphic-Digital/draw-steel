@@ -25,6 +25,8 @@ export default class KitModel extends BaseItemModel {
     "DRAW_STEEL.Item.Kit",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -69,6 +71,8 @@ export default class KitModel extends BaseItemModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
@@ -87,6 +91,8 @@ export default class KitModel extends BaseItemModel {
       if (swapKit === false) return false;
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -110,6 +116,8 @@ export default class KitModel extends BaseItemModel {
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prompt the user for which kit to replace when the actor is already at the maximum.
@@ -150,6 +158,8 @@ export default class KitModel extends BaseItemModel {
 
     await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {

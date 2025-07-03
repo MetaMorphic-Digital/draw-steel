@@ -11,6 +11,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
    */
   static DEFAULT_ICON = "icons/environment/people/charge.webp";
 
+  /* -------------------------------------------------- */
+
   /**
    * Determine default artwork based on the provided combatant group data.
    * @param {CombatantGroupData} createData The source combatant group data.
@@ -19,6 +21,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
   static getDefaultArtwork(createData) {
     return { img: this.DEFAULT_ICON };
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Present a Dialog form to create a new Document of this type.
@@ -112,11 +116,15 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     }, dialogOptions));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Is this group currently expanded in the combat tracker?
    * @type {boolean}
    */
   _expanded = false;
+
+  /* -------------------------------------------------- */
 
   /**
    * The disposition for this combatant group.
@@ -126,6 +134,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
   get disposition() {
     return this.members.first()?.disposition ?? CONST.TOKEN_DISPOSITIONS.SECRET;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {

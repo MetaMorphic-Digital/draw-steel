@@ -14,7 +14,6 @@ const { sheets, ux } = foundry.applications;
  * AppV2-based sheet for all item classes
  */
 export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheet) {
-
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["item"],
@@ -261,6 +260,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Context menu entries for power rolls
    * @returns {ContextMenuEntry}
@@ -285,6 +286,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       },
     ];
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc*/
   async _onRender(context, options) {
@@ -587,6 +590,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     const li = target.closest(".effect");
     return this.item.effects.get(li?.dataset?.effectId);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetches a Power Roll Effect pseudo-document

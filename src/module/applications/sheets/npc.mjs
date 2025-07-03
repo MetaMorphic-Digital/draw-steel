@@ -6,6 +6,7 @@ import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
     actions: {
@@ -14,6 +15,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       freeStrike: this.#freeStrike,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static PARTS = {
@@ -49,6 +52,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
@@ -72,6 +77,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetches the printable string for the monster's keywords
    * @returns {string}
@@ -83,6 +90,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     return formatter.format(keywords);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetches the label for the monster's organization
    * @returns {{list: FormSelectOption[], current: string}}
@@ -91,6 +100,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     const organizations = ds.CONFIG.monsters.organizations;
     return organizations[this.actor.system.monster.organization]?.label ?? "";
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetches the label for the monster's role
@@ -101,6 +112,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     return roles[this.actor.system.monster.role]?.label ?? "";
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetches the label for the monster's Encounter Value
    */
@@ -109,6 +122,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
     else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetches the options for Motivations
@@ -178,6 +193,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     new DocumentSourceInput({ document: this.document }).render({ force: true });
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Open a dialog to edit the monster metadata
    * @this DrawSteelNPCSheet
@@ -187,6 +204,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   static async #editMonsterMetadata(event, target) {
     new MonsterMetadataInput({ document: this.document }).render({ force: true });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Open a dialog to edit the monster metadata

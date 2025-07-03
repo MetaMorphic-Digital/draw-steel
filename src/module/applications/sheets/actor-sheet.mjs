@@ -176,6 +176,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     }, {});
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Constructs a tooltip of data paths
    * @protected
@@ -795,6 +797,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         return this.actor.rollCharacteristic(dataset.characteristic);
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Open a dialog to edit niche combat data.

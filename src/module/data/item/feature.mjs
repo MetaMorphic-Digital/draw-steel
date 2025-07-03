@@ -22,6 +22,8 @@ export default class FeatureModel extends BaseItemModel {
     "DRAW_STEEL.Item.Feature",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -39,6 +41,8 @@ export default class FeatureModel extends BaseItemModel {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {

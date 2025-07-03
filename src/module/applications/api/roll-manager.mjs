@@ -19,6 +19,8 @@ export default class RollManager extends QueryManager {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /**
    * Handle a click on a roll button
    * @this RollManager
@@ -30,6 +32,8 @@ export default class RollManager extends QueryManager {
 
     return this._handleRoll(user, target);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Subclass-specific logic for what the roll should be.

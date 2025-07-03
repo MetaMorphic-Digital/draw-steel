@@ -19,6 +19,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /** Name for the setting */
   static label = "DRAW_STEEL.Setting.HeroTokens.Label";
 
+  /* -------------------------------------------------- */
+
   /** Localized name for the setting */
   get label() {
     return game.i18n.localize(this.constructor.label);
@@ -28,6 +30,8 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /** Helper text for Hero Tokens */
   static hint = "DRAW_STEEL.Setting.HeroTokens.Hint";
+
+  /* -------------------------------------------------- */
 
   /** Localized helper text for Hero Token */
   get hint() {

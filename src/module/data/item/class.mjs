@@ -26,6 +26,8 @@ export default class ClassModel extends AdvancementModel {
     "DRAW_STEEL.Item.Class",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -62,6 +64,8 @@ export default class ClassModel extends AdvancementModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
@@ -82,6 +86,8 @@ export default class ClassModel extends AdvancementModel {
     }
     context.advancements = Object.values(advs).sort((a, b) => a.level - b.level);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _onCreate(data, options, userId) {

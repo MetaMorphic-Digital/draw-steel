@@ -81,6 +81,8 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Add an entry to `applied.effects`.
    * @this PowerRollEffectSheet

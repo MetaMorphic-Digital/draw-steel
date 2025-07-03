@@ -50,6 +50,8 @@ export default class SourceModel extends foundry.abstract.DataModel {
     return null;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetches the document containing this model
    * @returns {DrawSteelActor | DrawSteelItem}
@@ -57,6 +59,8 @@ export default class SourceModel extends foundry.abstract.DataModel {
   get document() {
     return this.parent?.parent ?? null;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the source label.
@@ -74,6 +78,8 @@ export default class SourceModel extends foundry.abstract.DataModel {
     this.value = this.book || (pkg?.title ?? "");
     this.slug = this.value.slugify({ strict: true });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   toString() {

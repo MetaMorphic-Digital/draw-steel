@@ -21,6 +21,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const schema = {};
@@ -42,6 +44,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Convenient access to the item's actor, if it exists.
    * @returns {DrawSteelActor | null}
@@ -50,15 +54,21 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     return this.parent.actor;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Prepare derived item data that requires actor derived actor data to be available
    */
   preparePostActorPrepData() {}
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {
@@ -69,6 +79,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
 
     if (!this._dsid) this.updateSource({ _dsid: data.name.slugify({ strict: true }) });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
@@ -81,12 +93,16 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     return embed;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Prepare type-specific data for the Item sheet.
    * @param {Record<string, unknown>} context  Sheet context data.
    * @returns {Promise<void>}
    */
   async getSheetContext(context) {}
+
+  /* -------------------------------------------------- */
 
   /**
    * Attach type-specific event listeners to details tab of the Item sheet.
@@ -95,6 +111,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
    * @protected
    */
   _attachPartListeners(htmlElement, options) {}
+
+  /* -------------------------------------------------- */
 
   /**
    * Perform item subtype specific modifications to the actor roll data

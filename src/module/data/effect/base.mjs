@@ -16,8 +16,12 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     type: "base",
   });
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Effect.base"];
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -31,6 +35,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * An effect is also temporary if it has the `end` property set even though they have indeterminate lengths
    * @returns {boolean | null}
@@ -41,6 +47,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     else return null;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Returns the duration label appropriate to this model's `end` property
    * @returns {string}
@@ -48,6 +56,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   get durationLabel() {
     return ds.CONFIG.effectEnds[this.end.type]?.abbreviation ?? "";
   }
+
+  /* -------------------------------------------------- */
 
   /** @import { ActiveEffectDuration, EffectDurationData } from "./_types" */
 
@@ -66,6 +76,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async toEmbed(config, options = {}) {
 
@@ -77,6 +89,8 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
     return embed;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Rolls a saving throw for the actor and disables the effect if it passes

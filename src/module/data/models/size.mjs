@@ -12,6 +12,8 @@ export default class SizeModel extends foundry.abstract.DataModel {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   toString() {
     const letter = this.value === 1 ? this.letter ?? "" : "";

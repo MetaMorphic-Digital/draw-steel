@@ -14,6 +14,8 @@ export default class ActorCombatStatsInput extends DocumentInput {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     body: {

@@ -6,6 +6,8 @@ import { preLocalize } from "./helpers/localization.mjs";
 
 export const DRAW_STEEL = {};
 
+/* -------------------------------------------------- */
+
 /**
  * The set of Characteristics used within the system.
  * These have special localization handling that checks for `DRAW_STEEL.Actor.characteristics`.
@@ -43,6 +45,8 @@ DRAW_STEEL.characteristics = {
 };
 preLocalize("characteristics", { keys: ["label", "hint"] });
 
+/* -------------------------------------------------- */
+
 /**
  *
  * @type {Record<number, {label: string, levels: number[]}>}
@@ -67,6 +71,8 @@ DRAW_STEEL.echelons = {
 };
 preLocalize("echelons", { key: "label" });
 
+/* -------------------------------------------------- */
+
 /**
  * Valid letter modifiers for size 1 creatures
  * @enum {{label: string}}
@@ -87,12 +93,16 @@ DRAW_STEEL.sizes = {
 };
 preLocalize("sizes", { key: "label" });
 
+/* -------------------------------------------------- */
+
 /**
  * Keys in `CONFIG.Token.movement.actions` to include as valid movement tag options for the Actor sheet.
  * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction
  * @type {string[]}
  */
 DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for damage types
@@ -138,6 +148,8 @@ DRAW_STEEL.damageTypes = {
 };
 preLocalize("damageTypes", { key: "label" });
 
+/* -------------------------------------------------- */
+
 /**
  * Configuration information for healing types.
  * Keys correspond to keys in `system.stamina`.
@@ -153,6 +165,8 @@ DRAW_STEEL.healingTypes = {
   },
 };
 preLocalize("healingTypes", { key: "label" });
+
+/* -------------------------------------------------- */
 
 /**
  * Condition definitions provided by the system that are merged in during the `init` hook
@@ -231,6 +245,8 @@ DRAW_STEEL.conditions = {
   },
 };
 
+/* -------------------------------------------------- */
+
 /**
  * Times when an effect can end
  * @enum {{label: string, abbreviation: string}}
@@ -250,6 +266,8 @@ DRAW_STEEL.effectEnds = {
   },
 };
 preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for skills
@@ -522,6 +540,8 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
   },
 });
 
+/* -------------------------------------------------- */
+
 /**
  * Configuration information for languages
  * @type {Record<string, {label: string}>}
@@ -656,6 +676,8 @@ DRAW_STEEL.languages = {
 };
 preLocalize("languages", { key: "label" });
 
+/* -------------------------------------------------- */
+
 /** @import { AdvancementTypeConfiguration } from "./_types" */
 
 /**
@@ -665,6 +687,8 @@ preLocalize("languages", { key: "label" });
 DRAW_STEEL.advancementTypes = {
 
 };
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for negotiations
@@ -711,6 +735,8 @@ DRAW_STEEL.negotiation = {
   },
 };
 preLocalize("negotiation.motivations", { key: "label" });
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for heroes
@@ -778,6 +804,8 @@ DRAW_STEEL.hero = {
   },
 };
 preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true });
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for monsters
@@ -901,6 +929,8 @@ DRAW_STEEL.monsters = {
 preLocalize("monsters.keywords", { keys: ["label", "group"] });
 preLocalize("monsters.roles", { key: "label" });
 preLocalize("monsters.organizations", { key: "label" });
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration information for Ability items
@@ -1187,6 +1217,8 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
   },
 });
 
+/* -------------------------------------------------- */
+
 /**
  * @typedef PowerRollEffectProperty
  * @property {string} label
@@ -1346,12 +1378,16 @@ preLocalize("culture.environments", { key: "label" });
 preLocalize("culture.organization", { key: "label" });
 preLocalize("culture.upbringing", { key: "label" });
 
+/* -------------------------------------------------- */
+
 /**
  * Configuration details for Kit items
  * @type {Record<string,  Record<string, {label: string}>>}
  */
 DRAW_STEEL.kits = {};
 // preLocalize("kits.types", {key: "label"});
+
+/* -------------------------------------------------- */
 
 /**
  * Configuration details for Equipment items
@@ -1497,6 +1533,8 @@ preLocalize("equipment.weapon", { key: "label" });
 preLocalize("equipment.implement", { key: "label" });
 preLocalize("equipment.other", { key: "label" });
 
+/* -------------------------------------------------- */
+
 DRAW_STEEL.features = {
   /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
   types: {
@@ -1545,6 +1583,8 @@ DRAW_STEEL.features = {
 preLocalize("features.types", { key: "label" });
 preLocalize("features.types.perk.subtypes", { key: "label" });
 preLocalize("features.types.title.subtypes", { key: "label" });
+
+/* -------------------------------------------------- */
 
 DRAW_STEEL.projects = {
   types: {

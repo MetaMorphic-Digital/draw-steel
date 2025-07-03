@@ -4,7 +4,6 @@ import { systemID } from "../../constants.mjs";
  * The Application responsible for configuring a single Wall document.
  */
 export default class DrawSteelWallConfig extends foundry.applications.sheets.WallConfig {
-
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
