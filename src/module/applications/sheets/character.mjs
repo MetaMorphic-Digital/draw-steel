@@ -77,6 +77,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         context.projects = await this._prepareProjectsContext();
         context.projectFields = ProjectModel.schema.fields;
         break;
+      case "biography":
+        context.measurements = this._getMeasurements();
+        break;
     }
     return context;
   }
@@ -167,6 +170,28 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }
 
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs an object with height and weight info.
+   * @returns {{ heightUnit: string; heightOptions: FormSelectOption[]; weightUnit: string; weightOptions: FormSelectOption[] }}
+   */
+  _getMeasurements() {
+    const heightOptions = Object.entries(ds.CONFIG.measurements.height).map(([value, config]) => ({
+      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
+    }));
+    const weightOptions = Object.entries(ds.CONFIG.measurements.weight).map(([value, config]) => ({
+      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
+    }));
+
+    return {
+      heightUnit: ds.CONFIG.measurements.height[this.actor.system.biography.height.units]?.label ?? this.actor.system.biography.height.units,
+      heightOptions,
+      weightUnit: ds.CONFIG.measurements.weight[this.actor.system.biography.weight.units]?.label ?? this.actor.system.biography.weight.units,
+      weightOptions,
+    };
   }
 
   /* -------------------------------------------------- */

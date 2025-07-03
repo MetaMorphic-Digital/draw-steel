@@ -4,6 +4,12 @@ import SizeModel from "../models/size.mjs";
 import { DamageSchema } from "../item/kit.mjs";
 import SourceModel from "../models/source.mjs";
 
+interface Biography {
+  value: string;
+  gm: string;
+  languages: Set<string>;
+}
+
 declare module "./base.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;
@@ -21,11 +27,7 @@ declare module "./base.mjs" {
         threshold: number;
       }
     }
-    biography: {
-      value: string;
-      gm: string;
-      languages: Set<string>;
-    }
+    biography: Biography
     movement: {
       value: number;
       types: Set<string>;
@@ -58,6 +60,7 @@ declare module "./character.mjs" {
         recoveryValue: number;
       };
       renown: number;
+      wealth: number;
       skills: Set<string>;
       preferredKit: string;
     }
@@ -66,6 +69,17 @@ declare module "./character.mjs" {
       weak: number;
       average: number;
       strong: number;
+    }
+    biography: Biography & {
+      age: string;
+      height: {
+        value: number;
+        units: string;
+      }
+      weight: {
+        value: number;
+        units: string;
+      }
     }
     abilityBonuses: {
       melee: {

@@ -325,6 +325,24 @@
   }
 
   [data-application-part="biography"] {
+    dl{
+      display: grid;
+      grid-template-columns: auto 1fr auto 1fr auto 1fr;
+      gap: 10px;
+    }
+    div.rewards {
+      gap: 30px;
+    }
+    div.appearance {
+      gap: 15px;
+      .age {
+        flex: 0.5;
+      }
+      input[type="number"] {
+        flex: 0 0 50px;
+        text-align: center;
+      }
+    }
     .negotiation {
       .fixed-stats {
         margin-top: 0;

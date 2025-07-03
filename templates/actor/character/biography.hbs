@@ -1,5 +1,44 @@
 {{! Biography Tab }}
 <section class="tab biography standard-form {{tab.cssClass}}" data-group="primary" data-tab="biography">
+  {{#if isPlay}}
+  <dl class="demographics">
+    <dt class="renown">{{systemFields.hero.fields.renown.label}}</dt>
+    <dd class="renown">{{system.hero.renown}}</dd>
+    <dt class="wealth">{{systemFields.hero.fields.wealth.label}}</dt>
+    <dd class="wealth">{{system.hero.wealth}}</dd>
+    {{!-- Intentionally left blank for grid formatting --}}
+    <dt class="blank"></dt>
+    <dd class="blank"></dd>
+    <dt class="age">{{systemFields.biography.fields.age.label}}</dt>
+    <dd class="age">{{system.biography.age}}</dd>
+    <dt class="height">{{systemFields.biography.fields.height.label}}</dt>
+    <dd class="height">{{system.biography.height.value}} {{measurements.heightUnit}}</dd>
+    <dt class="weight">{{systemFields.biography.fields.weight.label}}</dt>
+    <dd class="weight">{{system.biography.weight.value}} {{measurements.weightUnit}}</dd>
+  </dl>
+  {{else}}
+  <div class="flexrow rewards">
+    {{formGroup systemFields.hero.fields.renown value=systemSource.hero.renown dataset=datasets.isSource}}
+    {{formGroup systemFields.hero.fields.wealth value=systemSource.hero.wealth dataset=datasets.isSource}}
+  </div>
+  <div class="flexrow appearance">
+    {{formGroup systemFields.biography.fields.age value=systemSource.biography.age classes="age" dataset=datasets.isSource}}
+    <div class="form-group inline">
+      <label>{{systemFields.biography.fields.height.label}}</label>
+      <div class="form-fields">
+        {{formInput systemFields.biography.fields.height.fields.value value=systemSource.biography.height.value dataset=datasets.isSource}}
+        {{formInput systemFields.biography.fields.height.fields.units value=systemSource.biography.height.units dataset=datasets.isSource options=measurements.heightOptions}}
+      </div>
+    </div>
+    <div class="form-group inline">
+      <label>{{systemFields.biography.fields.weight.label}}</label>
+      <div class="form-fields">
+        {{formInput systemFields.biography.fields.weight.fields.value value=systemSource.biography.weight.value dataset=datasets.isSource}}
+        {{formInput systemFields.biography.fields.weight.fields.units value=systemSource.biography.weight.units dataset=datasets.isSource options=measurements.weightOptions}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
   {{> "systems/draw-steel/templates/actor/shared/partials/biography/languages.hbs"}}
   {{> "systems/draw-steel/templates/actor/shared/partials/biography/biography.hbs"}}
   {{> "systems/draw-steel/templates/actor/shared/partials/biography/gm-notes.hbs"}}
