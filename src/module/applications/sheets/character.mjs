@@ -267,7 +267,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   async _onDropItem(event, item) {
     // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
-    const projectDropTarget = event.target.closest("[data-application-part='projects'");
+    const projectDropTarget = event.target.closest("[data-application-part='projects']");
     if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
       await item.system.createProject(this.actor);
       return;
@@ -280,8 +280,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
         return;
       }
-      await ds.data.pseudoDocuments.advancements.BaseAdvancement.performChanges(this.document, item);
-      return;
+
+      const advancements = item.getEmbeddedPseudoDocumentCollection("Advancement");
+      const chains = [];
+      const range = [this.document.system.level, this.document.system.level + 1];
+      for (const advancement of advancements) {
+        const validRange = advancement.levels.some(level => level.between(...range));
+        if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
+      }
+      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+        chains, actor: this.document,
+      });
+      if (!configured) return;
+      return; // TODO: create and update items, configure traits, etc.
     }
 
     return super._onDropItem(event, item);

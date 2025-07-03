@@ -1,0 +1,41 @@
+<section class="standard-form">
+  {{#each ctx.chains}}
+
+  {{#each this}}
+  <div data-advancement-uuid="{{advancement.uuid}}">
+
+    <h3 class="section-header">
+      <span>{{advancement.name}}</span>
+      {{#if isChoice}}
+      <button type="button" class="icon fa-solid fa-fw {{ifThen isConfigured 'fa-check' 'fa-cog'}}" data-action="configureAdvancement"></button>
+      {{/if}}
+    </h3>
+
+    {{#each choices}}
+
+    {{#if isChosen}}
+
+    {{!-- ITEM GRANT SELECTED CHOICES --}}
+    {{#if (eq node.advancement.type "itemGrant")}}
+    <div class="form-group" data-item-uuid="{{item.uuid}}">
+      <label>{{{itemLink.outerHTML}}}</label>
+    </div>
+    {{/if}}
+    {{!-- TRAIT SELECTED CHOICES --}}
+    {{#if (eq node.advancement.type "trait")}}
+    <div class="form-group">
+      <label>{{choice}}</label>
+    </div>
+    {{/if}}
+
+    {{/if}}
+    {{/each}}
+  </div>
+  {{/each}}
+
+  {{#unless @last}}
+  <hr>
+  {{/unless}}
+
+  {{/each}}
+</section>

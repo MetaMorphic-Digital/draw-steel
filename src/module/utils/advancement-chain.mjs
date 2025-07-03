@@ -68,9 +68,10 @@ export default class AdvancementChain {
 
   /**
    * Create a new instance of instances of a chain.
-   * @param {BaseAdvancement|foundry.documents.Item} root   An advancement or item with advancements.
-   * @param {AdvancementChain} [parent]                     Parent chain link.
-   * @param {number} [_depth]                               Current tree depth.
+   * @param {BaseAdvancement|foundry.documents.Item} root       An advancement or item with advancements.
+   * @param {AdvancementChain} [parent]                         Parent chain link.
+   * @param {number} [_depth]                                   Current tree depth.
+   * @returns {Promise<AdvancementChain|AdvancementChain[]>}    A promise that resolves to the chain or chain link.
    */
   static async create(root, parent = null, _depth = 0) {
     if (root instanceof foundry.documents.Item) {
