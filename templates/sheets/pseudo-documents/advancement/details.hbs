@@ -29,7 +29,7 @@
   <div class="form-group inline" data-trait-id="{{trait.id}}">
     <label>{{localize (concat "TYPES.TraitChoice." trait.type)}}</label>
     <div class="form-fields">
-      {{formGroup fields.options value=trait.options options=options name=(concat "traits." trait.id ".options")}}
+      {{formGroup fields.options value=trait.options options=options name=(concat "traits." trait.id ".options") blank=(localize "DRAW_STEEL.TRAIT_CHOICE.Any")}}
       <button type="button" class="icon fa-solid fa-fw fa-trash" data-action="deleteTrait"></button>
     </div>
     <p class="hint">{{trait}}</p>

@@ -150,7 +150,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
   static async #addTrait(event, target) {
-    ds.data.pseudoDocuments.traitChoices.BaseTraitChoice.createDialog({}, { parent: this.pseudoDocument });
+    ds.data.pseudoDocuments.traitChoices.BaseTraitChoice.createDialog({}, { parent: this.pseudoDocument, renderSheet: false });
   }
 
   /* -------------------------------------------------- */

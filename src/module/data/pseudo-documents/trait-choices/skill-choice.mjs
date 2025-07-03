@@ -10,7 +10,7 @@ export default class SkillChoice extends BaseTraitChoice {
 
   /** @inheritdoc */
   get traitOptions() {
-    const groupLabel = game.i18n.localize("DRAW_STEEL.Skill.groupLabel");
+    const groupLabel = game.i18n.localize("DRAW_STEEL.TRAIT_CHOICE.skillGroup");
     // You can offer a trait choice from a group
     const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label, group: groupLabel }));
 
@@ -21,6 +21,7 @@ export default class SkillChoice extends BaseTraitChoice {
 
   /** @inheritdoc */
   toString() {
+    if (!this.options) return game.i18n.localize("DRAW_STEEL.TRAIT_CHOICE.Any");
     const config = ds.CONFIG.skills;
     return config.groups[this.options]?.label || config.list[this.options]?.label || game.i18n.localize("Unknown");
   }

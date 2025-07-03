@@ -12,9 +12,9 @@ export default class LanguageChoice extends BaseTraitChoice {
   get traitOptions() {
     const config = ds.CONFIG.languages;
 
-    const options = Object.entries(config).map((value, { label }) => ({ label, group: "Individuali18n", value }), []);
+    const groupLabel = game.i18n.localize("DRAW_STEEL.TRAIT_CHOICE.specificLanguage");
 
-    options.push({ value: "all", label: "Any Language" });
+    const options = Object.entries(config).map(([value, { label }]) => ({ label, group: groupLabel, value }), []);
 
     return options;
   }
@@ -23,6 +23,7 @@ export default class LanguageChoice extends BaseTraitChoice {
 
   /** @inheritdoc */
   toString() {
-    return "Language choice string";
+    if (!this.options) return game.i18n.localize("DRAW_STEEL.TRAIT_CHOICE.Any");
+    return ds.CONFIG.languages[this.options]?.label ?? game.i18n.localize("Unknown");
   }
 }
