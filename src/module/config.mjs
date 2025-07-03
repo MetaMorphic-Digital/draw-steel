@@ -718,31 +718,31 @@ preLocalize("negotiation.motivations", { key: "label" });
 DRAW_STEEL.measurements = {
   /** @type {Record<string, { label: string; group: string }>} */
   height: {
-    inches: {
-      label: "DRAW_STEEL.Measurement.Height.inches",
+    in: {
+      label: "DRAW_STEEL.Measurement.Height.in",
       group: "imperial",
     },
-    feet: {
-      label: "DRAW_STEEL.Measurement.Height.feet",
+    ft: {
+      label: "DRAW_STEEL.Measurement.Height.ft",
       group: "imperial",
     },
-    centimeters: {
-      label: "DRAW_STEEL.Measurement.Height.centimeters",
+    cm: {
+      label: "DRAW_STEEL.Measurement.Height.cm",
       group: "metric",
     },
-    meters: {
-      label: "DRAW_STEEL.Measurement.Height.meters",
+    m: {
+      label: "DRAW_STEEL.Measurement.Height.m",
       group: "metric",
     },
   },
   /** @type {Record<string, { label: string; group: string }>} */
   weight: {
-    pounds: {
-      label: "DRAW_STEEL.Measurement.Weight.pounds",
+    lb: {
+      label: "DRAW_STEEL.Measurement.Weight.lbs",
       group: "imperial",
     },
-    kilograms: {
-      label: "DRAW_STEEL.Measurement.Weight.kilograms",
+    kg: {
+      label: "DRAW_STEEL.Measurement.Weight.kg",
       group: "metric",
     },
   },
