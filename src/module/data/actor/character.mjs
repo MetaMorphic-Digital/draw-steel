@@ -45,6 +45,7 @@ export default class CharacterModel extends BaseActorModel {
       recoveries: barAttribute(8, 0),
       victories: requiredInteger({ initial: 0 }),
       renown: requiredInteger({ initial: 0 }),
+      wealth: requiredInteger({ initial: 1 }),
       skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField({ readonly: false }),
     });
@@ -60,12 +61,12 @@ export default class CharacterModel extends BaseActorModel {
 
     bio.height = new fields.SchemaField({
       value: new fields.NumberField({ min: 0 }),
-      units: new fields.StringField({ blank: false }),
+      units: new fields.StringField({ blank: false, required: true, initial: "inches" }),
     });
 
     bio.weight = new fields.SchemaField({
       value: new fields.NumberField({ min: 0 }),
-      units: new fields.StringField({ blank: false }),
+      units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
     });
 
     bio.age = new fields.StringField({ blank: false });
@@ -133,6 +134,7 @@ export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
+
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
     if (heroClass && heroClass.system.primary) {

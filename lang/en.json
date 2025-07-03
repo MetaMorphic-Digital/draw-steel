@@ -142,6 +142,22 @@
         "Page": "pg. {page}"
       }
     },
+    "Measurement": {
+      "Height": {
+        "in": "in",
+        "ft": "ft",
+        "cm": "cm",
+        "m": "m"
+      },
+      "Weight": {
+        "lbs": "lbs",
+        "kg": "kg"
+      },
+      "Groups": {
+        "imperial": "Imperial",
+        "metric": "Metric"
+      }
+    },
     "Actor": {
       "Tabs": {
         "biography": "Biography",
@@ -185,6 +201,15 @@
             },
             "languages": {
               "label": "Languages"
+            },
+            "height": {
+              "label": "Height"
+            },
+            "weight": {
+              "label": "Weight"
+            },
+            "age": {
+              "label": "Age"
             }
           },
           "characteristics": {
@@ -300,29 +325,17 @@
             "renown": {
               "label": "Renown"
             },
+            "wealth": {
+              "label": "Wealth"
+            },
+            "followers": {
+              "label": "Followers",
+              "max": {
+                "label": "Max Followers"
+              }
+            },
             "skills": {
               "label": "Skills"
-            }
-          },
-          "biography": {
-            "value": {
-              "label": "Biography"
-            },
-            "gm": {
-              "label": "GM Notes"
-            },
-            "languages": {
-              "label": "Languages"
-            },
-            "height": {
-              "value": {
-                "label": "Height"
-              }
-            },
-            "weight": {
-              "value": {
-                "label": "Weight"
-              }
             }
           }
         },
@@ -739,11 +752,14 @@
       },
       "Career": {
         "FIELDS": {
+          "projectPoints": {
+            "label": "Project Points"
+          },
           "renown": {
             "label": "Renown"
           },
-          "projectPoints": {
-            "label": "Project Points"
+          "wealth": {
+            "label": "Wealth"
           }
         }
       },

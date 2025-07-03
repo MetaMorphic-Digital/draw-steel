@@ -739,6 +739,54 @@ preLocalize("negotiation.motivations", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * Configuration information for height and weight measurements
+ */
+DRAW_STEEL.measurements = {
+  /** @type {Record<string, { label: string; group: string }>} */
+  height: {
+    in: {
+      label: "DRAW_STEEL.Measurement.Height.in",
+      group: "imperial",
+    },
+    ft: {
+      label: "DRAW_STEEL.Measurement.Height.ft",
+      group: "imperial",
+    },
+    cm: {
+      label: "DRAW_STEEL.Measurement.Height.cm",
+      group: "metric",
+    },
+    m: {
+      label: "DRAW_STEEL.Measurement.Height.m",
+      group: "metric",
+    },
+  },
+  /** @type {Record<string, { label: string; group: string }>} */
+  weight: {
+    lb: {
+      label: "DRAW_STEEL.Measurement.Weight.lbs",
+      group: "imperial",
+    },
+    kg: {
+      label: "DRAW_STEEL.Measurement.Weight.kg",
+      group: "metric",
+    },
+  },
+  /** @type {Record<string, { label: string }>} */
+  groups: {
+    imperial: {
+      label: "DRAW_STEEL.Measurement.Groups.imperial",
+    },
+    metric: {
+      label: "DRAW_STEEL.Measurement.Groups.metric",
+    },
+  },
+};
+preLocalize("measurements.height", { keys: ["label"] });
+preLocalize("measurements.weight", { keys: ["label"] });
+preLocalize("measurements.groups", { keys: ["label"] });
+
+/**
  * Configuration information for heroes
  */
 DRAW_STEEL.hero = {

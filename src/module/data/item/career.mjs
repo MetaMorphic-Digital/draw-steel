@@ -31,8 +31,9 @@ export default class CareerModel extends AdvancementModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.renown = new fields.NumberField({ integer: true });
-    schema.projectPoints = new fields.NumberField({ integer: true });
+    schema.projectPoints = new fields.NumberField({ integer: true, required: true });
+    schema.renown = new fields.NumberField({ integer: true, required: true });
+    schema.wealth = new fields.NumberField({ integer: true, required: true });
 
     return schema;
   }
