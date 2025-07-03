@@ -46,6 +46,8 @@ export default class CharacterModel extends BaseActorModel {
       victories: requiredInteger({ initial: 0 }),
       renown: requiredInteger({ initial: 0 }),
       wealth: requiredInteger({ initial: 1 }),
+      // TODO: Follower count?
+      followers: new fields.SchemaField({}),
       skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField({ readonly: false }),
     });
@@ -81,6 +83,9 @@ export default class CharacterModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.hero.recoveries.bonus = 0;
+    // Prefer being able to have AEs that multiply/upgrade/etc. targeting max followers
+    // than be able to propagate Renown adjustments
+    this.hero.followers.max = Math.clamp(Math.floor(this.hero.renown / 3), 0, 4);
 
     const kitBonuses = {
       stamina: 0,
@@ -132,6 +137,7 @@ export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
+
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
     if (heroClass && heroClass.system.primary) {

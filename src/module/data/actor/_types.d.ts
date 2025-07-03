@@ -61,6 +61,9 @@ declare module "./character.mjs" {
       };
       renown: number;
       wealth: number;
+      followers: {
+        max: number;
+      }
       skills: Set<string>;
       preferredKit: string;
     }

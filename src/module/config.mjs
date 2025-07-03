@@ -758,6 +758,7 @@ DRAW_STEEL.measurements = {
 };
 preLocalize("measurements.height", { keys: ["label"] });
 preLocalize("measurements.weight", { keys: ["label"] });
+preLocalize("measurements.groups", { keys: ["label"] });
 
 /**
  * Configuration information for heroes

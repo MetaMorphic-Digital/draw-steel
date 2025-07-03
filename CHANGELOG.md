@@ -26,7 +26,7 @@
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added a Wealth field to Careers. (#535)
 - Added a Renown and Wealth field to characters. (#279)
-- Added age, height, and weight info to the Biography tab for characters.
+- Added max followers, age, height, and weight info to the Biography tab for characters.
 
 ### Changed
 
