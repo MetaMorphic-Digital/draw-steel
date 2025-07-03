@@ -1,5 +1,11 @@
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
+const { StringField } = foundry.data.fields;
+
+/**
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
+ */
+
 export default class BaseTraitChoice extends TypedPseudoDocument {
   /** @inheritdoc */
   static get metadata() {
@@ -12,7 +18,19 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
 
   /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {});
+    return Object.assign(super.defineSchema(), {
+      options: new StringField({ required: true }),
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The list of options for this trait type
+   * @type {FormSelectOption[]}
+   */
+  get traitOptions() {
+    return [];
   }
 
   /* -------------------------------------------------- */

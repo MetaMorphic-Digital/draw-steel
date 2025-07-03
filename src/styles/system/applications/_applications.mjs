@@ -20,6 +20,7 @@ import "./sheets/active-effect-config.css";
 import "./sheets/actor-sheet.css";
 import "./sheets/combatant-group-config.css";
 import "./sheets/item-sheet.css";
+import "./sheets/pseudo-documents.css";
 
 import "./sidebar/tabs/chat.css";
 import "./sidebar/tabs/combat.css";
