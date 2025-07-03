@@ -11,6 +11,8 @@ export const barAttribute = (initial, min) => new SchemaField({
   max: new NumberField({ initial, min, nullable: false, integer: true }),
 });
 
+/* -------------------------------------------------- */
+
 /**
  * Constructs a number field that is always a number with a min of 0
  * @param {object} [options] Options to forward to the field
@@ -20,6 +22,8 @@ export const barAttribute = (initial, min) => new SchemaField({
  */
 export const requiredInteger = ({ initial = 0, label } = {}) => new NumberField({ initial, label, required: true, nullable: false, integer: true, min: 0 });
 
+/* -------------------------------------------------- */
+
 /**
  * Constructs a string field for use inside of a SetField
  * @param {object} [options] Options to forward to the field
@@ -28,6 +32,8 @@ export const requiredInteger = ({ initial = 0, label } = {}) => new NumberField(
  * @returns A string field that is always truthy
  */
 export const setOptions = ({ choices, validate } = {}) => new StringField({ required: true, blank: false, choices, validate });
+
+/* -------------------------------------------------- */
 
 /**
  * @callback DamageTypeCallback

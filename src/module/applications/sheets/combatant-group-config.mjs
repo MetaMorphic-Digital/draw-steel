@@ -17,6 +17,8 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     header: {
@@ -31,6 +33,8 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
@@ -40,6 +44,8 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
       systemFields: systemModel.schema.fields,
     });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preparePartContext(partId, context, option) {
@@ -51,7 +57,11 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   _prepareBodyContext(context) {}
+
+  /* -------------------------------------------------- */
 
   _prepareFooterContext(context) {
     /** @type {FormFooterButton[]} */

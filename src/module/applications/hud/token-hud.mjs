@@ -13,12 +13,16 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
     },
   };
 
+  /* -------------------------------------------------- */
+
   /**
    * Current option for the select, not stored in the database and shared between all tokens.
    * Expected to be be a valid key of {@linkcode ds.CONFIG.effectEnds}.
    * @type {string}
    */
   #effectEnd = "";
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _onRender(context, options) {
@@ -41,6 +45,8 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
       this.#effectEnd = effectEndSelect.value;
     });
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Handle toggling a token status effect icon.

@@ -10,6 +10,8 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
     classes: ["draw-steel"],
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     header: {
@@ -31,6 +33,8 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
       template: "templates/generic/form-footer.hbs",
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareContext(options) {

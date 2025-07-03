@@ -26,6 +26,8 @@ export default class EquipmentModel extends BaseItemModel {
     "DRAW_STEEL.Item.Equipment",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -53,6 +55,8 @@ export default class EquipmentModel extends BaseItemModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async getSheetContext(context) {
     context.categories = Object.entries(ds.CONFIG.equipment.categories).map(([value, { label }]) => ({ value, label }));
@@ -71,6 +75,8 @@ export default class EquipmentModel extends BaseItemModel {
       }
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Creates the provided equipment item as a project on a given actor

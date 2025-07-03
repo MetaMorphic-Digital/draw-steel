@@ -14,6 +14,8 @@ export default class DrawSteelActors extends foundry.documents.collections.Actor
     return game.settings.get(systemID, "heroTokens");
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Easy access to the current malice
    * @type {MaliceModel}

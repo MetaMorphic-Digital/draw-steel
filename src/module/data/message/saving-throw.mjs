@@ -23,6 +23,8 @@ export default class SavingThrowModel extends BaseMessageModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Fetches the effect from the UUID. Can return null if the effect no longer exists.
    * @returns {DrawSteelActiveEffect | null}

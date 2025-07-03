@@ -24,6 +24,8 @@ export default class CareerModel extends AdvancementModel {
     "DRAW_STEEL.Item.Career",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;

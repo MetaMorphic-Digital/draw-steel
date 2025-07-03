@@ -13,18 +13,25 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
     type: "base",
   });
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     return {};
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Returns the parent combat that the combatant group is in. Can be null if the CombatantGroup is only created in memory with "new"
+   * Returns the parent combat that the combatant group is in. Can be null if the
+   * CombatantGroup is only created in memory with "new".
    * @returns {DrawSteelCombat | null}
    */
   get combat() {
     return this.parent.parent;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _onUpdate(changed, options, userId) {
@@ -32,6 +39,8 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
 
     if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Refresh the token resource bars, token HUD, and actor sheets for each combatant within the group.

@@ -6,6 +6,7 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 /** @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "./_types.js" */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
@@ -17,6 +18,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       modifyItemQuantity: this.#modifyItemQuantity,
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static PARTS = {
@@ -60,6 +63,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
@@ -81,6 +86,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Constructs a string listing the actor's skills
    * @returns {string}
@@ -94,6 +101,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the context for features
@@ -109,6 +118,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the context for equipment categories and individual equipment items
@@ -153,6 +164,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the context for equipment categories and individual equipment items
@@ -202,6 +215,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Make a project roll and track the project points
    * @this DrawSteelCharacterSheet
@@ -213,6 +228,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     await project.system.roll();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Take a respite, converting victories to XP and resetting stamina and recoveries to max
    * @this DrawSteelCharacterSheet
@@ -222,6 +239,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static async #takeRespite(event, target) {
     await this.actor.system.takeRespite();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
@@ -233,6 +252,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     await this.actor.system.spendRecovery();
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
    * @this DrawSteelCharacterSheet
@@ -242,6 +263,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static async #spendStaminaHeroToken() {
     await this.actor.system.spendStaminaHeroToken();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Modify the quantity of a piece of equipment.

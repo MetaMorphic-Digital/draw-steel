@@ -4,7 +4,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 
 /** @import { ForcedMovementSchema } from "./_types" */
 
-const { BooleanField, SchemaField, SetField, StringField } = foundry.data.fields;
+const { SetField, StringField } = foundry.data.fields;
 
 /**
  * For abilities that inflict forced movement.

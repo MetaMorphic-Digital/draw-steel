@@ -20,6 +20,8 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     return disposition;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preUpdate(changes, options, user) {
     const allowed = await super._preUpdate(changes, options, user);
@@ -27,6 +29,8 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
     if (("initiative" in changes) && (changes.initiative < this.initiative)) await this.actor?.system._onStartTurn(this);
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _onUpdate(changed, options, userId) {
@@ -40,6 +44,8 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
@@ -48,11 +54,15 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     this.refreshCombatant();
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     Hooks.callAll("ds.prepareCombatantData", this);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Re-implements group prep to remove initiative override
@@ -63,6 +73,8 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
     this.initiative = this._source.initiative;
     if (typeof this.group === "string") this.group = null;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Refreshes the combatants token resources bar and actor stats tab

@@ -7,7 +7,6 @@
  * @property {boolean} deterministic=false    Is this formula not allowed to have dice values?
  */
 export default class FormulaField extends foundry.data.fields.StringField {
-
   /** @inheritdoc */
   static get _defaults() {
     return foundry.utils.mergeObject(super._defaults, {

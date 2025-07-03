@@ -12,6 +12,8 @@ export default class SavingThrowDialog extends RollDialog {
     classes: ["saving-throw-dialog"],
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     content: {
@@ -19,6 +21,8 @@ export default class SavingThrowDialog extends RollDialog {
     },
     footer: super.PARTS.footer,
   };
+
+  /* -------------------------------------------------- */
 
   /**
    * Amend the global modifiers and target specific modifiers based on changed values

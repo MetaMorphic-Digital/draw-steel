@@ -42,6 +42,8 @@ export default class AbilityUseModel extends BaseMessageModel {
     return this.parent.rolls[1]?.product;
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * The key of the tier.
    * @type {"tier1" | "tier2" | "tier3" | null}

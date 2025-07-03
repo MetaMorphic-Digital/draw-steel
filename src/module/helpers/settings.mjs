@@ -57,6 +57,8 @@ export default class DrawSteelSettingsHandler {
     };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Helper function called in the `init` hook.
    */

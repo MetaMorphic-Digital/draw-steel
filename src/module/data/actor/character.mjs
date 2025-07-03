@@ -128,6 +128,8 @@ export default class CharacterModel extends BaseActorModel {
     this.movement.disengage += kitBonuses["disengage"];
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;

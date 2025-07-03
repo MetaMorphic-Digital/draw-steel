@@ -6,8 +6,12 @@ export default class BaseCombatModel extends foundry.abstract.TypeDataModel {
     type: "base",
   });
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Combat.base"];
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {

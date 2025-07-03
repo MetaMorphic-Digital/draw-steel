@@ -30,6 +30,8 @@ export default class ProjectModel extends BaseItemModel {
     "DRAW_STEEL.Item.Project",
   ];
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static defineSchema() {
     const schema = super.defineSchema();
@@ -49,6 +51,8 @@ export default class ProjectModel extends BaseItemModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
@@ -62,6 +66,8 @@ export default class ProjectModel extends BaseItemModel {
       if (actorCharacteristics[characteristic].value > actorCharacteristics[this.characteristic].value) this.characteristic = characteristic;
     }
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {
@@ -88,6 +94,8 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    */
@@ -100,6 +108,8 @@ export default class ProjectModel extends BaseItemModel {
       options.completeProject = (changes.system.points >= this.goal) && (this.points < this.goal);
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -119,6 +129,8 @@ export default class ProjectModel extends BaseItemModel {
       if (this.yield.item) this.completeCraftingProject();
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -141,6 +153,8 @@ export default class ProjectModel extends BaseItemModel {
     return embed;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async getSheetContext(context) {
     context.typeOptions = Object.entries(ds.CONFIG.projects.types).map(([value, { label }]) => ({ value, label }));
@@ -155,6 +169,8 @@ export default class ProjectModel extends BaseItemModel {
       context.itemLink = item?.toAnchor().outerHTML;
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Make a project roll for this project and update the project points progress.
@@ -199,6 +215,8 @@ export default class ProjectModel extends BaseItemModel {
 
     return DrawSteelChatMessage.create(messageData);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Spend a variable amount of the actor's project points from their career on this project
@@ -245,6 +263,8 @@ export default class ProjectModel extends BaseItemModel {
       });
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Perform the creation of the yielded item(s) when a crafting project is completed.

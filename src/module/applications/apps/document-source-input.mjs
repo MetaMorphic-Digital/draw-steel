@@ -14,6 +14,8 @@ export default class DocumentSourceInput extends DocumentInput {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     body: {
@@ -21,14 +23,13 @@ export default class DocumentSourceInput extends DocumentInput {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
-
     context.sourceValues = this.document.system.source._source;
-
     context.sourceFields = this.document.system.source.schema.fields;
-
     return context;
   }
 }

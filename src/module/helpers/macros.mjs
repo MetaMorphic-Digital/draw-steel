@@ -41,6 +41,8 @@ export async function createDocMacro(data, slot) {
   game.user.assignHotbarMacro(macro, slot);
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Call an item's roll method
  * @param {string} itemUuid
