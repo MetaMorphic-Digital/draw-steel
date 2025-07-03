@@ -75,26 +75,9 @@ export default class ChainConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _preparePartContext(partId, context, options) {
-    context = await super._preparePartContext(context, options);
-    switch (partId) {
-      case "chains": return this._preparePartContextChains(context, options);
-      case "footer": return this._preparePartContextFooter(context, options);
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @type {import("../../../_types").ContextPartHandler} */
-  async _preparePartContextChains(context, options) {
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
     context.ctx = { chains: this.#chains.map(c => c.active()) };
-    return context;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @type {import("../../../_types").ContextPartHandler} */
-  async _preparePartContextFooter(context, options) {
     context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
     return context;
   }

@@ -285,18 +285,14 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       const chains = [];
       const range = [this.document.system.level, this.document.system.level + 1];
       for (const advancement of advancements) {
-        console.warn(advancement.levels);
         const validRange = advancement.levels.some(level => level.between(...range));
-        console.warn({ validRange });
         if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
       }
       const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
         chains, actor: this.document,
       });
       if (!configured) return;
-
-      console.warn("CONFIGURED CHAINS:", chains); // TODO: create items
-      return;
+      return; // TODO: create and update items, configure traits, etc.
     }
 
     return super._onDropItem(event, item);
