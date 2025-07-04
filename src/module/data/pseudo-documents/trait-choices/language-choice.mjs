@@ -9,6 +9,13 @@ export default class LanguageChoice extends BaseTraitChoice {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  get traitChoices() {
+    return ds.CONFIG.languages;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get traitOptions() {
     const config = ds.CONFIG.languages;
 

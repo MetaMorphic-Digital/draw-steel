@@ -27,7 +27,7 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
 
   /**
    * The record of unique, individual trait choices for this trait type
-   * @type {Record<string, { label }>}
+   * @type {Record<string, { label: string; group?: string }>}
    */
   get traitChoices() {
     return {};
@@ -40,7 +40,7 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
    * @type {FormSelectOption[]}
    */
   get traitOptions() {
-    return Object.entries(this.traitChoices).map(([value, { label }]) => ({ value, label }));
+    return Object.entries(this.traitChoices).map(([value, { label, group }]) => ({ value, label, group }));
   }
 
   /* -------------------------------------------------- */
