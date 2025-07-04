@@ -74,66 +74,69 @@ export default class TraitAdvancement extends BaseAdvancement {
       throw new Error(`The trait advancement [${this.uuid}] has no available choices configured.`);
     }
 
-    const chooseN = this.isChoice ? null : this.chooseN;
+    const chooseN = this.isChoice ? this.chooseN : null;
 
     const path = `flags.draw-steel.advancement.${this.id}.selected`;
     if (!this.isChoice) return { [path]: traits.map(trait => trait.id) };
 
+    const content = document.createElement("div");
+
+    /** @type {Record<string, Record<string, { label: string; group?: string }>>} */
+    const allOptions = {};
+    /** @type {Record<string, string[]>} */
+    const optionKeys = {};
+    for (const trait of traits) {
+      allOptions[trait.type] ??= trait.traitChoices;
+      optionKeys[trait.type] ??= [];
+
+      if (trait.isGroup) optionKeys[trait.type].push(...trait.choicesForGroup(trait.options));
+      else optionKeys[trait.type].push(trait.options);
+    }
+
+    const options = Object.entries(optionKeys).flatMap(([traitType, keys]) => {
+      return keys.map(k => ({ label: allOptions[traitType][k].label, value: k }));
+    });
+
     const item = this.document;
     const chosen = node
-      ? traits.filter(trait => node.selected[trait.id])
+      ? Object.entries(node.selected).reduce((arr, [k, v]) => { if (v) arr.push(k); return arr; }, [])
       : item.isEmbedded
         ? foundry.utils.getProperty(item, path) ?? []
         : [];
 
-    const content = document.createElement("div");
+    const choiceSelect = foundry.applications.fields.createMultiSelectInput({ options, name: "choices", type: "checkboxes", value: chosen });
 
-    /** @type {Set<string>} */
-    const traitTypes = new Set();
-    const allOptions = {};
-    const options = [];
-    for (const trait of traits) {
-      // if (!traitTypes.has(trait.type)) {
-      //   allOptions.push(...trait.traitChoices);
-      //   traitTypes.add(trait.type);
-      // }
-
-      // if (trait.isGroup) options.push(...trait.choicesForGroup(trait.options));
-      // else options.
-
-      const fgroup = foundry.applications.fields.createFormGroup({
-        label: trait.name,
-        input: foundry.utils.parseHTML(`<input type="checkbox" value="${trait.id}" name="choices" ${chosen.includes(trait.id) ? "checked" : ""}>`),
-      });
-      content.append(fgroup);
-    }
+    content.append(choiceSelect);
 
     function render(event, dialog) {
-      const checkboxes = dialog.element.querySelectorAll("input[name=choices]");
+      /** @type {foundry.applications.elements.HTMLMultiCheckboxElement} */
+      const multiCheckbox = dialog.element.querySelector("multi-checkbox[name=choices]");
       const submit = dialog.element.querySelector(".form-footer [type=submit]");
-      for (const checkbox of checkboxes) {
-        checkbox.addEventListener("change", () => {
-          const count = Array.from(checkboxes).reduce((acc, checkbox) => acc + checkbox.checked, 0);
-          for (const checkbox of checkboxes) checkbox.disabled = !checkbox.checked && (count >= chooseN);
-          submit.disabled = count !== chooseN;
-        });
-      }
-      checkboxes[0].dispatchEvent(new Event("change"));
+      multiCheckbox.addEventListener("change", () => {
+        for (const checkbox of multiCheckbox.querySelectorAll("input")) checkbox.disabled = !multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN);
+        submit.disabled = multiCheckbox.value.length !== chooseN;
+      });
+      multiCheckbox.dispatchEvent(new Event("change"));
     }
 
     const selection = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
+        icon: "fa-solid fa-edit",
+      },
       render,
       content: content,
     });
 
     if (!selection) return null;
-    const traitIds = Array.isArray(selection.choices) ? selection.choices : [selection.choices];
+    /** @type {string[]} */
+    const traitChoices = Array.isArray(selection.choices) ? selection.choices : [selection.choices];
 
+    console.log(node, traitChoices);
     if (node) {
-      node.selected = {};
-      for (const [traitId] of traits) node.selected[traitId] = selection.choices.includes(traitId);
+      node.selected = traitChoices.reduce((obj, choice) => { obj[choice] = true; return obj; }, {});
     }
 
-    return { [path]: traitIds.filter(_ => _) };
+    return { [path]: traitChoices.filter(_ => _) };
   }
 }

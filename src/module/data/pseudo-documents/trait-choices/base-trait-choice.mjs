@@ -40,7 +40,7 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
    * @type {FormSelectOption[]}
    */
   get traitOptions() {
-    return this.traitChoices;
+    return Object.entries(this.traitChoices).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */
@@ -51,7 +51,8 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
    * @returns {string[]}
    */
   choicesForGroup(group) {
-    return [];
+    if (!group) return Object.keys(this.traitChoices);
+    else return [];
   }
 
   /* -------------------------------------------------- */

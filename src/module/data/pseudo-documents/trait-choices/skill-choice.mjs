@@ -28,6 +28,7 @@ export default class SkillChoice extends BaseTraitChoice {
 
   /** @inheritdoc */
   choicesForGroup(group) {
+    if (!group) return Object.keys(this.traitChoices);
     return Object.entries(ds.CONFIG.skills.list).filter(([, s]) => s.group === group).map(([value]) => (value));
   }
 

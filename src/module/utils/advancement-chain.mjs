@@ -127,19 +127,25 @@ export default class AdvancementChain {
       }
     } else if (advancement.type === "trait") {
       for (const trait of advancement.traits) {
-        const choice = node.choices[trait.id] = {
-          node,
-          trait: trait.id,
-          children: {},
+
+        const defineTraitChoice = (key) => {
+          const choice = node.choices[key] = {
+            node,
+            trait: trait.id,
+            children: {},
+          };
+
+          Object.defineProperty(choice, "isChosen", {
+            get() {
+              if (!node.isChosen) return false;
+              if (!node.isChoice) return true;
+              return node.selected[key] === true;
+            },
+          });
         };
 
-        Object.defineProperty(choice, "isChosen", {
-          get() {
-            if (!node.isChosen) return false;
-            if (!node.isChoice) return true;
-            return node.selected[trait.id] === true;
-          },
-        });
+        if (trait.isGroup) for (const key of trait.choicesForGroup(trait.options)) defineTraitChoice(key);
+        else defineTraitChoice(trait.options);
       }
     }
 

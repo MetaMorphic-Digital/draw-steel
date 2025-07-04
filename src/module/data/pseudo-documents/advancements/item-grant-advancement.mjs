@@ -93,6 +93,10 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     const _content = document.createElement("DIV");
     for (const fg of content) _content.insertAdjacentElement("beforeend", fg);
     const selection = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
+        icon: "fa-solid fa-edit",
+      },
       render,
       content: _content,
     });
