@@ -131,6 +131,7 @@ export default class AdvancementChain {
         const defineTraitChoice = (key) => {
           const choice = node.choices[key] = {
             node,
+            choice: trait.traitChoices[key].label,
             trait: trait.id,
             children: {},
           };

@@ -132,7 +132,6 @@ export default class TraitAdvancement extends BaseAdvancement {
     /** @type {string[]} */
     const traitChoices = Array.isArray(selection.choices) ? selection.choices : [selection.choices];
 
-    console.log(node, traitChoices);
     if (node) {
       node.selected = traitChoices.reduce((obj, choice) => { obj[choice] = true; return obj; }, {});
     }
