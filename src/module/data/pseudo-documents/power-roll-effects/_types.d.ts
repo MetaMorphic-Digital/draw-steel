@@ -1,9 +1,3 @@
-declare module "./base-power-roll-effect.mjs" {
-  export default interface BasePowerRollEffect {
-    name: string;
-  }
-}
-
 type PotencySchema = {
   value: string;
   characteristic: string;

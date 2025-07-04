@@ -26,11 +26,42 @@ export default class BaseTraitChoice extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * The list of options for this trait type
+   * The record of unique, individual trait choices for this trait type
+   * @type {Record<string, { label }>}
+   */
+  get traitChoices() {
+    return {};
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The list of options for this trait type, including groups.
    * @type {FormSelectOption[]}
    */
   get traitOptions() {
+    return this.traitChoices;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The list of option values for a given group within this trait type.
+   * @param {string} group
+   * @returns {string[]}
+   */
+  choicesForGroup(group) {
     return [];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Does this trait choice actually represent a group of trait choices?
+   * A blank `options` means all possible choices.
+   */
+  get isGroup() {
+    return !this.options;
   }
 
   /* -------------------------------------------------- */

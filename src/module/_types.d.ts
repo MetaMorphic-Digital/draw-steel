@@ -5,30 +5,15 @@ import "./documents/_types";
 import {
   DrawSteelActor,
   DrawSteelChatMessage,
+  DrawSteelItem,
 } from "./documents/_module.mjs";
 
-import Advancement from "./documents/advancement/advancement.mjs";
 import {
   PowerRoll,
   ProjectRoll,
 } from "./rolls/_module.mjs";
-
-export interface AdvancementTypeConfiguration {
-  /**
-   * The advancement's document class.
-   */
-  dataModel: typeof Advancement;
-
-  /**
-   * What item types this advancement can be used with.
-   */
-  validItemTypes: Set <string>;
-
-  /**
-   * Should this advancement type be hidden in the selection dialog?
-   */
-  hidden ?: boolean;
-}
+import BaseAdvancement from "./data/pseudo-documents/advancements/base-advancement.mjs";
+import AdvancementChain from "./utils/advancement-chain.mjs";
 
 export interface PowerRollModifiers {
   edges: number;
@@ -68,26 +53,9 @@ export interface ProjectRollPrompt {
 
 /* -------------------------------------------------- */
 
-export interface AdvancementChainLink {
-  advancement: InstanceType<BaseAdvancement>;
-  parent?: AdvancementChainLink;
-  depth: number;
-  isRoot: boolean;
-  choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
-  selected: Record<string, boolean>;
-
-  // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
-  parentChoice?: AdvancementChainItemGrantLeaf;
-
-  isChosen: boolean;
-  isChoice: boolean;
-  chooseN: number | null;
-  isConfigured: boolean;
-}
-
 export interface AdvancementChainItemGrantLeaf {
-  item: foundry.documents.Item;
-  node: AdvancementChainLink;
+  item: DrawSteelItem;
+  node: AdvancementChain;
   itemLink: HTMLElement;
   children: Record<string, AdvancementChainTraitLeaf>;
 
@@ -96,10 +64,29 @@ export interface AdvancementChainItemGrantLeaf {
 }
 
 export interface AdvancementChainTraitLeaf {
-  node: AdvancementChainLink;
+  node: AdvancementChain;
   trait: string;
   children: object;
 
   // Whether this specific choice has been selected.
   isChosen: boolean;
+}
+
+declare module "./utils/advancement-chain.mjs" {
+  export default interface AdvancementChain {
+    advancement: BaseAdvancement;
+    parent?: AdvancementChain;
+    depth: number;
+    isRoot: boolean;
+    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
+    selected: Record<string, boolean>;
+
+    // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
+    parentChoice?: AdvancementChainItemGrantLeaf;
+
+    isChosen: boolean;
+    isChoice: boolean;
+    chooseN: number | null;
+    isConfigured: boolean;
+  }
 }

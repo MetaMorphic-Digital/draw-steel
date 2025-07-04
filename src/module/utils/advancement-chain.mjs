@@ -1,8 +1,11 @@
 import BaseAdvancement from "../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
+ * @import { AdvancementChain } from "../_types"
+ */
+
+/**
  * Utility class for advancement chains.
- * @extends {import("../_types").AdvancementChainLink}
  */
 export default class AdvancementChain {
   constructor(chainLink) {
@@ -134,7 +137,7 @@ export default class AdvancementChain {
           get() {
             if (!node.isChosen) return false;
             if (!node.isChoice) return true;
-            return node.selected[k] === true;
+            return node.selected[trait.id] === true;
           },
         });
       }
@@ -154,6 +157,7 @@ export default class AdvancementChain {
   get isChoice() {
     switch (this.advancement.type) {
       case "trait":
+        return this.advancement.isChoice;
       case "itemGrant":
         // If chooseN is null, there is no choice to make; you get all.
         return this.chooseN !== null;
@@ -172,11 +176,12 @@ export default class AdvancementChain {
   get chooseN() {
     switch (this.advancement.type) {
       case "trait":
-      case "itemGrant": {
+        if (!this.advancement.isChoice) return null;
+        return this.advancement.chooseN;
+      case "itemGrant":
         if (this.advancement.chooseN === null) return null;
         if (this.advancement.chooseN >= Object.values(this.choices).length) return null;
         return this.advancement.chooseN;
-      }
     }
     return null;
   }

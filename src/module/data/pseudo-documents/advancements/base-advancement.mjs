@@ -3,6 +3,9 @@ import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
 const { HTMLField } = foundry.data.fields;
 
+/**
+ * Advancements provide configurable modifications to actors beyond what ActiveEffects can provide.
+ */
 export default class BaseAdvancement extends TypedPseudoDocument {
   /** @type {import("../../../_types").PseudoDocumentMetadata} */
   static get metadata() {

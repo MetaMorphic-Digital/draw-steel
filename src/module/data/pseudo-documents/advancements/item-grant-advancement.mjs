@@ -1,9 +1,10 @@
 import BaseAdvancement from "./base-advancement.mjs";
 
-const {
-  ArrayField, DocumentUUIDField, NumberField, SchemaField,
-} = foundry.data.fields;
+const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
 
+/**
+ * An advancement representing a fixed or chosen item grant from a known set of items
+ */
 export default class ItemGrantAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static defineSchema() {
@@ -14,7 +15,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
-      // If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool
       chooseN: new NumberField({ integer: true, nullable: true, initial: null, min: 1 }),
     });
   }

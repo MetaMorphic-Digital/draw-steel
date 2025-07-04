@@ -2,6 +2,9 @@ import BaseAdvancement from "./base-advancement.mjs";
 
 const { NumberField, SchemaField } = foundry.data.fields;
 
+/**
+ * An advancement that applies changes to actor data during data prep
+ */
 export default class TraitAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static get metadata() {
@@ -21,7 +24,6 @@ export default class TraitAdvancement extends BaseAdvancement {
         level: new NumberField({ integer: true, min: 1, max: 10, nullable: false, initial: 1 }),
       }),
       traits: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.traitChoices.BaseTraitChoice),
-      // If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool
       chooseN: new NumberField({ integer: true, nullable: true, initial: null, min: 1 }),
     });
   }
@@ -57,21 +59,22 @@ export default class TraitAdvancement extends BaseAdvancement {
    */
   get isChoice() {
     if (this.chooseN === null) return false;
-    if (this.chooseN >= this.traits.size) return false;
-    return true;
+    if (this.chooseN < this.traits.size) return true;
+    return this.traits.some(t => t.isGroup);
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async configureAdvancement(node = null) {
+    /** @type {this["traits"]} */
     const traits = node ? node.advancement.traits : this.traits;
 
     if (!traits.size) {
       throw new Error(`The trait advancement [${this.uuid}] has no available choices configured.`);
     }
 
-    const chooseN = (this.chooseN === null) || (this.chooseN >= traits.length) ? null : this.chooseN;
+    const chooseN = this.isChoice ? null : this.chooseN;
 
     const path = `flags.draw-steel.advancement.${this.id}.selected`;
     if (!this.isChoice) return { [path]: traits.map(trait => trait.id) };
@@ -83,13 +86,26 @@ export default class TraitAdvancement extends BaseAdvancement {
         ? foundry.utils.getProperty(item, path) ?? []
         : [];
 
-    const content = [];
+    const content = document.createElement("div");
+
+    /** @type {Set<string>} */
+    const traitTypes = new Set();
+    const allOptions = {};
+    const options = [];
     for (const trait of traits) {
+      // if (!traitTypes.has(trait.type)) {
+      //   allOptions.push(...trait.traitChoices);
+      //   traitTypes.add(trait.type);
+      // }
+
+      // if (trait.isGroup) options.push(...trait.choicesForGroup(trait.options));
+      // else options.
+
       const fgroup = foundry.applications.fields.createFormGroup({
         label: trait.name,
         input: foundry.utils.parseHTML(`<input type="checkbox" value="${trait.id}" name="choices" ${chosen.includes(trait.id) ? "checked" : ""}>`),
       });
-      content.push(fgroup);
+      content.append(fgroup);
     }
 
     function render(event, dialog) {
@@ -107,7 +123,7 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     const selection = await ds.applications.api.DSDialog.input({
       render,
-      content: content.map(fgroup => fgroup.outerHTML).join(""),
+      content: content,
     });
 
     if (!selection) return null;
