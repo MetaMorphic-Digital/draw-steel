@@ -49,10 +49,10 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Heroic resource value - `@hero.primary.value`
 
 ### Recoveries
-+ Recovery value - `@hero.recoveries.recoveryValue`
-+ Current recovery amount - `@hero.recoveries.value`
-+ Maximum amount of recoveries - `@hero.recoveries.max`
-+ Bonus to max amount - `@hero.recoveries.bonus`
++ Recovery value - `@recoveries.recoveryValue`
++ Current recovery amount - `@recoveries.value`
++ Maximum amount of recoveries - `@recoveries.max`
++ Bonus to max amount - `@recoveries.bonus`
 
 ### Other Hero values
 + Renown - `@hero.renown`
