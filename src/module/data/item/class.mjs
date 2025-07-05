@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -48,11 +48,11 @@ export default class ClassModel extends AdvancementModel {
     });
 
     schema.stamina = new fields.SchemaField({
-      starting: new fields.NumberField({ required: true, initial: 20 }),
-      level: new fields.NumberField({ required: true, initial: 12 }),
+      starting: requiredInteger({ initial: 20 }),
+      level: requiredInteger({ initial: 12 }),
     });
 
-    schema.recoveries = new fields.NumberField({ required: true, nullable: false, initial: 8 });
+    schema.recoveries = requiredInteger({ initial: 8 });
 
     schema.kits = new fields.NumberField({ required: true, initial: 1 });
 
@@ -87,7 +87,15 @@ export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
   _onCreate(data, options, userId) {
     if (this.actor && (this.actor.type === "character") && (game.userId === userId)) {
-      this.actor.update({ "system.hero.recoveries.value": this.recoveries });
+      this.actor.update({ "system.recoveries.value": this.recoveries });
+    }
+  }
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    if (this.actor) {
+      this.actor.system.recoveries.max = this.recoveries;
+      this.actor.system.stamina.max = this.stamina.starting + this.level * this.stamina.level;
     }
   }
 }

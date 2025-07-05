@@ -52,13 +52,13 @@ declare module "./character.mjs" {
   };
 
   export default interface CharacterModel {
+    recoveries: BarAttribute & {
+      bonus: number;
+      recoveryValue: number;
+    };
     hero: {
       primary: HeroicResource;
       xp: number;
-      recoveries: BarAttribute & {
-        bonus: number;
-        recoveryValue: number;
-      };
       renown: number;
       wealth: number;
       skills: Set<string>;

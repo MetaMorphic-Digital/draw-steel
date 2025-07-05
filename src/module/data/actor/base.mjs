@@ -41,7 +41,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
         bonus: new FormulaField(),
       }),
       size: new fields.EmbeddedDataField(SizeModel),
-      stability: requiredInteger({ initial: 0 }),
+      stability: requiredInteger(),
       turns: requiredInteger({ initial: 1 }),
     });
 

@@ -1,6 +1,6 @@
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
-import { barAttribute, requiredInteger, setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 /** @import DrawSteelItem from "../../documents/item.mjs" */
@@ -32,16 +32,26 @@ export default class CharacterModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
+    // TODO: Improve the handling of TokenDocument._getTrackedAttributesFromSchema
+    // So that it recognizes derived max stamina & recovery values without them being in the schema
+    const maxStamina = schema.stamina.getField("max");
+    maxStamina.options.max = 0;
+    maxStamina.max = 0;
+
+    schema.recoveries = new fields.SchemaField({
+      value: requiredInteger(),
+      max: requiredInteger({ max: 0 }),
+    }),
+
     schema.hero = new fields.SchemaField({
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
       // Epic resources are not part of public license yet
-      surges: requiredInteger({ initial: 0 }),
-      xp: requiredInteger({ initial: 0 }),
-      recoveries: barAttribute(8, 0),
-      victories: requiredInteger({ initial: 0 }),
-      renown: requiredInteger({ initial: 0 }),
+      surges: requiredInteger(),
+      xp: requiredInteger(),
+      victories: requiredInteger(),
+      renown: requiredInteger(),
       wealth: requiredInteger({ initial: 1 }),
       skills: new fields.SetField(setOptions()),
       preferredKit: new fields.DocumentIdField({ readonly: false }),
@@ -77,7 +87,7 @@ export default class CharacterModel extends BaseActorModel {
   prepareBaseData() {
     super.prepareBaseData();
 
-    this.hero.recoveries.bonus = 0;
+    this.recoveries.bonus = 0;
 
     const kitBonuses = {
       stamina: 0,
@@ -130,7 +140,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.hero.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.hero.recoveries.bonus;
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
@@ -208,10 +218,10 @@ export default class CharacterModel extends BaseActorModel {
   async takeRespite() {
     return this.parent.update({
       system: {
+        recoveries: {
+          value: this.recoveries.max,
+        },
         hero: {
-          recoveries: {
-            value: this.hero.recoveries.max,
-          },
           victories: 0,
           xp: this.hero.xp + this.hero.victories,
         },
@@ -229,15 +239,15 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {Promise<DrawSteelActor}
    */
   async spendRecovery() {
-    if (this.hero.recoveries.value === 0) {
+    if (this.recoveries.value === 0) {
       ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
       return this.parent;
     }
 
     ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
-    await this.parent.update({ "system.hero.recoveries.value": this.hero.recoveries.value - 1 });
+    await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
-    return this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+    return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
   }
 
   /* -------------------------------------------------- */
@@ -262,7 +272,7 @@ export default class CharacterModel extends BaseActorModel {
     if (spend) {
       const valid = await heroTokens.spendToken("regainStamina", { flavor: this.parent.name });
       if (valid !== false) {
-        await this.parent.modifyTokenAttribute("stamina", this.hero.recoveries.recoveryValue, true);
+        await this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
       }
     }
     return this.parent;

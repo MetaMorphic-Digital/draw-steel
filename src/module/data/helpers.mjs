@@ -1,26 +1,15 @@
 const { NumberField, SchemaField, StringField } = foundry.data.fields;
 
 /**
- * Constructs a schema field with a value and max attribute
- * @param {number} initial The starting value for the bar
- * @param {number} [min]   A minimum value for the fields
- * @returns A Schema with a value and max
- */
-export const barAttribute = (initial, min) => new SchemaField({
-  value: new NumberField({ initial, min, nullable: false, integer: true }),
-  max: new NumberField({ initial, min, nullable: false, integer: true }),
-});
-
-/* -------------------------------------------------- */
-
-/**
  * Constructs a number field that is always a number with a min of 0
  * @param {object} [options] Options to forward to the field
- * @param {number} [options.initial=0] The initial value for the field
- * @param {string} [options.label] Label for the field
+ * @param {number} [options.initial=0]  The initial value for the field
+ * @param {number} [options.min=0]      The minimum value for the field
+ * @param {number} [options.max]        The maximum value for the field
+ * @param {string} [options.label]      Label for the field
  * @returns A number field that is non-nullable and always defined
  */
-export const requiredInteger = ({ initial = 0, label } = {}) => new NumberField({ initial, label, required: true, nullable: false, integer: true, min: 0 });
+export const requiredInteger = ({ initial = 0, min = 0, max, label } = {}) => new NumberField({ initial, label, min, max, required: true, nullable: false, integer: true });
 
 /* -------------------------------------------------- */
 

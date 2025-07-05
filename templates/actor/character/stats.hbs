@@ -1,5 +1,6 @@
 {{! Stats Tab }}
 <section class="tab stats standard-form {{tab.cssClass}}" data-group="primary" data-tab="stats">
+  {{#if isPlay}}
   <fieldset class="resources flexrow">
     <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
     <div class="resource stamina">
@@ -7,7 +8,6 @@
         <a data-action="spendStaminaHeroToken" data-tooltip="DRAW_STEEL.Sheet.HeroTokenRegainStamina" data-tooltip-direction="UP">{{systemFields.stamina.label}}</a>
       </label>
       <div class="resource-content flexrow">
-        {{#if isPlay}}
         <div class="resource-temporary">
           {{formGroup
           systemFields.stamina.fields.temporary
@@ -24,9 +24,7 @@
           classes="stacked"
           }}
         </div>
-        {{/if}}
         <span class="resource-max">
-          {{#if isPlay}}
           <div class="form-group stacked">
             <label class="input-placeholder-label">
               {{systemFields.stamina.fields.max.label}}
@@ -35,51 +33,39 @@
               {{system.stamina.max}}
             </div>
           </div>
-          {{else}}
-          {{formGroup systemFields.stamina.fields.max value=systemSource.stamina.max dataset=datasets.isSource classes="paired"}}
-          {{/if}}
         </span>
       </div>
     </div>
     <div class="resource recoveries">
       <label class="resource-label">
-        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Sheet.SpendRecovery" data-tooltip-direction="UP">{{systemFields.hero.fields.recoveries.label}}</a>
+        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Sheet.SpendRecovery" data-tooltip-direction="UP">{{systemFields.recoveries.label}}</a>
       </label>
       <div class="resource-content flexrow">
-        {{#if isPlay}}
         <div class="resource-current">
-          {{formGroup systemFields.hero.fields.recoveries.fields.value value=system.hero.recoveries.value dataset=datasets.notSource classes="stacked"}}
+          {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
         </div>
-        {{/if}}
         <span class="resource-max">
-          {{#if isPlay}}
           <div class="form-group stacked">
             <label class="input-placeholder-label">
-              {{systemFields.hero.fields.recoveries.fields.max.label}}
+              {{systemFields.recoveries.fields.max.label}}
             </label>
             <div class="input-placeholder">
-              {{system.hero.recoveries.max}}
+              {{system.recoveries.max}}
             </div>
           </div>
-          {{else}}
-          {{formGroup systemFields.hero.fields.recoveries.fields.max value=systemSource.hero.recoveries.max dataset=datasets.isSource classes="paired"}}
-          {{/if}}
         </span>
-        {{#if isPlay}}
         <span class="recovery-value">
           <div class="form-group stacked">
             <label class="input-placeholder-label">
               {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
             </label>
             <div class="input-placeholder">
-              {{system.hero.recoveries.recoveryValue}}
+              {{system.recoveries.recoveryValue}}
             </div>
           </div>
         </span>
-        {{/if}}
       </div>
     </div>
-    {{#if isPlay}}
     <div class="resource heroic">
       {{#if system.class}}
       {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label}}
@@ -95,8 +81,8 @@
         </div>
       </div>
     </div>
-    {{/if}}
   </fieldset>
+  {{/if}}
   {{> "systems/draw-steel/templates/actor/shared/partials/stats/characteristics.hbs"}}
   {{#if isPlay}}
   <div class="flexrow">
