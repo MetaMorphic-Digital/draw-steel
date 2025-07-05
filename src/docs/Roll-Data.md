@@ -39,6 +39,12 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Winded (<50%) Stamina Value - `@stamina.winded`
 + Is currently winded? (1/yes, 0/no) - `@statuses.winded`
 
+### Recoveries
++ Recovery value - `@recoveries.recoveryValue`
++ Current recovery amount - `@recoveries.value`
++ Maximum amount of recoveries - `@recoveries.max`
++ Bonus to recovery value - `@recoveries.bonus`
+
 ### Movement speeds
 + Speed - `@movement.value`
 + Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
@@ -47,12 +53,6 @@ Foundry's rolls support variable substitution through roll data, as explained in
 ### Heroic Resource
 + Heroic resource label - `@hero.primary.label`
 + Heroic resource value - `@hero.primary.value`
-
-### Recoveries
-+ Recovery value - `@recoveries.recoveryValue`
-+ Current recovery amount - `@recoveries.value`
-+ Maximum amount of recoveries - `@recoveries.max`
-+ Bonus to max amount - `@recoveries.bonus`
 
 ### Other Hero values
 + Renown - `@hero.renown`
