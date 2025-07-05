@@ -161,7 +161,6 @@ Hooks.once("i18nInit", () => {
 
   localizePseudos(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.TYPES);
   localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
-  localizePseudos(data.pseudoDocuments.traitChoices.BaseTraitChoice.TYPES);
 });
 
 /* -------------------------------------------- */

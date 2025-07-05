@@ -1335,32 +1335,15 @@ DRAW_STEEL.Advancement = {
     label: "TYPES.Advancement.itemGrant",
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
-  trait: {
-    label: "TYPES.Advancement.trait",
-    documentClass: pseudoDocuments.advancements.TraitAdvancement,
-  },
-};
-
-/* -------------------------------------------------- */
-
-/**
- * @typedef TraitChoiceType
- * @property {string} label   Human-readable label.
- * @property {pseudoDocuments.traitChoices.BaseTraitChoice} documentClass   The pseudo-document class.
- */
-
-/** @type {Record<string, TraitChoiceType>} */
-DRAW_STEEL.TraitChoice = {
-  language: {
-    label: "TYPES.TraitChoice.language",
-    documentClass: pseudoDocuments.traitChoices.LanguageChoice,
-  },
   skill: {
-    label: "TYPES.TraitChoice.skill",
-    documentClass: pseudoDocuments.traitChoices.SkillChoice,
+    label: "TYPES.Advancement.skill",
+    documentClass: pseudoDocuments.advancements.SkillAdvancement,
+  },
+  language: {
+    label: "TYPES.Advancement.language",
+    documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
-preLocalize("TraitChoice", { key: "label" });
 
 /* -------------------------------------------------- */
 

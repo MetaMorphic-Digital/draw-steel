@@ -46,11 +46,22 @@
             "label": "Choice",
             "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
           },
-          "traits": {
-            "element": {
-              "value": {
-                "label": "Value"
-              }
+          "any": {
+            "label": "Pick Any",
+            "hint": "Ignore the specific list of choices or groups and allow the character to pick any trait."
+          },
+          "languages": {
+            "label": "Language Choices",
+            "hint": "Specific languages that can be chosen in this advancement."
+          },
+          "skills": {
+            "choices": {
+              "label": "Skill Choices",
+              "hint": "Specific skills that can be chosen in this advancement."
+            },
+            "groups": {
+              "label": "Skill Groups",
+              "hint": "Groups of skills that can be chosen in this advancement."
             }
           }
         }
@@ -1492,9 +1503,6 @@
       "Zahariax": "Za'hariax",
       "Zaliac": "Zaliac"
     },
-    "Advancement": {
-      "Title": "Advancement"
-    },
     "Echelon": {
       "1": "1st Echelon",
       "2": "2nd Echelon",
@@ -1559,7 +1567,8 @@
     },
     "Advancement": {
       "itemGrant": "Item Grant",
-      "trait": "Trait"
+      "skill": "Skill",
+      "language": "Language"
     },
     "ChatMessage": {
       "abilityUse": "Ability Use"

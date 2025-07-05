@@ -5,6 +5,7 @@ const { HTMLField } = foundry.data.fields;
 
 /**
  * Advancements provide configurable modifications to actors beyond what ActiveEffects can provide.
+ * @abstract
  */
 export default class BaseAdvancement extends TypedPseudoDocument {
   /** @type {import("../../../_types").PseudoDocumentMetadata} */

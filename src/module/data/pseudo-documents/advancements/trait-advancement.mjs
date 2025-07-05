@@ -1,29 +1,23 @@
 import BaseAdvancement from "./base-advancement.mjs";
 
-const { NumberField, SchemaField } = foundry.data.fields;
+/**
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
+ */
+
+const { BooleanField, NumberField, SchemaField } = foundry.data.fields;
 
 /**
- * An advancement that applies changes to actor data during data prep
+ * An advancement that applies changes to actor data during data prep.
+ * @abstract
  */
 export default class TraitAdvancement extends BaseAdvancement {
-  /** @inheritdoc */
-  static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
-      embedded: {
-        TraitChoice: "traits",
-      },
-    });
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       requirements: new SchemaField({
         level: new NumberField({ integer: true, min: 1, max: 10, nullable: false, initial: 1 }),
       }),
-      traits: new ds.data.fields.CollectionField(ds.data.pseudoDocuments.traitChoices.BaseTraitChoice),
+      any: new BooleanField(),
       chooseN: new NumberField({ integer: true, nullable: true, initial: null, min: 1 }),
     });
   }
@@ -53,25 +47,47 @@ export default class TraitAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
+   * The record of unique, individual trait choices for this trait type
+   * @type {Record<string, { label: string; group?: string }>}
+   * @abstract
+   */
+  get traitChoices() {
+    throw new Error("A Trait Advancement must implement `get traitChoices`");
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Options available for this specific Trait advancement, with values corresponding to the keys of {@link traitChoices}
+   * @type {FormSelectOption[]}
+   * @abstract
+   */
+  get traitOptions() {
+    throw new Error("A Trait Advancement must implement `get traitOptions`");
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Does this trait have a choice to make? This can be done synchronously unlike
    * for item grant advancements, so we can make use of a getter directly on the advancement here.
    * @type {boolean}
    */
   get isChoice() {
     if (this.chooseN === null) return false;
-    if (this.chooseN < this.traits.size) return true;
-    return this.traits.some(t => t.isGroup);
+    if (this.chooseN < this.traitOptions.length) return true;
+    return false;
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async configureAdvancement(node = null) {
-    /** @type {this["traits"]} */
-    const traits = node ? node.advancement.traits : this.traits;
+    /** @type {FormSelectOption[]} */
+    const traits = node ? node.advancement.traitOptions : this.traitOptions;
 
-    if (!traits.size) {
-      throw new Error(`The trait advancement [${this.uuid}] has no available choices configured.`);
+    if (!traits.length) {
+      throw new Error(`The trait advancement [${this.uuid}] has no available options configured.`);
     }
 
     const chooseN = this.isChoice ? this.chooseN : null;
@@ -81,22 +97,6 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     const content = document.createElement("div");
 
-    /** @type {Record<string, Record<string, { label: string; group?: string }>>} */
-    const allOptions = {};
-    /** @type {Record<string, string[]>} */
-    const optionKeys = {};
-    for (const trait of traits) {
-      allOptions[trait.type] ??= trait.traitChoices;
-      optionKeys[trait.type] ??= [];
-
-      if (trait.isGroup) optionKeys[trait.type].push(...trait.choicesForGroup(trait.options));
-      else optionKeys[trait.type].push(trait.options);
-    }
-
-    const options = Object.entries(optionKeys).flatMap(([traitType, keys]) => {
-      return keys.map(k => ({ label: allOptions[traitType][k].label, value: k }));
-    });
-
     const item = this.document;
     const chosen = node
       ? Object.entries(node.selected).reduce((arr, [k, v]) => { if (v) arr.push(k); return arr; }, [])
@@ -104,7 +104,7 @@ export default class TraitAdvancement extends BaseAdvancement {
         ? foundry.utils.getProperty(item, path) ?? []
         : [];
 
-    const choiceSelect = foundry.applications.fields.createMultiSelectInput({ options, name: "choices", type: "checkboxes", value: chosen });
+    const choiceSelect = foundry.applications.fields.createMultiSelectInput({ options: traits, name: "choices", type: "checkboxes", value: chosen });
 
     content.append(choiceSelect);
 

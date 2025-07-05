@@ -5,8 +5,6 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
   static DEFAULT_OPTIONS = {
     actions: {
       deletePoolItem: AdvancementSheet.#deletePoolItem,
-      addTrait: AdvancementSheet.#addTrait,
-      deleteTrait: AdvancementSheet.#deleteTrait,
     },
     classes: ["advancement"],
   };
@@ -79,12 +77,13 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
       }
     }
 
-    else if (context.document.type === "trait") {
-      ctx.traits = context.document.getEmbeddedPseudoDocumentCollection("TraitChoice").map(trait => ({
-        trait,
-        fields: trait.schema.fields,
-        options: trait.traitOptions,
-      }));
+    else if (context.document.type === "skill") {
+      ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
+      ctx.skillChoices = ds.CONFIG.skills.optgroups;
+    }
+
+    else if (context.document.type === "language") {
+      ctx.languageChoices = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
     }
 
     return context;
@@ -139,30 +138,5 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     const pool = foundry.utils.deepClone(this.pseudoDocument._source.pool);
     pool.splice(index, 1);
     this.pseudoDocument.update({ pool });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Add a new trait for a Trait advancement.
-   * @this {AdvancementSheet}
-   * @param {PointerEvent} event    The initiating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static async #addTrait(event, target) {
-    ds.data.pseudoDocuments.traitChoices.BaseTraitChoice.createDialog({}, { parent: this.pseudoDocument, renderSheet: false });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Delete a trait off a Trait advancement.
-   * @this {AdvancementSheet}
-   * @param {PointerEvent} event    The initiating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static async #deleteTrait(event, target) {
-    const id = target.closest("[data-trait-id]").dataset.traitId;
-    this.pseudoDocument.update({ [`traits.-=${id}`]: null });
   }
 }
