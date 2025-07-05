@@ -34,7 +34,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  static LOCALIZATION_PREFIXES = ["DOCUMENT"];
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO"];
 
   /* -------------------------------------------------- */
 

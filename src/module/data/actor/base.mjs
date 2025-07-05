@@ -64,6 +64,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Actor.base"];
+
+  /* -------------------------------------------------- */
+
   /**
    * Helper function to fill in the `biography` property
    * @protected

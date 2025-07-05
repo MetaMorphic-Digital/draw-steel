@@ -24,7 +24,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.ADVANCEMENT"];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.ADVANCEMENT");
 
   /* -------------------------------------------------- */
 

@@ -16,11 +16,7 @@ export default class FeatureModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Feature",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Feature");
 
   /* -------------------------------------------------- */
 

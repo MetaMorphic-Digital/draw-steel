@@ -20,11 +20,7 @@ export default class EquipmentModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Equipment",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Equipment");
 
   /* -------------------------------------------------- */
 
