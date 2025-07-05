@@ -25,11 +25,10 @@ export default class NPCModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat([
     "DRAW_STEEL.Source",
-    "DRAW_STEEL.Actor.base",
     "DRAW_STEEL.Actor.NPC",
-  ];
+  ]);
 
   /* -------------------------------------------------- */
 

@@ -16,9 +16,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.CombatantGroup.squad",
-  ];
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.CombatantGroup.squad"];
 
   /* -------------------------------------------------- */
 

@@ -24,10 +24,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Actor.base",
-    "DRAW_STEEL.Actor.Character",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Actor.Character");
 
   /* -------------------------------------------------- */
 
@@ -375,5 +372,42 @@ export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
   async updateResource(delta) {
     this.parent.modifyTokenAttribute("hero.primary.value", delta, true, false);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance a given number of levels.
+   * @param {object} [options={}]                           Options to modify the advancement of levels.
+   * @param {number} [options.levels=1]                     The number of levels to advance.
+   * @param {foundry.documents.Item} [options.item=null]    For a hero with no current levels, a class item.
+   */
+  async advance({ levels = 1, item = null } = {}) {
+    let cls = this.class;
+
+    if (item && (item.type !== "class")) throw new Error("The item provided to advancing must be a class item.");
+    if (!cls && !item) throw new Error("A class item is required if a hero has no current levels.");
+    if (cls && item && (item.identifier !== cls.identifier))
+      throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
+    if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
+    if (this.level + levels > 10) throw new Error("A hero cannot advance beyond level 10.");
+
+    cls = cls ? cls : item;
+    const range = [this.level + 1, this.level + levels];
+    const advancements = cls.getEmbeddedPseudoDocumentCollection("Advancement");
+    const chains = [];
+    for (const advancement of advancements) {
+      const validRange = advancement.levels.some(level => level.between(...range));
+      if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
+    }
+
+    const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+      chains, actor: this.parent,
+    });
+    if (!configured) return;
+
+    // TODO: create and update items, actor, etc.
+
+    return cls; // TODO: return existing class item or return newly created class item
   }
 }
