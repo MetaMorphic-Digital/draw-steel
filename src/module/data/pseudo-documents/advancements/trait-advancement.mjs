@@ -44,23 +44,23 @@ export default class TraitAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * The record of unique, individual trait choices for this trait type
+   * The record of unique, individual trait choices for this trait type.
    * @type {Record<string, { label: string; group?: string }>}
    * @abstract
    */
   get traitChoices() {
-    throw new Error("A Trait Advancement must implement `get traitChoices`");
+    throw new Error("A Trait Advancement must implement `get traitChoices`.");
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Options available for this specific Trait advancement, with values corresponding to the keys of {@link traitChoices}
+   * Options available for this specific Trait advancement, with values corresponding to the keys of {@link traitChoices}.
    * @type {FormSelectOption[]}
    * @abstract
    */
   get traitOptions() {
-    throw new Error("A Trait Advancement must implement `get traitOptions`");
+    throw new Error("A Trait Advancement must implement `get traitOptions`.");
   }
 
   /* -------------------------------------------------- */
@@ -96,7 +96,7 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     const item = this.document;
     const chosen = node
-      ? Object.entries(node.selected).reduce((arr, [k, v]) => { if (v) arr.push(k); return arr; }, [])
+      ? Object.entries(node.selected).reduce((arr, [k, v]) => arr.concat(v ? k : []), [])
       : item.isEmbedded
         ? foundry.utils.getProperty(item, path) ?? []
         : [];

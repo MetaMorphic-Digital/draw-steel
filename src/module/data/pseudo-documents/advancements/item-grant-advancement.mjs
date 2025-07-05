@@ -3,7 +3,7 @@ import BaseAdvancement from "./base-advancement.mjs";
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
 
 /**
- * An advancement representing a fixed or chosen item grant from a known set of items
+ * An advancement representing a fixed or chosen item grant from a known set of items.
  */
 export default class ItemGrantAdvancement extends BaseAdvancement {
   /** @inheritdoc */
