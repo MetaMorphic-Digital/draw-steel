@@ -46,6 +46,14 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = [
+    "DRAW_STEEL.Item.base",
+    "DRAW_STEEL.Source",
+  ];
+
+  /* -------------------------------------------------- */
+
   /**
    * Convenient access to the item's actor, if it exists.
    * @returns {DrawSteelActor | null}
