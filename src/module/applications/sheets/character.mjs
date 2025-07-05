@@ -321,26 +321,14 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       return;
     }
 
-    // Dropping an item that supports advancements trigger a different workflow.
-    if (item.supportsAdvancements) {
-      // TODO: Level up when dropping an existing class.
-      if ((item.type === "class") && this.document.itemTypes.class.length) {
+    // Level up by dropping a class item.
+    if (item.type === "class") {
+      const cls = this.document.system.class;
+      if (cls && (cls.identifier !== item.identifier)) {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
         return;
       }
-
-      const advancements = item.getEmbeddedPseudoDocumentCollection("Advancement");
-      const chains = [];
-      const range = [this.document.system.level, this.document.system.level + 1];
-      for (const advancement of advancements) {
-        const validRange = advancement.levels.some(level => level.between(...range));
-        if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
-      }
-      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-        chains, actor: this.document,
-      });
-      if (!configured) return;
-      return; // TODO: create and update items, configure traits, etc.
+      return this.document.system.advance({ levels: 1, item });
     }
 
     return super._onDropItem(event, item);
