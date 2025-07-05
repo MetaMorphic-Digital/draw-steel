@@ -66,51 +66,30 @@
         "description": "<p>Lorem ipsum</p>",
         "img": null
       },
-      "PmvJLpnRHIEzsAi1": {
-        "type": "trait",
-        "_id": "PmvJLpnRHIEzsAi1",
-        "traits": {
-          "W4mzOuPwpTxc0bd0": {
-            "type": "skill",
-            "_id": "W4mzOuPwpTxc0bd0",
-            "options": "hide",
-            "name": "",
-            "img": null
-          },
-          "WC4s7uavdQLIe7Am": {
-            "type": "skill",
-            "_id": "WC4s7uavdQLIe7Am",
-            "options": "sneak",
-            "name": "",
-            "img": null
-          }
-        },
-        "name": "Skills",
-        "img": null,
-        "description": "",
-        "requirements": {
-          "level": 1
-        },
-        "chooseN": null
+      "qeqJmWU8sdfdEfWO": {
+        "type": "skill",
+        "_id": "qeqJmWU8sdfdEfWO",
+        "name": "Guaranteed Skills",
+        "skills": {
+          "choices": [
+            "hide",
+            "sneak"
+          ]
+        }
       },
-      "aqbAiHB9EEz4cW56": {
-        "type": "trait",
-        "_id": "aqbAiHB9EEz4cW56",
-        "traits": {
-          "ZKdq0i74dvTIDqIy": {
-            "type": "language",
-            "_id": "ZKdq0i74dvTIDqIy",
-            "name": "",
-            "img": null,
-            "options": ""
-          }
-        },
-        "chooseN": 1,
-        "name": "Language",
-        "img": null,
-        "description": "",
-        "requirements": {
-          "level": 1
+      "vJNXECXFdxjjxINx": {
+        "type": "skill",
+        "_id": "vJNXECXFdxjjxINx",
+        "name": "Skill Choices",
+        "skills": {
+          "groups": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ],
+          "choices": [
+            "criminalUnderworld"
+          ]
         }
       }
     },
@@ -135,7 +114,7 @@
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751673029598,
-    "modifiedTime": 1751673171149,
+    "modifiedTime": 1751742724959,
     "lastModifiedBy": "cpRCYfteS3IEfu8O"
   },
   "_id": "08pJ0i8AwjMsrKO1",
