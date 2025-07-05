@@ -33,7 +33,7 @@ export default class SkillAdvancement extends TraitAdvancement {
   get traitOptions() {
     const config = ds.CONFIG.skills;
     return Object.entries(config.list).reduce((arr, [value, { label, group }]) => {
-      if (this.skills.groups.has(group) || this.skills.choices.has(value)) arr.push({ label, group: config.groups[group].label, value });
+      if (this.any || this.skills.groups.has(group) || this.skills.choices.has(value)) arr.push({ label, group: config.groups[group].label, value });
       return arr;
     }, []);
   }

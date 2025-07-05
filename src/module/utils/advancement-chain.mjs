@@ -126,11 +126,11 @@ export default class AdvancementChain {
         }
       }
     } else if (advancement instanceof TraitAdvancement) {
-      for (const [key, { label }] of Object.entries(advancement.traitChoices)) {
-        const choice = node.choices[key] = {
+      for (const trait of advancement.traitOptions) {
+        const choice = node.choices[trait.value] = {
           node,
-          choice: label,
-          trait: key,
+          choice: trait.label,
+          trait: trait.value,
           children: {},
         };
 
@@ -138,7 +138,7 @@ export default class AdvancementChain {
           get() {
             if (!node.isChosen) return false;
             if (!node.isChoice) return true;
-            return node.selected[key] === true;
+            return node.selected[trait.value] === true;
           },
         });
       }
@@ -157,7 +157,8 @@ export default class AdvancementChain {
    */
   get isChoice() {
     switch (this.advancement.type) {
-      case "trait":
+      case "skill":
+      case "language":
         return this.advancement.isChoice;
       case "itemGrant":
         // If chooseN is null, there is no choice to make; you get all.

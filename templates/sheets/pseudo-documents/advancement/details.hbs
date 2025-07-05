@@ -21,10 +21,12 @@
 
   {{!-- TRAIT LIST --}}
   {{#if (eq document.type "skill")}}
+  {{formGroup fields.any value=source.any name="any"}}
   {{formGroup fields.skills.fields.groups value=source.skills.groups name="skills.groups" options=ctx.skillGroups}}
   {{formGroup fields.skills.fields.choices value=source.skills.choices name="skills.choices" options=ctx.skillChoices}}
   {{/if}}
   {{#if (eq document.type "language")}}
+  {{formGroup fields.any value=source.any name="any"}}
   {{formGroup fields.languages value=source.languages name="languages" options=ctx.languageChoices}}
   {{/if}}
 </section>
