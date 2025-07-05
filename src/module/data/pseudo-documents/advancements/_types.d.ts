@@ -1,5 +1,4 @@
-import ModelCollection from "../../../utils/model-collection.mjs";
-import { LanguageChoice, SkillChoice } from "../trait-choices/_module.mjs";
+export {};
 
 declare module "./base-advancement.mjs" {
   export default interface BaseAdvancement {
@@ -27,8 +26,23 @@ declare module "./trait-advancement.mjs" {
     requirements: {
       level: number;
     }
-    traits: ModelCollection<SkillChoice | LanguageChoice>;
+    any: boolean;
     /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool */
     chooseN: number | null;
+  }
+}
+
+declare module "./language-advancement.mjs" {
+  export default interface LanguageAdvancement {
+    languages: Set<string>;
+  }
+}
+
+declare module "./skill-advancement.mjs" {
+  export default interface SkillAdvancement {
+    skills: {
+      groups: Set<string>;
+      choices: Set<string>;
+    }
   }
 }
