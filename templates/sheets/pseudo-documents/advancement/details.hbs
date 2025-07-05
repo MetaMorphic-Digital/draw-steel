@@ -20,20 +20,11 @@
   {{/if}}
 
   {{!-- TRAIT LIST --}}
-  {{#if (eq document.type "trait")}}
-  <h4 class="section-header">
-    <span>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.traits"}}</span>
-    <button type="button" class="icon fa-solid fa-fw fa-circle-plus" data-action="addTrait"></button>
-  </h4>
-  {{#each ctx.traits}}
-  <div class="form-group" data-trait-id="{{trait.id}}">
-    <label>{{localize (concat "TYPES.TraitChoice." trait.type)}}</label>
-    <div class="form-fields">
-      {{!-- TODO: add fields depending on TraitChoice subtype --}}
-      <button type="button" class="icon fa-solid fa-fw fa-trash" data-action="deleteTrait"></button>
-    </div>
-    <p class="hint">{{trait}}</p>
-  </div>
-  {{/each}}
+  {{#if (eq document.type "skill")}}
+  {{formGroup fields.skills.fields.groups value=source.skills.groups name="skills.groups" options=ctx.skillGroups}}
+  {{formGroup fields.skills.fields.choices value=source.skills.choices name="skills.choices" options=ctx.skillChoices}}
+  {{/if}}
+  {{#if (eq document.type "language")}}
+  {{formGroup fields.languages value=source.languages name="languages" options=ctx.languageChoices}}
   {{/if}}
 </section>

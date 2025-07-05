@@ -22,7 +22,7 @@
     </div>
     {{/if}}
     {{!-- TRAIT SELECTED CHOICES --}}
-    {{#if (eq node.advancement.type "trait")}}
+    {{#if node.advancement.isTrait}}
     <div class="form-group">
       <label>{{choice}}</label>
     </div>

@@ -2,8 +2,7 @@
   "DOCUMENT": {
     "Advancement": "Advancement",
     "AdvancementPl": "Advancements",
-    "PowerRollEffect": "Power Roll Effect",
-    "TraitChoice": "Trait Choice"
+    "PowerRollEffect": "Power Roll Effect"
   },
   "DRAW_STEEL": {
     "COMPENDIUMS": {
@@ -39,11 +38,22 @@
             "label": "Choice",
             "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
           },
-          "traits": {
-            "element": {
-              "value": {
-                "label": "Value"
-              }
+          "any": {
+            "label": "Pick Any",
+            "hint": "Ignore the specific list of choices or groups and allow the character to pick any trait."
+          },
+          "languages": {
+            "label": "Language Choices",
+            "hint": "Specific languages that can be chosen in this advancement. If this is empty, any language can be chosen."
+          },
+          "skills": {
+            "choices": {
+              "label": "Skill Choices",
+              "hint": "Specific skills that can be chosen in this advancement. If this and skill groups are empty, any skill can be chosen."
+            },
+            "groups": {
+              "label": "Skill Groups",
+              "hint": "Groups of skills that can be chosen in this advancement."
             }
           }
         }
@@ -61,13 +71,19 @@
       "WARNING": {
         "cannotAddNewClass": "You cannot add a new class to a character that already has one."
       },
-
-      "levelUp": "Level Up: {name}"
+      "levelUp": "Level Up: {name}",
+      "ConfigureAdvancement": {
+        "Title": "Configure {name}",
+        "ChooseN": "Choose {n}"
+      }
     },
 
     "TRAIT_CHOICE": {
       "FIELDS": {},
-      "HINT": {}
+      "HINT": {},
+      "Any": "Any Option",
+      "skillGroup": "Skill Group",
+      "specificLanguage": "Specific Language"
     },
 
     "Sheet": {
@@ -1488,9 +1504,6 @@
       "Zahariax": "Za'hariax",
       "Zaliac": "Zaliac"
     },
-    "Advancement": {
-      "Title": "Advancement"
-    },
     "Echelon": {
       "1": "1st Echelon",
       "2": "2nd Echelon",
@@ -1555,7 +1568,8 @@
     },
     "Advancement": {
       "itemGrant": "Item Grant",
-      "trait": "Trait"
+      "skill": "Skill",
+      "language": "Language"
     },
     "ChatMessage": {
       "abilityUse": "Ability Use"
@@ -1580,8 +1594,7 @@
       "damage": "Damage",
       "forced": "Forced Movement",
       "other": "Other"
-    },
-    "TraitChoice": {}
+    }
   },
   "TOKEN.MOVEMENT":{
     "SelectType": "Select Movement Type",

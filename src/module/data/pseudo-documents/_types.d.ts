@@ -1,3 +1,4 @@
+import "./advancements/_types";
 import "./power-roll-effects/_types";
 
 import { ApplicationConfiguration } from "@client/applications/_types";
@@ -8,6 +9,8 @@ export interface TypedPseudoDocumentCreateDialogOptions extends ApplicationConfi
 declare module "./pseudo-document.mjs" {
   export default interface PseudoDocument {
     _id: string;
+    name: string;
+    img: string;
   }
 }
 

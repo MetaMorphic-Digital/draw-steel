@@ -1335,22 +1335,15 @@ DRAW_STEEL.Advancement = {
     label: "TYPES.Advancement.itemGrant",
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
-  trait: {
-    label: "TYPES.Advancement.trait",
-    documentClass: pseudoDocuments.advancements.TraitAdvancement,
+  skill: {
+    label: "TYPES.Advancement.skill",
+    documentClass: pseudoDocuments.advancements.SkillAdvancement,
+  },
+  language: {
+    label: "TYPES.Advancement.language",
+    documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
-
-/* -------------------------------------------------- */
-
-/**
- * @typedef TraitChoiceType
- * @property {string} label   Human-readable label.
- * @property {pseudoDocuments.traitChoices.BaseTraitChoice} documentClass   The pseudo-document class.
- */
-
-/** @type {Record<string, TraitChoiceType>} */
-DRAW_STEEL.TraitChoice = {};
 
 /* -------------------------------------------------- */
 
@@ -1648,22 +1641,3 @@ DRAW_STEEL.projects = {
   },
 };
 preLocalize("projects.types", { key: "label" });
-
-/* -------------------------------------------------- */
-
-/**
- * @typedef TraitConfiguration
- * @property {string} label         Human-readable label of the trait.
- * @property {DataField} [field]    A field used to render the input.
- */
-
-/**
- * The options for a trait advancement.
- * @type {Record<string, TraitConfiguration>}
- */
-DRAW_STEEL.TRAITS = {
-  test: {
-    label: "Test Trait",
-    field: new foundry.data.fields.NumberField({ min: 1, max: 5, integer: true, nullable: false }),
-  },
-};
