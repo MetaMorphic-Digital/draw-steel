@@ -24,13 +24,15 @@ export default class LanguageAdvancement extends TraitAdvancement {
   get traitChoices() {
     return ds.CONFIG.languages;
   }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get traitOptions() {
     const config = ds.CONFIG.languages;
+    const any = !this.languages.size;
     return Object.entries(config).reduce((arr, [value, { label }]) => {
-      if (this.any || this.languages.has(value)) arr.push({ label, value });
+      if (any || this.languages.has(value)) arr.push({ label, value });
       return arr;
     }, []);
   }

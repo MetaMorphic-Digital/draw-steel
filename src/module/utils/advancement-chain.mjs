@@ -177,7 +177,8 @@ export default class AdvancementChain {
    */
   get chooseN() {
     switch (this.advancement.type) {
-      case "trait":
+      case "language":
+      case "skill":
         if (!this.advancement.isChoice) return null;
         return this.advancement.chooseN;
       case "itemGrant":

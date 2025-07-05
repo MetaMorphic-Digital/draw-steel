@@ -44,12 +44,12 @@
           },
           "languages": {
             "label": "Language Choices",
-            "hint": "Specific languages that can be chosen in this advancement."
+            "hint": "Specific languages that can be chosen in this advancement. If this is empty, any language can be chosen."
           },
           "skills": {
             "choices": {
               "label": "Skill Choices",
-              "hint": "Specific skills that can be chosen in this advancement."
+              "hint": "Specific skills that can be chosen in this advancement. If this and skill groups are empty, any skill can be chosen."
             },
             "groups": {
               "label": "Skill Groups",
@@ -73,7 +73,8 @@
       },
       "levelUp": "Level Up: {name}",
       "ConfigureAdvancement": {
-        "Title": "Configure {name}"
+        "Title": "Configure {name}",
+        "ChooseN": "Choose {n}"
       }
     },
 

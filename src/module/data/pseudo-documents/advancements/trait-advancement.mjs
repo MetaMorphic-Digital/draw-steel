@@ -17,8 +17,7 @@ export default class TraitAdvancement extends BaseAdvancement {
       requirements: new SchemaField({
         level: new NumberField({ integer: true, min: 1, max: 10, nullable: false, initial: 1 }),
       }),
-      any: new BooleanField(),
-      chooseN: new NumberField({ integer: true, nullable: true, initial: null, min: 1 }),
+      chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
     });
   }
 
@@ -39,6 +38,15 @@ export default class TraitAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   get levels() {
     return [this.requirements.level];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Getter to indicate that this is a trait advancement
+   */
+  get isTrait() {
+    return true;
   }
 
   /* -------------------------------------------------- */
@@ -103,7 +111,13 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     const choiceSelect = foundry.applications.fields.createMultiSelectInput({ options: traits, name: "choices", type: "checkboxes", value: chosen });
 
-    content.append(choiceSelect);
+    const formGroup = foundry.applications.fields.createFormGroup({
+      classes: ["stacked"],
+      input: choiceSelect,
+      label: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: chooseN }),
+    });
+
+    content.append(formGroup);
 
     function render(event, dialog) {
       /** @type {foundry.applications.elements.HTMLMultiCheckboxElement} */

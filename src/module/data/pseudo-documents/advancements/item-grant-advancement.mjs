@@ -15,7 +15,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
-      chooseN: new NumberField({ integer: true, nullable: true, initial: null, min: 1 }),
+      chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
     });
   }
 

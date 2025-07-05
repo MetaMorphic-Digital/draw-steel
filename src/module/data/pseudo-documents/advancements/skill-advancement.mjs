@@ -27,13 +27,15 @@ export default class SkillAdvancement extends TraitAdvancement {
   get traitChoices() {
     return ds.CONFIG.skills.list;
   }
+
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   get traitOptions() {
     const config = ds.CONFIG.skills;
+    const any = !this.skills.groups.size && !this.skills.choices.size;
     return Object.entries(config.list).reduce((arr, [value, { label, group }]) => {
-      if (this.any || this.skills.groups.has(group) || this.skills.choices.has(value)) arr.push({ label, group: config.groups[group].label, value });
+      if (any || this.skills.groups.has(group) || this.skills.choices.has(value)) arr.push({ label, group: config.groups[group].label, value });
       return arr;
     }, []);
   }

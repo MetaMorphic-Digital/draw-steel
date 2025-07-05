@@ -1641,26 +1641,3 @@ DRAW_STEEL.projects = {
   },
 };
 preLocalize("projects.types", { key: "label" });
-
-/* -------------------------------------------------- */
-
-/**
- * @typedef TraitConfiguration
- * @property {string} label         Human-readable label of the trait.
- * @property {DataField} [field]    A field used to render the input.
- */
-
-/**
- * The options for a trait advancement.
- * @type {Record<string, TraitConfiguration>}
- */
-DRAW_STEEL.TRAITS = {
-  language: {
-    label: "TYPES.TraitChoice.language",
-    field: new foundry.data.fields.NumberField({ min: 1, max: 5, integer: true, nullable: false }),
-  },
-  skill: {
-    label: "TYPES.TraitChoice.skill",
-    field: new foundry.data.fields.BooleanField(),
-  },
-};
