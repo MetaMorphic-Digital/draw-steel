@@ -1,3 +1,4 @@
+import { systemID } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
@@ -16,6 +17,29 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     }
 
     return rollData;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+    if ((this.actor?.type !== "character") || !this.supportsAdvancements) return;
+
+    const record = this.actor.system._traits ??= {};
+    const flags = this.flags[systemID]?.advancement ?? {};
+    const addTrait = (type, trait) => {
+      record[type] ??= new Set();
+      for (const k of trait) record[type].add(k);
+    };
+
+    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement")) {
+      if (!["skill", "language"].includes(advancement.type)) continue;
+      const selected = advancement.isChoice
+        ? flags[advancement.id]?.selected ?? []
+        : Object.keys(advancement.traitChoices);
+      addTrait(advancement.type, selected);
+    }
   }
 
   /* -------------------------------------------------- */

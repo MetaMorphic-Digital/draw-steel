@@ -281,6 +281,16 @@ export default class CharacterModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Internal record used to cache trait advancements to apply their changes during data prep.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<string, Set>}
+   * @internal
+   */
+  _traits;
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get reach() {
     return 1 + this.abilityBonuses.melee.distance;
