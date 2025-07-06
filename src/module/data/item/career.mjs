@@ -1,8 +1,8 @@
 import { systemPath } from "../../constants.mjs";
-import CharacterModel from "../actor/character.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
- * @import AdvancementModel from "./advancement.mjs";
+ * @import CharacterModel from "../actor/character.mjs";
  */
 
 /**
