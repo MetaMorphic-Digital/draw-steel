@@ -203,7 +203,7 @@ export default class ProjectModel extends BaseItemModel {
       rolls: [projectRoll],
       title: this.parent.name,
       content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.Roll.Project.Label"),
+      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
       flags: { core: { canPopout: true } },
     };
 

@@ -25,7 +25,7 @@ export default class ProjectRoll extends DSRoll {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.netBoon > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.min(4, 2 * Math.abs(this.netBoon)),
-          flavor: game.i18n.localize(`DRAW_STEEL.Roll.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
+          flavor: game.i18n.localize(`DRAW_STEEL.ROLL.Power.Modifier.${this.netBoon > 0 ? "Edge" : "Bane"}`),
         });
         this.terms.push(operation, number);
       }
@@ -35,7 +35,7 @@ export default class ProjectRoll extends DSRoll {
         const operation = new foundry.dice.terms.OperatorTerm({ operator: (this.options.bonuses > 0 ? "+" : "-") });
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
-          flavor: game.i18n.localize("DRAW_STEEL.Roll.Power.Modifier.Bonuses"),
+          flavor: game.i18n.localize("DRAW_STEEL.ROLL.Power.Modifier.Bonuses"),
         });
         this.terms.push(operation, number);
       }
@@ -85,7 +85,7 @@ export default class ProjectRoll extends DSRoll {
     if (!["none", "evaluate", "message"].includes(evaluation)) {
       throw new Error("The `evaluation` parameter must be 'none', 'evaluate', or 'message'");
     }
-    const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.Roll.Project.Label");
+    const flavor = options.flavor ?? game.i18n.localize("DRAW_STEEL.ROLL.Project.Label");
     options.modifiers ??= {};
     options.modifiers.edges ??= 0;
     options.modifiers.banes ??= 0;
@@ -100,7 +100,7 @@ export default class ProjectRoll extends DSRoll {
     const promptValue = await PowerRollDialog.create({
       context,
       window: {
-        title: "DRAW_STEEL.Roll.Project.Label",
+        title: "DRAW_STEEL.ROLL.Project.Label",
       },
     });
 
@@ -209,16 +209,16 @@ export default class ProjectRoll extends DSRoll {
 
     switch (this.netBoon) {
       case -2:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Banes";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Banes";
         break;
       case -1:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Bane";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Bane";
         break;
       case 1:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Edge";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Edge";
         break;
       case 2:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Edges";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Edges";
         break;
     }
 

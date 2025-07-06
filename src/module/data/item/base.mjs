@@ -49,7 +49,7 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = [
     "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Source",
+    "DRAW_STEEL.SOURCE",
   ];
 
   /* -------------------------------------------------- */

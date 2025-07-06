@@ -344,7 +344,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
-      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       abilities: [],
       showAdd: false,
       // Show "other" if and only if there are abilities of that type

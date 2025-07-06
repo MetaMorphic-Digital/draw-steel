@@ -144,7 +144,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
-      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       equipment: [],
       showAdd: false,
       // Show "other" if and only if there is equipment of that category

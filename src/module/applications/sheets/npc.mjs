@@ -81,20 +81,18 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Fetches the printable string for the monster's keywords
-   * @returns {string}
+   * @returns {string[]}
    */
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
-    const formatter = game.i18n.getListFormatter({ type: "unit" });
-    const keywords = Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
-    return formatter.format(keywords);
+    return Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Fetches the label for the monster's organization
-   * @returns {{list: FormSelectOption[], current: string}}
+   * @returns {string}
    */
   _getOrganizationLabel() {
     const organizations = ds.CONFIG.monsters.organizations;
@@ -105,7 +103,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Fetches the label for the monster's role
-   * @returns {{list: FormSelectOption[], current: string}}
+   * @returns {string}
    */
   _getRoleLabel() {
     const roles = ds.CONFIG.monsters.roles;
@@ -116,6 +114,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /**
    * Fetches the label for the monster's Encounter Value
+   * @returns {string}
    */
   _getEVLabel() {
     const data = { value: this.actor.system.monster.ev };
@@ -126,8 +125,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the options for Motivations
-   * @returns {{list: FormSelectOption[]}}
+   * Fetches the options for Motivations & Pitfalls
+   * @returns {{list: FormSelectOption[]; currentMotivations: string; currentPitfalls: string}}
    */
   _getMotivations() {
     const motivations = ds.CONFIG.negotiation.motivations;

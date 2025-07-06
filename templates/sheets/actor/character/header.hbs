@@ -14,11 +14,11 @@
 {{else}}
 {{#if isPlay}}
 <span class="unfilled">
-  {{localize "DRAW_STEEL.Sheet.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
+  {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
 </span>
 {{else}}
 <a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="{{originType}}" data-render-sheet="true">
-  {{localize "DRAW_STEEL.Sheet.Add" itemName=(localize (concat "TYPES.Item." originType))}}
+  {{localize "DRAW_STEEL.SHEET.Add" itemName=(localize (concat "TYPES.Item." originType))}}
 </a>
 {{/if}}
 {{/if}}
@@ -63,7 +63,7 @@
       <dd class="level">
         {{system.level}}
         {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
-        <span class="level-up" data-tooltip="DRAW_STEEL.Sheet.LevelUp">
+        <span class="level-up" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
           <i class="fa-solid fa-up-long"></i>
         </span>
         {{/if}}

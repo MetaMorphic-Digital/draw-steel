@@ -7,7 +7,7 @@ export default class SavingThrowDialog extends RollDialog {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     window: {
-      title: "DRAW_STEEL.Roll.Save.Prompt.Title",
+      title: "DRAW_STEEL.ROLL.Save.Prompt.Title",
     },
     classes: ["saving-throw-dialog"],
   };

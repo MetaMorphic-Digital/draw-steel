@@ -1,21 +1,21 @@
 <section>
   <div class="global group">
-    <div class="header">{{localize "DRAW_STEEL.Roll.Power.Prompt.GlobalModifiers"}}</div>
+    <div class="header">{{localize "DRAW_STEEL.ROLL.Power.Prompt.GlobalModifiers"}}</div>
     <div class="modifiers general">
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Edges"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Edges"}}</span>
         <select name="modifiers.edges" data-dtype="Number">
           {{selectOptions modChoices selected=modifiers.edges}}
         </select>
       </label>
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Banes"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Banes"}}</span>
         <select name="modifiers.banes" data-dtype="Number">
           {{selectOptions modChoices selected=modifiers.banes}}
         </select>
       </label>
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Bonuses"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Bonuses"}}</span>
         {{numberInput modifiers.bonuses name="modifiers.bonuses" step=1}}
       </label>
     </div>
@@ -25,23 +25,23 @@
     <div class="header">{{target.actor.name}}</div>
     <div class="modifiers">
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Edges"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Edges"}}</span>
         <select name="targets.{{@index}}.modifiers.edges" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.edges}}
         </select>
-        <span class="total-edges">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.edges}}</span>
+        <span class="total-edges">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.edges}}</span>
       </label>
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Banes"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Banes"}}</span>
         <select name="targets.{{@index}}.modifiers.banes" data-dtype="Number">
           {{selectOptions @root.modChoices selected=target.modifiers.banes}}
         </select>
-        <span class="total-banes">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
+        <span class="total-banes">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.banes}}</span>
       </label>
       <label>
-        <span>{{localize "DRAW_STEEL.Roll.Power.Modifier.Bonuses"}}</span>
+        <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Bonuses"}}</span>
         {{numberInput target.modifiers.bonuses name=(concat "targets." @index ".modifiers.bonuses") step=1}}
-        <span class="total-bonuses">{{localize "DRAW_STEEL.Roll.Power.Prompt.Total" number=target.combinedModifiers.bonuses}}</span>
+        <span class="total-bonuses">{{localize "DRAW_STEEL.ROLL.Power.Prompt.Total" number=target.combinedModifiers.bonuses}}</span>
       </label>
     </div>
   </div>
@@ -56,7 +56,7 @@
   {{/if}}
   {{#if damageOptions}}
   <div class="form-group">
-    <label for="damage-selection">{{localize "DRAW_STEEL.Roll.Power.Prompt.DamageSelectionLabel"}}</label>
+    <label for="damage-selection">{{localize "DRAW_STEEL.ROLL.Power.Prompt.DamageSelectionLabel"}}</label>
     <div class="form-fields">
       <select name="damage-selection" id="damage-selection">
         {{selectOptions damageOptions selected=damage}}

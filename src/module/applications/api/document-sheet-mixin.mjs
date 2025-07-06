@@ -85,14 +85,14 @@ export default base => {
       const buttons = [constructHTMLButton({
         label: "",
         classes: ["header-control", "icon", "fa-solid", "fa-user-lock"],
-        dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.Sheet.ToggleMode" },
+        dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.SHEET.ToggleMode" },
       })];
 
       if (this.document.system.source) {
         buttons.push(constructHTMLButton({
           label: "",
           classes: ["header-control", "icon", "fa-solid", "fa-book"],
-          dataset: { action: "updateSource", tooltip: "DRAW_STEEL.Source.Update" },
+          dataset: { action: "updateSource", tooltip: "DRAW_STEEL.SOURCE.Update" },
         }));
       }
       this.window.controls.after(...buttons);

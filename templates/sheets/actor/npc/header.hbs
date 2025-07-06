@@ -18,24 +18,15 @@
     </div>
     <div class="tags flexrow">
       {{!-- Keyword Tags --}}
-      {{#each system.monster.keywords as |keyword|}}
-      <div class="tag">
-        {{lookup (lookup @root.config.monsters.keywords keyword) "label"}}
-      </div>
+      {{#each monsterKeywords as |keyword|}}
+      <div class="tag">{{keyword}}</div>
       {{/each}}
-      {{#unless system.monster.keywords}}
-      {{/unless}}
-
       {{!-- Organization/Role Tags --}}
       {{#if system.monster.organization}}
-      <div class="tag">
-        {{lookup (lookup config.monsters.organizations system.monster.organization) "label"}}
-      </div>
+      <div class="tag">{{organizationLabel}}</div>
       {{/if}}
       {{#if system.monster.role}}
-      <div class="tag">
-        {{lookup (lookup config.monsters.roles system.monster.role) "label"}}
-      </div>
+      <div class="tag">{{roleLabel}}</div>
       {{/if}}
       {{#unless isPlay}}
       <a data-action="editMonsterMetadata">
@@ -53,13 +44,7 @@
       <dd class="level">{{systemSource.monster.level}}</dd>
 
       <dt class="ev">{{localize "DRAW_STEEL.Actor.npc.EVLabel.Label"}}</dt>
-      <dd class="ev">
-        {{#if (eq system.monster.organization "minion")}}
-        {{localize "DRAW_STEEL.Actor.npc.EVLabel.Minion" value=systemSource.monster.ev}}
-        {{else}}
-        {{systemSource.monster.ev}}
-        {{/if}}
-      </dd>
+      <dd class="ev">{{evLabel}}</dd>
     </dl>
     {{#if showMalice}}
     <div class="malice">
