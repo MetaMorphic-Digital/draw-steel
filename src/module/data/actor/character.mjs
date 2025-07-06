@@ -398,7 +398,7 @@ export default class CharacterModel extends BaseActorModel {
 
     if (item && (item.type !== "class")) throw new Error("The item provided for advancing must be a class item.");
     if (!cls && !item) throw new Error("A class item is required if a hero has no current levels.");
-    if (cls && item && (item.identifier !== cls.identifier))
+    if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
     if (this.level + levels > 10) throw new Error("A hero cannot advance beyond level 10.");
