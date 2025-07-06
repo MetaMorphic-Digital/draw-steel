@@ -40,6 +40,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Recursive method to find all items that were added to an actor by this advancement.
+   * If the item is unowned, this returns `null`.
+   * @returns {Set<foundry.documents.Item[]>|null}
+   */
+  grantedItemsChain() {
+    // TODO
+    return new Set();
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async configureAdvancement(node = null) {
     const items = node ?
