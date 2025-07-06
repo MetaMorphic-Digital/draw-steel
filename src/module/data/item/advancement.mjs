@@ -32,9 +32,9 @@ export default class AdvancementModel extends BaseItemModel {
   prepareBaseData() {
     super.prepareBaseData();
 
-    if ((this.parent.actor?.type !== "character")) return;
+    if ((this.actor?.type !== "character")) return;
 
-    const record = this.parent.actor.system._traits;
+    const record = this.actor.system._traits;
     const flags = this.parent.flags[systemID]?.advancement ?? {};
     const addTrait = (type, trait) => {
       record[type] ??= new Set();
