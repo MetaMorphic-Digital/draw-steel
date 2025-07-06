@@ -144,7 +144,7 @@ export default class ProjectModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", "project");
     if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/project.hbs"), context);
+    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/project.hbs"), context);
     embed.insertAdjacentHTML("beforeend", projectBody);
     return embed;
   }

@@ -37,7 +37,7 @@ Hooks.once("init", function () {
   }
 
   helpers.registerHandlebars();
-  const templates = ["templates/embeds/ability.hbs", "templates/embeds/kit.hbs", "templates/embeds/project.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = ["templates/embeds/item/ability.hbs", "templates/embeds/item/kit.hbs", "templates/embeds/item/project.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
