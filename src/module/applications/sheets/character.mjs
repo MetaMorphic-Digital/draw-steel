@@ -324,7 +324,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     // Level up by dropping a class item.
     if (item.type === "class") {
       const cls = this.document.system.class;
-      if (cls && (cls.identifier !== item.identifier)) {
+      if (cls && (cls.dsid !== item.dsid)) {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
         return;
       }

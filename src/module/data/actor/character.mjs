@@ -1,3 +1,4 @@
+import { systemID } from "../../constants.mjs";
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
@@ -395,9 +396,9 @@ export default class CharacterModel extends BaseActorModel {
   async advance({ levels = 1, item = null } = {}) {
     let cls = this.class;
 
-    if (item && (item.type !== "class")) throw new Error("The item provided to advancing must be a class item.");
+    if (item && (item.type !== "class")) throw new Error("The item provided for advancing must be a class item.");
     if (!cls && !item) throw new Error("A class item is required if a hero has no current levels.");
-    if (cls && item && (item.identifier !== cls.identifier))
+    if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
     if (this.level + levels > 10) throw new Error("A hero cannot advance beyond level 10.");
@@ -416,8 +417,57 @@ export default class CharacterModel extends BaseActorModel {
     });
     if (!configured) return;
 
-    // TODO: create and update items, actor, etc.
+    const toCreate = {}; // Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
+    const toUpdate = {}; // Record of existing items' ids to the updates to be performed.
+    const actorUpdate = {};
 
-    return cls; // TODO: return existing class item or return newly created class item
+    // Should the class item be created?
+    const createClass = cls !== this.class;
+    if (createClass) {
+      const keepId = !this.parent.items.has(cls.id);
+      const itemData = game.items.fromCompendium(cls, { keepId });
+      foundry.utils.setProperty(itemData, "system.level", range[1]);
+      toCreate[cls.uuid] = itemData;
+    } else {
+      toUpdate[cls.id] = { _id: cls.id, "system.level": range[1] };
+    }
+
+    // TODO: store id of the "parent" item to allow for later recursive deletion.
+
+    // First gather all new items that are to be created.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (node.advancement.type !== "itemGrant") continue;
+
+      for (const uuid of node.chosenSelection) {
+        const item = node.choices[uuid].item;
+        const keepId = !this.parent.items.has(item.id) && !(item.id in toCreate);
+        const itemData = game.items.fromCompendium(item, { keepId });
+        toCreate[item.uuid] = itemData;
+      }
+    }
+
+    // Perform item data modifications or store item updates.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (!node.advancement.isTrait) continue;
+      const item = node.advancement.document;
+      const isExisting = item.parent === this.parent;
+      let itemData;
+      if (isExisting) {
+        toUpdate[item.id] ??= { _id: item.id };
+        itemData = toUpdate[item.id];
+      } else {
+        itemData = toCreate[item.uuid];
+      }
+
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${node.advancement.id}.selected`, node.chosenSelection);
+    }
+
+    await Promise.all([
+      this.parent.createEmbeddedDocuments("Item", Object.values(toCreate)),
+      this.parent.updateEmbeddedDocuments("Item", Object.values(toUpdate)),
+      this.parent.update(actorUpdate),
+    ]);
+
+    return this.class;
   }
 }

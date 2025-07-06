@@ -217,4 +217,16 @@ export default class AdvancementChain {
     const selected = Object.values(this.selected).reduce((acc, b) => acc + Boolean(b), 0);
     return selected === this.chooseN;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Retrieve the chosen selection. If no choice is involved, returns all choices.
+   * @type {string[]|null}
+   */
+  get chosenSelection() {
+    if (!this.isConfigured) return null;
+    if (this.isChoice) return Object.entries(this.selected).filter(([, v]) => v).map(([k]) => k);
+    return Object.keys(this.choices);
+  }
 }
