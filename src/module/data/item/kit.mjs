@@ -19,7 +19,7 @@ export default class KitModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Kit");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.kit");
 
   /* -------------------------------------------------- */
 
@@ -78,7 +78,7 @@ export default class KitModel extends BaseItemModel {
     if (actor) {
       const actorClass = actor.system.class;
       if (actorClass?.system.kits === 0) {
-        const message = game.i18n.format("DRAW_STEEL.Item.Kit.NotAllowedByClass", { class: actorClass.name });
+        const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
         ui.notifications.error(message);
         return false;
       }
@@ -126,7 +126,7 @@ export default class KitModel extends BaseItemModel {
     if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", { kit: this.parent.name, actor: this.parent.actor.name })}</strong>`;
+    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: this.parent.actor.name })}</strong>`;
     for (const kit of kits) {
       radioButtons += `
         <div class="form-group">
@@ -143,10 +143,10 @@ export default class KitModel extends BaseItemModel {
       content: radioButtons,
       window: {
         icon: "fa-solid fa-arrow-right-arrow-left",
-        title: "DRAW_STEEL.Item.Kit.Swap.Title",
+        title: "DRAW_STEEL.Item.kit.Swap.Title",
       },
       ok: {
-        label: "DRAW_STEEL.Item.Kit.Swap.Button",
+        label: "DRAW_STEEL.Item.kit.Swap.Button",
         icon: "fa-solid fa-arrow-right-arrow-left",
       },
     });

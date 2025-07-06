@@ -19,7 +19,7 @@ export default class ClassModel extends AdvancementModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Class");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.class");
 
   /* -------------------------------------------------- */
 

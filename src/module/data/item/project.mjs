@@ -24,7 +24,7 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Project");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.project");
 
   /* -------------------------------------------------- */
 
@@ -115,7 +115,7 @@ export default class ProjectModel extends BaseItemModel {
 
     // When the project is completed, notify the user and create any yielded item.
     if ((game.userId === userId) && options.completeProject) {
-      ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {
+      ui.notifications.success("DRAW_STEEL.Item.project.CompletedNotification", {
         format: {
           actor: this.actor.name,
           project: this.parent.name,
@@ -237,20 +237,20 @@ export default class ProjectModel extends BaseItemModel {
     const formGroup = new foundry.applications.fields.createFormGroup({
       input,
       classes: ["stacked"],
-      label: "DRAW_STEEL.Item.Project.SpendCareerPoints.Label",
+      label: "DRAW_STEEL.Item.project.SpendCareerPoints.Label",
       localize: true,
     });
 
     const fd = await ds.applications.api.DSDialog.input({
       content: formGroup.outerHTML,
-      window: { title: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title" },
+      window: { title: "DRAW_STEEL.Item.project.SpendCareerPoints.Title" },
     });
 
     if (fd?.spendPoints > 0) {
       await this.parent.update({ "system.points": this.points + fd.spendPoints });
       await this.actor.system.career.update({ "system.projectPoints": careerPoints - fd.spendPoints });
 
-      ui.notifications.success("DRAW_STEEL.Item.Project.SpendCareerPoints.Success", {
+      ui.notifications.success("DRAW_STEEL.Item.project.SpendCareerPoints.Success", {
         format: {
           actor: this.actor.name,
           points: fd.spendPoints,
@@ -282,7 +282,7 @@ export default class ProjectModel extends BaseItemModel {
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
-    ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {
+    ui.notifications.success("DRAW_STEEL.Item.project.Craft.CompletedNotification", {
       format: {
         actor: this.actor.name,
         amount,

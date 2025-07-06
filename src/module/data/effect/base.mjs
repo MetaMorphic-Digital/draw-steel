@@ -19,7 +19,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.Effect.base"];
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.ActiveEffect.base"];
 
   /* -------------------------------------------------- */
 

@@ -119,8 +119,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   _getEVLabel() {
     const data = { value: this.actor.system.monster.ev };
-    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
-    else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
+    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data);
+    else return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
   /* -------------------------------------------------- */
@@ -215,19 +215,19 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
    */
   static async #freeStrike(event, target) {
     try { game.user.targets.map(t => t.actor); } catch (e) {
-      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.MultiLinked", { localize: true });
+      ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.MultiLinked", { localize: true });
       throw (e);
     }
 
     /** @type {Array<DrawSteelActor>} */
     const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
     if (!targets.length) {
-      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", { localize: true });
+      ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.NoTargets", { localize: true });
       return;
     }
     const freeStrike = this.actor.system.freeStrike;
 
-    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
+    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
       value: freeStrike.value,
       type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
     });
@@ -252,10 +252,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     /** @type {object} */
     const fd = await ds.applications.api.DSDialog.input({
-      window: { title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
+      window: { title: "DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
       content,
       ok: {
-        label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
+        label: "DRAW_STEEL.Actor.npc.FreeStrike.DialogButton",
       },
     });
 

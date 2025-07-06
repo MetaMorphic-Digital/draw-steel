@@ -20,7 +20,7 @@ export default class EquipmentModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Equipment");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.equipment");
 
   /* -------------------------------------------------- */
 
@@ -81,7 +81,7 @@ export default class EquipmentModel extends BaseItemModel {
   async createProject(actor) {
     if (!actor) return;
 
-    const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", { name: this.parent.name });
+    const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
     await Item.create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
   }
 }

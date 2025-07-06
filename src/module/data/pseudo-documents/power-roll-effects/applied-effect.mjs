@@ -80,7 +80,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     const effectOptions = this.item.effects.filter(e => !e.transfer)
       .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
     const statusOptions = CONFIG.statusEffects.filter(s => (s._id && (s.hud !== false)))
-      .map(s => ({ value: s.id, label: s.name, group: game.i18n.localize("DRAW_STEEL.Effect.StatusConditions") }));
+      .map(s => ({ value: s.id, label: s.name, group: game.i18n.localize("DRAW_STEEL.ActiveEffect.StatusConditions") }));
 
     for (const n of [1, 2, 3]) {
       const path = `applied.tier${n}`;

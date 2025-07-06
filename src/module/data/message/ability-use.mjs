@@ -78,7 +78,7 @@ export default class AbilityUseModel extends BaseMessageModel {
       }
       else {
         embed = document.createElement("p");
-        embed.innerText = game.i18n.localize("DRAW_STEEL.Item.Ability.EmbedFail");
+        embed.innerText = game.i18n.localize("DRAW_STEEL.Item.ability.EmbedFail");
       }
 
       // If it's a roll, the roll rendering will replace the message's stored content. Otherwise we need to do it.
@@ -118,7 +118,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     for (const effectButton of effectButtons) effectButton.addEventListener("click", async (event) => {
       /** @type {AppliedPowerRollEffect} */
       const pre = await fromUuid(effectButton.dataset.uuid);
-      if (!pre) return void ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoPRE", { localize: true });
+      if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoPRE", { localize: true });
       const effectId = effectButton.dataset.effectId;
       const config = pre.applied[this.tierKey].effects[effectId];
 

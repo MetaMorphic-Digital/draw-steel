@@ -49,7 +49,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
         });
       }
     } catch (error) {
-      ui.notifications.warn("DRAW_STEEL.Effect.TargetedConditionPrompt.Warning", { localize: true });
+      ui.notifications.warn("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Warning", { localize: true });
     }
   }
 

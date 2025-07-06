@@ -184,12 +184,12 @@ preLocalize("healingTypes", { key: "label" });
  */
 DRAW_STEEL.conditions = {
   bleeding: {
-    name: "DRAW_STEEL.Effect.Conditions.Bleeding.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Bleeding.name",
     img: "icons/svg/blood.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ",
   },
   dazed: {
-    name: "DRAW_STEEL.Effect.Conditions.Dazed.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb",
     restrictions: {
@@ -197,14 +197,14 @@ DRAW_STEEL.conditions = {
     },
   },
   frightened: {
-    name: "DRAW_STEEL.Effect.Conditions.Frightened.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Frightened.name",
     img: "icons/svg/terror.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
     targeted: true,
     maxSources: 1,
   },
   grabbed: {
-    name: "DRAW_STEEL.Effect.Conditions.Grabbed.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Grabbed.name",
     img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn",
     targeted: true,
@@ -213,12 +213,12 @@ DRAW_STEEL.conditions = {
     },
   },
   prone: {
-    name: "DRAW_STEEL.Effect.Conditions.Prone.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Prone.name",
     img: "icons/svg/falling.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.v11clsSMgoFZm3V8",
   },
   restrained: {
-    name: "DRAW_STEEL.Effect.Conditions.Restrained.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Restrained.name",
     img: "icons/svg/net.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj",
     restrictions: {
@@ -226,20 +226,20 @@ DRAW_STEEL.conditions = {
     },
   },
   slowed: {
-    name: "DRAW_STEEL.Effect.Conditions.Slowed.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Slowed.name",
     img: "systems/draw-steel/assets/icons/snail.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL",
     defaultSpeed: 2,
   },
   taunted: {
-    name: "DRAW_STEEL.Effect.Conditions.Taunted.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh",
     targeted: true,
     maxSources: 1,
   },
   weakened: {
-    name: "DRAW_STEEL.Effect.Conditions.Weakened.name",
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Weakened.name",
     img: "icons/svg/downgrade.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.QZpLhRT6imKlqZ1n",
   },
@@ -253,16 +253,16 @@ DRAW_STEEL.conditions = {
  */
 DRAW_STEEL.effectEnds = {
   turn: {
-    label: "DRAW_STEEL.Effect.Ends.Turn.Label",
-    abbreviation: "DRAW_STEEL.Effect.Ends.Turn.Abbr",
+    label: "DRAW_STEEL.ActiveEffect.Ends.Turn.Label",
+    abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Turn.Abbr",
   },
   save: {
-    label: "DRAW_STEEL.Effect.Ends.Save.Label",
-    abbreviation: "DRAW_STEEL.Effect.Ends.Save.Abbr",
+    label: "DRAW_STEEL.ActiveEffect.Ends.Save.Label",
+    abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Save.Abbr",
   },
   encounter: {
-    label: "DRAW_STEEL.Effect.Ends.Encounter.Label",
-    abbreviation: "DRAW_STEEL.Effect.Ends.Encounter.Abbr",
+    label: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Label",
+    abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Abbr",
   },
 };
 preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
@@ -697,40 +697,40 @@ DRAW_STEEL.negotiation = {
   /** @type {Record<string, {label: string}>} */
   motivations: {
     benevolence: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Benevolence",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Benevolence",
     },
     discovery: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Discovery",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Discovery",
     },
     freedom: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Freedom",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Freedom",
     },
     greed: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Greed",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Greed",
     },
     authority: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.HigherAuthority",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.HigherAuthority",
     },
     justice: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Justice",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Justice",
     },
     legacy: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Legacy",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Legacy",
     },
     peace: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Peace",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Peace",
     },
     power: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Power",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Power",
     },
     protection: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Protection",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Protection",
     },
     revelry: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Revelry",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Revelry",
     },
     vengeance: {
-      label: "DRAW_STEEL.Actor.NPC.Negotiation.Motivations.Vengeance",
+      label: "DRAW_STEEL.Actor.npc.Negotiation.Motivations.Vengeance",
     },
   },
 };
@@ -862,115 +862,115 @@ DRAW_STEEL.monsters = {
   /** @type {Record<string, {label: string, group: string}>} */
   keywords: {
     abyssal: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Abyssal",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Abyssal",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     accursed: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Accursed",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Accursed",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     animal: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Animal",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Animal",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     beast: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Beast",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Beast",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     construct: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Construct",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Construct",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     dragon: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Dragon",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Dragon",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     elemental: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Elemental",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Elemental",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     fey: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Fey",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Fey",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     giant: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Giant",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Giant",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     horror: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Horror",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Horror",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     humanoid: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Humanoid",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Humanoid",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     infernal: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Infernal",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Infernal",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     plant: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Plant",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     swarm: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Swarm",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
     undead: {
-      label: "DRAW_STEEL.Actor.NPC.KEYWORDS.Undead",
-      group: "DRAW_STEEL.Actor.NPC.KeywordGroups.General",
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Undead",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
   },
   /** @type {Record<string, {label: string}>} */
   roles: {
     ambusher: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Ambusher",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Ambusher",
     },
     artillery: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Artillery",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Artillery",
     },
     brute: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Brute",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Brute",
     },
     controller: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Controller",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Controller",
     },
     defender: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Defender",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Defender",
     },
     harrier: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Harrier",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Harrier",
     },
     hexer: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Hexer",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Hexer",
     },
     mount: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Mount",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Mount",
     },
     support: {
-      label: "DRAW_STEEL.Actor.NPC.ROLES.Support",
+      label: "DRAW_STEEL.Actor.npc.ROLES.Support",
     },
   },
   /** @type {Record<string, {label: string}>} */
   organizations: {
     minion: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Minion",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
     },
     band: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Band",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Band",
     },
     platoon: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Platoon",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
     },
     troop: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Troop",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Troop",
     },
     leader: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Leader",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
     },
     solo: {
-      label: "DRAW_STEEL.Actor.NPC.ORGANIZATIONS.Solo",
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Solo",
     },
   },
 };
@@ -987,88 +987,88 @@ DRAW_STEEL.abilities = {
   /** @type {Record<string, {label: string, group?: string}>} */
   keywords: {
     animal: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Animal",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Fury",
+      label: "DRAW_STEEL.Item.ability.Keywords.Animal",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Fury",
     },
     animapathy: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Animapathy",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Animapathy",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     area: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Area",
+      label: "DRAW_STEEL.Item.ability.Keywords.Area",
     },
     charge: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Charge",
+      label: "DRAW_STEEL.Item.ability.Keywords.Charge",
     },
     chronopathy: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Chronopathy",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Chronopathy",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     cryokinesis: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Cryokinesis",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Cryokinesis",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     earth: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Earth",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist",
+      label: "DRAW_STEEL.Item.ability.Keywords.Earth",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
     },
     fire: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Fire",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist",
+      label: "DRAW_STEEL.Item.ability.Keywords.Fire",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
     },
     green: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Green",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist",
+      label: "DRAW_STEEL.Item.ability.Keywords.Green",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
     },
     magic: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Magic",
+      label: "DRAW_STEEL.Item.ability.Keywords.Magic",
     },
     melee: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Melee",
+      label: "DRAW_STEEL.Item.ability.Keywords.Melee",
     },
     metamorphosis: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Metamorphosis",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Metamorphosis",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     psionic: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Psionic",
+      label: "DRAW_STEEL.Item.ability.Keywords.Psionic",
     },
     pyrokinesis: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Pyrokinesis",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Pyrokinesis",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     ranged: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Ranged",
+      label: "DRAW_STEEL.Item.ability.Keywords.Ranged",
     },
     resopathy: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Resopathy",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Resopathy",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     rot: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Rot",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist",
+      label: "DRAW_STEEL.Item.ability.Keywords.Rot",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
     },
     routine: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Routine",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Troubador",
+      label: "DRAW_STEEL.Item.ability.Keywords.Routine",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Troubador",
     },
     strike: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Strike",
+      label: "DRAW_STEEL.Item.ability.Keywords.Strike",
     },
     telekinesis: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Telekinesis",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Telekinesis",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     telepathy: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Telepathy",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Talent",
+      label: "DRAW_STEEL.Item.ability.Keywords.Telepathy",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Talent",
     },
     void: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Void",
-      group: "DRAW_STEEL.Item.Ability.KeywordGroups.Elementalist",
+      label: "DRAW_STEEL.Item.ability.Keywords.Void",
+      group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
     },
     weapon: {
-      label: "DRAW_STEEL.Item.Ability.Keywords.Weapon",
+      label: "DRAW_STEEL.Item.ability.Keywords.Weapon",
     },
   },
   /**
@@ -1077,24 +1077,24 @@ DRAW_STEEL.abilities = {
    */
   types: {
     action: {
-      label: "DRAW_STEEL.Item.Ability.Type.Action",
+      label: "DRAW_STEEL.Item.ability.Type.Action",
     },
     maneuver: {
-      label: "DRAW_STEEL.Item.Ability.Type.Maneuver",
+      label: "DRAW_STEEL.Item.ability.Type.Maneuver",
     },
     freeManeuver: {
-      label: "DRAW_STEEL.Item.Ability.Type.FreeManeuver",
+      label: "DRAW_STEEL.Item.ability.Type.FreeManeuver",
     },
     triggered: {
-      label: "DRAW_STEEL.Item.Ability.Type.Triggered",
+      label: "DRAW_STEEL.Item.ability.Type.Triggered",
       triggered: true,
     },
     freeTriggered: {
-      label: "DRAW_STEEL.Item.Ability.Type.FreeTriggered",
+      label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
       triggered: true,
     },
     villain: {
-      label: "DRAW_STEEL.Item.Ability.Type.Villain",
+      label: "DRAW_STEEL.Item.ability.Type.Villain",
     },
   },
   /**
@@ -1103,16 +1103,16 @@ DRAW_STEEL.abilities = {
    */
   categories: {
     heroic: {
-      label: "DRAW_STEEL.Item.Ability.Category.Heroic",
+      label: "DRAW_STEEL.Item.ability.Category.Heroic",
     },
     freeStrike: {
-      label: "DRAW_STEEL.Item.Ability.Category.FreeStrike",
+      label: "DRAW_STEEL.Item.ability.Category.FreeStrike",
     },
     signature: {
-      label: "DRAW_STEEL.Item.Ability.Category.Signature",
+      label: "DRAW_STEEL.Item.ability.Category.Signature",
     },
     villain: {
-      label: "DRAW_STEEL.Item.Ability.Category.Villain",
+      label: "DRAW_STEEL.Item.ability.Category.Villain",
     },
   },
   /**
@@ -1123,113 +1123,113 @@ DRAW_STEEL.abilities = {
    */
   distances: {
     melee: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Melee",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Melee",
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Melee",
+      label: "DRAW_STEEL.Item.ability.Distance.Melee",
+      primary: "DRAW_STEEL.Item.ability.Distance.Melee",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Melee",
     },
     ranged: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Ranged",
+      label: "DRAW_STEEL.Item.ability.Distance.Ranged",
+      primary: "DRAW_STEEL.Item.ability.Distance.Ranged",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Ranged",
     },
     meleeRanged: {
-      label: "DRAW_STEEL.Item.Ability.Distance.MeleeRanged",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Melee",
-      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.MeleeRanged",
+      label: "DRAW_STEEL.Item.ability.Distance.MeleeRanged",
+      primary: "DRAW_STEEL.Item.ability.Distance.Melee",
+      secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.MeleeRanged",
     },
     aura: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Aura",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Aura",
+      label: "DRAW_STEEL.Item.ability.Distance.Aura",
+      primary: "DRAW_STEEL.Item.ability.Distance.Aura",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Aura",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Aura",
     },
     burst: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Burst",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Burst",
+      label: "DRAW_STEEL.Item.ability.Distance.Burst",
+      primary: "DRAW_STEEL.Item.ability.Distance.Burst",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Burst",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Burst",
     },
     cube: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Cube",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Length",
-      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      label: "DRAW_STEEL.Item.ability.Distance.Cube",
+      primary: "DRAW_STEEL.Item.ability.Distance.Length",
+      secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Cube",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Cube",
     },
     line: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Line",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Length",
-      secondary: "DRAW_STEEL.Item.Ability.Distance.Width",
-      tertiary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      label: "DRAW_STEEL.Item.ability.Distance.Line",
+      primary: "DRAW_STEEL.Item.ability.Distance.Length",
+      secondary: "DRAW_STEEL.Item.ability.Distance.Width",
+      tertiary: "DRAW_STEEL.Item.ability.Distance.Ranged",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Line",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Line",
     },
     wall: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Wall",
-      primary: "DRAW_STEEL.Item.Ability.Distance.Squares",
-      secondary: "DRAW_STEEL.Item.Ability.Distance.Ranged",
+      label: "DRAW_STEEL.Item.ability.Distance.Wall",
+      primary: "DRAW_STEEL.Item.ability.Distance.Squares",
+      secondary: "DRAW_STEEL.Item.ability.Distance.Ranged",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.DistanceEmbed.Wall",
+      embedLabel: "DRAW_STEEL.Item.ability.DistanceEmbed.Wall",
     },
     special: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Special",
+      label: "DRAW_STEEL.Item.ability.Distance.Special",
       area: true,
-      embedLabel: "DRAW_STEEL.Item.Ability.Distance.Special",
+      embedLabel: "DRAW_STEEL.Item.ability.Distance.Special",
     },
     self: {
-      label: "DRAW_STEEL.Item.Ability.Distance.Self",
-      embedLabel: "DRAW_STEEL.Item.Ability.Distance.Self",
+      label: "DRAW_STEEL.Item.ability.Distance.Self",
+      embedLabel: "DRAW_STEEL.Item.ability.Distance.Self",
     },
   },
   /** @type {Record<string, {label: string; all?: string; embedLabel: string}>} */
   targets: {
     creature: {
-      label: "DRAW_STEEL.Item.Ability.Target.Creature",
-      all: "DRAW_STEEL.Item.Ability.Target.AllCreatures",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.CreatureEmbed",
+      label: "DRAW_STEEL.Item.ability.Target.Creature",
+      all: "DRAW_STEEL.Item.ability.Target.AllCreatures",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.CreatureEmbed",
     },
     object: {
-      label: "DRAW_STEEL.Item.Ability.Target.Object",
-      all: "DRAW_STEEL.Item.Ability.Target.AllObjects",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.ObjectEmbed",
+      label: "DRAW_STEEL.Item.ability.Target.Object",
+      all: "DRAW_STEEL.Item.ability.Target.AllObjects",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.ObjectEmbed",
     },
     creatureObject: {
-      label: "DRAW_STEEL.Item.Ability.Target.CreatureObject",
-      all: "DRAW_STEEL.Item.Ability.Target.AllCreatureObject",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.CreatureObjectEmbed",
+      label: "DRAW_STEEL.Item.ability.Target.CreatureObject",
+      all: "DRAW_STEEL.Item.ability.Target.AllCreatureObject",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.CreatureObjectEmbed",
     },
     enemy: {
-      label: "DRAW_STEEL.Item.Ability.Target.Enemy",
-      all: "DRAW_STEEL.Item.Ability.Target.AllEnemies",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.EnemyEmbed",
+      label: "DRAW_STEEL.Item.ability.Target.Enemy",
+      all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
     },
     ally: {
-      label: "DRAW_STEEL.Item.Ability.Target.Ally",
-      all: "DRAW_STEEL.Item.Ability.Target.AllAllies",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.AllyEmbed",
+      label: "DRAW_STEEL.Item.ability.Target.Ally",
+      all: "DRAW_STEEL.Item.ability.Target.AllAllies",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.AllyEmbed",
     },
     self: {
-      label: "DRAW_STEEL.Item.Ability.Target.Self",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.Self",
+      label: "DRAW_STEEL.Item.ability.Target.Self",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.Self",
     },
     special: {
-      label: "DRAW_STEEL.Item.Ability.Target.Special",
-      embedLabel: "DRAW_STEEL.Item.Ability.Target.Special",
+      label: "DRAW_STEEL.Item.ability.Target.Special",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.Special",
     },
   },
   forcedMovement: {
     push: {
-      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Push",
-      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPush",
+      label: "DRAW_STEEL.Item.ability.ForcedMovement.Push",
+      vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalPush",
     },
     pull: {
-      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Pull",
-      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalPull",
+      label: "DRAW_STEEL.Item.ability.ForcedMovement.Pull",
+      vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalPull",
     },
     slide: {
-      label: "DRAW_STEEL.Item.Ability.ForcedMovement.Slide",
-      vertical: "DRAW_STEEL.Item.Ability.ForcedMovement.VerticalSlide",
+      label: "DRAW_STEEL.Item.ability.ForcedMovement.Slide",
+      vertical: "DRAW_STEEL.Item.ability.ForcedMovement.VerticalSlide",
     },
   },
 };
@@ -1354,63 +1354,63 @@ DRAW_STEEL.Advancement = {
 DRAW_STEEL.culture = {
   environments: {
     nomadic: {
-      label: "DRAW_STEEL.Item.Culture.Environments.Nomadic",
+      label: "DRAW_STEEL.Item.culture.Environments.Nomadic",
       skillOpts: new Set(),
     },
     rural: {
-      label: "DRAW_STEEL.Item.Culture.Environments.Rural",
+      label: "DRAW_STEEL.Item.culture.Environments.Rural",
       skillOpts: new Set(),
     },
     secluded: {
-      label: "DRAW_STEEL.Item.Culture.Environments.Secluded",
+      label: "DRAW_STEEL.Item.culture.Environments.Secluded",
       skillOpts: new Set(),
     },
     urban: {
-      label: "DRAW_STEEL.Item.Culture.Environments.Urban",
+      label: "DRAW_STEEL.Item.culture.Environments.Urban",
       skillOpts: new Set(),
     },
     wilderness: {
-      label: "DRAW_STEEL.Item.Culture.Environments.Wilderness",
+      label: "DRAW_STEEL.Item.culture.Environments.Wilderness",
       skillOpts: new Set(),
     },
   },
   organization: {
     anarchic: {
-      label: "DRAW_STEEL.Item.Culture.Organization.Anarchic",
+      label: "DRAW_STEEL.Item.culture.Organization.Anarchic",
       skillOpts: new Set(),
     },
     bureaucratic: {
-      label: "DRAW_STEEL.Item.Culture.Organization.Bureaucratic",
+      label: "DRAW_STEEL.Item.culture.Organization.Bureaucratic",
       skillOpts: new Set(),
     },
     communal: {
-      label: "DRAW_STEEL.Item.Culture.Organization.Communal",
+      label: "DRAW_STEEL.Item.culture.Organization.Communal",
       skillOpts: new Set(),
     },
   },
   upbringing: {
     academic: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Academic",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Academic",
       skillOpts: new Set(),
     },
     creative: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Creative",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Creative",
       skillOpts: new Set(),
     },
     illegal: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Illegal",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Illegal",
       skillOpts: new Set(),
     },
     labor: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Labor",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Labor",
       skillOpts: new Set(),
     },
     martial: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Martial",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
       skillOpts: new Set(),
     },
     noble: {
-      label: "DRAW_STEEL.Item.Culture.Upbringing.Noble",
+      label: "DRAW_STEEL.Item.culture.Upbringing.Noble",
       skillOpts: new Set(),
     },
   },
@@ -1438,25 +1438,25 @@ DRAW_STEEL.equipment = {
   /** @type {Record<string, {label: string, readonly keywords: FormSelectOption[]}>} */
   categories: {
     consumable: {
-      label: "DRAW_STEEL.Item.Equipment.Categories.Consumable",
+      label: "DRAW_STEEL.Item.equipment.Categories.Consumable",
       get keywords() {
         return [];
       },
     },
     trinket: {
-      label: "DRAW_STEEL.Item.Equipment.Categories.Trinket",
+      label: "DRAW_STEEL.Item.equipment.Categories.Trinket",
       get keywords() {
         return [];
       },
     },
     leveled: {
-      label: "DRAW_STEEL.Item.Equipment.Categories.Leveled",
+      label: "DRAW_STEEL.Item.equipment.Categories.Leveled",
       get keywords() {
         return [];
       },
     },
     artifact: {
-      label: "DRAW_STEEL.Item.Equipment.Categories.Artifact",
+      label: "DRAW_STEEL.Item.equipment.Categories.Artifact",
       get keywords() {
         return [];
       },
@@ -1465,105 +1465,105 @@ DRAW_STEEL.equipment = {
   /** @type {Record<string, {label: string}>} */
   kinds: {
     other: {
-      label: "DRAW_STEEL.Item.Equipment.Kinds.Other",
+      label: "DRAW_STEEL.Item.equipment.Kinds.Other",
     },
     armor: {
-      label: "DRAW_STEEL.Item.Equipment.Kinds.Armor",
+      label: "DRAW_STEEL.Item.equipment.Kinds.Armor",
     },
     implement: {
-      label: "DRAW_STEEL.Item.Equipment.Kinds.Implement",
+      label: "DRAW_STEEL.Item.equipment.Kinds.Implement",
     },
     weapon: {
-      label: "DRAW_STEEL.Item.Equipment.Kinds.Weapon",
+      label: "DRAW_STEEL.Item.equipment.Kinds.Weapon",
     },
   },
   /** @type {Record<string, {label: string, kitEquipment: boolean}>} */
   armor: {
     none: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.None",
+      label: "DRAW_STEEL.Item.equipment.Armor.None",
       kitEquipment: true,
     },
     light: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Light",
+      label: "DRAW_STEEL.Item.equipment.Armor.Light",
       kitEquipment: true,
     },
     medium: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Medium",
+      label: "DRAW_STEEL.Item.equipment.Armor.Medium",
       kitEquipment: true,
     },
     heavy: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Heavy",
+      label: "DRAW_STEEL.Item.equipment.Armor.Heavy",
       kitEquipment: true,
     },
     shield: {
-      label: "DRAW_STEEL.Item.Equipment.Armor.Shield",
+      label: "DRAW_STEEL.Item.equipment.Armor.Shield",
       kitEquipment: false,
     },
   },
   /** @type {Record<string, {label: string}>} */
   weapon: {
     none: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.None",
+      label: "DRAW_STEEL.Item.equipment.Weapons.None",
     },
     bow: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Bow",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Bow",
     },
     ensnaring: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Ensnaring",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Ensnaring",
     },
     heavy: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Heavy",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Heavy",
     },
     light: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Light",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Light",
     },
     medium: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Medium",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Medium",
     },
     polearm: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Polearm",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Polearm",
     },
     unarmed: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Unarmed",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Unarmed",
     },
     whip: {
-      label: "DRAW_STEEL.Item.Equipment.Weapons.Whip",
+      label: "DRAW_STEEL.Item.equipment.Weapons.Whip",
     },
   },
   /** @type {Record<string, {label: string}>} */
   implement: {
     bone: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Bone",
+      label: "DRAW_STEEL.Item.equipment.Implements.Bone",
     },
     crystal: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Crystal",
+      label: "DRAW_STEEL.Item.equipment.Implements.Crystal",
     },
     glass: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Glass",
+      label: "DRAW_STEEL.Item.equipment.Implements.Glass",
     },
     metal: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Metal",
+      label: "DRAW_STEEL.Item.equipment.Implements.Metal",
     },
     stone: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Stone",
+      label: "DRAW_STEEL.Item.equipment.Implements.Stone",
     },
     wood: {
-      label: "DRAW_STEEL.Item.Equipment.Implements.Wood",
+      label: "DRAW_STEEL.Item.equipment.Implements.Wood",
     },
   },
   /** @type {Record<string, {label: string}>} */
   other: {
     feet: {
-      label: "DRAW_STEEL.Item.Equipment.Other.Feet",
+      label: "DRAW_STEEL.Item.equipment.Other.Feet",
     },
     hands: {
-      label: "DRAW_STEEL.Item.Equipment.Other.Hands",
+      label: "DRAW_STEEL.Item.equipment.Other.Hands",
     },
     neck: {
-      label: "DRAW_STEEL.Item.Equipment.Other.Neck",
+      label: "DRAW_STEEL.Item.equipment.Other.Neck",
     },
     ring: {
-      label: "DRAW_STEEL.Item.Equipment.Other.Ring",
+      label: "DRAW_STEEL.Item.equipment.Other.Ring",
     },
   },
 };
@@ -1580,30 +1580,30 @@ DRAW_STEEL.features = {
   /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
   types: {
     perk: {
-      label: "DRAW_STEEL.Item.Feature.Types.Perk.Label",
+      label: "DRAW_STEEL.Item.feature.Types.Perk.Label",
       subtypes: {
         crafting: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Crafting",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Crafting",
         },
         exploration: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Exploration",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Exploration",
         },
         interpersonal: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Interpersonal",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Interpersonal",
         },
         intrigue: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Intrigue",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Intrigue",
         },
         lore: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Lore",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Lore",
         },
         supernatural: {
-          label: "DRAW_STEEL.Item.Feature.Types.Perk.Supernatural",
+          label: "DRAW_STEEL.Item.feature.Types.Perk.Supernatural",
         },
       },
     },
     title: {
-      label: "DRAW_STEEL.Item.Feature.Types.Title.Label",
+      label: "DRAW_STEEL.Item.feature.Types.Title.Label",
       subtypes: {
         1: {
           label: "DRAW_STEEL.Echelon.1",
@@ -1630,13 +1630,13 @@ preLocalize("features.types.title.subtypes", { key: "label" });
 DRAW_STEEL.projects = {
   types: {
     crafting: {
-      label: "DRAW_STEEL.Item.Project.Types.Crafting",
+      label: "DRAW_STEEL.Item.project.Types.Crafting",
     },
     research: {
-      label: "DRAW_STEEL.Item.Project.Types.Research",
+      label: "DRAW_STEEL.Item.project.Types.Research",
     },
     other: {
-      label: "DRAW_STEEL.Item.Project.Types.Other",
+      label: "DRAW_STEEL.Item.project.Types.Other",
     },
   },
 };

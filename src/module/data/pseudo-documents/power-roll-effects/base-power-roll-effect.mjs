@@ -159,7 +159,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     const potencyValue = this.actor
       ? ds.utils.evaluateFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.potency.value;
-    const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+    const potencyString = game.i18n.format("DRAW_STEEL.Item.ability.Potency.Embed", {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,
     });
