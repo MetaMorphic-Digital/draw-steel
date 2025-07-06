@@ -68,11 +68,11 @@ export default class SavingThrowModel extends BaseMessageModel {
     // Strictly GM-owned characters shouldn't have this option, and should only show if you have effect perms
     if (effect.hasPlayerOwner && effect.isOwner) {
       const heroToken = ds.utils.constructHTMLButton({
-        label: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Label"),
+        label: game.i18n.localize("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.Label"),
         icon: "fa-solid fa-shield",
         classes: ["hero-token"],
         dataset: {
-          tooltip: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Tooltip"),
+          tooltip: game.i18n.localize("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.Tooltip"),
         },
         disabled: effect.disabled,
       });
@@ -92,11 +92,11 @@ export default class SavingThrowModel extends BaseMessageModel {
       const effect = this.effect;
 
       if (!effect) {
-        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoEffect", { localize: true });
+        ui.notifications.error("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.NoEffect", { localize: true });
         return;
       }
       if (!effect.isOwner) {
-        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoOwner", { localize: true });
+        ui.notifications.error("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.NoOwner", { localize: true });
         return;
       }
 

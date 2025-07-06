@@ -27,7 +27,7 @@ export default class PowerRoll extends DSRoll {
         const number = new foundry.dice.terms.NumericTerm({
           number: 2,
           options: {
-            flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Edge" : "DRAW_STEEL.Roll.Power.Modifier.Bane"),
+            flavor: game.i18n.localize(this.netBoon > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Edge" : "DRAW_STEEL.ROLL.Power.Modifier.Bane"),
           },
         });
         this.terms.push(operation, number);
@@ -39,7 +39,7 @@ export default class PowerRoll extends DSRoll {
         const number = new foundry.dice.terms.NumericTerm({
           number: Math.abs(this.options.bonuses),
           options: {
-            flavor: game.i18n.localize(this.options.bonuses > 0 ? "DRAW_STEEL.Roll.Power.Modifier.Bonus" : "DRAW_STEEL.Roll.Power.Modifier.Penalty"),
+            flavor: game.i18n.localize(this.options.bonuses > 0 ? "DRAW_STEEL.ROLL.Power.Modifier.Bonus" : "DRAW_STEEL.ROLL.Power.Modifier.Penalty"),
           },
         });
         this.terms.push(operation, number);
@@ -79,11 +79,11 @@ export default class PowerRoll extends DSRoll {
   /** @enum {{label: string; icon: string}} */
   static #TYPES = Object.freeze({
     ability: {
-      label: "DRAW_STEEL.Roll.Power.Types.Ability",
+      label: "DRAW_STEEL.ROLL.Power.Types.Ability",
       icon: "fa-solid fa-bolt",
     },
     test: {
-      label: "DRAW_STEEL.Roll.Power.Types.Test",
+      label: "DRAW_STEEL.ROLL.Power.Types.Test",
       icon: "fa-solid fa-dice",
     },
   });
@@ -136,15 +136,15 @@ export default class PowerRoll extends DSRoll {
   /** @enum {{label: string; threshold: number}} */
   static #RESULT_TIERS = {
     tier1: {
-      label: "DRAW_STEEL.Roll.Power.Tiers.One",
+      label: "DRAW_STEEL.ROLL.Power.Tiers.One",
       threshold: -Infinity,
     },
     tier2: {
-      label: "DRAW_STEEL.Roll.Power.Tiers.Two",
+      label: "DRAW_STEEL.ROLL.Power.Tiers.Two",
       threshold: 12,
     },
     tier3: {
-      label: "DRAW_STEEL.Roll.Power.Tiers.Three",
+      label: "DRAW_STEEL.ROLL.Power.Tiers.Three",
       threshold: 17,
     },
   };
@@ -183,7 +183,7 @@ export default class PowerRoll extends DSRoll {
     const promptValue = await ds.applications.apps.PowerRollDialog.create({
       context,
       window: {
-        title: game.i18n.format("DRAW_STEEL.Roll.Power.Prompt.Title", { typeLabel }),
+        title: game.i18n.format("DRAW_STEEL.ROLL.Power.Prompt.Title", { typeLabel }),
       },
     });
     if (!promptValue) return null;
@@ -345,16 +345,16 @@ export default class PowerRoll extends DSRoll {
 
     switch (this.netBoon) {
       case -2:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Banes";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Banes";
         break;
       case -1:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Bane";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Bane";
         break;
       case 1:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Edge";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Edge";
         break;
       case 2:
-        modString = "DRAW_STEEL.Roll.Power.Modifier.Edges";
+        modString = "DRAW_STEEL.ROLL.Power.Modifier.Edges";
         break;
     }
 

@@ -197,22 +197,22 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     const categories = {
       temporary: {
         type: "temporary",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Temporary"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Temporary"),
         effects: [],
       },
       passive: {
         type: "passive",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Passive"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Passive"),
         effects: [],
       },
       inactive: {
         type: "inactive",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Inactive"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Inactive"),
         effects: [],
       },
       applied: {
         type: "applied",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Applied"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Applied"),
         effects: [],
       },
     };

@@ -12,7 +12,7 @@
   </div>
 
   <fieldset class="power-roll-data">
-    <legend>{{localize "DRAW_STEEL.Item.Ability.FIELDS.power.label"}}</legend>
+    <legend>{{localize "DRAW_STEEL.Item.ability.FIELDS.power.label"}}</legend>
     {{#with systemFields.power.fields.roll.fields as |powerRoll|}}
     {{formGroup powerRoll.characteristics value=@root.system.power.roll.characteristics options=@root.characteristics disabled=@root.isPlay}}
     {{formGroup powerRoll.formula value=@root.system.power.roll.formula placeholder=powerRoll.formula.initial disabled=@root.isPlay}}

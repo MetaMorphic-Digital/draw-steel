@@ -78,30 +78,30 @@ Hooks.once("init", function () {
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
     types: ["character"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Character",
+    label: "DRAW_STEEL.SHEET.Labels.Character",
   });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.NPC",
+    label: "DRAW_STEEL.SHEET.Labels.NPC",
   });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Item",
+    label: "DRAW_STEEL.SHEET.Labels.Item",
   });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
+    label: "DRAW_STEEL.SHEET.Labels.ActiveEffect",
   });
   DocumentSheetConfig.unregisterSheet(WallDocument, "core", foundry.applications.sheets.WallConfig);
   DocumentSheetConfig.registerSheet(WallDocument, DS_CONST.systemID, applications.sheets.DrawSteelWallConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.WallDocument",
+    label: "DRAW_STEEL.SHEET.Labels.WallDocument",
   });
   DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",
+    label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
 
   // Register replacements for core UI elements

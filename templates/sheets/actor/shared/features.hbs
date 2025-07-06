@@ -7,7 +7,7 @@
       <div class="item-column item-type">{{featureFields.type.fields.subtype.label}}</div>
       <div class="item-column item-controls">
         {{#unless isPlay}}
-        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.feature")) as |addItemTooltip|}}
+        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.feature")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="feature" data-render-sheet="true" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>

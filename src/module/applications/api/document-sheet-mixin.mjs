@@ -82,10 +82,18 @@ export default base => {
     /** @inheritdoc */
     async _renderFrame(options) {
       const frame = await super._renderFrame(options);
-      const buttons = [constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-user-lock"], dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.Sheet.ToggleMode" } })];
+      const buttons = [constructHTMLButton({
+        label: "",
+        classes: ["header-control", "icon", "fa-solid", "fa-user-lock"],
+        dataset: { action: "toggleMode", tooltip: "DRAW_STEEL.SHEET.ToggleMode" },
+      })];
 
       if (this.document.system.source) {
-        buttons.push(constructHTMLButton({ label: "", classes: ["header-control", "icon", "fa-solid", "fa-book"], dataset: { action: "updateSource", tooltip: "DRAW_STEEL.Sheet.UpdateSource" } }));
+        buttons.push(constructHTMLButton({
+          label: "",
+          classes: ["header-control", "icon", "fa-solid", "fa-book"],
+          dataset: { action: "updateSource", tooltip: "DRAW_STEEL.SOURCE.Update" },
+        }));
       }
       this.window.controls.after(...buttons);
 

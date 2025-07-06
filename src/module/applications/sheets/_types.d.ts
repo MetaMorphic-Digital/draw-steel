@@ -11,12 +11,12 @@ declare module "./actor-sheet.mjs" {
 }
 declare module "./character.mjs" {
   export default interface DrawSteelActorSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.CharacterModel };
+    actor: documents.DrawSteelActor & { system: data.Actor.characterModel };
   }
 }
 declare module "./npc.mjs" {
   export default interface DrawSteelActorSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.NPCModel };
+    actor: documents.DrawSteelActor & { system: data.Actor.npcModel };
   }
 }
 

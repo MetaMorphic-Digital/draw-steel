@@ -24,7 +24,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Actor.Character");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Actor.character");
 
   /* -------------------------------------------------- */
 
@@ -142,7 +142,7 @@ export default class CharacterModel extends BaseActorModel {
   prepareDerivedData() {
     this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
-    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
+    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
     const heroClass = this.class;
     if (heroClass && heroClass.system.primary) {
       this.hero.primary.label = heroClass.system.primary;
@@ -203,7 +203,7 @@ export default class CharacterModel extends BaseActorModel {
       });
       await recoveryRoll.toMessage({
         speaker: DrawSteelChatMessage.getSpeaker({ token: combatant.token }),
-        flavor: game.i18n.localize("DRAW_STEEL.Actor.Character.HeroicResourceGain"),
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.character.HeroicResourceGain"),
       });
       await this.updateResource(recoveryRoll.total);
     }
@@ -240,11 +240,11 @@ export default class CharacterModel extends BaseActorModel {
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
-      ui.notifications.error("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
       return this.parent;
     }
 
-    ui.notifications.success("DRAW_STEEL.Actor.Character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
     await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
     return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
@@ -301,7 +301,7 @@ export default class CharacterModel extends BaseActorModel {
     if (classModel) minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
 
     return {
-      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label"),
+      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value",
       minimum,

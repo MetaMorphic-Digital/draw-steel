@@ -1,7 +1,7 @@
 <section class="metadata">
   {{#if system.resource}}
   <p class="resource">
-    {{localize "DRAW_STEEL.Item.Ability.ResourceCost" value=system.resource name=resourceName}}
+    {{localize "DRAW_STEEL.Item.ability.ResourceCost" value=system.resource name=resourceName}}
   </p>
   {{/if}}
   {{#if system.story}}
@@ -14,7 +14,7 @@
     <dd class="keywords">{{keywordList}}</dd>
 
     <dt class="type">{{systemFields.type.label}}</dt>
-    <dd class="type">{{lookup (lookup config.abilities.types system.type) "label"}}</dd>
+    <dd class="type">{{actionTypeLabel}}</dd>
 
     <dt class="distance">{{systemFields.distance.label}}</dt>
     <dd class="distance">{{distanceLabel}}</dd>
@@ -39,16 +39,16 @@
 {{#if powerRolls}}
 <section class="powerResult">
   <p>
-    <strong>{{{localize "DRAW_STEEL.Roll.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
+    <strong>{{{localize "DRAW_STEEL.ROLL.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
   </p>
   <dl class="power-roll-display">
-    <dt class="tier1">{{localize "DRAW_STEEL.Roll.Power.Results.Tier1"}}</dt>
+    <dt class="tier1">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier1"}}</dt>
     <dd class="tier1">{{powerRollEffects.tier1.text}}</dd>
 
-    <dt class="tier2">{{localize "DRAW_STEEL.Roll.Power.Results.Tier2"}}</dt>
+    <dt class="tier2">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier2"}}</dt>
     <dd class="tier2">{{powerRollEffects.tier2.text}}</dd>
 
-    <dt class="tier3">{{localize "DRAW_STEEL.Roll.Power.Results.Tier3"}}</dt>
+    <dt class="tier3">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier3"}}</dt>
     <dd class="tier3">{{powerRollEffects.tier3.text}}</dd>
 
   </dl>

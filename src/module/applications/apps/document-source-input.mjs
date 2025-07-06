@@ -9,7 +9,7 @@ export default class DocumentSourceInput extends DocumentInput {
   static DEFAULT_OPTIONS = {
     classes: ["document-source"],
     window: {
-      title: "DRAW_STEEL.Source.UpdateTitle",
+      title: "DRAW_STEEL.SOURCE.Update",
       icon: "fa-solid fa-book",
     },
   };

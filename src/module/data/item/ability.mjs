@@ -30,7 +30,7 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.Ability");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.ability");
 
   /* -------------------------------------------------- */
 
@@ -54,8 +54,8 @@ export default class AbilityModel extends BaseItemModel {
       tertiary: new fields.NumberField({ integer: true, min: 0 }),
     });
     schema.damageDisplay = new fields.StringField({ choices: {
-      melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
-      ranged: "DRAW_STEEL.Item.Ability.Keywords.Ranged",
+      melee: "DRAW_STEEL.Item.ability.Keywords.Melee",
+      ranged: "DRAW_STEEL.Item.ability.Keywords.Ranged",
     }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
@@ -244,11 +244,13 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 
     context.keywordList = formattedLabels.keywords;
+
+    context.actionTypeLabel = config.types[this.type]?.label ?? "";
     context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
     context.abilityCategories = Object.entries(config.categories).map(([value, { label }]) => ({ value, label }));
 
@@ -256,9 +258,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
-    context.primaryDistance = config.distances[this.distance.type].primary;
-    context.secondaryDistance = config.distances[this.distance.type].secondary;
-    context.tertiaryDistance = config.distances[this.distance.type].tertiary;
+    context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
+    context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
+    context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";
 
     context.targetLabel = formattedLabels.target;
     context.targetTypes = Object.entries(config.targets).map(([value, { label }]) => ({ value, label }));
@@ -291,7 +293,7 @@ export default class AbilityModel extends BaseItemModel {
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
-    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
       value: this.spend.value ?? "",
       name: resourceName,
     });
@@ -350,14 +352,14 @@ export default class AbilityModel extends BaseItemModel {
 
       let hint = null;
       if (this.spend.value) {
-        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.Ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.Ability.ConfigureUse.SpendWarning", {
+        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
           value: current,
           name: coreResource.name,
         });
       }
 
       const spendGroup = foundry.applications.fields.createFormGroup({
-        label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+        label: game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
@@ -377,7 +379,7 @@ export default class AbilityModel extends BaseItemModel {
       configuration = await ds.applications.api.DSDialog.input({
         content,
         window: {
-          title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
+          title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear",
         },
       });
@@ -400,7 +402,7 @@ export default class AbilityModel extends BaseItemModel {
     if (configuration) {
       if (configuration.spend) {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
+        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
           name: coreResource.name,
         });
@@ -469,7 +471,7 @@ export default class AbilityModel extends BaseItemModel {
           else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
 
           const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
+          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
           const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
           await damageRoll.evaluate();
           messageDataCopy.rolls.push(damageRoll);

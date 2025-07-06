@@ -9,7 +9,7 @@ export default class DamageRoll extends DSRoll {
    * @param {PointerEvent} event
    */
   static async applyDamageCallback(event) {
-    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
+    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenSelected", { localize: true });
 
     const li = event.currentTarget.closest("[data-message-id]");
     const message = game.messages.get(li.dataset.messageId);
@@ -21,7 +21,7 @@ export default class DamageRoll extends DSRoll {
     for (const actor of ds.utils.tokensToActors()) {
       if (roll.isHeal) {
         const isTemp = roll.type !== "value";
-        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.Messages.base.Buttons.ApplyHeal.TempCapped", {
+        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
           format: { name: actor.name },
         });
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
@@ -79,9 +79,9 @@ export default class DamageRoll extends DSRoll {
    * @returns {HTMLButtonElement} A button that
    */
   toRollButton(index) {
-    const labelPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Label" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Label";
+    const labelPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Label" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Label";
 
-    const tooltipPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Tooltip";
+    const tooltipPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip";
 
     return ds.utils.constructHTMLButton({
       label: game.i18n.format(labelPath, {

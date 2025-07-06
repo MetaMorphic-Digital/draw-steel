@@ -9,7 +9,7 @@ export default class MonsterMetadataInput extends DocumentInput {
   static DEFAULT_OPTIONS = {
     classes: ["monster-metadata"],
     window: {
-      title: "DRAW_STEEL.Actor.NPC.MonsterMetadata.DialogTitle",
+      title: "DRAW_STEEL.Actor.npc.MonsterMetadata.DialogTitle",
       icon: "fa-solid fa-spaghetti-monster-flying",
     },
   };

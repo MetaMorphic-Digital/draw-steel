@@ -7,7 +7,7 @@
   <h6>{{systemFields.equipment.label}}</h6>
   <dl>
     <dt class="armor">{{systemFields.equipment.fields.armor.label}}</dt>
-    <dd class="armor">{{localize (lookup (lookup config.equipment.armor system.equipment.armor) "label")}}</dd>
+    <dd class="armor">{{armorLabel}}</dd>
 
     <dt class="equipment">{{systemFields.equipment.fields.weapon.label}}</dt>
     <dd class="equipment">{{weaponLabel}}</dd>
@@ -21,7 +21,7 @@
   <dl>
     {{#if system.bonuses.stamina}}
     <dt class="stamina-bonus">{{systemFields.bonuses.fields.stamina.label}}</dt>
-    <dd class="stamina-bonus">{{localize "DRAW_STEEL.Item.Kit.StaminaEmbed" number=(numberFormat system.bonuses.stamina sign=true)}}</dd>
+    <dd class="stamina-bonus">{{localize "DRAW_STEEL.Item.kit.StaminaEmbed" number=(numberFormat system.bonuses.stamina sign=true)}}</dd>
     {{/if}}
 
     {{#if system.bonuses.speed}}

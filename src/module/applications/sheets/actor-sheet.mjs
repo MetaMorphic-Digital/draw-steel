@@ -344,7 +344,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
     // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
     context["other"] = {
-      label: game.i18n.localize("DRAW_STEEL.Sheet.Other"),
+      label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       abilities: [],
       showAdd: false,
       // Show "other" if and only if there are abilities of that type
@@ -446,17 +446,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     const categories = {
       temporary: {
         type: "temporary",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Temporary"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Temporary"),
         effects: [],
       },
       passive: {
         type: "passive",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Passive"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Passive"),
         effects: [],
       },
       inactive: {
         type: "inactive",
-        label: game.i18n.localize("DRAW_STEEL.Effect.Inactive"),
+        label: game.i18n.localize("DRAW_STEEL.ActiveEffect.Inactive"),
         effects: [],
       },
     };
@@ -523,7 +523,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     return [
       //Ability specific options
       {
-        name: "DRAW_STEEL.Item.Ability.SwapUsage.ToMelee",
+        name: "DRAW_STEEL.Item.ability.SwapUsage.ToMelee",
         icon: "<i class=\"fa-solid fa-fw fa-sword\"></i>",
         condition: (target) => {
           let item = this._getEmbeddedDocument(target);
@@ -540,7 +540,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
       },
       {
-        name: "DRAW_STEEL.Item.Ability.SwapUsage.ToRanged",
+        name: "DRAW_STEEL.Item.ability.SwapUsage.ToRanged",
         icon: "<i class=\"fa-solid fa-fw fa-bow-arrow\"></i>",
         condition: (target) => {
           let item = this._getEmbeddedDocument(target);
@@ -558,7 +558,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       },
       // Kit specific options
       {
-        name: "DRAW_STEEL.Item.Kit.PreferredKit.MakePreferred",
+        name: "DRAW_STEEL.Item.kit.PreferredKit.MakePreferred",
         icon: "<i class=\"fa-solid fa-star\"></i>",
         condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
         callback: async (target) => {
@@ -573,7 +573,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       },
       // Project specific options
       {
-        name: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title",
+        name: "DRAW_STEEL.Item.project.SpendCareerPoints.Title",
         icon: "<i class=\"fa-solid fa-hammer\"></i>",
         condition: (target) => {
           const item = this._getEmbeddedDocument(target);
@@ -989,7 +989,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
         // If it's an equipment dropped on the project tab, create the item as a project
         if (projectDropTarget && (item.type === "equipment")) {
-          const name = game.i18n.format("DRAW_STEEL.Item.Project.Craft.ItemName", { name: item.name });
+          const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
           item = { name, type: "project", "system.yield.item": item.uuid };
         }
 

@@ -6,7 +6,7 @@
     <div class="item-header">
       <div class="item-column item-name">{{abilityType.label}}</div>
       {{#if (eq @key "villain")}}
-      <div class="item-column item-order">{{localize "DRAW_STEEL.Item.Ability.Order"}}</div>
+      <div class="item-column item-order">{{localize "DRAW_STEEL.Item.ability.Order"}}</div>
       {{else}}
       <div class="item-column item-cost">{{@root.abilityFields.resource.label}}</div>
       {{/if}}
@@ -14,7 +14,7 @@
       <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
       <div class="item-column item-controls">
         {{#if abilityType.showAdd}}
-        {{#with (localize "DRAW_STEEL.Sheet.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
+        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
@@ -29,7 +29,7 @@
           <div class="item-column item-name rollable" data-action="useAbility">
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
             {{#if abilityContext.item.system.restricted}}
-            <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.Ability.Restricted">
+            <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.ability.Restricted">
               <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             {{/if}}

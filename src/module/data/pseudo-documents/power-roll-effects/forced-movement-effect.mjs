@@ -113,7 +113,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       : tierValue.distance;
     const potencyString = this.toPotencyText(tier);
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
-    const distanceString = game.i18n.format("DRAW_STEEL.Item.Ability.ForcedMovement.Display", {
+    const distanceString = game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
       movement: formatter.format(tierValue.movement.map(v => {
         const config = ds.CONFIG.abilities.forcedMovement[v];
         return tierValue.properties.has("vertical") ? config.vertical : config.label;

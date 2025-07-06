@@ -5,13 +5,17 @@
     "PowerRollEffect": "Power Roll Effect"
   },
   "DRAW_STEEL": {
-    "COMPENDIUMS": {
+    "COMPENDIUM": {
       "classes": "Classes",
       "abilities": "Abilities",
       "journals": "System Journals"
     },
     "ADVANCEMENT": {
-      "FIELDS": {},
+      "FIELDS": {
+        "description": {
+          "label": "Description"
+        }
+      },
       "ITEM_GRANT": {
         "FIELDS": {
           "requirements": {
@@ -77,16 +81,7 @@
         "ChooseN": "Choose {n}"
       }
     },
-
-    "TRAIT_CHOICE": {
-      "FIELDS": {},
-      "HINT": {},
-      "Any": "Any Option",
-      "skillGroup": "Skill Group",
-      "specificLanguage": "Specific Language"
-    },
-
-    "Sheet": {
+    "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
         "NPC": "Draw Steel NPC Sheet",
@@ -101,13 +96,8 @@
       "Edit": "Edit",
       "Resources": "Resources",
       "Other": "Other",
-      "TakeRespite": "Take Respite",
       "LevelUp": "Level Up Available",
-      "SpendRecovery": "Spend a recovery to regain stamina.",
-      "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens",
-      "GainSurges": "Spend a hero token to gain two surges.",
-      "ToggleMode": "Toggle Play/Edit Mode",
-      "UpdateSource": "Update Source Information"
+      "ToggleMode": "Toggle Play/Edit Mode"
     },
     "EDITOR": {
       "Enrichers": {
@@ -124,7 +114,7 @@
         }
       }
     },
-    "Source": {
+    "SOURCE": {
       "FIELDS": {
         "source": {
           "label": "Source",
@@ -145,13 +135,13 @@
           }
         }
       },
-      "UpdateTitle": "Update Source Information",
+      "Update": "Update Source Information",
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
       }
     },
-    "Measurement": {
+    "MEASUREMENT": {
       "Height": {
         "in": "in",
         "ft": "ft",
@@ -309,12 +299,19 @@
           "M": "Medium",
           "L": "Large"
         },
+        "SpendRecovery": {
+          "tooltip": "Spend a recovery to regain stamina.",
+          "Notifications": {
+            "NoRecoveries": "{actor} does not have any recoveries to spend.",
+            "Success": "{actor} has spent a recovery to regain stamina."
+          }
+        },
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
         }
       },
-      "Character": {
+      "character": {
         "FIELDS": {
           "hero": {
             "primary": {
@@ -349,14 +346,9 @@
           }
         },
         "HeroicResourceGain": "Start of turn resource gain",
-        "SpendRecovery": {
-          "Notifications": {
-            "NoRecoveries": "{actor} does not have any recoveries to spend.",
-            "Success": "{actor} has spent a recovery to regain stamina."
-          }
-        }
+        "TakeRespite": "Take Respite"
       },
-      "NPC": {
+      "npc": {
         "FIELDS": {
           "negotiation": {
             "label": "Negotiation",
@@ -402,7 +394,8 @@
         },
         "EVLabel": {
           "Label": "EV",
-          "Minion": "{value} for eight minions"
+          "Minion": "{value} for eight minions",
+          "Other": "{value}"
         },
         "KEYWORDS": {
           "Abyssal": "Abyssal",
@@ -555,7 +548,7 @@
       "advancement": {
         "FIELDS": {}
       },
-      "Ability": {
+      "ability": {
         "FIELDS": {
           "story": {
             "label": "Story Text"
@@ -756,10 +749,10 @@
           "ToRanged": "Swap to Ranged Usage"
         }
       },
-      "Ancestry": {
+      "ancestry": {
         "FIELDS": {}
       },
-      "Career": {
+      "career": {
         "FIELDS": {
           "projectPoints": {
             "label": "Project Points"
@@ -772,7 +765,7 @@
           }
         }
       },
-      "Class": {
+      "class": {
         "FIELDS": {
           "level": {
             "label": "Level"
@@ -808,10 +801,10 @@
           }
         }
       },
-      "Complication": {
+      "complication": {
         "FIELDS": {}
       },
-      "Culture": {
+      "culture": {
         "FIELDS": {},
         "Environments": {
           "Nomadic": "Nomadic",
@@ -834,7 +827,7 @@
           "Noble": "Noble"
         }
       },
-      "Equipment": {
+      "equipment": {
         "FIELDS": {
           "kind": {
             "label": "Kind"
@@ -920,7 +913,7 @@
           "Ring": "Ring"
         }
       },
-      "Feature": {
+      "feature": {
         "FIELDS": {
           "type": {
             "value": {
@@ -952,7 +945,7 @@
           }
         }
       },
-      "Kit": {
+      "kit": {
         "FIELDS": {
           "type": {
             "label": "Type"
@@ -1035,7 +1028,7 @@
         },
         "StaminaEmbed": "{number} per echelon"
       },
-      "Project": {
+      "project": {
         "FIELDS": {
           "type": {
             "label": "Type"
@@ -1085,7 +1078,7 @@
         }
       }
     },
-    "Effect": {
+    "ActiveEffect": {
       "Name": "Effect",
       "StatusConditions": "Status Conditions",
       "Source": "Source",
@@ -1163,7 +1156,7 @@
         }
       }
     },
-    "DamageTypes": {
+    "DAMAGE_TYPE": {
       "Acid": "Acid",
       "Cold": "Cold",
       "Corruption": "Corruption",
@@ -1174,7 +1167,7 @@
       "Psychic": "Psychic",
       "Sonic": "Sonic"
     },
-    "HealingTypes": {
+    "HEALING_TYPE": {
       "Value": "Stamina",
       "Temporary": "Temporary Stamina"
     },
@@ -1275,7 +1268,7 @@
         "DeletedInfo": "Deleted {pseudoName} {id} with type {type} from {name}"
       }
     },
-    "Roll": {
+    "ROLL": {
       "Prompt": "Roll {prompt}",
       "Button": "Roll",
       "Power": {
@@ -1350,6 +1343,7 @@
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
         "GainSurges": {
+          "tooltip": "Spend a hero token to gain two surges.",
           "label": "Gain Surges",
           "messageContent": "Spends a hero token to gain two surges.",
           "dialogContent": "Spend one of {value} hero tokens to gain two surges."
@@ -1363,6 +1357,7 @@
           "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
         },
         "RegainStamina": {
+          "tooltip": "Regain Stamina with Hero Tokens",
           "label": "Regain Stamina",
           "messageContent": "Spends two hero tokens to regain stamina equal to their recovery value.",
           "dialogContent": "Spend two of {value} hero tokens to regain stamina equal to recovery value."
@@ -1393,7 +1388,7 @@
         "Timeout": "{label} timed out after {seconds}s"
       }
     },
-    "Skill": {
+    "SKILL": {
       "Group": {
         "Crafting": "Crafting",
         "Exploration": "Exploration",
@@ -1461,7 +1456,7 @@
         "Timescape": "Timescape"
       }
     },
-    "Languages": {
+    "LANGUAGE": {
       "Anjali": "Anjali",
       "Axiomatic": "Axiomatic",
       "Caelian": "Caelian",
@@ -1504,13 +1499,13 @@
       "Zahariax": "Za'hariax",
       "Zaliac": "Zaliac"
     },
-    "Echelon": {
+    "ECHELON": {
       "1": "1st Echelon",
       "2": "2nd Echelon",
       "3": "3rd Echelon",
       "4": "4th Echelon"
     },
-    "Messages": {
+    "ChatMessage": {
       "base": {
         "Buttons": {
           "ApplyHeal": {
@@ -1524,11 +1519,11 @@
           }
         }
       },
-      "AbilityUse": {
+      "abilityUse": {
         "NoTokenSelected": "You must have at least one token selected.",
         "NoPRE": "The Power Roll Effect could not be found."
       },
-      "SavingThrow": {
+      "savingThrow": {
         "Buttons": {
           "HeroToken": {
             "Label": "Hero Token",
