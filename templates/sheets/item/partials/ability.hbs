@@ -1,5 +1,5 @@
 {{#if isPlay}}
-{{> "systems/draw-steel/templates/sheets/item/embeds/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
+{{> "systems/draw-steel/templates/embeds/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
 {{else}}
 {{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywords.optgroups}}
