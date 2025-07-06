@@ -20,7 +20,7 @@ export default class AbilityModel extends BaseItemModel {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "ability",
-      detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
       },
@@ -210,7 +210,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     await this.getSheetContext(context);
-    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
   }

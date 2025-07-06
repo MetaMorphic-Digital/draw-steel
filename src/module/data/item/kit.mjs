@@ -12,7 +12,7 @@ export default class KitModel extends BaseItemModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "kit",
       invalidActorTypes: ["npc"],
-      detailsPartial: [systemPath("templates/item/partials/kit.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/kit.hbs")],
     });
   }
 
@@ -108,7 +108,7 @@ export default class KitModel extends BaseItemModel {
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
     await this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
-    const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
+    const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
   }

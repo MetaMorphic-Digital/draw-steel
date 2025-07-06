@@ -12,7 +12,7 @@ export default class ClassModel extends AdvancementModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "class",
       invalidActorTypes: ["npc"],
-      detailsPartial: [systemPath("templates/item/partials/class.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/class.hbs")],
     });
   }
 

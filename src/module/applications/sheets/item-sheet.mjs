@@ -62,29 +62,29 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/item/header.hbs"),
-      templates: ["templates/item/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/item/header.hbs"),
+      templates: ["templates/sheets/item/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     description: {
-      template: systemPath("templates/item/description.hbs"),
+      template: systemPath("templates/sheets/item/description.hbs"),
     },
     details: {
-      template: systemPath("templates/item/details.hbs"),
+      template: systemPath("templates/sheets/item/details.hbs"),
       scrollable: [""],
     },
     advancement: {
-      template: systemPath("templates/item/advancement.hbs"),
+      template: systemPath("templates/sheets/item/advancement.hbs"),
     },
     impact: {
-      template: systemPath("templates/item/impact.hbs"),
+      template: systemPath("templates/sheets/item/impact.hbs"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/item/effects.hbs"),
+      template: systemPath("templates/sheets/item/effects.hbs"),
     },
   };
 

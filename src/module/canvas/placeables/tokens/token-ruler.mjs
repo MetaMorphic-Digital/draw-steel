@@ -9,7 +9,7 @@ import { systemPath } from "../../../constants.mjs";
  */
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
-  static WAYPOINT_LABEL_TEMPLATE = systemPath("templates/hud/waypoint-label.hbs");
+  static WAYPOINT_LABEL_TEMPLATE = systemPath("templates/canvas/placeables/token/waypoint-label.hbs");
 
   /* -------------------------------------------------- */
 

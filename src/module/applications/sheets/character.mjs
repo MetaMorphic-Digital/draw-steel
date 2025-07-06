@@ -24,41 +24,41 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/actor/character/header.hbs"),
-      templates: ["templates/actor/character/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/actor/character/header.hbs"),
+      templates: ["templates/sheets/actor/character/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/actor/character/stats.hbs"),
-      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/actor/shared/partials/stats/${t}`)),
+      template: systemPath("templates/sheets/actor/character/stats.hbs"),
+      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/actor/shared/features.hbs"),
+      template: systemPath("templates/sheets/actor/shared/features.hbs"),
       scrollable: [""],
     },
     equipment: {
-      template: systemPath("templates/actor/character/equipment.hbs"),
+      template: systemPath("templates/sheets/actor/character/equipment.hbs"),
       scrollable: [""],
     },
     projects: {
-      template: systemPath("templates/actor/character/projects.hbs"),
+      template: systemPath("templates/sheets/actor/character/projects.hbs"),
       scrollable: [""],
     },
     abilities: {
-      template: systemPath("templates/actor/shared/abilities.hbs"),
+      template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/actor/shared/effects.hbs"),
+      template: systemPath("templates/sheets/actor/shared/effects.hbs"),
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/actor/character/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/actor/shared/partials/biography/${t}`)),
+      template: systemPath("templates/sheets/actor/character/biography.hbs"),
+      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
   };

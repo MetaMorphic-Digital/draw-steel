@@ -9,7 +9,7 @@ export default class FeatureModel extends BaseItemModel {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "feature",
-      detailsPartial: [systemPath("templates/item/partials/feature.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/feature.hbs")],
     });
   }
 
