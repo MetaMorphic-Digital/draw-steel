@@ -40,11 +40,13 @@ export default class AdvancementModel extends BaseItemModel {
       record[type] ??= new Set();
       for (const k of trait) record[type].add(k);
     };
+    const level = this.actor.system.level;
     for (const advancement of this.advancements) {
       if (!advancement.isTrait) continue;
+      if (!advancement.levels.some(l => l <= level)) continue;
       const selected = advancement.isChoice
         ? flags[advancement.id]?.selected ?? []
-        : Object.keys(advancement.traitChoices);
+        : advancement.traitOptions.map(option => option.value);
       addTrait(advancement.type, selected);
     }
   }
