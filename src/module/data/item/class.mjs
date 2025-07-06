@@ -91,6 +91,8 @@ export default class ClassModel extends AdvancementModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareDerivedData() {
     if (this.actor) {
