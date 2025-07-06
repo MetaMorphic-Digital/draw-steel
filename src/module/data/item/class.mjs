@@ -63,23 +63,9 @@ export default class ClassModel extends AdvancementModel {
 
   /** @inheritdoc */
   async getSheetContext(context) {
+    super.getSheetContext(context);
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
     context.kitOptions = Array.fromRange(3).map(number => ({ label: number, value: number }));
-
-    // Advancements
-    const advs = {};
-    const models = this.parent.getEmbeddedPseudoDocumentCollection("Advancement")[
-      context.isPlay ? "contents" : "sourceContents"
-    ];
-    for (const model of models) {
-      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
-        level: model.requirements.level,
-        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
-        documents: [],
-      };
-      advs[model.requirements.level].documents.push(model);
-    }
-    context.advancements = Object.values(advs).sort((a, b) => a.level - b.level);
   }
 
   /* -------------------------------------------------- */
