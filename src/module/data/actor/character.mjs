@@ -154,6 +154,13 @@ export default class CharacterModel extends BaseActorModel {
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
+
+    for (const skill of this._traits.skill ?? []) {
+      if (skill in ds.CONFIG.skills.list) this.hero.skills.add(skill);
+    }
+    for (const lang of this._traits.language ?? []) {
+      if (lang in ds.CONFIG.languages) this.biography.languages.add(lang);
+    }
   }
 
   /* -------------------------------------------------- */
