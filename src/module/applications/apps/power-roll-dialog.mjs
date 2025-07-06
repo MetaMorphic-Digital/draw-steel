@@ -21,7 +21,7 @@ export default class PowerRollDialog extends RollDialog {
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/rolls/power-roll-dialog.hbs"),
+      template: systemPath("templates/apps/power-roll-dialog.hbs"),
     },
     footer: super.PARTS.footer,
   };

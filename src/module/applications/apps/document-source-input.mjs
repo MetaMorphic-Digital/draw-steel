@@ -19,7 +19,7 @@ export default class DocumentSourceInput extends DocumentInput {
   /** @inheritdoc */
   static PARTS = {
     body: {
-      template: systemPath("templates/sheets/document-input/document-source-input.hbs"),
+      template: systemPath("templates/apps/document-input/document-source-input.hbs"),
     },
   };
 

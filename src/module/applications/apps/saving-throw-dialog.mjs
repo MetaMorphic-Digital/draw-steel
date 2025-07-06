@@ -17,7 +17,7 @@ export default class SavingThrowDialog extends RollDialog {
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/rolls/saving-throw-dialog.hbs"),
+      template: systemPath("templates/apps/saving-throw-dialog.hbs"),
     },
     footer: super.PARTS.footer,
   };

@@ -19,7 +19,7 @@ export default class MonsterMetadataInput extends DocumentInput {
   /** @inheritdoc */
   static PARTS = {
     body: {
-      template: systemPath("templates/sheets/document-input/monster-metadata-input.hbs"),
+      template: systemPath("templates/apps/document-input/monster-metadata-input.hbs"),
     },
   };
 

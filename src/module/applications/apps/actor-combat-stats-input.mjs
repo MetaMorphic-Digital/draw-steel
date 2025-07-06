@@ -19,7 +19,7 @@ export default class ActorCombatStatsInput extends DocumentInput {
   /** @inheritdoc */
   static PARTS = {
     body: {
-      template: systemPath("templates/sheets/document-input/actor-combat-stats-input.hbs"),
+      template: systemPath("templates/apps/document-input/actor-combat-stats-input.hbs"),
     },
   };
 }
