@@ -13,7 +13,7 @@ export default class EquipmentModel extends BaseItemModel {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "equipment",
-      detailsPartial: [systemPath("templates/item/partials/equipment.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/equipment.hbs")],
     });
   }
 

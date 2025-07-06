@@ -22,10 +22,10 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/combat/group-config/header.hbs"),
+      template: systemPath("templates/sheets/combatant-group/header.hbs"),
     },
     body: {
-      template: systemPath("templates/combat/group-config/body.hbs"),
+      template: systemPath("templates/sheets/combatant-group/body.hbs"),
     },
     footer: {
       // Core template

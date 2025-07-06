@@ -21,33 +21,33 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/actor/npc/header.hbs"),
-      templates: ["templates/actor/npc/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/actor/npc/header.hbs"),
+      templates: ["templates/sheets/actor/npc/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/actor/npc/stats.hbs"),
-      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/actor/shared/partials/stats/${t}`)),
+      template: systemPath("templates/sheets/actor/npc/stats.hbs"),
+      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/actor/shared/features.hbs"),
+      template: systemPath("templates/sheets/actor/shared/features.hbs"),
       scrollable: [""],
     },
     abilities: {
-      template: systemPath("templates/actor/shared/abilities.hbs"),
+      template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/actor/shared/effects.hbs"),
+      template: systemPath("templates/sheets/actor/shared/effects.hbs"),
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/actor/npc/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/actor/shared/partials/biography/${t}`)),
+      template: systemPath("templates/sheets/actor/npc/biography.hbs"),
+      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
   };

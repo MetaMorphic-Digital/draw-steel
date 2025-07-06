@@ -17,7 +17,7 @@ export default class ProjectModel extends BaseItemModel {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       type: "project",
-      detailsPartial: [systemPath("templates/item/partials/project.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/project.hbs")],
     });
   }
 
@@ -144,7 +144,7 @@ export default class ProjectModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", "project");
     if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/project.hbs"), context);
+    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/item/embeds/project.hbs"), context);
     embed.insertAdjacentHTML("beforeend", projectBody);
     return embed;
   }

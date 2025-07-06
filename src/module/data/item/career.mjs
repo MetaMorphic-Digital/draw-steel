@@ -14,7 +14,7 @@ export default class CareerModel extends AdvancementModel {
     return foundry.utils.mergeObject(super.metadata, {
       type: "career",
       invalidActorTypes: ["npc"],
-      detailsPartial: [systemPath("templates/item/partials/career.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/career.hbs")],
     });
   }
 

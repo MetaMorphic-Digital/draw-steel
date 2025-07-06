@@ -24,7 +24,7 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
       template: "templates/sheets/active-effect/details.hbs",
     },
     duration: {
-      template: systemPath("templates/active-effect/config-duration.hbs"),
+      template: systemPath("templates/sheets/active-effect/config-duration.hbs"),
     },
     changes: {
       template: "templates/sheets/active-effect/changes.hbs",

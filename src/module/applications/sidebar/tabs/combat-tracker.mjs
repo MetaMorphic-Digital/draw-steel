@@ -37,12 +37,12 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       template: "templates/sidebar/tabs/combat/footer.hbs",
     },
     dsTracker: {
-      template: systemPath("templates/combat/tracker.hbs"),
-      templates: [systemPath("templates/combat/turn.hbs")],
+      template: systemPath("templates/sidebar/tabs/combat/tracker.hbs"),
+      templates: [systemPath("templates/sidebar/tabs/combat/turn.hbs")],
       scrollable: [""],
     },
     dsFooter: {
-      template: systemPath("templates/combat/footer.hbs"),
+      template: systemPath("templates/sidebar/tabs/combat/footer.hbs"),
     },
   };
 

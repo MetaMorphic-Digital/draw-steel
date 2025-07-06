@@ -16,7 +16,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/active-effect/targeted-condition-prompt.hbs"),
+      template: systemPath("templates/sheets/active-effect/targeted-condition-prompt.hbs"),
     },
   };
 

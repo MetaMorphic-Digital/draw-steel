@@ -83,17 +83,17 @@
     </div>
   </fieldset>
   {{/if}}
-  {{> "systems/draw-steel/templates/actor/shared/partials/stats/characteristics.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
   {{#if isPlay}}
   <div class="flexrow">
-    {{> "systems/draw-steel/templates/actor/shared/partials/stats/combat.hbs"}}
-    {{> "systems/draw-steel/templates/actor/shared/partials/stats/movement.hbs"}}
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   </div>
   {{else}}
-  {{> "systems/draw-steel/templates/actor/shared/partials/stats/combat.hbs"}}
-  {{> "systems/draw-steel/templates/actor/shared/partials/stats/movement.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   {{/if}}
-  {{> "systems/draw-steel/templates/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
   <fieldset class="skills flexrow">
     <legend>{{systemFields.hero.fields.skills.label}}</legend>
     {{#if isPlay}}
