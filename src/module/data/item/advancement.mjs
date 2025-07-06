@@ -41,7 +41,7 @@ export default class AdvancementModel extends BaseItemModel {
       for (const k of trait) record[type].add(k);
     };
     for (const advancement of this.advancements) {
-      if (!["skill", "language"].includes(advancement.type)) continue;
+      if (!advancement.isTrait) continue;
       const selected = advancement.isChoice
         ? flags[advancement.id]?.selected ?? []
         : Object.keys(advancement.traitChoices);
