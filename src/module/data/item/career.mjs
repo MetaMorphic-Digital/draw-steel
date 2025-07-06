@@ -1,5 +1,9 @@
 import { systemPath } from "../../constants.mjs";
-import AdvancementModel from "./advancement.mjs";
+import CharacterModel from "../actor/character.mjs";
+
+/**
+ * @import AdvancementModel from "./advancement.mjs";
+ */
 
 /**
  * Careers describe what a hero did for a living before becoming a hero
@@ -31,5 +35,36 @@ export default class CareerModel extends AdvancementModel {
     schema.wealth = new fields.NumberField({ integer: true, required: true });
 
     return schema;
+  }
+
+  /** @inheritdoc */
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+    if ((userId !== game.userId) || !this.actor) return;
+
+    /** @type {CharacterModel} */
+    const systemModel = this.actor.system;
+
+    this.actor.update({
+      system: {
+        wealth: systemModel.hero.wealth + this.wealth,
+        renown: systemModel.hero.renown + this.renown,
+      },
+    });
+  }
+
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    if ((userId !== game.userId) || !this.actor) return;
+
+    /** @type {CharacterModel} */
+    const systemModel = this.actor.system;
+
+    this.actor.update({
+      system: {
+        wealth: systemModel.hero.wealth - this.wealth,
+        renown: systemModel.hero.renown - this.renown,
+      },
+    });
   }
 }
