@@ -37,6 +37,8 @@ export default class CareerModel extends AdvancementModel {
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
@@ -53,6 +55,9 @@ export default class CareerModel extends AdvancementModel {
     });
   }
 
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   _onDelete(options, userId) {
     super._onDelete(options, userId);
     if ((userId !== game.userId) || !this.actor) return;
