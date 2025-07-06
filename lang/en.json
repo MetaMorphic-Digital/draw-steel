@@ -77,15 +77,6 @@
         "ChooseN": "Choose {n}"
       }
     },
-
-    "TRAIT_CHOICE": {
-      "FIELDS": {},
-      "HINT": {},
-      "Any": "Any Option",
-      "skillGroup": "Skill Group",
-      "specificLanguage": "Specific Language"
-    },
-
     "Sheet": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
@@ -101,13 +92,8 @@
       "Edit": "Edit",
       "Resources": "Resources",
       "Other": "Other",
-      "TakeRespite": "Take Respite",
       "LevelUp": "Level Up Available",
-      "SpendRecovery": "Spend a recovery to regain stamina.",
-      "HeroTokenRegainStamina": "Regain Stamina with Hero Tokens",
-      "GainSurges": "Spend a hero token to gain two surges.",
-      "ToggleMode": "Toggle Play/Edit Mode",
-      "UpdateSource": "Update Source Information"
+      "ToggleMode": "Toggle Play/Edit Mode"
     },
     "EDITOR": {
       "Enrichers": {
@@ -145,7 +131,7 @@
           }
         }
       },
-      "UpdateTitle": "Update Source Information",
+      "Update": "Update Source Information",
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
@@ -309,6 +295,13 @@
           "M": "Medium",
           "L": "Large"
         },
+        "SpendRecovery": {
+          "tooltip": "Spend a recovery to regain stamina.",
+          "Notifications": {
+            "NoRecoveries": "{actor} does not have any recoveries to spend.",
+            "Success": "{actor} has spent a recovery to regain stamina."
+          }
+        },
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
@@ -349,12 +342,7 @@
           }
         },
         "HeroicResourceGain": "Start of turn resource gain",
-        "SpendRecovery": {
-          "Notifications": {
-            "NoRecoveries": "{actor} does not have any recoveries to spend.",
-            "Success": "{actor} has spent a recovery to regain stamina."
-          }
-        }
+        "TakeRespite": "Take Respite"
       },
       "npc": {
         "FIELDS": {
@@ -1350,6 +1338,7 @@
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
         "GainSurges": {
+          "tooltip": "Spend a hero token to gain two surges.",
           "label": "Gain Surges",
           "messageContent": "Spends a hero token to gain two surges.",
           "dialogContent": "Spend one of {value} hero tokens to gain two surges."
@@ -1363,6 +1352,7 @@
           "messageContent": "Spends a hero token to succeed on a test and lose any consequences suffered."
         },
         "RegainStamina": {
+          "tooltip": "Regain Stamina with Hero Tokens",
           "label": "Regain Stamina",
           "messageContent": "Spends two hero tokens to regain stamina equal to their recovery value.",
           "dialogContent": "Spend two of {value} hero tokens to regain stamina equal to recovery value."

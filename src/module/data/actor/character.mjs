@@ -240,11 +240,11 @@ export default class CharacterModel extends BaseActorModel {
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
-      ui.notifications.error("DRAW_STEEL.Actor.character.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
       return this.parent;
     }
 
-    ui.notifications.success("DRAW_STEEL.Actor.character.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
     await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
     return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);

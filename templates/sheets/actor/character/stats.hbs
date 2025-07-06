@@ -5,7 +5,7 @@
     <legend>{{localize "DRAW_STEEL.Sheet.Resources"}}</legend>
     <div class="resource stamina">
       <label class="resource-label">
-        <a data-action="spendStaminaHeroToken" data-tooltip="DRAW_STEEL.Sheet.HeroTokenRegainStamina" data-tooltip-direction="UP">{{systemFields.stamina.label}}</a>
+        <a data-action="spendStaminaHeroToken" data-tooltip="DRAW_STEEL.Setting.HeroTokens.RegainStamina.tooltip" data-tooltip-direction="UP">{{systemFields.stamina.label}}</a>
       </label>
       <div class="resource-content flexrow">
         <div class="resource-temporary">
@@ -38,7 +38,7 @@
     </div>
     <div class="resource recoveries">
       <label class="resource-label">
-        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Sheet.SpendRecovery" data-tooltip-direction="UP">{{systemFields.recoveries.label}}</a>
+        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip" data-tooltip-direction="UP">{{systemFields.recoveries.label}}</a>
       </label>
       <div class="resource-content flexrow">
         <div class="resource-current">
@@ -72,7 +72,7 @@
       {{/if}}
       <div class="form-group">
         <label>
-          <a data-action="gainSurges" data-tooltip="DRAW_STEEL.Sheet.GainSurges">
+          <a data-action="gainSurges" data-tooltip="DRAW_STEEL.Setting.HeroTokens.GainSurges.tooltip">
             {{systemFields.hero.fields.surges.label}}
           </a>
         </label>
