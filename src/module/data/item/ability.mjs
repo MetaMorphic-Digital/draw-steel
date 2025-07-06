@@ -249,6 +249,8 @@ export default class AbilityModel extends BaseItemModel {
     context.resourceName = resourceName;
 
     context.keywordList = formattedLabels.keywords;
+
+    context.actionTypeLabel = config.types[this.type]?.label ?? "";
     context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
     context.abilityCategories = Object.entries(config.categories).map(([value, { label }]) => ({ value, label }));
 
@@ -256,9 +258,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
-    context.primaryDistance = config.distances[this.distance.type].primary;
-    context.secondaryDistance = config.distances[this.distance.type].secondary;
-    context.tertiaryDistance = config.distances[this.distance.type].tertiary;
+    context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
+    context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
+    context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";
 
     context.targetLabel = formattedLabels.target;
     context.targetTypes = Object.entries(config.targets).map(([value, { label }]) => ({ value, label }));

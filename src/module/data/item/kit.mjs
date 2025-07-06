@@ -163,6 +163,8 @@ export default class KitModel extends BaseItemModel {
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, { label }]) => ({ value, label }))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
 
+    context.armorLabel = ds.CONFIG.equipment.armor[this.equipment.armor]?.label ?? "";
+
     const weaponFormatter = game.i18n.getListFormatter({ type: "unit" });
     const weaponList = Array.from(this.equipment.weapon).map(w => ds.CONFIG.equipment.weapon[w]?.label ?? w);
     context.weaponLabel = weaponFormatter.format(weaponList);
