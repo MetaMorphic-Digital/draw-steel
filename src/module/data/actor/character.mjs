@@ -287,7 +287,7 @@ export default class CharacterModel extends BaseActorModel {
    * @type {Record<string, Set>}
    * @internal
    */
-  _traits;
+  _traits = {};
 
   /* -------------------------------------------------- */
 
