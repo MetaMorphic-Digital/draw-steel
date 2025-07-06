@@ -24,13 +24,6 @@ export default class SkillAdvancement extends TraitAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  get traitChoices() {
-    return ds.CONFIG.skills.list;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   get traitOptions() {
     const config = ds.CONFIG.skills;
     const any = !this.skills.groups.size && !this.skills.choices.size;

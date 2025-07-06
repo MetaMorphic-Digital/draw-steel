@@ -21,13 +21,6 @@ export default class LanguageAdvancement extends TraitAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  get traitChoices() {
-    return ds.CONFIG.languages;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   get traitOptions() {
     const config = ds.CONFIG.languages;
     const any = !this.languages.size;

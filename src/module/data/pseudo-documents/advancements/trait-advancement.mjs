@@ -52,18 +52,7 @@ export default class TraitAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * The record of unique, individual trait choices for this trait type.
-   * @type {Record<string, { label: string; group?: string }>}
-   * @abstract
-   */
-  get traitChoices() {
-    throw new Error("A Trait Advancement must implement `get traitChoices`.");
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Options available for this specific Trait advancement, with values corresponding to the keys of {@link traitChoices}.
+   * Options available for this specific Trait advancement, with values corresponding to the keys of a relevant record.
    * @type {FormSelectOption[]}
    * @abstract
    */
