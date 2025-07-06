@@ -85,7 +85,11 @@ declare module "./ancestry.mjs" {
 }
 
 declare module "./career.mjs" {
-  // export default interface CareerModel { }
+  export default interface CareerModel {
+    projectPoints: number;
+    renown: number;
+    wealth: number;
+  }
 }
 
 declare module "./class.mjs" {
