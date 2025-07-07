@@ -277,7 +277,7 @@ export default class ProjectModel extends BaseItemModel {
     if (existingItem) {
       await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
     } else {
-      const itemData = game.items.fromCompendium(item);
+      const itemData = game.items.fromCompendium(item, { clearFolder: true });
       itemData.system.quantity = amount;
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }

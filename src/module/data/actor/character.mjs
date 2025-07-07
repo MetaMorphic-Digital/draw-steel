@@ -184,7 +184,7 @@ export default class CharacterModel extends BaseActorModel {
     if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
       const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
       // updateSource will merge the arrays for embedded collections
-      updates.items = items.map(i => game.items.fromCompendium(i));
+      updates.items = items.map(i => game.items.fromCompendium(i, { clearFolder: true }));
     }
 
     this.parent.updateSource(updates);
@@ -417,7 +417,7 @@ export default class CharacterModel extends BaseActorModel {
     if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
-    if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error("A hero cannot advance beyond level 10.");
+    if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
 
     cls = cls ? cls : item;
     const levelStart = this.level + 1;

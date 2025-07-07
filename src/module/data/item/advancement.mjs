@@ -58,18 +58,24 @@ export default class AdvancementModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Helper method to create an item's advancements.
-   * @abstract Subclasses are responsible for processing this item's potential creation or updates.
-   * @param {object} config                 Mandatory Properties
-   * @param {DrawSteelActor} config.actor   The actor to create this item within
-   * @param {number} config.levelStart      Base level of advancements to include
-   * @param {number} config.levelEnd        Highest level of advancements to include
-   * @param {object} [options]              Optional properties to configure this advancement's creation
-   * @param {object} [options.toCreate]     Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
-   * @param {object} [options.toUpdate]     Record of existing items' ids to the updates to be performed.
-   * @param {object} [options.actorUpdate]  Record of actor data to update with the advancement
+   * Helper method to add an item's advancements and create or update this item.
+   * @param {object} [options]                Optional properties to configure this advancement's creation
+   * @param {DrawSteelActor} [options.actor]  The actor to create this item within
+   * @param {number} [options.levelStart]     Base level of advancements to include
+   * @param {number} [options.levelEnd]       Highest level of advancements to include
+   * @param {object} [options.toCreate]       Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
+   * @param {object} [options.toUpdate]       Record of existing items' ids to the updates to be performed.
+   * @param {object} [options.actorUpdate]    Record of actor data to update with the advancement
    */
-  async applyAdvancements({ actor, levelStart, levelEnd }, { toCreate = {}, toUpdate = {}, actorUpdate = {} } = {}) {
+  async applyAdvancements({ actor = this.actor, levelStart = 1, levelEnd = 1, toCreate = {}, toUpdate = {}, actorUpdate = {} } = {}) {
+    if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
+
+    if (!this.actor && !(this.parent.uuid in toCreate)) {
+      const keepId = !actor.items.has(this.parent.id);
+      const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
+      toCreate[this.parent.uuid] = itemData;
+    } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
+
     const chains = [];
     for (const advancement of this.advancements) {
       const validRange = advancement.levels.some(level => level.between(levelStart, levelEnd));
@@ -90,7 +96,7 @@ export default class AdvancementModel extends BaseItemModel {
       for (const uuid of node.chosenSelection) {
         const item = node.choices[uuid].item;
         const keepId = !actor.items.has(item.id) && !(item.id in toCreate);
-        const itemData = game.items.fromCompendium(item, { keepId });
+        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
         toCreate[item.uuid] = itemData;
       }
     }

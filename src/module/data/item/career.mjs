@@ -81,13 +81,9 @@ export default class CareerModel extends AdvancementModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async applyAdvancements({ actor, ...config }, { toCreate = {}, ...options } = {}) {
-    if (actor.system.career) throw new Error(`${actor.name} already has a career!`);
+  async applyAdvancements({ actor, ...options }) {
+    if (!this.actor && actor.system.career) throw new Error(`${actor.name} already has a career!`);
 
-    const keepId = !actor.items.has(this.parent.id);
-    const itemData = game.items.fromCompendium(this.parent, { keepId });
-    toCreate[this.parent.uuid] = itemData;
-
-    return super.applyAdvancements({ actor, ...config }, { toCreate, ...options });
+    return super.applyAdvancements({ actor, ...options });
   }
 }

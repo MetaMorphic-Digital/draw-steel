@@ -342,7 +342,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         if (existing) {
           const replace = await ds.applications.api.DSDialog.confirm({
             window: {
-              title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.title", { format: { type: item.type } }),
+              title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.title", { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) }),
             },
             content: `<p>${game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.content", { name: item.name })}</p>`,
           });
