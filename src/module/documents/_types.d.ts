@@ -25,52 +25,53 @@ import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, Dra
 type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
+type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
 
 declare module "@client/documents/_module.mjs" {
-  interface Actor<Model extends ActorModel = ActorModel> extends ActorData {
+  interface BaseActor<Model extends ActorModel = ActorModel> extends ActorData {
     type: Model["metadata"]["type"];
-    system: InstanceType <Model>;
-    items: Collection <string, DrawSteelItem>;
-    effects: Collection <string, DrawSteelActiveEffect>;
+    system: InstanceType<Model>;
+    items: Collection<string, DrawSteelItem>;
+    effects: Collection<string, DrawSteelActiveEffect>;
   }
 
-  interface Item<Model extends ItemModel = ItemModel> extends ItemData {
+  interface BaseItem<Model extends ItemModel = ItemModel> extends ItemData {
     type: Model["metadata"]["type"];
-    system: InstanceType <Model>;
-    effects: Collection <string, DrawSteelActiveEffect>;
+    system: InstanceType<Model>;
+    effects: Collection<string, DrawSteelActiveEffect>;
   }
 
-  interface ActiveEffect extends ActiveEffectData {
+  interface BaseActiveEffect extends ActiveEffectData {
     type: "base";
     system: ActiveEffectModels.BaseEffectModel;
   }
-  interface ChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData {
+  interface BaseChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
   }
 
-  interface Combat extends CombatData {
+  interface BaseCombat extends CombatData {
     type: "base";
     system: CombatModels.BaseCombatModel;
     combatants: Collection<string, DrawSteelCombatant>;
     groups: Collection<string, DrawSteelCombatantGroup>
   }
 
-  interface CombatantGroup extends CombatantGroupData {
-    type: "base" | "squad";
-    system: CombatantGroupModels.BaseCombatantGroupModel | CombatantGroupModels.SquadModel;
+  interface BaseCombatantGroup<Model extends CombatantGroupModel = CombatantGroupModel> extends CombatantGroupData {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
   }
 
-  interface Combatant extends CombatantData {
+  interface BaseCombatant extends CombatantData {
     type: "base";
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface JournalEntryPage extends JournalEntryPageData {
+  interface BaseJournalEntryPage extends JournalEntryPageData {
     type: "text" | "image" | "pdf" | "video";
-    system: Record <string, unknown>;
+    system: Record<string, unknown>;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface TokenDocument extends TokenData {}
+  interface BaseToken extends TokenData {}
 }
