@@ -1,9 +1,12 @@
-import { systemID, systemPath } from "../../constants.mjs";
-import { EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import { systemPath } from "../../constants.mjs";
+import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
-/** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
-/** @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "./_types.js" */
+/**
+ * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs";
+ * @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "./_types.js";
+ */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
@@ -325,10 +328,30 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     if (item.type === "class") {
       const cls = this.document.system.class;
       if (cls && (cls.dsid !== item.dsid)) {
-        ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewClass", { localize: true });
+        ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
+          format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
+        });
         return;
       }
       return this.document.system.advance({ levels: 1, item });
+    } else if (item.system instanceof AdvancementModel) {
+      // Other advancements
+      if (["ancestry", "career", "culture"].includes(item.type)) {
+        /** @type {DrawSteelItem} */
+        const existing = this.document.system[item.type];
+        if (existing) {
+          const replace = await ds.applications.api.DSDialog.confirm({
+            window: {
+              title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.title", { format: { type: item.type } }),
+            },
+            content: `<p>${game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.content", { name: item.name })}</p>`,
+          });
+          // TODO: Undo previous item's advancements
+          if (replace) await existing.delete();
+          else return;
+        }
+      }
+      return item.system.applyAdvancements({ actor: this.document, levelStart: 1, levelEnd: this.document.system.level });
     }
 
     return super._onDropItem(event, item);

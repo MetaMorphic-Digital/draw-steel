@@ -87,10 +87,7 @@ export default class ClassModel extends AdvancementModel {
     }
   }
 
-  /**
-   * Extended version that will either create the class or advance the character's level
-   * @inheritdoc
-   */
+  /** @inheritdoc */
   async applyAdvancements({ actor, levelEnd, ...config }, { toCreate = {}, toUpdate = {}, ...options } = {}) {
     const createClass = this.parent !== actor.system.class;
     if (createClass) {

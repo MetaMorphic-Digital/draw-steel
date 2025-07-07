@@ -55,8 +55,11 @@ export default class AdvancementModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Helper method to create an item's advancements
+   * Helper method to create an item's advancements.
+   * @abstract Subclasses are responsible for processing this item's potential creation or updates.
    * @param {object} config                 Mandatory Properties
    * @param {DrawSteelActor} config.actor   The actor to create this item within
    * @param {number} config.levelStart      Base level of advancements to include
@@ -86,7 +89,7 @@ export default class AdvancementModel extends BaseItemModel {
 
       for (const uuid of node.chosenSelection) {
         const item = node.choices[uuid].item;
-        const keepId = !this.parent.items.has(item.id) && !(item.id in toCreate);
+        const keepId = !actor.items.has(item.id) && !(item.id in toCreate);
         const itemData = game.items.fromCompendium(item, { keepId });
         toCreate[item.uuid] = itemData;
       }
@@ -96,7 +99,7 @@ export default class AdvancementModel extends BaseItemModel {
     for (const chain of chains) for (const node of chain.active()) {
       if (!node.advancement.isTrait) continue;
       const item = node.advancement.document;
-      const isExisting = item.parent === this.parent;
+      const isExisting = item.parent === actor;
       let itemData;
       if (isExisting) {
         toUpdate[item.id] ??= { _id: item.id };
@@ -108,10 +111,12 @@ export default class AdvancementModel extends BaseItemModel {
       foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${node.advancement.id}.selected`, node.chosenSelection);
     }
 
-    await Promise.all([
+    const transactions = await Promise.all([
       actor.createEmbeddedDocuments("Item", Object.values(toCreate), { ds: { advancement: [levelStart, levelEnd] } }),
       actor.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: { advancement: [levelStart, levelEnd] } }),
       actor.update(actorUpdate, { ds: { advancement: [levelStart, levelEnd] } }),
     ]);
+
+    return transactions[0].find(i => i.type === this.parent.type);
   }
 }
