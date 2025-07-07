@@ -63,7 +63,6 @@ export default class ClassModel extends AdvancementModel {
 
   /** @inheritdoc */
   async getSheetContext(context) {
-    super.getSheetContext(context);
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
     context.kitOptions = Array.fromRange(3).map(number => ({ label: number, value: number }));
   }
