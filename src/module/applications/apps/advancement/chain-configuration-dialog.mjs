@@ -19,6 +19,9 @@ export default class ChainConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["chain-configuration-dialog"],
+    window: {
+      icon: "fa-solid fa-circle-up",
+    },
     position: {
       width: 500,
       height: "auto",
