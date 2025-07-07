@@ -86,4 +86,22 @@ export default class ClassModel extends AdvancementModel {
       this.actor.system.stamina.max = this.stamina.starting + this.level * this.stamina.level;
     }
   }
+
+  /**
+   * Extended version that will either create the class or advance the character's level
+   * @inheritdoc
+   */
+  async applyAdvancements({ actor, levelEnd, ...config }, { toCreate = {}, toUpdate = {}, ...options } = {}) {
+    const createClass = this.parent !== actor.system.class;
+    if (createClass) {
+      const keepId = !actor.items.has(this.parent.id);
+      const itemData = game.items.fromCompendium(this.parent, { keepId });
+      foundry.utils.setProperty(itemData, "system.level", levelEnd);
+      toCreate[this.parent.uuid] = itemData;
+    } else {
+      toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
+    }
+
+    return super.applyAdvancements({ actor, levelEnd, ...config }, { toCreate, toUpdate, ...options });
+  }
 }
