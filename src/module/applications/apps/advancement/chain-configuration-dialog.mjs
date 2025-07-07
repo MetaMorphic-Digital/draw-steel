@@ -44,13 +44,6 @@ export default class ChainConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  get title() {
-    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.levelUp", { name: this.hero.name });
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * The individual advancement chains. These will be mutated by the application
    * and as such cannot be reused for repeat behavior.

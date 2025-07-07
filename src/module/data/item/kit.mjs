@@ -92,7 +92,7 @@ export default class KitModel extends AdvancementModel {
   async kitSwapDialog(actor) {
     const kits = actor.system.kits.concat(this.parent);
     const kitLimit = actor.system.class?.system.kits;
-    if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
+    if (!Number.isNumeric(kitLimit) || (kits.length <= kitLimit)) return;
 
     // Generate the HTML for the dialog
     let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: actor.name })}</strong>`;

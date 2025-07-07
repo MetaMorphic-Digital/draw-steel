@@ -82,8 +82,12 @@ export default class AdvancementModel extends BaseItemModel {
       if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
     }
 
+    const title = this.actor ?
+      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.hero.name }) :
+      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.createWithAdvancementsTitle", { name: this.parent.name });
+
     const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-      chains, actor,
+      chains, actor, window: { title },
     });
     if (!configured) return;
 
