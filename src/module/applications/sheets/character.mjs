@@ -358,6 +358,16 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
           else return;
         }
       }
+      else if (item.type === "kit") {
+        const actorClass = this.document.system.class;
+        if (actorClass?.system.kits === 0) {
+          const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
+          ui.notifications.error(message);
+          return false;
+        }
+        const swapKit = await item.system.kitSwapDialog(this.document);
+        if (swapKit === false) return false;
+      }
       return item.system.applyAdvancements({ actor: this.document, levelStart: 1, levelEnd: this.document.system.level });
     }
 

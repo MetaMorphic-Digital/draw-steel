@@ -1,12 +1,12 @@
 import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
-import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
  */
-export default class KitModel extends BaseItemModel {
+export default class KitModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
@@ -27,15 +27,11 @@ export default class KitModel extends BaseItemModel {
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = ds.CONFIG;
-
-    // schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 
     schema.equipment = new fields.SchemaField({
       armor: new fields.StringField({ required: true, blank: true }),
       weapon: new fields.SetField(setOptions()),
       shield: new fields.BooleanField(),
-      // implement: new fields.StringField({choices: config.equipment.implement})
     });
 
     const damageSchema = () => ({
@@ -59,33 +55,7 @@ export default class KitModel extends BaseItemModel {
       disengage: new fields.NumberField({ integer: true }),
     });
 
-    // schema.signature = new fields.SchemaField({
-    //   grant: new fields.DocumentUUIDField(),
-    //   link: new fields.DocumentUUIDField()
-    // });
-
     return schema;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _preCreate(data, options, user) {
-    const allowed = await super._preCreate(data, options, user);
-    if (allowed === false) return false;
-
-    const actor = this.parent.actor;
-    if (actor) {
-      const actorClass = actor.system.class;
-      if (actorClass?.system.kits === 0) {
-        const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
-        ui.notifications.error(message);
-        return false;
-      }
-
-      const swapKit = await this._kitSwapDialog();
-      if (swapKit === false) return false;
-    }
   }
 
   /* -------------------------------------------------- */
@@ -119,14 +89,13 @@ export default class KitModel extends BaseItemModel {
    * Prompt the user for which kit to replace when the actor is already at the maximum.
    * @returns {Promise<void|false>}
    */
-  async _kitSwapDialog() {
-    const actor = this.parent.actor;
-    const kits = actor.system.kits;
+  async kitSwapDialog(actor) {
+    const kits = actor.system.kits.concat(this.parent);
     const kitLimit = actor.system.class?.system.kits;
     if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: this.parent.actor.name })}</strong>`;
+    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: actor.name })}</strong>`;
     for (const kit of kits) {
       radioButtons += `
         <div class="form-group">
@@ -150,7 +119,7 @@ export default class KitModel extends BaseItemModel {
         icon: "fa-solid fa-arrow-right-arrow-left",
       },
     });
-    if (!fd?.kit) return false;
+    if (!fd?.kit || (fd.kit === this.parent.id)) return false;
 
     await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
   }
