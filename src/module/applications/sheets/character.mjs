@@ -317,6 +317,13 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /** @inheritdoc */
   async _onDropItem(event, item) {
+    // Sort & Permission check first
+    if (!this.actor.isOwner) return null;
+    if (this.actor.uuid === item.parent?.uuid) {
+      const result = await this._onSortItem(event, item);
+      return result?.length ? item : null;
+    }
+
     // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
     const projectDropTarget = event.target.closest("[data-application-part='projects']");
     if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
@@ -354,6 +361,11 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       return item.system.applyAdvancements({ actor: this.document, levelStart: 1, levelEnd: this.document.system.level });
     }
 
-    return super._onDropItem(event, item);
+    // Fixed default implementation
+
+    const keepId = !this.actor.items.has(item.id);
+    const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+    const result = await Item.implementation.create(itemData, { parent: this.actor, keepId });
+    return result ?? null;
   }
 }
