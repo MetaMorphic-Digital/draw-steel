@@ -42,6 +42,7 @@ export default class CareerModel extends AdvancementModel {
   /** @inheritdoc */
   _onCreate(data, options, userId) {
     super._onCreate(data, options, userId);
+
     if ((userId !== game.userId) || !this.actor) return;
 
     /** @type {CharacterModel} */
@@ -49,8 +50,10 @@ export default class CareerModel extends AdvancementModel {
 
     this.actor.update({
       system: {
-        wealth: systemModel.hero.wealth + this.wealth,
-        renown: systemModel.hero.renown + this.renown,
+        hero: {
+          wealth: systemModel.hero.wealth + this.wealth,
+          renown: systemModel.hero.renown + this.renown,
+        },
       },
     });
   }
@@ -67,8 +70,10 @@ export default class CareerModel extends AdvancementModel {
 
     this.actor.update({
       system: {
-        wealth: systemModel.hero.wealth - this.wealth,
-        renown: systemModel.hero.renown - this.renown,
+        hero: {
+          wealth: systemModel.hero.wealth - this.wealth,
+          renown: systemModel.hero.renown - this.renown,
+        },
       },
     });
   }
