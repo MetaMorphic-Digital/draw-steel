@@ -65,21 +65,6 @@ export default class ClassModel extends AdvancementModel {
   async getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
     context.kitOptions = Array.fromRange(3).map(number => ({ label: number, value: number }));
-
-    // Advancements
-    const advs = {};
-    const models = this.parent.getEmbeddedPseudoDocumentCollection("Advancement")[
-      context.isPlay ? "contents" : "sourceContents"
-    ];
-    for (const model of models) {
-      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
-        level: model.requirements.level,
-        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
-        documents: [],
-      };
-      advs[model.requirements.level].documents.push(model);
-    }
-    context.advancements = Object.values(advs).sort((a, b) => a.level - b.level);
   }
 
   /* -------------------------------------------------- */
@@ -99,5 +84,21 @@ export default class ClassModel extends AdvancementModel {
       this.actor.system.recoveries.max = this.recoveries;
       this.actor.system.stamina.max = this.stamina.starting + this.level * this.stamina.level;
     }
+  }
+
+  /** @inheritdoc */
+  async applyAdvancements({ actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
+    const { end: levelEnd = 1 } = levels;
+    const createClass = this.parent !== actor.system.class;
+    if (createClass) {
+      const keepId = !actor.items.has(this.parent.id);
+      const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
+      foundry.utils.setProperty(itemData, "system.level", levelEnd);
+      toCreate[this.parent.uuid] = itemData;
+    } else {
+      toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
+    }
+
+    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, ...options });
   }
 }

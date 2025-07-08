@@ -72,10 +72,7 @@ async function transformEntry(entry) {
 
   for (const jep of entry.pages) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
-    // Additional newline is included to minimize churn from pack/unpack operation
-    await fs.writeFile(docsPath, jep.text.markdown + "\n", {
-      encoding: "utf8",
-    });
+    await fs.writeFile(docsPath, jep.text.markdown, { encoding: "utf8" });
     jep.text = { format: 2 };
   }
 }

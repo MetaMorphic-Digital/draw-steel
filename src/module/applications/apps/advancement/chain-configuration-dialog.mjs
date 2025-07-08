@@ -19,6 +19,9 @@ export default class ChainConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["chain-configuration-dialog"],
+    window: {
+      icon: "fa-solid fa-circle-up",
+    },
     position: {
       width: 500,
       height: "auto",
@@ -41,13 +44,6 @@ export default class ChainConfigurationDialog extends DSApplication {
       template: "templates/generic/form-footer.hbs",
     },
   };
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  get title() {
-    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.levelUp", { name: this.hero.name });
-  }
 
   /* -------------------------------------------------- */
 

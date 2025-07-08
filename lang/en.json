@@ -6,7 +6,10 @@
   },
   "DRAW_STEEL": {
     "COMPENDIUM": {
+      "ancestries": "Ancestries",
+      "backgrounds": "Backgrounds",
       "classes": "Classes",
+      "kits": "Kits",
       "abilities": "Abilities",
       "journals": "System Journals"
     },
@@ -73,9 +76,16 @@
         "traits": "Traits"
       },
       "WARNING": {
-        "cannotAddNewClass": "You cannot add a new class to a character that already has one."
+        "cannotAddNewType": "You cannot add a new {type} to a character that already has one."
       },
-      "levelUp": "Level Up: {name}",
+      "ReplaceItem": {
+        "title": "Replace {type}",
+        "content": "Do you want to replace {name}?"
+      },
+      "ChainConfiguration": {
+        "levelUpTitle": "Level Up: {name}",
+        "createWithAdvancementsTitle": "Create {name} with Advancements"
+      },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
         "ChooseN": "Choose {n}"

@@ -1,10 +1,10 @@
 import { systemPath } from "../../constants.mjs";
-import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
  * Passive benefits usually granted by other items
  */
-export default class FeatureModel extends BaseItemModel {
+export default class FeatureModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {

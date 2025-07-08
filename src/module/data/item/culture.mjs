@@ -16,4 +16,13 @@ export default class CultureModel extends AdvancementModel {
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.culture");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async applyAdvancements({ actor, ...options }) {
+    if (!this.actor && actor.system.culture) throw new Error(`${actor.name} already has a culture!`);
+
+    return super.applyAdvancements({ actor, ...options });
+  }
 }

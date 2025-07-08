@@ -4,6 +4,7 @@ import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
+import { ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
 
 export type ItemMetaData = Readonly<{
   /** The expected `type` value */
@@ -77,6 +78,14 @@ declare module "./ability.mjs" {
   export interface AbilityUseOptions {
     event: UIEvent,
     modifiers: PowerRollModifiers
+  }
+}
+
+declare module "./advancement.mjs" {
+  type Advancement = ItemGrantAdvancement | LanguageAdvancement | SkillAdvancement;
+
+  export default interface AdvancementModel {
+    advancements: ModelCollection<Advancement>;
   }
 }
 

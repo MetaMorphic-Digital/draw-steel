@@ -4,9 +4,12 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 
-/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs" */
-/** @import BaseItemModel from "../../data/item/base.mjs" */
+/**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
+ * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
+ * @import BaseItemModel from "../../data/item/base.mjs"
+ * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
+ */
 
 const { sheets, ux } = foundry.applications;
 
@@ -150,6 +153,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
         await this.item.system.getSheetContext(context);
         break;
+      case "advancement":
+        context.advancements = this._getAdvancementContext();
+        break;
       case "impact":
         context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
@@ -176,6 +182,37 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     }
 
     return tabs;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @typedef AdvancementContext
+   * @property {number} level
+   * @property {string} section
+   * @property {BaseAdvancement} documents
+   */
+
+  /**
+   * Prepares context info for the Advancements tab.
+   * @returns {AdvancementContext[]}
+   */
+  _getAdvancementContext() {
+    // Advancements
+    const advs = {};
+    const models = this.document.getEmbeddedPseudoDocumentCollection("Advancement")[
+      this.isPlayMode ? "contents" : "sourceContents"
+    ];
+    for (const model of models) {
+      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
+        level: model.requirements.level,
+        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
+        documents: [],
+      };
+      advs[model.requirements.level].documents.push(model);
+    }
+
+    return Object.values(advs).sort((a, b) => a.level - b.level);
   }
 
   /* -------------------------------------------------- */
