@@ -333,19 +333,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
     // Level up by dropping a class item.
     if (item.type === "class") {
-      const cls = this.document.system.class;
+      const cls = this.actor.system.class;
       if (cls && (cls.dsid !== item.dsid)) {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
           format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
         });
         throw new Error("Cannot add a new class to an actor already with one");
       }
-      return this.document.system.advance({ levels: 1, item });
+      return this.actor.system.advance({ levels: 1, item });
     } else if (item.system instanceof AdvancementModel) {
       // Other advancements
       if (["ancestry", "career", "culture"].includes(item.type)) {
         /** @type {DrawSteelItem} */
-        const existing = this.document.system[item.type];
+        const existing = this.actor.system[item.type];
         if (existing) {
           const replace = await ds.applications.api.DSDialog.confirm({
             window: {
@@ -360,16 +360,16 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         }
       }
       else if (item.type === "kit") {
-        const actorClass = this.document.system.class;
+        const actorClass = this.actor.system.class;
         if (actorClass?.system.kits === 0) {
           const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
           ui.notifications.error(message);
           return false;
         }
-        const swapKit = await item.system.kitSwapDialog(this.document);
+        const swapKit = await item.system.kitSwapDialog(this.actor);
         if (swapKit === false) return false;
       }
-      return item.system.applyAdvancements({ actor: this.document, levelStart: 1, levelEnd: this.document.system.level });
+      return item.system.applyAdvancements({ actor: this.actor, levels: { start: 1, end: this.actor.system.level } });
     }
 
     // Fixed default implementation, see https://github.com/foundryvtt/foundryvtt/issues/13166

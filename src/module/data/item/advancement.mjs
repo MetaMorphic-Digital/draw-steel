@@ -59,22 +59,26 @@ export default class AdvancementModel extends BaseItemModel {
 
   /**
    * Helper method to add an item's advancements and create or update this item.
-   * @param {object} [options]                Optional properties to configure this advancement's creation
-   * @param {DrawSteelActor} [options.actor]  The actor to create this item within
-   * @param {number} [options.levelStart]     Base level of advancements to include
-   * @param {number} [options.levelEnd]       Highest level of advancements to include
-   * @param {object} [options.toCreate]       Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
-   * @param {object} [options.toUpdate]       Record of existing items' ids to the updates to be performed.
-   * @param {object} [options.actorUpdate]    Record of actor data to update with the advancement
+   * @param {object} [options]                  Optional properties to configure this advancement's creation
+   * @param {DrawSteelActor} [options.actor]    The actor to create this item within
+   * @param {object} [options.levels]           Level info for this advancement
+   * @param {number} [options.levels.start=1]   Base level for this advancement
+   * @param {number} [options.levels.end=1]     End level for this advancement
+   * @param {object} [options.toCreate]         Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
+   * @param {object} [options.toUpdate]         Record of existing items' ids to the updates to be performed.
+   * @param {object} [options.actorUpdate]      Record of actor data to update with the advancement
    */
-  async applyAdvancements({ actor = this.actor, levelStart = 1, levelEnd = 1, toCreate = {}, toUpdate = {}, actorUpdate = {} } = {}) {
+  async applyAdvancements({ actor = this.actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {} } = {}) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
+    const { start: levelStart = 1, end: levelEnd = 1 } = levels;
 
-    if (!this.actor && !(this.parent.uuid in toCreate)) {
-      const keepId = !actor.items.has(this.parent.id);
-      const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
-      toCreate[this.parent.uuid] = itemData;
-    } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
+    if (!(this.parent.uuid in toCreate)) {
+      if (!this.actor) {
+        const keepId = !actor.items.has(this.parent.id);
+        const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
+        toCreate[this.parent.uuid] = itemData;
+      } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
+    }
 
     const chains = [];
     for (const advancement of this.advancements) {
@@ -83,7 +87,7 @@ export default class AdvancementModel extends BaseItemModel {
     }
 
     const title = this.actor ?
-      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.hero.name }) :
+      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: actor.name }) :
       game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.createWithAdvancementsTitle", { name: this.parent.name });
 
     const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
@@ -111,6 +115,7 @@ export default class AdvancementModel extends BaseItemModel {
       const item = node.advancement.document;
       const isExisting = item.parent === actor;
       let itemData;
+
       if (isExisting) {
         toUpdate[item.id] ??= { _id: item.id };
         itemData = toUpdate[item.id];
@@ -122,9 +127,9 @@ export default class AdvancementModel extends BaseItemModel {
     }
 
     const transactions = await Promise.all([
-      actor.createEmbeddedDocuments("Item", Object.values(toCreate), { ds: { advancement: [levelStart, levelEnd] } }),
-      actor.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: { advancement: [levelStart, levelEnd] } }),
-      actor.update(actorUpdate, { ds: { advancement: [levelStart, levelEnd] } }),
+      actor.createEmbeddedDocuments("Item", Object.values(toCreate), { ds: { levels } }),
+      actor.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: { levels } }),
+      actor.update(actorUpdate, { ds: { levels } }),
     ]);
 
     return transactions[0].find(i => i.type === this.parent.type);

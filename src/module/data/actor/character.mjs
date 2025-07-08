@@ -420,10 +420,8 @@ export default class CharacterModel extends BaseActorModel {
     if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
 
     cls = cls ? cls : item;
-    const levelStart = this.level + 1;
-    const levelEnd = this.level + levels;
 
-    await cls.system.applyAdvancements({ actor: this.parent, levelStart, levelEnd });
+    await cls.system.applyAdvancements({ actor: this.parent, levels: { start: this.level + 1, end: this.level + levels } });
 
     return this.class;
   }

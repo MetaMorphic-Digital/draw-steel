@@ -87,7 +87,8 @@ export default class ClassModel extends AdvancementModel {
   }
 
   /** @inheritdoc */
-  async applyAdvancements({ actor, levelEnd, toCreate = {}, toUpdate = {}, ...options } = {}) {
+  async applyAdvancements({ actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
+    const { end: levelEnd = 1 } = levels;
     const createClass = this.parent !== actor.system.class;
     if (createClass) {
       const keepId = !actor.items.has(this.parent.id);
@@ -98,6 +99,6 @@ export default class ClassModel extends AdvancementModel {
       toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
     }
 
-    return super.applyAdvancements({ actor, levelEnd, toCreate, toUpdate, ...options });
+    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, ...options });
   }
 }
