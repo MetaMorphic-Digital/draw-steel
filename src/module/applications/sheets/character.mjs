@@ -318,7 +318,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   async _onDropItem(event, item) {
     // Sort & Permission check first
-    if (!this.actor.isOwner) return null;
+    if (!this.isEditable) return null;
     if (this.actor.uuid === item.parent?.uuid) {
       const result = await this._onSortItem(event, item);
       return result?.length ? item : null;
