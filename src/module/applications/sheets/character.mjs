@@ -338,7 +338,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
           format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
         });
-        return;
+        throw new Error("Cannot add a new class to an actor already with one");
       }
       return this.document.system.advance({ levels: 1, item });
     } else if (item.system instanceof AdvancementModel) {
@@ -356,7 +356,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
           });
           // TODO: Undo previous item's advancements
           if (replace) await existing.delete();
-          else return;
+          else throw new Error(`Cannot add a new ${item.type} to a character that already has one without replacing the old.`);
         }
       }
       else if (item.type === "kit") {
@@ -372,7 +372,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       return item.system.applyAdvancements({ actor: this.document, levelStart: 1, levelEnd: this.document.system.level });
     }
 
-    // Fixed default implementation
+    // Fixed default implementation, see https://github.com/foundryvtt/foundryvtt/issues/13166
 
     const keepId = !this.actor.items.has(item.id);
     const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
