@@ -22,7 +22,7 @@
 
 ### Added
 
-- Advancements
+- Advancements (#51)
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added a Wealth field to Careers. (#535)
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
