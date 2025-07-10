@@ -1,5 +1,4 @@
 import { systemPath } from "../../constants.mjs";
-import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
@@ -35,9 +34,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
       toggleEffectDescription: this.#toggleEffectDescription,
-      editPowerRollEffect: this.#editPowerRoll,
-      deletePowerRollEffect: this.#deletePowerRoll,
-      createPowerRollEffect: this.#createPowerRoll,
+      createCultureAdvancement: this.#createCultureAdvancement,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -311,7 +308,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
         condition: () => this.isEditable,
         callback: (target) => {
-          const powerRollEffect = this._getPowerRoll(target);
+          const powerRollEffect = this._getPseudoDocument(target);
           ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
             pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
             id: powerRollEffect.id,
@@ -572,46 +569,14 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Edits a power roll pseudo document
+   * Creates an advancement on a culture, with additional logic to simplify creating "aspects"
    *
    * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async #editPowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.sheet.render({ force: true });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Deletes a power roll pseudo document
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async #deletePowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.delete();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Creates a power roll pseudo document
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async #createPowerRoll(event, target) {
-    BasePowerRollEffect.createDialog({}, { parent: this.item });
-  }
+  static async #createCultureAdvancement(event, target) {}
 
   /* -------------------------------------------------- */
   /*   Helper Functions                                 */
@@ -626,18 +591,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   _getEffect(target) {
     const li = target.closest(".effect");
     return this.item.effects.get(li?.dataset?.effectId);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches a Power Roll Effect pseudo-document
-   * @param {HTMLElement} target The element with the action
-   * @returns {BasePowerRollEffect} The document
-   */
-  _getPowerRoll(target) {
-    const btn = target.closest(".power-roll");
-    return this.item.getEmbeddedDocument("PowerRollEffect", btn?.dataset?.id);
   }
 
   /* -------------------------------------------------- */

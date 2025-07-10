@@ -3,7 +3,12 @@
 
     <h3 class="section-header">
       <span>{{localize "DOCUMENT.AdvancementPl"}}</span>
-      <button type="button" data-action="createPseudoDocument" class="icon fa-fw fa-solid fa-circle-plus" {{disabled (not @root.editable)}}></button>
+      <button
+        type="button"
+        data-action="{{ifThen (eq document.type "culture") "createCultureAdvancement" "createPseudoDocument" }}"
+        class="icon fa-fw fa-solid fa-circle-plus" {{disabled (not @root.editable)}}
+      >
+      </button>
     </h3>
 
     {{#each advancements}}
