@@ -1349,75 +1349,94 @@ DRAW_STEEL.Advancement = {
 
 /**
  * Configuration details for Culture items
- * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}
  */
 DRAW_STEEL.culture = {
-  environments: {
+  aspects: {
     nomadic: {
-      label: "DRAW_STEEL.Item.culture.Environments.Nomadic",
+      label: "DRAW_STEEL.Item.culture.Environment.Nomadic",
       skillOpts: new Set(),
+      group: "environment",
     },
     rural: {
-      label: "DRAW_STEEL.Item.culture.Environments.Rural",
+      label: "DRAW_STEEL.Item.culture.Environment.Rural",
       skillOpts: new Set(),
+      group: "environment",
     },
     secluded: {
-      label: "DRAW_STEEL.Item.culture.Environments.Secluded",
+      label: "DRAW_STEEL.Item.culture.Environment.Secluded",
       skillOpts: new Set(),
+      group: "environment",
     },
     urban: {
-      label: "DRAW_STEEL.Item.culture.Environments.Urban",
+      label: "DRAW_STEEL.Item.culture.Environment.Urban",
       skillOpts: new Set(),
+      group: "environment",
     },
     wilderness: {
-      label: "DRAW_STEEL.Item.culture.Environments.Wilderness",
+      label: "DRAW_STEEL.Item.culture.Environment.Wilderness",
       skillOpts: new Set(),
+      group: "environment",
     },
-  },
-  organization: {
     anarchic: {
       label: "DRAW_STEEL.Item.culture.Organization.Anarchic",
       skillOpts: new Set(),
+      group: "organization",
     },
     bureaucratic: {
       label: "DRAW_STEEL.Item.culture.Organization.Bureaucratic",
       skillOpts: new Set(),
+      group: "organization",
     },
     communal: {
       label: "DRAW_STEEL.Item.culture.Organization.Communal",
       skillOpts: new Set(),
+      group: "organization",
     },
-  },
-  upbringing: {
     academic: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Academic",
       skillOpts: new Set(),
+      group: "upbringing",
     },
     creative: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Creative",
       skillOpts: new Set(),
+      group: "upbringing",
     },
     illegal: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Illegal",
       skillOpts: new Set(),
+      group: "upbringing",
     },
     labor: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Labor",
       skillOpts: new Set(),
+      group: "upbringing",
     },
     martial: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
       skillOpts: new Set(),
+      group: "upbringing",
     },
     noble: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Noble",
       skillOpts: new Set(),
+      group: "upbringing",
+    },
+  },
+  group: {
+    environment: {
+      label: "DRAW_STEEL.Item.culture.Environment.label",
+    },
+    organization: {
+      label: "DRAW_STEEL.Item.culture.Organization.label",
+    },
+    upbringing: {
+      label: "DRAW_STEEL.Item.culture.Upbringing.label",
     },
   },
 };
-preLocalize("culture.environments", { key: "label" });
-preLocalize("culture.organization", { key: "label" });
-preLocalize("culture.upbringing", { key: "label" });
+preLocalize("culture.aspects", { key: "label" });
+preLocalize("culture.group", { key: "label" });
 
 /* -------------------------------------------------- */
 

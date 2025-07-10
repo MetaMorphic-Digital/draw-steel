@@ -4,6 +4,7 @@ import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 
 /**
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
@@ -576,7 +577,35 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async #createCultureAdvancement(event, target) {}
+  static async #createCultureAdvancement(event, target) {
+    /** @type {FormSelectOption} */
+    const options = Object.keys(ds.data.pseudoDocuments.advancements.BaseAdvancement.TYPES).map(type => ({
+      value: type,
+      label: game.i18n.localize(`TYPES.Advancement.${type}`),
+    }));
+
+    for (const [key, config] of Object.entries(ds.CONFIG.culture.aspects)) {
+      options.push({
+        label: config.label,
+        group: ds.CONFIG.culture.group[config.group]?.label,
+        value: `${config.group}.${key}`,
+      });
+    }
+
+    const select = foundry.applications.fields.createFormGroup({
+      label: game.i18n.localize("Type"),
+      input: foundry.applications.fields.createSelectInput({ blank: false, name: "type", options }),
+    }).outerHTML;
+    const result = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize("DOCUMENT.Advancement") }),
+        icon: ds.data.pseudoDocuments.advancements.BaseAdvancement.metadata.icon,
+      },
+      content: `<fieldset>${select}</fieldset>`,
+    });
+    if (!result) return null;
+    console.log(result);
+  }
 
   /* -------------------------------------------------- */
   /*   Helper Functions                                 */
