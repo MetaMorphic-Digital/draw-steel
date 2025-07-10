@@ -1348,81 +1348,106 @@ DRAW_STEEL.Advancement = {
 /* -------------------------------------------------- */
 
 /**
+ * @typedef CultureAspect
+ * @property {string} label         Human-readable label
+ * @property {string} skillGroups   A set of skill groups this aspect gives access to
+ * @property {Set<string>} skillChoices  A set of skills this aspect gives access to
+ * @property {Set<string>} group         An entry in culture.groups
+ * TODO: Description as a uuid reference
+ */
+
+/**
  * Configuration details for Culture items
  */
 DRAW_STEEL.culture = {
+  /**  @type {Record<string, CultureAspect>} */
   aspects: {
     nomadic: {
       label: "DRAW_STEEL.Item.culture.Environment.Nomadic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["exploration", "interpersonal"]),
+      skillChoices: new Set(),
       group: "environment",
     },
     rural: {
       label: "DRAW_STEEL.Item.culture.Environment.Rural",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting", "lore"]),
+      skillChoices: new Set(),
       group: "environment",
     },
     secluded: {
       label: "DRAW_STEEL.Item.culture.Environment.Secluded",
-      skillOpts: new Set(),
+      skillGroups: new Set(["interpersonal", "lore"]),
+      skillChoices: new Set(),
       group: "environment",
     },
     urban: {
       label: "DRAW_STEEL.Item.culture.Environment.Urban",
-      skillOpts: new Set(),
+      skillGroups: new Set(["interpersonal", "intrigue"]),
+      skillChoices: new Set(),
       group: "environment",
     },
     wilderness: {
       label: "DRAW_STEEL.Item.culture.Environment.Wilderness",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting", "exploration"]),
+      skillChoices: new Set(),
       group: "environment",
     },
     anarchic: {
       label: "DRAW_STEEL.Item.culture.Organization.Anarchic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["exploration", "intrigue"]),
+      skillChoices: new Set(),
       group: "organization",
     },
     bureaucratic: {
       label: "DRAW_STEEL.Item.culture.Organization.Bureaucratic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["intrigue", "lore"]),
+      skillChoices: new Set(),
       group: "organization",
     },
     communal: {
       label: "DRAW_STEEL.Item.culture.Organization.Communal",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting", "interpersonal"]),
+      skillChoices: new Set(),
       group: "organization",
     },
     academic: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Academic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["lore"]),
+      skillChoices: new Set(),
       group: "upbringing",
     },
     creative: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Creative",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting"]),
+      skillChoices: new Set(["music", "perform"]),
       group: "upbringing",
     },
     illegal: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Illegal",
-      skillOpts: new Set(),
+      skillGroups: new Set(["intrigue"]),
+      skillChoices: new Set(),
       group: "upbringing",
     },
     labor: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Labor",
-      skillOpts: new Set(),
+      skillGroups: new Set(["exploration"]),
+      skillChoices: new Set(["blacksmithing", "handleAnimals"]),
       group: "upbringing",
     },
     martial: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
-      skillOpts: new Set(),
+      skillGroups: new Set(),
+      skillChoices: new Set(["alertness", "blacksmithing", "climb", "endurance", "fletching", "intimidate", "monsters", "ride", "strategy", "track"]),
       group: "upbringing",
     },
     noble: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Noble",
-      skillOpts: new Set(),
+      skillGroups: new Set(["interpersonal"]),
+      skillChoices: new Set(),
       group: "upbringing",
     },
   },
+  /** @type {Record<string, { label: string }>} */
   group: {
     environment: {
       label: "DRAW_STEEL.Item.culture.Environment.label",

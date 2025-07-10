@@ -584,11 +584,13 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       label: game.i18n.localize(`TYPES.Advancement.${type}`),
     }));
 
+    const aspectPrefix = "cultureAspect";
+
     for (const [key, config] of Object.entries(ds.CONFIG.culture.aspects)) {
       options.push({
         label: config.label,
         group: ds.CONFIG.culture.group[config.group]?.label,
-        value: `${config.group}.${key}`,
+        value: `${aspectPrefix}.${key}`,
       });
     }
 
@@ -603,8 +605,25 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       },
       content: `<fieldset>${select}</fieldset>`,
     });
-    if (!result) return null;
-    console.log(result);
+    if (!result) return;
+
+    const [type, aspect] = result.type.split(".");
+    let createData;
+
+    if (type === aspectPrefix) {
+      const config = ds.CONFIG.culture.aspects[aspect];
+
+      createData = {
+        type: "skill",
+        name: config.label,
+        chooseN: 1,
+        skills: {
+          groups: Array.from(config.skillGroups),
+          choices: Array.from(config.skillChoices),
+        },
+      };
+    } else createData = { type };
+    ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.document });
   }
 
   /* -------------------------------------------------- */
