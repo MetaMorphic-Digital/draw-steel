@@ -36,6 +36,7 @@
 - [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
 - Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
   - This is to encourage best practices for data creation, due to the way item grant linkages work.
+  - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums. This functionality will be replaced with a compendium browser in a future update.
 
 ### Fixed
 
