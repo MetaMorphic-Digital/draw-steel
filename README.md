@@ -21,7 +21,9 @@ The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is under acti
 
 ## System Discussion
 
-Check out the [MCDM Discord](https://mcdm.gg/discord) - under the ds_homebrew channel there is a post for discussion of the system!
+We have two dedicated channels in appropriate discord forums:
+- In the [MCDM Discord](https://mcdm.gg/discord) look inside the ds_homebrew forum. This discord is also the best place to ask about playing Draw Steel.
+- In the [Foundry Discord](https://discord.gg/foundryvtt) look inside the other-game-systems forum. This discord is also the best place to ask about using the FoundryVTT software.
 
 ## Community Contribution
 
