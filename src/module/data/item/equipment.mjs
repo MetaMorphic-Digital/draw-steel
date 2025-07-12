@@ -11,10 +11,11 @@ import BaseItemModel from "./base.mjs";
 export default class EquipmentModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "equipment",
       detailsPartial: [systemPath("templates/sheets/item/partials/equipment.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

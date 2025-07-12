@@ -8,12 +8,13 @@ const { HTMLField } = foundry.data.fields;
  * @abstract
  */
 export default class BaseAdvancement extends TypedPseudoDocument {
-  /** @type {import("../../../_types").PseudoDocumentMetadata} */
+  /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       documentName: "Advancement",
       sheetClass: ds.applications.sheets.pseudoDocuments.AdvancementSheet,
-    });
+    };
   }
 
   /* -------------------------------------------------- */

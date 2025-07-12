@@ -3,6 +3,9 @@ import TraitAdvancement from "./trait-advancement.mjs";
 
 const { SetField } = foundry.data.fields;
 
+/**
+ * An advancement representing fixed or chosen language(s)
+ */
 export default class LanguageAdvancement extends TraitAdvancement {
   /** @inheritdoc */
   static defineSchema() {

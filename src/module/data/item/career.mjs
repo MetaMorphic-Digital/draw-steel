@@ -11,11 +11,12 @@ import AdvancementModel from "./advancement.mjs";
 export default class CareerModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "career",
       invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/sheets/item/partials/career.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */
