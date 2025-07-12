@@ -1,10 +1,10 @@
 import { systemPath } from "../../constants.mjs";
-import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 
 /**
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
@@ -35,9 +35,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
       toggleEffectDescription: this.#toggleEffectDescription,
-      editPowerRollEffect: this.#editPowerRoll,
-      deletePowerRollEffect: this.#deletePowerRoll,
-      createPowerRollEffect: this.#createPowerRoll,
+      createCultureAdvancement: this.#createCultureAdvancement,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -311,7 +309,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
         condition: () => this.isEditable,
         callback: (target) => {
-          const powerRollEffect = this._getPowerRoll(target);
+          const powerRollEffect = this._getPseudoDocument(target);
           ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
             pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
             id: powerRollEffect.id,
@@ -572,45 +570,60 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Edits a power roll pseudo document
+   * Creates an advancement on a culture, with additional logic to simplify creating "aspects"
    *
    * @this DrawSteelItemSheet
    * @param {PointerEvent} event   The originating click event
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
    * @private
    */
-  static async #editPowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.sheet.render({ force: true });
-  }
+  static async #createCultureAdvancement(event, target) {
+    /** @type {FormSelectOption} */
+    const options = Object.keys(ds.data.pseudoDocuments.advancements.BaseAdvancement.TYPES).map(type => ({
+      value: type,
+      label: game.i18n.localize(`TYPES.Advancement.${type}`),
+    }));
 
-  /* -------------------------------------------------- */
+    const aspectPrefix = "cultureAspect";
 
-  /**
-   * Deletes a power roll pseudo document
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async #deletePowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.delete();
-  }
+    for (const [key, config] of Object.entries(ds.CONFIG.culture.aspects)) {
+      options.push({
+        label: config.label,
+        group: ds.CONFIG.culture.group[config.group]?.label,
+        value: `${aspectPrefix}.${key}`,
+      });
+    }
 
-  /* -------------------------------------------------- */
+    const select = foundry.applications.fields.createFormGroup({
+      label: game.i18n.localize("Type"),
+      input: foundry.applications.fields.createSelectInput({ blank: false, name: "type", options }),
+    }).outerHTML;
+    const result = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize("DOCUMENT.Advancement") }),
+        icon: ds.data.pseudoDocuments.advancements.BaseAdvancement.metadata.icon,
+      },
+      content: `<fieldset>${select}</fieldset>`,
+    });
+    if (!result) return;
 
-  /**
-   * Creates a power roll pseudo document
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async #createPowerRoll(event, target) {
-    BasePowerRollEffect.createDialog({}, { parent: this.item });
+    const [type, aspect] = result.type.split(".");
+    let createData;
+
+    if (type === aspectPrefix) {
+      const config = ds.CONFIG.culture.aspects[aspect];
+
+      createData = {
+        type: "skill",
+        name: config.label,
+        chooseN: 1,
+        skills: {
+          groups: Array.from(config.skillGroups),
+          choices: Array.from(config.skillChoices),
+        },
+      };
+    } else createData = { type };
+    ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.document });
   }
 
   /* -------------------------------------------------- */
@@ -626,18 +639,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   _getEffect(target) {
     const li = target.closest(".effect");
     return this.item.effects.get(li?.dataset?.effectId);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches a Power Roll Effect pseudo-document
-   * @param {HTMLElement} target The element with the action
-   * @returns {BasePowerRollEffect} The document
-   */
-  _getPowerRoll(target) {
-    const btn = target.closest(".power-roll");
-    return this.item.getEmbeddedDocument("PowerRollEffect", btn?.dataset?.id);
   }
 
   /* -------------------------------------------------- */

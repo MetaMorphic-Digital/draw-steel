@@ -19,10 +19,10 @@
     {{/with}}
   </fieldset>
 
-  <fieldset>
+  <fieldset data-pseudo-document-name="PowerRollEffect">
     <legend>{{systemFields.power.fields.effects.label}}</legend>
     {{#unless isPlay}}
-    <button type="button" data-action="createPowerRollEffect">
+    <button type="button" data-action="createPseudoDocument">
       <i class="fa-solid fa-plus"></i>
       {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
     </button>
@@ -30,7 +30,7 @@
     {{!-- Using document.system to ensure initialized values in edit mode --}}
     <div class="power-roll-list">
       {{#each document.system.power.effects as |effect|}}
-      <button type="button" class="power-roll" data-action="editPowerRollEffect" data-id="{{effect.id}}">
+      <button type="button" class="power-roll" data-action="renderPseudoDocumentSheet" data-pseudo-id="{{effect.id}}">
         {{localize effect.name}}
       </button>
       {{/each}}
