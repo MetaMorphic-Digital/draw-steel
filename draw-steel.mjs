@@ -152,7 +152,10 @@ Hooks.once("i18nInit", () => {
     }
   }
 
-  // Localize pseudo-documents.
+  // Localize pseudo-documents. Base first, then loop through the types in use
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect);
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.advancements.BaseAdvancement);
+
   const localizePseudos = record => {
     for (const cls of Object.values(record)) {
       foundry.helpers.Localization.localizeDataModel(cls);
