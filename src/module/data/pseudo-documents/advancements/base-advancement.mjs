@@ -12,6 +12,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   static get metadata() {
     return foundry.utils.mergeObject(super.metadata, {
       documentName: "Advancement",
+      icon: "fa-solid fa-book-circle-arrow-up",
       sheetClass: ds.applications.sheets.pseudoDocuments.AdvancementSheet,
     });
   }
