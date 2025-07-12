@@ -1,3 +1,4 @@
+import { systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
@@ -5,11 +6,12 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
-  static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, ...dialogOptions } = {}) {
+  static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
     if (!pack && !types) {
       types = this.TYPES.filter(t => ![ "ancestry", "base", "career", "class", "kit", "subclass" ].includes(t));
+      template = systemPath("templates/sidebar/tabs/item/document-create.hbs");
     }
-    return super.createDialog(data, { pack, ...createOptions }, { types, ...dialogOptions });
+    return super.createDialog(data, { pack, ...createOptions }, { types, template, ...dialogOptions });
   }
 
   /** @inheritdoc */
