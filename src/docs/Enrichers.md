@@ -32,3 +32,6 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 10 type=temporary]]: Like damage you can specify the healing type. You must be precise and use "value" or "temporary" here.
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
 - [&ZeroWidthSpace;[/heal @recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
+
+## HTML-mode to clean up text
+If an enricher is not working as intended, in the text editor in which you are trying to add the enricher click on the `</>` symbold to enter HTML mode and make sure, there is not unneccessary characters or code interfering with the enricher.
