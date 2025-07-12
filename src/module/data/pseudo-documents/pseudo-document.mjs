@@ -244,6 +244,32 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
+   * Prompt for creating this pseudo-document.
+   * @param {object} [data]                                 The data used for the creation.
+   * @param {object} operation                              The context of the operation.
+   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
+   */
+  static async createDialog(data = {}, { parent, ...operation } = {}) {
+    // If there's demand or need we can make the template & context more dynamic
+    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
+      fields: this.schema.fields,
+    });
+
+    const result = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
+        icon: this.metadata.icon,
+      },
+      content,
+    });
+    if (!result) return null;
+    return this.create({ ...data, ...result }, { parent, ...operation });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Delete this pseudo-document.
    * @param {object} [operation]                      The context of the operation.
    * @returns {Promise<foundry.abstract.Document>}    A promise that resolves to the updated document.

@@ -64,13 +64,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Prompt for picking the subtype of this pseudo-document.
-   * @param {object} [data]                                 The data used for the creation.
-   * @param {object} operation                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
-   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
-   */
+  /** @inheritdoc */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
     /** @type {FormSelectOption[]} */
     const typeOptions = Object.keys(this.TYPES).map(type => ({
