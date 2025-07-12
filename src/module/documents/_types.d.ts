@@ -27,15 +27,17 @@ type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemMod
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
 type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGroupModels];
 
+type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
+
 declare module "@client/documents/_module.mjs" {
-  interface BaseActor<Model extends ActorModel = ActorModel> extends ActorData {
+  interface BaseActor<Model extends ActorModel = ActorModel> extends ActorData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
     items: Collection<string, DrawSteelItem>;
     effects: Collection<string, DrawSteelActiveEffect>;
   }
 
-  interface BaseItem<Model extends ItemModel = ItemModel> extends ItemData {
+  interface BaseItem<Model extends ItemModel = ItemModel> extends ItemData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
     effects: Collection<string, DrawSteelActiveEffect>;
@@ -45,33 +47,32 @@ declare module "@client/documents/_module.mjs" {
     type: "base";
     system: ActiveEffectModels.BaseEffectModel;
   }
-  interface BaseChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData {
+  interface BaseChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
   }
 
-  interface BaseCombat extends CombatData {
+  interface BaseCombat extends CombatData, InstanceType<ClientDocument> {
     type: "base";
     system: CombatModels.BaseCombatModel;
     combatants: Collection<string, DrawSteelCombatant>;
     groups: Collection<string, DrawSteelCombatantGroup>
   }
 
-  interface BaseCombatantGroup<Model extends CombatantGroupModel = CombatantGroupModel> extends CombatantGroupData {
+  interface BaseCombatantGroup<Model extends CombatantGroupModel = CombatantGroupModel> extends CombatantGroupData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
   }
 
-  interface BaseCombatant extends CombatantData {
+  interface BaseCombatant extends CombatantData, InstanceType<ClientDocument> {
     type: "base";
     system: CombatantModels.BaseCombatantModel;
   }
 
-  interface BaseJournalEntryPage extends JournalEntryPageData {
+  interface BaseJournalEntryPage extends JournalEntryPageData, InstanceType<ClientDocument> {
     type: "text" | "image" | "pdf" | "video";
     system: Record<string, unknown>;
   }
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface BaseToken extends TokenData {}
+   
+  interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
 }

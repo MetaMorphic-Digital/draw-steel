@@ -5,6 +5,14 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
+  static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, ...dialogOptions } = {}) {
+    if (!pack && !types) {
+      types = this.TYPES.filter(t => ![ "ancestry", "base", "career", "class", "kit", "subclass" ].includes(t));
+    }
+    return super.createDialog(data, { pack, ...createOptions }, { types, ...dialogOptions });
+  }
+
+  /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
 
