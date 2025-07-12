@@ -56,7 +56,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc*/
+  /** @inheritdoc */
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     switch (attribute) {
       case "stamina": return this.#modifyStamina(value, isDelta);

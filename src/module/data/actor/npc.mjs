@@ -12,7 +12,7 @@ import SourceModel from "../models/source.mjs";
  * NPCs are created and controlled by the director
  */
 export default class NPCModel extends BaseActorModel {
-  /** @inheritdoc*/
+  /** @inheritdoc */
   static get metadata() {
     return {
       ...super.metadata,
