@@ -11,6 +11,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /** @inheritdoc */
   static get metadata() {
     return {
+      // no-op but future proofing for additions to the BaseCombatantGroupModel
+      ...super.metadata,
       type: "squad",
     };
   }
