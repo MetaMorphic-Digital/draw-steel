@@ -35,8 +35,7 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 
 ## HTML-mode to clean up text
 If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
-1. click on the `Ⱦ` symbol to "clear formatting", this usually fixes the issue. If not, then
+1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
 2. click on the `</>` symbold to enter HTML mode and make sure, there is not unneccessary characters or code interfering with the enricher.
-
 
 ![HTML clean-up mode explainer](draw-steel/assets/docs/HTML-mode-explainer.png?raw=true "HTML Mode explainer")
