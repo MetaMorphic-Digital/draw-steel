@@ -29,6 +29,7 @@
 - Added a Renown and Wealth field to characters. (#279)
 - Added age, height, and weight info to the Biography tab for characters.
 - Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
+- Added a "Next Respite" option for ending Active Effects. (#694)
 
 ### Changed
 
