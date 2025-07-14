@@ -3,6 +3,9 @@ import TraitAdvancement from "./trait-advancement.mjs";
 
 const { SchemaField, SetField } = foundry.data.fields;
 
+/**
+ * An advancement representing fixed or chosen skill(s).
+ */
 export default class SkillAdvancement extends TraitAdvancement {
   /** @inheritdoc */
   static defineSchema() {

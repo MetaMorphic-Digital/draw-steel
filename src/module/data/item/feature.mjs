@@ -7,10 +7,11 @@ import AdvancementModel from "./advancement.mjs";
 export default class FeatureModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "feature",
       detailsPartial: [systemPath("templates/sheets/item/partials/feature.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

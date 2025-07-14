@@ -9,9 +9,13 @@ const fields = foundry.data.fields;
  */
 export default class SquadModel extends BaseCombatantGroupModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "squad",
-  });
+  static get metadata() {
+    return {
+      // no-op but future proofing for additions to the BaseCombatantGroupModel
+      ...super.metadata,
+      type: "squad",
+    };
+  }
 
   /* -------------------------------------------------- */
 

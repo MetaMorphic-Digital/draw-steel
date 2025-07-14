@@ -4,7 +4,7 @@ import BaseAdvancement from "./base-advancement.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  */
 
-const { BooleanField, NumberField, SchemaField } = foundry.data.fields;
+const { NumberField, SchemaField } = foundry.data.fields;
 
 /**
  * An advancement that applies changes to actor data during data prep.

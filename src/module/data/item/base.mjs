@@ -15,10 +15,11 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
    * @type {import("./_types").ItemMetaData}
    */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "base",
       invalidActorTypes: [],
-    });
+    };
   }
 
   /* -------------------------------------------------- */
