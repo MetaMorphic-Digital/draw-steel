@@ -594,6 +594,21 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           await this.render();
         },
       },
+      // Equipment specific options
+      {
+        name: "DRAW_STEEL.Item.project.Craft.FromEquipment.Label",
+        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        condition: (target) => this._getEmbeddedDocument(target)?.type === "equipment",
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          if (!item) {
+            console.error("Could not find item");
+            return;
+          }
+          await item.system.createProject(this.actor);
+          ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromEquipment.Notification", { format: { item: item.name } });
+        },
+      },
       // All applicable options
       {
         name: "View",
