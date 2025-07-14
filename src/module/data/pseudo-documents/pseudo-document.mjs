@@ -257,11 +257,11 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     });
 
     const result = await ds.applications.api.DSDialog.input({
+      content,
       window: {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
         icon: this.metadata.icon,
       },
-      content,
     });
     if (!result) return null;
     return this.create({ ...data, ...result }, { parent, ...operation });
