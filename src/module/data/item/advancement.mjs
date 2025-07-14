@@ -8,12 +8,13 @@ import BaseItemModel from "./base.mjs";
 export default class AdvancementModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "",
       embedded: {
         Advancement: "system.advancements",
       },
-    });
+    };
   }
 
   /* -------------------------------------------------- */

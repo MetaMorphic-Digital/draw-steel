@@ -6,10 +6,11 @@ import AdvancementModel from "./advancement.mjs";
 export default class CultureModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "culture",
       invalidActorTypes: ["npc"],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

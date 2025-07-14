@@ -9,11 +9,12 @@ import AdvancementModel from "./advancement.mjs";
 export default class KitModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "kit",
       invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/sheets/item/partials/kit.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

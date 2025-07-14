@@ -324,7 +324,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc*/
+  /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));

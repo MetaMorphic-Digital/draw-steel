@@ -16,9 +16,11 @@ const fields = foundry.data.fields;
  */
 export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "abilityUse",
-  });
+  static get metadata() {
+    return {
+      type: "abilityUse",
+    };
+  }
 
   /* -------------------------------------------------- */
 

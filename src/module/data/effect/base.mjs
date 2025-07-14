@@ -12,9 +12,11 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /**
    * Key information about this ActiveEffect subtype
    */
-  static metadata = Object.freeze({
-    type: "base",
-  });
+  static get metadata() {
+    return {
+      type: "base",
+    };
+  }
 
   /* -------------------------------------------------- */
 
