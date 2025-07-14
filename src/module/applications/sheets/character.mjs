@@ -242,6 +242,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Spend a hero token to gain a surge
    * @this DrawSteelCharacterSheet

@@ -10,6 +10,7 @@ export default class FeatureModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "feature",
+      packOnly: false,
       detailsPartial: [systemPath("templates/sheets/item/partials/feature.hbs")],
     };
   }

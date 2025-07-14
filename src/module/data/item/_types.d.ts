@@ -11,6 +11,8 @@ export type ItemMetaData = Readonly<{
   type: string;
   /** Actor types that this item cannot be placed on */
   invalidActorTypes: string[];
+  /** Is this item type restricted to only appearing in compendium packs? */
+  packOnly: boolean;
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
 } & SubtypeMetadata>;

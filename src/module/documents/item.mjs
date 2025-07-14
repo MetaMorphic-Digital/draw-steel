@@ -7,12 +7,15 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
   static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
-    if (!pack && !types) {
-      types = this.TYPES.filter(t => ![ "ancestry", "base", "career", "class", "kit", "subclass" ].includes(t));
+    if (!pack) {
+      types ??= this.TYPES;
+      types = types.filter(t => !CONFIG.Item.dataModels[t].metadata?.packOnly);
       template = systemPath("templates/sidebar/tabs/item/document-create.hbs");
     }
     return super.createDialog(data, { pack, ...createOptions }, { types, template, ...dialogOptions });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   getRollData() {

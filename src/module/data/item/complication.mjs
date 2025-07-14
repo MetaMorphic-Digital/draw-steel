@@ -9,6 +9,7 @@ export default class ComplicationModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "complication",
+      packOnly: false,
       invalidActorTypes: ["npc"],
     };
   }

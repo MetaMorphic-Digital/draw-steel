@@ -19,6 +19,7 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
       ...super.metadata,
       type: "base",
       invalidActorTypes: [],
+      packOnly: false,
     };
   }
 
