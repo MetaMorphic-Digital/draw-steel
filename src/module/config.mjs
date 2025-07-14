@@ -264,6 +264,10 @@ DRAW_STEEL.effectEnds = {
     label: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Abbr",
   },
+  respite: {
+    label: "DRAW_STEEL.ActiveEffect.Ends.Respite.Label",
+    abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Respite.Abbr",
+  },
 };
 preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
 

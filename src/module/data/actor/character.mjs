@@ -1,9 +1,11 @@
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
+import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 /** @import DrawSteelItem from "../../documents/item.mjs" */
+/** @import ActiveEffectData from "@common/documents/_types.mjs" */
 
 const fields = foundry.data.fields;
 
@@ -217,10 +219,18 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite resetting the character's stamina/recoveries and convert victories to XP
+   * Take a respite resetting the character's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
+    /** @type {ActiveEffectData[]} */
+    const updates = [];
+    for (const effect of this.parent.appliedEffects) {
+      if (!(effect.system instanceof BaseEffectModel)) continue;
+      if (effect.system.end.type === "respite") updates.push({ _id: effect.id, disabled: true });
+    }
+    await this.parent.updateEmbeddedDocuments("ActiveEffect", updates);
+
     return this.parent.update({
       system: {
         recoveries: {
