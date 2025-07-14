@@ -74,16 +74,16 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
     // If there's demand or need we can make the template & context more dynamic
     const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
-      fields: this.schema.fields,
       typeOptions,
+      fields: this.schema.fields,
     });
 
     const result = await ds.applications.api.DSDialog.input({
+      content,
       window: {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
         icon: this.metadata.icon,
       },
-      content,
       render: (event, dialog) => {
         const typeInput = dialog.element.querySelector("[name=\"type\"]");
         const nameInput = dialog.element.querySelector("[name=\"name\"]");
