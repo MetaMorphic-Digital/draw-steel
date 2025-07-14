@@ -1,6 +1,7 @@
+import { systemPath } from "../../constants.mjs";
 import PseudoDocument from "./pseudo-document.mjs";
 
-/** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types" */
+/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
 const { DocumentTypeField } = foundry.data.fields;
 
@@ -63,31 +64,32 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Prompt for picking the subtype of this pseudo-document.
-   * @param {object} [data]                                 The data used for the creation.
-   * @param {object} operation                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
-   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
-   */
+  /** @inheritdoc */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
-    const select = foundry.applications.fields.createFormGroup({
-      label: game.i18n.localize("Type"),
-      input: foundry.applications.fields.createSelectInput({
-        blank: false,
-        name: "type",
-        options: Object.keys(this.TYPES).map(type => ({
-          value: type,
-          label: game.i18n.localize(`TYPES.${this.metadata.documentName}.${type}`),
-        })),
-      }),
-    }).outerHTML;
+    /** @type {FormSelectOption[]} */
+    const typeOptions = Object.keys(this.TYPES).map(type => ({
+      value: type,
+      label: game.i18n.localize(`TYPES.${this.metadata.documentName}.${type}`),
+    }));
+
+    // If there's demand or need we can make the template & context more dynamic
+    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
+      typeOptions,
+      fields: this.schema.fields,
+    });
+
     const result = await ds.applications.api.DSDialog.input({
+      content,
       window: {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
         icon: this.metadata.icon,
       },
-      content: `<fieldset>${select}</fieldset>`,
+      render: (event, dialog) => {
+        const typeInput = dialog.element.querySelector("[name=\"type\"]");
+        const nameInput = dialog.element.querySelector("[name=\"name\"]");
+        nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label;
+        typeInput.addEventListener("change", () => nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label);
+      },
     });
     if (!result) return null;
     return this.create({ ...data, ...result }, { parent, ...operation });

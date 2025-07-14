@@ -9,9 +9,11 @@ export default class BaseCombatantGroupModel extends foundry.abstract.TypeDataMo
   /**
    * Key information about this CombatantGroup subtype
    */
-  static metadata = Object.freeze({
-    type: "base",
-  });
+  static get metadata() {
+    return {
+      type: "base",
+    };
+  }
 
   /* -------------------------------------------------- */
 

@@ -6,10 +6,11 @@ import AdvancementModel from "./advancement.mjs";
 export default class AncestryModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "ancestry",
       invalidActorTypes: ["npc"],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

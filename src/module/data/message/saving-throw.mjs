@@ -9,9 +9,12 @@ const fields = foundry.data.fields;
  * Chat Messages representing the result of a {@linkcode SavingThrowRoll}
  */
 export default class SavingThrowModel extends BaseMessageModel {
-  static metadata = Object.freeze({
-    type: "savingThrow",
-  });
+  /** @inheritdoc */
+  static get metadata() {
+    return {
+      type: "savingThrow",
+    };
+  }
 
   /* -------------------------------------------------- */
 

@@ -18,13 +18,14 @@ const fields = foundry.data.fields;
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "ability",
       detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
       },
-    });
+    };
   }
 
   /* -------------------------------------------------- */

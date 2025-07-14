@@ -28,10 +28,11 @@
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
 - Added a Renown and Wealth field to characters. (#279)
 - Added age, height, and weight info to the Biography tab for characters.
+- Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 
 ### Changed
 
-- Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
+- [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 - [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
 - [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
 - Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
@@ -42,6 +43,7 @@
 
 - Fixed display of popped out ability messages
 - Fixed display of multi-result abilities
+- Fixed unrequited prompting for end of turn events (#673)
 
 ## 0.7.3
 
