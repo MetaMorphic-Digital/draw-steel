@@ -1,9 +1,22 @@
+import { systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
+  /** @inheritdoc */
+  static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
+    if (!pack) {
+      types ??= this.TYPES;
+      types = types.filter(t => !CONFIG.Item.dataModels[t].metadata?.packOnly);
+      template = systemPath("templates/sidebar/tabs/item/document-create.hbs");
+    }
+    return super.createDialog(data, { pack, ...createOptions }, { types, template, ...dialogOptions });
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};

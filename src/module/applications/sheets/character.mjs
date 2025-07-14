@@ -13,6 +13,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   static DEFAULT_OPTIONS = {
     classes: ["character"],
     actions: {
+      addOrigin: this.#addOrigin,
       gainSurges: this.#gainSurges,
       rollProject: this.#rollProject,
       takeRespite: this.#takeRespite,
@@ -212,6 +213,35 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a window to add an appropriate character origin
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   */
+  static async #addOrigin(event, target) {
+    // TODO: Replace this with opening a compendium browser as part of #130
+    switch (target.dataset.type) {
+      case "ancestry":
+        game.packs.get("draw-steel.ancestries").render({ force: true });
+        break;
+      case "culture":
+        game.packs.get("draw-steel.backgrounds").render({ force: true });
+        break;
+      case "career":
+        game.packs.get("draw-steel.backgrounds").render({ force: true });
+        break;
+      case "class":
+        game.packs.get("draw-steel.classes").render({ force: true });
+        break;
+      case "subclass":
+        game.packs.get("draw-steel.classes").render({ force: true });
+        break;
+    }
+  }
+
   /* -------------------------------------------------- */
 
   /**

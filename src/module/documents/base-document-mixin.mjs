@@ -1,9 +1,12 @@
-/** @import Document from "@common/abstract/document.mjs"; */
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import { Constructor } from "@common/_types.mjs";
+ */
 
 /**
  * Mixin for common functions used across most or all document classes in this system.
  * Requires the document to have a `system` field.
- * @template {import("@common/_types.mjs").Constructor<Document>} BaseDocument
+ * @template {Constructor<Document>} BaseDocument
  * @param {BaseDocument} base
  *
  */

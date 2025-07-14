@@ -11,6 +11,7 @@ export default class AdvancementModel extends BaseItemModel {
     return {
       ...super.metadata,
       type: "",
+      packOnly: true,
       embedded: {
         Advancement: "system.advancements",
       },

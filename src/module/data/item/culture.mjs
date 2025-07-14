@@ -9,6 +9,7 @@ export default class CultureModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "culture",
+      packOnly: false,
       invalidActorTypes: ["npc"],
     };
   }

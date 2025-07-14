@@ -17,7 +17,7 @@
   {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
 </span>
 {{else}}
-<a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="{{originType}}" data-render-sheet="true">
+<a class="unfilled" data-action="addOrigin" data-type="{{originType}}">
   {{localize "DRAW_STEEL.SHEET.Add" itemName=(localize (concat "TYPES.Item." originType))}}
 </a>
 {{/if}}

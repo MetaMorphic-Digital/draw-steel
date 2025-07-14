@@ -115,7 +115,8 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     const item = await fromUuid(foundry.applications.ux.TextEditor.implementation.getDragEventData(event).uuid);
 
     // TODO: Restrict by item type.
-    if (!item || !item.pack || (item.documentName !== "Item")) return;
+    if (!item || (item.documentName !== "Item")) return;
+    if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.requirePack", { localize: true });
 
     const exists = this.pseudoDocument.pool.some(k => k.uuid === item.uuid);
     if (exists) return;
