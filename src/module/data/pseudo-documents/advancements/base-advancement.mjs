@@ -13,6 +13,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
     return {
       ...super.metadata,
       documentName: "Advancement",
+      icon: "fa-solid fa-circle-nodes",
       sheetClass: ds.applications.sheets.pseudoDocuments.AdvancementSheet,
     };
   }
