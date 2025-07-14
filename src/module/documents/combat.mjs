@@ -152,7 +152,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   async _onDelete(options, userId) {
     super._onDelete(options, userId);
 
-    if (!game.user.isActiveGM) return;
+    if (!game.user.isActiveGM || !this.round) return;
 
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
@@ -168,12 +168,12 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       const updates = [];
       for (const effect of actor.appliedEffects) {
         if (!(effect.system instanceof BaseEffectModel)) continue;
-        if (effect.system.end.type === "encounter") updates.push({ _id: effect.id, disabled: true });
+        if (["turn", "save", "encounter"].includes(effect.system.end.type)) updates.push({ _id: effect.id, disabled: true });
       }
       actor.updateEmbeddedDocuments("ActiveEffect", updates);
     }
 
-    await this.awardVictories();
+    await this.completeEncounter();
   }
 
   /* -------------------------------------------------- */
@@ -283,35 +283,54 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the GM for a number of victories to award and then award each character that many victories
+   * Prompt the GM for end of encounter adjustments
    */
-  async awardVictories() {
-    // TODO: Once encounter difficulty math is implemented, default victory value to the victories for that difficulty
-    const input = foundry.applications.fields.createNumberInput({ name: "victories", value: 1 });
+  async completeEncounter() {
+    const content = document.createElement("div");
+
     const victoryGroup = foundry.applications.fields.createFormGroup({
-      label: "DRAW_STEEL.Combat.AwardVictories.Title",
-      hint: "DRAW_STEEL.Combat.AwardVictories.Hint",
-      input: input,
+      label: "DRAW_STEEL.Combat.CompleteEncounter.AwardVictories.label",
+      hint: "DRAW_STEEL.Combat.CompleteEncounter.AwardVictories.hint",
+      // TODO: Once encounter difficulty math is implemented, default victory value to the victories for that difficulty
+      input: foundry.applications.fields.createNumberInput({ name: "victories", value: 1 }),
       localize: true,
     });
 
+    const resetTempStamina = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Combat.CompleteEncounter.ResetTempStamina.label",
+      input: foundry.applications.fields.createCheckboxInput({ name: "resetTempStamina", value: true }),
+      classes: ["slim"],
+      localize: true,
+    });
+
+    const resetHeroicResources = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Combat.CompleteEncounter.ResetHeroicResources.label",
+      input: foundry.applications.fields.createCheckboxInput({ name: "resetHeroicResources", value: true }),
+      classes: ["slim"],
+      localize: true,
+    });
+
+    content.append(victoryGroup, resetTempStamina, resetHeroicResources);
     const fd = await ds.applications.api.DSDialog.input({
-      content: victoryGroup.outerHTML,
-      classes: ["award-victories"],
+      content,
+      classes: ["complete-encounter"],
       window: {
-        title: "DRAW_STEEL.Combat.AwardVictories.Title",
-      },
-      ok: {
-        label: "DRAW_STEEL.Combat.AwardVictories.Button",
+        title: "DRAW_STEEL.Combat.CompleteEncounter.Title",
       },
     });
 
     if (fd) {
       for (const combatant of this.combatants) {
         const actor = combatant.actor;
-        if (!actor || (actor.type !== "character")) continue;
+        if (!actor) continue;
+        const updates = { system: { } };
+        if (actor.type === "character") {
+          updates.system["hero"] = { victories: actor.system.hero.victories + fd.victories };
+          if (fd.resetHeroicResources) updates.system.hero["primary"] = { value: 0 };
+        }
+        if (fd.resetTempStamina) updates.system["stamina"] = { temporary: 0 };
 
-        await actor.update({ "system.hero.victories": actor.system.hero.victories + fd.victories });
+        await actor.update(updates);
       }
     }
   }

@@ -28,6 +28,7 @@
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
 - Added a Renown and Wealth field to characters. (#279)
 - Added age, height, and weight info to the Biography tab for characters.
+- Expanded end of encounter prompt to reset heroic resources & temporary stamina (#612)
 - Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 
 ### Changed
@@ -35,6 +36,7 @@
 - [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 - [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
 - [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
+- The end of encounter prompt now only triggers if an encounter progressed to at least the first round. (#643)
 - Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
   - This enforces good practices for data creation.
   - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
