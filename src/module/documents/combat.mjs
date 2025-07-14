@@ -251,7 +251,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   async _onEndTurn(combatant, context) {
     /** @type {DrawSteelActor} */
     const actor = combatant.actor;
-    if (!actor) return;
+    if (!actor || context.skipped) return;
     /** @type {ActiveEffectData[]} */
     const updates = [];
     for (const effect of actor.appliedEffects) {
