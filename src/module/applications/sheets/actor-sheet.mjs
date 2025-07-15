@@ -611,40 +611,31 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       },
       // All applicable options
       {
-        name: "View",
+        name: "DRAW_STEEL.SHEET.View",
         icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
         condition: () => this.isPlayMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return console.error("Could not find item");
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
         },
       },
       {
-        name: "Edit",
+        name: "DRAW_STEEL.SHEET.Edit",
         icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
         condition: () => this.isEditMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return console.error("Could not find item");
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
         },
       },
       {
-        name: "DRAW_STEEL.Item.base.share",
+        name: "DRAW_STEEL.SHEET.Share",
         icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return console.error("Could not find item");
           await DrawSteelChatMessage.create({
             content: `@Embed[${item.uuid} caption=false]`,
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
@@ -652,15 +643,12 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
       },
       {
-        name: "Delete",
+        name: "DRAW_STEEL.SHEET.Delete",
         icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
         condition: () => this.actor.isOwner,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
+          if (!item) return console.error("Could not find item");
           if (item.hasGrantedItems) await item.advancementDeletionPrompt();
           else await item.deleteDialog();
         },
