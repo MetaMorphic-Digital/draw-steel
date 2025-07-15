@@ -10,3 +10,4 @@ export { default as FeatureModel } from "./feature.mjs";
 export { default as EquipmentModel } from "./equipment.mjs";
 export { default as KitModel } from "./kit.mjs";
 export { default as ProjectModel } from "./project.mjs";
+export { default as SubclassModel } from "./subclass.mjs";

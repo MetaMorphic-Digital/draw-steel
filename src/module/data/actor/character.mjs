@@ -366,6 +366,16 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
+   * Finds the actor's current class
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
+   */
+  get subclass() {
+    return this.parent.items.find(i => i.type === "subclass");
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Finds the actor's current culture
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */

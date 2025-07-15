@@ -36,11 +36,19 @@
         "htmlFields": ["effect.before", "effect.after"]
       },
       "ancestry": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "career": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "class": {
@@ -52,11 +60,19 @@
         "gmOnlyFields": ["description.gm"]
       },
       "complication": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "culture": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "equipment": {
@@ -64,15 +80,31 @@
         "gmOnlyFields": ["description.gm"]
       },
       "feature": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "kit": {
-        "htmlFields": ["description.value", "description.gm"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       },
       "project": {
         "htmlFields": ["description.value", "description.gm"],
+        "gmOnlyFields": ["description.gm"]
+      },
+      "subclass": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
         "gmOnlyFields": ["description.gm"]
       }
     }
