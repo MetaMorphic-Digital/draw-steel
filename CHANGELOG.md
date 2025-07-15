@@ -30,6 +30,7 @@
 - Added age, height, and weight info to the Biography tab for characters.
 - Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 - Added a "Next Respite" option for ending Active Effects. (#694)
+- Added an option in the character sheet equipment context menu to start a crafting project for that equipment.
 
 ### Changed
 
