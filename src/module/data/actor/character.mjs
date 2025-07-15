@@ -370,7 +370,7 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
    */
   get subclass() {
-    return this.parent.items.find(i => i.type === "subclass");
+    return this.parent.items.documentsByType.subclass[0];
   }
 
   /* -------------------------------------------------- */
