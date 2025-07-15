@@ -3,7 +3,7 @@ import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { DrawSteelActor } from "../../documents/_module.mjs"; */
+/** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
 
 /**
  * Equipment covers all physical items that provide special benefits beyond the base kit
@@ -76,13 +76,14 @@ export default class EquipmentModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Creates the provided equipment item as a project on a given actor
+   * Creates a project for this equipment on the provided actor.
    * @param {DrawSteelActor} actor
+   * @returns {DrawSteelItem}
    */
   async createProject(actor) {
     if (!actor) return;
 
     const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: this.parent.name });
-    await Item.create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
+    return Item.create({ name, type: "project", "system.yield.item": this.parent.uuid }, { parent: actor });
   }
 }

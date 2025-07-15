@@ -605,8 +605,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
             console.error("Could not find item");
             return;
           }
-          await item.system.createProject(this.actor);
-          ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromEquipment.Notification", { format: { item: item.name } });
+          const project = await item.system.createProject(this.actor);
+          if (project) ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromEquipment.Notification", { format: { item: item.name } });
         },
       },
       // All applicable options
