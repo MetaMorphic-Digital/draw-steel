@@ -206,6 +206,6 @@ declare module "./project.mjs" {
 
 declare module "./subclass.mjs" {
   export default interface SubclassModel {
-    classDSID: string;
+    classLink: string;
   }
 }

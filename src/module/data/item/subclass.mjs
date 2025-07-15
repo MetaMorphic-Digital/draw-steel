@@ -24,7 +24,7 @@ export default class SubclassModel extends AdvancementModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.classDSID = new fields.StringField({ required: true });
+    schema.classLink = new fields.StringField({ required: true });
 
     return schema;
   }

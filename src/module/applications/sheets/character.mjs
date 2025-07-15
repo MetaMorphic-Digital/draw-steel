@@ -380,9 +380,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
           ui.notifications.error(message, { console: false });
           throw new Error(message);
         }
-        else if (cls.dsid !== item.system.classDSID) {
+        else if (cls.dsid !== item.system.classLink) {
           const message = game.i18n.format("DRAW_STEEL.Item.subclass.ERRORS.WrongDSID", {
-            expected: item.system.classDSID,
+            expected: item.system.classLink,
             actual: cls.dsid,
           });
           ui.notifications.error(message, { console: false });
