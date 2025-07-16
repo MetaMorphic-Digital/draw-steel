@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { PowerRollModifiers } from  "../../_types.js"*/
@@ -37,7 +37,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.prerequisites = new fields.StringField({ required: true });
     schema.projectSource = new fields.StringField({ required: true });
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = new fields.NumberField({ required: true, nullable: false, integer: true, positive: true, initial: 1 });
+    schema.goal = requiredInteger({ initial: 1, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),

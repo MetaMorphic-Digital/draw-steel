@@ -31,14 +31,17 @@ export default class ProjectRollModel extends BaseMessageModel {
   async alterMessageHTML(html) {
     await super.alterMessageHTML(html);
 
-    if (game.settings.get(systemID, "projectEvents") === "none") return;
+    const projectEventSetting = game.settings.get(systemID, "projectEvents");
+
+    if (projectEventSetting === "none") return;
 
     const messageContent = html.querySelector(".message-content");
     const events = this.events;
     if (!events) return;
-    const eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.EventsTriggered", {
-      events: this.events,
-    });
+    let eventText = "";
+    if (projectEventSetting === "roll") eventText = game.i18n.localize("DRAW_STEEL.Item.project.Events.RollTriggered");
+    else eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.MilestoneTriggered", { events: this.events });
+
     messageContent.insertAdjacentHTML("beforeend", `<div class="milestone-events">${eventText}<div>`);
   }
 
@@ -61,7 +64,7 @@ export default class ProjectRollModel extends BaseMessageModel {
     }
 
     const eventRoll = this.parent.rolls.find(roll => roll.constructor.name === "DSRoll");
-    if ((game.settings.get(systemID, "projectEvents") === "roll") && !eventRoll) {
+    if ((game.settings.get(systemID, "projectEvents") === "roll") && !eventRoll && !this.events) {
       const eventButton = ds.utils.constructHTMLButton({
         label: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
         icon: "fa-solid fa-dice-d6",
