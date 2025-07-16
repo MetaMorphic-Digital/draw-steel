@@ -193,7 +193,7 @@ export default class ProjectModel extends BaseItemModel {
     const messageData = {
       system: {
         uuid: this.parent.uuid,
-        milestoneEvents: this.milestoneEventsTriggered(previousPoints, updatedPoints),
+        events: this.milestoneEventsTriggered(previousPoints, updatedPoints),
       },
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],

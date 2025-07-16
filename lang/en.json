@@ -1100,7 +1100,8 @@
           "Success": "{actor} has spent {points} project points from their career on {project}."
         },
         "Events": {
-          "MilestoneReached": "The {name} project has reached the milestone for {events} event(s) during the last roll."
+          "RollForEvent": "Roll for Event",
+          "EventsTriggered": "The {name} project has {events} event(s) for the last roll."
         },
         "RollBreakThrough": "Roll Breakthrough"
       }
@@ -1413,6 +1414,12 @@
       "MigrationVersion": {
         "Label": "Migration Version",
         "Hint": "Last Performed Migration"
+      },
+      "ProjectEvents": {
+        "Label": "Project Event Trigger",
+        "Hint": "How should project event timing be determined?",
+        "Roll": "Roll for Event",
+        "Milestone": "Event Milestones"
       }
     },
     "SOCKET": {

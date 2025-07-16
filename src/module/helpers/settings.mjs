@@ -54,6 +54,14 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         onChange: () => ui.players.render(),
       },
+      projectEvents: {
+        name: "DRAW_STEEL.Setting.ProjectEvents.Label",
+        hint: "DRAW_STEEL.Setting.ProjectEvents.Hint",
+        type: new fields.StringField({ choices: ds.CONST.projectEventOptions, initial: "none", required: true }),
+        config: true,
+        scope: "world",
+        onChange: () => ui.players.render(),
+      },
     };
   }
 

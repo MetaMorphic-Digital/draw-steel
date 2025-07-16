@@ -31,6 +31,16 @@ export const initiativeModes = Object.freeze({
 
 /* -------------------------------------------------- */
 
+export const projectEventOptions = Object.freeze({
+  none: "None",
+  /** Roll a d6 during the project roll. */
+  roll: "DRAW_STEEL.Setting.ProjectEvents.Roll",
+  /** Triggers based on the milestones set in {@linkcode ds.CONFIG.projects.milestones}. */
+  milestone: "DRAW_STEEL.Setting.ProjectEvents.Milestone",
+});
+
+/* -------------------------------------------------- */
+
 /**
  * Effects that apply based on stamina value
  * @type {Record<string, {img: string, name: string, threshold: string | number}>}
