@@ -231,4 +231,12 @@ export default class ProjectRoll extends DSRoll {
 
     return context;
   }
+
+  /** @inheritdoc */
+  async toMessage(messageData = {}, messageOptions = {}) {
+    // Project rolls always create projectRoll messages
+    messageData.type = "projectRoll";
+
+    return super.toMessage(messageData, messageOptions);
+  }
 }
