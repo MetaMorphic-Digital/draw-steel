@@ -1687,5 +1687,25 @@ DRAW_STEEL.projects = {
       label: "DRAW_STEEL.Item.project.Types.Other",
     },
   },
+  milestones: [{
+    min: 0,
+    max: 30,
+    events: 0,
+  },
+  {
+    min: 31,
+    max: 200,
+    events: 1,
+  },
+  {
+    min: 201,
+    max: 999,
+    events: 2,
+  },
+  {
+    min: 1000,
+    max: Infinity,
+    events: 3,
+  }],
 };
 preLocalize("projects.types", { key: "label" });

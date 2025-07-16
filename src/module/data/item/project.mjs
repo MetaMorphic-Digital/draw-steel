@@ -180,6 +180,41 @@ export default class ProjectModel extends BaseItemModel {
       return null;
     }
 
+    const promptValue = await this.rollPrompt(options);
+
+    if (!promptValue) return null;
+    const { rollMode, projectRoll } = promptValue;
+
+    const total = projectRoll.total;
+    const previousPoints = this.points;
+    const updatedPoints = previousPoints + total;
+    await this.parent.update({ "system.points": updatedPoints });
+
+    const messageData = {
+      system: {
+        uuid: this.parent.uuid,
+        milestoneEvents: this.milestoneEventsTriggered(previousPoints, updatedPoints),
+      },
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
+      rolls: [projectRoll],
+      title: this.parent.name,
+      content: this.parent.name,
+      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
+      flags: { core: { canPopout: true } },
+    };
+
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    return await projectRoll.toMessage(messageData);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt the player to roll this project.
+   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @returns {ProjectRollPrompt}
+   */
+  async rollPrompt(options = {}) {
     const rollData = this.parent.getRollData();
     const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
 
@@ -192,25 +227,7 @@ export default class ProjectModel extends BaseItemModel {
       flavor: this.parent.name,
     });
 
-    if (!promptValue) return null;
-    const { rollMode, projectRoll } = promptValue;
-
-    const total = projectRoll.total;
-    const updatedPoints = this.points + total;
-    await this.parent.update({ "system.points": updatedPoints });
-
-    const messageData = {
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [projectRoll],
-      title: this.parent.name,
-      content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
-      flags: { core: { canPopout: true } },
-    };
-
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-
-    return DrawSteelChatMessage.create(messageData);
+    return promptValue;
   }
 
   /* -------------------------------------------------- */
@@ -290,5 +307,46 @@ export default class ProjectModel extends BaseItemModel {
         item: item.name,
       },
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * An array of numbers at which a milestone event would happen.
+   * @type {number[]}
+   */
+  get milestoneEventThresholds() {
+    const milestone = ds.CONFIG.projects.milestones.find(milestone => (this.goal >= milestone.min) && (this.goal <= milestone.max));
+    const events = milestone?.events ?? 0;
+
+    const eventThresholds = [];
+    if (!events) return eventThresholds;
+
+    for (let i = 1; i <= events; i++) {
+      const threshold = Math.floor(i / (events + 1) * this.goal);
+      eventThresholds.push(threshold);
+    }
+
+    return eventThresholds;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Determine how project events triggered based on milestone thresholds.
+   * @param {number} previousPoints The project points before the project roll.
+   * @param {number} updatedPoints  The project points after the project roll.
+   * @returns {number}
+   */
+  milestoneEventsTriggered(previousPoints, updatedPoints) {
+    const thresholds = this.milestoneEventThresholds;
+    if (thresholds.length === 0) return 0;
+
+    let eventsTriggered = 0;
+    for (const threshold of thresholds) {
+      if ((previousPoints < threshold) && (updatedPoints >= threshold)) eventsTriggered++;
+    }
+
+    return eventsTriggered;
   }
 }
