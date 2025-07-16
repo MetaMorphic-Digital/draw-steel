@@ -52,7 +52,7 @@ export default class ProjectRollModel extends BaseMessageModel {
     const lastRoll = this.parent.rolls[length - 1];
     if (lastRoll.isBreakthrough) {
       const button = ds.utils.constructHTMLButton({
-        label: "Roll Breakthrough",
+        label: game.i18n.localize("DRAW_STEEL.Item.project.RollBreakThrough"),
         icon: "fa-solid fa-hammer",
         classes: ["roll-breakthrough"],
       });
