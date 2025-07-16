@@ -31,6 +31,10 @@
 - Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 - Added a "Next Respite" option for ending Active Effects. (#694)
 - Added an option in the character sheet equipment context menu to start a crafting project for that equipment.
+- Add a setting for which project events type to use, "None", "Roll for Event", or "Event Milestones". (#710)
+  - If set to "Roll for Event", a roll button will appear in the chat message.
+  - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
+- When a project roll is a breakthrough, a button will appear to roll the project again.
 
 ### Changed
 
