@@ -33,13 +33,10 @@ export default class ProjectRollModel extends BaseMessageModel {
 
     if (game.settings.get(systemID, "projectEvents") === "none") return;
 
-    const project = await fromUuid(this.uuid);
     const messageContent = html.querySelector(".message-content");
-
     const events = this.events;
     if (!events) return;
     const eventText = game.i18n.format("DRAW_STEEL.Item.project.Events.EventsTriggered", {
-      name: project.name,
       events: this.events,
     });
     messageContent.insertAdjacentHTML("beforeend", `<div class="milestone-events">${eventText}<div>`);
@@ -51,16 +48,6 @@ export default class ProjectRollModel extends BaseMessageModel {
   async _constructFooterButtons() {
     const buttons = await super._constructFooterButtons();
 
-    const eventRoll = this.parent.rolls.find(roll => roll.constructor.name === "DSRoll");
-    if ((game.settings.get(systemID, "projectEvents") === "roll") && !eventRoll) {
-      const eventButton = ds.utils.constructHTMLButton({
-        label: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
-        icon: "fa-solid fa-dice-d6",
-        classes: ["roll-event"],
-      });
-      buttons.push(eventButton);
-    }
-
     const projectRolls = this.parent.rolls.filter(roll => roll instanceof ProjectRoll);
     if (!projectRolls.length) return buttons;
     const lastProjectRoll = projectRolls.at(-1);
@@ -71,6 +58,16 @@ export default class ProjectRollModel extends BaseMessageModel {
         classes: ["roll-breakthrough"],
       });
       buttons.push(breakthroughButton);
+    }
+
+    const eventRoll = this.parent.rolls.find(roll => roll.constructor.name === "DSRoll");
+    if ((game.settings.get(systemID, "projectEvents") === "roll") && !eventRoll) {
+      const eventButton = ds.utils.constructHTMLButton({
+        label: game.i18n.localize("DRAW_STEEL.Item.project.Events.RollForEvent"),
+        icon: "fa-solid fa-dice-d6",
+        classes: ["roll-event"],
+      });
+      buttons.push(eventButton);
     }
     return buttons;
   }
@@ -107,9 +104,9 @@ export default class ProjectRollModel extends BaseMessageModel {
       const previousPoints = project.system.points;
       const updatedPoints = previousPoints + roll.total;
       await project.update({ "system.points": updatedPoints });
-      const newEvents = project.system.milestoneEventsTriggered(previousPoints, updatedPoints);
+      const newEvents = project.system.milestoneEventsOccured(previousPoints, updatedPoints);
 
-      updates["system.events"] = this.events + newEvents;
+      updates["system.events"] = (this.events ?? 0) + newEvents;
 
       await this.parent.update(updates);
     });

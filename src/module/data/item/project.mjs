@@ -37,7 +37,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.prerequisites = new fields.StringField({ required: true });
     schema.projectSource = new fields.StringField({ required: true });
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = new fields.NumberField({ required: true, integer: true, positive: true, initial: 1 });
+    schema.goal = new fields.NumberField({ required: true, nullable: false, integer: true, positive: true, initial: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
@@ -193,7 +193,7 @@ export default class ProjectModel extends BaseItemModel {
     const messageData = {
       system: {
         uuid: this.parent.uuid,
-        events: this.milestoneEventsTriggered(previousPoints, updatedPoints),
+        events: this.milestoneEventsOccured(previousPoints, updatedPoints),
       },
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
       rolls: [projectRoll],
@@ -333,20 +333,20 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Determine how project events triggered based on milestone thresholds.
+   * Determine how many project events occur based on milestone thresholds.
    * @param {number} previousPoints The project points before the project roll.
    * @param {number} updatedPoints  The project points after the project roll.
    * @returns {number}
    */
-  milestoneEventsTriggered(previousPoints, updatedPoints) {
+  milestoneEventsOccured(previousPoints, updatedPoints) {
     const thresholds = this.milestoneEventThresholds;
     if (thresholds.length === 0) return 0;
 
-    let eventsTriggered = 0;
+    let eventsOccured = 0;
     for (const threshold of thresholds) {
-      if ((previousPoints < threshold) && (updatedPoints >= threshold)) eventsTriggered++;
+      if ((previousPoints < threshold) && (updatedPoints >= threshold)) eventsOccured++;
     }
 
-    return eventsTriggered;
+    return eventsOccured;
   }
 }
