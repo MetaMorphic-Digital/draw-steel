@@ -206,8 +206,8 @@
             "value": {
               "label": "Biography"
             },
-            "gm": {
-              "label": "GM Notes"
+            "director": {
+              "label": "Director Notes"
             },
             "languages": {
               "label": "Languages"
@@ -546,8 +546,8 @@
             "value": {
               "label": "Description"
             },
-            "gm": {
-              "label": "GM Notes"
+            "director": {
+              "label": "Director Notes"
             }
           },
           "_dsid": {
@@ -1114,7 +1114,13 @@
           "Title": "Spend Career Points",
           "Label": "How many points do you want to spend?",
           "Success": "{actor} has spent {points} project points from their career on {project}."
-        }
+        },
+        "Events": {
+          "RollForEvent": "Roll for Event",
+          "RollTriggered": "The event roll triggers an event!",
+          "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
+        },
+        "RollBreakThrough": "Roll Breakthrough"
       }
     },
     "ActiveEffect": {
@@ -1425,6 +1431,12 @@
       "MigrationVersion": {
         "Label": "Migration Version",
         "Hint": "Last Performed Migration"
+      },
+      "ProjectEvents": {
+        "Label": "Project Event Trigger",
+        "Hint": "How should project event timing be determined?",
+        "Roll": "Roll for Event",
+        "Milestone": "Event Milestones"
       }
     },
     "SOCKET": {

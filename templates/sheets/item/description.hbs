@@ -16,15 +16,15 @@
   <div class="prosemirror editor">
     {{#if gm}}
     <label class="description-label">
-      {{systemFields.description.fields.gm.label}}
+      {{systemFields.description.fields.director.label}}
       {{#unless isPlay}}
-      <a class="label-action" data-action="editHTML" data-field-name="system.description.gm">
+      <a class="label-action" data-action="editHTML" data-field-name="system.description.director">
         <i class="fa-solid fa-feather"></i>
       </a>
       {{/unless}}
     </label>
-    <div class="description gm editor-content">
-      {{{enrichedGMNotes}}}
+    <div class="description director editor-content">
+      {{{enrichedDirectorNotes}}}
     </div>
     {{/if}}
   </div>

@@ -62,7 +62,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     },
     biography: {
       template: systemPath("templates/sheets/actor/character/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
+      templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
   };

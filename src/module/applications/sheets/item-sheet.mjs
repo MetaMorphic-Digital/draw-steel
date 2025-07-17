@@ -145,7 +145,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     switch (partId) {
       case "description":
         context.enrichedDescription = await enrichHTML(this.item.system.description.value, { relativeTo: this.item });
-        context.enrichedGMNotes = await enrichHTML(this.item.system.description.gm, { relativeTo: this.item });
+        context.enrichedDirectorNotes = await enrichHTML(this.item.system.description.director, { relativeTo: this.item });
         break;
       case "details":
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;

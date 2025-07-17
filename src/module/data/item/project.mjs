@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
 /** @import { PowerRollModifiers } from  "../../_types.js"*/
@@ -37,7 +37,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.prerequisites = new fields.StringField({ required: true });
     schema.projectSource = new fields.StringField({ required: true });
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = new fields.NumberField({ required: true, integer: true, positive: true, initial: 1 });
+    schema.goal = requiredInteger({ initial: 1, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
@@ -180,6 +180,41 @@ export default class ProjectModel extends BaseItemModel {
       return null;
     }
 
+    const promptValue = await this.rollPrompt(options);
+
+    if (!promptValue) return null;
+    const { rollMode, projectRoll } = promptValue;
+
+    const total = projectRoll.total;
+    const previousPoints = this.points;
+    const updatedPoints = previousPoints + total;
+    await this.parent.update({ "system.points": updatedPoints });
+
+    const messageData = {
+      system: {
+        uuid: this.parent.uuid,
+        events: this.milestoneEventsOccured(previousPoints, updatedPoints),
+      },
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
+      rolls: [projectRoll],
+      title: this.parent.name,
+      content: this.parent.name,
+      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
+      flags: { core: { canPopout: true } },
+    };
+
+    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
+    return await projectRoll.toMessage(messageData);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt the player to roll this project.
+   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @returns {ProjectRollPrompt}
+   */
+  async rollPrompt(options = {}) {
     const rollData = this.parent.getRollData();
     const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
 
@@ -192,25 +227,7 @@ export default class ProjectModel extends BaseItemModel {
       flavor: this.parent.name,
     });
 
-    if (!promptValue) return null;
-    const { rollMode, projectRoll } = promptValue;
-
-    const total = projectRoll.total;
-    const updatedPoints = this.points + total;
-    await this.parent.update({ "system.points": updatedPoints });
-
-    const messageData = {
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [projectRoll],
-      title: this.parent.name,
-      content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
-      flags: { core: { canPopout: true } },
-    };
-
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-
-    return DrawSteelChatMessage.create(messageData);
+    return promptValue;
   }
 
   /* -------------------------------------------------- */
@@ -290,5 +307,46 @@ export default class ProjectModel extends BaseItemModel {
         item: item.name,
       },
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * An array of numbers at which a milestone event would happen.
+   * @type {number[]}
+   */
+  get milestoneEventThresholds() {
+    const milestone = ds.CONFIG.projects.milestones.find(milestone => (this.goal >= milestone.min) && (this.goal <= milestone.max));
+    const events = milestone?.events ?? 0;
+
+    const eventThresholds = [];
+    if (!events) return eventThresholds;
+
+    for (let i = 1; i <= events; i++) {
+      const threshold = Math.floor(i / (events + 1) * this.goal);
+      eventThresholds.push(threshold);
+    }
+
+    return eventThresholds;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Determine how many project events occur based on milestone thresholds.
+   * @param {number} previousPoints The project points before the project roll.
+   * @param {number} updatedPoints  The project points after the project roll.
+   * @returns {number}
+   */
+  milestoneEventsOccured(previousPoints, updatedPoints) {
+    const thresholds = this.milestoneEventThresholds;
+    if (thresholds.length === 0) return 0;
+
+    let eventsOccured = 0;
+    for (const threshold of thresholds) {
+      if ((previousPoints < threshold) && (updatedPoints >= threshold)) eventsOccured++;
+    }
+
+    return eventsOccured;
   }
 }

@@ -13,17 +13,18 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       },
       "npc": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       }
     },
     "ChatMessage": {
       "abilityUse": {},
-      "savingThrow": {}
+      "savingThrow": {},
+      "projectRoll": {}
     },
     "CombatantGroup": {
       "squad": {}
@@ -40,72 +41,72 @@
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "career": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "class": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "complication": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "culture": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "equipment": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "feature": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "kit": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "project": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "subclass": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       }
     }
   },

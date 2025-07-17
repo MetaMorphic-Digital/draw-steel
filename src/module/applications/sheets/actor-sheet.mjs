@@ -141,7 +141,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       case "biography":
         context.languages = this._getLanguages();
         context.enrichedBiography = await enrichHTML(this.actor.system.biography.value, { relativeTo: this.actor });
-        context.enrichedGMNotes = await enrichHTML(this.actor.system.biography.gm, { relativeTo: this.actor });
+        context.enrichedDirectorNotes = await enrichHTML(this.actor.system.biography.director, { relativeTo: this.actor });
         break;
       case "effects":
         context.statuses = await this._prepareStatusEffects();
