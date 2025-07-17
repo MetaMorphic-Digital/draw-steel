@@ -108,6 +108,11 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     content.append(formGroup);
 
+    /**
+     * Render callback for Dialog
+     * @param {Event} event
+     * @param {DSDialog} dialog
+     */
     function render(event, dialog) {
       /** @type {foundry.applications.elements.HTMLMultiCheckboxElement} */
       const multiCheckbox = dialog.element.querySelector("multi-checkbox[name=choices]");

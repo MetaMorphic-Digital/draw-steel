@@ -6,6 +6,8 @@ import RollManager from "../api/roll-manager.mjs";
 /**
  * A class for managing a saving throw roll
  * @extends RollManager<boolean>
+ * @see {@link ds.rolls.SavingThrowRoll | SavingThrowRoll}
+ * @see {@link ds.applications.apps.SavingThrowDialog | SavingThrowDialog}
  */
 export default class SavingThrowManager extends RollManager {
   /**

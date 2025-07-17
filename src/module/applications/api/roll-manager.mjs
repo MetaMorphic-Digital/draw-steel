@@ -3,6 +3,7 @@ import QueryManager from "./query-manager.mjs";
 /** @import DrawSteelUser from "../../documents/user.mjs" */
 
 /**
+ * A stock class for delegating rolls
  * @template {boolean | number} QueryResult The roll "product" (evaluated result)
  * @extends QueryManager<QueryResult>
  * @abstract

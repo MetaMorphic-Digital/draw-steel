@@ -5,7 +5,8 @@ import RollDialog from "../api/roll-dialog.mjs";
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
- * AppV2-based sheet Power Roll modifications
+ * A roll dialog for Power Rolls
+ * @see {@link PowerRoll}
  */
 export default class PowerRollDialog extends RollDialog {
   /** @inheritdoc */

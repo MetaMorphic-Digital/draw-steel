@@ -6,8 +6,12 @@
  * @param {ModelClass} base
  */
 export default base => {
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DrawSteelSystemModel extends base {
-    /** @type {SubtypeMetadata} */
+    /**
+     * Metadata for this document subtype
+     * @type {SubtypeMetadata}
+     */
     static get metadata() {
       return {
         embedded: {},

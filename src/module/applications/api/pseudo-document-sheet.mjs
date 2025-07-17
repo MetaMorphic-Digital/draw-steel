@@ -230,6 +230,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
+   * Copies the ID or UUID for the pseudo document
    * @this {PseudoDocumentSheet}
    * @param {PointerEvent} event      The originating click event.
    */

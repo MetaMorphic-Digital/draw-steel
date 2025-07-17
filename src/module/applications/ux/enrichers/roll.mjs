@@ -25,7 +25,10 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
 
 /* -------------------------------------------------- */
 
-/** @type {TextEditorEnricher} */
+/**
+ * Enricher function
+ * @type {TextEditorEnricher}
+ */
 export function enricher(match, options) {
   let { type, config, label } = match.groups;
   /** @type {typeof rollTypes} */
@@ -160,6 +163,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
 /* -------------------------------------------------- */
 
 /**
+ * Helper function that constructs the damage roll
  * @param {HTMLAnchorElement} link
  * @param {PointerEvent} event
  */

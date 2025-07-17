@@ -19,7 +19,7 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *[Symbol.iterator]() {
-
+    // eslint-disable-next-line @jsdoc/require-jsdoc
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
@@ -40,6 +40,7 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *active() {
+    // eslint-disable-next-line @jsdoc/require-jsdoc
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {

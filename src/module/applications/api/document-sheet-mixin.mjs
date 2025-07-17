@@ -10,6 +10,7 @@ const { HandlebarsApplicationMixin } = foundry.applications.api;
  * @param {BaseDocumentSheet} base
  */
 export default base => {
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DSDocumentSheet extends HandlebarsApplicationMixin(base) {
     /** @inheritdoc */
     static DEFAULT_OPTIONS = {
