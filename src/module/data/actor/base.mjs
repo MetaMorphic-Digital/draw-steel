@@ -5,9 +5,12 @@ import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
 import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 
-/** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs"; */
-/** @import AbilityModel from "../item/ability.mjs" */
-/** @import DataModel from "@common/abstract/data.mjs" */
+/**
+ * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
+ * @import AbilityModel from "../item/ability.mjs";
+ * @import DataModel from "@common/abstract/data.mjs";
+ * @import { DataField } from "@common/data/fields.mjs";
+ */
 
 const fields = foundry.data.fields;
 
@@ -72,7 +75,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /**
    * Helper function to fill in the `biography` property
    * @protected
-   * @returns {Record<string, fields["DataField"]}
+   * @returns {Record<string, DataField>}
    */
   static actorBiography() {
     return {

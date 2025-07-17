@@ -169,18 +169,21 @@ preLocalize("healingTypes", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef DrawSteelCondition
+ * @property {string} name
+ * @property {string} img
+ * @property {string} rule
+ * @property {boolean} [targeted]
+ * @property {number} [maxSources]
+ * @property {number} [defaultSpeed]
+ * @property {Record<string, Set<string>>} [restrictions]
+ */
+
+/**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
  * The `_id` property is handled as part of the merging process
- * @type {Record<string, {
- *  img: string,
- *  name: string,
- *  rule: string,
- *  targeted? boolean,
- *  maxSources?: number,
- *  defaultSpeed?: number,
- *  restrictions?: Record<string, Set<string>>
- * }>}
+ * @type {Record<string, DrawSteelCondition>}
  */
 DRAW_STEEL.conditions = {
   bleeding: {
@@ -1280,12 +1283,12 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
  * @typedef PowerRollEffectType
  * @property {string} label
  * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass
- * @property {Record<string, PowerRollEffectProperty} [properties]
+ * @property {Record<string, PowerRollEffectProperty>} [properties]
  */
 
 /**
  * Valid types for the PowerRollEffect pseudo-document
- * @type {Record<string, PowerRollEffectType> }>}
+ * @type {Record<string, PowerRollEffectType>}
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
@@ -1479,11 +1482,17 @@ DRAW_STEEL.kits = {};
 /* -------------------------------------------------- */
 
 /**
+ * @typedef EquipmentCategory
+ * @property {string} label
+ * @property {FormSelectOption[]} keywords
+ */
+
+/**
  * Configuration details for Equipment items
  * Also used by Kits
  */
 DRAW_STEEL.equipment = {
-  /** @type {Record<string, {label: string, readonly keywords: FormSelectOption[]}>} */
+  /** @type {Record<string, EquipmentCategory>} */
   categories: {
     consumable: {
       label: "DRAW_STEEL.Item.equipment.Categories.Consumable",

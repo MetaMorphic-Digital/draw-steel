@@ -340,7 +340,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         tabSection.classList.add("editorActive");
       });
     }
-    /** @type {Array<HTMLElement} */
+    /** @type {Array<HTMLElement>} */
     const editors = this.element.querySelectorAll("prose-mirror");
     for (const ed of editors) {
       const formGroup = ed.closest(".form-group");

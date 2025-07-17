@@ -5,8 +5,11 @@ import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
-/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
-/** @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js" */
+/**
+ * @import { NumberField } from "@common/data/fields.mjs";
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
+ * @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
+ */
 
 const { sheets } = foundry.applications;
 
@@ -153,10 +156,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * @typedef {import("@common/data/fields.mjs").NumberField} NumberField
-   */
 
   /**
    * Constructs a record of valid characteristics and their associated field

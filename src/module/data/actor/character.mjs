@@ -251,7 +251,7 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
-   * @returns {Promise<DrawSteelActor}
+   * @returns {Promise<DrawSteelActor>}
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
