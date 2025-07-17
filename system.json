@@ -13,12 +13,12 @@
   "documentTypes": {
     "Actor": {
       "character": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       },
       "npc": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       }
     },
     "ChatMessage": {
@@ -37,44 +37,44 @@
         "htmlFields": ["effect.before", "effect.after"]
       },
       "ancestry": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "career": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "class": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]
         },
-        "htmlFields": ["description.value", "description.gm", "advancements.*.description"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "complication": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "culture": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "equipment": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "feature": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "kit": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "project": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       }
     }
   },

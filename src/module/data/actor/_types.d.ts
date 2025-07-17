@@ -6,7 +6,7 @@ import SourceModel from "../models/source.mjs";
 
 interface Biography {
   value: string;
-  gm: string;
+  director: string;
   languages: Set<string>;
 }
 

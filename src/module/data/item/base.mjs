@@ -32,7 +32,7 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     schema.description = new fields.SchemaField({
       value: new fields.HTMLField(),
       // gmOnly doesn't do anything client-side currently, handled in system.json declaration
-      gm: new fields.HTMLField({ gmOnly: true }),
+      director: new fields.HTMLField({ gmOnly: true }),
     });
 
     schema.source = new fields.EmbeddedDataField(SourceModel);

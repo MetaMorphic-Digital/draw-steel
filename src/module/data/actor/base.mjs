@@ -77,7 +77,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   static actorBiography() {
     return {
       value: new fields.HTMLField(),
-      gm: new fields.HTMLField({ gmOnly: true }),
+      director: new fields.HTMLField({ gmOnly: true }),
       languages: new fields.SetField(setOptions()),
     };
   }

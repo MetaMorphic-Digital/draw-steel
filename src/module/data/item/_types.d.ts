@@ -22,7 +22,7 @@ declare module "./base.mjs" {
     parent: DrawSteelItem;
     description: {
       value: string;
-      gm: string;
+      director: string;
     }
     source: SourceModel;
     /** The Draw Steel ID, indicating a unique game rules element */
