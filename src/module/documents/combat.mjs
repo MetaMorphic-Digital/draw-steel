@@ -283,7 +283,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the GM for end of encounter adjustments
+   * Prompt the GM for end of encounter adjustments.
    */
   async completeEncounter() {
     const content = document.createElement("div");
@@ -325,10 +325,10 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         if (!actor) continue;
         const updates = { system: { } };
         if (actor.type === "character") {
-          updates.system["hero"] = { victories: actor.system.hero.victories + fd.victories };
-          if (fd.resetHeroicResources) updates.system.hero["primary"] = { value: 0 };
+          updates.system.hero = { victories: actor.system.hero.victories + fd.victories };
+          if (fd.resetHeroicResources) updates.system.hero.primary = { value: 0 };
         }
-        if (fd.resetTempStamina) updates.system["stamina"] = { temporary: 0 };
+        if (fd.resetTempStamina) updates.system.stamina = { temporary: 0 };
 
         await actor.update(updates);
       }
