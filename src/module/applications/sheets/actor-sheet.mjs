@@ -616,7 +616,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         condition: () => this.isPlayMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) return console.error("Could not find item");
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
         },
       },
@@ -626,7 +625,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         condition: () => this.isEditMode,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) return console.error("Could not find item");
           await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
         },
       },
@@ -635,7 +633,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) return console.error("Could not find item");
           await DrawSteelChatMessage.create({
             content: `@Embed[${item.uuid} caption=false]`,
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
@@ -648,7 +645,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         condition: () => this.actor.isOwner,
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) return console.error("Could not find item");
           if (item.hasGrantedItems) await item.advancementDeletionPrompt();
           else await item.deleteDialog();
         },
