@@ -91,7 +91,12 @@ export default defineConfig([
         ]],
       }],
 
-      "@jsdoc/require-jsdoc": ["warn", { require: { ClassExpression: true, FunctionDeclaration: true }, enableFixer: false }],
+      "@jsdoc/require-jsdoc": ["warn", {
+        require: { ClassExpression: true, FunctionDeclaration: true, MethodDefinition: true },
+        enableFixer: false,
+        checkSetters: "no-getter",
+        checkConstructors: false,
+      }],
       "@jsdoc/require-description": ["warn", { checkConstructors: false, contexts: ["FunctionDeclaration", "ClassDeclaration"] }],
       "@jsdoc/require-description-complete-sentence": "warn",
     },

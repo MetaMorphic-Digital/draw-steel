@@ -1,7 +1,14 @@
 import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import DSApplication from "../../api/application.mjs";
 
+/**
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
+
 export default class ChainConfigurationDialog extends DSApplication {
+  /**
+   * @param {ApplicationConfiguration} options
+   */
   constructor({ chains, actor, ...options } = {}) {
     if (!chains) {
       throw new Error("The chain configuration dialog was constructed without Chains.");
@@ -53,6 +60,7 @@ export default class ChainConfigurationDialog extends DSApplication {
    * @type {AdvancementChain[]}
    */
   #chains;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   get chains() {
     return this.#chains;
   }
@@ -64,6 +72,7 @@ export default class ChainConfigurationDialog extends DSApplication {
    * @type {foundry.documents.Actor}
    */
   #hero;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   get hero() {
     return this.#hero;
   }

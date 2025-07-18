@@ -1,7 +1,10 @@
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
-/** @import Document from "@common/abstract/document.mjs" */
-/** @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs" */
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
 
 /**
  * Generic sheet class to represent a {@linkcode PseudoDocument}.
@@ -9,6 +12,9 @@ const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
  * @abstract
  */
 export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Application) {
+  /**
+   * @param {ApplicationConfiguration} options
+   */
   constructor(options) {
     super(options);
     this.#pseudoUuid = options.document.uuid;

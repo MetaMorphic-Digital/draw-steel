@@ -20,6 +20,7 @@ export default class RollDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static PARTS = {
     footer: {
       template: systemPath("templates/api/roll-dialog-footer.hbs"),
