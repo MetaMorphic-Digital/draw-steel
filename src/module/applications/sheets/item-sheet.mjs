@@ -594,7 +594,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       });
     }
 
-    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
+    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/advancement/create-dialog.hbs"), {
       fields: ds.data.pseudoDocuments.advancements.BaseAdvancement.schema.fields,
       typeOptions,
     });

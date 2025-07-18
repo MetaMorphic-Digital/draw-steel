@@ -10,9 +10,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      requirements: new SchemaField({
-        level: new NumberField({ min: 1, integer: true, max: 10, initial: 1, nullable: false }),
-      }),
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),

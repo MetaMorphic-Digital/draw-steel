@@ -4,7 +4,7 @@ import BaseAdvancement from "./base-advancement.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  */
 
-const { NumberField, SchemaField } = foundry.data.fields;
+const { NumberField } = foundry.data.fields;
 
 /**
  * An advancement that applies changes to actor data during data prep.
@@ -14,9 +14,6 @@ export default class TraitAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      requirements: new SchemaField({
-        level: new NumberField({ integer: true, min: 1, max: 10, nullable: false, initial: 1 }),
-      }),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
     });
   }

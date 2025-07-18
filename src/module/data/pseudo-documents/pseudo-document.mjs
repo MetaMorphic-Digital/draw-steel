@@ -1,5 +1,9 @@
-/** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
-/** @import { PseudoDocumentMetadata } from "../_types" */
+import { systemPath } from "../../constants.mjs";
+
+/**
+ * @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs";
+ * @import { PseudoDocumentMetadata } from "../_types";
+ */
 
 const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
 
@@ -36,6 +40,13 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO"];
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Template for {@link createDialog}.
+   */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/base-create-dialog.hbs");
 
   /* -------------------------------------------------- */
 
@@ -252,7 +263,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
     // If there's demand or need we can make the template & context more dynamic
-    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
+    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, {
       fields: this.schema.fields,
     });
 

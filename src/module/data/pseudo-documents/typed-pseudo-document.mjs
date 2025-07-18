@@ -43,6 +43,11 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/typed-create-dialog.hbs");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     if (!this.name) {
@@ -73,7 +78,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
     }));
 
     // If there's demand or need we can make the template & context more dynamic
-    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
+    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, {
       typeOptions,
       fields: this.schema.fields,
     });

@@ -17,11 +17,17 @@
       "FIELDS": {
         "description": {
           "label": "Description"
+        },
+        "requirements": {
+          "level": {
+            "label": "Level"
+          }
         }
       },
       "ITEM_GRANT": {
         "FIELDS": {
           "requirements": {
+            "label": "Requirements",
             "level": {
               "label": "Level",
               "hint": "The level at which these items can be granted."
@@ -36,6 +42,7 @@
       "TRAIT": {
         "FIELDS": {
           "requirements": {
+            "label": "Requirements",
             "level": {
               "label": "Level",
               "hint": "The level at which these traits can be granted."
@@ -69,12 +76,9 @@
         "level": "Level {level}"
       },
       "SHEET": {
-        "requirements": "Requirements",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
-        "requirePack": "Granted items must come from a compendium pack.",
-        "traitLabel": "Label",
-        "traits": "Traits"
+        "requirePack": "Granted items must come from a compendium pack."
       },
       "WARNING": {
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one."
