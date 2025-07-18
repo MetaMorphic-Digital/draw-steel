@@ -1,6 +1,6 @@
 import enrichHTML from "../../utils/enrich-html.mjs";
 import SourceModel from "../models/source.mjs";
-import SubtypeModelMixin from "../subtype-model-mixin.mjs";
+import DrawSteelSystemModel from "../system-model.mjs";
 
 /** @import DrawSteelActor from "../../documents/actor.mjs" */
 
@@ -9,7 +9,7 @@ const fields = foundry.data.fields;
 /**
  * A base item model that provides basic description and source metadata for an item instance.
  */
-export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
+export default class BaseItemModel extends DrawSteelSystemModel {
   /**
    * Key information about this item subtype.
    * @type {import("./_types").ItemMetaData}

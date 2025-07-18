@@ -3,13 +3,13 @@ import PowerRoll from "../../rolls/power.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
-import SubtypeModelMixin from "../subtype-model-mixin.mjs";
+import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
+ * @import { DataField } from "@common/data/fields.mjs";
  * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
- * @import DataModel from "@common/abstract/data.mjs";
- * @import { DataField } from "@common/data/fields.mjs";
+ * @import { CoreResource } from "./_types";
  */
 
 const fields = foundry.data.fields;
@@ -17,7 +17,7 @@ const fields = foundry.data.fields;
 /**
  * A base actor model that provides common properties for both characters and npcs.
  */
-export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
+export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   static defineSchema() {
     const characteristic = { min: -5, max: 5, initial: 0, integer: true, nullable: false };
@@ -477,12 +477,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
    * Fetch information about the core resource for this actor subtype.
    * @see {@linkcode AbilityModel.use | AbilityModel#use}
    * @abstract
-   * @returns {{
-   *  name: string;
-   *  target: DataModel;
-   *  path: string;
-   *  minimum: number;
-   * }}
+   * @returns {CoreResource}
    */
   get coreResource() {
     return null;
