@@ -15,7 +15,7 @@ import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A base actor model that provides common properties for both characters and npcs
+ * A base actor model that provides common properties for both characters and npcs.
  */
 export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /** @inheritdoc */
@@ -73,7 +73,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Helper function to fill in the `biography` property
+   * Helper function to fill in the `biography` property.
    * @protected
    * @returns {Record<string, DataField>}
    */
@@ -158,8 +158,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Perform actor subtype specific modifications to the actor roll data
-   * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy
+   * Perform actor subtype specific modifications to the actor roll data.
+   * @param {object} rollData   Pointer to the roll data object after all iterable properties of this class have been assigned as a shallow copy.
    */
   modifyRollData(rollData) {
     for (const [key, obj] of Object.entries(this.characteristics)) {
@@ -174,7 +174,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * The actor's melee range
+   * The actor's melee range.
    */
   get reach() {
     return 1;
@@ -183,7 +183,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * The actor's level
+   * The actor's level.
    */
   get level() {
     return 1;
@@ -192,7 +192,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * The actor's echelon based on their current level
+   * The actor's echelon based on their current level.
    */
   get echelon() {
     return Object.entries(ds.CONFIG.echelons).reduce((acc, [key, value]) => {
@@ -213,7 +213,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Returns a Set of all combatant groups this actor is a part of
+   * Returns a Set of all combatant groups this actor is a part of.
    * @returns {Set<DrawSteelCombatantGroup>}
    */
   get combatGroups() {
@@ -266,9 +266,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
 
   /**
    * @inheritdoc
-   * @param {object} changed            The differential data that was changed relative to the documents prior values
-   * @param {object} options            Additional options which modify the update request
-   * @param {string} userId             The id of the User requesting the document update
+   * @param {object} changed            The differential data that was changed relative to the documents prior values.
+   * @param {object} options            Additional options which modify the update request.
+   * @param {string} userId             The id of the User requesting the document update.
    * @protected
    * @internal
    */
@@ -288,7 +288,7 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Update the stamina effects based on updated stamina values
+   * Update the stamina effects based on updated stamina values.
    */
   async updateStaminaEffects() {
     for (const [key, value] of Object.entries(ds.CONST.staminaEffects)) {
@@ -342,8 +342,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Updates performed at the start of combat
-   * @param {DrawSteelCombatant} combatant The combatant representation
+   * Updates performed at the start of combat.
+   * @param {DrawSteelCombatant} combatant The combatant representation.
    */
   async startCombat(combatant) {
     await combatant.update({ initiative: this.combat.turns });
@@ -352,8 +352,8 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Updates performed at the start of this actor's turn
-   * @param {DrawSteelCombatant} combatant The combatant representation
+   * Updates performed at the start of this actor's turn.
+   * @param {DrawSteelCombatant} combatant The combatant representation.
    * @abstract
    */
   async _onStartTurn(combatant) {}
@@ -361,13 +361,13 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user for what types
-   * @param {string} characteristic   The characteristic to roll
-   * @param {object} [options]        Options to modify the characteristic roll
-   * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic
-   * @param {number} [options.edges]                    Base edges for the roll
-   * @param {number} [options.banes]                    Base banes for the roll
-   * @param {number} [options.bonuses]                  Base bonuses for the roll
+   * Prompt the user for what types.
+   * @param {string} characteristic   The characteristic to roll.
+   * @param {object} [options]        Options to modify the characteristic roll.
+   * @param {Array<"test" | "ability">} [options.types] Valid roll types for the characteristic.
+   * @param {number} [options.edges]                    Base edges for the roll.
+   * @param {number} [options.banes]                    Base banes for the roll.
+   * @param {number} [options.bonuses]                  Base bonuses for the roll.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
@@ -419,11 +419,11 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Deal damage to the actor, accounting for immunities and resistances
-   * @param {number} damage    The amount of damage to take
-   * @param {object} [options] Options to modify the damage application
-   * @param {string} [options.type]   Valid damage type
-   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore
+   * Deal damage to the actor, accounting for immunities and resistances.
+   * @param {number} damage    The amount of damage to take.
+   * @param {object} [options] Options to modify the damage application.
+   * @param {string} [options.type]   Valid damage type.
+   * @param {Array<string>} [options.ignoredImmunities]  Which damage immunities to ignore.
    * @returns {Promise<DrawSteelActor | DrawSteelCombatantGroup>}
    */
   async takeDamage(damage, options = {}) {
@@ -491,9 +491,9 @@ export default class BaseActorModel extends SubtypeModelMixin(foundry.abstract.T
   /* -------------------------------------------------- */
 
   /**
-   * Update the core resource for this actor subtype
+   * Update the core resource for this actor subtype.
    * @see {@linkcode AbilityModel.use | AbilityModel#use}
-   * @param {number} delta Change in value
+   * @param {number} delta Change in value.
    */
   async updateResource(delta) {
     throw new Error("This method is abstract and must be implemented by a subclass");

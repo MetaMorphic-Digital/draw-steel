@@ -7,7 +7,7 @@ import DSDialog from "../../api/dialog.mjs";
 
 /**
  * Implementation logic for all roll-style enrichers.
- * Inspired by the implementation in dnd5e
+ * Inspired by the implementation in dnd5e.
  */
 
 /** @type {TextEditorEnricherConfig["id"]} */
@@ -16,7 +16,7 @@ export const id = "ds.roll";
 /* -------------------------------------------------- */
 
 /**
- * Valid roll types
+ * Valid roll types.
  */
 const rollTypes = ["damage", "heal", "healing"];
 
@@ -26,7 +26,7 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
 /* -------------------------------------------------- */
 
 /**
- * Enricher function
+ * Enricher function.
  * @type {TextEditorEnricher}
  */
 export function enricher(match, options) {
@@ -71,7 +71,7 @@ function parseConfig(match = "", { multiple = false } = {}) {
 /* -------------------------------------------------- */
 
 /**
- * Called when the enriched content is added to the DOM
+ * Called when the enriched content is added to the DOM.
  * @param {HTMLEnrichedContentElement} element
  */
 export async function onRender(element) {
@@ -88,7 +88,7 @@ export async function onRender(element) {
 /* -------------------------------------------------- */
 
 /**
- * Damage/Heal Enricher
+ * Damage/Heal Enricher.
  */
 
 /**
@@ -163,7 +163,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
 /* -------------------------------------------------- */
 
 /**
- * Helper function that constructs the damage roll
+ * Helper function that constructs the damage roll.
  * @param {HTMLAnchorElement} link
  * @param {PointerEvent} event
  */
@@ -246,7 +246,7 @@ async function rollDamageHeal(link, event) {
 /* -------------------------------------------------- */
 
 /**
- * HTML Construction Helper Functions
+ * HTML Construction Helper Functions.
  */
 
 /**

@@ -64,7 +64,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Reference to the grandparent item
+   * Reference to the grandparent item.
    * @type {DrawSteelItem}
    */
   get item() {
@@ -74,7 +74,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Reference to the great-grandparent actor
+   * Reference to the great-grandparent actor.
    * @type {DrawSteelActor}
    */
   get actor() {
@@ -115,7 +115,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Implement rendering context for tiers 1-3.
-   * @param {object} context    Rendering context. **will be mutated**
+   * @param {object} context    Rendering context. **will be mutated**.
    * @returns {Promise<void>}   A promise that resolves once the rendering context has been mutated.
    */
   async _tierRenderingContext(context) {
@@ -152,7 +152,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /**
    * A helper method for generating the potency string (i.e M < 2).
    * @param {1|2|3} n     The tier.
-   * @returns {string}    The formatted potency string
+   * @returns {string}    The formatted potency string.
    */
   toPotencyText(tier) {
     const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];

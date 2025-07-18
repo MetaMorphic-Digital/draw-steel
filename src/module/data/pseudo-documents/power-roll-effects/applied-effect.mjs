@@ -10,7 +10,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 const { SchemaField, SetField, StringField, TypedObjectField } = foundry.data.fields;
 
 /**
- * For abilities that apply an ActiveEffect
+ * For abilities that apply an ActiveEffect.
  */
 export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */
@@ -168,7 +168,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /**
-   * Fetch the applicable effect by its key, or fallback to a simple object
+   * Fetch the applicable effect by its key, or fallback to a simple object.
    * @param {string} key
    * @returns {DrawSteelActiveEffect | StatusEffectConfig | { name: string }}
    * @protected

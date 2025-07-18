@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DocumentInput from "../api/document-input.mjs";
 
 /**
- * Simple live-updating input for {@linkcode ds.data.models.SourceModel | `SourceModel`}
+ * Simple live-updating input for {@linkcode ds.data.models.SourceModel | `SourceModel`}.
  */
 export default class DocumentSourceInput extends DocumentInput {
   /** @inheritdoc */

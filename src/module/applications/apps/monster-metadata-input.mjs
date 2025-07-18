@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DocumentInput from "../api/document-input.mjs";
 
 /**
- * Simple live-updating input for monster metadata
+ * Simple live-updating input for monster metadata.
  */
 export default class MonsterMetadataInput extends DocumentInput {
   /** @inheritdoc */

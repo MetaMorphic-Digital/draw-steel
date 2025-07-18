@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DSApplication from "../api/application.mjs";
 
 /**
- * Prompt application for configuring the actor UUID that is causing a targeted condition
+ * Prompt application for configuring the actor UUID that is causing a targeted condition.
  */
 export default class TargetedConditionPrompt extends DSApplication {
   /** @inheritdoc */
@@ -35,7 +35,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * The first target in the user targets
+   * The first target in the user targets.
    * @type {Token}
    */
   #target = game.user.targets.first();
@@ -43,7 +43,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * The hook ID for canceling the hook on close
+   * The hook ID for canceling the hook on close.
    * @type {number}
    */
   #hook;

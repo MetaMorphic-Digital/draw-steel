@@ -14,7 +14,7 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 const { sheets } = foundry.applications;
 
 /**
- * AppV2-based sheet for all actor classes
+ * AppV2-based sheet for all actor classes.
  */
 export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.ActorSheetV2) {
   /** @inheritdoc */
@@ -61,7 +61,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * A set of the currently expanded item ids
+   * A set of the currently expanded item ids.
    * @type {Set<string>}
    */
   #expanded = new Set();
@@ -69,7 +69,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * A set of the currently expanded effect UUIDs
+   * A set of the currently expanded effect UUIDs.
    * @type {Set<string>}
    */
   #expandedDescriptions = new Set();
@@ -158,7 +158,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Constructs a record of valid characteristics and their associated field
+   * Constructs a record of valid characteristics and their associated field.
    * @returns {Record<string, {field: NumberField, value: number}>}
    * @protected
    */
@@ -178,7 +178,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Constructs a tooltip of data paths
+   * Constructs a tooltip of data paths.
    * @protected
    */
   _getCombatTooltip() {
@@ -197,7 +197,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions
+   * Constructs an object with the actor's movement types as well as all options available from CONFIG.Token.movement.actions.
    * @returns {{flying: boolean, list: string, options: FormSelectOption[]}}
    * @protected
    */
@@ -223,7 +223,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages
+   * Constructs an object with the actor's languages as well as all options available from CONFIG.DRAW_STEEL.languages.
    * @returns {{list: string, options: FormSelectOption[]}}
    * @protected
    */
@@ -240,7 +240,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels
+   * Constructs an object with the formatted immunities and weaknesses with a list of damage labels.
    * @returns {{immunities: string, weaknesses: string, labels: Record<string, string>}}
    * @protected
    */
@@ -267,7 +267,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Helper to compose datasets available in the hbs
+   * Helper to compose datasets available in the hbs.
    * @returns {Record<string, unknown>}
    * @protected
    */
@@ -281,7 +281,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Generate the context data shared between item types
+   * Generate the context data shared between item types.
    * @param {DrawSteelItem} item
    * @returns {Promise<ActorSheetItemContext>}
    */
@@ -300,7 +300,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for features
+   * Prepare the context for features.
    * @returns {Array<ActorSheetItemContext>}
    * @protected
    */
@@ -318,7 +318,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for ability categories and individual abilities
+   * Prepare the context for ability categories and individual abilities.
    * @protected
    */
   async _prepareAbilitiesContext() {
@@ -430,14 +430,14 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * @typedef ActiveEffectCategory
-   * @property {string} type                 - The type of category
-   * @property {string} label                - The localized name of the category
-   * @property {Array<ActiveEffect>} effects - The effects in the category
+   * @property {string} type                 - The type of category.
+   * @property {string} label                - The localized name of the category.
+   * @property {Array<ActiveEffect>} effects - The effects in the category.
    */
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -496,8 +496,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Actions performed after a first render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
+   * @param {ApplicationRenderContext} context      Prepared context data.
+   * @param {RenderOptions} options                 Provided render options.
    * @protected
    */
   async _onFirstRender(context, options) {
@@ -671,8 +671,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Actions performed after any render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data
-   * @param {RenderOptions} options                 Provided render options
+   * @param {ApplicationRenderContext} context      Prepared context data.
+   * @param {RenderOptions} options                 Provided render options.
    * @protected
    * @inheritdoc
    */
@@ -686,11 +686,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Toggle Edit vs. Play mode
+   * Toggle Edit vs. Play mode.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #toggleMode(event, target) {
     if (!this.isEditable) {
@@ -704,11 +704,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode
+   * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #viewDoc(event, target) {
@@ -723,11 +723,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Handles item deletion
+   * Handles item deletion.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #deleteDoc(event, target) {
@@ -738,11 +738,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
+   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #createDoc(event, target) {
@@ -764,11 +764,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Creates or deletes a configured status effect
+   * Creates or deletes a configured status effect.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #toggleStatus(event, target) {
@@ -779,11 +779,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Toggles an active effect from disabled to enabled
+   * Toggles an active effect from disabled to enabled.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #toggleEffect(event, target) {
@@ -797,8 +797,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * Handle clickable rolls.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #onRoll(event, target) {
@@ -818,8 +818,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * Open a dialog to edit niche combat data.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #editCombat(event, target) {
@@ -832,8 +832,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * Handle clickable rolls.
    *
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #useAbility(event, target) {
@@ -849,10 +849,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions
+   * TODO: Refactor re-rendering to instead use CSS transitions.
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #toggleEffectDescription(event, target) {
@@ -869,10 +869,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
   /**
    * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions
+   * TODO: Refactor re-rendering to instead use CSS transitions.
    * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #toggleItemEmbed(event, target) {
@@ -890,10 +890,10 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the embedded document representing the containing HTML element
+   * Fetches the embedded document representing the containing HTML element.
    *
-   * @param {HTMLElement} target    The element subject to search
-   * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect
+   * @param {HTMLElement} target    The element subject to search.
+   * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect.
    */
   _getEmbeddedDocument(target) {
     const docRow = target.closest("[data-document-class]");
@@ -915,8 +915,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /**
    * Handle a dropped Active Effect on the Actor Sheet.
    * The default implementation creates an Active Effect embedded document on the Actor.
-   * @param {DragEvent} event       The initiating drop event
-   * @param {ActiveEffect} effect   The dropped ActiveEffect document
+   * @param {DragEvent} event       The initiating drop event.
+   * @param {ActiveEffect} effect   The dropped ActiveEffect document.
    * @returns {Promise<void>}
    * @protected
    */
@@ -929,7 +929,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings
+   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings.
    *
    * @param {DragEvent} event
    * @param {ActiveEffect} effect
@@ -1018,7 +1018,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Disables inputs subject to active effects
+   * Disables inputs subject to active effects.
    */
   #disableOverrides() {
     const flatOverrides = foundry.utils.flattenObject(this.actor.overrides);

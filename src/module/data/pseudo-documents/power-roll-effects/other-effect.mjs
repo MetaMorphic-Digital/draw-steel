@@ -3,7 +3,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 const { StringField } = foundry.data.fields;
 
 /**
- * General fallback type for a simple text description
+ * General fallback type for a simple text description.
  */
 export default class OtherPowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */

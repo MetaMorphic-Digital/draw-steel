@@ -43,7 +43,7 @@ export default class TraitAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Getter to indicate that this is a trait advancement
+   * Getter to indicate that this is a trait advancement.
    */
   get isTrait() {
     return true;
@@ -109,7 +109,7 @@ export default class TraitAdvancement extends BaseAdvancement {
     content.append(formGroup);
 
     /**
-     * Render callback for Dialog
+     * Render callback for Dialog.
      * @param {Event} event
      * @param {DSDialog} dialog
      */

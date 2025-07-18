@@ -193,7 +193,7 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
-   * Is this advancement chosen and valid? I.e. if confirming, should it be applied?
+   * Is this advancement chosen and valid? I.e. If confirming, should it be applied?
    * It's either an advancement in the root, which are always applied, or it's from
    * an item granted by a "parent" item grant, in which case we check the "parent choice"
    * to see if *that* was chosen. This should recursively check up the chain until it

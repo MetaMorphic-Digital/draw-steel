@@ -5,7 +5,7 @@ import DSRoll from "./base.mjs";
 /** @import { PowerRollPrompt, PowerRollPromptOptions } from "../_types.js" */
 
 /**
- * Augments the Roll class with specific functionality for power rolls
+ * Augments the Roll class with specific functionality for power rolls.
  */
 export default class PowerRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
@@ -67,8 +67,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Types of Power Rolls
-   * @returns A key-value pair of the valid types and their i18n strings
+   * Types of Power Rolls.
+   * @returns A key-value pair of the valid types and their i18n strings.
    */
   static get TYPES() {
     return PowerRoll.#TYPES;
@@ -91,7 +91,7 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Set of power roll types
+   * Set of power roll types.
    * @type {Set<"ability" | "test">}
    */
   static get VALID_TYPES() {
@@ -101,21 +101,21 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Maximum number of edges
+   * Maximum number of edges.
    */
   static MAX_EDGE = 2;
 
   /* -------------------------------------------------- */
 
   /**
-   * Maximum number of banes
+   * Maximum number of banes.
    */
   static MAX_BANE = 2;
 
   /* -------------------------------------------------- */
 
   /**
-   * Power roll result tiers
+   * Power roll result tiers.
    */
   static get RESULT_TIERS() {
     return this.#RESULT_TIERS;
@@ -124,7 +124,7 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Names of the result tiers
+   * Names of the result tiers.
    * @type {Array<"tier1" | "tier2" | "tier3">}
    */
   static get TIER_NAMES() {
@@ -152,9 +152,9 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user with a roll configuration dialog
-   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
-   * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages
+   * Prompt the user with a roll configuration dialog.
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog.
+   * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages.
    */
   static async prompt(options = {}) {
     const type = options.type ?? "test";
@@ -223,8 +223,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the options object based on conditions that apply to all Power Rolls
-   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog
+   * Modify the options object based on conditions that apply to all Power Rolls.
+   * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog.
    */
   static getActorModifiers(options) {
     if (!options.actor) return;
@@ -238,7 +238,7 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if this is a power roll with 2d10 base
+   * Determines if this is a power roll with 2d10 base.
    * @returns {boolean}
    */
   get isValidPowerRoll() {
@@ -249,8 +249,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Cancels out edges and banes to get the adjustment
-   * @returns {number} An integer from -2 to 2, inclusive
+   * Cancels out edges and banes to get the adjustment.
+   * @returns {number} An integer from -2 to 2, inclusive.
    */
   get netBoon() {
     return this.options.edges - this.options.banes;
@@ -259,8 +259,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Produces the tier of a roll as a number
-   * @returns {1 | 2 | 3 | undefined} Returns a number for the tier or undefined if this isn't yet evaluated
+   * Produces the tier of a roll as a number.
+   * @returns {1 | 2 | 3 | undefined} Returns a number for the tier or undefined if this isn't yet evaluated.
    */
   get product() {
     if (this._total === undefined) return undefined;
@@ -276,8 +276,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Converts the tier of a roll into a string property
-   * @returns {string | undefined} Returns a string for the tier or undefined if this isn't yet evaluated
+   * Converts the tier of a roll into a string property.
+   * @returns {string | undefined} Returns a string for the tier or undefined if this isn't yet evaluated.
    */
   get tier() {
     if (this.product === undefined) return undefined;
@@ -287,7 +287,7 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Returns the natural result of the power roll
+   * Returns the natural result of the power roll.
    * @returns {number | undefined}
    */
   get naturalResult() {
@@ -297,8 +297,8 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if the natural result was a natural 20
-   * @returns {boolean | null} Null if not yet evaluated
+   * Determines if the natural result was a natural 20.
+   * @returns {boolean | null} Null if not yet evaluated.
    */
   get isNat20() {
     if ((this._total === undefined) || !this.isValidPowerRoll) return null;
@@ -308,9 +308,9 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if a power roll was a critical
+   * Determines if a power roll was a critical.
    * @returns {boolean | null} Null if not yet evaluated,
-   * otherwise returns if the dice total is a 19 or higher
+   * otherwise returns if the dice total is a 19 or higher.
    */
   get isCritical() {
     if (this._total === undefined) return null;

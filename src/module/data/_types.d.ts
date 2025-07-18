@@ -7,7 +7,7 @@ import "./effect/_types";
 import "./item/_types";
 import "./message/_types";
 import "./models/_types";
-import "./models/_types";
+import "./pseudo-documents/_types";
 import "./settings/_types";
 
 export type BarAttribute = {
@@ -16,7 +16,7 @@ export type BarAttribute = {
 };
 
 export type SubtypeMetadata = {
-  /** The registered document subtype in system.json */
+  /** The registered document subtype in system.json. */
   type: string;
   /** Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>;
@@ -27,7 +27,7 @@ export type PseudoDocumentMetadata = {
   documentName: string,
   /** File path for a default image. */
   defaultImage: string | null;
-  /** The font-awesome icon for this pseudo-document type */
+  /** The font-awesome icon for this pseudo-document type. */
   icon: string;
   /** Record of document names of pseudo-documents and the path to the collection. */
   embedded: Record<string, string>,

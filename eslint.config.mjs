@@ -93,6 +93,7 @@ export default defineConfig([
 
       "@jsdoc/require-jsdoc": ["warn", { require: { ClassExpression: true, FunctionDeclaration: true }, enableFixer: false }],
       "@jsdoc/require-description": ["warn", { checkConstructors: false, contexts: ["FunctionDeclaration", "ClassDeclaration"] }],
+      "@jsdoc/require-description-complete-sentence": "warn",
     },
   }, {
     files: ["**/*.hbs", "**/*.html"],

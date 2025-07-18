@@ -4,7 +4,7 @@ import RollDialog from "../api/roll-dialog.mjs";
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
- * A roll dialog for Saving Throws
+ * A roll dialog for Saving Throws.
  * @see {@link ds.rolls.SavingThrowRoll | SavingThrowRoll}
  */
 export default class SavingThrowDialog extends RollDialog {
@@ -29,7 +29,7 @@ export default class SavingThrowDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Amend the situational bonus and success threshold based on changed values
+   * Amend the situational bonus and success threshold based on changed values.
    * @inheritdoc
    */
   _onChangeForm(formConfig, event) {

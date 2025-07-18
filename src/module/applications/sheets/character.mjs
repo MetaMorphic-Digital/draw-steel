@@ -96,7 +96,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Constructs a string listing the actor's skills
+   * Constructs a string listing the actor's skills.
    * @returns {string}
    */
   _getSkillList() {
@@ -112,7 +112,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for features
+   * Prepare the context for features.
    * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareKitsContext() {
@@ -129,7 +129,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for equipment categories and individual equipment items
+   * Prepare the context for equipment categories and individual equipment items.
    */
   async _prepareEquipmentContext() {
     /** @type {Record<string, ActorSheetEquipmentContext>} */
@@ -175,7 +175,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for equipment categories and individual equipment items
+   * Prepare the context for equipment categories and individual equipment items.
    * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareProjectsContext() {
@@ -216,10 +216,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open a window to add an appropriate character origin
+   * Open a window to add an appropriate character origin.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #addOrigin(event, target) {
     // TODO: Replace this with opening a compendium browser as part of #130
@@ -245,10 +245,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a hero token to gain a surge
+   * Spend a hero token to gain a surge.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #gainSurges(event, target) {
     /** @type {HeroTokenModel} */
@@ -276,10 +276,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Make a project roll and track the project points
+   * Make a project roll and track the project points.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #rollProject(event, target) {
     const project = this._getEmbeddedDocument(target);
@@ -289,10 +289,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite, converting victories to XP and resetting stamina and recoveries to max
+   * Take a respite, converting victories to XP and resetting stamina and recoveries to max.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #takeRespite(event, target) {
     await this.actor.system.takeRespite();
@@ -301,10 +301,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #spendRecovery(event, target) {
     await this.actor.system.spendRecovery();
@@ -313,10 +313,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #spendStaminaHeroToken() {
     await this.actor.system.spendStaminaHeroToken();
@@ -327,8 +327,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /**
    * Modify the quantity of a piece of equipment.
    * @this DrawSteelCharacterSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #modifyItemQuantity(event, target) {
     const quantityModification = target.dataset.quantityModification;

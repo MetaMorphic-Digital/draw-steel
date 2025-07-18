@@ -5,7 +5,7 @@ import { systemID, systemPath } from "../../constants.mjs";
 /** @import { MaliceModel } from "../../data/settings/malice.mjs"; */
 
 /**
- * An extension of the core Players display that adds controls for hero tokens and malice
+ * An extension of the core Players display that adds controls for hero tokens and malice.
  */
 export default class DrawSteelPlayers extends foundry.applications.ui.Players {
   /** @inheritdoc */
@@ -42,7 +42,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
   /* -------------------------------------------------- */
 
   /**
-   * Context menu entries for the Hero Token menu button
+   * Context menu entries for the Hero Token menu button.
    * @returns {ContextMenuEntry}
    */
   _metaCurrencyContextMenuOptions() {

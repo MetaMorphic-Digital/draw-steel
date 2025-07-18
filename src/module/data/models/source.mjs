@@ -4,7 +4,7 @@
 const fields = foundry.data.fields;
 
 /**
- * Data model
+ * Data model.
  */
 export default class SourceModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
@@ -53,7 +53,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the document containing this model
+   * Fetches the document containing this model.
    * @returns {DrawSteelActor | DrawSteelItem}
    */
   get document() {

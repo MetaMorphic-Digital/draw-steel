@@ -9,7 +9,7 @@ export default base => {
   // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DrawSteelSystemModel extends base {
     /**
-     * Metadata for this document subtype
+     * Metadata for this document subtype.
      * @type {SubtypeMetadata}
      */
     static get metadata() {

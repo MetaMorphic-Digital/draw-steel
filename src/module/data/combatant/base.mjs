@@ -1,11 +1,11 @@
 const fields = foundry.data.fields;
 
 /**
- * A model to store system-specific information about combatants
+ * A model to store system-specific information about combatants.
  */
 export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
   /**
-   * Key information about this Combatant subtype
+   * Key information about this Combatant subtype.
    */
   static get metadata() {
     return {

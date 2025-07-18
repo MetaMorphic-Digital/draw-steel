@@ -7,11 +7,11 @@ import SubtypeModelMixin from "../subtype-model-mixin.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A base item model that provides basic description and source metadata for an item instance
+ * A base item model that provides basic description and source metadata for an item instance.
  */
 export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.TypeDataModel) {
   /**
-   * Key information about this item subtype
+   * Key information about this item subtype.
    * @type {import("./_types").ItemMetaData}
    */
   static get metadata() {
@@ -38,7 +38,7 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
     schema.source = new fields.EmbeddedDataField(SourceModel);
 
     /**
-     * The Draw Steel ID, indicating a unique game rules element
+     * The Draw Steel ID, indicating a unique game rules element.
      * @remarks `readonly: true` makes this non-iterable
      */
     schema._dsid = new fields.StringField({ required: true, readonly: true });
@@ -74,7 +74,7 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
   /* -------------------------------------------------- */
 
   /**
-   * Prepare derived item data that requires actor derived actor data to be available
+   * Prepare derived item data that requires actor derived actor data to be available.
    */
   preparePostActorPrepData() {}
 
@@ -116,8 +116,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
 
   /**
    * Attach type-specific event listeners to details tab of the Item sheet.
-   * @param {HTMLElement} htmlElement             The rendered HTML element for the part
-   * @param {ApplicationRenderOptions} options    Rendering options passed to the render method
+   * @param {HTMLElement} htmlElement             The rendered HTML element for the part.
+   * @param {ApplicationRenderOptions} options    Rendering options passed to the render method.
    * @protected
    */
   _attachPartListeners(htmlElement, options) {}
@@ -125,8 +125,8 @@ export default class BaseItemModel extends SubtypeModelMixin(foundry.abstract.Ty
   /* -------------------------------------------------- */
 
   /**
-   * Perform item subtype specific modifications to the actor roll data
-   * @param {object} rollData   Pointer to the roll data object
+   * Perform item subtype specific modifications to the actor roll data.
+   * @param {object} rollData   Pointer to the roll data object.
    */
   modifyRollData(rollData) {}
 }

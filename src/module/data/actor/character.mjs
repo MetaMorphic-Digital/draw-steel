@@ -10,7 +10,7 @@ import BaseActorModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Characters are controlled by players and have heroic resources and advancement
+ * Characters are controlled by players and have heroic resources and advancement.
  */
 export default class CharacterModel extends BaseActorModel {
   /** @inheritdoc */
@@ -250,7 +250,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
    * @returns {Promise<DrawSteelActor>}
    */
   async spendRecovery() {
@@ -268,7 +268,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
+   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery.
    * @returns {DrawSteelActor}
    */
   async spendStaminaHeroToken() {
@@ -336,7 +336,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current ancestry
+   * Finds the actor's current ancestry.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
@@ -346,7 +346,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current career
+   * Finds the actor's current career.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
@@ -356,7 +356,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current class
+   * Finds the actor's current class.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
@@ -366,7 +366,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current culture
+   * Finds the actor's current culture.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
@@ -376,7 +376,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Returns all of the actor's kits
+   * Returns all of the actor's kits.
    * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
    */
   get kits() {
@@ -386,7 +386,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Returns the total xp required for the next level
+   * Returns the total xp required for the next level.
    */
   get nextLevelXP() {
     if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
@@ -396,7 +396,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Returns the number of victories required to ascend to the next level
+   * Returns the number of victories required to ascend to the next level.
    */
   get victoriesMax() {
     return Math.max(0, this.nextLevelXP - this.hero.xp);

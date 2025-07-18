@@ -88,7 +88,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     }
 
     /**
-     * Render callback for Dialog
+     * Render callback for Dialog.
      * @param {Event} event
      * @param {DSDialog} dialog
      */

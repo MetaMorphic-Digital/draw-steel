@@ -5,7 +5,7 @@ import { systemPath } from "../../../constants.mjs";
 /** @import DrawSteelTokenDocument from "../../../documents/token.mjs"; */
 
 /**
- * Draw Steel implementation of the core token ruler
+ * Draw Steel implementation of the core token ruler.
  */
 export default class DrawSteelTokenRuler extends foundry.canvas.placeables.tokens.TokenRuler {
   /** @inheritdoc */
@@ -14,7 +14,7 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   /* -------------------------------------------------- */
 
   /**
-   * Helper function called in `init` hook
+   * Helper function called in `init` hook.
    * @internal
    */
   static applyDSMovementConfig() {
@@ -141,9 +141,9 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
   /* -------------------------------------------------- */
 
   /**
-   * Adjusts the grid or segment style based on the token's movement characteristics
-   * @param {{ color?: PIXI.ColorSource }} style        - The calculated style properties from the parent class
-   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint - The waypoint being adjusted
+   * Adjusts the grid or segment style based on the token's movement characteristics.
+   * @param {{ color?: PIXI.ColorSource }} style        - The calculated style properties from the parent class.
+   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint - The waypoint being adjusted.
    * @protected
    */
   #speedValueStyle(style, waypoint) {
