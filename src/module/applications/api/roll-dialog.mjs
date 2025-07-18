@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DSApplication from "./application.mjs";
 
 /**
- * Provides basic framework for roll dialogs
+ * Provides basic framework for roll dialogs.
  * @abstract
  */
 export default class RollDialog extends DSApplication {
@@ -20,6 +20,7 @@ export default class RollDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
   static PARTS = {
     footer: {
       template: systemPath("templates/api/roll-dialog-footer.hbs"),

@@ -3,12 +3,14 @@ import { systemID } from "../constants.mjs";
 import BaseEffectModel from "../data/effect/base.mjs";
 import DSRoll from "../rolls/base.mjs";
 
-/** @import ActiveEffectData from "@common/documents/_types.mjs" */
-/** @import { MaliceModel } from "../data/settings/malice.mjs" */
-/** @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs" */
+/**
+ * @import ActiveEffectData from "@common/documents/_types.mjs";
+ * @import { MaliceModel } from "../data/settings/malice.mjs";
+ * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "./_module.mjs";
+ */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Combat.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Combat.documentClass.
  */
 export default class DrawSteelCombat extends foundry.documents.Combat {
   /** @inheritdoc */
@@ -53,7 +55,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
    * @inheritdoc In Draw Steel's default initiative, non-GM users cannot change the round
-   * @param {User} user The user attempting to change the round
+   * @param {User} user The user attempting to change the round.
    * @returns {boolean} Is the user allowed to change the round?
    */
   _canChangeRound(user) {
@@ -92,9 +94,9 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
-   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant
-   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} b Some other combatant
-   * @returns {number} The sort for an {@linkcode Array.sort | Array#sort} callback
+   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} a Some combatant.
+   * @param {DrawSteelCombatant | DrawSteelCombatantGroup} b Some other combatant.
+   * @returns {number} The sort for an {@linkcode Array.sort | Array#sort} callback.
    * @protected
    * @inheritdoc
    */
@@ -180,12 +182,12 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
      * Actions taken after descendant documents have been created and changes have been applied to client data.
-     * @param {DrawSteelCombat} parent         The direct parent of the created Documents, may be this Document or a child
-     * @param {string} collection       The collection within which documents were created
-     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of created Documents
-     * @param {object[]} data           The source data for new documents that were created
-     * @param {object} options          Options which modified the creation operation
-     * @param {string} userId           The ID of the User who triggered the operation
+     * @param {DrawSteelCombat} parent         The direct parent of the created Documents, may be this Document or a child.
+     * @param {string} collection       The collection within which documents were created.
+     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of created Documents.
+     * @param {object[]} data           The source data for new documents that were created.
+     * @param {object} options          Options which modified the creation operation.
+     * @param {string} userId           The ID of the User who triggered the operation.
      * @protected
      * @override
      */
@@ -198,12 +200,12 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
      * Actions taken after descendant documents have been updated and changes have been applied to client data.
-     * @param {DrawSteelCombat} parent         The direct parent of the updated Documents, may be this Document or a child
-     * @param {string} collection       The collection within which documents were updated
-     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of updated Documents
-     * @param {object[]} changes        The array of differential Document updates which were applied
-     * @param {object} options          Options which modified the update operation
-     * @param {string} userId           The ID of the User who triggered the operation
+     * @param {DrawSteelCombat} parent         The direct parent of the updated Documents, may be this Document or a child.
+     * @param {string} collection       The collection within which documents were updated.
+     * @param {DrawSteelCombatant[] | DrawSteelCombatantGroup[]} documents    The array of updated Documents.
+     * @param {object[]} changes        The array of differential Document updates which were applied.
+     * @param {object} options          Options which modified the update operation.
+     * @param {string} userId           The ID of the User who triggered the operation.
      * @protected
      * @override
      */
@@ -216,12 +218,12 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
      * Actions taken after descendant documents have been deleted and those deletions have been applied to client data.
-     * @param {Document} parent         The direct parent of the deleted Documents, may be this Document or a child
-     * @param {string} collection       The collection within which documents were deleted
-     * @param {Document[]} documents    The array of Documents which were deleted
-     * @param {string[]} ids            The array of document IDs which were deleted
-     * @param {object} options          Options which modified the deletion operation
-     * @param {string} userId           The ID of the User who triggered the operation
+     * @param {Document} parent         The direct parent of the deleted Documents, may be this Document or a child.
+     * @param {string} collection       The collection within which documents were deleted.
+     * @param {Document[]} documents    The array of Documents which were deleted.
+     * @param {string[]} ids            The array of document IDs which were deleted.
+     * @param {object} options          Options which modified the deletion operation.
+     * @param {string} userId           The ID of the User who triggered the operation.
      * @protected
      * @override
      */
@@ -234,9 +236,9 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
   /**
    * Shared actions taken when CombatantGroups are modified within this Combat document.
-   * @param {DrawSteelCombat} parent              The direct parent of the created Documents, may be this Document or a child
-   * @param {DrawSteelCombatantGroup[]} documents The array of created Documents
-   * @param {object} options                      Options which modified the operation
+   * @param {DrawSteelCombat} parent              The direct parent of the created Documents, may be this Document or a child.
+   * @param {DrawSteelCombatantGroup[]} documents The array of created Documents.
+   * @param {object} options                      Options which modified the operation.
    */
   #onModifyCombatantGroups(parent, documents, options) {
     if ((ui.combat.viewed === parent) && (options.render !== false)) ui.combat.render();
@@ -245,7 +247,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /* -------------------------------------------------- */
 
   /**
-   * Handle Draw Steel effect expiration logic
+   * Handle Draw Steel effect expiration logic.
    * @inheritdoc
    */
   async _onEndTurn(combatant, context) {

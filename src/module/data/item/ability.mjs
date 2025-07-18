@@ -13,7 +13,7 @@ import BaseItemModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
+ * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment.
  */
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
@@ -314,14 +314,14 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Use an ability, generating a chat message and potentially making a power roll
-   * @param {Partial<AbilityUseOptions>} [options={}] Configuration
+   * Use an ability, generating a chat message and potentially making a power roll.
+   * @param {Partial<AbilityUseOptions>} [options={}] Configuration.
    * @returns {Promise<Array<DrawSteelChatMessage> | null>}
-   * TODO: Add hooks based on discussion with module authors
+   * TODO: Add hooks based on discussion with module authors.
    */
   async use(options = {}) {
     /**
-     * Configuration information
+     * Configuration information.
      * @type {object | null}
      */
     let configuration = null;
@@ -336,7 +336,7 @@ export default class AbilityModel extends BaseItemModel {
       const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
 
       /**
-       * Range picker config is ignored by the checkbox element
+       * Range picker config is ignored by the checkbox element.
        * @type {FormInputConfig}
        */
       const spendInputConfig = {
@@ -500,8 +500,8 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
-   * @param {Partial<AbilityUseOptions>} options Options for the dialog
+   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target.
+   * @param {Partial<AbilityUseOptions>} options Options for the dialog.
    */
   getActorModifiers(options) {
     if (!this.actor) return;
@@ -514,8 +514,8 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelToken} target A target of the Ability Roll
+   * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target.
+   * @param {DrawSteelToken} target A target of the Ability Roll.
    * @returns {PowerRollModifiers}
    */
   getTargetModifiers(target) {

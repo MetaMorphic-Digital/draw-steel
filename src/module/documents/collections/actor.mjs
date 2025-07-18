@@ -3,11 +3,11 @@ import { systemID } from "../../constants.mjs";
 /** @import { HeroTokenModel, MaliceModel } from "../../data/settings/_module.mjs" */
 
 /**
- * An extension of the core Actors collection with extra convenience functions
+ * An extension of the core Actors collection with extra convenience functions.
  */
 export default class DrawSteelActors extends foundry.documents.collections.Actors {
   /**
-   * Easy access to the current hero tokens
+   * Easy access to the current hero tokens.
    * @type {HeroTokenModel}
    */
   get heroTokens() {
@@ -17,7 +17,7 @@ export default class DrawSteelActors extends foundry.documents.collections.Actor
   /* -------------------------------------------------- */
 
   /**
-   * Easy access to the current malice
+   * Easy access to the current malice.
    * @type {MaliceModel}
    */
   get malice() {

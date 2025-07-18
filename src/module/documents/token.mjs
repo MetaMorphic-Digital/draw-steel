@@ -3,7 +3,7 @@ import { systemID } from "../constants.mjs";
 /** @import DrawSteelToken from "../canvas/placeables/token.mjs"; */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Token.documentClass.
  */
 export default class DrawSteelTokenDocument extends foundry.documents.TokenDocument {
   /**
@@ -17,7 +17,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /**
-   * Convenient reference to the movement types on the associated actor
+   * Convenient reference to the movement types on the associated actor.
    * @type {Set<string>}
    */
   get movementTypes() {

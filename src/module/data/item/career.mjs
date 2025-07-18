@@ -6,7 +6,7 @@ import AdvancementModel from "./advancement.mjs";
  */
 
 /**
- * Careers describe what a hero did for a living before becoming a hero
+ * Careers describe what a hero did for a living before becoming a hero.
  */
 export default class CareerModel extends AdvancementModel {
   /** @inheritdoc */

@@ -1,7 +1,7 @@
 const fields = foundry.data.fields;
 
 /**
- * A data model to represent the size of a creature in Draw Steel
+ * A data model to represent the size of a creature in Draw Steel.
  */
 export default class SizeModel extends foundry.abstract.DataModel {
   /** @inheritdoc */

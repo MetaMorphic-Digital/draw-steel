@@ -9,7 +9,7 @@ import SourceModel from "../models/source.mjs";
 /** @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs"; */
 
 /**
- * NPCs are created and controlled by the director
+ * NPCs are created and controlled by the director.
  */
 export default class NPCModel extends BaseActorModel {
   /** @inheritdoc */
@@ -96,7 +96,7 @@ export default class NPCModel extends BaseActorModel {
 
   /**
    * Fetch the traits of this creature's free strike.
-   * The value is stored in `this.monster.freeStrike`
+   * The value is stored in `this.monster.freeStrike`.
    * @returns {import("./_types").FreeStrike}
    */
   get freeStrike() {

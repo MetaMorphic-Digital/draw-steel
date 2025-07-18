@@ -4,7 +4,7 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Classes provide the bulk of a hero's features and abilities
+ * Classes provide the bulk of a hero's features and abilities.
  */
 export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */

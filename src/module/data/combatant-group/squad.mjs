@@ -36,7 +36,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the captain
+   * Finds the captain.
    * @type {DrawSteelActor | null}
    */
   get captain() {
@@ -46,7 +46,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds all the minions in the squad
+   * Finds all the minions in the squad.
    * @type {Set<DrawSteelActor>}
    */
   get minions() {

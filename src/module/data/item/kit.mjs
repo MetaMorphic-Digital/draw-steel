@@ -4,7 +4,7 @@ import { setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
+ * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics.
  */
 export default class KitModel extends AdvancementModel {
   /** @inheritdoc */

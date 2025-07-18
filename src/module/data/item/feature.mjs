@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Passive benefits usually granted by other items
+ * Passive benefits usually granted by other items.
  */
 export default class FeatureModel extends AdvancementModel {
   /** @inheritdoc */

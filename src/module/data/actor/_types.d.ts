@@ -10,6 +10,13 @@ interface Biography {
   languages: Set<string>;
 }
 
+interface CoreResource {
+  name: string;
+  target: foundry.abstract.DataModel;
+  path: string;
+  minimum: number;
+}
+
 declare module "./base.mjs" {
   export default interface BaseActorModel {
     parent: DrawSteelActor;

@@ -11,6 +11,7 @@
  *
  */
 export default base => {
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DrawSteelDocument extends base {
     /**
      * Obtain the embedded collection of a given pseudo-document type.

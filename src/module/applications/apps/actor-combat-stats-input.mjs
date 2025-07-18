@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DocumentInput from "../api/document-input.mjs";
 
 /**
- * Simple live-updating input for specialized combat data
+ * Simple live-updating input for specialized combat data.
  */
 export default class ActorCombatStatsInput extends DocumentInput {
   /** @inheritdoc */
