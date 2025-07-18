@@ -1,5 +1,5 @@
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Combatant.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Combatant.documentClass.
  */
 export default class DrawSteelCombatant extends foundry.documents.Combatant {
   /**
@@ -7,7 +7,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
    * 1. Manually specified for this combatant
    * 2. Token disposition
    * 3. Prototype Token disposition for the associated actor
-   * 4. -2
+   * 4. -2.
    * @returns {number}
    */
   get disposition() {
@@ -65,7 +65,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
   /* -------------------------------------------------- */
 
   /**
-   * Re-implements group prep to remove initiative override
+   * Re-implements group prep to remove initiative override.
    * @inheritdoc
    */
   _prepareGroup() {
@@ -78,7 +78,7 @@ export default class DrawSteelCombatant extends foundry.documents.Combatant {
 
   /**
    * Refreshes the combatants token resources bar and actor stats tab
-   * Needed when the squad stamina changes or the combatant is added or removed from a squad to ensure correct stamina value and inputs are used
+   * Needed when the squad stamina changes or the combatant is added or removed from a squad to ensure correct stamina value and inputs are used.
    */
   refreshCombatant() {
     this.token?.object?.renderFlags.set({ refreshBars: true });

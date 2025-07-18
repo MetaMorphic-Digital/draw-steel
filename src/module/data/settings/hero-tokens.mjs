@@ -4,7 +4,7 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A data model to manage Hero Tokens in Draw Steel
+ * A data model to manage Hero Tokens in Draw Steel.
  */
 export class HeroTokenModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
@@ -16,24 +16,24 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  /** Name for the setting */
+  /** Name for the setting. */
   static label = "DRAW_STEEL.Setting.HeroTokens.Label";
 
   /* -------------------------------------------------- */
 
-  /** Localized name for the setting */
+  /** Localized name for the setting. */
   get label() {
     return game.i18n.localize(this.constructor.label);
   }
 
   /* -------------------------------------------------- */
 
-  /** Helper text for Hero Tokens */
+  /** Helper text for Hero Tokens. */
   static hint = "DRAW_STEEL.Setting.HeroTokens.Hint";
 
   /* -------------------------------------------------- */
 
-  /** Localized helper text for Hero Token */
+  /** Localized helper text for Hero Token. */
   get hint() {
     return game.i18n.localize(this.constructor.hint);
   }
@@ -42,11 +42,11 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
 
   /**
    * Send a socket message to the Director to spend a hero token
-   * Necessary because only game masters can modify world settings
+   * Necessary because only game masters can modify world settings.
    * @param {string} spendType        Key of `ds.CONFIG.hero.tokenSpends`.
-   * @param {object} [options]        Options to modify the token spend
-   * @param {string} [options.flavor] Flavor for the chat message (default: Current user's character name)
-   * @returns {Promise<void|false>}   An explicit `false` if there was an error in spending the token
+   * @param {object} [options]        Options to modify the token spend.
+   * @param {string} [options.flavor] Flavor for the chat message (default: Current user's character name).
+   * @returns {Promise<void|false>}   An explicit `false` if there was an error in spending the token.
    */
   async spendToken(spendType, options = {}) {
     if (!game.users.activeGM) {
@@ -77,11 +77,11 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Give out hero tokens
-   * @param {number} [count=1] How many tokens to give out (default: `1`)
+   * Give out hero tokens.
+   * @param {number} [count=1] How many tokens to give out (default: `1`).
    * @param {object} [options]  Options.
-   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`)
-   * @returns {number} The new number of hero tokens
+   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`).
+   * @returns {number} The new number of hero tokens.
    */
   async giveToken(count = 1, { chatMessage = true } = {}) {
     if (!game.user.isGM) {
@@ -100,9 +100,9 @@ export class HeroTokenModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Reset tokens to the number of heroes in the party
+   * Reset tokens to the number of heroes in the party.
    * @param {object} [options]  Options.
-   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`)
+   * @param {boolean} [options.chatMessage=true]  Should a chat message be created? (default: `true`).
    */
   async resetTokens({ chatMessage = true } = {}) {
     if (!game.user.isGM) {

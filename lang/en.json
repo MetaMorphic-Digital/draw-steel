@@ -104,7 +104,10 @@
       "Add": "+ Add {itemName}",
       "NoDocument": "No {documentName}",
       "Play": "Play",
+      "View": "View",
       "Edit": "Edit",
+      "Share": "Share",
+      "Delete": "Delete",
       "Resources": "Resources",
       "Other": "Other",
       "LevelUp": "Level Up Available",
@@ -496,10 +499,18 @@
       "base": {
         "FIELDS": {}
       },
-      "AwardVictories": {
-        "Title": "Victories Awarded",
-        "Hint": "How many victories to award to each character in the combat.",
-        "Button": "Award Victories"
+      "CompleteEncounter": {
+        "Title": "Complete Encounter",
+        "AwardVictories": {
+          "label": "Victories Awarded",
+          "hint": "How many victories to award to each character in the combat."
+        },
+        "ResetTempStamina": {
+          "label": "Reset Temporary Stamina"
+        },
+        "ResetHeroicResources": {
+          "label": "Reset Heroic Resources"
+        }
       }
     },
     "Combatant": {
@@ -554,8 +565,7 @@
             "label": "DSID",
             "hint": "Draw Steel ID"
           }
-        },
-        "share": "Share"
+        }
       },
       "advancement": {
         "FIELDS": {

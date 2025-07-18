@@ -2,10 +2,10 @@
 
 /**
  * Helper function that reduces path length for enrichment calls and improves default handling.
- * Enrich HTML content by replacing or augmenting components of it
- * @param {string} content                  The original HTML content (as a string)
- * @param {EnrichmentOptions} [options={}]  Additional options which configure how HTML is enriched
- * @returns {Promise<string>}               The enriched HTML content
+ * Enrich HTML content by replacing or augmenting components of it.
+ * @param {string} content                  The original HTML content (as a string).
+ * @param {EnrichmentOptions} [options={}]  Additional options which configure how HTML is enriched.
+ * @returns {Promise<string>}               The enriched HTML content.
  */
 export default async function enrichHTML(content, options = {}) {
   // Override document-related options with the relative document's info

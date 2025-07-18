@@ -5,7 +5,7 @@ import BasePowerRollEffect from "./base-power-roll-effect.mjs";
 const { SetField, SchemaField, StringField } = foundry.data.fields;
 
 /**
- * For abilities that do damage
+ * For abilities that do damage.
  */
 export default class DamagePowerRollEffect extends BasePowerRollEffect {
   /** @inheritdoc */

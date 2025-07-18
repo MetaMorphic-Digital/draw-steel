@@ -47,7 +47,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /**
    * Configure this advancement such that all choices have been made. Optionally also apply
    * these choices to a node in an advancement chain.
-   * @param {AdvancementChain} [node]   A node that is configured in-place and used to gather options. **will be mutated**
+   * @param {AdvancementChain} [node]   A node that is configured in-place and used to gather options. **will be mutated**.
    * @returns {Promise<object>}         A promise that resolves to an update to perform on the parent of the advancement.
    */
   async configureAdvancement(node = null) {

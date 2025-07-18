@@ -6,7 +6,7 @@ import BaseItemModel from "./base.mjs";
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
 
 /**
- * Equipment covers all physical items that provide special benefits beyond the base kit
+ * Equipment covers all physical items that provide special benefits beyond the base kit.
  */
 export default class EquipmentModel extends BaseItemModel {
   /** @inheritdoc */

@@ -2,7 +2,7 @@ import { systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
@@ -42,7 +42,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * Return an item's Draw Steel ID
+   * Return an item's Draw Steel ID.
    * @type {string}
    */
   get dsid() {

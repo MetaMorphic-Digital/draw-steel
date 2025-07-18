@@ -49,7 +49,7 @@ export function preLocalize(configKeyPath, { key, keys = [], sort = false } = {}
 
 /**
  * Execute previously defined pre-localization tasks on the provided config object.
- * @param {object} config  The `ds.CONFIG` object to localize and sort. *Will be mutated.*
+ * @param {object} config  The `ds.CONFIG` object to localize and sort. *Will be mutated.*.
  */
 export function performPreLocalization(config) {
   for (const [keyPath, settings] of Object.entries(_preLocalizationRegistrations)) {

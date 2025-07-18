@@ -3,8 +3,8 @@
 /**
  * Specialized collection type for stored data models.
  * @param {Array<string, DataModel>} entries    Array containing the data models to store.
- * @template {DataModel} Model The model class contained by this collection
- * @extends foundry.utils.Collection<string, Model>
+ * @template {DataModel} Model The model class contained by this collection.
+ * @extends {foundry.utils.Collection<string, Model>}
  */
 export default class ModelCollection extends foundry.utils.Collection {
   /* -------------------------------------------------- */

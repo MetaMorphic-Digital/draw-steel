@@ -4,14 +4,14 @@ import TargetedConditionPrompt from "../applications/apps/targeted-condition-pro
 /** @import DrawSteelActor from "./actor.mjs"; */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass.
  */
 export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffect {
   /**
-   * Checks if a status condition applies to the actor
-   * @param {StatusEffectConfig} status An entry in CONFIG.statusEffects
-   * @param {DrawSteelActor} actor      The actor to check against for rendering
-   * @returns {boolean} Will be shown on the token hud for the actor
+   * Checks if a status condition applies to the actor.
+   * @param {StatusEffectConfig} status An entry in CONFIG.statusEffects.
+   * @param {DrawSteelActor} actor      The actor to check against for rendering.
+   * @returns {boolean} Will be shown on the token hud for the actor.
    */
   static validHud(status, actor) {
     return (status.hud !== false) &&
@@ -56,10 +56,10 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /**
-   * Determine if the affected actor has the status and if the source is the one imposing it
-   * @param {DrawSteelActor} affected The actor affected by the status
-   * @param {DrawSteelActor} source The actor imposing the status
-   * @param {string} statusId A status id from the CONFIG object
+   * Determine if the affected actor has the status and if the source is the one imposing it.
+   * @param {DrawSteelActor} affected The actor affected by the status.
+   * @param {DrawSteelActor} source The actor imposing the status.
+   * @param {string} statusId A status id from the CONFIG object.
    * @returns {boolean | null}
    */
   static isStatusSource(affected, source, statusId) {
@@ -71,7 +71,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /**
-   * Automatically deactivate effects with expired durations
+   * Automatically deactivate effects with expired durations.
    * @inheritdoc
    */
   get isSuppressed() {
@@ -105,7 +105,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   /* -------------------------------------------------- */
 
   /**
-   * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check
+   * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
    * @inheritdoc
    */
   get isTemporary() {
@@ -155,7 +155,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /**
    * Return a data object which defines the data schema against which dice rolls can be evaluated.
-   * Potentially usable in the future. May also want to adjust details to care about
+   * Potentially usable in the future. May also want to adjust details to care about.
    * @returns {object}
    */
   getRollData() {

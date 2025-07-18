@@ -6,7 +6,7 @@ import BaseMessageModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Chat Messages representing the result of a {@linkcode SavingThrowRoll}
+ * Chat Messages representing the result of a {@linkcode SavingThrowRoll}.
  */
 export default class SavingThrowModel extends BaseMessageModel {
   /** @inheritdoc */

@@ -5,7 +5,7 @@
 
 /**
  * Convenience method to get the unique actors of an array of tokens.
- * @param {(DrawSteelToken | DrawSteelTokenDocument)[]} [tokens] Defaults to canvas.tokens.controlled
+ * @param {(DrawSteelToken | DrawSteelTokenDocument)[]} [tokens] Defaults to canvas.tokens.controlled.
  * @returns {Set<DrawSteelActor>}    The set of actors of the controlled tokens.
  */
 export default function tokensToActors(tokens) {

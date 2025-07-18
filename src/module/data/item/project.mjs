@@ -233,7 +233,7 @@ export default class ProjectModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a variable amount of the actor's project points from their career on this project
+   * Spend a variable amount of the actor's project points from their career on this project.
    */
   async spendCareerPoints() {
     if (!this.actor) return console.error("This project has no owner actor.");

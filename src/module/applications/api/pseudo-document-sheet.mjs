@@ -1,14 +1,20 @@
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
-/** @import Document from "@common/abstract/document.mjs" */
-/** @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs" */
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
 
 /**
- * Generic sheet class to represent a {@linkcode PseudoDocument}
- * @template {PseudoDocument} TPseudo The type of Pseudodocument this covers
+ * Generic sheet class to represent a {@linkcode PseudoDocument}.
+ * @template {PseudoDocument} TPseudo The type of Pseudodocument this covers.
  * @abstract
  */
 export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Application) {
+  /**
+   * @param {ApplicationConfiguration} options
+   */
   constructor(options) {
     super(options);
     this.#pseudoUuid = options.document.uuid;
@@ -230,6 +236,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
+   * Copies the ID or UUID for the pseudo document.
    * @this {PseudoDocumentSheet}
    * @param {PointerEvent} event      The originating click event.
    */

@@ -61,14 +61,14 @@ export default class AdvancementModel extends BaseItemModel {
 
   /**
    * Helper method to add an item's advancements and create or update this item.
-   * @param {object} [options]                  Optional properties to configure this advancement's creation
-   * @param {DrawSteelActor} [options.actor]    The actor to create this item within
-   * @param {object} [options.levels]           Level info for this advancement
-   * @param {number} [options.levels.start=1]   Base level for this advancement
-   * @param {number} [options.levels.end=1]     End level for this advancement
+   * @param {object} [options]                  Optional properties to configure this advancement's creation.
+   * @param {DrawSteelActor} [options.actor]    The actor to create this item within.
+   * @param {object} [options.levels]           Level info for this advancement.
+   * @param {number} [options.levels.start=1]   Base level for this advancement.
+   * @param {number} [options.levels.end=1]     End level for this advancement.
    * @param {object} [options.toCreate]         Record of original items' uuids to the to-be-created item data (may have `_id` if allowed).
    * @param {object} [options.toUpdate]         Record of existing items' ids to the updates to be performed.
-   * @param {object} [options.actorUpdate]      Record of actor data to update with the advancement
+   * @param {object} [options.actorUpdate]      Record of actor data to update with the advancement.
    */
   async applyAdvancements({ actor = this.actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {} } = {}) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
