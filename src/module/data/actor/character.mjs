@@ -340,7 +340,7 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
-    return this.parent.items.find(i => i.type === "ancestry");
+    return this.parent.itemTypes.ancestry[0];
   }
 
   /* -------------------------------------------------- */
@@ -350,7 +350,7 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
-    return this.parent.items.find(i => i.type === "career");
+    return this.parent.itemTypes.career[0];
   }
 
   /* -------------------------------------------------- */
@@ -360,7 +360,17 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
-    return this.parent.items.find(i => i.type === "class");
+    return this.parent.itemTypes.class[0];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Finds the actor's current subclass.
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
+   */
+  get subclass() {
+    return this.parent.itemTypes.subclass[0];
   }
 
   /* -------------------------------------------------- */
@@ -370,7 +380,7 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
-    return this.parent.items.find(i => i.type === "culture");
+    return this.parent.itemTypes.culture[0];
   }
 
   /* -------------------------------------------------- */
@@ -380,7 +390,7 @@ export default class CharacterModel extends BaseActorModel {
    * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
    */
   get kits() {
-    return this.parent.items.filter(i => i.type === "kit");
+    return this.parent.itemTypes.kit;
   }
 
   /* -------------------------------------------------- */

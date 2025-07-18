@@ -37,11 +37,19 @@
         "htmlFields": ["effect.before", "effect.after"]
       },
       "ancestry": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "career": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "class": {
@@ -53,11 +61,19 @@
         "gmOnlyFields": ["description.director"]
       },
       "complication": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "culture": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "equipment": {
@@ -65,15 +81,31 @@
         "gmOnlyFields": ["description.director"]
       },
       "feature": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "kit": {
-        "htmlFields": ["description.value", "description.director"],
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       },
       "project": {
         "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "subclass": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
         "gmOnlyFields": ["description.director"]
       }
     }

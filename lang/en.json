@@ -568,7 +568,11 @@
         }
       },
       "advancement": {
-        "FIELDS": {}
+        "FIELDS": {
+          "advancements": {
+            "label": "Advancements"
+          }
+        }
       },
       "ability": {
         "FIELDS": {
@@ -1056,6 +1060,18 @@
           "MakePreferred": "Make Preferred Kit"
         },
         "StaminaEmbed": "{number} per echelon"
+      },
+      "subclass": {
+        "FIELDS": {
+          "classLink": {
+            "label": "Class Link",
+            "hint": "The Draw Steel ID of the parent class, which can be found in the class's Source Information."
+          }
+        },
+        "ERRORS": {
+          "NeedClass": "You can only add a subclass to characters with a class",
+          "WrongDSID": "The expected DSID {expected} did not match the current class's DSID of {actual}."
+        }
       },
       "project": {
         "FIELDS": {
@@ -1634,6 +1650,7 @@
       "feature": "Feature",
       "equipment": "Equipment",
       "kit": "Kit",
+      "subclass": "Subclass",
       "project": "Project"
     },
     "PowerRollEffect": {

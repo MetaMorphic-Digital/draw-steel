@@ -365,15 +365,32 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     if (item.type === "class") {
       const cls = this.actor.system.class;
       if (cls && (cls.dsid !== item.dsid)) {
-        ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
-          format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
+        const message = game.i18n.format("DRAW_STEEL.ADVANCEMENT.WARNING.cannotAddNewType", {
+          type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]),
         });
-        throw new Error("Cannot add a new class to an actor already with one");
+        ui.notifications.error(message, { console: false });
+        throw new Error(message);
       }
       return this.actor.system.advance({ levels: 1, item });
     } else if (item.system instanceof AdvancementModel) {
+      if (item.type === "subclass") {
+        const cls = this.actor.system.class;
+        if (!cls) {
+          const message = game.i18n.localize("DRAW_STEEL.Item.subclass.ERRORS.NeedClass");
+          ui.notifications.error(message, { console: false });
+          throw new Error(message);
+        }
+        else if (cls.dsid !== item.system.classLink) {
+          const message = game.i18n.format("DRAW_STEEL.Item.subclass.ERRORS.WrongDSID", {
+            expected: item.system.classLink,
+            actual: cls.dsid,
+          });
+          ui.notifications.error(message, { console: false });
+          throw new Error(message);
+        }
+      }
       // Other advancements
-      if (["ancestry", "career", "culture"].includes(item.type)) {
+      if (["ancestry", "career", "culture", "subclass"].includes(item.type)) {
         /** @type {DrawSteelItem} */
         const existing = this.actor.system[item.type];
         if (existing) {
@@ -393,8 +410,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         const actorClass = this.actor.system.class;
         if (actorClass?.system.kits === 0) {
           const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
-          ui.notifications.error(message);
-          return false;
+          ui.notifications.error(message, { console: false });
+          throw new Error(message);
         }
         const swapKit = await item.system.kitSwapDialog(this.actor);
         if (swapKit === false) return false;
