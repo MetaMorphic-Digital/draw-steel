@@ -5,9 +5,9 @@
 
 /**
  * A hook event that fires when the TokenConfig application is rendered.
- * @param {PrototypeTokenConfig | TokenConfig} app             The Application instance being rendered.
- * @param {HTMLElement} html  The inner HTML of the document that will be displayed and may be modified.
- * @param {Record<string, any>} context The object of data used when rendering the application.
+ * @param {PrototypeTokenConfig | TokenConfig} app  The Application instance being rendered.
+ * @param {HTMLElement} html                        The inner HTML of the document that will be displayed and may be modified.
+ * @param {Record<string, any>} context             The object of data used when rendering the application.
  * @param {ApplicationRenderOptions} options
  */
 export function renderTokenApplication(app, html, context, options) {

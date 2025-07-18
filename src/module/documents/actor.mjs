@@ -128,9 +128,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
    * Toggle a configured status effect for the Actor.
    * @param {string} statusId       A status effect ID defined in CONFIG.statusEffects.
    * @param {object} [options={}]   Additional options which modify how the effect is created.
-   * @param {boolean} [options.active]        Force the effect to be active or inactive regardless of its current state.
-   * @param {boolean} [options.overlay=false] Display the toggled effect as an overlay.
-   * @param {string} [options.effectEnd]      Value for `system.end.type`.
+   * @param {boolean} [options.active]          Force the effect to be active or inactive regardless of its current state.
+   * @param {boolean} [options.overlay=false]   Display the toggled effect as an overlay.
+   * @param {string} [options.effectEnd]        Value for `system.end.type`.
    * @returns {Promise<DrawSteelActiveEffect|boolean|undefined>}  A promise which resolves to one of the following values:
    *                                 - ActiveEffect if a new effect need to be created
    *                                 - true if was already an existing effect

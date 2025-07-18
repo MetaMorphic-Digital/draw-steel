@@ -8,7 +8,7 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 /**
  * @import { NumberField } from "@common/data/fields.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
- * @import { ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
+ * @import { ActiveEffectCategory, ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
  */
 
 const { sheets } = foundry.applications;
@@ -427,13 +427,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * @typedef ActiveEffectCategory
-   * @property {string} type                 - The type of category.
-   * @property {string} label                - The localized name of the category.
-   * @property {Array<ActiveEffect>} effects - The effects in the category.
-   */
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Actor or Item.

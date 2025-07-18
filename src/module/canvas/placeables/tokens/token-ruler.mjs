@@ -142,8 +142,8 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
 
   /**
    * Adjusts the grid or segment style based on the token's movement characteristics.
-   * @param {{ color?: PIXI.ColorSource }} style        - The calculated style properties from the parent class.
-   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint - The waypoint being adjusted.
+   * @param {{ color?: PIXI.ColorSource }} style        The calculated style properties from the parent class.
+   * @param {DeepReadonly<TokenRulerWaypoint>} waypoint The waypoint being adjusted.
    * @protected
    */
   #speedValueStyle(style, waypoint) {

@@ -32,6 +32,15 @@ declare module "./item-sheet.mjs" {
   }
 }
 
+export interface ActiveEffectCategory {
+  /** The type of category. */
+  type: string;
+  /** The localized name of the category. */
+  label: string;
+  /** The effects in the category. */
+  effects: documents.DrawSteelActiveEffect[]
+}
+
 export interface ActorSheetItemContext {
   item: documents.DrawSteelItem;
   expanded: boolean;
