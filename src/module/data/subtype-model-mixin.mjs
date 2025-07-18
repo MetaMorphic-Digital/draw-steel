@@ -1,8 +1,11 @@
-/** @import { SubtypeMetadata } from "./_types" */
+/**
+ * @import { SubtypeMetadata } from "./_types";
+ * @import TypeDataModel from "@common/abstract/type-data.mjs";
+ */
 
 /**
  * Mixin for common functions used across most or all document subtypes.
- * @template {import("@common/_types.mjs").Constructor<foundry.abstract.TypeDataModel>} ModelClass
+ * @template {typeof TypeDataModel} ModelClass
  * @param {ModelClass} base
  */
 export default base => {
