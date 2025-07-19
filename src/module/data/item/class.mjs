@@ -90,16 +90,20 @@ export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
   async applyAdvancements({ actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
     const { end: levelEnd = 1 } = levels;
+
+    const _idMap = new Map();
     const createClass = this.parent !== actor.system.class;
     if (createClass) {
       const keepId = !actor.items.has(this.parent.id);
       const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
       foundry.utils.setProperty(itemData, "system.level", levelEnd);
+      if (!keepId) itemData._id = foundry.utils.randomID();
       toCreate[this.parent.uuid] = itemData;
+      _idMap.set(this.parent.id, itemData._id);
     } else {
       toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
     }
 
-    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, ...options });
+    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, _idMap, ...options });
   }
 }
