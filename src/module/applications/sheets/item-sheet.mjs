@@ -202,11 +202,16 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
-      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
-        level: model.requirements.level,
-        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
-        documents: [],
-      };
+      if (!advs[model.requirements.level]) {
+        const section = Number.isNumeric(model.requirements.level) ?
+          game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }) :
+          game.i18n.localize("DRAW_STEEL.ADVANCEMENT.HEADERS.null");
+        advs[model.requirements.level] = {
+          section,
+          level: model.requirements.level,
+          documents: [],
+        };
+      }
       advs[model.requirements.level].documents.push(model);
     }
 
