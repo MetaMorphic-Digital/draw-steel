@@ -2,6 +2,9 @@ export {};
 
 declare module "./base-advancement.mjs" {
   export default interface BaseAdvancement {
+    requirements: {
+      level: number;
+    }
     description: string;
   }
 }
@@ -12,9 +15,6 @@ interface ItemGrantPool {
 
 declare module "./item-grant-advancement.mjs" {
   export default interface ItemGrantAdvancement {
-    requirements: {
-      level: number;
-    }
     pool: ItemGrantPool[];
     /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool. */
     chooseN: number | null;
@@ -23,9 +23,6 @@ declare module "./item-grant-advancement.mjs" {
 
 declare module "./trait-advancement.mjs" {
   export default interface TraitAdvancement {
-    requirements: {
-      level: number;
-    }
     any: boolean;
     /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool. */
     chooseN: number | null;
