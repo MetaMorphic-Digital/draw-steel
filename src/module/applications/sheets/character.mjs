@@ -416,7 +416,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         const swapKit = await item.system.kitSwapDialog(this.actor);
         if (swapKit === false) return false;
       }
-      return item.system.applyAdvancements({ actor: this.actor, levels: { start: 1, end: this.actor.system.level } });
+      return item.system.applyAdvancements({ actor: this.actor, levels: { end: this.actor.system.level } });
     }
 
     // Fixed default implementation, see https://github.com/foundryvtt/foundryvtt/issues/13166
