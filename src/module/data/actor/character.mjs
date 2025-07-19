@@ -32,11 +32,10 @@ export default class CharacterModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    // TODO: Improve the handling of TokenDocument._getTrackedAttributesFromSchema
-    // So that it recognizes derived max stamina & recovery values without them being in the schema
-    const maxStamina = schema.stamina.getField("max");
-    maxStamina.options.max = 0;
-    maxStamina.max = 0;
+    schema.stamina = new fields.SchemaField({
+      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
+    }, { trackedAttribute: true });
 
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
@@ -130,7 +129,7 @@ export default class CharacterModel extends BaseActorModel {
       }
     }
 
-    this.stamina.max += kitBonuses["stamina"] * this.echelon;
+    this.stamina.max = kitBonuses["stamina"] * this.echelon;
     this.movement.value += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
