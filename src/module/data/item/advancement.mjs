@@ -71,12 +71,11 @@ export default class AdvancementModel extends BaseItemModel {
    *                                            with the `keepId: true` option.
    * @param {object} [options.toUpdate]         Record of existing items' ids to the updates to be performed.
    * @param {object} [options.actorUpdate]      Record of actor data to update with the advancement.
+   * @param {Map<string, string>} [options._idMap]  Internal map to aid in retrieving 'new' ids of created items.
    */
-  async applyAdvancements({ actor = this.actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {}, ...options } = {}) {
+  async applyAdvancements({ actor = this.actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {}, ...options } = {}) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
-    const { start: levelStart = 1, end: levelEnd = 1 } = levels;
-
-    // Internal map to aid in retrieving 'new' ids of created items.
+    const { start: levelStart = null, end: levelEnd = 1 } = levels;
     const _idMap = options._idMap ?? new Map();
 
     if (!(this.parent.uuid in toCreate)) {
@@ -91,7 +90,10 @@ export default class AdvancementModel extends BaseItemModel {
 
     const chains = [];
     for (const advancement of this.advancements) {
-      const validRange = advancement.levels.some(level => level.between(levelStart, levelEnd));
+      const validRange = advancement.levels.some(level => {
+        if (Number.isNumeric(level)) return level.between(levelStart ?? 0, levelEnd);
+        else return levelStart === null;
+      });
       if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
     }
 

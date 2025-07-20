@@ -32,7 +32,7 @@ export default class CultureModel extends AdvancementModel {
         name: game.i18n.localize("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.name"),
         description: `<p>${game.i18n.localize("DRAW_STEEL.Item.culture.AnyLanguageAdvancement.description")}</p>`,
         requirements: {
-          level: 1,
+          level: null,
         },
         _id: "anyLang".padEnd(16, "0"),
       };

@@ -2,13 +2,13 @@ import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
+import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
- * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
  */
 
 const { sheets, ux } = foundry.applications;
@@ -152,7 +152,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         await this.item.system.getSheetContext(context);
         break;
       case "advancement":
-        context.advancements = this._getAdvancementContext();
+        context.advancements = await this._getAdvancementContext();
+        context.advancementIcon = BaseAdvancement.metadata.icon;
         break;
       case "impact":
         context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
@@ -195,19 +196,30 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * Prepares context info for the Advancements tab.
    * @returns {AdvancementContext[]}
    */
-  _getAdvancementContext() {
+  async _getAdvancementContext() {
     // Advancements
     const advs = {};
+    /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
     const models = this.document.getEmbeddedPseudoDocumentCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
-      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
-        level: model.requirements.level,
-        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
-        documents: [],
+      if (!advs[model.requirements.level]) {
+        const section = Number.isNumeric(model.requirements.level) ?
+          game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }) :
+          game.i18n.localize("DRAW_STEEL.ADVANCEMENT.HEADERS.null");
+        advs[model.requirements.level] = {
+          section,
+          level: model.requirements.level,
+          documents: [],
+        };
+      }
+      const advancementContext = {
+        name: model.name,
+        id: model.id,
       };
-      advs[model.requirements.level].documents.push(model);
+      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
+      advs[model.requirements.level].documents.push(advancementContext);
     }
 
     return Object.values(advs).sort((a, b) => a.level - b.level);
@@ -579,7 +591,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    */
   static async #createCultureAdvancement(event, target) {
     /** @type {FormSelectOption[]} */
-    const typeOptions = Object.keys(ds.data.pseudoDocuments.advancements.BaseAdvancement.TYPES).map(type => ({
+    const typeOptions = Object.keys(BaseAdvancement.TYPES).map(type => ({
       value: type,
       label: game.i18n.localize(`TYPES.Advancement.${type}`),
     }));
@@ -594,15 +606,15 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       });
     }
 
-    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/create-dialog.hbs"), {
-      fields: ds.data.pseudoDocuments.advancements.BaseAdvancement.schema.fields,
+    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/advancement/create-dialog.hbs"), {
       typeOptions,
+      fields: BaseAdvancement.schema.fields,
     });
 
     const result = await ds.applications.api.DSDialog.input({
       window: {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize("DOCUMENT.Advancement") }),
-        icon: ds.data.pseudoDocuments.advancements.BaseAdvancement.metadata.icon,
+        icon: BaseAdvancement.metadata.icon,
       },
       content,
       render: (event, dialog) => {

@@ -1,7 +1,7 @@
 <section class="{{tabs.details.cssClass}}" data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}">
   <fieldset>
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
-    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level"}}
+    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" type="number" classes="slim"}}
     {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
   </fieldset>
 

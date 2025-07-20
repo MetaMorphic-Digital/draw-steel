@@ -1,7 +1,12 @@
 import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
+import { systemPath } from "../../../constants.mjs";
 
-const { HTMLField } = foundry.data.fields;
+/**
+ * @import { DataSchema } from "@common/abstract/_types.mjs"
+ */
+
+const { HTMLField, NumberField, SchemaField } = foundry.data.fields;
 
 /**
  * Advancements provide configurable modifications to actors beyond what ActiveEffects can provide.
@@ -24,13 +29,31 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
       description: new HTMLField(),
+      requirements: new SchemaField(this.defineRequirements()),
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The requirements for this Advancement type.
+   * @returns {DataSchema}
+   */
+  static defineRequirements() {
+    return {
+      level: new NumberField({ min: 1, integer: true, max: 10, required: true }),
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.ADVANCEMENT");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/advancement/create-dialog.hbs");
 
   /* -------------------------------------------------- */
 
