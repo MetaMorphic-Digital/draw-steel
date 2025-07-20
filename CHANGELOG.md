@@ -46,6 +46,7 @@
 - Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
   - This enforces good practices for data creation.
   - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
+- Items with advancements can no longer be mass-created as part of dropping a folder onto an actor sheet. (#736)
 
 ### Fixed
 

@@ -183,7 +183,7 @@ export default class CharacterModel extends BaseActorModel {
     if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
       const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
       // updateSource will merge the arrays for embedded collections
-      updates.items = items.map(i => game.items.fromCompendium(i, { clearFolder: true }));
+      updates.items = items.map(i => game.items.fromCompendium(i, { keepId: true, clearFolder: true }));
     }
 
     this.parent.updateSource(updates);
