@@ -83,7 +83,7 @@ export default class ClassModel extends AdvancementModel {
   prepareDerivedData() {
     if (this.actor) {
       this.actor.system.recoveries.max = this.recoveries;
-      this.actor.system.stamina.max = this.stamina.starting + this.level * this.stamina.level;
+      this.actor.system.stamina.max += this.stamina.starting + (this.level - 1) * this.stamina.level;
     }
   }
 
