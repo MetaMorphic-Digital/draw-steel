@@ -216,6 +216,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       }
       const advancementContext = {
         name: model.name,
+        img: model.img,
         id: model.id,
       };
       if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });

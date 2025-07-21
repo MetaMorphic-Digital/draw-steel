@@ -1269,8 +1269,9 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 
 /**
  * @typedef PowerRollEffectType
- * @property {string} label
- * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass
+ * @property {string} label                                                         Human-readable label.
+ * @property {string} defaultImage                                                  The default image for PowerRollEffects of this type.
+ * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass   The pseudo-document class.
  * @property {Record<string, PowerRollEffectProperty>} [properties]
  */
 
@@ -1281,6 +1282,7 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 DRAW_STEEL.PowerRollEffect = {
   damage: {
     label: "TYPES.PowerRollEffect.damage",
+    defaultImage: "icons/svg/fire.svg",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1290,6 +1292,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   applied: {
     label: "TYPES.PowerRollEffect.applied",
+    defaultImage: "icons/svg/paralysis.svg",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
     properties: {
       stacking: {
@@ -1299,6 +1302,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   forced: {
     label: "TYPES.PowerRollEffect.forced",
+    defaultImage: "icons/svg/portal.svg",
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1311,6 +1315,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   other: {
     label: "TYPES.PowerRollEffect.other",
+    defaultImage: "icons/svg/sun.svg",
     documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
   },
 };
@@ -1320,7 +1325,8 @@ preLocalize("PowerRollEffect", { key: "label" });
 
 /**
  * @typedef AdvancementType
- * @property {string} label   Human-readable label.
+ * @property {string} label                                                 Human-readable label.
+ * @property {string} defaultImage                                          Default image used by documents of this type.
  * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
  */
 
@@ -1328,14 +1334,17 @@ preLocalize("PowerRollEffect", { key: "label" });
 DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
+    defaultImage: "icons/svg/item-bag.svg",
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {
     label: "TYPES.Advancement.skill",
+    defaultImage: "icons/svg/hanging-sign.svg",
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
+    defaultImage: "icons/svg/village.svg",
     documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
