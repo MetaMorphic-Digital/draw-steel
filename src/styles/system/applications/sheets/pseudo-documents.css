@@ -5,7 +5,7 @@
 }
 
 .draw-steel.configure-advancement {
-  multi-checkbox {
+  multi-checkbox:has(fieldset) {
     display: flex;
     flex-wrap: wrap;
     justify-content: stretch;
