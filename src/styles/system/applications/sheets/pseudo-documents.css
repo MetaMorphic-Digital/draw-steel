@@ -3,3 +3,18 @@
     margin: 0;
   }
 }
+
+.draw-steel.configure-advancement {
+  multi-checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 0.75rem;
+    fieldset {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+  }
+}
