@@ -16,7 +16,7 @@ declare global {
   const fromUuid = foundry.utils.fromUuid;
   const fromUuidSync = foundry.utils.fromUuidSync;
   /**
-   * The singleton game canvas
+   * The singleton game canvas.
    */
   const canvas: Canvas;
 }

@@ -102,8 +102,11 @@
     }
   }
 
-  section[data-tab="advancements"] {
-    gap: 0.5rem;
+  section[data-tab="advancement"] {
+    .advancement-img {
+      flex: 0 0 var(--input-height);
+      max-height: var(--input-height);
+    }
   }
 
   section[data-tab="impact"] {
@@ -111,10 +114,9 @@
       display: flex;
       flex-direction: column;
     }
-    .power-roll-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.5rem;
+    .pre-img {
+      flex: 0 0 var(--input-height);
+      max-height: var(--input-height);
     }
   }
 }

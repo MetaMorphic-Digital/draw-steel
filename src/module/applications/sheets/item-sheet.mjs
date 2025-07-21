@@ -156,6 +156,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         context.advancementIcon = BaseAdvancement.metadata.icon;
         break;
       case "impact":
+        context.powerRollEffectIcon = ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.metadata.icon;
         context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
@@ -216,6 +217,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       }
       const advancementContext = {
         name: model.name,
+        img: model.img,
         id: model.id,
       };
       if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
@@ -292,46 +294,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       c.effects.sort((a, b) => (a.sort || 0) - (b.sort || 0));
     }
     return categories;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  async _onFirstRender(context, options) {
-    await super._onFirstRender(context, options);
-
-    this._createContextMenu(this._powerRollContextOptions, ".power-roll-list .power-roll", {
-      hookName: "getPowerRollEffectContextOptions",
-      fixed: true,
-      parentClassHooks: false,
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Context menu entries for power rolls.
-   * @returns {ContextMenuEntry}
-   * @protected
-   */
-  _powerRollContextOptions() {
-    return [
-      {
-        name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.PowerRollEffect") }),
-        icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
-        condition: () => this.isEditable,
-        callback: (target) => {
-          const powerRollEffect = this._getPseudoDocument(target);
-          ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
-            pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
-            id: powerRollEffect.id,
-            type: powerRollEffect.type,
-            name: this.item.name,
-          } });
-          powerRollEffect.delete();
-        },
-      },
-    ];
   }
 
   /* -------------------------------------------------- */

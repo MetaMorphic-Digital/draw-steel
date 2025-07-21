@@ -21,20 +21,25 @@
 
   <fieldset data-pseudo-document-name="PowerRollEffect">
     <legend>{{systemFields.power.fields.effects.label}}</legend>
-    {{#unless isPlay}}
-    <button type="button" data-action="createPseudoDocument">
-      <i class="fa-solid fa-plus"></i>
-      {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
-    </button>
-    {{/unless}}
-    {{!-- Using document.system to ensure initialized values in edit mode --}}
-    <div class="power-roll-list">
-      {{#each document.system.power.effects as |effect|}}
-      <button type="button" class="power-roll" data-action="renderPseudoDocumentSheet" data-pseudo-id="{{effect.id}}">
-        {{localize effect.name}}
+      {{#unless isPlay}}
+    <div class="section-header">
+      <button type="button" data-action="createPseudoDocument">
+        <i class="{{powerRollEffectIcon}}"></i>
+        {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.PowerRollEffect")}}
       </button>
-      {{/each}}
     </div>
+      {{/unless}}
+    {{!-- Using document.system to ensure initialized values in edit mode --}}
+    {{#each document.system.power.effects}}
+    <div class="form-group" data-pseudo-id="{{id}}">
+      <img class="pre-img" src="{{img}}" alt="{{name}}">
+      <label> {{name}} </label>
+      <div class="form-fields">
+        <button type="button" data-action="renderPseudoDocumentSheet" class="icon fa-fw fa-solid fa-cog" {{disabled (not @root.editable)}}></button>
+        <button type="button" data-action="deletePseudoDocument" class="icon fa-solid fa-fw fa-trash" {{disabled @root.isPlay)}}></button>
+      </div>
+    </div>
+    {{/each}}
   </fieldset>
 
   <fieldset>

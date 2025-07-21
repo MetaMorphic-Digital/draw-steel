@@ -18,7 +18,6 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   static get metadata() {
     return {
       documentName: null,
-      defaultImage: null,
       icon: "",
       embedded: {},
       sheetClass: null,
@@ -32,7 +31,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     return {
       _id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
       name: new StringField({ required: true }),
-      img: new FilePathField({ categories: ["IMAGE"], initial: () => this.metadata.defaultImage, nullable: true }),
+      img: new FilePathField({ categories: ["IMAGE"] }),
     };
   }
 
