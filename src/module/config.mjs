@@ -685,18 +685,6 @@ preLocalize("languages", { key: "label" });
 
 /* -------------------------------------------------- */
 
-/** @import { AdvancementTypeConfiguration } from "./_types" */
-
-/**
- * Advancement types that can be added to items.
- * @enum {AdvancementTypeConfiguration}
- */
-DRAW_STEEL.advancementTypes = {
-
-};
-
-/* -------------------------------------------------- */
-
 /**
  * Configuration information for negotiations.
  */
