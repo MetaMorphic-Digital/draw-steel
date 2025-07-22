@@ -983,6 +983,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       }),
     );
     this.actor.createEmbeddedDocuments("Item", droppedItemData, { keepId: true });
+    return folder;
   }
 
   /* -------------------------------------------------- */
