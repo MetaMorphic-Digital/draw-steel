@@ -35,8 +35,8 @@ for (const pack of packs) {
   );
 }
 /**
- * Prefaces the document with its type
- * @param {object} doc - The document data
+ * Prefaces the document with its type.
+ * @param {object} doc - The document data.
  */
 function transformName(doc, context) {
   const safeFileName = doc.name.replace(/[^a-zA-Z0-9А-я]/g, "_");
@@ -63,8 +63,8 @@ function transformName(doc, context) {
 }
 
 /**
- * Remove text content from wiki journal
- * @param {object} entry The entry data
+ * Remove text content from wiki journal.
+ * @param {object} entry The entry data.
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {

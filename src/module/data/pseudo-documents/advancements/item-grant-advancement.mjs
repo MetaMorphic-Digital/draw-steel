@@ -72,7 +72,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         ? foundry.utils.getProperty(item, path) ?? []
         : [];
 
-    const content = [];
+    const content = document.createElement("div");
     for (const item of items) {
       const fgroup = `
       <div class="form-group">
@@ -81,7 +81,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
           <input type="checkbox" value="${item.uuid}" name="choices" ${chosen.includes(item.uuid) ? "checked" : ""}>
         </div>
       </div>`;
-      content.push(foundry.utils.parseHTML(fgroup));
+      content.insertAdjacentElement("beforeend", foundry.utils.parseHTML(fgroup));
     }
 
     /**
@@ -102,15 +102,14 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       checkboxes[0].dispatchEvent(new Event("change"));
     }
 
-    const _content = document.createElement("DIV");
-    for (const fg of content) _content.insertAdjacentElement("beforeend", fg);
     const selection = await DSDialog.input({
+      content,
+      render,
+      classes: ["configure-advancement"],
       window: {
         title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
         icon: "fa-solid fa-edit",
       },
-      render,
-      content: _content,
     });
 
     if (!selection) return null;

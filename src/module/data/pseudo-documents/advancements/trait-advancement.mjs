@@ -122,12 +122,13 @@ export default class TraitAdvancement extends BaseAdvancement {
     }
 
     const selection = await ds.applications.api.DSDialog.input({
+      content,
+      render,
+      classes: ["configure-advancement"],
       window: {
         title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
         icon: "fa-solid fa-edit",
       },
-      render,
-      content: content,
     });
 
     if (!selection) return null;

@@ -47,6 +47,7 @@
   - This enforces good practices for data creation.
   - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
 - Items with advancements can no longer be mass-created as part of dropping a folder onto an actor sheet. (#736)
+- Adjusted the display of Power Roll Effects, including adding an image property.
 
 ### Fixed
 
