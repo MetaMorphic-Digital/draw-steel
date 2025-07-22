@@ -262,9 +262,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
     // If there's demand or need we can make the template & context more dynamic
-    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, {
-      fields: this.schema.fields,
-    });
+    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, this._prepareCreateDialogContext(parent));
 
     const result = await ds.applications.api.DSDialog.input({
       content,
@@ -272,10 +270,33 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
         title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
         icon: this.metadata.icon,
       },
+      render: (event, dialog) => this._createDialogRenderCallback(event, dialog),
     });
     if (!result) return null;
     return this.create({ ...data, ...result }, { parent, ...operation });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepares context for use with {@link CREATE_TEMPLATE}.
+   * @param {foundry.abstract.DataModel} parent
+   * @returns {object}
+   */
+  static _prepareCreateDialogContext(parent) {
+    return {
+      fields: this.schema.fields,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Render callback for dynamic handling on the .
+   * @param {Event} event
+   * @param {ds.applications.api.DSDialog} dialog
+   */
+  static _createDialogRenderCallback(event, dialog) {}
 
   /* -------------------------------------------------- */
 

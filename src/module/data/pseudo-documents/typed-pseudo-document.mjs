@@ -77,33 +77,23 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static async createDialog(data = {}, { parent, ...operation } = {}) {
-    /** @type {FormSelectOption[]} */
-    const typeOptions = Object.keys(this.TYPES).map(type => ({
-      value: type,
-      label: game.i18n.localize(`TYPES.${this.metadata.documentName}.${type}`),
-    }));
+  static _prepareCreateDialogContext(parent) {
 
-    // If there's demand or need we can make the template & context more dynamic
-    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, {
+    const typeOptions = Object.entries(ds.CONFIG[this.metadata.documentName]).map(([value, { label }]) => ({ value, label }));
+
+    return {
       typeOptions,
       fields: this.schema.fields,
-    });
+    };
+  }
 
-    const result = await ds.applications.api.DSDialog.input({
-      content,
-      window: {
-        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
-        icon: this.metadata.icon,
-      },
-      render: (event, dialog) => {
-        const typeInput = dialog.element.querySelector("[name=\"type\"]");
-        const nameInput = dialog.element.querySelector("[name=\"name\"]");
-        nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label;
-        typeInput.addEventListener("change", () => nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label);
-      },
-    });
-    if (!result) return null;
-    return this.create({ ...data, ...result }, { parent, ...operation });
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _createDialogRenderCallback(event, dialog) {
+    const typeInput = dialog.element.querySelector("[name=\"type\"]");
+    const nameInput = dialog.element.querySelector("[name=\"name\"]");
+    nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label;
+    typeInput.addEventListener("change", () => nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label);
   }
 }
