@@ -426,4 +426,33 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const result = await Item.implementation.create(itemData, { parent: this.actor, keepId });
     return result ?? null;
   }
+
+  /** @inheritdoc */
+  async _onDropFolder(event, data) {
+    if (!this.actor.isOwner) return null;
+    const folder = await Folder.implementation.fromDropData(data);
+    if (folder.type !== "Item") return null;
+    const projectDropTarget = event.target.closest("[data-application-part='projects'");
+    const droppedItemData = await Promise.all(
+      folder.contents.map(async (/** @type {DrawSteelItem} */ item) => {
+        if (!(document instanceof Item)) item = await fromUuid(item.uuid);
+
+        // If it's an equipment dropped on the project tab, create the item as a project
+        if (projectDropTarget && (item.type === "equipment")) {
+          const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
+          return { name, type: "project", "system.yield.item": item.uuid };
+        }
+        else if (item.supportsAdvancements && (item.getEmbeddedPseudoDocumentCollection("Advancement").size > 0)) {
+          ui.notifications.error("DRAW_STEEL.SHEET.NoCreateAdvancement", { format: { name: item.name } });
+          return null;
+        }
+
+        const keepId = !this.actor.items.has(item.id);
+
+        return game.items.fromCompendium(item, { keepId, clearFolder: true });
+      }),
+    );
+    await this.actor.createEmbeddedDocuments("Item", droppedItemData.filter(_ => _), { keepId: true });
+    return folder;
+  }
 }
