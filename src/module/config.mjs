@@ -1336,7 +1336,7 @@ DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
-    itemTypes: new Set(["career", "class", "complication", "feature", "kit", "subclass"]),
+    itemTypes: new Set(["ancestry", "career", "class", "complication", "feature", "kit", "subclass"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {

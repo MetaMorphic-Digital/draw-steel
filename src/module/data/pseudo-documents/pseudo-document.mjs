@@ -282,6 +282,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Prepares context for use with {@link CREATE_TEMPLATE}.
    * @param {foundry.abstract.DataModel} parent
    * @returns {object}
+   * @protected
    */
   static _prepareCreateDialogContext(parent) {
     return {
@@ -295,6 +296,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Render callback for dynamic handling on the .
    * @param {Event} event
    * @param {ds.applications.api.DSDialog} dialog
+   * @protected
    */
   static _createDialogRenderCallback(event, dialog) {}
 

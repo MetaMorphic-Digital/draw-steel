@@ -79,6 +79,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /** @inheritdoc */
   static _prepareCreateDialogContext(parent) {
 
+    /** @type {FormSelectOption[]} */
     const typeOptions = Object.entries(ds.CONFIG[this.metadata.documentName]).map(([value, { label }]) => ({ value, label }));
 
     return {
