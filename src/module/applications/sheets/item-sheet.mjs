@@ -5,7 +5,6 @@ import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
@@ -552,26 +551,19 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @private
    */
   static async #createCultureAdvancement(event, target) {
-    /** @type {FormSelectOption[]} */
-    const typeOptions = Object.keys(BaseAdvancement.TYPES).map(type => ({
-      value: type,
-      label: game.i18n.localize(`TYPES.Advancement.${type}`),
-    }));
+    const context = BaseAdvancement._prepareCreateDialogContext(this.document);
 
     const aspectPrefix = "cultureAspect";
 
     for (const [key, config] of Object.entries(ds.CONFIG.culture.aspects)) {
-      typeOptions.push({
+      context.typeOptions.push({
         label: config.label,
         group: ds.CONFIG.culture.group[config.group]?.label,
         value: `${aspectPrefix}.${key}`,
       });
     }
 
-    const content = await foundry.applications.handlebars.renderTemplate(systemPath("templates/sheets/pseudo-documents/advancement/create-dialog.hbs"), {
-      typeOptions,
-      fields: BaseAdvancement.schema.fields,
-    });
+    const content = await foundry.applications.handlebars.renderTemplate(BaseAdvancement.CREATE_TEMPLATE, context);
 
     const result = await ds.applications.api.DSDialog.input({
       window: {
@@ -582,8 +574,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       render: (event, dialog) => {
         const typeInput = dialog.element.querySelector("[name=\"type\"]");
         const nameInput = dialog.element.querySelector("[name=\"name\"]");
-        nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label;
-        typeInput.addEventListener("change", () => nameInput.placeholder = typeOptions.find(o => o.value === typeInput.value).label);
+        nameInput.placeholder = context.typeOptions.find(o => o.value === typeInput.value).label;
+        typeInput.addEventListener("change", () => nameInput.placeholder = context.typeOptions.find(o => o.value === typeInput.value).label);
       },
     });
     if (!result) return;

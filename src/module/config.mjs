@@ -1327,6 +1327,7 @@ preLocalize("PowerRollEffect", { key: "label" });
  * @typedef AdvancementType
  * @property {string} label                                                 Human-readable label.
  * @property {string} defaultImage                                          Default image used by documents of this type.
+ * @property {Set<string>} itemTypes                                        Item types that can hold this advancement type.
  * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
  */
 
@@ -1335,19 +1336,23 @@ DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
+    itemTypes: new Set(["ancestry", "career", "class", "complication", "feature", "kit", "subclass"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
     defaultImage: "icons/svg/village.svg",
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
     documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
+preLocalize("Advancement", { key: "label" });
 
 /* -------------------------------------------------- */
 

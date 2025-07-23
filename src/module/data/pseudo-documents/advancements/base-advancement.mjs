@@ -4,6 +4,7 @@ import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs"
+ * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
  */
 
 const { HTMLField, NumberField, SchemaField } = foundry.data.fields;
@@ -54,6 +55,23 @@ export default class BaseAdvancement extends TypedPseudoDocument {
 
   /** @inheritdoc */
   static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/advancement/create-dialog.hbs");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _prepareCreateDialogContext(parent) {
+
+    /** @type {FormSelectOption[]} */
+    const typeOptions = Object.entries(ds.CONFIG.Advancement).reduce((arr, [value, config]) => {
+      if (config.itemTypes.has(parent.type)) arr.push({ value, label: config.label });
+      return arr;
+    }, []);
+
+    return {
+      typeOptions,
+      fields: this.schema.fields,
+    };
+  }
 
   /* -------------------------------------------------- */
 

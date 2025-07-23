@@ -32,6 +32,14 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Item types that can be added to an Item Grant.
+   * @type {Set<string>}
+   */
+  static ALLOWED_TYPES = new Set(["ability", "equipment", "feature", "kit", "project"]);
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get levels() {
     return [this.requirements.level];
