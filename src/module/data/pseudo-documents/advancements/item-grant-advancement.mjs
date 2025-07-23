@@ -32,10 +32,10 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Item types that cannot be added to an Item Grant.
+   * Item types that can be added to an Item Grant.
    * @type {Set<string>}
    */
-  static RESTRICTED_TYPES = new Set(["ancestry", "career", "class", "complication", "culture", "subclass"]);
+  static ALLOWED_TYPES = new Set(["ability", "equipment", "feature", "kit", "project"]);
 
   /* -------------------------------------------------- */
 
