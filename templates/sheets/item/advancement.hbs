@@ -6,14 +6,12 @@
     </button>
   </div>
   {{#each advancements}}
-  <fieldset>
+  <fieldset class="advancement">
     <legend>{{section}}</legend>
     {{#each documents}}
     <div class="form-group" data-pseudo-id="{{id}}">
       <img class="advancement-img" src="{{img}}" alt="{{name}}">
-      <label data-tooltip-html="{{enrichedDescription}}">
-        {{name}}
-      </label>
+      <label>{{name}}</label>
       <div class="form-fields">
         {{#if @root.document.parent}}
         <button
@@ -44,6 +42,11 @@
           >
         </button>
       </div>
+      {{#if enrichedDescription}}
+      <div class="hint">
+        {{{enrichedDescription}}}
+      </div>
+      {{/if}}
     </div>
     {{/each}}
   </fieldset>
