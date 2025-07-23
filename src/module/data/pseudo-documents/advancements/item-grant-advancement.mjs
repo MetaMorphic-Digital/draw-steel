@@ -1,5 +1,6 @@
 import BaseAdvancement from "./base-advancement.mjs";
 import DSDialog from "../../../applications/api/dialog.mjs";
+import { systemID } from "../../../constants.mjs";
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
 
@@ -44,8 +45,13 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
    * @returns {Set<foundry.documents.Item[]>|null}
    */
   grantedItemsChain() {
-    // TODO
-    return new Set();
+    if (!this.document.parent) return null;
+    const items = new Set();
+    for (const item of this.document.collection) {
+      const advancementFlags = item.getFlag(systemID, "advancement");
+      if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) items.add(item);
+    }
+    return items;
   }
 
   /* -------------------------------------------------- */

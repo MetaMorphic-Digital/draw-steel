@@ -72,7 +72,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   get hasGrantedItems() {
     if (!this.supportsAdvancements) return false;
     for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      if (advancement.grantedItemsChain().size) return true;
+      if (advancement.grantedItemsChain()?.size) return true;
     }
     return false;
   }
@@ -93,12 +93,26 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       throw new Error(`The [${this.type}] item type does not support advancements.`);
     }
 
+    const content = document.createElement("div");
+
+    content.insertAdjacentHTML("afterbegin", `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.DeleteDialog.Content")}</p>`);
+    content.append(this.toAnchor());
+
     const itemIds = new Set([this.id]);
     for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      for (const item of advancement.grantedItemsChain()) itemIds.add(item.id);
+      for (const item of advancement.grantedItemsChain()) {
+        content.append(item.toAnchor());
+        itemIds.add(item.id);
+      }
     }
 
-    const confirm = await ds.applications.api.DSDialog.confirm();
+    const confirm = await ds.applications.api.DSDialog.confirm({
+      content,
+      window: {
+        icon: "fa-solid fa-trash",
+        title: `${game.i18n.format("DOCUMENT.Delete", { type: this.name })}`,
+      },
+    });
     if (!confirm) return;
     return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
   }
