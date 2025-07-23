@@ -5,7 +5,6 @@ import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
  */
@@ -35,6 +34,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       toggleEffect: this.#toggleEffect,
       toggleEffectDescription: this.#toggleEffectDescription,
       createCultureAdvancement: this.#createCultureAdvancement,
+      reconfigureAdvancement: this.#reconfigureAdvancement,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -597,6 +597,20 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       };
     } else createData = { type };
     ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.document });
+  }
+
+  /**
+   * Reconfigure an existing advancement on an actor.
+   *
+   * @this DrawSteelItemSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #reconfigureAdvancement(event, target) {
+    if (!this.document.parent) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
+    const advancement = this._getPseudoDocument(target);
+    await advancement.reconfigure();
   }
 
   /* -------------------------------------------------- */

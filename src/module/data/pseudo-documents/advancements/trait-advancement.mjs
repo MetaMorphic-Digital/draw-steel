@@ -141,4 +141,12 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     return { [path]: traitChoices.filter(_ => _) };
   }
+
+  /** @inheritdoc */
+  async reconfigure() {
+    await super.reconfigure();
+
+    const configuration = await this.configureAdvancement();
+    await this.document.update(configuration);
+  }
 }
