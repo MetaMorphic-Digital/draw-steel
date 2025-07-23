@@ -523,10 +523,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
           await item.update({ "system.damageDisplay": "melee" });
           await this.render();
         },
@@ -540,10 +536,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
           await item.update({ "system.damageDisplay": "ranged" });
           await this.render();
         },
@@ -555,10 +547,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
           await this.actor.update({ "system.hero.preferredKit": item.id });
           await this.render();
         },
@@ -578,10 +566,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
           await item.system.spendCareerPoints();
           await this.render();
         },
@@ -593,10 +577,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         condition: (target) => this._getEmbeddedDocument(target)?.type === "equipment",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
-          if (!item) {
-            console.error("Could not find item");
-            return;
-          }
           const project = await item.system.createProject(this.actor);
           if (project) ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromEquipment.Notification", { format: { item: item.name } });
         },
@@ -709,7 +689,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    */
   static async #deleteDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    await doc.deleteDialog();
+    if (doc.hasGrantedItems) await doc.advancementDeletionPrompt();
+    else await doc.deleteDialog();
   }
 
   /* -------------------------------------------------- */

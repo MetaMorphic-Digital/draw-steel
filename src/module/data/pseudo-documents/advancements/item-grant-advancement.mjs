@@ -42,15 +42,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /**
    * Recursive method to find all items that were added to an actor by this advancement.
    * If the item is unowned, this returns `null`.
-   * @returns {Set<foundry.documents.Item[]>|null}
+   * @returns {Set<foundry.documents.Item[]> | null}
    */
   grantedItemsChain() {
     if (!this.document.parent) return null;
     const items = new Set();
     for (const item of this.document.collection) {
       const advancementFlags = item.getFlag(systemID, "advancement");
-      if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) items.add(item);
-      if (item.hasGrantedItems) for (const i of item.grantedItemsChain()) items.add(i);
+      if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
+        items.add(item);
+        if (item.hasGrantedItems) for (const i of item.grantedItemsChain()) items.add(i);
+      }
+
     }
     return items;
   }
