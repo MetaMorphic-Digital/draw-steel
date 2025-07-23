@@ -1,4 +1,4 @@
-import { systemPath } from "../constants.mjs";
+import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
@@ -70,11 +70,11 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
    * @type {boolean}
    */
   get hasGrantedItems() {
-    if (!this.supportsAdvancements) return false;
-    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      if (advancement.grantedItemsChain().size) return true;
-    }
-    return false;
+    if (!this.supportsAdvancements || !this.parent) return false;
+    return this.collection.some(item => {
+      if (item.getFlag(systemID, "advancement.parentId") === this.id) return !!this.getEmbeddedPseudoDocumentCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
+      return false;
+    });
   }
 
   /* -------------------------------------------------- */
@@ -93,12 +93,26 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       throw new Error(`The [${this.type}] item type does not support advancements.`);
     }
 
+    const content = document.createElement("div");
+
+    content.insertAdjacentHTML("afterbegin", `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.DeleteDialog.Content")}</p>`);
+    content.append(this.toAnchor());
+
     const itemIds = new Set([this.id]);
     for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      for (const item of advancement.grantedItemsChain()) itemIds.add(item.id);
+      for (const item of advancement.grantedItemsChain()) {
+        content.append(item.toAnchor());
+        itemIds.add(item.id);
+      }
     }
 
-    const confirm = await ds.applications.api.DSDialog.confirm();
+    const confirm = await ds.applications.api.DSDialog.confirm({
+      content,
+      window: {
+        icon: "fa-solid fa-trash",
+        title: `${game.i18n.format("DOCUMENT.Delete", { type: this.name })}`,
+      },
+    });
     if (!confirm) return;
     return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
   }

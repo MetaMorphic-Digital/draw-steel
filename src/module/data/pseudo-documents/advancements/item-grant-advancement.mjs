@@ -1,5 +1,6 @@
 import BaseAdvancement from "./base-advancement.mjs";
 import DSDialog from "../../../applications/api/dialog.mjs";
+import { systemID } from "../../../constants.mjs";
 
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
 
@@ -41,11 +42,22 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /**
    * Recursive method to find all items that were added to an actor by this advancement.
    * If the item is unowned, this returns `null`.
-   * @returns {Set<foundry.documents.Item[]>|null}
+   * @returns {Set<foundry.documents.Item[]> | null}
    */
   grantedItemsChain() {
-    // TODO
-    return new Set();
+    if (!this.document.parent) return null;
+    const items = new Set();
+    // There is probably a more efficient function that uses less recursion
+    // but it is unlikely that even deleting a level 10 class will have a noticeable performance cost.
+    for (const item of this.document.collection) {
+      const advancementFlags = item.getFlag(systemID, "advancement");
+      if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
+        items.add(item);
+        if (item.hasGrantedItems) for (const i of item.grantedItemsChain()) items.add(i);
+      }
+
+    }
+    return items;
   }
 
   /* -------------------------------------------------- */

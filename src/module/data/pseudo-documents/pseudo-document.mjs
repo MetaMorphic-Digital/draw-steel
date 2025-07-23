@@ -1,6 +1,7 @@
 import { systemPath } from "../../constants.mjs";
 
 /**
+ * @import Document from "@common/abstract/document.mjs";
  * @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs";
  * @import { PseudoDocumentMetadata } from "../_types";
  */
