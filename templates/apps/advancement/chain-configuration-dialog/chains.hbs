@@ -1,41 +1,45 @@
 <section class="standard-form">
-  {{#each ctx.chains}}
+  <ul class="advancement-list">
+    {{#each ctx.chains}}
 
-  {{#each this}}
-  <div data-advancement-uuid="{{advancement.uuid}}">
-
-    <h3 class="section-header">
-      <span>{{advancement.name}}</span>
-      {{#if isChoice}}
-      <button type="button" class="icon fa-solid fa-fw {{ifThen isConfigured 'fa-check' 'fa-cog'}}" data-action="configureAdvancement"></button>
+    {{#each this}}
+    <li class="advancement" data-advancement-uuid="{{advancement.uuid}}">
+      <div class="advancement-row">
+        <img class="advancement-img" src="{{advancement.img}}" alt="{{advancement.name}}">
+        <div class="advancement-name">{{advancement.name}}</div>
+        <div class="advancement-controls">
+          {{#if isChoice}}
+          <button type="button" class="icon fa-solid fa-fw {{ifThen isConfigured 'fa-check' 'fa-cog'}}" data-action="configureAdvancement"></button>
+          {{/if}}
+        </div>
+      </div>
+      {{#if enrichedDescription}}
+      <div class="enriched-description">{{{enrichedDescription}}}</div>
       {{/if}}
-    </h3>
+      <ul class="advancement-choices">
+        {{#each choices}}
 
-    {{#each choices}}
+        {{#if isChosen}}
 
-    {{#if isChosen}}
+        {{!-- ITEM GRANT SELECTED CHOICES --}}
+        {{#if (eq node.advancement.type "itemGrant")}}
+        <li class="advancement-choice" data-item-uuid="{{item.uuid}}">{{{itemLink.outerHTML}}}</li>
+        {{/if}}
+        {{!-- TRAIT SELECTED CHOICES --}}
+        {{#if node.advancement.isTrait}}
+        <li class="advancement-choice">{{choice}}</li>
+        {{/if}}
 
-    {{!-- ITEM GRANT SELECTED CHOICES --}}
-    {{#if (eq node.advancement.type "itemGrant")}}
-    <div class="form-group" data-item-uuid="{{item.uuid}}">
-      <label>{{{itemLink.outerHTML}}}</label>
-    </div>
-    {{/if}}
-    {{!-- TRAIT SELECTED CHOICES --}}
-    {{#if node.advancement.isTrait}}
-    <div class="form-group">
-      <label>{{choice}}</label>
-    </div>
-    {{/if}}
-
-    {{/if}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </li>
     {{/each}}
-  </div>
-  {{/each}}
 
-  {{#unless @last}}
-  <hr>
-  {{/unless}}
+    {{#unless @last}}
+    <hr>
+    {{/unless}}
 
-  {{/each}}
+    {{/each}}
+  </ul>
 </section>
