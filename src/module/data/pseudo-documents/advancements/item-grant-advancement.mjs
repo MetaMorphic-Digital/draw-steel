@@ -50,6 +50,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     for (const item of this.document.collection) {
       const advancementFlags = item.getFlag(systemID, "advancement");
       if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) items.add(item);
+      if (item.hasGrantedItems) for (const i of item.grantedItemsChain()) items.add(i);
     }
     return items;
   }

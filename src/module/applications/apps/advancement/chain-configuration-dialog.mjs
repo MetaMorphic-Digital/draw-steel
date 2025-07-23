@@ -124,7 +124,6 @@ export default class ChainConfigurationDialog extends DSApplication {
     const advancementUuid = target.closest("[data-advancement-uuid]").dataset.advancementUuid;
     const node = this.getByAdvancement(advancementUuid);
     const configured = await node.advancement.configureAdvancement(node);
-    console.log(configured);
     if (!configured) return;
     this.render();
   }
