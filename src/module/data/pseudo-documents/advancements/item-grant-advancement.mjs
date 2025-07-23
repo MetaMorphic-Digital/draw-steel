@@ -50,7 +50,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /**
    * Recursive method to find all items that were added to an actor by this advancement.
    * If the item is unowned, this returns `null`.
-   * @returns {Set<foundry.documents.Item[]> | null}
+   * @returns {Set<foundry.documents.Item> | null}
    */
   grantedItemsChain() {
     if (!this.document.parent) return null;
@@ -141,5 +141,26 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     }
 
     return { [path]: uuids.filter(_ => _) };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async reconfigure() {
+    await super.reconfigure();
+    const allowed = await ds.applications.api.DSDialog.confirm({
+      window: {
+        icon: "fa-solid fa-arrow-rotate-right",
+        title: "DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Title",
+      },
+      content: `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
+    });
+    if (!allowed) return;
+    const configuration = await this.configureAdvancement();
+    if (!configuration) return;
+    const toDelete = this.grantedItemsChain().map(i => i.id);
+    if (toDelete.length) await this.document.parent.deleteEmbeddedDocuments("Item", toDelete);
+
+    // TODO: Creation logic
   }
 }
