@@ -1,4 +1,4 @@
-import { systemPath } from "../constants.mjs";
+import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
@@ -70,11 +70,11 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
    * @type {boolean}
    */
   get hasGrantedItems() {
-    if (!this.supportsAdvancements) return false;
-    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      if (advancement.grantedItemsChain()?.size) return true;
-    }
-    return false;
+    if (!this.supportsAdvancements || !this.parent) return false;
+    return this.collection.some(item => {
+      if (item.getFlag(systemID, "advancement.parentId") === this.id) return !!this.getEmbeddedPseudoDocumentCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
+      return false;
+    });
   }
 
   /* -------------------------------------------------- */

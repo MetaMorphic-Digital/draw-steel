@@ -47,6 +47,8 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   grantedItemsChain() {
     if (!this.document.parent) return null;
     const items = new Set();
+    // There is probably a more efficient function that uses less recursion
+    // but it is unlikely that even deleting a level 10 class will have a noticeable performance cost.
     for (const item of this.document.collection) {
       const advancementFlags = item.getFlag(systemID, "advancement");
       if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
