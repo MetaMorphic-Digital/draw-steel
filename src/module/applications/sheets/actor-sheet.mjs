@@ -496,8 +496,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    this._createContextMenu(this._getItemButtonContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
-      hookName: "getItemButtonContextOptions",
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
+      hookName: "getDocumentListContextOptions",
       parentClassHooks: false,
       fixed: true,
     });
@@ -506,11 +506,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /* -------------------------------------------------- */
 
   /**
-   * Get context menu entries for item buttons.
+   * Get context menu entries for embedded document lists.
    * @returns {ContextMenuEntry[]}
    * @protected
    */
-  _getItemButtonContextOptions() {
+  _getDocumentListContextOptions() {
     // name is auto-localized
     return [
       //Ability specific options
@@ -587,8 +587,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
         condition: () => this.isPlayMode,
         callback: async (target) => {
-          const item = this._getEmbeddedDocument(target);
-          await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
+          const document = this._getEmbeddedDocument(target);
+          await document.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
         },
       },
       {
@@ -596,18 +596,22 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
         condition: () => this.isEditMode,
         callback: async (target) => {
-          const item = this._getEmbeddedDocument(target);
-          await item.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
+          const document = this._getEmbeddedDocument(target);
+          await document.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
         },
       },
       {
         name: "DRAW_STEEL.SHEET.Share",
         icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
         callback: async (target) => {
-          const item = this._getEmbeddedDocument(target);
+          const document = this._getEmbeddedDocument(target);
           await DrawSteelChatMessage.create({
-            content: `@Embed[${item.uuid} caption=false]`,
+            content: `@Embed[${document.uuid} caption=false]`,
             speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
+            title: document.name,
+            flags: {
+              core: { canPopout: true },
+            },
           });
         },
       },
@@ -616,9 +620,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
         condition: () => this.actor.isOwner,
         callback: async (target) => {
-          const item = this._getEmbeddedDocument(target);
-          if (item.hasGrantedItems) await item.advancementDeletionPrompt();
-          else await item.deleteDialog();
+          const document = this._getEmbeddedDocument(target);
+          if (document.hasGrantedItems) await document.advancementDeletionPrompt();
+          else await document.deleteDialog();
         },
       },
     ];
