@@ -104,6 +104,15 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  _getDurationLabel(rounds, turns) {
+    if ((rounds + turns) !== 0) return super._getDurationLabel(rounds, turns);
+    // Lines up with our effect suppression
+    return game.i18n.localize("DRAW_STEEL.ActiveEffect.Expired");
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Check if the effect's subtype has special handling, otherwise fallback to normal `duration` and `statuses` check.
    * @inheritdoc
