@@ -1,18 +1,15 @@
 # Frequently Asked Questions
 
-### I can't find [game feature] anywhere. Is it implemented yet, are there plans for it?
+## How can I play Draw Steel in non-English languages
 
-Have a look in the System Wiki if you can find what you are looking for there. Some things are not obvious at first glance, but should be explained in the Wiki
+The system fully implements Foundry's i18n framework, so non-English languages can be provided as modules. The [Babele](https://foundryvtt.com/packages/babele) module is a popular option for translating compendium content.
 
-But chances are, the feature you are looking for has not been implemented yet. Feel free to ask about it on the [Foundry discord server](https://discord.com/channels/170995199584108546/1390065189453435041) or the [MDCDM discord server](https://discord.com/channels/332362513368875008/1342298358664138805).
+## Modules
 
-The [issues list](https://github.com/MetaMorphic-Digital/draw-steel/issues) contains all current feature requests, please check there first to see if a request has already been made; feel free to add a comment to existing tickets, as these can help decide prioritization. If you cannot find an existing ticket, please open a [feature request ticket](https://github.com/MetaMorphic-Digital/draw-steel/issues/new/choose) so it can be considered.
+### Are there any recommended modules?
 
-### If I would want to get a certain module compatibility working with the Draw Steel system, what do I need to do about that?
+There are no "recommended" modules for use with Draw Steel. The system is designed to be fully supported and playable by itself.
 
-- We're happy to provide guidance to users integrating modules for personal configuration, submitting pull requests to modules, or creating compatibility modules
-- We're willing to take pull requests for module compatibility on a limited basis; the system already provides integration for **Dice so Nice** natively
+### How can I integrate a module with Draw Steel?
 
-###  My enrichers are not working! What am I doing wrong?
-
-Check the wiki page on enrichers to make sure you are using the right format.
+Reach out via Discord — We're happy to provide guidance to users and developers on integrating modules for personal configuration, adding compatibility directly to modules, or creating compatibility modules. Pull requests to Draw Steel directly will only be accepted on an limited basis; the system currently only provides native integration for **Dice so Nice**.
