@@ -54,6 +54,7 @@
 - Fixed display of popped out ability messages
 - Fixed display of multi-result abilities
 - Fixed unrequited prompting for end of turn events (#673)
+- Fixed project and save rolls not respecting roll mode settings. (#734)
 
 ## 0.7.3
 
