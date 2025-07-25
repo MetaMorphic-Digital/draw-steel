@@ -32,3 +32,10 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 10 type=temporary]]: Like damage you can specify the healing type. You must be precise and use "value" or "temporary" here.
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
 - [&ZeroWidthSpace;[/heal @recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
+
+## HTML-mode to clean up text
+If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
+1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
+2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
+
+![HTML clean-up mode explainer](draw-steel/assets/docs/HTML-mode-explainer.png?raw=true "HTML Mode explainer")
