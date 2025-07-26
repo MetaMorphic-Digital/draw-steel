@@ -203,8 +203,7 @@ export default class ProjectModel extends BaseItemModel {
       flags: { core: { canPopout: true } },
     };
 
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-    return await projectRoll.toMessage(messageData);
+    return await projectRoll.toMessage(messageData, { rollMode });
   }
 
   /* -------------------------------------------------- */

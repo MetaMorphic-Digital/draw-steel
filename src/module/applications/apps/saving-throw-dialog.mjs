@@ -40,4 +40,16 @@ export default class SavingThrowDialog extends RollDialog {
 
     this.render();
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _processFormData(event, form, formData) {
+    formData = super._processFormData(event, form, formData);
+
+    return {
+      rollConfig: formData,
+      rollMode: this.options.context.rollMode,
+    };
+  }
 }
