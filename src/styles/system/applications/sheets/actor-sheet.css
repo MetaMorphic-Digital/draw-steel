@@ -1,7 +1,8 @@
 .draw-steel.actor {
 
   &:not(.minimizing, .maximizing, .minimized) {
-    min-width: 560px;
+    /* Characteristics start wrapping */
+    min-width: 605px;
   }
 
   .form-group {
@@ -86,10 +87,6 @@
     height: 100%
   }
 
-  .flexrow.fieldgroup {
-    align-items: stretch;
-  }
-
   .resources {
     .form-group.stacked {
       flex-direction: column-reverse;
@@ -110,6 +107,10 @@
       text-align: center;
       width: 100%;
       display: inline-block;
+      button.icon {
+        display: inline-block;
+        border: none;
+      }
     }
 
     .resource-current {
