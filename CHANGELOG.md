@@ -50,7 +50,7 @@
 - Adjusted the display of Power Roll Effects, including adding an image property.
 - Expired Active Effects are now labeled "Expired" in their duration rather than "None".
 - Changed the hook name for the actor sheet document context menus to "getDocumentListContextOptions".
-- Separated interactivity in Character Resources to designated buttons
+- Adjusted display of resource labels so their role as buttons is clearer.
 
 ### Fixed
 
