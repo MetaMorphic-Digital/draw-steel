@@ -57,6 +57,7 @@
 - Fixed display of multi-result abilities
 - Fixed unrequited prompting for end of turn events (#673)
 - Fixed project and save rolls not respecting roll mode settings. (#734)
+- Secret blocks will now display in enriched descriptions for owned documents.
 
 ## 0.7.3
 
