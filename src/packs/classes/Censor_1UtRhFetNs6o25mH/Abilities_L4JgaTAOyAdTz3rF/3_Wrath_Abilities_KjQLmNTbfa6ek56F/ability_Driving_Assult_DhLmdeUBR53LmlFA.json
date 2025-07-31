@@ -1,0 +1,103 @@
+{
+  "folder": "KjQLmNTbfa6ek56F",
+  "name": "Driving Assult",
+  "type": "ability",
+  "_id": "DhLmdeUBR53LmlFA",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "driving-assult",
+    "story": "As you force your enemy back with your weapon, you use your faith to stay close.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "C24N4n5lNZ2OT66t": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "C24N4n5lNZ2OT66t",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "eb3z7Xx1qUcG9i17": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "eb3z7Xx1qUcG9i17",
+          "forced": {
+            "tier2": {
+              "distance": "3"
+            },
+            "tier3": {
+              "distance": "5"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can shift up to your speed in a straight line toward the target after pushing them.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "lRkxYszShOLYPqDd": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1753985109963,
+    "modifiedTime": 1753985210607,
+    "lastModifiedBy": "lRkxYszShOLYPqDd"
+  },
+  "_key": "!items!DhLmdeUBR53LmlFA"
+}

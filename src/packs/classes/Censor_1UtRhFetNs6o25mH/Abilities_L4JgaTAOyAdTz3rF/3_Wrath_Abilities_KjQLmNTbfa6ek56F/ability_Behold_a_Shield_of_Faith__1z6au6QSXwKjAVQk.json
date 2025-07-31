@@ -1,0 +1,98 @@
+{
+  "folder": "KjQLmNTbfa6ek56F",
+  "name": "Behold a Shield of Faith!",
+  "type": "ability",
+  "_id": "1z6au6QSXwKjAVQk",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "behold-a-shield-of-faith",
+    "story": "A mighty blow turns your foe’s vitality into a holy light that envelops you and an ally, discouraging enemies who might attack you.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "vjVxxXJmmzpDQkos": {
+          "name": "Holy Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "vjVxxXJmmzpDQkos",
+          "damage": {
+            "tier1": {
+              "types": [
+                "holy"
+              ],
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "9 + @chr",
+              "types": [
+                "holy"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Until the start of your next turn, enemies take a bane on ability rolls made against you or any ally adjacent to you.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "lRkxYszShOLYPqDd": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1753984941522,
+    "modifiedTime": 1753985219741,
+    "lastModifiedBy": "lRkxYszShOLYPqDd"
+  },
+  "_key": "!items!1z6au6QSXwKjAVQk"
+}

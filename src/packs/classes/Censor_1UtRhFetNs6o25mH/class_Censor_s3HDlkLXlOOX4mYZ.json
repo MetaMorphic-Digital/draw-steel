@@ -3,15 +3,15 @@
   "name": "Censor",
   "type": "class",
   "_id": "s3HDlkLXlOOX4mYZ",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
   "system": {
     "description": {
       "value": "<p>Demons and deathless fear you. Criminals run from the sight of your shadow. Agents of chaos, blasphemers, and heretics tremble at the sound of your voice. You carry the power of the gods, armed with wrath and sent out into the world first to seek, then censor those whose actions—or even existence—are anathema to your church.</p><p>As a censor, you’re at your best against the strongest foes. Your judgment terrifies heretics, stops enemies in their tracks, and even hurls them across the battlefield.</p>",
       "director": ""
     },
     "source": {
-      "book": "",
-      "page": "",
+      "book": "Draw Steel Heroes",
+      "page": "78",
       "license": "",
       "revision": 1
     },
@@ -22,7 +22,7 @@
         "img": null,
         "type": "itemGrant",
         "requirements": {
-          "level": null
+          "level": 1
         },
         "_id": "9hj1vSSvAlyMP0r9",
         "pool": [
@@ -48,7 +48,7 @@
         "img": null,
         "type": "itemGrant",
         "requirements": {
-          "level": null
+          "level": 1
         },
         "_id": "eZzgbmLxJjOmy78y",
         "chooseN": 1,
@@ -66,9 +66,72 @@
             "uuid": "Compendium.draw-steel.classes.Item.qQ2skEWQO1zMdssg"
           }
         ]
+      },
+      "29nVbO8MisyOZFbd": {
+        "name": "Skill Choices",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "29nVbO8MisyOZFbd",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "lore"
+          ]
+        }
+      },
+      "VvqOAFnxiqb8rfXb": {
+        "name": "3-Wrath Abilities",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "VvqOAFnxiqb8rfXb",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1z6au6QSXwKjAVQk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DhLmdeUBR53LmlFA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.4ETfnQq9wwUMkzCy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.5FfLSWWQ6Hw9Ssjr"
+          }
+        ]
+      },
+      "H0KShOml4vbtIKko": {
+        "name": "5-Wrath Abilities",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "H0KShOml4vbtIKko",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 wrath to use. (Quick Build: Purifying Fire.)</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.AS9L7DF6HWw2ciHt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.CszjMBXS4fIQeNhe"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.74qzwHLak09Dwvcq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1mfUv05ONbsz64oa"
+          }
+        ]
       }
     },
-    "level": 0,
+    "level": 1,
     "primary": "Wrath",
     "turnGain": "2",
     "minimum": "0",
@@ -100,7 +163,7 @@
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1753979387187,
-    "modifiedTime": 1753983754631,
+    "modifiedTime": 1753986359130,
     "lastModifiedBy": "lRkxYszShOLYPqDd"
   },
   "_key": "!items!s3HDlkLXlOOX4mYZ"
