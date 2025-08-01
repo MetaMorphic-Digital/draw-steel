@@ -952,14 +952,14 @@ DRAW_STEEL.monsters = {
     minion: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
     },
-    band: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Band",
+    horde: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
     },
     platoon: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
     },
-    troop: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Troop",
+    elite: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
     },
     leader: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
