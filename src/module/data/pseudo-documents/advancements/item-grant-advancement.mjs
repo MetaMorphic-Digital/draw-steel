@@ -41,6 +41,15 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  get isChoice() {
+    if (this.chooseN === null) return false;
+    if (this.chooseN >= Object.values(this.pool).length) return false;
+    return true;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get levels() {
     return [this.requirements.level];
   }

@@ -13,7 +13,7 @@
       <img class="advancement-img" src="{{img}}" alt="{{name}}">
       <label>{{name}}</label>
       <div class="form-fields">
-        {{#if @root.document.parent}}
+        {{#if canReconfigure}}
         <button
           type="button"
           data-tooltip="DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure"

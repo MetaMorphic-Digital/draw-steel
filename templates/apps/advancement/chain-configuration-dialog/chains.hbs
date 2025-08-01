@@ -8,7 +8,7 @@
         <img class="advancement-img" src="{{advancement.img}}" alt="{{advancement.name}}">
         <div class="advancement-name">{{advancement.name}}</div>
         <div class="advancement-controls">
-          {{#if isChoice}}
+          {{#if advancement.isChoice}}
           <button type="button" class="icon fa-solid fa-fw {{ifThen isConfigured 'fa-check' 'fa-cog'}}" data-action="configureAdvancement"></button>
           {{/if}}
         </div>
