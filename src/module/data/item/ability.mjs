@@ -86,6 +86,16 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static migrateData(data) {
+    // Game release updates
+    if (data.type === "action") data.type = "main";
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
     for (const effect of this.power.effects) effect.prepareBaseData();

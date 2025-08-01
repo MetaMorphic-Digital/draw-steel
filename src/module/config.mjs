@@ -1071,8 +1071,8 @@ DRAW_STEEL.abilities = {
    * @type {Record<string, {label: string, triggered?: boolean}>}
    */
   types: {
-    action: {
-      label: "DRAW_STEEL.Item.ability.Type.Action",
+    main: {
+      label: "DRAW_STEEL.Item.ability.Type.Main",
     },
     maneuver: {
       label: "DRAW_STEEL.Item.ability.Type.Maneuver",
