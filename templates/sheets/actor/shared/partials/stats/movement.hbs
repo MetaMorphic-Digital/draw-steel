@@ -13,7 +13,7 @@
   <legend>{{systemFields.movement.label}}</legend>
   {{formGroup systemFields.movement.fields.value value=systemSource.movement.value rootId=document.uuid dataset=datasets.isSource classes="slim stacked"}}
   {{formGroup systemFields.movement.fields.types value=systemSource.movement.types rootId=document.uuid dataset=datasets.isSource options=movement.options localize=true}}
-  {{#if movement.flying}}
+  {{#if movement.canHover}}
   {{formGroup systemFields.movement.fields.hover value=systemSource.movement.hover rootId=document.uuid dataset=datasets.isSource classes="slim stacked"}}
   {{/if}}
   {{formGroup systemFields.movement.fields.disengage value=systemSource.movement.disengage rootId=document.uuid dataset=datasets.isSource classes="slim stacked"}}
