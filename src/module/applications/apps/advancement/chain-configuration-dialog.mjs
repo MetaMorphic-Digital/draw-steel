@@ -1,4 +1,5 @@
 import AdvancementChain from "../../../utils/advancement-chain.mjs";
+import enrichHTML from "../../../utils/enrich-html.mjs";
 import DSApplication from "../../api/application.mjs";
 
 /**
@@ -85,6 +86,17 @@ export default class ChainConfigurationDialog extends DSApplication {
     context.ctx = { chains: this.#chains.map(c => c.active()) };
     context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preFirstRender(context, options) {
+    await super._preFirstRender(context, options);
+
+    for (const chain of this.#chains) {
+      chain.enrichedDescription = await enrichHTML(chain.advancement.description, { relativeTo: chain.advancement.document });
+    }
   }
 
   /* -------------------------------------------------- */

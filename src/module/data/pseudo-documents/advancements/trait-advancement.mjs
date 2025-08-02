@@ -59,11 +59,7 @@ export default class TraitAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Does this trait have a choice to make? This can be done synchronously unlike
-   * for item grant advancements, so we can make use of a getter directly on the advancement here.
-   * @type {boolean}
-   */
+  /** @inheritdoc */
   get isChoice() {
     if (this.chooseN === null) return false;
     if (this.chooseN < this.traitOptions.length) return true;
@@ -140,5 +136,15 @@ export default class TraitAdvancement extends BaseAdvancement {
     }
 
     return { [path]: traitChoices.filter(_ => _) };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async reconfigure() {
+    await super.reconfigure();
+
+    const configuration = await this.configureAdvancement();
+    await this.document.update(configuration);
   }
 }
