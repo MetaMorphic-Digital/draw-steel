@@ -6,13 +6,14 @@
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "",
+      "page": "273",
       "license": "Draw Steel Creator License",
       "revision": 2
     },
     "_dsid": "grab",
     "keywords": [
-      "melee"
+      "melee",
+      "weapon"
     ],
     "type": "maneuver",
     "category": "",
@@ -30,14 +31,14 @@
       "value": 1
     },
     "effect": {
-      "before": "",
-      "after": "<p>You gain an edge on the power roll if the creature’s size is smaller than yours. You can grab only one creature at a time this way.</p>"
+      "before": "<p>A creature seeking to keep a foe close and locked down can attempt to grab a creature using the following ability</p>",
+      "after": "<p>You can usually target only creatures of your size or smaller. If your Might score is 2 or higher, you can target any creature with a size equal to or less than your Might score.</p>"
     },
     "spend": {
       "value": null,
       "text": ""
     },
-    "story": "You attempt to grab a creature using the following ability.",
+    "story": "",
     "power": {
       "roll": {
         "characteristics": [
@@ -46,33 +47,34 @@
         "formula": "@chr"
       },
       "effects": {
-        "VTYdHGLzFvmGyupC": {
-          "type": "other",
-          "_id": "VTYdHGLzFvmGyupC",
-          "other": {
+        "2SbphbZofGVQUQlD": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "2SbphbZofGVQUQlD",
+          "applied": {
             "tier1": {
-              "display": "No effect",
-              "potency": {
-                "value": "@potency.weak",
-                "characteristic": "none"
-              }
+              "display": "No effect."
             },
             "tier2": {
-              "display": "You can grab the target, but if you do, they can make a melee free strike against you right before they become grabbed by you.",
-              "potency": {
-                "value": "@potency.average",
-                "characteristic": ""
+              "display": "You can grab the target, but if you do, the target can make a melee free strike against you before they are grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "always",
+                  "end": ""
+                }
               }
             },
             "tier3": {
-              "display": "The target is grabbed by you.",
-              "potency": {
-                "value": "@potency.strong",
-                "characteristic": ""
-              }
+              "effects": {
+                "grabbed": {
+                  "condition": "always",
+                  "end": ""
+                }
+              },
+              "display": "The target is grabbed by you."
             }
-          },
-          "name": "Grab"
+          }
         }
       }
     }

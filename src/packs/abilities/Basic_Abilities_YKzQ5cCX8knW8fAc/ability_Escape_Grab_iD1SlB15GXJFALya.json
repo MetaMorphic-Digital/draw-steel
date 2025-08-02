@@ -6,7 +6,7 @@
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "",
+      "page": "273",
       "license": "Draw Steel Creator License",
       "revision": 2
     },
@@ -17,7 +17,7 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "melee",
+      "type": "self",
       "primary": 1,
       "secondary": null,
       "tertiary": null
@@ -28,14 +28,14 @@
       "value": 1
     },
     "effect": {
-      "before": "<p>While you are grabbed by another creature (see Grab below), you can attempt to escape by making the following test (which can’t have a skill applied). You take a bane on the roll if the creature’s size is larger than yours.</p>",
-      "after": ""
+      "before": "<p>A creature who is grabbed by another creature, an object, or an effect (see Grab below) can attempt to escape by using the following ability.</p>",
+      "after": "<p>You take a bane on this maneuver if your size is smaller than the size of the creature, object, or effect that has you grabbed.</p>"
     },
     "spend": {
       "value": null,
       "text": ""
     },
-    "story": "You attempt to escape the grab of an Enemy.",
+    "story": "",
     "power": {
       "roll": {
         "characteristics": [
@@ -50,14 +50,14 @@
           "_id": "9IqHcvFKmPUnGT2i",
           "other": {
             "tier1": {
-              "display": "You fail to escape the grab.",
+              "display": "No Effect.",
               "potency": {
                 "value": "@potency.weak",
                 "characteristic": "none"
               }
             },
             "tier2": {
-              "display": "You can escape the grab, but if you do, the creature grabbing you can make a melee free strike against you before you are no longer grabbed.",
+              "display": "You can escape the grab, but if you do, a creature who has you grabbed can make a melee free strike against you before you are no longer grabbed.",
               "potency": {
                 "value": "@potency.average",
                 "characteristic": ""
