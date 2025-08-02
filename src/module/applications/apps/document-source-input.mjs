@@ -12,6 +12,9 @@ export default class DocumentSourceInput extends DocumentInput {
       title: "DRAW_STEEL.SOURCE.Update",
       icon: "fa-solid fa-book",
     },
+    actions: {
+      clearCompendiumSource: this.#clearCompendiumSource,
+    },
   };
 
   /* -------------------------------------------------- */
@@ -33,5 +36,17 @@ export default class DocumentSourceInput extends DocumentInput {
     const compendiumSource = await fromUuid(this.document._stats.compendiumSource);
     context.sourceLink = compendiumSource?.toAnchor();
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+     * Clear the document's compendium source.
+     * @this {DSDocumentSheet}
+     * @param {PointerEvent} event    The initiating click event.
+     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+     */
+  static async #clearCompendiumSource(event, target) {
+    await this.document.update({ "_stats.compendiumSource": null });
   }
 }

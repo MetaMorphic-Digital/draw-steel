@@ -8,9 +8,11 @@
   {{/if}}
   {{#if sourceLink}}
   <div class="form-group inline">
-    <label>{{localize "DRAW_STEEL.SOURCE.CompendiumSource"}}</label>
-    <div>
-      {{{sourceLink.outerHTML}}}
+    <label>{{localize "DRAW_STEEL.SOURCE.CompendiumSource.Label"}}</label>
+    <div class="form-fields">
+      {{!-- Don't want the link border to expand, so wrappin in another element --}}
+      <span>{{{sourceLink.outerHTML}}}</span>
+      <button type="button" data-action="clearCompendiumSource" data-tooltip="DRAW_STEEL.SOURCE.CompendiumSource.Clear" class="icon fa-solid fa-trash"></button>
     </div>
   </div>
   {{/if}}
