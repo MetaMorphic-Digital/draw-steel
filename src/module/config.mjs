@@ -1440,7 +1440,7 @@ DRAW_STEEL.culture = {
     martial: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
       skillGroups: new Set(),
-      skillChoices: new Set([ "blacksmithing", "fletching", "climb", "endurance", "ride", "intimidate", "alertness", "track", "monsters", "strategy"]),
+      skillChoices: new Set(["blacksmithing", "fletching", "climb", "endurance", "ride", "intimidate", "alertness", "track", "monsters", "strategy"]),
       group: "upbringing",
     },
     noble: {
