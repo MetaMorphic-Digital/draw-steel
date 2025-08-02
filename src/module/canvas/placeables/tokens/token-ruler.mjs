@@ -25,13 +25,6 @@ export default class DrawSteelTokenRuler extends foundry.canvas.placeables.token
       "-=blink": null,
       teleport,
       /** @type {TokenMovementActionConfig} */
-      burrow: {
-        getCostFunction: (token, _options) => {
-          if (token.movementTypes.has("burrow")) return cost => cost;
-          else return cost => cost * 3;
-        },
-      },
-      /** @type {TokenMovementActionConfig} */
       climb: {
         canSelect: (token) => !(token instanceof TokenDocument) || !token.hasStatusEffect("prone"),
         getCostFunction: (token, _options) => {

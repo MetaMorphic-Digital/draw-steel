@@ -204,15 +204,15 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   _getMovement() {
     const formatter = game.i18n.getListFormatter({ type: "unit" });
     const actorMovement = this.actor.system.movement;
-    const flying = actorMovement.types.has("fly");
+    const canHover = actorMovement.types.has("fly") || actorMovement.types.has("teleport");
     const movementList = Array.from(actorMovement.types).map(m => {
       let label = game.i18n.localize(CONFIG.Token.movement.actions[m]?.label ?? m);
       if ((m === "teleport") && (actorMovement.teleport !== actorMovement.value)) label += " " + actorMovement.teleport;
       return label;
     });
-    if (flying && actorMovement.hover) movementList.push(game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
+    if (canHover && actorMovement.hover) movementList.push(game.i18n.localize("DRAW_STEEL.Actor.base.FIELDS.movement.hover.label"));
     return {
-      flying,
+      canHover,
       list: formatter.format(movementList),
       options: Object.entries(CONFIG.Token.movement.actions)
         .filter(([key, _action]) => ds.CONFIG.speedOptions.includes(key))
