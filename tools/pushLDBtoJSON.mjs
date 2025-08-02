@@ -68,6 +68,10 @@ function transformName(doc, context) {
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {
+  Object.assign(entry._stats, {
+    modifiedTime: null,
+    lastModifiedBy: null,
+  });
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
