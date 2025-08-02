@@ -30,6 +30,8 @@ export default class DocumentSourceInput extends DocumentInput {
     const context = await super._prepareContext(options);
     context.sourceValues = this.document.system.source._source;
     context.sourceFields = this.document.system.source.schema.fields;
+    const compendiumSource = await fromUuid(this.document._stats.compendiumSource);
+    context.sourceLink = compendiumSource?.toAnchor();
     return context;
   }
 }
