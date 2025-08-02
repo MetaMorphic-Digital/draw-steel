@@ -68,10 +68,17 @@ function transformName(doc, context) {
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {
+  // Reducing churn
   Object.assign(entry._stats, {
     modifiedTime: null,
     lastModifiedBy: null,
   });
+  // Update if we ever start including other document types, e.g. Adventures
+  for (const embeddedCollection of ["items", "effects", "pages"]) {
+    if (entry[embeddedCollection]) {
+      for (const e of entry[embeddedCollection]) Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
+    }
+  }
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
