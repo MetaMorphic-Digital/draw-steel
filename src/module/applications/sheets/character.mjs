@@ -21,6 +21,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
       modifyItemQuantity: this.#modifyItemQuantity,
     },
+    position: {
+      // Skills section is visible by default
+      height: 680,
+    },
   };
 
   /* -------------------------------------------------- */
