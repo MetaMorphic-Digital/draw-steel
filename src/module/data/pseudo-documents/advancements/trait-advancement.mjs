@@ -145,6 +145,6 @@ export default class TraitAdvancement extends BaseAdvancement {
     await super.reconfigure();
 
     const configuration = await this.configureAdvancement();
-    await this.document.update(configuration);
+    if (configuration) await this.document.update(configuration);
   }
 }

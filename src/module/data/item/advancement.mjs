@@ -54,6 +54,9 @@ export default class AdvancementModel extends BaseItemModel {
         ? flags[advancement.id]?.selected ?? []
         : advancement.traitOptions.map(option => option.value);
       addTrait(advancement.type, selected);
+      if ((advancement.type === "language") && (selected.length < advancement.chooseN)) {
+        record.unfilledLanguage.add(advancement.getRelativeUUID(this.actor));
+      }
     }
   }
 

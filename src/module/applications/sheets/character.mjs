@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import FillLanguageDialog from "../apps/advancement/fill-language-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /**
@@ -20,6 +21,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
       modifyItemQuantity: this.#modifyItemQuantity,
+      fillLanguage: this.#fillLanguage,
     },
     position: {
       // Skills section is visible by default
@@ -96,6 +98,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         break;
       case "biography":
         context.measurements = this._getMeasurements();
+        // functionally a boolean to determine whether to show the unfilled languages
+        context.unfilledLanguage = this.actor.system._traits.unfilledLanguage?.size;
         break;
     }
     return context;
@@ -371,6 +375,20 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const updatedQuantity = (quantityModification === "increase") ? quantity + 1 : quantity - 1;
 
     item.update({ "system.quantity": updatedQuantity });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt the user to fill one or more unchosen languages.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #fillLanguage(event, target) {
+    const advancements = this.actor.system._traits.unfilledLanguage.map(uuid => fromUuidSync(uuid, { relative: this.actor }));
+
+    FillLanguageDialog.create({ advancements });
   }
 
   /* -------------------------------------------------- */
