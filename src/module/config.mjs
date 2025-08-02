@@ -952,14 +952,14 @@ DRAW_STEEL.monsters = {
     minion: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
     },
-    band: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Band",
+    horde: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
     },
     platoon: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
     },
-    troop: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Troop",
+    elite: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
     },
     leader: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
@@ -1071,8 +1071,8 @@ DRAW_STEEL.abilities = {
    * @type {Record<string, {label: string, triggered?: boolean}>}
    */
   types: {
-    action: {
-      label: "DRAW_STEEL.Item.ability.Type.Action",
+    main: {
+      label: "DRAW_STEEL.Item.ability.Type.Main",
     },
     maneuver: {
       label: "DRAW_STEEL.Item.ability.Type.Maneuver",
@@ -1401,21 +1401,15 @@ DRAW_STEEL.culture = {
       skillChoices: new Set(),
       group: "environment",
     },
-    anarchic: {
-      label: "DRAW_STEEL.Item.culture.Organization.Anarchic",
-      skillGroups: new Set(["exploration", "intrigue"]),
-      skillChoices: new Set(),
-      group: "organization",
-    },
     bureaucratic: {
       label: "DRAW_STEEL.Item.culture.Organization.Bureaucratic",
-      skillGroups: new Set(["intrigue", "lore"]),
+      skillGroups: new Set(["interpersonal", "intrigue"]),
       skillChoices: new Set(),
       group: "organization",
     },
     communal: {
       label: "DRAW_STEEL.Item.culture.Organization.Communal",
-      skillGroups: new Set(["crafting", "interpersonal"]),
+      skillGroups: new Set(["crafting", "exploration"]),
       skillChoices: new Set(),
       group: "organization",
     },
@@ -1431,8 +1425,8 @@ DRAW_STEEL.culture = {
       skillChoices: new Set(["music", "perform"]),
       group: "upbringing",
     },
-    illegal: {
-      label: "DRAW_STEEL.Item.culture.Upbringing.Illegal",
+    lawless: {
+      label: "DRAW_STEEL.Item.culture.Upbringing.Lawless",
       skillGroups: new Set(["intrigue"]),
       skillChoices: new Set(),
       group: "upbringing",
@@ -1446,7 +1440,7 @@ DRAW_STEEL.culture = {
     martial: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
       skillGroups: new Set(),
-      skillChoices: new Set(["alertness", "blacksmithing", "climb", "endurance", "fletching", "intimidate", "monsters", "ride", "strategy", "track"]),
+      skillChoices: new Set(["blacksmithing", "fletching", "climb", "endurance", "ride", "intimidate", "alertness", "track", "monsters", "strategy"]),
       group: "upbringing",
     },
     noble: {
