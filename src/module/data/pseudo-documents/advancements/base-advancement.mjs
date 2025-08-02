@@ -76,6 +76,27 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
+   * Does this trait have a choice to make?
+   * @type {boolean}
+   */
+  get isChoice() {
+    return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Determine if this advancement can be reconfigured.
+   * @returns {boolean}
+   */
+  get canReconfigure() {
+    const actor = this.document.parent;
+    return !!actor && (this.requirements.level <= actor.system.level) && this.isChoice;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * At which levels this advancement applies.
    * @type {number[]}
    */
@@ -90,8 +111,20 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    * these choices to a node in an advancement chain.
    * @param {AdvancementChain} [node]   A node that is configured in-place and used to gather options. **will be mutated**.
    * @returns {Promise<object>}         A promise that resolves to an update to perform on the parent of the advancement.
+   * @abstract
    */
   async configureAdvancement(node = null) {
     return {};
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Redo the advancements on this item.
+   * Base function provides error checking.
+   * @abstract
+   */
+  async reconfigure() {
+    if (!this.canReconfigure) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
   }
 }

@@ -1,0 +1,33 @@
+.draw-steel.chain-configuration-dialog {
+  .advancement-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    .advancement-row {
+      display: flex;
+      .advancement-img {
+        flex: 0 0 var(--input-height);
+        max-height: var(--input-height);
+      }
+      .advancement-name {
+        flex-grow: 1;
+        font-weight: bold;
+        font-size: var(--font-size-15);
+        line-height: var(--input-height);
+      }
+      .advancement-controls {
+        display: flex;
+        flex: 0 0 100px;
+        justify-content: flex-end;
+      }
+    }
+    .advancement-choices {
+      list-style: none;
+      .advancement-choice {
+        .content-link {
+          border: none;
+        }
+      }
+    }
+  }
+}
