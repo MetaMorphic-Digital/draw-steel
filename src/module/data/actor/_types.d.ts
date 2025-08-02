@@ -65,6 +65,7 @@ declare module "./character.mjs" {
     };
     hero: {
       primary: HeroicResource;
+      epic: HeroicResource;
       xp: number;
       renown: number;
       wealth: number;
