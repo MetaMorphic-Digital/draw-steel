@@ -1,5 +1,17 @@
 <fieldset>
-  <legend>{{systemFields.biography.fields.languages.label}}</legend>
+  <legend>
+    {{systemFields.biography.fields.languages.label}}
+    {{#if unfilledLanguage}}
+    <button
+      type="button"
+      class="icon fa-solid fa-message-question"
+      data-tooltip="DRAW_STEEL.ADVANCEMENT.ISpeakTheirLanguage.button"
+      data-tooltip-direction="UP"
+      data-action="fillLanguage"
+    >
+    </button>
+    {{/if}}
+  </legend>
   {{#if isPlay}}
   {{languages.list}}
   {{else}}
