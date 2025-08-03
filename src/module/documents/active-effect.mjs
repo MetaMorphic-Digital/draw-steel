@@ -185,4 +185,12 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
     return rollData;
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  apply(actor, change) {
+    if (this.system.apply instanceof Function) this.system.apply(actor, change);
+    else super.apply(actor, change);
+  }
 }

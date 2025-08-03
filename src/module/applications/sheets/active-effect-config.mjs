@@ -43,4 +43,16 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
 
     return context;
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    if (this.document.type === "abilityBonus") {
+      const description = this.element.querySelector("[data-application-part=\"details\"] .form-group.stacked");
+      console.log(description);
+    }
+  }
 }
