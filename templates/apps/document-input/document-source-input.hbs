@@ -12,7 +12,14 @@
     <div class="form-fields">
       {{!-- Don't want the link border to expand, so wrappin in another element --}}
       <span>{{{sourceLink.outerHTML}}}</span>
-      <button type="button" data-action="clearCompendiumSource" data-tooltip="DRAW_STEEL.SOURCE.CompendiumSource.Clear" class="icon fa-solid fa-trash"></button>
+      <button
+        type="button"
+        data-action="clearCompendiumSource"
+        data-tooltip="DRAW_STEEL.SOURCE.CompendiumSource.Clear"
+        data-tooltip-direction="UP"
+        class="icon fa-solid fa-trash"
+      >
+      </button>
     </div>
   </div>
   {{/if}}

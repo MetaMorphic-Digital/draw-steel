@@ -1,5 +1,5 @@
 import { systemPath } from "../../constants.mjs";
-import DocumentInput from "../api/document-input.mjs";
+import { DSDialog, DocumentInput } from "../api/_module.mjs";
 
 /**
  * Simple live-updating input for {@linkcode ds.data.models.SourceModel | `SourceModel`}.
@@ -41,12 +41,19 @@ export default class DocumentSourceInput extends DocumentInput {
   /* -------------------------------------------------- */
 
   /**
-     * Clear the document's compendium source.
-     * @this {DSDocumentSheet}
-     * @param {PointerEvent} event    The initiating click event.
-     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-     */
+   * Clear the document's compendium source.
+   * @this {DocumentSourceInput}
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
   static async #clearCompendiumSource(event, target) {
-    await this.document.update({ "_stats.compendiumSource": null });
+    const confirm = await DSDialog.confirm({
+      window: {
+        title: "DRAW_STEEL.SOURCE.CompendiumSource.ConfirmDeleteTitle",
+        icon: "fa-solid fa-triangle-exclamation",
+      },
+      content: game.i18n.localize("DRAW_STEEL.SOURCE.CompendiumSource.ConfirmDeleteContent"),
+    });
+    if (confirm) await this.document.update({ "_stats.compendiumSource": null });
   }
 }
