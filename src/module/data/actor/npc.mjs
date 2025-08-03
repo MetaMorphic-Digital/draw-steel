@@ -60,6 +60,23 @@ export default class NPCModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static migrateData(data) {
+    switch (data.monster?.organization) {
+      // release updates
+      case "band":
+        data.monster.organization = "horde";
+        break;
+      case "troop":
+        data.monster.organization = "elite";
+        break;
+    }
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get level() {
     return this.monster.level;
   }

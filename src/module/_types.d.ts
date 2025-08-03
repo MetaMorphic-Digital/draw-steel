@@ -85,8 +85,5 @@ declare module "./utils/advancement-chain.mjs" {
     parentChoice?: AdvancementChainItemGrantLeaf;
 
     isChosen: boolean;
-    isChoice: boolean;
-    chooseN: number | null;
-    isConfigured: boolean;
   }
 }

@@ -68,12 +68,13 @@
         "requirements": "Requirements",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
+        "reconfigure": "Reconfigure Advancement"
+      },
+      "WARNING": {
+        "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
         "restrictedType": "{type} items cannot be added as advancements.",
         "requirePack": "Granted items must come from a compendium pack.",
         "forbidParent": "Granted items cannot be embedded in an actor."
-      },
-      "WARNING": {
-        "cannotAddNewType": "You cannot add a new {type} to a character that already has one."
       },
       "ReplaceItem": {
         "title": "Replace {type}",
@@ -81,7 +82,8 @@
       },
       "ChainConfiguration": {
         "levelUpTitle": "Level Up: {name}",
-        "createWithAdvancementsTitle": "Create {name} with Advancements"
+        "createWithAdvancementsTitle": "Create {name} with Advancements",
+        "reconfigureTitle": "Reconfigure Advancement"
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
@@ -89,6 +91,12 @@
       },
       "DeleteDialog": {
         "Content": "The following items will be deleted:"
+      },
+      "Reconfigure": {
+        "ConfirmItemGrant": {
+          "Title": "Reconfigure Item Grant",
+          "Content": "This will delete and recreate the granted items."
+        }
       }
     },
     "SHEET": {
@@ -150,6 +158,12 @@
         }
       },
       "Update": "Update Source Information",
+      "CompendiumSource": {
+        "Label": "Compendium Source",
+        "Clear": "Clear compendium source",
+        "ConfirmDeleteTitle": "Clear Compendium Source",
+        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata."
+      },
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
@@ -413,7 +427,7 @@
         },
         "EVLabel": {
           "Label": "EV",
-          "Minion": "{value} for eight minions",
+          "Minion": "{value} for four minions",
           "Other": "{value}"
         },
         "KEYWORDS": {
@@ -448,12 +462,12 @@
           "Support": "Support"
         },
         "ORGANIZATIONS": {
-          "Band": "Band",
-          "Leader": "Leader",
           "Minion": "Minion",
+          "Horde": "Horde",
           "Platoon": "Platoon",
-          "Solo": "Solo",
-          "Troop": "Troop"
+          "Elite": "Elite",
+          "Leader": "Leader",
+          "Solo": "Solo"
         },
         "Negotiation": {
           "Motivations": {
@@ -693,7 +707,7 @@
           "Weapon": "Weapon"
         },
         "Type": {
-          "Action": "Action",
+          "Main": "Main Action",
           "Maneuver": "Maneuver",
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
@@ -862,7 +876,7 @@
           "label": "Upbringing",
           "Academic": "Academic",
           "Creative": "Creative",
-          "Illegal": "Illegal",
+          "Lawless": "Lawless",
           "Labor": "Labor",
           "Martial": "Martial",
           "Noble": "Noble"
@@ -1162,7 +1176,7 @@
           "Abbr": "Save Ends"
         },
         "Encounter": {
-          "Label": "End of Encounter or Dying",
+          "Label": "End of Encounter",
           "Abbr": "EoE"
         },
         "Respite": {

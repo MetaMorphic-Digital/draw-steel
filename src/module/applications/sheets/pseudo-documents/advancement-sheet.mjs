@@ -118,11 +118,11 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     const item = await fromUuid(TextEditor.implementation.getDragEventData(event).uuid);
 
     if (!item || (item.documentName !== "Item")) return;
-    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type)) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.restrictedType", {
+    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type)) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
       format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
     });
-    if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.requirePack", { localize: true });
-    if (item.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.forbidParent", { localize: true });
+    if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePack", { localize: true });
+    if (item.parent) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.forbidParent", { localize: true });
 
     const exists = this.pseudoDocument.pool.some(k => k.uuid === item.uuid);
     if (exists) return;

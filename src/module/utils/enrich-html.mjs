@@ -10,8 +10,8 @@
 export default async function enrichHTML(content, options = {}) {
   // Override document-related options with the relative document's info
   if (options.relativeTo) {
-    // allow secrets=false to prevent secret display
-    options.secrets &&= options.relativeTo.isOwner;
+    // Don't reveal secrets of unowned documents, but allow explicit false to prevent sharing secrets of owned documents
+    if (options.secrets !== false) options.secrets = options.relativeTo.isOwner;
     if (options.relativeTo.getRollData instanceof Function) options.rollData = options.relativeTo.getRollData();
   }
   return foundry.applications.ux.TextEditor.implementation.enrichHTML(content, options);

@@ -86,6 +86,16 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static migrateData(data) {
+    // Game release updates
+    if (data.type === "action") data.type = "main";
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
     for (const effect of this.power.effects) effect.prepareBaseData();
@@ -226,7 +236,7 @@ export default class AbilityModel extends BaseItemModel {
     const labels = {};
     const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
-    labels.keywords = keywordFormatter.format(keywordList);
+    labels.keywords = keywordFormatter.format(keywordList) || "—";
 
     labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
