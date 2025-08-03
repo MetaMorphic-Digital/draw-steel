@@ -4,12 +4,12 @@
   "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
   "system": {
     "description": {
-      "value": "",
+      "value": "<p>Subtlety is your art, the tip of the blade your brush. You studied at a secret college, specializing in alchemy, illusion, or shadow-magics. Your training and knowledge place you among the elite ranks of assassins, spies, and commandos. But more potent than any weapon or sorcery is your insight into your enemies’ weaknesses.</p><p>As a shadow, you possess abilities that deal significant damage, enable you to move swiftly across the battlefield and evade hazards, and allow you to fade from notice even in the midst of the most intense combat encounters. You also possess more skills than any other hero.</p>",
       "director": ""
     },
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "160",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -22,7 +22,7 @@
     },
     "stamina": {
       "starting": 18,
-      "level": 9
+      "level": 6
     },
     "advancements": {
       "qeqJmWU8sdfdEfWO": {
@@ -37,7 +37,8 @@
         },
         "requirements": {
           "level": 1
-        }
+        },
+        "description": "<p>You gain the Hide and Sneak skills.</p>"
       },
       "vJNXECXFdxjjxINx": {
         "type": "skill",
@@ -56,14 +57,16 @@
         "chooseN": 5,
         "requirements": {
           "level": 1
-        }
+        },
+        "description": "<p>Then choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups.</p>"
       }
     },
     "_dsid": "shadow",
     "turnGain": "1d3",
     "minimum": "0",
     "recoveries": 8,
-    "kits": 1
+    "kits": 1,
+    "epic": "Subterfuge"
   },
   "effects": [],
   "folder": "ngcpmEclU2UUJbz4",

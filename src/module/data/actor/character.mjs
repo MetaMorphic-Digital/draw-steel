@@ -46,7 +46,9 @@ export default class CharacterModel extends BaseActorModel {
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
-      // Epic resources are not part of public license yet
+      epic: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+      }),
       surges: requiredInteger(),
       xp: requiredInteger(),
       victories: requiredInteger(),
@@ -142,10 +144,11 @@ export default class CharacterModel extends BaseActorModel {
     this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
+    this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
-    if (heroClass && heroClass.system.primary) {
-      this.hero.primary.label = heroClass.system.primary;
-      // this.hero.secondary.label = this.class.system.secondary;
+    if (heroClass) {
+      if (heroClass.system.primary) this.hero.primary.label = heroClass.system.primary;
+      if (heroClass.system.epic) this.hero.epic.label = heroClass.system.epic;
     }
 
     super.prepareDerivedData();
