@@ -1149,6 +1149,7 @@
     },
     "ActiveEffect": {
       "Name": "Effect",
+      "Filters": "Filters",
       "StatusConditions": "Status Conditions",
       "Source": "Source",
       "Toggle": "Toggle Effect",
@@ -1230,7 +1231,15 @@
         }
       },
       "abilityBonus": {
-        "FIELDS": {}
+        "FIELDS": {
+          "filters": {
+            "label": "Filters",
+            "keywords": {
+              "label": "Keywords",
+              "hint": "All keywords that an ability must have to receive these bonuses."
+            }
+          }
+        }
       }
     },
     "DAMAGE_TYPE": {

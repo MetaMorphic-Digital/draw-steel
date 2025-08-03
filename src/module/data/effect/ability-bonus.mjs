@@ -25,7 +25,7 @@ export default class AbilityBonus extends BaseEffectModel {
 
     const fields = foundry.data.fields;
 
-    schema.requirements = new fields.SchemaField({
+    schema.filters = new fields.SchemaField({
       keywords: new fields.SetField(setOptions()),
     });
 

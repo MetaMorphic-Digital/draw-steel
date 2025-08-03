@@ -4,6 +4,12 @@ import * as sheets from "@client/applications/sheets/_module.mjs";
 
 // TODO: Remove the extends if/when Foundry updates HBSMixin to use @template
 
+declare module "./active-effect-config.mjs" {
+  export default interface DrawSteelActiveEffectConfig extends foundry.applications.api.DocumentSheetV2 {
+    document: documents.DrawSteelActiveEffect;
+  }
+}
+
 declare module "./actor-sheet.mjs" {
   export default interface DrawSteelActorSheet extends sheets.ActorSheet {
     actor: documents.DrawSteelActor;

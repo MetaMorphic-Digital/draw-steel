@@ -21,7 +21,7 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
       template: "templates/generic/tab-navigation.hbs",
     },
     details: {
-      template: "templates/sheets/active-effect/details.hbs",
+      template: systemPath("templates/sheets/active-effect/details.hbs"),
     },
     duration: {
       template: systemPath("templates/sheets/active-effect/config-duration.hbs"),
@@ -44,15 +44,16 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
     return context;
   }
 
-  /* -------------------------------------------------- */
+  /** @inheritDoc */
+  async _preparePartContext(partId, context) {
+    const partContext = await super._preparePartContext(partId, context);
 
-  /** @inheritdoc */
-  async _onRender(context, options) {
-    await super._onRender(context, options);
-
-    if (this.document.type === "abilityBonus") {
-      const description = this.element.querySelector("[data-application-part=\"details\"] .form-group.stacked");
-      console.log(description);
+    switch (partId) {
+      case "details":
+        context.keywordOptions = ds.CONFIG.abilities.keywords.optgroups;
+        break;
     }
+
+    return partContext;
   }
 }
