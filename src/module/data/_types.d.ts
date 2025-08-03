@@ -14,7 +14,7 @@ export type AbilityFilters = {
   keywords: Set<string>;
 };
 
-export type AbilityBonus = Partial<foundry.documents.types.EffectChangeData> & {
+export type AbilityBonus = foundry.documents.types.EffectChangeData & {
   filters: AbilityFilters;
 };
 

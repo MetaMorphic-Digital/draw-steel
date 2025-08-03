@@ -5,7 +5,7 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 /**
- * @import { DamageSchema } from "../item/kit.mjs";
+ * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
  */
@@ -128,7 +128,9 @@ export default class CharacterModel extends BaseActorModel {
 
       for (const [type, obj] of Object.entries(kitAbilityBonuses)) {
         if (("damage" in obj) && (this.hero.preferredKit !== kit.id)) continue;
-        if (Object.values(bonuses[type].damage).some(v => v)) obj.damage = bonuses[type].damage;
+        for (const [key, value] of Object.entries(bonuses[type].damage)) {
+          if (value) foundry.utils.setProperty(obj, `damage.${key}.value`, value);
+        }
       }
     }
 
@@ -147,7 +149,7 @@ export default class CharacterModel extends BaseActorModel {
             mode: CONST.ACTIVE_EFFECT_MODES.ADD,
             priority: 0,
             filters: {
-              keywords: new Set([keyword]),
+              keywords: new Set([keyword, "weapon"]),
             },
           });
         }
@@ -328,7 +330,8 @@ export default class CharacterModel extends BaseActorModel {
 
   /** @inheritdoc */
   get reach() {
-    return 1 + this.abilityBonuses.melee.distance;
+    // TODO: Fix
+    return 1;
   }
 
   /* -------------------------------------------------- */

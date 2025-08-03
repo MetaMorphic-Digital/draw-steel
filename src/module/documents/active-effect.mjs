@@ -190,7 +190,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   apply(actor, change) {
-    if (this.system.apply instanceof Function) this.system.apply(actor, change);
-    else super.apply(actor, change);
+    if (this.system.apply instanceof Function) return this.system.apply(actor, change);
+    else return super.apply(actor, change);
   }
 }

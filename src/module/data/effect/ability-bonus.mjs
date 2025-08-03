@@ -40,12 +40,12 @@ export default class AbilityBonus extends BaseEffectModel {
 
   /**
    * Apply this ActiveEffect to all abilities on the actor matching the requirements.
-   * @param {DrawSteelActor} actor                   The Actor to whom this effect should be applied.
+   * @param {DrawSteelActor} actor          The Actor to whom this effect should be applied.
    * @param {EffectChangeData} change       The change data being applied.
-   * @returns {Record<string, *>}           An object of property paths and their updated values.
    */
   apply(actor, change) {
-    Object.assign(change, this.filters);
+    change.filters = this.filters;
     actor.system._abilityBonuses.push(change);
+    return {};
   }
 }

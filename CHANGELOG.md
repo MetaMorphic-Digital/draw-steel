@@ -23,8 +23,8 @@
 ### Added
 
 - Advancements (#51)
+- Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
 - Added a button to ability use messages to apply effects from the ability. (#214)
-- Added a new Active Effect subtype for ability bonuses. (#713)
 - Added Epic Resource display. (#537)
 - Added a Wealth field to Careers. (#535)
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
