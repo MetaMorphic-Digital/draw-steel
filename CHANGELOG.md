@@ -69,6 +69,7 @@
 ### Removed
 
 - Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
+- Removed "Melee" range as a separate listing from the character sheet stats tab to match the official character sheet.
 
 ## 0.7.3
 

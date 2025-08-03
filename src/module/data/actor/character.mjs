@@ -329,14 +329,6 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  get reach() {
-    // TODO: Fix
-    return 1;
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
   }

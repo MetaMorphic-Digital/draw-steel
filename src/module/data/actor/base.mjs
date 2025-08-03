@@ -192,15 +192,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /* -------------------------------------------------- */
 
   /**
-   * The actor's melee range.
-   */
-  get reach() {
-    return 1;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * The actor's level.
    */
   get level() {
