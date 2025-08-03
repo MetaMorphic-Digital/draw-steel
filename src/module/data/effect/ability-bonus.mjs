@@ -13,6 +13,7 @@ export default class AbilityBonus extends BaseEffectModel {
   static get metadata() {
     return {
       type: "abilityBonus",
+      icon: "fa-solid fa-hand-sparkles",
     };
   }
 

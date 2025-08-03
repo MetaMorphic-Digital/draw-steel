@@ -24,18 +24,13 @@
         <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
         <div class="effect-controls flexrow">
           <a
-            class="effect-control"
-            data-action="createDoc"
-            data-document-class="ActiveEffect"
-            data-origin="{{@root.document.uuid}}"
-            data-img="icons/svg/aura.svg"
+            class="effect-control effect-create"
             {{#if (eq section.type "inactive")}}
             data-disabled="true"
             {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
             {{else if (eq section.type "temporary")}}
             data-system.end.type="turn"
             {{/if}}
-            data-tooltip-text="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"
           >
             <i class="fa-solid fa-plus"></i>
             {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}

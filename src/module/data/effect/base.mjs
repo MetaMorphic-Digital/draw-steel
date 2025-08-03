@@ -3,7 +3,9 @@ import SavingThrowRoll from "../../rolls/saving-throw.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 
-/** @import { DrawSteelChatMessage } from "../../documents/_module.mjs" */
+/**
+ * @import { DrawSteelChatMessage } from "../../documents/_module.mjs"
+ */
 
 /**
  * A data model used by default effects with properties to control the expiration behavior.
@@ -15,6 +17,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   static get metadata() {
     return {
       type: "base",
+      icon: "fa-solid fa-person-rays",
     };
   }
 
