@@ -4,7 +4,6 @@ import { systemPath } from "../../constants.mjs";
  * The Application responsible for configuring a single ActiveEffect document within a parent Actor or Item.
  */
 export default class DrawSteelActiveEffectConfig extends foundry.applications.sheets.ActiveEffectConfig {
-
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["draw-steel"],
@@ -43,6 +42,8 @@ export default class DrawSteelActiveEffectConfig extends foundry.applications.sh
 
     return context;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritDoc */
   async _preparePartContext(partId, context) {

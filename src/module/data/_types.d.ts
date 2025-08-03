@@ -10,6 +10,14 @@ import "./models/_types";
 import "./pseudo-documents/_types";
 import "./settings/_types";
 
+export type AbilityFilters = {
+  keywords: Set<string>;
+};
+
+export type AbilityBonus = Partial<foundry.documents.types.EffectChangeData> & {
+  filters: AbilityFilters;
+};
+
 export type BarAttribute = {
   value: number,
   max: number

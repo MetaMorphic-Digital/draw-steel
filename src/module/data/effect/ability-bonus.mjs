@@ -2,6 +2,10 @@ import BaseEffectModel from "./base.mjs";
 import { setOptions } from "../helpers.mjs";
 
 /**
+ * @import DrawSteelActor from "../../documents/actor.mjs";
+ */
+
+/**
  * An Active Effect subtype that represents bonuses to an actor's abilities.
  */
 export default class AbilityBonus extends BaseEffectModel {
@@ -36,11 +40,12 @@ export default class AbilityBonus extends BaseEffectModel {
 
   /**
    * Apply this ActiveEffect to all abilities on the actor matching the requirements.
-   * @param {Actor} actor                   The Actor to whom this effect should be applied.
+   * @param {DrawSteelActor} actor                   The Actor to whom this effect should be applied.
    * @param {EffectChangeData} change       The change data being applied.
    * @returns {Record<string, *>}           An object of property paths and their updated values.
    */
   apply(actor, change) {
-    console.log(this, actor, change);
+    Object.assign(change, this.filters);
+    actor.system._abilityBonuses.push(change);
   }
 }

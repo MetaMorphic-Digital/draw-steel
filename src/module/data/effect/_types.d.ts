@@ -1,4 +1,5 @@
 import { DrawSteelActiveEffect, DrawSteelCombat } from "../../documents/_module.mjs";
+import { AbilityFilters } from "../_types";
 
 declare module "./base.mjs" {
   export default interface BaseEffectModel {
@@ -7,6 +8,12 @@ declare module "./base.mjs" {
       type: keyof typeof ds["CONFIG"]["effectEnds"] | "";
       roll: string;
     }
+  }
+}
+
+declare module "./ability-bonus.mjs" {
+  export default interface BaseEffectModel {
+    filters: AbilityFilters;
   }
 }
 

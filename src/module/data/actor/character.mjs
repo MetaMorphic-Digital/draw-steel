@@ -4,8 +4,11 @@ import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
-/** @import DrawSteelItem from "../../documents/item.mjs" */
-/** @import ActiveEffectData from "@common/documents/_types.mjs" */
+/**
+ * @import { DamageSchema } from "../item/kit.mjs";
+ * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import ActiveEffectData from "@common/documents/_types.mjs";
+ */
 
 const fields = foundry.data.fields;
 
@@ -95,9 +98,7 @@ export default class CharacterModel extends BaseActorModel {
       disengage: 0,
     };
 
-    /** @typedef {import("../item/kit.mjs").DamageSchema} DamageSchema */
-
-    this.abilityBonuses = {
+    const kitAbilityBonuses = {
       /** @type {{ distance: number, damage?: DamageSchema}} */
       melee: {
         distance: 0,
@@ -118,12 +119,12 @@ export default class CharacterModel extends BaseActorModel {
       const abiBonuses = ["melee.distance", "ranged.distance"];
 
       for (const key of abiBonuses) {
-        const current = foundry.utils.getProperty(this.abilityBonuses, key);
+        const current = foundry.utils.getProperty(kitAbilityBonuses, key);
         const kitValue = foundry.utils.getProperty(bonuses, key);
-        foundry.utils.setProperty(this.abilityBonuses, key, Math.max(current, kitValue));
+        foundry.utils.setProperty(kitAbilityBonuses, key, Math.max(current, kitValue));
       }
 
-      for (const [type, obj] of Object.entries(this.abilityBonuses)) {
+      for (const [type, obj] of Object.entries(kitAbilityBonuses)) {
         if (("damage" in obj) && (this.hero.preferredKit !== kit.id)) continue;
         if (Object.values(bonuses[type].damage).some(v => v)) obj.damage = bonuses[type].damage;
       }
@@ -133,6 +134,24 @@ export default class CharacterModel extends BaseActorModel {
     this.movement.value += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
+
+    for (const keyword of ["melee", "ranged"]) {
+      const bonuses = foundry.utils.flattenObject(kitAbilityBonuses[keyword]);
+      for (const [key, value] of Object.entries(bonuses)) {
+        if (value) {
+          this._abilityBonuses.push({
+            key,
+            value,
+            mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+            priority: 0,
+            filters: {
+              keywords: new Set([keyword]),
+            },
+          });
+        }
+
+      }
+    }
   }
 
   /* -------------------------------------------------- */
