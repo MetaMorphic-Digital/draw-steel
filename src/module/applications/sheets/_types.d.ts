@@ -64,3 +64,10 @@ export interface ActorSheetEquipmentContext {
   equipment: ActorSheetItemContext[];
   showAdd: boolean;
 }
+
+export interface ActorSheetComplicationsContext {
+  label: string;
+  complication: ActorSheetItemContext[];
+  showAdd: boolean;
+  showHeader: boolean;
+}
