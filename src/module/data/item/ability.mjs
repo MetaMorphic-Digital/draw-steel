@@ -120,7 +120,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
-    this._prepareCharacterData();
+    this._applyAbilityBonuses();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -138,7 +138,7 @@ export default class AbilityModel extends BaseItemModel {
    * Adds kit bonuses as native "active effect" like adjustments.
    * @protected
    */
-  _prepareCharacterData() {
+  _applyAbilityBonuses() {
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
 
