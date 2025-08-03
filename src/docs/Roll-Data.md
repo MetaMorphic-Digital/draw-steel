@@ -61,18 +61,6 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Current Victory Points - `@hero.victories`
 + Accumulated XP - `@hero.xp`
 
-### Kit
-The below bonuses come from a kit, but can be addressed this way in any case:
-+ Bonus to Tier 1 Melee damage - `@abilityBonuses.melee.damage.tier1`
-+ Bonus to Tier 2 Melee damage - `@abilityBonuses.melee.damage.tier2`
-+ Bonus to Tier 3 Melee damage - `@abilityBonuses.melee.damage.tier3`
-+ Bonus to Tier 1 Ranged damage - `@abilityBonuses.ranged.damage.tier1`
-+ Bonus to Tier 2 Ranged damage - `@abilityBonuses.ranged.damage.tier2`
-+ Bonus to Tier 3 Ranged damage - `@abilityBonuses.ranged.damage.tier3`
-+ Bonus to melee distance - `@abilityBonuses.melee.distance`
-+ Bonus to ranged distance - `@abilityBonuses.ranged.distance`
-
-
 ### Immunities and Weaknesses
 The below roll data entries work add damage immunities and weaknesses, for example added in effects. The numerical value determines how much of a weakness of immunity the actor has
 
@@ -171,15 +159,6 @@ Value indicates if actor currently has status (1/yes, 0/no)
 
 ### Abilities
 
-+ Ability Bonus on Disengage distance - `@abilityBonuses.disengage`
-+ Ability Bonus on Melee Damage Tier 1 - `@abilityBonuses.melee.damage.tier1`
-+ Ability Bonus on Melee Damage Tier 2 - `@abilityBonuses.melee.damage.tier2`
-+ Ability Bonus on Melee Damage Tier 3 - `@abilityBonuses.melee.damage.tier3`
-+ Ability Bonus on Melee Distance - `@abilityBonuses.melee.distance`
-+ Ability Bonus on Ranged Damage Tier 1 - `@abilityBonuses.ranged.damage.tier1`
-+ Ability Bonus on Ranged Damage Tier 2 - `@abilityBonuses.ranged.damage.tier2`
-+ Ability Bonus on Ranged Damage Tier 3 - `@abilityBonuses.ranged.damage.tier3`
-+ Ability Bonus on Ranged Distance - `@abilityBonuses.ranged.distance`
 + Ability Category - `@item.category`
 + Ability damage display (Melee/Ranged) - `@item.damageDisplay`
 + Ability Story Text - `@item.story`

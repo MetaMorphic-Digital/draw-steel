@@ -660,15 +660,15 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         },
       },
       {
-        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityBonus") }),
-        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityBonus}"></i>`,
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityModifier}"></i>`,
         condition: () => this.isEditable,
         callback: (target) => {
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
-            name: effectClass.defaultName({ parent: this.actor, type: "abilityBonus" }),
+            name: effectClass.defaultName({ parent: this.actor, type: "abilityModifier" }),
             img: "icons/svg/explosion.svg",
-            type: "abilityBonus",
+            type: "abilityModifier",
             origin: this.actor.uuid,
           };
           for (const [dataKey, value] of Object.entries(target.dataset)) {

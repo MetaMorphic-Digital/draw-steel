@@ -12,7 +12,7 @@ export default class AbilityBonus extends BaseEffectModel {
   /** @inheritdoc */
   static get metadata() {
     return {
-      type: "abilityBonus",
+      type: "abilityModifier",
       icon: "fa-solid fa-hand-sparkles",
     };
   }
@@ -20,7 +20,7 @@ export default class AbilityBonus extends BaseEffectModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.ActiveEffect.abilityBonus");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.ActiveEffect.abilityModifier");
 
   /* -------------------------------------------------- */
 

@@ -115,17 +115,17 @@ While there are similarities with roll data, active effects generally lead with 
 >
 ></details>
 
-## Ability Bonus Effects
+## Ability Modifiers
 
-The system includes a subtype of active effect called "Ability Bonus", which will modify abilities that an actor has. This allows non-kit items to apply kit-like bonuses.
+The system includes a subtype of active effect called "Ability Modifier", which apply their changes to all abilities on an actor. This allows non-kit items to apply kit-like bonuses.
 
 ### Filters
 
-Ability bonuses currently support keyword filters. An ability must have all selected keywords to receive the bonus. If an item like a treasure wants to apply bonuses to disjunct sets of keywords, make two copies of the effect (e.g. a bonus to all Magic *or* Psionic abilities).
+Ability modifiers currently support keyword filters. An ability must have all selected keywords to receive the bonus. If an item like a treasure wants to apply bonuses to disjunct sets of keywords, make two copies of the effect (e.g. a bonus to all Magic *or* Psionic abilities).
 
 ### Changes
 
-Ability Bonuses support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
+Ability modifiers support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
 
 |Key|Description|
 |---|-----------|
