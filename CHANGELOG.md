@@ -28,6 +28,7 @@
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
 - Added a Renown and Wealth field to characters. (#279)
 - Added age, height, and weight info to the Biography tab for characters.
+- Added data path for bonuses to max stamina per echelon. (#259)
 - Expanded end of encounter prompt to reset heroic resources & temporary stamina. (#612)
 - Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 - Added a "Next Respite" option for ending Active Effects. (#694)

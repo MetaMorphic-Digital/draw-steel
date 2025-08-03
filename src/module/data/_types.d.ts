@@ -10,11 +10,6 @@ import "./models/_types";
 import "./pseudo-documents/_types";
 import "./settings/_types";
 
-export type BarAttribute = {
-  value: number,
-  max: number
-};
-
 export type SubtypeMetadata = {
   /** The registered document subtype in system.json. */
   type: string;
