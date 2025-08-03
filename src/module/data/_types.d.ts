@@ -18,11 +18,6 @@ export type AbilityBonus = Partial<foundry.documents.types.EffectChangeData> & {
   filters: AbilityFilters;
 };
 
-export type BarAttribute = {
-  value: number,
-  max: number
-};
-
 export type SubtypeMetadata = {
   /** The registered document subtype in system.json. */
   type: string;

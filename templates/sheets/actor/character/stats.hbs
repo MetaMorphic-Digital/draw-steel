@@ -111,6 +111,9 @@
           {{formInput systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
         </div>
       </div>
+      {{#if (gte system.level 10)}}
+      {{formGroup systemFields.hero.fields.epic.fields.value value=system.hero.epic.value dataset=datasets.notSource label=system.hero.epic.label classes="slim"}}
+      {{/if}}
     </div>
   </fieldset>
   {{/if}}

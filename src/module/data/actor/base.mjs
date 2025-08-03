@@ -119,7 +119,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       dsid: new Set(),
     };
 
-    this.stamina.min = 0;
+    Object.assign(this.stamina, {
+      min: 0,
+      bonuses: {
+        echelon: 0,
+      },
+    });
 
     // Teleport speeds are unaffected by conditions and effects
     this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
@@ -130,6 +135,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    // Apply all stamina bonuses before calculating winded
+    this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 

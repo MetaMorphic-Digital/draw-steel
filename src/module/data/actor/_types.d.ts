@@ -1,7 +1,11 @@
 import DrawSteelActor from "../../documents/actor.mjs";
-import { BarAttribute } from "../_types";
 import SizeModel from "../models/size.mjs";
 import SourceModel from "../models/source.mjs";
+
+interface BarAttribute {
+  value: number,
+  max: number
+}
 
 interface Biography {
   value: string;
@@ -32,6 +36,9 @@ declare module "./base.mjs" {
     stamina: BarAttribute & {
       temporary: number;
       winded: number;
+      bonuses: {
+        echelon: number;
+      }
     },
     characteristics: Record<string, { value: number }>;
     combat: {
@@ -74,6 +81,7 @@ declare module "./character.mjs" {
     };
     hero: {
       primary: HeroicResource;
+      epic: HeroicResource;
       xp: number;
       renown: number;
       wealth: number;

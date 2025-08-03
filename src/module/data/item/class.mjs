@@ -40,6 +40,8 @@ export default class ClassModel extends AdvancementModel {
 
     schema.primary = new fields.StringField({ required: true });
 
+    schema.epic = new fields.StringField({ required: true });
+
     schema.turnGain = new FormulaField();
 
     schema.minimum = new FormulaField({ initial: "0" });

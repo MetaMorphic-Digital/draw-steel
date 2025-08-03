@@ -87,6 +87,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Stability|`system.combat.stability`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
+|Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Speed|`system.movement.value`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
