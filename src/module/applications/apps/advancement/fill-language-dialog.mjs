@@ -29,11 +29,14 @@ export default class FillLanguageDialog extends DSApplication {
     this.#advancements = advancements;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["fill-language-dialog"],
     window: {
       title: "DRAW_STEEL.ADVANCEMENT.ISpeakTheirLanguage.title",
+      icon: "fa-solid fa-comment",
     },
     actions: {
       reconfigureAdvancement: this.#reconfigureAdvancement,
@@ -98,8 +101,8 @@ export default class FillLanguageDialog extends DSApplication {
    */
   static async #reconfigureAdvancement(event, target) {
     const uuid = target.closest("[data-uuid]").dataset.uuid;
+    /** @type {LanguageAdvancement} */
     const advancement = await fromUuid(uuid);
     await advancement.reconfigure();
   }
-
 }
