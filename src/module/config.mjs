@@ -801,16 +801,12 @@ DRAW_STEEL.hero = {
     "Compendium.draw-steel.abilities.Item.oxaISpgVoCfo6fmt",
     // Heal
     "Compendium.draw-steel.abilities.Item.2qWHDVB7SBS9anLB",
-    // Hide
-    "Compendium.draw-steel.abilities.Item.JykB1rELpGBeAVe6",
     // Knockback
     "Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu",
     // Melee Free Strike
     "Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6",
     // Ranged Free Strike
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
-    // Search for Hidden Creatures
-    "Compendium.draw-steel.abilities.Item.zQ83mlzlRtflpD3w",
     // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
   ]),

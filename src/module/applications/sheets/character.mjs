@@ -23,6 +23,10 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       modifyItemQuantity: this.#modifyItemQuantity,
       fillLanguage: this.#fillLanguage,
     },
+    position: {
+      // Skills section is visible by default
+      height: 680,
+    },
   };
 
   /* -------------------------------------------------- */

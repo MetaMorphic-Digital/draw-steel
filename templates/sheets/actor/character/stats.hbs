@@ -3,11 +3,23 @@
   {{#if isPlay}}
   <fieldset class="resources flexrow">
     <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
-    <div class="resource stamina">
+    <div class="resource stamina flexcol">
       <label class="resource-label">
-        <a data-action="spendStaminaHeroToken" data-tooltip="DRAW_STEEL.Setting.HeroTokens.RegainStamina.tooltip" data-tooltip-direction="UP">{{systemFields.stamina.label}}</a>
+        {{#if editable}}
+        <button
+          type="button"
+          data-action="spendStaminaHeroToken"
+          data-tooltip="DRAW_STEEL.Setting.HeroTokens.RegainStamina.tooltip"
+          data-tooltip-direction="UP"
+        >
+          <i class="fa-solid fa-circle-bolt"></i>
+          {{systemFields.stamina.label}}
+        </button>
+        {{else}}
+        <span>{{systemFields.stamina.label}}</span>
+        {{/if}}
       </label>
-      <div class="resource-content flexrow">
+      <div class="form-group resource-content">
         <div class="resource-temporary">
           {{formGroup
           systemFields.stamina.fields.temporary
@@ -27,7 +39,7 @@
         <span class="resource-max">
           <div class="form-group stacked">
             <label class="input-placeholder-label">
-              {{systemFields.stamina.fields.max.label}}
+              {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.max.label"}}
             </label>
             <div class="input-placeholder">
               {{system.stamina.max}}
@@ -36,11 +48,23 @@
         </span>
       </div>
     </div>
-    <div class="resource recoveries">
+    <div class="resource recoveries flexcol">
       <label class="resource-label">
-        <a data-action="spendRecovery" data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip" data-tooltip-direction="UP">{{systemFields.recoveries.label}}</a>
+        {{#if editable}}
+        <button
+          type="button"
+          data-action="spendRecovery"
+          data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip"
+          data-tooltip-direction="UP"
+        >
+          <i class="fa-solid fa-heart-pulse"></i>
+          {{systemFields.recoveries.label}}
+        </button>
+        {{else}}
+        <span>{{systemFields.recoveries.label}}</span>
+        {{/if}}
       </label>
-      <div class="resource-content flexrow">
+      <div class="form-group resource-content">
         <div class="resource-current">
           {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
         </div>
@@ -66,15 +90,22 @@
         </span>
       </div>
     </div>
-    <div class="resource heroic">
-      {{#if system.class}}
-      {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label}}
-      {{/if}}
-      <div class="form-group">
-        <label>
-          <a data-action="gainSurges" data-tooltip="DRAW_STEEL.Setting.HeroTokens.GainSurges.tooltip">
+    <div class="resource heroic flexcol">
+      {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label classes="slim"}}
+      <div class="form-group slim">
+        <label class="surges">
+          {{#if editable}}
+          <button
+            type="button"
+            data-action="gainSurges"
+            data-tooltip="DRAW_STEEL.Setting.HeroTokens.GainSurges.tooltip"
+          >
+            <i class="fa-solid fa-circle-bolt"></i>
             {{systemFields.hero.fields.surges.label}}
-          </a>
+          </button>
+          {{else}}
+          <span>{{systemFields.hero.fields.surges.label}}</span>
+          {{/if}}
         </label>
         <div class="form-fields">
           {{formInput systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
@@ -85,7 +116,7 @@
   {{/if}}
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
   {{#if isPlay}}
-  <div class="flexrow">
+  <div class="form-group">
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   </div>
@@ -94,7 +125,7 @@
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   {{/if}}
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
-  <fieldset class="skills flexrow">
+  <fieldset class="skills">
     <legend>{{systemFields.hero.fields.skills.label}}</legend>
     {{#if isPlay}}
     {{skills}}
