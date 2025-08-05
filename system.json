@@ -2,14 +2,17 @@
   "id": "draw-steel",
   "title": "Draw Steel",
   "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
-  "authors": [{
-    "name": "Joseph M.",
-    "url": "https://joseph-meehan.carrd.co/",
-    "discord": "chaosos"
-  }, {
-    "name": "Zhell",
-    "discord": "zhell9201"
-  }],
+  "authors": [
+    {
+      "name": "Joseph M.",
+      "url": "https://joseph-meehan.carrd.co/",
+      "discord": "chaosos"
+    },
+    {
+      "name": "Zhell",
+      "discord": "zhell9201"
+    }
+  ],
   "documentTypes": {
     "Actor": {
       "character": {
@@ -121,11 +124,13 @@
   "readme": "README.md",
   "bugs": "https://github.com/MetaMorphic-Digital/draw-steel/issues",
   "changelog": "CHANGELOG.md",
-  "media": [{
-    "type": "setup",
-    "url": "systems/draw-steel/assets/anvil-impact.png",
-    "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
-  }],
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/draw-steel/assets/anvil-impact.png",
+      "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
+    }
+  ],
   "version": "0.8.0",
   "compatibility": {
     "minimum": "13.346",
@@ -137,11 +142,13 @@
     { "src": "css/draw-steel-variables.css", "layer": "variables" },
     { "src": "css/draw-steel-elements.css", "layer": "elements" }
   ],
-  "languages": [{
-    "lang": "en",
-    "name": "English",
-    "path": "lang/en.json"
-  }],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
   "packs": [
     {
       "name": "ancestries",
@@ -172,13 +179,56 @@
       "name": "journals",
       "label": "DRAW_STEEL.COMPENDIUM.journals",
       "type": "JournalEntry"
+    },
+    {
+      "name": "perks",
+      "label": "DRAW_STEEL.COMPENDIUM.perks",
+      "type": "Item"
+    },
+    {
+      "name": "titles",
+      "label": "DRAW_STEEL.COMPENDIUM.titles",
+      "type": "Item"
+    },
+    {
+      "name": "complications",
+      "label": "DRAW_STEEL.COMPENDIUM.complications",
+      "type": "Item"
+    },
+    {
+      "name": "tables",
+      "label": "DRAW_STEEL.COMPENDIUM.tables",
+      "type": "RollTable"
+    },
+    {
+      "name": "monsters",
+      "label": "DRAW_STEEL.COMPENDIUM.monsters",
+      "type": "Actor"
+    },
+    {
+      "name": "treasures",
+      "label": "DRAW_STEEL.COMPENDIUM.treasures",
+      "type": "Item"
     }
   ],
   "packFolders": [
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["ancestries", "backgrounds", "classes", "kits", "abilities", "journals"]
+      "packs": [
+        "abilities",
+        "ancestries",
+        "backgrounds",
+        "classes",
+        "complications",
+        "journals",
+        "kits",
+        "monsters",
+        "perks",
+        "tables",
+        "titles",
+        "treasures"
+      ]
     }
   ],
   "socket": true,
