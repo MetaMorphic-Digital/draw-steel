@@ -23,7 +23,7 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 15
+      "primary": 5
     },
     "damageDisplay": "melee",
     "target": {
@@ -48,19 +48,19 @@
           "_id": "fYrplP2lLMh1CkGW",
           "damage": {
             "tier1": {
-              "value": "5 + @chr",
+              "value": "3 + @chr",
               "types": [
                 "fire"
               ]
             },
             "tier2": {
-              "value": "7 + @chr",
+              "value": "5 + @chr",
               "types": [
                 "fire"
               ]
             },
             "tier3": {
-              "value": "10 + @chr",
+              "value": "8 + @chr",
               "types": [
                 "fire"
               ]
@@ -71,7 +71,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p><strong>Effect:</strong> One creature or object of your choice within 2 squares of the target takes fire damage equal to the characteristic score used for this ability’s power roll.</p>"
+      "after": "<p>One creature or object of your choice within 2 squares of the target takes fire damage equal to the characteristic score used for this ability’s power roll.</p>"
     },
     "spend": {
       "text": "",
