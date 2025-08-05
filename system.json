@@ -151,23 +151,8 @@
   ],
   "packs": [
     {
-      "name": "ancestries",
-      "label": "DRAW_STEEL.COMPENDIUM.ancestries",
-      "type": "Item"
-    },
-    {
-      "name": "backgrounds",
-      "label": "DRAW_STEEL.COMPENDIUM.backgrounds",
-      "type": "Item"
-    },
-    {
       "name": "classes",
       "label": "DRAW_STEEL.COMPENDIUM.classes",
-      "type": "Item"
-    },
-    {
-      "name": "kits",
-      "label": "DRAW_STEEL.COMPENDIUM.kits",
       "type": "Item"
     },
     {
@@ -181,21 +166,6 @@
       "type": "JournalEntry"
     },
     {
-      "name": "perks",
-      "label": "DRAW_STEEL.COMPENDIUM.perks",
-      "type": "Item"
-    },
-    {
-      "name": "titles",
-      "label": "DRAW_STEEL.COMPENDIUM.titles",
-      "type": "Item"
-    },
-    {
-      "name": "complications",
-      "label": "DRAW_STEEL.COMPENDIUM.complications",
-      "type": "Item"
-    },
-    {
       "name": "tables",
       "label": "DRAW_STEEL.COMPENDIUM.tables",
       "type": "RollTable"
@@ -206,13 +176,18 @@
       "type": "Actor"
     },
     {
-      "name": "projects",
-      "label": "DRAW_STEEL.COMPENDIUM.projects",
+      "name": "origins",
+      "label": "DRAW_STEEL.COMPENDIUM.origins",
       "type": "Item"
     },
     {
-      "name": "treasures",
-      "label": "DRAW_STEEL.COMPENDIUM.treasures",
+      "name": "character-options",
+      "label": "DRAW_STEEL.COMPENDIUM.character-options",
+      "type": "Item"
+    },
+    {
+      "name": "rewards",
+      "label": "DRAW_STEEL.COMPENDIUM.rewards",
       "type": "Item"
     }
   ],
@@ -220,21 +195,7 @@
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": [
-        "abilities",
-        "ancestries",
-        "backgrounds",
-        "classes",
-        "complications",
-        "journals",
-        "kits",
-        "monsters",
-        "perks",
-        "projects",
-        "tables",
-        "titles",
-        "treasures"
-      ]
+      "packs": ["abilities", "classes", "journals", "monsters", "tables", "character-options", "origins", "rewards"]
     }
   ],
   "socket": true,
