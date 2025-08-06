@@ -1,0 +1,84 @@
+{
+  "name": "Sword and Board",
+  "type": "kit",
+  "_id": "NkzAlCFgDeGuTnzr",
+  "img": "icons/equipment/shield/buckler-wooden-boss-steel.webp",
+  "system": {
+    "description": {
+      "value": "<p>The Sword and Board kit doesn’t just give you a shield—it makes the shield part of your offensive arsenal. With a medium weapon in one hand and a block of steel or solid oak in the other, you protect yourself while you control the battlefield.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "sword-and-board",
+    "advancements": {
+      "awk6CThKdV6JXyau": {
+        "name": "Shield Bash",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "awk6CThKdV6JXyau",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qmoH5kdmy0Quwirq"
+          }
+        ]
+      }
+    },
+    "equipment": {
+      "armor": "medium",
+      "weapon": [
+        "medium"
+      ],
+      "shield": true
+    },
+    "bonuses": {
+      "melee": {
+        "damage": {
+          "tier1": 2,
+          "tier2": 2,
+          "tier3": 2
+        },
+        "distance": null
+      },
+      "ranged": {
+        "damage": {
+          "tier1": 0,
+          "tier2": 0,
+          "tier3": 0
+        },
+        "distance": null
+      },
+      "stamina": 9,
+      "speed": null,
+      "stability": 1,
+      "disengage": 1
+    }
+  },
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754416458430,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!NkzAlCFgDeGuTnzr"
+}
