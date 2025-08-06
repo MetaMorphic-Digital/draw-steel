@@ -82,9 +82,12 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /**
    * An alternative to the document delete method, this deletes the item as well as any items that were
    * added as a result of this item's creation via advancements.
+   * @param {Object} options
+   * @param {boolean} [options.replacement=false]   Should the window title indicate that this is a replacement.
+   * @param {boolean} [options.skipDialog=false]    Whether to skip the confirmation dialog, e.g. If there's already been another.
    * @returns {Promise<foundry.documents.Item[]|null>}   A promise that resolves to the deleted items.
    */
-  async advancementDeletionPrompt() {
+  async advancementDeletionPrompt({ replacement = false, skipDialog = false } = {}) {
     if (!this.isEmbedded) {
       throw new Error("You cannot prompt for deletion of advancements of an unowned item.");
     }
@@ -106,14 +109,21 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       }
     }
 
-    const confirm = await ds.applications.api.DSDialog.confirm({
-      content,
-      window: {
-        icon: "fa-solid fa-trash",
-        title: `${game.i18n.format("DOCUMENT.Delete", { type: this.name })}`,
-      },
-    });
-    if (!confirm) return;
+    if (!skipDialog) {
+      const title = game.i18n.format(
+        replacement ? "DRAW_STEEL.ADVANCEMENT.DeleteDialog.ReplaceTitle" : "DOCUMENT.Delete",
+        { type: this.name },
+      );
+      const confirm = await ds.applications.api.DSDialog.confirm({
+        content,
+        window: {
+          title,
+          icon: "fa-solid fa-trash",
+        },
+      });
+      if (!confirm) return;
+    }
+
     return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
   }
 }
