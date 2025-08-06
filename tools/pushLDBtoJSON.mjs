@@ -73,10 +73,18 @@ async function transformEntry(entry) {
     modifiedTime: null,
     lastModifiedBy: null,
   });
+  // Remove module flags
+  for (const key of Object.keys(entry.flags)) if (key !== "draw-steel") delete entry.flags[key];
+  // Fix ownership (folders don't have ownership)
+  if (!entry._key.startsWith("!folders")) entry.ownership = { default: 0 };
+
   // Update if we ever start including other document types, e.g. Adventures
   for (const embeddedCollection of ["items", "effects", "pages"]) {
     if (entry[embeddedCollection]) {
-      for (const e of entry[embeddedCollection]) Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
+      for (const e of entry[embeddedCollection]) {
+        Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
+        if (e["effects"]) for (const grandchild of e["effects"]) Object.assign(grandchild, { modifiedTime: null, lastModifiedBy: null });
+      }
     }
   }
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
