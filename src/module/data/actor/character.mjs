@@ -401,7 +401,7 @@ export default class CharacterModel extends BaseActorModel {
    * Returns the total xp required for the next level.
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return Infinity;
     return ds.CONFIG.hero.xp_track[this.level];
   }
 
