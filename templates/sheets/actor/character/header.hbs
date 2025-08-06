@@ -78,15 +78,19 @@
       <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
       <dd class="xp">
         <span class="resource-curent">{{system.hero.xp}}</span>
+        {{#if system.nextLevelXP}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.nextLevelXP}}</span>
+        {{/if}}
       </dd>
 
       <dt>{{systemFields.hero.fields.victories.label}}</dt>
       <dd>
         <span class="resource-current">{{system.hero.victories}}</span>
+        {{#if system.victoriesMax}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.victoriesMax}}</span>
+        {{/if}}
       </dd>
       {{/if}}
     </dl>
