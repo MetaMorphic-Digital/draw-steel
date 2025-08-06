@@ -79,6 +79,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   async _preparePartContext(partId, context, options) {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
+      case "header":
+        context.showLevelUp = (this.actor.system.hero.xp > (this.actor.system.nextLevelXP ?? Infinity));
+        break;
       case "stats":
         context.skills = this._getSkillList();
         break;

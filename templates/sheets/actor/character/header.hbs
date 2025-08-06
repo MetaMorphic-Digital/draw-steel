@@ -64,7 +64,8 @@
     <dl>
       <dt class="level">{{localize "DRAW_STEEL.Item.class.FIELDS.level.label"}}</dt>
       <dd class="level">
-        {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
+        {{log this}}
+        {{#if showLevelUp}}
         <button type="button" {{disabled (not editable)}} data-action="levelUp" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
           {{system.level}}
           <i class="fa-solid fa-up-long"></i>
