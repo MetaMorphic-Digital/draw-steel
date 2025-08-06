@@ -1,9 +1,9 @@
 {
-  "folder": "SNTVv8Z0uNTC8Wab",
-  "name": "Devil Culture",
+  "folder": "nD7JFE93WSpXnadB",
+  "name": "Monastic order",
   "type": "culture",
-  "_id": "8wbziVKFMsQASWEz",
-  "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+  "_id": "KevwxXx1wAuQJxCc",
+  "img": "icons/environment/people/cleric-grey.webp",
   "system": {
     "description": {
       "value": "",
@@ -15,26 +15,36 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "devil-culture",
+    "_dsid": "monastic-order",
     "advancements": {
-      "68txRgawYVc98lcY": {
+      "anyLang000000000": {
         "type": "language",
-        "_id": "68txRgawYVc98lcY",
-        "name": "Language",
-        "languages": [
-          "anjali"
-        ],
-        "img": null,
-        "description": "",
+        "chooseN": 1,
+        "name": "Any Language",
+        "description": "<p>You know the language of your chosen culture.</p>",
         "requirements": {
           "level": null
         },
-        "chooseN": null
+        "_id": "anyLang000000000",
+        "img": null,
+        "languages": []
       },
-      "3ePHqlbaaZpxGvKk": {
+      "NgAXaZ3RLVxtlQ0R": {
         "type": "skill",
-        "_id": "3ePHqlbaaZpxGvKk",
-        "name": "Urban",
+        "name": "Secluded",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "lore"
+          ],
+          "choices": []
+        },
+        "_id": "NgAXaZ3RLVxtlQ0R"
+      },
+      "RuRRdUi8BJMGFRyV": {
+        "type": "skill",
+        "name": "Bureaucratic",
         "chooseN": 1,
         "skills": {
           "groups": [
@@ -43,46 +53,19 @@
           ],
           "choices": []
         },
-        "img": null,
-        "description": "",
-        "requirements": {
-          "level": null
-        }
+        "_id": "RuRRdUi8BJMGFRyV"
       },
-      "ntysmrEIQ8Yky6AD": {
+      "NtEGlqGoqCegfjYx": {
         "type": "skill",
-        "_id": "ntysmrEIQ8Yky6AD",
-        "name": "Bureacratic",
-        "skills": {
-          "groups": [
-            "interpersonal",
-            "intrigue"
-          ],
-          "choices": []
-        },
-        "chooseN": 1,
-        "img": null,
-        "description": "",
-        "requirements": {
-          "level": null
-        }
-      },
-      "ccY6542d4OHpNEcy": {
-        "type": "skill",
-        "_id": "ccY6542d4OHpNEcy",
         "name": "Academic",
+        "chooseN": 1,
         "skills": {
           "groups": [
             "lore"
           ],
           "choices": []
         },
-        "chooseN": 1,
-        "img": null,
-        "description": "",
-        "requirements": {
-          "level": null
-        }
+        "_id": "NtEGlqGoqCegfjYx"
       }
     }
   },
@@ -90,8 +73,7 @@
   "sort": 0,
   "ownership": {
     "default": 0,
-    "cpRCYfteS3IEfu8O": 3,
-    "dvov5uFd7VVMcuAv": 3
+    "whGCKogBJnD2ehjg": 3
   },
   "flags": {},
   "_stats": {
@@ -101,9 +83,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754426091157,
+    "createdTime": 1754485369058,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!8wbziVKFMsQASWEz"
+  "_key": "!items!KevwxXx1wAuQJxCc"
 }
