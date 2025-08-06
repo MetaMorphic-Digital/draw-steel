@@ -6,7 +6,7 @@
   "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
   "system": {
     "description": {
-      "value": "",
+      "value": "<h2>Devil Traits</h2><p>Devil heroes have access to the following traits.</p><p></p><h4>Signature Trait: @UUID[Compendium.draw-steel.origins.Item.Ch6TwaIZ8MxXYzbn]{Silver Tongue}</h4><p>Your innate magic allows you to twist how your words are perceived to get a better read on people and convince them to see things your way. You have one skill of your choice from the interpersonal skill group (see Skills in Chapter 9: Tests), and you gain an edge on tests when attempting to discover an NPC’s motivations and pitfalls during a negotiation (see Chapter 11: Negotiation).</p><h4>Purchased Devil Traits</h4><p>You have 3 ancestry points to spend on the following traits. (Quick Build: Beast Legs, Impressive Horns.)</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.HZ79OavAF7SpzMYt]{Barbed Tail (1 Point)}</h4><p>Your pointy tail allows you to punctuate all your actions. Once per round when you make a melee strike, you can deal extra damage with the strike equal to your highest characteristic score.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.IWD4Pua2f8rKLLY3]{Beast Legs (1 Point)}</h4><p>Your powerful legs make you faster. You have speed 6.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.npLTlAWa8PqdUN0N]{Glowing Eyes (1 Point)}</h4><p>Your eyes are a solid, vibrant color that flares to show your excitement or rage. Whenever you take damage from a creature, you can use a triggered action to deal that creature psychic damage equal to 1d10 + your level.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.2UBV1KK9O20000ty]{Hellsight (1 Point)}</h4><p>Your eyes let you see through darkness, fog, and other obscuring effects. You don’t take a bane on strikes made against creatures with concealment.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.YK7TDv4d7ZgODY3U]{Impressive Horns (2 Points)}</h4><p>Your cherished horns are larger than the average devil’s, and a hardened representation of your force of will. Whenever you make a saving throw, you succeed on a roll of 5 or higher.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.nXmsu9ClzQpdQE0e]{Prehensile Tail (2 Points)}</h4><p>Your prehensile tail allows you to challenge foes on all sides. You can’t be flanked.</p><p></p><h4>@UUID[Compendium.draw-steel.origins.Item.J3ctTvIiRbzAEDw1]{Wings (2 Points)}</h4><p>You possess wings powerful enough to take you airborne. While using your wings to fly, you can stay aloft for a number of rounds equal to your Might score (minimum 1 round) before you fall. While using your wings to fly at 3rd level or lower, you have damage weakness 5.</p>",
       "director": ""
     },
     "source": {
@@ -23,7 +23,7 @@
         "name": "Signature Trait",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.ancestries.Item.Ch6TwaIZ8MxXYzbn"
+            "uuid": "Compendium.draw-steel.origins.Item.Ch6TwaIZ8MxXYzbn"
           }
         ],
         "img": null,
@@ -31,7 +31,41 @@
         "requirements": {
           "level": null
         },
-        "chooseN": null
+        "chooseN": 1
+      },
+      "zIAWcD9qtXaPNX58": {
+        "name": "Purchased Devil Traits",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "zIAWcD9qtXaPNX58",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.HZ79OavAF7SpzMYt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.IWD4Pua2f8rKLLY3"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.npLTlAWa8PqdUN0N"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.2UBV1KK9O20000ty"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.YK7TDv4d7ZgODY3U"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.nXmsu9ClzQpdQE0e"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.J3ctTvIiRbzAEDw1"
+          }
+        ],
+        "chooseN": 3,
+        "description": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">You have 3 ancestry points to spend on the following traits.</span></p>"
       }
     }
   },
