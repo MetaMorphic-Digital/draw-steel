@@ -1,0 +1,111 @@
+{
+  "name": "Unmooring",
+  "type": "ability",
+  "img": "icons/skills/melee/sword-engraved-glow-purple.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "unmooring",
+    "story": "Your weapon unleashes psionic energy that reduces your target’s weight.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "reason",
+          "intuition",
+          "presence"
+        ]
+      },
+      "effects": {
+        "R9zctOREjtLxuFoJ": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "R9zctOREjtLxuFoJ",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "6 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "9 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Until the end of the target’s next turn, any forced movement that affects the target has its distance increased by 2.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "folder": "9MmUCFDVEUEgDY04",
+  "ownership": {
+    "default": 0,
+    "dvov5uFd7VVMcuAv": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754341917119,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "a8GtSVHtRJXKObRj",
+  "sort": 400000,
+  "_key": "!items!a8GtSVHtRJXKObRj"
+}

@@ -6,7 +6,7 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs";
- * @import { ActorSheetItemContext, ActorSheetEquipmentContext } from "./_types.js";
+ * @import { ActorSheetItemContext, ActorSheetEquipmentContext, ActorSheetComplicationsContext } from "./_types.js";
  */
 
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
@@ -47,7 +47,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/sheets/actor/shared/features.hbs"),
+      template: systemPath("templates/sheets/actor/character/features.hbs"),
+      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
     equipment: {
@@ -81,6 +82,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "stats":
         context.skills = this._getSkillList();
+        break;
+      case "features":
+        context.complications = await this._prepareComplicationsContext();
         break;
       case "equipment":
         context.kits = await this._prepareKitsContext();
@@ -175,6 +179,30 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       for (const [key, value] of Object.entries(context)) {
         if (!value.equipment.length) delete context[key];
       }
+    }
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepare the context for complication items.
+   */
+  async _prepareComplicationsContext() {
+    const complications = this.actor.itemTypes.complication.toSorted((a, b) => a.sort - b.sort);
+
+    /** @type {ActorSheetComplicationsContext} */
+    const context = {
+      label: game.i18n.localize("TYPES.Item.complication"),
+      complications: [],
+      showAdd: this.isEditMode,
+      showHeader: complications.length || this.isEditMode,
+    };
+
+    // Prepare the context for each individual complication item
+    for (const item of complications) {
+      context.complications.push(await this._prepareItemContext(item));
     }
 
     return context;

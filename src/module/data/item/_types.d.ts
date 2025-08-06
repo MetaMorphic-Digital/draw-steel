@@ -105,6 +105,7 @@ declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
+    epic: string;
     turnGain: string;
     minimum: string;
     characteristics: {

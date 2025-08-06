@@ -4,7 +4,7 @@
   "img": "icons/skills/melee/strike-weapons-orange.webp",
   "system": {
     "description": {
-      "value": "<p>Strategist. Defender. Leader. With sword in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can. </p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks.</p>",
+      "value": "<p>Strategist. Defender. Leader. With weapon in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can.</p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks, even as you leave your enemies struggling to respond.</p>",
       "director": ""
     },
     "advancements": {
@@ -50,7 +50,8 @@
           "choices": [
             "lead"
           ]
-        }
+        },
+        "description": "<p>You gain the Lead skill.</p>"
       },
       "lffZjjuNWAvfmliT": {
         "name": "Skill Choices",
@@ -78,7 +79,8 @@
             "exploration"
           ]
         },
-        "chooseN": 2
+        "chooseN": 2,
+        "description": "<p>Then choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group.</p>"
       },
       "MP2iZkK0a0TBrk2f": {
         "name": "Mark",
@@ -111,8 +113,8 @@
       }
     },
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "174",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -129,10 +131,11 @@
     },
     "stamina": {
       "starting": 21,
-      "level": 12
+      "level": 9
     },
     "recoveries": 10,
-    "kits": 2
+    "kits": 2,
+    "epic": "Command"
   },
   "effects": [],
   "folder": "kCN3c3aC6ziHDp5c",
