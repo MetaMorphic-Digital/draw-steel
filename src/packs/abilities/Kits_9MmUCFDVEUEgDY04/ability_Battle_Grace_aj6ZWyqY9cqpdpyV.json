@@ -1,0 +1,104 @@
+{
+  "folder": "9MmUCFDVEUEgDY04",
+  "name": "Battle Grace",
+  "type": "ability",
+  "_id": "aj6ZWyqY9cqpdpyV",
+  "img": "icons/weapons/fist/fist-knuckles-brass.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "battle-grace",
+    "story": "You feint to move your enemies into perfect position.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility"
+        ]
+      },
+      "effects": {
+        "EOsCDcdiELdqs420": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "EOsCDcdiELdqs420",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "MtvQXRMrO2CgPem0": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "MtvQXRMrO2CgPem0",
+          "applied": {
+            "tier2": {
+              "display": "you can swap places with the target"
+            },
+            "tier3": {
+              "display": "you can swap places with the target"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If you obtain a tier 2 or tier 3 outcome and can’t swap places with the target because one or both of you is too big to fit into the swapped space, you both remain in your original spaces and the target takes 1 extra damage</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754361020219,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!aj6ZWyqY9cqpdpyV"
+}
