@@ -90,7 +90,8 @@ Specific notes by type:
 - Not having a subtype is perfectly reasonable, many features are neither perks nor titles.
 - Titles should be replicated for each of their descendant options, e.g. `Ratcatcher: Come Out to Play`, `Ratcatcher: Deadly and Big`, and `Ratcatcher: Everybody Move!` each with the `_dsid` of `ratcatcher`.
 
-<!-- Kit -->
+**Kit**
+- Keep in mind that the book's abilities already include the kit bonus, so the ones in the compendium should *not* include the kit bonus to avoid double-counting.
 
 <!-- Project -->
 
