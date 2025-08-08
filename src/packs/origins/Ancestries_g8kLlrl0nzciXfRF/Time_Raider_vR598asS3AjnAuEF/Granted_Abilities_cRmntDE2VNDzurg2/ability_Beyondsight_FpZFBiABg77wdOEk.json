@@ -1,34 +1,29 @@
 {
-  "folder": "FACFQjxnOrP1RX5o",
-  "name": "Minor Acceleration (ability)",
+  "folder": "cRmntDE2VNDzurg2",
+  "name": "Beyondsight",
   "type": "ability",
-  "_id": "sSWcFde8OLkWgksg",
-  "img": "icons/magic/control/debuff-energy-hold-teal-blue.webp",
+  "_id": "FpZFBiABg77wdOEk",
+  "img": "icons/magic/perception/eye-slit-orange.webp",
   "system": {
     "source": {
-      "book": "Heroes",
-      "page": "50",
-      "license": "Draw Steel Creators License",
+      "book": "",
+      "page": "",
+      "license": "",
       "revision": 1
     },
-    "_dsid": "minor-acceleration-ability",
-    "story": "You fill yourself or an ally with a burst of speed",
-    "keywords": [
-      "melee",
-      "psionic"
-    ],
+    "_dsid": "beyondsight-ability",
+    "story": "",
+    "keywords": [],
     "type": "maneuver",
-    "category": "signature",
+    "category": "",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "melee",
-      "primary": 1
+      "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
-      "value": 1
+      "type": "self"
     },
     "power": {
       "roll": {
@@ -39,7 +34,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>The target gains a bonus to speed equal to your Reason, Intuition, or Presence score (your choice) until the start of your next turn.</p>"
+      "after": "<p>As a maneuver, you can adjust your vision to allow you to see through mundane obstructions that are 1 square thick or less. While your vision is adjusted this way, you can’t see the area within 1 square of you and you don’t have line of effect to any creature or object in that area. You can restore your usual vision as a maneuver.</p>"
     },
     "spend": {
       "text": "",
@@ -47,7 +42,7 @@
     }
   },
   "effects": [],
-  "sort": 1000000,
+  "sort": 400000,
   "ownership": {
     "default": 0,
     "VZi5vh2ClmBymSIC": 3
@@ -60,9 +55,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754630190057,
+    "createdTime": 1754630639349,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!sSWcFde8OLkWgksg"
+  "_key": "!items!FpZFBiABg77wdOEk"
 }

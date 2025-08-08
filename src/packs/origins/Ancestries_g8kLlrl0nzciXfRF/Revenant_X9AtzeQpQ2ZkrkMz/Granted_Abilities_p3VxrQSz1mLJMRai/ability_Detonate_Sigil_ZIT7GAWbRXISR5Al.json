@@ -1,20 +1,20 @@
 {
-  "folder": "FACFQjxnOrP1RX5o",
-  "name": "Concussive Slam (ability)",
+  "folder": "p3VxrQSz1mLJMRai",
+  "name": "Detonate Sigil",
   "type": "ability",
-  "_id": "FRPORMdCeEONySxL",
-  "img": "icons/magic/control/energy-stream-link-blue.webp",
+  "_id": "ZIT7GAWbRXISR5Al",
+  "img": "icons/magic/symbols/rune-sigil-red-orange.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "50",
+      "page": "47",
       "license": "Draw Steel Creators License",
       "revision": 1
     },
-    "_dsid": "concussive-slam-ability",
-    "story": "You slam an invisible force down upon the target.",
+    "_dsid": "detonate-sigil-ability",
+    "story": "A magic sigil you placed on a creature explodes with energy.",
     "keywords": [
-      "psionic",
+      "magic",
       "ranged",
       "strike"
     ],
@@ -28,7 +28,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creatureObject",
+      "type": "creature",
       "value": 1
     },
     "power": {
@@ -41,12 +41,15 @@
         ]
       },
       "effects": {
-        "O0oqBRawI1CmWlu5": {
+        "oOCHoyWnHjsUBBrJ": {
           "name": "",
           "img": null,
           "type": "damage",
-          "_id": "O0oqBRawI1CmWlu5",
+          "_id": "oOCHoyWnHjsUBBrJ",
           "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
             "tier2": {
               "value": "5 + @chr"
             },
@@ -55,31 +58,28 @@
             }
           }
         },
-        "vT0GlOzfvjAUxakK": {
+        "ILXHZgsUsHtgXIzB": {
           "name": "",
           "img": null,
           "type": "forced",
-          "_id": "vT0GlOzfvjAUxakK",
+          "_id": "ILXHZgsUsHtgXIzB",
           "forced": {
             "tier1": {
-              "distance": ""
+              "movement": [
+                "slide"
+              ]
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "2"
             },
             "tier3": {
-              "distance": "2"
-            }
-          }
-        },
-        "xZj2sEiKQnyUNAXC": {
-          "name": "",
-          "img": null,
-          "type": "applied",
-          "_id": "xZj2sEiKQnyUNAXC",
-          "applied": {
-            "tier3": {
-              "display": "{{potency}}, prone",
-              "potency": {
-                "characteristic": "might"
-              }
+              "movement": [
+                "slide"
+              ],
+              "distance": "3"
             }
           }
         }
@@ -87,7 +87,7 @@
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>The sigil disappears from the creature.</p>"
     },
     "spend": {
       "text": "",
@@ -95,7 +95,7 @@
     }
   },
   "effects": [],
-  "sort": 800000,
+  "sort": 200000,
   "ownership": {
     "default": 0,
     "VZi5vh2ClmBymSIC": 3
@@ -108,9 +108,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754630162821,
+    "createdTime": 1754628436984,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!FRPORMdCeEONySxL"
+  "_key": "!items!ZIT7GAWbRXISR5Al"
 }
