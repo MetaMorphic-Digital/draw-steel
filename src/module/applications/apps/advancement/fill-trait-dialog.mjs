@@ -19,20 +19,21 @@ export default class FillTraitDialog extends DSApplication {
   /**
    * @param {ApplicationConfiguration & FillTraitDialogOptions} options
    */
-  constructor({ advancements, ...options }) {
-    if (!advancements) {
+  constructor(options) {
+    if (!options.advancements) {
       throw new Error("The trait fill dialog was constructed without Chains.");
     }
 
     super(options);
 
-    this.#advancements = advancements;
+    this.#advancements = options.advancements;
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
+    id: "fill-trait-{id}",
     classes: ["fill-trait-dialog"],
     window: {
       title: "DRAW_STEEL.ADVANCEMENT.FillTrait.title",
@@ -66,6 +67,22 @@ export default class FillTraitDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  /** @inheritDoc */
+  _initializeApplicationOptions(options) {
+    options = super._initializeApplicationOptions(options);
+    /**
+     * All advancements should share a common actor and type, so only need to grab the first for that info .
+     * @type {TraitAdvancement}
+     */
+    const sampleAdvancement = options.advancements.first();
+    const suffix = sampleAdvancement.document.actor.uuid.replaceAll(".", "-");
+    // prevents opening multiple copies of this dialog for a given trait
+    options.uniqueId = `${sampleAdvancement.type}-${suffix}`;
+    return options;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(options) {
     const items = {};
@@ -82,7 +99,7 @@ export default class FillTraitDialog extends DSApplication {
         img: model.img,
         uuid: model.uuid,
       };
-      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
+      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: item });
       items[item.id].advancements.push(advancementContext);
     }
 
