@@ -74,7 +74,7 @@ async function transformEntry(entry) {
     lastModifiedBy: null,
   });
   // Remove module flags
-  for (const key of Object.keys(entry.flags)) if (key !== "draw-steel") delete entry.flags[key];
+  for (const key of Object.keys(entry.flags)) if (!["core", "draw-steel"].includes(key)) delete entry.flags[key];
   // Fix ownership (folders don't have ownership)
   if (!entry._key.startsWith("!folders")) entry.ownership = { default: 0 };
 
