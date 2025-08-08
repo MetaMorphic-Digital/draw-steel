@@ -1,0 +1,124 @@
+{
+  "folder": "FACFQjxnOrP1RX5o",
+  "name": "Psionic  Bolt (ability)",
+  "type": "ability",
+  "_id": "NtmaR1wzwRtMt5LZ",
+  "img": "icons/magic/control/energy-stream-link-large-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "50",
+      "license": "Draw Steel Creators License",
+      "revision": 1
+    },
+    "_dsid": "psionic-bolt-ability",
+    "story": "You shoot forth a purple beam of psychic force that moves your target.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason",
+          "intuition",
+          "presence"
+        ]
+      },
+      "effects": {
+        "wkv0tPE5yqRHqqfB": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "wkv0tPE5yqRHqqfB",
+          "damage": {
+            "tier1": {
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "5 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "7 + @chr",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "rMky8NEk4b4yPcl6": {
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "rMky8NEk4b4yPcl6",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "slide"
+              ]
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "2"
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "3"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 900000,
+  "ownership": {
+    "default": 0,
+    "VZi5vh2ClmBymSIC": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754630178694,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!NtmaR1wzwRtMt5LZ"
+}
