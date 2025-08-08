@@ -409,6 +409,16 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
+   * Returns if this actor can level up.
+   * @type {boolean}
+   */
+  get advancementReady() {
+    return this.hero.xp > (this.nextLevelXP ?? Infinity);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Returns the number of victories required to ascend to the next level.
    */
   get victoriesMax() {
