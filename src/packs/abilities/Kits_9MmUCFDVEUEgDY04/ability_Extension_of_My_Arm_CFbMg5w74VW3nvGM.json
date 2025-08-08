@@ -1,0 +1,124 @@
+{
+  "folder": "9MmUCFDVEUEgDY04",
+  "name": "Extension of My Arm",
+  "type": "ability",
+  "_id": "CFbMg5w74VW3nvGM",
+  "img": "icons/skills/melee/strike-flail-spiked-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "224",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "extension-of-my-arm",
+    "story": "When you draw your whip back after an attack, your enemy is drawn ever closer",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility"
+        ]
+      },
+      "effects": {
+        "ilwvOSeCikrmqdXn": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "ilwvOSeCikrmqdXn",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "xUFQM2onRFudgQye": {
+          "name": "Pull",
+          "img": null,
+          "type": "forced",
+          "_id": "xUFQM2onRFudgQye",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ]
+            },
+            "tier2": {
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "2"
+            },
+            "tier3": {
+              "movement": [
+                "pull"
+              ],
+              "distance": "3",
+              "properties": [
+                "vertical"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754449048284,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!CFbMg5w74VW3nvGM"
+}
