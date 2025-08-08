@@ -64,7 +64,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     const hasOneGrant = (this.pool.length === 1);
     if (hasDefaultImage & hasOneGrant) {
       const indexEntry = fromUuidSync(this.pool[0].uuid);
-      this.img = indexEntry.img;
+      if (indexEntry) this.img = indexEntry.img;
     }
   }
 
