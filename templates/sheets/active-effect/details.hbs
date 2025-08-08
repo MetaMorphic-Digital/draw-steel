@@ -3,7 +3,7 @@
   {{#if systemFields.filters}}
   <fieldset class="filters">
     <legend>{{localize "DRAW_STEEL.ActiveEffect.Filters"}}</legend>
-    {{formGroup systemFields.filters.fields.keywords value=system.filters.keywords options=keywordOptions}}
+    {{formGroup systemFields.filters.fields.keywords value=source.system.filters.keywords options=keywordOptions}}
   </fieldset>
   {{/if}}
   {{formGroup fields.description value=source.description rootId=rootId}}
