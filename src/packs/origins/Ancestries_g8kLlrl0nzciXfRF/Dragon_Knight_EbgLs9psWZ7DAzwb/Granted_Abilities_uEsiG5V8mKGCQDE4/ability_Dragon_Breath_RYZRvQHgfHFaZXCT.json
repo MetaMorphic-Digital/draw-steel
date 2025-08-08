@@ -1,9 +1,9 @@
 {
-  "folder": "YvziC9ysJqSFn1bb",
-  "name": "Draconian Pride (ability)",
+  "folder": "uEsiG5V8mKGCQDE4",
+  "name": "Dragon Breath",
   "type": "ability",
-  "_id": "5LER6qhbgk5ycv89",
-  "img": "icons/skills/social/intimidation-impressing.webp",
+  "_id": "RYZRvQHgfHFaZXCT",
+  "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
   "system": {
     "source": {
       "book": "Heroes",
@@ -11,8 +11,8 @@
       "license": "Draw Steel Creators License",
       "revision": 1
     },
-    "_dsid": "draconian-pride",
-    "story": "You let loose a mighty roar to shake your foes' spirits.",
+    "_dsid": "dragon-breath",
+    "story": "A furious exhalation of energy washes over your foes.",
     "keywords": [
       "area",
       "magic"
@@ -22,8 +22,9 @@
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "burst",
-      "primary": 1
+      "type": "cube",
+      "primary": 3,
+      "secondary": 1
     },
     "damageDisplay": "melee",
     "target": {
@@ -39,32 +40,20 @@
         ]
       },
       "effects": {
-        "4IgQ5ERX83f2Kocs": {
+        "rn1UmW2cUbNkLMFd": {
           "name": "",
           "img": null,
           "type": "damage",
-          "_id": "4IgQ5ERX83f2Kocs",
+          "_id": "rn1UmW2cUbNkLMFd",
           "damage": {
-            "tier2": {
-              "value": "5 + @chr"
-            },
-            "tier3": {
-              "value": "7 + @chr"
-            }
-          }
-        },
-        "JNMefpRygVAOndOx": {
-          "name": "",
-          "img": null,
-          "type": "forced",
-          "_id": "JNMefpRygVAOndOx",
-          "forced": {
-            "tier3": {
-              "distance": "2"
-            },
             "tier1": {
-              "distance": "",
-              "movement": []
+              "value": "2"
+            },
+            "tier2": {
+              "value": "4"
+            },
+            "tier3": {
+              "value": "6"
             }
           }
         }
@@ -72,7 +61,7 @@
     },
     "effect": {
       "before": "",
-      "after": ""
+      "after": "<p>You choose the ability's damage type from acid, cold, corruption, fire, lightning, or poison.</p>"
     },
     "spend": {
       "text": "",
@@ -80,7 +69,7 @@
     }
   },
   "effects": [],
-  "sort": 250000,
+  "sort": 200000,
   "ownership": {
     "default": 0,
     "VZi5vh2ClmBymSIC": 3
@@ -93,9 +82,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754524026080,
+    "createdTime": 1754524603111,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!5LER6qhbgk5ycv89"
+  "_key": "!items!RYZRvQHgfHFaZXCT"
 }
