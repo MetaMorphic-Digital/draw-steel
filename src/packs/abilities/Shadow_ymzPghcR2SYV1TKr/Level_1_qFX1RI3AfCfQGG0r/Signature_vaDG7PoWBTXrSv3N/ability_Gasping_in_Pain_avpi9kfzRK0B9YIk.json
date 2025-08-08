@@ -1,0 +1,181 @@
+{
+  "name": "Gasping in Pain",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "163",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "gasping-in-pain",
+    "story": "Your precise strikes let your allies take advantage of a target’s agony.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "QEp70zgOT7JvvAsj": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "QEp70zgOT7JvvAsj",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "5 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "8 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "ZDAkGVNcvWDeydrN": {
+          "name": "Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "ZDAkGVNcvWDeydrN",
+          "applied": {
+            "tier1": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": "intuition"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>One ally within 5 squares of the target gains 1 surge.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/svg/item-bag.svg",
+      "transfer": false,
+      "_id": "ZHEKuOicVxYamG0Q",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!avpi9kfzRK0B9YIk.ZHEKuOicVxYamG0Q"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754652138162,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0,
+    "whGCKogBJnD2ehjg": 3
+  },
+  "folder": "vaDG7PoWBTXrSv3N",
+  "_id": "avpi9kfzRK0B9YIk",
+  "sort": 100000,
+  "_key": "!items!avpi9kfzRK0B9YIk"
+}

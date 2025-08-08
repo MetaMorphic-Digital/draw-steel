@@ -1,0 +1,109 @@
+{
+  "name": "Teamwork Has Its Place",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "163",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "teamwork-has-its-place",
+    "story": "You attack an enemy as an ally exposes their weakness.",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "LSya3EucBwfM9AhF": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "LSya3EucBwfM9AhF",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "6 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "9 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>If any ally is adjacent to the target, you gain 1 surge before making the power roll.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754652141402,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0,
+    "whGCKogBJnD2ehjg": 3
+  },
+  "folder": "vaDG7PoWBTXrSv3N",
+  "_id": "7iEVcJVYLoDe49Cs",
+  "sort": 200000,
+  "_key": "!items!7iEVcJVYLoDe49Cs"
+}

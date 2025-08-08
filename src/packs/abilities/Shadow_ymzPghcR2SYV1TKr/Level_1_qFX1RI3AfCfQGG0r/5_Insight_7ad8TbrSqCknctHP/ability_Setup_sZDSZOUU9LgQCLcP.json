@@ -1,0 +1,112 @@
+{
+  "folder": "7ad8TbrSqCknctHP",
+  "name": "Setup",
+  "type": "ability",
+  "_id": "sZDSZOUU9LgQCLcP",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "164",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "setup",
+    "story": "Your friends will thank you.",
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "t8iRG5mpyr4cbhsy": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "t8iRG5mpyr4cbhsy",
+          "damage": {
+            "tier1": {
+              "value": "6 + @chr"
+            },
+            "tier2": {
+              "value": "9 + @chr"
+            },
+            "tier3": {
+              "value": "13 + @chr"
+            }
+          }
+        },
+        "hAxcmYNAUDBvbagb": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "hAxcmYNAUDBvbagb",
+          "other": {
+            "tier1": {
+              "potency": {
+                "characteristic": "reason"
+              },
+              "display": "{{potency}}, the target has damage weakness 5 (save ends)"
+            },
+            "tier2": {
+              "display": "{{potency}}, the target has damage weakness 5 (save ends)"
+            },
+            "tier3": {
+              "display": "{{potency}}, the target has damage weakness 5 (save ends)",
+              "potency": {
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "whGCKogBJnD2ehjg": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754654362675,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!sZDSZOUU9LgQCLcP"
+}
