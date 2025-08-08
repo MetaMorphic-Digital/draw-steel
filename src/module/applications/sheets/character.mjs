@@ -14,6 +14,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     classes: ["character"],
     actions: {
       addOrigin: this.#addOrigin,
+      levelUp: this.#levelUp,
       gainSurges: this.#gainSurges,
       rollProject: this.#rollProject,
       takeRespite: this.#takeRespite,
@@ -272,6 +273,18 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         game.packs.get("draw-steel.classes").render({ force: true });
         break;
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance this character one level.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #levelUp(event, target) {
+    await this.actor.system.advance();
   }
 
   /* -------------------------------------------------- */
