@@ -269,9 +269,6 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       case "class":
         game.packs.get("draw-steel.classes").render({ force: true });
         break;
-      case "subclass":
-        game.packs.get("draw-steel.classes").render({ force: true });
-        break;
     }
   }
 
