@@ -1,24 +1,24 @@
 {
   "folder": "9MmUCFDVEUEgDY04",
-  "name": "Protective Attack",
+  "name": "Where I Want You",
   "type": "ability",
-  "_id": "3G70A9bFAJzp7nxD",
-  "img": "icons/skills/melee/shield-block-gray-orange.webp",
+  "_id": "B2ETWXdsU4mVFQFj",
+  "img": "icons/skills/melee/hand-grip-staff-blue.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "222",
+      "page": "223",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "protective-attack",
-    "story": "The strength of your assault makes it impossible for your foe to ignore you.",
+    "_dsid": "where-i-want-you",
+    "story": "When your stick speaks, your enemy moves",
     "keywords": [
       "melee",
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
@@ -40,9 +40,11 @@
         ]
       },
       "effects": {
-        "PYG6jE7eJ6CbbxDI": {
+        "PxwKGnzuksIepy2Q": {
+          "name": "Damage",
+          "img": null,
           "type": "damage",
-          "_id": "PYG6jE7eJ6CbbxDI",
+          "_id": "PxwKGnzuksIepy2Q",
           "damage": {
             "tier1": {
               "value": "3 + @chr"
@@ -54,12 +56,36 @@
               "value": "9 + @chr"
             }
           }
+        },
+        "oi2TIspf4TtGMD2I": {
+          "name": "Slide",
+          "img": null,
+          "type": "forced",
+          "_id": "oi2TIspf4TtGMD2I",
+          "forced": {
+            "tier1": {
+              "movement": [],
+              "display": ""
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "1"
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "3"
+            }
+          }
         }
       }
     },
     "effect": {
       "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
+      "after": ""
     },
     "spend": {
       "text": "",
@@ -67,9 +93,10 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
-    "default": 0
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
   },
   "flags": {},
   "_stats": {
@@ -79,9 +106,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751910010822,
+    "createdTime": 1754449851888,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3G70A9bFAJzp7nxD"
+  "_key": "!items!B2ETWXdsU4mVFQFj"
 }

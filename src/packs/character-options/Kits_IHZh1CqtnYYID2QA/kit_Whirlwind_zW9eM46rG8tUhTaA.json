@@ -1,53 +1,51 @@
 {
-  "name": "Dual Wielder",
+  "name": "Whirlwind",
   "type": "kit",
-  "img": "icons/weapons/swords/swords-short.webp",
+  "_id": "zW9eM46rG8tUhTaA",
+  "img": "icons/equipment/hand/gauntlet-tooled-leather-brown.webp",
   "system": {
     "description": {
-      "value": "<p>The Dual Wielder kit is for folks who want to excel at using two weapons at the same time. Your fighting style maximizes the power of each weapon you have in hand, making you a whirling dealer of death.</p>",
+      "value": "<p>The Whirlwind kit makes effective use of whips, granting you mobility, damage, and reach. If you want to be a fast-moving warrior who lashes foes with a chain or whip, then this is the kit for you</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "220",
+      "page": "224",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "shining-armor",
+    "_dsid": "whirlwind",
     "advancements": {
-      "vC2fdGhqshVnooGx": {
-        "name": "Double Strike",
+      "yObEvruqSgXSwAnW": {
+        "name": "Extension of My Arm",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
-        "_id": "vC2fdGhqshVnooGx",
-        "description": "",
+        "_id": "yObEvruqSgXSwAnW",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.abilities.Item.WObnlBIDDMWoNhVn"
+            "uuid": "Compendium.draw-steel.abilities.Item.CFbMg5w74VW3nvGM"
           }
-        ],
-        "chooseN": null
+        ]
       }
     },
     "equipment": {
-      "armor": "medium",
+      "armor": "none",
       "weapon": [
-        "light",
-        "medium"
+        "whip"
       ],
       "shield": false
     },
     "bonuses": {
       "melee": {
         "damage": {
-          "tier1": 2,
-          "tier2": 2,
-          "tier3": 2
+          "tier1": 1,
+          "tier2": 1,
+          "tier3": 1
         },
-        "distance": null
+        "distance": 1
       },
       "ranged": {
         "damage": {
@@ -57,14 +55,19 @@
         },
         "distance": null
       },
-      "stamina": 6,
-      "speed": 2,
+      "stamina": null,
+      "speed": 3,
       "stability": null,
       "disengage": 1
     }
   },
   "effects": [],
-  "folder": "IHZh1CqtnYYID2QA",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -73,14 +76,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754426139461,
+    "createdTime": 1754416695047,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "ownership": {
-    "default": 0
-  },
-  "_id": "26dSN2U5BPYxURBl",
-  "sort": 0,
-  "_key": "!items!26dSN2U5BPYxURBl"
+  "_key": "!items!zW9eM46rG8tUhTaA"
 }

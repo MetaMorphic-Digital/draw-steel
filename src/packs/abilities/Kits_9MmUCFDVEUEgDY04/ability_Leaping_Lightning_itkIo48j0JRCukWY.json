@@ -1,24 +1,25 @@
 {
   "folder": "9MmUCFDVEUEgDY04",
-  "name": "Protective Attack",
+  "name": "Leaping Lightning",
   "type": "ability",
-  "_id": "3G70A9bFAJzp7nxD",
-  "img": "icons/skills/melee/shield-block-gray-orange.webp",
+  "_id": "itkIo48j0JRCukWY",
+  "img": "icons/magic/lightning/bolt-forked-blue.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "222",
+      "page": "223",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "protective-attack",
-    "story": "The strength of your assault makes it impossible for your foe to ignore you.",
+    "_dsid": "leaping-lightning",
+    "story": "Lightning jumps from your weapon as you strike to harm a nearby foe",
     "keywords": [
+      "magic",
       "melee",
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
@@ -28,7 +29,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "creatureObject",
       "value": 1
     },
     "power": {
@@ -36,22 +37,35 @@
         "formula": "@chr",
         "characteristics": [
           "might",
-          "agility"
+          "reason",
+          "intuition",
+          "presence"
         ]
       },
       "effects": {
-        "PYG6jE7eJ6CbbxDI": {
+        "bbvohMHUYj4INoSH": {
+          "name": "Damage",
+          "img": null,
           "type": "damage",
-          "_id": "PYG6jE7eJ6CbbxDI",
+          "_id": "bbvohMHUYj4INoSH",
           "damage": {
             "tier1": {
-              "value": "3 + @chr"
+              "value": "3 + @chr",
+              "types": [
+                "lightning"
+              ]
             },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "6 + @chr",
+              "types": [
+                "lightning"
+              ]
             },
             "tier3": {
-              "value": "9 + @chr"
+              "value": "9 + @chr",
+              "types": [
+                "lightning"
+              ]
             }
           }
         }
@@ -59,7 +73,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
+      "after": "<p>A creature or object of your choice within 2 squares of the target takes lightning damage equal to the characteristic score used for this ability’s power roll ([[/damage @chr]]).</p>"
     },
     "spend": {
       "text": "",
@@ -67,9 +81,10 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
-    "default": 0
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
   },
   "flags": {},
   "_stats": {
@@ -79,9 +94,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751910010822,
+    "createdTime": 1754446726107,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3G70A9bFAJzp7nxD"
+  "_key": "!items!itkIo48j0JRCukWY"
 }

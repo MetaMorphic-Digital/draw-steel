@@ -1,24 +1,25 @@
 {
   "folder": "9MmUCFDVEUEgDY04",
-  "name": "Protective Attack",
+  "name": "Weakening Brand",
   "type": "ability",
-  "_id": "3G70A9bFAJzp7nxD",
-  "img": "icons/skills/melee/shield-block-gray-orange.webp",
+  "_id": "UxnX9shM9QMWvfpw",
+  "img": "icons/magic/light/projectile-bolts-salvo-white.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "222",
+      "page": "224",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "protective-attack",
-    "story": "The strength of your assault makes it impossible for your foe to ignore you.",
+    "_dsid": "weakening-brand",
+    "story": "The impact of your weapon brands your target for destruction",
     "keywords": [
+      "magic",
       "melee",
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
@@ -28,7 +29,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "creatureObject",
       "value": 1
     },
     "power": {
@@ -36,22 +37,34 @@
         "formula": "@chr",
         "characteristics": [
           "might",
-          "agility"
+          "reason",
+          "intuition",
+          "presence"
         ]
       },
       "effects": {
-        "PYG6jE7eJ6CbbxDI": {
+        "hJLolFQAfc1LnHfs": {
+          "name": "Damage",
+          "img": null,
           "type": "damage",
-          "_id": "PYG6jE7eJ6CbbxDI",
+          "_id": "hJLolFQAfc1LnHfs",
           "damage": {
             "tier1": {
-              "value": "3 + @chr"
+              "types": [
+                "holy"
+              ]
             },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "4 + @chr",
+              "types": [
+                "holy"
+              ]
             },
             "tier3": {
-              "value": "9 + @chr"
+              "value": "7 + @chr",
+              "types": [
+                "holy"
+              ]
             }
           }
         }
@@ -59,7 +72,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
+      "after": "<p>Until the end of the target’s next turn, they have damage weakness equal to the characteristic score used for this ability’s power roll.</p>"
     },
     "spend": {
       "text": "",
@@ -67,9 +80,10 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
-    "default": 0
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
   },
   "flags": {},
   "_stats": {
@@ -79,9 +93,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751910010822,
+    "createdTime": 1754448837387,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3G70A9bFAJzp7nxD"
+  "_key": "!items!UxnX9shM9QMWvfpw"
 }

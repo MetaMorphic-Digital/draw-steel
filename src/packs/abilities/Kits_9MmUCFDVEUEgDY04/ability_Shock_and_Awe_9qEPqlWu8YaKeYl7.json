@@ -1,30 +1,32 @@
 {
   "folder": "9MmUCFDVEUEgDY04",
-  "name": "Protective Attack",
+  "name": "Shock and Awe",
   "type": "ability",
-  "_id": "3G70A9bFAJzp7nxD",
-  "img": "icons/skills/melee/shield-block-gray-orange.webp",
+  "_id": "9qEPqlWu8YaKeYl7",
+  "img": "icons/skills/ranged/arrow-flying-gray-brown.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "222",
+      "page": "221",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "protective-attack",
-    "story": "The strength of your assault makes it impossible for your foe to ignore you.",
+    "_dsid": "shock-and-awe",
+    "story": "You execute a brutal strike that leaves your foe reeling",
     "keywords": [
       "melee",
+      "ranged",
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
     "distance": {
-      "type": "melee",
-      "primary": 1
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5
     },
     "damageDisplay": "melee",
     "target": {
@@ -40,18 +42,17 @@
         ]
       },
       "effects": {
-        "PYG6jE7eJ6CbbxDI": {
+        "OlwlVM5uitUAcIrg": {
+          "name": "Damage",
+          "img": null,
           "type": "damage",
-          "_id": "PYG6jE7eJ6CbbxDI",
+          "_id": "OlwlVM5uitUAcIrg",
           "damage": {
-            "tier1": {
-              "value": "3 + @chr"
-            },
             "tier2": {
-              "value": "6 + @chr"
+              "value": "5 + @chr"
             },
             "tier3": {
-              "value": "9 + @chr"
+              "value": "7 + @chr"
             }
           }
         }
@@ -59,7 +60,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
+      "after": "<p>The target takes a bane on their next power roll made before the end of their next turn</p>"
     },
     "spend": {
       "text": "",
@@ -67,9 +68,10 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
-    "default": 0
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
   },
   "flags": {},
   "_stats": {
@@ -79,9 +81,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751910010822,
+    "createdTime": 1754422026019,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3G70A9bFAJzp7nxD"
+  "_key": "!items!9qEPqlWu8YaKeYl7"
 }

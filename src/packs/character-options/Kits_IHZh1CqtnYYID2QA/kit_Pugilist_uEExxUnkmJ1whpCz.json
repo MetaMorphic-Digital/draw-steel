@@ -1,50 +1,49 @@
 {
-  "name": "Battlemind",
+  "name": "Pugilist",
   "type": "kit",
-  "img": "icons/creatures/magical/construct-golem-stone-blue.webp",
+  "_id": "uEExxUnkmJ1whpCz",
+  "img": "icons/weapons/fist/fist-knuckles-stone.webp",
   "system": {
     "description": {
-      "value": "<p>Who says lightly armored heroes can’t also be hard to move? You just need to employ some psionics! The Battlemind kit harnesses the power of your mind to make you harder to move—and to make your foes easier to push around.</p>",
+      "value": "<p>Meant for brawlers and boxers, the Pugilist kit gives you access to a melee fighting style that grants a boost to Stamina and damage while allowing you to float like a butterfly. If you want to be a tough, strong hero who doles out punishment with your fists, then this kit is for you.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "219",
+      "page": "221",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "shining-armor",
+    "_dsid": "pugilist",
     "advancements": {
-      "v8DE5pImdstCo8pV": {
-        "name": "Unmooring",
+      "z1CMvkZlfCyEOh1Y": {
+        "name": "Let's Dance",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
-        "_id": "v8DE5pImdstCo8pV",
-        "description": "",
+        "_id": "z1CMvkZlfCyEOh1Y",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.abilities.Item.a8GtSVHtRJXKObRj"
+            "uuid": "Compendium.draw-steel.abilities.Item.ivplHkJEvRq8fr4U"
           }
-        ],
-        "chooseN": null
+        ]
       }
     },
     "equipment": {
-      "armor": "light",
+      "armor": "none",
       "weapon": [
-        "medium"
+        "unarmed"
       ],
       "shield": false
     },
     "bonuses": {
       "melee": {
         "damage": {
-          "tier1": 2,
-          "tier2": 2,
-          "tier3": 2
+          "tier1": 1,
+          "tier2": 1,
+          "tier3": 1
         },
         "distance": null
       },
@@ -56,14 +55,19 @@
         },
         "distance": null
       },
-      "stamina": 3,
+      "stamina": 6,
       "speed": 2,
       "stability": 1,
       "disengage": null
     }
   },
   "effects": [],
-  "folder": "IHZh1CqtnYYID2QA",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -72,14 +76,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754426137055,
+    "createdTime": 1754362608255,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "ownership": {
-    "default": 0
-  },
-  "_id": "dFKiwPs0hVo7uWei",
-  "sort": 300000,
-  "_key": "!items!dFKiwPs0hVo7uWei"
+  "_key": "!items!uEExxUnkmJ1whpCz"
 }

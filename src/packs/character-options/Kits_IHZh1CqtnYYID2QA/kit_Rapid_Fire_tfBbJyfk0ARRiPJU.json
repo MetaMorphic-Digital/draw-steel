@@ -1,39 +1,38 @@
 {
-  "name": "Arcane Archer",
+  "name": "Rapid-Fire",
   "type": "kit",
-  "img": "icons/skills/ranged/arrow-flying-broadhead-metal.webp",
+  "_id": "tfBbJyfk0ARRiPJU",
+  "img": "icons/weapons/ammunition/arrows-fletching.webp",
   "system": {
     "description": {
-      "value": "<p>The Arcane Archer kit allows you to combine magic and ranged weapon strikes. Your lack of armor keeps you mobile, and your magic makes your arrows explode to devastate your foes.</p>",
+      "value": "<p>The Rapid-Fire kit is for archers who want to deal maximum damage by shooting as many arrows as possible into nearby enemies. With this kit, your fighting technique focuses on peppering foes before they can get close enough to counterattack.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "219",
+      "page": "222",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "shining-armor",
+    "_dsid": "rapid-fire",
     "advancements": {
-      "WB4jziAOOfyJvhU3": {
-        "type": "itemGrant",
-        "_id": "WB4jziAOOfyJvhU3",
-        "name": "Exploding Arrow",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.efaX6kreuPliD9Fd"
-          }
-        ],
+      "aVAXarbjjp2f688V": {
+        "name": "Two Shot",
         "img": null,
-        "description": "",
+        "type": "itemGrant",
         "requirements": {
           "level": null
         },
-        "chooseN": null
+        "_id": "aVAXarbjjp2f688V",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Sl7RrvSQ3idV8Dok"
+          }
+        ]
       }
     },
     "equipment": {
-      "armor": "none",
+      "armor": "light",
       "weapon": [
         "bow"
       ],
@@ -54,16 +53,21 @@
           "tier2": 2,
           "tier3": 2
         },
-        "distance": 10
+        "distance": 7
       },
-      "stamina": 0,
+      "stamina": 3,
       "speed": 1,
-      "stability": 0,
+      "stability": null,
       "disengage": 1
     }
   },
   "effects": [],
-  "folder": "IHZh1CqtnYYID2QA",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -72,14 +76,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754426133550,
+    "createdTime": 1754362911798,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "ownership": {
-    "default": 0
-  },
-  "_id": "DfUznZyAwRkgQ7Cq",
-  "sort": 100000,
-  "_key": "!items!DfUznZyAwRkgQ7Cq"
+  "_key": "!items!tfBbJyfk0ARRiPJU"
 }

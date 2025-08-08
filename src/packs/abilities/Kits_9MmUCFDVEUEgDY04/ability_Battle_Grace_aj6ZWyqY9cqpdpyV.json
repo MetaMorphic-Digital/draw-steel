@@ -1,24 +1,24 @@
 {
   "folder": "9MmUCFDVEUEgDY04",
-  "name": "Protective Attack",
+  "name": "Battle Grace",
   "type": "ability",
-  "_id": "3G70A9bFAJzp7nxD",
-  "img": "icons/skills/melee/shield-block-gray-orange.webp",
+  "_id": "aj6ZWyqY9cqpdpyV",
+  "img": "icons/weapons/fist/fist-knuckles-brass.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "222",
+      "page": "220",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "protective-attack",
-    "story": "The strength of your assault makes it impossible for your foe to ignore you.",
+    "_dsid": "battle-grace",
+    "story": "You feint to move your enemies into perfect position.",
     "keywords": [
       "melee",
       "strike",
       "weapon"
     ],
-    "type": "action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
@@ -40,9 +40,11 @@
         ]
       },
       "effects": {
-        "PYG6jE7eJ6CbbxDI": {
+        "EOsCDcdiELdqs420": {
+          "name": "Damage",
+          "img": null,
           "type": "damage",
-          "_id": "PYG6jE7eJ6CbbxDI",
+          "_id": "EOsCDcdiELdqs420",
           "damage": {
             "tier1": {
               "value": "3 + @chr"
@@ -54,12 +56,26 @@
               "value": "9 + @chr"
             }
           }
+        },
+        "FDbgYX6exoXLTkNR": {
+          "name": "Other",
+          "img": null,
+          "type": "other",
+          "_id": "FDbgYX6exoXLTkNR",
+          "other": {
+            "tier2": {
+              "display": "you can swap places with the target"
+            },
+            "tier3": {
+              "display": "you can swap places with the target"
+            }
+          }
         }
       }
     },
     "effect": {
       "before": "",
-      "after": "<p>The target is taunted until the end of their next turn</p>"
+      "after": "<p>If you obtain a tier 2 or tier 3 outcome and can’t swap places with the target because one or both of you is too big to fit into the swapped space, you both remain in your original spaces and the target takes 1 extra damage</p>"
     },
     "spend": {
       "text": "",
@@ -67,9 +83,10 @@
     }
   },
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
-    "default": 0
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
   },
   "flags": {},
   "_stats": {
@@ -79,9 +96,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751910010822,
+    "createdTime": 1754361020219,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3G70A9bFAJzp7nxD"
+  "_key": "!items!aj6ZWyqY9cqpdpyV"
 }

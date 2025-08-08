@@ -1,35 +1,34 @@
 {
-  "name": "Cloak and Dagger",
+  "name": "Raider",
   "type": "kit",
-  "img": "icons/equipment/head/hood-cloth-teal.webp",
+  "_id": "jBAKshrCTStqX7yI",
+  "img": "icons/weapons/swords/shortsword-guard-steel-worn.webp",
   "system": {
     "description": {
-      "value": "<p>Providing throwable light weapons and light armor easily concealed by a cloak to confuse your enemies, the Cloak and Dagger kit makes you more mobile while increasing the effectiveness of your short-range strikes.</p>",
+      "value": "<p>The Raider kit keeps you protected while granting you full mobility, providing a boost to speed and distance that lets you run around the battlefield like a Viking warrior.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "219",
+      "page": "221",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "shining-armor",
+    "_dsid": "raider",
     "advancements": {
-      "I6bmg0Iq9xdhhf2I": {
-        "name": "Fade",
+      "MnyFftZXJ6tA47bc": {
+        "name": "Shock and Awe",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
-        "_id": "I6bmg0Iq9xdhhf2I",
-        "description": "",
+        "_id": "MnyFftZXJ6tA47bc",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.abilities.Item.ZWx0BbPE3GitPTXJ"
+            "uuid": "Compendium.draw-steel.abilities.Item.9qEPqlWu8YaKeYl7"
           }
-        ],
-        "chooseN": null
+        ]
       }
     },
     "equipment": {
@@ -37,7 +36,7 @@
       "weapon": [
         "light"
       ],
-      "shield": false
+      "shield": true
     },
     "bonuses": {
       "melee": {
@@ -56,14 +55,19 @@
         },
         "distance": 5
       },
-      "stamina": 3,
-      "speed": 2,
-      "stability": 0,
+      "stamina": 6,
+      "speed": 1,
+      "stability": null,
       "disengage": 1
     }
   },
   "effects": [],
-  "folder": "IHZh1CqtnYYID2QA",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "kZoV8xj0DBrnj5EN": 3
+  },
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -72,14 +76,9 @@
     "coreVersion": "13.346",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1754426138209,
+    "createdTime": 1754362714511,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "ownership": {
-    "default": 0
-  },
-  "_id": "eQsxbl59pEjHEyB7",
-  "sort": 200000,
-  "_key": "!items!eQsxbl59pEjHEyB7"
+  "_key": "!items!jBAKshrCTStqX7yI"
 }
