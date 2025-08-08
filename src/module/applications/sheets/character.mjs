@@ -1,6 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
-import FillLanguageDialog from "../apps/advancement/fill-language-dialog.mjs";
+import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /**
@@ -22,7 +22,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
       modifyItemQuantity: this.#modifyItemQuantity,
-      fillLanguage: this.#fillLanguage,
+      fillTrait: this.#fillTrait,
     },
     position: {
       // Skills section is visible by default
@@ -82,6 +82,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
+        context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkillList();
         break;
       case "features":
@@ -99,8 +100,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         break;
       case "biography":
         context.measurements = this._getMeasurements();
-        // functionally a boolean to determine whether to show the unfilled languages
-        context.unfilledLanguage = this.actor.system._traits.unfilledLanguage?.size;
+        context.unfilledLanguage = !!this.actor.system._unfilledTraits.language?.size;
         break;
     }
     return context;
@@ -398,10 +398,17 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static async #fillLanguage(event, target) {
-    const advancements = this.actor.system._traits.unfilledLanguage.map(uuid => fromUuidSync(uuid, { relative: this.actor }));
+  static async #fillTrait(event, target) {
+    const { type } = target.dataset;
 
-    FillLanguageDialog.create({ advancements });
+    const appOptions = {
+      advancements: this.actor.system._unfilledTraits[type].map(uuid => fromUuidSync(uuid, { relative: this.actor })),
+    };
+
+    // special name for the language title
+    if (type === "language") foundry.utils.setProperty(appOptions, "window.title", "DRAW_STEEL.ADVANCEMENT.FillTrait.languageTitle");
+
+    FillTraitDialog.create(appOptions);
   }
 
   /* -------------------------------------------------- */

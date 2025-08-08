@@ -5,9 +5,11 @@
     <button
       type="button"
       class="icon fa-solid fa-message-question"
-      data-tooltip="DRAW_STEEL.ADVANCEMENT.ISpeakTheirLanguage.button"
+      {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+      data-tooltip-text="{{localize "DRAW_STEEL.ADVANCEMENT.FillTrait.button" type=(localize "TYPES.Advancement.language")}}"
       data-tooltip-direction="UP"
-      data-action="fillLanguage"
+      data-action="fillTrait"
+      data-type="language"
     >
     </button>
     {{/if}}

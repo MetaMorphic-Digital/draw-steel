@@ -3,25 +3,25 @@ import { systemPath } from "../../../constants.mjs";
 import enrichHTML from "../../../utils/enrich-html.mjs";
 
 /**
- * @import LanguageAdvancement from "../../../data/pseudo-documents/advancements/language-advancement.mjs";
+ * @import TraitAdvancement from "../../../data/pseudo-documents/advancements/trait-advancement.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
  */
 
 /**
- * @typedef FillLanguageDialogOptions
- * @property {Set<LanguageAdvancement>} advancements
+ * @typedef FillTraitDialogOptions
+ * @property {Set<TraitAdvancement>} advancements
  */
 
 /**
- * An Application that presents unchosen languages for the purpose of "I Speak Their Language".
+ * An Application that presents unchosen traits, e.g. Languages for "I Speak Their Language".
  */
-export default class FillLanguageDialog extends DSApplication {
+export default class FillTraitDialog extends DSApplication {
   /**
-   * @param {ApplicationConfiguration & FillLanguageDialogOptions} options
+   * @param {ApplicationConfiguration & FillTraitDialogOptions} options
    */
   constructor({ advancements, ...options }) {
     if (!advancements) {
-      throw new Error("The language fill dialog was constructed without Chains.");
+      throw new Error("The trait fill dialog was constructed without Chains.");
     }
 
     super(options);
@@ -33,10 +33,10 @@ export default class FillLanguageDialog extends DSApplication {
 
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["fill-language-dialog"],
+    classes: ["fill-trait-dialog"],
     window: {
-      title: "DRAW_STEEL.ADVANCEMENT.ISpeakTheirLanguage.title",
-      icon: "fa-solid fa-comment",
+      title: "DRAW_STEEL.ADVANCEMENT.FillTrait.title",
+      icon: "fa-solid fa-clipboard-question",
     },
     actions: {
       reconfigureAdvancement: this.#reconfigureAdvancement,
@@ -48,15 +48,15 @@ export default class FillLanguageDialog extends DSApplication {
   /** @inheritdoc */
   static PARTS = {
     advancements: {
-      template: systemPath("templates/apps/advancement/fill-language-dialog/advancements.hbs"),
+      template: systemPath("templates/apps/advancement/fill-trait-dialog/advancements.hbs"),
     },
   };
 
   /* -------------------------------------------------- */
 
   /**
-   * The languages which still have available choices.
-   * @type {Set<LanguageAdvancement>}
+   * The traits which still have available choices.
+   * @type {Set<TraitAdvancement>}
    */
   #advancements;
   // eslint-disable-next-line @jsdoc/require-jsdoc
@@ -92,16 +92,16 @@ export default class FillLanguageDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * Open the dialog to reconfigure the actor's language.
+   * Open the dialog to reconfigure the actor's trait.
    *
-   * @this FillLanguageDialog
+   * @this FillTraitDialog
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #reconfigureAdvancement(event, target) {
     const uuid = target.closest("[data-uuid]").dataset.uuid;
-    /** @type {LanguageAdvancement} */
+    /** @type {TraitAdvancement} */
     const advancement = await fromUuid(uuid);
     await advancement.reconfigure();
   }

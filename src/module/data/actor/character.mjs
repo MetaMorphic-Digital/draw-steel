@@ -156,6 +156,7 @@ export default class CharacterModel extends BaseActorModel {
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
 
+    // Handling for trait advancements
     for (const skill of this._traits.skill ?? []) {
       if (skill in ds.CONFIG.skills.list) this.hero.skills.add(skill);
     }
@@ -303,9 +304,18 @@ export default class CharacterModel extends BaseActorModel {
    * @type {Record<string, Set>}
    * @internal
    */
-  _traits = {
-    unfilledLanguage: new Set(),
-  };
+  _traits = {};
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Internal record used to cache trait advancements that did not select their full complement of choices.
+   * Each entry is a set of advancement UUIDs.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<string, Set<string>>}
+   * @internal
+   */
+  _unfilledTraits = {};
 
   /* -------------------------------------------------- */
 
