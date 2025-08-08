@@ -399,10 +399,21 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Returns the total xp required for the next level.
+   * @type {number | null} Null if there is no next level
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return null;
     return ds.CONFIG.hero.xp_track[this.level];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Returns if this actor can level up.
+   * @type {boolean}
+   */
+  get advancementReady() {
+    return this.hero.xp > (this.nextLevelXP ?? Infinity);
   }
 
   /* -------------------------------------------------- */

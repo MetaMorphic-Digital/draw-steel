@@ -16,7 +16,7 @@
             class="effect-control"
             data-action="createDoc"
             data-origin="{{@root.document.uuid}}"
-            data-img="icons/svg/aura.svg"
+            data-img="{{@root.document.img}}"
             {{#if (eq section.type "inactive")}}
             data-disabled="true"
             {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
