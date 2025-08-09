@@ -1,0 +1,98 @@
+{
+  "folder": "1KXwSgGxCTvfrnKn",
+  "name": "The Gods Punish and Defend",
+  "type": "ability",
+  "_id": "yxeUUh0LXFldQJTp",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "83",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "the-gods-punish-and-defend",
+    "story": "You channel holy energy to smite a foe and heal an ally.",
+    "keywords": [
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "6CSeJXduOlEvd7cK": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "6CSeJXduOlEvd7cK",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier2": {
+              "value": "8 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "11 + @chr",
+              "types": [
+                "holy"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can spend a Recovery to allow yourself or one ally within</p><p>10 squares to regain Stamina equal to your recovery value.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754756446873,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!yxeUUh0LXFldQJTp"
+}

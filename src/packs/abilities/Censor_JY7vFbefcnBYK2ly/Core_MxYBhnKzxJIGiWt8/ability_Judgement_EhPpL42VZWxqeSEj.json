@@ -1,0 +1,67 @@
+{
+  "folder": "MxYBhnKzxJIGiWt8",
+  "name": "Judgement",
+  "type": "ability",
+  "_id": "EhPpL42VZWxqeSEj",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "80",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "judgement",
+    "story": "You utter a prayer that outlines your foe in holy energy.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target is judged by you until the end of the encounter, you use this ability again, you willingly end this effect (no action required), or another censor judges the target.</p><p>Whenever a creature judged by you uses a main action and is within your line of effect, you can use a free triggered action to deal holy damage equal to twice your Presence score to them.</p><p>When a creature judged by you is reduced to 0 Stamina, you can use a free triggered action to use this ability against a new target. Additionally, you can spend 1 wrath to take one of the following free triggered actions:</p><ul><li><p>When an adjacent creature judged by you starts to shift, you make a melee free strike against them and their speed becomes 0 until the end of the current turn, preventing them from shifting.</p></li><li><p>When a creature judged by you within 10 squares makes a power roll, you cause them to take a bane on the roll.</p></li><li><p>When a creature judged by you within 10 squares uses an ability with a potency that targets only one creature, the potency is reduced by 1 for that creature.</p></li><li><p>If you damage a creature judged by you with a melee ability, the creature is taunted by you until the end of their next turn.</p></li></ul><p>You can choose only one free triggered action option at a time, even if multiple options are triggered by the same effect.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754753744595,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!EhPpL42VZWxqeSEj"
+}

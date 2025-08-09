@@ -1,0 +1,66 @@
+{
+  "folder": "USQKTXhqgTnvUILn",
+  "name": "Grave Speech",
+  "type": "ability",
+  "_id": "K9FppXA3WwSOTau2",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "81",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "grave-speech",
+    "story": "You commune with the lingering soul of the recently dead.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You can speak to the target if they are a creature who has died within the last 24 hours and who can speak a language you know, even if they are just a head. The target regards you as they would have in life, and you might need to make tests to influence them and convince them to speak with you. The trauma of dying can make a creature’s memory of that event hazy, but the target otherwise knows all they knew in life. After 1 minute, the effect ends. You can’t use this ability on the same creature twice.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754754384680,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!K9FppXA3WwSOTau2"
+}
