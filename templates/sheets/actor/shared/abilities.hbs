@@ -13,7 +13,7 @@
       <div class="item-column item-distance">{{@root.abilityFields.distance.label}}</div>
       <div class="item-column item-target">{{@root.abilityFields.target.label}}</div>
       <div class="item-column item-controls">
-        {{#if abilityType.showAdd}}
+        {{#if (and abilityType.showAdd @root.isOwner)}}
         {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.ability")) as |addItemTooltip|}}
         <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="ability" data-render-sheet="true" data-system.type="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
@@ -26,7 +26,7 @@
       {{#each abilityType.abilities as |abilityContext|}}
       <li class="item ability draggable" data-item-id="{{abilityContext.item.id}}" data-document-class="Item">
         <div class="item-row">
-          <div class="item-column item-name rollable" data-action="useAbility">
+          <div class="item-column item-name rollable" data-action="useAbility" {{disabled (not @root.isOwner)}}>
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
             {{#if abilityContext.item.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.ability.Restricted">
