@@ -1,4 +1,5 @@
 import { systemPath } from "../../constants.mjs";
+import { requiredInteger } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -37,7 +38,19 @@ export default class FeatureModel extends AdvancementModel {
       value: new fields.StringField({ required: true }),
     });
 
+    schema.points = requiredInteger({ initial: 1 });
+
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Does this feature use the points information for item grant budgets.
+   * @type {boolean}
+   */
+  get purchasable() {
+    return !!ds.CONFIG.features.types[this.type.value]?.subtypes[this.type.subtype]?.purchaseable;
   }
 
   /* -------------------------------------------------- */

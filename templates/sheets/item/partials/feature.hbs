@@ -2,6 +2,9 @@
 {{#if featureSubtypes}}
 {{formGroup systemFields.type.fields.subtype value=system.type.subtype options=featureSubtypes blank="" disabled=isPlay}}
 {{/if}}
+{{#if document.system.purchasable}}
+{{formGroup systemFields.points value=system.points disabled=isPlay}}
+{{/if}}
 <fieldset>
   <legend>{{systemFields.prerequisites.label}}</legend>
   {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value disabled=isPlay}}

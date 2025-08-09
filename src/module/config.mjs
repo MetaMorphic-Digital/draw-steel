@@ -1625,9 +1625,33 @@ preLocalize("equipment.other", { key: "label" });
 
 /* -------------------------------------------------- */
 
+/**
+ * @typedef FeatureSubType
+ * @property {string} label
+ * @property {boolean} [purchaseable]
+ */
+
+/**
+ * @typedef FeatureType
+ * @property {string} label
+ * @property {Record<string, FeatureSubType>} [subtypes]
+ */
+
 DRAW_STEEL.features = {
-  /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
+  /** @type {Record<string, FeatureType>} */
   types: {
+    ancestry: {
+      label: "DRAW_STEEL.Item.feature.Types.Ancestry.Label",
+      subtypes: {
+        signature: {
+          label: "DRAW_STEEL.Item.feature.Types.Ancestry.signature",
+        },
+        purchased: {
+          label: "DRAW_STEEL.Item.feature.Types.Ancestry.purchased",
+          purchaseable: true,
+        },
+      },
+    },
     perk: {
       label: "DRAW_STEEL.Item.feature.Types.Perk.Label",
       subtypes: {
@@ -1671,6 +1695,7 @@ DRAW_STEEL.features = {
   },
 };
 preLocalize("features.types", { key: "label" });
+preLocalize("features.types.ancestry.subtypes", { key: "label" });
 preLocalize("features.types.perk.subtypes", { key: "label" });
 preLocalize("features.types.title.subtypes", { key: "label" });
 

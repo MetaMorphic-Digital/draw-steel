@@ -43,6 +43,7 @@
 ### Changed
 
 - Increased system minimum to 13.347.
+- Added "Ancestry Trait" as a feature subtype, and added field for tracking the point cost. (#303)
 - Updated various CONFIG properties and i18n strings to match the final PDF. (#576)
 - [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 - [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
