@@ -49,6 +49,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /** @inheritdoc */
   prepareBaseData() {
+    super.prepareBaseData();
     this.img ||= ds.CONFIG[this.constructor.metadata.documentName][this.type].defaultImage;
   }
 

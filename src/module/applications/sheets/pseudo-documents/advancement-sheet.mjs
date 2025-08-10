@@ -1,8 +1,16 @@
 import PseudoDocumentSheet from "../../api/pseudo-document-sheet.mjs";
 import ItemGrantAdvancement from "../../../data/pseudo-documents/advancements/item-grant-advancement.mjs";
 
+/**
+ * @import BaseAdvancement from "../../../data/pseudo-documents/advancements/base-advancement.mjs".
+ */
+
 const { DragDrop, TextEditor } = foundry.applications.ux;
 
+/**
+ * A sheet representing advancements.
+ * @extends PseudoDocumentSheet<BaseAdvancement>
+ */
 export default class AdvancementSheet extends PseudoDocumentSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
@@ -112,13 +120,15 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
   /**
    * Handle drop events in the pool area.
+   * @this {AdvancementSheet}
    * @param {DragEvent} event   The initiating drag event.
    */
   static async #onDropTargetArea(event) {
     const item = await fromUuid(TextEditor.implementation.getDragEventData(event).uuid);
 
     if (!item || (item.documentName !== "Item")) return;
-    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type)) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
+    const subclassException = (item.type === "subclass") && (this.pseudoDocument.document.type === "class");
+    if (!ItemGrantAdvancement.ALLOWED_TYPES.has(item.type) && !subclassException) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.restrictedType", {
       format: { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) },
     });
     if (!item.pack) return void ui.notifications.error("DRAW_STEEL.ADVANCEMENT.WARNING.requirePack", { localize: true });

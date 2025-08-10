@@ -56,6 +56,20 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+    // Item grants that are only granting a single item should have a matching icon
+    const hasDefaultImage = (this.img === ds.CONFIG.Advancement.itemGrant.defaultImage);
+    const hasOneGrant = (this.pool.length === 1);
+    if (hasDefaultImage & hasOneGrant) {
+      const indexEntry = fromUuidSync(this.pool[0].uuid);
+      if (indexEntry) this.img = indexEntry.img;
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Recursive method to find all items that were added to an actor by this advancement.
    * If the item is unowned, this returns `null`.

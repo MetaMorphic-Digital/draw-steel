@@ -5,7 +5,7 @@
   <a class="filled" data-action="viewDoc">
     {{lookup originDoc "name"}}
   </a>
-  {{#unless isPlay}}
+  {{#unless (or isPlay noEdit)}}
   <a data-action="deleteDoc">
     <i class="fa-solid fa-trash-can"></i>
   </a>
@@ -17,9 +17,11 @@
   {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
 </span>
 {{else}}
+{{#unless noEdit}}
 <a class="unfilled" data-action="addOrigin" data-type="{{originType}}">
   {{localize "DRAW_STEEL.SHEET.Add" itemName=(localize (concat "TYPES.Item." originType))}}
 </a>
+{{/unless}}
 {{/if}}
 {{/if}}
 {{/inline}}
@@ -56,7 +58,7 @@
         {{> headerTag originDoc=document.system.class originType="class"}}
       </div>
       <div class="subclass tag">
-        {{> headerTag originDoc=document.system.subclass originType="subclass"}}
+        {{> headerTag originDoc=document.system.subclass originType="subclass" noEdit=true}}
       </div>
     </div>
   </div>
@@ -64,11 +66,13 @@
     <dl>
       <dt class="level">{{localize "DRAW_STEEL.Item.class.FIELDS.level.label"}}</dt>
       <dd class="level">
-        {{system.level}}
-        {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
-        <span class="level-up" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
+        {{#if system.advancementReady}}
+        <button type="button" {{disabled (not editable)}} data-action="levelUp" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
+          {{system.level}}
           <i class="fa-solid fa-up-long"></i>
-        </span>
+        </button>
+        {{else}}
+        {{system.level}}
         {{/if}}
       </dd>
 
@@ -76,15 +80,19 @@
       <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
       <dd class="xp">
         <span class="resource-curent">{{system.hero.xp}}</span>
+        {{#if system.nextLevelXP}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.nextLevelXP}}</span>
+        {{/if}}
       </dd>
 
       <dt>{{systemFields.hero.fields.victories.label}}</dt>
       <dd>
         <span class="resource-current">{{system.hero.victories}}</span>
+        {{#if system.victoriesMax}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.victoriesMax}}</span>
+        {{/if}}
       </dd>
       {{/if}}
     </dl>

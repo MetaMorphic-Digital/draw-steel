@@ -14,6 +14,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     classes: ["character"],
     actions: {
       addOrigin: this.#addOrigin,
+      levelUp: this.#levelUp,
       gainSurges: this.#gainSurges,
       rollProject: this.#rollProject,
       takeRespite: this.#takeRespite,
@@ -268,10 +269,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       case "class":
         game.packs.get("draw-steel.classes").render({ force: true });
         break;
-      case "subclass":
-        game.packs.get("draw-steel.classes").render({ force: true });
-        break;
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance this character one level.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #levelUp(event, target) {
+    await this.actor.system.advance();
   }
 
   /* -------------------------------------------------- */
@@ -426,16 +436,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         /** @type {DrawSteelItem} */
         const existing = this.actor.system[item.type];
         if (existing) {
-          const replace = await ds.applications.api.DSDialog.confirm({
-            window: {
-              icon: "fa-solid fa-arrow-right-arrow-left",
-              title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.title", { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) }),
-            },
-            content: `<p>${game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.content", { name: item.name })}</p>`,
-          });
-          // TODO: Undo previous item's advancements
-          if (replace) await existing.delete();
-          else throw new Error(`Cannot add a new ${item.type} to a character that already has one without replacing the old.`);
+          const confirmation = await existing.advancementDeletionPrompt({ replacement: true });
+          if (!confirmation) return;
         }
       }
       else if (item.type === "kit") {
