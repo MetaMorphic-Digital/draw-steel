@@ -2,6 +2,10 @@ import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ */
+
+/**
  * Passive benefits usually granted by other items.
  */
 export default class FeatureModel extends AdvancementModel {
@@ -51,5 +55,22 @@ export default class FeatureModel extends AdvancementModel {
     if (featureConfig.types[this.type.value]?.subtypes) {
       context.featureSubtypes = Object.entries(featureConfig.types[this.type.value].subtypes).map(([value, { label }]) => ({ value, label }));
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @inheritdoc
+   * @param {DocumentHTMLEmbedConfig} config
+   * @param {EnrichmentOptions} options
+   */
+  async toEmbed(config, options = {}) {
+    const enriched = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
+
+    const embed = document.createElement("div");
+    embed.classList.add("draw-steel", this.parent.type);
+    embed.innerHTML = enriched;
+
+    return embed;
   }
 }

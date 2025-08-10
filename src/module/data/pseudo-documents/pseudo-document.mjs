@@ -112,16 +112,6 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  // /**
-  //  * Fetches the collection this PseudoDocument is contained in.
-  //  * @type {ModelCollection<this>}
-  //  */
-  // get collection() {
-  //   return foundry.utils.getProperty(this.document, this.fieldPath);
-  // }
-
-  /* -------------------------------------------------- */
-
   /**
    * Reference to the sheet of this pseudo-document, registered in a static map.
    * A pseudo-document is temporary, unlike regular documents, so the relation here
