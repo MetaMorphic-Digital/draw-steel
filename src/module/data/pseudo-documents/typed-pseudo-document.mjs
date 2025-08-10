@@ -1,6 +1,7 @@
+import { systemPath } from "../../constants.mjs";
 import PseudoDocument from "./pseudo-document.mjs";
 
-/** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types" */
+/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
 const { DocumentTypeField } = foundry.data.fields;
 
@@ -42,6 +43,19 @@ export default class TypedPseudoDocument extends PseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/typed-create-dialog.hbs");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+    this.img ||= ds.CONFIG[this.constructor.metadata.documentName][this.type].defaultImage;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
     if (!this.name) {
@@ -63,33 +77,25 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Prompt for picking the subtype of this pseudo-document.
-   * @param {object} [data]                                 The data used for the creation.
-   * @param {object} operation                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
-   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
-   */
-  static async createDialog(data = {}, { parent, ...operation } = {}) {
-    const select = foundry.applications.fields.createFormGroup({
-      label: game.i18n.localize("Type"),
-      input: foundry.applications.fields.createSelectInput({
-        blank: false,
-        name: "type",
-        options: Object.keys(this.TYPES).map(type => ({
-          value: type,
-          label: game.i18n.localize(`TYPES.${this.metadata.documentName}.${type}`),
-        })),
-      }),
-    }).outerHTML;
-    const result = await ds.applications.api.DSDialog.input({
-      window: {
-        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
-        icon: this.metadata.icon,
-      },
-      content: `<fieldset>${select}</fieldset>`,
-    });
-    if (!result) return null;
-    return this.create({ ...data, ...result }, { parent, ...operation });
+  /** @inheritdoc */
+  static _prepareCreateDialogContext(parent) {
+
+    /** @type {FormSelectOption[]} */
+    const typeOptions = Object.entries(ds.CONFIG[this.metadata.documentName]).map(([value, { label }]) => ({ value, label }));
+
+    return {
+      typeOptions,
+      fields: this.schema.fields,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _createDialogRenderCallback(event, dialog) {
+    const typeInput = dialog.element.querySelector("[name=\"type\"]");
+    const nameInput = dialog.element.querySelector("[name=\"name\"]");
+    nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label;
+    typeInput.addEventListener("change", () => nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label);
   }
 }

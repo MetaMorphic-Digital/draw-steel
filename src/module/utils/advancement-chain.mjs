@@ -19,7 +19,7 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *[Symbol.iterator]() {
-
+    // eslint-disable-next-line @jsdoc/require-jsdoc
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
@@ -40,10 +40,11 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *active() {
+    // eslint-disable-next-line @jsdoc/require-jsdoc
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
-        const isSelected = !node.isChoice || !!node.selected[k];
+        const isSelected = !node.advancement.isChoice || !!node.selected[k];
         if (!isSelected) continue;
         for (const u in node.choices[k].children)
           yield * yielder(node.choices[k].children[u]);
@@ -112,7 +113,7 @@ export default class AdvancementChain {
         Object.defineProperty(choice, "isChosen", {
           get() {
             if (!node.isChosen) return false;
-            if (!node.isChoice) return true;
+            if (!node.advancement.isChoice) return true;
             return node.selected[item.uuid] === true;
           },
         });
@@ -137,7 +138,7 @@ export default class AdvancementChain {
         Object.defineProperty(choice, "isChosen", {
           get() {
             if (!node.isChosen) return false;
-            if (!node.isChoice) return true;
+            if (!node.advancement.isChoice) return true;
             return node.selected[trait.value] === true;
           },
         });
@@ -149,24 +150,6 @@ export default class AdvancementChain {
 
   /* -------------------------------------------------- */
   /*   Properties                                       */
-  /* -------------------------------------------------- */
-
-  /**
-   * Is there a choice to make or do you just get everything?
-   * @type {boolean}
-   */
-  get isChoice() {
-    switch (this.advancement.type) {
-      case "skill":
-      case "language":
-        return this.advancement.isChoice;
-      case "itemGrant":
-        // If chooseN is null, there is no choice to make; you get all.
-        return this.chooseN !== null;
-      default: return false;
-    }
-  }
-
   /* -------------------------------------------------- */
 
   /**
@@ -192,7 +175,7 @@ export default class AdvancementChain {
   /* -------------------------------------------------- */
 
   /**
-   * Is this advancement chosen and valid? I.e. if confirming, should it be applied?
+   * Is this advancement chosen and valid? I.e. If confirming, should it be applied?
    * It's either an advancement in the root, which are always applied, or it's from
    * an item granted by a "parent" item grant, in which case we check the "parent choice"
    * to see if *that* was chosen. This should recursively check up the chain until it
@@ -213,7 +196,7 @@ export default class AdvancementChain {
    * @type {boolean}
    */
   get isConfigured() {
-    if (!this.isChoice) return true;
+    if (!this.advancement.isChoice) return true;
     const selected = Object.values(this.selected).reduce((acc, b) => acc + Boolean(b), 0);
     return selected === this.chooseN;
   }
@@ -226,7 +209,7 @@ export default class AdvancementChain {
    */
   get chosenSelection() {
     if (!this.isConfigured) return null;
-    if (this.isChoice) return Object.entries(this.selected).filter(([, v]) => v).map(([k]) => k);
+    if (this.advancement.isChoice) return Object.entries(this.selected).filter(([, v]) => v).map(([k]) => k);
     return Object.keys(this.choices);
   }
 }

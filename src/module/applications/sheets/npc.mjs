@@ -34,7 +34,8 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/sheets/actor/shared/features.hbs"),
+      template: systemPath("templates/sheets/actor/npc/features.hbs"),
+      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
     abilities: {
@@ -47,7 +48,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     },
     biography: {
       template: systemPath("templates/sheets/actor/npc/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
+      templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
   };
@@ -80,7 +81,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the printable string for the monster's keywords
+   * Fetches the printable string for the monster's keywords.
    * @returns {string[]}
    */
   _getMonsterKeywords() {
@@ -91,7 +92,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the label for the monster's organization
+   * Fetches the label for the monster's organization.
    * @returns {string}
    */
   _getOrganizationLabel() {
@@ -102,7 +103,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the label for the monster's role
+   * Fetches the label for the monster's role.
    * @returns {string}
    */
   _getRoleLabel() {
@@ -113,7 +114,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the label for the monster's Encounter Value
+   * Fetches the label for the monster's Encounter Value.
    * @returns {string}
    */
   _getEVLabel() {
@@ -125,7 +126,7 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the options for Motivations & Pitfalls
+   * Fetches the options for Motivations & Pitfalls.
    * @returns {{list: FormSelectOption[]; currentMotivations: string; currentPitfalls: string}}
    */
   _getMotivations() {
@@ -183,10 +184,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open the update source dialog
+   * Open the update source dialog.
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
     new DocumentSourceInput({ document: this.document }).render({ force: true });
@@ -195,10 +196,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open a dialog to edit the monster metadata
+   * Open a dialog to edit the monster metadata.
    * @this DrawSteelNPCSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editMonsterMetadata(event, target) {
     new MonsterMetadataInput({ document: this.document }).render({ force: true });
@@ -207,10 +208,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open a dialog to edit the monster metadata
+   * Open a dialog to edit the monster metadata.
    * @this DrawSteelNPCSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #freeStrike(event, target) {
     try { game.user.targets.map(t => t.actor); } catch (e) {

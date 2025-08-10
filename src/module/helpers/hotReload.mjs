@@ -7,7 +7,7 @@ import { systemPath } from "../constants.mjs";
  * The hook provides the hot reload data related to the file change.
  * Hooked functions may intercept the hot reload and prevent the core software from handling it by returning false.
  *
- * @param {HotReloadData} data          The hot reload data
+ * @param {HotReloadData} data          The hot reload data.
  */
 export function hotReload(data) {
   if (data.packageType !== "system") return;

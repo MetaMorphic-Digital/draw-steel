@@ -6,7 +6,7 @@ import DrawSteelChatMessage from "../documents/chat-message.mjs";
 /** @import { RollPromptOptions, ProjectRollPrompt } from "../_types.js" */
 
 /**
- * Special test used during downtime
+ * Special test used during downtime.
  */
 export default class ProjectRoll extends DSRoll {
   constructor(formula = "2d10", data = {}, options = {}) {
@@ -61,21 +61,21 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Maximum number of edges
+   * Maximum number of edges.
    */
   static MAX_EDGE = 2;
 
   /* -------------------------------------------------- */
 
   /**
-   * Maximum number of banes
+   * Maximum number of banes.
    */
   static MAX_BANE = 2;
 
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user with a roll configuration dialog
+   * Prompt the user with a roll configuration dialog.
    * @param {Partial<RollPromptOptions>} [options]
    * @returns {Promise<ProjectRollPrompt | null>}
    */
@@ -128,7 +128,7 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if this is a power roll with 2d10 base
+   * Determines if this is a power roll with 2d10 base.
    * @returns {boolean}
    */
   get isValidProjectRoll() {
@@ -139,8 +139,8 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Cancels out edges and banes to get the adjustment
-   * @returns {number} An integer from -2 to 2, inclusive
+   * Cancels out edges and banes to get the adjustment.
+   * @returns {number} An integer from -2 to 2, inclusive.
    */
   get netBoon() {
     return this.options.edges - this.options.banes;
@@ -149,7 +149,7 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Total project points accrued from this roll
+   * Total project points accrued from this roll.
    * @returns {number | undefined}
    */
   get product() {
@@ -160,7 +160,7 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Returns the natural result of the power roll
+   * Returns the natural result of the power roll.
    * @returns {number | undefined}
    */
   get naturalResult() {
@@ -170,8 +170,8 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if the natural result was a natural 20
-   * @returns {boolean | null} Null if not yet evaluated
+   * Determines if the natural result was a natural 20.
+   * @returns {boolean | null} Null if not yet evaluated.
    */
   get isNat20() {
     if ((this._total === undefined) || !this.isValidProjectRoll) return null;
@@ -181,9 +181,9 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Determines if a project roll was a critical
+   * Determines if a project roll was a critical.
    * @returns {boolean | null} Null if not yet evaluated,
-   * otherwise returns if the dice total is a 19 or higher
+   * otherwise returns if the dice total is a 19 or higher.
    */
   get isCritical() {
     if (this._total === undefined) return null;
@@ -193,7 +193,7 @@ export default class ProjectRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Semantic alias for this.critical
+   * Semantic alias for this.critical.
    */
   get isBreakthrough() {
     return this.isCritical;
@@ -230,5 +230,15 @@ export default class ProjectRoll extends DSRoll {
     context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
 
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async toMessage(messageData = {}, messageOptions = {}) {
+    // Project rolls always create projectRoll messages
+    messageData.type = "projectRoll";
+
+    return super.toMessage(messageData, messageOptions);
   }
 }

@@ -29,8 +29,8 @@ for (const pack of packs) {
 }
 
 /**
- * Add in wiki docs from `src/docs`
- * @param {object} entry The entry data
+ * Add in wiki docs from `src/docs`.
+ * @param {object} entry The entry data.
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {

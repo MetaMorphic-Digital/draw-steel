@@ -86,14 +86,14 @@ export default class DrawSteelSocketHandler {
   /* -------------------------------------------------- */
 
   /**
-   * Call for a saving throw from a specific user
-   * @param {string | DrawSteelActiveEffect} effect   An effect instance or UUID
-   * @param {string | DrawSteelUser} user             A user instance or ID
+   * Call for a saving throw from a specific user.
+   * @param {string | DrawSteelActiveEffect} effect   An effect instance or UUID.
+   * @param {string | DrawSteelUser} user             A user instance or ID.
    * @param {object} rollOptions
    * @param {object} dialogOptions
    * @param {object} messageData
    * @param {object} messageOptions
-   * @returns {object} The constructed message data
+   * @returns {object} The constructed message data.
    */
   async rollSave(effect, user, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {}) {
     if (typeof user === "string") user = game.users.get(user);
@@ -124,23 +124,23 @@ export default class DrawSteelSocketHandler {
   /* -------------------------------------------------- */
 
   /**
-   * Query a user for a saving throw roll
+   * Query a user for a saving throw roll.
    * @param {Object} payload
-   * @param {string} payload.userId               The ID of the user who sent the save request
-   * @param {string} payload.effectUuid           The effect to save on
-   * @param {object} [payload.rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}
-   * @param {object} [payload.dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}
-   * @param {object} [payload.messageData={}]     The data object to use when creating the message
+   * @param {string} payload.userId               The ID of the user who sent the save request.
+   * @param {string} payload.effectUuid           The effect to save on.
+   * @param {object} [payload.rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}.
+   * @param {object} [payload.dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}.
+   * @param {object} [payload.messageData={}]     The data object to use when creating the message.
    * @param {object} [payload.messageOptions={}]  Additional options which modify the created message.
-   * @param {object} [queryOptions]                    The query options
-   * @param {number} [queryOptions.timeout]            The timeout in milliseconds
-   * @returns {object} The constructed message data
+   * @param {object} [queryOptions]                    The query options.
+   * @param {number} [queryOptions.timeout]            The timeout in milliseconds.
+   * @returns {object} The constructed message data.
   */
   async #rollSave({ userId, effectUuid, rollOptions = {}, dialogOptions = {}, messageData = {}, messageOptions = {} }, { timeout }) {
     dialogOptions.timeout = timeout;
 
     /**
-     * Effect should almost always be in-world anyways but we can safely fromUuid
+     * Effect should almost always be in-world anyways but we can safely fromUuid.
      * @type {DrawSteelActiveEffect}
      */
     const effect = await fromUuid(effectUuid);

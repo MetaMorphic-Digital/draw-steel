@@ -1,5 +1,10 @@
-/** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
-/** @import { PseudoDocumentMetadata } from "../_types" */
+import { systemPath } from "../../constants.mjs";
+
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs";
+ * @import { PseudoDocumentMetadata } from "../_types";
+ */
 
 const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
 
@@ -14,7 +19,6 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   static get metadata() {
     return {
       documentName: null,
-      defaultImage: null,
       icon: "",
       embedded: {},
       sheetClass: null,
@@ -28,7 +32,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     return {
       _id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
       name: new StringField({ required: true }),
-      img: new FilePathField({ categories: ["IMAGE"], initial: () => this.metadata.defaultImage, nullable: true }),
+      img: new FilePathField({ categories: ["IMAGE"] }),
     };
   }
 
@@ -36,6 +40,13 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /** @inheritdoc */
   static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO"];
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Template for {@link createDialog}.
+   */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/base-create-dialog.hbs");
 
   /* -------------------------------------------------- */
 
@@ -240,6 +251,55 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet?.render({ force: true });
     return parent;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt for creating this pseudo-document.
+   * @param {object} [data]                                 The data used for the creation.
+   * @param {object} operation                              The context of the operation.
+   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
+   */
+  static async createDialog(data = {}, { parent, ...operation } = {}) {
+    // If there's demand or need we can make the template & context more dynamic
+    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, this._prepareCreateDialogContext(parent));
+
+    const result = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
+        icon: this.metadata.icon,
+      },
+      render: (event, dialog) => this._createDialogRenderCallback(event, dialog),
+    });
+    if (!result) return null;
+    return this.create({ ...data, ...result }, { parent, ...operation });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepares context for use with {@link CREATE_TEMPLATE}.
+   * @param {foundry.abstract.DataModel} parent
+   * @returns {object}
+   * @protected
+   */
+  static _prepareCreateDialogContext(parent) {
+    return {
+      fields: this.schema.fields,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Render callback for dynamic handling on the .
+   * @param {Event} event
+   * @param {ds.applications.api.DSDialog} dialog
+   * @protected
+   */
+  static _createDialogRenderCallback(event, dialog) {}
 
   /* -------------------------------------------------- */
 

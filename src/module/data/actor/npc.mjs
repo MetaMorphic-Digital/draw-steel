@@ -9,17 +9,15 @@ import SourceModel from "../models/source.mjs";
 /** @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs"; */
 
 /**
- * NPCs are created and controlled by the director
+ * NPCs are created and controlled by the director.
  */
 export default class NPCModel extends BaseActorModel {
-  /**
-   * @inheritdoc
-   * @type {import("../_types").SubtypeMetadata}
-   */
+  /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "npc",
-    });
+    };
   }
 
   /* -------------------------------------------------- */
@@ -62,6 +60,23 @@ export default class NPCModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static migrateData(data) {
+    switch (data.monster?.organization) {
+      // release updates
+      case "band":
+        data.monster.organization = "horde";
+        break;
+      case "troop":
+        data.monster.organization = "elite";
+        break;
+    }
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   get level() {
     return this.monster.level;
   }
@@ -98,7 +113,7 @@ export default class NPCModel extends BaseActorModel {
 
   /**
    * Fetch the traits of this creature's free strike.
-   * The value is stored in `this.monster.freeStrike`
+   * The value is stored in `this.monster.freeStrike`.
    * @returns {import("./_types").FreeStrike}
    */
   get freeStrike() {

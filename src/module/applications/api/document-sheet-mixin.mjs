@@ -5,11 +5,12 @@ import constructHTMLButton from "../../utils/construct-html-button.mjs";
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
 /**
- * Augments a Document Sheet with Draw-Steel specific behavior
+ * Augments a Document Sheet with Draw-Steel specific behavior.
  * @template {Constructor<foundry.applications.api.DocumentSheet>} BaseDocumentSheet
  * @param {BaseDocumentSheet} base
  */
 export default base => {
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DSDocumentSheet extends HandlebarsApplicationMixin(base) {
     /** @inheritdoc */
     static DEFAULT_OPTIONS = {

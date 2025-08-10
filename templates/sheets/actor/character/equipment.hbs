@@ -27,7 +27,7 @@
       {{#each kits as |kitContext|}}
       <li class="item feature draggable" data-item-id="{{kitContext.item.id}}" data-document-class="Item">
         <div class="item-row">
-          <div class="item-column item-name" data-action="useAbility">
+          <div class="item-column item-name">
             <img class="item-image" src="{{kitContext.item.img}}" alt="{{kitContext.item.name}}">
             {{#if (eq @root.system.hero.preferredKit kitContext.item.id)}}
             <i data-tooltip="DRAW_STEEL.Item.kit.PreferredKit.Label" class="fa-solid fa-star"></i>

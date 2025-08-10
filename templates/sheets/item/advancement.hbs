@@ -1,25 +1,54 @@
-<section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="advancement" data-subtype="{{document.type}}">
-  <section class="advancements" data-pseudo-document-name="Advancement">
-
-    <h3 class="section-header">
-      <span>{{localize "DOCUMENT.AdvancementPl"}}</span>
-      <button type="button" data-action="createPseudoDocument" class="icon fa-fw fa-solid fa-circle-plus" {{disabled (not @root.editable)}}></button>
-    </h3>
-
-    {{#each advancements}}
-    <h4 class="section-header">
-      <span>{{section}}</span>
-    </h4>
-    {{#each documents as |adv|}}
-    <div class="form-group" data-pseudo-id="{{adv.id}}">
-      {{adv.name}}
+<section class="tab standard-form {{tab.cssClass}}" data-group="primary" data-tab="advancement" data-subtype="{{document.type}}" data-pseudo-document-name="Advancement">
+  <div class="section-header">
+    <button type="button" data-action="{{ifThen (eq document.type "culture") "createCultureAdvancement" "createPseudoDocument" }}" {{disabled (not @root.editable)}}>
+      <i class="{{advancementIcon}}"></i>
+      {{localize "DOCUMENT.Create" type=(localize "DOCUMENT.Advancement")}}
+    </button>
+  </div>
+  {{#each advancements}}
+  <fieldset class="advancement">
+    <legend>{{section}}</legend>
+    {{#each documents}}
+    <div class="form-group" data-pseudo-id="{{id}}">
+      <img class="advancement-img" src="{{img}}" alt="{{name}}">
+      <label>{{name}}</label>
       <div class="form-fields">
-        <button type="button" data-action="renderPseudoDocumentSheet" class="icon fa-fw fa-solid fa-cog" {{disabled (not @root.editable)}}></button>
-        <button type="button" data-action="deletePseudoDocument" class="icon fa-solid fa-fw fa-trash" {{disabled (not @root.editable)}}></button>
+        {{#if canReconfigure}}
+        <button
+          type="button"
+          data-tooltip="DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure"
+          data-action="reconfigureAdvancement"
+          class="icon fa-fw fa-solid fa-arrow-rotate-right"
+          {{disabled (not @root.editable)}}
+        >
+        </button>
+        {{/if}}
+        <button
+          type="button"
+          {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
+          data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DOCUMENT.Advancement")}}"
+          data-action="renderPseudoDocumentSheet"
+          class="icon fa-fw fa-solid fa-cog"
+          {{disabled (not @root.editable)}}
+          >
+        </button>
+        <button
+          type="button"
+          {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
+          data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DOCUMENT.Advancement")}}"
+          data-action="deletePseudoDocument"
+          class="icon fa-solid fa-fw fa-trash"
+          {{disabled @root.isPlay}}
+          >
+        </button>
       </div>
+      {{#if enrichedDescription}}
+      <div class="hint">
+        {{{enrichedDescription}}}
+      </div>
+      {{/if}}
     </div>
     {{/each}}
-    {{/each}}
-
-  </section>
+  </fieldset>
+  {{/each}}
 </section>

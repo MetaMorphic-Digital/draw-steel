@@ -4,16 +4,17 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Classes provide the bulk of a hero's features and abilities
+ * Classes provide the bulk of a hero's features and abilities.
  */
 export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "class",
       invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/sheets/item/partials/class.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */
@@ -38,6 +39,8 @@ export default class ClassModel extends AdvancementModel {
     });
 
     schema.primary = new fields.StringField({ required: true });
+
+    schema.epic = new fields.StringField({ required: true });
 
     schema.turnGain = new FormulaField();
 
@@ -80,25 +83,30 @@ export default class ClassModel extends AdvancementModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
+    super.prepareDerivedData();
     if (this.actor) {
       this.actor.system.recoveries.max = this.recoveries;
-      this.actor.system.stamina.max = this.stamina.starting + this.level * this.stamina.level;
+      this.actor.system.stamina.max += this.stamina.starting + (this.level - 1) * this.stamina.level;
     }
   }
 
   /** @inheritdoc */
   async applyAdvancements({ actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
     const { end: levelEnd = 1 } = levels;
+
+    const _idMap = new Map();
     const createClass = this.parent !== actor.system.class;
     if (createClass) {
       const keepId = !actor.items.has(this.parent.id);
       const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
       foundry.utils.setProperty(itemData, "system.level", levelEnd);
+      if (!keepId) itemData._id = foundry.utils.randomID();
       toCreate[this.parent.uuid] = itemData;
+      _idMap.set(this.parent.id, itemData._id);
     } else {
       toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
     }
 
-    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, ...options });
+    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, _idMap, ...options });
   }
 }

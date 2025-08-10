@@ -12,4 +12,4 @@ export * as settings from "./settings/_module.mjs";
 export * as migrations from "./migrations.mjs";
 export * as pseudoDocuments from "./pseudo-documents/_module.mjs";
 
-export { default as SubtypeModelMixin } from "./subtype-model-mixin.mjs";
+export { default as DrawSteelSystemModel } from "./system-model.mjs";

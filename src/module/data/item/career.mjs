@@ -6,16 +6,17 @@ import AdvancementModel from "./advancement.mjs";
  */
 
 /**
- * Careers describe what a hero did for a living before becoming a hero
+ * Careers describe what a hero did for a living before becoming a hero.
  */
 export default class CareerModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "career",
       invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/sheets/item/partials/career.hbs")],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

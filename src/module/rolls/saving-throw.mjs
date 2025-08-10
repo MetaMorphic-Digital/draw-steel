@@ -2,13 +2,13 @@ import DSRoll from "./base.mjs";
 import { systemPath } from "../constants.mjs";
 
 /**
- * Usually a flat d10 roll to shake free of a persistent condition
+ * Usually a flat d10 roll to shake free of a persistent condition.
  */
 export default class SavingThrowRoll extends DSRoll {
   /**
-   * @param {string} [formula="1d10"]        Default saving throw is a flat 1d10
-   * @param {Record<string, any>} [data]     Roll data
-   * @param {{ flavor?: string, successThreshold?: number }} [options]  Options to modify roll display
+   * @param {string} [formula="1d10"]        Default saving throw is a flat 1d10.
+   * @param {Record<string, any>} [data]     Roll data.
+   * @param {{ flavor?: string, successThreshold?: number }} [options]  Options to modify roll display.
    */
   constructor(formula = "1d10", data = {}, options = {}) {
     super(formula, data, options);
@@ -21,7 +21,7 @@ export default class SavingThrowRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * The total to succeed or higher
+   * The total to succeed or higher.
    * @returns {number}
    * @defaultValue `6`
    */
@@ -32,7 +32,7 @@ export default class SavingThrowRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Did the saving throw succeed
+   * Did the saving throw succeed.
    * @returns {boolean}
    */
   get product() {

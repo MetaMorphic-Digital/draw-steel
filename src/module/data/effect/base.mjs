@@ -6,15 +6,17 @@ import FormulaField from "../fields/formula-field.mjs";
 /** @import { DrawSteelChatMessage } from "../../documents/_module.mjs" */
 
 /**
- * A data model used by default effects with properties to control the expiration behavior
+ * A data model used by default effects with properties to control the expiration behavior.
  */
 export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /**
-   * Key information about this ActiveEffect subtype
+   * Key information about this ActiveEffect subtype.
    */
-  static metadata = Object.freeze({
-    type: "base",
-  });
+  static get metadata() {
+    return {
+      type: "base",
+    };
+  }
 
   /* -------------------------------------------------- */
 
@@ -38,7 +40,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * An effect is also temporary if it has the `end` property set even though they have indeterminate lengths
+   * An effect is also temporary if it has the `end` property set even though they have indeterminate lengths.
    * @returns {boolean | null}
    * @internal
    */
@@ -50,7 +52,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Returns the duration label appropriate to this model's `end` property
+   * Returns the duration label appropriate to this model's `end` property.
    * @returns {string}
    */
   get durationLabel() {
@@ -62,7 +64,7 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /** @import { ActiveEffectDuration, EffectDurationData } from "./_types" */
 
   /**
-   * Subtype specific duration calculations
+   * Subtype specific duration calculations.
    * @returns {Omit<ActiveEffectDuration, keyof EffectDurationData> | null}
    * @internal
    */
@@ -93,10 +95,10 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Rolls a saving throw for the actor and disables the effect if it passes
-   * @param {object} [rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}
-   * @param {object} [dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}
-   * @param {object} [messageData={}]     The data object to use when creating the message
+   * Rolls a saving throw for the actor and disables the effect if it passes.
+   * @param {object} [rollOptions={}]     Options forwarded to new {@linkcode SavingThrowRoll}.
+   * @param {object} [dialogOptions={}]   Options forwarded to {@linkcode SavingThrowDialog.create}.
+   * @param {object} [messageData={}]     The data object to use when creating the message.
    * @param {object} [messageOptions={}]  Additional options which modify the created message.
    * @returns {Promise<DrawSteelChatMessage|object>} A promise which resolves to the created ChatMessage document if create is
    *                                                 true, or the Object of prepared chatData otherwise.
@@ -114,8 +116,12 @@ export default class BaseEffectModel extends foundry.abstract.TypeDataModel {
 
     if (!fd) return;
 
-    if (fd.situationalBonus) formula += ` + ${fd.situationalBonus}`;
-    rollOptions.successThreshold = fd.successThreshold;
+    const { rollConfig, rollMode } = fd;
+
+    if (rollConfig.situationalBonus) formula += ` + ${rollConfig.situationalBonus}`;
+    rollOptions.successThreshold = rollConfig.successThreshold;
+
+    messageOptions.rollMode = rollMode;
 
     const roll = new SavingThrowRoll(formula, rollData, rollOptions);
 

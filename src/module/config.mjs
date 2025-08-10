@@ -74,7 +74,7 @@ preLocalize("echelons", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
- * Valid letter modifiers for size 1 creatures
+ * Valid letter modifiers for size 1 creatures.
  * @enum {{label: string}}
  */
 DRAW_STEEL.sizes = {
@@ -97,7 +97,7 @@ preLocalize("sizes", { key: "label" });
 
 /**
  * Keys in `CONFIG.Token.movement.actions` to include as valid movement tag options for the Actor sheet.
- * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction
+ * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction.
  * @type {string[]}
  */
 DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
@@ -105,7 +105,7 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for damage types
+ * Configuration information for damage types.
  * @type {Record<string, {label: string, color: foundry.utils.Color}>}
  */
 DRAW_STEEL.damageTypes = {
@@ -169,18 +169,21 @@ preLocalize("healingTypes", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
+ * @typedef DrawSteelCondition
+ * @property {string} name
+ * @property {string} img
+ * @property {string} rule
+ * @property {boolean} [targeted]
+ * @property {number} [maxSources]
+ * @property {number} [defaultSpeed]
+ * @property {Record<string, Set<string>>} [restrictions]
+ */
+
+/**
  * Condition definitions provided by the system that are merged in during the `init` hook
  * Afterwards all references *should* use the core-provided CONFIG.statusEffects
- * The `_id` property is handled as part of the merging process
- * @type {Record<string, {
- *  img: string,
- *  name: string,
- *  rule: string,
- *  targeted? boolean,
- *  maxSources?: number,
- *  defaultSpeed?: number,
- *  restrictions?: Record<string, Set<string>>
- * }>}
+ * The `_id` property is handled as part of the merging process.
+ * @type {Record<string, DrawSteelCondition>}
  */
 DRAW_STEEL.conditions = {
   bleeding: {
@@ -248,7 +251,7 @@ DRAW_STEEL.conditions = {
 /* -------------------------------------------------- */
 
 /**
- * Times when an effect can end
+ * Times when an effect can end.
  * @enum {{label: string, abbreviation: string}}
  */
 DRAW_STEEL.effectEnds = {
@@ -264,13 +267,17 @@ DRAW_STEEL.effectEnds = {
     label: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Encounter.Abbr",
   },
+  respite: {
+    label: "DRAW_STEEL.ActiveEffect.Ends.Respite.Label",
+    abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Respite.Abbr",
+  },
 };
 preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
 
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for skills
+ * Configuration information for skills.
  * @type {{
  *  groups: Record<string, {label: string}>,
  *  list: Record<string, {label: string, group: string}>,
@@ -543,7 +550,7 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for languages
+ * Configuration information for languages.
  * @type {Record<string, {label: string}>}
  */
 DRAW_STEEL.languages = {
@@ -678,20 +685,8 @@ preLocalize("languages", { key: "label" });
 
 /* -------------------------------------------------- */
 
-/** @import { AdvancementTypeConfiguration } from "./_types" */
-
 /**
- * Advancement types that can be added to items.
- * @enum {AdvancementTypeConfiguration}
- */
-DRAW_STEEL.advancementTypes = {
-
-};
-
-/* -------------------------------------------------- */
-
-/**
- * Configuration information for negotiations
+ * Configuration information for negotiations.
  */
 DRAW_STEEL.negotiation = {
   /** @type {Record<string, {label: string}>} */
@@ -739,7 +734,7 @@ preLocalize("negotiation.motivations", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for height and weight measurements
+ * Configuration information for height and weight measurements.
  */
 DRAW_STEEL.measurements = {
   /** @type {Record<string, { label: string; group: string }>} */
@@ -787,10 +782,10 @@ preLocalize("measurements.weight", { keys: ["label"] });
 preLocalize("measurements.groups", { keys: ["label"] });
 
 /**
- * Configuration information for heroes
+ * Configuration information for heroes.
  */
 DRAW_STEEL.hero = {
-  /** Items added to new heroes in _preCreate */
+  /** Items added to new heroes in _preCreate. */
   defaultItems: new Set([
     // Aid Attack
     "Compendium.draw-steel.abilities.Item.Xb3S5N1fZyICD58D",
@@ -806,26 +801,22 @@ DRAW_STEEL.hero = {
     "Compendium.draw-steel.abilities.Item.oxaISpgVoCfo6fmt",
     // Heal
     "Compendium.draw-steel.abilities.Item.2qWHDVB7SBS9anLB",
-    // Hide
-    "Compendium.draw-steel.abilities.Item.JykB1rELpGBeAVe6",
     // Knockback
     "Compendium.draw-steel.abilities.Item.emug9cXuwndDrWzu",
     // Melee Free Strike
     "Compendium.draw-steel.abilities.Item.wU69Y06G9lYFrvp6",
     // Ranged Free Strike
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
-    // Search for Hidden Creatures
-    "Compendium.draw-steel.abilities.Item.zQ83mlzlRtflpD3w",
     // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
   ]),
   /**
-   * XP progression for heroes
+   * XP progression for heroes.
    * @type {number[]}
    */
   xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
   /**
-   * Ways to spend hero tokens
+   * Ways to spend hero tokens.
    * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
    */
   tokenSpends: {
@@ -856,7 +847,7 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for monsters
+ * Configuration information for monsters.
  */
 DRAW_STEEL.monsters = {
   /** @type {Record<string, {label: string, group: string}>} */
@@ -957,14 +948,14 @@ DRAW_STEEL.monsters = {
     minion: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Minion",
     },
-    band: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Band",
+    horde: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Horde",
     },
     platoon: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Platoon",
     },
-    troop: {
-      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Troop",
+    elite: {
+      label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Elite",
     },
     leader: {
       label: "DRAW_STEEL.Actor.npc.ORGANIZATIONS.Leader",
@@ -981,7 +972,7 @@ preLocalize("monsters.organizations", { key: "label" });
 /* -------------------------------------------------- */
 
 /**
- * Configuration information for Ability items
+ * Configuration information for Ability items.
  */
 DRAW_STEEL.abilities = {
   /** @type {Record<string, {label: string, group?: string}>} */
@@ -1072,12 +1063,12 @@ DRAW_STEEL.abilities = {
     },
   },
   /**
-   * Action types
+   * Action types.
    * @type {Record<string, {label: string, triggered?: boolean}>}
    */
   types: {
-    action: {
-      label: "DRAW_STEEL.Item.ability.Type.Action",
+    main: {
+      label: "DRAW_STEEL.Item.ability.Type.Main",
     },
     maneuver: {
       label: "DRAW_STEEL.Item.ability.Type.Maneuver",
@@ -1098,7 +1089,7 @@ DRAW_STEEL.abilities = {
     },
   },
   /**
-   * Ability category, e.g. "Villain Action"
+   * Ability category, e.g. "Villain Action".
    * @type {Record<string, {label: string}>}
    */
   categories: {
@@ -1118,7 +1109,7 @@ DRAW_STEEL.abilities = {
   /**
    * Valid distances in Draw Steel
    * `primary` and `secondary`, if present represent additional measures/dimensions that are valid for this type
-   * The string values are the labels for those properties
+   * The string values are the labels for those properties.
    * @type {Record<string, {label: string; primary?: string; secondary?: string; tertiary?: string; area?: boolean; embedLabel: string}>}
    */
   distances: {
@@ -1274,18 +1265,20 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
 
 /**
  * @typedef PowerRollEffectType
- * @property {string} label
- * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass
- * @property {Record<string, PowerRollEffectProperty} [properties]
+ * @property {string} label                                                         Human-readable label.
+ * @property {string} defaultImage                                                  The default image for PowerRollEffects of this type.
+ * @property {pseudoDocuments.powerRollEffects.BasePowerRollEffect} documentClass   The pseudo-document class.
+ * @property {Record<string, PowerRollEffectProperty>} [properties]
  */
 
 /**
- * Valid types for the PowerRollEffect pseudo-document
- * @type {Record<string, PowerRollEffectType> }>}
+ * Valid types for the PowerRollEffect pseudo-document.
+ * @type {Record<string, PowerRollEffectType>}
  */
 DRAW_STEEL.PowerRollEffect = {
   damage: {
     label: "TYPES.PowerRollEffect.damage",
+    defaultImage: "icons/svg/fire.svg",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1295,6 +1288,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   applied: {
     label: "TYPES.PowerRollEffect.applied",
+    defaultImage: "icons/svg/paralysis.svg",
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
     properties: {
       stacking: {
@@ -1304,6 +1298,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   forced: {
     label: "TYPES.PowerRollEffect.forced",
+    defaultImage: "icons/svg/portal.svg",
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
     properties: {
       ignoresImmunity: {
@@ -1316,6 +1311,7 @@ DRAW_STEEL.PowerRollEffect = {
   },
   other: {
     label: "TYPES.PowerRollEffect.other",
+    defaultImage: "icons/svg/sun.svg",
     documentClass: pseudoDocuments.powerRollEffects.OtherPowerRollEffect,
   },
 };
@@ -1325,7 +1321,9 @@ preLocalize("PowerRollEffect", { key: "label" });
 
 /**
  * @typedef AdvancementType
- * @property {string} label   Human-readable label.
+ * @property {string} label                                                 Human-readable label.
+ * @property {string} defaultImage                                          Default image used by documents of this type.
+ * @property {Set<string>} itemTypes                                        Item types that can hold this advancement type.
  * @property {pseudoDocuments.advancements.BaseAdvancement} documentClass   The pseudo-document class.
  */
 
@@ -1333,96 +1331,141 @@ preLocalize("PowerRollEffect", { key: "label" });
 DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
+    defaultImage: "icons/svg/item-bag.svg",
+    itemTypes: new Set(["ancestry", "career", "class", "complication", "feature", "kit", "subclass"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {
     label: "TYPES.Advancement.skill",
+    defaultImage: "icons/svg/hanging-sign.svg",
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
+    defaultImage: "icons/svg/village.svg",
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
     documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
+preLocalize("Advancement", { key: "label" });
 
 /* -------------------------------------------------- */
 
 /**
- * Configuration details for Culture items
- * @type {Record<string, Record<string, {label: string, skillOpts: Set<string>}>>}
+ * @typedef CultureAspect
+ * @property {string} label         Human-readable label.
+ * @property {string} skillGroups   A set of skill groups this aspect gives access to.
+ * @property {Set<string>} skillChoices  A set of skills this aspect gives access to.
+ * @property {Set<string>} group         An entry in culture.groups
+ * TODO: Description as a uuid reference.
+ */
+
+/**
+ * Configuration details for Culture items.
  */
 DRAW_STEEL.culture = {
-  environments: {
+  /**  @type {Record<string, CultureAspect>} */
+  aspects: {
     nomadic: {
-      label: "DRAW_STEEL.Item.culture.Environments.Nomadic",
-      skillOpts: new Set(),
+      label: "DRAW_STEEL.Item.culture.Environment.Nomadic",
+      skillGroups: new Set(["exploration", "interpersonal"]),
+      skillChoices: new Set(),
+      group: "environment",
     },
     rural: {
-      label: "DRAW_STEEL.Item.culture.Environments.Rural",
-      skillOpts: new Set(),
+      label: "DRAW_STEEL.Item.culture.Environment.Rural",
+      skillGroups: new Set(["crafting", "lore"]),
+      skillChoices: new Set(),
+      group: "environment",
     },
     secluded: {
-      label: "DRAW_STEEL.Item.culture.Environments.Secluded",
-      skillOpts: new Set(),
+      label: "DRAW_STEEL.Item.culture.Environment.Secluded",
+      skillGroups: new Set(["interpersonal", "lore"]),
+      skillChoices: new Set(),
+      group: "environment",
     },
     urban: {
-      label: "DRAW_STEEL.Item.culture.Environments.Urban",
-      skillOpts: new Set(),
+      label: "DRAW_STEEL.Item.culture.Environment.Urban",
+      skillGroups: new Set(["interpersonal", "intrigue"]),
+      skillChoices: new Set(),
+      group: "environment",
     },
     wilderness: {
-      label: "DRAW_STEEL.Item.culture.Environments.Wilderness",
-      skillOpts: new Set(),
-    },
-  },
-  organization: {
-    anarchic: {
-      label: "DRAW_STEEL.Item.culture.Organization.Anarchic",
-      skillOpts: new Set(),
+      label: "DRAW_STEEL.Item.culture.Environment.Wilderness",
+      skillGroups: new Set(["crafting", "exploration"]),
+      skillChoices: new Set(),
+      group: "environment",
     },
     bureaucratic: {
       label: "DRAW_STEEL.Item.culture.Organization.Bureaucratic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["interpersonal", "intrigue"]),
+      skillChoices: new Set(),
+      group: "organization",
     },
     communal: {
       label: "DRAW_STEEL.Item.culture.Organization.Communal",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting", "exploration"]),
+      skillChoices: new Set(),
+      group: "organization",
     },
-  },
-  upbringing: {
     academic: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Academic",
-      skillOpts: new Set(),
+      skillGroups: new Set(["lore"]),
+      skillChoices: new Set(),
+      group: "upbringing",
     },
     creative: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Creative",
-      skillOpts: new Set(),
+      skillGroups: new Set(["crafting"]),
+      skillChoices: new Set(["music", "perform"]),
+      group: "upbringing",
     },
-    illegal: {
-      label: "DRAW_STEEL.Item.culture.Upbringing.Illegal",
-      skillOpts: new Set(),
+    lawless: {
+      label: "DRAW_STEEL.Item.culture.Upbringing.Lawless",
+      skillGroups: new Set(["intrigue"]),
+      skillChoices: new Set(),
+      group: "upbringing",
     },
     labor: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Labor",
-      skillOpts: new Set(),
+      skillGroups: new Set(["exploration"]),
+      skillChoices: new Set(["blacksmithing", "handleAnimals"]),
+      group: "upbringing",
     },
     martial: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Martial",
-      skillOpts: new Set(),
+      skillGroups: new Set(),
+      skillChoices: new Set(["blacksmithing", "fletching", "climb", "endurance", "ride", "intimidate", "alertness", "track", "monsters", "strategy"]),
+      group: "upbringing",
     },
     noble: {
       label: "DRAW_STEEL.Item.culture.Upbringing.Noble",
-      skillOpts: new Set(),
+      skillGroups: new Set(["interpersonal"]),
+      skillChoices: new Set(),
+      group: "upbringing",
+    },
+  },
+  /** @type {Record<string, { label: string }>} */
+  group: {
+    environment: {
+      label: "DRAW_STEEL.Item.culture.Environment.label",
+    },
+    organization: {
+      label: "DRAW_STEEL.Item.culture.Organization.label",
+    },
+    upbringing: {
+      label: "DRAW_STEEL.Item.culture.Upbringing.label",
     },
   },
 };
-preLocalize("culture.environments", { key: "label" });
-preLocalize("culture.organization", { key: "label" });
-preLocalize("culture.upbringing", { key: "label" });
+preLocalize("culture.aspects", { key: "label" });
+preLocalize("culture.group", { key: "label" });
 
 /* -------------------------------------------------- */
 
 /**
- * Configuration details for Kit items
+ * Configuration details for Kit items.
  * @type {Record<string,  Record<string, {label: string}>>}
  */
 DRAW_STEEL.kits = {};
@@ -1431,11 +1474,17 @@ DRAW_STEEL.kits = {};
 /* -------------------------------------------------- */
 
 /**
+ * @typedef EquipmentCategory
+ * @property {string} label
+ * @property {FormSelectOption[]} keywords
+ */
+
+/**
  * Configuration details for Equipment items
- * Also used by Kits
+ * Also used by Kits.
  */
 DRAW_STEEL.equipment = {
-  /** @type {Record<string, {label: string, readonly keywords: FormSelectOption[]}>} */
+  /** @type {Record<string, EquipmentCategory>} */
   categories: {
     consumable: {
       label: "DRAW_STEEL.Item.equipment.Categories.Consumable",
@@ -1639,5 +1688,25 @@ DRAW_STEEL.projects = {
       label: "DRAW_STEEL.Item.project.Types.Other",
     },
   },
+  milestones: [{
+    min: 0,
+    max: 30,
+    events: 0,
+  },
+  {
+    min: 31,
+    max: 200,
+    events: 1,
+  },
+  {
+    min: 201,
+    max: 999,
+    events: 2,
+  },
+  {
+    min: 1000,
+    max: Infinity,
+    events: 3,
+  }],
 };
 preLocalize("projects.types", { key: "label" });

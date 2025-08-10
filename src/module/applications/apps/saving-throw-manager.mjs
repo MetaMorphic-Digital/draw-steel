@@ -4,14 +4,16 @@ import RollManager from "../api/roll-manager.mjs";
 /** @import { DrawSteelActiveEffect, DrawSteelChatMessage, DrawSteelUser } from "../../documents/_module.mjs" */
 
 /**
- * A class for managing a saving throw roll
+ * A class for managing a saving throw roll.
  * @extends RollManager<boolean>
+ * @see {@link ds.rolls.SavingThrowRoll | SavingThrowRoll}
+ * @see {@link ds.applications.apps.SavingThrowDialog | SavingThrowDialog}
  */
 export default class SavingThrowManager extends RollManager {
   /**
    * Determine the appropriate user to roll a saving throw.
-   * @param {DrawSteelActiveEffect} effect The effect to save against
-   * @returns {boolean} Did the saving throw succeed
+   * @param {DrawSteelActiveEffect} effect The effect to save against.
+   * @returns {boolean} Did the saving throw succeed.
    */
   static async delegateSavingThrow(effect) {
     if (!game.user.isGM) throw new Error("SavingThrowManager#delegateSavingThrow is only for GM users");
@@ -60,7 +62,7 @@ export default class SavingThrowManager extends RollManager {
   /* -------------------------------------------------- */
 
   /**
-   * Convenient reference to the stored effect
+   * Convenient reference to the stored effect.
    * @type {DrawSteelActiveEffect}
    */
   get effect() {

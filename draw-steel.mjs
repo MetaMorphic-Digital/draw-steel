@@ -118,7 +118,7 @@ Hooks.once("init", function () {
 });
 
 /**
- * Perform one-time pre-localization and sorting of some configuration objects
+ * Perform one-time pre-localization and sorting of some configuration objects.
  */
 Hooks.once("i18nInit", () => {
   helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
@@ -152,7 +152,10 @@ Hooks.once("i18nInit", () => {
     }
   }
 
-  // Localize pseudo-documents.
+  // Localize pseudo-documents. Base first, then loop through the types in use
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect);
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.advancements.BaseAdvancement);
+
   const localizePseudos = record => {
     for (const cls of Object.values(record)) {
       foundry.helpers.Localization.localizeDataModel(cls);
@@ -181,14 +184,14 @@ Hooks.once("ready", async function () {
 });
 
 /**
- * Render hooks
+ * Render hooks.
  */
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /**
- * Other hooks
+ * Other hooks.
  */
 Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

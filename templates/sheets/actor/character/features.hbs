@@ -1,0 +1,42 @@
+<section class="tab features {{tab.cssClass}}" data-group="primary" data-tab="features">
+  {{#if complications.showHeader}}
+  <section class="item-list-container complications-list-container">
+    <div class="item-header">
+      <div class="item-column item-name">{{complications.label}}</div>
+      <div class="item-column item-controls">
+        {{#if complications.showAdd}}
+        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=complications.label) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="complication" data-render-sheet="true" data-tooltip-text="{{addItemTooltip}}">
+          <i class="fa-solid fa-plus"></i>
+        </a>
+        {{/with}}
+        {{/if}}
+      </div>
+    </div>
+    <ol class="item-list complications-list">
+      {{#each complications.complications as |complicationContext|}}
+      <li class="item complication draggable" data-item-id="{{complicationContext.item.id}}" data-document-class="Item">
+        <div class="item-row">
+          <div class="item-column item-name">
+            <img class="item-image" src="{{complicationContext.item.img}}" alt="{{complicationContext.item.name}}">
+            <div class="name">
+              <div class="label">{{complicationContext.item.name}}</div>
+            </div>
+          </div>
+          <div class="item-column item-controls">
+            <a data-action="toggleItemEmbed">
+              <i class="fa-solid fa-angle-{{ifThen complicationContext.expanded "down" "right"}}"></i>
+            </a>
+          </div>
+        </div>
+        <div class="item-embed">
+          {{#if complicationContext.expanded}}{{{complicationContext.embed.outerHTML}}}{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+  </section>
+  {{/if}}
+
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/features/features.hbs"}}
+</section>

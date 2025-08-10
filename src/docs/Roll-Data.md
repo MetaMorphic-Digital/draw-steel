@@ -149,7 +149,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 **First example: a craftable consumable**
 #### Item Descriptors
 + Item category - `@item.category `
-+ Item GM description - `@item.description.gm`
++ Item Director Description - `@item.description.director`
 + Item Type - `@item.kind`
 + Item Name - `@item.name`
 #### Downtime Project roll data
@@ -181,7 +181,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Item Bonus on Speed - `@item.bonuses.speed`
 + Item Bonus on Stability - `@item.bonuses.stability`
 + Item Bonus on Stamina - `@tem.bonuses.stamina`
-+ Item GM description - `@item.description.gm`
++ Item Director Description - `@item.description.director`
 + Item description - `@item.description.value`
 + Item Armor type - `@item.equipment.armor`
 + Item is/has shield (true/false) - `@item.equipment.shield`

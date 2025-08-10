@@ -22,23 +22,52 @@
 
 ### Added
 
-- Advancements
+- Advancements (#51)
 - Added a button to ability use messages to apply effects from the ability. (#214)
+- Added Epic Resource display. (#537)
 - Added a Wealth field to Careers. (#535)
 - Adding or removing a career will adjust the amount of renown and wealth your character has.
 - Added a Renown and Wealth field to characters. (#279)
 - Added age, height, and weight info to the Biography tab for characters.
+- Added data path for bonuses to max stamina per echelon. (#259)
+- Expanded end of encounter prompt to reset heroic resources & temporary stamina. (#612)
+- Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
+- Added a "Next Respite" option for ending Active Effects. (#694)
+- Added an option in the character sheet equipment context menu to start a crafting project for that equipment.
+- Add a setting for which project events type to use, "None", "Roll for Event", or "Event Milestones". (#710)
+  - If set to "Roll for Event", a roll button will appear in the chat message.
+  - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
+- When a project roll is a breakthrough, a button will appear to roll the project again.
+- The Source Information popout will show the Compendium Source of an item if it is available.
 
 ### Changed
 
-- Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
+- Increased system minimum to 13.347.
+- Updated various CONFIG properties and i18n strings to match the final PDF. (#576)
+- [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 - [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
 - [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
+- The end of encounter prompt now only triggers if an encounter progressed to at least the first round. (#643)
+- Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
+  - This enforces good practices for data creation.
+  - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
+- Items with advancements can no longer be mass-created as part of dropping a folder onto an actor sheet. (#736)
+- Adjusted the display of Power Roll Effects, including adding an image property.
+- Expired Active Effects are now labeled "Expired" in their duration rather than "None".
+- Changed the hook name for the actor sheet document context menus to "getDocumentListContextOptions".
+- Adjusted display of resource labels so their role as buttons is clearer.
 
 ### Fixed
 
 - Fixed display of popped out ability messages
 - Fixed display of multi-result abilities
+- Fixed unrequited prompting for end of turn events (#673)
+- Fixed project and save rolls not respecting roll mode settings. (#734)
+- Secret blocks will now display in enriched descriptions for owned documents.
+
+### Removed
+
+- Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
 
 ## 0.7.3
 

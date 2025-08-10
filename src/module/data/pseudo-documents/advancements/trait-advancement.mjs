@@ -4,7 +4,7 @@ import BaseAdvancement from "./base-advancement.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  */
 
-const { BooleanField, NumberField, SchemaField } = foundry.data.fields;
+const { NumberField } = foundry.data.fields;
 
 /**
  * An advancement that applies changes to actor data during data prep.
@@ -14,9 +14,6 @@ export default class TraitAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      requirements: new SchemaField({
-        level: new NumberField({ integer: true, min: 1, max: 10, nullable: false, initial: 1 }),
-      }),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
     });
   }
@@ -43,7 +40,7 @@ export default class TraitAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Getter to indicate that this is a trait advancement
+   * Getter to indicate that this is a trait advancement.
    */
   get isTrait() {
     return true;
@@ -62,11 +59,7 @@ export default class TraitAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Does this trait have a choice to make? This can be done synchronously unlike
-   * for item grant advancements, so we can make use of a getter directly on the advancement here.
-   * @type {boolean}
-   */
+  /** @inheritdoc */
   get isChoice() {
     if (this.chooseN === null) return false;
     if (this.chooseN < this.traitOptions.length) return true;
@@ -108,6 +101,11 @@ export default class TraitAdvancement extends BaseAdvancement {
 
     content.append(formGroup);
 
+    /**
+     * Render callback for Dialog.
+     * @param {Event} event
+     * @param {DSDialog} dialog
+     */
     function render(event, dialog) {
       /** @type {foundry.applications.elements.HTMLMultiCheckboxElement} */
       const multiCheckbox = dialog.element.querySelector("multi-checkbox[name=choices]");
@@ -120,12 +118,13 @@ export default class TraitAdvancement extends BaseAdvancement {
     }
 
     const selection = await ds.applications.api.DSDialog.input({
+      content,
+      render,
+      classes: ["configure-advancement"],
       window: {
         title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
         icon: "fa-solid fa-edit",
       },
-      render,
-      content: content,
     });
 
     if (!selection) return null;
@@ -137,5 +136,15 @@ export default class TraitAdvancement extends BaseAdvancement {
     }
 
     return { [path]: traitChoices.filter(_ => _) };
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async reconfigure() {
+    await super.reconfigure();
+
+    const configuration = await this.configureAdvancement();
+    await this.document.update(configuration);
   }
 }

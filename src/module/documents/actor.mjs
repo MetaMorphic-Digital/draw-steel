@@ -4,7 +4,7 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
 /** @import ClassModel from "../data/item/class.mjs" */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass.
  */
 export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.Actor) {
   /**
@@ -44,9 +44,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
   /* -------------------------------------------------- */
 
   /**
-   * Rolls a given actor's characteristic
+   * Rolls a given actor's characteristic.
    * @param {string} characteristic
-   * @param {object} [options] Pass through options object
+   * @param {object} [options] Pass through options object.
    * @returns
    */
   async rollCharacteristic(characteristic, options) {
@@ -56,7 +56,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc*/
+  /** @inheritdoc */
   async modifyTokenAttribute(attribute, value, isDelta = false, isBar = true) {
     switch (attribute) {
       case "stamina": return this.#modifyStamina(value, isDelta);
@@ -69,9 +69,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /**
    * Handle how changes to Stamina are applied to the Actor.
-   * @param {number} value        The target attribute value
-   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
-   * @returns {Promise<DrawSteelActor>}    The updated Actor document
+   * @param {number} value        The target attribute value.
+   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false).
+   * @returns {Promise<DrawSteelActor>}    The updated Actor document.
    */
   async #modifyStamina(value, isDelta) {
     const attribute = "stamina";
@@ -96,9 +96,9 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /**
    * Handle how changes to Heroic Resources are applied to the Actor.
-   * @param {number} value        The target attribute value
-   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false)
-   * @returns {Promise<DrawSteelActor>}    The updated Actor document
+   * @param {number} value        The target attribute value.
+   * @param {boolean} isDelta     Whether the number represents a relative change (true) or an absolute change (false).
+   * @returns {Promise<DrawSteelActor>}    The updated Actor document.
    */
   async #modifyHeroicResource(value, isDelta) {
     const attribute = "hero.primary.value";
@@ -126,16 +126,16 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
 
   /**
    * Toggle a configured status effect for the Actor.
-   * @param {string} statusId       A status effect ID defined in CONFIG.statusEffects
-   * @param {object} [options={}]   Additional options which modify how the effect is created
-   * @param {boolean} [options.active]        Force the effect to be active or inactive regardless of its current state
-   * @param {boolean} [options.overlay=false] Display the toggled effect as an overlay
-   * @param {string} [options.effectEnd]      Value for `system.end.type`
+   * @param {string} statusId       A status effect ID defined in CONFIG.statusEffects.
+   * @param {object} [options={}]   Additional options which modify how the effect is created.
+   * @param {boolean} [options.active]          Force the effect to be active or inactive regardless of its current state.
+   * @param {boolean} [options.overlay=false]   Display the toggled effect as an overlay.
+   * @param {string} [options.effectEnd]        Value for `system.end.type`.
    * @returns {Promise<DrawSteelActiveEffect|boolean|undefined>}  A promise which resolves to one of the following values:
    *                                 - ActiveEffect if a new effect need to be created
    *                                 - true if was already an existing effect
    *                                 - false if an existing effect needed to be removed
-   *                                 - undefined if no changes need to be made
+   *                                 - undefined if no changes need to be made.
    * @override Implementation copied from core.
    */
   async toggleStatusEffect(statusId, { active, overlay = false, effectEnd = "" } = {}) {

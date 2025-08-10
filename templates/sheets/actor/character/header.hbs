@@ -17,7 +17,7 @@
   {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
 </span>
 {{else}}
-<a class="unfilled" data-action="createDoc" data-document-class="Item" data-type="{{originType}}" data-render-sheet="true">
+<a class="unfilled" data-action="addOrigin" data-type="{{originType}}">
   {{localize "DRAW_STEEL.SHEET.Add" itemName=(localize (concat "TYPES.Item." originType))}}
 </a>
 {{/if}}
@@ -55,17 +55,22 @@
       <div class="class tag">
         {{> headerTag originDoc=document.system.class originType="class"}}
       </div>
+      <div class="subclass tag">
+        {{> headerTag originDoc=document.system.subclass originType="subclass"}}
+      </div>
     </div>
   </div>
   <div class="header-right flexcol">
     <dl>
       <dt class="level">{{localize "DRAW_STEEL.Item.class.FIELDS.level.label"}}</dt>
       <dd class="level">
-        {{system.level}}
-        {{#if (and (gte system.hero.xp system.nextLevelXP) system.class)}}
-        <span class="level-up" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
+        {{#if system.advancementReady}}
+        <button type="button" {{disabled (not editable)}} data-action="levelUp" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
+          {{system.level}}
           <i class="fa-solid fa-up-long"></i>
-        </span>
+        </button>
+        {{else}}
+        {{system.level}}
         {{/if}}
       </dd>
 
@@ -73,15 +78,19 @@
       <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
       <dd class="xp">
         <span class="resource-curent">{{system.hero.xp}}</span>
+        {{#if system.nextLevelXP}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.nextLevelXP}}</span>
+        {{/if}}
       </dd>
 
       <dt>{{systemFields.hero.fields.victories.label}}</dt>
       <dd>
         <span class="resource-current">{{system.hero.victories}}</span>
+        {{#if system.victoriesMax}}
         <span class="resource-divider"> / </span>
         <span class="resource-max">{{system.victoriesMax}}</span>
+        {{/if}}
       </dd>
       {{/if}}
     </dl>

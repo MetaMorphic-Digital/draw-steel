@@ -6,24 +6,24 @@ import SourceModel from "../models/source.mjs";
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
 import { ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
 
-export type ItemMetaData = Readonly<{
-  /** The expected `type` value */
-  type: string;
-  /** Actor types that this item cannot be placed on */
+export type ItemMetaData = Readonly<SubtypeMetadata & {
+  /** Actor types that this item cannot be placed on. */
   invalidActorTypes: string[];
+  /** Is this item type restricted to only appearing in compendium packs? */
+  packOnly: boolean;
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
-} & SubtypeMetadata>;
+}>;
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {
     parent: DrawSteelItem;
     description: {
       value: string;
-      gm: string;
+      director: string;
     }
     source: SourceModel;
-    /** The Draw Steel ID, indicating a unique game rules element */
+    /** The Draw Steel ID, indicating a unique game rules element. */
     _dsid: string;
   }
 }
@@ -47,18 +47,18 @@ declare module "./ability.mjs" {
     trigger: string;
     target: {
       type: string;
-      /** Null value indicates "all"*/
+      /** Null value indicates "all". */
       value: number | null;
     }
     power: {
-      /** Added during base data prep, not a schema value */
+      /** Added during base data prep, not a schema value. */
       characteristic: {
         key: string;
-        /** Null value during data prep or if no parent actor */
+        /** Null value during data prep or if no parent actor. */
         value: null | number;
       }
       roll: {
-        /** Added during data prep */
+        /** Added during data prep. */
         enabled: boolean;
         formula: string;
         characteristics: Set<string>;
@@ -105,6 +105,7 @@ declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
+    epic: string;
     turnGain: string;
     minimum: string;
     characteristics: {
@@ -199,5 +200,11 @@ declare module "./project.mjs" {
       amount: string;
       display: string
     }
+  }
+}
+
+declare module "./subclass.mjs" {
+  export default interface SubclassModel {
+    classLink: string;
   }
 }

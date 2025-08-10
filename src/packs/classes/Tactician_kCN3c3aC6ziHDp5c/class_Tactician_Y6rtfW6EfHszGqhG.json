@@ -4,8 +4,8 @@
   "img": "icons/skills/melee/strike-weapons-orange.webp",
   "system": {
     "description": {
-      "value": "<p>Strategist. Defender. Leader. With sword in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can. </p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks.</p>",
-      "gm": ""
+      "value": "<p>Strategist. Defender. Leader. With weapon in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can.</p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks, even as you leave your enemies struggling to respond.</p>",
+      "director": ""
     },
     "advancements": {
       "36mlcVBFxyBy3tIn": {
@@ -19,7 +19,11 @@
             "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
           }
         ],
-        "name": "Features"
+        "name": "Features",
+        "requirements": {
+          "level": 1
+        },
+        "description": "<p>Field Arsenal, Focus</p>"
       },
       "KoGp0Q93aEXIiQxx": {
         "type": "itemGrant",
@@ -33,11 +37,84 @@
             "uuid": "Compendium.draw-steel.classes.Item.UMi9OOllnmMinI9h"
           }
         ]
+      },
+      "ZYrQ1MTL4PPJq1un": {
+        "name": "Guaranteed Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "ZYrQ1MTL4PPJq1un",
+        "skills": {
+          "choices": [
+            "lead"
+          ]
+        },
+        "description": "<p>You gain the Lead skill.</p>"
+      },
+      "lffZjjuNWAvfmliT": {
+        "name": "Skill Choices",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "lffZjjuNWAvfmliT",
+        "skills": {
+          "choices": [
+            "architecture",
+            "blacksmithing",
+            "fletching",
+            "mechanics",
+            "brag",
+            "empathize",
+            "alertness",
+            "search",
+            "culture",
+            "monsters",
+            "strategy"
+          ],
+          "groups": [
+            "exploration"
+          ]
+        },
+        "chooseN": 2,
+        "description": "<p>Then choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group.</p>"
+      },
+      "MP2iZkK0a0TBrk2f": {
+        "name": "Mark",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "MP2iZkK0a0TBrk2f",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.nTU8DYaGb8P4afyP"
+          }
+        ],
+        "description": "<p>You know how to focus the attention of your allies as you push them toward victory.</p>"
+      },
+      "GaCGwCaDeZ0tIzEW": {
+        "name": "Strike Now",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "GaCGwCaDeZ0tIzEW",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.pBj37n9AteNMfSCo"
+          }
+        ]
       }
     },
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "174",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -54,16 +131,16 @@
     },
     "stamina": {
       "starting": 21,
-      "level": 12
+      "level": 9
     },
     "recoveries": 10,
-    "kits": 2
+    "kits": 2,
+    "epic": "Command"
   },
   "effects": [],
   "folder": "kCN3c3aC6ziHDp5c",
   "ownership": {
-    "default": 0,
-    "TJSowGV8FgjirefO": 3
+    "default": 0
   },
   "flags": {},
   "_stats": {
@@ -74,8 +151,8 @@
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140107957,
-    "modifiedTime": 1751141613388,
-    "lastModifiedBy": "TJSowGV8FgjirefO"
+    "modifiedTime": null,
+    "lastModifiedBy": null
   },
   "_id": "Y6rtfW6EfHszGqhG",
   "sort": 0,

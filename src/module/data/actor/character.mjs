@@ -1,24 +1,24 @@
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
+import BaseEffectModel from "../effect/base.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 
 /** @import DrawSteelItem from "../../documents/item.mjs" */
+/** @import ActiveEffectData from "@common/documents/_types.mjs" */
 
 const fields = foundry.data.fields;
 
 /**
- * Characters are controlled by players and have heroic resources and advancement
+ * Characters are controlled by players and have heroic resources and advancement.
  */
 export default class CharacterModel extends BaseActorModel {
-  /**
-   * @inheritdoc
-   * @type {import("../_types").SubtypeMetadata}
-   */
+  /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "character",
-    });
+    };
   }
 
   /* -------------------------------------------------- */
@@ -32,11 +32,10 @@ export default class CharacterModel extends BaseActorModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    // TODO: Improve the handling of TokenDocument._getTrackedAttributesFromSchema
-    // So that it recognizes derived max stamina & recovery values without them being in the schema
-    const maxStamina = schema.stamina.getField("max");
-    maxStamina.options.max = 0;
-    maxStamina.max = 0;
+    schema.stamina = new fields.SchemaField({
+      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
+    }, { trackedAttribute: true });
 
     schema.recoveries = new fields.SchemaField({
       value: requiredInteger(),
@@ -47,7 +46,9 @@ export default class CharacterModel extends BaseActorModel {
       primary: new fields.SchemaField({
         value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
       }),
-      // Epic resources are not part of public license yet
+      epic: new fields.SchemaField({
+        value: new fields.NumberField({ initial: 0, integer: true, nullable: false }),
+      }),
       surges: requiredInteger(),
       xp: requiredInteger(),
       victories: requiredInteger(),
@@ -130,7 +131,7 @@ export default class CharacterModel extends BaseActorModel {
       }
     }
 
-    this.stamina.max += kitBonuses["stamina"] * this.echelon;
+    this.stamina.max = kitBonuses["stamina"] * this.echelon;
     this.movement.value += kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
@@ -143,10 +144,11 @@ export default class CharacterModel extends BaseActorModel {
     this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
+    this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
-    if (heroClass && heroClass.system.primary) {
-      this.hero.primary.label = heroClass.system.primary;
-      // this.hero.secondary.label = this.class.system.secondary;
+    if (heroClass) {
+      if (heroClass.system.primary) this.hero.primary.label = heroClass.system.primary;
+      if (heroClass.system.epic) this.hero.epic.label = heroClass.system.epic;
     }
 
     super.prepareDerivedData();
@@ -184,7 +186,7 @@ export default class CharacterModel extends BaseActorModel {
     if (!stats.duplicateSource && !stats.compendiumSource && !stats.exportSource) {
       const items = await Promise.all(ds.CONFIG.hero.defaultItems.map(uuid => fromUuid(uuid)));
       // updateSource will merge the arrays for embedded collections
-      updates.items = items.map(i => game.items.fromCompendium(i, { clearFolder: true }));
+      updates.items = items.map(i => game.items.fromCompendium(i, { keepId: true, clearFolder: true }));
     }
 
     this.parent.updateSource(updates);
@@ -219,10 +221,18 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite resetting the character's stamina/recoveries and convert victories to XP
+   * Take a respite resetting the character's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
+    /** @type {ActiveEffectData[]} */
+    const updates = [];
+    for (const effect of this.parent.appliedEffects) {
+      if (!(effect.system instanceof BaseEffectModel)) continue;
+      if (effect.system.end.type === "respite") updates.push({ _id: effect.id, disabled: true });
+    }
+    await this.parent.updateEmbeddedDocuments("ActiveEffect", updates);
+
     return this.parent.update({
       system: {
         recoveries: {
@@ -242,8 +252,8 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries
-   * @returns {Promise<DrawSteelActor}
+   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
+   * @returns {Promise<DrawSteelActor>}
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
@@ -260,7 +270,7 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery
+   * Prompt the user to spend two hero tokens to regain stamina without spending a recovery.
    * @returns {DrawSteelActor}
    */
   async spendStaminaHeroToken() {
@@ -328,67 +338,88 @@ export default class CharacterModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current ancestry
+   * Finds the actor's current ancestry.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "ancestry", system: import("../item/ancestry.mjs").default})}
    */
   get ancestry() {
-    return this.parent.items.find(i => i.type === "ancestry");
+    return this.parent.itemTypes.ancestry[0];
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current career
+   * Finds the actor's current career.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "career", system: import("../item/career.mjs").default})}
    */
   get career() {
-    return this.parent.items.find(i => i.type === "career");
+    return this.parent.itemTypes.career[0];
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current class
+   * Finds the actor's current class.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "class", system: import("../item/class.mjs").default})}
    */
   get class() {
-    return this.parent.items.find(i => i.type === "class");
+    return this.parent.itemTypes.class[0];
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current culture
+   * Finds the actor's current subclass.
+   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
+   */
+  get subclass() {
+    return this.parent.itemTypes.subclass[0];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Finds the actor's current culture.
    * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "culture", system: import("../item/culture.mjs").default})}
    */
   get culture() {
-    return this.parent.items.find(i => i.type === "culture");
+    return this.parent.itemTypes.culture[0];
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Returns all of the actor's kits
+   * Returns all of the actor's kits.
    * @returns {Array<Omit<DrawSteelItem, "type" | "system"> & { type: "kit", system: import("../item/kit.mjs").default }>}
    */
   get kits() {
-    return this.parent.items.filter(i => i.type === "kit");
+    return this.parent.itemTypes.kit;
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Returns the total xp required for the next level
+   * Returns the total xp required for the next level.
+   * @type {number | null} Null if there is no next level
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return null;
     return ds.CONFIG.hero.xp_track[this.level];
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Returns the number of victories required to ascend to the next level
+   * Returns if this actor can level up.
+   * @type {boolean}
+   */
+  get advancementReady() {
+    return this.hero.xp > (this.nextLevelXP ?? Infinity);
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Returns the number of victories required to ascend to the next level.
    */
   get victoriesMax() {
     return Math.max(0, this.nextLevelXP - this.hero.xp);

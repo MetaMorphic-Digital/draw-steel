@@ -12,13 +12,15 @@ import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Chat messages representing the result of {@linkcode AbilityModel.use}
+ * Chat messages representing the result of {@linkcode AbilityModel.use}.
  */
 export default class AbilityUseModel extends BaseMessageModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "abilityUse",
-  });
+  static get metadata() {
+    return {
+      type: "abilityUse",
+    };
+  }
 
   /* -------------------------------------------------- */
 

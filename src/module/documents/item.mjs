@@ -1,9 +1,22 @@
+import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
+  /** @inheritdoc */
+  static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
+    if (!pack) {
+      types ??= this.TYPES;
+      types = types.filter(t => !CONFIG.Item.dataModels[t].metadata?.packOnly);
+      template = systemPath("templates/sidebar/tabs/item/document-create.hbs");
+    }
+    return super.createDialog(data, { pack, ...createOptions }, { types, template, ...dialogOptions });
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   getRollData() {
     const rollData = this.actor?.getRollData() ?? {};
@@ -29,7 +42,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /* -------------------------------------------------- */
 
   /**
-   * Return an item's Draw Steel ID
+   * Return an item's Draw Steel ID.
    * @type {string}
    */
   get dsid() {
@@ -57,11 +70,11 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
    * @type {boolean}
    */
   get hasGrantedItems() {
-    if (!this.supportsAdvancements) return false;
-    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      if (advancement.grantedItemsChain().size) return true;
-    }
-    return false;
+    if (!this.supportsAdvancements || !this.parent) return false;
+    return this.collection.some(item => {
+      if (item.getFlag(systemID, "advancement.parentId") === this.id) return !!this.getEmbeddedPseudoDocumentCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
+      return false;
+    });
   }
 
   /* -------------------------------------------------- */
@@ -69,9 +82,12 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   /**
    * An alternative to the document delete method, this deletes the item as well as any items that were
    * added as a result of this item's creation via advancements.
+   * @param {Object} options
+   * @param {boolean} [options.replacement=false]   Should the window title indicate that this is a replacement?
+   * @param {boolean} [options.skipDialog=false]    Whether to skip the confirmation dialog, e.g., if there's already been another.
    * @returns {Promise<foundry.documents.Item[]|null>}   A promise that resolves to the deleted items.
    */
-  async advancementDeletionPrompt() {
+  async advancementDeletionPrompt({ replacement = false, skipDialog = false } = {}) {
     if (!this.isEmbedded) {
       throw new Error("You cannot prompt for deletion of advancements of an unowned item.");
     }
@@ -80,13 +96,34 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
       throw new Error(`The [${this.type}] item type does not support advancements.`);
     }
 
+    const content = document.createElement("div");
+
+    content.insertAdjacentHTML("afterbegin", `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.DeleteDialog.Content")}</p>`);
+    content.append(this.toAnchor());
+
     const itemIds = new Set([this.id]);
     for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
-      for (const item of advancement.grantedItemsChain()) itemIds.add(item.id);
+      for (const item of advancement.grantedItemsChain()) {
+        content.append(item.toAnchor());
+        itemIds.add(item.id);
+      }
     }
 
-    const confirm = await ds.applications.api.DSDialog.confirm();
-    if (!confirm) return;
+    if (!skipDialog) {
+      const title = game.i18n.format(
+        replacement ? "DRAW_STEEL.ADVANCEMENT.DeleteDialog.ReplaceTitle" : "DOCUMENT.Delete",
+        { type: this.name },
+      );
+      const confirm = await ds.applications.api.DSDialog.confirm({
+        content,
+        window: {
+          title,
+          icon: "fa-solid fa-trash",
+        },
+      });
+      if (!confirm) return;
+    }
+
     return this.actor.deleteEmbeddedDocuments("Item", Array.from(itemIds));
   }
 }

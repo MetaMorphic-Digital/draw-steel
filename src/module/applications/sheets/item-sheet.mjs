@@ -1,20 +1,18 @@
 import { systemPath } from "../../constants.mjs";
-import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
+import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
- * @import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
  */
 
 const { sheets, ux } = foundry.applications;
 
 /**
- * AppV2-based sheet for all item classes
+ * AppV2-based sheet for all item classes.
  */
 export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheet) {
   /** @inheritdoc */
@@ -35,9 +33,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
       toggleEffectDescription: this.#toggleEffectDescription,
-      editPowerRollEffect: this.#editPowerRoll,
-      deletePowerRollEffect: this.#deletePowerRoll,
-      createPowerRollEffect: this.#createPowerRoll,
+      createCultureAdvancement: this.#createCultureAdvancement,
+      reconfigureAdvancement: this.#reconfigureAdvancement,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -94,7 +91,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * A set of the currently expanded effect IDs
+   * A set of the currently expanded effect IDs.
    * @type {Set<string>}
    */
   #expanded = new Set();
@@ -147,16 +144,18 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     switch (partId) {
       case "description":
         context.enrichedDescription = await enrichHTML(this.item.system.description.value, { relativeTo: this.item });
-        context.enrichedGMNotes = await enrichHTML(this.item.system.description.gm, { relativeTo: this.item });
+        context.enrichedDirectorNotes = await enrichHTML(this.item.system.description.director, { relativeTo: this.item });
         break;
       case "details":
         context.detailsPartial = this.item.system.constructor.metadata.detailsPartial ?? null;
         await this.item.system.getSheetContext(context);
         break;
       case "advancement":
-        context.advancements = this._getAdvancementContext();
+        context.advancements = await this._getAdvancementContext();
+        context.advancementIcon = BaseAdvancement.metadata.icon;
         break;
       case "impact":
+        context.powerRollEffectIcon = ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.metadata.icon;
         context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
@@ -197,19 +196,31 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * Prepares context info for the Advancements tab.
    * @returns {AdvancementContext[]}
    */
-  _getAdvancementContext() {
+  async _getAdvancementContext() {
     // Advancements
     const advs = {};
+    /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
     const models = this.document.getEmbeddedPseudoDocumentCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
-      if (!advs[model.requirements.level]) advs[model.requirements.level] = {
-        level: model.requirements.level,
-        section: game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }),
-        documents: [],
+      if (!advs[model.requirements.level]) {
+        const section = Number.isNumeric(model.requirements.level) ?
+          game.i18n.format("DRAW_STEEL.ADVANCEMENT.HEADERS.level", { level: model.requirements.level }) :
+          game.i18n.localize("DRAW_STEEL.ADVANCEMENT.HEADERS.null");
+        advs[model.requirements.level] = {
+          section,
+          level: model.requirements.level,
+          documents: [],
+        };
+      }
+      const advancementContext = {
+        name: model.name,
+        img: model.img,
+        id: model.id,
       };
-      advs[model.requirements.level].documents.push(model);
+      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
+      advs[model.requirements.level].documents.push(advancementContext);
     }
 
     return Object.values(advs).sort((a, b) => a.level - b.level);
@@ -219,14 +230,14 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * @typedef ActiveEffectCategory
-   * @property {string} type                 - The type of category
-   * @property {string} label                - The localized name of the category
-   * @property {Array<ActiveEffect>} effects - The effects in the category
+   * @property {string} type                 - The type of category.
+   * @property {string} label                - The localized name of the category.
+   * @property {Array<ActiveEffect>} effects - The effects in the category.
    */
 
   /**
    * Prepare the data structure for Active Effects which are currently embedded in an Item.
-   * @return {Record<string, ActiveEffectCategory>} Data for rendering
+   * @return {Record<string, ActiveEffectCategory>} Data for rendering.
    * @protected
    */
   async _prepareActiveEffectCategories() {
@@ -287,46 +298,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _onFirstRender(context, options) {
-    await super._onFirstRender(context, options);
-
-    this._createContextMenu(this._powerRollContextOptions, ".power-roll-list .power-roll", {
-      hookName: "getPowerRollEffectContextOptions",
-      fixed: true,
-      parentClassHooks: false,
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Context menu entries for power rolls
-   * @returns {ContextMenuEntry}
-   * @protected
-   */
-  _powerRollContextOptions() {
-    return [
-      {
-        name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.PowerRollEffect") }),
-        icon: "<i class=\"fa-solid fa-fw fa-trash-can\"></i>",
-        condition: () => this.isEditable,
-        callback: (target) => {
-          const powerRollEffect = this._getPowerRoll(target);
-          ui.notifications.info("DRAW_STEEL.PSEUDO.Notifications.DeletedInfo", { format: {
-            pseudoName: game.i18n.localize("DOCUMENT.PowerRollEffect"),
-            id: powerRollEffect.id,
-            type: powerRollEffect.type,
-            name: this.item.name,
-          } });
-          powerRollEffect.delete();
-        },
-      },
-    ];
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc*/
   async _onRender(context, options) {
     await super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));
@@ -342,7 +313,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         tabSection.classList.add("editorActive");
       });
     }
-    /** @type {Array<HTMLElement} */
+    /** @type {Array<HTMLElement>} */
     const editors = this.element.querySelectorAll("prose-mirror");
     for (const ed of editors) {
       const formGroup = ed.closest(".form-group");
@@ -376,11 +347,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Toggle Edit vs. Play mode
+   * Toggle Edit vs. Play mode.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #toggleMode(event, target) {
     if (!this.isEditable) {
@@ -395,11 +366,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Display the item image
+   * Display the item image.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #showImage(event, target) {
     const { img, name, uuid } = this.item;
@@ -409,11 +380,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Open the update source dialog
+   * Open the update source dialog.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
     new DocumentSourceInput({ document: this.document }).render({ force: true });
@@ -422,7 +393,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Active editor instance in the description tab
+   * Active editor instance in the description tab.
    * @type {ProseMirrorEditor}
    */
   #editor = null;
@@ -446,11 +417,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Create a TextEditor instance that takes up the whole tab
+   * Create a TextEditor instance that takes up the whole tab.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #editHTML(event, target) {
@@ -483,11 +454,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Renders an embedded document's sheet
+   * Renders an embedded document's sheet.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #viewEffect(event, target) {
@@ -498,11 +469,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Handles item deletion
+   * Handles item deletion.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #deleteEffect(event, target) {
@@ -513,11 +484,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset
+   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #createEffect(event, target) {
@@ -537,11 +508,11 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Determines effect parent to pass to helper
+   * Determines effect parent to pass to helper.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
   static async #toggleEffect(event, target) {
@@ -553,10 +524,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions
+   * TODO: Refactor re-rendering to instead use CSS transitions.
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
   static async #toggleEffectDescription(event, target) {
@@ -572,45 +543,74 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Edits a power roll pseudo document
+   * Creates an advancement on a culture, with additional logic to simplify creating "aspects".
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
-  static async #editPowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.sheet.render({ force: true });
+  static async #createCultureAdvancement(event, target) {
+    const context = BaseAdvancement._prepareCreateDialogContext(this.document);
+
+    const aspectPrefix = "cultureAspect";
+
+    for (const [key, config] of Object.entries(ds.CONFIG.culture.aspects)) {
+      context.typeOptions.push({
+        label: config.label,
+        group: ds.CONFIG.culture.group[config.group]?.label,
+        value: `${aspectPrefix}.${key}`,
+      });
+    }
+
+    const content = await foundry.applications.handlebars.renderTemplate(BaseAdvancement.CREATE_TEMPLATE, context);
+
+    const result = await ds.applications.api.DSDialog.input({
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize("DOCUMENT.Advancement") }),
+        icon: BaseAdvancement.metadata.icon,
+      },
+      content,
+      render: (event, dialog) => {
+        const typeInput = dialog.element.querySelector("[name=\"type\"]");
+        const nameInput = dialog.element.querySelector("[name=\"name\"]");
+        nameInput.placeholder = context.typeOptions.find(o => o.value === typeInput.value).label;
+        typeInput.addEventListener("change", () => nameInput.placeholder = context.typeOptions.find(o => o.value === typeInput.value).label);
+      },
+    });
+    if (!result) return;
+
+    const [type, aspect] = result.type.split(".");
+    let createData;
+
+    if (type === aspectPrefix) {
+      const config = ds.CONFIG.culture.aspects[aspect];
+
+      createData = {
+        type: "skill",
+        name: config.label,
+        chooseN: 1,
+        skills: {
+          groups: Array.from(config.skillGroups),
+          choices: Array.from(config.skillChoices),
+        },
+      };
+    } else createData = { type };
+    ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.document });
   }
 
-  /* -------------------------------------------------- */
-
   /**
-   * Deletes a power roll pseudo document
+   * Reconfigure an existing advancement on an actor.
    *
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @private
    */
-  static async #deletePowerRoll(event, target) {
-    const powerRollEffect = this._getPowerRoll(target);
-    powerRollEffect.delete();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Creates a power roll pseudo document
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-   * @private
-   */
-  static async #createPowerRoll(event, target) {
-    BasePowerRollEffect.createDialog({}, { parent: this.item });
+  static async #reconfigureAdvancement(event, target) {
+    if (!this.document.parent) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
+    const advancement = this._getPseudoDocument(target);
+    await advancement.reconfigure();
   }
 
   /* -------------------------------------------------- */
@@ -618,10 +618,10 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the row with the data for the rendered embedded document
+   * Fetches the row with the data for the rendered embedded document.
    *
-   * @param {HTMLElement} target  The element with the action
-   * @returns {DrawSteelActiveEffect} The document's row
+   * @param {HTMLElement} target  The element with the action.
+   * @returns {DrawSteelActiveEffect} The document's row.
    */
   _getEffect(target) {
     const li = target.closest(".effect");
@@ -629,24 +629,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * Fetches a Power Roll Effect pseudo-document
-   * @param {HTMLElement} target The element with the action
-   * @returns {BasePowerRollEffect} The document
-   */
-  _getPowerRoll(target) {
-    const btn = target.closest(".power-roll");
-    return this.item.getEmbeddedDocument("PowerRollEffect", btn?.dataset?.id);
-  }
-
-  /* -------------------------------------------------- */
   /*   DragDrop                                         */
   /* -------------------------------------------------- */
 
   /**
-   * Define whether a user is able to begin a dragstart workflow for a given drag selector
-   * @param {string} selector       The candidate HTML selector for dragging
+   * Define whether a user is able to begin a dragstart workflow for a given drag selector.
+   * @param {string} selector       The candidate HTML selector for dragging.
    * @returns {boolean}             Can the current user drag this selector?
    * @protected
    */
@@ -658,8 +646,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector
-   * @param {string} selector       The candidate HTML selector for the drop target
+   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
+   * @param {string} selector       The candidate HTML selector for the drop target.
    * @returns {boolean}             Can the current user drop on this selector?
    * @protected
    */
@@ -672,7 +660,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * Callback actions which occur at the beginning of a drag start workflow.
-   * @param {DragEvent} event       The originating DragEvent
+   * @param {DragEvent} event       The originating DragEvent.
    * @protected
    */
   _onDragStart(event) {
@@ -697,7 +685,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent
+   * @param {DragEvent} event       The originating DragEvent.
    * @protected
    */
   _onDragOver(event) {}
@@ -706,7 +694,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /**
    * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent
+   * @param {DragEvent} event       The originating DragEvent.
    * @protected
    */
   async _onDrop(event) {
@@ -731,9 +719,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Handle the dropping of ActiveEffect data onto an Actor Sheet
-   * @param {DragEvent} event                  The concluding DragEvent which contains drop data
-   * @param {object} data                      The data transfer extracted from the event
+   * Handle the dropping of ActiveEffect data onto an Actor Sheet.
+   * @param {DragEvent} event                  The concluding DragEvent which contains drop data.
+   * @param {object} data                      The data transfer extracted from the event.
    * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
    * @protected
    */
@@ -750,7 +738,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Sorts an Active Effect based on its surrounding attributes
+   * Sorts an Active Effect based on its surrounding attributes.
    *
    * @param {DragEvent} event
    * @param {ActiveEffect} effect
@@ -790,9 +778,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Handle dropping of an Actor data onto another Actor sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
+   * Handle dropping of an Actor data onto another Actor sheet.
+   * @param {DragEvent} event            The concluding DragEvent which contains drop data.
+   * @param {object} data                The data transfer extracted from the event.
    * @returns {Promise<object|boolean>}  A data object which describes the result of the drop, or false if the drop was
    *                                     not permitted.
    * @protected
@@ -804,9 +792,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Handle dropping of an item reference or item data onto an Actor Sheet
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data
-   * @param {object} data                The data transfer extracted from the event
+   * Handle dropping of an item reference or item data onto an Actor Sheet.
+   * @param {DragEvent} event            The concluding DragEvent which contains drop data.
+   * @param {object} data                The data transfer extracted from the event.
    * @returns {Promise<Item[]|boolean>}  The created or updated Item instances, or false if the drop was not permitted.
    * @protected
    */
@@ -819,8 +807,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /**
    * Handle dropping of a Folder on an Actor Sheet.
    * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data
-   * @param {object} data         The data transfer extracted from the event
+   * @param {DragEvent} event     The concluding DragEvent which contains drop data.
+   * @param {object} data         The data transfer extracted from the event.
    * @returns {Promise<Item[]>}
    * @protected
    */
@@ -830,10 +818,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /* -------------------------------------------------- */
 
-  /** The following pieces set up drag handling and are unlikely to need modification  */
-
   /**
-   * Returns an array of DragDrop instances
+   * Returns an array of DragDrop instances.
    * @type {DragDrop[]}
    */
   get dragDrop() {
@@ -843,8 +829,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Create drag-and-drop workflow handlers for this Application
-   * @returns {DragDrop[]}     An array of DragDrop handlers
+   * Create drag-and-drop workflow handlers for this Application.
+   * @returns {DragDrop[]}     An array of DragDrop handlers.
    * @private
    */
   #createDragDropHandlers() {

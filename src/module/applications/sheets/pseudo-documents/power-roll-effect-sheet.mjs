@@ -101,6 +101,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       const effect = await ActiveEffect.implementation.create({
         name: ActiveEffect.implementation.defaultName({ parent: item }),
         img: item.img,
+        origin: item.uuid,
         transfer: false,
       }, { parent: item });
 

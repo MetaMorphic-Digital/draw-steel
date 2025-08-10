@@ -11,5 +11,11 @@ export interface FormulaFieldOptions extends StringFieldOptions {
 declare module "./formula-field.mjs" {
   export default interface FormulaField extends FormulaFieldOptions {
     options: FormulaFieldOptions;
+
+    /**
+     * Is this formula not allowed to have dice values?
+     * @defaultValue `false`
+     */
+    deterministic: boolean;
   }
 }

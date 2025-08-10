@@ -1,15 +1,17 @@
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * A complication is an optional feature that provides both a positive benefit and a negative drawback
+ * A complication is an optional feature that provides both a positive benefit and a negative drawback.
  */
 export default class ComplicationModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "complication",
+      packOnly: false,
       invalidActorTypes: ["npc"],
-    });
+    };
   }
 
   /* -------------------------------------------------- */

@@ -1,7 +1,15 @@
 import AdvancementChain from "../../../utils/advancement-chain.mjs";
+import enrichHTML from "../../../utils/enrich-html.mjs";
 import DSApplication from "../../api/application.mjs";
 
+/**
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
+
 export default class ChainConfigurationDialog extends DSApplication {
+  /**
+   * @param {ApplicationConfiguration} options
+   */
   constructor({ chains, actor, ...options } = {}) {
     if (!chains) {
       throw new Error("The chain configuration dialog was constructed without Chains.");
@@ -53,6 +61,7 @@ export default class ChainConfigurationDialog extends DSApplication {
    * @type {AdvancementChain[]}
    */
   #chains;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   get chains() {
     return this.#chains;
   }
@@ -64,6 +73,7 @@ export default class ChainConfigurationDialog extends DSApplication {
    * @type {foundry.documents.Actor}
    */
   #hero;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   get hero() {
     return this.#hero;
   }
@@ -76,6 +86,17 @@ export default class ChainConfigurationDialog extends DSApplication {
     context.ctx = { chains: this.#chains.map(c => c.active()) };
     context.buttons = [{ type: "submit", label: "Confirm", icon: "fa-solid fa-fw fa-check" }];
     return context;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preFirstRender(context, options) {
+    await super._preFirstRender(context, options);
+
+    for (const chain of this.#chains) {
+      chain.enrichedDescription = await enrichHTML(chain.advancement.description, { relativeTo: chain.advancement.document });
+    }
   }
 
   /* -------------------------------------------------- */

@@ -6,27 +6,30 @@
   },
   "DRAW_STEEL": {
     "COMPENDIUM": {
-      "ancestries": "Ancestries",
-      "backgrounds": "Backgrounds",
       "classes": "Classes",
-      "kits": "Kits",
       "abilities": "Abilities",
-      "journals": "System Journals"
+      "journals": "System Journals",
+      "tables": "Roll Tables",
+      "monsters": "Monsters",
+      "origins": "Ancestries & Backgrounds",
+      "character-options": "Complications, Perks, and Kits",
+      "rewards": "Projects & Rewards"
     },
     "ADVANCEMENT": {
       "FIELDS": {
         "description": {
           "label": "Description"
+        },
+        "requirements": {
+          "label": "Requirements",
+          "level": {
+            "label": "Level",
+            "hint": "The level at which this advancement can be granted."
+          }
         }
       },
       "ITEM_GRANT": {
         "FIELDS": {
-          "requirements": {
-            "level": {
-              "label": "Level",
-              "hint": "The level at which these items can be granted."
-            }
-          },
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
@@ -35,12 +38,6 @@
       },
       "TRAIT": {
         "FIELDS": {
-          "requirements": {
-            "level": {
-              "label": "Level",
-              "hint": "The level at which these traits can be granted."
-            }
-          },
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the traits can be picked when this advancement is configured. If left blank or if the number is greater than the number of traits available, all the traits are granted."
@@ -66,29 +63,39 @@
         }
       },
       "HEADERS": {
-        "level": "Level {level}"
+        "level": "Level {level}",
+        "null": "Initial Advancements"
       },
       "SHEET": {
         "requirements": "Requirements",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
-        "traitLabel": "Label",
-        "traits": "Traits"
+        "reconfigure": "Reconfigure Advancement"
       },
       "WARNING": {
-        "cannotAddNewType": "You cannot add a new {type} to a character that already has one."
-      },
-      "ReplaceItem": {
-        "title": "Replace {type}",
-        "content": "Do you want to replace {name}?"
+        "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
+        "restrictedType": "{type} items cannot be added as advancements.",
+        "requirePack": "Granted items must come from a compendium pack.",
+        "forbidParent": "Granted items cannot be embedded in an actor."
       },
       "ChainConfiguration": {
         "levelUpTitle": "Level Up: {name}",
-        "createWithAdvancementsTitle": "Create {name} with Advancements"
+        "createWithAdvancementsTitle": "Create {name} with Advancements",
+        "reconfigureTitle": "Reconfigure Advancement"
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
         "ChooseN": "Choose {n}"
+      },
+      "DeleteDialog": {
+        "ReplaceTitle": "Replace {type}",
+        "Content": "The following items will be deleted:"
+      },
+      "Reconfigure": {
+        "ConfirmItemGrant": {
+          "Title": "Reconfigure Item Grant",
+          "Content": "This will delete and recreate the granted items."
+        }
       }
     },
     "SHEET": {
@@ -103,11 +110,15 @@
       "Add": "+ Add {itemName}",
       "NoDocument": "No {documentName}",
       "Play": "Play",
+      "View": "View",
       "Edit": "Edit",
+      "Share": "Share",
+      "Delete": "Delete",
       "Resources": "Resources",
       "Other": "Other",
       "LevelUp": "Level Up Available",
-      "ToggleMode": "Toggle Play/Edit Mode"
+      "ToggleMode": "Toggle Play/Edit Mode",
+      "NoCreateAdvancement": "{name} could not be created as part of the folder drop because it has advancements."
     },
     "EDITOR": {
       "Enrichers": {
@@ -146,6 +157,12 @@
         }
       },
       "Update": "Update Source Information",
+      "CompendiumSource": {
+        "Label": "Compendium Source",
+        "Clear": "Clear compendium source",
+        "ConfirmDeleteTitle": "Clear Compendium Source",
+        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata."
+      },
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
@@ -205,8 +222,8 @@
             "value": {
               "label": "Biography"
             },
-            "gm": {
-              "label": "GM Notes"
+            "director": {
+              "label": "Director Notes"
             },
             "languages": {
               "label": "Languages"
@@ -329,6 +346,11 @@
                 "label": "Heroic Resource"
               }
             },
+            "epic": {
+              "value": {
+                "label": "Epic Resource"
+              }
+            },
             "surges": {
               "label": "Surges"
             },
@@ -404,7 +426,7 @@
         },
         "EVLabel": {
           "Label": "EV",
-          "Minion": "{value} for eight minions",
+          "Minion": "{value} for four minions",
           "Other": "{value}"
         },
         "KEYWORDS": {
@@ -439,12 +461,12 @@
           "Support": "Support"
         },
         "ORGANIZATIONS": {
-          "Band": "Band",
-          "Leader": "Leader",
           "Minion": "Minion",
+          "Horde": "Horde",
           "Platoon": "Platoon",
-          "Solo": "Solo",
-          "Troop": "Troop"
+          "Elite": "Elite",
+          "Leader": "Leader",
+          "Solo": "Solo"
         },
         "Negotiation": {
           "Motivations": {
@@ -495,10 +517,18 @@
       "base": {
         "FIELDS": {}
       },
-      "AwardVictories": {
-        "Title": "Victories Awarded",
-        "Hint": "How many victories to award to each character in the combat.",
-        "Button": "Award Victories"
+      "CompleteEncounter": {
+        "Title": "Complete Encounter",
+        "AwardVictories": {
+          "label": "Victories Awarded",
+          "hint": "How many victories to award to each character in the combat."
+        },
+        "ResetTempStamina": {
+          "label": "Reset Temporary Stamina"
+        },
+        "ResetHeroicResources": {
+          "label": "Reset Heroic Resources"
+        }
       }
     },
     "Combatant": {
@@ -538,25 +568,29 @@
         "tier2": "Tier 2",
         "tier3": "Tier 3"
       },
+      "LimitWorldCreateTooltip": "Certain item types (Class, Subclass, Ancestry, Career, Kit) must be created inside of a compendium and cannot be created in-world.",
       "base": {
         "FIELDS": {
           "description": {
             "value": {
               "label": "Description"
             },
-            "gm": {
-              "label": "GM Notes"
+            "director": {
+              "label": "Director Notes"
             }
           },
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
           }
-        },
-        "share": "Share"
+        }
       },
       "advancement": {
-        "FIELDS": {}
+        "FIELDS": {
+          "advancements": {
+            "label": "Advancements"
+          }
+        }
       },
       "ability": {
         "FIELDS": {
@@ -672,7 +706,7 @@
           "Weapon": "Weapon"
         },
         "Type": {
-          "Action": "Action",
+          "Main": "Main Action",
           "Maneuver": "Maneuver",
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
@@ -783,6 +817,9 @@
           "primary": {
             "label": "Heroic Resource"
           },
+          "epic": {
+            "label": "Epic Resource"
+          },
           "turnGain": {
             "label": "Gain Per Turn"
           },
@@ -816,7 +853,12 @@
       },
       "culture": {
         "FIELDS": {},
-        "Environments": {
+        "AnyLanguageAdvancement": {
+          "name": "Any Language",
+          "description": "You know the language of your chosen culture."
+        },
+        "Environment": {
+          "label": "Environment",
           "Nomadic": "Nomadic",
           "Rural": "Rural",
           "Secluded": "Secluded",
@@ -824,14 +866,16 @@
           "Wilderness": "Wilderness"
         },
         "Organization": {
+          "label": "Organization",
           "Anarchic": "Anarchic",
           "Bureaucratic": "Bureaucratic",
           "Communal": "Communal"
         },
         "Upbringing": {
+          "label": "Upbringing",
           "Academic": "Academic",
           "Creative": "Creative",
-          "Illegal": "Illegal",
+          "Lawless": "Lawless",
           "Labor": "Labor",
           "Martial": "Martial",
           "Noble": "Noble"
@@ -951,7 +995,7 @@
             "Supernatural": "Supernatural"
           },
           "Title": {
-            "Label":"Title"
+            "Label": "Title"
           }
         }
       },
@@ -1038,6 +1082,18 @@
         },
         "StaminaEmbed": "{number} per echelon"
       },
+      "subclass": {
+        "FIELDS": {
+          "classLink": {
+            "label": "Class Link",
+            "hint": "The Draw Steel ID of the parent class, which can be found in the class's Source Information."
+          }
+        },
+        "ERRORS": {
+          "NeedClass": "You can only add a subclass to characters with a class",
+          "WrongDSID": "The expected DSID {expected} did not match the current class's DSID of {actual}."
+        }
+      },
       "project": {
         "FIELDS": {
           "type": {
@@ -1079,13 +1135,23 @@
         "CompletedNotification": "{actor} has achieved enough project points to complete the {project} project.",
         "Craft": {
           "ItemName": "Craft {name}",
-          "CompletedNotification": "{actor} successfully crafted {amount} {item}(s)."
+          "CompletedNotification": "{actor} successfully crafted {amount} {item}(s).",
+          "FromEquipment": {
+            "Label": "Start Crafting Project",
+            "Notification": "Started crafting project for {item}."
+          }
         },
         "SpendCareerPoints": {
           "Title": "Spend Career Points",
           "Label": "How many points do you want to spend?",
           "Success": "{actor} has spent {points} project points from their career on {project}."
-        }
+        },
+        "Events": {
+          "RollForEvent": "Roll for Event",
+          "RollTriggered": "The event roll triggers an event!",
+          "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
+        },
+        "RollBreakThrough": "Roll Breakthrough"
       }
     },
     "ActiveEffect": {
@@ -1097,6 +1163,7 @@
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects",
       "Applied": "Applied Effects",
+      "Expired": "Expired",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
@@ -1108,8 +1175,12 @@
           "Abbr": "Save Ends"
         },
         "Encounter": {
-          "Label": "End of Encounter or Dying",
+          "Label": "End of Encounter",
           "Abbr": "EoE"
+        },
+        "Respite": {
+          "Label": "Next Respite",
+          "Abbr": "Respite"
         }
       },
       "Conditions": {
@@ -1188,6 +1259,9 @@
         },
         "img": {
           "label": "Image"
+        },
+        "type": {
+          "label": "Type"
         }
       },
       "POWER_ROLL_EFFECT": {
@@ -1389,6 +1463,12 @@
       "MigrationVersion": {
         "Label": "Migration Version",
         "Hint": "Last Performed Migration"
+      },
+      "ProjectEvents": {
+        "Label": "Project Event Trigger",
+        "Hint": "How should project event timing be determined?",
+        "Roll": "Roll for Event",
+        "Milestone": "Event Milestones"
       }
     },
     "SOCKET": {
@@ -1592,6 +1672,7 @@
       "feature": "Feature",
       "equipment": "Equipment",
       "kit": "Kit",
+      "subclass": "Subclass",
       "project": "Project"
     },
     "PowerRollEffect": {
@@ -1601,7 +1682,7 @@
       "other": "Other"
     }
   },
-  "TOKEN.MOVEMENT":{
+  "TOKEN.MOVEMENT": {
     "SelectType": "Select Movement Type",
     "ToggleShift": "Toggle Shifting",
     "ACTIONS": {

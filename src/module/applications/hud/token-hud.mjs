@@ -1,7 +1,7 @@
 import { systemPath } from "../../constants.mjs";
 
 /**
- * A custom Token HUD that implements Draw Steel effect handling
+ * A custom Token HUD that implements Draw Steel effect handling.
  */
 export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD {
   /** @inheritdoc */
@@ -51,8 +51,8 @@ export default class DrawSteelTokenHUD extends foundry.applications.hud.TokenHUD
   /**
    * Handle toggling a token status effect icon.
    * @this {DrawSteelTokenHUD}
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #onToggleEffect(event, target) {
     if (!this.actor) {

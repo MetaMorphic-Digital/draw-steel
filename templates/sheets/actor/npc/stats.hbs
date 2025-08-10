@@ -1,13 +1,13 @@
 {{! Stats Tab }}
 <section class="tab stats standard-form {{tab.cssClass}}" data-group="primary" data-tab="stats">
-  <div class="flexrow fieldgroup">
+  <div class="form-group">
     <fieldset class="resources flexrow">
       <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
       <div class="resource stamina">
         <label class="resource-label">
           {{systemFields.stamina.label}}
         </label>
-        <div class="resource-content flexrow">
+        <div class="form-group resource-content">
           {{#if isPlay}}
           <div class="resource-temporary">
             {{formGroup
@@ -78,7 +78,7 @@
   </div>
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
   {{#if isPlay}}
-  <div class="flexrow">
+  <div class="form-group">
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
   </div>
