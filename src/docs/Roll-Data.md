@@ -131,12 +131,12 @@ Value indicates if actor currently has status (1/yes, 0/no)
 **This section only includes roll data entries that are specific to NPC actors.**
 
 ### Monter Roll data
-+ Monster EV - `@monster.ev`
-+ Monster Free Strike damage: - `@monster.freeStrike`
-+ Monster Keyword - `@monster.keywords`
++ Encounter Value - `@monster.ev`
++ Free Strike damage: - `@monster.freeStrike`
++ Monster Keywords - `@monster.keywords`
 + Monster Level - `@monster.level`
-+ Monster Organisation - `@monster.organization`
-+ Monster Roll - `@monster.role`
++ Monster Organization - `@monster.organization`
++ Monster Role - `@monster.role`
 
 ### Monster Negotiation Roll Data
 + Impression Score - `@negotiation.impression`
