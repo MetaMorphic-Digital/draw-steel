@@ -126,6 +126,25 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Echelon - `@echelon`
 + Level - `@level`
 
+## NPC Actor Roll Data
+
+**This section only includes roll data entries that are specific to NPC actors.**
+
+### Monter Roll data
++ Monster EV - `@monster.ev`
++ Monster Free Strike damage: - `@monster.freeStrike`
++ Monster Keyword - `@monster.keywords`
++ Monster Level - `@monster.level`
++ Monster Organisation - `@monster.organization`
++ Monster Roll - `@monster.role`
+
+### Monster Negotiation Roll Data
++ Impression Score - `@negotiation.impression`
++ Interest - `@negotiation.interest`
++ Patience - `@negotiation.patience`
++ Motivations - `@negotiation.motivations`
++ Pitfalls - `@negotiation.pitfalls`
+
 ## Item Roll Data
 **First example: a craftable consumable**
 #### Item Descriptors
