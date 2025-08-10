@@ -112,13 +112,13 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  /**
-   * Fetches the collection this PseudoDocument is contained in.
-   * @type {ModelCollection<this>}
-   */
-  get collection() {
-    return foundry.utils.getProperty(this.document, this.fieldPath);
-  }
+  // /**
+  //  * Fetches the collection this PseudoDocument is contained in.
+  //  * @type {ModelCollection<this>}
+  //  */
+  // get collection() {
+  //   return foundry.utils.getProperty(this.document, this.fieldPath);
+  // }
 
   /* -------------------------------------------------- */
 
@@ -130,6 +130,17 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    */
   get sheet() {
     return ds.applications.api.PseudoDocumentSheet.getSheet(this);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _configure(options = {}) {
+    super._configure(options);
+    Object.defineProperty(this, "collection", {
+      value: options.collection ?? null,
+      writable: false,
+    });
   }
 
   /* -------------------------------------------------- */
