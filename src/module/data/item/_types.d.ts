@@ -152,6 +152,10 @@ declare module "./feature.mjs" {
       value: string;
       subtype: string;
     }
+    prerequisites: {
+      value: string;
+    }
+    story: string;
   }
 }
 

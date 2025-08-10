@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
+import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
  * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
@@ -41,6 +42,8 @@ export default class FeatureModel extends AdvancementModel {
       value: new fields.StringField({ required: true }),
     });
 
+    schema.story = new fields.StringField({ required: true, blank: true });
+
     return schema;
   }
 
@@ -70,6 +73,12 @@ export default class FeatureModel extends AdvancementModel {
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", this.parent.type);
     embed.innerHTML = enriched;
+    if (this.story) embed.insertAdjacentHTML("afterbegin", `<em>${this.story}</em>`);
+    const showPrerequisites = (config.values.includes("prerequisites") || config.prerequisites);
+    if (showPrerequisites) embed.insertAdjacentHTML("afterbegin",
+      `<p><strong>${this.schema.getField("prerequisites").label}</strong>:
+      ${this.prerequisites.value || game.i18n.localize("DRAW_STEEL.Item.NoPrerequisites")}</p>`,
+    );
 
     return embed;
   }
