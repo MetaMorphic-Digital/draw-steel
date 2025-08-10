@@ -1,5 +1,19 @@
 <fieldset>
-  <legend>{{systemFields.biography.fields.languages.label}}</legend>
+  <legend>
+    {{systemFields.biography.fields.languages.label}}
+    {{#if unfilledLanguage}}
+    <button
+      type="button"
+      class="icon fa-solid fa-message-question"
+      {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+      data-tooltip-text="{{localize "DRAW_STEEL.ADVANCEMENT.FillTrait.button" type=(localize "TYPES.Advancement.language")}}"
+      data-tooltip-direction="UP"
+      data-action="fillTrait"
+      data-type="language"
+    >
+    </button>
+    {{/if}}
+  </legend>
   {{#if isPlay}}
   {{languages.list}}
   {{else}}

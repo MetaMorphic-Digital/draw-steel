@@ -41,6 +41,7 @@ export default class AdvancementModel extends BaseItemModel {
     if ((this.actor?.type !== "character")) return;
 
     const record = this.actor.system._traits;
+    const unfilled = this.actor.system._unfilledTraits;
     const flags = this.parent.flags[systemID]?.advancement ?? {};
     const addTrait = (type, trait) => {
       record[type] ??= new Set();
@@ -54,6 +55,10 @@ export default class AdvancementModel extends BaseItemModel {
         ? flags[advancement.id]?.selected ?? []
         : advancement.traitOptions.map(option => option.value);
       addTrait(advancement.type, selected);
+      if (selected.length < advancement.chooseN) {
+        unfilled[advancement.type] ??= new Set();
+        unfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
+      }
     }
   }
 

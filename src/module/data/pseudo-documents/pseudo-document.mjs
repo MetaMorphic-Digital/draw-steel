@@ -4,6 +4,7 @@ import { systemPath } from "../../constants.mjs";
  * @import Document from "@common/abstract/document.mjs";
  * @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs";
  * @import { PseudoDocumentMetadata } from "../_types";
+ * @import ModelCollection from "../../utils/model-collection.mjs";
  */
 
 const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
@@ -111,6 +112,16 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
+  // /**
+  //  * Fetches the collection this PseudoDocument is contained in.
+  //  * @type {ModelCollection<this>}
+  //  */
+  // get collection() {
+  //   return foundry.utils.getProperty(this.document, this.fieldPath);
+  // }
+
+  /* -------------------------------------------------- */
+
   /**
    * Reference to the sheet of this pseudo-document, registered in a static map.
    * A pseudo-document is temporary, unlike regular documents, so the relation here
@@ -119,6 +130,17 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    */
   get sheet() {
     return ds.applications.api.PseudoDocumentSheet.getSheet(this);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _configure(options = {}) {
+    super._configure(options);
+    Object.defineProperty(this, "collection", {
+      value: options.collection ?? null,
+      writable: false,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -155,6 +177,34 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
   /*   Instance Methods                                 */
+  /* -------------------------------------------------- */
+
+  /**
+   * Construct a UUID relative to another document.
+   * @param {Document} relative  The document to compare against.
+   */
+  getRelativeUUID(relative) {
+
+    // This PseudoDocument is a sibling of the relative Document.
+    if (this.collection === relative.collection) return `.${this.id}`;
+
+    // This PseudoDocument may be a descendant of the relative Document, so walk up the hierarchy to check.
+    const parts = [this.documentName, this.id];
+    let parent = this.parent;
+    while (parent) {
+      if (parent === relative) break;
+      // Skip intermediate non-Document/PseudoDocument data models
+      if (parent.documentName) parts.unshift(parent.documentName, parent.id);
+      parent = parent.parent;
+    }
+
+    // The relative Document was a parent or grandparent of this one.
+    if (parent === relative) return `.${parts.join(".")}`;
+
+    // The relative Document was unrelated to this one.
+    return this.uuid;
+  }
+
   /* -------------------------------------------------- */
 
   /**

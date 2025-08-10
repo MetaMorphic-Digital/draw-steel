@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /**
@@ -21,6 +22,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
       modifyItemQuantity: this.#modifyItemQuantity,
+      fillTrait: this.#fillTrait,
     },
     position: {
       // Skills section is visible by default
@@ -80,6 +82,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
+        context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkillList();
         break;
       case "features":
@@ -97,6 +100,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         break;
       case "biography":
         context.measurements = this._getMeasurements();
+        context.unfilledLanguage = !!this.actor.system._unfilledTraits.language?.size;
         break;
     }
     return context;
@@ -381,6 +385,27 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     const updatedQuantity = (quantityModification === "increase") ? quantity + 1 : quantity - 1;
 
     item.update({ "system.quantity": updatedQuantity });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt the user to fill one or more unchosen languages.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #fillTrait(event, target) {
+    const { type } = target.dataset;
+
+    const appOptions = {
+      advancements: this.actor.system._unfilledTraits[type].map(uuid => fromUuidSync(uuid, { relative: this.actor })),
+    };
+
+    // special name for the language title
+    if (type === "language") foundry.utils.setProperty(appOptions, "window.title", "DRAW_STEEL.ADVANCEMENT.FillTrait.languageTitle");
+
+    FillTraitDialog.create(appOptions);
   }
 
   /* -------------------------------------------------- */
