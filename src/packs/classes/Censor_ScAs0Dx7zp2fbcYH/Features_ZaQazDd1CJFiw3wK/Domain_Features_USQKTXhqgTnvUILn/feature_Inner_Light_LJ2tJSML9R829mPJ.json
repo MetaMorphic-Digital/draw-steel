@@ -25,7 +25,57 @@
       "value": ""
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Inner Light",
+      "origin": "Compendium.draw-steel.classes.Item.LJ2tJSML9R829mPJ",
+      "img": "icons/svg/item-bag.svg",
+      "transfer": false,
+      "_id": "W0e9SMh7huuVY745",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "combat.save.bonus",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1754936468740,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!LJ2tJSML9R829mPJ.W0e9SMh7huuVY745"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
