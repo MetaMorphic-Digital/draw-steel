@@ -5,7 +5,10 @@ import FormulaField from "../fields/formula-field.mjs";
 import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { PowerRollModifiers } from  "../../_types.js"*/
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { PowerRollModifiers } from  "../../_types.js"
+ */
 
 const fields = foundry.data.fields;
 

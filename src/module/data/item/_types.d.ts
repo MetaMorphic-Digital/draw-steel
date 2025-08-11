@@ -155,6 +155,7 @@ declare module "./feature.mjs" {
     prerequisites: {
       value: string;
     }
+    story: string;
     points: number;
   }
 }
