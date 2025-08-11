@@ -112,14 +112,14 @@ export default class TraitAdvancement extends BaseAdvancement {
       const submit = dialog.element.querySelector(".form-footer [type=submit]");
       multiCheckbox.addEventListener("change", () => {
         for (const checkbox of multiCheckbox.querySelectorAll("input")) checkbox.disabled = !multiCheckbox.value.includes(checkbox.value) && (multiCheckbox.value.length >= chooseN);
-        submit.disabled = multiCheckbox.value.length !== chooseN;
+        submit.disabled = multiCheckbox.value.length > chooseN;
       });
       multiCheckbox.dispatchEvent(new Event("change"));
     }
 
     const selection = await ds.applications.api.DSDialog.input({
       content,
-      render,
+      render: render.bind(this),
       classes: ["configure-advancement"],
       window: {
         title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
@@ -145,6 +145,6 @@ export default class TraitAdvancement extends BaseAdvancement {
     await super.reconfigure();
 
     const configuration = await this.configureAdvancement();
-    await this.document.update(configuration);
+    if (configuration) await this.document.update(configuration);
   }
 }

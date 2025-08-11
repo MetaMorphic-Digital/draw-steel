@@ -1,0 +1,83 @@
+{
+  "folder": "zUXKgyV6RrQD4AsM",
+  "name": "College of the Harlequin Mask",
+  "type": "subclass",
+  "_id": "FVMUt54L6k3ZOO58",
+  "img": "icons/equipment/head/mask-carved-wood-pink.webp",
+  "system": {
+    "description": {
+      "value": "<p>Graduates of the College of the Harlequin Mask learn illusion magic, which they use to infiltrate enemy strongholds and create orchestrated chaos in combat. You have the Lie skill.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "161",
+      "license": "Draw Steek Creator License",
+      "revision": 1
+    },
+    "_dsid": "college-of-the-harlequin-mask",
+    "advancements": {
+      "UoYJf2tjr0RXuMBm": {
+        "name": "Skill (Lie)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "UoYJf2tjr0RXuMBm",
+        "skills": {
+          "choices": [
+            "lie"
+          ]
+        }
+      },
+      "gCBxdwLbtULbFgSX": {
+        "name": "College Features",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gCBxdwLbtULbFgSX",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ZZbgNnWUKXD14C1r"
+          }
+        ]
+      },
+      "OxbNmzO132RahSg4": {
+        "name": "College Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "OxbNmzO132RahSg4",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.rtFwtr8oYTBhjCn8"
+          }
+        ]
+      }
+    },
+    "classLink": "shadow"
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754644755259,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!FVMUt54L6k3ZOO58"
+}
