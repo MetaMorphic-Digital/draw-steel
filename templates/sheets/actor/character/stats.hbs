@@ -129,7 +129,21 @@
   {{/if}}
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
   <fieldset class="skills">
-    <legend>{{systemFields.hero.fields.skills.label}}</legend>
+    <legend>
+      {{systemFields.hero.fields.skills.label}}
+      {{#if unfilledSkill}}
+      <button
+        type="button"
+        class="icon fa-solid fa-clipboard-question"
+        {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+        data-tooltip-text="{{localize "DRAW_STEEL.ADVANCEMENT.FillTrait.button" type=(localize "TYPES.Advancement.skill")}}"
+        data-tooltip-direction="UP"
+        data-action="fillTrait"
+        data-type="skill"
+      >
+      </button>
+      {{/if}}
+    </legend>
     {{#if isPlay}}
     {{skills}}
     {{else}}
