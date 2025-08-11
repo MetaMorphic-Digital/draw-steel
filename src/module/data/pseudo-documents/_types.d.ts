@@ -1,6 +1,8 @@
 import "./advancements/_types";
 import "./power-roll-effects/_types";
 
+import ModelCollection from "../../utils/model-collection.mjs";
+
 import { ApplicationConfiguration } from "@client/applications/_types";
 import { DialogV2Configuration, DialogV2WaitOptions } from "@client/applications/api/dialog.mjs";
 
@@ -11,6 +13,7 @@ declare module "./pseudo-document.mjs" {
     _id: string;
     name: string;
     img: string;
+    collection: ModelCollection<this>
   }
 }
 

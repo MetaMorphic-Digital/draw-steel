@@ -3,12 +3,19 @@ import enrichHTML from "../../../utils/enrich-html.mjs";
 import DSApplication from "../../api/application.mjs";
 
 /**
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
  * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
+
+/**
+ * @typedef ChainConfigurationDialogOptions
+ * @property {DrawSteelActor} actor
+ * @property {AdvancementChain[]} chains
  */
 
 export default class ChainConfigurationDialog extends DSApplication {
   /**
-   * @param {ApplicationConfiguration} options
+   * @param {ApplicationConfiguration & ChainConfigurationDialogOptions} options
    */
   constructor({ chains, actor, ...options } = {}) {
     if (!chains) {
@@ -70,7 +77,7 @@ export default class ChainConfigurationDialog extends DSApplication {
 
   /**
    * The hero leveling up.
-   * @type {foundry.documents.Actor}
+   * @type {DrawSteelActor}
    */
   #hero;
   // eslint-disable-next-line @jsdoc/require-jsdoc
