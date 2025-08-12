@@ -1,0 +1,120 @@
+{
+  "folder": "uWYEH9fs5ogusKkP",
+  "name": "Tough But Withered",
+  "type": "feature",
+  "_id": "S2OsBBFHqBoHZYUu",
+  "img": "icons/magic/death/undead-skeleton-deformed-red.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your undead body grants you immunity to cold, corruption, lightning, and poison damage equal to your level, but you have fire weakness 5. You can’t suffocate, and you don’t need to eat or drink to stay alive.</p><p>Additionally, when your Stamina reaches the negative of your winded value, you become inert instead of dying. You fall prone and can’t stand. You continue to observe your surroundings, but you can’t speak, take main actions, maneuvers, move actions, or triggered actions. While inert this way, if you take any fire damage, your body is destroyed and you die. Otherwise, after 12 hours, you [[/heal @recoveries.recoveryValue]]{regain Stamina} equal to your recovery value.</p>",
+      "director": "<p>The immunities that scale will level need to be adjusted manually as the character levels. </p>"
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "47",
+      "license": "Draw Steel Creators License",
+      "revision": 1
+    },
+    "_dsid": "tough-but-withered",
+    "advancements": {},
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "value": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Tough But Withered",
+      "origin": "Compendium.draw-steel.origins.Item.S2OsBBFHqBoHZYUu",
+      "img": "icons/magic/death/undead-skeleton-deformed-red.webp",
+      "_id": "o6jQgG4VANoob2XI",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.acid",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.poison",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.fire",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1754628983679,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!S2OsBBFHqBoHZYUu.o6jQgG4VANoob2XI"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754628353140,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!S2OsBBFHqBoHZYUu"
+}

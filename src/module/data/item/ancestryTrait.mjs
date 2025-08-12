@@ -1,4 +1,5 @@
 import FeatureModel from "./feature.mjs";
+import { systemPath } from "../../constants.mjs";
 
 /**
  * Signature and purchased features for ancestries.
@@ -24,7 +25,8 @@ export default class AncestryTraitModel extends FeatureModel {
   static defineSchema() {
     const schema = super.defineSchema();
 
-    schema.points = new foundry.data.fields.NumberField({ integer: true });
+    // Null means signature trait
+    schema.points = new foundry.data.fields.NumberField({ required: true, integer: true });
 
     return schema;
   }

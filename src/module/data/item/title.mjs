@@ -1,5 +1,6 @@
-import { requiredInteger } from "../helpers.mjs";
 import FeatureModel from "./feature.mjs";
+import { systemPath } from "../../constants.mjs";
+import { requiredInteger } from "../helpers.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 
 /**
@@ -32,7 +33,7 @@ export default class TitleModel extends FeatureModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.echelon = requiredInteger();
+    schema.echelon = requiredInteger({ initial: 1 });
 
     schema.story = new fields.StringField({ required: true, blank: true });
 

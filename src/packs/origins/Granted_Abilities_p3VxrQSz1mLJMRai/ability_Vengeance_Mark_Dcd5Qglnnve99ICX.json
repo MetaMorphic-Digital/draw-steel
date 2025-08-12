@@ -1,0 +1,64 @@
+{
+  "folder": "p3VxrQSz1mLJMRai",
+  "name": "Vengeance Mark",
+  "type": "ability",
+  "_id": "Dcd5Qglnnve99ICX",
+  "img": "icons/magic/symbols/rune-sigil-hook-white-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "47",
+      "license": "Draw Steel Creators License",
+      "revision": 1
+    },
+    "_dsid": "vengeance-mark-ability",
+    "story": "",
+    "keywords": [],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>As a maneuver, you place a magic sigil on a creature within 10 squares. When you place a sigil, you decide where it appears on the creature’s body, and whether the sigil is visible to only you or to all creatures.</p><p>You always know the direction to the exact location of a creature who bears one of your sigils and is on the same world. You can have a number of active sigils equal to your level, and can remove a sigil from a creature at will (no action required). If you already have the maximum number of sigils activated and you place a new one, your oldest sigil disappears with no other effect.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754629386014,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Dcd5Qglnnve99ICX"
+}

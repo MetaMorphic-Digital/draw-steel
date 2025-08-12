@@ -1,0 +1,96 @@
+{
+  "folder": "5ZNEzHj1srMQquH7",
+  "name": "Small!",
+  "type": "feature",
+  "_id": "Sk03bZTV24MzxYVT",
+  "img": "icons/creatures/invertebrates/ant-strength-green.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your diminutive stature lets you easily get out of—or into—trouble. Your size is 1S.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "45",
+      "license": "Draw Steel Creators License",
+      "revision": 1
+    },
+    "_dsid": "small",
+    "advancements": {},
+    "type": {
+      "value": "",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "value": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Small!",
+      "origin": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT",
+      "img": "icons/creatures/invertebrates/ant-strength-green.webp",
+      "_id": "zA4EgMRsL0I76cou",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "S",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1754627544826,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Sk03bZTV24MzxYVT.zA4EgMRsL0I76cou"
+    }
+  ],
+  "sort": 150000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.346",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754624477569,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Sk03bZTV24MzxYVT"
+}
