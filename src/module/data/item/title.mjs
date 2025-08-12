@@ -66,7 +66,7 @@ export default class TitleModel extends FeatureModel {
     embed.classList.add("draw-steel", this.parent.type);
     embed.innerHTML = enriched;
     if (this.story) embed.insertAdjacentHTML("afterbegin", `<em>${this.story}</em>`);
-    const showPrerequisites = (config.values.includes("prerequisites") || config.prerequisites);
+    const showPrerequisites = (config.values?.includes("prerequisites") || config.prerequisites);
     if (showPrerequisites) embed.insertAdjacentHTML("afterbegin",
       `<p><strong>${this.schema.getField("prerequisites").label}</strong>:
       ${this.prerequisites.value || game.i18n.localize("DRAW_STEEL.Item.NoPrerequisites")}</p>`,

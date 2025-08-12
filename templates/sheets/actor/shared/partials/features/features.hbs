@@ -2,8 +2,7 @@
 <section class="item-list-container feature-list-container">
   <div class="item-header">
     <div class="item-column item-name">{{localize "TYPES.Item.feature"}}</div>
-    <div class="item-column item-type">{{featureFields.type.fields.value.label}}</div>
-    <div class="item-column item-type">{{featureFields.type.fields.subtype.label}}</div>
+    <div class="item-column item-type">{{localize "DOCUMENT.FIELDS.type.label"}}</div>
     <div class="item-column item-controls">
       {{#unless isPlay}}
       {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.feature")) as |addItemTooltip|}}
@@ -24,12 +23,7 @@
             <div class="label">{{featureContext.item.name}}</div>
           </div>
         </div>
-        {{#with (lookup @root.config.features.types featureContext.item.system.type.value) as |typeConfig|}}
-        {{#with (lookup typeConfig.subtypes featureContext.item.system.type.subtype) as |subtypeConfig|}}
-        <div class="item-column item-type">{{typeConfig.label}}</div>
-        <div class="item-column item-subtype">{{subtypeConfig.label}}</div>
-        {{/with}}
-        {{/with}}
+        <div class="item-column item-type">{{localize typeLabel}}</div>
         <div class="item-column item-controls">
           <a data-action="toggleItemEmbed">
             <i class="fa-solid fa-angle-{{ifThen featureContext.expanded "down" "right"}}"></i>
