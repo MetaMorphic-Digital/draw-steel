@@ -802,6 +802,13 @@
       "ancestry": {
         "FIELDS": {}
       },
+      "ancestryTrait": {
+        "FIELDS": {
+          "points": {
+            "label": "Point Cost"
+          }
+        }
+      },
       "career": {
         "FIELDS": {
           "projectPoints": {
@@ -974,44 +981,7 @@
         }
       },
       "feature": {
-        "FIELDS": {
-          "type": {
-            "value": {
-              "label": "Feature Type"
-            },
-            "subtype": {
-              "label": "Feature Subtype"
-            }
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
-          },
-          "points": {
-            "label": "Point Cost"
-          }
-        },
-        "Types": {
-          "Ancestry": {
-            "Label": "Ancestry Trait",
-            "signature": "Signature",
-            "purchased": "Purchased"
-          },
-          "Perk": {
-            "Label": "Perk",
-            "Crafting": "Crafting",
-            "Exploration": "Exploration",
-            "Interpersonal": "Interpersonal",
-            "Intrigue": "Intrigue",
-            "Lore": "Lore",
-            "Supernatural": "Supernatural"
-          },
-          "Title": {
-            "Label": "Title"
-          }
-        }
+        "FIELDS": {}
       },
       "kit": {
         "FIELDS": {
@@ -1106,6 +1076,32 @@
         "ERRORS": {
           "NeedClass": "You can only add a subclass to characters with a class",
           "WrongDSID": "The expected DSID {expected} did not match the current class's DSID of {actual}."
+        }
+      },
+      "title": {
+        "FIELDS": {
+          "echelon": {
+            "label": "Echelon"
+          },
+          "story": {
+            "label": "Story Text"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "perk": {
+        "FIELDS": {
+          "perkType": {
+            "label": "Perk Type"
+          }
+        },
+        "Types": {
+          "Supernatural": "Supernatural"
         }
       },
       "project": {
@@ -1679,6 +1675,7 @@
     "Item": {
       "ability": "Ability",
       "ancestry": "Ancestry",
+      "ancestryTrait": "Ancestry Trait",
       "career": "Career",
       "class": "Class",
       "complication": "Complication",
@@ -1686,8 +1683,10 @@
       "feature": "Feature",
       "equipment": "Equipment",
       "kit": "Kit",
+      "perk": "Perk",
+      "project": "Project",
       "subclass": "Subclass",
-      "project": "Project"
+      "title": "Title"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",
