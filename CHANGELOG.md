@@ -63,6 +63,7 @@
 - Fixed display of multi-result abilities
 - Fixed unrequited prompting for end of turn events (#673)
 - Fixed project and save rolls not respecting roll mode settings. (#734)
+- Players can now use NPC abilities that don't have malice costs. (#790)
 - Secret blocks will now display in enriched descriptions for owned documents.
 
 ### Removed
