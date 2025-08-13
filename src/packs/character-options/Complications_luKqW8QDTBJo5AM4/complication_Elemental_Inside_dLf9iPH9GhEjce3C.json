@@ -10,15 +10,65 @@
       "page": ""
     },
     "description": {
-      "value": "<p>When an evil mage threatened someone you loved, you blocked your foe’s summoning of an elemental creature by absorbing their magic with your body. You are now infused with the power of that elemental - and they’re not happy about it.</p><p><strong>Benefit:</strong> </p><p><strong>Drawback:</strong> When you are dying, your possessing elemental takes control of your body. The elemental yearns for destruction, causing you to attack the closest creature they notice without regard for your desires or your body’s safety. The Director or you can control the hero, but whoever does must do their best to kill any creature they notice until you are no longer dying.</p>",
+      "value": "<p>When an evil mage threatened someone you loved, you blocked that foe’s summoning of an elemental creature by absorbing their magic with your body. You are now infused with the power of that elemental—who isn’t at all happy about it. </p><p><strong>Benefit:</strong> You gain a +3 bonus to Stamina at 1st level, then again at 4th, 7th, and 10th levels. </p><p><strong>Drawback:</strong> While you are dying, your possessing elemental takes control of your body. The elemental yearns for destruction, causing you to attack the nearest creature you notice without regard for your desires or your body’s safety. If you don’t do your best to fulfill the elemental’s rage, the Director can take temporary control of your hero.</p>",
       "director": ""
     },
     "_dsid": "elemental-inside",
     "advancements": {}
   },
   "_id": "dLf9iPH9GhEjce3C",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/magic/fire/elemental-fire-flying.webp",
+  "effects": [
+    {
+      "name": "Elemental Inside Benefit",
+      "origin": "Compendium.draw-steel.character-options.Item.dLf9iPH9GhEjce3C",
+      "img": "icons/magic/earth/construct-stone.webp",
+      "_id": "J65F31mXewwBWYds",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755095890825,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!dLf9iPH9GhEjce3C.J65F31mXewwBWYds"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
