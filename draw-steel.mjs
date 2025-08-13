@@ -195,3 +195,4 @@ Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
  */
 Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);
+Hooks.once("polyglot.init", helpers.polyglotInit);

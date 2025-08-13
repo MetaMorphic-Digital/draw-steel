@@ -1,4 +1,5 @@
 export * from "./dsn.mjs";
+export * from "./polyglot.mjs";
 export * from "./hotReload.mjs";
 export * from "./handlebars.mjs";
 export * as macros from "./macros.mjs";
