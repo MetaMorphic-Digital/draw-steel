@@ -10,114 +10,15 @@
       "page": "247"
     },
     "description": {
-      "value": "<p>You were dying in the wode, collapsing while starving and wounded. When you woke, you discovered that a group of green elementalists had saved your life by infusing the regenerative bark of a tree to your body. </p><p><strong>Benefit:</strong> Your recovery value increases by an amount equal to your highest characteristic score. </p><p><strong>Drawback:</strong> You have fire weakness 5.</p>",
+      "value": "<p>You were dying in the wode - starving and wounded, you collapsed. When you woke, you found a group of green elementalists had saved your life by infusing the regenerative bark of a tree to your body.</p><p><strong>Benefit:</strong> </p><p><strong>Drawback:</strong> Fire Weakness + 5</p>",
       "director": ""
     },
     "_dsid": "wodewalker",
     "advancements": {}
   },
   "_id": "krC6L1GE2x0iZEJo",
-  "img": "icons/magic/nature/root-vine-barrier-wall-brown.webp",
-  "effects": [
-    {
-      "name": "Wodewalker Drawback",
-      "origin": "Compendium.draw-steel.character-options.Item.krC6L1GE2x0iZEJo",
-      "img": "icons/magic/nature/root-vine-barrier-wall-brown.webp",
-      "_id": "n7P5RYtFq5IoqhFh",
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.damage.weaknesses.fire",
-          "mode": 2,
-          "value": "5",
-          "priority": null
-        }
-      ],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755181307163,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!items.effects!krC6L1GE2x0iZEJo.n7P5RYtFq5IoqhFh"
-    },
-    {
-      "name": "Wodewalker Benefit",
-      "origin": "Compendium.draw-steel.character-options.Item.krC6L1GE2x0iZEJo",
-      "img": "icons/magic/nature/root-vine-barrier-wall-brown.webp",
-      "_id": "IUcA4BbVgMYZJxKZ",
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.recoveries.recoveryValue",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": true,
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755181339531,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!items.effects!krC6L1GE2x0iZEJo.IUcA4BbVgMYZJxKZ"
-    }
-  ],
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0
