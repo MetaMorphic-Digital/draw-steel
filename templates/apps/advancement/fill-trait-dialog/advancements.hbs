@@ -1,0 +1,27 @@
+<section class="standard-form">
+  {{#each items}}
+  <fieldset class="advancement">
+    <legend>{{name}}</legend>
+    {{#each advancements}}
+    <div class="form-group" data-uuid="{{uuid}}">
+      <img class="advancement-img" src="{{img}}" alt="{{name}}">
+      <label>{{name}}</label>
+      <div class="form-fields">
+        <button
+          type="button"
+          data-tooltip="DRAW_STEEL.ADVANCEMENT.SHEET.reconfigure"
+          data-action="reconfigureAdvancement"
+          class="icon fa-fw fa-solid fa-arrow-rotate-right"
+        >
+        </button>
+      </div>
+      {{#if enrichedDescription}}
+      <div class="hint">
+        {{{enrichedDescription}}}
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+  </fieldset>
+  {{/each}}
+</section>

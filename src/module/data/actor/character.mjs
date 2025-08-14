@@ -177,6 +177,7 @@ export default class CharacterModel extends BaseActorModel {
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
 
+    // Handling for trait advancements
     for (const skill of this._traits.skill ?? []) {
       if (skill in ds.CONFIG.skills.list) this.hero.skills.add(skill);
     }
@@ -328,6 +329,17 @@ export default class CharacterModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Internal record used to cache trait advancements that did not select their full complement of choices.
+   * Each entry is a set of advancement UUIDs.
+   * This record is populated during `prepareEmbeddedDocuments`.
+   * @type {Record<string, Set<string>>}
+   * @internal
+   */
+  _unfilledTraits = {};
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get level() {
     return this.class?.system.level ?? 0;
@@ -413,10 +425,21 @@ export default class CharacterModel extends BaseActorModel {
 
   /**
    * Returns the total xp required for the next level.
+   * @type {number | null} Null if there is no next level
    */
   get nextLevelXP() {
-    if (this.level >= ds.CONFIG.hero.xp_track.length) return 0;
+    if (this.level >= ds.CONFIG.hero.xp_track.length) return null;
     return ds.CONFIG.hero.xp_track[this.level];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Returns if this actor can level up.
+   * @type {boolean}
+   */
+  get advancementReady() {
+    return this.hero.xp > (this.nextLevelXP ?? Infinity);
   }
 
   /* -------------------------------------------------- */

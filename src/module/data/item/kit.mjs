@@ -91,9 +91,9 @@ export default class KitModel extends AdvancementModel {
    * @returns {Promise<void|false>}
    */
   async kitSwapDialog(actor) {
-    const kits = actor.system.kits.concat(this.parent);
+    const kits = actor.system.kits;
     const kitLimit = actor.system.class?.system.kits;
-    if (!Number.isNumeric(kitLimit) || (kits.length <= kitLimit)) return;
+    if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
 
     // Generate the HTML for the dialog
     let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: actor.name })}</strong>`;
@@ -120,9 +120,10 @@ export default class KitModel extends AdvancementModel {
         icon: "fa-solid fa-arrow-right-arrow-left",
       },
     });
-    if (!fd?.kit || (fd.kit === this.parent.id)) return false;
+    if (!fd?.kit) return false;
 
-    await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
+    const deleted = await actor.items.get(fd.kit).advancementDeletionPrompt({ skipDialog: true });
+    if (!deleted) return false;
   }
 
   /* -------------------------------------------------- */

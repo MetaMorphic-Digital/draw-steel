@@ -42,8 +42,9 @@ export default class CollectionField extends TypedObjectField {
 
   /** @inheritdoc */
   initialize(value, model, options = {}) {
-    const init = super.initialize(value, model, options);
     const collection = new ModelCollection();
+    options.collection = collection;
+    const init = super.initialize(value, model, options);
     for (const [id, model] of Object.entries(init)) {
       if (model instanceof ds.data.pseudoDocuments.PseudoDocument) {
         collection.set(id, model);

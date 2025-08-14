@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /**
@@ -14,12 +15,14 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     classes: ["character"],
     actions: {
       addOrigin: this.#addOrigin,
+      levelUp: this.#levelUp,
       gainSurges: this.#gainSurges,
       rollProject: this.#rollProject,
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
       modifyItemQuantity: this.#modifyItemQuantity,
+      fillTrait: this.#fillTrait,
     },
     position: {
       // Skills section is visible by default
@@ -79,6 +82,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
+        context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkillList();
         break;
       case "features":
@@ -96,6 +100,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         break;
       case "biography":
         context.measurements = this._getMeasurements();
+        context.unfilledLanguage = !!this.actor.system._unfilledTraits.language?.size;
         break;
     }
     return context;
@@ -268,10 +273,19 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       case "class":
         game.packs.get("draw-steel.classes").render({ force: true });
         break;
-      case "subclass":
-        game.packs.get("draw-steel.classes").render({ force: true });
-        break;
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Advance this character one level.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #levelUp(event, target) {
+    await this.actor.system.advance();
   }
 
   /* -------------------------------------------------- */
@@ -374,6 +388,27 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   }
 
   /* -------------------------------------------------- */
+
+  /**
+   * Prompt the user to fill one or more unchosen languages.
+   * @this DrawSteelCharacterSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #fillTrait(event, target) {
+    const { type } = target.dataset;
+
+    const appOptions = {
+      advancements: this.actor.system._unfilledTraits[type].map(uuid => fromUuidSync(uuid, { relative: this.actor })),
+    };
+
+    // special name for the language title
+    if (type === "language") foundry.utils.setProperty(appOptions, "window.title", "DRAW_STEEL.ADVANCEMENT.FillTrait.languageTitle");
+
+    FillTraitDialog.create(appOptions);
+  }
+
+  /* -------------------------------------------------- */
   /*   Drag and Drop                                    */
   /* -------------------------------------------------- */
 
@@ -426,16 +461,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
         /** @type {DrawSteelItem} */
         const existing = this.actor.system[item.type];
         if (existing) {
-          const replace = await ds.applications.api.DSDialog.confirm({
-            window: {
-              icon: "fa-solid fa-arrow-right-arrow-left",
-              title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.title", { type: game.i18n.localize(CONFIG.Item.typeLabels[item.type]) }),
-            },
-            content: `<p>${game.i18n.format("DRAW_STEEL.ADVANCEMENT.ReplaceItem.content", { name: item.name })}</p>`,
-          });
-          // TODO: Undo previous item's advancements
-          if (replace) await existing.delete();
-          else throw new Error(`Cannot add a new ${item.type} to a character that already has one without replacing the old.`);
+          const confirmation = await existing.advancementDeletionPrompt({ replacement: true });
+          if (!confirmation) return;
         }
       }
       else if (item.type === "kit") {
