@@ -7,18 +7,68 @@
       "book": "Heroes",
       "license": "Draw Steel Creator License",
       "revision": 1,
-      "page": ""
+      "page": "235"
     },
     "description": {
-      "value": "<p>Cultists captured you while raiding your home, then began an unholy ritual to turn your body into an undead spirit. The ritual failed, but your body became infused with corrupted magic, turning you partially incorporeal.</p><p><strong>Benefit:</strong> Once per turn, you can move through a solid mundane object no more than 1 square thick. If you end your turn inside the object, you take 5 damage and are shunted out into the space where you entered the object.</p><p><strong>Drawback:</strong> Corruption Weakness + 5</p>",
+      "value": "<p>Cultists captured you while raiding your home, then began an unholy ritual to turn your body into an undead spirit. Though the ritual failed, your body became infused with corrupted magic, turning you partially incorporeal. </p><p><strong>Benefit:</strong> Once per turn, you can move through solid matter 1 square thick or less. If you end your turn inside solid matter, you are forced out into the space from which you entered it and you take [[/damage 5]] damage that can’t be reduced in any way. </p><p><strong>Drawback:</strong> You have corruption weakness 5.</p>",
       "director": ""
     },
     "_dsid": "cult-victim",
     "advancements": {}
   },
   "_id": "AKQnpT3IUsQQ43KS",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+  "effects": [
+    {
+      "name": "Cult Victim Drawback",
+      "origin": "Compendium.draw-steel.character-options.Item.AKQnpT3IUsQQ43KS",
+      "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+      "_id": "rwy2nGuW0W1SjOX3",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.corruption",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755094332826,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!AKQnpT3IUsQQ43KS.rwy2nGuW0W1SjOX3"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

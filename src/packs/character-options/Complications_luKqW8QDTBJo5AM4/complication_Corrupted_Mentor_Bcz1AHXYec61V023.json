@@ -7,18 +7,83 @@
       "book": "Heroes",
       "license": "Draw Steel Creator License",
       "revision": 1,
-      "page": ""
+      "page": "235"
     },
     "description": {
       "value": "<p>Your mentor taught you everything, and you trusted them implicitly - until they went rogue, betraying you or your organization. Their current whereabouts and activities are unknown, although there are disturbing rumors - and you, as their former pupil, are under suspicion as well.</p><p><strong>Benefit:</strong> Your mentor taught you the Corrupt Spirit maneuver, which, in retrospect, should have aroused your suspicion.</p><p><strong>Drawback:</strong> You have holy weakness 1. Each time you use Corrupt Spirit, your holy weakness increases by 1, to a maximum of your Recovery value. This weakness is reset to 1 after you take holy damage.</p>",
       "director": ""
     },
     "_dsid": "corrupted-mentor",
-    "advancements": {}
+    "advancements": {
+      "G9wSU2vPSW2BTAEY": {
+        "name": "",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "G9wSU2vPSW2BTAEY",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.R0853kqCl1p0tQSx"
+          }
+        ]
+      }
+    }
   },
   "_id": "Bcz1AHXYec61V023",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+  "effects": [
+    {
+      "name": "Corrupted Mentor Downside",
+      "origin": "Compendium.draw-steel.character-options.Item.Bcz1AHXYec61V023",
+      "img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+      "_id": "uD02X8VKR4k8yz7b",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weakness.holy",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755119461055,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Bcz1AHXYec61V023.uD02X8VKR4k8yz7b"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

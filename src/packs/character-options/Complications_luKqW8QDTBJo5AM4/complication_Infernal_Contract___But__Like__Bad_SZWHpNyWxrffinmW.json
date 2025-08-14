@@ -7,18 +7,80 @@
       "book": "Heroes",
       "license": "Draw Steel Creator License",
       "revision": 1,
-      "page": ""
+      "page": "239"
     },
     "description": {
-      "value": "<p>You made a deal with a devil - not a very good deal, but it wasn’t a very good devil. Now it’s too late for regrets. Your soul is forfeit unless you find a loophole or convince the devil to void the deal.</p><p><strong>Benefit:</strong> </p><p><strong>Drawback:</strong> Your body bears a fiendish mark. Anyone who understands religion can tell that your soul belongs to Hell, giving you a bane on tests made to interact with them (unless they’re into that). Additionally, when you die, your soul goes to Hell and you can’t be restored to life.</p>",
+      "value": "<p>You made a deal with a devil. Not a very good deal, because it wasn’t a very good devil. It’s too late for regrets, though, because your soul is forfeit unless you find a loophole or can convince the devil to void the deal.</p><p><strong>Benefit:</strong> Choose one of the following benefits:</p><ul><li><p>You earn 2 Renown.</p></li><li><p>Your Wealth increases by 2.</p></li><li><p>You gain a +3 bonus to Stamina.</p></li></ul><p>(Delete the unused benefits from Active Effect)</p><p><strong>Drawback:</strong> Your body bears a fiendish mark. Any creature who understands religion and notes the mark can tell that your soul belongs to Hell, imposing a bane on any test you make to interact with those creatures (unless they’re into that). Additionally, when you die, your soul goes to Hell and you can’t be restored to life.</p>",
       "director": ""
     },
     "_dsid": "infernal-contract--but-like-bad",
     "advancements": {}
   },
   "_id": "SZWHpNyWxrffinmW",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+  "effects": [
+    {
+      "name": "Infernal Contract … But, Like, Bad Benefit",
+      "origin": "Compendium.draw-steel.character-options.Item.SZWHpNyWxrffinmW",
+      "img": "icons/creatures/unholy/demon-fire-horned-mask.webp",
+      "_id": "GXdZxi4P7kNxs5S7",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.hero.renown",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "system.hero.wealth",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755113937524,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SZWHpNyWxrffinmW.GXdZxi4P7kNxs5S7"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

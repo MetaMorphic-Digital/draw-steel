@@ -7,18 +7,294 @@
       "book": "Heroes",
       "license": "Draw Steel Creator License",
       "revision": 1,
-      "page": ""
+      "page": "234"
     },
     "description": {
-      "value": "<p>Due to a magical accident, your being has fused with a small, harmless animal. You turn into this animal when it’s convenient - and sometimes when it’s inconvenient as well.</p><p><strong>Benefit:</strong> At the start of your turn, while you are conscious you can take the form of a specific 1T animal. Apart from your size, you keep your other statistics. Based on the animal you can turn into, your movement gains either the Burrow, Climb, Fly, or Swim keyword. Instead of gaining one of these keywords, your speed can increase by 2. Unless you use this benefit again, you regain your true form at the start of your next turn. While in animal form, you can’t talk or use actions, and the only maneuvers you can take are Escape Grab, Hide, and Stand Up.</p><p><strong>Drawback:</strong> At the start of your turn while you are winded, the Director can spend 1 Malice to force you to take your animal form. Once the Director has done so, they can’t do so again until you have finished a respite.</p>",
+      "value": "<p>Due to a magical accident, your being has fused with that of a small, harmless animal. You turn into this animal when it’s convenient—and sometimes when it’s inconvenient as well.</p><p><strong>Benefit:</strong> As a maneuver, you take the form of a specific animal of size 1T. You retain all your other statistics aside from your size, but you can’t talk or use actions, and the only maneuvers you can use are Escape Grab, Hide, and Stand Up. Based on the animal you can turn into, you might be able to burrow or fly, or to automatically climb or swim at full speed while moving. If your animal form doesn’t provide such additional movement, you have a +2 bonus to speed.</p><p>Unless you use this benefit again, you return to your true form at the start of your next turn.</p><p><strong>Drawback:</strong> At the start of any turn while you are winded, the Director can spend 1 Malice to force you to take your animal form. Once the Director has done so, they can’t do so again until you have finished a respite.</p>",
       "director": ""
     },
     "_dsid": "animal-form",
     "advancements": {}
   },
   "_id": "j2HtRqbi2Ve1UhsB",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+  "effects": [
+    {
+      "name": "Animal Form Benefit: Climb",
+      "origin": "Compendium.draw-steel.character-options.Item.j2HtRqbi2Ve1UhsB",
+      "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+      "_id": "EEG7JsQiIfXEejxV",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "T",
+          "priority": null
+        },
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "climb",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 100000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755155704282,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!j2HtRqbi2Ve1UhsB.EEG7JsQiIfXEejxV"
+    },
+    {
+      "name": "Animal Form Benefit: Fly",
+      "origin": "Compendium.draw-steel.character-options.Item.j2HtRqbi2Ve1UhsB",
+      "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+      "_id": "QOtlVKLMXelsDBL9",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "T",
+          "priority": null
+        },
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "fly",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 300000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755156149227,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!j2HtRqbi2Ve1UhsB.QOtlVKLMXelsDBL9"
+    },
+    {
+      "name": "Animal Form Benefit: Burrow",
+      "origin": "Compendium.draw-steel.character-options.Item.j2HtRqbi2Ve1UhsB",
+      "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+      "_id": "R32QeSKMVktkxcV9",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "T",
+          "priority": null
+        },
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "burrow",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 400000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755156179118,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!j2HtRqbi2Ve1UhsB.R32QeSKMVktkxcV9"
+    },
+    {
+      "name": "Animal Form Benefit: Swim",
+      "origin": "Compendium.draw-steel.character-options.Item.j2HtRqbi2Ve1UhsB",
+      "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+      "_id": "1i2VY6dozmQzz21d",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 2,
+          "value": "T",
+          "priority": null
+        },
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "swim",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 200000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755156188990,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!j2HtRqbi2Ve1UhsB.1i2VY6dozmQzz21d"
+    },
+    {
+      "name": "Animal Form Benefit: Speed Bonus",
+      "origin": "Compendium.draw-steel.character-options.Item.j2HtRqbi2Ve1UhsB",
+      "img": "icons/creatures/mammals/rodent-rat-diseaed-gray.webp",
+      "_id": "pbvapmSrrefUL3ej",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "T",
+          "priority": null
+        },
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 500000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755156200830,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!j2HtRqbi2Ve1UhsB.pbvapmSrrefUL3ej"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

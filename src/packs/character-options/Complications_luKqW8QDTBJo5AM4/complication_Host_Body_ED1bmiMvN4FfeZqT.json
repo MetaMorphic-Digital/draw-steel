@@ -7,18 +7,68 @@
       "book": "Heroes",
       "license": "Draw Steel Creator License",
       "revision": 1,
-      "page": ""
+      "page": "239"
     },
     "description": {
-      "value": "<p>“Do not be alarmed! We are not the humanoid we appear to be. We are an intelligent fungal collective, using this body as a host. No, we are doing nothing unsavory! This body was dead when we found it; we merely gave it another chance at life. We are friendly. Please put down those torches!”</p><p><strong>Benefit:</strong> You are a fungus that inhabits a humanoid body. Your host body follows all the normal rules for a character and is considered to be alive. At any time while your host body is alive, or for 24 hours after it dies, as an action you can move to a dead humanoid within 10 squares of the body and use it as your new host body, provided the body belongs a playable ancestry. When you do so, your original host body dies. Your new host body gains all your statistics except for those related to your former host body’s ancestry such as size and ancestry traits, which you instead gain from your new host body. When you inhabit a new host body, you start with 1 Stamina and can immediately spend a Recovery.</p><p><strong>Drawback:</strong> Fire Weakness + 5</p>",
+      "value": "<p>“Do not be alarmed! We are not the humanoid we appear to be. We are an intelligent fungal collective, using this body as a host. No, we are doing nothing unsavory! This body was dead when we found it, and we merely gave it another chance at life. We are friendly. Please put down those torches!” </p><p><strong>Benefit:</strong> You are a sapient fungus who inhabits a humanoid body. Your host body follows all the usual rules for a character and is considered to be alive. At any time while your host body is alive, or for 24 hours after it dies, you can use a main action to move to a dead humanoid within 10 squares of the body and use it as your new host body, provided the body belongs to a playable ancestry. When you do so, your original host body dies if it was alive. Your new host body gains all your statistics except size, ancestry traits, and other statistics related to your former host body’s ancestry, which you instead gain from your new host body. When you inhabit a new host body, you start with 1 Stamina and can immediately spend a Recovery. </p><p><strong>Drawback:</strong> You have fire weakness 5. Additionally, you take a bane on any test made to read a humanoid creature’s emotions or body language.</p>",
       "director": ""
     },
     "_dsid": "host-body",
     "advancements": {}
   },
   "_id": "ED1bmiMvN4FfeZqT",
-  "img": "icons/svg/item-bag.svg",
-  "effects": [],
+  "img": "icons/consumables/mushrooms/ovate-thin-blue.webp",
+  "effects": [
+    {
+      "name": "Host Body Drawback",
+      "origin": "Compendium.draw-steel.character-options.Item.ED1bmiMvN4FfeZqT",
+      "img": "icons/consumables/mushrooms/ovate-thin-blue.webp",
+      "_id": "Syi3B215yO4DAyI1",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weakness.fire",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755113417059,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ED1bmiMvN4FfeZqT.Syi3B215yO4DAyI1"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
