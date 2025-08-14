@@ -1,0 +1,166 @@
+{
+  "folder": "UOufuPwHKuuE680F",
+  "name": "Stone Eyes",
+  "type": "ability",
+  "_id": "L6hj69urtWE21QgW",
+  "img": "icons/magic/unholy/silhouette-light-fire-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "241",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "stone-eyes",
+    "story": "Your looks don’t kill—they petrify.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "presence"
+        ]
+      },
+      "effects": {
+        "hU4Kk5jyqiQGTM0I": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "hU4Kk5jyqiQGTM0I",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "4"
+            },
+            "tier3": {
+              "value": "6"
+            }
+          }
+        },
+        "OlJ1IUzuQWc6nt4m": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "OlJ1IUzuQWc6nt4m",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "might"
+              },
+              "display": "{{potency}} slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/unholy/silhouette-light-fire-blue.webp",
+      "origin": "Compendium.draw-steel.character-options.Item.L6hj69urtWE21QgW",
+      "transfer": false,
+      "_id": "EWimD3qHfeeEBR5J",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755182849357,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!L6hj69urtWE21QgW.EWimD3qHfeeEBR5J"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755182417859,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!L6hj69urtWE21QgW"
+}
