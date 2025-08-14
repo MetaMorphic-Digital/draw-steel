@@ -164,20 +164,18 @@ export function polyglotInit(LanguageProvider) {
      *         If this is something we want, and are able to do without breaking other setups, then this is probably the place to do it.
      */
     async getLanguages() {
-      const outputLangs = {};
-
       if (this.replaceLanguages) { // if module setting to only use custom-set languages is enabled
         this.languages = {}; // remove the rpg system's own list of languages from Polyglot. (No impact to PC feature selection options.)
       }
       const languagesSetting = game.settings.get("polyglot", "Languages"); // User-set fonts and scrambling overrides for system langs
-      for (let lang in this.languages) {
+      this.languages = Object.keys(this.languages).reduce((outputLangs, lang) => {
         outputLangs[lang] = {
           label: ds.CONFIG.languages[lang].label,
           font: languagesSetting[lang]?.font || this.languages[lang]?.font || this.defaultFont,
           rng: languagesSetting[lang]?.rng ?? "default",
         };
-      }
-      this.languages = outputLangs;
+        return outputLangs;
+      }, {});
     }
 
     /**
@@ -185,7 +183,7 @@ export function polyglotInit(LanguageProvider) {
      * Called during init on user's designated character, before lang list is fully loaded, to establish user's chat language options. 
      * Called also by Director during regular play, whenever selecting an actor on the canvas.
      * @param {DrawSteelActor} actor
-     * @returns [known_languages, literate_languages] Array of Set objects for spoken, written language keys for the actor.
+     * @returns {[Set<string>, Set<string>]} Tuple of Set objects for an actor's [spoken, written] language keys.
      */
     getUserLanguages(actor) {
       let known_languages = new Set(); // set of language keys; fluency with spoken language
