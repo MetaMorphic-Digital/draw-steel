@@ -327,7 +327,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.item }),
-            img: "icons/svg/aura.svg",
+            img: this.document.img,
             type: "base",
             origin: this.item.uuid,
           };
@@ -347,7 +347,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
-            img: "icons/svg/explosion.svg",
+            img: this.document.img,
             type: "abilityModifier",
             origin: this.item.uuid,
           };
