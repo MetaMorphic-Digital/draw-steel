@@ -253,7 +253,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open a window to add an appropriate character origin.
+   * Open a window to add an appropriate hero origin.
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
@@ -279,7 +279,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Advance this character one level.
+   * Advance this hero one level.
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
@@ -347,7 +347,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
+   * Spend a recovery, adding to the hero's stamina and reducing the number of recoveries.
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
@@ -359,7 +359,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
+   * Spend a hero token, adding to the hero's stamina and reducing the number of hero tokens.
    * @this DrawSteelCharacterSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].

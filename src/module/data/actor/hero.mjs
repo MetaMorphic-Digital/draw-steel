@@ -222,7 +222,7 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite resetting the character's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
+   * Take a respite resetting the hero's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
@@ -253,7 +253,7 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
+   * Spend a recovery, adding to the hero's stamina and reducing the number of recoveries.
    * @returns {Promise<DrawSteelActor>}
    */
   async spendRecovery() {
