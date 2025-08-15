@@ -421,7 +421,7 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     // TODO: Figure out how to better handle invocations when this.actor is null
-    await this.actor?.system.updateResource(resourceSpend * -1);
+    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
 
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";

@@ -1427,10 +1427,15 @@
         "Hint": "Hero tokens are a group resource that is tracked by the players and kept in a pool that is accessible to all their characters.",
         "NoHeroTokens": "No Hero Tokens available",
         "WarnDirectorBadSpend": "{name} attempted to spend a hero token while none were available.",
+        "SpendToken": "Spend Token",
         "GiveToken": "Give Token",
         "GrantedTokens": "The heroes gain {count} hero token(s).",
         "ResetToken": "Reset Hero Tokens",
         "StartSession": "The Director reset the number of hero tokens to {count} for the start of the session.",
+        "Generic": {
+          "label": "Spend Token",
+          "messageContent": "Spent a hero token."
+        },
         "GainSurges": {
           "tooltip": "Spend a hero token to gain two surges.",
           "label": "Gain Surges",
@@ -1459,7 +1464,8 @@
           "label": "Adjust Malice",
           "hint": "Positive numbers will increase the value and negative numbers will decrease the value."
         },
-        "ResetMalice": "Reset Malice"
+        "ResetMalice": "Reset Malice",
+        "PlayerError": "Malice can only be updated by a GM."
       },
       "ShowPlayerMalice": {
         "Label": "Show Malice Value To Players",
