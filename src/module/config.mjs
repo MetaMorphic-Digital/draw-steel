@@ -820,6 +820,11 @@ DRAW_STEEL.hero = {
    * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
    */
   tokenSpends: {
+    generic: {
+      label: "DRAW_STEEL.Setting.HeroTokens.Generic.label",
+      tokens: 1,
+      messageContent: "DRAW_STEEL.Setting.HeroTokens.Generic.messageContent",
+    },
     gainSurges: {
       label: "DRAW_STEEL.Setting.HeroTokens.GainSurges.label",
       tokens: 1,
