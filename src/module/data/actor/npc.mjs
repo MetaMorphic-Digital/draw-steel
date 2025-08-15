@@ -154,7 +154,10 @@ export default class NPCModel extends BaseActorModel {
 
   /** @inheritdoc */
   async updateResource(delta) {
-    if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
+    if (!game.user.isGM) {
+      ui.notifications.error("DRAW_STEEL.Setting.Malice.PlayerError", { localize: true, console: false });
+      throw new Error("Malice can only be updated by a GM");
+    }
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
     await game.settings.set(systemID, "malice", { value: malice.value + delta });

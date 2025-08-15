@@ -40,6 +40,7 @@
   - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
 - When a project roll is a breakthrough, a button will appear to roll the project again.
 - The Source Information popout will show the Compendium Source of an item if it is available.
+- Added a generic "spend hero token" option available to all users.
 
 ### Changed
 
@@ -65,6 +66,7 @@
 - Fixed display of multi-result abilities
 - Fixed unrequited prompting for end of turn events (#673)
 - Fixed project and save rolls not respecting roll mode settings. (#734)
+- Players can now use NPC abilities that don't have malice costs. (#790)
 - Secret blocks will now display in enriched descriptions for owned documents.
 
 ### Removed

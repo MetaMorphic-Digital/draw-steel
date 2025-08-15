@@ -1,0 +1,138 @@
+{
+  "name": "Greening",
+  "type": "complication",
+  "folder": "luKqW8QDTBJo5AM4",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "license": "Draw Steel Creator License",
+      "revision": 1,
+      "page": "238"
+    },
+    "description": {
+      "value": "<p>You once felt the call of a great tree in the middle of a forest, whose life force was being drained by a parasitic supernatural moss clinging to its roots. As you removed the moss, you felt as if you were being filled with green elemental energy. Sadly, the great tree withered before you could finish the job, but left behind a golden sapling you now carry with you, seeking the perfect place to plant it. </p><p><strong>Benefit:</strong> You have corruption immunity 5. </p><p><strong>Drawback:</strong> You have fire weakness 5.</p>",
+      "director": ""
+    },
+    "_dsid": "greening",
+    "advancements": {}
+  },
+  "_id": "evXu3b8RYLnvu1Wb",
+  "img": "icons/magic/nature/tree-elm-roots-brown.webp",
+  "effects": [
+    {
+      "name": "Greening Benefit",
+      "origin": "Compendium.draw-steel.character-options.Item.evXu3b8RYLnvu1Wb",
+      "img": "icons/magic/nature/tree-elm-roots-brown.webp",
+      "_id": "85uaKZXskrCNb83J",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755112844956,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!evXu3b8RYLnvu1Wb.85uaKZXskrCNb83J"
+    },
+    {
+      "name": "Greening Downside",
+      "origin": "Compendium.draw-steel.character-options.Item.evXu3b8RYLnvu1Wb",
+      "img": "icons/magic/nature/tree-elm-roots-brown.webp",
+      "_id": "xrO9U0rZY6bqwRr4",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.fire",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755112845315,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!evXu3b8RYLnvu1Wb.xrO9U0rZY6bqwRr4"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754715846118,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!evXu3b8RYLnvu1Wb"
+}
