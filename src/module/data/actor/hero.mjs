@@ -10,21 +10,21 @@ import BaseActorModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Characters are controlled by players and have heroic resources and advancement.
+ * Heroes are controlled by players and have heroic resources and advancement.
  */
-export default class CharacterModel extends BaseActorModel {
+export default class HeroModel extends BaseActorModel {
   /** @inheritdoc */
   static get metadata() {
     return {
       ...super.metadata,
-      type: "character",
+      type: "hero",
     };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Actor.character");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Actor.hero");
 
   /* -------------------------------------------------- */
 
@@ -143,8 +143,8 @@ export default class CharacterModel extends BaseActorModel {
   prepareDerivedData() {
     this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
-    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
-    this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.epic.value.label");
+    this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+    this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
     if (heroClass) {
       if (heroClass.system.primary) this.hero.primary.label = heroClass.system.primary;
@@ -213,7 +213,7 @@ export default class CharacterModel extends BaseActorModel {
       });
       await recoveryRoll.toMessage({
         speaker: DrawSteelChatMessage.getSpeaker({ token: combatant.token }),
-        flavor: game.i18n.localize("DRAW_STEEL.Actor.character.HeroicResourceGain"),
+        flavor: game.i18n.localize("DRAW_STEEL.Actor.hero.HeroicResourceGain"),
       });
       await this.updateResource(recoveryRoll.total);
     }
@@ -340,7 +340,7 @@ export default class CharacterModel extends BaseActorModel {
     if (classModel) minimum = ds.utils.evaluateFormula(classModel.minimum, classModel.parent.getRollData());
 
     return {
-      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label"),
+      name: this.class?.system.primary ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label"),
       target: this.parent,
       path: "system.hero.primary.value",
       minimum,

@@ -112,7 +112,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         return { biography: tabs.biography };
       }
 
-      if (this.document.type !== "character") {
+      if (this.document.type !== "hero") {
         delete tabs.equipment;
         delete tabs.projects;
       }

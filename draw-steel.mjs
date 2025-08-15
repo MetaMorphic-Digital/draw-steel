@@ -76,7 +76,7 @@ Hooks.once("init", function () {
 
   // Register sheet application classes
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
-    types: ["character"],
+    types: ["hero"],
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Character",
   });

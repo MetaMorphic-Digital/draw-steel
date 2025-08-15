@@ -343,7 +343,7 @@
           "Title": "Specialized Combat Data"
         }
       },
-      "character": {
+      "hero": {
         "FIELDS": {
           "hero": {
             "primary": {
@@ -1473,7 +1473,9 @@
       },
       "MigrationVersion": {
         "Label": "Migration Version",
-        "Hint": "Last Performed Migration"
+        "Hint": "Last Performed Migration",
+        "WorldWarning": "Applying migrations for version {version}",
+        "WorldSuccess": "Successfully applied migrations for version {version}"
       },
       "ProjectEvents": {
         "Label": "Project Event Trigger",
@@ -1659,7 +1661,7 @@
   },
   "TYPES": {
     "Actor": {
-      "character": "Character",
+      "hero": "Hero",
       "npc": "NPC"
     },
     "Advancement": {

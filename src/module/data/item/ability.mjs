@@ -139,7 +139,7 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _prepareCharacterData() {
-    /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
+    /** @type {import("../actor/hero.mjs").HeroModel["abilityBonuses"]} */
     const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
     if (bonuses) { // Data prep order of operations issues
       switch (this.distance.type) {
@@ -255,7 +255,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 

@@ -59,13 +59,13 @@ declare module "./base.mjs" {
   }
 }
 
-declare module "./character.mjs" {
+declare module "./hero.mjs" {
   type HeroicResource = {
     value: number;
     label?: string;
   };
 
-  export default interface CharacterModel {
+  export default interface HeroModel {
     recoveries: BarAttribute & {
       bonus: number;
       recoveryValue: number;

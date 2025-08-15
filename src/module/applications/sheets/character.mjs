@@ -12,7 +12,7 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
 export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["character"],
+    classes: ["hero"],
     actions: {
       addOrigin: this.#addOrigin,
       levelUp: this.#levelUp,

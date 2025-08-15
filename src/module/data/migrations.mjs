@@ -15,16 +15,22 @@ export async function migrateWorld() {
     return;
   }
   const migrationVersion = game.settings.get(systemID, "migrationVersion");
+  let updateVersion = false;
   if (!migrationVersion) {
     // New world - initialize the migration version and rename Gamemaster to Director
     await game.users.activeGM.update({ name: game.i18n.localize("USER.RoleGamemaster") });
-    await game.settings.set(systemID, "migrationVersion", game.system.version);
+    updateVersion = true;
   }
   else if (foundry.utils.isNewerVersion("0.8.0", migrationVersion)) {
+    const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.8.0" }, progress: true });
     await migrateType(game.actors);
+    warning.update({ pct: 0.5 });
     await migrateType(game.items);
-    // await game.settings.set(systemID, "migrationVersion", game.system.version);
+    ui.notifications.remove(warning);
+    ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.8.0" } });
+    updateVersion = true;
   }
+  if (updateVersion) await game.settings.set(systemID, "migrationVersion", game.system.version);
 }
 
 /**
@@ -37,9 +43,15 @@ export async function migrateWorld() {
 export async function migrateType(collection, options = {}) {
   const toMigrate = collection.filter(doc => doc.getFlag(systemID, "migrateType")).map(doc => ({
     _id: doc.id,
+    type: doc.type,
     "==system": doc.system.toObject(),
     "flags.draw-steel.-=migrateType": null,
   }));
-  console.log(collection, toMigrate);
-  // collection.documentClass.updateDocuments(toMigrate, { pack: options.pack, parent: options.parent });
+  // update in increments of 100
+  const batches = Math.ceil(toMigrate.length / 100);
+  for (let i = 0; i < batches; i++) {
+    const updateData = toMigrate.slice(i * 100, (i + 1) * 100);
+    const migrationResults = await collection.documentClass.updateDocuments(updateData, { pack: options.pack, parent: options.parent, diff: false });
+    console.log(migrationResults);
+  }
 }
