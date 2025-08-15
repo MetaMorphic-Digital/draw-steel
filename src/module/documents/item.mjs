@@ -6,6 +6,15 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
+  static migrateData(data) {
+    if (data.type === "equipment") {
+      data.type = "treasure";
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
+    return super.migrateData(data);
+  }
+
+  /** @inheritdoc */
   static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
     if (!pack) {
       types ??= this.TYPES;

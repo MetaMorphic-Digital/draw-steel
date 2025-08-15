@@ -7,7 +7,7 @@ export { default as ClassModel } from "./class.mjs";
 export { default as ComplicationModel } from "./complication.mjs";
 export { default as CultureModel } from "./culture.mjs";
 export { default as FeatureModel } from "./feature.mjs";
-export { default as EquipmentModel } from "./equipment.mjs";
+export { default as TreasureModel } from "./treasure.mjs";
 export { default as KitModel } from "./kit.mjs";
 export { default as ProjectModel } from "./project.mjs";
 export { default as SubclassModel } from "./subclass.mjs";

@@ -53,53 +53,53 @@
   </section>
   {{/if}}
 
-  {{! Equipments List}}
-  {{#each equipment as |equipmentCategory|}}
-  {{!-- Don't show the "Other" category if there's no other equipment --}}
-  {{#if equipmentCategory.showHeader}}
-  <section class="item-list-container equipment-list-container">
+  {{! Treasures List}}
+  {{#each treasure as |treasureType|}}
+  {{!-- Don't show the "Other" category if there's no other treasures --}}
+  {{#if treasureType.showHeader}}
+  <section class="item-list-container treasure-list-container">
     <div class="item-header">
-      <div class="item-column item-name">{{equipmentCategory.label}}</div>
-      <div class="item-column item-echelon">{{@root.equipmentFields.echelon.label}}</div>
-      <div class="item-column item-quantity">{{@root.equipmentFields.quantity.label}}</div>
+      <div class="item-column item-name">{{treasureType.label}}</div>
+      <div class="item-column item-echelon">{{@root.treasureFields.echelon.label}}</div>
+      <div class="item-column item-quantity">{{@root.treasureFields.quantity.label}}</div>
       <div class="item-column item-controls">
-        {{#if equipmentCategory.showAdd}}
-        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.equipment")) as |addItemTooltip|}}
-        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="equipment" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
+        {{#if treasureType.showAdd}}
+        {{#with (localize "DRAW_STEEL.SHEET.Add" itemName=(localize "TYPES.Item.treasure")) as |addItemTooltip|}}
+        <a class="createDoc" data-action="createDoc" data-document-class="Item" data-type="treasure" data-render-sheet="true" data-system.category="{{@key}}" data-tooltip-text="{{addItemTooltip}}">
           <i class="fa-solid fa-plus"></i>
         </a>
         {{/with}}
         {{/if}}
       </div>
     </div>
-    <ol class="item-list equipment-list">
-      {{#each equipmentCategory.equipment as |equipmentContext|}}
-      <li class="item equipment draggable" data-item-id="{{equipmentContext.item.id}}" data-document-class="Item">
+    <ol class="item-list treasure-list">
+      {{#each treasureType.treasure as |treasureContext|}}
+      <li class="item treasure draggable" data-item-id="{{treasureContext.item.id}}" data-document-class="Item">
         <div class="item-row">
           <div class="item-column item-name">
-            <img class="item-image" src="{{equipmentContext.item.img}}" alt="{{equipmentContext.item.name}}">
+            <img class="item-image" src="{{treasureContext.item.img}}" alt="{{treasureContext.item.name}}">
             <div class="name">
-              <div class="label">{{equipmentContext.item.name}}</div>
+              <div class="label">{{treasureContext.item.name}}</div>
             </div>
           </div>
-          <div class="item-column item-echelon">{{localize (concat "DRAW_STEEL.ECHELON." equipmentContext.item.system.echelon)}}</div>
+          <div class="item-column item-echelon">{{localize (concat "DRAW_STEEL.ECHELON." treasureContext.item.system.echelon)}}</div>
           <div class="item-column item-quantity quantity-controls">
             <a data-action="modifyItemQuantity" data-quantity-modification="decrease">
               <i class="fa-regular fa-minus"></i>
             </a>
-            <span class="quantity">{{equipmentContext.item.system.quantity}}</span>
+            <span class="quantity">{{treasureContext.item.system.quantity}}</span>
             <a data-action="modifyItemQuantity" data-quantity-modification="increase">
               <i class="fa-regular fa-plus"></i>
             </a>
           </div>
           <div class="item-column item-controls">
             <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen equipmentContext.expanded "down" "right"}}"></i>
+              <i class="fa-solid fa-angle-{{ifThen treasureContext.expanded "down" "right"}}"></i>
             </a>
           </div>
         </div>
         <div class="item-embed">
-          {{#if equipmentContext.expanded}}{{{equipmentContext.embed.outerHTML}}}{{/if}}
+          {{#if treasureContext.expanded}}{{{treasureContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
       {{/each}}

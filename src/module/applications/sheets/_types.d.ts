@@ -60,9 +60,9 @@ export interface ActorSheetAbilitiesContext {
   showHeader: boolean;
 }
 
-export interface ActorSheetEquipmentContext {
+export interface ActorSheetTreasureContext {
   label: string;
-  equipment: ActorSheetItemContext[];
+  treasure: ActorSheetItemContext[];
   showAdd: boolean;
 }
 

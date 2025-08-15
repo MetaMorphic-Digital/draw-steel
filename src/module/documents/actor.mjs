@@ -10,7 +10,6 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
   /** @inheritdoc */
   static migrateData(data) {
     if (data.type === "character") {
-      console.log(data);
       data.type = "hero";
       foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
     }

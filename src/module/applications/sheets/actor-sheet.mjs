@@ -574,7 +574,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       {
         name: "DRAW_STEEL.Item.project.Craft.FromEquipment.Label",
         icon: "<i class=\"fa-solid fa-hammer\"></i>",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "equipment",
+        condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           const project = await item.system.createProject(this.actor);

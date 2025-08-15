@@ -6,22 +6,22 @@ import BaseItemModel from "./base.mjs";
 /** @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs"; */
 
 /**
- * Equipment covers all physical items that provide special benefits beyond the base kit.
+ * Treasure are supernatural items that provide benefits beyond what a kit can provide.
  */
-export default class EquipmentModel extends BaseItemModel {
+export default class TreasureModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
     return {
       ...super.metadata,
-      type: "equipment",
-      detailsPartial: [systemPath("templates/sheets/item/partials/equipment.hbs")],
+      type: "treasure",
+      detailsPartial: [systemPath("templates/sheets/item/partials/treasure.hbs")],
     };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.equipment");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.treasure");
 
   /* -------------------------------------------------- */
 

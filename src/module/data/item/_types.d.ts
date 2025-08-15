@@ -128,7 +128,7 @@ declare module "./culture.mjs" {
 }
 
 declare module "./equipment.mjs" {
-  export default interface EquipmentModel {
+  export default interface TreasureModel {
     kind: keyof typeof ds["CONFIG"]["equipment"]["kinds"];
     category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
     echelon: keyof typeof ds["CONFIG"]["echelons"];
