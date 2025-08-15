@@ -1,0 +1,89 @@
+{
+  "name": "Curse of Caution",
+  "type": "complication",
+  "folder": "luKqW8QDTBJo5AM4",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "license": "Draw Steel Creator License",
+      "revision": 1,
+      "page": "236"
+    },
+    "description": {
+      "value": "<p>When you were young, you did something reckless and unthinking that endangered a hag or cost them something dear. The hag cursed you to always take your time, forcing you to be cautious and thorough—even to your detriment. The curse has saved you from trouble a few times, but not being able to get away from trouble might be your downfall if you can’t shake it. </p><p><strong>Benefit:</strong> Until you’ve taken your turn in a combat round, any strike made against you takes a bane. </p><p><strong>Drawback:</strong> You have a −1 penalty to speed.</p>",
+      "director": ""
+    },
+    "_dsid": "curse-of-caution",
+    "advancements": {}
+  },
+  "_id": "mMHSYpNEmCeZfW2H",
+  "img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
+  "effects": [
+    {
+      "name": "Curse of Caution Downside",
+      "origin": "Compendium.draw-steel.character-options.Item.mMHSYpNEmCeZfW2H",
+      "img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
+      "_id": "sD3cAsq85sB2gyO8",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "-1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755094536260,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mMHSYpNEmCeZfW2H.sD3cAsq85sB2gyO8"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754715846118,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!mMHSYpNEmCeZfW2H"
+}

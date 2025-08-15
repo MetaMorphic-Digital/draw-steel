@@ -1,0 +1,153 @@
+{
+  "name": "Waterborn",
+  "type": "complication",
+  "folder": "luKqW8QDTBJo5AM4",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "license": "Draw Steel Creator License",
+      "revision": 1,
+      "page": "246"
+    },
+    "description": {
+      "value": "<p>You nearly lost your life at sea, but then you heard the voice. Someone—or something—in the water called out to you, telling you to swim. The ocean was suddenly no longer your doom but your parent, granting you a fragment of its power. But for what purpose, you can’t be sure. </p><p><strong>Benefit:</strong> You can automatically swim at full speed while moving, and you can breathe underwater. Additionally, you have the Rogue Wave ability. </p><p><strong>Drawback:</strong> You have lightning weakness 5. Additionally, the ocean or a creature it sends to seek you can assign you a quest. If you don’t do the ocean’s bidding, it might temporarily deny you this complication’s benefits—including being able to breathe underwater—at an inconvenient time.</p>",
+      "director": ""
+    },
+    "_dsid": "waterborn",
+    "advancements": {
+      "O21pplwv4N52OydF": {
+        "name": "",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "O21pplwv4N52OydF",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.Tg24CJGq6cCXgrsc"
+          }
+        ]
+      }
+    }
+  },
+  "_id": "rg9vQvcXpdnpFrQZ",
+  "img": "icons/magic/water/wave-water-blue.webp",
+  "effects": [
+    {
+      "name": "Waterborn Benefit",
+      "origin": "Compendium.draw-steel.character-options.Item.rg9vQvcXpdnpFrQZ",
+      "img": "icons/magic/water/wave-water-blue.webp",
+      "_id": "8MQE1ixZhOQAnAy5",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "swim",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755187723230,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!rg9vQvcXpdnpFrQZ.8MQE1ixZhOQAnAy5"
+    },
+    {
+      "name": "Waterborn Drawback",
+      "origin": "Compendium.draw-steel.character-options.Item.rg9vQvcXpdnpFrQZ",
+      "img": "icons/magic/water/wave-water-blue.webp",
+      "_id": "OamkyV3mChRgqDqp",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.lightning",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755187772532,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!rg9vQvcXpdnpFrQZ.OamkyV3mChRgqDqp"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754715846118,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!rg9vQvcXpdnpFrQZ"
+}
