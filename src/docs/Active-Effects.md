@@ -15,23 +15,76 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 
 On the actor sheet, at the top of 'Effects' tab is now a new section with buttons for the DS core conditions. Clicking any of these will apply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
 
-Applying any of these DS core conditions applies a active effect, details for which can be found in the `System Automatios` section.
-
 When creating a new temporary active effect by clicking on the `+ New Effect` button on the right of a active effect section header on this page, the duration is by default set to EoT (End of Turn).
+
+### Status Conditions
+
+Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
+
+Any of the Foundry DS system condition statuses can be applied to a Token via the Token HUD. When doing so, at the veyr top of the conditions window is a drop down menu that let's you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
+
+Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactive it again.
+
+Active statuses are highlighted, while inactive ones are displayed in muted colours.
+
+Additionally, each effect is documented in the system compendiums.
+
+### Dazed
+
+If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor’s triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can’t be used while affected by the `Dazed` effect.
+
+### Dying
+
+If an Actor's stamina falls below zero they automatically get the `dying` status effect applied to them. This status does not have any effects by itself and is removed automatically if an actor's stamina gets healed above zero stamina.
+
+### Frightened
+
+If the `Frightened` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the affected actor's fear and the ability power rolls of the frightened actor that are targeted at the source actor automatically have a bane.
+
+### Grabbed
+
+If the `Grabbed` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Grab and the ability power rolls of the grabbed actor that are targeted at actors other than the source actor automatically have a bane. Additionally the displayed movement speed on the grabbed actor’s character sheet is set to zero.
+
+### Prone
+
+If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***)
+
+### Restrained
+
+If the `Restrained` status effect is applied to an actor the ability power rolls of the restrained actor automatically have a bane and abilities with the restrained actor being targeted have an edge. Additionally the displayed movement speed on the grabbed actor’s character sheet is set to zero.
+
+### Slowed
+
+If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***) Traits such as Humans` `Perseverance` can be activated via Active Effects, which allows to set the “slowed” speed to 3 instead of 2.
+
+### Taunted
+
+If the `taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the `taunt` and afterwards abilities that are targeted at actors other than the `taunted` source actor automatically have a double bane while in line of effect to the `taunted` source.
+
+### Weakened
+
+If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
+
+### Winded
+
+If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
+If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
 
 ## Active Effect Config
 
-Draw Steel has tweaked the default active effect sheet; this section explains what's been added.
+At any given time you can change the icon and name of an active effect.
 
 ### Details
 
-If an effect is suspended or has a conventional duration (e.g. in rounds & turns) that has run over then its effects will not be applied.
+On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves. Effects are also automatically suppressed if they have a conventional duration (e.g. in rounds & turns) that has run over.
 
-The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if it is unchecked means the effect is available as an applied effect for ability usage. All other item types do not leverage applied effects.
+The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if the tickbox is unchecked means the effect is available as an apoplied effect in ability usage, but the system won't have that application handling until 0.8 at least.
 
 #### Linking status effects
 
 At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
+
+For example if an Active Effect is linked to the `Prone` condition and is applied to an actor, this actor's movement becomes crawling and abilities against them gain an edge, and their abilities have a bane.
 
 If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
 
@@ -48,7 +101,7 @@ Additional options for duration are timed durations, and durations base don roun
 
 ### Changes
 
-The last tab includes the meat of the active effect system, where the actual changes from the effect are defined.
+The last tab includes the Active Effect changes of an effect. Here you can add bonuses and maluses, or stat changes, and determine how they affect a actor.
 
 #### Active effect change modes
 
@@ -87,6 +140,10 @@ While there are similarities with roll data, active effects generally lead with 
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Speed|`system.movement.value`|
+|Bonus to Tier X Melee Damage (X=1, 2, 3)|`system.abilityBonuses.melee.damage.tierX`|
+|Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
+|Bonus to Tier X Ranged Damage (X=1, 2, 3)|`system.abilityBonuses.ranged.damage.tierX`|
+|Bonus to Ranged Distance|`system.abilityBonuses.ranged.distance`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
@@ -114,22 +171,3 @@ While there are similarities with roll data, active effects generally lead with 
 > |---|---|---|
 >
 ></details>
-
-## Ability Modifiers
-
-The system includes a subtype of active effect called "Ability Modifier", which apply their changes to all abilities on an actor. This allows non-kit items to apply kit-like bonuses.
-
-### Filters
-
-Ability modifiers currently support keyword filters. An ability must have all selected keywords to receive the bonus. If an item like a treasure wants to apply bonuses to disjunct sets of keywords, make two copies of the effect (e.g. a bonus to all Magic *or* Psionic abilities).
-
-### Changes
-
-Ability modifiers support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
-
-|Key|Description|
-|---|-----------|
-|`distance`|Gives a bonus to the range of the ability, based on the range type.|
-|`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
-|`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
-|`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|

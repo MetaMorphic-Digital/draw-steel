@@ -6,6 +6,8 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/items/) has more inf
 
 ## Ability
 
+Abilities that are both melee and ranged have an additional context option to switch their display between ranged and melee; this is relevant if a character has kit or other bonuses that only apply to one or the other modes.
+
 ## Ancestry
 
 ## Career
@@ -16,11 +18,12 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/items/) has more inf
 
 ## Culture
 
-## Equipment
+## Treasures
 
 ## Feature
 
 ## Kit
 
-## Project
+The Draw Steel system automatically applies the bonuses from kits.
 
+## Project
