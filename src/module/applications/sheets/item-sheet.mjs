@@ -296,6 +296,73 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   }
 
   /* -------------------------------------------------- */
+  /*   Application Life-Cycle Events                    */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc*/
+  async _onFirstRender(context, options) {
+    await super._onFirstRender(context, options);
+
+    this._createContextMenu(this._createEffectContextOptions, ".effect-list-container .effect-create", {
+      hookName: "createEffectContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+      eventName: "click",
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Get context menu entries for creating.
+   * @returns {ContextMenuEntry[]}
+   */
+  _createEffectContextOptions() {
+    return [
+      {
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.base}"></i>`,
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const effectClass = getDocumentClass("ActiveEffect");
+          const effectData = {
+            name: effectClass.defaultName({ parent: this.item }),
+            img: this.document.img,
+            type: "base",
+            origin: this.item.uuid,
+          };
+          for (const [dataKey, value] of Object.entries(target.dataset)) {
+            if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
+            foundry.utils.setProperty(effectData, dataKey, value);
+          }
+
+          effectClass.create(effectData, { parent: this.item, renderSheet: true });
+        },
+      },
+      {
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityModifier}"></i>`,
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const effectClass = getDocumentClass("ActiveEffect");
+          const effectData = {
+            name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
+            img: this.document.img,
+            type: "abilityModifier",
+            origin: this.item.uuid,
+          };
+          for (const [dataKey, value] of Object.entries(target.dataset)) {
+            if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
+            foundry.utils.setProperty(effectData, dataKey, value);
+          }
+
+          effectClass.create(effectData, { parent: this.item, renderSheet: true });
+        },
+      },
+    ];
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _onRender(context, options) {

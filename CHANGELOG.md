@@ -23,6 +23,7 @@
 ### Added
 
 - Advancements (#51)
+- Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added Epic Resource display. (#537)
 - Added a Wealth field to Careers. (#535)
@@ -45,6 +46,7 @@
 
 - Increased system minimum to 13.347.
 - Updated various CONFIG properties and i18n strings to match the final PDF. (#576)
+- [BREAKING] Reworked how kit bonuses are applied to abilities to line up with the new Active Effect type
 - [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
 - [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
 - [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
@@ -70,6 +72,7 @@
 ### Removed
 
 - Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
+- Removed "Melee" range as a separate listing from the character sheet stats tab to match the official character sheet.
 
 ## 0.7.3
 

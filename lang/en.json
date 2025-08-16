@@ -1161,6 +1161,7 @@
     },
     "ActiveEffect": {
       "Name": "Effect",
+      "Filters": "Filters",
       "StatusConditions": "Status Conditions",
       "Source": "Source",
       "Toggle": "Toggle Effect",
@@ -1237,6 +1238,17 @@
             },
             "roll": {
               "label": "Saving Throw Formula"
+            }
+          }
+        }
+      },
+      "abilityModifier": {
+        "FIELDS": {
+          "filters": {
+            "label": "Filters",
+            "keywords": {
+              "label": "Keywords",
+              "hint": "All keywords that an ability must have to receive these modifications."
             }
           }
         }
@@ -1658,6 +1670,9 @@
     }
   },
   "TYPES": {
+    "ActiveEffect": {
+      "abilityModifier": "Ability Modifier"
+    },
     "Actor": {
       "character": "Character",
       "npc": "NPC"

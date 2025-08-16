@@ -44,6 +44,7 @@ Hooks.once("init", function () {
     if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
     for (const modelCls of Object.values(models)) {
       if (modelCls.metadata?.type) CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
+      if (modelCls.metadata?.icon) CONFIG[doc].typeIcons[modelCls.metadata.type] = modelCls.metadata.icon;
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }

@@ -43,6 +43,7 @@ declare module "./ability.mjs" {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
       primary: number;
       secondary: number;
+      tertiary: number;
     }
     trigger: string;
     target: {
