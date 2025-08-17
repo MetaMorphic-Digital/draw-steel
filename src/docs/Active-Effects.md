@@ -138,10 +138,6 @@ While there are similarities with roll data, active effects generally lead with 
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Speed|`system.movement.value`|
-|Bonus to Tier X Melee Damage (X=1, 2, 3)|`system.abilityBonuses.melee.damage.tierX`|
-|Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
-|Bonus to Tier X Ranged Damage (X=1, 2, 3)|`system.abilityBonuses.ranged.damage.tierX`|
-|Bonus to Ranged Distance|`system.abilityBonuses.ranged.distance`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
