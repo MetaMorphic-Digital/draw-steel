@@ -16,8 +16,8 @@ declare module "./actor-sheet.mjs" {
     actor: documents.DrawSteelActor;
   }
 }
-declare module "./character.mjs" {
-  export default interface DrawSteelCharacterSheet {
+declare module "./hero.mjs" {
+  export default interface DrawSteelHeroSheet {
     actor: documents.DrawSteelActor & { system: data.Actor.HeroModel };
   }
 }

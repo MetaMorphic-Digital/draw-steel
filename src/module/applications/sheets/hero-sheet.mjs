@@ -9,7 +9,7 @@ import DrawSteelActorSheet from "./actor-sheet.mjs";
  * @import { ActorSheetItemContext, ActorSheetTreasureContext, ActorSheetComplicationsContext } from "./_types.js";
  */
 
-export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
+export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["hero"],
@@ -35,29 +35,29 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/sheets/actor/character/header.hbs"),
-      templates: ["templates/sheets/actor/character/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/actor/hero-sheet/header.hbs"),
+      templates: ["templates/sheets/actor/hero-sheet/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/sheets/actor/character/stats.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/stats.hbs"),
       templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/sheets/actor/character/features.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/features.hbs"),
       templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
     equipment: {
-      template: systemPath("templates/sheets/actor/character/equipment.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/equipment.hbs"),
       scrollable: [""],
     },
     projects: {
-      template: systemPath("templates/sheets/actor/character/projects.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/projects.hbs"),
       scrollable: [""],
     },
     abilities: {
@@ -69,7 +69,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/sheets/actor/character/biography.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/biography.hbs"),
       templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
@@ -159,7 +159,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       };
     }
 
-    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the hero sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       treasure: [],
@@ -254,7 +254,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Open a window to add an appropriate hero origin.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -280,7 +280,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Advance this hero one level.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -292,7 +292,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a hero token to gain a surge.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -323,7 +323,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Make a project roll and track the project points.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -336,7 +336,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Take a respite, converting victories to XP and resetting stamina and recoveries to max.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -348,7 +348,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a recovery, adding to the hero's stamina and reducing the number of recoveries.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -360,7 +360,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a hero token, adding to the hero's stamina and reducing the number of hero tokens.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -372,7 +372,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Modify the quantity of a piece of treasure.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -391,7 +391,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prompt the user to fill one or more unchosen languages.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
