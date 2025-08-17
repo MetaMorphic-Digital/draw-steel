@@ -7,8 +7,11 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "@common/data/_types.mjs" */
-/** @import { PowerRollModifiers } from "../../_types.js" */
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { FormInputConfig } from "@common/data/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
+ */
 
 const fields = foundry.data.fields;
 

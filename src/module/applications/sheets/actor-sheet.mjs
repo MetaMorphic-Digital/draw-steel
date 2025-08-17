@@ -306,11 +306,18 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   async _prepareFeaturesContext() {
-    const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
+    const features = [
+      ...this.actor.itemTypes.feature,
+      ...this.actor.itemTypes.ancestryTrait,
+      ...this.actor.itemTypes.perk,
+      ...this.actor.itemTypes.title,
+    ].sort((a, b) => a.sort - b.sort);
     const context = [];
 
     for (const feature of features) {
-      context.push(await this._prepareItemContext(feature));
+      const featureContext = await this._prepareItemContext(feature);
+      featureContext.typeLabel = CONFIG.Item.typeLabels[feature.type];
+      context.push(featureContext);
     }
 
     return context;

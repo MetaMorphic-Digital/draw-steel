@@ -1337,19 +1337,19 @@ DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
-    itemTypes: new Set(["ancestry", "career", "class", "complication", "feature", "kit", "subclass"]),
+    itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "kit", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
     defaultImage: "icons/svg/village.svg",
-    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
@@ -1630,57 +1630,34 @@ preLocalize("equipment.other", { key: "label" });
 
 /* -------------------------------------------------- */
 
-DRAW_STEEL.features = {
-  /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
-  types: {
-    perk: {
-      label: "DRAW_STEEL.Item.feature.Types.Perk.Label",
-      subtypes: {
-        crafting: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Crafting",
-        },
-        exploration: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Exploration",
-        },
-        interpersonal: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Interpersonal",
-        },
-        intrigue: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Intrigue",
-        },
-        lore: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Lore",
-        },
-        supernatural: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Supernatural",
-        },
-      },
-    },
-    title: {
-      label: "DRAW_STEEL.Item.feature.Types.Title.Label",
-      subtypes: {
-        1: {
-          label: "DRAW_STEEL.ECHELON.1",
-        },
-        2: {
-          label: "DRAW_STEEL.ECHELON.2",
-        },
-        3: {
-          label: "DRAW_STEEL.ECHELON.3",
-        },
-        4: {
-          label: "DRAW_STEEL.ECHELON.4",
-        },
-      },
-    },
-  },
-};
-preLocalize("features.types", { key: "label" });
-preLocalize("features.types.perk.subtypes", { key: "label" });
-preLocalize("features.types.title.subtypes", { key: "label" });
+/**
+ * Configuration details for Feature items.
+ */
+DRAW_STEEL.features = { };
 
 /* -------------------------------------------------- */
 
+/**
+ * Configuration details for perk items.
+ */
+DRAW_STEEL.perks = {
+  /**
+   * Types of perks in addition to the available skill groups.
+   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
+   * @type {Record<string, {label: string}>}
+   */
+  types: {
+    supernatural: {
+      label: "DRAW_STEEL.Item.perk.Types.Supernatural",
+    },
+  },
+};
+
+/* -------------------------------------------------- */
+
+/**
+ * Configuration details for project items.
+ */
 DRAW_STEEL.projects = {
   types: {
     crafting: {
