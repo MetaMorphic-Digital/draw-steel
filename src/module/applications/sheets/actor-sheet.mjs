@@ -113,7 +113,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         return { biography: tabs.biography };
       }
 
-      if (this.document.type !== "character") {
+      if (this.document.type !== "hero") {
         delete tabs.equipment;
         delete tabs.projects;
       }
@@ -349,7 +349,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       };
     }
 
-    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the actor sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       abilities: [],
@@ -584,7 +584,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       {
         name: "DRAW_STEEL.Item.project.Craft.FromEquipment.Label",
         icon: "<i class=\"fa-solid fa-hammer\"></i>",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "equipment",
+        condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           const project = await item.system.createProject(this.actor);

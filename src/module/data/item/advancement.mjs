@@ -38,7 +38,7 @@ export default class AdvancementModel extends BaseItemModel {
   prepareBaseData() {
     super.prepareBaseData();
 
-    if ((this.actor?.type !== "character")) return;
+    if ((this.actor?.type !== "hero")) return;
 
     const record = this.actor.system._traits;
     const unfilled = this.actor.system._unfilledTraits;

@@ -97,7 +97,7 @@
       {{/if}}
     </dl>
     {{#unless isPlay}}
-    <div class="actor-data character-data">
+    <div class="actor-data hero-data">
       {{formGroup systemFields.hero.fields.xp value=systemSource.hero.xp classes="xp"}}
       {{formGroup systemFields.hero.fields.victories value=systemSource.hero.victories classes="victories"}}
     </div>
@@ -106,7 +106,7 @@
     <div class="take-respite">
       <a data-action="takeRespite">
         <i class="fa-solid fa-bed"></i>
-        {{localize "DRAW_STEEL.Actor.character.TakeRespite"}}
+        {{localize "DRAW_STEEL.Actor.hero.TakeRespite"}}
       </a>
     </div>
     {{/if}}

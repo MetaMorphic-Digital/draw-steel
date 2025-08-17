@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * @import CharacterModel from "../actor/character.mjs";
+ * @import HeroModel from "../actor/hero.mjs";
  */
 
 /**
@@ -46,7 +46,7 @@ export default class CareerModel extends AdvancementModel {
 
     if ((userId !== game.userId) || !this.actor) return;
 
-    /** @type {CharacterModel} */
+    /** @type {HeroModel} */
     const systemModel = this.actor.system;
 
     this.actor.update({
@@ -66,7 +66,7 @@ export default class CareerModel extends AdvancementModel {
     super._onDelete(options, userId);
     if ((userId !== game.userId) || !this.actor) return;
 
-    /** @type {CharacterModel} */
+    /** @type {HeroModel} */
     const systemModel = this.actor.system;
 
     this.actor.update({

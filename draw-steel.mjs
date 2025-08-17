@@ -76,8 +76,8 @@ Hooks.once("init", function () {
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
-  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
-    types: ["character"],
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelHeroSheet, {
+    types: ["hero"],
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Character",
   });

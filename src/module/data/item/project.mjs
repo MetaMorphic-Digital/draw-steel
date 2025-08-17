@@ -13,7 +13,7 @@ import BaseItemModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Projects are activities (crafting, research, or other) characters can accomplish during downtime.
+ * Projects are activities (crafting, research, or other) heroes can accomplish during downtime.
  */
 export default class ProjectModel extends BaseItemModel {
   /** @inheritdoc */
@@ -77,7 +77,7 @@ export default class ProjectModel extends BaseItemModel {
     // If creating with item UUID, transfer the item project data to the project item
     const itemUUID = data.system?.yield?.item;
     const yieldItem = await fromUuid(itemUUID);
-    if (yieldItem?.type === "equipment") {
+    if (yieldItem?.type === "treasure") {
       const { prerequisites, rollCharacteristic, goal, source } = yieldItem.system.project;
       this.updateSource({
         type: "crafting",

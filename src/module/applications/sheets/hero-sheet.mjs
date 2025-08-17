@@ -1,18 +1,18 @@
 import { systemPath } from "../../constants.mjs";
-import { AdvancementModel, EquipmentModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import { AdvancementModel, TreasureModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
 import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
 /**
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs";
- * @import { ActorSheetItemContext, ActorSheetEquipmentContext, ActorSheetComplicationsContext } from "./_types.js";
+ * @import { ActorSheetItemContext, ActorSheetTreasureContext, ActorSheetComplicationsContext } from "./_types.js";
  */
 
-export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
+export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
-    classes: ["character"],
+    classes: ["hero"],
     actions: {
       addOrigin: this.#addOrigin,
       levelUp: this.#levelUp,
@@ -35,29 +35,29 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/sheets/actor/character/header.hbs"),
-      templates: ["templates/sheets/actor/character/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/actor/hero-sheet/header.hbs"),
+      templates: ["templates/sheets/actor/hero-sheet/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/sheets/actor/character/stats.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/stats.hbs"),
       templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/sheets/actor/character/features.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/features.hbs"),
       templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
     equipment: {
-      template: systemPath("templates/sheets/actor/character/equipment.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/equipment.hbs"),
       scrollable: [""],
     },
     projects: {
-      template: systemPath("templates/sheets/actor/character/projects.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/projects.hbs"),
       scrollable: [""],
     },
     abilities: {
@@ -69,7 +69,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/sheets/actor/character/biography.hbs"),
+      template: systemPath("templates/sheets/actor/hero-sheet/biography.hbs"),
       templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
@@ -91,8 +91,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       case "equipment":
         context.kits = await this._prepareKitsContext();
         context.kitFields = KitModel.schema.fields;
-        context.equipment = await this._prepareEquipmentContext();
-        context.equipmentFields = EquipmentModel.schema.fields;
+        context.treasure = await this._prepareTreasureContext();
+        context.treasureFields = TreasureModel.schema.fields;
         break;
       case "projects":
         context.projects = await this._prepareProjectsContext();
@@ -142,43 +142,43 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for equipment categories and individual equipment items.
+   * Prepare the context for treasure categories and individual treasure items.
    */
-  async _prepareEquipmentContext() {
-    /** @type {Record<string, ActorSheetEquipmentContext>} */
+  async _prepareTreasureContext() {
+    /** @type {Record<string, ActorSheetTreasureContext>} */
     const context = {};
-    const equipment = this.actor.itemTypes.equipment.toSorted((a, b) => a.sort - b.sort);
+    const treasures = this.actor.itemTypes.treasure.toSorted((a, b) => a.sort - b.sort);
 
     // Prepare ability categories for each ability type
     for (const [category, config] of Object.entries(ds.CONFIG.equipment.categories)) {
       context[category] = {
         label: config.label,
-        equipment: [],
+        treasure: [],
         showAdd: this.isEditMode,
         showHeader: this.isEditMode,
       };
     }
 
-    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the hero sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
-      equipment: [],
+      treasure: [],
       showAdd: false,
-      // Show "other" if and only if there is equipment of that category
+      // Show "other" if and only if there is treasure of that category
       showHeader: false,
     };
 
-    // Prepare the context for each individual equipment item
-    for (const item of equipment) {
+    // Prepare the context for each individual treasure item
+    for (const item of treasures) {
       const category = context[item.system.category] ? item.system.category : "other";
       context[category].showHeader = true;
-      context[category].equipment.push(await this._prepareItemContext(item));
+      context[category].treasure.push(await this._prepareItemContext(item));
     }
 
     // Filter out unused headers for play mode
     if (this.isPlayMode) {
       for (const [key, value] of Object.entries(context)) {
-        if (!value.equipment.length) delete context[key];
+        if (!value.treasure.length) delete context[key];
       }
     }
 
@@ -212,7 +212,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the context for equipment categories and individual equipment items.
+   * Prepare the context for project items.
    * @returns {Array<ActorSheetItemContext>}
    */
   async _prepareProjectsContext() {
@@ -253,8 +253,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open a window to add an appropriate character origin.
-   * @this DrawSteelCharacterSheet
+   * Open a window to add an appropriate hero origin.
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -279,8 +279,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Advance this character one level.
-   * @this DrawSteelCharacterSheet
+   * Advance this hero one level.
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -292,7 +292,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Spend a hero token to gain a surge.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -323,7 +323,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Make a project roll and track the project points.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -336,7 +336,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Take a respite, converting victories to XP and resetting stamina and recoveries to max.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -347,8 +347,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
-   * @this DrawSteelCharacterSheet
+   * Spend a recovery, adding to the hero's stamina and reducing the number of recoveries.
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -359,8 +359,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Spend a recovery, adding to the character's stamina and reducing the number of recoveries.
-   * @this DrawSteelCharacterSheet
+   * Spend a hero token, adding to the hero's stamina and reducing the number of hero tokens.
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -371,8 +371,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the quantity of a piece of equipment.
-   * @this DrawSteelCharacterSheet
+   * Modify the quantity of a piece of treasure.
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -391,7 +391,7 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
 
   /**
    * Prompt the user to fill one or more unchosen languages.
-   * @this DrawSteelCharacterSheet
+   * @this DrawSteelHeroSheet
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
@@ -421,9 +421,9 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       return result?.length ? item : null;
     }
 
-    // If the item is an equipment and is dropped onto the project tab, create the item as a project instead
+    // If the item is a treasure and is dropped onto the project tab, create the item as a project instead
     const projectDropTarget = event.target.closest("[data-application-part='projects']");
-    if (projectDropTarget && (item.type === "equipment") && (this.actor.uuid !== item.parent?.uuid)) {
+    if (projectDropTarget && (item.type === "treasure") && (this.actor.uuid !== item.parent?.uuid)) {
       await item.system.createProject(this.actor);
       return;
     }
@@ -496,8 +496,8 @@ export default class DrawSteelCharacterSheet extends DrawSteelActorSheet {
       folder.contents.map(async (/** @type {DrawSteelItem} */ item) => {
         if (!(document instanceof Item)) item = await fromUuid(item.uuid);
 
-        // If it's an equipment dropped on the project tab, create the item as a project
-        if (projectDropTarget && (item.type === "equipment")) {
+        // If it's a treasure dropped on the project tab, create the item as a project
+        if (projectDropTarget && (item.type === "treasure")) {
           const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
           return { name, type: "project", "system.yield.item": item.uuid };
         }

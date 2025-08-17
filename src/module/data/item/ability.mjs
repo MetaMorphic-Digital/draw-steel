@@ -252,7 +252,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 

@@ -343,7 +343,7 @@
           "Title": "Specialized Combat Data"
         }
       },
-      "character": {
+      "hero": {
         "FIELDS": {
           "hero": {
             "primary": {
@@ -894,7 +894,7 @@
           "Noble": "Noble"
         }
       },
-      "equipment": {
+      "treasure": {
         "FIELDS": {
           "kind": {
             "label": "Kind"
@@ -1146,7 +1146,7 @@
         "Craft": {
           "ItemName": "Craft {name}",
           "CompletedNotification": "{actor} successfully crafted {amount} {item}(s).",
-          "FromEquipment": {
+          "FromTreasure": {
             "Label": "Start Crafting Project",
             "Notification": "Started crafting project for {item}."
           }
@@ -1490,7 +1490,9 @@
       },
       "MigrationVersion": {
         "Label": "Migration Version",
-        "Hint": "Last Performed Migration"
+        "Hint": "Last Performed Migration",
+        "WorldWarning": "Applying migrations for version {version}",
+        "WorldSuccess": "Successfully applied migrations for version {version}"
       },
       "ProjectEvents": {
         "Label": "Project Event Trigger",
@@ -1679,7 +1681,7 @@
       "abilityModifier": "Ability Modifier"
     },
     "Actor": {
-      "character": "Character",
+      "hero": "Hero",
       "npc": "NPC"
     },
     "Advancement": {
@@ -1702,7 +1704,7 @@
       "complication": "Complication",
       "culture": "Culture",
       "feature": "Feature",
-      "equipment": "Equipment",
+      "treasure": "Treasure",
       "kit": "Kit",
       "perk": "Perk",
       "project": "Project",

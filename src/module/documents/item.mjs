@@ -6,6 +6,26 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
   /** @inheritdoc */
+  static migrateData(data) {
+    // 0.8 type migrations
+    if (data.type === "equipment") {
+      data.type = "treasure";
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
+    if (foundry.utils.getProperty(data, "system.type.value") === "perk") {
+      data.type = "perk";
+      foundry.utils.setProperty(data, "system.perkType", data.system.type.subtype);
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
+    if (foundry.utils.getProperty(data, "system.type.value") === "title") {
+      data.type = "title";
+      foundry.utils.setProperty(data, "system.echelon", data.system.type.subtype);
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
+    return super.migrateData(data);
+  }
+
+  /** @inheritdoc */
   static async createDialog(data = {}, { pack, ...createOptions } = {}, { types, template, ...dialogOptions } = {}) {
     if (!pack) {
       types ??= this.TYPES;
