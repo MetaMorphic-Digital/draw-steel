@@ -23,6 +23,9 @@
 ### Added
 
 - Advancements (#51)
+  - Advancements allow items like classes, kits, and features to make complex adjustments to an actor.
+  - Simply dragging an ancestry or class onto an actor will prompt you through the advancements.
+  - See the system documentation either in game or on the github wiki for more information.
 - Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added Epic Resource display. (#537)
