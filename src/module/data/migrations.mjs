@@ -24,24 +24,20 @@ export async function migrateWorld() {
   }
   else if (foundry.utils.isNewerVersion("0.8.0", migrationVersion)) {
     const warning = ui.notifications.warn("DRAW_STEEL.Setting.MigrationVersion.WorldWarning", { format: { version: "0.8.0" }, progress: true });
-    let pct = 0;
 
     console.log("Migrating world actors");
     await migrateType(game.actors);
-    pct += 0.2;
-    warning.update({ pct });
+    warning.update({ pct: 0.2 });
 
     console.log("Migrating world items");
     await migrateType(game.items);
-    pct += 0.3;
-    warning.update({ pct });
+    warning.update({ pct: 0.5 });
 
     for (const actor of game.actors) {
       console.log("Migrating items inside", actor.name);
       await migrateType(actor.items, { parent: actor });
-      pct += (0.3 / game.actors.size);
-      warning.update({ pct });
     }
+    warning.update({ pct: 0.8 });
 
     // Current migration does not search for items created inside deltas
     // if that is ever necessary, expand to loop through game.scenes => scene.tokens
@@ -57,9 +53,8 @@ export async function migrateWorld() {
         for (const actor of pack) await migrateType(actor.items, { parent: actor, pack: pack.collection });
       }
       if (wasLocked) await pack.configure({ locked: true });
-      pct += (0.2 / packsToMigrate.length);
-      warning.update({ pct });
     }
+    warning.update({ pct: 1.0 });
 
     ui.notifications.remove(warning);
     ui.notifications.success("DRAW_STEEL.Setting.MigrationVersion.WorldSuccess", { format: { version: "0.8.0" }, permanent: true });
