@@ -55,6 +55,9 @@
   - This enforces good practices for data creation.
   - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
 - Items with advancements can no longer be mass-created as part of dropping a folder onto an actor sheet. (#736)
+- [BREAKING] Split features up into multiple new item subtypes (#809)
+  - Perks, Titles, and Ancestry Traits now have their own item type.
+  - All still display together in the actor sheet.
 - Adjusted the display of Power Roll Effects, including adding an image property.
 - Expired Active Effects are now labeled "Expired" in their duration rather than "None".
 - Changed the hook name for the actor sheet document context menus to "getDocumentListContextOptions".

@@ -65,8 +65,8 @@ export class MaliceModel extends foundry.abstract.DataModel {
    * @returns {Promise<MaliceModel>}
    */
   async startCombat(heroes) {
-    const totalVictories = heroes.reduce((victories, character) => {
-      victories += foundry.utils.getProperty(character, "system.hero.victories") ?? 0;
+    const totalVictories = heroes.reduce((victories, hero) => {
+      victories += foundry.utils.getProperty(hero, "system.hero.victories") ?? 0;
       return victories;
     }, 0);
     const avgVictories = Math.floor(totalVictories / heroes.length) || 0;

@@ -7,8 +7,11 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "@common/data/_types.mjs" */
-/** @import { PowerRollModifiers } from "../../_types.js" */
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { FormInputConfig } from "@common/data/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
+ */
 
 const fields = foundry.data.fields;
 
@@ -249,7 +252,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 

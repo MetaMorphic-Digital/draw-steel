@@ -16,7 +16,7 @@ import DrawSteelSystemModel from "../system-model.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A base actor model that provides common properties for both characters and npcs.
+ * A base actor model that provides common properties for both heroes and npcs.
  */
 export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */

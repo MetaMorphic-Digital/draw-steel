@@ -4,6 +4,10 @@ import { setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ */
+
+/**
  * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics.
  */
 export default class KitModel extends AdvancementModel {

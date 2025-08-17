@@ -74,7 +74,7 @@ export default class ClassModel extends AdvancementModel {
 
   /** @inheritdoc */
   _onCreate(data, options, userId) {
-    if (this.actor && (this.actor.type === "character") && (game.userId === userId)) {
+    if (this.actor && (this.actor.type === "hero") && (game.userId === userId)) {
       this.actor.update({ "system.recoveries.value": this.recoveries });
     }
   }

@@ -180,7 +180,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
     const stamina = Number(data.value);
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
-    // Needed to handle character's negative stamina
+    // Needed to handle actor's negative stamina
     const totalStamina = data.max - data.min;
     const adjustedValue = stamina - data.min;
     const barPct = Math.clamp(adjustedValue, 0, totalStamina) / totalStamina;

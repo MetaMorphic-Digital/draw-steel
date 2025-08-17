@@ -7,6 +7,15 @@ import BaseDocumentMixin from "./base-document-mixin.mjs";
  * A document subclass adding system-specific behavior and registered in CONFIG.Actor.documentClass.
  */
 export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.Actor) {
+  /** @inheritdoc */
+  static migrateData(data) {
+    if (data.type === "character") {
+      data.type = "hero";
+      foundry.utils.setProperty(data, "flags.draw-steel.migrateType", true);
+    }
+    return super.migrateData(data);
+  }
+
   /**
    * Is this actor a minion?
    * @returns {boolean}

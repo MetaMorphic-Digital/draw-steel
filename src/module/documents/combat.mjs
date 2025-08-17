@@ -45,7 +45,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
 
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
-    const heroes = this.combatants.filter(c => (c.actor?.type === "character") && c.hasPlayerOwner).map(c => c.actor);
+    const heroes = this.combatants.filter(c => (c.actor?.type === "hero") && c.hasPlayerOwner).map(c => c.actor);
     await malice.startCombat(heroes);
 
     return super.startCombat();
@@ -277,7 +277,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
     const aliveHeroes = this.combatants
-      .filter(c => (c.actor?.type === "character") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
+      .filter(c => (c.actor?.type === "hero") && c.hasPlayerOwner && !c.actor.statuses.has("dead"))
       .map(c => c.actor);
     await malice._onStartRound(this, aliveHeroes);
   }
@@ -326,7 +326,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         const actor = combatant.actor;
         if (!actor) continue;
         const updates = { system: { } };
-        if (actor.type === "character") {
+        if (actor.type === "hero") {
           updates.system.hero = { victories: actor.system.hero.victories + fd.victories };
           if (fd.resetHeroicResources) updates.system.hero.primary = { value: 0 };
         }

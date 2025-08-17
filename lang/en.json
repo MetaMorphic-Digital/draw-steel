@@ -343,7 +343,7 @@
           "Title": "Specialized Combat Data"
         }
       },
-      "character": {
+      "hero": {
         "FIELDS": {
           "hero": {
             "primary": {
@@ -574,6 +574,7 @@
         "tier3": "Tier 3"
       },
       "LimitWorldCreateTooltip": "Certain item types (Class, Subclass, Ancestry, Career, Kit) must be created inside of a compendium and cannot be created in-world.",
+      "NoPrerequisites": "None",
       "base": {
         "FIELDS": {
           "description": {
@@ -801,6 +802,13 @@
       "ancestry": {
         "FIELDS": {}
       },
+      "ancestryTrait": {
+        "FIELDS": {
+          "points": {
+            "label": "Point Cost"
+          }
+        }
+      },
       "career": {
         "FIELDS": {
           "projectPoints": {
@@ -886,7 +894,7 @@
           "Noble": "Noble"
         }
       },
-      "equipment": {
+      "treasure": {
         "FIELDS": {
           "kind": {
             "label": "Kind"
@@ -973,36 +981,7 @@
         }
       },
       "feature": {
-        "FIELDS": {
-          "type": {
-            "value": {
-              "label": "Feature Type"
-            },
-            "subtype": {
-              "label": "Feature Subtype"
-            }
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
-          }
-        },
-        "Types": {
-          "Perk": {
-            "Label": "Perk",
-            "Crafting": "Crafting",
-            "Exploration": "Exploration",
-            "Interpersonal": "Interpersonal",
-            "Intrigue": "Intrigue",
-            "Lore": "Lore",
-            "Supernatural": "Supernatural"
-          },
-          "Title": {
-            "Label": "Title"
-          }
-        }
+        "FIELDS": {}
       },
       "kit": {
         "FIELDS": {
@@ -1099,6 +1078,32 @@
           "WrongDSID": "The expected DSID {expected} did not match the current class's DSID of {actual}."
         }
       },
+      "title": {
+        "FIELDS": {
+          "echelon": {
+            "label": "Echelon"
+          },
+          "story": {
+            "label": "Story Text"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "perk": {
+        "FIELDS": {
+          "perkType": {
+            "label": "Perk Type"
+          }
+        },
+        "Types": {
+          "Supernatural": "Supernatural"
+        }
+      },
       "project": {
         "FIELDS": {
           "type": {
@@ -1141,7 +1146,7 @@
         "Craft": {
           "ItemName": "Craft {name}",
           "CompletedNotification": "{actor} successfully crafted {amount} {item}(s).",
-          "FromEquipment": {
+          "FromTreasure": {
             "Label": "Start Crafting Project",
             "Notification": "Started crafting project for {item}."
           }
@@ -1485,7 +1490,9 @@
       },
       "MigrationVersion": {
         "Label": "Migration Version",
-        "Hint": "Last Performed Migration"
+        "Hint": "Last Performed Migration",
+        "WorldWarning": "Applying migrations for version {version}",
+        "WorldSuccess": "Successfully applied migrations for version {version}"
       },
       "ProjectEvents": {
         "Label": "Project Event Trigger",
@@ -1674,7 +1681,7 @@
       "abilityModifier": "Ability Modifier"
     },
     "Actor": {
-      "character": "Character",
+      "hero": "Hero",
       "npc": "NPC"
     },
     "Advancement": {
@@ -1691,15 +1698,18 @@
     "Item": {
       "ability": "Ability",
       "ancestry": "Ancestry",
+      "ancestryTrait": "Ancestry Trait",
       "career": "Career",
       "class": "Class",
       "complication": "Complication",
       "culture": "Culture",
       "feature": "Feature",
-      "equipment": "Equipment",
+      "treasure": "Treasure",
       "kit": "Kit",
+      "perk": "Perk",
+      "project": "Project",
       "subclass": "Subclass",
-      "project": "Project"
+      "title": "Title"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",
