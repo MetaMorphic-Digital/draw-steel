@@ -16,7 +16,460 @@
       "revision": 1
     },
     "_dsid": "troubadour",
-    "advancements": {},
+    "advancements": {
+      "e3VBn4QmlF9a3xeh": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "e3VBn4QmlF9a3xeh",
+        "description": "<p>You gain the Read Person skill (see Skills in Chapter 9: Tests). Then choose two skills from the interpersonal skill group and one skill from the intrigue or lore skill groups. (Quick Build: Brag, Read Person, Rumors, Society.)</p>",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        }
+      },
+      "Oor2BUokZbY1DUzY": {
+        "name": "Troubadour Class Act",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Oor2BUokZbY1DUzY",
+        "description": "<p>Panache, melody, and depiction. Some troubadours have it all, but everyone starts somewhere. Your troubadour class act is your art form, summing up the manner in which the world becomes your stage. As you go about unearthing the drama of everyday life and strife, you choose a troubadour class act from the following options, each of which grants you a skill. (Quick Build: Virtuoso.)</p><ul><li><p>Auteur: You seek drama from story and recount, using your magic to manipulate the sequence of events unfolding before you. You have the Brag skill.</p></li><li><p>Duelist: Drama infuses your every movement done in tandem with another. You perform dances of death, putting trust in your opponent to return your passion in kind. You have the Gymnastics skill.</p></li><li><p>Virtuoso: You find drama in music and song, weaving magic between vibrations and filling the audience with your pathos. You have the Music skill and can play an instrument.</p></li></ul><p>Your troubadour class act is your subclass, and your choice of class act determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "W4ULU4i9oP0fKEAt": {
+        "name": "Drama",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "W4ULU4i9oP0fKEAt",
+        "description": "<p>During battles, you are fueled by the dynamic ups, downs, and upside downs of the fray, from which you derive a Heroic Resource called drama.</p>"
+      },
+      "4utt4CI3v3jby2x7": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "4utt4CI3v3jby2x7",
+        "description": "<p>You can use and gain the benefits of a kit. See Chapter 6: Kits for more information. (Quick Build: Swashbuckler.)</p>",
+        "chooseN": 1
+      },
+      "soX3KkRKDjTtkjkd": {
+        "name": "Scene Partner",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "soX3KkRKDjTtkjkd",
+        "description": "<p>Whenever you obtain a success on a test to interact with an NPC using a skill from the interpersonal group, you can form a bond with that NPC. When you enter into a negotiation with a bonded NPC, their patience increases by 1 (to a maximum of 5). Additionally, the first time during a negotiation that you personally make an argument that would increase a bonded NPC’s interest by 1, you instead increase their interest by 2 (to a maximum of 5).</p><p>You can have a number of bonds active equal to your level. When you form a bond with a new NPC that would exceed the limit, you must choose which of your active bonds to lose.</p>"
+      },
+      "CvQQ679eRntsrsDf": {
+        "name": "Routines",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "CvQQ679eRntsrsDf",
+        "description": "<p>You enter every battle with a set of performance abilities at the ready. Performances are magical presentations (such as songs, dances, poems, or gymnastic feats) that your allies can participate in. These abilities have the Performance keyword. At the start of each combat round, as long as you are not dazed, dead, or surprised, you can either choose a new performance or maintain your current performance (no action required). Your performance lasts until you are unable to maintain it or until the end of the encounter.</p><p>You start off with the Choreography and Revitalizing Limerick performance abilities. Your choice of class act grants you additional performances.</p>"
+      },
+      "SPzS1KGINuqM6mB9": {
+        "name": "Class Act Features",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "SPzS1KGINuqM6mB9",
+        "description": "<p>Your troubadour class act grants you two features, as shown on the 1st-Level Class Act Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Class Act Features</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Blocking</p><p>Dramatic Monologue</p></td></tr><tr><td><p>Duelist</p></td><td><p>Acrobatics</p><p>Star Power</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Power Chord</p><p>Virtuoso Performances</p></td></tr></tbody></table>",
+        "chooseN": 2
+      },
+      "8hV9KLXhRs2ryi6y": {
+        "name": "Class Act Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "8hV9KLXhRs2ryi6y",
+        "description": "<p>Your troubadour class act grants you a triggered action, as shown on the Class Act Triggered Actions table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Class Act Triggered Action</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Triggered Action</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Turnabout Is Fair Play</p></td></tr><tr><td><p>Duelist</p></td><td><p>Riposte</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Harmonize</p></td></tr></tbody></table>"
+      },
+      "gStatMG9CtsXYte1": {
+        "name": "Signature Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gStatMG9CtsXYte1",
+        "description": "<p>Your performance centers around maneuvering through the scene of battle, maintaining its momentum so that the story flows as dramatically as possible.</p><p>Choose one signature ability from the following options. Signature abilities can be used at will. (Quick Build: Witty Banter.)</p>",
+        "chooseN": 1
+      },
+      "KN1jhDJt8poiNXql": {
+        "name": "3-Drama Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "KN1jhDJt8poiNXql",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 drama to use. (Quick Build: Harsh Critic.)</p>"
+      },
+      "0IQgoq6iWfxpfDen": {
+        "name": "5-Drama Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "0IQgoq6iWfxpfDen",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 drama to use. (Quick Build: Dramatic Reversal.)</p>",
+        "chooseN": 1
+      },
+      "ryR4WkhLGrDUukzt": {
+        "name": "Appeal to the Muses",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "ryR4WkhLGrDUukzt",
+        "description": "<p>You can give a rousing speech, invoke your inspirations, or lift your fellows’ spirits, appealing to the muses to heighten a battle’s drama. However, irony is eager to hand your fortune to the villain to achieve the same end.</p><p>Before you roll to gain drama at the start of your turn, you can make your appeal (no action required). If you do, your roll gains the following additional effects:</p><ul><li><p>If the roll is a 1, you gain 1 additional drama. The Director gains 1d3 Malice (see Draw Steel: Monsters).</p></li><li><p>If the roll is a 2, you gain 1 Heroic Resource, which you can keep or give to an ally within the distance of your active performance. The Director gains 1 Malice.</p></li><li><p>If the roll is a 3, you gain 2 of a Heroic Resource, which you can distribute among yourself and any allies within the distance of your active performance.</p></li></ul>"
+      },
+      "H0AeCgH98F0j2vsT": {
+        "name": "Invocation",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "H0AeCgH98F0j2vsT",
+        "description": "<p>You have a specific manner that helps define your presence on the</p><p>battlefield. Choose one of the following features.</p>",
+        "chooseN": 1
+      },
+      "dtvM8asYHpm4SB02": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "dtvM8asYHpm4SB02",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice. See Chapter 7: Perks.</p>",
+        "chooseN": 1
+      },
+      "4SERM0ElZ5QDV2FN": {
+        "name": "Class Act Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "4SERM0ElZ5QDV2FN",
+        "description": "<p>Your troubadour class act grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Class Act Ability</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Guest Star</p><p>Twist at the End</p></td></tr><tr><td><p>Duelist</p></td><td><p>Classic Chandelier Stunt</p><p>En Garde!</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Encore</p><p>Tough Crowd</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "2t0psjiQSnTeM4Rn": {
+        "name": "Class Act Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "2t0psjiQSnTeM4Rn",
+        "description": "<p>Your troubadour class act grants you a feature, as shown on the 3rd-Level Class Act Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>3rd-Level Class Act Features</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Missed Cue</p></td></tr><tr><td><p>Duelist</p></td><td><p>Foil</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Second Album</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "ihTQO3o78kxYSmsH": {
+        "name": "7-Drama Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "ihTQO3o78kxYSmsH",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 drama to use.</p>",
+        "chooseN": 1
+      },
+      "46kXwIzgrTywdV4T": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "46kXwIzgrTywdV4T",
+        "description": "<p>Your Agility and Presence scores each increase to 3.</p>"
+      },
+      "X2VnsMZKxWZGJCyp": {
+        "name": "Melodrama",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "X2VnsMZKxWZGJCyp",
+        "description": "<p>You have more ways of getting the most drama out of a situation. Choose two of the following events to add to the events that grant you drama during battle:</p><ul><li><p>Whenever a creature rolls a natural 2 on a power roll, you gain 2 drama.</p></li><li><p>The first time the Director deals damage to a hero using a Villain action or an ability that costs Malice, you gain 2 drama.</p></li><li><p>The first time a hero unwillingly falls 5 or more squares, you gain 2 drama.</p></li><li><p>The first time a hero deals damage with 3 surges, you gain 2 drama.</p></li><li><p>Whenever a hero spends their last Recovery, you gain 2 drama.</p></li></ul><p>Alternatively, you can forgo choosing a new event to choose one event you already have (including an event gained with this feature). Whenever the chosen event grants you drama, you gain 1 additional drama.</p>"
+      },
+      "D06GgCzD7GJpL42N": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "D06GgCzD7GJpL42N",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "DFIk1va8z5be5g9F": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "DFIk1va8z5be5g9F",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>",
+        "chooseN": 1
+      },
+      "pP5XYTBno1OKL5yZ": {
+        "name": "Zeitgeist",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "pP5XYTBno1OKL5yZ",
+        "description": "<p>You always have your ear to the ground, your finger on the pulse. When you start or finish a respite, choose one of the following effects.</p>",
+        "chooseN": 1
+      },
+      "o3G3CAeYd1aUdxRC": {
+        "name": "Class Act Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "o3G3CAeYd1aUdxRC",
+        "description": "<p>Your troubadour class act grants your choice of one of two features.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Class Act Features</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Fix It in Post</p><p>Take Two!</p></td></tr><tr><td><p>Duelist</p></td><td><p>Verbal Duel</p><p>We Can’t Be Upstaged!</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Bolstering Banter</p><p>Medley</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "9SYtzmvzfqtGBt19": {
+        "name": "9-Drama Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "9SYtzmvzfqtGBt19",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 drama to use.</p>",
+        "chooseN": 1
+      },
+      "tXAJOn4Rlv6Bpv8P": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "tXAJOn4Rlv6Bpv8P",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "lfKtV2oIED8O1RMc": {
+        "name": "Spotlight",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "lfKtV2oIED8O1RMc",
+        "description": "<p>You have the following performance ability, which is usable with your Routines feature.</p>"
+      },
+      "fgSsUgJPODZsPYpc": {
+        "name": "Class Act Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "fgSsUgJPODZsPYpc",
+        "description": "<p>Your troubadour class act grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level Class Act Ability</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Here’s How Your Story Ends</p><p>You’re All My Understudies</p></td></tr><tr><td><p>Duelist</p></td><td><p>Blood on the Stage</p><p>Fight Choreography</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Feedback</p><p>Legendary Drum Fill</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "9IM4cN5dPPbTgxdM": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "9IM4cN5dPPbTgxdM",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "2vBMx4XmX4EI1J1h": {
+        "name": "A Muse's Muse",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "2vBMx4XmX4EI1J1h",
+        "description": "<p>At the start of each of your turns during combat, you gain 1d3 + 1 drama instead of 1d3.</p>"
+      },
+      "xM4pzaIVGI46a7ew": {
+        "name": "Equal Billing",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "xM4pzaIVGI46a7ew",
+        "description": "<p>You can use your Scene Partner feature to form a bond with one willing hero instead of an NPC you interact with using a test. If you bond with another hero, you lose your existing bond with a hero. </p><p>Additionally, you and creatures you are bonded with gain a +1 bonus to saving throws. Whenever you or a bonded creature succeeds on a saving throw, you and each creature you are bonded with gains temporary Stamina equal to your level.</p>"
+      },
+      "GAUsax0Cfh9PrjB0": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "GAUsax0Cfh9PrjB0",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "Vw3EszNloOsVfnia": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "Vw3EszNloOsVfnia",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "r8zk7mbJquXicGSI": {
+        "name": "Class Act Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "r8zk7mbJquXicGSI",
+        "description": "<p>Your troubadour class act grants you a feature, as shown on the 8th-Level Class Act Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Class Act Features</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Deleted Scene</p></td></tr><tr><td><p>Duelist</p></td><td><p>Masterwork</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Crowd Favorites</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "jDZv146syKaYkbyD": {
+        "name": "11-Drama Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "jDZv146syKaYkbyD",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 drama to use.</p>",
+        "chooseN": 1
+      },
+      "7TYPftFJ9hGlRxjG": {
+        "name": "Roar of the Crowd",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "7TYPftFJ9hGlRxjG",
+        "description": "<p>You are empowered by your audience, near and far. You can’t be made frightened, and if you are prone, you can stand up as a free maneuver.</p><p>Additionally, whenever you spend a Recovery, you can forgo regaining Stamina to invoke the roar of an invisible applauding audience. You and each ally within 3 squares of you gains temporary Stamina equal to 10 + the number of active bonds from your Scene Partner feature + either your Victories or the number of players in your game (whichever is higher).</p>"
+      },
+      "DfwCNyCH8QCeEgul": {
+        "name": "Class Act Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "DfwCNyCH8QCeEgul",
+        "description": "<p>Your troubadour class act grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Class Act Ability</strong></p></td></tr><tr><td><p><strong>Class Act</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Auteur</p></td><td><p>Epic</p><p>Rising Tension</p></td></tr><tr><td><p>Duelist</p></td><td><p>Expert Fencer</p><p>Renegotiated Contract</p></td></tr><tr><td><p>Virtuoso</p></td><td><p>Jam Session</p><p>Melt Their Faces</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "ifcoozjkimPRw9Tj": {
+        "name": "Applause",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "ifcoozjkimPRw9Tj",
+        "description": "<p>You have an epic resource called applause. Each time you finish a respite, you gain applause equal to the XP you gain. You can spend applause on your abilities as if it were drama.</p><p>Additionally, whenever you or a creature within 3 squares would obtain a failure or a tier 1 outcome on a test, you can spend 1 applause to improve the outcome by 1 tier.</p><p>Applause remains until you spend it.</p>"
+      },
+      "YJRPvO4nIEVD8KrM": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "YJRPvO4nIEVD8KrM",
+        "description": "<p>Your Agility and Presence scores each increase to 5.</p>"
+      },
+      "Suyb7sOXEqdznlTg": {
+        "name": "Dramaturgy",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "Suyb7sOXEqdznlTg",
+        "description": "<p>You gain 1 additional drama or other Heroic Resource whenever you use your Appeal to the Muses feature. Additionally, your performances no longer have a distance, but can affect any target on the encounter map within your line of effect.</p>"
+      },
+      "j4YgNZj9qO4r8QF4": {
+        "name": "Greatest of All Time",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "j4YgNZj9qO4r8QF4",
+        "description": "<p>Whenever you obtain a success on a test, each NPC within your line of effect has their Impression score decreased by 4 during a negotiation (to a minimum of 1), and each ally within 3 squares of you gains an edge on their next test. These effects last until you start your next respite.</p>"
+      },
+      "V1x7JkhDn8RsJlLe": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "V1x7JkhDn8RsJlLe",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "iMYxljsfD91UBZlO": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "iMYxljsfD91UBZlO",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      }
+    },
     "level": 0,
     "primary": "Drama",
     "epic": "Applause",

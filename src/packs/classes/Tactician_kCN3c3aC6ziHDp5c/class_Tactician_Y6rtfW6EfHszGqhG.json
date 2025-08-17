@@ -8,108 +8,432 @@
       "director": ""
     },
     "advancements": {
-      "36mlcVBFxyBy3tIn": {
-        "type": "itemGrant",
-        "_id": "36mlcVBFxyBy3tIn",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.dNGmfuNuaML5TRQL"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
-          }
-        ],
-        "name": "Features",
-        "requirements": {
-          "level": 1
-        },
-        "description": "<p>Field Arsenal, Focus</p>"
-      },
-      "KoGp0Q93aEXIiQxx": {
-        "type": "itemGrant",
-        "_id": "KoGp0Q93aEXIiQxx",
-        "requirements": {
-          "level": 3
-        },
-        "name": "Features",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.UMi9OOllnmMinI9h"
-          }
-        ]
-      },
-      "ZYrQ1MTL4PPJq1un": {
-        "name": "Guaranteed Skill",
+      "oxIyaHPtXTLrx4vK": {
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "ZYrQ1MTL4PPJq1un",
-        "skills": {
-          "choices": [
-            "lead"
-          ]
-        },
-        "description": "<p>You gain the Lead skill.</p>"
+        "_id": "oxIyaHPtXTLrx4vK",
+        "description": "<p>You gain the Lead skill (see Skills in Chapter 9: Tests). Then choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (Quick Build: Lead, Monsters, Strategy.)</p>",
+        "chooseN": 2
       },
-      "lffZjjuNWAvfmliT": {
-        "name": "Skill Choices",
+      "9143IeeWb9egQInm": {
+        "name": "Tactical Doctrine",
         "img": null,
-        "type": "skill",
+        "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "lffZjjuNWAvfmliT",
-        "skills": {
-          "choices": [
-            "architecture",
-            "blacksmithing",
-            "fletching",
-            "mechanics",
-            "brag",
-            "empathize",
-            "alertness",
-            "search",
-            "culture",
-            "monsters",
-            "strategy"
-          ],
-          "groups": [
-            "exploration"
-          ]
-        },
-        "chooseN": 2,
-        "description": "<p>Then choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group.</p>"
+        "_id": "9143IeeWb9egQInm",
+        "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (Quick Build: Vanguard and the Intimidate skill.)</p><ul><li><p>Insurgent: Doing your duty, playing fair, and dying honorably in battle is your opponent’s job. You’ll do whatever it takes to keep your allies alive. You gain a skill from the intrigue skill group.</p></li><li><p>Mastermind: You have an encyclopedic knowledge of warfare, viewing the battlefield as a game board and seeking victory by thinking steps ahead of your opponents. You gain a skill from the lore skill group.</p></li><li><p>Vanguard: You have learned the stratagems of ancient heroes, letting you lead from the front lines and seek victory through sheer force of will and personality. You gain a skill from the interpersonal skill group.</p></li></ul><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
       },
-      "MP2iZkK0a0TBrk2f": {
+      "81VY30k13Tomz3xg": {
+        "name": "Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "81VY30k13Tomz3xg",
+        "description": "<p>The ring of steel panics others but brings order to your mind, granting you a Heroic Resource called focus.</p>"
+      },
+      "1wEhgMAeCEZTpDHF": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "1wEhgMAeCEZTpDHF",
+        "description": "<p>Your tactical doctrine grants you a feature, as shown on the 1st-Level Doctrine Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Doctrine Features</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Covert Operations</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Studied Commander</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Commanding Presence</p></td></tr></tbody></table>"
+      },
+      "9TwZwMg2gIJLN95Y": {
+        "name": "Doctrine Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "9TwZwMg2gIJLN95Y",
+        "description": "<p>Your tactical doctrine grants you a triggered action, as shown on the Doctrine Triggered Actions table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>Doctrine Triggered Actions</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Triggered Action</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Advanced Tactics</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Overwatch</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Parry</p></td></tr></tbody></table>"
+      },
+      "zv0OWJRkol1bVGKN": {
+        "name": "Field Arsenal",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "zv0OWJRkol1bVGKN",
+        "description": "<p>You have drilled with a broad array of arms and armor, and have developed techniques to optimize their use. You can use and gain the benefits of two kits, including both their signature abilities. Whenever you would choose or change one kit, you can choose or change your second kit as well. See Chapter 6: Kits for more information. (Quick Build: Shining Armor, Sniper.)</p><p>If both kits grant you the same benefit, you take one or the other and can’t change your choice until you finish a respite. (This usually means taking the higher of two bonuses.)</p><p>For example, if you take the Shining Armor and Sniper kits, you gain the following benefits overall:</p><ul><li><p>Stamina Bonus: +12 per echelon</p></li><li><p>Stability Bonus: +1</p></li><li><p>Melee Damage Bonus: +2/+2/+2</p></li><li><p>Ranged Damage Bonus: +0/+0/+4</p></li><li><p>Speed Bonus: +1</p></li><li><p>Ranged Distance Bonus: +10</p></li><li><p>Disengage Bonus: +1</p></li><li><p>You can use the Patient Shot and Protective Attack signature abilities.</p></li></ul><p>Kit signature abilities have their kit’s bonuses already applied, which might require you to adjust the bonuses of the signature abilities you gain from a kit. For example, you might take the Martial Artist kit, which gives a melee weapon damage bonus of +2/+2/+2, and the Mountain kit, which gives a melee weapon damage bonus of +0/+0/+4. If you choose to use the Mountain kit’s damage bonus, then the Battle Grace signature ability from the Martial Artist kit loses the +2/+2/+2 bonus from that kit, reducing its usual 5/8/11 damage for its tier 1, tier 2, and tier 3 outcomes to 3/6/9. It then gains the +0/+0/+4 of the Mountain kit to deal 3/6/13 damage.</p>"
+      },
+      "77aAiIjaWsvcL5VD": {
         "name": "Mark",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "MP2iZkK0a0TBrk2f",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.nTU8DYaGb8P4afyP"
-          }
-        ],
-        "description": "<p>You know how to focus the attention of your allies as you push them toward victory.</p>"
+        "_id": "77aAiIjaWsvcL5VD",
+        "description": "<p>You know how to focus the attention of your allies as you push them toward victory. You have the following ability.</p>"
       },
-      "GaCGwCaDeZ0tIzEW": {
+      "326HwuOjKmPBAqw7": {
         "name": "Strike Now",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "GaCGwCaDeZ0tIzEW",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.pBj37n9AteNMfSCo"
-          }
-        ]
+        "_id": "326HwuOjKmPBAqw7",
+        "description": "<p>You have the following ability.</p>"
+      },
+      "i3bGKzu2n0ece1My": {
+        "name": "3-Focus Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "i3bGKzu2n0ece1My",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 focus to use. (Quick Build: Inspiring Strike.)</p>",
+        "chooseN": 1
+      },
+      "WA8zakppmpCV6zVl": {
+        "name": "5-Focus Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "WA8zakppmpCV6zVl",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 focus to use. (Quick Build: Hammer and Anvil.)</p>",
+        "chooseN": 1
+      },
+      "P5W6tvt4RwIjg4xz": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "P5W6tvt4RwIjg4xz",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice. See Chapter 7: Perks.</p>",
+        "chooseN": 1
+      },
+      "auIebEQy9UhkGnpN": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "auIebEQy9UhkGnpN",
+        "description": "<p>Your tactical doctrine grants you a feature, as shown on the 2nd-Level Doctrine Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Doctrine Features</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Infiltration Tactics</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Goaded</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Melee Superiority</p></td></tr></tbody></table>"
+      },
+      "LahPGhkL9bTJ4h9q": {
+        "name": "Doctrine Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "LahPGhkL9bTJ4h9q",
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Doctrine Abilities</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Fog of War</p><p>Try Me Instead</p></td></tr><tr><td><p>Mastermind</p></td><td><p>I’ve Got Your Back</p><p>Targets of Opportunity</p></td></tr><tr><td><p>Vanguard</p></td><td><p>No Dying on My Watch</p><p>Squad! On Me!</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "JYe8Zc906XkKW9wv": {
+        "name": "Out of Position",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "JYe8Zc906XkKW9wv",
+        "description": "<p>Even before battle begins, your enemies struggle to keep up with your tactics. At the start of an encounter, you can use a free triggered action to use your Mark ability against one enemy you have line of effect to, even if you are surprised. You can then slide the marked target up to 3 squares, ignoring stability. The target can’t be moved in a way that would harm them (such as over a cliff), leave them dying, or result in them suffering a condition or other negative effect.</p>"
+      },
+      "XQmZ50vakPSGAjMZ": {
+        "name": "7-Focus Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "XQmZ50vakPSGAjMZ",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 focus to use.</p>",
+        "chooseN": 1
+      },
+      "kvPIrSG41YbRQV79": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "kvPIrSG41YbRQV79",
+        "description": "<p>Your Might and Reason scores each increase to 3.</p>"
+      },
+      "P3SCXacO8B3e5Guy": {
+        "name": "Focus on Their Weaknesses",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "P3SCXacO8B3e5Guy",
+        "description": "<p>The first time each combat round that you or any ally damages a target marked by you, you gain 2 focus instead of 1.</p>"
+      },
+      "1PGvTTcbLmkXwAaT": {
+        "name": "Improved Field Arsenal",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "1PGvTTcbLmkXwAaT",
+        "description": "<p>Your expertise with weapons has grown. Whenever you use a signature ability from one of your equipped kits or make a free strike using a weapon from one of your equipped kits, you gain an edge.</p>"
+      },
+      "wqL0HxgRsAGgPX6o": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "wqL0HxgRsAGgPX6o",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "XRm7uMqU8d1Y6yZy": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "XRm7uMqU8d1Y6yZy",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>",
+        "chooseN": 1
+      },
+      "Bgqt4RURPo3ZJlFw": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "Bgqt4RURPo3ZJlFw",
+        "description": "<p>Your tactical doctrine grants you two features, as shown on the 5th-Level Doctrine Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Doctrine Features</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Distracted</p><p>Leave No Trace</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Anticipation</p><p>I Predicted That</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Shake It Off</p><p>Tactical Offensive</p></td></tr></tbody></table>",
+        "chooseN": 2
+      },
+      "Q028tlXskrajPWo3": {
+        "name": "9-Focus Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "Q028tlXskrajPWo3",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 focus to use.</p>"
+      },
+      "MYsfmiialNqXGICW": {
+        "name": "Master of Arms",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "MYsfmiialNqXGICW",
+        "description": "<p>Your expertise with weapons has grown to true mastery. Whenever you use a signature ability from one of your equipped kits or make a free strike using a weapon from one of your equipped kits, you can negate a bane on the power roll or reduce a double bane to a bane.</p>"
+      },
+      "JBNIxrYyv5c1rCeB": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "JBNIxrYyv5c1rCeB",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "w9WToUrBDLtc9lOi": {
+        "name": "Doctrine Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "w9WToUrBDLtc9lOi",
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Doctrine Abilities</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Coordinated Execution</p><p>Panic in Their Lines</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Battle Plan</p><p>Hustle!</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Instant Retaliation</p><p>To Me Squad!</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "ZYJyIhwzhbkh5XEN": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "ZYJyIhwzhbkh5XEN",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "o03zbrdiMPCGLZnH": {
+        "name": "Heightened Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "o03zbrdiMPCGLZnH",
+        "description": "<p>When you gain focus at the start of each of your turns during combat, you gain 3 focus instead of 2.</p>"
+      },
+      "OA3NyPTGCl4fgE9W": {
+        "name": "Seize the Initiative",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "OA3NyPTGCl4fgE9W",
+        "description": "<p>If you are not surprised when combat begins, your side gets to go first. If an enemy has an ability that allows their side to go first, you roll as usual to determine who goes first.</p>"
+      },
+      "GO0B4mSXmqPpFd2M": {
+        "name": "Skill",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "GO0B4mSXmqPpFd2M",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "C2RjGGsSkDZS876j": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "C2RjGGsSkDZS876j",
+        "description": "<p>Your tactical doctrine grants you a feature, as shown on the 7th-Level Doctrine Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>7th-Level Doctrine Features</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Asymmetric Warfare</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Grand Strategy</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Shock and Awe</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "Am3b4XwRLq8dndMs": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "Am3b4XwRLq8dndMs",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "i9e90S0BVwHB9H8y": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "i9e90S0BVwHB9H8y",
+        "description": "<p>Your tactical doctrine grants you a feature, as shown on the 8th-Level Doctrine Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Doctrine Features</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Bait and Ambush</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Pincer Movement</p></td></tr><tr><td><p>Vanguard</p></td><td><p>See Your Enemies Driven Before You</p></td></tr></tbody></table>"
+      },
+      "rFaJf7COHjOtC7bu": {
+        "name": "11-Focus Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "rFaJf7COHjOtC7bu",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 focus to use.</p>",
+        "chooseN": 1
+      },
+      "Chkffg9pl6eI58eA": {
+        "name": "Grandmaster of Arms",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "Chkffg9pl6eI58eA",
+        "description": "<p>Your expertise with weapons has grown to true mastery. Whenever you use a signature ability from one of your equipped kits or make a free strike using a weapon from one of your equipped kits, you automatically obtain a tier 3 outcome on the power roll. You can still roll to determine if you score a critical hit.</p>"
+      },
+      "hqNmblWxg3yzknmO": {
+        "name": "Doctrine Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "hqNmblWxg3yzknmO",
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Doctrine Abilities</strong></p></td></tr><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Squad! Hit and Run!</p><p>Their Lack of Focus Is Their Undoing</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Blot Out the Sun!</p><p>Counterstrategy</p></td></tr><tr><td><p>Vanguard</p></td><td><p>No Escape</p><p>That One Is Mine!</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "8fw1vWf09662EHA8": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "8fw1vWf09662EHA8",
+        "description": "<p>Your Might and Reason scores each increase to 5.</p>"
+      },
+      "viLx2y5JLRtrqVJG": {
+        "name": "Command",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "viLx2y5JLRtrqVJG",
+        "description": "<p>You have an epic resource called command. Each time you finish a respite, you gain command equal to the XP you gain. You can spend command on your abilities as if it were focus.</p><p>Additionally, whenever you or any ally uses an ability to deal rolled damage to a creature marked by you, you can spend 1 command as a free triggered action to increase the power roll outcome for that target by one tier. Whenever an enemy marked by you makes an ability roll, you can spend 1 command as a free triggered action to decrease the power roll outcome by one tier.</p><p>Command remains until you spend it.</p>"
+      },
+      "6KqDJiYis05blzWd": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "6KqDJiYis05blzWd",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "wvdmStGJPTzIKa5c": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "wvdmStGJPTzIKa5c",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "JbuUazcRX2IIR38W": {
+        "name": "True Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "JbuUazcRX2IIR38W",
+        "description": "<p>When you gain focus at the start of each of your turns during combat, you gain 4 focus instead of 3.</p>"
+      },
+      "Ue42NWiYm1VhkCot": {
+        "name": "Warmaster",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "Ue42NWiYm1VhkCot",
+        "description": "<p>You have mastered the entirety of possible strategies and tactics. Whenever you or any ally makes an ability roll against a target marked by you, the character making the roll can roll three dice and choose which two to use.</p><p>Additionally, whenever an ally uses a heroic ability that targets one or more creatures marked by you, they spend 2 fewer of their Heroic Resource on that ability (minimum 1).</p>"
       }
     },
     "source": {
@@ -147,7 +471,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140107957,

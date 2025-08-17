@@ -25,150 +25,458 @@
       "level": 6
     },
     "advancements": {
-      "qeqJmWU8sdfdEfWO": {
+      "SGcIk0R038jUuckL": {
+        "name": "Skill",
+        "img": null,
         "type": "skill",
-        "_id": "qeqJmWU8sdfdEfWO",
-        "name": "Guaranteed Skills",
-        "skills": {
-          "choices": [
-            "hide",
-            "sneak"
-          ]
-        },
         "requirements": {
           "level": 1
         },
-        "description": "<p>You gain the Hide and Sneak skills.</p>"
-      },
-      "vJNXECXFdxjjxINx": {
-        "type": "skill",
-        "_id": "vJNXECXFdxjjxINx",
-        "name": "Skill Choices",
+        "_id": "SGcIk0R038jUuckL",
+        "description": "<p>You gain the Hide and Sneak skills (see Skills in Chapter 9: Tests). Then choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups. (Quick Build: Criminal Underworld, Hide, Lie, Pick Lock, Pick Pocket, Sabotage, Sneak.)</p>",
         "skills": {
           "groups": [
             "exploration",
             "interpersonal",
             "intrigue"
-          ],
-          "choices": [
-            "criminalUnderworld"
           ]
         },
-        "chooseN": 5,
-        "requirements": {
-          "level": 1
-        },
-        "description": "<p>Then choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups.</p>"
+        "chooseN": 5
       },
-      "xbz684UecAtQyYgk": {
-        "name": "Features",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "xbz684UecAtQyYgk",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.8UVDKdZXiXzfFI0I"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.weYBoNzMpzcu9qUr"
-          }
-        ]
-      },
-      "902QsazsIAjNioxx": {
-        "name": "Signature Ability",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "902QsazsIAjNioxx",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.avpi9kfzRK0B9YIk"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.ehA3Xd2YnARQszb2"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.7iEVcJVYLoDe49Cs"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.JsIqJ0UsUSNJemm3"
-          }
-        ],
-        "chooseN": 1
-      },
-      "6Hec0kIaaXm1ZSPf": {
-        "name": "3 Insight",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "6Hec0kIaaXm1ZSPf",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.fxdiH1SHqvKGcMYY"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.yX2KU1Eqc24ijqcB"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.VwqbeNSv0ItsaaPD"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.PF2heedkoTuLzInM"
-          }
-        ],
-        "chooseN": 1
-      },
-      "SuaZbEJYFdKVDgnS": {
-        "name": "5 Insight",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "SuaZbEJYFdKVDgnS",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.wdOVSaOWjUsPmeEM"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.a93xTnhOnwJSe0Zq"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.sZDSZOUU9LgQCLcP"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.mMqubTdf0bE8mCXV"
-          }
-        ],
-        "chooseN": 1
-      },
-      "rqzrydpzFK0X1jwh": {
+      "pA2Uu1FZp0iQIFcB": {
         "name": "Shadow College",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "rqzrydpzFK0X1jwh",
-        "chooseN": 1,
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.w9bPx3bsOslJ43Tj"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.Hh1KF3TjXZydyOL2"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.FVMUt54L6k3ZOO58"
-          }
-        ]
+        "_id": "pA2Uu1FZp0iQIFcB",
+        "description": "<p>Shadow colleges are secret institutions that turn ordinary folk into something else. Finding a college is the first step in a rigorous initiation process that tests the mettle of an applicant. Even those who make the cut often wash out—or are kicked out—as the master shadows who teach stealth, magic, and assassination to their students are often less than gentle in their approach.</p><p>You graduated from a shadow college chosen from the following options, each of which grants you a skill. (Quick Build: College of Black Ash.) </p><ul><li><p>College of Black Ash: The College of Black Ash founded the art of being a shadow. Its graduates are unmatched in mobility, using sorcery to teleport around the battlefield, manipulate shadows, and summon darkness. You have the Magic skill.</p></li><li><p>College of Caustic Alchemy: The College of Caustic Alchemy teaches its students recipes for the acids, bombs, and poisons used in their grim work. Graduates of the college are exceptional assassins. You have the Alchemy skill.</p></li><li><p>College of the Harlequin Mask: Graduates of the College of the Harlequin Mask learn illusion magic, which they use to infiltrate enemy strongholds and create orchestrated chaos in combat. You have the Lie skill.</p></li></ul><p>Your shadow college is your subclass, and your choice of college determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "pHIWoiBmj11tCDaR": {
+        "name": "Insight",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pHIWoiBmj11tCDaR",
+        "description": "<p>By observing your enemy, you learn how to use their weaknesses against them, building up a Heroic Resource called insight.</p>"
+      },
+      "CdDIgFcsAceAH67G": {
+        "name": "College Features",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "CdDIgFcsAceAH67G",
+        "description": "<p>Your shadow college grants you one or two features, as shown on the 1st-Level College Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level College Features</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Black Ash Teleport</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Coat the Blade</p><p>Smoke Bomb</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>I’m No Threat</p></td></tr></tbody></table>"
+      },
+      "R8FFnf7GrxtYVekn": {
+        "name": "College Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "R8FFnf7GrxtYVekn",
+        "description": "<p>Your shadow college grants you a triggered action, as shown on the College Triggered Actions table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>College Triggered Actions</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Triggered Action</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>In All This Confusion</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Defensive Roll</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Clever Trick</p></td></tr></tbody></table>"
+      },
+      "I29XJUdh0YnqEcKv": {
+        "name": "Hesitation is Weakness",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "I29XJUdh0YnqEcKv",
+        "description": "<p>You have the following ability.</p>"
+      },
+      "vp3W49ajg4fNEo7U": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "vp3W49ajg4fNEo7U",
+        "description": "<p>You can use and gain the benefits of a kit. See Chapter 6: Kits for more information. (Quick Build: Cloak and Dagger.)</p>"
+      },
+      "EJVGCGGARAGfcVVU": {
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "EJVGCGGARAGfcVVU",
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (Quick Build: Teamwork Has Its Place.)</p>",
+        "chooseN": 1
+      },
+      "gLeGmQNN0L52p6Vj": {
+        "name": "3-Insight Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gLeGmQNN0L52p6Vj",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 insight to use. (Quick Build: Get In Get Out.)</p>"
+      },
+      "mjCuCCpUIExpruvu": {
+        "name": "5-Insight Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "mjCuCCpUIExpruvu",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 insight to use. (Quick Build: Coup de Grace.)</p>"
+      },
+      "QXKxKJFxM62NIdjI": {
+        "name": "College Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "QXKxKJFxM62NIdjI",
+        "description": "<p>Your shadow college grants you a feature, as shown on the 2nd-Level College Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level College Features</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Burning Ash</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Trained Assassin</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Friend!</p></td></tr></tbody></table>"
+      },
+      "bWlRFsWAPchNVXH6": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "bWlRFsWAPchNVXH6",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice. See Chapter 7: Perks.</p>"
+      },
+      "F7AyPTCv6D8uQGZi": {
+        "name": "College Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "F7AyPTCv6D8uQGZi",
+        "description": "<p>Your shadow college grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level College Ability</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>In a Puff of Ash</p><p>Too Slow</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Sticky Bomb</p><p>Stink Bomb</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Machinations of Sound</p><p>So Gullible</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "ckaTR6fZrYN3k8zR": {
+        "name": "Careful Observation",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "ckaTR6fZrYN3k8zR",
+        "description": "<p>You have the following ability.</p>"
+      },
+      "Pxo0TdySR3yP0eQ9": {
+        "name": "7-Insight Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "Pxo0TdySR3yP0eQ9",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 insight to use.</p>",
+        "chooseN": 1
+      },
+      "BVPZcl9qJiACd9TY": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "BVPZcl9qJiACd9TY",
+        "description": "<p>Your Agility score increases to 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 3.</p>"
+      },
+      "6O9vRjDUcd5Ps3b6": {
+        "name": "Keep It Down",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "6O9vRjDUcd5Ps3b6",
+        "description": "<p>While conversing with any creature you share a language with, you can decide whether anyone else can perceive what you’re conveying, even while yelling.</p>"
+      },
+      "K8fZjElCUhJWtW6g": {
+        "name": "Night Watch",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "K8fZjElCUhJWtW6g",
+        "description": "<p>Your sense for stealth shows those around you how to evade notice. While you are hidden, enemies take a bane on tests made to search for you or other hidden creatures within 10 squares of you. </p><p>Additionally, you have the following ability.</p>"
+      },
+      "yYWgZmvjWaeJElQv": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "yYWgZmvjWaeJElQv",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "SRAejnOFwwqJ7PtH": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "SRAejnOFwwqJ7PtH",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>",
+        "chooseN": 1
+      },
+      "LJyLxpvWv1HIcqTz": {
+        "name": "Surge of Insight",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "LJyLxpvWv1HIcqTz",
+        "description": "<p>The first time each combat round that you deal damage incorporating 1 or more surges, you gain 2 insight instead of 1.</p>"
+      },
+      "DBujvYAVVl150UZP": {
+        "name": "College Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "DBujvYAVVl150UZP",
+        "description": "<p>Your shadow college grants you a feature, as shown on the 5th-Level College Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level College Features</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Trail of Cinders</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Volatile Reagents</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Harlequin Gambit</p></td></tr></tbody></table>"
+      },
+      "aF0yBPfF3a8ykOFZ": {
+        "name": "9-Insight Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "aF0yBPfF3a8ykOFZ",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 insight to use.</p>",
+        "chooseN": 1
+      },
+      "7gaUBTFZldNf5cjg": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "7gaUBTFZldNf5cjg",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "5z0doxbF7VpjXb3y": {
+        "name": "Umbral Form",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "5z0doxbF7VpjXb3y",
+        "description": "<p>As a maneuver, you lose control of yourself, becoming a shadow creature dripping with ash. This transformation lasts until the end of the encounter, until you are dying, or after 1 uninterrupted hour of quiet focus outside of combat. You gain the following effects while in this form:</p><ul><li><p>You can automatically climb at full speed while moving.</p></li><li><p>Enemies’ spaces don’t count as difficult terrain for you. An enemy takes corruption damage equal to your Agility score the first time you pass through their space on a turn.</p></li><li><p>If you end your turn with cover or concealment from another creature, you are automatically hidden from that creature.</p></li><li><p>You gain 1 surge at the start of each of your turns.</p></li><li><p>You have corruption immunity equal to 5 + your level.</p></li><li><p>Creatures gain an edge on strikes against you.</p></li><li><p>You take a bane on Presence tests made to interact with other creatures.</p></li></ul>"
+      },
+      "InF7PZpOD4F8NFNg": {
+        "name": "College Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "InF7PZpOD4F8NFNg",
+        "description": "<p>Your shadow college grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level College Ability</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Black Ash Eruption</p><p>Cinderstorm</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>One Vial Makes You Better</p><p>One Vial Makes You Faster</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Look!</p><p>Puppet Strings</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "dSJuxYhGp9ONiQhU": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "dSJuxYhGp9ONiQhU",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "bvDzE1bYle9udQji": {
+        "name": "Keen Insight",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "bvDzE1bYle9udQji",
+        "description": "<p>At the start of each of your turns during combat, you gain 1d3 + 1 insight instead of 1d3.</p>"
+      },
+      "upSQS0I1HD3HAmCS": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "upSQS0I1HD3HAmCS",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "ocMxIQVZXDUTU2oB": {
+        "name": "Careful Observation Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "ocMxIQVZXDUTU2oB",
+        "description": "<p>You can target two creatures simultaneously with your Careful Observation ability, observing both simultaneously. Making a strike against one target doesn’t end your observation of the other target.</p>"
+      },
+      "J3HzhD047onCOQIU": {
+        "name": "Ventriloquist",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "J3HzhD047onCOQIU",
+        "description": "<p>Whenever you communicate, you can throw your voice so that it seems to originate from a creature or object within 10 squares. If you are hidden, talking this way doesn’t cause you to be revealed.</p>"
+      },
+      "9luVFDvP4y3zCYvX": {
+        "name": "College Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "9luVFDvP4y3zCYvX",
+        "description": "<p>Your shadow college grants you a feature, as shown on the 8th-Level College Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level College Features</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Cinder Step</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Time Bomb</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>Parkour</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "1E8s6579hskdFX5P": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "1E8s6579hskdFX5P",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "GkdnLb7br5uQyFBV": {
+        "name": "11-Insight Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "GkdnLb7br5uQyFBV",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 insight to use.</p>",
+        "chooseN": 1
+      },
+      "WPAYvf5gknmI9XEG": {
+        "name": "Gloom Squad",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "WPAYvf5gknmI9XEG",
+        "description": "<p>At the start of each of your turns, you can forgo gaining insight to create <strong>1d6</strong> clones of yourself in unoccupied adjacent spaces. A clone acts on your turn and uses your statistics, except they have 1 Stamina. They are affected by any conditions and effects on you, and last until the start of your next turn. A clone doesn’t have insight and can’t use the Careful Observation ability, the Umbral Form feature, or any triggered actions. On their turn, a clone has a move action, a maneuver, and a main action that they can use only to make a free strike. While making a free strike, a clone must choose targets that you or another clone aren’t also striking.</p><p>Outside of combat, you can have one clone active for every 2 Victories you have. If a clone is destroyed, you must wait 1 hour before creating another one.</p>"
+      },
+      "ImCetjEjOKuIGBe5": {
+        "name": "College Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "ImCetjEjOKuIGBe5",
+        "description": "<p>Your shadow college grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level College Ability</strong></p></td></tr><tr><td><p><strong>College</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Black Ash</p></td><td><p>Cacophony of Cinders</p><p>Demon Door</p></td></tr><tr><td><p>Caustic Alchemy</p></td><td><p>Chain Reaction</p><p>To the Stars</p></td></tr><tr><td><p>Harlequin Mask</p></td><td><p>I Am You</p><p>It Was Me All Along</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "1x7b2aoqA8MBjKFz": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "1x7b2aoqA8MBjKFz",
+        "description": "<p>Your Agility score increases to 5. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 5.</p>"
+      },
+      "IGY2v5CiXj69cu6G": {
+        "name": "Death Pool",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "IGY2v5CiXj69cu6G",
+        "description": "<p>The first time each combat round that you deal damage incorporating 1 or more surges, you gain 3 insight instead of 2.</p>"
+      },
+      "35gAfmf4yamTs5ta": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "35gAfmf4yamTs5ta",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "K6p4mRHr2oQrNzr9": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "K6p4mRHr2oQrNzr9",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "KiBZaX7OXeYG8UYC": {
+        "name": "Careful Observation Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "KiBZaX7OXeYG8UYC",
+        "description": "<p>You can target three creatures simultaneously with your Careful Observation ability.</p>"
+      },
+      "LEoUYPPcEzPqTXWu": {
+        "name": "Improved Umbral Form",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "LEoUYPPcEzPqTXWu",
+        "description": "<p>You gain full control over the shadow creature you become with your Umbral Form feature, and you can end the transformation at will (no action required). Additionally, you are always wreathed in darkness that grants you concealment while in this form, and creatures no longer gain an edge on strikes against you.</p><p>While you are in your umbral form, you can spend 1 uninterrupted minute concentrating on a location where you’ve been before. At the end of that minute, you and each willing creature of your choice within 10 squares of you can teleport to unoccupied spaces of your choice within that location. Each creature who teleports this way is invisible for 1 hour or until they use an ability.</p>"
+      },
+      "Sz1JUPJsbWCUsoeP": {
+        "name": "Subterfuge",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "Sz1JUPJsbWCUsoeP",
+        "description": "<p>You have an epic resource called subterfuge. Each time you finish a respite, you gain subterfuge equal to the XP you gain. You can spend subterfuge on your abilities as if it were insight.</p><p>Additionally, you can spend subterfuge to take additional maneuvers on your turn. You can use one maneuver for each subterfuge you spend. </p><p>Subterfuge remains until you spend it.</p>"
       }
     },
     "_dsid": "shadow",

@@ -16,7 +16,446 @@
       "revision": 1
     },
     "_dsid": "elementalist",
-    "advancements": {},
+    "advancements": {
+      "1XgNokBXzQVdKWN8": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "1XgNokBXzQVdKWN8",
+        "description": "<p>You gain the Magic skill (see Skills in Chapter 9: Tests). Then choose any three skills from the crafting or lore skill groups. (Quick Build: Alchemy, Blacksmithing, History, Magic.)</p>",
+        "skills": {
+          "groups": [
+            "crafting",
+            "lore"
+          ]
+        }
+      },
+      "011Acm7U2UiT862l": {
+        "name": "Elemental Specialization",
+        "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "011Acm7U2UiT862l",
+        "description": "<p>Through your studies, you know and can manipulate the seven primal elements of the timescape:</p><ul><li><p>Air is the element of movement. Air abilities allow you to manipulate speed, quickness, flight, and breath.</p></li><li><p>Earth is the element of permanence. Earth abilities bolster your body and grant the power to permanently create and shape physical terrain.</p></li><li><p>Fire is the element of destruction. Fire abilities devastate enemies and melt objects to slag.</p></li><li><p>Green is the element of creation and growth. Green abilities make and manipulate plants, fungi, and other forms of life to hamper foes and nourish your allies.</p></li><li><p>Rot is the element of decay. Rot abilities harm and debuff enemies.</p></li><li><p>Void is the element of the mystery. Void abilities warp space and reality, allowing you to teleport, create illusions, and make things incorporeal.</p></li><li><p>Water is the element of change. Water abilities enhance your allies’ power, and alter your enemies’ power for the worse.</p></li></ul><p>You choose an elemental specialization from the following options: earth, fire, green, or void. Your elemental specialization is your subclass, and your choice of specialization determines many of the features you’ll gain as you gain new levels, including one of the following benefits.</p><p>(Other elemental specializations will be featured in future products.)(Quick Build: Fire.)</p>"
+      },
+      "iXkwwh8av1E974ln": {
+        "name": "Essence",
+        "img": "icons/magic/light/hand-sparks-glow-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "iXkwwh8av1E974ln",
+        "description": "<p>You channel the substance of creation in the form of a Heroic Resource called essence, gathering and burning it to cast and maintain spells.</p>"
+      },
+      "ONUMwbKu3KWv6s6o": {
+        "name": "Hurl Element",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "ONUMwbKu3KWv6s6o",
+        "description": "<p>You have the following ability, which can be used as a ranged free strike.</p>"
+      },
+      "gKK66MHx2iZEzO8U": {
+        "name": "Persistent Magic",
+        "img": "icons/magic/symbols/circle-ouroboros.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gKK66MHx2iZEzO8U",
+        "description": "<p>Some of your heroic abilities have a persistent effect entry. For example, the Instantaneous Excavation ability has an effect noted as “Persistent 1.” Whenever you use a persistent ability, you decide whether you want to maintain it, and start doing so immediately after you first use the ability. If you maintain a persistent ability in combat, you reduce the amount of essence you earn at the start of your turn by an amount equal to the ability’s persistent value, which enables the ability’s persistent effect. All your active persistent abilities end at the end of the encounter.</p><p>You can’t maintain any abilities that would make you earn a negative amount of essence at the start of your turn. You can stop maintaining an ability at any time (no action required).</p><p>If you maintain the same ability on several targets and the effect includes a power roll, you make that roll once and apply the same effect to all targets. A creature can’t be affected by multiple instances of a persistent ability.</p><p>If you take damage equal to or greater than 5 times your Reason score in one turn, you stop maintaining any persistent abilities. For instance, if you have a Reason score of 2 and are maintaining Instantaneous Excavation, taking 10 or more damage in one turn causes you to stop maintaining the ability.</p>"
+      },
+      "h1pLVcMNtJzucZkm": {
+        "name": "Practical Magic",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "h1pLVcMNtJzucZkm",
+        "description": "<p>You have the following ability.</p>"
+      },
+      "Yzav5t7FAR2Cvw5g": {
+        "name": "Specialization Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Yzav5t7FAR2Cvw5g",
+        "description": "<p>Your elemental specialization grants you a feature, as shown on the 1st-Level Elemental Specialization Features table.</p><p></p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Elemental Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Motivate Earth</p></td></tr><tr><td><p>Fire</p></td><td><p>Return to Formlessness</p></td></tr><tr><td><p>Green</p></td><td><p>It Is the Soul Which Hears</p></td></tr><tr><td><p>Void</p></td><td><p>A Beyonding of Vision</p></td></tr></tbody></table>"
+      },
+      "riLCHATOAzH5kdZ1": {
+        "name": "Specialization Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "riLCHATOAzH5kdZ1",
+        "description": "<p>Your elemental specialization grants you a triggered action, as shown on the Specialization Triggered Actions table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>Elemental Specialization Triggered Actions</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Triggered Action</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Skin Like Castle Walls</p></td></tr><tr><td><p>Fire</p></td><td><p>Explosive Assistance</p></td></tr><tr><td><p>Green</p></td><td><p>Breath of Dawn Remembered</p></td></tr><tr><td><p>Void</p></td><td><p>Subtle Relocation</p></td></tr></tbody></table>"
+      },
+      "OVwV7OfI8jyAVRLz": {
+        "name": "Enchantment",
+        "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "OVwV7OfI8jyAVRLz",
+        "description": "<p>You weave an elemental enchantment into your body that enhances your statistics. Choose one of the following enchantments. You can change your enchantment and ward (see Elementalist Ward below) by performing a complex ritual as a respite activity. (Quick Build: Enchantment of Destruction.)</p>"
+      },
+      "diOy3bIa7ZACIQ0F": {
+        "name": "Elementalist Ward",
+        "img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "diOy3bIa7ZACIQ0F",
+        "description": "<p>You create an invisible elemental ward that protects you. Choose one of the following wards. You can change your ward and enchantment (see above) by performing a complex ritual as a respite activity. (Quick Build: Ward of Surprising Reactivity.)</p>"
+      },
+      "uIaMFzORgmp4WNt7": {
+        "name": "Signature Abilities",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "uIaMFzORgmp4WNt7",
+        "description": "<p>Your understanding of elemental magic grants you unique abilities, letting you damage, move, and debuff your enemies, empower your allies, and alter the terrain around you. You can select abilities from any elemental specialization to broaden your potential, or you can focus on abilities tied to your chosen specialization to establish your mastery of elemental power.</p><p>Choose two signature abilities from the following options. Signature abilities can be used at will. (Quick Build: Bifurcated Incineration, Viscous Fire.)</p>",
+        "chooseN": 2
+      },
+      "PTFcMydOkJQ7eEOI": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "PTFcMydOkJQ7eEOI",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice. See Chapter 7: Perks.</p>"
+      },
+      "liLdcr3quJE78ADS": {
+        "name": "Specialization Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "liLdcr3quJE78ADS",
+        "description": "<p>Your elemental specialization grants you a feature, as shown on the 2nd-Level Elemental Specialization Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Elemental Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Disciple of Earth</p></td></tr><tr><td><p>Fire</p></td><td><p>Disciple of Fire</p></td></tr><tr><td><p>Green</p></td><td><p>Disciple of the Green</p></td></tr><tr><td><p>Void</p></td><td><p>There Is No Space Between</p></td></tr></tbody></table>"
+      },
+      "u2Wed0QIYbXw2Crr": {
+        "name": "5-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "u2Wed0QIYbXw2Crr",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 essence to use. Alternatively, you can choose one of the 5-essence abilities you didn’t select at 1st level (see 1st-Level Features).</p>"
+      },
+      "zbBcCWt7IWGlXPQm": {
+        "name": "Specialization Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "zbBcCWt7IWGlXPQm",
+        "description": "<p>Your elemental specialization grants you a feature, as shown on the 3rd-Level Elemental Specialization Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>3rd-Level Elemental Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Earth Accepts Me</p></td></tr><tr><td><p>Fire</p></td><td><p>A Conversation With Fire</p></td></tr><tr><td><p>Green</p></td><td><p>Remember Growth and Sun and Rain</p></td></tr><tr><td><p>Void</p></td><td><p>Distance Is Only Memory</p></td></tr></tbody></table>"
+      },
+      "B1krVN9wI2yOdN4O": {
+        "name": "7-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "B1krVN9wI2yOdN4O",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 essence to use.</p>"
+      },
+      "4weoOV3OC70x6r3C": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "4weoOV3OC70x6r3C",
+        "description": "<p>Your Reason score increases to 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 3.</p>"
+      },
+      "LmayAMLMj6lfJkjd": {
+        "name": "Font of Essence",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "LmayAMLMj6lfJkjd",
+        "description": "<p>The first time each combat round that you or a creature within 10 squares takes damage that isn’t untyped or holy damage, you gain 2 essence instead of 1.</p>"
+      },
+      "E3Mvqyivr9351Ban": {
+        "name": "Mantle of Essence",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "E3Mvqyivr9351Ban",
+        "description": "<p>While you have 3 or more essence and are not dying, you exude an aura of magic whose distance is equal to your Reason score. The effects within the area of the aura are based on your specialization, as shown on the Mantle of Essence Specialization Effects table. You can activate and deactivate the aura at will (no action required).</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>Mantle of Essence Specialization Effects</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Quaking Earth</p></td></tr><tr><td><p>Fire</p></td><td><p>Burning Grounds</p></td></tr><tr><td><p>Green</p></td><td><p>Flowering Bed</p></td></tr><tr><td><p>Void</p></td><td><p>Veiling Bed</p></td></tr></tbody></table>"
+      },
+      "z8vCYdF1Ew1Sv6KN": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "z8vCYdF1Ew1Sv6KN",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "O5zNZukudl8zmdj7": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "O5zNZukudl8zmdj7",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>"
+      },
+      "CLDtmQUtJxP5Pb80": {
+        "name": "Specialization Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "CLDtmQUtJxP5Pb80",
+        "description": "<p>Your elemental specialization grants you a feature, as shown on the 5th-Level Elemental Specialization Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Elemental Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>The Mountain Does Not Move</p></td></tr><tr><td><p>Fire</p></td><td><p>Smoldering Step</p></td></tr><tr><td><p>Green</p></td><td><p>Hide of Tenfold Shields</p></td></tr><tr><td><p>Void</p></td><td><p>Pierce the Veil of Substance</p></td></tr></tbody></table>"
+      },
+      "cvc7HMI9XfudtYXr": {
+        "name": "9-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "cvc7HMI9XfudtYXr",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 essence to use.</p>"
+      },
+      "v6jTmpjKPE5f9WQe": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "v6jTmpjKPE5f9WQe",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>"
+      },
+      "AbG0RwZIJuiyKLPd": {
+        "name": "Wyrding",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "AbG0RwZIJuiyKLPd",
+        "description": "<p>You can spend 10 uninterrupted minutes to create a freeform magic spell for a variety of situations. Choose one of the following magical effects:</p><ul><li><p>You create a mundane object of a size equal to your Reason score or smaller.</p></li><li><p>You construct a place of shelter suitable for twenty creatures that lasts for 24 hours and can’t be detected by enemies.</p></li><li><p>You restore all Stamina to a mundane object of a size equal to your Reason score or smaller.</p></li><li><p>Choose a cube with a size up to your Reason score within 5 squares. You can fill that area with difficult terrain or natural phenomena such as fire, water, or plant life, or can clear the area of those things.</p></li><li><p>You can preserve a corpse or up to 5 pounds of food for a week, or can cause a corpse or that amount of food to instantly rot.</p></li><li><p>You create a seal on a surface that can’t be seen or felt by anyone but you. When a creature comes adjacent to the surface, you can see and hear through the seal for as long as the creature remains adjacent to it. When you create the seal, you can decide to limit the number of creatures who activate it by choosing a creature keyword (such as Undead) or a specific name (such as Ajax the Invincible) or organization (such as the Black Iron Pact). If you do, the seal alerts you only when creatures with the keyword, name, or organizational affiliation you provide pass by it. If you create a second seal, the first one disappears. You can dispel a seal at any time (no action required).</p></li></ul>"
+      },
+      "M63OxvE5VrJjpAcc": {
+        "name": "9-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "M63OxvE5VrJjpAcc",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 essence to use. Alternatively, you can choose one of the 9-assence abilities you didn’t select at 5th level (see 5th-Level Features).</p>"
+      },
+      "XY6AXgXmdzttjM0U": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "XY6AXgXmdzttjM0U",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "yUpc9lP26yy8fxEH": {
+        "name": "Mantle of Quintessence",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "yUpc9lP26yy8fxEH",
+        "description": "<p>Your Mantle of Essence feature no longer requires essence. </p><p>Additionally, your Mantle of Essence now radiates magic that creates a calming air. Creatures in the area of the mantle’s aura have their starting patience increased by 1 (to a maximum of 5) during any negotiation. While in the area, you and any ally gain an edge on tests that use the Handle Animals skill. If you have 5 or more Victories, the bonus to patience increases to 2 and tests that use the Handle Animals skill have a double edge.</p>"
+      },
+      "DxKBjG0YP6P2se1r": {
+        "name": "Surging Essence",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "DxKBjG0YP6P2se1r",
+        "description": "<p>When you gain essence at the start of each of your turns during combat, you gain 3 essence instead of 2.</p>"
+      },
+      "QKQBea2agLKbKHOd": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "QKQBea2agLKbKHOd",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "vTYfDucJUUT31JvN": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "vTYfDucJUUT31JvN",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "mzgKggpyMIgYB7NJ": {
+        "name": "Specialization Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "mzgKggpyMIgYB7NJ",
+        "description": "<p>Your elemental specialization grants you a feature, as shown on the 8th-Level Elemental Specialization Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Elemental Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Summon Source of Earth</p></td></tr><tr><td><p>Fire</p></td><td><p>The Flame Primordial</p></td></tr><tr><td><p>Green</p></td><td><p>Chimeric Manifestation</p></td></tr><tr><td><p>Void</p></td><td><p>Black Hole Star</p></td></tr></tbody></table>"
+      },
+      "0fUWEx36a9nrVVk8": {
+        "name": "11-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "0fUWEx36a9nrVVk8",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 essence to use.</p>"
+      },
+      "h8MulztrEbGgZ4JF": {
+        "name": "Grand Wyrding",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "h8MulztrEbGgZ4JF",
+        "description": "<p>You have mastered the magic of shaping a wyrd, and can use your Wyrding feature as a main action. </p><p>Additionally, when you have 5 or more Victories, choose one of the following damage types: acid, cold, corruption, fire, lightning, poison, or sonic. You have immunity all to that type.</p>"
+      },
+      "IfPlsISFejzXOjTx": {
+        "name": "11-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "IfPlsISFejzXOjTx",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 essence to use. Alternatively, you can choose one of the 11-essence abilities you didn’t select at 8th level (see 8th-Level Features).</p>"
+      },
+      "LfqNerhwNnVP3R4Z": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "LfqNerhwNnVP3R4Z",
+        "description": "<p>Your Reason score increases to 5. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 5.</p>"
+      },
+      "un4KM2bpG2eLZFMc": {
+        "name": "Breath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "un4KM2bpG2eLZFMc",
+        "description": "<p>You have an epic resource called breath. Each time you finish a respite, you gain breath equal to the XP you gain. You can spend any number of breath to gain essence (no action required). When you do, 1 breath becomes 3 essence. </p><p>Breath remains until you convert it to essence.</p>"
+      },
+      "XkGLlftEeZljLPJ4": {
+        "name": "Essential Being",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "XkGLlftEeZljLPJ4",
+        "description": "<p>When you gain essence at the start of each of your turns during combat, you gain 4 essence instead of 3.</p>"
+      },
+      "K7J2atLcnZrDUG6B": {
+        "name": "One",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "K7J2atLcnZrDUG6B",
+        "description": "<p>You become the embodiment of the element of your chosen specialization. Whenever you use magic, elemental motes flit around you and your skin changes to reflect your element, taking on an earthen or stony appearance for earth, appearing like flickering flame for fire, gaining a leaf pattern for green, and becoming a starry expanse for void.</p><p>Additionally, you gain one of the following benefits, as shown on the One Specialization Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>One Specialization Features</strong></p></td></tr><tr><td><p><strong>Specialization</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Earth</p></td><td><p>Master of Earth</p></td></tr><tr><td><p>Fire</p></td><td><p>Master of Fire</p></td></tr><tr><td><p>Green</p></td><td><p>Master of Green</p></td></tr><tr><td><p>Void</p></td><td><p>Master of Void</p></td></tr></tbody></table>"
+      },
+      "7cJ1A06WZRugYOS6": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "7cJ1A06WZRugYOS6",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>"
+      },
+      "UzlrQSkaNA1lqsQ8": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "UzlrQSkaNA1lqsQ8",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "jUhj4IIDsMqGFghU": {
+        "name": "3-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "jUhj4IIDsMqGFghU",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 essence to use. (Quick Build: The Flesh, a Crucible.)</p>"
+      },
+      "6NyMbd6U0xX4fBaN": {
+        "name": "5-Essence Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "6NyMbd6U0xX4fBaN",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 essence to use. (Quick Build: Conflagration.)</p>"
+      }
+    },
     "level": 0,
     "primary": "Essence",
     "epic": "Breath",

@@ -16,7 +16,499 @@
       "revision": 1
     },
     "_dsid": "null",
-    "advancements": {},
+    "advancements": {
+      "jRrY9A9aby9emRYB": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "jRrY9A9aby9emRYB",
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "lore"
+          ]
+        },
+        "description": "<p>You gain the Psionics skill (see Skills in Chapter 9: Tests). Then choose any two skills from the interpersonal or lore skill groups. (Quick Build: Psionics, Read Person, Timescape.)</p>",
+        "chooseN": 2
+      },
+      "pvEBYHxFuQWPhPZK": {
+        "name": "Null Tradition",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pvEBYHxFuQWPhPZK",
+        "description": "<p>Through extensive physical and psionic training, you have learned to unlock the full potential of your body. As you shape the growth of your power, you choose a null tradition from the following options, each of which grants you a skill. (Quick Build: Chronokinetic and the Monsters skill.)</p><ul><li><p>Chronokinetic: Your training unmoors you from temporal reality, allowing you to use the flow of time as another dimension that all things move through. You gain one skill from the lore group.</p></li><li><p>Cryokinetic: You can tap into absolute cold, the most essential energy of myriad manifolds, and manifest its effects in your body. You gain one skill from the crafting group.</p></li><li><p>Metakinetic: You learn to see through the illusions of the universe to more fully understand your body and its psionic potential. You gain one skill from the exploration group.</p></li></ul><p>Your null tradition is your subclass, and your choice of tradition determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "NGMWwUPaHQ3wE0Ol": {
+        "name": "Discipline",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NGMWwUPaHQ3wE0Ol",
+        "description": "<p>As your mastery of your body and tradition grows, it imbues you with a Heroic Resource called discipline.</p>"
+      },
+      "1itlnSoiVwl01IWc": {
+        "name": "Null Field",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "1itlnSoiVwl01IWc",
+        "description": "<p>You project a psionic field of order around your body, dampening the effects of supernatural abilities harmful to you and your allies.</p>"
+      },
+      "6HkjIyvnDUBWIqie": {
+        "name": "Inertial Shield",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "6HkjIyvnDUBWIqie",
+        "description": "<p>Your instincts for danger let you predict attacks before they happen.</p>"
+      },
+      "kOKxlDfjXrIduJ1p": {
+        "name": "Discipline Mastery",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "kOKxlDfjXrIduJ1p",
+        "description": "<p>As you advance in your chosen null tradition, you gain certain benefits in combat, including benefits based on the amount of discipline you have. Benefits based on how much discipline you have last until the end of your turn, even if a benefit would become unavailable to you because of the amount of discipline you spend during your turn.</p><p>Some Discipline Mastery benefits can be applied only if you are a specific level or higher, with the level of those benefits noted in the tables below.</p>"
+      },
+      "faCuWYMdgZndSCEh": {
+        "name": "Null Speed",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "faCuWYMdgZndSCEh",
+        "description": "<p>The flow of psionic power through you allows you to achieve high velocity. You gain a bonus to speed and to the number of squares you can shift when you take the Disengage move action equal to your Agility score.</p>"
+      },
+      "I1CBpVja8sHSs0Ae": {
+        "name": "Psionic Augmentation",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "I1CBpVja8sHSs0Ae",
+        "description": "<p>Your training has turned your body into the perfect psionic weapon, shaping pathways in your mind that enhance your physical form. Choose one of the following augmentations. You can change your augmentation by undergoing a psionic meditation as a respite activity. (Quick Build: Speed Augmentation.)</p>"
+      },
+      "mtMpEzvDcGHvG5T6": {
+        "name": "Psionic Martial Arts",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "mtMpEzvDcGHvG5T6",
+        "description": "<p>Whenever you use the Knockback or Grab maneuver, you use Intuition instead of Might for the power roll and for determining if you can target creatures larger than you. Additionally, whenever you use the Knockback maneuver, you can choose to slide the target instead of pushing them.</p>"
+      },
+      "aqpX5qJHvkGKLUU3": {
+        "name": "Signature Abilities",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "aqpX5qJHvkGKLUU3",
+        "description": "<p>You rely on a unique blend of martial techniques and psionic prowess to take down your foes and defend your allies.</p><p>Choose two signature abilities from the following options. Signature abilities can be used at will. (Quick Build: Faster Than the Eye, Inertial Step.)</p>",
+        "chooseN": 2
+      },
+      "WgkbSKzxrh11krfB": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "WgkbSKzxrh11krfB",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice. See Chapter 7: Perks.</p>",
+        "chooseN": 1
+      },
+      "wz0isl6LvXl3isPu": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "wz0isl6LvXl3isPu",
+        "description": "<p>Your null tradition grants you a feature, as shown on the 2nd-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Rapid Processing</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Entropic Adaptability</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Inertial Sink</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "2un7L4yc5IfeFRMM": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "2un7L4yc5IfeFRMM",
+        "description": "<p>Your null tradition grants your choice of one of two abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Blur</p><p>Force Redirected</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Entropic Field</p><p>Heat Sink</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Gravitic Strike</p><p>Kinetic Shield</p></td></tr></tbody></table>"
+      },
+      "NSLX2giPrwmBBGVm": {
+        "name": "Psionic Leap",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "NSLX2giPrwmBBGVm",
+        "description": "<p>You can long jump and high jump a distance equal to twice your Agility score without needing to make a test.</p>"
+      },
+      "TFNOtVwPzX8gc7V9": {
+        "name": "Reorder",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "TFNOtVwPzX8gc7V9",
+        "description": "<p>At the start of each of your turns, you can use a free triggered action to end one effect on you that is ended by a saving throw or that ends at the end of your turn. Alternatively, you can grant this benefit to one creature in the area of your Null Field ability.</p>"
+      },
+      "7axuR4tZ9JkUvs13": {
+        "name": "7-Discipline Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "7axuR4tZ9JkUvs13",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 discipline to use.</p>"
+      },
+      "bNiTbK4qA0NjkxeI": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "bNiTbK4qA0NjkxeI",
+        "description": "<p>Your Agility and Intuition scores each increase to 3.</p>"
+      },
+      "YAVzbKcZusJdd4OX": {
+        "name": "Discipline Mastery Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "YAVzbKcZusJdd4OX",
+        "description": "<p>Your Discipline Mastery feature provides additional benefits when you have 8 or more discipline.</p>"
+      },
+      "FdDW3W6lwD1IiieA": {
+        "name": "Enhanced Null Field",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "FdDW3W6lwD1IiieA",
+        "description": "<p>While using your Null Field ability, you disrupt magic and psionic power suffusing the area around you. During combat, any temporary supernatural terrain effects of your level or lower are removed when your aura partially or fully overlaps with their location. Permanent supernatural terrain effects of your level or lower are temporarily negated while your aura overlaps with their location, but return when the aura no longer overlaps with them.</p>"
+      },
+      "tJi9NAPmJeIvSZqM": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "tJi9NAPmJeIvSZqM",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "8eyO8iPxOOABNCEo": {
+        "name": "Regenerative Field",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "8eyO8iPxOOABNCEo",
+        "description": "<p>The first time each combat round that an enemy in the area of your Null Field ability uses a main action, you gain 2 discipline instead of 1.</p>"
+      },
+      "LS6W850Zqk6V42mt": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "LS6W850Zqk6V42mt",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>",
+        "chooseN": 1
+      },
+      "TFMr91PmEE7nszCT": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "TFMr91PmEE7nszCT",
+        "description": "<p>Your null tradition grants you a feature, as shown on the 5th-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Instant Action</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Chilling Readiness</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Inertial Fulcrum</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "YiD6UHsCmeEFgD7d": {
+        "name": "9-Discipline Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "YiD6UHsCmeEFgD7d",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 discipline to use.</p>",
+        "chooseN": 1
+      },
+      "Rl2RUleg6RtdH27t": {
+        "name": "Elemental Absorption",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Rl2RUleg6RtdH27t",
+        "description": "<p>Whenever you use your Inertial Shield triggered action, you gain immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to your Intuition score against the triggering damage.</p>"
+      },
+      "JqD2f0iwxsjNTLCJ": {
+        "name": "Elemental Buffer",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "JqD2f0iwxsjNTLCJ",
+        "description": "<p>Whenever you reduce acid, cold, corruption, fire, lightning, poison, or sonic damage with damage immunity, you gain 2 surges that can be used only to increase the damage of your next strike.</p>"
+      },
+      "TDGF6CPsvi34C32k": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "TDGF6CPsvi34C32k",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
+      },
+      "sAdA3YyHQYdYBTCu": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "sAdA3YyHQYdYBTCu",
+        "description": "<p>Your null tradition grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Interphase</p><p>Phase Step</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Ice Pillars</p><p>Wall of Ice</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Gravitic Charge</p><p>Iron Body</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "lIWBRqm69AxNoQ38": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "lIWBRqm69AxNoQ38",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "RzD5mwjOqqY9lQC9": {
+        "name": "Discipline Mastery Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "RzD5mwjOqqY9lQC9",
+        "description": "<p>Your Discipline Mastery feature provides additional benefits when you have 10 or more discipline.</p>"
+      },
+      "Nnk0Sd5FDTaRN8w3": {
+        "name": "Psi Boost",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "Nnk0Sd5FDTaRN8w3",
+        "description": "<p>Whenever you use an ability that is a main action or a maneuver with the Psionic keyword, you can spend additional discipline to apply a psi boost to it and enhance its effects. A psi boost’s effects only last until the end of the turn which the ability is first used. You can apply multiple psi boosts to an ability, but only one instance of each specific boost. You can use the following psi boosts.</p>"
+      },
+      "wzG2rGCvn2HHUjKx": {
+        "name": "Improved Body",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "wzG2rGCvn2HHUjKx",
+        "description": "<p>When you gain discipline at the start of each of your turns during combat, you gain 3 discipline instead of 2.</p>"
+      },
+      "RUkoSBdcINNoHf4C": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "RUkoSBdcINNoHf4C",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "MSbnZ639yADXKDRT": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "MSbnZ639yADXKDRT",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "raLuWp4klIRyYjNe": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "raLuWp4klIRyYjNe",
+        "description": "<p>Your null tradition grants you a feature, as shown on the 8th-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Shared Momentum</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Synaptic Triage</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Inertial Dampener</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "xTI1C39y56sFoH6Z": {
+        "name": "11-Discipline Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "xTI1C39y56sFoH6Z",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 discipline to use.</p>",
+        "chooseN": 1
+      },
+      "JlLGpndO1OK6ubm3": {
+        "name": "I Am the Weapon",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "JlLGpndO1OK6ubm3",
+        "description": "<p>Your Stamina increases by 21 and you can’t be made bleeding even while dying. You no longer age or have need of food. Additionally, you can use Intuition instead of another characteristic when resisting potencies.</p>"
+      },
+      "zfxpDvW2znUMh8Uo": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "zfxpDvW2znUMh8Uo",
+        "description": "<p>Your null tradition grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronokinetic</p></td><td><p>Arrestor Cycle</p><p>Time Loop</p></td></tr><tr><td><p>Cryokinetic</p></td><td><p>Absolute Zero</p><p>Heat Drain</p></td></tr><tr><td><p>Metakinetic</p></td><td><p>Inertial Absorption</p><p>Realitas</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "bhdrsDYP7PswraIq": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "bhdrsDYP7PswraIq",
+        "description": "<p>Your Agility and Intuition scores each increase to 5.</p>"
+      },
+      "3E2QgTmiljma0hC1": {
+        "name": "Discipline Mastery Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "3E2QgTmiljma0hC1",
+        "description": "<p>Your Discipline Mastery feature provides additional benefits when you have 12 or more discipline.</p>"
+      },
+      "WtIYqCsgNKm5djWd": {
+        "name": "Manifold Body",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "WtIYqCsgNKm5djWd",
+        "description": "<p>When you gain discipline at the start of each of your turns during combat, you gain 4 discipline instead of 3.</p>"
+      },
+      "IViM9sEGCBZmKt0j": {
+        "name": "Manifold Resonance",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "IViM9sEGCBZmKt0j",
+        "description": "<p>Your body becomes perfected matter, beyond the whims and chaos of the timescape and the restrictions of the manifolds. Each time you finish a respite, you can shift yourself and any creatures in the area of your Null Field ability to any location in the timescape known to you, known to any other creature in the area, or where any supernatural treasure in the area has been before.</p><p>Whenever you use an ability, you gain 1 discipline that can be used only to apply a benefit from your Psi Boost feature to that ability. Additionally, you and allies in the area of your Null Field ability ignore banes and double banes on your power rolls.</p>"
+      },
+      "rp8ly06qwjmxo5w8": {
+        "name": "Order",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "rp8ly06qwjmxo5w8",
+        "description": "<p>You have an epic resource called order. Each time you finish a respite, you gain order equal to the XP you gain. You can spend order on your abilities as if it were discipline. </p><p>At the start of a combat encounter, you can spend 1 order to increase the size of your Null Field by 1 until the end of the encounter.</p><p>Order remains until you spend it.</p>"
+      },
+      "b4Tqx6IoY6WqXIkt": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "b4Tqx6IoY6WqXIkt",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "BITkGNlSNIGBxUPo": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "BITkGNlSNIGBxUPo",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "K1c4IgIQeqkNlmdf": {
+        "name": "3-Discipline Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "K1c4IgIQeqkNlmdf",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 discipline to use. (Quick Build: Chronal Spike.)</p>"
+      },
+      "pm5hMyEolD1brxZN": {
+        "name": "5-Discipline Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pm5hMyEolD1brxZN",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 discipline to use. (Quick Build: A Squad Unto Myself.)</p>"
+      }
+    },
     "level": 0,
     "primary": "Discipline",
     "epic": "Order",

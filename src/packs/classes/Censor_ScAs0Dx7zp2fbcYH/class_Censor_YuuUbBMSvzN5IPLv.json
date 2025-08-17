@@ -6,7 +6,7 @@
   "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
   "system": {
     "description": {
-      "value": "<p>Demons and deathless fear you. Criminals run from the sight of your shadow. Agents of chaos, blasphemers, and heretics tremble at the sound of your voice. You carry the power of the gods, armed with wrath and sent out into the world first to seek, then censor those whose actions—or even existence—are anathema to your church.  As a censor, you’re at your best against the strongest foes. Your judgment terrifies heretics, stops enemies in their tracks, and even hurls them across the battlefield.</p>",
+      "value": "<p>Demons and deathless fear you. Criminals run from the sight of your shadow. Agents of chaos, blasphemers, and heretics tremble at the sound of your voice. You carry the power of the gods, armed with wrath and sent out into the world first to seek, then censor those whose actions—or even existence—are anathema to your church. </p><p>As a censor, you’re at your best against the strongest foes. Your judgment terrifies heretics, stops enemies in their tracks, and even hurls them across the battlefield.</p>",
       "director": ""
     },
     "source": {
@@ -18,7 +18,7 @@
     "_dsid": "censor",
     "advancements": {
       "vH4tHPZ4vku3Le68": {
-        "name": "2 Skills (Interpersonal or Lore)",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -31,34 +31,12 @@
             "interpersonal",
             "lore"
           ]
-        }
-      },
-      "dky8xFYM15jMWOO9": {
-        "name": "Features",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
         },
-        "_id": "dky8xFYM15jMWOO9",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.qkj3iQg7Ga2OzXXY"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.vwqIB4UTc6ow6mXt"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.EhPpL42VZWxqeSEj"
-          },
-          {
-            "uuid": "Compendium.draw-steel.abilities.Item.0BbgRsExkr0Iq3PS"
-          }
-        ]
+        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. (see Skills in Chapter 9: Tests) (Quick Build: Intimidate, Religion.)</p>"
       },
       "vHNafO7l2nAXopqb": {
         "name": "Signature Ability",
-        "img": null,
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -78,10 +56,11 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.zMsvZ08yT9oEdp8h"
           }
-        ]
+        ],
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (Quick Build: Your Allies Cannot Save You!)</p>"
       },
       "aWG5hew7GdvWuFwH": {
-        "name": "3 Wrath",
+        "name": "3-Wrath Ability",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -102,10 +81,11 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.yxeUUh0LXFldQJTp"
           }
-        ]
+        ],
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 wrath to use. (Quick Build: The Gods Punish and Defend.)</p>"
       },
       "LXFAKkiXnOLCBaAL": {
-        "name": "5 Wrath",
+        "name": "5-Wrath Ability",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -126,11 +106,12 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.4m5rgK9RH2QXg9S5"
           }
-        ]
+        ],
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 wrath to use. (Quick Build: Purifying Fire.)</p>"
       },
       "2Pr5Ma8i9qqdSQ1l": {
         "name": "Censor Order",
-        "img": null,
+        "img": "icons/environment/settlement/columned-forum.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -147,7 +128,568 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.G7CW919PYBzeVnH9"
           }
+        ],
+        "description": "<p>Censors are the will of their god made physically manifest, and you act as your god’s agent in the world. As you shoulder that responsibility, you choose a censor order from the following options, each of which grants you a skill. (Quick Build: Paragon.)</p><ul><li><p>Exorcist: You specialize in hunting your order’s hidden enemies, knowing that an open mind is an unguarded fortress. You have the Read Person skill.</p></li><li><p>Oracle: Corruption has deep tendrils that can be missed, leading you to specialize in uncovering clandestine threats to your order. You have the Magic skill.</p></li><li><p>Paragon: Without a strong example and a firm hand, the weak will be corrupted. You specialize in setting an example for your order. You have the Lead skill.</p></li></ul><p>Your censor order is your subclass, and your choice of order determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "3oHhkMIm9NK9pYhr": {
+        "name": "Judgement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "3oHhkMIm9NK9pYhr",
+        "chooseN": null,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.EhPpL42VZWxqeSEj"
+          }
+        ],
+        "description": "<p>You pick out the enemies most worthy of your wrath and place a divine judgment upon them, censoring them with the power of your god.</p>"
+      },
+      "xdrKJi8HunaVdOG9": {
+        "name": "Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "xdrKJi8HunaVdOG9",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.qkj3iQg7Ga2OzXXY"
+          }
+        ],
+        "description": "<p>The power you serve grants you a Heroic Resource called wrath, fueling your abilities as you censor those your church deems to be heretics.</p>"
+      },
+      "xU70GOOkjCBEUMVC": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "xU70GOOkjCBEUMVC",
+        "description": "<p>You can use and gain the benefits of a kit. See Chapter 6: Kits for more information. (Quick Build: Warrior Priest.)</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.dFKiwPs0hVo7uWei"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.eQsxbl59pEjHEyB7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.26dSN2U5BPYxURBl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZQVco8CZprfeqPp6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.49hPWhEliTnRbuxT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.x41mBdtcCGTj8Quy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jHJnlHyRRNf9V5hm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.uEExxUnkmJ1whpCz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jBAKshrCTStqX7yI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.IWcztYRBrAMdRQyf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.tfBbJyfk0ARRiPJU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RhaBwqKzijzbJcCQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.JE0Q1L35MuOGLVVJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.B07q1yyc5HSCnAf7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.74X1pEcNgz1OQC2x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.UWjNAZn9cBAMUWB0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZoWDIjHoCJjr1uo1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.NkzAlCFgDeGuTnzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AOCz8Nufy6kbg85v"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
+          }
         ]
+      },
+      "jRorbg2DYs9gwnsk": {
+        "name": "Deity and Domains",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "jRorbg2DYs9gwnsk",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vwqIB4UTc6ow6mXt"
+          }
+        ],
+        "description": "<p>Choose a god or saint who your character reveres from Chapter 14: Gods and Religion, or ask your Director about the deities in your campaign world. With the Director’s permission, you can also create your own deity and choose four domains to be part of their portfolio.</p><p>After choosing your deity, pick one domain from their portfolio. Your choice of domain determines many of the features you’ll gain from this class. (Quick Build: Cavall as deity and War as domain.)</p>"
+      },
+      "yWsxj25Ev3qnM1rG": {
+        "name": "My Life for Yours",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "yWsxj25Ev3qnM1rG",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.0BbgRsExkr0Iq3PS"
+          }
+        ],
+        "description": "<p>You channel your will to mend your wounds or the wounds of your allies.</p>"
+      },
+      "Rl48RLoyEtZJUYPm": {
+        "name": "Order Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "Rl48RLoyEtZJUYPm",
+        "description": "<p>Your censor order grants you two features, as shown on the 2nd-Level Order Features table.</p><p></p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Order Features</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>Saint’s Vigilance</p><p>A Sense for Truth</p></td></tr><tr><td><p>Oracle</p></td><td><p>It Was Foretold</p><p>Judge of Character</p></td></tr><tr><td><p>Paragon</p></td><td><p>Lead by Example</p><p>Stalwart Icon</p></td></tr></tbody></table>",
+        "chooseN": 2
+      },
+      "AFQfVsjj5p062NfL": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "AFQfVsjj5p062NfL",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice. See Chapter 7: Perks.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.fBos54gboa8FH5A6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AeghHvtfDCZSbb6S"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.Jz8hssu19cftbxIN"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.Bepbl7r618snnZx0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ygZBwmcHjZgLnCIu"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.e7rh9wI42p4FlD8g"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.cnfdqnROS0OUOex6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.OaTle2mm2Sesll3s"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZNYFzuhxbsV4y37x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.u8oa7FY1a3Kp3ijD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.yhVy35nwex2DQZBK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.OhV61irKCVuHZaAk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.iEPSLFMz1H5XKNPZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.5L8uUJXIaW653rka"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.1NBLfs0ERePHwIhF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ys5MAnDllhpK7VFz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.cG7wwuJTiieHqbmD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.FBfINe9Q8C2AvVmt"
+          }
+        ]
+      },
+      "JHCjgsi31NnD1Q7p": {
+        "name": "2nd-Level Order Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "JHCjgsi31NnD1Q7p",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p><p></p><p></p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Order Ability</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>It Is Justice You Fear</p><p>Revelator</p></td></tr><tr><td><p>Oracle</p></td><td><p>Prescient Grace</p><p>With My Blessing</p></td></tr><tr><td><p>Paragon</p></td><td><p>Blessing of the Faithful</p><p>Sentenced</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "2eW0Z6m2rtL08DSy": {
+        "name": "Look On My Work and Despair",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "2eW0Z6m2rtL08DSy",
+        "description": "<p>Your judgment has grown in divine power, instilling fear in those you condemn. Whenever you use your Judgment ability, you can spend 1 wrath, and if the target has <strong>P&lt;AVERAGE</strong>, they are frightened of you (save ends). Additionally, whenever a creature judged by you is reduced to 0 Stamina and you use Judgment as a free triggered action, if the new target has <strong>P&lt;STRONG</strong>, they are frightened of you (save ends). If the target is already frightened of you, they instead take holy damage equal to twice your Presence score.</p>"
+      },
+      "FHsGx1uCHqTNeMPd": {
+        "name": "7-Wrath Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "FHsGx1uCHqTNeMPd",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 wrath to use.</p>",
+        "chooseN": 1
+      },
+      "G5RO2LND6RPKmpvE": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "G5RO2LND6RPKmpvE",
+        "description": "<p>Your Might and Presence scores each increase to 3.</p>"
+      },
+      "h8Up79b0ITmKRDjo": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "h8Up79b0ITmKRDjo",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "SaiYljJ8ipVciI6W": {
+        "name": "Wrath Beyond Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "SaiYljJ8ipVciI6W",
+        "description": "<p>The first time each combat round that you deal damage to a creature judged by you, you gain 2 wrath instead of 1.</p>"
+      },
+      "IrNDbQEdLANWgd63": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "IrNDbQEdLANWgd63",
+        "description": "<p>You gain a domain feature from your domain, as shown on the 4th-Level Censor Domain Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>4th-Level Censor Domain Features</strong></p></td></tr><tr><td><p><strong>Domain</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Creation</p></td><td><p>Improved Hands of the Maker</p></td></tr><tr><td><p>Death</p></td><td><p>Séance</p></td></tr><tr><td><p>Fate</p></td><td><p>Oracular Warning</p></td></tr><tr><td><p>Knowledge</p></td><td><p>Saint’s Epiphany</p></td></tr><tr><td><p>Life</p></td><td><p>Blessing of Life</p></td></tr><tr><td><p>Love</p></td><td><p>Invocation of the Heart</p></td></tr><tr><td><p>Nature</p></td><td><p>Wode Road</p></td></tr><tr><td><p>Protection</p></td><td><p>Impervious Touch</p></td></tr><tr><td><p>Storm</p></td><td><p>Windwalk</p></td></tr><tr><td><p>Sun</p></td><td><p>Light of Revelation</p></td></tr><tr><td><p>Trickery</p></td><td><p>Blessing of Secrets</p></td></tr><tr><td><p>War</p></td><td><p>Improved Sanctified Weapon</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "aEicYiA02iISBysZ": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "aEicYiA02iISBysZ",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        }
+      },
+      "69pB8XvATh1QRKl3": {
+        "name": "Order Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "69pB8XvATh1QRKl3",
+        "description": "<p>Your censor order grants you a feature, as shown on the 5th-Level Order Features table.</p><p></p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Order Features</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>Evil Revealed</p></td></tr><tr><td><p>Oracle</p></td><td><p>Prophecy</p></td></tr><tr><td><p>Paragon</p></td><td><p>Stand Fast!</p></td></tr></tbody></table>"
+      },
+      "5gwPjidVJKmNxdE9": {
+        "name": "9-Wrath Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "5gwPjidVJKmNxdE9",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 wrath to use.</p>",
+        "chooseN": 1
+      },
+      "voNhVTObqw2IY6q7": {
+        "name": "Implement of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "voNhVTObqw2IY6q7",
+        "description": "<p>Each time you finish a respite, you can choose one hero’s weapon, including your own, to channel supernatural power as an implement of your god’s wrath. The weapon becomes magic and gains the following benefits until your next respite:</p><ul><li><p>Strikes with the weapon deal extra holy damage equal to the wielder’s highest characteristic score.</p></li><li><p>Any creature struck by the weapon who has holy weakness and has <strong>P&lt;STRONG</strong> is frightened and weakened (save ends).</p></li><li><p>Any minion targeted by a strike using the weapon dies. That minion’s Stamina maximum is removed from the minion Stamina pool before any damage is applied to the rest of the squad.</p></li><li><p>The weapon’s wielder can’t be made frightened.</p></li></ul>"
+      },
+      "YC0U1DARXf0h1AZ3": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "YC0U1DARXf0h1AZ3",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+      },
+      "cLrGLj4olnSG9sqP": {
+        "name": "Order Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "cLrGLj4olnSG9sqP",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level Order Ability</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>Begone!</p><p>Pain of Your Own Making</p></td></tr><tr><td><p>Oracle</p></td><td><p>Burden of Evil</p><p>Edict of Peace</p></td></tr><tr><td><p>Paragon</p></td><td><p>Congregation</p><p>Intercede</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "WleJbXgwNqHTSz4k": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "WleJbXgwNqHTSz4k",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "bgyiw9mpviOyTYqj": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "bgyiw9mpviOyTYqj",
+        "description": "<p>You gain a domain feature from your domain, as shown on the 7th-Level Censor Domain Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>7th-Level Censor Domain Features</strong></p></td></tr><tr><td><p><strong>Domain</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Creation</p></td><td><p>Divine Quartermaster</p></td></tr><tr><td><p>Death</p></td><td><p>Word of Death Deferred</p></td></tr><tr><td><p>Fate</p></td><td><p>Word of Fate Denied</p></td></tr><tr><td><p>Knowledge</p></td><td><p>Gods’ Library</p></td></tr><tr><td><p>Life</p></td><td><p>Font of Grace</p></td></tr><tr><td><p>Love</p></td><td><p>Covenant of the Heart</p></td></tr><tr><td><p>Nature</p></td><td><p>Nature’s Bounty</p></td></tr><tr><td><p>Protection</p></td><td><p>Blessing of Iron</p></td></tr><tr><td><p>Storm</p></td><td><p>Thunderstruck</p></td></tr><tr><td><p>Sun</p></td><td><p>Light of the Burning Sun</p></td></tr><tr><td><p>Trickery</p></td><td><p>Trinity of Trickery</p></td></tr><tr><td><p>War</p></td><td><p>Your Triumphs are Remembered</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "M9mOmFju5g3v6qeV": {
+        "name": "Focused Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "M9mOmFju5g3v6qeV",
+        "description": "<p>When you gain wrath at the start of each of your turns during combat, you gain 3 wrath instead of 2.</p>"
+      },
+      "oq9ZJraZAsxKNWEd": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "oq9ZJraZAsxKNWEd",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "bWRz6oEs3RXTFluK": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "bWRz6oEs3RXTFluK",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "P3Ulo0K6cGjPImdv": {
+        "name": "Order Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "P3Ulo0K6cGjPImdv",
+        "description": "<p>Your censor order grants you a feature, as shown on the 8th-Level Order Features table.</p><p></p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Order Features</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>Demonologist</p></td></tr><tr><td><p>Oracle</p></td><td><p>Their Past Revealed</p></td></tr><tr><td><p>Paragon</p></td><td><p>Vow</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "ozqu3kn8nvz9UP7U": {
+        "name": "11-Wrath Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "ozqu3kn8nvz9UP7U",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 wrath to use.</p>",
+        "chooseN": 1
+      },
+      "lhbLVwvBUzMVrfn3": {
+        "name": "Improved Implement of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "lhbLVwvBUzMVrfn3",
+        "description": "<p>The weapon you target with your Implement of Wrath feature gains the following additional benefits:</p><ul><li><p>The weapon’s wielder and each ally adjacent to them gain a +2 bonus to saving throws.</p></li><li><p>At the end of each of the weapon wielder’s turns, each ally adjacent to the wielder makes a saving throw against each effect on them that is ended by a saving throw.</p></li><li><p>The weapon’s wielder has corruption immunity 10.</p></li></ul>"
+      },
+      "lcBpPMEHloAl4h5p": {
+        "name": "Order Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "lcBpPMEHloAl4h5p",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Order Ability</strong></p></td></tr><tr><td><p><strong>Order</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Exorcist</p></td><td><p>Banish</p><p>Terror Manifest</p></td></tr><tr><td><p>Oracle</p></td><td><p>Blessing and a Curse</p><p>Fulfill Your Destiny</p></td></tr><tr><td><p>Paragon</p></td><td><p>Apostate</p><p>Edict of Unyielding Resolve</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "NaBqs7fNRhx7BIsZ": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "NaBqs7fNRhx7BIsZ",
+        "description": "<p>Your Might and Presence scores each increase to 5.</p>"
+      },
+      "xWr4aa0p76apeXmA": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "xWr4aa0p76apeXmA",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RR5yz4KnJxNbyisw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.15Fd8ksj8Wei4fcJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.5aL4G6PhWjV4Q8gD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.pZXfPq3qKc7RyTsA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jZ8I5l70BPVk6Qsx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.Adqm52vXCP31H2dx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.yhVy35nwex2DQZBK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.OhV61irKCVuHZaAk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.iEPSLFMz1H5XKNPZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.5L8uUJXIaW653rka"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.1NBLfs0ERePHwIhF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ys5MAnDllhpK7VFz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.cG7wwuJTiieHqbmD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.FBfINe9Q8C2AvVmt"
+          }
+        ],
+        "chooseN": 1
+      },
+      "72GcZZBTnVbzByxs": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "72GcZZBTnVbzByxs",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "LfBskItq70gLhbre": {
+        "name": "Templar Virtue",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "LfBskItq70gLhbre",
+        "description": "<p>You have an epic resource called virtue. Each time you finish a respite, you gain virtue equal to the XP you gain. You can spend virtue on your abilities as if it were wrath.</p><p>Additionally, you can spend 3 virtue to access one of your deity’s domains that you usually don’t have access to. When you do, you can use that domain’s features until you finish another respite. </p><p>Virtue remains until you spend it.</p>"
+      },
+      "VGUdqNDkbgaPOlpg": {
+        "name": "Wrath of the Gods",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "VGUdqNDkbgaPOlpg",
+        "description": "<p>When you gain wrath at the start of each of your turns during combat, you gain 4 wrath instead of 3.</p>"
+      },
+      "ghInByRSLEwKdquO": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "ghInByRSLEwKdquO",
+        "description": "<p>You gain a domain feature from your domain, as shown on the 1st-Level Censor Domain Features table. Additionally, you gain a skill from your domain, chosen from the skill group indicated on the table.</p><table><tbody><tr><td colspan=\"3\"><p style=\"text-align:center\"><strong>1st-Level Censor Domain Features</strong></p></td></tr><tr><td><p><strong>Domain</strong></p></td><td><p><strong>Feature</strong></p></td><td><p><strong>Skill Group</strong></p></td></tr><tr><td><p>Creation</p></td><td><p>Hands of the Maker</p></td><td><p>Crafting</p></td></tr><tr><td><p>Death</p></td><td><p>Grave Speech</p></td><td><p>Lore</p></td></tr><tr><td><p>Fate</p></td><td><p>Oracular Visions</p></td><td><p>Lore</p></td></tr><tr><td><p>Knowledge</p></td><td><p>Blessing of Comprehension</p></td><td><p>Lore</p></td></tr><tr><td><p>Life</p></td><td><p>Revitalizing Ritual</p></td><td><p>Exploration</p></td></tr><tr><td><p>Love</p></td><td><p>Blessing of Compassion</p></td><td><p>Interpersonal</p></td></tr><tr><td><p>Nature</p></td><td><p>Faithful Friend</p></td><td><p>Exploration</p></td></tr><tr><td><p>Protection</p></td><td><p>Protective Circle</p></td><td><p>Exploration</p></td></tr><tr><td><p>Storm</p></td><td><p>Blessing of Fortunate Weather</p></td><td><p>Exploration</p></td></tr><tr><td><p>Sun</p></td><td><p>Inner Light</p></td><td><p>Lore</p></td></tr><tr><td><p>Trickery</p></td><td><p>Inspired Deception</p></td><td><p>Intrigue</p></td></tr><tr><td><p>War</p></td><td><p>Sanctified Weapon</p></td><td><p>Exploration</p></td></tr></tbody></table>"
       }
     },
     "level": 0,

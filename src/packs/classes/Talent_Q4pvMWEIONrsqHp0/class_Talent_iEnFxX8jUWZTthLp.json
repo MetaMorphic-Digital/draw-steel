@@ -16,7 +16,475 @@
       "revision": 1
     },
     "_dsid": "talent",
-    "advancements": {},
+    "advancements": {
+      "eNOrNeWgUyzWykvb": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "eNOrNeWgUyzWykvb",
+        "description": "<p>You gain the Psionics and Read Person skills (see Skills in Chapter 9: Tests). Then choose any two skills from the interpersonal or lore skill groups. (Quick Build: Empathize, Psionics, Read Person, Timescape.)</p>",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "lore"
+          ]
+        }
+      },
+      "UEYKP1f5T3tpn17m": {
+        "name": "Talent Tradition",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "UEYKP1f5T3tpn17m",
+        "description": "<p>Psionic abilities are grouped into categories according to their effects, with each category comprising one of many talent traditions:</p><ul><li><p><strong>Animapathy</strong> abilities allow you to manipulate, meld, and exchange the souls of living things.</p></li><li><p><strong>Chronopathy</strong> abilities allow you to view future and past events, and to manipulate time to aid allies and hinder foes.</p></li><li><p><strong>Cryokinesis</strong> abilities allow you to manifest and manipulate absolute cold to enemies and the environment alike.</p></li><li><p><strong>Metamorphosis</strong> abilities allow you to strengthen and manipulate your body and the bodies of others to perform preternatural exploits.</p></li><li><p><strong>Pyrokinesis</strong> abilities allow you to create and manipulate fire by interacting with the potential energy found in all things.</p></li><li><p><strong>Resopathy</strong> abilities allow you to manipulate matter and space to create, alter, or displace your environment and the creatures and objects in it.</p></li><li><p><strong>Telekinesis</strong> abilities allow you to physically manipulate creatures and objects.</p></li><li><p><strong>Telepathy</strong> abilities allow you to communicate with, read, and influence the minds of other creatures.</p></li></ul><p>You choose a talent tradition from the following options: chronopathy, telekinesis, or telepathy. Your talent tradition is your subclass, and your choice of tradition determines many of the features you’ll gain as you gain new levels. (Other talent traditions will be featured in future products.) (Quick Build: Telekinesis.)</p>",
+        "chooseN": 1
+      },
+      "ZUa0bwGG3ADgW8mm": {
+        "name": "Clarity and Strain",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "ZUa0bwGG3ADgW8mm",
+        "description": "<p>The focus and precision of your thoughts grant you a Heroic Resource called clarity that empowers your psionic abilities.</p>"
+      },
+      "Ee8IYMJyzK3Kwu6L": {
+        "name": "Mind Spike",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Ee8IYMJyzK3Kwu6L",
+        "description": "<p>You have the following ability, which can be used as a ranged free strike.</p>"
+      },
+      "74UNgNx8u4A0vChX": {
+        "name": "Psionic Augmentation",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "74UNgNx8u4A0vChX",
+        "description": "<p>Through meditation, you create pathways in your mind that enhance your statistics. Choose one of the following augmentations. You can change your augmentation and ward (see Talent Ward below) by undergoing a psionic meditation as a respite activity. (Quick Build: Force Augmentation.)</p>"
+      },
+      "65sw6wBSdcUdgcl4": {
+        "name": "Talent Ward",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "65sw6wBSdcUdgcl4",
+        "description": "<p>Through meditation, you create a ward that protects you. Choose one of the following wards. You can change your ward and psionic augmentation (see above) by undergoing a psionic meditation as a respite activity. (Quick Build: Repulsive Ward.)</p>",
+        "chooseN": 1
+      },
+      "NpWYKchAXNJZmCBY": {
+        "name": "Telepathic Speech",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NpWYKchAXNJZmCBY",
+        "description": "<p>You know the Mindspeech language (see Languages in Orden in Chapter 4: Background). Additionally, you can telepathically communicate with any creatures within distance of your Mind Spike ability if they share a language with you and you know of each other. When you communicate with someone this way, they can respond telepathically.</p>"
+      },
+      "qVT3dy8sr8lETAk0": {
+        "name": "Tradition Features",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "qVT3dy8sr8lETAk0",
+        "description": "<p>Your talent tradition grants you two features, as shown on the 1st-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Accelerate</p><p>Again</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Minor Telekinesis</p><p>Repel</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Feedback Loop</p><p>Remote Assistance</p></td></tr></tbody></table>"
+      },
+      "j0gGWENSwpYbcPKP": {
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "j0gGWENSwpYbcPKP",
+        "description": "<p>You manifest a variety of psionic powers that let you impact the environment, bolster your allies, and empower yourself. You can choose abilities across different talent traditions or focus on abilities tied to your chosen tradition to dedicate yourself to its power.</p><p>Choose two signature abilities from the following options. Signature abilities can be used at will. (Quick Build: Incinerate, Kinetic Grip.)</p>",
+        "chooseN": 2
+      },
+      "DUUEKKQxs1tOGY4z": {
+        "name": "3-Clarity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "DUUEKKQxs1tOGY4z",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 clarity to use. (Quick Build: Choke.)</p>",
+        "chooseN": 1
+      },
+      "erlQIS3hFow2vgVM": {
+        "name": "5-Clarity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "erlQIS3hFow2vgVM",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 clarity to use. (Quick Build: Inertia Soak.)</p>"
+      },
+      "pT9z7itsH6FnHCVb": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "pT9z7itsH6FnHCVb",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice. See Chapter 7: Perks.</p>",
+        "chooseN": 1
+      },
+      "oOO0B4QXqeq20QZU": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "oOO0B4QXqeq20QZU",
+        "description": "<p>Your talent tradition grants you a feature, as shown on the 2nd-Level</p><p>Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Ease the Hours</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Ease Their Fall</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Ease the Mind</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "5SU74SqXAZwktrh2": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "5SU74SqXAZwktrh2",
+        "description": "<p>Your talent tradition grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Applied Chronometrics</p><p>Slow</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Gravitic Burst</p><p>Levity and Gravity</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Overwhelm</p><p>Synaptic Override</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "Bs3nRIpVHOD8klVq": {
+        "name": "Scan",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "Bs3nRIpVHOD8klVq",
+        "description": "<p>You can extend your psionic senses beyond their usual range. Once on each of your turns, you can search for hidden creatures as a free maneuver (see Hide and Sneak in Chapter 9: Tests). Additionally, once you establish line of effect to a thinking creature within distance of your Mind Spike ability, you always have line of effect to that creature until they move beyond that distance.</p>"
+      },
+      "FIEhc4JhRiYmsDNX": {
+        "name": "7-Clarity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "FIEhc4JhRiYmsDNX",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 clarity to use.</p>",
+        "chooseN": 1
+      },
+      "Rmodz5wSKc0LGlYu": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "Rmodz5wSKc0LGlYu",
+        "description": "<p>Your Reason and Presence scores each increase to 3.</p>"
+      },
+      "FHANKIJn0n5uNGPP": {
+        "name": "Mind Projection",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "FHANKIJn0n5uNGPP",
+        "description": "<p>As a maneuver, you project your mind outside your body. While you are in this state, your body remains unconscious and prone, and your mind is a separate entity with size 1T. Your mind automatically has concealment, and can freely move through solid matter. If you end your turn inside solid matter, you are forced out into the space where you entered it.</p><p>Any abilities or features you use originate from your mind. Both your mind and your body can take damage while separated, with any such damage applied to your Stamina. Your mind is instantly forced back into your body if you take any damage, and you can immediately return to your body as a free maneuver.</p>"
+      },
+      "wq2N0Mv136CpJAn1": {
+        "name": "Mind Recovery",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "wq2N0Mv136CpJAn1",
+        "description": "<p>Whenever you spend a Recovery to regain Stamina while strained, you can forgo the Stamina and gain 3 clarity instead.</p><p>Additionally, the first time each combat round that a creature is force moved, you gain 2 clarity instead of 1.</p>"
+      },
+      "dZ3CLi8odQaDM6Lo": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "dZ3CLi8odQaDM6Lo",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "PreV9aF2uTVpyREr": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "PreV9aF2uTVpyREr",
+        "description": "<p>Your talent tradition grants you two features, as shown on the 5th-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Distortion Temporal</p><p>Speed of Thought</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Kinetic Amplifier</p><p>Triangulate</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Compulsion</p><p>Remote Amplification</p></td></tr></tbody></table>",
+        "chooseN": 2
+      },
+      "4dfyCXBUutPIrqDY": {
+        "name": "9-Clarity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "4dfyCXBUutPIrqDY",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 clarity to use.</p>",
+        "chooseN": 1
+      },
+      "IKWAjxNeWGEzgYip": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "IKWAjxNeWGEzgYip",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "u8Frsz8X6zNorsEQ": {
+        "name": "Psi Boost",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "u8Frsz8X6zNorsEQ",
+        "description": "<p>Whenever you use an ability that is a main action or a maneuver with the Psionic keyword, you can spend additional clarity to apply a psi boost to it and enhance its effects. A psi boost’s effects only last until the end of the turn which the ability is first used. You can apply multiple psi boosts to an ability, but only one instance of each specific boost. You can use the following psi boosts.</p>"
+      },
+      "Eu2i7wLNW1qhiLEd": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Eu2i7wLNW1qhiLEd",
+        "description": "<p>Your talent tradition grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Fate</p><p>Stasis Field</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Gravitic Well</p><p>Greater Kinetic Grip</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Synaptic Conditioning</p><p>Synaptic Dissipation</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "pI8Ykiphm7bROtq6": {
+        "name": "Ancestral Memory",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "pI8Ykiphm7bROtq6",
+        "description": "<p>Each time you finish a respite, you can choose a number of skills you have up to your Reason score and replace them with an equal number of skills from the interpersonal and lore skill groups. These replacements last unil the end of your next respite.</p>"
+      },
+      "z1tWzR7fKJ5MS3vD": {
+        "name": "Cascading Strain",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "z1tWzR7fKJ5MS3vD",
+        "description": "<p>Whenever you take damage from a strained effect or from having negative clarity, you can choose one enemy within distance of your Mind Spike ability to take the same damage.</p>"
+      },
+      "YwOPFQqlvCWc7skD": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "YwOPFQqlvCWc7skD",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "nOD06tbdiJA8aRZD": {
+        "name": "Lucid Mind",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "nOD06tbdiJA8aRZD",
+        "description": "<p>At the start of each of your turns during combat, you gain 1d3 + 1 clarity instead of 1d3.</p>"
+      },
+      "WDx0VE1pfZvjKf0G": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "WDx0VE1pfZvjKf0G",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "pDEcghT0AARsxlar": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "pDEcghT0AARsxlar",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1
+      },
+      "iE7E6JlHSB3NzgRt": {
+        "name": "Tradition Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "iE7E6JlHSB3NzgRt",
+        "description": "<p>Your talent tradition grants you two features, as shown on the 8th-Level Tradition Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Tradition Features</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Features</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Doubling the Hours</p><p>Stasis Shield</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Levitation Field</p><p>Low Gravity</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Mindlink</p><p>Universal Connection</p></td></tr></tbody></table>",
+        "chooseN": 2
+      },
+      "LxKF77UolmH2R8tb": {
+        "name": "11-Clarity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "LxKF77UolmH2R8tb",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 clarity to use.</p>",
+        "chooseN": 1
+      },
+      "5CTXHa9OczuNVJ0I": {
+        "name": "Fortress of Perfect Thought",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "5CTXHa9OczuNVJ0I",
+        "description": "<p>Your mind is an impenetrable palace that shields you from danger. You gain the following effects:</p><ul><li><p>You can breathe even when there is no breathable air.</p></li><li><p>You have psychic immunity 10.</p></li><li><p>Creatures can’t read your thoughts unless you allow them to.</p></li><li><p>Your Reason and Intuition are treated as 2 higher for the purpose of resisting the potency of abilities.</p></li><li><p>You can’t be made taunted or frightened.</p></li></ul>"
+      },
+      "tVRrF4OM3nHPAsGb": {
+        "name": "Tradition Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "tVRrF4OM3nHPAsGb",
+        "description": "<p>Your talent tradition grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Tradition Ability</strong></p></td></tr><tr><td><p><strong>Tradition</strong></p></td><td><p><strong>Ability</strong></p></td></tr><tr><td><p>Chronopathy</p></td><td><p>Acceleration Field</p><p>Borrow From the Future</p></td></tr><tr><td><p>Telekinesis</p></td><td><p>Fulcrum</p><p>Gravitic Nova</p></td></tr><tr><td><p>Telepathy</p></td><td><p>Resonant Mind Spike</p><p>Synaptic Terror</p></td></tr></tbody></table>",
+        "chooseN": 1
+      },
+      "JLLMFcd15QrrNWhI": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "JLLMFcd15QrrNWhI",
+        "description": "<p>Your Reason and Presence scores each increase to 5.</p>"
+      },
+      "jknwaUXHlOy6Bhvr": {
+        "name": "Clear Mind",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "jknwaUXHlOy6Bhvr",
+        "description": "<p>The first time each combat round that a creature is force moved, you gain 3 clarity instead of 2.</p>"
+      },
+      "YAzYcIRnPCWedmYD": {
+        "name": "Omnisensory",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "YAzYcIRnPCWedmYD",
+        "description": "<p>You have a +10 bonus to the distance of your ranged abilities. Additionally, you don’t need line of effect to a target of a ranged ability if the target is a creature capable of thought who you have previously had line of effect to.</p>"
+      },
+      "RTUTQ91jVFbfbmWP": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "RTUTQ91jVFbfbmWP",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+      },
+      "JqAvmJpIW3SBJRT2": {
+        "name": "Psion",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "JqAvmJpIW3SBJRT2",
+        "description": "<p>At the start of each of your turns during combat, you gain 1d3 + 2 clarity instead of 1d3 + 1.</p><p>Additionally, you can choose to not take damage from having negative clarity. You can also choose to take on any ability’s strained effect even if you’re not strained.</p>"
+      },
+      "cSf75zJGYIFQ7ufv": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "cSf75zJGYIFQ7ufv",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "MFkzV9ROiKQsv8KC": {
+        "name": "Vision",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "MFkzV9ROiKQsv8KC",
+        "description": "<p>You have an epic resource called vision. Each time you finish a respite, you gain vision equal to the XP you gain. You can spend vision on your abilities as if it were clarity. Additionally, you can spend vision to use one additional psionic ability on your turn, provided you pay the entire cost of the ability in vision.</p><p>If you choose to use a psionic ability that usually costs no clarity, you must spend 1 vision to use it. </p><p>Vision remains until you spend it.</p>"
+      },
+      "r0WZ3MdmQITVucoW": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "r0WZ3MdmQITVucoW",
+        "chooseN": 1,
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>"
+      },
+      "6r9DIkleyyqQ5H0o": {
+        "name": "Suspensor Field",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "6r9DIkleyyqQ5H0o",
+        "description": "<p>You can fly. While flying, your stability is reduced to 0 and can’t be increased. If you can already fly, you have a +2 bonus to speed while flying instead.</p><p>If you are strained while flying and are force moved, the forced movement distance gains a +2 bonus.</p>"
+      }
+    },
     "level": 0,
     "primary": "Clarity",
     "epic": "Vision",

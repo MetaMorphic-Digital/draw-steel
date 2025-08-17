@@ -16,7 +16,468 @@
       "revision": 1
     },
     "_dsid": "fury",
-    "advancements": {},
+    "advancements": {
+      "QHtM2whJrxfMUhCq": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "QHtM2whJrxfMUhCq",
+        "description": "<p>You gain the Nature skill (see Skills in Chapter 9: Tests). Then choose any two skills from the exploration or intrigue skill groups. (Quick Build: Alertness, Jump, Nature.)</p>",
+        "skills": {
+          "groups": [
+            "exploration",
+            "intrigue"
+          ]
+        },
+        "chooseN": 2
+      },
+      "l0OGJPYLpBOFuqM6": {
+        "name": "Primordial Aspect",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "l0OGJPYLpBOFuqM6",
+        "description": "<p>You are a product of customs older than warfare, older than civilization, older than most of the world. You have undergone a rite of passage that revealed the building blocks of the timescape—the Primordial Chaos—and that left an aspect of that chaos inside you. You choose a primordial aspect from the following options, each of which grants you a skill. (Quick Build: Berserker.)</p><ul><li><p>Berserker: You channel your ferocity into physical might, acting as a living version of the forces that shape the world. You have the Lift skill.</p></li><li><p>Reaver: You channel your ferocity into instinct and cunning, challenging the order of civilization. You have the Hide skill. </p></li><li><p>Stormwight: You channel your ferocity into primordial storms and can take on the form of an animal or an animal hybrid form. You have the Track skill.</p></li></ul><p>Your primordial aspect is your subclass, and your choice of aspect determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "zgVtWTXR2iX6Sfp8": {
+        "name": "Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "zgVtWTXR2iX6Sfp8",
+        "description": "<p>Within the heat of battle, your determination and anger grow, fueling a Heroic Resource called ferocity.</p>"
+      },
+      "7XULELraR8UAQEW4": {
+        "name": "Growing Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "7XULELraR8UAQEW4",
+        "description": "<p>You gain certain benefits in combat based on the amount of ferocity you have (see 1st-Level Aspect Features for details). These benefits last until the end of your turn, even if a benefit would become unavailable to you because of the amount of ferocity you spend during your turn. </p><p>Some Growing Ferocity benefits can be applied only if you are a specific level or higher, with the level of those benefits noted in the various Growing Ferocity tables in this section.</p>"
+      },
+      "lpjrFdjSxpGKAiMn": {
+        "name": "Aspect Features",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "lpjrFdjSxpGKAiMn",
+        "description": "<p>Your primordial aspect grants you two features, as shown on the 1st-Level Aspect Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>1st-Level Aspect Features</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Kit</p><p>Primordial Strength</p></td></tr><tr><td><p>Reaver</p></td><td><p>Kit</p><p>Primordial Cunning</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Beast Shape</p><p>Relentless Hunter</p></td></tr></tbody></table>"
+      },
+      "2t3TTKBW7GyO4iVP": {
+        "name": "Aspect Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "2t3TTKBW7GyO4iVP",
+        "description": "<p>Your primordial aspect grants you a triggered action, as shown on the Aspect Triggered Actions table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>Aspect Triggered Actions</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Triggered Action</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Lines of Force</p></td></tr><tr><td><p>Reaver</p></td><td><p>Unearthly Reflexes</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Furious Change</p></td></tr></tbody></table>"
+      },
+      "UxzWiQlSvIDXK8dH": {
+        "name": "Mighty Leaps",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "UxzWiQlSvIDXK8dH",
+        "description": "<p>You can’t obtain lower than a tier 2 outcome on any Might test made to jump (see Movement Types in Chapter 10: Combat).</p>"
+      },
+      "w8E0dLluHIzYxfgF": {
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "w8E0dLluHIzYxfgF",
+        "description": "<p>You specialize in dealing massive damage on the battlefield, and have mastered unique martial abilities that allow you to strike hard and keep moving.</p><p>Choose one signature ability from the following options. Signature abilities can be used at will. (Quick Build: To the Death!)</p>",
+        "chooseN": 1
+      },
+      "bCbUeQ8RUiZsklKm": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "bCbUeQ8RUiZsklKm",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice. See Chapter 7: Perks.</p>"
+      },
+      "ER5GQAUtlLOXJ722": {
+        "name": "Aspect Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "ER5GQAUtlLOXJ722",
+        "description": "<p>Your primordial aspect grants you a feature, as shown on the 2nd-Level Aspect Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Aspect Features</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Unstoppable Force</p></td></tr><tr><td><p>Reaver</p></td><td><p>Inescapable Wrath</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Tooth and Claw</p></td></tr></tbody></table>"
+      },
+      "xfIhCJtQM0EC31mW": {
+        "name": "Aspect Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "xfIhCJtQM0EC31mW",
+        "description": "<p>Your primordial aspect grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>2nd-Level Aspect Ability</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Special Delivery</p><p>Wrecking Ball</p></td></tr><tr><td><p>Reaver</p></td><td><p>Death … Death!</p><p>Phalanx-Breaker</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Apex Predator</p><p>Visceral Roar</p></td></tr></tbody></table>"
+      },
+      "G8ol1x1lVGVr2R3k": {
+        "name": "Aspect Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "G8ol1x1lVGVr2R3k",
+        "description": "<p>Your primordial aspect grants you a feature, as shown on the 3rd-Level Aspect Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>3rd-Level Aspect Features</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Immovable Object</p></td></tr><tr><td><p>Reaver</p></td><td><p>See Through Their Tricks</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Nature’s Knight</p></td></tr></tbody></table>"
+      },
+      "J4eETmg5nVts8Z7g": {
+        "name": "7-Ferocity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "J4eETmg5nVts8Z7g",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 ferocity to use.</p>"
+      },
+      "B598s5V04uA5btAN": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "B598s5V04uA5btAN",
+        "description": "<p>Your Might and Agility scores each increase to 3.</p>"
+      },
+      "Si95j4lWn1j4mWsL": {
+        "name": "Damaging Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "Si95j4lWn1j4mWsL",
+        "description": "<p>The first time you take damage each combat round, you gain 2 ferocity instead of 1.</p>"
+      },
+      "noyIyOG64RnvhNLH": {
+        "name": "Growing Ferocity Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "noyIyOG64RnvhNLH",
+        "description": "<p>Your Growing Ferocity feature provides additional benefits when you have 8 or more ferocity.</p>"
+      },
+      "i9K0W24ZELgrt9PF": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "i9K0W24ZELgrt9PF",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "cOsn0g7eUOmggnHw": {
+        "name": "Primordial Attunement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "cOsn0g7eUOmggnHw",
+        "description": "<p>As your ferocity manifests elemental forces created by the Primordial Chaos, you are aware of how elemental power interacts with those around you. You automatically sense whether any creature within 10 squares has damage immunity or damage weakness to acid, cold, corruption, fire, lightning, poison, or sonic damage, learning whether they have immunity or weakness, the value of that immunity or weakness, and the specific damage type. Additionally, you automatically sense any source of one of those damage types within 10 squares, such as a fire or a source of elemental power.</p>"
+      },
+      "jrKiXyZQlFpQAD59": {
+        "name": "Primordial Strike",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "jrKiXyZQlFpQAD59",
+        "description": "<p>You can manifest your ferocity directly as an elemental force created by the Primordial Chaos. As part of any strike, you can spend 1 ferocity to gain 1 surge that must be used for that strike. The extra damage dealt by the surge can be acid, cold, corruption, fire, lightning, poison, or sonic (your choice).</p>"
+      },
+      "BKuFEKNcK8RCN7bM": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "BKuFEKNcK8RCN7bM",
+        "description": "<p>You gain one skill of your choice. See Skills in Chapter 9: Tests.</p>"
+      },
+      "ROd8ofcH21PQudMV": {
+        "name": "Aspect Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "ROd8ofcH21PQudMV",
+        "description": "<p>Your primordial aspect grants you a feature, as shown on the 5th-Level Aspect Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>5th-Level Aspect Features</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Bounder</p></td></tr><tr><td><p>Reaver</p></td><td><p>Unfettered</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Stormborn</p></td></tr></tbody></table>"
+      },
+      "fKUhitz4U0w14z2v": {
+        "name": "9-Ferocity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "fKUhitz4U0w14z2v",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 ferocity to use.</p>"
+      },
+      "JG2CaLggunmYI2OE": {
+        "name": "Marauder of the Primordial Chaos",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "JG2CaLggunmYI2OE",
+        "description": "<p>As your connection to the power of the Primordial Chaos grows ever stronger, you automatically sense any elemental creatures or magic sources of elemental power, such as a lava pool or a lake overlapping with Quintessence, within 1 mile of you. </p><p>Additionally, you can speak with elemental creatures, and when you are in a negotiation with an elemental, you treat your Renown as 1 higher than usual. This stacks with the increase to your effective Renown provided by the Nature’s Knight aspect feature (see 3rd-Level Features). When any elemental first becomes aware of you in combat, if they have <strong>P&lt;AVERAGE</strong> , they are frightened of you (save ends).</p>"
+      },
+      "5krfYfArjHHjO9Fs": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "5krfYfArjHHjO9Fs",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>"
+      },
+      "lZcET1EEBhNdivKs": {
+        "name": "Aspect Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "lZcET1EEBhNdivKs",
+        "description": "<p>Your primordial aspect grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>6th-Level Aspect Ability</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Avalanche Impact</p><p>Force of Storms</p></td></tr><tr><td><p>Reaver</p></td><td><p>Death Strike</p><p>Seek and Destroy</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Pounce</p><p>Riders on the Storm</p></td></tr></tbody></table>"
+      },
+      "U6Tmmyagi4geYD0i": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "U6Tmmyagi4geYD0i",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>"
+      },
+      "mmBjcqDKuUYmY5BS": {
+        "name": "Elemental Form",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "mmBjcqDKuUYmY5BS",
+        "description": "<p>You exhibit ever-stronger signs of how the force of the Primordial Chaos flows within you. Whenever you show strong emotion or increase your ferocity, elemental motes attuned to your mood flit around you, and your skin changes in appearance to reflect an element of your choice.</p><p>Additionally, if you are a berserker or reaver, you have immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to your Might score. If you are a stormwight, you have immunity to the damage type of your Primordial Storm feature equal to twice your Might score.</p>"
+      },
+      "fpXkjAvVzWaln4Es": {
+        "name": "Greater Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "fpXkjAvVzWaln4Es",
+        "description": "<p>When you gain ferocity at the start of each of your turns during combat, you gain 1d3 + 1 ferocity instead of 1d3.</p>"
+      },
+      "s8BOpEPN6WERfSFQ": {
+        "name": "Growing Ferocity Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "s8BOpEPN6WERfSFQ",
+        "description": "<p>Your Growing Ferocity feature provides additional benefits when you have 10 or more ferocity.</p>"
+      },
+      "HtppIkSXU973OfmV": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "HtppIkSXU973OfmV",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "ouAzGUpBR85zcpMk": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "ouAzGUpBR85zcpMk",
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "vfuTpQHOY2BnDihf": {
+        "name": "Aspect Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "vfuTpQHOY2BnDihf",
+        "description": "<p>Your primordial aspect grants you a feature, as shown on the 8th-Level</p><p>Aspect Features table.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>8th-Level Aspect Features</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Strongest There Is</p></td></tr><tr><td><p>Reaver</p></td><td><p>A Step Ahead</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Menagerie</p></td></tr></tbody></table>"
+      },
+      "VcMSXxkQYVXVzAxC": {
+        "name": "11-Ferocity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "VcMSXxkQYVXVzAxC",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 ferocity to use.</p>"
+      },
+      "f1R6s3q5CJJFEge2": {
+        "name": "Harbinger of the Primordial Chaos",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "f1R6s3q5CJJFEge2",
+        "description": "<p>You can create a temporary source of elemental power as a respite activity. This source of elemental power lasts 24 hours after creation, and can be used to create a portal to Quintessence with your Primordial Portal feature. If you do so, the source of elemental power lasts as long as the portal is maintained in your network.</p>"
+      },
+      "58i30b23nPVmLyDj": {
+        "name": "Aspect Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "58i30b23nPVmLyDj",
+        "description": "<p>Your primordial aspect grants your choice of one of two heroic abilities.</p><table><tbody><tr><td colspan=\"2\"><p style=\"text-align:center\"><strong>9th-Level Aspect Ability</strong></p></td></tr><tr><td><p><strong>Aspect</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Berserker</p></td><td><p>Death Comes for You All!</p><p>Primordial Vortex</p></td></tr><tr><td><p>Reaver</p></td><td><p>Primordial Bane</p><p>Shower of Blood</p></td></tr><tr><td><p>Stormwright</p></td><td><p>Death Rattle</p><p>Deluge</p></td></tr></tbody></table>"
+      },
+      "l42Cwke4xw8yhRr2": {
+        "name": "Chaos Incarnate",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "l42Cwke4xw8yhRr2",
+        "description": "<p>Your mastery of elemental forces protects and emboldens you. If you are a berserker or reaver, you have immunity to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to twice your Might score. If you are a stormwight, your damage immunity from your Primordial Storm feature (see Stormwight Kits) increases to three times your Might score.</p><p>When any elemental or any other creature whose abilities deal acid, cold, corruption, fire, lightning, poison, or sonic damage first becomes aware of you in combat, if they have <strong>P&lt;STRONG</strong> , they are frightened of you (save ends).</p><p>Additionally, when you use Primordial Strike, you can spend up to 3 ferocity, gaining 1 surge per ferocity spent to use for that strike.</p>"
+      },
+      "9pBLVpyPAq1iJc6P": {
+        "name": "Characteristic Increase",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "9pBLVpyPAq1iJc6P",
+        "description": "<p>Your Might and Agility scores each increase to 5.</p>"
+      },
+      "zxIjj51asgrL5eY6": {
+        "name": "Growing Ferocity Improvement",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "zxIjj51asgrL5eY6",
+        "description": "<p>Your Growing Ferocity feature provides additional benefits when you have 12 or more ferocity.</p>"
+      },
+      "qpWGhtt6KiTG842t": {
+        "name": "Perk",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "qpWGhtt6KiTG842t",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>"
+      },
+      "zgT63xt82rSzTTCk": {
+        "name": "Primordial Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "zgT63xt82rSzTTCk",
+        "description": "<p>The first time you take damage each combat round, you gain 3 ferocity instead of 2.</p>"
+      },
+      "bgIFLjD3IXuV6eqa": {
+        "name": "Primordial Power",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "bgIFLjD3IXuV6eqa",
+        "description": "<p>You have an epic resource called primordial power. Each time you finish a respite, you gain primordial power equal to the XP you gain. You can spend primordial power on your abilities as if it were ferocity.</p><p>Additionally, you can spend any amount of primordial power as a free maneuver, ending one effect on you for each primordial power spent.</p><p>You can also spend 3 primordial power to create a portal to Quintessence without needing a source of elemental power. </p><p>Primordial power remains until you spend it.</p>"
+      },
+      "x8KwFncuNQaEOl2L": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "x8KwFncuNQaEOl2L",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "EIystHl8LocfcJkz": {
+        "name": "Primordial Portal",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "EIystHl8LocfcJkz",
+        "description": "<p>As a main action, you can touch a magic source of elemental power and use it to create a portal to Quintessence. You can then use a main action to teleport yourself and any willing creatures within 10 squares of you through the portal and onto a safe island in Quintessence, or to teleport back again. You can maintain a number of portals equal to your Might score, each leading to the same safe island in Quintessence. If a portal in your network is destroyed, it is no longer part of the network. You can remove a portal from your network no matter your distance from it, including across different worlds (no action required). </p><p>(Exploring Quintessence is possible from your island, but continued safety is not guaranteed.)</p>"
+      },
+      "R5TbXEnzGObMdKV9": {
+        "name": "3-Ferocity Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "R5TbXEnzGObMdKV9",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 ferocity to use. (Quick Build: Back!)</p>",
+        "chooseN": 1
+      },
+      "BN9zEjsVwininql7": {
+        "name": "5-Ferocity  Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "BN9zEjsVwininql7",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 ferocity to use. (Quick Build: Blood for Blood!)</p>",
+        "chooseN": 1
+      }
+    },
     "level": 0,
     "primary": "Ferocity",
     "epic": "Primordial Power",
