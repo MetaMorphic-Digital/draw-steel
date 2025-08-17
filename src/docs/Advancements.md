@@ -12,6 +12,8 @@ Item grants allow one item to add other items to the character sheet automatical
 
 Items can be added to the pool by dragging and dropping; these specifications are stored by UUID, which means that if an item is moved, deleted, or otherwise unavailable it cannot be granted. However, if an item is simply updated (e.g. for errata), the link will not be disrupted. This will *not* automatically update items already granted to an actor, only ensure that future granted items are the latest version.
 
+Whenever an item grant advancement provides choices, if the choice would provide further advancements, those will be added to the configuration dialog.
+
 ## Traits
 
 Trait grants cover several other types of advancements that share common features. They are applied during data preparation after Active Effects, which means their adjustments will not be visible in edit mode on the character sheet. They do not check the actor for what choices have already been made in other advancements; it is up to players to ensure that their trait choices from their ancestry, culture, career, and class do not overlap.
