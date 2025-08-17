@@ -32,7 +32,7 @@ The `Update Combatant` menu opens a pop-up setting menu in which the following i
 + Represented Token (non-editable)
 + Displayed Name (editable; sets displayed name in combat tracker)
 + Thumbnail Image (editable; sets token display image in combat tracker)
-+ Initiative Value (editable; sets how many turns a token has per round. Standart is 1. 0=had their turn, 1=can act on 1 turn, 2=can act on 2 turns, etc...)
++ Initiative Value (editable; sets how many turns a token has per round. Standard is 1. 0=had their turn, 1=can act on 1 turn, 2=can act on 2 turns, etc...)
 + Combatant Group (editable; available if a combatant croup is set up for this encounter)
 + Disposition (editable; "Match token", Friendly, Neutral, Hostile, Secret)
 + Status (editable; `Hidden` and/or `Defeated`)
@@ -61,7 +61,7 @@ The cog icon will open the core foundry combat tracker settings, which allow to 
 ### Create Combatant Groups
 When creating a combatant group, a dialogue prompt pops up, in which the combatant group can be named, and also gives the choice between a `base` or a `squad` group.
 
-A `Base` combatant group can have any number of non-minion members, but no minion combatants. 
+A `Base` combatant group can have any number of non-minion members, but no minion combatants.
 
 A `Squad` combatant group can have any number of minions plus up to one non-minion captain. If a `Squad` group is set up, it will display the stamina pool of the minions as `X/Max (individual minion stamina)`, e.g. a Squad of 8 full stamina Gnoll Abyssal Hyenas is denoted as `56/56 (7)` as their combatant group. This number is not influenced by the presence of a captain, but the individual minion stamina value will only be visible if all minions within a squad have the same max stamina value.
 
@@ -69,7 +69,7 @@ Clicking on a combatant group reveals the list of all included combatants. Click
 
 Both the `Base` and the `Squad` combatant groups rely on enemy NPC actors having their organization set in their actor sheet.
 
-Actors may be added to a combatant group by click&dragging them into the group, or via the `Update Combatant` menu option of a comatants right-click context menu.
+Actors may be added to a combatant group by click&dragging them into the group, or via the `Update Combatant` menu option of a combatants right-click context menu.
 
 #### Right-click context menu
 

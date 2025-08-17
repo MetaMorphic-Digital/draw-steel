@@ -21,15 +21,15 @@ When creating a new temporary active effect by clicking on the `+ New Effect` bu
 
 Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
 
-Any of the Foundry DS system condition statuses can be applied to a Token via the Token HUD. When doing so, at the veyr top of the conditions window is a drop down menu that let's you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
+Any of the condition statuses can be applied to a Token via the Token HUD. When doing so, the conditions window is a drop down menu that let's you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
 
-Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactive it again.
+Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactivate it again.
 
-Active statuses are highlighted, while inactive ones are displayed in muted colours.
+Active statuses are highlighted, while inactive ones are displayed in muted colors.
 
 Additionally, each effect is documented in the system compendiums.
 
-### Dazed
+#### Dazed
 
 If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor’s triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can’t be used while affected by the `Dazed` effect.
 
@@ -72,19 +72,17 @@ If the actor's stamina gets healed above the 50 % threshold, the `winded` status
 
 ## Active Effect Config
 
-At any given time you can change the icon and name of an active effect.
+Draw Steel has tweaked the default active effect sheet; this section explains what's been added.
 
 ### Details
 
-On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves. Effects are also automatically suppressed if they have a conventional duration (e.g. in rounds & turns) that has run over.
+If an effect is suspended or has a conventional duration (e.g. in rounds & turns) that has run over then its effects will not be applied.
 
-The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if the tickbox is unchecked means the effect is available as an apoplied effect in ability usage, but the system won't have that application handling until 0.8 at least.
+The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if it is unchecked means the effect is available as an applied effect for ability usage. All other item types do not leverage applied effects.
 
 #### Linking status effects
 
-At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
-
-For example if an Active Effect is linked to the `Prone` condition and is applied to an actor, this actor's movement becomes crawling and abilities against them gain an edge, and their abilities have a bane.
+At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
 
 If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
 
@@ -97,11 +95,11 @@ Additionally, the Save Ends duration allows for defining the saving throw formul
 + `Save Ends` will prompt the combatant's owners to configure the save threshold and add any situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
 + `End of Encounter` effects will automatically self-disable alongside the encounter.
 
-Additional options for duration are timed durations, and durations base don rounds and turns, however, as these are not part of the Draw Steel rules, it is recommended not to utilise these.
+The system also supports timed durations. Effects that have outlasted their duration are automatically suppressed; keep in mind that turn-based durations are unreliable due to Draw Steel's dynamic initiative count.
 
 ### Changes
 
-The last tab includes the Active Effect changes of an effect. Here you can add bonuses and maluses, or stat changes, and determine how they affect a actor.
+The last tab includes the meat of the active effect system, where the actual changes from the effect are defined.
 
 #### Active effect change modes
 
@@ -171,3 +169,22 @@ While there are similarities with roll data, active effects generally lead with 
 > |---|---|---|
 >
 ></details>
+
+## Ability Modifiers
+
+The system includes a subtype of active effect called "Ability Modifier", which apply their changes to all abilities on an actor. This allows non-kit items to apply kit-like bonuses.
+
+### Filters
+
+Ability modifiers currently support keyword filters. An ability must have all selected keywords to receive the bonus. If an item like a treasure wants to apply bonuses to disjunct sets of keywords, make two copies of the effect (e.g. a bonus to all Magic *or* Psionic abilities).
+
+### Changes
+
+Ability modifiers support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
+
+|Key|Description|
+|---|-----------|
+|`distance`|Gives a bonus to the range of the ability, based on the range type.|
+|`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
+|`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
+|`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
