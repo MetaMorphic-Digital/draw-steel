@@ -3,10 +3,10 @@
   "name": "Vanguard",
   "type": "subclass",
   "_id": "OjWhetKz8boQxExU",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/shield-block-gray-yellow.webp",
   "system": {
     "description": {
-      "value": "",
+      "value": "<p>You have learned the stratagems of ancient heroes, letting you lead from the front lines and seek victory through sheer force of will and personality. You gain a skill from the interpersonal skill group.</p>",
       "director": ""
     },
     "source": {
@@ -22,7 +22,30 @@
         "img": null,
         "type": "itemGrant",
         "_id": "n35DctOnFwqR4uNk",
-        "description": "<p></p><p>@UUID[Compendium.draw-steel.classes.Item.wdOsstaPrLX5WcVa]{Commanding Presence}</p>"
+        "description": "",
+        "requirements": {
+          "level": 1
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.wdOsstaPrLX5WcVa"
+          }
+        ]
+      },
+      "em9qmEDawFrI5G4y": {
+        "name": "Skill (Interpersonal)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "em9qmEDawFrI5G4y",
+        "skills": {
+          "groups": [
+            "interpersonal"
+          ]
+        },
+        "chooseN": 1
       }
     },
     "classLink": "tactician"
