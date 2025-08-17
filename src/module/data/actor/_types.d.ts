@@ -1,6 +1,5 @@
 import DrawSteelActor from "../../documents/actor.mjs";
 import SizeModel from "../models/size.mjs";
-import { DamageSchema } from "../item/kit.mjs";
 import SourceModel from "../models/source.mjs";
 
 interface BarAttribute {
@@ -19,6 +18,16 @@ interface CoreResource {
   target: foundry.abstract.DataModel;
   path: string;
   minimum: number;
+}
+
+interface FreeStrike {
+  value: number;
+  keywords: Set<string>;
+  type: string;
+  range: {
+    melee: number;
+    ranged: number;
+  };
 }
 
 declare module "./base.mjs" {
@@ -96,16 +105,6 @@ declare module "./hero.mjs" {
         units: string;
       }
     }
-    abilityBonuses: {
-      melee: {
-        distance: number;
-        damage?: DamageSchema;
-      }
-      ranged: {
-        distance: number;
-        damage?: DamageSchema;
-      }
-    }
   }
 }
 
@@ -128,14 +127,4 @@ declare module "./npc.mjs" {
       organization: string;
     }
   }
-}
-
-interface FreeStrike {
-  value: number;
-  keywords: Set<string>;
-  type: string;
-  range: {
-    melee: number;
-    ranged: number;
-  };
 }

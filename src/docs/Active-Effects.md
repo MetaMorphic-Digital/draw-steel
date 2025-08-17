@@ -13,27 +13,25 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 
 ## Actor's 'Effects' tab
 
-On the actor sheet, at the top of 'Effects' tab is now a new section with butttons for the DS core conditions. Clicking any of these will aply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
+On the actor sheet, at the top of 'Effects' tab is now a new section with buttons for the DS core conditions. Clicking any of these will apply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
 
-Applying any of these DS core conditions applies a active effect, details for which can be found in the `System Automations` section.
+Applying any of these DS core conditions applies a active effect, details for which can be found in the `System Automatios` section.
 
 When creating a new temporary active effect by clicking on the `+ New Effect` button on the right of a active effect section header on this page, the duration is by default set to EoT (End of Turn).
 
 ## Active Effect Config
 
-At any given time you can change the icon and name of an active effect.
+Draw Steel has tweaked the default active effect sheet; this section explains what's been added.
 
 ### Details
 
-On the details page, you can give an effect a informative description. If you tick the `Effect Suspended` tick box, the effect will exist, but not take effect until activated. If you tick the `Apply Effect to Actor` tick box, the effect will be applied to the actor themselves. Effects are also automatically suppressed if they have a conventional duration (e.g. in rounds & turns) that has run over.
+If an effect is suspended or has a conventional duration (e.g. in rounds & turns) that has run over then its effects will not be applied.
 
-The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if the tickbox is unchecked means the effect is available as an apoplied effect in ability usage, but the system won't have that application handling until 0.8 at least.
+The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an effect on an item is an "Applied Effect"; if it is unchecked means the effect is available as an applied effect for ability usage. All other item types do not leverage applied effects.
 
 #### Linking status effects
 
 At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
-
-For example if an Active Effect is linked to the `Prone` condition and is applied to an actor, this actor's movement becomes crawling and abilities against them gain an edge, and their abilities have a bane.
 
 If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
 
@@ -50,7 +48,7 @@ Additional options for duration are timed durations, and durations base don roun
 
 ### Changes
 
-The last tab includes the Active Effect changes of an effect. Here you can add bonuses and maluses, or stat changes, and determine how they affect a actor.
+The last tab includes the meat of the active effect system, where the actual changes from the effect are defined.
 
 #### Active effect change modes
 
@@ -89,10 +87,6 @@ While there are similarities with roll data, active effects generally lead with 
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Speed|`system.movement.value`|
-|Bonus to Tier X Melee Damage (X=1, 2, 3)|`system.abilityBonuses.melee.damage.tierX`|
-|Bonus to Melee Distance|`system.abilityBonuses.melee.distance`|
-|Bonus to Tier X Ranged Damage (X=1, 2, 3)|`system.abilityBonuses.ranged.damage.tierX`|
-|Bonus to Ranged Distance|`system.abilityBonuses.ranged.distance`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
@@ -121,3 +115,21 @@ While there are similarities with roll data, active effects generally lead with 
 >
 ></details>
 
+## Ability Modifiers
+
+The system includes a subtype of active effect called "Ability Modifier", which apply their changes to all abilities on an actor. This allows non-kit items to apply kit-like bonuses.
+
+### Filters
+
+Ability modifiers currently support keyword filters. An ability must have all selected keywords to receive the bonus. If an item like a treasure wants to apply bonuses to disjunct sets of keywords, make two copies of the effect (e.g. a bonus to all Magic *or* Psionic abilities).
+
+### Changes
+
+Ability modifiers support a far more limited set of keys, but still use the same mode & value logic as normal active effects.
+
+|Key|Description|
+|---|-----------|
+|`distance`|Gives a bonus to the range of the ability, based on the range type.|
+|`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
+|`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
+|`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|

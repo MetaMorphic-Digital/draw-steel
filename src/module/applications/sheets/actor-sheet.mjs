@@ -6,6 +6,7 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
 
 /**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs"
  * @import { NumberField } from "@common/data/fields.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  * @import { ActiveEffectCategory, ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
@@ -305,11 +306,18 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   async _prepareFeaturesContext() {
-    const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
+    const features = [
+      ...this.actor.itemTypes.feature,
+      ...this.actor.itemTypes.ancestryTrait,
+      ...this.actor.itemTypes.perk,
+      ...this.actor.itemTypes.title,
+    ].sort((a, b) => a.sort - b.sort);
     const context = [];
 
     for (const feature of features) {
-      context.push(await this._prepareItemContext(feature));
+      const featureContext = await this._prepareItemContext(feature);
+      featureContext.typeLabel = CONFIG.Item.typeLabels[feature.type];
+      context.push(featureContext);
     }
 
     return context;
@@ -487,12 +495,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /*   Application Life-Cycle Events                    */
   /* -------------------------------------------------- */
 
-  /**
-   * Actions performed after a first render of the Application.
-   * @param {ApplicationRenderContext} context      Prepared context data.
-   * @param {RenderOptions} options                 Provided render options.
-   * @protected
-   */
+  /** @inheritdoc*/
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
@@ -500,6 +503,13 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       hookName: "getDocumentListContextOptions",
       parentClassHooks: false,
       fixed: true,
+    });
+
+    this._createContextMenu(this._createEffectContextOptions, ".effect-list-container .effect-create", {
+      hookName: "createEffectContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+      eventName: "click",
     });
   }
 
@@ -623,6 +633,57 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           const document = this._getEmbeddedDocument(target);
           if (document.hasGrantedItems) await document.advancementDeletionPrompt();
           else await document.deleteDialog();
+        },
+      },
+    ];
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Get context menu entries for creating.
+   * @returns {ContextMenuEntry[]}
+   */
+  _createEffectContextOptions() {
+    return [
+      {
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.ActiveEffect") }),
+        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.base}"></i>`,
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const effectClass = getDocumentClass("ActiveEffect");
+          const effectData = {
+            name: effectClass.defaultName({ parent: this.actor }),
+            img: "icons/svg/aura.svg",
+            type: "base",
+            origin: this.actor.uuid,
+          };
+          for (const [dataKey, value] of Object.entries(target.dataset)) {
+            if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
+            foundry.utils.setProperty(effectData, dataKey, value);
+          }
+
+          effectClass.create(effectData, { parent: this.actor, renderSheet: true });
+        },
+      },
+      {
+        name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("TYPES.ActiveEffect.abilityModifier") }),
+        icon: `<i class="${CONFIG.ActiveEffect.typeIcons.abilityModifier}"></i>`,
+        condition: () => this.isEditable,
+        callback: (target) => {
+          const effectClass = getDocumentClass("ActiveEffect");
+          const effectData = {
+            name: effectClass.defaultName({ parent: this.actor, type: "abilityModifier" }),
+            img: "icons/svg/explosion.svg",
+            type: "abilityModifier",
+            origin: this.actor.uuid,
+          };
+          for (const [dataKey, value] of Object.entries(target.dataset)) {
+            if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
+            foundry.utils.setProperty(effectData, dataKey, value);
+          }
+
+          effectClass.create(effectData, { parent: this.actor, renderSheet: true });
         },
       },
     ];

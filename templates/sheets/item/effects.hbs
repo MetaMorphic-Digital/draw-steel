@@ -13,10 +13,7 @@
         <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
         <div class="effect-controls flexrow">
           <a
-            class="effect-control"
-            data-action="createDoc"
-            data-origin="{{@root.document.uuid}}"
-            data-img="{{@root.document.img}}"
+            class="effect-control effect-create"
             {{#if (eq section.type "inactive")}}
             data-disabled="true"
             {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
@@ -25,7 +22,6 @@
             {{else if (eq section.type "applied")}}
             data-transfer="false"
             {{/if}}
-            data-tooltip-text="{{localize "DOCUMENT.Create" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"
           >
             <i class="fa-solid fa-plus"></i>
             {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}

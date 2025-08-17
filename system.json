@@ -14,6 +14,9 @@
     }
   ],
   "documentTypes": {
+    "ActiveEffect": {
+      "abilityModifier": {}
+    },
     "Actor": {
       "hero": {
         "htmlFields": ["biography.value", "biography.director"],
@@ -84,6 +87,30 @@
         "gmOnlyFields": ["description.director"]
       },
       "feature": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "ancestryTrait": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "perk": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "title": {
         "filePathFields": {
           "advancements.*.img": ["IMAGE"],
           "advancements.*.traits.*.img": ["IMAGE"]

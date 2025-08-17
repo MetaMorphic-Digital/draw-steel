@@ -74,6 +74,11 @@ Specific notes by type:
 - The description on the ancestry itself should be the info text.
 - Even features that only grant abilities should be created as both, for the purpose of easy inclusion in trait purchasing.
 
+**Ancestry Trait**
+- If a trait grants an ability, both the trait and the ability must be included
+- Ancestry Traits should not include the point cost in their name or _dsid.
+- A point cost of null means it is a signature trait
+
 **Career**
 - Inciting incidents tables should be linked by `@UUID` reference.
 
@@ -90,15 +95,17 @@ Specific notes by type:
 
 **Feature**
 - Not having a subtype is perfectly reasonable, many features are neither perks nor titles.
-- Ancestry Abilities should not include the point cost in their name or _dsid.
 
 **Kit**
 - Keep in mind that the book's abilities already include the kit bonus, so the ones in the compendium should *not* include the kit bonus to avoid double-counting.
 
+<!-- Perk -->
+
 <!-- Project -->
 
 **Title**
-- Titles should be replicated for each of their descendant options, e.g. `Ratcatcher: Come Out to Play`, `Ratcatcher: Deadly and Big`, and `Ratcatcher: Everybody Move!`.
+- Titles with choices should have item grants for each of those choices, e.g. for Ratcatcher, an ability named "Come Out to Play", a feature for "Deadly and Big", and another feature for "Everybody Move!".
+- Use the `@Embed` enricher to avoid duplicating text unnecessarily.
 
 ### Translations
 

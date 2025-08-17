@@ -7,8 +7,11 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "@common/data/_types.mjs" */
-/** @import { PowerRollModifiers } from "../../_types.js" */
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { FormInputConfig } from "@common/data/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
+ */
 
 const fields = foundry.data.fields;
 
@@ -120,7 +123,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
-    if (this.actor.type === "character") this._prepareCharacterData();
+    this._applyAbilityBonuses();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -138,56 +141,50 @@ export default class AbilityModel extends BaseItemModel {
    * Adds kit bonuses as native "active effect" like adjustments.
    * @protected
    */
-  _prepareCharacterData() {
-    /** @type {import("../actor/hero.mjs").HeroModel["abilityBonuses"]} */
-    const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
-    if (bonuses) { // Data prep order of operations issues
-      switch (this.distance.type) {
-        case "melee":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.distance;
-          }
-          break;
-        case "ranged":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.ranged.distance;
-          }
-          break;
-        case "meleeRanged":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.distance;
-            this.distance.secondary += bonuses.ranged.distance;
-          }
-          break;
-        case "aura":
-        case "burst":
-        case "cube":
-        case "line":
-        case "wall":
-        case "self":
-        case "special":
-          break;
+  _applyAbilityBonuses() {
+    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
+      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+
+      if (bonus.key === "distance") {
+        // All distance value fields are structured identically so the field can be used regardless of which it actually modifies
+        const distanceValueField = this.schema.getField("distance.primary");
+        switch (this.distance.type) {
+          case "melee":
+          case "ranged":
+            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            break;
+          case "meleeRanged":
+            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            break;
+          case "wall":
+          case "cube":
+            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            break;
+          case "line":
+            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus);
+            break;
+          case "aura":
+          case "burst":
+          case "self":
+          case "special":
+            break;
+        }
       }
 
-      if (this.keywords.has("weapon")) {
-        const isMelee = this.keywords.has("melee");
-        const isRanged = this.keywords.has("ranged");
-        const prefMelee = this.damageDisplay === "melee";
-        const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
+      if (bonus.key.startsWith("damage")) {
+        let applyBonus = true;
+        if (this.keywords.has("melee") && this.keywords.has("ranged")) {
+          // melee & ranged abilities only display one set of bonuses at a time
+          applyBonus = bonus.filters.keywords.has(this.damageDisplay);
+        }
 
-        if (distance) {
-          // All three tier.damage.value fields should be identical, so their apply change should be identical
-          const formulaField = DamagePowerRollEffect.schema.getField(["damage", "tier1", "value"]);
+        if (applyBonus) {
+          const formulaField = DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
-          for (const tier of PowerRoll.TIER_NAMES) {
-            const bonus = foundry.utils.getProperty(bonuses, `${distance}.damage.${tier}`);
-            if (!bonus) continue;
-            firstDamageEffect.damage[tier].value = formulaField.applyChange(firstDamageEffect.damage[tier].value, this, {
-              value: bonus,
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-            });
-          }
+          const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
         }
       }
     }

@@ -10,6 +10,7 @@ import DrawSteelSystemModel from "../system-model.mjs";
  * @import { DrawSteelActor, DrawSteelCombatant, DrawSteelCombatantGroup } from "../../documents/_module.mjs";
  * @import AbilityModel from "../item/ability.mjs";
  * @import { CoreResource } from "./_types";
+ * @import { AbilityBonus } from "../_types";
  */
 
 const fields = foundry.data.fields;
@@ -84,6 +85,15 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       languages: new fields.SetField(setOptions()),
     };
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Array for tracking bonuses to abilities that this actor has.
+   * @type {AbilityBonus[]}
+   * @internal
+   */
+  _abilityBonuses = [];
 
   /* -------------------------------------------------- */
 
@@ -177,15 +187,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     rollData.echelon = this.echelon;
     rollData.level = this.level;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * The actor's melee range.
-   */
-  get reach() {
-    return 1;
   }
 
   /* -------------------------------------------------- */

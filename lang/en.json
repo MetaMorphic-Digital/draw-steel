@@ -574,6 +574,7 @@
         "tier3": "Tier 3"
       },
       "LimitWorldCreateTooltip": "Certain item types (Class, Subclass, Ancestry, Career, Kit) must be created inside of a compendium and cannot be created in-world.",
+      "NoPrerequisites": "None",
       "base": {
         "FIELDS": {
           "description": {
@@ -801,6 +802,13 @@
       "ancestry": {
         "FIELDS": {}
       },
+      "ancestryTrait": {
+        "FIELDS": {
+          "points": {
+            "label": "Point Cost"
+          }
+        }
+      },
       "career": {
         "FIELDS": {
           "projectPoints": {
@@ -973,36 +981,7 @@
         }
       },
       "feature": {
-        "FIELDS": {
-          "type": {
-            "value": {
-              "label": "Feature Type"
-            },
-            "subtype": {
-              "label": "Feature Subtype"
-            }
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
-          }
-        },
-        "Types": {
-          "Perk": {
-            "Label": "Perk",
-            "Crafting": "Crafting",
-            "Exploration": "Exploration",
-            "Interpersonal": "Interpersonal",
-            "Intrigue": "Intrigue",
-            "Lore": "Lore",
-            "Supernatural": "Supernatural"
-          },
-          "Title": {
-            "Label": "Title"
-          }
-        }
+        "FIELDS": {}
       },
       "kit": {
         "FIELDS": {
@@ -1099,6 +1078,32 @@
           "WrongDSID": "The expected DSID {expected} did not match the current class's DSID of {actual}."
         }
       },
+      "title": {
+        "FIELDS": {
+          "echelon": {
+            "label": "Echelon"
+          },
+          "story": {
+            "label": "Story Text"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            }
+          }
+        }
+      },
+      "perk": {
+        "FIELDS": {
+          "perkType": {
+            "label": "Perk Type"
+          }
+        },
+        "Types": {
+          "Supernatural": "Supernatural"
+        }
+      },
       "project": {
         "FIELDS": {
           "type": {
@@ -1161,6 +1166,7 @@
     },
     "ActiveEffect": {
       "Name": "Effect",
+      "Filters": "Filters",
       "StatusConditions": "Status Conditions",
       "Source": "Source",
       "Toggle": "Toggle Effect",
@@ -1237,6 +1243,17 @@
             },
             "roll": {
               "label": "Saving Throw Formula"
+            }
+          }
+        }
+      },
+      "abilityModifier": {
+        "FIELDS": {
+          "filters": {
+            "label": "Filters",
+            "keywords": {
+              "label": "Keywords",
+              "hint": "All keywords that an ability must have to receive these modifications."
             }
           }
         }
@@ -1660,6 +1677,9 @@
     }
   },
   "TYPES": {
+    "ActiveEffect": {
+      "abilityModifier": "Ability Modifier"
+    },
     "Actor": {
       "hero": "Hero",
       "npc": "NPC"
@@ -1678,6 +1698,7 @@
     "Item": {
       "ability": "Ability",
       "ancestry": "Ancestry",
+      "ancestryTrait": "Ancestry Trait",
       "career": "Career",
       "class": "Class",
       "complication": "Complication",
@@ -1685,8 +1706,10 @@
       "feature": "Feature",
       "treasure": "Treasure",
       "kit": "Kit",
+      "perk": "Perk",
+      "project": "Project",
       "subclass": "Subclass",
-      "project": "Project"
+      "title": "Title"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",

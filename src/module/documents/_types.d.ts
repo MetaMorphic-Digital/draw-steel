@@ -22,6 +22,7 @@ import {
 import { DrawSteelActiveEffect, DrawSteelCombatantGroup, DrawSteelCombatant, DrawSteelItem } from "./_module.mjs";
 
 // Collator for the types
+type ActiveEffectModel = typeof ActiveEffectModels[keyof typeof ActiveEffectModels];
 type ActorModel = typeof ActorModels[Exclude<keyof typeof ActorModels, "BaseActorModel">];
 type ItemModel = typeof ItemModels[Exclude<keyof typeof ItemModels, "BaseItemModel" | "AdvancementModel">];
 type MessageModel = typeof ChatMessageModels[keyof typeof ChatMessageModels];
@@ -30,6 +31,11 @@ type CombatantGroupModel = typeof CombatantGroupModels[keyof typeof CombatantGro
 type ClientDocument = ReturnType<typeof foundry.documents.abstract.ClientDocumentMixin>;
 
 declare module "@client/documents/_module.mjs" {
+  interface BaseActiveEffect<Model extends ActiveEffectModel = ActiveEffectModel> extends ActiveEffectData, InstanceType<ClientDocument> {
+    type: Model["metadata"]["type"];
+    system: InstanceType<Model>;
+  }
+
   interface BaseActor<Model extends ActorModel = ActorModel> extends ActorData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
@@ -41,11 +47,6 @@ declare module "@client/documents/_module.mjs" {
     type: Model["metadata"]["type"];
     system: InstanceType<Model>;
     effects: Collection<string, DrawSteelActiveEffect>;
-  }
-
-  interface BaseActiveEffect extends ActiveEffectData {
-    type: "base";
-    system: ActiveEffectModels.BaseEffectModel;
   }
   interface BaseChatMessage<Model extends MessageModel = MessageModel> extends ChatMessageData, InstanceType<ClientDocument> {
     type: Model["metadata"]["type"];
@@ -73,6 +74,6 @@ declare module "@client/documents/_module.mjs" {
     type: "text" | "image" | "pdf" | "video";
     system: Record<string, unknown>;
   }
-   
+
   interface BaseToken extends TokenData, InstanceType<ClientDocument> {}
 }
