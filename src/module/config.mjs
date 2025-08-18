@@ -1209,6 +1209,15 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.ability.Target.Self",
       embedLabel: "DRAW_STEEL.Item.ability.Target.Self",
     },
+    selfOrAlly: {
+      label: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
+    },
+    selfAlly: {
+      label: "DRAW_STEEL.Item.ability.Target.SelfAlly",
+      all: "DRAW_STEEL.Item.ability.Target.AllSelfAllies",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.SelfAllyEmbed",
+    },
     special: {
       label: "DRAW_STEEL.Item.ability.Target.Special",
       embedLabel: "DRAW_STEEL.Item.ability.Target.Special",
@@ -1337,19 +1346,19 @@ DRAW_STEEL.Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
-    itemTypes: new Set(["ancestry", "career", "class", "complication", "feature", "kit", "subclass"]),
+    itemTypes: new Set(["ancestry", "ancestryTrait", "career", "class", "complication", "feature", "kit", "perk", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.ItemGrantAdvancement,
   },
   skill: {
     label: "TYPES.Advancement.skill",
     defaultImage: "icons/svg/hanging-sign.svg",
-    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
+    itemTypes: new Set(["career", "ancestryTrait", "class", "complication", "culture", "feature", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.SkillAdvancement,
   },
   language: {
     label: "TYPES.Advancement.language",
     defaultImage: "icons/svg/village.svg",
-    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass"]),
+    itemTypes: new Set(["career", "class", "complication", "culture", "feature", "subclass", "title"]),
     documentClass: pseudoDocuments.advancements.LanguageAdvancement,
   },
 };
@@ -1479,38 +1488,38 @@ DRAW_STEEL.kits = {};
 /* -------------------------------------------------- */
 
 /**
- * @typedef EquipmentCategory
+ * @typedef TreasureCategory
  * @property {string} label
  * @property {FormSelectOption[]} keywords
  */
 
 /**
- * Configuration details for Equipment items
+ * Configuration details for Treasure items
  * Also used by Kits.
  */
 DRAW_STEEL.equipment = {
-  /** @type {Record<string, EquipmentCategory>} */
+  /** @type {Record<string, TreasureCategory>} */
   categories: {
     consumable: {
-      label: "DRAW_STEEL.Item.equipment.Categories.Consumable",
+      label: "DRAW_STEEL.Item.treasure.Categories.Consumable",
       get keywords() {
         return [];
       },
     },
     trinket: {
-      label: "DRAW_STEEL.Item.equipment.Categories.Trinket",
+      label: "DRAW_STEEL.Item.treasure.Categories.Trinket",
       get keywords() {
         return [];
       },
     },
     leveled: {
-      label: "DRAW_STEEL.Item.equipment.Categories.Leveled",
+      label: "DRAW_STEEL.Item.treasure.Categories.Leveled",
       get keywords() {
         return [];
       },
     },
     artifact: {
-      label: "DRAW_STEEL.Item.equipment.Categories.Artifact",
+      label: "DRAW_STEEL.Item.treasure.Categories.Artifact",
       get keywords() {
         return [];
       },
@@ -1519,105 +1528,105 @@ DRAW_STEEL.equipment = {
   /** @type {Record<string, {label: string}>} */
   kinds: {
     other: {
-      label: "DRAW_STEEL.Item.equipment.Kinds.Other",
+      label: "DRAW_STEEL.Item.treasure.Kinds.Other",
     },
     armor: {
-      label: "DRAW_STEEL.Item.equipment.Kinds.Armor",
+      label: "DRAW_STEEL.Item.treasure.Kinds.Armor",
     },
     implement: {
-      label: "DRAW_STEEL.Item.equipment.Kinds.Implement",
+      label: "DRAW_STEEL.Item.treasure.Kinds.Implement",
     },
     weapon: {
-      label: "DRAW_STEEL.Item.equipment.Kinds.Weapon",
+      label: "DRAW_STEEL.Item.treasure.Kinds.Weapon",
     },
   },
   /** @type {Record<string, {label: string, kitEquipment: boolean}>} */
   armor: {
     none: {
-      label: "DRAW_STEEL.Item.equipment.Armor.None",
+      label: "DRAW_STEEL.Item.treasure.Armor.None",
       kitEquipment: true,
     },
     light: {
-      label: "DRAW_STEEL.Item.equipment.Armor.Light",
+      label: "DRAW_STEEL.Item.treasure.Armor.Light",
       kitEquipment: true,
     },
     medium: {
-      label: "DRAW_STEEL.Item.equipment.Armor.Medium",
+      label: "DRAW_STEEL.Item.treasure.Armor.Medium",
       kitEquipment: true,
     },
     heavy: {
-      label: "DRAW_STEEL.Item.equipment.Armor.Heavy",
+      label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
       kitEquipment: true,
     },
     shield: {
-      label: "DRAW_STEEL.Item.equipment.Armor.Shield",
+      label: "DRAW_STEEL.Item.treasure.Armor.Shield",
       kitEquipment: false,
     },
   },
   /** @type {Record<string, {label: string}>} */
   weapon: {
     none: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.None",
+      label: "DRAW_STEEL.Item.treasure.Weapons.None",
     },
     bow: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Bow",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Bow",
     },
     ensnaring: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Ensnaring",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Ensnaring",
     },
     heavy: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Heavy",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Heavy",
     },
     light: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Light",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Light",
     },
     medium: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Medium",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Medium",
     },
     polearm: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Polearm",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Polearm",
     },
     unarmed: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Unarmed",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Unarmed",
     },
     whip: {
-      label: "DRAW_STEEL.Item.equipment.Weapons.Whip",
+      label: "DRAW_STEEL.Item.treasure.Weapons.Whip",
     },
   },
   /** @type {Record<string, {label: string}>} */
   implement: {
     bone: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Bone",
+      label: "DRAW_STEEL.Item.treasure.Implements.Bone",
     },
     crystal: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Crystal",
+      label: "DRAW_STEEL.Item.treasure.Implements.Crystal",
     },
     glass: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Glass",
+      label: "DRAW_STEEL.Item.treasure.Implements.Glass",
     },
     metal: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Metal",
+      label: "DRAW_STEEL.Item.treasure.Implements.Metal",
     },
     stone: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Stone",
+      label: "DRAW_STEEL.Item.treasure.Implements.Stone",
     },
     wood: {
-      label: "DRAW_STEEL.Item.equipment.Implements.Wood",
+      label: "DRAW_STEEL.Item.treasure.Implements.Wood",
     },
   },
   /** @type {Record<string, {label: string}>} */
   other: {
     feet: {
-      label: "DRAW_STEEL.Item.equipment.Other.Feet",
+      label: "DRAW_STEEL.Item.treasure.Other.Feet",
     },
     hands: {
-      label: "DRAW_STEEL.Item.equipment.Other.Hands",
+      label: "DRAW_STEEL.Item.treasure.Other.Hands",
     },
     neck: {
-      label: "DRAW_STEEL.Item.equipment.Other.Neck",
+      label: "DRAW_STEEL.Item.treasure.Other.Neck",
     },
     ring: {
-      label: "DRAW_STEEL.Item.equipment.Other.Ring",
+      label: "DRAW_STEEL.Item.treasure.Other.Ring",
     },
   },
 };
@@ -1630,57 +1639,34 @@ preLocalize("equipment.other", { key: "label" });
 
 /* -------------------------------------------------- */
 
-DRAW_STEEL.features = {
-  /** @type {Record<string, {label: string, subtypes?: Record<string, {label: string}>}>} */
-  types: {
-    perk: {
-      label: "DRAW_STEEL.Item.feature.Types.Perk.Label",
-      subtypes: {
-        crafting: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Crafting",
-        },
-        exploration: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Exploration",
-        },
-        interpersonal: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Interpersonal",
-        },
-        intrigue: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Intrigue",
-        },
-        lore: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Lore",
-        },
-        supernatural: {
-          label: "DRAW_STEEL.Item.feature.Types.Perk.Supernatural",
-        },
-      },
-    },
-    title: {
-      label: "DRAW_STEEL.Item.feature.Types.Title.Label",
-      subtypes: {
-        1: {
-          label: "DRAW_STEEL.ECHELON.1",
-        },
-        2: {
-          label: "DRAW_STEEL.ECHELON.2",
-        },
-        3: {
-          label: "DRAW_STEEL.ECHELON.3",
-        },
-        4: {
-          label: "DRAW_STEEL.ECHELON.4",
-        },
-      },
-    },
-  },
-};
-preLocalize("features.types", { key: "label" });
-preLocalize("features.types.perk.subtypes", { key: "label" });
-preLocalize("features.types.title.subtypes", { key: "label" });
+/**
+ * Configuration details for Feature items.
+ */
+DRAW_STEEL.features = { };
 
 /* -------------------------------------------------- */
 
+/**
+ * Configuration details for perk items.
+ */
+DRAW_STEEL.perks = {
+  /**
+   * Types of perks in addition to the available skill groups.
+   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
+   * @type {Record<string, {label: string}>}
+   */
+  types: {
+    supernatural: {
+      label: "DRAW_STEEL.Item.perk.Types.Supernatural",
+    },
+  },
+};
+
+/* -------------------------------------------------- */
+
+/**
+ * Configuration details for project items.
+ */
 DRAW_STEEL.projects = {
   types: {
     crafting: {

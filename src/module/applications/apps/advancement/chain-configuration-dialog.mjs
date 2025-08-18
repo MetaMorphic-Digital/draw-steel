@@ -21,7 +21,7 @@ export default class ChainConfigurationDialog extends DSApplication {
     if (!chains) {
       throw new Error("The chain configuration dialog was constructed without Chains.");
     }
-    if (!actor || !(actor.documentName === "Actor") || !(actor.type === "character")) {
+    if (!actor || !(actor.documentName === "Actor") || !(actor.type === "hero")) {
       throw new Error("A chain configuration dialog can only be constructed for heroes.");
     }
     super(options);

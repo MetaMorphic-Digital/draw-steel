@@ -4,12 +4,12 @@
   "img": "icons/svg/item-bag.svg",
   "system": {
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "179",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "tactician-sub-1-2-2a",
+    "_dsid": "fog-of-war",
     "keywords": [
       "ranged"
     ],
@@ -25,7 +25,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creatures",
+      "type": "creature",
       "value": 2
     },
     "power": {
@@ -36,8 +36,8 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "Each target is marked by you. You immediately force each targeted creature to make a free strike against a creature of your choice within 5 squares of the targeted creature.\n\n**Mark Benefit**: For the rest of the encounter whenever you or an ally attacks a marked target, you can spend 2 focus to make the marked target free strike a creature of your choice within 5 squares of the marked target."
+      "before": "<p>Each target is marked by you, and must immediately make a free strike against a creature of your choice within 5 squares of them.</p><p><strong>Mark Benefit:</strong> Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to force that target to make a free strike against a creature of your choice within 5 squares of them.</p>",
+      "after": ""
     },
     "spend": {
       "value": null,
@@ -52,7 +52,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140881536,

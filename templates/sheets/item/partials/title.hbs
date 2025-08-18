@@ -1,0 +1,6 @@
+{{formGroup systemFields.echelon value=system.echelon options=echelons disabled=isPlay}}
+{{formGroup systemFields.story value=system.story disabled=isPlay}}
+<fieldset {{disabled isPlay}}>
+  <legend>{{systemFields.prerequisites.label}}</legend>
+  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value}}
+</fieldset>

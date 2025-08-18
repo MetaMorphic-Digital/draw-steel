@@ -4,12 +4,12 @@
   "img": "icons/svg/item-bag.svg",
   "system": {
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "178",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "tactician-ability-4",
+    "_dsid": "squad-forward",
     "keywords": [
       "ranged"
     ],
@@ -25,8 +25,8 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "and",
-      "value": null
+      "type": "selfAlly",
+      "value": 2
     },
     "power": {
       "roll": {
@@ -36,8 +36,8 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "Each target can move their speed."
+      "before": "<p>Each target can move up to their speed.</p>",
+      "after": ""
     },
     "spend": {
       "value": null,
@@ -52,7 +52,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140640029,

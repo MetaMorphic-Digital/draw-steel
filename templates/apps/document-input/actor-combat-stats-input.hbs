@@ -1,5 +1,5 @@
 <section class="standard-form">
-  {{#unless (eq document.type "character")}}
+  {{#unless (eq document.type "hero")}}
   {{formGroup systemFields.combat.fields.turns value=systemSource.combat.turns classes="slim"}}
   {{/unless}}
   {{formGroup systemFields.combat.fields.save.fields.bonus value=systemSource.combat.save.bonus}}

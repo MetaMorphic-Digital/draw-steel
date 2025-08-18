@@ -16,9 +16,9 @@ declare module "./actor-sheet.mjs" {
     actor: documents.DrawSteelActor;
   }
 }
-declare module "./character.mjs" {
-  export default interface DrawSteelCharacterSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.CharacterModel };
+declare module "./hero.mjs" {
+  export default interface DrawSteelHeroSheet {
+    actor: documents.DrawSteelActor & { system: data.Actor.HeroModel };
   }
 }
 declare module "./npc.mjs" {
@@ -66,9 +66,9 @@ export interface ActorSheetAbilitiesContext {
   showHeader: boolean;
 }
 
-export interface ActorSheetEquipmentContext {
+export interface ActorSheetTreasureContext {
   label: string;
-  equipment: ActorSheetItemContext[];
+  treasure: ActorSheetItemContext[];
   showAdd: boolean;
 }
 

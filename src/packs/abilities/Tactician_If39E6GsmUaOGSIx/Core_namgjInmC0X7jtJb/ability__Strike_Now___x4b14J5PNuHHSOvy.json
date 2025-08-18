@@ -1,0 +1,66 @@
+{
+  "folder": "namgjInmC0X7jtJb",
+  "name": "\"Strike Now!\"",
+  "type": "ability",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "177",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "strike-now",
+    "story": "Your foe left an opening. You point this out to an ally!",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p><span class=\"fontstyle0\">The target can use a signature ability as a free triggered action.</span></p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "You target two allies instead of one.",
+      "value": 5
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755474002285,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "x4b14J5PNuHHSOvy",
+  "sort": 0,
+  "_key": "!items!x4b14J5PNuHHSOvy"
+}

@@ -4,12 +4,12 @@
   "img": "icons/svg/item-bag.svg",
   "system": {
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "178",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "tactician-ability-3",
+    "_dsid": "inspiring-strike",
     "keywords": [
       "melee",
       "ranged",
@@ -28,7 +28,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "creatureObject",
       "value": 1
     },
     "power": {
@@ -73,40 +73,20 @@
             }
           }
         },
-        "ivbUYZQIK2DA6Jjw": {
-          "type": "applied",
-          "_id": "ivbUYZQIK2DA6Jjw",
+        "JuGJkTS6GFA0naaW": {
           "name": "",
-          "applied": {
+          "img": null,
+          "type": "other",
+          "_id": "JuGJkTS6GFA0naaW",
+          "other": {
             "tier1": {
-              "potency": {
-                "characteristic": "none",
-                "value": "@potency.weak"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
             },
             "tier2": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.average"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
             },
             "tier3": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.strong"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery, and each of you gains an edge on the next ability power roll they make in the encounter",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery, and each of you gains an edge on the next ability roll you make during the encounter"
             }
           }
         }
@@ -129,7 +109,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140634396,

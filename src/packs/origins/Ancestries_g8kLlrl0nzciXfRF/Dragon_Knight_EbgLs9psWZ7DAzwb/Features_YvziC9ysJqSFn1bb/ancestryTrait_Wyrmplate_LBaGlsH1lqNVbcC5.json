@@ -1,0 +1,90 @@
+{
+  "folder": "YvziC9ysJqSFn1bb",
+  "name": "Wyrmplate",
+  "type": "ancestryTrait",
+  "_id": "LBaGlsH1lqNVbcC5",
+  "img": "icons/equipment/chest/breastplate-layered-gold.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your hardened scales grant you damage immunity equal to your level to one of the following damage types: acid, cold, corruption, fire, lightning, or poison. You can change your damage immunity type when you finish a respite.</p>",
+      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunity.[damage type]</code> , where [damage type] is replaced with acid, cold, corruption, fire, lightning, or poison.</p>"
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "29",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "wyrmplate",
+    "advancements": {},
+    "points": null
+  },
+  "effects": [
+    {
+      "name": "Wyrmplate",
+      "origin": "Compendium.draw-steel.origins.Item.LBaGlsH1lqNVbcC5",
+      "img": "icons/equipment/chest/breastplate-layered-gold.webp",
+      "disabled": true,
+      "_id": "WTEHqU3xFlhwv9JN",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunity.acid",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.346",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1754523115273,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!LBaGlsH1lqNVbcC5.WTEHqU3xFlhwv9JN"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754522554970,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!LBaGlsH1lqNVbcC5"
+}

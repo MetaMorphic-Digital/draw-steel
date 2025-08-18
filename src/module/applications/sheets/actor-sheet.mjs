@@ -113,7 +113,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         return { biography: tabs.biography };
       }
 
-      if (this.document.type !== "character") {
+      if (this.document.type !== "hero") {
         delete tabs.equipment;
         delete tabs.projects;
       }
@@ -306,11 +306,18 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   async _prepareFeaturesContext() {
-    const features = this.actor.itemTypes.feature.toSorted((a, b) => a.sort - b.sort);
+    const features = [
+      ...this.actor.itemTypes.feature,
+      ...this.actor.itemTypes.ancestryTrait,
+      ...this.actor.itemTypes.perk,
+      ...this.actor.itemTypes.title,
+    ].sort((a, b) => a.sort - b.sort);
     const context = [];
 
     for (const feature of features) {
-      context.push(await this._prepareItemContext(feature));
+      const featureContext = await this._prepareItemContext(feature);
+      featureContext.typeLabel = CONFIG.Item.typeLabels[feature.type];
+      context.push(featureContext);
     }
 
     return context;
@@ -342,7 +349,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       };
     }
 
-    // Adding here instead of the initial context declaration so that the "other" category appears last on the character sheet
+    // Adding here instead of the initial context declaration so that the "other" category appears last on the actor sheet
     context["other"] = {
       label: game.i18n.localize("DRAW_STEEL.SHEET.Other"),
       abilities: [],
@@ -577,7 +584,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       {
         name: "DRAW_STEEL.Item.project.Craft.FromEquipment.Label",
         icon: "<i class=\"fa-solid fa-hammer\"></i>",
-        condition: (target) => this._getEmbeddedDocument(target)?.type === "equipment",
+        condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           const project = await item.system.createProject(this.actor);
