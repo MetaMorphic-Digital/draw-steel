@@ -71,7 +71,7 @@ export default class KitModel extends AdvancementModel {
     if (allowed === false) return false;
     if (!this.advancements.size) {
       const signature = {
-        type: "language",
+        type: "itemGrant",
         chooseN: 1,
         name: game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.name"),
         description: `<p>${game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.description")}</p>`,
