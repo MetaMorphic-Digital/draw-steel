@@ -65,6 +65,27 @@ export default class KitModel extends AdvancementModel {
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!this.advancements.size) {
+      const signature = {
+        type: "itemGrant",
+        chooseN: 1,
+        name: game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.name"),
+        description: `<p>${game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.description")}</p>`,
+        requirements: {
+          level: null,
+        },
+        _id: "signature".padEnd(16, "0"),
+      };
+      this.parent.updateSource({ [`system.advancements.${signature._id}`]: signature });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    * @param {DocumentHTMLEmbedConfig} config
@@ -86,48 +107,6 @@ export default class KitModel extends AdvancementModel {
     const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Prompt the user for which kit to replace when the actor is already at the maximum.
-   * @returns {Promise<void|false>}
-   */
-  async kitSwapDialog(actor) {
-    const kits = actor.system.kits;
-    const kitLimit = actor.system.class?.system.kits;
-    if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
-
-    // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.kit.Swap.Header", { kit: this.parent.name, actor: actor.name })}</strong>`;
-    for (const kit of kits) {
-      radioButtons += `
-        <div class="form-group">
-          <label for="${kit.id}">${kit.name}</label>
-          <div class="form-fields">
-            <input type="radio" value="${kit.id}" name="kit" id="${kit.id}" ${(kits.length === 1 ? "checked" : "")}>
-          </div>
-        </div>
-      `;
-    }
-
-    /** @type {object | null} */
-    const fd = await ds.applications.api.DSDialog.input({
-      content: radioButtons,
-      window: {
-        icon: "fa-solid fa-arrow-right-arrow-left",
-        title: "DRAW_STEEL.Item.kit.Swap.Title",
-      },
-      ok: {
-        label: "DRAW_STEEL.Item.kit.Swap.Button",
-        icon: "fa-solid fa-arrow-right-arrow-left",
-      },
-    });
-    if (!fd?.kit) return false;
-
-    const deleted = await actor.items.get(fd.kit).advancementDeletionPrompt({ skipDialog: true });
-    if (!deleted) return false;
   }
 
   /* -------------------------------------------------- */

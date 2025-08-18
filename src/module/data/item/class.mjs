@@ -57,8 +57,6 @@ export default class ClassModel extends AdvancementModel {
 
     schema.recoveries = requiredInteger({ initial: 8 });
 
-    schema.kits = new fields.NumberField({ required: true, initial: 1 });
-
     return schema;
   }
 
@@ -67,7 +65,6 @@ export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
   async getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
-    context.kitOptions = Array.fromRange(3).map(number => ({ label: number, value: number }));
   }
 
   /* -------------------------------------------------- */
