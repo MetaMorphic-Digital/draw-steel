@@ -1209,6 +1209,15 @@ DRAW_STEEL.abilities = {
       label: "DRAW_STEEL.Item.ability.Target.Self",
       embedLabel: "DRAW_STEEL.Item.ability.Target.Self",
     },
+    selfOrAlly: {
+      label: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
+    },
+    selfAlly: {
+      label: "DRAW_STEEL.Item.ability.Target.SelfAlly",
+      all: "DRAW_STEEL.Item.ability.Target.AllSelfAllies",
+      embedLabel: "DRAW_STEEL.Item.ability.Target.SelfAllyEmbed",
+    },
     special: {
       label: "DRAW_STEEL.Item.ability.Target.Special",
       embedLabel: "DRAW_STEEL.Item.ability.Target.Special",

@@ -15,7 +15,7 @@
       "strike",
       "weapon"
     ],
-    "type": "triggered action",
+    "type": "main",
     "category": "heroic",
     "resource": 5,
     "trigger": "",
@@ -48,37 +48,55 @@
                 "characteristic": "reason",
                 "value": "@potency.weak"
               },
-              "display": "R < [weak], frightened of the triggering ally (save ends)",
+              "display": "{{potency}}, the target is frightened of the triggering ally (save ends)",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier2": {
               "potency": {
                 "characteristic": "reason",
                 "value": "@potency.average"
               },
-              "display": "R < [average], frightened of the triggering ally (save ends)",
+              "display": "",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier3": {
               "potency": {
                 "characteristic": "reason",
                 "value": "@potency.strong"
               },
-              "display": "R < [strong], frightened of the triggering ally (save ends)",
+              "display": "",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }
       }
     },
     "effect": {
-      "before": "",
+      "before": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains 5 temporary Stamina for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
       "after": ""
     },
     "spend": {

@@ -14,7 +14,7 @@
       "melee",
       "weapon"
     ],
-    "type": "triggered action",
+    "type": "main",
     "category": "signature",
     "resource": null,
     "trigger": "",
@@ -26,7 +26,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "or",
+      "type": "selfOrAlly",
       "value": null
     },
     "power": {
@@ -38,7 +38,7 @@
     },
     "effect": {
       "before": "",
-      "after": "The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1."
+      "after": "<p>The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1.</p>"
     },
     "spend": {
       "value": null,

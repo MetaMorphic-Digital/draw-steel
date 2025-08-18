@@ -25,7 +25,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "allies",
+      "type": "ally",
       "value": 3
     },
     "power": {
@@ -36,40 +36,20 @@
         ]
       },
       "effects": {
-        "uqTWwNFW0o2aXgJo": {
-          "type": "applied",
-          "_id": "uqTWwNFW0o2aXgJo",
+        "rcbUjWpmoFSi1wS4": {
           "name": "",
-          "applied": {
+          "img": null,
+          "type": "other",
+          "_id": "rcbUjWpmoFSi1wS4",
+          "other": {
             "tier1": {
-              "potency": {
-                "characteristic": "none",
-                "value": "@potency.weak"
-              },
-              "display": "the target gains one surge",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "Each target gains 1 surge."
             },
             "tier2": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.average"
-              },
-              "display": "the target gains two surges",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "Each target gains 2 surges."
             },
             "tier3": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.strong"
-              },
-              "display": "the target gains three surges",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "Each target gains 3 surges."
             }
           }
         }

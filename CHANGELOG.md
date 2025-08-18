@@ -32,12 +32,13 @@
 - Added age, height, and weight info to the Biography tab for characters.
 - Added data path for bonuses to max stamina per echelon. (#259)
 - Expanded end of encounter prompt to reset heroic resources & temporary stamina. (#612)
-- Added name and image inputs to pseudodocument creation, e.g. Power Roll Effects. (#718)
 - Added a "Next Respite" option for ending Active Effects. (#694)
 - Added an option in the character sheet equipment context menu to start a crafting project for that equipment.
 - Add a setting for which project events type to use, "None", "Roll for Event", or "Event Milestones". (#710)
   - If set to "Roll for Event", a roll button will appear in the chat message.
   - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
+- Added name and image inputs to Power Roll Effect creation. (#718)
+- Added "Self or Ally" and "Self and Allies" targeting options.
 - When a project roll is a breakthrough, a button will appear to roll the project again.
 - The Source Information popout will show the Compendium Source of an item if it is available.
 - Added a generic "spend hero token" option available to all users.

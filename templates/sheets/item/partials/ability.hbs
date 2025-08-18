@@ -28,7 +28,7 @@
 <fieldset>
   <legend>{{systemFields.target.label}}</legend>
   {{formGroup systemFields.target.fields.type value=system.target.type options=targetTypes}}
-  {{#if (and (ne system.target.type "self") (ne system.target.type "special"))}}
+  {{#if (and (ne system.target.type "self") (ne system.target.type "selfOrAlly") (ne system.target.type "special"))}}
   {{formGroup systemFields.target.fields.value value=system.target.value placeholder=(localize "DRAW_STEEL.Item.ability.Target.All")}}
   {{/if}}
 </fieldset>

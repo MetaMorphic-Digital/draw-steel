@@ -28,7 +28,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "creatureObject",
       "value": 1
     },
     "power": {
@@ -73,40 +73,20 @@
             }
           }
         },
-        "ivbUYZQIK2DA6Jjw": {
-          "type": "applied",
-          "_id": "ivbUYZQIK2DA6Jjw",
+        "JuGJkTS6GFA0naaW": {
           "name": "",
-          "applied": {
+          "img": null,
+          "type": "other",
+          "_id": "JuGJkTS6GFA0naaW",
+          "other": {
             "tier1": {
-              "potency": {
-                "characteristic": "none",
-                "value": "@potency.weak"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
             },
             "tier2": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.average"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
             },
             "tier3": {
-              "potency": {
-                "characteristic": "",
-                "value": "@potency.strong"
-              },
-              "display": "you or one ally within 10 squares can spend a Recovery, and each of you gains an edge on the next ability power roll they make in the encounter",
-              "always": [],
-              "failure": [],
-              "success": []
+              "display": "you or one ally within 10 squares of you can spend a Recovery, and each of you gains an edge on the next ability roll you make during the encounter"
             }
           }
         }

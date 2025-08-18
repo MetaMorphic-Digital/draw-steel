@@ -25,8 +25,8 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "and",
-      "value": null
+      "type": "selfAlly",
+      "value": 2
     },
     "power": {
       "roll": {
@@ -36,8 +36,8 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "Each target can move their speed."
+      "before": "<p>Each target can move up to their speed.</p>",
+      "after": ""
     },
     "spend": {
       "value": null,

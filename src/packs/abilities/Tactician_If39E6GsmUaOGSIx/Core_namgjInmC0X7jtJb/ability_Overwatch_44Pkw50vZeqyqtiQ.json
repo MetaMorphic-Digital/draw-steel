@@ -13,10 +13,10 @@
     "keywords": [
       "ranged"
     ],
-    "type": "triggered action",
+    "type": "triggered",
     "category": "signature",
     "resource": null,
-    "trigger": "",
+    "trigger": "The target moves.",
     "distance": {
       "type": "ranged",
       "primary": 10,
@@ -25,7 +25,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "enemy",
+      "type": "creature",
       "value": 1
     },
     "power": {
@@ -36,12 +36,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "At any point during the target’s movement, one ally can make a free strike against them."
+      "before": "<p>At any point during the target’s movement, one ally can make a free strike against them.</p>",
+      "after": ""
     },
     "spend": {
-      "value": null,
-      "text": ""
+      "value": 1,
+      "text": "If the target has R < Average, they are slowed (EoT)"
     },
     "story": "Under your direction, an ally waits for just the right moment to strike."
   },

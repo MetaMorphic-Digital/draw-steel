@@ -1,33 +1,33 @@
 {
-  "folder": "78pbwV8U2xiEUz57",
-  "name": "\"Strike Now!\"",
+  "folder": "Xyfx7wKsdZmJloDI",
+  "name": "Targets of Opportunity",
   "type": "ability",
-  "_id": "pBj37n9AteNMfSCo",
-  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
+  "_id": "zLKvoysqHElI2q54",
+  "img": "icons/svg/item-bag.svg",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "177",
+      "page": "179",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "strike-now",
-    "story": "Your foe left an opening. You point this out to an ally!",
+    "_dsid": "targets-of-opportunity",
+    "story": "You point out easy targets to your friends, allowing them to include more enemies in their attacks.",
     "keywords": [
       "ranged"
     ],
-    "type": "action",
-    "category": "",
-    "resource": null,
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": 5
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
-      "value": 1
+      "type": "creature",
+      "value": 2
     },
     "power": {
       "roll": {
@@ -37,12 +37,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p><span class=\"fontstyle0\">The target can use a signature ability as a free triggered action.</span></p>",
+      "before": "<p>Each target is marked by you, and you gain two surges.</p><p><strong>Mark Benefit:</strong> Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to add one additional target to the strike.</p>",
       "after": ""
     },
     "spend": {
-      "text": "You target two allies instead of one.",
-      "value": 5
+      "text": "",
+      "value": null
     }
   },
   "effects": [],
@@ -58,9 +58,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1752900763136,
+    "createdTime": 1755476598558,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!pBj37n9AteNMfSCo"
+  "_key": "!items!zLKvoysqHElI2q54"
 }

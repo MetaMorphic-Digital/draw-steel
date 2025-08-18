@@ -13,10 +13,10 @@
     "keywords": [
       "ranged"
     ],
-    "type": "triggered action",
+    "type": "triggered",
     "category": "signature",
     "resource": null,
-    "trigger": "",
+    "trigger": "The target deals damage to another creature.",
     "distance": {
       "type": "ranged",
       "primary": 10,
@@ -36,12 +36,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "The target gains two surges, which they can use on the triggering damage."
+      "before": "<p>The target gains 2 surges, which they can use on the triggering damage.</p>",
+      "after": "<p>The target gains two surges, which they can use on the triggering damage.</p>"
     },
     "spend": {
-      "value": null,
-      "text": ""
+      "value": 1,
+      "text": "If the damage has any potency effect associated with it, the potency is increased by 1"
     },
     "story": "Your leadership aids an ally."
   },
