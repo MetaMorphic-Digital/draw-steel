@@ -25,49 +25,107 @@
       "level": 6
     },
     "advancements": {
-      "qeqJmWU8sdfdEfWO": {
+      "SGcIk0R038jUuckL": {
+        "name": "Skill",
+        "img": null,
         "type": "skill",
-        "_id": "qeqJmWU8sdfdEfWO",
-        "name": "Guaranteed Skills",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "SGcIk0R038jUuckL",
+        "description": "<p>You gain the Hide and Sneak skills.</p>",
         "skills": {
+          "groups": [],
           "choices": [
             "hide",
             "sneak"
           ]
         },
+        "chooseN": 2
+      },
+      "SRAejnOFwwqJ7PtH": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "SRAejnOFwwqJ7PtH",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "upSQS0I1HD3HAmCS": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "upSQS0I1HD3HAmCS",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "K6p4mRHr2oQrNzr9": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "K6p4mRHr2oQrNzr9",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "rVxzta9pyPzGkeRk": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
         "requirements": {
           "level": 1
         },
-        "description": "<p>You gain the Hide and Sneak skills.</p>"
-      },
-      "vJNXECXFdxjjxINx": {
-        "type": "skill",
-        "_id": "vJNXECXFdxjjxINx",
-        "name": "Skill Choices",
+        "_id": "rVxzta9pyPzGkeRk",
+        "description": "<p>Choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups. (<em>Quick Build:</em> Criminal Underworld, Hide, Lie, Pick Lock, Pick Pocket, Sabotage, Sneak.)</p>",
         "skills": {
+          "choices": [
+            "criminalUnderworld"
+          ],
           "groups": [
             "exploration",
             "interpersonal",
             "intrigue"
-          ],
-          "choices": [
-            "criminalUnderworld"
           ]
         },
-        "chooseN": 5,
+        "chooseN": 1
+      },
+      "t6jYyY0XwIK2EEJs": {
+        "name": "Shadow College",
+        "img": null,
+        "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "description": "<p>Then choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups.</p>"
+        "_id": "t6jYyY0XwIK2EEJs",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.w9bPx3bsOslJ43Tj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Hh1KF3TjXZydyOL2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.FVMUt54L6k3ZOO58"
+          }
+        ],
+        "description": "<p>You graduated from a shadow college chosen from the following options, each of which grants you a skill. (<em>Quick Build:</em> College of Black Ash.)</p>"
       },
-      "xbz684UecAtQyYgk": {
+      "MFtoHbyZrLvp0QdX": {
         "name": "Features",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "xbz684UecAtQyYgk",
+        "_id": "MFtoHbyZrLvp0QdX",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.8UVDKdZXiXzfFI0I"
@@ -75,16 +133,18 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.weYBoNzMpzcu9qUr"
           }
-        ]
+        ],
+        "description": "<p>You gain the following features.</p>"
       },
-      "902QsazsIAjNioxx": {
+      "e5IGhKXPmer934df": {
         "name": "Signature Ability",
-        "img": null,
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "902QsazsIAjNioxx",
+        "_id": "e5IGhKXPmer934df",
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (<em>Quick Build:</em> Teamwork Has Its Place.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.avpi9kfzRK0B9YIk"
@@ -101,14 +161,15 @@
         ],
         "chooseN": 1
       },
-      "6Hec0kIaaXm1ZSPf": {
+      "jwPkEg7OrYzXIcvN": {
         "name": "3 Insight",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "6Hec0kIaaXm1ZSPf",
+        "_id": "jwPkEg7OrYzXIcvN",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 insight to use. (<em>Quick Build:</em> Get In Get Out.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.fxdiH1SHqvKGcMYY"
@@ -125,14 +186,15 @@
         ],
         "chooseN": 1
       },
-      "SuaZbEJYFdKVDgnS": {
+      "cwvHruLPKOsQLebf": {
         "name": "5 Insight",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "SuaZbEJYFdKVDgnS",
+        "_id": "cwvHruLPKOsQLebf",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 insight to use. (<em>Quick Build:</em> Coup de Grace.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.wdOVSaOWjUsPmeEM"
@@ -149,24 +211,79 @@
         ],
         "chooseN": 1
       },
-      "rqzrydpzFK0X1jwh": {
-        "name": "Shadow College",
-        "img": null,
+      "FH9787PO0HX1I60w": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "rqzrydpzFK0X1jwh",
+        "_id": "FH9787PO0HX1I60w",
+        "description": "<p>You can use and gain the benefits of a kit. See Chapter 6: Kits for more information. (<em>Quick Build:</em> Cloak and Dagger.)</p>",
         "chooseN": 1,
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.w9bPx3bsOslJ43Tj"
+            "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.Hh1KF3TjXZydyOL2"
+            "uuid": "Compendium.draw-steel.character-options.Item.dFKiwPs0hVo7uWei"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.FVMUt54L6k3ZOO58"
+            "uuid": "Compendium.draw-steel.character-options.Item.eQsxbl59pEjHEyB7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.26dSN2U5BPYxURBl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZQVco8CZprfeqPp6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.49hPWhEliTnRbuxT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.x41mBdtcCGTj8Quy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jHJnlHyRRNf9V5hm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.uEExxUnkmJ1whpCz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jBAKshrCTStqX7yI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.IWcztYRBrAMdRQyf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.tfBbJyfk0ARRiPJU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RhaBwqKzijzbJcCQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.JE0Q1L35MuOGLVVJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.B07q1yyc5HSCnAf7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.74X1pEcNgz1OQC2x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.UWjNAZn9cBAMUWB0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZoWDIjHoCJjr1uo1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.NkzAlCFgDeGuTnzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AOCz8Nufy6kbg85v"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ]
       }
