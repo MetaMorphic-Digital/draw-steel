@@ -138,6 +138,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Speed|`system.movement.value`|
+|Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
