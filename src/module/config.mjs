@@ -2,9 +2,6 @@ import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 
 /** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
-/** @import { DataField } from "@common/data/fields.mjs" */
-
-export const DRAW_STEEL = {};
 
 /* -------------------------------------------------- */
 
@@ -16,7 +13,7 @@ export const DRAW_STEEL = {};
  * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
-DRAW_STEEL.characteristics = {
+export const characteristics = {
   might: {
     label: "DRAW_STEEL.Actor.characteristics.might.full",
     hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
@@ -51,7 +48,7 @@ preLocalize("characteristics", { keys: ["label", "hint"] });
  *
  * @type {Record<number, {label: string, levels: number[]}>}
  */
-DRAW_STEEL.echelons = {
+export const echelons = {
   1: {
     label: "DRAW_STEEL.ECHELON.1",
     threshold: -Infinity,
@@ -77,7 +74,7 @@ preLocalize("echelons", { key: "label" });
  * Valid letter modifiers for size 1 creatures.
  * @enum {{label: string}}
  */
-DRAW_STEEL.sizes = {
+export const sizes = {
   T: {
     label: "DRAW_STEEL.Actor.base.sizes.T",
   },
@@ -100,7 +97,7 @@ preLocalize("sizes", { key: "label" });
  * Order also functions as a priority list for DrawSteelTokenDocument#_inferMovementAction.
  * @type {string[]}
  */
-DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
+export const speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"];
 
 /* -------------------------------------------------- */
 
@@ -108,7 +105,7 @@ DRAW_STEEL.speedOptions = ["teleport", "fly", "walk", "swim", "burrow", "climb"]
  * Configuration information for damage types.
  * @type {Record<string, {label: string, color: foundry.utils.Color}>}
  */
-DRAW_STEEL.damageTypes = {
+export const damageTypes = {
   acid: {
     label: "DRAW_STEEL.DAMAGE_TYPE.Acid",
     color: foundry.utils.Color.fromString("#14ff14"),
@@ -156,7 +153,7 @@ preLocalize("damageTypes", { key: "label" });
  * This is included in ds.CONFIG not because the top level keys can be customized
  * but because the properties within the object can be customized.
  */
-DRAW_STEEL.healingTypes = {
+export const healingTypes = {
   value: {
     label: "DRAW_STEEL.HEALING_TYPE.Value",
   },
@@ -185,7 +182,7 @@ preLocalize("healingTypes", { key: "label" });
  * The `_id` property is handled as part of the merging process.
  * @type {Record<string, DrawSteelCondition>}
  */
-DRAW_STEEL.conditions = {
+export const conditions = {
   bleeding: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Bleeding.name",
     img: "icons/svg/blood.svg",
@@ -254,7 +251,7 @@ DRAW_STEEL.conditions = {
  * Times when an effect can end.
  * @enum {{label: string, abbreviation: string}}
  */
-DRAW_STEEL.effectEnds = {
+export const effectEnds = {
   turn: {
     label: "DRAW_STEEL.ActiveEffect.Ends.Turn.Label",
     abbreviation: "DRAW_STEEL.ActiveEffect.Ends.Turn.Abbr",
@@ -284,7 +281,7 @@ preLocalize("effectEnds", { keys: ["label", "abbreviation"] });
  *  optgroups: FormSelectOption[]
  * }}
  */
-DRAW_STEEL.skills = {
+export const skills = {
   groups: {
     crafting: {
       label: "DRAW_STEEL.SKILL.Group.Crafting",
@@ -536,7 +533,7 @@ DRAW_STEEL.skills = {
 preLocalize("skills.groups", { key: "label" });
 preLocalize("skills.list", { key: "label" });
 
-Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
+Object.defineProperty(skills, "optgroups", {
   /** @type {FormSelectOption[]} */
   get: function() {
     const config = ds.CONFIG.skills;
@@ -553,7 +550,7 @@ Object.defineProperty(DRAW_STEEL.skills, "optgroups", {
  * Configuration information for languages.
  * @type {Record<string, {label: string}>}
  */
-DRAW_STEEL.languages = {
+export const languages = {
   // ancestry languages
   anjali: {
     label: "DRAW_STEEL.LANGUAGE.Anjali",
@@ -688,7 +685,7 @@ preLocalize("languages", { key: "label" });
 /**
  * Configuration information for negotiations.
  */
-DRAW_STEEL.negotiation = {
+export const negotiation = {
   /** @type {Record<string, {label: string}>} */
   motivations: {
     benevolence: {
@@ -736,7 +733,7 @@ preLocalize("negotiation.motivations", { key: "label" });
 /**
  * Configuration information for height and weight measurements.
  */
-DRAW_STEEL.measurements = {
+export const measurements = {
   /** @type {Record<string, { label: string; group: string }>} */
   height: {
     in: {
@@ -784,7 +781,7 @@ preLocalize("measurements.groups", { keys: ["label"] });
 /**
  * Configuration information for heroes.
  */
-DRAW_STEEL.hero = {
+export const hero = {
   /** Items added to new heroes in _preCreate. */
   defaultItems: new Set([
     // Aid Attack
@@ -854,7 +851,7 @@ preLocalize("hero.tokenSpends", { keys: ["label", "messageContent"], sort: true 
 /**
  * Configuration information for monsters.
  */
-DRAW_STEEL.monsters = {
+export const monsters = {
   /** @type {Record<string, {label: string, group: string}>} */
   keywords: {
     abyssal: {
@@ -979,7 +976,7 @@ preLocalize("monsters.organizations", { key: "label" });
 /**
  * Configuration information for Ability items.
  */
-DRAW_STEEL.abilities = {
+export const abilities = {
   /** @type {Record<string, {label: string, group?: string}>} */
   keywords: {
     animal: {
@@ -1246,7 +1243,7 @@ preLocalize("abilities.distances", { keys: ["label", "primary", "secondary", "te
 preLocalize("abilities.targets", { keys: ["label", "all"] });
 preLocalize("abilities.forcedMovement", { keys: ["label", "vertical"] });
 
-Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
+Object.defineProperty(abilities.keywords, "optgroups", {
   /** @type {FormSelectOption[]} */
   get: function() {
     const sortedKeywords = Object.entries(ds.CONFIG.abilities.keywords).sort(([keyA, valueA], [keyB, valueB]) => {
@@ -1289,7 +1286,7 @@ Object.defineProperty(DRAW_STEEL.abilities.keywords, "optgroups", {
  * Valid types for the PowerRollEffect pseudo-document.
  * @type {Record<string, PowerRollEffectType>}
  */
-DRAW_STEEL.PowerRollEffect = {
+export const PowerRollEffect = {
   damage: {
     label: "TYPES.PowerRollEffect.damage",
     defaultImage: "icons/svg/fire.svg",
@@ -1342,7 +1339,7 @@ preLocalize("PowerRollEffect", { key: "label" });
  */
 
 /** @type {Record<string, AdvancementType>} */
-DRAW_STEEL.Advancement = {
+export const Advancement = {
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
@@ -1378,7 +1375,7 @@ preLocalize("Advancement", { key: "label" });
 /**
  * Configuration details for Culture items.
  */
-DRAW_STEEL.culture = {
+export const culture = {
   /**  @type {Record<string, CultureAspect>} */
   aspects: {
     nomadic: {
@@ -1482,7 +1479,7 @@ preLocalize("culture.group", { key: "label" });
  * Configuration details for Kit items.
  * @type {Record<string,  Record<string, {label: string}>>}
  */
-DRAW_STEEL.kits = {};
+export const kits = {};
 // preLocalize("kits.types", {key: "label"});
 
 /* -------------------------------------------------- */
@@ -1497,7 +1494,7 @@ DRAW_STEEL.kits = {};
  * Configuration details for Treasure items
  * Also used by Kits.
  */
-DRAW_STEEL.equipment = {
+export const equipment = {
   /** @type {Record<string, TreasureCategory>} */
   categories: {
     consumable: {
@@ -1642,14 +1639,14 @@ preLocalize("equipment.other", { key: "label" });
 /**
  * Configuration details for Feature items.
  */
-DRAW_STEEL.features = { };
+export const features = { };
 
 /* -------------------------------------------------- */
 
 /**
  * Configuration details for perk items.
  */
-DRAW_STEEL.perks = {
+export const perks = {
   /**
    * Types of perks in addition to the available skill groups.
    * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
@@ -1667,7 +1664,7 @@ DRAW_STEEL.perks = {
 /**
  * Configuration details for project items.
  */
-DRAW_STEEL.projects = {
+export const projects = {
   types: {
     crafting: {
       label: "DRAW_STEEL.Item.project.Types.Crafting",
