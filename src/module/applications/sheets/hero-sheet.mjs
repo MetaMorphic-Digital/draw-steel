@@ -465,16 +465,6 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
           if (!confirmation) return;
         }
       }
-      else if (item.type === "kit") {
-        const actorClass = this.actor.system.class;
-        if (actorClass?.system.kits === 0) {
-          const message = game.i18n.format("DRAW_STEEL.Item.kit.NotAllowedByClass", { class: actorClass.name });
-          ui.notifications.error(message, { console: false });
-          throw new Error(message);
-        }
-        const swapKit = await item.system.kitSwapDialog(this.actor);
-        if (swapKit === false) return false;
-      }
       return item.system.applyAdvancements({ actor: this.actor, levels: { end: this.actor.system.level } });
     }
 
