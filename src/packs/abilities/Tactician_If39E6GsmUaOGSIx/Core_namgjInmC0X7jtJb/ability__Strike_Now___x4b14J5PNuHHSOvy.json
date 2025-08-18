@@ -1,22 +1,21 @@
 {
-  "folder": "78pbwV8U2xiEUz57",
-  "name": "Mark",
+  "folder": "namgjInmC0X7jtJb",
+  "name": "\"Strike Now!\"",
   "type": "ability",
-  "_id": "nTU8DYaGb8P4afyP",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/targeting/target-strike-triple-blue.webp",
   "system": {
     "source": {
-      "book": "",
-      "page": "",
-      "license": "",
+      "book": "Heroes",
+      "page": "177",
+      "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "mark",
-    "story": "You draw your allies’ attention to a specific foe—with devastating effect.",
+    "_dsid": "strike-now",
+    "story": "Your foe left an opening. You point this out to an ally!",
     "keywords": [
       "ranged"
     ],
-    "type": "maneuver",
+    "type": "main",
     "category": "",
     "resource": null,
     "trigger": "",
@@ -26,7 +25,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "ally",
       "value": 1
     },
     "power": {
@@ -37,16 +36,15 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
+      "before": "<p><span class=\"fontstyle0\">The target can use a signature ability as a free triggered action.</span></p>",
       "after": ""
     },
     "spend": {
-      "text": "",
-      "value": null
+      "text": "You target two allies instead of one.",
+      "value": 5
     }
   },
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -55,12 +53,14 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1752900599416,
+    "createdTime": 1755474002285,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!nTU8DYaGb8P4afyP"
+  "_id": "x4b14J5PNuHHSOvy",
+  "sort": 0,
+  "_key": "!items!x4b14J5PNuHHSOvy"
 }

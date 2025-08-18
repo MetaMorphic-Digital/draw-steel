@@ -80,7 +80,7 @@
           ]
         },
         "chooseN": 2,
-        "description": "<p>Then choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group.</p>"
+        "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build</em>: Lead, Monsters, Strategy.)</p>"
       },
       "MP2iZkK0a0TBrk2f": {
         "name": "Mark",
@@ -92,7 +92,7 @@
         "_id": "MP2iZkK0a0TBrk2f",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.nTU8DYaGb8P4afyP"
+            "uuid": "Compendium.draw-steel.abilities.Item.zyd6C7phOZr6EAQ9"
           }
         ],
         "description": "<p>You know how to focus the attention of your allies as you push them toward victory.</p>"
@@ -107,9 +107,31 @@
         "_id": "GaCGwCaDeZ0tIzEW",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.pBj37n9AteNMfSCo"
+            "uuid": "Compendium.draw-steel.abilities.Item.x4b14J5PNuHHSOvy"
           }
         ]
+      },
+      "TPNKDjRP9rjsZfdo": {
+        "name": "Tactical Doctrine",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "TPNKDjRP9rjsZfdo",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VfwdbL1GG2Dx0zv7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aYjVEZyiYqtdGGPS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OjWhetKz8boQxExU"
+          }
+        ],
+        "chooseN": 1,
+        "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build</em>: Vanguard and the Intimidate skill.)</p><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
       }
     },
     "source": {
@@ -147,7 +169,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140107957,

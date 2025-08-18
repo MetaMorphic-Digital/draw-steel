@@ -4,12 +4,12 @@
   "img": "icons/svg/item-bag.svg",
   "system": {
     "source": {
-      "book": "Backer Packet",
-      "page": "#2",
+      "book": "Heroes",
+      "page": "178",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "tactician-ability-2",
+    "_dsid": "concussive-strike",
     "keywords": [
       "melee",
       "ranged",
@@ -28,7 +28,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "creatureObject",
       "value": 1
     },
     "power": {
@@ -83,30 +83,48 @@
                 "characteristic": "might",
                 "value": "@potency.weak"
               },
-              "display": "M < [weak], dazed (save ends)",
+              "display": "{{potency}}, dazed (save ends)",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier2": {
               "potency": {
                 "characteristic": "might",
                 "value": "@potency.average"
               },
-              "display": "M < [average], dazed (save ends)",
+              "display": "",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier3": {
               "potency": {
                 "characteristic": "might",
                 "value": "@potency.strong"
               },
-              "display": "M < [strong], dazed (save ends)",
+              "display": "",
               "always": [],
               "failure": [],
-              "success": []
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }
@@ -129,7 +147,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1751140628632,
