@@ -1,0 +1,192 @@
+{
+  "folder": "rUcCzdXGsg5sJ0qQ",
+  "name": "Impaled!",
+  "type": "ability",
+  "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "133",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "brutal-slam",
+    "story": "You skewer your enemy like a boar upon a spit.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "kMEMHtTjiF7Nyu1O": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "kMEMHtTjiF7Nyu1O",
+          "damage": {
+            "tier1": {
+              "value": "2 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "5 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "7 + @chr",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "QjWvwRqV5ATsZRmr": {
+          "name": "grabbed",
+          "img": null,
+          "type": "applied",
+          "_id": "QjWvwRqV5ATsZRmr",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Note: This ability should have a target of <strong>'One creature of your size or smaller.'</strong></p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
+      "origin": "Item.ZwRESh7OwYxDv4lR",
+      "transfer": false,
+      "_id": "cwE6RsSuvqmFgyTu",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!UsRhRq1x10cnyuWk.cwE6RsSuvqmFgyTu"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755578841680,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "UsRhRq1x10cnyuWk",
+  "sort": 100000,
+  "_key": "!items!UsRhRq1x10cnyuWk"
+}
