@@ -57,7 +57,7 @@
           }
         },
         "vFkyUqb7CNPJXjAJ": {
-          "name": "Bleeding",
+          "name": "Bleeding and Weakened",
           "img": null,
           "type": "applied",
           "_id": "vFkyUqb7CNPJXjAJ",
@@ -68,26 +68,7 @@
               },
               "display": "{{potency}}, bleeding and weakened (save ends)",
               "effects": {
-                "bleeding": {
-                  "condition": "failure",
-                  "end": "save"
-                }
-              }
-            }
-          }
-        },
-        "h8kJnMg5DZKYmz1R": {
-          "name": "Weakened",
-          "img": null,
-          "type": "applied",
-          "_id": "h8kJnMg5DZKYmz1R",
-          "applied": {
-            "tier1": {
-              "potency": {
-                "characteristic": "might"
-              },
-              "effects": {
-                "weakened": {
+                "smsxzpXNKk6UkIC5": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -106,7 +87,53 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Bleeding and Weakened",
+      "img": "icons/skills/wounds/injury-triple-slash-bleed.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.CD27c6U0GUSIJPDT",
+      "transfer": false,
+      "_id": "smsxzpXNKk6UkIC5",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "bleeding",
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755646165971,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!CD27c6U0GUSIJPDT.smsxzpXNKk6UkIC5"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

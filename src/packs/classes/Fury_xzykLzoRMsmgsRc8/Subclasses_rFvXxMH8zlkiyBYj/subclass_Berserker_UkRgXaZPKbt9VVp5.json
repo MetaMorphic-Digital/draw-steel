@@ -1,58 +1,73 @@
 {
   "folder": "rFvXxMH8zlkiyBYj",
-  "name": "Reaver",
+  "name": "Berserker",
   "type": "subclass",
-  "_id": "k5tD7sSMemOrgeZl",
-  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "_id": "UkRgXaZPKbt9VVp5",
+  "img": "icons/skills/wounds/injury-face-impact-orange.webp",
   "system": {
     "description": {
-      "value": "<p>You channel your ferocity into instinct and cunning, challenging the order of civilization. You have the Hide skill.</p>",
+      "value": "<p>You channel your ferocity into physical might, acting as a living version of the forces that shape the world. You have the Lift skill.</p>",
       "director": ""
     },
     "source": {
-      "book": "",
-      "page": "",
-      "license": "",
+      "book": "Heroes",
+      "page": "131",
+      "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "reaver",
+    "_dsid": "subclass",
     "advancements": {
-      "x1OMeLaVv14Ytert": {
-        "name": "Primordial Cunning",
+      "qcrRk0Nh1YoLFGR5": {
+        "name": "Primordial Strength",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "x1OMeLaVv14Ytert",
+        "_id": "qcrRk0Nh1YoLFGR5",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.KUCByYUPKEzXFSW7"
+            "uuid": "Compendium.draw-steel.classes.Item.JXioZdy4zIxskO72"
           }
         ]
       },
-      "7VRpAxONCZtWcYs3": {
-        "name": "Unearthly Reflexes",
+      "iC58F6iBYfJyZ9zR": {
+        "name": "Lines of Force",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "7VRpAxONCZtWcYs3",
+        "_id": "iC58F6iBYfJyZ9zR",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.abilities.Item.CsIpGSv52h9optwM"
+            "uuid": "Compendium.draw-steel.abilities.Item.6JirKNIULN4f4Ii0"
           }
         ]
       },
-      "VwoCOtpp9ne4DEgq": {
+      "DSpkLQm0bsqMoUfP": {
+        "name": "Lift",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "DSpkLQm0bsqMoUfP",
+        "skills": {
+          "choices": [
+            "lift"
+          ]
+        }
+      },
+      "cPTJfFw4ACuLzXQg": {
         "name": "Kit",
         "img": "icons/equipment/chest/breastplate-collared-leather-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "VwoCOtpp9ne4DEgq",
+        "_id": "cPTJfFw4ACuLzXQg",
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
@@ -118,23 +133,9 @@
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ]
-      },
-      "86dezZH7IFwXBLG4": {
-        "name": "Hide",
-        "img": null,
-        "type": "skill",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "86dezZH7IFwXBLG4",
-        "skills": {
-          "choices": [
-            "hide"
-          ]
-        }
       }
     },
-    "classLink": ""
+    "classLink": "fury"
   },
   "effects": [],
   "sort": 0,
@@ -149,9 +150,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755575332905,
+    "createdTime": 1755575322113,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!k5tD7sSMemOrgeZl"
+  "_key": "!items!UkRgXaZPKbt9VVp5"
 }
