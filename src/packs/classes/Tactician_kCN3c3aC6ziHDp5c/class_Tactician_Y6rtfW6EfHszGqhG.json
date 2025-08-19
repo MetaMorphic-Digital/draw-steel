@@ -8,59 +8,66 @@
       "director": ""
     },
     "advancements": {
-      "36mlcVBFxyBy3tIn": {
-        "type": "itemGrant",
-        "_id": "36mlcVBFxyBy3tIn",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.dNGmfuNuaML5TRQL"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
-          }
-        ],
-        "name": "Features",
-        "requirements": {
-          "level": 1
-        },
-        "description": "<p>Field Arsenal, Focus</p>"
-      },
-      "KoGp0Q93aEXIiQxx": {
-        "type": "itemGrant",
-        "_id": "KoGp0Q93aEXIiQxx",
-        "requirements": {
-          "level": 3
-        },
-        "name": "Features",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.UMi9OOllnmMinI9h"
-          }
-        ]
-      },
-      "ZYrQ1MTL4PPJq1un": {
-        "name": "Guaranteed Skill",
+      "oxIyaHPtXTLrx4vK": {
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "ZYrQ1MTL4PPJq1un",
+        "_id": "oxIyaHPtXTLrx4vK",
+        "description": "<p>You gain the Lead skill.</p>",
+        "chooseN": 1,
         "skills": {
+          "groups": [],
           "choices": [
             "lead"
           ]
-        },
-        "description": "<p>You gain the Lead skill.</p>"
+        }
       },
-      "lffZjjuNWAvfmliT": {
-        "name": "Skill Choices",
+      "XRm7uMqU8d1Y6yZy": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "XRm7uMqU8d1Y6yZy",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "wvdmStGJPTzIKa5c": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "wvdmStGJPTzIKa5c",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "gQLvrlyD30LVwNGR": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "gQLvrlyD30LVwNGR",
+        "chooseN": 1,
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "ycBa5AmcV2f1l1Dq": {
+        "name": "Choose Skill",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "lffZjjuNWAvfmliT",
+        "_id": "ycBa5AmcV2f1l1Dq",
+        "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build:</em> Monsters, Strategy.)</p>",
+        "chooseN": 2,
         "skills": {
           "choices": [
             "architecture",
@@ -78,17 +85,22 @@
           "groups": [
             "exploration"
           ]
+<<<<<<< Updated upstream
         },
         "chooseN": 2,
         "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build</em>: Lead, Monsters, Strategy.)</p>"
+=======
+        }
+>>>>>>> Stashed changes
       },
-      "MP2iZkK0a0TBrk2f": {
-        "name": "Mark",
+      "6jTdEmIiAuIP9HnE": {
+        "name": "Tactical Doctrine",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
+<<<<<<< Updated upstream
         "_id": "MP2iZkK0a0TBrk2f",
         "pool": [
           {
@@ -96,14 +108,20 @@
           }
         ],
         "description": "<p>You know how to focus the attention of your allies as you push them toward victory.</p>"
+=======
+        "_id": "6jTdEmIiAuIP9HnE",
+        "description": "<p>Choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build:</em> Vanguard and the Intimidate skill.)</p>",
+        "chooseN": 1
+>>>>>>> Stashed changes
       },
-      "GaCGwCaDeZ0tIzEW": {
-        "name": "Strike Now",
+      "tSMUmnXiVO1Ku3JK": {
+        "name": "Features",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
+<<<<<<< Updated upstream
         "_id": "GaCGwCaDeZ0tIzEW",
         "pool": [
           {
@@ -113,11 +131,19 @@
       },
       "TPNKDjRP9rjsZfdo": {
         "name": "Tactical Doctrine",
+=======
+        "_id": "tSMUmnXiVO1Ku3JK",
+        "description": "<p>You gain the following features.</p>"
+      },
+      "G1xXVdCgSzBKWEeM": {
+        "name": "3 Focus",
+>>>>>>> Stashed changes
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
+<<<<<<< Updated upstream
         "_id": "TPNKDjRP9rjsZfdo",
         "pool": [
           {
@@ -132,6 +158,22 @@
         ],
         "chooseN": 1,
         "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build</em>: Vanguard and the Intimidate skill.)</p><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
+=======
+        "_id": "G1xXVdCgSzBKWEeM",
+        "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 focus to use. (<em>Quick Build:</em> Inspiring Strike.)</p>"
+      },
+      "J6r43LyU0NPTfYCI": {
+        "name": "5 Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "J6r43LyU0NPTfYCI",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 focus to use. (<em>Quick Build:</em> Hammer and Anvil.)</p>",
+        "chooseN": 1
+>>>>>>> Stashed changes
       }
     },
     "source": {
