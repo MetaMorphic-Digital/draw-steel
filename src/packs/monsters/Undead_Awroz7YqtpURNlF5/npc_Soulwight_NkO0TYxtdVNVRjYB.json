@@ -1,13 +1,12 @@
 {
   "folder": "Awroz7YqtpURNlF5",
-  "name": "Zombie",
+  "name": "Soulwight",
   "type": "npc",
-  "_id": "G7bFOGyqq0Z4xJ7F",
-  "img": "systems/draw-steel/assets/roles/brute.webp",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 20,
+      "value": 10,
+      "max": 10,
       "temporary": 0
     },
     "characteristics": {
@@ -18,10 +17,10 @@
         "value": 1
       },
       "reason": {
-        "value": -5
+        "value": 0
       },
       "intuition": {
-        "value": -2
+        "value": 0
       },
       "presence": {
         "value": 1
@@ -36,13 +35,13 @@
         "value": 1,
         "letter": "M"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
       "value": 5,
@@ -80,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "264",
+      "page": "263",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,24 +91,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
         "undead"
       ],
       "level": 1,
       "ev": 3,
-      "role": "brute",
+      "role": "hexer",
       "organization": "horde"
     }
   },
   "prototypeToken": {
-    "name": "Zombie",
+    "name": "Soulwight",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/brute.webp",
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -158,7 +157,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -178,7 +177,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -191,20 +190,120 @@
       "disposition": false
     },
     "movementAction": null,
-    "flags": {
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
+    "flags": {},
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Clobber and Clutch",
+      "name": "Arise",
+      "type": "feature",
+      "_id": "5NQSsKKbwf3Sispt",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The first time the soulwight is reduced to 0 Stamina by damage that isn’t fire damage or holy damage and their body isn’t de stroyed, they instead have 1 Stamina and fall prone.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.5NQSsKKbwf3Sispt"
+    },
+    {
+      "name": "Stolen Vitality",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target regains [[/heal 10]]. The soulwight can’t use this maneuver again until after they strike a creature with their Soulstealer Longsword.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "ppxgzlfLdNAEHkgg",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.ppxgzlfLdNAEHkgg"
+    },
+    {
+      "name": "Soulstealer Longsword",
       "type": "ability",
       "system": {
         "type": "main",
@@ -241,167 +340,28 @@
             ]
           },
           "effects": {
-            "I14r4QDrtwVa7UV9": {
-              "type": "damage",
-              "_id": "I14r4QDrtwVa7UV9",
-              "damage": {
-                "tier1": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "6",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
+            "R0wDlQgQt1ZMXMtP": {
               "name": "",
-              "img": null
-            },
-            "wjm6gvMDZZYKWivf": {
-              "name": "Grabbed",
               "img": null,
-              "type": "applied",
-              "_id": "wjm6gvMDZZYKWivf",
-              "applied": {
-                "tier3": {
-                  "display": "grabbed",
-                  "effects": {
-                    "grabbed": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A target who starts their turn grabbed by the zombie takes 2 corruption damage. A creature who takes 5 or more corruption damage this way becomes insatiably hungry for flesh, and must complete the Find a Cure downtime project in Draw Steel: Heroes to end this effect.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "zmo5m5IkZkiIoSHM",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.zmo5m5IkZkiIoSHM"
-    },
-    {
-      "name": "Zombie Dust",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "ability",
-        "story": "",
-        "keywords": [
-          "area"
-        ],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "burst",
-          "primary": 2
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "might"
-            ]
-          },
-          "effects": {
-            "R58IG82ZStVLi00e": {
               "type": "damage",
-              "_id": "R58IG82ZStVLi00e",
+              "_id": "R0wDlQgQt1ZMXMtP",
               "damage": {
                 "tier1": {
-                  "value": "2",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "types": [
-                    "corruption"
-                  ],
                   "value": "3",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [
+                    "corruption"
+                  ],
                   "properties": [],
                   "potency": {
                     "value": "@potency.average",
@@ -409,7 +369,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "4",
+                  "value": "5",
                   "types": [
                     "corruption"
                   ],
@@ -419,99 +379,48 @@
                     "characteristic": ""
                   }
                 }
-              },
+              }
+            },
+            "bYmw8Hll6SNxqF4s": {
               "name": "",
-              "img": null
-            },
-            "6NdbPvpwqfDmdNTh": {
-              "type": "applied",
-              "_id": "6NdbPvpwqfDmdNTh",
-              "applied": {
-                "tier3": {
-                  "display": "{{potency}} Dazed (save ends)",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "2"
-                  },
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "display": "{{potency}} Weakened (save ends)",
-                  "potency": {
-                    "value": "1",
-                    "characteristic": "might"
-                  },
-                  "effects": {
-                    "weakened": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  },
-                  "effects": {}
-                }
-              },
-              "name": "Weakened and Dazed",
-              "img": null
-            },
-            "VUM8Vn0tma2MT9kA": {
-              "name": "Prone",
               "img": null,
               "type": "applied",
-              "_id": "VUM8Vn0tma2MT9kA",
+              "_id": "bYmw8Hll6SNxqF4s",
               "applied": {
-                "tier1": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
                 "tier2": {
+                  "display": "{{potency}} slowed (save ends)",
                   "effects": {
-                    "prone": {
+                    "slowed": {
                       "condition": "failure",
-                      "end": "",
+                      "end": "save",
                       "properties": []
                     }
                   },
-                  "display": "",
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
                   }
                 },
                 "tier3": {
+                  "display": "{{potency}} slowed and weakened (save ends)",
                   "effects": {
-                    "prone": {
+                    "1XC4RokOmULqp1LI": {
                       "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
-                  "display": "",
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 }
               }
@@ -520,18 +429,68 @@
         },
         "effect": {
           "before": "",
-          "after": ""
+          "after": "<p>The target appears to rapidly age each time they take damage from this ability. The target regains their former appearance when the soulwight is destroyed.</p>"
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "55mAc67mMTtwpFzp",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
-      "effects": [],
+      "_id": "HtcTwuGlQNsNi2wI",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Slowed and Weakened",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Actor.Rslc88u25SrzNjIz.Item.HtcTwuGlQNsNi2wI",
+          "transfer": false,
+          "_id": "1XC4RokOmULqp1LI",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "slowed",
+            "weakened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI.1XC4RokOmULqp1LI",
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      ],
       "folder": null,
       "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -543,211 +502,24 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.55mAc67mMTtwpFzp"
-    },
-    {
-      "name": "Raevnous Horde",
-      "type": "ability",
-      "system": {
-        "type": "freeTriggered",
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "ability",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 2,
-        "trigger": "An undead starts its turn",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>At the end of this round, each hero not already adjacent to one or more undead is beset by two <strong>rotting zombies</strong> who burst up from the ground to appear in adjacent unoccupied spaces. Each zombie is winded. This feature can’t be used two rounds in a row.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "OhSioZlAOWFwKfus",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.OhSioZlAOWFwKfus",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.OhSioZlAOWFwKfus"
-    },
-    {
-      "name": "Paranormal Fling",
-      "type": "ability",
-      "system": {
-        "type": "freeTriggered",
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "ability",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "An undead starts its turn",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Up to three unattended objects on the encounter map rise to f loat 1 square off the ground. Each object is then pulled 5 squares toward the nearest enemy within 3 squares of the object.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "xugyW4K9KoECdfet",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.xugyW4K9KoECdfet",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.xugyW4K9KoECdfet"
-    },
-    {
-      "name": "The Grasping, the Hungry",
-      "type": "ability",
-      "system": {
-        "type": "freeTriggered",
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "ability",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "An undead starts its turn",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Ravenous and rotting undead arms burst forth from 9 connected squares of a vertical or horizontal surface. Any creature who ends their turn adjacent to an affected square makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"130\"><p>11 or less</p></td><td><p>5 damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"130\"><p>12-16</p></td><td><p>5 damage; restrained (EoT)</p></td></tr><tr><td data-colwidth=\"130\"><p>17+</p></td><td><p>5 damage</p></td></tr></tbody></table>",
-          "after": "<p>While restrained this way, a creature takes 1d6 damage at the start of each of their turns.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "4iwC33FHeYSYgZk8",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.4iwC33FHeYSYgZk8",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.4iwC33FHeYSYgZk8"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI"
     },
     {
       "name": "Dread March",
       "type": "ability",
+      "_id": "8hB1tLL2URvZBcfn",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "freeTriggered",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "260",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
         "_dsid": "ability",
         "story": "",
         "keywords": [],
+        "type": "freeTriggered",
         "category": "heroic",
         "resource": 7,
         "trigger": "An undead starts its turn",
@@ -774,18 +546,16 @@
           "value": null
         }
       },
-      "_id": "eGPpeIRl4G5gUOhk",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": 400000,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.eGPpeIRl4G5gUOhk",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
@@ -794,33 +564,60 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.eGPpeIRl4G5gUOhk"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.8hB1tLL2URvZBcfn"
     },
     {
-      "name": "Endless Knight",
-      "type": "feature",
-      "_id": "xaafURmvxWgmnJPK",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "name": "Paranormal Fling",
+      "type": "ability",
+      "_id": "lzbMqUWA4iFalbtN",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "description": {
-          "value": "<p>The first time the zombie is reduced to 0 Stamina by damage that isn’t fire damage or holy damage and their body isn’t destroyed, they instead have 10 Stamina and fall prone.</p>",
-          "director": ""
-        },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "260",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
-        "advancements": {}
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "type": "freeTriggered",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "An undead starts its turn",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Up to three unattended objects on the encounter map rise to f loat 1 square off the ground. Each object is then pulled 5 squares toward the nearest enemy within 3 squares of the object.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
       },
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.xaafURmvxWgmnJPK",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
@@ -829,15 +626,134 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.lzbMqUWA4iFalbtN"
+    },
+    {
+      "name": "Ravenous Horde",
+      "type": "ability",
+      "_id": "FfN6PL4vn5ZmLZcm",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "260",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "type": "freeTriggered",
+        "category": "heroic",
+        "resource": 2,
+        "trigger": "An undead starts its turn",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>At the end of this round, each hero not already adjacent to one or more undead is beset by two <strong>rotting zombies</strong> who burst up from the ground to appear in adjacent unoccupied spaces. Each zombie is winded. This feature can’t be used two rounds in a row.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!G7bFOGyqq0Z4xJ7F.xaafURmvxWgmnJPK"
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.FfN6PL4vn5ZmLZcm"
+    },
+    {
+      "name": "The Grasping, the Hungry",
+      "type": "ability",
+      "_id": "L45OjsFoztGqU07c",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "260",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "type": "freeTriggered",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "An undead starts its turn",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Ravenous and rotting undead arms burst forth from 9 connected squares of a vertical or horizontal surface. Any creature who ends their turn adjacent to an affected square makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"130\"><p>11 or less</p></td><td><p>5 damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"130\"><p>12-16</p></td><td><p>5 damage; restrained (EoT)</p></td></tr><tr><td data-colwidth=\"130\"><p>17+</p></td><td><p>5 damage</p></td></tr></tbody></table>",
+          "after": "<p>While restrained this way, a creature takes 1d6 damage at the start of each of their turns.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.L45OjsFoztGqU07c"
     }
   ],
   "effects": [],
-  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -849,9 +765,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639587589,
+    "createdTime": 1755701962870,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!G7bFOGyqq0Z4xJ7F"
+  "_id": "NkO0TYxtdVNVRjYB",
+  "sort": 200000,
+  "_key": "!actors!NkO0TYxtdVNVRjYB"
 }
