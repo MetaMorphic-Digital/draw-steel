@@ -212,12 +212,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "109",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "concussive-bolts",
         "story": "",
         "keywords": [
           "charge",
@@ -364,12 +364,12 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "109",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "steam-powered-snare",
         "story": "",
         "keywords": [
           "area",
@@ -429,17 +429,80 @@
       "_key": "!actors.items!yYKle19pHJYfKMfQ.ParOIEUV5a83gikW"
     },
     {
+      "name": "Rappelling Barrage",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "105",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "rappelling-barrage",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A dwarf starts their turn",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each dwarf acting this turn can automatically climb at full speed while moving. At any point during this movement, they can make a free strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "jeKfV8aI1rqyfkj4",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "zR2leIjgt7VcKr8l",
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.AEnNkuhdPqY0mGNo",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755714185049,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!yYKle19pHJYfKMfQ.jeKfV8aI1rqyfkj4"
+    },
+    {
       "name": "Snaring Line",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "105",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "snaring-line",
         "story": "",
         "keywords": [
           "area",
@@ -476,10 +539,10 @@
           "value": null
         }
       },
-      "_id": "LawMkoXkoSARdPho",
+      "_id": "iV1xZa3LFqKK1Xgu",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": null,
+      "folder": "zR2leIjgt7VcKr8l",
       "sort": 100000,
       "flags": {},
       "_stats": {
@@ -489,14 +552,15 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1755714186013,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!yYKle19pHJYfKMfQ.LawMkoXkoSARdPho"
+      "_key": "!actors.items!yYKle19pHJYfKMfQ.iV1xZa3LFqKK1Xgu"
     },
     {
       "name": "Breaching Charge",
@@ -504,12 +568,12 @@
       "system": {
         "type": "freeTriggered",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "105",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "breaching-charge",
         "story": "",
         "keywords": [],
         "category": "heroic",
@@ -530,7 +594,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage (3 for wood, 6 for stone, or 9 for metal).</p>",
+          "before": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage ([[/damage 3]] for wood, [[/damage 6]] for stone, or [[/damage 9]] for metal).</p>",
           "after": ""
         },
         "spend": {
@@ -538,14 +602,14 @@
           "value": null
         }
       },
-      "_id": "BTY5NhyrQYgUF5Aw",
+      "_id": "UsBSwuFSEE8zpLvM",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": null,
-      "sort": 0,
+      "folder": "zR2leIjgt7VcKr8l",
+      "sort": 200000,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
@@ -555,72 +619,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1755715169974,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!yYKle19pHJYfKMfQ.BTY5NhyrQYgUF5Aw"
-    },
-    {
-      "name": "Rappelling Barrage",
-      "type": "ability",
-      "system": {
-        "type": "freeTriggered",
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "ability",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A dwarf starts their turn",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each dwarf acting this turn can automatically climb at full speed while moving. At any point during this movement, they can make a free strike.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "AEnNkuhdPqY0mGNo",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.AEnNkuhdPqY0mGNo",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!yYKle19pHJYfKMfQ.AEnNkuhdPqY0mGNo"
+      "_key": "!actors.items!yYKle19pHJYfKMfQ.UsBSwuFSEE8zpLvM"
     }
   ],
   "effects": [],

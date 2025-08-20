@@ -1,9 +1,8 @@
 {
   "folder": "Awroz7YqtpURNlF5",
-  "name": "Skeleton",
+  "name": "Soulwight",
   "type": "npc",
-  "_id": "2h6PhbOuGeraFQZm",
-  "img": "systems/draw-steel/assets/roles/artillery.webp",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
   "system": {
     "stamina": {
       "value": 10,
@@ -12,19 +11,19 @@
     },
     "characteristics": {
       "might": {
-        "value": 0
-      },
-      "agility": {
         "value": 2
       },
-      "reason": {
+      "agility": {
         "value": 1
+      },
+      "reason": {
+        "value": 0
       },
       "intuition": {
         "value": 0
       },
       "presence": {
-        "value": -1
+        "value": 1
       }
     },
     "combat": {
@@ -41,8 +40,8 @@
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
       "value": 5,
@@ -80,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "262",
+      "page": "263",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,24 +91,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
         "undead"
       ],
       "level": 1,
       "ev": 3,
-      "role": "artillery",
+      "role": "hexer",
       "organization": "horde"
     }
   },
   "prototypeToken": {
-    "name": "Skeleton",
+    "name": "Soulwight",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/artillery.webp",
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -158,7 +157,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -178,7 +177,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -191,34 +190,133 @@
       "disposition": false
     },
     "movementAction": null,
-    "flags": {
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
+    "flags": {},
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Bone Shards",
+      "name": "Arise",
+      "type": "feature",
+      "_id": "5NQSsKKbwf3Sispt",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The first time the soulwight is reduced to 0 Stamina by damage that isn’t fire damage or holy damage and their body isn’t de stroyed, they instead have 1 Stamina and fall prone.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "263",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "arise",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.5NQSsKKbwf3Sispt"
+    },
+    {
+      "name": "Stolen Vitality",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "263",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "stolen-vitality",
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target regains [[/heal 10]]. The soulwight can’t use this maneuver again until after they strike a creature with their Soulstealer Longsword.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "ppxgzlfLdNAEHkgg",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.ppxgzlfLdNAEHkgg"
+    },
+    {
+      "name": "Soulstealer Longsword",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "262",
+          "page": "263",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bone-shards",
+        "_dsid": "soulstealer-longsword",
         "story": "",
         "keywords": [
           "melee",
-          "ranged",
           "strike",
           "weapon"
         ],
@@ -226,9 +324,8 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 10
+          "type": "melee",
+          "primary": 1
         },
         "damageDisplay": "melee",
         "target": {
@@ -239,267 +336,173 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
           "effects": {
-            "z2ytVSoA8EIjP9Pc": {
-              "type": "damage",
-              "_id": "z2ytVSoA8EIjP9Pc",
-              "damage": {
-                "tier1": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "6",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
+            "R0wDlQgQt1ZMXMtP": {
               "name": "",
-              "img": null
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Until the start of the skeletonʼs next turn, the target takes 2 damage the first time they willingly move on their turn.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "TL45obcwD3gxH4YD",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.TL45obcwD3gxH4YD"
-    },
-    {
-      "name": "Bone Spur",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "262",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "bone-spur",
-        "story": "",
-        "keywords": [
-          "weapon",
-          "area"
-        ],
-        "category": "heroic",
-        "resource": 2,
-        "trigger": "",
-        "distance": {
-          "type": "burst",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {
-            "EyD6Cf26e35itR9d": {
+              "img": null,
               "type": "damage",
-              "_id": "EyD6Cf26e35itR9d",
+              "_id": "R0wDlQgQt1ZMXMtP",
               "damage": {
                 "tier1": {
-                  "value": "1",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
                   "value": "3",
-                  "types": [],
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [
+                    "corruption"
+                  ],
                   "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             },
-            "lBY3N9Du98l4Fr1W": {
+            "bYmw8Hll6SNxqF4s": {
+              "name": "",
+              "img": null,
               "type": "applied",
-              "_id": "lBY3N9Du98l4Fr1W",
-              "name": "Bleeding",
+              "_id": "bYmw8Hll6SNxqF4s",
               "applied": {
-                "tier1": {
-                  "display": "{{potency}} bleeding (save ends)",
-                  "potency": {
-                    "value": "0",
-                    "characteristic": "might"
-                  },
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
                 "tier2": {
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "",
+                  "display": "{{potency}} slowed (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "slowed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "",
+                  "display": "{{potency}} slowed and weakened (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "1XC4RokOmULqp1LI": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 }
-              },
-              "img": null
+              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>Each target takes a bane on their next strike.</p>"
+          "after": "<p>The target appears to rapidly age each time they take damage from this ability. The target regains their former appearance when the soulwight is destroyed.</p>"
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "GNMkT6RTuBTUHg53",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
-      "effects": [],
+      "_id": "HtcTwuGlQNsNi2wI",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Slowed and Weakened",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Actor.Rslc88u25SrzNjIz.Item.HtcTwuGlQNsNi2wI",
+          "transfer": false,
+          "_id": "1XC4RokOmULqp1LI",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "slowed",
+            "weakened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI.1XC4RokOmULqp1LI"
+        }
+      ],
       "folder": null,
       "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.GNMkT6RTuBTUHg53"
-    },
-    {
-      "name": "Arise",
-      "type": "feature",
-      "_id": "xaafURmvxWgmnJPK",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The first time the skeleton is reduced to 0 Stamina by damage that isnʼt fire damage or holy damage and their body isnʼt destroyed, they instead have 1 Stamina and fall prone.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "262",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "arise",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.xaafURmvxWgmnJPK",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.xaafURmvxWgmnJPK"
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI"
     },
     {
       "name": "Dread March",
@@ -545,7 +548,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 300000,
+      "sort": 400000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -558,11 +561,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714534846,
+        "createdTime": 1755714554784,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.EzWvhVW1uXUmKhV5"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.EzWvhVW1uXUmKhV5"
     },
     {
       "name": "Paranormal Fling",
@@ -608,7 +611,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 125000,
+      "sort": 200000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -621,11 +624,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714536190,
+        "createdTime": 1755714555814,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.da4wUZrJsfQ3EMZ3"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.da4wUZrJsfQ3EMZ3"
     },
     {
       "name": "Ravenous Horde",
@@ -684,11 +687,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714537281,
+        "createdTime": 1755714556678,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.gSoRE2jY58pVAtXf"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.gSoRE2jY58pVAtXf"
     },
     {
       "name": "The Grasping, the Hungry",
@@ -747,15 +750,14 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715278827,
+        "createdTime": 1755715285864,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.5lQ9od53YUhk2eDw"
+      "_key": "!actors.items!NkO0TYxtdVNVRjYB.5lQ9od53YUhk2eDw"
     }
   ],
   "effects": [],
-  "sort": 500000,
   "ownership": {
     "default": 0
   },
@@ -767,9 +769,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639587589,
+    "createdTime": 1755701962870,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!2h6PhbOuGeraFQZm"
+  "_id": "NkO0TYxtdVNVRjYB",
+  "sort": 200000,
+  "_key": "!actors!NkO0TYxtdVNVRjYB"
 }

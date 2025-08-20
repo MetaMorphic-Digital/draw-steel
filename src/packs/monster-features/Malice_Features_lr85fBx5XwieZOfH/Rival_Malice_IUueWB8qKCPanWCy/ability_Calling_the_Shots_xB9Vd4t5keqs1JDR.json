@@ -1,26 +1,26 @@
 {
-  "name": "Blood In Their Eyes",
+  "name": "Calling the Shots",
   "type": "ability",
   "system": {
     "type": "freeTriggered",
     "source": {
       "book": "Monsters",
-      "page": "323",
+      "page": "232",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "blood-in-their-eyes",
+    "_dsid": "calling-the-shots",
     "story": "",
     "keywords": [],
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A werewolf's turn starts",
+    "resource": 5,
+    "trigger": "A rival's turn starts",
     "distance": {
-      "type": "self"
+      "type": "special"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "special"
     },
     "power": {
       "roll": {
@@ -30,7 +30,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The werewolf gains 10 temporary Stamina and a +3 bonus to speed until the end of their turn. The werewolf can’t use this fea ture if they took any holy damage since ending their last turn.</p>",
+      "before": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
       "after": ""
     },
     "spend": {
@@ -38,25 +38,25 @@
       "value": null
     }
   },
-  "_id": "FuYtAM2ldpDVCZ0X",
+  "_id": "xB9Vd4t5keqs1JDR",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "effects": [],
-  "folder": "fZU2BCqzTRlAQ7SE",
-  "sort": 100000,
+  "folder": "IUueWB8qKCPanWCy",
+  "sort": 250000,
   "ownership": {
     "default": 0
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": "Actor.0gfYrTzOgWNi0QBy.Item.7V7IIsCnVtxj40we",
+    "compendiumSource": "Actor.EhnU9L0Aew7nM5aT.Item.z3xzUCsBYvDhJ9qD",
     "duplicateSource": null,
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639546111,
+    "createdTime": 1755702078259,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!FuYtAM2ldpDVCZ0X"
+  "_key": "!items!xB9Vd4t5keqs1JDR"
 }
