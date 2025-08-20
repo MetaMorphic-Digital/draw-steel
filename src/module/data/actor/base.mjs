@@ -283,10 +283,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    */
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
-    if (game.userId === userId && changed.system?.stamina) {
+    if ((game.userId === userId) && changed.system?.stamina) {
       this.updateStaminaEffects();
       // Has our maximum stamina been updated? Is our current stamina equal to our max stamina?
-      if (changed.system?.stamina?.max && options.ds?.previousStamina?.max && options.ds.previousStamina.max !== this.stamina.max && this.stamina.value === options.ds.previousStamina.max) {
+      if ((changed.system?.stamina?.max && options.ds?.previousStamina?.max) && ((options.ds.previousStamina.max !== this.stamina.max) && (this.stamina.value === options.ds.previousStamina.max))) {
         this.parent.update({ "system.stamina.value": this.stamina.max });
       }
     }
