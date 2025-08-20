@@ -1,0 +1,62 @@
+{
+  "name": "Tiny Stabs",
+  "type": "ability",
+  "system": {
+    "type": "freeTriggered",
+    "source": {
+      "book": "Monsters",
+      "page": "160",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "ability",
+    "story": "",
+    "keywords": [],
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A goblin starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "_id": "Oa0MhwS1yeyeJ5qG",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "effects": [],
+  "folder": "vxOVWECtypuYigNy",
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.usGFrBn8EJ9d1r4x",
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755639546111,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Oa0MhwS1yeyeJ5qG"
+}

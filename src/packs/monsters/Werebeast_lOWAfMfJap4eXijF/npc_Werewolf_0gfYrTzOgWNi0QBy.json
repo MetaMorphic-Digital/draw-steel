@@ -1,0 +1,1940 @@
+{
+  "folder": "lOWAfMfJap4eXijF",
+  "name": "Werewolf",
+  "type": "npc",
+  "_id": "0gfYrTzOgWNi0QBy",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 200,
+      "max": 200,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": 1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "<p></p>",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 7,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "323",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [
+        "accursed",
+        "humanoid"
+      ],
+      "level": 1,
+      "ev": 36,
+      "role": "",
+      "organization": "solo"
+    }
+  },
+  "prototypeToken": {
+    "name": "Werewolf",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "_id": "D3CeKm1dUgPN3KyK",
+      "img": "systems/draw-steel/assets/roles/solo.webp",
+      "system": {
+        "description": {
+          "value": "<p>End Effect: At the end of each of their turns, the werewolf can take 5 damage to end one effect on them that can be ended by a saving throw. This damage can’t be reduced in any way.</p><p>Solo Turns: The werewolf can take two turns each round. They can’t take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.D3CeKm1dUgPN3KyK"
+    },
+    {
+      "name": "Accursed Rage",
+      "type": "feature",
+      "_id": "I1oW8Qnq4GHMKjdm",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The werewolf’s ferocity is expressed through rage, and their abilities can inflict rage points on any enemy except a stormwight fury. A creature who starts their turn with 10 or more range expends their rage. Then before taking their turn, they must shift up to their speed toward the nearest creature and make a melee free strike against them. A creature who takes damage from this free strike gains 1 rage. Accumulated rage disappears after a character finishes a respite.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.I1oW8Qnq4GHMKjdm"
+    },
+    {
+      "name": "Shapeshifter",
+      "type": "feature",
+      "_id": "4JQFd11OdBMZy5hg",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The werewolf enters combat in their hybrid humanoid form. Their shape can’t be changed by any external effect.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.4JQFd11OdBMZy5hg"
+    },
+    {
+      "name": "Vukenstep",
+      "type": "feature",
+      "_id": "sZEWAgy6vbmWaMnQ",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The werewolf ignores difficult terrain.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.sZEWAgy6vbmWaMnQ"
+    },
+    {
+      "name": "Accursed Bite",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "charge",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "KMDZf8d0J1b0e429": {
+              "name": "Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "KMDZf8d0J1b0e429",
+              "damage": {
+                "tier1": {
+                  "value": "9",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "gURFEXxK8JuyFDc6": {
+              "name": "Rage",
+              "img": null,
+              "type": "applied",
+              "_id": "gURFEXxK8JuyFDc6",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "WgMV5KOjsKOc1aKL": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "display": "the target gains 2 rage",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target gains 4 rage",
+                  "effects": {
+                    "WgMV5KOjsKOc1aKL": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "the target gains 5 rage",
+                  "effects": {
+                    "WgMV5KOjsKOc1aKL": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "2rh9wpPUsC1GmYRO": {
+              "name": "Lycanthropy",
+              "img": null,
+              "type": "applied",
+              "_id": "2rh9wpPUsC1GmYRO",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "kl2pG3kFmmSfU0Vg": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "kl2pG3kFmmSfU0Vg": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "kl2pG3kFmmSfU0Vg": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "If the target has P < 0, they are afflicted with lycanthropy. Each time the target is unaffected by the potency effect, the potency increases by 1 the next time the werewolf uses the ability against the same target. A creature afflicted with lycanthropy gains 2 rage at the end of each of their turns whenever they’re in combat. Their rage doesn’t disappear after finishing a respite, and they must complete the Find a Cure downtime project in Draw Steel: Heroes to end this effect.",
+          "value": 2
+        }
+      },
+      "_id": "OtPczOfHSdfETpcn",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Rage",
+          "img": "icons/magic/fire/flame-burning-eye.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.OtPczOfHSdfETpcn",
+          "transfer": false,
+          "_id": "WgMV5KOjsKOc1aKL",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn.WgMV5KOjsKOc1aKL"
+        },
+        {
+          "name": "Lycanthropy",
+          "img": "icons/creatures/abilities/wolf-howl-moon-purple.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.OtPczOfHSdfETpcn",
+          "transfer": false,
+          "_id": "kl2pG3kFmmSfU0Vg",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": ""
+            }
+          },
+          "changes": [
+            {
+              "key": "",
+              "value": "",
+              "mode": 2
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn.kl2pG3kFmmSfU0Vg"
+        },
+        {
+          "name": "Active Effect",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.OtPczOfHSdfETpcn",
+          "transfer": false,
+          "_id": "WF7OEtrtZA08qrDN",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn.WF7OEtrtZA08qrDN"
+        },
+        {
+          "name": "Lycanthropy Rage",
+          "img": "icons/creatures/abilities/wolf-howl-moon-purple.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.OtPczOfHSdfETpcn",
+          "transfer": false,
+          "_id": "k8Tz12bhG2nHYoRT",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn.k8Tz12bhG2nHYoRT"
+        },
+        {
+          "name": "Active Effect (2)",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.OtPczOfHSdfETpcn",
+          "transfer": false,
+          "_id": "87GOoVHVgubgVZF3",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn.87GOoVHVgubgVZF3"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.OtPczOfHSdfETpcn"
+    },
+    {
+      "name": "Ripping Claws",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "z1UM66yDv9rWmh2P": {
+              "name": "Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "z1UM66yDv9rWmh2P",
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "n7CJP9k0zX7WOyqn": {
+              "name": "Bleeding",
+              "img": null,
+              "type": "applied",
+              "_id": "n7CJP9k0zX7WOyqn",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "@potency.weak"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target gains 1 rage; {{potency}} bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "rDsdlqr0JEElIIyw": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "rDsdlqr0JEElIIyw": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "display": "the target gains 3 rage; {{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Ckh29d7Pf2M2uOUR",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Rage",
+          "img": "icons/magic/fire/flame-burning-eye.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.Ckh29d7Pf2M2uOUR",
+          "transfer": false,
+          "_id": "rDsdlqr0JEElIIyw",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.Ckh29d7Pf2M2uOUR.rDsdlqr0JEElIIyw"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.Ckh29d7Pf2M2uOUR"
+    },
+    {
+      "name": "Berserker Slash",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "VMfTY6Cme3aV1o38": {
+              "name": "Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "VMfTY6Cme3aV1o38",
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "CTXcJJwKWlsWZXPw": {
+              "name": "Push",
+              "img": null,
+              "type": "forced",
+              "_id": "CTXcJJwKWlsWZXPw",
+              "forced": {
+                "tier1": {
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "slide"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "fADcJbULp7D6CB4D": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "fADcJbULp7D6CB4D",
+              "applied": {
+                "tier2": {
+                  "display": "the target gains 1 rage",
+                  "effects": {
+                    "Y5l5EHKEDqQRwyKB": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "the target gains 3 rage",
+                  "effects": {
+                    "Y5l5EHKEDqQRwyKB": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "k9xIoUyRAnpW8BcS",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "effects": [
+        {
+          "name": "Rage",
+          "img": "icons/magic/fire/flame-burning-eye.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.k9xIoUyRAnpW8BcS",
+          "transfer": false,
+          "_id": "Y5l5EHKEDqQRwyKB",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.k9xIoUyRAnpW8BcS.Y5l5EHKEDqQRwyKB"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.k9xIoUyRAnpW8BcS"
+    },
+    {
+      "name": "Wall Leap",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The werewolf jumps up to 4 squares. If they end this jump at a wall, the werewolf jumps off the wall up to 4 squares and can make a melee free strike. If the target of the free strike has m&lt;2, they are knocked prone.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "dJ1nRf1y8EPVjMwm",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.dJ1nRf1y8EPVjMwm"
+    },
+    {
+      "name": "Facepalm and Head Slam",
+      "type": "ability",
+      "system": {
+        "type": "triggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "melee"
+        ],
+        "category": "heroic",
+        "resource": 2,
+        "trigger": "A creature within distance targets the werewolf with a melee ability after charging or moving 2 or more squares in a straight line toward them.",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target is knocked prone and takes 5 damage before the triggering ability is resolved.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "yEC20pm3GGTwtmDA",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.yEC20pm3GGTwtmDA"
+    },
+    {
+      "name": "Howl",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target makes an Intuition test.</p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>The target must move their speed in a straight line away from the werewolf; frightened (save ends)</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>Frightened (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": "<p>Any enemy in the encounter who has 1 or more rage gains 4 rage and howls along with the werewolf.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "TRBg0ozhqDmQMJbX",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.TRBg0ozhqDmQMJbX"
+    },
+    {
+      "name": "Full Wolf",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The werewolf transforms into a massive wolf of size 3 until they die or until the end of the encounter. They move to a space that can accommodate their new size and push adjacent creatures out of their way. While in wolf form, they have speed 10 and stability 2, their strikes gain a +2 damage bonus and bestow an additional 1 rage, and the potency of Accursed Bite increases by 1.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "yG3Kb0ynLzlbSa3w",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.yG3Kb0ynLzlbSa3w"
+    },
+    {
+      "name": "Rampage",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 2
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {
+            "RIoeKyoX1OPOpfGj": {
+              "name": "Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "RIoeKyoX1OPOpfGj",
+              "damage": {
+                "tier1": {
+                  "value": "5",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "WuBA9vA1OmOr3ERU": {
+              "name": "Bleeding",
+              "img": null,
+              "type": "applied",
+              "_id": "WuBA9vA1OmOr3ERU",
+              "applied": {
+                "tier1": {
+                  "display": "the target gains 2 rage; {{potency}} bleeding (save ends)",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "@potency.weak"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "EeHlWpCVsUbyUhpl": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "the target gains 4 rage; {{potency}} bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "EeHlWpCVsUbyUhpl": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "the target gains 8 rage; {{potency}} bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "EeHlWpCVsUbyUhpl": {
+                      "condition": "always",
+                      "end": "respite",
+                      "properties": [
+                        "stacking"
+                      ]
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "CSpDz4j11bw9DbZx",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [
+        {
+          "name": "Rage",
+          "img": "icons/magic/fire/flame-burning-eye.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.CSpDz4j11bw9DbZx",
+          "transfer": false,
+          "_id": "EeHlWpCVsUbyUhpl",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.CSpDz4j11bw9DbZx.EeHlWpCVsUbyUhpl"
+        },
+        {
+          "name": "Active Effect",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "origin": "Actor.0gfYrTzOgWNi0QBy.Item.CSpDz4j11bw9DbZx",
+          "transfer": false,
+          "_id": "X0ta8fpb8vt2ZZfm",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0gfYrTzOgWNi0QBy.CSpDz4j11bw9DbZx.X0ta8fpb8vt2ZZfm"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.CSpDz4j11bw9DbZx"
+    },
+    {
+      "name": "Blood In Their Eyes",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A werewolf's turn starts",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The werewolf gains 10 temporary Stamina and a +3 bonus to speed until the end of their turn. The werewolf can’t use this fea ture if they took any holy damage since ending their last turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "7V7IIsCnVtxj40we",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.7V7IIsCnVtxj40we"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A werewolf's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The werewolf takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Gly65wzYaw8V0CGZ",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.Gly65wzYaw8V0CGZ"
+    },
+    {
+      "name": "Moonfall",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "A werewolf's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the encounter, the encounter map turns to night and the moon appears impossibly huge in the sky. The werewolf can take an additional move action or maneuver on each of their turns while they have line of effect to the moon. Any creature who ends their turn with line of effect to the moon with 1 or more rage gains 2 rage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Kc2aYVPCzAyUX1YG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0gfYrTzOgWNi0QBy.Kc2aYVPCzAyUX1YG"
+    }
+  ],
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755639588876,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!0gfYrTzOgWNi0QBy"
+}
