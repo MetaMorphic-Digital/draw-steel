@@ -16,7 +16,7 @@ for (const pack of packs) {
     for (const file of await fs.readdir(directory)) {
       const filePath = path.join(directory, file);
       if (file.endsWith(yaml ? ".yml" : ".json")) await fs.unlink(filePath);
-      else fs.rm(filePath, { recursive: true });
+      else await fs.rm(filePath, { recursive: true });
     }
   } catch (error) {
     if (error.code === "ENOENT") console.log("No files inside of " + pack);
