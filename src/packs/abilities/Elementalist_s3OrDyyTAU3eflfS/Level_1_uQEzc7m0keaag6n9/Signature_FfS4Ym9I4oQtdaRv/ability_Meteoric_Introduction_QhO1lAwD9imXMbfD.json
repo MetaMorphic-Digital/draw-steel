@@ -1,0 +1,106 @@
+{
+  "folder": "FfS4Ym9I4oQtdaRv",
+  "name": "Meteoric Introduction",
+  "type": "ability",
+  "_id": "QhO1lAwD9imXMbfD",
+  "img": "icons/magic/earth/projectile-spiked-stone-boulder-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "117",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "meteoric-introduction",
+    "story": "You give your enemy a gentle tap—like an asteroid impact.",
+    "keywords": [
+      "magic",
+      "melee",
+      "strike",
+      "earth"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "KAFjTVbh1FuGJibm": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "KAFjTVbh1FuGJibm",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "8 + @chr"
+            }
+          }
+        },
+        "sJTM8koYOWNyanLE": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "sJTM8koYOWNyanLE",
+          "forced": {
+            "tier1": {
+              "distance": "2"
+            },
+            "tier2": {
+              "distance": "3"
+            },
+            "tier3": {
+              "distance": "4"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755740309596,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!QhO1lAwD9imXMbfD"
+}
