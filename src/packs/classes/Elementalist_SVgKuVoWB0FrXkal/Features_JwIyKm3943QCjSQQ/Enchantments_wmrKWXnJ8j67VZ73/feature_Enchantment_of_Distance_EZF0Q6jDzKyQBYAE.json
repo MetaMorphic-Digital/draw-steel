@@ -1,0 +1,95 @@
+{
+  "folder": "wmrKWXnJ8j67VZ73",
+  "name": "Enchantment of Distance",
+  "type": "feature",
+  "_id": "EZF0Q6jDzKyQBYAE",
+  "img": "icons/magic/lightning/bolt-strike-beam-yellow.webp",
+  "system": {
+    "description": {
+      "value": "<p>You have a +2 bonus to the distance of your ranged magic abilities.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "enchantment-of-distance",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Enchantment of Distance",
+      "img": "icons/magic/lightning/bolt-strike-beam-yellow.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.EZF0Q6jDzKyQBYAE",
+      "_id": "25SaIaDvWmrJqBJF",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "magic",
+            "ranged"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "distance",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755719827102,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!EZF0Q6jDzKyQBYAE.25SaIaDvWmrJqBJF"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755719777704,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!EZF0Q6jDzKyQBYAE"
+}
