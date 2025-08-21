@@ -1,0 +1,66 @@
+{
+  "folder": "TchL2TAVusf5yX3W",
+  "name": "Spirit Ward",
+  "type": "ability",
+  "_id": "dgsLd0DpoibEU1h9",
+  "img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "spirit-ward",
+    "story": "Invisible spirits surround you if you are harmed. Whenever an adjacent creature deals damage to you, they take corruption damage equal to your Intuition score.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p><span style=\"color:oklab(0.952331 0.000418991 -0.00125992);font-family:'gg mono', 'Source Code Pro', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace;font-size:13.6px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:pre-wrap;background-color:oklab(0.57738 0.0140701 -0.208587 / 0.0784314);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">[[/damage @I corruption]]</span></p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755666315179,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!dgsLd0DpoibEU1h9"
+}

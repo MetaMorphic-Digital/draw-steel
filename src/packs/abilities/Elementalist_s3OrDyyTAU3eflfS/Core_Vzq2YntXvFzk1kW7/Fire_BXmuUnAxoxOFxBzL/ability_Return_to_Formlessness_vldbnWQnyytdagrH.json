@@ -1,0 +1,68 @@
+{
+  "folder": "BXmuUnAxoxOFxBzL",
+  "name": "Return to Formlessness",
+  "type": "ability",
+  "_id": "vldbnWQnyytdagrH",
+  "img": "icons/magic/fire/flame-burning-building.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "115",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "return-to-formlessness",
+    "story": "With the merest touch, you cause an object to turn to slag or ash.",
+    "keywords": [
+      "magic",
+      "melee",
+      "fire"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "object",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You heat the target and cause it to melt or combust, destroy ing it. If the object is larger than 1 square, then only the square of the object you touch is destroyed.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755716331364,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!vldbnWQnyytdagrH"
+}

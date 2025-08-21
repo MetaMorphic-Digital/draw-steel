@@ -1,0 +1,99 @@
+{
+  "folder": "UTCXPBObxnRg5Yp4",
+  "name": "Behold the Mystery",
+  "type": "ability",
+  "_id": "yThKHzaEA0oul7wP",
+  "img": "icons/magic/symbols/question-stone-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "117",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "behold-the-mystery",
+    "story": "You open a rift into the void to harry your foes.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged",
+      "void"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 3,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "uArO3SiRxEIDW2wu": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "uArO3SiRxEIDW2wu",
+          "damage": {
+            "tier1": {
+              "types": [
+                "psychic"
+              ],
+              "value": "2"
+            },
+            "tier2": {
+              "value": "4",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "6",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p><strong>Persistent 1:</strong> At the start of your turn, you can use a maneuver to use this ability again without spending essence</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755741218900,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!yThKHzaEA0oul7wP"
+}
