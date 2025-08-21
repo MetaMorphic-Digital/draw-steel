@@ -45,13 +45,31 @@
           "type": "damage",
           "_id": "mTpWeINs6JtU2qxT",
           "damage": {
+            "tier1": {
+              "types": [
+                "acid",
+                "cold",
+                "corruption",
+                "fire",
+                "lightning",
+                "poison",
+                "sonic"
+              ]
+            },
             "tier2": {
-              "value": "4 + @chr"
+              "value": "4 + @chr",
+              "types": [
+                "acid",
+                "cold",
+                "corruption",
+                "fire",
+                "lightning",
+                "poison",
+                "sonic"
+              ]
             },
             "tier3": {
-              "value": "6 + @chr"
-            },
-            "tier1": {
+              "value": "6 + @chr",
               "types": [
                 "acid",
                 "cold",
