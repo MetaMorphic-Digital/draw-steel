@@ -67,27 +67,6 @@
         "description": "<p>You gain one skill of your choice.</p>",
         "chooseN": 1
       },
-      "DW8i59sYy9hZ1ZNI": {
-        "name": "Features",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "DW8i59sYy9hZ1ZNI",
-        "description": "<p>As a conduit, you gain the following features.</p>",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.TqhbTvHo0XqK65DW"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.vfV23FkmV94GLuBI"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.cTQVqRLw1x6bk9ZD"
-          }
-        ]
-      },
       "evZLo0zeGnoNuDCC": {
         "name": "Deity and Domains",
         "img": null,
@@ -97,16 +76,61 @@
         },
         "_id": "evZLo0zeGnoNuDCC",
         "chooseN": null,
-        "description": "<p>Pick two domains from their portfolio. The two domains you pick make up your subclass, and your choice of domains determines many of the features you’ll gain as you gain new levels. (<em>Quick Build:</em> Adûn for deity, and Life and Protection as domains.)</p>",
+        "description": "<p>Choose a god or saint who your character reveres from Chapter 14: Gods and Religion, or ask your Director about the deities in your campaign world. With the Director’s permission, you can also create your own deity and choose four domains to be part of their portfolio.</p><p>After choosing your deity, pick two domains from their portfolio. The two domains you pick make up your subclass, and your choice of domains determines many of the features you’ll gain as you gain new levels. (<em>Quick Build:</em> Adûn for deity, and Life and Protection as domains.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.t71ffENhQrQ8e59X"
           }
         ]
       },
+      "NTtV2ajZK2aEJd4n": {
+        "name": "Piety",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "NTtV2ajZK2aEJd4n",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.TqhbTvHo0XqK65DW"
+          }
+        ],
+        "description": "<p>Your deity grants you a Heroic Resource called piety, letting you heal and empower your allies, and unleash holy power upon your foes.</p>"
+      },
+      "p2AwNsp5ySMApdYG": {
+        "name": "Healing Grace",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "p2AwNsp5ySMApdYG",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.S1KR2X2c81VGQqsO"
+          }
+        ],
+        "description": "<p>Your divine energy restores the righteous.</p>"
+      },
+      "gPyQLALhXOgN0TcX": {
+        "name": "Ray of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gPyQLALhXOgN0TcX",
+        "description": "<p>You unleash a blast of holy light upon your foe.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.4r6uYuaEgmiGsdCf"
+          }
+        ]
+      },
       "Sh4U3vDFoMw4jEOG": {
         "name": "Triggered",
-        "img": null,
+        "img": "icons/magic/time/clock-stopwatch-white-blue.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -122,6 +146,36 @@
         ],
         "chooseN": 1,
         "description": "<p>Choose one of the following triggered actions. (<em>Quick Build:</em> Word of Guidance.)</p>"
+      },
+      "DNIjeFW2NgEnvmTA": {
+        "name": "Prayer",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "DNIjeFW2NgEnvmTA",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vfV23FkmV94GLuBI"
+          }
+        ],
+        "description": "<p>Your god answers a prayer with enhancements to your body and mind. Choose one of the following prayers. You can change your prayer along with your ward by praying to your god as a respite activity. (<em>Quick Build:</em> Prayer of Distance.)</p>"
+      },
+      "kdU2fIwl5Z8XFs5P": {
+        "name": "Conduit Ward",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "kdU2fIwl5Z8XFs5P",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.cTQVqRLw1x6bk9ZD"
+          }
+        ],
+        "description": "<p>Your god grants you a ward that protects you from the faithless. Choose one of the following wards. You can change your ward along with your prayer (see Prayer above) by praying to your god as a respite activity. (<em>Quick Build:</em> Bastion Ward.)</p>"
       },
       "Fo9985q2yH772eDz": {
         "name": "Signature Ability",
@@ -162,7 +216,7 @@
       },
       "6LpWW8oNYC2i9IXH": {
         "name": "3 Piety",
-        "img": null,
+        "img": "icons/magic/symbols/runes-triangle-blue.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -187,7 +241,7 @@
       },
       "GKLkZYTtIr1w9s6h": {
         "name": "5 Piety",
-        "img": null,
+        "img": "icons/magic/symbols/runes-star-pentagon-blue.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
