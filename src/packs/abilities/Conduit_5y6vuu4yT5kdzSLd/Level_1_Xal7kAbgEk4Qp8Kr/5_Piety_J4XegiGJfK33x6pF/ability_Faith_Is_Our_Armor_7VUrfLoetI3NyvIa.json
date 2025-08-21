@@ -1,0 +1,253 @@
+{
+  "folder": "J4XegiGJfK33x6pF",
+  "name": "Faith Is Our Armor",
+  "type": "ability",
+  "_id": "7VUrfLoetI3NyvIa",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "101",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "faith-is-our-armor",
+    "story": "The heroes’ armor glows with golden light, granting divine protection.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 4
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "KMmXceN3YX2egs7s": {
+          "name": "Temporary Stamina",
+          "img": null,
+          "type": "applied",
+          "_id": "KMmXceN3YX2egs7s",
+          "applied": {
+            "tier1": {
+              "display": "The target gains 5 temporary Stamina",
+              "effects": {
+                "i17P9pf8K2506cxg": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "display": "The target gains 10 temporary Stamina",
+              "effects": {
+                "PYh1X8cItsMmXKSB": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "U6TQtsYQ6DG30wVe": {
+                  "condition": "always",
+                  "end": ""
+                }
+              },
+              "display": "The target gains 15 temporary Stamina"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can target yourself instead of one ally with this ability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Temporary Stamina (5)",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.7VUrfLoetI3NyvIa",
+      "transfer": false,
+      "_id": "i17P9pf8K2506cxg",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "@stamina.temporary",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755712581277,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!7VUrfLoetI3NyvIa.i17P9pf8K2506cxg"
+    },
+    {
+      "name": "Temporary Stamina (10)",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.7VUrfLoetI3NyvIa",
+      "transfer": false,
+      "_id": "PYh1X8cItsMmXKSB",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "@stamina.temporary",
+          "mode": 2,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755712608977,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!7VUrfLoetI3NyvIa.PYh1X8cItsMmXKSB"
+    },
+    {
+      "name": "Temporary Stamina (15)",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.7VUrfLoetI3NyvIa",
+      "transfer": false,
+      "_id": "U6TQtsYQ6DG30wVe",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "@stamina.temporary",
+          "mode": 2,
+          "value": "15",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755712803933,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!7VUrfLoetI3NyvIa.U6TQtsYQ6DG30wVe"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646984040,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!7VUrfLoetI3NyvIa"
+}

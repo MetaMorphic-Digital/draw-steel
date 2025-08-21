@@ -1,0 +1,112 @@
+{
+  "folder": "9uaH6cBSk3yky8QF",
+  "name": "Call the Thunder Down",
+  "type": "ability",
+  "_id": "7IVmZMxN83iSbwJW",
+  "img": "icons/magic/lightning/fist-unarmed-strike-blue-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "101",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "call-the-thunder-down",
+    "story": "You ask your saint for thunder and your prayer is answered.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 3,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "0BC2YlbrPfpenhIS": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "0BC2YlbrPfpenhIS",
+          "damage": {
+            "tier1": {
+              "types": [
+                "sonic"
+              ],
+              "value": "2"
+            },
+            "tier2": {
+              "value": "3",
+              "types": [
+                "sonic"
+              ]
+            },
+            "tier3": {
+              "value": "5",
+              "types": [
+                "sonic"
+              ]
+            }
+          }
+        },
+        "ZQPwSAwoV5twikgU": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "ZQPwSAwoV5twikgU",
+          "forced": {
+            "tier2": {
+              "distance": "2"
+            },
+            "tier3": {
+              "distance": "3"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can push each willing ally in the area the same distance, ignoring stability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646905053,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!7IVmZMxN83iSbwJW"
+}

@@ -1,0 +1,114 @@
+{
+  "folder": "RtJjFiM68S5EQfvi",
+  "name": "Prayer of Distance",
+  "type": "ability",
+  "_id": "TABrJ5gxpQjV67bG",
+  "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "prayer-of-distance",
+    "story": "Your god blesses you with the ability to stretch your divine magic farther. You have a +2 bonus to the distance of your ranged magic abilities.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Prayer of Distance",
+      "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.TABrJ5gxpQjV67bG",
+      "transfer": false,
+      "_id": "CVewsyCbaDyFnjjX",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.abilityBonuses.ranged.distance",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You have a +2 bonus to the distance of your ranged magic abilities.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755729092928,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!TABrJ5gxpQjV67bG.CVewsyCbaDyFnjjX"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755665865030,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!TABrJ5gxpQjV67bG"
+}

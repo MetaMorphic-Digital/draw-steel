@@ -1,0 +1,96 @@
+{
+  "folder": "tv6gR5r1UgtqsrGO",
+  "name": "Lightfall",
+  "type": "ability",
+  "_id": "LLebExwIrmMxIhQM",
+  "img": "icons/magic/light/beam-strike-village-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "lightfall",
+    "story": "A rain of holy light scours your enemies and repositions your allies.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "NnrNfE7Ohg9x3i6s": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "NnrNfE7Ohg9x3i6s",
+          "damage": {
+            "tier2": {
+              "value": "3",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "5",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier1": {
+              "types": [
+                "holy"
+              ],
+              "value": "2"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can teleport yourself and each ally in the area to unoccupied spaces in the area.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646475332,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!LLebExwIrmMxIhQM"
+}

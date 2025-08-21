@@ -1,0 +1,210 @@
+{
+  "folder": "9uaH6cBSk3yky8QF",
+  "name": "Judgment's Hammer",
+  "type": "ability",
+  "_id": "UUH2bcsx4XhE1JFj",
+  "img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "101",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "judgments-hammer",
+    "story": "Your divine fury is a hammer that crashes down upon the unrighteous.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "RREHETdAzL8LfboQ": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "RREHETdAzL8LfboQ",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier2": {
+              "value": "6 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "9 + @chr",
+              "types": [
+                "holy"
+              ]
+            }
+          }
+        },
+        "KsIR32AgWdBlUxZL": {
+          "name": "Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "KsIR32AgWdBlUxZL",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "agility"
+              },
+              "display": "{{potency}}, prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "display": "{{potency}}, prone",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, prone and can't stand (save ends)",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.UUH2bcsx4XhE1JFj",
+      "transfer": false,
+      "_id": "5vVY1qpRSWEvJYRd",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755707156967,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!UUH2bcsx4XhE1JFj.5vVY1qpRSWEvJYRd"
+    },
+    {
+      "name": "Active Effect (2)",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.UUH2bcsx4XhE1JFj",
+      "transfer": false,
+      "_id": "Rc0JI0kFkPI1RSab",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755707163240,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!UUH2bcsx4XhE1JFj.Rc0JI0kFkPI1RSab"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646924728,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!UUH2bcsx4XhE1JFj"
+}
