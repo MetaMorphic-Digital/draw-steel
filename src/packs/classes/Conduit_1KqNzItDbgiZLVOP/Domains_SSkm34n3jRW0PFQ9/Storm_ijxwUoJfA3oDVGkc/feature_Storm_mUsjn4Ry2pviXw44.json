@@ -1,0 +1,69 @@
+{
+  "folder": "ijxwUoJfA3oDVGkc",
+  "name": "Storm",
+  "type": "feature",
+  "_id": "mUsjn4Ry2pviXw44",
+  "img": "icons/magic/lightning/bolt-cloud-sky-white.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that an enemy within 10 squares is force moved.</p><p><strong>Prayer Effect:</strong> Each enemy in a 3 cube within 10 squares takes lightning damage equal to twice your Intuition score. [[/damage 2*@I type=lightning]]</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "96",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "storm",
+    "advancements": {
+      "GlNrUzNEbfqs94d7": {
+        "name": "Skill (Exploration)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "GlNrUzNEbfqs94d7",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "exploration"
+          ]
+        }
+      },
+      "JaRPXyr0e5Jpl9Dj": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "JaRPXyr0e5Jpl9Dj",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755671011819,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!mUsjn4Ry2pviXw44"
+}
