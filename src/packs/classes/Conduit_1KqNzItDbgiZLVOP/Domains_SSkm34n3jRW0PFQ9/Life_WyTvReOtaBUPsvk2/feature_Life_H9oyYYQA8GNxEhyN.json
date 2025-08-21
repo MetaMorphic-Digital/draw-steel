@@ -1,0 +1,69 @@
+{
+  "folder": "WyTvReOtaBUPsvk2",
+  "name": "Life",
+  "type": "feature",
+  "_id": "H9oyYYQA8GNxEhyN",
+  "img": "icons/magic/life/ankh-gold-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that a creature within 10 squares regains Stamina.</p><p><strong>Prayer Effect:</strong> Choose yourself or one ally within 10 squares. That character can spend a Recovery, can end one effect on them that is ended by a saving throw or that ends at the end of their turn, or can stand up if they are prone. Alternatively, you or one ally within 10 squares gains temporary Stamina equal to two times your Intuition score. [[/heal 2*@I type=temporary]]</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "96",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "life",
+    "advancements": {
+      "0bxn0KITwgVVqh4d": {
+        "name": "Skill (Exploration)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "0bxn0KITwgVVqh4d",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "exploration"
+          ]
+        }
+      },
+      "HL7CMIoAqqbEbqhJ": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "HL7CMIoAqqbEbqhJ",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.kDa1rc6xRuBARDpJ"
+          }
+        ]
+      }
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755670963090,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!H9oyYYQA8GNxEhyN"
+}

@@ -1,0 +1,120 @@
+{
+  "folder": "tv6gR5r1UgtqsrGO",
+  "name": "Wither",
+  "type": "ability",
+  "_id": "504hBrdvlcWT7yyo",
+  "img": "icons/magic/unholy/hand-fire-skeleton-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "100",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "wither",
+    "story": "A bolt of holy energy saps the life from a foe.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "y2m9PrQiU6BmPaAL": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "y2m9PrQiU6BmPaAL",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "5 + @chr",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "8 + @chr",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        },
+        "VsicTjGrQTuciJbH": {
+          "name": "Bane",
+          "img": null,
+          "type": "other",
+          "_id": "VsicTjGrQTuciJbH",
+          "other": {
+            "tier1": {
+              "potency": {
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "presence"
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "presence"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646877338,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!504hBrdvlcWT7yyo"
+}
