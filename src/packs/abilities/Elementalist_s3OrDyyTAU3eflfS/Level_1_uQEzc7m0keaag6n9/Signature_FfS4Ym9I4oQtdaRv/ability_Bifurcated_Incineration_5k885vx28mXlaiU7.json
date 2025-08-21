@@ -1,0 +1,98 @@
+{
+  "folder": "FfS4Ym9I4oQtdaRv",
+  "name": "Bifurcated Incineration",
+  "type": "ability",
+  "_id": "5k885vx28mXlaiU7",
+  "img": "icons/magic/fire/blast-jet-stream-embers-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "116",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "bifurcated-incineration",
+    "story": "",
+    "keywords": [
+      "magic",
+      "ranged",
+      "fire",
+      "strike"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 2
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "4B5RV5JfcsJSHhWl": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "4B5RV5JfcsJSHhWl",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier2": {
+              "value": "4",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier3": {
+              "value": "6",
+              "types": [
+                "fire"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755739418490,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!5k885vx28mXlaiU7"
+}

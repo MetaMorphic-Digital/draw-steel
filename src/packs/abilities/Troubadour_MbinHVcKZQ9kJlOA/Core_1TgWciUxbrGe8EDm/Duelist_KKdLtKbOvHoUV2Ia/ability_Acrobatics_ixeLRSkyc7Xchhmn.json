@@ -1,0 +1,68 @@
+{
+  "folder": "KKdLtKbOvHoUV2Ia",
+  "name": "Acrobatics",
+  "type": "ability",
+  "_id": "ixeLRSkyc7Xchhmn",
+  "img": "icons/magic/movement/trail-streak-zigzag-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "205",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "acrobatics",
+    "story": "Folks love a good tumble.",
+    "keywords": [
+      "area",
+      "magic",
+      "routine"
+    ],
+    "type": "freeTriggered",
+    "category": "",
+    "resource": null,
+    "trigger": "A round of combat starts",
+    "distance": {
+      "type": "aura",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>While this performance is active, each target who starts their turn in the area can automatically obtain a tier 3 outcome on one test made to jump, tumble, or climb as part of their movement before the end of their turn.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755793374619,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ixeLRSkyc7Xchhmn"
+}

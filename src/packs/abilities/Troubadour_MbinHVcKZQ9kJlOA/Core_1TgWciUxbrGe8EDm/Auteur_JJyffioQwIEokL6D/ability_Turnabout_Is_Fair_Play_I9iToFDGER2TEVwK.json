@@ -1,0 +1,66 @@
+{
+  "folder": "JJyffioQwIEokL6D",
+  "name": "Turnabout Is Fair Play",
+  "type": "ability",
+  "_id": "I9iToFDGER2TEVwK",
+  "img": "icons/skills/wounds/injury-body-pain-gray.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "206",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "turnabout-is-fair-play",
+    "story": "All’s fair in love and whatever.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target makes an ability roll that has an edge, a double  edge, a bane, or a double bane.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>An edge on the triggering roll becomes a bane, or a double edge becomes an edge. A bane becomes an edge, or a double bane becomes a bane.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "An edge on the triggering roll becomes a double  bane, or a double edge is negated. A bane becomes a double edge, or  a double bane is negated.",
+      "value": 3
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755797897073,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!I9iToFDGER2TEVwK"
+}
