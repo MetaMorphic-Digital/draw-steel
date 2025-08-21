@@ -1,0 +1,63 @@
+{
+  "folder": "37WSxVi25opk72oX",
+  "name": "Subtle Relocation",
+  "type": "ability",
+  "_id": "U5TX3QbnpxjNBxJ2",
+  "img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "115",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "subtle-relocation",
+    "story": "You call on the void to swallow and spit out an ally.",
+    "keywords": [],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target starts their turn, moves, or is force moved.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You teleport the target up to a number of squares equal to your Reason score. If the target moves to trigger this ability, you can teleport them at any point during the move.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "You teleport the target up to a number of squares  equal to twice your Reason score instead.",
+      "value": 1
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755716979884,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!U5TX3QbnpxjNBxJ2"
+}

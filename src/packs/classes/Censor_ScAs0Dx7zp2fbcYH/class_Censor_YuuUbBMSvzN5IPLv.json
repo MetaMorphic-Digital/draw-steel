@@ -6,7 +6,7 @@
   "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
   "system": {
     "description": {
-      "value": "<p>Demons and deathless fear you. Criminals run from the sight of your shadow. Agents of chaos, blasphemers, and heretics tremble at the sound of your voice. You carry the power of the gods, armed with wrath and sent out into the world first to seek, then censor those whose actions—or even existence—are anathema to your church.  As a censor, you’re at your best against the strongest foes. Your judgment terrifies heretics, stops enemies in their tracks, and even hurls them across the battlefield.</p>",
+      "value": "<p>Demons and deathless fear you. Criminals run from the sight of your shadow. Agents of chaos, blasphemers, and heretics tremble at the sound of your voice. You carry the power of the gods, armed with wrath and sent out into the world first to seek, then censor those whose actions—or even existence—are anathema to your church. </p><p>As a censor, you’re at your best against the strongest foes. Your judgment terrifies heretics, stops enemies in their tracks, and even hurls them across the battlefield.</p>",
       "director": ""
     },
     "source": {
@@ -18,7 +18,7 @@
     "_dsid": "censor",
     "advancements": {
       "vH4tHPZ4vku3Le68": {
-        "name": "2 Skills (Interpersonal or Lore)",
+        "name": "Choose Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -31,22 +31,93 @@
             "interpersonal",
             "lore"
           ]
+        },
+        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. (<em>Quick Build:</em> Intimidate, Religion.)</p>"
+      },
+      "aEicYiA02iISBysZ": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "aEicYiA02iISBysZ",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1,
+        "skills": {
+          "groups": []
         }
       },
-      "dky8xFYM15jMWOO9": {
+      "oq9ZJraZAsxKNWEd": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "oq9ZJraZAsxKNWEd",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "72GcZZBTnVbzByxs": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "72GcZZBTnVbzByxs",
+        "description": "<p>You gain one skill of your choice.</p>"
+      },
+      "muZl4KsNLZbdcPMD": {
+        "name": "Censor Order",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "muZl4KsNLZbdcPMD",
+        "chooseN": 1,
+        "description": "<p>Choose a censor order from the following options, each of which grants you a skill. (<em>Quick Build:</em> Paragon.)</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.4sIzvWJt4GkrIceK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.xOrDR2a0Kf7B4BcV"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.G7CW919PYBzeVnH9"
+          }
+        ]
+      },
+      "hVDXNXUF3DWZZmR4": {
+        "name": "Deity and Domains",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "hVDXNXUF3DWZZmR4",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vwqIB4UTc6ow6mXt"
+          }
+        ],
+        "description": "<p>Your choice of domain determines many of the features you’ll gain from this class. (<em>Quick Build:</em> Cavall as deity and War as domain.)</p>"
+      },
+      "kCHtrnGzgDaebhCC": {
         "name": "Features",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "dky8xFYM15jMWOO9",
+        "_id": "kCHtrnGzgDaebhCC",
+        "description": "<p>You gain the following features.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.qkj3iQg7Ga2OzXXY"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.vwqIB4UTc6ow6mXt"
           },
           {
             "uuid": "Compendium.draw-steel.abilities.Item.EhPpL42VZWxqeSEj"
@@ -56,15 +127,16 @@
           }
         ]
       },
-      "vHNafO7l2nAXopqb": {
+      "VZJR8OYxF3Z40NPR": {
         "name": "Signature Ability",
-        "img": null,
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "vHNafO7l2nAXopqb",
+        "_id": "VZJR8OYxF3Z40NPR",
         "chooseN": 1,
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (<em>Quick Build:</em> Your Allies Cannot Save You!)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.oT9bE6xptFbhVYkY"
@@ -80,15 +152,16 @@
           }
         ]
       },
-      "aWG5hew7GdvWuFwH": {
+      "n50AeA4rcxDZT082": {
         "name": "3 Wrath",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "aWG5hew7GdvWuFwH",
+        "_id": "n50AeA4rcxDZT082",
         "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 wrath to use. (<em>Quick Build:</em> The Gods Punish and Defend.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.kfkkmiaXCPQrF5AJ"
@@ -104,15 +177,16 @@
           }
         ]
       },
-      "LXFAKkiXnOLCBaAL": {
+      "UL1Cu9PGD4lWRDiu": {
         "name": "5 Wrath",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "LXFAKkiXnOLCBaAL",
+        "_id": "UL1Cu9PGD4lWRDiu",
         "chooseN": 1,
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 wrath to use. (<em>Quick Build:</em> Purifying Fire.)</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.vCYGSjp1mhNTD30W"
@@ -128,24 +202,79 @@
           }
         ]
       },
-      "2Pr5Ma8i9qqdSQ1l": {
-        "name": "Censor Order",
-        "img": null,
+      "A9K3KTrrkVl3i3Pk": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "2Pr5Ma8i9qqdSQ1l",
+        "_id": "A9K3KTrrkVl3i3Pk",
+        "description": "<p>You can use and gain the benefits of a kit. (<em>Quick Build:</em> Warrior Priest.)</p>",
         "chooseN": 1,
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.4sIzvWJt4GkrIceK"
+            "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.xOrDR2a0Kf7B4BcV"
+            "uuid": "Compendium.draw-steel.character-options.Item.dFKiwPs0hVo7uWei"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.G7CW919PYBzeVnH9"
+            "uuid": "Compendium.draw-steel.character-options.Item.eQsxbl59pEjHEyB7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.26dSN2U5BPYxURBl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZQVco8CZprfeqPp6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.49hPWhEliTnRbuxT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.x41mBdtcCGTj8Quy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jHJnlHyRRNf9V5hm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.uEExxUnkmJ1whpCz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jBAKshrCTStqX7yI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.IWcztYRBrAMdRQyf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.tfBbJyfk0ARRiPJU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RhaBwqKzijzbJcCQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.JE0Q1L35MuOGLVVJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.B07q1yyc5HSCnAf7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.74X1pEcNgz1OQC2x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.UWjNAZn9cBAMUWB0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZoWDIjHoCJjr1uo1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.NkzAlCFgDeGuTnzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AOCz8Nufy6kbg85v"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ]
       }

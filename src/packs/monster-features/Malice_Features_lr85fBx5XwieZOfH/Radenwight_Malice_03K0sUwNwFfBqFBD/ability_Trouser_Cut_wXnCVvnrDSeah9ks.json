@@ -1,0 +1,133 @@
+{
+  "folder": "03K0sUwNwFfBqFBD",
+  "name": "Trouser Cut",
+  "type": "ability",
+  "_id": "wXnCVvnrDSeah9ks",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "225",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "trouser-cut",
+    "story": "",
+    "keywords": [
+      "magic",
+      "melee"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "2",
+        "characteristics": []
+      },
+      "effects": {
+        "J8ZyFtvUeh7fUU06": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "J8ZyFtvUeh7fUU06",
+          "damage": {
+            "tier1": {
+              "value": "7"
+            },
+            "tier2": {
+              "value": "10"
+            },
+            "tier3": {
+              "value": "13"
+            }
+          }
+        },
+        "UZvfj8gwWwSlTK6s": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "UZvfj8gwWwSlTK6s",
+          "forced": {
+            "tier1": {
+              "distance": "3"
+            },
+            "tier2": {
+              "distance": "3"
+            },
+            "tier3": {
+              "distance": "5"
+            }
+          }
+        },
+        "zQHVPeyhyCj2ux4J": {
+          "name": "Taunted",
+          "img": null,
+          "type": "applied",
+          "_id": "zQHVPeyhyCj2ux4J",
+          "applied": {
+            "tier1": {
+              "display": "",
+              "effects": {}
+            },
+            "tier3": {
+              "display": "taunted (EoT)",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              },
+              "display": "taunted (EoT)"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If the target is wearing clothing covering the lower half of their body, they must use a maneuver once to pull that clothing up before they can move.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755703906248,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wXnCVvnrDSeah9ks"
+}
