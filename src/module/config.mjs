@@ -1048,8 +1048,8 @@ const abilityKeywords = {
     label: "DRAW_STEEL.Item.ability.Keywords.Rot",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Elementalist",
   },
-  routine: {
-    label: "DRAW_STEEL.Item.ability.Keywords.Routine",
+  performance: {
+    label: "DRAW_STEEL.Item.ability.Keywords.Performance",
     group: "DRAW_STEEL.Item.ability.KeywordGroups.Troubador",
   },
   strike: {
@@ -1093,6 +1093,9 @@ const abilityTypes = {
   freeTriggered: {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
+  },
+  none: {
+    label: "DRAW_STEEL.Item.ability.Type.None",
   },
   villain: {
     label: "DRAW_STEEL.Item.ability.Type.Villain",
