@@ -1,0 +1,145 @@
+{
+  "folder": "BiLZLDEQFlNmxUnT",
+  "name": "Kinetic Strike",
+  "type": "ability",
+  "_id": "FqJWr6a2mVB4vXGJ",
+  "img": "icons/magic/light/beam-layered-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "149",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "kinetic-strike",
+    "story": "Your opponent staggers. They cannot ignore you.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "6vivkjoTU0exmHLm": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "6vivkjoTU0exmHLm",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "6 + @chr"
+            }
+          }
+        },
+        "jRB27t3zUWRrwOWv": {
+          "name": "Taunted",
+          "img": null,
+          "type": "applied",
+          "_id": "jRB27t3zUWRrwOWv",
+          "applied": {
+            "tier1": {
+              "display": "taunted (EoT)",
+              "effects": {
+                "taunted": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
+            }
+          }
+        },
+        "CiK5l95rHEHQc37G": {
+          "name": "Slide",
+          "img": null,
+          "type": "forced",
+          "_id": "CiK5l95rHEHQc37G",
+          "forced": {
+            "tier1": {
+              "movement": [],
+              "distance": "",
+              "display": ""
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ]
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755812184048,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!FqJWr6a2mVB4vXGJ"
+}
