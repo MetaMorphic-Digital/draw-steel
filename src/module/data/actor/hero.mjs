@@ -1,3 +1,4 @@
+import { systemID } from "../../constants.mjs";
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import BaseEffectModel from "../effect/base.mjs";
@@ -8,6 +9,8 @@ import BaseActorModel from "./base.mjs";
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
+ * @import AdvancementChain from "../../utils/advancement-chain.mjs";
+ * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -476,20 +479,97 @@ export default class HeroModel extends BaseActorModel {
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
     if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
 
-    cls = cls ? cls : item;
-
     const levelRange = { start: this.level + 1, end: this.level + levels };
 
-    await cls.system.applyAdvancements({ actor: this.parent, levels: levelRange });
+    if (!cls) item.system.applyAdvancements({ actor: this.parent, levels: levelRange });
+    else {
+      const chains = (await Promise.all(this.parent.items.map(i => {
+        if (i.supportsAdvancements) return i.system.createChains(levelRange.start, levelRange.end);
+        return [];
+      }))).flat();
 
-    // Quick hack; fix for 0.8.1
-    if (!item) {
-      for (const item of this.parent.items) {
-        if (item !== cls)
-          if (item.supportsAdvancements) await item.system.applyAdvancements({ actor: this.parent, levels: levelRange });
-      }
+      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+        chains, actor: this.parent, window: { title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }) },
+      });
+      if (!configured) return;
+
+      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": levelRange.end } };
+
+      this.finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
     }
 
     return this.class;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform document operations for advancements.
+   * @param {object} config
+   * @param {AdvancementChain[]} config.chains
+   * @param {ItemData[]} [config.toCreate={}]
+   * @param {ItemData[]} [config.toUpdate={}]
+   * @param {ActorData} [config.actorUpdate={}]
+   * @param {Map<string>} [config._idMap]
+   * @param {object} [options]                                      Operation options.
+   * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
+   * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
+   */
+  async finalizeAdvancements({ chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, { levels } = {}) {
+    // First gather all new items that are to be created.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (node.advancement.type !== "itemGrant") continue;
+      const parentItem = node.advancement.document;
+
+      for (const uuid of node.chosenSelection ?? []) {
+        const item = node.choices[uuid].item;
+        const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
+        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+        if (!keepId) itemData._id = foundry.utils.randomID();
+        toCreate[item.uuid] = itemData;
+        _idMap.set(item.id, itemData._id);
+        itemData._parentId = parentItem.id;
+        itemData._advId = node.advancement.id;
+      }
+    }
+
+    // Apply flags to store "parent" item's id and origin advancement.
+    for (const uuid in toCreate) {
+      const itemData = toCreate[uuid];
+      const { _parentId, _advId } = itemData;
+      delete itemData._parentId;
+      delete itemData._advId;
+
+      // Fall back to the _parentId, in the case of existing items being
+      // updated to grant more items (eg a class leveling up).
+      const parentId = _idMap.get(_parentId) ?? _parentId;
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement`, { parentId: parentId, advancementId: _advId });
+    }
+
+    // Perform item data modifications or store item updates.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (!node.advancement.isTrait) continue;
+      const { document: item, id } = node.advancement;
+      const isExisting = item.parent === this.parent;
+      let itemData;
+
+      if (isExisting) {
+        toUpdate[item.id] ??= { _id: item.id };
+        itemData = toUpdate[item.id];
+      } else {
+        itemData = toCreate[item.uuid];
+      }
+
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
+    }
+
+    const operationOptions = {};
+    if (levels) operationOptions.levels = levels;
+
+    return await Promise.all([
+      this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),
+      this.parent.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: operationOptions }),
+      this.parent.update(actorUpdate, { ds: operationOptions }),
+    ]);
   }
 }
