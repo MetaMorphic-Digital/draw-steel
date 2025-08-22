@@ -1,0 +1,66 @@
+{
+  "folder": "d8jdUpNgJPchnQ4N",
+  "name": "Repel",
+  "type": "ability",
+  "_id": "xuXuX9ENl2uwdJVK",
+  "img": "icons/magic/defensive/barrier-shield-dome-deflect-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "189",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "repel",
+    "story": "They aren’t going anywhere, but you might!",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ],
+    "type": "triggered",
+    "category": "",
+    "resource": null,
+    "trigger": "The target takes damage or is force moved.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target takes half the triggering damage, or the distance of the triggering forced movement is reduced by a number of squares equal to your Reason score. If the target took damage and was force moved, you choose the effect. If the forced movement is reduced to 0 squares, the target can push the source of the forced movement a number of squares equal to your Reason score.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755830228139,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!xuXuX9ENl2uwdJVK"
+}

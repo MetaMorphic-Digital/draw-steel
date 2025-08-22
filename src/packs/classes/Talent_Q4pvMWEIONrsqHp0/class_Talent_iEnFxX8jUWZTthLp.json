@@ -16,7 +16,182 @@
       "revision": 1
     },
     "_dsid": "talent",
-    "advancements": {},
+    "advancements": {
+      "N4jPmJOG2tgdUWI8": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "N4jPmJOG2tgdUWI8",
+        "skills": {
+          "choices": [
+            "readPerson",
+            "psionics"
+          ]
+        },
+        "description": "<p>You gain the Psionics and Read Person skills.</p>"
+      },
+      "mnSPy2hTQq3QTmEP": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "mnSPy2hTQq3QTmEP",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "lore"
+          ]
+        },
+        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. <em>(Quick Build: Empathize, Psionics, Read Person, Timescape.)</em> </p>"
+      },
+      "u9JuwU50FzpsBX4V": {
+        "name": "Talent Tradition",
+        "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "u9JuwU50FzpsBX4V",
+        "description": "<p>Choose a talent tradition from the following options. <em>(Quick Build: Telekinesis.)</em></p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.1L7ct02Be0Hr9Tpw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.g7kPqIxwJB8bqm78"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.YvcB53u33Uhpt1wQ"
+          }
+        ],
+        "chooseN": 1
+      },
+      "Up3QFZLWyklPMbGT": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Up3QFZLWyklPMbGT",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.MkF7O4vi1bEV6zJK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.0VZoAfHp9CM0jLUJ"
+          }
+        ],
+        "description": "<p>You gain the following features.</p>"
+      },
+      "wqg5KhjHWQuLZUMi": {
+        "name": "Psionic Augmentations",
+        "img": "icons/magic/perception/orb-crystal-ball-scrying-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "wqg5KhjHWQuLZUMi",
+        "description": "<p>Choose one of the following augmentations <em>(Quick Build: Force Augmentation.)</em></p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.EozglrAwvYRQw5s8"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.mwwEAQ5s5j8sBr1s"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.jF9Viz80YHQBW2QU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.cnP9ReGko79M4Xex"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.xxfGODNK1x9MS65e"
+          }
+        ],
+        "chooseN": 1
+      },
+      "s7HQyu2KJppN6nbH": {
+        "name": "Talent Ward",
+        "img": "icons/magic/defensive/shield-barrier-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "s7HQyu2KJppN6nbH",
+        "description": "<p>Choose one of the following wards. <em>(Quick Build: Repulsive Ward.)</em></p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.SrNnnIB1IhdIqQv9"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.9UZdFGEYlhAt8eBX"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VKW9qDHCunLecjtl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.H0KjiRC8GNA5WBwe"
+          }
+        ],
+        "chooseN": 1
+      },
+      "duCphrf8kIPjgNfD": {
+        "name": "Mind Spike",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "duCphrf8kIPjgNfD",
+        "description": "<p>You have the following ability, which can be used as a ranged free strike.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.2MdIFxCPWqTUE7JT"
+          }
+        ]
+      },
+      "50ozxYVLuwNt7B6D": {
+        "name": "Signature Abilities",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "50ozxYVLuwNt7B6D",
+        "description": "<p>Choose two signature abilities from the following options. Signature abilities can be used at will. <em>(Quick Build: Incinerate, Kinetic Grip.)</em></p>",
+        "chooseN": 2
+      },
+      "vhsgACqXDiz1ED6A": {
+        "name": "3 Clarity Abilities",
+        "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "vhsgACqXDiz1ED6A",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 clarity to use. <em>(Quick Build: Choke.)</em></p>",
+        "chooseN": 1
+      },
+      "Te4pzHD08FtGie4m": {
+        "name": "5 Clarity Abilities",
+        "img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Te4pzHD08FtGie4m",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 clarity to use. <em>(Quick Build: Inertia Soak.)</em></p>",
+        "chooseN": 1
+      }
+    },
     "level": 0,
     "primary": "Clarity",
     "epic": "Vision",
