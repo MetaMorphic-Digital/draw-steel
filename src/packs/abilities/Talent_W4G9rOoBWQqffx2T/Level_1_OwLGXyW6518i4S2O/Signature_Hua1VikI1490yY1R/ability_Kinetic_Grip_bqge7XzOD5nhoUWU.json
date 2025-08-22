@@ -1,0 +1,115 @@
+{
+  "folder": "Hua1VikI1490yY1R",
+  "name": "Kinetic Grip",
+  "type": "ability",
+  "_id": "bqge7XzOD5nhoUWU",
+  "img": "icons/magic/control/energy-stream-link-spiral-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "190",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "kinetic-grip",
+    "story": "You lift and hurl your foe away from you.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "lNWlcRO88g3Snb1S": {
+          "name": "Slide",
+          "img": null,
+          "type": "forced",
+          "_id": "lNWlcRO88g3Snb1S",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "2 + @chr"
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "4 + @chr"
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "6 + @chr",
+              "display": "{{forced}}"
+            }
+          }
+        },
+        "QV9gwaREjPWi3SAw": {
+          "name": "Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "QV9gwaREjPWi3SAw",
+          "applied": {
+            "tier3": {
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              },
+              "display": "prone"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p><strong>Strained:</strong> You must vertical push the target instead of sliding them.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755842510410,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!bqge7XzOD5nhoUWU"
+}
