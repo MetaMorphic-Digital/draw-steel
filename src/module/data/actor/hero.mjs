@@ -394,11 +394,11 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current subclass.
-   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
+   * Finds the actor's current subclasses.
+   * @returns {Set<(Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})>}
    */
-  get subclass() {
-    return this.parent.itemTypes.subclass[0];
+  get subclasses() {
+    return new Set(this.parent.itemTypes.subclass);
   }
 
   /* -------------------------------------------------- */

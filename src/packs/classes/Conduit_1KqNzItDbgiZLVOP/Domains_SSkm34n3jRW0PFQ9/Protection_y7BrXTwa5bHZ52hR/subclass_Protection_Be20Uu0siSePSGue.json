@@ -1,12 +1,12 @@
 {
-  "folder": "BU2wgR3SJRtHNmll",
-  "name": "Nature",
-  "type": "feature",
-  "_id": "8qJlvdyF539WCv4N",
-  "img": "icons/magic/nature/tree-elm-roots-brown.webp",
+  "folder": "y7BrXTwa5bHZ52hR",
+  "name": "Protection",
+  "type": "subclass",
+  "_id": "Be20Uu0siSePSGue",
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes acid, cold, fire, lightning, poison, or sonic damage.</p><p><strong>Prayer Effect:</strong> Vines whip up from the floor or ground within 10 squares, wrapping around a number of creatures equal to your Intuition score. You can slide each creature up to a number of squares equal to your Intuition score. The vines then fade away.</p>",
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or any ally within 10 squares gains temporary Stamina, or uses a triggered action to reduce incoming damage or to impose a bane or double bane on an enemy’s power roll.</p><p><strong>Prayer Effect:</strong> One ally within 10 squares gains temporary Stamina equal to four times your Intuition score. [[/heal 4*@I type=temporary]]</p>",
       "director": ""
     },
     "source": {
@@ -15,16 +15,16 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "nature",
+    "_dsid": "protection",
     "advancements": {
-      "uBzClK8HrUwTshV3": {
+      "ikTmfY5zLmTJEAxi": {
         "name": "Skill (Exploration)",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "uBzClK8HrUwTshV3",
+        "_id": "ikTmfY5zLmTJEAxi",
         "skills": {
           "groups": [
             "exploration"
@@ -32,17 +32,17 @@
         },
         "chooseN": 1
       },
-      "ncSgiU5vDKGC7D6P": {
+      "tOBL9PEAZ3MlCz3n": {
         "name": "Domain Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "ncSgiU5vDKGC7D6P",
+        "_id": "tOBL9PEAZ3MlCz3n",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.OKgn1XTvDQ4anbYK"
+            "uuid": "Compendium.draw-steel.classes.Item.FxXIbGZGvaJNpJ4E"
           }
         ]
       }
@@ -61,9 +61,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755670985006,
+    "createdTime": 1755670999541,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!8qJlvdyF539WCv4N"
+  "_key": "!items!Be20Uu0siSePSGue"
 }

@@ -1,48 +1,48 @@
 {
-  "folder": "lV0kAMQlAVsMO4xU",
-  "name": "Love",
-  "type": "feature",
-  "_id": "KQVARkvjGEpL9iKA",
-  "img": "icons/magic/life/heart-red-blue.webp",
+  "folder": "yfacLCXI3C6iENvX",
+  "name": "War",
+  "type": "subclass",
+  "_id": "oXK9RDnTuXTu47l1",
+  "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or any ally within 10 squares uses the Aid Attack maneuver or an ability that targets an ally.</p><p><strong>Prayer Effect:</strong> Each ally within 10 squares of you gains temporary Stamina equal to two times your Intuition score. [[/heal 2*@I type=temporary]]</p>",
+      "value": "<p><strong>Piety: </strong>You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes damage greater than 10 + your level in a single turn.</p><p><strong>Prayer Effect:</strong> Choose up to three allies within 10 squares of you, or choose yourself instead of one ally. Each target gains 2 surges.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "96",
+      "page": "97",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "love",
+    "_dsid": "war",
     "advancements": {
-      "HtpM2XBKriUfAdUs": {
-        "name": "Skill (Interpersonal)",
+      "z8cUorL1n0uysoDT": {
+        "name": "Skill (Exploration)",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "HtpM2XBKriUfAdUs",
+        "_id": "z8cUorL1n0uysoDT",
         "chooseN": 1,
         "skills": {
           "groups": [
-            "interpersonal"
+            "exploration"
           ]
         }
       },
-      "Ti0DqYB4LEDAuTnG": {
+      "Sod3hzOKZNhRIwIk": {
         "name": "Domain Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "Ti0DqYB4LEDAuTnG",
+        "_id": "Sod3hzOKZNhRIwIk",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.D0ef3sDvAeB8Tre7"
+            "uuid": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX"
           }
         ]
       }
@@ -61,9 +61,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755670975417,
+    "createdTime": 1755671048803,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!KQVARkvjGEpL9iKA"
+  "_key": "!items!oXK9RDnTuXTu47l1"
 }
