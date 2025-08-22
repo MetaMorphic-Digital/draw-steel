@@ -205,6 +205,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       [this.document.id]: { _id: this.document.id },
     };
 
-    await actor.system.finalizeAdvancements({ chains, toUpdate });
+    await actor.system._finalizeAdvancements({ chains, toUpdate });
   }
 }

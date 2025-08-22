@@ -495,7 +495,7 @@ export default class HeroModel extends BaseActorModel {
 
       const toUpdate = { [cls.id]: { _id: cls.id, "system.level": levelRange.end } };
 
-      this.finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
+      this._finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
     }
 
     return this.class;
@@ -514,8 +514,9 @@ export default class HeroModel extends BaseActorModel {
    * @param {object} [options]                                      Operation options.
    * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
    * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
+   * @internal End consumers should use the {@link advance}, AdvancementModel#applyAdvancements, or ItemGrantAdvancement#reconfigure methods
    */
-  async finalizeAdvancements({ chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, { levels } = {}) {
+  async _finalizeAdvancements({ chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, { levels } = {}) {
     // First gather all new items that are to be created.
     for (const chain of chains) for (const node of chain.active()) {
       if (node.advancement.type !== "itemGrant") continue;
