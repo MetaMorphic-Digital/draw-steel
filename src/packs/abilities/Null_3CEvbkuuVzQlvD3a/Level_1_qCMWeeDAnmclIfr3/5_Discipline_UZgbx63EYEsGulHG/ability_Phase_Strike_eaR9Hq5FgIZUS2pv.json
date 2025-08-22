@@ -1,0 +1,177 @@
+{
+  "folder": "UZgbx63EYEsGulHG",
+  "name": "Phase Strike",
+  "type": "ability",
+  "_id": "eaR9Hq5FgIZUS2pv",
+  "img": "icons/magic/control/silhouette-hold-change-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "151",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "phase-strike",
+    "story": "For a moment, your foe slips out of phase with this manifold.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "fwIBzf2jIM63OIeU": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fwIBzf2jIM63OIeU",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "4 + @chr"
+            },
+            "tier3": {
+              "value": "6 + @chr"
+            }
+          }
+        },
+        "AElcrvgnCbgYIcep": {
+          "name": "Out of Phase",
+          "img": null,
+          "type": "applied",
+          "_id": "AElcrvgnCbgYIcep",
+          "applied": {
+            "tier1": {
+              "effects": {
+                "bDOy4GRErLnNOAfj": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "display": "{{potency}}, the target goes out of phase (save ends)"
+            },
+            "tier2": {
+              "effects": {
+                "bDOy4GRErLnNOAfj": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "bDOy4GRErLnNOAfj": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>A target who goes out of phase is slowed, has their stability reduced by 2, and can’t obtain a tier 3 outcome on ability rolls.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Out of Phase",
+      "img": "icons/magic/control/silhouette-hold-change-green.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.eaR9Hq5FgIZUS2pv",
+      "transfer": false,
+      "_id": "bDOy4GRErLnNOAfj",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "-2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755822867064,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!eaR9Hq5FgIZUS2pv.bDOy4GRErLnNOAfj"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755822665537,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!eaR9Hq5FgIZUS2pv"
+}
