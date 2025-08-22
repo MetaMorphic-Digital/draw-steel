@@ -478,7 +478,17 @@ export default class HeroModel extends BaseActorModel {
 
     cls = cls ? cls : item;
 
-    await cls.system.applyAdvancements({ actor: this.parent, levels: { start: this.level + 1, end: this.level + levels } });
+    const levelRange = { start: this.level + 1, end: this.level + levels };
+
+    await cls.system.applyAdvancements({ actor: this.parent, levels: levelRange });
+
+    // Quick hack; fix for 0.8.1
+    if (!item) {
+      for (const item of this.parent.items) {
+        if (item !== cls)
+          if (item.supportsAdvancements) await item.system.applyAdvancements({ actor: this.parent, levels: levelRange });
+      }
+    }
 
     return this.class;
   }

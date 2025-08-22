@@ -99,7 +99,15 @@ export default class AdvancementModel extends BaseItemModel {
         if (Number.isNumeric(level)) return level.between(levelStart ?? 0, levelEnd);
         else return levelStart === null;
       });
-      if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
+      if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement, null, { start: levelStart, end: levelEnd }));
+    }
+
+    const [firstUpdate, ...rest] = Object.values(toUpdate);
+    const noUpdates = (Object.keys(firstUpdate ?? {}).length <= 1) && (rest.length === 0);
+
+    if (!chains.length && foundry.utils.isEmpty(toCreate) && noUpdates) {
+      console.debug("No advancements to apply for", this.parent.name);
+      return null;
     }
 
     const title = this.actor ?
@@ -116,7 +124,7 @@ export default class AdvancementModel extends BaseItemModel {
       if (node.advancement.type !== "itemGrant") continue;
       const parentItem = node.advancement.document;
 
-      for (const uuid of node.chosenSelection) {
+      for (const uuid of node.chosenSelection ?? []) {
         const item = node.choices[uuid].item;
         const keepId = !actor.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
         const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });

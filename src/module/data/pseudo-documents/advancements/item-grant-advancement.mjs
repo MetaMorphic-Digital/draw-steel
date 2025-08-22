@@ -2,6 +2,10 @@ import BaseAdvancement from "./base-advancement.mjs";
 import DSDialog from "../../../applications/api/dialog.mjs";
 import { systemID } from "../../../constants.mjs";
 
+/**
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
+ */
+
 const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
 
 /**
@@ -176,6 +180,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   async reconfigure() {
     await super.reconfigure();
 
+    /** @type {DrawSteelActor} */
     const actor = this.document.parent;
 
     const allowed = await ds.applications.api.DSDialog.confirm({
@@ -186,7 +191,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       content: `<p>${game.i18n.localize("DRAW_STEEL.ADVANCEMENT.Reconfigure.ConfirmItemGrant.Content")}</p>`,
     });
     if (!allowed) return;
-    const chains = [await ds.utils.AdvancementChain.create(this)];
+    const chains = [await ds.utils.AdvancementChain.create(this, null, { end: actor.system.level })];
     const configuration = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
       chains, actor, window: { title: "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.reconfigureTitle" },
     });
