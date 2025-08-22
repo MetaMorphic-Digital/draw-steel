@@ -1,12 +1,12 @@
 {
-  "folder": "ijxwUoJfA3oDVGkc",
-  "name": "Storm",
-  "type": "feature",
-  "_id": "mUsjn4Ry2pviXw44",
-  "img": "icons/magic/lightning/bolt-cloud-sky-white.webp",
+  "folder": "y7BrXTwa5bHZ52hR",
+  "name": "Protection",
+  "type": "subclass",
+  "_id": "Be20Uu0siSePSGue",
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that an enemy within 10 squares is force moved.</p><p><strong>Prayer Effect:</strong> Each enemy in a 3 cube within 10 squares takes lightning damage equal to twice your Intuition score. [[/damage 2*@I type=lightning]]</p>",
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or any ally within 10 squares gains temporary Stamina, or uses a triggered action to reduce incoming damage or to impose a bane or double bane on an enemy’s power roll.</p><p><strong>Prayer Effect:</strong> One ally within 10 squares gains temporary Stamina equal to four times your Intuition score. [[/heal 4*@I type=temporary]]</p>",
       "director": ""
     },
     "source": {
@@ -15,38 +15,39 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "storm",
+    "_dsid": "protection",
     "advancements": {
-      "GlNrUzNEbfqs94d7": {
+      "ikTmfY5zLmTJEAxi": {
         "name": "Skill (Exploration)",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "GlNrUzNEbfqs94d7",
-        "chooseN": 1,
+        "_id": "ikTmfY5zLmTJEAxi",
         "skills": {
           "groups": [
             "exploration"
           ]
-        }
+        },
+        "chooseN": 1
       },
-      "JaRPXyr0e5Jpl9Dj": {
+      "tOBL9PEAZ3MlCz3n": {
         "name": "Domain Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "JaRPXyr0e5Jpl9Dj",
+        "_id": "tOBL9PEAZ3MlCz3n",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ"
+            "uuid": "Compendium.draw-steel.classes.Item.FxXIbGZGvaJNpJ4E"
           }
         ]
       }
-    }
+    },
+    "classLink": "conduit"
   },
   "effects": [],
   "sort": 100000,
@@ -61,9 +62,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755671011819,
+    "createdTime": 1755670999541,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!mUsjn4Ry2pviXw44"
+  "_key": "!items!Be20Uu0siSePSGue"
 }

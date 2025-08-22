@@ -457,7 +457,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         }
       }
       // Other advancements
-      if (["ancestry", "career", "culture", "subclass"].includes(item.type)) {
+      if (["ancestry", "career", "culture"].includes(item.type)) {
         /** @type {DrawSteelItem} */
         const existing = this.actor.system[item.type];
         if (existing) {

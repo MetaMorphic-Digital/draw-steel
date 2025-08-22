@@ -1,52 +1,53 @@
 {
-  "folder": "yfacLCXI3C6iENvX",
-  "name": "War",
-  "type": "feature",
-  "_id": "oXK9RDnTuXTu47l1",
-  "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
+  "folder": "2fU3ronTeOe1vGdQ",
+  "name": "Trickery",
+  "type": "subclass",
+  "_id": "Hg3pUKdOeLi4LBhn",
+  "img": "icons/creatures/unholy/demon-fanged-horned-yellow.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety: </strong>You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes damage greater than 10 + your level in a single turn.</p><p><strong>Prayer Effect:</strong> Choose up to three allies within 10 squares of you, or choose yourself instead of one ally. Each target gains 2 surges.</p>",
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes the Aid Attack or Hide maneuver.</p><p><strong>Prayer Effect:</strong> You slide one creature within 10 squares of you up to a number of squares equal to 5 + your conduit level. [[5+@level]]</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "97",
+      "page": "96",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "war",
+    "_dsid": "trickery",
     "advancements": {
-      "z8cUorL1n0uysoDT": {
-        "name": "Skill (Exploration)",
+      "O1ycu0Bsshs4jupx": {
+        "name": "Skill (Intrigue)",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "z8cUorL1n0uysoDT",
+        "_id": "O1ycu0Bsshs4jupx",
         "chooseN": 1,
         "skills": {
           "groups": [
-            "exploration"
+            "intrigue"
           ]
         }
       },
-      "Sod3hzOKZNhRIwIk": {
+      "XpuKM4GYlZvPUwGW": {
         "name": "Domain Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "Sod3hzOKZNhRIwIk",
+        "_id": "XpuKM4GYlZvPUwGW",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX"
+            "uuid": "Compendium.draw-steel.classes.Item.VRC4QcE3f1ob0drS"
           }
         ]
       }
-    }
+    },
+    "classLink": "conduit"
   },
   "effects": [],
   "sort": 100000,
@@ -61,9 +62,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755671048803,
+    "createdTime": 1755671040863,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!oXK9RDnTuXTu47l1"
+  "_key": "!items!Hg3pUKdOeLi4LBhn"
 }
