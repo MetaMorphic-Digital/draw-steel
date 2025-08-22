@@ -1,0 +1,221 @@
+{
+  "folder": "DDQszc7f2JZLgbRD",
+  "name": "Smolder",
+  "type": "ability",
+  "_id": "ubBYqHf4LxOZZw4G",
+  "img": "icons/magic/fire/flame-burning-campfire-rocks.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "191",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "smolder",
+    "story": "Smoke flows from your enemy like tears as their skin begins to blacken and flake.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "pyrokinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "aFck8XBUeGruWOJq": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "aFck8XBUeGruWOJq",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "8wJO779Nh0gbJqJm": {
+          "name": "Weakness",
+          "img": null,
+          "type": "applied",
+          "_id": "8wJO779Nh0gbJqJm",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, the target has weakness 5 (save ends)",
+              "effects": {
+                "KPyDN925R8Ld9pBO": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "KPyDN925R8Ld9pBO": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, the target has weakness equal to 5 + your Reason score (save ends)",
+              "effects": {
+                "LUcaVS8NL6mNDwb6": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Choose the damage type and the weakness for this ability from one of the following: acid, corruption, or fire. The target takes damage before this ability imposes any weakness.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Smolder",
+      "img": "icons/magic/fire/flame-burning-campfire-rocks.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.ubBYqHf4LxOZZw4G",
+      "transfer": false,
+      "_id": "KPyDN925R8Ld9pBO",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755876262686,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ubBYqHf4LxOZZw4G.KPyDN925R8Ld9pBO"
+    },
+    {
+      "name": "Smolder (T3)",
+      "img": "icons/magic/fire/flame-burning-campfire-rocks.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.ubBYqHf4LxOZZw4G",
+      "transfer": false,
+      "_id": "LUcaVS8NL6mNDwb6",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755876725174,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ubBYqHf4LxOZZw4G.LUcaVS8NL6mNDwb6"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755872266582,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ubBYqHf4LxOZZw4G"
+}
