@@ -1,0 +1,161 @@
+{
+  "folder": "DDQszc7f2JZLgbRD",
+  "name": "Choke",
+  "type": "ability",
+  "_id": "5B3qFN4oAdjGzMFs",
+  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "191",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "choke",
+    "story": "You crush a foe in a telekinetic grip.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "3DofgqTrQJ2n9z9v": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "3DofgqTrQJ2n9z9v",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "8 + @chr"
+            }
+          }
+        },
+        "fYyIFZoVW9Gd38IG": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "fYyIFZoVW9Gd38IG",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, restrained (save ends)",
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can vertical pull the target up to 2 squares. If the target is made restrained by this ability, this forced movement ignores their stability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.5B3qFN4oAdjGzMFs",
+      "transfer": false,
+      "_id": "55iwy505cFzsdzYd",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755873350311,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5B3qFN4oAdjGzMFs.55iwy505cFzsdzYd"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755872238967,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!5B3qFN4oAdjGzMFs"
+}

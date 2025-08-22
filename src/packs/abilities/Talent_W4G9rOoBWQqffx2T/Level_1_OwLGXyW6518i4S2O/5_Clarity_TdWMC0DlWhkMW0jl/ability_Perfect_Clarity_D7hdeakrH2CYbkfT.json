@@ -1,0 +1,67 @@
+{
+  "folder": "TdWMC0DlWhkMW0jl",
+  "name": "Perfect Clarity",
+  "type": "ability",
+  "_id": "D7hdeakrH2CYbkfT",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "191",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "perfect-clarity",
+    "story": "You clear the mind of nothing but the goal.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "telepathy"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the start of your next turn, the target gains a +3 bonus to speed, and they have a double edge on the next power roll they make. If the target obtains a tier 3 outcome on that roll, you gain 1 clarity.</p><p>Strained: You take [[/damage 1d6]] damage, and you can’t use triggered actions (save ends).</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755872317453,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!D7hdeakrH2CYbkfT"
+}
