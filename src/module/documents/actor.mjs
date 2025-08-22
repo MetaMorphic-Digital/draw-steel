@@ -94,7 +94,8 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     if (update === current) return this;
 
     // Determine the updates to make to the actor data
-    const updates = { "system.stamina.value": Math.clamp(update, this.system.stamina.min, this.system.stamina.max) };
+    const spent = this.system.stamina.max - Math.clamp(update, this.system.stamina.min, this.system.stamina.max);
+    const updates = { "system.stamina.spent": spent };
 
     // Allow a hook to override these changes
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);

@@ -27,12 +27,12 @@
             label=(localize "TYPES.CombatantGroup.squad")
             }}
             {{else}}
-            {{formGroup
-            systemFields.stamina.fields.value
-            value=system.stamina.value
-            dataset=datasets.notSource
-            classes="paired"
-            }}
+            <div class="form-group paired">
+              <label>{{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.value.label"}}</label>
+              <div class="form-fields">
+                <input type="number" name="system.stamina.value" value="{{system.stamina.value}}">
+              </div>
+            </div>
             {{/if}}
           </div>
           {{/if}}

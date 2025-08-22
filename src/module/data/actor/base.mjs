@@ -25,7 +25,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      spent: new fields.NumberField({ initial: 0, nullable: false, integer: true, min: 0 }),
       max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
@@ -138,8 +138,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
-
     this.stamina.winded = Math.floor(this.stamina.max / 2);
+    this.stamina.value = this.stamina.max - this.stamina.spent;
 
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
@@ -475,7 +475,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
 
     const remainingDamage = Math.max(0, damage - damageToTempStamina);
-    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
+    if (remainingDamage > 0) staminaUpdates.spent = this.stamina.spent + remainingDamage;
 
     return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
   }

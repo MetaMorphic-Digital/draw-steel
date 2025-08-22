@@ -36,7 +36,7 @@ export default class HeroModel extends BaseActorModel {
     const schema = super.defineSchema();
 
     schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
+      spent: new fields.NumberField({ initial: 0, nullable: false, integer: true, min: 0 }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     }, { trackedAttribute: true });
 
@@ -265,7 +265,7 @@ export default class HeroModel extends BaseActorModel {
           xp: this.hero.xp + this.hero.victories,
         },
         stamina: {
-          value: this.stamina.max,
+          spent: 0,
         },
       },
     });
