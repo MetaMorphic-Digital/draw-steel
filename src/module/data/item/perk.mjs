@@ -11,7 +11,6 @@ export default class PerkModel extends FeatureModel {
       ...super.metadata,
       type: "perk",
       invalidActorTypes: ["npc"],
-      packOnly: true,
       detailsPartial: [systemPath("templates/sheets/item/partials/perk.hbs")],
     };
   }
