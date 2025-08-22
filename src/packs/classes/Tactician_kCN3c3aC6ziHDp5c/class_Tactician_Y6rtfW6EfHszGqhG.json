@@ -8,38 +8,22 @@
       "director": ""
     },
     "advancements": {
-      "36mlcVBFxyBy3tIn": {
-        "type": "itemGrant",
-        "_id": "36mlcVBFxyBy3tIn",
-        "pool": [
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.dNGmfuNuaML5TRQL"
-          },
-          {
-            "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
-          }
-        ],
-        "name": "Features",
-        "requirements": {
-          "level": 1
-        },
-        "description": "<p>Field Arsenal, Focus</p>"
-      },
       "KoGp0Q93aEXIiQxx": {
         "type": "itemGrant",
         "_id": "KoGp0Q93aEXIiQxx",
         "requirements": {
           "level": 3
         },
-        "name": "Features",
+        "name": "Out of Position",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.UMi9OOllnmMinI9h"
           }
-        ]
+        ],
+        "description": "<p>Even before battle begins, your enemies struggle to keep up with your tactics.</p>"
       },
       "ZYrQ1MTL4PPJq1un": {
-        "name": "Guaranteed Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -54,7 +38,7 @@
         "description": "<p>You gain the Lead skill.</p>"
       },
       "lffZjjuNWAvfmliT": {
-        "name": "Skill Choices",
+        "name": "Choose Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -80,7 +64,60 @@
           ]
         },
         "chooseN": 2,
-        "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build</em>: Lead, Monsters, Strategy.)</p>"
+        "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build</em>: Monsters, Strategy.)</p>"
+      },
+      "TPNKDjRP9rjsZfdo": {
+        "name": "Tactical Doctrine",
+        "img": "icons/sundries/documents/document-sealed-red-tan.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "TPNKDjRP9rjsZfdo",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VfwdbL1GG2Dx0zv7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aYjVEZyiYqtdGGPS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OjWhetKz8boQxExU"
+          }
+        ],
+        "chooseN": 1,
+        "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build</em>: Vanguard and the Intimidate skill.)</p><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "QbsiJwC2zZCfmQej": {
+        "name": "Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "QbsiJwC2zZCfmQej",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
+          }
+        ],
+        "description": "<p>The ring of steel panics others but brings order to your mind, granting you a Heroic Resource called focus.</p>"
+      },
+      "7k50JsLsnWjsjUNC": {
+        "name": "Field Arsenal",
+        "img": "icons/skills/melee/spear-tips-quintuple-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "7k50JsLsnWjsjUNC",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.dNGmfuNuaML5TRQL"
+          }
+        ],
+        "description": "<p>You have drilled with a broad array of weapons and have developed techniques to optimize their use. Whenever you select or change your kit, you can select an additional kit and gain the benefits of both kits, including both their signature abilities. See Kits for more information. (<em>Quick Build:</em> Shining Armor, Sniper)</p>",
+        "chooseN": null
       },
       "MP2iZkK0a0TBrk2f": {
         "name": "Mark",
@@ -109,29 +146,58 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.x4b14J5PNuHHSOvy"
           }
-        ]
+        ],
+        "description": "<p>You have the following ability.</p>"
       },
-      "TPNKDjRP9rjsZfdo": {
-        "name": "Tactical Doctrine",
-        "img": null,
+      "v3lv8gpmAuGMFZeL": {
+        "name": "3 Focus",
+        "img": "icons/magic/symbols/runes-triangle-orange.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "TPNKDjRP9rjsZfdo",
+        "_id": "v3lv8gpmAuGMFZeL",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 focus to use. (<em>Quick Build</em>: Inspiring Strike.)</p>",
+        "chooseN": 1,
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.VfwdbL1GG2Dx0zv7"
+            "uuid": "Compendium.draw-steel.abilities.Item.tNLgOK3NPEmKPT8N"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.aYjVEZyiYqtdGGPS"
+            "uuid": "Compendium.draw-steel.abilities.Item.S3iGPafawIlrjPLQ"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.OjWhetKz8boQxExU"
+            "uuid": "Compendium.draw-steel.abilities.Item.yYQqS6yLeI1vSq5F"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.KgIMq4mGRFmij4yK"
           }
-        ],
+        ]
+      },
+      "gxX5Ov4NXyFqjz7Y": {
+        "name": "5 Focus",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gxX5Ov4NXyFqjz7Y",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 focus to use. (<em>Quick Build:</em> Hammer and Anvil.)</p>",
         "chooseN": 1,
-        "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build</em>: Vanguard and the Intimidate skill.)</p><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.lNJCFKdUV1fjYmhC"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tpi0fKQDK1dEDwWw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qHiPuCKH4WNHCYgO"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.eiwrW9TL342wPNea"
+          }
+        ]
       }
     },
     "source": {
