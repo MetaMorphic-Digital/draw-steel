@@ -287,7 +287,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     if ((game.userId === userId) && changed.system?.stamina) this.updateStaminaEffects();
 
     if (options.ds?.previousStamina && changed.system?.stamina) {
-      const stamDiff = options.ds.previousStamina.value - (changed.system.stamina.value || options.ds.previousStamina.value);
+      const stamDiff = (changed.system.stamina.spent || options.ds.previousStamina.spent) - options.ds.previousStamina.spent;
       const tempDiff = options.ds.previousStamina.temporary - (changed.system.stamina.temporary || options.ds.previousStamina.temporary);
       const diff = stamDiff + tempDiff;
       this.displayStaminaChange(diff, options.ds.damageType);
