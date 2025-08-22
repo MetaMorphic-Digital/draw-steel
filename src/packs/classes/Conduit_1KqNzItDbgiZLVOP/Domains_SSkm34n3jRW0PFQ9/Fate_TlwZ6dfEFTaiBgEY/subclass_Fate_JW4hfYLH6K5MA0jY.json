@@ -1,12 +1,12 @@
 {
-  "folder": "T3XJaPq9pd6F8bCx",
-  "name": "Death",
-  "type": "feature",
-  "_id": "b8B5pjyAJsywS2pf",
-  "img": "icons/magic/death/grave-tombstone-glow-teal.webp",
+  "folder": "TlwZ6dfEFTaiBgEY",
+  "name": "Fate",
+  "type": "subclass",
+  "_id": "JW4hfYLH6K5MA0jY",
+  "img": "icons/commodities/treasure/crystal-ball-blue-purple.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that a creature within 10 squares who isn’t a minion is reduced to 0 Stamina, or the first time in an encounter that a solo creature within 10 squares becomes winded.</p><p><strong>Prayer Effect:</strong> You inflict a deadly curse on up to two enemies within 10 squares of you. Each target takes corruption damage equal to twice your Intuition score. [[/damage 2*@I type=corruption]]</p>",
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that an ally within 10 squares obtains a tier 3 outcome on a power roll, or an enemy within 10 squares obtains a tier 1 outcome on a power roll.</p><p><strong>Prayer Effect:</strong> You call on the forces of fate to create a reliable future. Choose a creature within 10 squares. That creature automatically obtains a tier 1 or tier 3 outcome (your choice) on their next power roll made before the end of the encounter.</p>",
       "director": ""
     },
     "source": {
@@ -15,16 +15,16 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "death",
+    "_dsid": "fate",
     "advancements": {
-      "t3RXauOgaB2N19Qt": {
+      "ciAEpj5mXFuS3ZnT": {
         "name": "Skill (Lore)",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 1
         },
-        "_id": "t3RXauOgaB2N19Qt",
+        "_id": "ciAEpj5mXFuS3ZnT",
         "skills": {
           "groups": [
             "lore"
@@ -32,21 +32,22 @@
         },
         "chooseN": 1
       },
-      "sTDrffIF7XJyj1R3": {
+      "sYR3UkIOyTrvZ802": {
         "name": "Domain Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "sTDrffIF7XJyj1R3",
+        "_id": "sYR3UkIOyTrvZ802",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i"
+            "uuid": "Compendium.draw-steel.classes.Item.21lMiXOy7dWQvNZH"
           }
         ]
       }
-    }
+    },
+    "classLink": "conduit"
   },
   "effects": [],
   "sort": 100000,
@@ -61,9 +62,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755670908981,
+    "createdTime": 1755670926605,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!b8B5pjyAJsywS2pf"
+  "_key": "!items!JW4hfYLH6K5MA0jY"
 }
