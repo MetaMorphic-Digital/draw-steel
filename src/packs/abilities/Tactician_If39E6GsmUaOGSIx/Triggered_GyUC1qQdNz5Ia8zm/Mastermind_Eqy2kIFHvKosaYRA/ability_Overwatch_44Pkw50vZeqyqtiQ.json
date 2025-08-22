@@ -1,7 +1,7 @@
 {
-  "name": "Parry",
+  "name": "Overwatch",
   "type": "ability",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/tools/navigation/spyglass-telescope-brass.webp",
   "system": {
     "source": {
       "book": "Heroes",
@@ -9,25 +9,24 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "parry",
+    "_dsid": "overwatch",
     "keywords": [
-      "melee",
-      "weapon"
+      "ranged"
     ],
-    "type": "main",
+    "type": "triggered",
     "category": "signature",
     "resource": null,
-    "trigger": "",
+    "trigger": "The target moves.",
     "distance": {
-      "type": "melee",
-      "primary": 1,
+      "type": "ranged",
+      "primary": 10,
       "secondary": 0,
       "tertiary": null
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "selfOrAlly",
-      "value": null
+      "type": "creature",
+      "value": 1
     },
     "power": {
       "roll": {
@@ -37,17 +36,17 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "<p>The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1.</p>"
+      "before": "<p>At any point during the target’s movement, one ally can make a free strike against them.</p>",
+      "after": ""
     },
     "spend": {
-      "value": null,
-      "text": ""
+      "value": 1,
+      "text": "If the target has R < Average, they are slowed (EoT)"
     },
-    "story": "Your quick reflexes cost an enemy the precision they seek."
+    "story": "Under your direction, an ally waits for just the right moment to strike."
   },
   "effects": [],
-  "folder": "namgjInmC0X7jtJb",
+  "folder": "Eqy2kIFHvKosaYRA",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -56,14 +55,14 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751141730791,
+    "createdTime": 1751141727577,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "NSOHEMtSDSy8qwIh",
-  "sort": 0,
-  "_key": "!items!NSOHEMtSDSy8qwIh"
+  "_id": "44Pkw50vZeqyqtiQ",
+  "sort": 100000,
+  "_key": "!items!44Pkw50vZeqyqtiQ"
 }

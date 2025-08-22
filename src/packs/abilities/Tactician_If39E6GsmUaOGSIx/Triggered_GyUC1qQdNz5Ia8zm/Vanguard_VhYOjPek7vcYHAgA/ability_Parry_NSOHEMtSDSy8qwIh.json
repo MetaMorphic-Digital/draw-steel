@@ -1,7 +1,7 @@
 {
-  "name": "Advanced Tactics",
+  "name": "Parry",
   "type": "ability",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/skills/melee/swords-parry-block-blue.webp",
   "system": {
     "source": {
       "book": "Heroes",
@@ -9,23 +9,24 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "advanced-tactics",
+    "_dsid": "parry",
     "keywords": [
-      "ranged"
+      "melee",
+      "weapon"
     ],
-    "type": "triggered",
+    "type": "main",
     "category": "signature",
     "resource": null,
-    "trigger": "The target deals damage to another creature.",
+    "trigger": "",
     "distance": {
-      "type": "ranged",
-      "primary": 10,
+      "type": "melee",
+      "primary": 1,
       "secondary": 0,
       "tertiary": null
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "selfOrAlly",
       "value": null
     },
     "power": {
@@ -36,17 +37,17 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The target gains 2 surges, which they can use on the triggering damage.</p>",
-      "after": "<p>The target gains two surges, which they can use on the triggering damage.</p>"
+      "before": "",
+      "after": "<p>The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1.</p>"
     },
     "spend": {
-      "value": 1,
-      "text": "If the damage has any potency effect associated with it, the potency is increased by 1"
+      "value": null,
+      "text": ""
     },
-    "story": "Your leadership aids an ally."
+    "story": "Your quick reflexes cost an enemy the precision they seek."
   },
   "effects": [],
-  "folder": "namgjInmC0X7jtJb",
+  "folder": "VhYOjPek7vcYHAgA",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -55,14 +56,14 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1751141724065,
+    "createdTime": 1751141730791,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "Ww4AaolCBsUJMeDA",
-  "sort": 300000,
-  "_key": "!items!Ww4AaolCBsUJMeDA"
+  "_id": "NSOHEMtSDSy8qwIh",
+  "sort": 100000,
+  "_key": "!items!NSOHEMtSDSy8qwIh"
 }
