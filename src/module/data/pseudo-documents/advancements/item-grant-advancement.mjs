@@ -86,8 +86,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         items.add(item);
         if (item.hasGrantedItems) {
           for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
-            if (!("grantedItemsChain" in advancement)) continue;
-            for (const a of advancement.grantedItemsChain()) items.add(a);
+            for (const a of advancement.grantedItemsChain?.() ?? []) items.add(a);
           }
         }
       }
