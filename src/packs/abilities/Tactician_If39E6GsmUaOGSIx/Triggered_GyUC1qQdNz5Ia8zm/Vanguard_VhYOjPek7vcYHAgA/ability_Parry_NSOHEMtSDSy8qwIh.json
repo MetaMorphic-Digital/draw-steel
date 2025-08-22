@@ -1,0 +1,69 @@
+{
+  "name": "Parry",
+  "type": "ability",
+  "img": "icons/skills/melee/swords-parry-block-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "176",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "parry",
+    "keywords": [
+      "melee",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1.</p>"
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "Your quick reflexes cost an enemy the precision they seek."
+  },
+  "effects": [],
+  "folder": "VhYOjPek7vcYHAgA",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751141730791,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "NSOHEMtSDSy8qwIh",
+  "sort": 100000,
+  "_key": "!items!NSOHEMtSDSy8qwIh"
+}

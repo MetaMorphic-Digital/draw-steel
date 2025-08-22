@@ -1,0 +1,95 @@
+{
+  "folder": "TNk6pcZd6C0ioWM5",
+  "name": "Density Augmentation",
+  "type": "feature",
+  "_id": "6n5LrSg6JPnZEHvV",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
+  "system": {
+    "description": {
+      "value": "<p>You gain a +6 bonus to Stamina, and this bonus increases by 6 at 4th, 7th, and 10th levels. Additionally, you gain a +1 bonus to stability.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "density-augmentation",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Density Augmentation Effect",
+      "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.6n5LrSg6JPnZEHvV",
+      "_id": "kS2kgab22HuDWt9K",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.bonuses.echelon",
+          "mode": 2,
+          "value": "6",
+          "priority": null
+        },
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755805981975,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6n5LrSg6JPnZEHvV.kS2kgab22HuDWt9K"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755805900968,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!6n5LrSg6JPnZEHvV"
+}
