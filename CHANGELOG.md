@@ -86,6 +86,7 @@
 - Removed direct kit limitations derived from class information in favor of handling kits as advancements. (#863)
 - Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
 - Removed "Melee" range as a separate listing from the character sheet stats tab to match the official character sheet.
+- Removed the "End Encounter" button from the bottom of the combat tracker.
 
 ## 0.7.3
 
