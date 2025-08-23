@@ -246,7 +246,8 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite resetting the hero's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
+   * Take a respite resetting the hero's stamina and recoveries, converting victories
+   * to XP, and disabling "Next Respite" active effects.
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
@@ -282,11 +283,15 @@ export default class HeroModel extends BaseActorModel {
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
-      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", {
+        format: { actor: this.parent.name },
+      });
       return this.parent;
     }
 
-    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", {
+      format: { actor: this.parent.name },
+    });
     await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
     return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
@@ -477,7 +482,9 @@ export default class HeroModel extends BaseActorModel {
     if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
-    if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
+    if (this.level + levels > ds.CONFIG.hero.xp_track.length) {
+      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
+    }
 
     const levelRange = { start: this.level + 1, end: this.level + levels };
 
@@ -489,7 +496,9 @@ export default class HeroModel extends BaseActorModel {
       }))).flat();
 
       const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
-        chains, actor: this.parent, window: { title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }) },
+        chains, actor: this.parent, window: {
+          title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
+        },
       });
       if (!configured) return;
 
@@ -514,9 +523,13 @@ export default class HeroModel extends BaseActorModel {
    * @param {object} [options]                                      Operation options.
    * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
    * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
-   * @internal End consumers should use the {@link advance}, AdvancementModel#applyAdvancements, or ItemGrantAdvancement#reconfigure methods
+   * @internal          End consumers should use the {@link advance}, AdvancementModel#applyAdvancements,
+   *                    or ItemGrantAdvancement#reconfigure methods
    */
-  async _finalizeAdvancements({ chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() }, { levels } = {}) {
+  async _finalizeAdvancements(
+    { chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
+    { levels } = {},
+  ) {
     // First gather all new items that are to be created.
     for (const chain of chains) for (const node of chain.active()) {
       if (node.advancement.type !== "itemGrant") continue;

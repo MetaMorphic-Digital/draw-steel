@@ -69,7 +69,7 @@ export default class AdvancementModel extends BaseItemModel {
    * Creates the advancement chains for this item given a level range.
    * @param {number} levelStart
    * @param {number} levelEnd
-   * @returns {Promise<Array<AdvancementChain>>}
+   * @returns {Promise<AdvancementChain[]>}
    */
   async createChains(levelStart, levelEnd) {
     const chains = [];
@@ -100,7 +100,14 @@ export default class AdvancementModel extends BaseItemModel {
    * @param {Map<string, string>} [options._idMap]  Internal map to aid in retrieving 'new' ids of created items.
    * @returns {DrawSteelItem}
    */
-  async applyAdvancements({ actor = this.actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {}, ...options } = {}) {
+  async applyAdvancements({
+    actor = this.actor,
+    levels = { start: null, end: 1 },
+    toCreate = {},
+    toUpdate = {},
+    actorUpdate = {},
+    ...options } = {},
+  ) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
     const { start: levelStart = null, end: levelEnd = 1 } = levels;
     const _idMap = options._idMap ?? new Map();
@@ -134,7 +141,10 @@ export default class AdvancementModel extends BaseItemModel {
     });
     if (!configured) return;
 
-    const transactions = await actor.system._finalizeAdvancements({ chains, toCreate, toUpdate, actorUpdate, _idMap }, { levels });
+    const transactions = await actor.system._finalizeAdvancements(
+      { chains, toCreate, toUpdate, actorUpdate, _idMap },
+      { levels },
+    );
 
     return transactions[0].find(i => i.type === this.parent.type);
   }
