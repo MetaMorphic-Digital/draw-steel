@@ -136,12 +136,13 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    // Apply all stamina bonuses before calculating winded
+    this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
+
+    // If our current stamina has not been set, match it to max:
     if (this.stamina.value === undefined) {
       this.stamina.value = this.stamina.max;
     }
-
-    // Apply all stamina bonuses before calculating winded
-    this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
 
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
