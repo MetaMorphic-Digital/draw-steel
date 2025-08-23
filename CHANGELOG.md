@@ -22,6 +22,11 @@
 
 ### Added
 
+- Compendiums (#757, #758)
+  - Compendiums are how the system includes and distributes the rules elements that have been openly licensed.
+  - This release includes material for first level play, as well as many of the monsters used in the starter adventures.
+  - Added Compendiums for classes, monsters, roll tables, character options, character origins, and rewards.
+  - Compendium content will continue to be a work in progress throughout the 0.8 series.
 - Advancements (#51)
   - Advancements allow items like classes, kits, and features to make complex adjustments to an actor.
   - Simply dragging an ancestry or class onto an actor will prompt you through the advancements.
