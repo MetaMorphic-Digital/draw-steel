@@ -21,21 +21,19 @@ When creating a new temporary active effect by clicking on the `+ New Effect` bu
 
 Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
 
-Any of the condition statuses can be applied to a Token via the Token HUD. When doing so, the conditions window is a drop down menu that let's you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
+Any of the status conditions can be applied to a Token via the Token HUD. When doing so, the conditions window is a drop down menu that lets you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
 
 Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactivate it again.
 
-Active statuses are highlighted, while inactive ones are displayed in muted colors.
-
-Additionally, each effect is documented in the system compendiums.
+Active statuses are highlighted, while inactive ones are displayed in muted colors. Additionally, each effect is documented in the system compendiums.
 
 #### Dazed
 
-If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor’s triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can’t be used while affected by the `Dazed` effect.
+If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor's triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can't be used while affected by the `Dazed` effect.
 
 ### Dying
 
-If an Actor's stamina falls below zero they automatically get the `dying` status effect applied to them. This status does not have any effects by itself and is removed automatically if an actor's stamina gets healed above zero stamina.
+If an Actor's stamina falls below zero they automatically get the `Dying` status effect applied to them. This status does not have any effects by itself and is removed automatically if an actor's stamina returns to above zero.
 
 ### Frightened
 
@@ -43,7 +41,7 @@ If the `Frightened` status effect is applied to an actor, while another actor is
 
 ### Grabbed
 
-If the `Grabbed` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Grab and the ability power rolls of the grabbed actor that are targeted at actors other than the source actor automatically have a bane. Additionally the displayed movement speed on the grabbed actor’s character sheet is set to zero.
+If the `Grabbed` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Grab and the ability power rolls of the grabbed actor that are targeted at actors other than the source actor automatically have a bane. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
 
 ### Prone
 
@@ -51,15 +49,17 @@ If the `Prone` status effect is applied to an actor, the available movement type
 
 ### Restrained
 
-If the `Restrained` status effect is applied to an actor the ability power rolls of the restrained actor automatically have a bane and abilities with the restrained actor being targeted have an edge. Additionally the displayed movement speed on the grabbed actor’s character sheet is set to zero.
+If the `Restrained` status effect is applied to an actor, the ability power rolls of the restrained actor automatically have a bane and abilities with the restrained actor being targeted have an edge. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
 
 ### Slowed
 
-If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***) Traits such as Humans` `Perseverance` can be activated via Active Effects, which allows to set the “slowed” speed to 3 instead of 2.
+If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***)
+
+Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which allows setting the "slowed" speed to 3 instead of 2.
 
 ### Taunted
 
-If the `taunted` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the `taunt` and afterwards abilities that are targeted at actors other than the `taunted` source actor automatically have a double bane while in line of effect to the `taunted` source.
+If the `Taunted` status effect is applied to an actor while another actor is targeted, the targeted actor becomes the source of the `Taunt`, and afterwards abilities that are targeted at actors other than the `Taunted` source actor automatically have a double bane while in line of effect to the `Taunted` source.
 
 ### Weakened
 
@@ -67,8 +67,7 @@ If the `Weakened` status is applied to an actor, all power rolls of that actor a
 
 ### Winded
 
-If an actor falls below 50 % of their maximum stamina, they automatically get the `winded` status effect applied to them. This status does not have any effects by itself.
-If the actor's stamina gets healed above the 50 % threshold, the `winded` status automatically if removed.
+If an actor falls below 50% of their maximum stamina, they automatically get the `Winded` status effect applied to them. This status does not have any effects by itself. If the actor's stamina gets healed above the 50% threshold, the `Winded` status is automatically removed.
 
 ## Active Effect Config
 
@@ -82,9 +81,9 @@ The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an 
 
 #### Linking status effects
 
-At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
+At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions then this effect will include that condition in its functionality, and an Actor will behave as if that status condition is applied to it.
 
-If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
+If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the ActiveEffect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
 
 ### Duration
 

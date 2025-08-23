@@ -69,7 +69,7 @@ Clicking on a combatant group reveals the list of all included combatants. Click
 
 Both the `Base` and the `Squad` combatant groups rely on enemy NPC actors having their organization set in their actor sheet.
 
-Actors may be added to a combatant group by click&dragging them into the group, or via the `Update Combatant` menu option of a combatants right-click context menu.
+Actors may be added to a combatant group by dragging them into the group, or via the `Update Combatant` menu option of a combatants right-click context menu.
 
 #### Right-click context menu
 

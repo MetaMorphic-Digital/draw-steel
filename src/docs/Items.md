@@ -4,9 +4,9 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/items/) has more inf
 
 ## General Info
 
-All items have a source info button in the top bar of their sheet. This can be used to input source information for the item which will be displayed in the top right of the header. If the page value is a number, it will be prefixed with "pg.", otherwise it will be taken as-is and combined with the book name.
+All items have a source info button in the header of their sheet. This can be used to input source information for the item which will be displayed in the top right of the header. If the page value is a number, it will be prefixed with "pg.", otherwise it will be taken as-is and combined with the book name.
 
-The description tab of the item sheet includes fields for both the general and director descriptions. The description field will use the item's roll data for any enrichers. Other core Foundry rich text features, such as secret blocks, are fully supported.
+The description tab of the item sheet includes fields for both general and Director descriptions. The description field will use the item's roll data for any enrichers. Other core Foundry rich text features, such as secret blocks, are fully supported.
 
 ### Draw Steel ID
 
@@ -14,7 +14,7 @@ The Draw Steel ID (DSID) is a field that uniquely identifies a rules element sep
 
 ## Ability
 
-Abilities that are both melee and ranged have an additional context option to switch their display between ranged and melee; this is relevant if a character has kit or other bonuses that only apply to one or the other modes.
+Abilities that are both melee and ranged have an additional context option to switch their display between ranged and melee; this is relevant if a character has a kit or other bonuses that only apply to one or the other modes.
 
 ## Ancestry
 
@@ -44,19 +44,19 @@ Classes are listed in the header of the hero sheet. Draw Steel does not support 
 
 _Supports Advancements: See that page for details_
 
-Complications are displayed on the features tab of the hero sheet. A hero is not obligated to pick a complication.
+Complications are displayed on the features tab of the hero sheet. A hero is not required to pick a complication.
 
 ## Culture
 
 _Supports Advancements: See that page for details_
 
-A culture's aspects are implemented entirely through the advancements system. Creating an advancement on a culture gives a special dialog with pre-filled advancements for the various aspects in the books.
+A culture's aspects are implemented entirely through the Advancement system. Creating an advancement on a culture gives a special prompt with pre-filled advancements for the various aspects in the books.
 
 ## Kit
 
 _Supports Advancements: See that page for details_
 
-The Draw Steel system automatically applies the bonuses from kits. Kits also support item grant advancements for the purpose of giving their signature ability.
+The Draw Steel system automatically applies the bonuses from kits. Kits also support Item Grant Advancements for the purpose of providing their signature ability.
 
 ## Feature
 
@@ -84,7 +84,7 @@ Titles can specify their echelon, story text, and prerequisites.
 
 ## Treasures
 
-Treasures cover the variety individual items that heroes can acquire. They have a number of fields to help sort and organize them. Many treasures can be automated via Active Effects.
+Treasures cover the variety individual items that heroes can acquire. They have a number of fields to help sort and organize them. Many treasures can be automated via ActiveEffects.
 
 ## Project
 

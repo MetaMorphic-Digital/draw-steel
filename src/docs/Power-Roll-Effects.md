@@ -10,7 +10,7 @@ Damage effects allow specifying the damage amount (as a formula that takes both 
 
 ## Applied Effects
 
-Applied effects allow abilities to apply conditions to actors. This application is not fully automated; the owners of those actors must use the "apply effect" button to execute this. Each tier can have any number of effects, including both canonical status conditions as well as custom effects. "Create Custom Effect" will create a new Active Effect under the "Applied Effects" section of the item sheet; if you create a custom effect but no longer wish to use it, it must be fully deleted from the ability from its effects tab.
+Applied effects allow abilities to apply conditions to actors. This application is not fully automated; the owners of those actors must use the "Apply Effect" button to execute this. Each tier can have any number of effects, including both canonical status conditions as well as custom effects. The "Create Custom Effect" button will create a new ActiveEffect under the "Applied Effects" section of the item sheet; if you create a custom effect but no longer wish to use it, it must be fully deleted from the ability via its Effects tab.
 
 ## Forced Movement
 
@@ -18,4 +18,4 @@ Forced Movement effects allow specifying the direction and distance of an abilit
 
 ## Other
 
-The Other type is a catch-all for anything that doesn't fit into the other categories and includes just text displays.
+The Other type is a catch-all for anything that does not fit into the other categories and includes just text displays.

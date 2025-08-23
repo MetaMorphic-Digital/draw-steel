@@ -8,20 +8,20 @@ Advancement choices can be adjusted by opening the Advancements tab of the item'
 
 ## Item Grants
 
-Item grants allow one item to add other items to the character sheet automatically. The "Choose N" field will give all available choices if there are fewer choices than specified or if the field is entirely blank.
+Item Grant Advancements allow one item to add other items to the character sheet automatically. The "Choose N" field determines how many items from the configured pool of choices can be picked; if this value is less than or equal to the number of items available to pick from, all available choices are granted.
 
-Items can be added to the pool by dragging and dropping; these specifications are stored by UUID, which means that if an item is moved, deleted, or otherwise unavailable it cannot be granted. However, if an item is simply updated (e.g. for errata), the link will not be disrupted. This will *not* automatically update items already granted to an actor, only ensure that future granted items are the latest version.
+Items can be added to the pool by dragging and dropping; these specifications are stored by UUID, which means that if an item is moved, deleted, or otherwise unavailable, it cannot be granted. However, if an item is simply updated (e.g. for errata), the link will not be disrupted. This will *not* automatically update items already granted to an actor, only ensure that items granted in the future are the latest version.
 
-Whenever an item grant advancement provides choices, if the choice would provide further advancements, those will be added to the configuration dialog.
+Whenever an Item Grant Advancement provides choices, if the choice would provide further advancements, those will be added to the configuration window.
 
 ## Traits
 
-Trait grants cover several other types of advancements that share common features. They are applied during data preparation after Active Effects, which means their adjustments will not be visible in edit mode on the character sheet. They do not check the actor for what choices have already been made in other advancements; it is up to players to ensure that their trait choices from their ancestry, culture, career, and class do not overlap.
+Trait Advancements cover several other types of advancements that share common features. They are applied during data preparation after ActiveEffects, which means their adjustments will not be visible in edit mode on the character sheet. They do not check the actor for what choices have already been made in other advancements; it is up to players to ensure that their trait choices from their ancestry, culture, career, and class do not overlap.
 
 ### Skills
 
-Skill advancements provide skills either from a group or individually. If a feature specifies that it grants "X skill from Y group", do not include the group in the advancement; just include the specific skill. If not all skill choices have been made, a reminder button will be available on the character sheet.
+Skill Advancements provide skills either from a group or individually. If a feature specifies that it grants "X skill from Y group," do not include the group in the advancement; simply include the specific skill. If not all skill choices have been made, a button will be available on the character sheet to configure the remaining choices at any point.
 
 ### Languages
 
-Language advancements allow specifying either a general skill choice or specific language grants. If not all language choices have been made, a reminder button will be available on the character sheet.
+Language Advancements allow specifying a language to be granted. If not all language choices have been made during the level-up process, a button will be available on the character sheet to configure the remaining choices at any point.

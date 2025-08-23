@@ -7,25 +7,25 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/actors/) has more in
 The actor sheets in Draw Steel feature both a "Play" and "Edit" mode, which can be toggled using the buttons in the top right of the sheet.
 
 In play mode:
-- You can click the characteristic labels to prompt for a roll, including the opportunity to select a relevant skill or modify edges & boons
+- You can click the Characteristic labels to prompt for a roll, including the opportunity to select a relevant skill or apply edges and boons.
 
 In edit mode:
-- You can adjust the base values
-- The adjustments from active effects and advancements are *not* displayed.
+- You can adjust the base values.
+- The adjustments from ActiveEffects and advancements are *not* displayed.
 
 ### Tokens
 
 Actors are represented on the canvas via tokens. Draw Steel includes a number of enhancements to the core token functionality.
 
-**Attribute Bars:** The Token attribute bars will assume a "delta" change if you enter a number prefixed with a + or -, so -5 means "reduce attribute by 5" rather than "set attribute to -5". If you want to *set* an attribute to a negative value, prefix with `=-`, e.g. `=-5` to set to -5.
+**Attribute Bars:** The Token attribute bars will assume a "delta" change if you enter a number prefixed with a `+` or `-`, so `-5` means "reduce attribute by 5" rather than "set attribute to `-5`". If you want to *set* an attribute to a negative value, prefix with `=-`, e.g. `=-5` to set to `-5`.
 
 **Flanking:** The system automates the edge on melee strikes from Flanking; it requires line of effect and the ability to take triggered actions.
 
-**Token Ruler:** Dragging a token in Draw Steel will both display distance information based on the token's movement value & selected movement type as well as the *quantity* of free strikes triggered.
+**Token Ruler:** Dragging a token in Draw Steel will both display distance information based on the token's movement value and selected movement type as well as the *quantity* of free strikes triggered.
 
 ## Heroes
 
-The player characters in Draw Steel are heroes.
+The player characters in Draw Steel are known as heroes.
 
 ### Recoveries and Respites
 
@@ -33,7 +33,7 @@ Players can use the "Recovery" button on the character sheet to spend a recovery
 
 ### Heroic Resources
 
-If a player character has a defined class with a defined HR generation formula (typically `2` or `1d3`), then at the beginning of each of their turns in combat, they automatically generate that amount. Accordingly if they use abilities with a resource cost, that resource cost is automatically subtracted from their total. If a player character has victories, then they will start combat with an equal amount of their HR.
+If a player character has a defined class with a defined Heroic Resource generation formula (typically `2` or `1d3`), then, at the beginning of each of their turns in combat, they automatically generate that amount. Accordingly, if they use abilities with a resource cost, that resource cost is automatically subtracted from their total. If a player character has victories, then they will start combat with an equal amount of their Heroic Resource.
 
 ### Hero Tokens
 
@@ -51,13 +51,11 @@ Non-player character ("NPC") actors cover both the monsters that the heroes figh
 
 ### Malice
 
-The system automatically generates Malice at the start of each round of combat based on the number of heroes, their victories, and the number of rounds. To be counted as a hero, a combatant must:
-- be associated with an actor of type "hero"
-- that hero is owned by at least one player
+The system automatically generates Malice at the start of each round of combat based on the number of heroes, their victories, and the number of rounds. To be counted as a hero for the purpose of this system feature, a combatant must be associated with an actor of type "hero" and that actor must be owned by at least one player.
 
 #### Malice Consumption
 
-All NPC actors share a malice pool. Any ability that has a `Resource Cost` listed will consume Malice if activated from an NPC actor sheet.
+All NPC actors share a malice pool. Any ability that has a Resource Cost listed will consume Malice if activated from an NPC actor sheet.
 
 ## Free Strikes
 

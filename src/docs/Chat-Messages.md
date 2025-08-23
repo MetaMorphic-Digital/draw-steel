@@ -8,7 +8,7 @@ Draw Steel will interpret the provided rolls to a message to add additional func
 
 ### Dealing and Taking Damage
 
-Any chat message with a damage roll will have an "apply damage" button that can be used to deal that damage to _selected_ tokens. This will take into account the actor's immunities and weaknesses. It will also create floating text on the token.
+Any chat message with a damage roll will have an "Apply Damage" button that can be used to deal that damage to _selected_ (controlled) tokens. This will take into account the actor's immunities and weaknesses.
 
 ## Ability Messages
 
@@ -16,7 +16,7 @@ Using an ability creates a special type of chat message with additional data and
 
 ### Apply Effect
 
-Abilities with an "Applied Effect" power roll effect will have the option to apply the effect to _selected_ tokens. This will automatically account for the configuration of the effect, e.g. if at certain tiers it should be until end of turn vs. save ends.
+Abilities with an "Applied Effect" power roll effect will have the option to apply the effect to _selected_ (controlled) tokens. This will automatically account for the configuration of the effect, e.g., if at certain tiers it should be until End of Turn vs. Save Ends.
 
 ## Project Roll Messages
 
