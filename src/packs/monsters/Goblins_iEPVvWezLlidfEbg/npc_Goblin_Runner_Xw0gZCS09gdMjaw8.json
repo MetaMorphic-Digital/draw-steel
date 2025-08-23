@@ -1,13 +1,12 @@
 {
   "folder": "iEPVvWezLlidfEbg",
-  "name": "Goblin Sniper",
+  "name": "Goblin Runner",
   "type": "npc",
-  "_id": "E637uEMv0INA5LPW",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 3,
-      "max": 3,
+      "value": 4,
+      "max": 4,
       "temporary": 0
     },
     "characteristics": {
@@ -41,11 +40,11 @@
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
         "walk",
         "climb"
@@ -93,19 +92,17 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
-      "keywords": [
-        "humanoid"
-      ],
+      "freeStrike": 1,
+      "keywords": [],
       "level": 1,
       "ev": 3,
-      "role": "artillery",
-      "organization": "minion"
+      "role": "",
+      "organization": ""
     }
   },
   "prototypeToken": {
-    "name": "Goblin Sniper",
-    "displayName": 20,
+    "name": "Goblin Runner",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -159,7 +156,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -192,23 +189,92 @@
       "disposition": false
     },
     "movementAction": null,
-    "flags": {
-      "token-aura-ring": {
-        "aura-rings": []
-      },
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
+    "flags": {},
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Bow",
+      "name": "Crafty",
+      "type": "feature",
+      "_id": "IpnEqs83JkgZpvZJ",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The runner doesn't provoke oppurtunity attacks by moving.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "161",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "crafty",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.IpnEqs83JkgZpvZJ"
+    },
+    {
+      "name": "With Captain",
+      "type": "feature",
+      "_id": "hoEauWQhpDNCsRsF",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>With Captain: </strong>Gain an edge on strikes</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "161",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "with-captain",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": -100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.hoEauWQhpDNCsRsF"
+    },
+    {
+      "name": "Club Charge",
       "type": "ability",
       "system": {
         "type": "main",
@@ -218,10 +284,11 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bow",
+        "_dsid": "club-charge",
         "story": "",
         "keywords": [
-          "ranged",
+          "charge",
+          "melee",
           "strike",
           "weapon"
         ],
@@ -229,8 +296,8 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "ranged",
-          "primary": 10
+          "type": "melee",
+          "primary": 1
         },
         "damageDisplay": "melee",
         "target": {
@@ -245,12 +312,14 @@
             ]
           },
           "effects": {
-            "J3lQoL7CipGhqKaQ": {
+            "iTuBq1bwRgRcWckC": {
+              "name": "",
+              "img": null,
               "type": "damage",
-              "_id": "J3lQoL7CipGhqKaQ",
+              "_id": "iTuBq1bwRgRcWckC",
               "damage": {
                 "tier1": {
-                  "value": "2",
+                  "value": "1",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -259,7 +328,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "4",
+                  "value": "2",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -268,7 +337,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "5",
+                  "value": "3",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -276,106 +345,27 @@
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             }
           }
         },
         "effect": {
-          "before": "<p>With Captain: +5 bonus to ranged distance</p>",
-          "after": "<p>If the sniper doesn't use a move action this turn, this ability gains an edge.</p>"
+          "before": "",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "R1JVWasOVx8ZkAuo",
+      "_id": "WeMq0DalWkEq62RQ",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.R1JVWasOVx8ZkAuo"
-    },
-    {
-      "name": "Crafty",
-      "type": "feature",
-      "_id": "jVBIXhdQEbN4FpSh",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The Sniper doesnʼt provoke opportunity attacks by moving.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "161",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "crafty",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.jVBIXhdQEbN4FpSh",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.jVBIXhdQEbN4FpSh"
-    },
-    {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "z645tcJGl2YAUZat",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p>With Captain: +5 bonus to ranged distance</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "161",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
@@ -388,7 +378,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.z645tcJGl2YAUZat"
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.WeMq0DalWkEq62RQ"
     },
     {
       "name": "Goblin Mode",
@@ -441,80 +431,16 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.nuE5FmnXGPlibTpE",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714247798,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.4IYmvaux8p8vaWR6"
-    },
-    {
-      "name": "Tiny Stabs",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "tiny-stabs",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A goblin starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "Oa0MhwS1yeyeJ5qG",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "vxOVWECtypuYigNy",
-      "sort": 200000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.usGFrBn8EJ9d1r4x",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714250039,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.Oa0MhwS1yeyeJ5qG"
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.4IYmvaux8p8vaWR6"
     },
     {
       "name": "Swamp Stink",
@@ -603,7 +529,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
+          "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
         },
         {
           "name": "Active Effect",
@@ -640,7 +566,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
+          "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
         },
         {
           "name": "Active Effect (2)",
@@ -677,7 +603,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
+          "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
         },
         {
           "name": "Active Effect (3)",
@@ -714,7 +640,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
+          "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
         },
         {
           "name": "Active Effect (4)",
@@ -751,7 +677,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
+          "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
         }
       ],
       "folder": "vxOVWECtypuYigNy",
@@ -762,21 +688,81 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715080898,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.vZMdicLidQzWMkgm"
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm"
+    },
+    {
+      "name": "Tiny Stabs",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "160",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "tiny-stabs",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A goblin starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Oa0MhwS1yeyeJ5qG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "vxOVWECtypuYigNy",
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!Xw0gZCS09gdMjaw8.Oa0MhwS1yeyeJ5qG"
     }
   ],
   "effects": [],
-  "sort": 500000,
   "ownership": {
     "default": 0
   },
@@ -788,9 +774,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639584661,
+    "createdTime": 1755922156735,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!E637uEMv0INA5LPW"
+  "_id": "Xw0gZCS09gdMjaw8",
+  "sort": 400000,
+  "_key": "!actors!Xw0gZCS09gdMjaw8"
 }

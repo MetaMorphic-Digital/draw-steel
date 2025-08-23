@@ -1,21 +1,21 @@
 {
-  "folder": "SN3x5ZfzmkqqFmny",
-  "name": "Familiar",
+  "folder": "uzDlhwRlxqGNSV32",
+  "name": "Noncombatant",
   "type": "npc",
-  "_id": "cBkB3TyhBE1UsNGM",
-  "img": "systems/draw-steel/assets/roles/mount.webp",
+  "_id": "n6KfPTM9QRvDr4x2",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 20,
+      "value": 8,
+      "max": 8,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": -3
+        "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 0
       },
       "reason": {
         "value": 0
@@ -24,7 +24,7 @@
         "value": 0
       },
       "presence": {
-        "value": 1
+        "value": 0
       }
     },
     "combat": {
@@ -34,7 +34,7 @@
       },
       "size": {
         "value": 1,
-        "letter": "T"
+        "letter": "M"
       },
       "stability": 0,
       "turns": 1
@@ -42,9 +42,7 @@
     "biography": {
       "value": "",
       "director": "",
-      "languages": [
-        "mindspeech"
-      ]
+      "languages": []
     },
     "movement": {
       "value": 5,
@@ -82,7 +80,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "231",
+      "page": "5",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -94,24 +92,25 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 0,
+      "freeStrike": 1,
       "keywords": [
-        "animal"
+        "animal",
+        "humanoid"
       ],
-      "level": 1,
-      "ev": 4,
-      "role": "support",
-      "organization": "minion"
+      "level": 0,
+      "ev": 0,
+      "role": "",
+      "organization": ""
     }
   },
   "prototypeToken": {
-    "name": "Familiar",
+    "name": "Noncombatant",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/mount.webp",
+      "src": "icons/svg/mystery-man.svg",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -200,22 +199,22 @@
   },
   "items": [
     {
-      "name": "Telepathic",
+      "name": "Feature",
       "type": "feature",
-      "_id": "nU9qpZWDGqJQAWSr",
-      "img": "icons/svg/item-bag.svg",
+      "_id": "NwAhWpNAskns8W3i",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>While you and your familiar are within 10 squares of each other, you can communicate telepathically and share each other’s senses. While sharing senses, each of you also benefits from your own senses at the same time.</p>",
+          "value": "<p>The noncombatant can be size 1S, 1M, 1L, or 2.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "231",
+          "page": "5",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "telepathic",
+        "_dsid": "feature",
         "advancements": {}
       },
       "effects": [],
@@ -223,7 +222,7 @@
       "sort": 0,
       "ownership": {
         "default": 0,
-        "KimC3Q9ULPxjXgeP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
@@ -233,11 +232,10 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755833999677,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!cBkB3TyhBE1UsNGM.nU9qpZWDGqJQAWSr"
+      "_key": "!actors.items!n6KfPTM9QRvDr4x2.NwAhWpNAskns8W3i"
     }
   ],
   "effects": [],
@@ -253,9 +251,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755833595680,
+    "createdTime": 1755922183912,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!cBkB3TyhBE1UsNGM"
+  "_key": "!actors!n6KfPTM9QRvDr4x2"
 }

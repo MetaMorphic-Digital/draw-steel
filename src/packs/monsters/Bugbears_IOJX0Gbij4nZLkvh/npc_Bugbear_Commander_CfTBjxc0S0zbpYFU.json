@@ -1,30 +1,29 @@
 {
-  "folder": "iEPVvWezLlidfEbg",
-  "name": "Goblin Sniper",
+  "folder": "IOJX0Gbij4nZLkvh",
+  "name": "Bugbear Commander",
   "type": "npc",
-  "_id": "E637uEMv0INA5LPW",
-  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "img": "systems/draw-steel/assets/roles/support.webp",
   "system": {
     "stamina": {
-      "value": 3,
-      "max": 3,
+      "value": 80,
+      "max": 80,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": -2
-      },
-      "agility": {
         "value": 2
       },
+      "agility": {
+        "value": 1
+      },
       "reason": {
-        "value": 0
+        "value": 2
       },
       "intuition": {
         "value": 0
       },
       "presence": {
-        "value": -1
+        "value": 0
       }
     },
     "combat": {
@@ -34,21 +33,20 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "L"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
       "value": 5,
       "types": [
-        "walk",
-        "climb"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -81,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "161",
+      "page": "53",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -93,24 +91,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 5,
       "keywords": [
         "humanoid"
       ],
-      "level": 1,
-      "ev": 3,
-      "role": "artillery",
-      "organization": "minion"
+      "level": 2,
+      "ev": 16,
+      "role": "support",
+      "organization": "elite"
     }
   },
   "prototypeToken": {
-    "name": "Goblin Sniper",
-    "displayName": 20,
+    "name": "Bugbear Commander",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "src": "systems/draw-steel/assets/roles/support.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -159,7 +157,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -179,7 +177,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -192,36 +190,66 @@
       "disposition": false
     },
     "movementAction": null,
-    "flags": {
-      "token-aura-ring": {
-        "aura-rings": []
-      },
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
+    "flags": {},
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Bow",
+      "name": "The Commander’s Watching",
+      "type": "feature",
+      "_id": "CUOHVyYyoH6QDlo7",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Any ally who has line of effect to the commander can end one condition on themself at the start of each of their turns.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "53",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "the-commanders-watching",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.CUOHVyYyoH6QDlo7"
+    },
+    {
+      "name": "Inspiring Swordplay",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "161",
+          "page": "53",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bow",
+        "_dsid": "inspiring-swordplay",
         "story": "",
         "keywords": [
-          "ranged",
+          "melee",
           "strike",
           "weapon"
         ],
@@ -229,8 +257,280 @@
         "resource": null,
         "trigger": "",
         "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "Wv8SnPHItJhOCrD5": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "Wv8SnPHItJhOCrD5",
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "gpfiPNbqvHonWlm9": {
+              "name": "Grabbed",
+              "img": null,
+              "type": "applied",
+              "_id": "gpfiPNbqvHonWlm9",
+              "applied": {
+                "tier3": {
+                  "display": "one target is grabbed",
+                  "effects": {
+                    "grabbed": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>One ally within 5 squares of the commander gains an edge on their next strike until the start of the commander’s next turn.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "LagNBVAtN3LFSFjU",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.LagNBVAtN3LFSFjU"
+    },
+    {
+      "name": "You Next!",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "53",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "you-next",
+        "story": "",
+        "keywords": [
+          "ranged"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
           "type": "ranged",
-          "primary": 10
+          "primary": 8
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target moves up to their speed and uses a signature ability.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "hrPfpEnp79uXtKga",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.hrPfpEnp79uXtKga"
+    },
+    {
+      "name": "Fall Back!",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "53",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "fall-back",
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target shifts up to their speed, then can use the Throw maneuver.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "s9IqRYXfFSaCaNPi",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.s9IqRYXfFSaCaNPi"
+    },
+    {
+      "name": "Throw",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "53",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "throw",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
         },
         "damageDisplay": "melee",
         "target": {
@@ -240,142 +540,27 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
+            "characteristics": []
           },
-          "effects": {
-            "J3lQoL7CipGhqKaQ": {
-              "type": "damage",
-              "_id": "J3lQoL7CipGhqKaQ",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            }
-          }
+          "effects": {}
         },
         "effect": {
-          "before": "<p>With Captain: +5 bonus to ranged distance</p>",
-          "after": "<p>If the sniper doesn't use a move action this turn, this ability gains an edge.</p>"
+          "before": "<p>Special: The target must be grabbed by the commander.</p><p>The target is vertical pushed up to 4 squares. An ally doesn’t take damage from being force moved this way.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "R1JVWasOVx8ZkAuo",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.R1JVWasOVx8ZkAuo"
-    },
-    {
-      "name": "Crafty",
-      "type": "feature",
-      "_id": "jVBIXhdQEbN4FpSh",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The Sniper doesnʼt provoke opportunity attacks by moving.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "161",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "crafty",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.jVBIXhdQEbN4FpSh",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.jVBIXhdQEbN4FpSh"
-    },
-    {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "z645tcJGl2YAUZat",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p>With Captain: +5 bonus to ranged distance</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "161",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
+      "_id": "WCfg0aigzL7qmkBi",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
@@ -388,7 +573,69 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.z645tcJGl2YAUZat"
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.WCfg0aigzL7qmkBi"
+    },
+    {
+      "name": "Catcher",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "53",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "catcher",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "A size 1 creature or object is force moved within distance, or  a size 1 ally willingly moves within distance.",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target is grabbed by the commander.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "E1rzwE72ls2rnpO6",
+      "img": "icons/skills/movement/arrow-upward-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.E1rzwE72ls2rnpO6"
     },
     {
       "name": "Goblin Mode",
@@ -441,80 +688,16 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.nuE5FmnXGPlibTpE",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714247798,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.4IYmvaux8p8vaWR6"
-    },
-    {
-      "name": "Tiny Stabs",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "tiny-stabs",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A goblin starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "Oa0MhwS1yeyeJ5qG",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "vxOVWECtypuYigNy",
-      "sort": 200000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.usGFrBn8EJ9d1r4x",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714250039,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!E637uEMv0INA5LPW.Oa0MhwS1yeyeJ5qG"
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.4IYmvaux8p8vaWR6"
     },
     {
       "name": "Swamp Stink",
@@ -603,7 +786,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
+          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
         },
         {
           "name": "Active Effect",
@@ -640,7 +823,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
+          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
         },
         {
           "name": "Active Effect (2)",
@@ -677,7 +860,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
+          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
         },
         {
           "name": "Active Effect (3)",
@@ -714,7 +897,7 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
+          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
         },
         {
           "name": "Active Effect (4)",
@@ -751,32 +934,92 @@
           },
           "modifiedTime": null,
           "lastModifiedBy": null,
-          "_key": "!actors.items.effects!E637uEMv0INA5LPW.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
+          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
         }
       ],
       "folder": "vxOVWECtypuYigNy",
-      "sort": 300000,
+      "sort": 500000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715080898,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!E637uEMv0INA5LPW.vZMdicLidQzWMkgm"
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm"
+    },
+    {
+      "name": "Tiny Stabs",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "160",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "tiny-stabs",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A goblin starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Oa0MhwS1yeyeJ5qG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "vxOVWECtypuYigNy",
+      "sort": 400000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.Oa0MhwS1yeyeJ5qG"
     }
   ],
   "effects": [],
-  "sort": 500000,
   "ownership": {
     "default": 0
   },
@@ -788,9 +1031,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639584661,
+    "createdTime": 1755922153100,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!E637uEMv0INA5LPW"
+  "_id": "CfTBjxc0S0zbpYFU",
+  "sort": 0,
+  "_key": "!actors!CfTBjxc0S0zbpYFU"
 }

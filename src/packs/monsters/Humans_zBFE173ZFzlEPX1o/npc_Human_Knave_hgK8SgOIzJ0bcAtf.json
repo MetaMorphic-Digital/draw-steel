@@ -1,13 +1,12 @@
 {
   "folder": "zBFE173ZFzlEPX1o",
-  "name": "Human Brawler",
+  "name": "Human Knave",
   "type": "npc",
-  "_id": "DSEkUDEnQeS4LsWr",
-  "img": "systems/draw-steel/assets/roles/brute.webp",
+  "img": "systems/draw-steel/assets/roles/defender.webp",
   "system": {
     "stamina": {
-      "value": 40,
-      "max": 40,
+      "value": 50,
+      "max": 50,
       "temporary": 0
     },
     "characteristics": {
@@ -15,10 +14,10 @@
         "value": 2
       },
       "agility": {
-        "value": 1
+        "value": 0
       },
       "reason": {
-        "value": 0
+        "value": 1
       },
       "intuition": {
         "value": 0
@@ -41,8 +40,8 @@
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
       "value": 5,
@@ -57,12 +56,12 @@
         "all": 0,
         "acid": 0,
         "cold": 0,
-        "corruption": 1,
+        "corruption": 2,
         "fire": 0,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
-        "psychic": 1,
+        "psychic": 2,
         "sonic": 0
       },
       "weaknesses": {
@@ -80,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "181",
+      "page": "182",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -97,19 +96,19 @@
         "humanoid"
       ],
       "level": 1,
-      "ev": 6,
-      "role": "brute",
+      "ev": 8,
+      "role": "defender",
       "organization": "platoon"
     }
   },
   "prototypeToken": {
-    "name": "Human Brawler",
+    "name": "Human Knave",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/brute.webp",
+      "src": "systems/draw-steel/assets/roles/defender.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -158,7 +157,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -178,7 +177,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -193,25 +192,143 @@
     "movementAction": null,
     "flags": {},
     "randomImg": false,
-    "appendNumber": true,
+    "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Haymaker",
+      "name": "I'm Your Enemy",
+      "type": "feature",
+      "_id": "da3q80Um62NGCPR8",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever an adjacent creature the knave has taunted deals dam age to a creature other than the knave, the knave can make a free strike against them.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "182",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "im-your-enemy",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.da3q80Um62NGCPR8"
+    },
+    {
+      "name": "Overwhelm",
+      "type": "feature",
+      "_id": "JjbpH95MaUDpegiM",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>An enemy who starts their turn adjacent to the knave can’t shift.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "182",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "overwhelm",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.JjbpH95MaUDpegiM"
+    },
+    {
+      "name": "Supernatural Insight",
+      "type": "feature",
+      "_id": "818dtFLh8hxADsby",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The knave ignores concealment if it’s granted by a supernatural effect.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "182",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "supernatural-insight",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.818dtFLh8hxADsby"
+    },
+    {
+      "name": "Morningstar and Javelin",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "181",
+          "page": "182",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "haymaker",
+        "_dsid": "morningstar-and-javelin",
         "story": "",
         "keywords": [
           "melee",
+          "ranged",
           "strike",
           "weapon"
         ],
@@ -219,8 +336,9 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": 1
+          "type": "meleeRanged",
+          "primary": 1,
+          "secondary": 5
         },
         "damageDisplay": "melee",
         "target": {
@@ -235,9 +353,11 @@
             ]
           },
           "effects": {
-            "Ie17tQRpGgNplROT": {
+            "7JCoNt79xVXOVI3N": {
+              "name": "",
+              "img": null,
               "type": "damage",
-              "_id": "Ie17tQRpGgNplROT",
+              "_id": "7JCoNt79xVXOVI3N",
               "damage": {
                 "tier1": {
                   "value": "6",
@@ -266,231 +386,109 @@
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             },
-            "wMsRzNzm2i5xigUA": {
+            "wQdKWUqYdPUyloDB": {
+              "name": "Taunted",
+              "img": null,
               "type": "applied",
-              "_id": "wMsRzNzm2i5xigUA",
-              "name": "Wrestling Grab",
+              "_id": "wQdKWUqYdPUyloDB",
               "applied": {
-                "tier3": {
-                  "display": "{{potency}} grabbed and the target takes a bane on the Escape Grab maneuver",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "@potency.strong"
-                  },
+                "tier2": {
                   "effects": {
-                    "grabbed": {
-                      "condition": "failure",
+                    "taunted": {
+                      "condition": "always",
                       "end": "",
                       "properties": []
                     }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
                   },
-                  "effects": {}
-                },
-                "tier2": {
                   "display": "",
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
+                  }
+                },
+                "tier1": {
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "Xop08QW1wjcbHCfb": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "Xop08QW1wjcbHCfb",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "@potency.weak"
                   },
                   "effects": {}
+                },
+                "tier3": {
+                  "display": "{{potency}} the target has a double bane on their next  power roll",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 }
-              },
-              "img": null
+              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>A target who is already grabbed takes an extra 2 damage.</p>"
+          "after": "<p>The target is taunted (EoT).</p>"
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "daL7FIljzSpRRHSu",
+      "_id": "WmwhrYOxo5BPd6hB",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.daL7FIljzSpRRHSu"
-    },
-    {
-      "name": "Throw (1 Malice)",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "throw-1-malice",
-        "story": "",
-        "keywords": [
-          "melee"
-        ],
-        "category": "heroic",
-        "resource": 1,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p><strong>Note:</strong> One creature grabbed by the brawler</p><p>The brawler pushes the target up to 5 squares.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "F66XwHHFuTzPM9TM",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.F66XwHHFuTzPM9TM"
-    },
-    {
-      "name": "Shoot the Hostage!",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shoot-the-hostage",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "The brawler is targeted with a strike",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The brawler halves the damage from any strike if they have a creature or object grabbed of size 1S or larger. The grabbed creature or object takes the remaining damage.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "gtOLdsMVkl7yYDKh",
-      "img": "icons/skills/movement/arrow-upward-blue.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.gtOLdsMVkl7yYDKh"
-    },
-    {
-      "name": "Supernatural Insight",
-      "type": "feature",
-      "_id": "W54VgR1A3eMCWbFb",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The brawler ignores concealment if it’s granted by a supernatural effect.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "supernatural-insight",
-        "advancements": {}
-      },
       "effects": [],
       "folder": null,
       "sort": 0,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
@@ -503,7 +501,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.W54VgR1A3eMCWbFb"
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.WmwhrYOxo5BPd6hB"
     },
     {
       "name": "Alchemical Device",
@@ -655,17 +653,16 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714297835,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.lVlwo9eIp8HBjfth"
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.lVlwo9eIp8HBjfth"
     },
     {
       "name": "Exploit Opening",
@@ -714,21 +711,20 @@
       "sort": 200000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.8BzL1WGLdRmlM5U0",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714298826,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.LYYyN9iD2PjepIFo"
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.LYYyN9iD2PjepIFo"
     },
     {
       "name": "Staying Power",
@@ -777,25 +773,23 @@
       "sort": 300000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.UgORNnmUgijjyizj",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714299675,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.vxocmPyA9uKwrgEq"
+      "_key": "!actors.items!hgK8SgOIzJ0bcAtf.vxocmPyA9uKwrgEq"
     }
   ],
   "effects": [],
-  "sort": 800000,
   "ownership": {
     "default": 0
   },
@@ -807,9 +801,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639586219,
+    "createdTime": 1755922193154,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!DSEkUDEnQeS4LsWr"
+  "_id": "hgK8SgOIzJ0bcAtf",
+  "sort": 300000,
+  "_key": "!actors!hgK8SgOIzJ0bcAtf"
 }
