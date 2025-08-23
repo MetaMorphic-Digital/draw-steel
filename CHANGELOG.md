@@ -22,7 +22,15 @@
 
 ### Added
 
+- Compendiums (#757, #758)
+  - Compendiums are how the system includes and distributes the rules elements that have been openly licensed.
+  - This release includes material for first level play, as well as many of the monsters used in the starter adventures.
+  - Added Compendiums for classes, monsters, roll tables, character options, character origins, and rewards.
+  - Compendium content will continue to be a work in progress throughout the 0.8 series.
 - Advancements (#51)
+  - Advancements allow items like classes, kits, and features to make complex adjustments to an actor.
+  - Simply dragging an ancestry or class onto an actor will prompt you through the advancements.
+  - See the system documentation either in game or on the github wiki for more information.
 - Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added Epic Resource display. (#537)
@@ -38,7 +46,7 @@
   - If set to "Roll for Event", a roll button will appear in the chat message.
   - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
 - Added name and image inputs to Power Roll Effect creation. (#718)
-- Added "Self or Ally" and "Self and Allies" targeting options.
+- Added "Self or ally", "Self and allies", and "Self or one creature" targeting options. (#872)
 - When a project roll is a breakthrough, a button will appear to roll the project again.
 - The Source Information popout will show the Compendium Source of an item if it is available.
 - Added a generic "spend hero token" option available to all users.
