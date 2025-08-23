@@ -1,10 +1,14 @@
 {
   "folder": "TchL2TAVusf5yX3W",
   "name": "Bastion Ward",
-  "type": "ability",
-  "_id": "hbZTXjsr4CPjCIx8",
+  "type": "feature",
+  "_id": "JdY0Ntgy9wrrgpkD",
   "img": "icons/magic/defensive/shield-barrier-blue.webp",
   "system": {
+    "description": {
+      "value": "<p>Your god grants you a holy countenance that protects you at all times. You gain a +1 bonus to saving throws.</p>",
+      "director": ""
+    },
     "source": {
       "book": "Heroes",
       "page": "99",
@@ -12,45 +16,16 @@
       "revision": 1
     },
     "_dsid": "bastion-ward",
-    "story": "Your god grants you a holy countenance that protects you at all times. You gain a +1 bonus to saving throws.",
-    "keywords": [
-      "magic"
-    ],
-    "type": "main",
-    "category": "heroic",
-    "resource": null,
-    "trigger": "",
-    "distance": {
-      "type": "self"
-    },
-    "damageDisplay": "melee",
-    "target": {
-      "type": "self"
-    },
-    "power": {
-      "roll": {
-        "formula": "@chr",
-        "characteristics": []
-      },
-      "effects": {}
-    },
-    "effect": {
-      "before": "",
-      "after": ""
-    },
-    "spend": {
-      "text": "",
-      "value": null
-    }
+    "advancements": {}
   },
   "effects": [
     {
       "name": "Bastion Ward",
       "img": "icons/magic/defensive/shield-barrier-blue.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.hbZTXjsr4CPjCIx8",
-      "transfer": false,
-      "_id": "JwjPGQwUpTRNPNur",
+      "origin": "Compendium.draw-steel.classes.Item.JdY0Ntgy9wrrgpkD",
+      "transfer": true,
+      "_id": "yMFNbhkY9UElWJ0Q",
       "system": {
         "end": {
           "type": "",
@@ -75,7 +50,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>You gain a +1 bonus to saving throws.</p>",
+      "description": "<p>Your god grants you a holy countenance that protects you at all times. You gain a +1 bonus to saving throws.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -87,14 +62,14 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755732471766,
+        "createdTime": 1755918125478,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!hbZTXjsr4CPjCIx8.JwjPGQwUpTRNPNur"
+      "_key": "!items.effects!JdY0Ntgy9wrrgpkD.yMFNbhkY9UElWJ0Q"
     }
   ],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -106,9 +81,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755666289907,
+    "createdTime": 1755918061946,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!hbZTXjsr4CPjCIx8"
+  "_key": "!items!JdY0Ntgy9wrrgpkD"
 }

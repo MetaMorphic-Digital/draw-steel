@@ -1,10 +1,14 @@
 {
   "folder": "RtJjFiM68S5EQfvi",
   "name": "Prayer of Destruction",
-  "type": "ability",
-  "_id": "kDrpWQ94nvOR9zO5",
+  "type": "feature",
+  "_id": "ELmjh5zCJIQDHq07",
   "img": "icons/magic/fire/flame-burning-building.webp",
   "system": {
+    "description": {
+      "value": "<p>Your god infuses wrath within your being. You gain a +1 bonus to rolled damage with magic abilities.</p>",
+      "director": ""
+    },
     "source": {
       "book": "Heroes",
       "page": "99",
@@ -12,49 +16,25 @@
       "revision": 1
     },
     "_dsid": "prayer-of-destruction",
-    "story": "Your god infuses wrath within your being. You gain a +1 bonus to rolled damage with magic abilities.",
-    "keywords": [
-      "magic"
-    ],
-    "type": "main",
-    "category": "heroic",
-    "resource": null,
-    "trigger": "",
-    "distance": {
-      "type": "self"
-    },
-    "damageDisplay": "melee",
-    "target": {
-      "type": "self"
-    },
-    "power": {
-      "roll": {
-        "formula": "@chr",
-        "characteristics": []
-      },
-      "effects": {}
-    },
-    "effect": {
-      "before": "<p>Your god infuses wrath within your being. You gain a +1 bonus to rolled damage with magic abilities.</p>",
-      "after": ""
-    },
-    "spend": {
-      "text": "",
-      "value": null
-    }
+    "advancements": {}
   },
   "effects": [
     {
       "name": "Prayer of Destruction",
       "img": "icons/magic/fire/flame-burning-building.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.kDrpWQ94nvOR9zO5",
-      "transfer": false,
-      "_id": "NEDtFQMTUFIK3YVf",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.ELmjh5zCJIQDHq07",
+      "transfer": true,
+      "_id": "qaNtQJSpDVddWNnS",
       "system": {
         "end": {
           "type": "",
-          "roll": ""
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "magic"
+          ]
         }
       },
       "changes": [
@@ -75,7 +55,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>You gain a +1 bonus to rolled damage with magic abilities.</p>",
+      "description": "<p>Your god infuses wrath within your being. You gain a +1 bonus to rolled damage with magic abilities.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -87,14 +67,14 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755666958127,
+        "createdTime": 1755915139054,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!kDrpWQ94nvOR9zO5.NEDtFQMTUFIK3YVf"
+      "_key": "!items.effects!ELmjh5zCJIQDHq07.qaNtQJSpDVddWNnS"
     }
   ],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -106,9 +86,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755665855841,
+    "createdTime": 1755915078293,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!kDrpWQ94nvOR9zO5"
+  "_key": "!items!ELmjh5zCJIQDHq07"
 }

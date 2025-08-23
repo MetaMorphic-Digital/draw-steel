@@ -1,10 +1,14 @@
 {
   "folder": "RtJjFiM68S5EQfvi",
   "name": "Prayer of Soldier's Skill",
-  "type": "ability",
-  "_id": "gsQCAFm0ncLkcrFK",
+  "type": "feature",
+  "_id": "fsRyhdp5hrcZPlTV",
   "img": "icons/environment/people/infantry.webp",
   "system": {
+    "description": {
+      "value": "<p>Your god gives your mind the training of a soldier. You can wear light armor and wield light weapons effectively, even though you don’t have a kit. While you wear light armor, you gain a +3 bonus to Stamina, and that bonus increases by 3 at 4th, 7th, and 10th levels. While you wield a light weapon, you gain a +1 damage bonus with weapon abilities, including free strikes. You can use light armor treasures and light weapon treasures. If you have a kit, you can’t take this blessing.</p>",
+      "director": ""
+    },
     "source": {
       "book": "Heroes",
       "page": "99",
@@ -12,49 +16,25 @@
       "revision": 1
     },
     "_dsid": "prayer-of-soldiers-skill",
-    "story": "Your god gives your mind the training of a soldier. You can wear light armor and wield light weapons effectively, even though you don’t have a kit. While you wear light armor, you gain a +3 bonus to Stamina, and that bonus increases by 3 at 4th, 7th, and 10th levels. While you wield a light weapon, you gain a +1 damage bonus with weapon abilities, including free strikes. You can use light armor treasures and light weapon treasures. If you have a kit, you can’t take this blessing.",
-    "keywords": [
-      "magic"
-    ],
-    "type": "main",
-    "category": "heroic",
-    "resource": null,
-    "trigger": "",
-    "distance": {
-      "type": "self"
-    },
-    "damageDisplay": "melee",
-    "target": {
-      "type": "self"
-    },
-    "power": {
-      "roll": {
-        "formula": "@chr",
-        "characteristics": []
-      },
-      "effects": {}
-    },
-    "effect": {
-      "before": "",
-      "after": ""
-    },
-    "spend": {
-      "text": "",
-      "value": null
-    }
+    "advancements": {}
   },
   "effects": [
     {
       "name": "Light Armor",
       "img": "icons/equipment/chest/breastplate-layered-leather-stitched.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.gsQCAFm0ncLkcrFK",
-      "transfer": false,
-      "_id": "eY9VSJ4yK4ZVW3R9",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.fsRyhdp5hrcZPlTV",
+      "transfer": true,
+      "_id": "kHwoQTabvNKEY5I6",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "magic"
+          ]
         }
       },
       "changes": [
@@ -87,23 +67,26 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755728137187,
+        "createdTime": 1755916646116,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!gsQCAFm0ncLkcrFK.eY9VSJ4yK4ZVW3R9"
+      "_key": "!items.effects!fsRyhdp5hrcZPlTV.kHwoQTabvNKEY5I6"
     },
     {
       "name": "Light Weapon",
       "img": "icons/weapons/daggers/dagger-straight-blue.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.classes.Item.gsQCAFm0ncLkcrFK",
-      "transfer": false,
-      "_id": "6EKAUJbUrtLvQ7xF",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.fsRyhdp5hrcZPlTV",
+      "transfer": true,
+      "_id": "iP61VmK4xybtojHC",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
         }
       },
       "changes": [
@@ -136,7 +119,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>While you wield a light weapon, you gain a +1 damage bonus with weapon abilities,</p><p>including free strikes.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -148,14 +131,14 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755728845523,
+        "createdTime": 1755916807152,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!gsQCAFm0ncLkcrFK.6EKAUJbUrtLvQ7xF"
+      "_key": "!items.effects!fsRyhdp5hrcZPlTV.iP61VmK4xybtojHC"
     }
   ],
-  "sort": 0,
+  "sort": 150000,
   "ownership": {
     "default": 0
   },
@@ -167,9 +150,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755665873585,
+    "createdTime": 1755916611511,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!gsQCAFm0ncLkcrFK"
+  "_key": "!items!fsRyhdp5hrcZPlTV"
 }
