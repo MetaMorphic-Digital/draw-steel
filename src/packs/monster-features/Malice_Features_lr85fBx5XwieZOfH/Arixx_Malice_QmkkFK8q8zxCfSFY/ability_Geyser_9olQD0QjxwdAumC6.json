@@ -1,0 +1,64 @@
+{
+  "folder": "QmkkFK8q8zxCfSFY",
+  "name": "Geyser",
+  "type": "ability",
+  "_id": "9olQD0QjxwdAumC6",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "44",
+      "license": "Geyser",
+      "revision": 1
+    },
+    "_dsid": "geyser",
+    "story": "",
+    "keywords": [],
+    "type": "freeTriggered",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "special",
+      "primary": 3,
+      "secondary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The arixx’s underground tunnels swell with pressure, causing a sudden influx of hot gas to burst from a 3-square-by-3-square area anywhere on the surface. Each enemy in the area makes an Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"111\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; vertical push 5</p></td></tr><tr><td data-colwidth=\"111\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"111\"><p>17+</p></td><td><p>The target shifts to the nearest unoccupied space outside the area.</p></td></tr></tbody></table>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": "Item.9olQD0QjxwdAumC6",
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755922242457,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!9olQD0QjxwdAumC6"
+}

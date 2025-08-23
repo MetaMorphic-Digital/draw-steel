@@ -1,21 +1,20 @@
 {
   "folder": "zBFE173ZFzlEPX1o",
-  "name": "Human Guard",
+  "name": "Human Rogue",
   "type": "npc",
-  "_id": "3sZIJ1aJRhMF6iK5",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 5,
-      "max": 5,
+      "value": 4,
+      "max": 4,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 2
+        "value": 0
       },
       "agility": {
-        "value": 0
+        "value": 2
       },
       "reason": {
         "value": 0
@@ -24,7 +23,7 @@
         "value": 0
       },
       "presence": {
-        "value": 0
+        "value": 1
       }
     },
     "combat": {
@@ -41,11 +40,11 @@
     },
     "biography": {
       "value": "",
-      "languages": [],
-      "director": ""
+      "director": "",
+      "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 7,
       "types": [
         "walk"
       ],
@@ -98,12 +97,12 @@
       ],
       "level": 1,
       "ev": 3,
-      "role": "brute",
+      "role": "ambusher",
       "organization": "minion"
     }
   },
   "prototypeToken": {
-    "name": "Human Guard",
+    "name": "Human Rogue",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
@@ -158,7 +157,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -178,7 +177,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -204,21 +203,21 @@
       "img": "icons/skills/social/intimidation-impressing.webp",
       "system": {
         "description": {
-          "value": "<p>With Captain: +5 bonus to speed while a captain is assigned to this minion</p>",
+          "value": "<p><strong>With Captain</strong>: Gain an edge on strikes</p>",
           "director": ""
         },
         "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
+          "book": "",
+          "page": "",
+          "license": "",
           "revision": 1
         },
-        "_dsid": "with-captain",
+        "_dsid": "feature",
         "advancements": {}
       },
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": -100000,
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -231,25 +230,67 @@
         "modifiedTime": null
       },
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.7GiDtF9g6pt8MSW2"
+      "_key": "!actors.items!dhs3FHouwzVD0Acn.7GiDtF9g6pt8MSW2"
     },
     {
-      "name": "Halberd",
+      "name": "Supernatural Insight",
+      "type": "feature",
+      "_id": "W54VgR1A3eMCWbFb",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The rogue ignores concealment if it’s granted by a supernatural effect.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!dhs3FHouwzVD0Acn.W54VgR1A3eMCWbFb"
+    },
+    {
+      "name": "Concealed Dagger",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
+          "book": "",
+          "page": "",
+          "license": "",
           "revision": 1
         },
-        "_dsid": "halberd",
+        "_dsid": "ability",
         "story": "",
         "keywords": [
           "melee",
+          "ranged",
           "strike",
           "weapon"
         ],
@@ -257,8 +298,9 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": 2
+          "type": "meleeRanged",
+          "primary": 1,
+          "secondary": 5
         },
         "damageDisplay": "melee",
         "target": {
@@ -269,16 +311,18 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
+              "agility"
             ]
           },
           "effects": {
-            "uOHrZkKZ0RA2peZR": {
+            "kA9aLIibOqU6l5j8": {
+              "name": "",
+              "img": null,
               "type": "damage",
-              "_id": "uOHrZkKZ0RA2peZR",
+              "_id": "kA9aLIibOqU6l5j8",
               "damage": {
                 "tier1": {
-                  "value": "2",
+                  "value": "1",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -287,7 +331,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "4",
+                  "value": "2",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -296,7 +340,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "5",
+                  "value": "3",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -304,26 +348,28 @@
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>If the guard is flanked, they can make a free strike against a different target adjacent to them.</p>"
+          "after": "<p>If the rogue is disguised or hidden when they use this ability, it deals an extra [[/damage 3]] damage</p>"
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "RJkZHz0P9GEv3QIn",
+      "_id": "hD0xKBzLOGdZgNKt",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -335,49 +381,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.RJkZHz0P9GEv3QIn"
-    },
-    {
-      "name": "Supernatural Insight",
-      "type": "feature",
-      "_id": "W54VgR1A3eMCWbFb",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The guard ignores concealment if it’s granted by a supernatural effect.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "supernatural-insight",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DSEkUDEnQeS4LsWr.Item.W54VgR1A3eMCWbFb",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.W54VgR1A3eMCWbFb"
+      "_key": "!actors.items!dhs3FHouwzVD0Acn.hD0xKBzLOGdZgNKt"
     },
     {
       "name": "Exploit Opening",
@@ -426,21 +430,20 @@
       "sort": 200000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.8BzL1WGLdRmlM5U0",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714309605,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.LYYyN9iD2PjepIFo"
+      "_key": "!actors.items!dhs3FHouwzVD0Acn.LYYyN9iD2PjepIFo"
     },
     {
       "name": "Staying Power",
@@ -489,25 +492,23 @@
       "sort": 300000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.UgORNnmUgijjyizj",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714312222,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.vxocmPyA9uKwrgEq"
+      "_key": "!actors.items!dhs3FHouwzVD0Acn.vxocmPyA9uKwrgEq"
     }
   ],
   "effects": [],
-  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -519,9 +520,11 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755639586219,
+    "createdTime": 1755922192044,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!3sZIJ1aJRhMF6iK5"
+  "_id": "dhs3FHouwzVD0Acn",
+  "sort": 200000,
+  "_key": "!actors!dhs3FHouwzVD0Acn"
 }
