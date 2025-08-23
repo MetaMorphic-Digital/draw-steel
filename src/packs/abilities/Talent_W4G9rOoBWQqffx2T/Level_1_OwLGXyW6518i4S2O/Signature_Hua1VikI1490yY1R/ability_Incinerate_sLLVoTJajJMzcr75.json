@@ -1,0 +1,100 @@
+{
+  "folder": "Hua1VikI1490yY1R",
+  "name": "Incinerate",
+  "type": "ability",
+  "_id": "sLLVoTJajJMzcr75",
+  "img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "190",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "incinerate",
+    "story": "The air erupts into a column of smokeless flame.",
+    "keywords": [
+      "area",
+      "psionic",
+      "ranged",
+      "fire",
+      "pyrokinesis"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 3,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "NKXWuN8yaR7j80N0": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "NKXWuN8yaR7j80N0",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier2": {
+              "value": "4",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier3": {
+              "value": "6",
+              "types": [
+                "fire"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>A column of fire remains in the area until the start of your next turn. Each enemy who enters the area for the first time in a combat round or starts their turn there takes 2 fire damage. [[/damage 2 type=fire]]</p><p><strong>Strained:</strong> The size of the cube increases by 2, but the fire disappears at the end of your turn.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755842501449,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!sLLVoTJajJMzcr75"
+}

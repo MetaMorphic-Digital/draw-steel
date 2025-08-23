@@ -1,0 +1,105 @@
+{
+  "folder": "1b95uSyyQlEuFh6G",
+  "name": "Force Augmentation",
+  "type": "feature",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your damage-dealing psionic abilities gain a +1 bonus to rolled damage.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "188",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "force-augmentation",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Ability Modifier",
+      "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.0lOE0o9Fq4SXbBlu",
+      "_id": "gZq8TAsIleiq2FJi",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "psionic"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!cnP9ReGko79M4Xex.gZq8TAsIleiq2FJi"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755825903427,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "cnP9ReGko79M4Xex",
+  "sort": 0,
+  "_key": "!items!cnP9ReGko79M4Xex"
+}

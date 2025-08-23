@@ -1,0 +1,89 @@
+{
+  "folder": "Hua1VikI1490yY1R",
+  "name": "Materialize",
+  "type": "ability",
+  "_id": "TN62N2UfrSWzNall",
+  "img": "icons/magic/light/orb-hand-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "190",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "materialize",
+    "story": "You picture an object in your mind and give it form—directly above your opponent’s head.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "resopathy"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "0LIaLskPtYEUPQoP": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "0LIaLskPtYEUPQoP",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "8 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>A worthless size 1M object drops onto the target to deal the damage, then rolls into an adjacent unoccupied space of your choice. The object is made of wood, stone, or metal (your choice).</p><p><strong>Strained:</strong> The object explodes after the damage is dealt, and each creature adjacent to the target takes damage equal to your Reason score. [[/damage @R]] You also take damage equal to your Reason score [[/damage @R]] that can’t be reduced in any way.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755842526098,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!TN62N2UfrSWzNall"
+}

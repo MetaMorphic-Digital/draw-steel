@@ -1,0 +1,87 @@
+{
+  "folder": "J4XegiGJfK33x6pF",
+  "name": "Faith Is Our Armor",
+  "type": "ability",
+  "_id": "7VUrfLoetI3NyvIa",
+  "img": "icons/magic/defensive/shield-barrier-flaming-pentagon-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "101",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "faith-is-our-armor",
+    "story": "The heroes’ armor glows with golden light, granting divine protection.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 4
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "KJ9ruY4GXEnl5zkF": {
+          "name": "Temporary Stamina",
+          "img": null,
+          "type": "other",
+          "_id": "KJ9ruY4GXEnl5zkF",
+          "other": {
+            "tier1": {
+              "display": "The target gains 5 temporary Stamina"
+            },
+            "tier2": {
+              "display": "The target gains 10 temporary Stamina"
+            },
+            "tier3": {
+              "display": "The target gains 15 temporary Stamina"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can target yourself instead of one ally with this ability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755646984040,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!7VUrfLoetI3NyvIa"
+}

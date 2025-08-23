@@ -56,25 +56,38 @@
             }
           }
         },
-        "hAxcmYNAUDBvbagb": {
-          "name": "",
+        "LIwqV5doVVKJLHhd": {
+          "name": "Setup",
           "img": null,
-          "type": "other",
-          "_id": "hAxcmYNAUDBvbagb",
-          "other": {
+          "type": "applied",
+          "_id": "LIwqV5doVVKJLHhd",
+          "applied": {
             "tier1": {
+              "display": "{{potency}}, the target has damage weakness 5 (save ends)",
               "potency": {
                 "characteristic": "reason"
               },
-              "display": "{{potency}}, the target has damage weakness 5 (save ends)"
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier2": {
-              "display": "{{potency}}, the target has damage weakness 5 (save ends)"
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier3": {
-              "display": "{{potency}}, the target has damage weakness 5 (save ends)",
-              "potency": {
-                "characteristic": ""
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
               }
             }
           }
@@ -90,7 +103,57 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Setup",
+      "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.sZDSZOUU9LgQCLcP",
+      "transfer": false,
+      "_id": "BUYv96JTyhyHrnDN",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755878289146,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!sZDSZOUU9LgQCLcP.BUYv96JTyhyHrnDN"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

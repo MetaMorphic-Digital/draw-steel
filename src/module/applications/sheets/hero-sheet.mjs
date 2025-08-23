@@ -262,13 +262,13 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     // TODO: Replace this with opening a compendium browser as part of #130
     switch (target.dataset.type) {
       case "ancestry":
-        game.packs.get("draw-steel.ancestries").render({ force: true });
+        game.packs.get("draw-steel.origins").render({ force: true });
         break;
       case "culture":
-        game.packs.get("draw-steel.backgrounds").render({ force: true });
+        game.packs.get("draw-steel.origins").render({ force: true });
         break;
       case "career":
-        game.packs.get("draw-steel.backgrounds").render({ force: true });
+        game.packs.get("draw-steel.origins").render({ force: true });
         break;
       case "class":
         game.packs.get("draw-steel.classes").render({ force: true });
@@ -457,7 +457,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         }
       }
       // Other advancements
-      if (["ancestry", "career", "culture", "subclass"].includes(item.type)) {
+      if (["ancestry", "career", "culture"].includes(item.type)) {
         /** @type {DrawSteelItem} */
         const existing = this.actor.system[item.type];
         if (existing) {

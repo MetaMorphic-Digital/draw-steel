@@ -1,0 +1,159 @@
+{
+  "folder": "1LBQVhBGG8TGV7Nu",
+  "name": "Bear Claws",
+  "type": "ability",
+  "_id": "NkmO3IZcwqQUowkY",
+  "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "144",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "bear-claws",
+    "story": "Attacks with your sharp and deadly claws grab the weak.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "3tsfQLY7r3ebSPpn": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "3tsfQLY7r3ebSPpn",
+          "damage": {
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "11 + @chr"
+            }
+          }
+        },
+        "NS4AvqDfjCFCKf26": {
+          "name": "Grabbed",
+          "img": null,
+          "type": "applied",
+          "_id": "NS4AvqDfjCFCKf26",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              },
+              "display": "{{potency}}, grabbed"
+            },
+            "tier2": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/creatures/claws/claw-bear-paw-swipe-brown.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.NkmO3IZcwqQUowkY",
+      "transfer": false,
+      "_id": "eqnri5hAuMAYVa5J",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755754766506,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!NkmO3IZcwqQUowkY.eqnri5hAuMAYVa5J"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755754685338,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!NkmO3IZcwqQUowkY"
+}

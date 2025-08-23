@@ -1,0 +1,133 @@
+{
+  "folder": "Hua1VikI1490yY1R",
+  "name": "Hoarfrost",
+  "type": "ability",
+  "_id": "KEckumFe4KcYqnHI",
+  "img": "icons/magic/water/snowflake-ice-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "189",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "hoarfrost",
+    "story": "You blast a foe with a pulse of cold energy.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "cryokinesis"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "Sx8aasv3ocHdTOEv": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "Sx8aasv3ocHdTOEv",
+          "damage": {
+            "tier2": {
+              "value": "4 + @chr",
+              "types": [
+                "cold"
+              ]
+            },
+            "tier3": {
+              "value": "6 + @chr",
+              "types": [
+                "cold"
+              ]
+            },
+            "tier1": {
+              "types": [
+                "cold"
+              ]
+            }
+          }
+        },
+        "KmudjgcU1DRqoTIm": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "KmudjgcU1DRqoTIm",
+          "applied": {
+            "tier1": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "turn"
+                }
+              },
+              "potency": {
+                "characteristic": "might"
+              },
+              "display": "{{potency}}, slowed (EoT)"
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "turn"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p><strong>Strained:</strong> You are slowed until the end of your next turn. Additionally, a target slowed by this ability is restrained instead.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755842485202,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!KEckumFe4KcYqnHI"
+}
