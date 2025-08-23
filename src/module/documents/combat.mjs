@@ -312,7 +312,14 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       localize: true,
     });
 
-    content.append(victoryGroup, resetTempStamina, resetHeroicResources);
+    const resetSurgeResources = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Combat.CompleteEncounter.ResetSurgeResources.label",
+      input: foundry.applications.fields.createCheckboxInput({ name: "resetSurgeResources", value: true }),
+      classes: ["slim"],
+      localize: true,
+    });
+
+    content.append(victoryGroup, resetTempStamina, resetHeroicResources, resetSurgeResources);
     const fd = await ds.applications.api.DSDialog.input({
       content,
       classes: ["complete-encounter"],
@@ -329,6 +336,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         if (actor.type === "hero") {
           updates.system.hero = { victories: actor.system.hero.victories + fd.victories };
           if (fd.resetHeroicResources) updates.system.hero.primary = { value: 0 };
+          if (fd.resetSurgeResources) updates.system.hero.surges = 0;
         }
         if (fd.resetTempStamina) updates.system.stamina = { temporary: 0 };
 
