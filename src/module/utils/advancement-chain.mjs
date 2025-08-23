@@ -1,7 +1,8 @@
-import { BaseAdvancement, TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
+import { TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
 
 /**
  * @import { AdvancementChain } from "../_types"
+ * @import { BaseAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
  */
 
 /**
