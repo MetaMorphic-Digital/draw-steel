@@ -22,19 +22,14 @@
     {
       "name": "Prayer of Steel",
       "img": "icons/magic/earth/strike-fist-stone-gray.webp",
-      "type": "abilityModifier",
+      "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.WixZ78HthzRim4Ny",
-      "transfer": false,
+      "transfer": true,
       "_id": "Is2DCMb2yuKsN0Kx",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        },
-        "filters": {
-          "keywords": [
-            "magic"
-          ]
         }
       },
       "changes": [
@@ -51,7 +46,7 @@
           "priority": null
         }
       ],
-      "disabled": true,
+      "disabled": false,
       "duration": {
         "startTime": null,
         "combat": null,

@@ -10,9 +10,9 @@
       "director": ""
     },
     "source": {
-      "book": "",
-      "page": "",
-      "license": "",
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
       "revision": 1
     },
     "_dsid": "bastion-ward",
@@ -22,19 +22,14 @@
     {
       "name": "Bastion Ward",
       "img": "icons/magic/defensive/shield-barrier-blue.webp",
-      "type": "abilityModifier",
+      "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.JdY0Ntgy9wrrgpkD",
-      "transfer": false,
+      "transfer": true,
       "_id": "yMFNbhkY9UElWJ0Q",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        },
-        "filters": {
-          "keywords": [
-            "magic"
-          ]
         }
       },
       "changes": [
@@ -45,7 +40,7 @@
           "priority": null
         }
       ],
-      "disabled": true,
+      "disabled": false,
       "duration": {
         "startTime": null,
         "combat": null,
