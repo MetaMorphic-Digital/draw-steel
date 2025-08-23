@@ -1235,6 +1235,10 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
     embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrAlly",
   },
+  selfOrCreature: {
+    label: "DRAW_STEEL.Item.ability.Target.SelfOrCreature",
+    embedLabel: "DRAW_STEEL.Item.ability.Target.SelfOrCreature",
+  },
   selfAlly: {
     label: "DRAW_STEEL.Item.ability.Target.SelfAlly",
     all: "DRAW_STEEL.Item.ability.Target.AllSelfAllies",
