@@ -38,7 +38,7 @@
   - If set to "Roll for Event", a roll button will appear in the chat message.
   - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
 - Added name and image inputs to Power Roll Effect creation. (#718)
-- Added "Self or Ally" and "Self and Allies" targeting options.
+- Added "Self or ally", "Self and allies", and "Self or one creature" targeting options. (#872)
 - When a project roll is a breakthrough, a button will appear to roll the project again.
 - The Source Information popout will show the Compendium Source of an item if it is available.
 - Added a generic "spend hero token" option available to all users.
