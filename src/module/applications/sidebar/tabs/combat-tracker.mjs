@@ -95,7 +95,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const isPlayerTurn = combat?.combatant?.players?.includes(game.user);
     const canControl = numberTurn && combat.canUserModify(game.user, "update", { turn: null });
 
-    context.nullTurn = combat.combatant && !numberTurn;
+    context.nullTurn = combat?.combatant && !numberTurn;
     context.canEndTurn = isPlayerTurn && canControl;
   }
 
@@ -220,13 +220,18 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
     if (game.user.isGM) {
       const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
-      rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
-        classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
-        dataset: {
-          action: "endCombat",
-          tooltip: "COMBAT.End",
-        },
-      }));
+      if (rightControls) {
+        const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
+        if (!endCombat) {
+          rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
+            classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
+            dataset: {
+              action: "endCombat",
+              tooltip: "COMBAT.End",
+            },
+          }));
+        }
+      }
     }
 
     new ux.DragDrop.implementation({
