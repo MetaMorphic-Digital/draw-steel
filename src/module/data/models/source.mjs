@@ -4,7 +4,7 @@
 const fields = foundry.data.fields;
 
 /**
- * Data model
+ * Data model.
  */
 export default class SourceModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
@@ -50,13 +50,17 @@ export default class SourceModel extends foundry.abstract.DataModel {
     return null;
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the document containing this model
+   * Fetches the document containing this model.
    * @returns {DrawSteelActor | DrawSteelItem}
    */
   get document() {
     return this.parent?.parent ?? null;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Prepare the source label.
@@ -68,12 +72,14 @@ export default class SourceModel extends foundry.abstract.DataModel {
     if (!this.book) this.book = this.bookPlaceholder;
 
     const page = Number.isNumeric(this.page)
-      ? game.i18n.format("DRAW_STEEL.Source.Display.Page", { page: this.page }) : (this.page ?? "");
-    this.label = game.i18n.format("DRAW_STEEL.Source.Display.Full", { book: this.book, page }).trim();
+      ? game.i18n.format("DRAW_STEEL.SOURCE.Display.Page", { page: this.page }) : (this.page ?? "");
+    this.label = game.i18n.format("DRAW_STEEL.SOURCE.Display.Full", { book: this.book, page }).trim();
 
     this.value = this.book || (pkg?.title ?? "");
     this.slug = this.value.slugify({ strict: true });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   toString() {

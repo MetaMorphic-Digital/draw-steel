@@ -1,43 +1,42 @@
 import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import { setOptions } from "../helpers.mjs";
-import BaseItemModel from "./base.mjs";
+import AdvancementModel from "./advancement.mjs";
 
 /**
- * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
  */
-export default class KitModel extends BaseItemModel {
+
+/**
+ * Kits provide equipment and a fighting style that grants a signature ability and bonuses to one or more game statistics.
+ */
+export default class KitModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "kit",
       invalidActorTypes: ["npc"],
-      detailsPartial: [systemPath("templates/item/partials/kit.hbs")],
-    });
+      detailsPartial: [systemPath("templates/sheets/item/partials/kit.hbs")],
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Kit",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.kit");
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
-    const config = ds.CONFIG;
-
-    // schema.type = new fields.StringField({choices: config.kits.type, initial: "martial"});
 
     schema.equipment = new fields.SchemaField({
       armor: new fields.StringField({ required: true, blank: true }),
       weapon: new fields.SetField(setOptions()),
       shield: new fields.BooleanField(),
-      // implement: new fields.StringField({choices: config.equipment.implement})
     });
 
     const damageSchema = () => ({
@@ -61,32 +60,31 @@ export default class KitModel extends BaseItemModel {
       disengage: new fields.NumberField({ integer: true }),
     });
 
-    // schema.signature = new fields.SchemaField({
-    //   grant: new fields.DocumentUUIDField(),
-    //   link: new fields.DocumentUUIDField()
-    // });
-
     return schema;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-
-    const actor = this.parent.actor;
-    if (actor) {
-      const actorClass = actor.system.class;
-      if (actorClass?.system.kits === 0) {
-        const message = game.i18n.format("DRAW_STEEL.Item.Kit.NotAllowedByClass", { class: actorClass.name });
-        ui.notifications.error(message);
-        return false;
-      }
-
-      const swapKit = await this._kitSwapDialog();
-      if (swapKit === false) return false;
+    if (!this.advancements.size) {
+      const signature = {
+        type: "itemGrant",
+        chooseN: 1,
+        name: game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.name"),
+        description: `<p>${game.i18n.localize("DRAW_STEEL.Item.kit.SignatureAbilityAdvancement.description")}</p>`,
+        requirements: {
+          level: null,
+        },
+        _id: "signature".padEnd(16, "0"),
+      };
+      this.parent.updateSource({ [`system.advancements.${signature._id}`]: signature });
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -106,56 +104,20 @@ export default class KitModel extends BaseItemModel {
     context.enrichedDescription = await enrichHTML(this.description.value, { ...options, relativeTo: this.parent });
     await this.getSheetContext(context);
     //TODO: Once kits provide a signature item, add the ability embed or link to the item
-    const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/kit.hbs"), context);
+    const kitBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/kit.hbs"), context);
     embed.insertAdjacentHTML("beforeend", kitBody);
     return embed;
   }
 
-  /**
-   * Prompt the user for which kit to replace when the actor is already at the maximum.
-   * @returns {Promise<void|false>}
-   */
-  async _kitSwapDialog() {
-    const actor = this.parent.actor;
-    const kits = actor.system.kits;
-    const kitLimit = actor.system.class?.system.kits;
-    if (!Number.isNumeric(kitLimit) || (kits.length < kitLimit)) return;
-
-    // Generate the HTML for the dialog
-    let radioButtons = `<strong>${game.i18n.format("DRAW_STEEL.Item.Kit.Swap.Header", { kit: this.parent.name, actor: this.parent.actor.name })}</strong>`;
-    for (const kit of kits) {
-      radioButtons += `
-        <div class="form-group">
-          <label for="${kit.id}">${kit.name}</label>
-          <div class="form-fields">
-            <input type="radio" value="${kit.id}" name="kit" id="${kit.id}" ${(kits.length === 1 ? "checked" : "")}>
-          </div>
-        </div>
-      `;
-    }
-
-    /** @type {object | null} */
-    const fd = await ds.applications.api.DSDialog.input({
-      content: radioButtons,
-      window: {
-        icon: "fa-solid fa-arrow-right-arrow-left",
-        title: "DRAW_STEEL.Item.Kit.Swap.Title",
-      },
-      ok: {
-        label: "DRAW_STEEL.Item.Kit.Swap.Button",
-        icon: "fa-solid fa-arrow-right-arrow-left",
-      },
-    });
-    if (!fd?.kit) return false;
-
-    await actor.deleteEmbeddedDocuments("Item", [fd.kit]);
-  }
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {
     context.weaponOptions = Object.entries(ds.CONFIG.equipment.weapon).map(([value, { label }]) => ({ value, label }));
     context.armorOptions = Object.entries(ds.CONFIG.equipment.armor).map(([value, { label }]) => ({ value, label }))
       .filter(entry => ds.CONFIG.equipment.armor[entry.value].kitEquipment);
+
+    context.armorLabel = ds.CONFIG.equipment.armor[this.equipment.armor]?.label ?? "";
 
     const weaponFormatter = game.i18n.getListFormatter({ type: "unit" });
     const weaponList = Array.from(this.equipment.weapon).map(w => ds.CONFIG.equipment.weapon[w]?.label ?? w);

@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import htmlEslint from "@html-eslint/eslint-plugin";
 import stylistic from "@stylistic/eslint-plugin";
+import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
 import parser from "@html-eslint/parser";
 import path from "node:path";
@@ -25,6 +26,7 @@ export default defineConfig([
     plugins: {
       "@html-eslint": htmlEslint,
       "@stylistic": stylistic,
+      "@jsdoc": jsdoc,
     },
 
     languageOptions: {
@@ -88,6 +90,15 @@ export default defineConfig([
           "instanceof",
         ]],
       }],
+
+      "@jsdoc/require-jsdoc": ["warn", {
+        require: { ClassExpression: true, FunctionDeclaration: true, MethodDefinition: true },
+        enableFixer: false,
+        checkSetters: "no-getter",
+        checkConstructors: false,
+      }],
+      "@jsdoc/require-description": ["warn", { checkConstructors: false, contexts: ["FunctionDeclaration", "ClassDeclaration"] }],
+      "@jsdoc/require-description-complete-sentence": "warn",
     },
   }, {
     files: ["**/*.hbs", "**/*.html"],

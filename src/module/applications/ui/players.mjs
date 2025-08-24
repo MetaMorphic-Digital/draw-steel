@@ -5,7 +5,7 @@ import { systemID, systemPath } from "../../constants.mjs";
 /** @import { MaliceModel } from "../../data/settings/malice.mjs"; */
 
 /**
- * An extension of the core Players display that adds controls for hero tokens and malice
+ * An extension of the core Players display that adds controls for hero tokens and malice.
  */
 export default class DrawSteelPlayers extends foundry.applications.ui.Players {
   /** @inheritdoc */
@@ -13,14 +13,12 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
     await super._onFirstRender(context, options);
 
     // Can adjust if it makes sense to have hero token controls for non-GMs (e.g. a more generic hero action)
-    if (game.user.isGM) {
-      this._createContextMenu(this._metaCurrencyContextMenuOptions, "#meta-currency .context-menu", {
-        eventName: "click",
-        hookName: "getMetaCurrencyContextOptions",
-        parentClassHooks: false,
-        fixed: true,
-      });
-    }
+    this._createContextMenu(this._metaCurrencyContextMenuOptions, "#meta-currency .context-menu", {
+      eventName: "click",
+      hookName: "getMetaCurrencyContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -42,7 +40,7 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
   /* -------------------------------------------------- */
 
   /**
-   * Context menu entries for the Hero Token menu button
+   * Context menu entries for the Hero Token menu button.
    * @returns {ContextMenuEntry}
    */
   _metaCurrencyContextMenuOptions() {
@@ -55,6 +53,15 @@ export default class DrawSteelPlayers extends foundry.applications.ui.Players {
           /** @type {HeroTokenModel} */
           const heroTokens = game.actors.heroTokens;
           await heroTokens.giveToken();
+        },
+      },
+      {
+        name: "DRAW_STEEL.Setting.HeroTokens.SpendToken",
+        icon: "<i class=\"fa-solid fa-fw fa-minus\"></i>",
+        callback: async li => {
+          /** @type {HeroTokenModel} */
+          const heroTokens = game.actors.heroTokens;
+          await heroTokens.spendToken("generic");
         },
       },
       {

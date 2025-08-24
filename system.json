@@ -2,68 +2,141 @@
   "id": "draw-steel",
   "title": "Draw Steel",
   "description": "The Draw Steel system by MCDM for Foundry Virtual Tabletop",
-  "authors": [{
-    "name": "Joseph M.",
-    "url": "https://joseph-meehan.carrd.co/",
-    "discord": "chaosos"
-  }],
+  "authors": [
+    {
+      "name": "Joseph M.",
+      "url": "https://joseph-meehan.carrd.co/",
+      "discord": "chaosos"
+    },
+    {
+      "name": "Zhell",
+      "discord": "zhell9201"
+    }
+  ],
   "documentTypes": {
+    "ActiveEffect": {
+      "abilityModifier": {}
+    },
     "Actor": {
-      "character": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+      "hero": {
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       },
       "npc": {
-        "htmlFields": ["biography.value", "biography.gm"],
-        "gmOnlyFields": ["biography.gm"]
+        "htmlFields": ["biography.value", "biography.director"],
+        "gmOnlyFields": ["biography.director"]
       }
     },
     "ChatMessage": {
       "abilityUse": {},
-      "savingThrow": {}
+      "savingThrow": {},
+      "projectRoll": {}
     },
     "CombatantGroup": {
       "squad": {}
     },
     "Item": {
       "ability": {
+        "filePathFields": {
+          "power.effects.*.img": ["IMAGE"]
+        },
         "htmlFields": ["effect.before", "effect.after"]
       },
       "ancestry": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "career": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "class": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "complication": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "culture": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
-      "equipment": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+      "treasure": {
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
       },
       "feature": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "ancestryTrait": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "perk": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "title": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "kit": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       },
       "project": {
-        "htmlFields": ["description.value", "description.gm"],
-        "gmOnlyFields": ["description.gm"]
+        "htmlFields": ["description.value", "description.director"],
+        "gmOnlyFields": ["description.director"]
+      },
+      "subclass": {
+        "filePathFields": {
+          "advancements.*.img": ["IMAGE"],
+          "advancements.*.traits.*.img": ["IMAGE"]
+        },
+        "htmlFields": ["description.value", "description.director", "advancements.*.description"],
+        "gmOnlyFields": ["description.director"]
       }
     }
   },
@@ -78,14 +151,16 @@
   "readme": "README.md",
   "bugs": "https://github.com/MetaMorphic-Digital/draw-steel/issues",
   "changelog": "CHANGELOG.md",
-  "media": [{
-    "type": "setup",
-    "url": "systems/draw-steel/assets/anvil-impact.png",
-    "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
-  }],
-  "version": "0.7.3",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/draw-steel/assets/anvil-impact.png",
+      "thumbnail": "systems/draw-steel/assets/anvil-impact.png"
+    }
+  ],
+  "version": "0.8.0",
   "compatibility": {
-    "minimum": "13.340",
+    "minimum": "13.347",
     "verified": "13"
   },
   "esmodules": ["draw-steel.mjs"],
@@ -94,33 +169,70 @@
     { "src": "css/draw-steel-variables.css", "layer": "variables" },
     { "src": "css/draw-steel-elements.css", "layer": "elements" }
   ],
-  "languages": [{
-    "lang": "en",
-    "name": "English",
-    "path": "lang/en.json"
-  }],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
   "packs": [
     {
+      "name": "classes",
+      "label": "DRAW_STEEL.COMPENDIUM.classes",
+      "type": "Item"
+    },
+    {
       "name": "abilities",
-      "label": "Abilities",
+      "label": "DRAW_STEEL.COMPENDIUM.abilities",
       "type": "Item"
     },
     {
       "name": "journals",
-      "label": "System Journals",
+      "label": "DRAW_STEEL.COMPENDIUM.journals",
       "type": "JournalEntry"
+    },
+    {
+      "name": "tables",
+      "label": "DRAW_STEEL.COMPENDIUM.tables",
+      "type": "RollTable"
+    },
+    {
+      "name": "monsters",
+      "label": "DRAW_STEEL.COMPENDIUM.monsters",
+      "type": "Actor"
+    },
+      {
+      "name": "monster-features",
+      "label": "DRAW_STEEL.COMPENDIUM.monster-features",
+      "type": "Item"
+    },
+    {
+      "name": "origins",
+      "label": "DRAW_STEEL.COMPENDIUM.origins",
+      "type": "Item"
+    },
+    {
+      "name": "character-options",
+      "label": "DRAW_STEEL.COMPENDIUM.character-options",
+      "type": "Item"
+    },
+    {
+      "name": "rewards",
+      "label": "DRAW_STEEL.COMPENDIUM.rewards",
+      "type": "Item"
     }
   ],
   "packFolders": [
     {
       "name": "Draw Steel System",
       "color": "#483D8B",
-      "packs": ["abilities", "journals"]
+      "packs": ["abilities", "classes", "journals", "monsters", "monster-features", "tables", "character-options", "origins", "rewards"]
     }
   ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/MetaMorphic-Digital/draw-steel/refs/heads/main/system.json",
-  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.7.3/draw-steel-release-0.7.3.zip",
+  "download": "https://github.com/MetaMorphic-Digital/draw-steel/releases/download/release-0.8.0/draw-steel-release-0.8.0.zip",
   "background": "systems/draw-steel/assets/anvil-impact.png",
   "grid": {
     "type": 1,

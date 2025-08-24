@@ -2,33 +2,35 @@ import { systemPath } from "../../constants.mjs";
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 import { DSRoll, ProjectRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { PowerRollModifiers } from  "../../_types.js"*/
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { PowerRollModifiers } from  "../../_types.js"
+ */
 
 const fields = foundry.data.fields;
 
 /**
- * Projects are activities (crafting, research, or other) characters can accomplish during downtime.
+ * Projects are activities (crafting, research, or other) heroes can accomplish during downtime.
  */
 export default class ProjectModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "project",
-      detailsPartial: [systemPath("templates/item/partials/project.hbs")],
-    });
+      detailsPartial: [systemPath("templates/sheets/item/partials/project.hbs")],
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Project",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.project");
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -38,7 +40,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.prerequisites = new fields.StringField({ required: true });
     schema.projectSource = new fields.StringField({ required: true });
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = new fields.NumberField({ required: true, integer: true, positive: true, initial: 1 });
+    schema.goal = requiredInteger({ initial: 1, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
@@ -48,6 +50,8 @@ export default class ProjectModel extends BaseItemModel {
 
     return schema;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   preparePostActorPrepData() {
@@ -63,6 +67,8 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
@@ -71,7 +77,7 @@ export default class ProjectModel extends BaseItemModel {
     // If creating with item UUID, transfer the item project data to the project item
     const itemUUID = data.system?.yield?.item;
     const yieldItem = await fromUuid(itemUUID);
-    if (yieldItem?.type === "equipment") {
+    if (yieldItem?.type === "treasure") {
       const { prerequisites, rollCharacteristic, goal, source } = yieldItem.system.project;
       this.updateSource({
         type: "crafting",
@@ -88,6 +94,8 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    */
@@ -101,6 +109,8 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * @inheritdoc
    */
@@ -109,7 +119,7 @@ export default class ProjectModel extends BaseItemModel {
 
     // When the project is completed, notify the user and create any yielded item.
     if ((game.userId === userId) && options.completeProject) {
-      ui.notifications.success("DRAW_STEEL.Item.Project.CompletedNotification", {
+      ui.notifications.success("DRAW_STEEL.Item.project.CompletedNotification", {
         format: {
           actor: this.actor.name,
           project: this.parent.name,
@@ -119,6 +129,8 @@ export default class ProjectModel extends BaseItemModel {
       if (this.yield.item) this.completeCraftingProject();
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * @inheritdoc
@@ -136,10 +148,12 @@ export default class ProjectModel extends BaseItemModel {
     const embed = document.createElement("div");
     embed.classList.add("draw-steel", "project");
     if (config.includeName !== false) embed.insertAdjacentHTML("afterbegin", `<h5>${this.parent.name}</h5>`);
-    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/project.hbs"), context);
+    const projectBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/project.hbs"), context);
     embed.insertAdjacentHTML("beforeend", projectBody);
     return embed;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async getSheetContext(context) {
@@ -156,6 +170,8 @@ export default class ProjectModel extends BaseItemModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Make a project roll for this project and update the project points progress.
    * @param {Partial<PowerRollModifiers>} [options={}]
@@ -167,6 +183,40 @@ export default class ProjectModel extends BaseItemModel {
       return null;
     }
 
+    const promptValue = await this.rollPrompt(options);
+
+    if (!promptValue) return null;
+    const { rollMode, projectRoll } = promptValue;
+
+    const total = projectRoll.total;
+    const previousPoints = this.points;
+    const updatedPoints = previousPoints + total;
+    await this.parent.update({ "system.points": updatedPoints });
+
+    const messageData = {
+      system: {
+        uuid: this.parent.uuid,
+        events: this.milestoneEventsOccured(previousPoints, updatedPoints),
+      },
+      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
+      rolls: [projectRoll],
+      title: this.parent.name,
+      content: this.parent.name,
+      flavor: game.i18n.localize("DRAW_STEEL.ROLL.Project.Label"),
+      flags: { core: { canPopout: true } },
+    };
+
+    return await projectRoll.toMessage(messageData, { rollMode });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt the player to roll this project.
+   * @param {Partial<PowerRollModifiers>} [options={}]
+   * @returns {ProjectRollPrompt}
+   */
+  async rollPrompt(options = {}) {
     const rollData = this.parent.getRollData();
     const rollKey = ds.CONFIG.characteristics[this.characteristic]?.rollKey ?? "";
 
@@ -179,29 +229,13 @@ export default class ProjectModel extends BaseItemModel {
       flavor: this.parent.name,
     });
 
-    if (!promptValue) return null;
-    const { rollMode, projectRoll } = promptValue;
-
-    const total = projectRoll.total;
-    const updatedPoints = this.points + total;
-    await this.parent.update({ "system.points": updatedPoints });
-
-    const messageData = {
-      speaker: DrawSteelChatMessage.getSpeaker({ actor: this.actor }),
-      rolls: [projectRoll],
-      title: this.parent.name,
-      content: this.parent.name,
-      flavor: game.i18n.localize("DRAW_STEEL.Roll.Project.Label"),
-      flags: { core: { canPopout: true } },
-    };
-
-    DrawSteelChatMessage.applyRollMode(messageData, rollMode);
-
-    return DrawSteelChatMessage.create(messageData);
+    return promptValue;
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Spend a variable amount of the actor's project points from their career on this project
+   * Spend a variable amount of the actor's project points from their career on this project.
    */
   async spendCareerPoints() {
     if (!this.actor) return console.error("This project has no owner actor.");
@@ -223,20 +257,20 @@ export default class ProjectModel extends BaseItemModel {
     const formGroup = new foundry.applications.fields.createFormGroup({
       input,
       classes: ["stacked"],
-      label: "DRAW_STEEL.Item.Project.SpendCareerPoints.Label",
+      label: "DRAW_STEEL.Item.project.SpendCareerPoints.Label",
       localize: true,
     });
 
     const fd = await ds.applications.api.DSDialog.input({
       content: formGroup.outerHTML,
-      window: { title: "DRAW_STEEL.Item.Project.SpendCareerPoints.Title" },
+      window: { title: "DRAW_STEEL.Item.project.SpendCareerPoints.Title" },
     });
 
     if (fd?.spendPoints > 0) {
       await this.parent.update({ "system.points": this.points + fd.spendPoints });
       await this.actor.system.career.update({ "system.projectPoints": careerPoints - fd.spendPoints });
 
-      ui.notifications.success("DRAW_STEEL.Item.Project.SpendCareerPoints.Success", {
+      ui.notifications.success("DRAW_STEEL.Item.project.SpendCareerPoints.Success", {
         format: {
           actor: this.actor.name,
           points: fd.spendPoints,
@@ -245,6 +279,8 @@ export default class ProjectModel extends BaseItemModel {
       });
     }
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Perform the creation of the yielded item(s) when a crafting project is completed.
@@ -261,17 +297,58 @@ export default class ProjectModel extends BaseItemModel {
     if (existingItem) {
       await existingItem.update({ "system.quantity": existingItem.system.quantity + amount });
     } else {
-      const itemData = game.items.fromCompendium(item);
+      const itemData = game.items.fromCompendium(item, { clearFolder: true });
       itemData.system.quantity = amount;
       await this.actor.createEmbeddedDocuments("Item", [itemData]);
     }
 
-    ui.notifications.success("DRAW_STEEL.Item.Project.Craft.CompletedNotification", {
+    ui.notifications.success("DRAW_STEEL.Item.project.Craft.CompletedNotification", {
       format: {
         actor: this.actor.name,
         amount,
         item: item.name,
       },
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * An array of numbers at which a milestone event would happen.
+   * @type {number[]}
+   */
+  get milestoneEventThresholds() {
+    const milestone = ds.CONFIG.projects.milestones.find(milestone => (this.goal >= milestone.min) && (this.goal <= milestone.max));
+    const events = milestone?.events ?? 0;
+
+    const eventThresholds = [];
+    if (!events) return eventThresholds;
+
+    for (let i = 1; i <= events; i++) {
+      const threshold = Math.floor(i / (events + 1) * this.goal);
+      eventThresholds.push(threshold);
+    }
+
+    return eventThresholds;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Determine how many project events occur based on milestone thresholds.
+   * @param {number} previousPoints The project points before the project roll.
+   * @param {number} updatedPoints  The project points after the project roll.
+   * @returns {number}
+   */
+  milestoneEventsOccured(previousPoints, updatedPoints) {
+    const thresholds = this.milestoneEventThresholds;
+    if (thresholds.length === 0) return 0;
+
+    let eventsOccured = 0;
+    for (const threshold of thresholds) {
+      if ((previousPoints < threshold) && (updatedPoints >= threshold)) eventsOccured++;
+    }
+
+    return eventsOccured;
   }
 }

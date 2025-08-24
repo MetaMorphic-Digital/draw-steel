@@ -36,7 +36,76 @@ If you are using VSCode, the i18n Ally (ID: `lokalise.i18n-ally`) extension will
 
 ## Compendiums
 
-The system is still under construction and not ready for compendium content yet! The current license allows for the full text of the backer packets and the backer packets only.
+The system supports compendium content for 1st party material licensed through the Draw Steel Creator's License. That means:
+
+- No 3rd party content
+- No playtest material
+- No unlicensed releases (e.g. the Delian Tomb)
+
+The files for compendium content are available in the `src/packs` directory.
+
+### Creating and updating content
+
+Modifications to compendium content should be performed from within foundry. This process requires having a dev install of the system, not the version downloaded from the package repository.
+
+1. While Foundry is closed, use `npm run build:packs` to make sure your local database files align with the material in the source files.
+2. Open foundry and open a world with zero modules.
+3. Unlock the compendium(s) you wish to adjust; there will be a dialog warning you about edit to system files, but in this case that is exactly what you want to be doing.
+4. Create or edit content as needed within the compendiums.
+5. When you are done, close down Foundry and run `npm run unpack`
+6. Your changes should appear as edits to the json files within `src/packs`. You may then commit those changes and submit them as a pull request.
+
+#### Style Guide
+
+To maintain consistency across the repository, keep the following rules in mind:
+- Not every feature is supported by automation; it's better to have the rules text and leave it up to individual groups to handle than use an ugly hack
+- If something seems like it should be supported by automation, check if there's already a ticket, and if there's not, feel free to file one requesting support.
+- All documents should have a thematically appropriate icon selected from the core foundry icons.
+  - Linked documents (e.g. a career and its incidents table) should have matching icons.
+  - Table results are the exception; only the table itself needs a unique icon.
+- HTML fields should be clean without extra styles added from pasting.
+
+Specific notes by type:
+
+**Abilities**
+- For abilities with no power roll, the "before" effect is preferred to the "after".
+
+**Ancestry**
+- The description on the ancestry itself should be the info text.
+- Even features that only grant abilities should be created as both, for the purpose of easy inclusion in trait purchasing.
+
+**Ancestry Trait**
+- If a trait grants an ability, both the trait and the ability must be included
+- Ancestry Traits should not include the point cost in their name or _dsid.
+- A point cost of null means it is a signature trait
+
+**Career**
+- Inciting incidents tables should be linked by `@UUID` reference.
+
+**Culture**
+- The core book's cultures are not expected to have descriptions, and the advancement titles should consist solely of the aspect (e.g. "Communal").
+
+<!-- Complication -->
+
+**Class and Subclass**
+- If a class or subclass feature only exists to grant an ability, e.g. the Tactician's Mark, just grant the ability directly and put the extra description in the Advancement.
+
+**Equipment**
+- Each tier of benefits for a leveled treasure should be implemented as a separate active effect with the idea that *only* that effect will be active.
+
+**Feature**
+- Not having a subtype is perfectly reasonable, many features are neither perks nor titles.
+
+**Kit**
+- Keep in mind that the book's abilities already include the kit bonus, so the ones in the compendium should *not* include the kit bonus to avoid double-counting.
+
+<!-- Perk -->
+
+<!-- Project -->
+
+**Title**
+- Titles with choices should have item grants for each of those choices, e.g. for Ratcatcher, an ability named "Come Out to Play", a feature for "Deadly and Big", and another feature for "Everybody Move!".
+- Use the `@Embed` enricher to avoid duplicating text unnecessarily.
 
 ### Translations
 

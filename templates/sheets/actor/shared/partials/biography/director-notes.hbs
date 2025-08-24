@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>{{systemFields.biography.fields.director.label}}</legend>
+  {{#if (and gm editable (not isPlay))}}
+  {{formInput
+  systemFields.biography.fields.director
+  value=systemSource.biography.director
+  documentUUID=document.uuid
+  height=200
+  }}
+  {{else}}
+  {{{enrichedDirectorNotes}}}
+  {{/if}}
+</fieldset>

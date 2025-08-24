@@ -1,13 +1,20 @@
 const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
-/** @import Document from "@common/abstract/document.mjs" */
-/** @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs" */
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
+ * @import { ApplicationConfiguration } from "@client/applications/_types.mjs";
+ */
 
 /**
- * Generic sheet class to represent a {@linkcode PseudoDocument}
+ * Generic sheet class to represent a {@linkcode PseudoDocument}.
+ * @template {PseudoDocument} TPseudo The type of Pseudodocument this covers.
  * @abstract
  */
 export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Application) {
+  /**
+   * @param {ApplicationConfiguration} options
+   */
   constructor(options) {
     super(options);
     this.#pseudoUuid = options.document.uuid;
@@ -100,7 +107,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
 
   /**
    * The pseudo-document. This can be null if a parent pseudo-document is removed.
-   * @type {PseudoDocument|null}
+   * @type {TPseudo|null}
    */
   get pseudoDocument() {
     let relative = this.document;
@@ -195,6 +202,22 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _prepareContext(options) {
+    const document = this.pseudoDocument;
+
+    const context = {
+      tabs: this._prepareTabs("primary"),
+      document,
+      source: document._source,
+      fields: document.schema.fields,
+    };
+
+    return context;
+  }
+
+  /* -------------------------------------------------- */
   /*   Event handlers                                   */
   /* -------------------------------------------------- */
 
@@ -213,6 +236,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
+   * Copies the ID or UUID for the pseudo document.
    * @this {PseudoDocumentSheet}
    * @param {PointerEvent} event      The originating click event.
    */

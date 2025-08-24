@@ -1,0 +1,154 @@
+{
+  "folder": "9iT8OXz2ZLsuyduZ",
+  "name": "Blood for Blood!",
+  "type": "ability",
+  "_id": "CD27c6U0GUSIJPDT",
+  "img": "icons/skills/wounds/injury-triple-slash-bleed.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "134",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "blood-for-blood",
+    "story": "See how well they fight after you’ve bled them dry.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "EmJWtPYMflRI8igQ": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "EmJWtPYMflRI8igQ",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "10 + @chr"
+            }
+          }
+        },
+        "vFkyUqb7CNPJXjAJ": {
+          "name": "Bleeding and Weakened",
+          "img": null,
+          "type": "applied",
+          "_id": "vFkyUqb7CNPJXjAJ",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "might"
+              },
+              "display": "{{potency}}, bleeding and weakened (save ends)",
+              "effects": {
+                "smsxzpXNKk6UkIC5": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can deal 1d6 damage to yourself to deal an extra 1d6 damage to the target.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Bleeding and Weakened",
+      "img": "icons/skills/wounds/injury-triple-slash-bleed.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.CD27c6U0GUSIJPDT",
+      "transfer": false,
+      "_id": "smsxzpXNKk6UkIC5",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "bleeding",
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755646165971,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!CD27c6U0GUSIJPDT.smsxzpXNKk6UkIC5"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755579974551,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!CD27c6U0GUSIJPDT"
+}

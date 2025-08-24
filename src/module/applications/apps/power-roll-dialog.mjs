@@ -5,7 +5,8 @@ import RollDialog from "../api/roll-dialog.mjs";
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
- * AppV2-based sheet Power Roll modifications
+ * A roll dialog for Power Rolls.
+ * @see {@link PowerRoll}
  */
 export default class PowerRollDialog extends RollDialog {
   /** @inheritdoc */
@@ -21,7 +22,7 @@ export default class PowerRollDialog extends RollDialog {
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/rolls/power-roll-dialog.hbs"),
+      template: systemPath("templates/apps/power-roll-dialog.hbs"),
     },
     footer: super.PARTS.footer,
   };
@@ -51,7 +52,7 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the ability context by generating the ability Item and damageOptions
+   * Prepare the ability context by generating the ability Item and damageOptions.
    * @param {object} context
    */
   async _prepareAbilityContext(context) {
@@ -75,8 +76,8 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare targets by adding the actor and combinging modifiers
-   * @param {object} context The context from _prepareContext
+   * Prepare targets by adding the actor and combinging modifiers.
+   * @param {object} context The context from _prepareContext.
    */
   async _prepareTargets(context) {
     for (const target of context.targets) {
@@ -93,8 +94,8 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Prepare the skill select options
-   * @param {object} context The context from _prepareContext
+   * Prepare the skill select options.
+   * @param {object} context The context from _prepareContext.
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
@@ -108,7 +109,7 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
-   * Amend the global modifiers and target specific modifiers based on changed values
+   * Amend the global modifiers and target specific modifiers based on changed values.
    * @inheritdoc
    */
   _onChangeForm(formConfig, event) {

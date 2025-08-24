@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import DSApplication from "../api/application.mjs";
 
 /**
- * Prompt application for configuring the actor UUID that is causing a targeted condition
+ * Prompt application for configuring the actor UUID that is causing a targeted condition.
  */
 export default class TargetedConditionPrompt extends DSApplication {
   /** @inheritdoc */
@@ -16,7 +16,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /** @inheritdoc */
   static PARTS = {
     content: {
-      template: systemPath("templates/active-effect/targeted-condition-prompt.hbs"),
+      template: systemPath("templates/sheets/active-effect/targeted-condition-prompt.hbs"),
     },
   };
 
@@ -35,7 +35,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * The first target in the user targets
+   * The first target in the user targets.
    * @type {Token}
    */
   #target = game.user.targets.first();
@@ -43,7 +43,7 @@ export default class TargetedConditionPrompt extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
-   * The hook ID for canceling the hook on close
+   * The hook ID for canceling the hook on close.
    * @type {number}
    */
   #hook;
@@ -62,7 +62,7 @@ export default class TargetedConditionPrompt extends DSApplication {
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.Effect.TargetedConditionPrompt.Title", {
+    return game.i18n.format("DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Title", {
       condition: this.condition,
     });
   }

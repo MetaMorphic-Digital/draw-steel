@@ -6,6 +6,7 @@ import { DocumentSourceInput, MonsterMetadataInput } from "../apps/_module.mjs";
 /** @import DrawSteelActor from "../../documents/actor.mjs"; */
 
 export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
+  /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["npc"],
     actions: {
@@ -15,39 +16,44 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/actor/npc/header.hbs"),
-      templates: ["templates/actor/npc/header.hbs"].map(t => systemPath(t)),
+      template: systemPath("templates/sheets/actor/npc/header.hbs"),
+      templates: ["templates/sheets/actor/npc/header.hbs"].map(t => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     stats: {
-      template: systemPath("templates/actor/npc/stats.hbs"),
-      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/actor/shared/partials/stats/${t}`)),
+      template: systemPath("templates/sheets/actor/npc/stats.hbs"),
+      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
       scrollable: [""],
     },
     features: {
-      template: systemPath("templates/actor/shared/features.hbs"),
+      template: systemPath("templates/sheets/actor/npc/features.hbs"),
+      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
       scrollable: [""],
     },
     abilities: {
-      template: systemPath("templates/actor/shared/abilities.hbs"),
+      template: systemPath("templates/sheets/actor/shared/abilities.hbs"),
       scrollable: [""],
     },
     effects: {
-      template: systemPath("templates/actor/shared/effects.hbs"),
+      template: systemPath("templates/sheets/actor/shared/effects.hbs"),
       scrollable: [""],
     },
     biography: {
-      template: systemPath("templates/actor/npc/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "gm-notes.hbs"].map(t => systemPath(`templates/actor/shared/partials/biography/${t}`)),
+      template: systemPath("templates/sheets/actor/npc/biography.hbs"),
+      templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
       scrollable: [""],
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
@@ -72,47 +78,56 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     return context;
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the printable string for the monster's keywords
-   * @returns {string}
+   * Fetches the printable string for the monster's keywords.
+   * @returns {string[]}
    */
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
-    const formatter = game.i18n.getListFormatter({ type: "unit" });
-    const keywords = Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
-    return formatter.format(keywords);
+    return Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the label for the monster's organization
-   * @returns {{list: FormSelectOption[], current: string}}
+   * Fetches the label for the monster's organization.
+   * @returns {string}
    */
   _getOrganizationLabel() {
     const organizations = ds.CONFIG.monsters.organizations;
     return organizations[this.actor.system.monster.organization]?.label ?? "";
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the label for the monster's role
-   * @returns {{list: FormSelectOption[], current: string}}
+   * Fetches the label for the monster's role.
+   * @returns {string}
    */
   _getRoleLabel() {
     const roles = ds.CONFIG.monsters.roles;
     return roles[this.actor.system.monster.role]?.label ?? "";
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the label for the monster's Encounter Value
+   * Fetches the label for the monster's Encounter Value.
+   * @returns {string}
    */
   _getEVLabel() {
     const data = { value: this.actor.system.monster.ev };
-    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Minion", data);
-    else return game.i18n.format("DRAW_STEEL.Actor.NPC.EVLabel.Other", data);
+    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data);
+    else return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Fetches the options for Motivations
-   * @returns {{list: FormSelectOption[]}}
+   * Fetches the options for Motivations & Pitfalls.
+   * @returns {{list: FormSelectOption[]; currentMotivations: string; currentPitfalls: string}}
    */
   _getMotivations() {
     const motivations = ds.CONFIG.negotiation.motivations;
@@ -169,46 +184,50 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Open the update source dialog
+   * Open the update source dialog.
    * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
     new DocumentSourceInput({ document: this.document }).render({ force: true });
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Open a dialog to edit the monster metadata
+   * Open a dialog to edit the monster metadata.
    * @this DrawSteelNPCSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editMonsterMetadata(event, target) {
     new MonsterMetadataInput({ document: this.document }).render({ force: true });
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Open a dialog to edit the monster metadata
+   * Open a dialog to edit the monster metadata.
    * @this DrawSteelNPCSheet
-   * @param {PointerEvent} event   The originating click event
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #freeStrike(event, target) {
     try { game.user.targets.map(t => t.actor); } catch (e) {
-      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.MultiLinked", { localize: true });
+      ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.MultiLinked", { localize: true });
       throw (e);
     }
 
     /** @type {Array<DrawSteelActor>} */
     const targets = game.user.targets.map(t => t.actor).filter(a => a?.system?.takeDamage).toObject();
     if (!targets.length) {
-      ui.notifications.error("DRAW_STEEL.Actor.NPC.FreeStrike.NoTargets", { localize: true });
+      ui.notifications.error("DRAW_STEEL.Actor.npc.FreeStrike.NoTargets", { localize: true });
       return;
     }
     const freeStrike = this.actor.system.freeStrike;
 
-    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.NPC.FreeStrike.DialogHeader", {
+    const damageLabel = game.i18n.format("DRAW_STEEL.Actor.npc.FreeStrike.DialogHeader", {
       value: freeStrike.value,
       type: ds.CONFIG.damageTypes[freeStrike.type]?.label ?? "",
     });
@@ -233,10 +252,10 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
     /** @type {object} */
     const fd = await ds.applications.api.DSDialog.input({
-      window: { title: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
+      window: { title: "DRAW_STEEL.Actor.npc.FreeStrike.DialogTitle", icon: "fa-solid fa-burst" },
       content,
       ok: {
-        label: "DRAW_STEEL.Actor.NPC.FreeStrike.DialogButton",
+        label: "DRAW_STEEL.Actor.npc.FreeStrike.DialogButton",
       },
     });
 

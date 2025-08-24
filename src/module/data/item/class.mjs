@@ -1,30 +1,28 @@
 import { systemPath } from "../../constants.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { requiredInteger, setOptions } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
- * Classes provide the bulk of a hero's features and abilities
+ * Classes provide the bulk of a hero's features and abilities.
  */
 export default class ClassModel extends AdvancementModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "class",
       invalidActorTypes: ["npc"],
-      detailsPartial: [systemPath("templates/item/partials/class.hbs")],
-    });
+      detailsPartial: [systemPath("templates/sheets/item/partials/class.hbs")],
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.advancement",
-    "DRAW_STEEL.Item.Class",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.class");
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -42,6 +40,8 @@ export default class ClassModel extends AdvancementModel {
 
     schema.primary = new fields.StringField({ required: true });
 
+    schema.epic = new fields.StringField({ required: true });
+
     schema.turnGain = new FormulaField();
 
     schema.minimum = new FormulaField({ initial: "0" });
@@ -51,27 +51,59 @@ export default class ClassModel extends AdvancementModel {
     });
 
     schema.stamina = new fields.SchemaField({
-      starting: new fields.NumberField({ required: true, initial: 20 }),
-      level: new fields.NumberField({ required: true, initial: 12 }),
+      starting: requiredInteger({ initial: 20 }),
+      level: requiredInteger({ initial: 12 }),
     });
 
-    schema.recoveries = new fields.NumberField({ required: true, nullable: false, initial: 8 });
-
-    schema.kits = new fields.NumberField({ required: true, initial: 1 });
+    schema.recoveries = requiredInteger({ initial: 8 });
 
     return schema;
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async getSheetContext(context) {
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
-    context.kitOptions = Array.fromRange(3).map(number => ({ label: number, value: number }));
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _onCreate(data, options, userId) {
-    if (this.actor && (this.actor.type === "character") && (game.userId === userId)) {
-      this.actor.update({ "system.hero.recoveries.value": this.recoveries });
+    if (this.actor && (this.actor.type === "hero") && (game.userId === userId)) {
+      this.actor.update({ "system.recoveries.value": this.recoveries });
     }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    if (this.actor) {
+      this.actor.system.recoveries.max = this.recoveries;
+      this.actor.system.stamina.max += this.stamina.starting + (this.level - 1) * this.stamina.level;
+    }
+  }
+
+  /** @inheritdoc */
+  async applyAdvancements({ actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
+    const { end: levelEnd = 1 } = levels;
+
+    const _idMap = new Map();
+    const createClass = this.parent !== actor.system.class;
+    if (createClass) {
+      const keepId = !actor.items.has(this.parent.id);
+      const itemData = game.items.fromCompendium(this.parent, { keepId, clearFolder: true });
+      foundry.utils.setProperty(itemData, "system.level", levelEnd);
+      if (!keepId) itemData._id = foundry.utils.randomID();
+      toCreate[this.parent.uuid] = itemData;
+      _idMap.set(this.parent.id, itemData._id);
+    } else {
+      toUpdate[this.parent.id] = { _id: this.parent.id, "system.level": levelEnd };
+    }
+
+    return super.applyAdvancements({ actor, levels, toCreate, toUpdate, _idMap, ...options });
   }
 }

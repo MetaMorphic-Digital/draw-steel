@@ -1,0 +1,247 @@
+{
+  "name": "Tactician",
+  "type": "class",
+  "img": "icons/skills/melee/strike-weapons-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>Strategist. Defender. Leader. With weapon in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can.</p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks, even as you leave your enemies struggling to respond.</p>",
+      "director": ""
+    },
+    "advancements": {
+      "KoGp0Q93aEXIiQxx": {
+        "type": "itemGrant",
+        "_id": "KoGp0Q93aEXIiQxx",
+        "requirements": {
+          "level": 3
+        },
+        "name": "Out of Position",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UMi9OOllnmMinI9h"
+          }
+        ],
+        "description": "<p>Even before battle begins, your enemies struggle to keep up with your tactics.</p>"
+      },
+      "ZYrQ1MTL4PPJq1un": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "ZYrQ1MTL4PPJq1un",
+        "skills": {
+          "choices": [
+            "lead"
+          ]
+        },
+        "description": "<p>You gain the Lead skill.</p>"
+      },
+      "lffZjjuNWAvfmliT": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "lffZjjuNWAvfmliT",
+        "skills": {
+          "choices": [
+            "architecture",
+            "blacksmithing",
+            "fletching",
+            "mechanics",
+            "brag",
+            "empathize",
+            "alertness",
+            "search",
+            "culture",
+            "monsters",
+            "strategy"
+          ],
+          "groups": [
+            "exploration"
+          ]
+        },
+        "chooseN": 2,
+        "description": "<p>Choose any two skills from Alertness, Architecture, Blacksmithing, Brag, Culture, Empathize, Fletching, Mechanics, Monsters, Search, Strategy, or the skills of the exploration skill group. (<em>Quick Build</em>: Monsters, Strategy.)</p>"
+      },
+      "TPNKDjRP9rjsZfdo": {
+        "name": "Tactical Doctrine",
+        "img": "icons/sundries/documents/document-sealed-red-tan.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "TPNKDjRP9rjsZfdo",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VfwdbL1GG2Dx0zv7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aYjVEZyiYqtdGGPS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OjWhetKz8boQxExU"
+          }
+        ],
+        "chooseN": 1,
+        "description": "<p>Warfare is as old as civilization—and perhaps even older. As battle became ever more complex, military leaders invented tactical doctrine, outlining how combatants should be structured, used, and deployed. Doctrine can be learned at war colleges passing on ancient martial traditions, or directly through blood and sweat on the battlefield. Whatever path brought you to your mastery of historically proven tactics, you choose a tactical doctrine from the following options, each of which grants you a skill. (<em>Quick Build</em>: Vanguard and the Intimidate skill.)</p><p>Your tactical doctrine is your subclass, and your choice of doctrine determines many of the features you’ll gain as you gain new levels.</p>"
+      },
+      "QbsiJwC2zZCfmQej": {
+        "name": "Focus",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "QbsiJwC2zZCfmQej",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.BsbaqvmoNmQLIhkS"
+          }
+        ],
+        "description": "<p>The ring of steel panics others but brings order to your mind, granting you a Heroic Resource called focus.</p>"
+      },
+      "7k50JsLsnWjsjUNC": {
+        "name": "Field Arsenal",
+        "img": "icons/skills/melee/spear-tips-quintuple-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "7k50JsLsnWjsjUNC",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.dNGmfuNuaML5TRQL"
+          }
+        ],
+        "description": "<p>You have drilled with a broad array of weapons and have developed techniques to optimize their use. Whenever you select or change your kit, you can select an additional kit and gain the benefits of both kits, including both their signature abilities. See Kits for more information. (<em>Quick Build:</em> Shining Armor, Sniper)</p>",
+        "chooseN": null
+      },
+      "MP2iZkK0a0TBrk2f": {
+        "name": "Mark",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "MP2iZkK0a0TBrk2f",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.zyd6C7phOZr6EAQ9"
+          }
+        ],
+        "description": "<p>You know how to focus the attention of your allies as you push them toward victory.</p>"
+      },
+      "GaCGwCaDeZ0tIzEW": {
+        "name": "Strike Now",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "GaCGwCaDeZ0tIzEW",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.x4b14J5PNuHHSOvy"
+          }
+        ],
+        "description": "<p>You have the following ability.</p>"
+      },
+      "v3lv8gpmAuGMFZeL": {
+        "name": "3 Focus",
+        "img": "icons/magic/symbols/runes-triangle-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "v3lv8gpmAuGMFZeL",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 focus to use. (<em>Quick Build</em>: Inspiring Strike.)</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tNLgOK3NPEmKPT8N"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.S3iGPafawIlrjPLQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yYQqS6yLeI1vSq5F"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.KgIMq4mGRFmij4yK"
+          }
+        ]
+      },
+      "gxX5Ov4NXyFqjz7Y": {
+        "name": "5 Focus",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "gxX5Ov4NXyFqjz7Y",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 focus to use. (<em>Quick Build:</em> Hammer and Anvil.)</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.lNJCFKdUV1fjYmhC"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tpi0fKQDK1dEDwWw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qHiPuCKH4WNHCYgO"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.eiwrW9TL342wPNea"
+          }
+        ]
+      }
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "174",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "tactician",
+    "level": 0,
+    "primary": "Focus",
+    "turnGain": "2",
+    "minimum": "0",
+    "characteristics": {
+      "core": [
+        "might",
+        "reason"
+      ]
+    },
+    "stamina": {
+      "starting": 21,
+      "level": 9
+    },
+    "recoveries": 10,
+    "epic": "Command"
+  },
+  "effects": [],
+  "folder": "kCN3c3aC6ziHDp5c",
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140107957,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "Y6rtfW6EfHszGqhG",
+  "sort": 0,
+  "_key": "!items!Y6rtfW6EfHszGqhG"
+}

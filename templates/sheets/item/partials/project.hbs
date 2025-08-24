@@ -1,0 +1,18 @@
+{{#if isPlay}}
+{{> "systems/draw-steel/templates/embeds/item/project.hbs"}}
+{{else}}
+{{formGroup systemFields.type value=system.type options=typeOptions blank=""}}
+{{formGroup systemFields.prerequisites value=system.prerequisites}}
+{{formGroup systemFields.projectSource value=system.projectSource}}
+{{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic options=characteristics}}
+{{formGroup systemFields.goal value=system.goal}}
+{{#if document.isOwned}}
+{{formGroup systemFields.points value=system.points}}
+{{/if}}
+<fieldset>
+  <legend>{{systemFields.yield.label}}</legend>
+  {{formGroup systemFields.yield.fields.item value=system.yield.item}}
+  {{formGroup systemFields.yield.fields.amount value=system.yield.amount}}
+  {{formGroup systemFields.yield.fields.display value=system.yield.display}}
+</fieldset>
+{{/if}}

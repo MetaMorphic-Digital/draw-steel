@@ -5,7 +5,7 @@ import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as utils from "./src/module/utils/_module.mjs";
-import { DRAW_STEEL } from "./src/module/config.mjs";
+import * as DS_CONFIG from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
@@ -17,11 +17,16 @@ globalThis.ds = {
   data,
   utils,
   CONST: DS_CONST,
-  CONFIG: DRAW_STEEL,
+  CONFIG: DS_CONFIG,
 };
 
+// Register custom elements.
+for (const element of Object.values(applications.elements)) {
+  window.customElements.define(element.tagName, element);
+}
+
 Hooks.once("init", function () {
-  CONFIG.DRAW_STEEL = DRAW_STEEL;
+  CONFIG.DRAW_STEEL = DS_CONFIG;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
   helpers.DrawSteelSettingsHandler.registerSettings();
 
@@ -32,13 +37,14 @@ Hooks.once("init", function () {
   }
 
   helpers.registerHandlebars();
-  const templates = ["templates/item/embeds/ability.hbs", "templates/item/embeds/kit.hbs", "templates/item/embeds/project.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = ["templates/embeds/item/ability.hbs", "templates/embeds/item/kit.hbs", "templates/embeds/item/project.hbs"].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
     if (!CONST.ALL_DOCUMENT_TYPES.includes(doc)) continue;
     for (const modelCls of Object.values(models)) {
       if (modelCls.metadata?.type) CONFIG[doc].dataModels[modelCls.metadata.type] = modelCls;
+      if (modelCls.metadata?.icon) CONFIG[doc].typeIcons[modelCls.metadata.type] = modelCls.metadata.icon;
       if (modelCls.metadata?.detailsPartial) templates.push(...modelCls.metadata.detailsPartial);
     }
   }
@@ -58,7 +64,7 @@ Hooks.once("init", function () {
   const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
-  for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
+  for (const [id, value] of Object.entries(DS_CONFIG.conditions)) {
     CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {
@@ -70,33 +76,33 @@ Hooks.once("init", function () {
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
-  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelCharacterSheet, {
-    types: ["character"],
+  Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelHeroSheet, {
+    types: ["hero"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Character",
+    label: "DRAW_STEEL.SHEET.Labels.Character",
   });
   Actors.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelNPCSheet, {
     types: ["npc"],
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.NPC",
+    label: "DRAW_STEEL.SHEET.Labels.NPC",
   });
   Items.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelItemSheet, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.Item",
+    label: "DRAW_STEEL.SHEET.Labels.Item",
   });
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.ActiveEffect",
+    label: "DRAW_STEEL.SHEET.Labels.ActiveEffect",
   });
   DocumentSheetConfig.unregisterSheet(WallDocument, "core", foundry.applications.sheets.WallConfig);
   DocumentSheetConfig.registerSheet(WallDocument, DS_CONST.systemID, applications.sheets.DrawSteelWallConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.WallDocument",
+    label: "DRAW_STEEL.SHEET.Labels.WallDocument",
   });
   DocumentSheetConfig.registerSheet(CombatantGroup, DS_CONST.systemID, applications.sheets.DrawSteelCombatantGroupConfig, {
     makeDefault: true,
-    label: "DRAW_STEEL.Sheet.Labels.CombatantGroup",
+    label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
 
   // Register replacements for core UI elements
@@ -113,7 +119,7 @@ Hooks.once("init", function () {
 });
 
 /**
- * Perform one-time pre-localization and sorting of some configuration objects
+ * Perform one-time pre-localization and sorting of some configuration objects.
  */
 Hooks.once("i18nInit", () => {
   helpers.localization.performPreLocalization(CONFIG.DRAW_STEEL);
@@ -147,8 +153,18 @@ Hooks.once("i18nInit", () => {
     }
   }
 
-  // Localize pseudo-documents: THIS DOES NOT WORK WAARGGGG
-  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.DamagePowerRollEffect);
+  // Localize pseudo-documents. Base first, then loop through the types in use
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect);
+  foundry.helpers.Localization.localizeDataModel(data.pseudoDocuments.advancements.BaseAdvancement);
+
+  const localizePseudos = record => {
+    for (const cls of Object.values(record)) {
+      foundry.helpers.Localization.localizeDataModel(cls);
+    }
+  };
+
+  localizePseudos(data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.TYPES);
+  localizePseudos(data.pseudoDocuments.advancements.BaseAdvancement.TYPES);
 });
 
 /* -------------------------------------------- */
@@ -169,14 +185,14 @@ Hooks.once("ready", async function () {
 });
 
 /**
- * Render hooks
+ * Render hooks.
  */
 Hooks.on("renderChatMessageHTML", applications.hooks.renderChatMessageHTML);
 Hooks.on("renderCombatantConfig", applications.hooks.renderCombatantConfig);
 Hooks.on("renderTokenApplication", applications.hooks.renderTokenApplication);
 
 /**
- * Other hooks
+ * Other hooks.
  */
 Hooks.on("diceSoNiceRollStart", helpers.diceSoNiceRollStart);
 Hooks.on("hotReload", helpers.hotReload);

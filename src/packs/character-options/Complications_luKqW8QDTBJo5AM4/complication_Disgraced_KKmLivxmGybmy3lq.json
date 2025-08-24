@@ -1,0 +1,106 @@
+{
+  "name": "Disgraced",
+  "type": "complication",
+  "folder": "luKqW8QDTBJo5AM4",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "license": "Draw Steel Creator License",
+      "revision": 1,
+      "page": "236"
+    },
+    "description": {
+      "value": "<p>You’re a disgraced member of a powerful family or guild, having been turned out by your relatives or peers. Those you were once close to won’t give you the time of day anymore, much less lend a helping hand, until you clear your name or clean up your act. </p><p><strong>Benefit:</strong> You earn 1 Renown, and you have one skill of your choice from the interpersonal or intrigue skill group. </p><p><strong>Drawback:</strong> Anyone who has heard of you and is influenced by your Renown treats you as infamous. Whenever you are part of a negotiation with an NPC who has an interest of 2 or lower, that NPC makes a plan to hurt you personally after the negotiation ends—and carries that plan out.</p>",
+      "director": "236"
+    },
+    "_dsid": "disgraced",
+    "advancements": {
+      "2mbZL8WAseuPZLS2": {
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "2mbZL8WAseuPZLS2",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "interpersonal",
+            "intrigue"
+          ]
+        }
+      }
+    }
+  },
+  "_id": "KKmLivxmGybmy3lq",
+  "img": "icons/skills/wounds/injury-face-impact-orange.webp",
+  "effects": [
+    {
+      "name": "Disgraced Benefit",
+      "origin": "Compendium.draw-steel.character-options.Item.KKmLivxmGybmy3lq",
+      "img": "icons/skills/wounds/injury-face-impact-orange.webp",
+      "_id": "zGBa7URnsdH6lGLH",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.hero.renown",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755119662926,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!KKmLivxmGybmy3lq.zGBa7URnsdH6lGLH"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754715846118,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!KKmLivxmGybmy3lq"
+}

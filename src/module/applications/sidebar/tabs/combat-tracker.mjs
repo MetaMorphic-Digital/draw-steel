@@ -7,7 +7,7 @@ import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/
 const { ux, sidebar } = foundry.applications;
 
 /**
- * A custom combat tracker that supports Draw Steel's initiative system
+ * A custom combat tracker that supports Draw Steel's initiative system.
  */
 export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /** @inheritdoc */
@@ -24,25 +24,25 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /** @inheritdoc */
   static PARTS = {
-    /** Inherited */
+    // Inherited
     header: {
       template: "templates/sidebar/tabs/combat/header.hbs",
     },
-    /** Inherited, only used for "alternative" combat */
+    // Inherited, only used for "alternative" combat
     tracker: {
       template: "templates/sidebar/tabs/combat/tracker.hbs",
     },
-    /** Inherited, only used for "alternative" combats */
+    // Inherited, only used for "alternative" combats
     footer: {
       template: "templates/sidebar/tabs/combat/footer.hbs",
     },
     dsTracker: {
-      template: systemPath("templates/combat/tracker.hbs"),
-      templates: [systemPath("templates/combat/turn.hbs")],
+      template: systemPath("templates/sidebar/tabs/combat/tracker.hbs"),
+      templates: [systemPath("templates/sidebar/tabs/combat/turn.hbs")],
       scrollable: [""],
     },
     dsFooter: {
-      template: systemPath("templates/combat/footer.hbs"),
+      template: systemPath("templates/sidebar/tabs/combat/footer.hbs"),
     },
   };
 
@@ -95,7 +95,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const isPlayerTurn = combat?.combatant?.players?.includes(game.user);
     const canControl = numberTurn && combat.canUserModify(game.user, "update", { turn: null });
 
-    context.nullTurn = !numberTurn;
+    context.nullTurn = combat?.combatant && !numberTurn;
     context.canEndTurn = isPlayerTurn && canControl;
   }
 
@@ -218,6 +218,21 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // These buttons/methods are inappropriate for default initiative handling
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollNPC\"]")?.remove();
+    if (game.user.isGM) {
+      const rightControls = this.element.querySelector(".encounter-controls.combat .control-buttons.right");
+      if (rightControls) {
+        const endCombat = rightControls.querySelector("[data-action=\"endCombat\"]");
+        if (!endCombat) {
+          rightControls.insertAdjacentElement("beforeend", ds.utils.constructHTMLButton({
+            classes: ["inline-control", "combat-control", "icon", "fa-solid", "fa-trash"],
+            dataset: {
+              action: "endCombat",
+              tooltip: "COMBAT.End",
+            },
+          }));
+        }
+      }
+    }
 
     new ux.DragDrop.implementation({
       dragSelector: ".combatant",
@@ -238,7 +253,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /**
    * An event that occurs when a drag workflow begins for a draggable combatant on the combat tracker.
-   * @param {DragEvent} event       The initiating drag start event
+   * @param {DragEvent} event       The initiating drag start event.
    * @returns {Promise<void>}
    * @protected
    */
@@ -427,7 +442,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /* -------------------------------------------------- */
 
   /**
-   * Toggle a Combatant Group
+   * Toggle a Combatant Group.
    * @this DrawSteelCombatTracker
    * @param {PointerEvent} event The triggering event.
    * @param {HTMLElement} target The action target element.
@@ -449,7 +464,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /* -------------------------------------------------- */
 
   /**
-   * Cycle through the combatant's activation status
+   * Cycle through the combatant's activation status.
    * @this DrawSteelCombatTracker
    * @param {PointerEvent} event The triggering event.
    * @param {HTMLElement} target The action target element.
@@ -478,7 +493,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   /* -------------------------------------------------- */
 
   /**
-   * Cycle through the combatant group's activation status
+   * Cycle through the combatant group's activation status.
    * @this DrawSteelCombatTracker
    * @param {PointerEvent} event The triggering event.
    * @param {HTMLElement} target The action target element.

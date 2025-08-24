@@ -19,12 +19,16 @@ export function sortObjectEntries(obj, sortKey) {
   return Object.fromEntries(sorted);
 }
 
+/* -------------------------------------------------- */
+
 /**
  * Storage for pre-localization configuration.
  * @type {object}
  * @private
  */
 const _preLocalizationRegistrations = {};
+
+/* -------------------------------------------------- */
 
 /**
  * Mark the provided config key to be pre-localized during the init stage.
@@ -41,11 +45,11 @@ export function preLocalize(configKeyPath, { key, keys = [], sort = false } = {}
   _preLocalizationRegistrations[configKeyPath] = { keys, sort };
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * Execute previously defined pre-localization tasks on the provided config object.
- * @param {object} config  The `ds.CONFIG` object to localize and sort. *Will be mutated.*
+ * @param {object} config  The `ds.CONFIG` object to localize and sort. *Will be mutated.*.
  */
 export function performPreLocalization(config) {
   for (const [keyPath, settings] of Object.entries(_preLocalizationRegistrations)) {
@@ -62,7 +66,7 @@ export function performPreLocalization(config) {
   );
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------- */
 
 /**
  * Localize the values of a configuration object by translating them in-place.

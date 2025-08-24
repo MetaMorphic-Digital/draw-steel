@@ -9,14 +9,20 @@ const fields = foundry.data.fields;
  */
 export default class SquadModel extends BaseCombatantGroupModel {
   /** @inheritdoc */
-  static metadata = Object.freeze({
-    type: "squad",
-  });
+  static get metadata() {
+    return {
+      // no-op but future proofing for additions to the BaseCombatantGroupModel
+      ...super.metadata,
+      type: "squad",
+    };
+  }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.CombatantGroup.squad",
-  ];
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.CombatantGroup.squad"];
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   static defineSchema() {
@@ -27,21 +33,27 @@ export default class SquadModel extends BaseCombatantGroupModel {
     });
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Finds the captain
+   * Finds the captain.
    * @type {DrawSteelActor | null}
    */
   get captain() {
     return this.parent.members.find(c => !c.actor?.isMinion)?.actor ?? null;
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * Finds all the minions in the squad
+   * Finds all the minions in the squad.
    * @type {Set<DrawSteelActor>}
    */
   get minions() {
     return this.parent.members.filter(c => c.actor?.isMinion);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * The max stamina for the minions in this squad.
@@ -55,6 +67,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
     }, 0);
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preUpdate(changed, options, userId) {
     const allowed = await super._preUpdate(changed, options, userId);
@@ -66,6 +80,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _onUpdate(changed, options, userId) {
     super._onUpdate(changed, options, userId);
@@ -73,6 +89,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
     if (changed.system && ("staminaValue" in changed.system)) this.refreshSquad();
     if (options.ds?.staminaDiff) this.displayMinionStaminaChange(options.ds.staminaDiff, options.ds.damageType);
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Displays a change in stamina over each minion in a group.
@@ -85,6 +103,8 @@ export default class SquadModel extends BaseCombatantGroupModel {
       minion.actor?.system.displayStaminaChange(diff, damageType);
     });
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   _onDelete(options, userId) {

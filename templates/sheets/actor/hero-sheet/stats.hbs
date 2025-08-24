@@ -1,0 +1,153 @@
+{{! Stats Tab }}
+<section class="tab stats standard-form {{tab.cssClass}}" data-group="primary" data-tab="stats">
+  {{#if isPlay}}
+  <fieldset class="resources flexrow">
+    <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
+    <div class="resource stamina flexcol">
+      <label class="resource-label">
+        {{#if editable}}
+        <button
+          type="button"
+          data-action="spendStaminaHeroToken"
+          data-tooltip="DRAW_STEEL.Setting.HeroTokens.RegainStamina.tooltip"
+          data-tooltip-direction="UP"
+        >
+          <i class="fa-solid fa-circle-bolt"></i>
+          {{systemFields.stamina.label}}
+        </button>
+        {{else}}
+        <span>{{systemFields.stamina.label}}</span>
+        {{/if}}
+      </label>
+      <div class="form-group resource-content">
+        <div class="resource-temporary">
+          {{formGroup
+          systemFields.stamina.fields.temporary
+          value=system.stamina.temporary
+          dataset=datasets.notSource
+          classes="stacked"
+          }}
+        </div>
+        <div class="resource-current">
+          {{formGroup
+          systemFields.stamina.fields.value
+          value=system.stamina.value
+          dataset=datasets.notSource
+          classes="stacked"
+          }}
+        </div>
+        <span class="resource-max">
+          <div class="form-group stacked">
+            <label class="input-placeholder-label">
+              {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.max.label"}}
+            </label>
+            <div class="input-placeholder">
+              {{system.stamina.max}}
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div class="resource recoveries flexcol">
+      <label class="resource-label">
+        {{#if editable}}
+        <button
+          type="button"
+          data-action="spendRecovery"
+          data-tooltip="DRAW_STEEL.Actor.base.SpendRecovery.tooltip"
+          data-tooltip-direction="UP"
+        >
+          <i class="fa-solid fa-heart-pulse"></i>
+          {{systemFields.recoveries.label}}
+        </button>
+        {{else}}
+        <span>{{systemFields.recoveries.label}}</span>
+        {{/if}}
+      </label>
+      <div class="form-group resource-content">
+        <div class="resource-current">
+          {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
+        </div>
+        <span class="resource-max">
+          <div class="form-group stacked">
+            <label class="input-placeholder-label">
+              {{systemFields.recoveries.fields.max.label}}
+            </label>
+            <div class="input-placeholder">
+              {{system.recoveries.max}}
+            </div>
+          </div>
+        </span>
+        <span class="recovery-value">
+          <div class="form-group stacked">
+            <label class="input-placeholder-label">
+              {{localize "DRAW_STEEL.Actor.base.FIELDS.stamina.label"}}
+            </label>
+            <div class="input-placeholder">
+              {{system.recoveries.recoveryValue}}
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+    <div class="resource heroic flexcol">
+      {{formGroup systemFields.hero.fields.primary.fields.value value=system.hero.primary.value dataset=datasets.notSource label=system.hero.primary.label classes="slim"}}
+      <div class="form-group slim">
+        <label class="surges">
+          {{#if editable}}
+          <button
+            type="button"
+            data-action="gainSurges"
+            data-tooltip="DRAW_STEEL.Setting.HeroTokens.GainSurges.tooltip"
+          >
+            <i class="fa-solid fa-circle-bolt"></i>
+            {{systemFields.hero.fields.surges.label}}
+          </button>
+          {{else}}
+          <span>{{systemFields.hero.fields.surges.label}}</span>
+          {{/if}}
+        </label>
+        <div class="form-fields">
+          {{formInput systemFields.hero.fields.surges value=system.hero.surges dataset=datasets.notSource}}
+        </div>
+      </div>
+      {{#if (gte system.level 10)}}
+      {{formGroup systemFields.hero.fields.epic.fields.value value=system.hero.epic.value dataset=datasets.notSource label=system.hero.epic.label classes="slim"}}
+      {{/if}}
+    </div>
+  </fieldset>
+  {{/if}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
+  {{#if isPlay}}
+  <div class="form-group">
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+    {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  </div>
+  {{else}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/movement.hbs"}}
+  {{/if}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/immunities-weaknesses.hbs"}}
+  <fieldset class="skills">
+    <legend>
+      {{systemFields.hero.fields.skills.label}}
+      {{#if unfilledSkill}}
+      <button
+        type="button"
+        class="icon fa-solid fa-clipboard-question"
+        {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
+        data-tooltip-text="{{localize "DRAW_STEEL.ADVANCEMENT.FillTrait.button" type=(localize "TYPES.Advancement.skill")}}"
+        data-tooltip-direction="UP"
+        data-action="fillTrait"
+        data-type="skill"
+      >
+      </button>
+      {{/if}}
+    </legend>
+    {{#if isPlay}}
+    {{skills}}
+    {{else}}
+    {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=config.skills.optgroups dataset=datasets.isSource}}
+    {{/if}}
+  </fieldset>
+</section>

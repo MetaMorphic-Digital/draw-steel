@@ -3,6 +3,8 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
 declare module "./base.mjs" {
   export default interface BaseMessageModel {
     parent: DrawSteelChatMessage;
+    /** A set of DrawSteelTokenDocument UUIDs. */
+    targets: Set<string>;
   }
 }
 

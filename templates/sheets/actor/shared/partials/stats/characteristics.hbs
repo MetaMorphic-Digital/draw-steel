@@ -1,0 +1,15 @@
+<fieldset class="characteristics flexrow">
+  <legend>{{systemFields.characteristics.label}}</legend>
+  {{#each characteristics as |chr key|}}
+  {{#if @root.isPlay}}
+  <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}">
+    {{chr.field.label}} {{numberFormat chr.value sign=true}}
+  </a>
+  {{else}}
+  <label class="characteristic edit" data-tooltip="{{chr.field.label}}">
+    <span class="label">{{chr.field.hint}}</span>
+    {{formInput chr.field value=chr.value type="number" placeholder="0"}}
+  </label>
+  {{/if}}
+  {{/each}}
+</fieldset>

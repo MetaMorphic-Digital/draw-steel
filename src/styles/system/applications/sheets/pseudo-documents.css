@@ -1,0 +1,27 @@
+.draw-steel.advancement {
+  h4.section-header {
+    margin: 0;
+  }
+}
+
+.draw-steel.configure-advancement {
+  /* Managing overflow for long list e.g. kits */
+  .dialog-form {
+    max-height: 80vh;
+    .dialog-content {
+      overflow-y: auto;
+    }
+  }
+  multi-checkbox:has(fieldset) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 0.75rem;
+    fieldset {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+  }
+}

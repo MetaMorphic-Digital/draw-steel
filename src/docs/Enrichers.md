@@ -17,6 +17,7 @@ You can have inline damage enrichers by using `[[/damage]]`; this is the intende
 - [&ZeroWidthSpace;[/damage formula=3d6 type=acid]]: You can also specify which parts are which to avoid ambiguity.
 - [&ZeroWidthSpace;[/damage 3d6 type=acid/poison]]: If you specify the `type` parameter you can use a `/` or `|` to indicate "or".
 - [&ZeroWidthSpace;[/damage 3d6 fire & 2d6 cold]]: You can join any number of damage rolls together in one enricher by using &.
+- [&ZeroWidthSpace;[/damage @monster.freeStrike]]: This will display the selected actors free strike damage as an `Apply Damage` button, which can be used multiple times for example for a minion squad. You can also use `[[/damage 8*monster.freeStrike]]` to display the selected actor's free strike damage times 8 (or any other number) to emulate multiple minions striking at once.
 
 ### Healing Enrichers
 
@@ -31,3 +32,11 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 10]]: If no healing type is specified it will default to current stamina.
 - [&ZeroWidthSpace;[/heal 10 type=temporary]]: Like damage you can specify the healing type. You must be precise and use "value" or "temporary" here.
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
+- [&ZeroWidthSpace;[/heal @recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
+
+## HTML-mode to clean up text
+If an enricher is not working as intended, in the text editor in which you are trying to add the enricher try the following (see screenshot):
+1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
+2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
+
+![HTML clean-up mode explainer](draw-steel/assets/docs/HTML-mode-explainer.png?raw=true "HTML Mode explainer")

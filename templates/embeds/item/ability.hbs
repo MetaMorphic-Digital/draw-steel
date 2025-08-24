@@ -1,0 +1,72 @@
+<section class="metadata">
+  {{#if system.resource}}
+  <p class="resource">
+    {{localize "DRAW_STEEL.Item.ability.ResourceCost" value=system.resource name=resourceName}}
+  </p>
+  {{/if}}
+  {{#if system.story}}
+  <p class="flavor">
+    <em>{{system.story}}</em>
+  </p>
+  {{/if}}
+  <dl>
+    <dt class="keywords">{{systemFields.keywords.label}}</dt>
+    <dd class="keywords">{{keywordList}}</dd>
+
+    <dt class="type">{{systemFields.type.label}}</dt>
+    <dd class="type">{{actionTypeLabel}}</dd>
+
+    <dt class="distance">{{systemFields.distance.label}}</dt>
+    <dd class="distance">{{distanceLabel}}</dd>
+
+    <dt class="target">{{systemFields.target.label}}</dt>
+    <dd class="target">{{targetLabel}}</dd>
+
+    {{#if triggeredAction}}
+    <dt class="trigger">{{systemFields.trigger.label}}</dt>
+    <dd class="trigger">{{system.trigger}}</dd>
+    {{/if}}
+  </dl>
+</section>
+{{#if system.effect.before}}
+<section class="effect before">
+  <dl>
+    <dt class="effect">{{systemFields.effect.label}}</dt>
+    <dd class="effect">{{{enrichedBeforeEffect}}}</dd>
+  </dl>
+</section>
+{{/if}}
+{{#if powerRolls}}
+<section class="powerResult">
+  <p>
+    <strong>{{{localize "DRAW_STEEL.ROLL.Power.RollPlusBonus" bonus=powerRollBonus}}}</strong>
+  </p>
+  <dl class="power-roll-display">
+    <dt class="tier1">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier1"}}</dt>
+    <dd class="tier1">{{powerRollEffects.tier1.text}}</dd>
+
+    <dt class="tier2">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier2"}}</dt>
+    <dd class="tier2">{{powerRollEffects.tier2.text}}</dd>
+
+    <dt class="tier3">{{localize "DRAW_STEEL.ROLL.Power.Results.Tier3"}}</dt>
+    <dd class="tier3">{{powerRollEffects.tier3.text}}</dd>
+
+  </dl>
+</section>
+{{/if}}
+{{#if system.effect.after}}
+<section class="effect after">
+  <dl>
+    <dt class="effect">{{systemFields.effect.label}}</dt>
+    <dd class="effect">{{{enrichedAfterEffect}}}</dd>
+  </dl>
+</section>
+{{/if}}
+{{#if system.spend.text}}
+<section class="spend">
+  <dl>
+    <dt>{{spendLabel}}</dt>
+    <dd>{{{system.spend.text}}}</dd>
+  </dl>
+</section>
+{{/if}}

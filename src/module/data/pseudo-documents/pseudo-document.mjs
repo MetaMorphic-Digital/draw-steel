@@ -1,7 +1,13 @@
-/** @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs"; */
-/** @import { PseudoDocumentMetadata } from "../_types" */
+import { systemPath } from "../../constants.mjs";
 
-const { DocumentIdField } = foundry.data.fields;
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import PseudoDocumentSheet from "../../applications/api/pseudo-document-sheet.mjs";
+ * @import { PseudoDocumentMetadata } from "../_types";
+ * @import ModelCollection from "../../utils/model-collection.mjs";
+ */
+
+const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
 
 /**
  * A special subclass of data model that can be treated as a system-defined embedded document.
@@ -14,9 +20,9 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   static get metadata() {
     return {
       documentName: null,
-      label: "",
       icon: "",
       embedded: {},
+      sheetClass: null,
     };
   }
 
@@ -26,12 +32,22 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   static defineSchema() {
     return {
       _id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
+      name: new StringField({ required: true }),
+      img: new FilePathField({ categories: ["IMAGE"] }),
     };
   }
 
   /* -------------------------------------------------- */
 
-  static LOCALIZATION_PREFIXES = ["DOCUMENT"];
+  /** @inheritdoc */
+  static LOCALIZATION_PREFIXES = ["DRAW_STEEL.PSEUDO"];
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Template for {@link createDialog}.
+   */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/base-create-dialog.hbs");
 
   /* -------------------------------------------------- */
 
@@ -107,6 +123,17 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _configure(options = {}) {
+    super._configure(options);
+    Object.defineProperty(this, "collection", {
+      value: options.collection ?? null,
+      writable: false,
+    });
+  }
+
+  /* -------------------------------------------------- */
   /*   Data preparation                                 */
   /* -------------------------------------------------- */
 
@@ -140,6 +167,34 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
   /*   Instance Methods                                 */
+  /* -------------------------------------------------- */
+
+  /**
+   * Construct a UUID relative to another document.
+   * @param {Document} relative  The document to compare against.
+   */
+  getRelativeUUID(relative) {
+
+    // This PseudoDocument is a sibling of the relative Document.
+    if (this.collection === relative.collection) return `.${this.id}`;
+
+    // This PseudoDocument may be a descendant of the relative Document, so walk up the hierarchy to check.
+    const parts = [this.documentName, this.id];
+    let parent = this.parent;
+    while (parent) {
+      if (parent === relative) break;
+      // Skip intermediate non-Document/PseudoDocument data models
+      if (parent.documentName) parts.unshift(parent.documentName, parent.id);
+      parent = parent.parent;
+    }
+
+    // The relative Document was a parent or grandparent of this one.
+    if (parent === relative) return `.${parts.join(".")}`;
+
+    // The relative Document was unrelated to this one.
+    return this.uuid;
+  }
+
   /* -------------------------------------------------- */
 
   /**
@@ -213,24 +268,78 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * Create a new instance of this pseudo-document.
    * @param {object} [data]                                 The data used for the creation.
    * @param {object} operation                              The context of the operation.
-   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @param {foundry.abstract.DataModel} operation.parent   The parent of this document.
+   * @param {boolean} [operation.renderSheet]               Render the sheet of the created pseudo-document?
    * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
    */
-  static async create(data = {}, { parent, ...operation } = {}) {
+  static async create(data = {}, { parent, renderSheet = true, ...operation } = {}) {
     if (!parent) {
       throw new Error("A parent document must be specified for the creation of a pseudo-document!");
     }
     const id = operation.keepId && foundry.data.validators.isValidId(data._id) ? data._id : foundry.utils.randomID();
 
-    const fieldPath = parent.system.constructor.metadata.embedded?.[this.metadata.documentName];
+    const fieldPath = parent instanceof foundry.abstract.Document
+      ? parent.system.constructor.metadata?.embedded?.[this.metadata.documentName]
+      : parent.constructor.metadata?.embedded?.[this.metadata.documentName];
     if (!fieldPath) {
       throw new Error(`A ${parent.documentName} of type '${parent.type}' does not support ${this.metadata.documentName}!`);
     }
 
     const update = { [`${fieldPath}.${id}`]: { ...data, _id: id } };
     this._configureUpdates("create", parent, update, operation);
-    return parent.update(update, operation);
+    await parent.update(update, operation);
+    if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet?.render({ force: true });
+    return parent;
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt for creating this pseudo-document.
+   * @param {object} [data]                                 The data used for the creation.
+   * @param {object} operation                              The context of the operation.
+   * @param {foundry.abstract.Document} operation.parent    The parent of this document.
+   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
+   */
+  static async createDialog(data = {}, { parent, ...operation } = {}) {
+    // If there's demand or need we can make the template & context more dynamic
+    const content = await foundry.applications.handlebars.renderTemplate(this.CREATE_TEMPLATE, this._prepareCreateDialogContext(parent));
+
+    const result = await ds.applications.api.DSDialog.input({
+      content,
+      window: {
+        title: game.i18n.format("DOCUMENT.New", { type: game.i18n.localize(`DOCUMENT.${this.metadata.documentName}`) }),
+        icon: this.metadata.icon,
+      },
+      render: (event, dialog) => this._createDialogRenderCallback(event, dialog),
+    });
+    if (!result) return null;
+    return this.create({ ...data, ...result }, { parent, ...operation });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prepares context for use with {@link CREATE_TEMPLATE}.
+   * @param {foundry.abstract.DataModel} parent
+   * @returns {object}
+   * @protected
+   */
+  static _prepareCreateDialogContext(parent) {
+    return {
+      fields: this.schema.fields,
+    };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Render callback for dynamic handling on the .
+   * @param {Event} event
+   * @param {ds.applications.api.DSDialog} dialog
+   * @protected
+   */
+  static _createDialogRenderCallback(event, dialog) {}
 
   /* -------------------------------------------------- */
 

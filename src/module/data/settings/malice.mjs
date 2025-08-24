@@ -6,7 +6,7 @@ import { systemID } from "../../constants.mjs";
 const fields = foundry.data.fields;
 
 /**
- * A data model to manage Malice in Draw Steel
+ * A data model to manage Malice in Draw Steel.
  */
 export class MaliceModel extends foundry.abstract.DataModel {
   /** @inheritdoc */
@@ -18,20 +18,24 @@ export class MaliceModel extends foundry.abstract.DataModel {
 
   /* -------------------------------------------------- */
 
-  /** Name for the setting */
+  /** Name for the setting. */
   static label = "DRAW_STEEL.Setting.Malice.Label";
 
-  /** Localized name for the setting */
+  /* -------------------------------------------------- */
+
+  /** Localized name for the setting. */
   get label() {
     return game.i18n.localize(this.constructor.label);
   }
 
   /* -------------------------------------------------- */
 
-  /** Helper text for Malice */
+  /** Helper text for Malice. */
   static hint = "DRAW_STEEL.Setting.Malice.Hint";
 
-  /** Localized helper text for Malice */
+  /* -------------------------------------------------- */
+
+  /** Localized helper text for Malice. */
   get hint() {
     return game.i18n.localize(this.constructor.hint);
   }
@@ -39,10 +43,10 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Re-render NPC sheets to synchronize the Malice display
-   * @param {MaliceModel} value The MaliceModel instance
-   * @param {object} options    Additional options which modify the creation or update request
-   * @param {string} userId     The id of the User requesting the document update
+   * Re-render NPC sheets to synchronize the Malice display.
+   * @param {MaliceModel} value The MaliceModel instance.
+   * @param {object} options    Additional options which modify the creation or update request.
+   * @param {string} userId     The id of the User requesting the document update.
    */
   static onChange(value, options, userId) {
     ui.players.render();
@@ -56,13 +60,13 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Set malice for the start of combat
-   * @param {DrawSteelActor[]} heroes Heroes to tally up victories
+   * Set malice for the start of combat.
+   * @param {DrawSteelActor[]} heroes Heroes to tally up victories.
    * @returns {Promise<MaliceModel>}
    */
   async startCombat(heroes) {
-    const totalVictories = heroes.reduce((victories, character) => {
-      victories += foundry.utils.getProperty(character, "system.hero.victories") ?? 0;
+    const totalVictories = heroes.reduce((victories, hero) => {
+      victories += foundry.utils.getProperty(hero, "system.hero.victories") ?? 0;
       return victories;
     }, 0);
     const avgVictories = Math.floor(totalVictories / heroes.length) || 0;
@@ -72,9 +76,9 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Increase malice on round change
-   * @param {DrawSteelCombat} combat The active combat
-   * @param {DrawSteelActor[]} heroes The heroes who are currently alive
+   * Increase malice on round change.
+   * @param {DrawSteelCombat} combat The active combat.
+   * @param {DrawSteelActor[]} heroes The heroes who are currently alive.
    * @returns {Promise<MaliceModel>}
    */
   async _onStartRound(combat, heroes) {
@@ -84,7 +88,7 @@ export class MaliceModel extends foundry.abstract.DataModel {
   /* -------------------------------------------------- */
 
   /**
-   * Reset malice to 0
+   * Reset malice to 0.
    * @returns {Promise<MaliceModel>}
    */
   async resetMalice() {

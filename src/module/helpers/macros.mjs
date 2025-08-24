@@ -2,8 +2,8 @@
 /**
  * Create a Macro from an Item drop.
  * Get an existing item macro if one exists, otherwise create a new one.
- * @param {Object} data     The dropped data
- * @param {number} slot     The hotbar slot to use
+ * @param {Object} data     The dropped data.
+ * @param {number} slot     The hotbar slot to use.
  * @returns {Promise}
  */
 export async function createDocMacro(data, slot) {
@@ -41,8 +41,10 @@ export async function createDocMacro(data, slot) {
   game.user.assignHotbarMacro(macro, slot);
 }
 
+/* -------------------------------------------------- */
+
 /**
- * Call an item's roll method
+ * Call an item's roll method.
  * @param {string} itemUuid
  */
 export async function rollItemMacro(itemUuid) {

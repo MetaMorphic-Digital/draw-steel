@@ -39,20 +39,21 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Winded (<50%) Stamina Value - `@stamina.winded`
 + Is currently winded? (1/yes, 0/no) - `@statuses.winded`
 
+### Recoveries
++ Recovery value - `@recoveries.recoveryValue`
++ Current recovery amount - `@recoveries.value`
++ Maximum amount of recoveries - `@recoveries.max`
++ Bonus to recovery value - `@recoveries.bonus`
+
 ### Movement speeds
 + Speed - `@movement.value`
 + Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
 
 ## Hero specific roll data and values
+
 ### Heroic Resource
 + Heroic resource label - `@hero.primary.label`
 + Heroic resource value - `@hero.primary.value`
-
-### Recoveries
-+ Recovery value - `@hero.recoveries.recoveryValue`
-+ Current recovery amount - `@hero.recoveries.value`
-+ Maximum amount of recoveries - `@hero.recoveries.max`
-+ Bonus to max amount - `@hero.recoveries.bonus`
 
 ### Other Hero values
 + Renown - `@hero.renown`
@@ -61,20 +62,7 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Current Victory Points - `@hero.victories`
 + Accumulated XP - `@hero.xp`
 
-### Kit
-The below bonuses come from a kit, but can be addressed this way in any case:
-+ Bonus to Tier 1 Melee damage - `@abilityBonuses.melee.damage.tier1`
-+ Bonus to Tier 2 Melee damage - `@abilityBonuses.melee.damage.tier2`
-+ Bonus to Tier 3 Melee damage - `@abilityBonuses.melee.damage.tier3`
-+ Bonus to Tier 1 Ranged damage - `@abilityBonuses.ranged.damage.tier1`
-+ Bonus to Tier 2 Ranged damage - `@abilityBonuses.ranged.damage.tier2`
-+ Bonus to Tier 3 Ranged damage - `@abilityBonuses.ranged.damage.tier3`
-+ Bonus to melee distance - `@abilityBonuses.melee.distance`
-+ Bonus to ranged distance - `@abilityBonuses.ranged.distance`
-
-
 ### Immunities and Weaknesses
-The below roll data entries work add damage immunities and weaknesses, for example added in effects. The numerical value determines how much of a weakness of immunity the actor has
 
 #### Immunities
 + Acid damage -`@damage.immunities.acid`
@@ -126,77 +114,28 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Echelon - `@echelon`
 + Level - `@level`
 
+## NPC Actor Roll Data
+
+### Monster Roll data
++ Free Strike damage: - `@monster.freeStrike`
+
+### Monster Negotiation Roll Data
++ Impression Score - `@negotiation.impression`
++ Interest - `@negotiation.interest`
++ Patience - `@negotiation.patience`
+
 ## Item Roll Data
-**First example: a craftable consumable**
-#### Item Descriptors
-+ Item category - `@item.category `
-+ Item GM description - `@item.description.gm`
-+ Item Type - `@item.kind`
-+ Item Name - `@item.name`
+
 #### Downtime Project roll data
-+ Project Prerequisites - `@item.prerequisites`
 + Project Goal - `@item.project.goal`
-+ Project Roll Characteristic - `@item.project.rollCharacteristic`
-+ Project Source - `@item.project.source`
-+ Project Yield - `@item.project.yield`
-#### Source data
-+ Source Book - `@item.source.book`
-+ Source Book Placeholder - `@item.source.bookPlaceholder`
-+ Source Label - `@item.source.label`
-+ Source License - `@item.source.license`
-+ Source Page - `@item.source.page`
-+ Source Revision - `@item.source.revision`
-+ Source Slug - `@item.source.slug`
-+ Source Value - `@item.source.value`
-
-**Second example: An equipment kit**
-+ Item Bonus on Disengage distance - `@item.bonuses.disengage`
-+ Item Bonus on Melee Damage Tier 1 - `@item.bonuses.melee.damage.tier1`
-+ Item Bonus on Melee Damage Tier 2 - `@item.bonuses.melee.damage.tier2`
-+ Item Bonus on Melee Damage Tier 3 - `@item.bonuses.melee.damage.tier3`
-+ Item Bonus on Melee Distance - `@item.bonuses.melee.distance`
-+ Item Bonus on Ranged Damage Tier 1 - `@item.bonuses.ranged.damage.tier1`
-+ Item Bonus on Ranged Damage Tier 2 - `@item.bonuses.ranged.damage.tier2`
-+ Item Bonus on Ranged Damage Tier 3 - `@item.bonuses.ranged.damage.tier3`
-+ Item Bonus on Ranged Distance - `@item.bonuses.ranged.distance`
-+ Item Bonus on Speed - `@item.bonuses.speed`
-+ Item Bonus on Stability - `@item.bonuses.stability`
-+ Item Bonus on Stamina - `@tem.bonuses.stamina`
-+ Item GM description - `@item.description.gm`
-+ Item description - `@item.description.value`
-+ Item Armor type - `@item.equipment.armor`
-+ Item is/has shield (true/false) - `@item.equipment.shield`
-+ Item Keywords - `@item.equipment.weapon`
-
 
 ### Abilities
 
-+ Ability Bonus on Disengage distance - `@abilityBonuses.disengage`
-+ Ability Bonus on Melee Damage Tier 1 - `@abilityBonuses.melee.damage.tier1`
-+ Ability Bonus on Melee Damage Tier 2 - `@abilityBonuses.melee.damage.tier2`
-+ Ability Bonus on Melee Damage Tier 3 - `@abilityBonuses.melee.damage.tier3`
-+ Ability Bonus on Melee Distance - `@abilityBonuses.melee.distance`
-+ Ability Bonus on Ranged Damage Tier 1 - `@abilityBonuses.ranged.damage.tier1`
-+ Ability Bonus on Ranged Damage Tier 2 - `@abilityBonuses.ranged.damage.tier2`
-+ Ability Bonus on Ranged Damage Tier 3 - `@abilityBonuses.ranged.damage.tier3`
-+ Ability Bonus on Ranged Distance - `@abilityBonuses.ranged.distance`
-+ Ability Category - `@item.category`
-+ Ability damage display (Melee/Ranged) - `@item.damageDisplay`
-+ Ability Story Text - `@item.story`
-+ Ability primary distance (distance/AoE size eg Burst **5**) - `@item.distance.primary`
-+ Ability secondary distance (AoE distance eg. Cube 3 within **10**) - `@item.distance.secondary`
-+ Ability tertiary distance (secondary AoE distance eg. 1x10 line within **1**)- `@item.distance.tertiary`
-+ Ability Distance type - `@item.distance.type`
-+ Ability Effect (Before) - `@item.effect.before`
-+ Ability Effect (After) - `@item.effect.after`
-+ Ability Name - `@item.name`
++ Ability primary distance  - `@item.distance.primary`
++ Ability secondary distance - `@item.distance.secondary`
++ Ability tertiary distance - `@item.distance.tertiary`
 + Ability Power Roll Characteristic - `@item.powerRoll.characteristics`
-+ Ability has Power Roll (true/false) - `@item.powerRoll.enabled`
 + Ability Power Roll Characteristic formula - `@item.powerRoll.formula`
 + Ability Heroic Resource/Malice Cost -`@item.resource`
-+ Ability Additional Heroic Resource/Malice spent effect - `@item.spend.text`
 + Ability Additional Heroic Resource/Malice Cost - `@item.spend.value`
-+ Type of Target - `@item.target.type`
 + Number of targets - `@item.target.value`
-+ Trigger (if triggered action) - `@item.trigger`
-+ Ability type - `@item.type`

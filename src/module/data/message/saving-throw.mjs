@@ -6,12 +6,15 @@ import BaseMessageModel from "./base.mjs";
 const fields = foundry.data.fields;
 
 /**
- * Chat Messages representing the result of a {@linkcode SavingThrowRoll}
+ * Chat Messages representing the result of a {@linkcode SavingThrowRoll}.
  */
 export default class SavingThrowModel extends BaseMessageModel {
-  static metadata = Object.freeze({
-    type: "savingThrow",
-  });
+  /** @inheritdoc */
+  static get metadata() {
+    return {
+      type: "savingThrow",
+    };
+  }
 
   /* -------------------------------------------------- */
 
@@ -22,6 +25,8 @@ export default class SavingThrowModel extends BaseMessageModel {
     schema.effectUuid = new fields.DocumentUUIDField({ nullable: false, type: "ActiveEffect" });
     return schema;
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Fetches the effect from the UUID. Can return null if the effect no longer exists.
@@ -63,14 +68,14 @@ export default class SavingThrowModel extends BaseMessageModel {
 
     if (!effect) return buttons;
 
-    // Strictly GM-owned characters shouldn't have this option, and should only show if you have effect perms
+    // Strictly GM-owned actors shouldn't have this option, and should only show if you have effect perms
     if (effect.hasPlayerOwner && effect.isOwner) {
       const heroToken = ds.utils.constructHTMLButton({
-        label: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Label"),
+        label: game.i18n.localize("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.Label"),
         icon: "fa-solid fa-shield",
         classes: ["hero-token"],
         dataset: {
-          tooltip: game.i18n.localize("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.Tooltip"),
+          tooltip: game.i18n.localize("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.Tooltip"),
         },
         disabled: effect.disabled,
       });
@@ -90,11 +95,11 @@ export default class SavingThrowModel extends BaseMessageModel {
       const effect = this.effect;
 
       if (!effect) {
-        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoEffect", { localize: true });
+        ui.notifications.error("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.NoEffect", { localize: true });
         return;
       }
       if (!effect.isOwner) {
-        ui.notifications.error("DRAW_STEEL.Messages.SavingThrow.Buttons.HeroToken.NoOwner", { localize: true });
+        ui.notifications.error("DRAW_STEEL.ChatMessage.savingThrow.Buttons.HeroToken.NoOwner", { localize: true });
         return;
       }
 

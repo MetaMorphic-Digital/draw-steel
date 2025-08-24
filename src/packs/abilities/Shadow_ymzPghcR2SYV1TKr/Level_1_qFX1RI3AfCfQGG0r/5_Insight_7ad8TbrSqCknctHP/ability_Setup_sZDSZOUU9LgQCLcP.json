@@ -1,0 +1,174 @@
+{
+  "folder": "7ad8TbrSqCknctHP",
+  "name": "Setup",
+  "type": "ability",
+  "_id": "sZDSZOUU9LgQCLcP",
+  "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "164",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "setup",
+    "story": "Your friends will thank you.",
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "t8iRG5mpyr4cbhsy": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "t8iRG5mpyr4cbhsy",
+          "damage": {
+            "tier1": {
+              "value": "6 + @chr"
+            },
+            "tier2": {
+              "value": "9 + @chr"
+            },
+            "tier3": {
+              "value": "13 + @chr"
+            }
+          }
+        },
+        "LIwqV5doVVKJLHhd": {
+          "name": "Setup",
+          "img": null,
+          "type": "applied",
+          "_id": "LIwqV5doVVKJLHhd",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, the target has damage weakness 5 (save ends)",
+              "potency": {
+                "characteristic": "reason"
+              },
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "BUYv96JTyhyHrnDN": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Setup",
+      "img": "icons/skills/targeting/crosshair-mark-rough-pink.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.sZDSZOUU9LgQCLcP",
+      "transfer": false,
+      "_id": "BUYv96JTyhyHrnDN",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755878289146,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!sZDSZOUU9LgQCLcP.BUYv96JTyhyHrnDN"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754654362675,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!sZDSZOUU9LgQCLcP"
+}

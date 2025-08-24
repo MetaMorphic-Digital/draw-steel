@@ -16,7 +16,7 @@ for (const pack of packs) {
     for (const file of await fs.readdir(directory)) {
       const filePath = path.join(directory, file);
       if (file.endsWith(yaml ? ".yml" : ".json")) await fs.unlink(filePath);
-      else fs.rm(filePath, { recursive: true });
+      else await fs.rm(filePath, { recursive: true });
     }
   } catch (error) {
     if (error.code === "ENOENT") console.log("No files inside of " + pack);
@@ -35,8 +35,8 @@ for (const pack of packs) {
   );
 }
 /**
- * Prefaces the document with its type
- * @param {object} doc - The document data
+ * Prefaces the document with its type.
+ * @param {object} doc - The document data.
  */
 function transformName(doc, context) {
   const safeFileName = doc.name.replace(/[^a-zA-Z0-9А-я]/g, "_");
@@ -63,19 +63,35 @@ function transformName(doc, context) {
 }
 
 /**
- * Remove text content from wiki journal
- * @param {object} entry The entry data
+ * Remove text content from wiki journal.
+ * @param {object} entry The entry data.
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {
+  // Reducing churn
+  Object.assign(entry._stats, {
+    modifiedTime: null,
+    lastModifiedBy: null,
+  });
+  // Remove module flags
+  for (const key of Object.keys(entry.flags)) if (!["core", "draw-steel"].includes(key)) delete entry.flags[key];
+  // Fix ownership (folders don't have ownership)
+  if (!entry._key.startsWith("!folders")) entry.ownership = { default: 0 };
+
+  // Update if we ever start including other document types, e.g. Adventures
+  for (const embeddedCollection of ["items", "effects", "pages"]) {
+    if (entry[embeddedCollection]) {
+      for (const e of entry[embeddedCollection]) {
+        Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
+        if (e["effects"]) for (const grandchild of e["effects"]) Object.assign(grandchild, { modifiedTime: null, lastModifiedBy: null });
+      }
+    }
+  }
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
-    // Additional newline is included to minimize churn from pack/unpack operation
-    await fs.writeFile(docsPath, jep.text.markdown + "\n", {
-      encoding: "utf8",
-    });
+    await fs.writeFile(docsPath, jep.text.markdown, { encoding: "utf8" });
     jep.text = { format: 2 };
   }
 }

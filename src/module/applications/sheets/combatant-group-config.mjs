@@ -5,7 +5,7 @@ import { systemPath } from "../../constants.mjs";
 const { HandlebarsApplicationMixin, DocumentSheet } = foundry.applications.api;
 
 /**
- * Basic sheet for Combatant Groups
+ * Basic sheet for Combatant Groups.
  */
 export default class DrawSteelCombatantGroupConfig extends HandlebarsApplicationMixin(DocumentSheet) {
   /** @inheritdoc */
@@ -17,19 +17,23 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     },
   };
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   static PARTS = {
     header: {
-      template: systemPath("templates/combat/group-config/header.hbs"),
+      template: systemPath("templates/sheets/combatant-group/header.hbs"),
     },
     body: {
-      template: systemPath("templates/combat/group-config/body.hbs"),
+      template: systemPath("templates/sheets/combatant-group/body.hbs"),
     },
     footer: {
       // Core template
       template: "templates/generic/form-footer.hbs",
     },
   };
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _prepareContext(options) {
@@ -41,6 +45,8 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     });
   }
 
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, option) {
     context = await super._preparePartContext(partId, context, option);
@@ -51,8 +57,20 @@ export default class DrawSteelCombatantGroupConfig extends HandlebarsApplication
     return context;
   }
 
+  /* -------------------------------------------------- */
+
+  /**
+   * Mutates the context object to add properties for the `body` part.
+   * @param {object} context
+   */
   _prepareBodyContext(context) {}
 
+  /* -------------------------------------------------- */
+
+  /**
+   *  Mutates the context object to add properties for the `footer` part.
+   * @param {object} context
+   */
   _prepareFooterContext(context) {
     /** @type {FormFooterButton[]} */
     const buttons = [

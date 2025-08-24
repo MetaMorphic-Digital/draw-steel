@@ -15,7 +15,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
     return {
       ...super.metadata,
       documentName: "PowerRollEffect",
-      label: "DOCUMENT.PowerRollEffect",
       icon: "fa-solid fa-dice-d10",
       sheetClass: ds.applications.sheets.pseudoDocuments.PowerRollEffectSheet,
     };
@@ -30,10 +29,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /** @inheritdoc */
   static defineSchema() {
-    return Object.assign(super.defineSchema(), {
-      // TODO: Remove manual label assignment when localization bug is fixed
-      name: new StringField({ required: true, label: "DOCUMENT.FIELDS.name.label" }),
-    });
+    return Object.assign(super.defineSchema(), {});
   }
 
   /* -------------------------------------------------- */
@@ -68,7 +64,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Reference to the grandparent item
+   * Reference to the grandparent item.
    * @type {DrawSteelItem}
    */
   get item() {
@@ -78,7 +74,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
-   * Reference to the great-grandparent actor
+   * Reference to the great-grandparent actor.
    * @type {DrawSteelActor}
    */
   get actor() {
@@ -95,8 +91,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.value ||= this.schema.getField([`${this.constructor.TYPE}`, `tier${n}`, "potency", "value"]).getInitialValue({});
       this[`${this.constructor.TYPE}`][`tier${n}`].potency.characteristic ||= this.#defaultPotencyCharacteristic(n);
     }
-
-    this.name ||= this.typeLabel;
   }
 
   /* -------------------------------------------------- */
@@ -121,7 +115,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * Implement rendering context for tiers 1-3.
-   * @param {object} context    Rendering context. **will be mutated**
+   * @param {object} context    Rendering context. **will be mutated**.
    * @returns {Promise<void>}   A promise that resolves once the rendering context has been mutated.
    */
   async _tierRenderingContext(context) {
@@ -158,14 +152,14 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /**
    * A helper method for generating the potency string (i.e M < 2).
    * @param {1|2|3} n     The tier.
-   * @returns {string}    The formatted potency string
+   * @returns {string}    The formatted potency string.
    */
   toPotencyText(tier) {
     const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];
     const potencyValue = this.actor
       ? ds.utils.evaluateFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.potency.value;
-    const potencyString = game.i18n.format("DRAW_STEEL.Item.Ability.Potency.Embed", {
+    const potencyString = game.i18n.format("DRAW_STEEL.Item.ability.Potency.Embed", {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,
     });
@@ -181,4 +175,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @abstract
    */
   toText(tier) {}
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Constructs button for an Ability Use chat message.
+   * @param {1 | 2 | 3} tier    The specific tier.
+   * @returns {HTMLButtonElement[] | null} An array of buttons to add to the footer of the message, or null if there are none.
+   */
+  constructButtons(tier) {
+    return null;
+  }
 }

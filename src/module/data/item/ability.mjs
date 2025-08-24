@@ -7,34 +7,34 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
 
-/** @import { FormInputConfig } from "@common/data/_types.mjs" */
-/** @import { PowerRollModifiers } from "../../_types.js" */
+/**
+ * @import { DocumentHTMLEmbedConfig, EnrichmentOptions } from "@client/applications/ux/text-editor.mjs";
+ * @import { FormInputConfig } from "@common/data/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
+ */
 
 const fields = foundry.data.fields;
 
 /**
- * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment
+ * Abilities are special actions, maneuvers, and more that affect creatures, objects, and the environment.
  */
 export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "ability",
-      detailsPartial: [systemPath("templates/item/partials/ability.hbs")],
+      detailsPartial: [systemPath("templates/sheets/item/partials/ability.hbs")],
       embedded: {
         PowerRollEffect: "system.power.effects",
       },
-    });
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Item.base",
-    "DRAW_STEEL.Item.Ability",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.Item.ability");
 
   /* -------------------------------------------------- */
 
@@ -58,8 +58,8 @@ export default class AbilityModel extends BaseItemModel {
       tertiary: new fields.NumberField({ integer: true, min: 0 }),
     });
     schema.damageDisplay = new fields.StringField({ choices: {
-      melee: "DRAW_STEEL.Item.Ability.Keywords.Melee",
-      ranged: "DRAW_STEEL.Item.Ability.Keywords.Ranged",
+      melee: "DRAW_STEEL.Item.ability.Keywords.Melee",
+      ranged: "DRAW_STEEL.Item.ability.Keywords.Ranged",
     }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
@@ -89,6 +89,16 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  static migrateData(data) {
+    // Game release updates
+    if (data.type === "action") data.type = "main";
+
+    return super.migrateData(data);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
     for (const effect of this.power.effects) effect.prepareBaseData();
@@ -113,7 +123,7 @@ export default class AbilityModel extends BaseItemModel {
   /** @inheritdoc */
   preparePostActorPrepData() {
     super.preparePostActorPrepData();
-    if (this.actor.type === "character") this._prepareCharacterData();
+    this._applyAbilityBonuses();
 
     for (const chr of this.power.roll.characteristics) {
       const c = this.actor.system.characteristics[chr];
@@ -131,56 +141,50 @@ export default class AbilityModel extends BaseItemModel {
    * Adds kit bonuses as native "active effect" like adjustments.
    * @protected
    */
-  _prepareCharacterData() {
-    /** @type {import("../actor/character.mjs").default["abilityBonuses"]} */
-    const bonuses = foundry.utils.getProperty(this.actor ?? {}, "system.abilityBonuses");
-    if (bonuses) { // Data prep order of operations issues
-      switch (this.distance.type) {
-        case "melee":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.distance;
-          }
-          break;
-        case "ranged":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.ranged.distance;
-          }
-          break;
-        case "meleeRanged":
-          if (this.keywords.has("weapon")) {
-            this.distance.primary += bonuses.melee.distance;
-            this.distance.secondary += bonuses.ranged.distance;
-          }
-          break;
-        case "aura":
-        case "burst":
-        case "cube":
-        case "line":
-        case "wall":
-        case "self":
-        case "special":
-          break;
+  _applyAbilityBonuses() {
+    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
+      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+
+      if (bonus.key === "distance") {
+        // All distance value fields are structured identically so the field can be used regardless of which it actually modifies
+        const distanceValueField = this.schema.getField("distance.primary");
+        switch (this.distance.type) {
+          case "melee":
+          case "ranged":
+            this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            break;
+          case "meleeRanged":
+            if (bonus.filters.keywords.has("melee")) this.distance.primary = distanceValueField.applyChange(this.distance.primary, this, bonus);
+            if (bonus.filters.keywords.has("ranged")) this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            break;
+          case "wall":
+          case "cube":
+            this.distance.secondary = distanceValueField.applyChange(this.distance.secondary, this, bonus);
+            break;
+          case "line":
+            this.distance.tertiary = distanceValueField.applyChange(this.distance.tertiary, this, bonus);
+            break;
+          case "aura":
+          case "burst":
+          case "self":
+          case "special":
+            break;
+        }
       }
 
-      if (this.keywords.has("weapon")) {
-        const isMelee = this.keywords.has("melee");
-        const isRanged = this.keywords.has("ranged");
-        const prefMelee = this.damageDisplay === "melee";
-        const distance = (isMelee && (prefMelee || !isRanged)) ? "melee" : ((isRanged) ? "ranged" : null);
+      if (bonus.key.startsWith("damage")) {
+        let applyBonus = true;
+        if (this.keywords.has("melee") && this.keywords.has("ranged")) {
+          // melee & ranged abilities only display one set of bonuses at a time
+          applyBonus = bonus.filters.keywords.has(this.damageDisplay);
+        }
 
-        if (distance) {
-          // All three tier.damage.value fields should be identical, so their apply change should be identical
-          const formulaField = DamagePowerRollEffect.schema.getField(["damage", "tier1", "value"]);
+        if (applyBonus) {
+          const formulaField = DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
-          for (const tier of PowerRoll.TIER_NAMES) {
-            const bonus = foundry.utils.getProperty(bonuses, `${distance}.damage.${tier}`);
-            if (!bonus) continue;
-            firstDamageEffect.damage[tier].value = formulaField.applyChange(firstDamageEffect.damage[tier].value, this, {
-              value: bonus,
-              mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-            });
-          }
+          const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
         }
       }
     }
@@ -214,7 +218,7 @@ export default class AbilityModel extends BaseItemModel {
     if (config.tier2) context.tier2 = true;
     if (config.tier3) context.tier3 = true;
     await this.getSheetContext(context);
-    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/item/embeds/ability.hbs"), context);
+    const abilityBody = await foundry.applications.handlebars.renderTemplate(systemPath("templates/embeds/item/ability.hbs"), context);
     embed.insertAdjacentHTML("beforeend", abilityBody);
     return embed;
   }
@@ -229,7 +233,7 @@ export default class AbilityModel extends BaseItemModel {
     const labels = {};
     const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
     const keywordList = Array.from(this.keywords).map(k => ds.CONFIG.abilities.keywords[k]?.label ?? k);
-    labels.keywords = keywordFormatter.format(keywordList);
+    labels.keywords = keywordFormatter.format(keywordList) || "—";
 
     labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
@@ -248,11 +252,13 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
-    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.Character.FIELDS.hero.primary.value.label");
+    const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;
 
     context.keywordList = formattedLabels.keywords;
+
+    context.actionTypeLabel = config.types[this.type]?.label ?? "";
     context.actionTypes = Object.entries(config.types).map(([value, { label }]) => ({ value, label }));
     context.abilityCategories = Object.entries(config.categories).map(([value, { label }]) => ({ value, label }));
 
@@ -260,9 +266,9 @@ export default class AbilityModel extends BaseItemModel {
 
     context.distanceLabel = formattedLabels.distance;
     context.distanceTypes = Object.entries(config.distances).map(([value, { label }]) => ({ value, label }));
-    context.primaryDistance = config.distances[this.distance.type].primary;
-    context.secondaryDistance = config.distances[this.distance.type].secondary;
-    context.tertiaryDistance = config.distances[this.distance.type].tertiary;
+    context.primaryDistance = config.distances[this.distance.type]?.primary ?? "";
+    context.secondaryDistance = config.distances[this.distance.type]?.secondary ?? "";
+    context.tertiaryDistance = config.distances[this.distance.type]?.tertiary ?? "";
 
     context.targetLabel = formattedLabels.target;
     context.targetTypes = Object.entries(config.targets).map(([value, { label }]) => ({ value, label }));
@@ -295,7 +301,7 @@ export default class AbilityModel extends BaseItemModel {
     context.enrichedBeforeEffect = await enrichHTML(this.effect.before, { relativeTo: this.parent });
     context.enrichedAfterEffect = await enrichHTML(this.effect.after, { relativeTo: this.parent });
 
-    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+    context.spendLabel = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
       value: this.spend.value ?? "",
       name: resourceName,
     });
@@ -315,14 +321,14 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Use an ability, generating a chat message and potentially making a power roll
-   * @param {Partial<AbilityUseOptions>} [options={}] Configuration
-   * @returns {Promise<Array<DrawSteelChatMessage> | null>}
-   * TODO: Add hooks based on discussion with module authors
+   * Use an ability, generating a chat message and potentially making a power roll.
+   * @param {Partial<AbilityUseOptions>} [options={}] Configuration.
+   * @returns {Promise<DrawSteelChatMessage[] | null>}
+   * TODO: Add hooks based on discussion with module authors.
    */
   async use(options = {}) {
     /**
-     * Configuration information
+     * Configuration information.
      * @type {object | null}
      */
     let configuration = null;
@@ -337,7 +343,7 @@ export default class AbilityModel extends BaseItemModel {
       const current = foundry.utils.getProperty(coreResource.target, coreResource.path);
 
       /**
-       * Range picker config is ignored by the checkbox element
+       * Range picker config is ignored by the checkbox element.
        * @type {FormInputConfig}
        */
       const spendInputConfig = {
@@ -354,14 +360,14 @@ export default class AbilityModel extends BaseItemModel {
 
       let hint = null;
       if (this.spend.value) {
-        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.Ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.Ability.ConfigureUse.SpendWarning", {
+        hint = game.i18n.format(this.spend.value <= spendInputConfig.max ? "DRAW_STEEL.Item.ability.ConfigureUse.SpendHint" : "DRAW_STEEL.Item.ability.ConfigureUse.SpendWarning", {
           value: current,
           name: coreResource.name,
         });
       }
 
       const spendGroup = foundry.applications.fields.createFormGroup({
-        label: game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpendLabel", {
+        label: game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpendLabel", {
           value: this.spend.value || "",
           name: coreResource.name,
         }),
@@ -381,7 +387,7 @@ export default class AbilityModel extends BaseItemModel {
       configuration = await ds.applications.api.DSDialog.input({
         content,
         window: {
-          title: "DRAW_STEEL.Item.Ability.ConfigureUse.Title",
+          title: "DRAW_STEEL.Item.ability.ConfigureUse.Title",
           icon: "fa-solid fa-gear",
         },
       });
@@ -404,7 +410,7 @@ export default class AbilityModel extends BaseItemModel {
     if (configuration) {
       if (configuration.spend) {
         resourceSpend += typeof configuration.spend === "boolean" ? this.spend.value : configuration.spend;
-        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.Ability.ConfigureUse.SpentFlavor", {
+        messageData.flavor = game.i18n.format("DRAW_STEEL.Item.ability.ConfigureUse.SpentFlavor", {
           value: resourceSpend,
           name: coreResource.name,
         });
@@ -412,7 +418,7 @@ export default class AbilityModel extends BaseItemModel {
     }
 
     // TODO: Figure out how to better handle invocations when this.actor is null
-    await this.actor?.system.updateResource(resourceSpend * -1);
+    if (resourceSpend) await this.actor?.system.updateResource(resourceSpend * -1);
 
     if (this.power.roll.enabled) {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
@@ -473,7 +479,7 @@ export default class AbilityModel extends BaseItemModel {
           else if (damageEffect.types.size > 1) damageType = baseRoll.options.damageSelection;
 
           const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
-          const flavor = game.i18n.format("DRAW_STEEL.Item.Ability.DamageFlavor", { type: damageLabel });
+          const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
           const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
           await damageRoll.evaluate();
           messageDataCopy.rolls.push(damageRoll);
@@ -501,8 +507,8 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target
-   * @param {Partial<AbilityUseOptions>} options Options for the dialog
+   * Modify the options object based on conditions that apply to ability Power Rolls regardless of target.
+   * @param {Partial<AbilityUseOptions>} options Options for the dialog.
    */
   getActorModifiers(options) {
     if (!this.actor) return;
@@ -515,8 +521,8 @@ export default class AbilityModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
-   * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target
-   * @param {DrawSteelToken} target A target of the Ability Roll
+   * Get the modifiers based on conditions that apply to ability Power Rolls specific to a target.
+   * @param {DrawSteelToken} target A target of the Ability Roll.
    * @returns {PowerRollModifiers}
    */
   getTargetModifiers(target) {

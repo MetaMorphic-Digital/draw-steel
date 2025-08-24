@@ -2,7 +2,7 @@ const { HandlebarsApplicationMixin, Application } = foundry.applications.api;
 
 /**
  * A stock class for delegating query actions.
- * @template QueryResult The expected result for the query manager
+ * @template QueryResult The expected result for the query manager.
  * @abstract
  */
 export default class QueryManager extends HandlebarsApplicationMixin(Application) {
@@ -35,7 +35,7 @@ export default class QueryManager extends HandlebarsApplicationMixin(Application
   /* -------------------------------------------------- */
 
   /**
-   * Convenient reference to the list of users who might roll the effect
+   * Convenient reference to the list of users who might roll the effect.
    * @type {DrawSteelUser[]}
    */
   get users() {

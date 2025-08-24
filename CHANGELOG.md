@@ -18,6 +18,76 @@
 ### Known Issues
 -->
 
+## 0.8.0
+
+### Added
+
+- Compendiums (#757, #758)
+  - Compendiums are how the system includes and distributes the rules elements that have been openly licensed.
+  - This release includes material for first level play, as well as many of the monsters used in the starter adventures.
+  - Added Compendiums for classes, monsters, roll tables, character options, character origins, and rewards.
+  - Compendium content will continue to be a work in progress throughout the 0.8 series.
+- Advancements (#51)
+  - Advancements allow items like classes, kits, and features to make complex adjustments to an actor.
+  - Simply dragging an ancestry or class onto an actor will prompt you through the advancements.
+  - See the system documentation either in game or on the github wiki for more information.
+- Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
+- Added a button to ability use messages to apply effects from the ability. (#214)
+- Added Epic Resource display. (#537)
+- Added a Wealth field to Careers. (#535)
+- Adding or removing a career will adjust the amount of renown and wealth your character has.
+- Added a Renown and Wealth field to characters. (#279)
+- Added age, height, and weight info to the Biography tab for characters.
+- Added data path for bonuses to max stamina per echelon. (#259)
+- Expanded end of encounter prompt to reset heroic resources & temporary stamina. (#612)
+- Added a "Next Respite" option for ending Active Effects. (#694)
+- Added an option in the character sheet equipment context menu to start a crafting project for that equipment.
+- Add a setting for which project events type to use, "None", "Roll for Event", or "Event Milestones". (#710)
+  - If set to "Roll for Event", a roll button will appear in the chat message.
+  - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
+- Added name and image inputs to Power Roll Effect creation. (#718)
+- Added "Self or ally", "Self and allies", and "Self or one creature" targeting options. (#872)
+- When a project roll is a breakthrough, a button will appear to roll the project again.
+- The Source Information popout will show the Compendium Source of an item if it is available.
+- Added a generic "spend hero token" option available to all users.
+
+### Changed
+
+- Increased system minimum to 13.347.
+- Updated various CONFIG properties and i18n strings to match the final PDF. (#576)
+- [BREAKING] Reworked how kit bonuses are applied to abilities to line up with the new Active Effect type
+- [BREAKING] Redid the implementation of how "Applied Effect" Power Roll Effects work. Now, instead of several sets, you can add an entire effect and it will have multiple properties to configure per tier, such as the Potency Condition, if/how it overrides the end, and any additional properties like "stackable".
+- [BREAKING] Moved recoveries from `system.hero.recoveries` to `system.recoveries`.
+- [BREAKING] Character max recoveries and stamina are now derived from their class item (#627).
+- The end of encounter prompt now only triggers if an encounter progressed to at least the first round. (#643)
+- Certain item types (Class, Subclass, Ancestry, Career, Kit) can no longer be created directly in world. Instead, they must be created inside a compendium. (#716)
+  - This enforces good practices for data creation.
+  - The buttons on the character sheet header now open the Ancestry, Background, and Class compendiums.
+- Items with advancements can no longer be mass-created as part of dropping a folder onto an actor sheet. (#736)
+- [BREAKING] Split features up into multiple new item subtypes (#809)
+  - Perks, Titles, and Ancestry Traits now have their own item type.
+  - All still display together in the actor sheet.
+- Adjusted the display of Power Roll Effects, including adding an image property.
+- Expired Active Effects are now labeled "Expired" in their duration rather than "None".
+- Changed the hook name for the actor sheet document context menus to "getDocumentListContextOptions".
+- Adjusted display of resource labels so their role as buttons is clearer.
+
+### Fixed
+
+- Fixed display of popped out ability messages
+- Fixed display of multi-result abilities
+- Fixed unrequited prompting for end of turn events (#673)
+- Fixed project and save rolls not respecting roll mode settings. (#734)
+- Players can now use NPC abilities that don't have malice costs. (#790)
+- Secret blocks will now display in enriched descriptions for owned documents.
+
+### Removed
+
+- Removed direct kit limitations derived from class information in favor of handling kits as advancements. (#863)
+- Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
+- Removed "Melee" range as a separate listing from the character sheet stats tab to match the official character sheet.
+- Removed the "End Encounter" button from the bottom of the combat tracker.
+
 ## 0.7.3
 
 ### Added

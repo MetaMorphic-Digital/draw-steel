@@ -1,0 +1,128 @@
+{
+  "name": "No Dying On My Watch",
+  "type": "ability",
+  "img": "icons/creatures/abilities/bear-roar-bite-brown.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "180",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "no-dying-on-my-watch",
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "gsngfBcksXZXNbJ1": {
+          "type": "applied",
+          "_id": "gsngfBcksXZXNbJ1",
+          "name": "",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.weak"
+              },
+              "display": "{{potency}}, the target is frightened of the triggering ally (save ends)",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.average"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.strong"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains 5 temporary Stamina for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "You prioritize saving an ally over your own safety."
+  },
+  "effects": [],
+  "folder": "cFVtfkYEyx9FXpdn",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140822395,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "ZtMBjvDFJQYVkdmt",
+  "sort": 0,
+  "_key": "!items!ZtMBjvDFJQYVkdmt"
+}

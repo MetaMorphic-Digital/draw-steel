@@ -1,7 +1,7 @@
 /** @import { CombatantGroupData } from "@common/types.mjs"; */
 
 /**
- * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass
+ * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass.
  */
 export default class DrawSteelCombatantGroup extends foundry.documents.CombatantGroup {
 
@@ -10,6 +10,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
    * @type {string}
    */
   static DEFAULT_ICON = "icons/environment/people/charge.webp";
+
+  /* -------------------------------------------------- */
 
   /**
    * Determine default artwork based on the provided combatant group data.
@@ -20,12 +22,14 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     return { img: this.DEFAULT_ICON };
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Present a Dialog form to create a new Document of this type.
    * Choose a name and a type from a select menu of types.
-   * @param {CombatantGroupData} data                Document creation data
+   * @param {CombatantGroupData} data                Document creation data.
    * @param {DatabaseCreateOperation} [createOptions]  Document creation options.
-   * @param {object} [context={}]        Options forwarded to DialogV2.prompt
+   * @param {object} [context={}]        Options forwarded to DialogV2.prompt.
    * @param {string[]} [context.types]   A restriction of the selectable sub-types of the Dialog.
    * @param {string} [context.template]  A template to use for the dialog contents instead of the default.
    * @returns {Promise<Document|null>}   A Promise which resolves to the created Document, or null if the dialog was
@@ -112,11 +116,15 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     }, dialogOptions));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Is this group currently expanded in the combat tracker?
    * @type {boolean}
    */
   _expanded = false;
+
+  /* -------------------------------------------------- */
 
   /**
    * The disposition for this combatant group.
@@ -126,6 +134,8 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
   get disposition() {
     return this.members.first()?.disposition ?? CONST.TOKEN_DISPOSITIONS.SECRET;
   }
+
+  /* -------------------------------------------------- */
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {

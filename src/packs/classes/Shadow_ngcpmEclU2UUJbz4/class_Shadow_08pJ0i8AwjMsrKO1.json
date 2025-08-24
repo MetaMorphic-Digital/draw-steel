@@ -1,0 +1,318 @@
+{
+  "name": "Shadow",
+  "type": "class",
+  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+  "system": {
+    "description": {
+      "value": "<p>Subtlety is your art, the tip of the blade your brush. You studied at a secret college, specializing in alchemy, illusion, or shadow-magics. Your training and knowledge place you among the elite ranks of assassins, spies, and commandos. But more potent than any weapon or sorcery is your insight into your enemies’ weaknesses.</p><p>As a shadow, you possess abilities that deal significant damage, enable you to move swiftly across the battlefield and evade hazards, and allow you to fade from notice even in the midst of the most intense combat encounters. You also possess more skills than any other hero.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "160",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "level": 0,
+    "primary": "Insight",
+    "characteristics": {
+      "core": [
+        "agility"
+      ]
+    },
+    "stamina": {
+      "starting": 18,
+      "level": 6
+    },
+    "advancements": {
+      "SGcIk0R038jUuckL": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "SGcIk0R038jUuckL",
+        "description": "<p>You gain the Hide and Sneak skills.</p>",
+        "skills": {
+          "groups": [],
+          "choices": [
+            "hide",
+            "sneak"
+          ]
+        },
+        "chooseN": 2
+      },
+      "SRAejnOFwwqJ7PtH": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "SRAejnOFwwqJ7PtH",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "upSQS0I1HD3HAmCS": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "upSQS0I1HD3HAmCS",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "K6p4mRHr2oQrNzr9": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "K6p4mRHr2oQrNzr9",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1
+      },
+      "rVxzta9pyPzGkeRk": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "rVxzta9pyPzGkeRk",
+        "description": "<p>Choose any five skills from Criminal Underworld or the skills of the exploration, interpersonal, or intrigue skill groups. (<em>Quick Build:</em> Criminal Underworld, Lie, Pick Lock, Pick Pocket, Sabotage.)</p>",
+        "skills": {
+          "choices": [
+            "criminalUnderworld"
+          ],
+          "groups": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        },
+        "chooseN": 5
+      },
+      "t6jYyY0XwIK2EEJs": {
+        "name": "Shadow College",
+        "img": "icons/environment/settlement/city-night-spire.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "t6jYyY0XwIK2EEJs",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.w9bPx3bsOslJ43Tj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Hh1KF3TjXZydyOL2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.FVMUt54L6k3ZOO58"
+          }
+        ],
+        "description": "<p>You graduated from a shadow college chosen from the following options, each of which grants you a skill. (<em>Quick Build:</em> College of Black Ash.)</p>",
+        "chooseN": 1
+      },
+      "MFtoHbyZrLvp0QdX": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "MFtoHbyZrLvp0QdX",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8UVDKdZXiXzfFI0I"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.weYBoNzMpzcu9qUr"
+          }
+        ],
+        "description": "<p>You gain the following features.</p>"
+      },
+      "e5IGhKXPmer934df": {
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "e5IGhKXPmer934df",
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (<em>Quick Build:</em> Teamwork Has Its Place.)</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.avpi9kfzRK0B9YIk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ehA3Xd2YnARQszb2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.7iEVcJVYLoDe49Cs"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.JsIqJ0UsUSNJemm3"
+          }
+        ],
+        "chooseN": 1
+      },
+      "jwPkEg7OrYzXIcvN": {
+        "name": "3 Insight",
+        "img": "icons/magic/symbols/runes-triangle-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "jwPkEg7OrYzXIcvN",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 insight to use. (<em>Quick Build:</em> Get In Get Out.)</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.fxdiH1SHqvKGcMYY"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yX2KU1Eqc24ijqcB"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.VwqbeNSv0ItsaaPD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.PF2heedkoTuLzInM"
+          }
+        ],
+        "chooseN": 1
+      },
+      "cwvHruLPKOsQLebf": {
+        "name": "5 Insight",
+        "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "cwvHruLPKOsQLebf",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 insight to use. (<em>Quick Build:</em> Coup de Grace.)</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.wdOVSaOWjUsPmeEM"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.a93xTnhOnwJSe0Zq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.sZDSZOUU9LgQCLcP"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mMqubTdf0bE8mCXV"
+          }
+        ],
+        "chooseN": 1
+      },
+      "FH9787PO0HX1I60w": {
+        "name": "Kit",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "FH9787PO0HX1I60w",
+        "description": "<p>You can use and gain the benefits of a kit. (<em>Quick Build:</em> Cloak and Dagger.)</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.dFKiwPs0hVo7uWei"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.eQsxbl59pEjHEyB7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.26dSN2U5BPYxURBl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZQVco8CZprfeqPp6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.49hPWhEliTnRbuxT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.x41mBdtcCGTj8Quy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jHJnlHyRRNf9V5hm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.uEExxUnkmJ1whpCz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.jBAKshrCTStqX7yI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.IWcztYRBrAMdRQyf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.tfBbJyfk0ARRiPJU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.RhaBwqKzijzbJcCQ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.JE0Q1L35MuOGLVVJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.B07q1yyc5HSCnAf7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.74X1pEcNgz1OQC2x"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.UWjNAZn9cBAMUWB0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.ZoWDIjHoCJjr1uo1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.NkzAlCFgDeGuTnzr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.AOCz8Nufy6kbg85v"
+          },
+          {
+            "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
+          }
+        ]
+      }
+    },
+    "_dsid": "shadow",
+    "turnGain": "1d3",
+    "minimum": "0",
+    "recoveries": 8,
+    "epic": "Subterfuge"
+  },
+  "effects": [],
+  "folder": "ngcpmEclU2UUJbz4",
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751673029598,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "08pJ0i8AwjMsrKO1",
+  "sort": 0,
+  "_key": "!items!08pJ0i8AwjMsrKO1"
+}

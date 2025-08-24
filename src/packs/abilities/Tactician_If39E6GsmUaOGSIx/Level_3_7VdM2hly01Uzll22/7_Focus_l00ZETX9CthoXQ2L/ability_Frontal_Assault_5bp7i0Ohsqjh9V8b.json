@@ -1,0 +1,66 @@
+{
+  "name": "Frontal Assault",
+  "type": "ability",
+  "img": "icons/weapons/artillery/cannon-engraved-gold.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "180",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "frontal-assault",
+    "keywords": [],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": 0,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Until the end of the encounter or you are dying, whenever you or any ally deals damage a target marked by you, the damage dealer can push the target up to 2 squares, then shift up to 2 squares. Additionally, any ally using the Charge action to attack a target marked by you can use a signature or heroic ability in place of a melee free strike.</p>"
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "The purpose of a charge is to break their morale and force a retreat."
+  },
+  "effects": [],
+  "folder": "l00ZETX9CthoXQ2L",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140989219,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "5bp7i0Ohsqjh9V8b",
+  "sort": 300000,
+  "_key": "!items!5bp7i0Ohsqjh9V8b"
+}

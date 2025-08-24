@@ -1,0 +1,31 @@
+{{! Description Tab }}
+<section class="tab {{tab.cssClass}}" data-group="primary" data-tab="description">
+  <div class="prosemirror editor">
+    <label class="description-label">
+      {{systemFields.description.fields.value.label}}
+      {{#unless isPlay}}
+      <a class="label-action" data-action="editHTML" data-field-name="system.description.value">
+        <i class="fa-solid fa-feather"></i>
+      </a>
+      {{/unless}}
+    </label>
+    <div class="description value editor-content">
+      {{{enrichedDescription}}}
+    </div>
+  </div>
+  <div class="prosemirror editor">
+    {{#if gm}}
+    <label class="description-label">
+      {{systemFields.description.fields.director.label}}
+      {{#unless isPlay}}
+      <a class="label-action" data-action="editHTML" data-field-name="system.description.director">
+        <i class="fa-solid fa-feather"></i>
+      </a>
+      {{/unless}}
+    </label>
+    <div class="description director editor-content">
+      {{{enrichedDirectorNotes}}}
+    </div>
+    {{/if}}
+  </div>
+</section>

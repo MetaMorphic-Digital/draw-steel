@@ -1,0 +1,125 @@
+{
+  "name": "Inspiring Strike",
+  "type": "ability",
+  "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "178",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "inspiring-strike",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "8b0IjcpC8H5jsALA": {
+          "type": "damage",
+          "_id": "8b0IjcpC8H5jsALA",
+          "name": "",
+          "damage": {
+            "tier1": {
+              "types": [],
+              "value": "3+@chr",
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "properties": []
+            },
+            "tier2": {
+              "types": [],
+              "value": "5+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.average"
+              },
+              "properties": []
+            },
+            "tier3": {
+              "types": [],
+              "value": "8+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.strong"
+              },
+              "properties": []
+            }
+          }
+        },
+        "JuGJkTS6GFA0naaW": {
+          "name": "Recovery",
+          "img": null,
+          "type": "other",
+          "_id": "JuGJkTS6GFA0naaW",
+          "other": {
+            "tier1": {
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
+            },
+            "tier2": {
+              "display": "you or one ally within 10 squares of you can spend a Recovery"
+            },
+            "tier3": {
+              "display": "you or one ally within 10 squares of you can spend a Recovery, and each of you gains an edge on the next ability roll you make during the encounter"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "Your attack gives an ally hope."
+  },
+  "effects": [],
+  "folder": "rTZbhhWgJJlUsz0q",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140634396,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "yYQqS6yLeI1vSq5F",
+  "sort": 200000,
+  "_key": "!items!yYQqS6yLeI1vSq5F"
+}

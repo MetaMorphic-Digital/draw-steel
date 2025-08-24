@@ -1,0 +1,162 @@
+{
+  "name": "Try Me Instead",
+  "type": "ability",
+  "img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "179",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "try-me-instead",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "self",
+      "primary": 1,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "inOTUdFXYJuIR75k": {
+          "type": "damage",
+          "_id": "inOTUdFXYJuIR75k",
+          "name": "",
+          "damage": {
+            "tier1": {
+              "types": [],
+              "value": "2+@chr",
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "properties": []
+            },
+            "tier2": {
+              "types": [],
+              "value": "3+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.average"
+              },
+              "properties": []
+            },
+            "tier3": {
+              "types": [],
+              "value": "4+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.strong"
+              },
+              "properties": []
+            }
+          }
+        },
+        "9EgqMwDRInYiAOXb": {
+          "type": "applied",
+          "_id": "9EgqMwDRInYiAOXb",
+          "name": "",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.weak"
+              },
+              "display": "{{potency}}, frightened (save ends)",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.average"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "reason",
+                "value": "@potency.strong"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You shift up to your speed directly toward an ally, ending adjacent to them, then swapping locations with that ally as long as you can fit into each other’s spaces. The ally can spend a Recovery, and you can make the following weapon strike with a distance of melee 1 against a creature.</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "\"Try picking on someone my size.\""
+  },
+  "effects": [],
+  "folder": "3vTHdH8nZgeuLfMh",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140886742,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "Dtlh3rkTZZ6mNwNu",
+  "sort": 0,
+  "_key": "!items!Dtlh3rkTZZ6mNwNu"
+}

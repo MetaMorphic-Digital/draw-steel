@@ -1,0 +1,204 @@
+{
+  "folder": "xzykLzoRMsmgsRc8",
+  "name": "Fury",
+  "type": "class",
+  "_id": "09NImezUFH1COsUX",
+  "img": "icons/skills/melee/blood-slash-foam-red.webp",
+  "system": {
+    "description": {
+      "value": "<p>You do not temper the heat of battle within you. You unleash it! Your experience in the wild taught you the secrets of predators, and now, like the raptor, the panther, the wolf, you channel unfettered anger into martial prowess. Primordial Chaos is your ally. Let others use finesse to clean up the wreckage left in your wake. As a fury, you devastate foes with overwhelming might, hurl yourself and enemies around the battlefield, and grow stronger as your ferocity increases. Nature has no concept of fairness—and neither do you.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "130",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "fury",
+    "advancements": {
+      "vsxWbN6W3rgdbB7h": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "vsxWbN6W3rgdbB7h",
+        "skills": {
+          "choices": [
+            "nature"
+          ]
+        },
+        "chooseN": 1,
+        "description": "<p>You gain the Nature skill.</p>"
+      },
+      "UkhBvtjA3OxcP4c4": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "UkhBvtjA3OxcP4c4",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "exploration",
+            "intrigue"
+          ]
+        },
+        "description": "<p>Choose any two skills from the exploration or intrigue skill groups. <em>(Quick Build: Alertness, Jump, Nature.)</em></p>"
+      },
+      "F1SV8pE24DkIDxtA": {
+        "name": "Primordial Aspect",
+        "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "F1SV8pE24DkIDxtA",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UkRgXaZPKbt9VVp5"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.k5tD7sSMemOrgeZl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OV3nfjXGHEzv4gUQ"
+          }
+        ],
+        "description": "<p>Choose a primordial aspect from the following options, each of which grants you a skill. <em>(Quick Build: Berserker.)</em></p>"
+      },
+      "2gM4VoC4XmaJAxpi": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "2gM4VoC4XmaJAxpi",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.F8JyT7pwBmV3fYj2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.5Q9C9fs5pzztX6zJ"
+          }
+        ]
+      },
+      "OCayU87edJQCroxu": {
+        "name": "Signature Ability",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "OCayU87edJQCroxu",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.nHYS3JAp9m264mQO"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.0C5AhHHBvFVKSvzj"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.UsRhRq1x10cnyuWk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.i3mzybXIZtT5F3GN"
+          }
+        ],
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. <em>(Quick Build: To the Death!)</em></p>",
+        "chooseN": 1
+      },
+      "pHoGNliceTIIehzI": {
+        "name": "3 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-wood.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "pHoGNliceTIIehzI",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.h8HLdTWTOgXRT7j7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.2rom1WjJv9sw41Gn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.HrNe7XilXFUlWP1O"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.1C3skjTgPyL1haOZ"
+          }
+        ],
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 ferocity to use. <em>(Quick Build: Back!)</em></p>"
+      },
+      "hN844cKi9NqjVT2X": {
+        "name": "5 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "hN844cKi9NqjVT2X",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 ferocity to use. <em>(Quick Build: Blood for Blood!)</em></p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.CD27c6U0GUSIJPDT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.b18zgjUQHcy1NaJ2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.FDhoFbrlPEEjPFAf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.54IP1nIQiFvWmqYw"
+          }
+        ],
+        "chooseN": 1
+      }
+    },
+    "level": 0,
+    "primary": "Ferocity",
+    "epic": "Primordial Power",
+    "turnGain": "1d3",
+    "minimum": "0",
+    "characteristics": {
+      "core": [
+        "might",
+        "agility"
+      ]
+    },
+    "stamina": {
+      "starting": 21,
+      "level": 9
+    },
+    "recoveries": 10
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1754707776139,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!09NImezUFH1COsUX"
+}

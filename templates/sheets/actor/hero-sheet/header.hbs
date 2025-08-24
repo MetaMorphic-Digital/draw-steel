@@ -1,0 +1,116 @@
+{{!-- Partial for header tags --}}
+{{#*inline "headerTag"}}
+{{#if originDoc}}
+<span data-document-class="Item" data-item-id="{{lookup originDoc "id"}}">
+  <a class="filled" data-action="viewDoc">
+    {{lookup originDoc "name"}}
+  </a>
+  {{#unless (or @root.isPlay noEdit)}}
+  <a data-action="deleteDoc">
+    <i class="fa-solid fa-trash-can"></i>
+  </a>
+  {{/unless}}
+</span>
+{{else}}
+{{#if @root.isPlay}}
+<span class="unfilled">
+  {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
+</span>
+{{else}}
+{{#unless noEdit}}
+<a class="unfilled" data-action="addOrigin" data-type="{{originType}}">
+  {{localize "DRAW_STEEL.SHEET.Add" itemName=(localize (concat "TYPES.Item." originType))}}
+</a>
+{{/unless}}
+{{/if}}
+{{/if}}
+{{/inline}}
+
+{{! Sheet Header }}
+<header class="sheet-header">
+  <img
+    class="profile-img"
+    src="{{document.img}}"
+    alt="{{document.name}}"
+    data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
+    data-edit="img"
+    title="{{document.name}}"
+  >
+  <div class="header-center flexcol">
+    <div class="document-name">
+      {{#if isPlay}}
+      <h2>{{document.name}}</h2>
+      {{else}}
+      {{formInput fields.name value=source.name placeholder=(localize "Name")}}
+      {{/if}}
+    </div>
+    <div class="origins tags flexrow">
+      <div class="ancestry tag">
+        {{> headerTag originDoc=document.system.ancestry originType="ancestry"}}
+      </div>
+      <div class="culture tag">
+        {{> headerTag originDoc=document.system.culture originType="culture"}}
+      </div>
+      <div class="career tag">
+        {{> headerTag originDoc=document.system.career originType="career"}}
+      </div>
+      <div class="class tag">
+        {{> headerTag originDoc=document.system.class originType="class"}}
+      </div>
+      {{#each document.system.subclasses as |subclass|}}
+      <div class="subclass tag">
+        {{> headerTag originDoc=subclass originType="subclass" noEdit=true}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class="header-right flexcol">
+    <dl>
+      <dt class="level">{{localize "DRAW_STEEL.Item.class.FIELDS.level.label"}}</dt>
+      <dd class="level">
+        {{#if system.advancementReady}}
+        <button type="button" {{disabled (not editable)}} data-action="levelUp" data-tooltip="DRAW_STEEL.SHEET.LevelUp">
+          {{system.level}}
+          <i class="fa-solid fa-up-long"></i>
+        </button>
+        {{else}}
+        {{system.level}}
+        {{/if}}
+      </dd>
+
+      {{#if isPlay}}
+      <dt class="xp">{{systemFields.hero.fields.xp.label}}</dt>
+      <dd class="xp">
+        <span class="resource-curent">{{system.hero.xp}}</span>
+        {{#if system.nextLevelXP}}
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.nextLevelXP}}</span>
+        {{/if}}
+      </dd>
+
+      <dt>{{systemFields.hero.fields.victories.label}}</dt>
+      <dd>
+        <span class="resource-current">{{system.hero.victories}}</span>
+        {{#if system.victoriesMax}}
+        <span class="resource-divider"> / </span>
+        <span class="resource-max">{{system.victoriesMax}}</span>
+        {{/if}}
+      </dd>
+      {{/if}}
+    </dl>
+    {{#unless isPlay}}
+    <div class="actor-data hero-data">
+      {{formGroup systemFields.hero.fields.xp value=systemSource.hero.xp classes="xp"}}
+      {{formGroup systemFields.hero.fields.victories value=systemSource.hero.victories classes="victories"}}
+    </div>
+    {{/unless}}
+    {{#if isPlay}}
+    <div class="take-respite">
+      <a data-action="takeRespite">
+        <i class="fa-solid fa-bed"></i>
+        {{localize "DRAW_STEEL.Actor.hero.TakeRespite"}}
+      </a>
+    </div>
+    {{/if}}
+  </div>
+</header>

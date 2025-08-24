@@ -2,7 +2,7 @@
 /** @import { Point } from "@common/_types.mjs" */
 
 /**
- * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass
+ * A Placeable Object subclass adding system-specific behavior and registered in CONFIG.Token.objectClass.
  */
 export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /**
@@ -46,7 +46,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
   /**
    * An array of inset vertices for each of the token's grid spaces.
-   * Each vertex is inset by 1px to account for cases where the vertex is on a wall
+   * Each vertex is inset by 1px to account for cases where the vertex is on a wall.
    * @returns {Point[]}
    */
   get insetVertices() {
@@ -90,7 +90,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /* -------------------------------------------------- */
 
   /**
-   * Return all allies adjacent to the target with line of effect
+   * Return all allies adjacent to the target with line of effect.
    * @param {DrawSteelToken} target
    * @returns {DrawSteelToken[]}
    */
@@ -109,7 +109,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
   /* -------------------------------------------------- */
 
   /**
-   * Does this token have line of effect to the target token
+   * Does this token have line of effect to the target token.
    * @param {DrawSteelToken} token    The token that is moving.
    * @returns {boolean}
    */
@@ -173,14 +173,14 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc*/
+  /** @inheritdoc */
   _drawBar(number, bar, data) {
     if (data.attribute !== "stamina") return super._drawBar(number, bar, data);
 
     const stamina = Number(data.value);
 
     // Creates a normalized range of 0 to (max stamina - min stamina) used for calculating the token bar percentage
-    // Needed to handle character's negative stamina
+    // Needed to handle actor's negative stamina
     const totalStamina = data.max - data.min;
     const adjustedValue = stamina - data.min;
     const barPct = Math.clamp(adjustedValue, 0, totalStamina) / totalStamina;

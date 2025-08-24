@@ -1,6 +1,7 @@
+import { systemPath } from "../../constants.mjs";
 import PseudoDocument from "./pseudo-document.mjs";
 
-/** @import { TypedPseudoDocumentCreateDialogOptions } from "./_types" */
+/** @import { FormSelectOption } from "@client/applications/forms/fields.mjs" */
 
 const { DocumentTypeField } = foundry.data.fields;
 
@@ -41,12 +42,25 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
-  /**
-   * The localized label for this typed pseudodocument's type.
-   * @type {string}
-   */
-  get typeLabel() {
-    return ds.CONFIG[this.constructor.metadata.documentName][this.type].label;
+  /** @inheritdoc */
+  static CREATE_TEMPLATE = systemPath("templates/sheets/pseudo-documents/typed-create-dialog.hbs");
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareBaseData() {
+    super.prepareBaseData();
+    this.img ||= ds.CONFIG[this.constructor.metadata.documentName][this.type].defaultImage;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  prepareDerivedData() {
+    super.prepareDerivedData();
+    if (!this.name) {
+      this.name = game.i18n.localize(`TYPES.${this.documentName}.${this.type}`);
+    }
   }
 
   /* -------------------------------------------------- */
@@ -61,35 +75,27 @@ export default class TypedPseudoDocument extends PseudoDocument {
     return super.create(data, { parent, ...operation });
   }
 
-  /**
-   * Create a new instance of this pseudo-document with a prompt to choose the type.
-   * @param {object} [data]                                     The data used for the creation.
-   * @param {object} createOptions                              The context of the operation.
-   * @param {foundry.abstract.Document} createOptions.parent    The parent of this document.
-   * @param {TypedPseudoDocumentCreateDialogOptions} [options={}]
-   * @returns {Promise<foundry.abstract.Document>}              A promise that resolves to the updated document.
-   */
-  static async createDialog(data = {}, createOptions = {}, options = {}) {
-    /** @type {TypedPseudoDocumentCreateDialogOptions} */
-    const defaultOptions = {
-      window: {
-        title: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize(this.metadata.label) }),
-        icon: this.metadata.icon,
-      },
-      content: this.schema.fields.type.toFormGroup({
-        label: "DOCUMENT.FIELDS.type.label",
-        localize: true,
-      }, {
-        choices: ds.CONFIG[this.metadata.documentName],
-      }).outerHTML,
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static _prepareCreateDialogContext(parent) {
+
+    /** @type {FormSelectOption[]} */
+    const typeOptions = Object.entries(ds.CONFIG[this.metadata.documentName]).map(([value, { label }]) => ({ value, label }));
+
+    return {
+      typeOptions,
+      fields: this.schema.fields,
     };
+  }
 
-    const inputData = await ds.applications.api.DSDialog.input(foundry.utils.mergeObject(defaultOptions, options));
+  /* -------------------------------------------------- */
 
-    if (!inputData) return;
-
-    foundry.utils.mergeObject(data, inputData);
-
-    return this.create(data, createOptions);
+  /** @inheritdoc */
+  static _createDialogRenderCallback(event, dialog) {
+    const typeInput = dialog.element.querySelector("[name=\"type\"]");
+    const nameInput = dialog.element.querySelector("[name=\"name\"]");
+    nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label;
+    typeInput.addEventListener("change", () => nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label);
   }
 }

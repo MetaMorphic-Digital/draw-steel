@@ -9,27 +9,24 @@ import SourceModel from "../models/source.mjs";
 /** @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs"; */
 
 /**
- * NPCs are created and controlled by the director
+ * NPCs are created and controlled by the director.
  */
 export default class NPCModel extends BaseActorModel {
-  /**
-   * @inheritdoc
-   * @type {import("../_types").SubtypeMetadata}
-   */
+  /** @inheritdoc */
   static get metadata() {
-    return foundry.utils.mergeObject(super.metadata, {
+    return {
+      ...super.metadata,
       type: "npc",
-    });
+    };
   }
 
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = [
-    "DRAW_STEEL.Source",
-    "DRAW_STEEL.Actor.base",
-    "DRAW_STEEL.Actor.NPC",
-  ];
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat([
+    "DRAW_STEEL.SOURCE",
+    "DRAW_STEEL.Actor.npc",
+  ]);
 
   /* -------------------------------------------------- */
 
@@ -58,6 +55,23 @@ export default class NPCModel extends BaseActorModel {
     });
 
     return schema;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    switch (data.monster?.organization) {
+      // release updates
+      case "band":
+        data.monster.organization = "horde";
+        break;
+      case "troop":
+        data.monster.organization = "elite";
+        break;
+    }
+
+    return super.migrateData(data);
   }
 
   /* -------------------------------------------------- */
@@ -99,7 +113,7 @@ export default class NPCModel extends BaseActorModel {
 
   /**
    * Fetch the traits of this creature's free strike.
-   * The value is stored in `this.monster.freeStrike`
+   * The value is stored in `this.monster.freeStrike`.
    * @returns {import("./_types").FreeStrike}
    */
   get freeStrike() {
@@ -140,7 +154,10 @@ export default class NPCModel extends BaseActorModel {
 
   /** @inheritdoc */
   async updateResource(delta) {
-    if (!game.user.isGM) throw new Error("Malice can only be updated by a GM");
+    if (!game.user.isGM) {
+      ui.notifications.error("DRAW_STEEL.Setting.Malice.PlayerError", { localize: true, console: false });
+      throw new Error("Malice can only be updated by a GM");
+    }
     /** @type {MaliceModel} */
     const malice = game.actors.malice;
     await game.settings.set(systemID, "malice", { value: malice.value + delta });

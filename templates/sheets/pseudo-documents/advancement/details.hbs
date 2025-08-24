@@ -1,0 +1,30 @@
+<section class="{{tabs.details.cssClass}}" data-tab="{{tabs.details.id}}" data-group="{{tabs.details.group}}">
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
+    {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" type="number" classes="slim"}}
+    {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
+  </fieldset>
+
+  {{!-- ITEM GRANT POOL --}}
+  {{#if (eq document.type "itemGrant")}}
+  <section class="drop-target-area">
+    {{#each ctx.itemPool}}
+    <div class="form-group" data-pool-index="{{@index}}">
+      <label>{{{link.outerHTML}}}</label>
+      <div class="form-fields">
+        <button type="button" data-action="deletePoolItem" class="icon fa-solid fa-trash"></button>
+      </div>
+    </div>
+    {{/each}}
+  </section>
+  {{/if}}
+
+  {{!-- TRAIT LIST --}}
+  {{#if (eq document.type "skill")}}
+  {{formGroup fields.skills.fields.groups value=source.skills.groups name="skills.groups" options=ctx.skillGroups}}
+  {{formGroup fields.skills.fields.choices value=source.skills.choices name="skills.choices" options=ctx.skillChoices}}
+  {{/if}}
+  {{#if (eq document.type "language")}}
+  {{formGroup fields.languages value=source.languages name="languages" options=ctx.languageChoices}}
+  {{/if}}
+</section>

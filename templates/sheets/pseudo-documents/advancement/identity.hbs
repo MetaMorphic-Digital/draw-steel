@@ -1,0 +1,6 @@
+<section class="{{tabs.identity.cssClass}}" data-tab="{{tabs.identity.id}}" data-group="{{tabs.identity.group}}">
+  {{formGroup fields.name value=source.name placeholder=(localize (concat "TYPES.Advancement." source.type)) name="name"}}
+  {{formGroup fields.img value=source.img name="img"}}
+
+  {{formInput fields.description value=source.description height=300 name="description"}}
+</section>

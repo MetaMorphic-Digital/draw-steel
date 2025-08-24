@@ -1,8 +1,0 @@
-{{formGroup systemFields.type.fields.value value=system.type.value options=featureTypes blank="" disabled=isPlay}}
-{{#if featureSubtypes}}
-{{formGroup systemFields.type.fields.subtype value=system.type.subtype options=featureSubtypes blank="" disabled=isPlay}}
-{{/if}}
-<fieldset>
-  <legend>{{systemFields.prerequisites.label}}</legend>
-  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value disabled=isPlay}}
-</fieldset>

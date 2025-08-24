@@ -1,0 +1,69 @@
+{
+  "name": "Now!",
+  "type": "ability",
+  "img": "icons/magic/time/clock-spinning-gold-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "178",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "now",
+    "keywords": [
+      "ranged",
+      "weapon"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Each target can make a free strike.</p>"
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "Your allies wait for your command - then unleash death!"
+  },
+  "effects": [],
+  "folder": "qqy4D1GA6B5jsNJH",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140780154,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "tpi0fKQDK1dEDwWw",
+  "sort": 0,
+  "_key": "!items!tpi0fKQDK1dEDwWw"
+}

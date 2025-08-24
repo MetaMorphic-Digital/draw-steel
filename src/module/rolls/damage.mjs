@@ -1,15 +1,15 @@
 import DSRoll from "./base.mjs";
 
 /**
- * Contains damage-specific info like damage types
+ * Contains damage-specific info like damage types.
  */
 export default class DamageRoll extends DSRoll {
   /**
-   * Button callback to apply damage to selected actors
+   * Button callback to apply damage to selected actors.
    * @param {PointerEvent} event
    */
   static async applyDamageCallback(event) {
-    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.Messages.AbilityUse.NoTokenSelected", { localize: true });
+    if (!canvas.tokens.controlled.length) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenSelected", { localize: true });
 
     const li = event.currentTarget.closest("[data-message-id]");
     const message = game.messages.get(li.dataset.messageId);
@@ -18,10 +18,10 @@ export default class DamageRoll extends DSRoll {
 
     let amount = roll.total;
     if (event.shiftKey) amount = Math.floor(amount / 2);
-    for (const actor of ds.utils.selectedActors()) {
+    for (const actor of ds.utils.tokensToActors()) {
       if (roll.isHeal) {
         const isTemp = roll.type !== "value";
-        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.Messages.base.Buttons.ApplyHeal.TempCapped", {
+        if (isTemp && (amount < actor.system.stamina.temporary)) ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", {
           format: { name: actor.name },
         });
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
@@ -30,8 +30,10 @@ export default class DamageRoll extends DSRoll {
     }
   }
 
+  /* -------------------------------------------------- */
+
   /**
-   * The damage type
+   * The damage type.
    * @type {string}
    */
   get type() {
@@ -41,7 +43,7 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * The localized label for this damage roll's type
+   * The localized label for this damage roll's type.
    * @type {string}
    */
   get typeLabel() {
@@ -52,7 +54,7 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Damage immunities to ignore
+   * Damage immunities to ignore.
    * @type {string[]}
    */
   get ignoredImmunities() {
@@ -72,14 +74,14 @@ export default class DamageRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * Produces a button with relevant data to applying this damage
-   * @param {number} index The index of this roll in the `rolls` array of the message
-   * @returns {HTMLButtonElement} A button that
+   * Produces a button with relevant data to applying this damage.
+   * @param {number} index The index of this roll in the `rolls` array of the message.
+   * @returns {HTMLButtonElement} A button that.
    */
   toRollButton(index) {
-    const labelPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Label" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Label";
+    const labelPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Label" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Label";
 
-    const tooltipPath = this.isHeal ? "DRAW_STEEL.Messages.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.Messages.base.Buttons.ApplyDamage.Tooltip";
+    const tooltipPath = this.isHeal ? "DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.Tooltip" : "DRAW_STEEL.ChatMessage.base.Buttons.ApplyDamage.Tooltip";
 
     return ds.utils.constructHTMLButton({
       label: game.i18n.format(labelPath, {

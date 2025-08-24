@@ -1,0 +1,56 @@
+{{! Sheet Header }}
+<header class="sheet-header">
+  <img
+    class="profile-img"
+    src="{{document.img}}"
+    alt="{{document.name}}"
+    data-action="{{ifThen isPlay "showPortraitArtwork" "editImage"}}"
+    data-edit="img"
+    title="{{document.name}}"
+  >
+  <div class="header-center flexcol">
+    <div class="document-name">
+      {{#if isPlay}}
+      <h2>{{document.name}}</h2>
+      {{else}}
+      {{formInput fields.name value=source.name placeholder=(localize "Name") }}
+      {{/if}}
+    </div>
+    <div class="tags flexrow">
+      {{!-- Keyword Tags --}}
+      {{#each monsterKeywords as |keyword|}}
+      <div class="tag">{{keyword}}</div>
+      {{/each}}
+      {{!-- Organization/Role Tags --}}
+      {{#if system.monster.organization}}
+      <div class="tag">{{organizationLabel}}</div>
+      {{/if}}
+      {{#if system.monster.role}}
+      <div class="tag">{{roleLabel}}</div>
+      {{/if}}
+      {{#unless isPlay}}
+      <a data-action="editMonsterMetadata">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+      {{/unless}}
+    </div>
+  </div>
+  <div class="header-right flexcol">
+    <div class="actor-source">
+      {{document.system.source.label}}
+    </div>
+    <dl>
+      <dt class="level">{{systemFields.monster.fields.level.label}}</dt>
+      <dd class="level">{{systemSource.monster.level}}</dd>
+
+      <dt class="ev">{{localize "DRAW_STEEL.Actor.npc.EVLabel.Label"}}</dt>
+      <dd class="ev">{{evLabel}}</dd>
+    </dl>
+    {{#if showMalice}}
+    <div class="malice">
+      <label>{{malice.label}}</label>
+      <input type="number" step="1" data-setting="malice" value="{{malice.value}}">
+    </div>
+    {{/if}}
+  </div>
+</header>

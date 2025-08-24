@@ -1,8 +1,34 @@
 import DrawSteelActor from "../../documents/actor.mjs";
-import { BarAttribute } from "../_types";
 import SizeModel from "../models/size.mjs";
-import { DamageSchema } from "../item/kit.mjs";
 import SourceModel from "../models/source.mjs";
+
+interface BarAttribute {
+  value: number,
+  max: number
+}
+
+interface Biography {
+  value: string;
+  director: string;
+  languages: Set<string>;
+}
+
+interface CoreResource {
+  name: string;
+  target: foundry.abstract.DataModel;
+  path: string;
+  minimum: number;
+}
+
+interface FreeStrike {
+  value: number;
+  keywords: Set<string>;
+  type: string;
+  range: {
+    melee: number;
+    ranged: number;
+  };
+}
 
 declare module "./base.mjs" {
   export default interface BaseActorModel {
@@ -10,6 +36,9 @@ declare module "./base.mjs" {
     stamina: BarAttribute & {
       temporary: number;
       winded: number;
+      bonuses: {
+        echelon: number;
+      }
     },
     characteristics: Record<string, { value: number }>;
     combat: {
@@ -21,11 +50,7 @@ declare module "./base.mjs" {
         threshold: number;
       }
     }
-    biography: {
-      value: string;
-      gm: string;
-      languages: Set<string>;
-    }
+    biography: Biography
     movement: {
       value: number;
       types: Set<string>;
@@ -43,21 +68,23 @@ declare module "./base.mjs" {
   }
 }
 
-declare module "./character.mjs" {
+declare module "./hero.mjs" {
   type HeroicResource = {
     value: number;
     label?: string;
   };
 
-  export default interface CharacterModel {
+  export default interface HeroModel {
+    recoveries: BarAttribute & {
+      bonus: number;
+      recoveryValue: number;
+    };
     hero: {
       primary: HeroicResource;
+      epic: HeroicResource;
       xp: number;
-      recoveries: BarAttribute & {
-        bonus: number;
-        recoveryValue: number;
-      };
       renown: number;
+      wealth: number;
       skills: Set<string>;
       preferredKit: string;
     }
@@ -67,14 +94,15 @@ declare module "./character.mjs" {
       average: number;
       strong: number;
     }
-    abilityBonuses: {
-      melee: {
-        distance: number;
-        damage?: DamageSchema;
+    biography: Biography & {
+      age: string;
+      height: {
+        value: number;
+        units: string;
       }
-      ranged: {
-        distance: number;
-        damage?: DamageSchema;
+      weight: {
+        value: number;
+        units: string;
       }
     }
   }
@@ -99,14 +127,4 @@ declare module "./npc.mjs" {
       organization: string;
     }
   }
-}
-
-interface FreeStrike {
-  value: number;
-  keywords: Set<string>;
-  type: string;
-  range: {
-    melee: number;
-    ranged: number;
-  };
 }

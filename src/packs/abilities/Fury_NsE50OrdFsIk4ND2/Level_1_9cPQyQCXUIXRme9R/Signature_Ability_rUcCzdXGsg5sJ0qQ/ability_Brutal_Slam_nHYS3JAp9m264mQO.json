@@ -1,0 +1,102 @@
+{
+  "folder": "rUcCzdXGsg5sJ0qQ",
+  "name": "Brutal Slam",
+  "type": "ability",
+  "_id": "nHYS3JAp9m264mQO",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "133",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "brutal-slam",
+    "story": "The heavy impact of your weapon attacks drives your foes ever back.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "kMEMHtTjiF7Nyu1O": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "kMEMHtTjiF7Nyu1O",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "7zVIxJzsjP2LRfUO": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "7zVIxJzsjP2LRfUO",
+          "forced": {
+            "tier2": {
+              "distance": "2"
+            },
+            "tier3": {
+              "distance": "4"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755578038122,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!nHYS3JAp9m264mQO"
+}

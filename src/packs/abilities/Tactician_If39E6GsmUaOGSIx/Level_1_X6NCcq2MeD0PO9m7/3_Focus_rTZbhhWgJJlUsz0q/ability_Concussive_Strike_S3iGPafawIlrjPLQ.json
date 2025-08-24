@@ -1,0 +1,163 @@
+{
+  "name": "Concussive Strike",
+  "type": "ability",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "178",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "concussive-strike",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "action",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "LDNZ7ZtkrReyBEDs": {
+          "type": "damage",
+          "_id": "LDNZ7ZtkrReyBEDs",
+          "name": "",
+          "damage": {
+            "tier1": {
+              "types": [],
+              "value": "3+@chr",
+              "potency": {
+                "characteristic": "none",
+                "value": "@potency.weak"
+              },
+              "properties": []
+            },
+            "tier2": {
+              "types": [],
+              "value": "5+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.average"
+              },
+              "properties": []
+            },
+            "tier3": {
+              "types": [],
+              "value": "8+@chr",
+              "potency": {
+                "characteristic": "",
+                "value": "@potency.strong"
+              },
+              "properties": []
+            }
+          }
+        },
+        "n2s5coNoWVimQudO": {
+          "type": "applied",
+          "_id": "n2s5coNoWVimQudO",
+          "name": "Dazed",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "might",
+                "value": "@potency.weak"
+              },
+              "display": "{{potency}}, dazed (save ends)",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "might",
+                "value": "@potency.average"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "might",
+                "value": "@potency.strong"
+              },
+              "display": "",
+              "always": [],
+              "failure": [],
+              "success": [],
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "Your precise strike leaves your foe struggling to respond."
+  },
+  "effects": [],
+  "folder": "rTZbhhWgJJlUsz0q",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140628632,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "S3iGPafawIlrjPLQ",
+  "sort": 300000,
+  "_key": "!items!S3iGPafawIlrjPLQ"
+}

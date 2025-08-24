@@ -1,0 +1,66 @@
+{
+  "folder": "namgjInmC0X7jtJb",
+  "name": "Mark",
+  "type": "ability",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "177",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "mark",
+    "story": "You draw your allies’ attention to a specific foe—with devastating effect.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target is marked by you until the end of the encounter, until you are dying, or until you use this ability again. You can willingly end your mark on a creature (no action required), and if another tactician marks a creature, your mark on that creature ends. When a creature marked by you is reduced to 0 Stamina, you can use a free triggered action to mark a new target within distance.</p><p>You can initially mark only one creature using this ability, though other tactician abilities allow you to mark additional creatures at the same time. The mastermind tactical doctrine’s Anticipation feature allows you to target additional creatures with this ability starting at 5th level.</p><p>While a creature marked by you is within your line of effect, you and allies within your line of effect gain an edge on power rolls made against that creature. Additionally, whenever you or any ally uses an ability to deal rolled damage to a creature marked by you, you can spend 1 focus to gain one of the following benefits as a free triggered action:</p><ul><li><p><span class=\"fontstyle0\">The ability deals extra damage equal to twice your Reason score.</span></p></li><li><p><span class=\"fontstyle0\">The creature dealing the damage can spend a Recovery.</span></p></li><li><p><span class=\"fontstyle0\">The creature dealing the damage can shift up to a number of squares equal to your Reason score.</span></p></li><li><p><span class=\"fontstyle0\">If you damage a creature marked by you with a melee ability, the creature is taunted by you until the end of their next turn.</span></p></li></ul><p>You can’t gain more than one benefit from the same trigger</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755474003234,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "zyd6C7phOZr6EAQ9",
+  "sort": 0,
+  "_key": "!items!zyd6C7phOZr6EAQ9"
+}

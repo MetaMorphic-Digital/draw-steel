@@ -1,21 +1,28 @@
+import "./pseudo-documents/_types";
 import * as documents from "../../documents/_module.mjs";
 import * as data from "../../data/_module.mjs";
 import * as sheets from "@client/applications/sheets/_module.mjs";
 
 // TODO: Remove the extends if/when Foundry updates HBSMixin to use @template
 
+declare module "./active-effect-config.mjs" {
+  export default interface DrawSteelActiveEffectConfig extends foundry.applications.api.DocumentSheetV2 {
+    document: documents.DrawSteelActiveEffect;
+  }
+}
+
 declare module "./actor-sheet.mjs" {
   export default interface DrawSteelActorSheet extends sheets.ActorSheet {
     actor: documents.DrawSteelActor;
   }
 }
-declare module "./character.mjs" {
-  export default interface DrawSteelActorSheet {
-    actor: documents.DrawSteelActor & { system: data.Actor.CharacterModel };
+declare module "./hero.mjs" {
+  export default interface DrawSteelHeroSheet {
+    actor: documents.DrawSteelActor & { system: data.Actor.HeroModel };
   }
 }
 declare module "./npc.mjs" {
-  export default interface DrawSteelActorSheet {
+  export default interface DrawSteelNPCSheet {
     actor: documents.DrawSteelActor & { system: data.Actor.NPCModel };
   }
 }
@@ -30,6 +37,15 @@ declare module "./item-sheet.mjs" {
   export default interface DrawSteelItemSheet extends sheets.ItemSheet {
     item: documents.DrawSteelItem;
   }
+}
+
+export interface ActiveEffectCategory {
+  /** The type of category. */
+  type: string;
+  /** The localized name of the category. */
+  label: string;
+  /** The effects in the category. */
+  effects: documents.DrawSteelActiveEffect[]
 }
 
 export interface ActorSheetItemContext {
@@ -50,8 +66,15 @@ export interface ActorSheetAbilitiesContext {
   showHeader: boolean;
 }
 
-export interface ActorSheetEquipmentContext {
+export interface ActorSheetTreasureContext {
   label: string;
-  equipment: ActorSheetItemContext[];
+  treasure: ActorSheetItemContext[];
   showAdd: boolean;
+}
+
+export interface ActorSheetComplicationsContext {
+  label: string;
+  complication: ActorSheetItemContext[];
+  showAdd: boolean;
+  showHeader: boolean;
 }

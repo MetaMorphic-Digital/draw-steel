@@ -1,0 +1,89 @@
+{
+  "folder": "YprdZFn9QNUmZlNk",
+  "name": "Chronal Spike",
+  "type": "ability",
+  "_id": "6VgiUFDvsHSeH6yD",
+  "img": "icons/magic/earth/projectile-stone-bullet-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "150",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "chronal-spike",
+    "story": "You foresee the best moment to strike, then exploit it.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "h1cRSCi8X5ozPwUE": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "h1cRSCi8X5ozPwUE",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr"
+            },
+            "tier2": {
+              "value": "10 + @chr"
+            },
+            "tier3": {
+              "value": "13 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can shift up to half your speed before or after you make this strike. Additionally, whenever an effect lets you make a free strike or use a signature ability, you can use this ability instead, paying its discipline cost as usual</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755813403299,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!6VgiUFDvsHSeH6yD"
+}

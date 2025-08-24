@@ -1,0 +1,27 @@
+{{! Biography Tab }}
+<section class="tab biography standard-form {{tab.cssClass}}" data-group="primary" data-tab="biography">
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/biography/languages.hbs"}}
+  <fieldset class="negotiation">
+    <legend>{{systemFields.negotiation.label}}</legend>
+    {{#if isPlay}}
+    <div class="flexrow">
+      {{formGroup systemFields.negotiation.fields.interest value=system.negotiation.interest dataset=datasets.notSource classes="paired slim"}}
+      {{formGroup systemFields.negotiation.fields.patience value=system.negotiation.patience dataset=datasets.notSource classes="paired slim"}}
+    </div>
+    <dl class="fixed-stats">
+      <dt>{{systemFields.negotiation.fields.impression.label}}</dt>
+      <dd>{{system.negotiation.impression}}</dd>
+      <dt>{{systemFields.negotiation.fields.motivations.label}}</dt>
+      <dd>{{motivations.currentMotivations}}</dd>
+      <dt>{{systemFields.negotiation.fields.pitfalls.label}}</dt>
+      <dd>{{motivations.currentPitfalls}}</dd>
+    </dl>
+    {{else}}
+    {{formGroup systemFields.negotiation.fields.impression value=system.negotiation.impression}}
+    {{formGroup systemFields.negotiation.fields.motivations value=system.negotiation.motivations options=motivations.list}}
+    {{formGroup systemFields.negotiation.fields.pitfalls value=system.negotiation.pitfalls options=motivations.list}}
+    {{/if}}
+  </fieldset>
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/biography/biography.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/biography/director-notes.hbs"}}
+</section>

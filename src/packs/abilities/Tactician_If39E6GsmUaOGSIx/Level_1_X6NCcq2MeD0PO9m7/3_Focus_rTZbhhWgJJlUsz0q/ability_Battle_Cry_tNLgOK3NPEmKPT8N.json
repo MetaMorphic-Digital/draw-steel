@@ -1,0 +1,88 @@
+{
+  "name": "Battle Cry",
+  "type": "ability",
+  "img": "icons/creatures/abilities/lion-roar-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "178",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "battle-cry",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "rcbUjWpmoFSi1wS4": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "rcbUjWpmoFSi1wS4",
+          "other": {
+            "tier1": {
+              "display": "Each target gains 1 surge."
+            },
+            "tier2": {
+              "display": "Each target gains 2 surges."
+            },
+            "tier3": {
+              "display": "Each target gains 3 surges."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "You shout a phrase that galvanizes your team."
+  },
+  "effects": [],
+  "folder": "rTZbhhWgJJlUsz0q",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140619879,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "tNLgOK3NPEmKPT8N",
+  "sort": 100000,
+  "_key": "!items!tNLgOK3NPEmKPT8N"
+}

@@ -1,0 +1,118 @@
+{
+  "name": "Squad! On Me!",
+  "type": "ability",
+  "img": "icons/sundries/flags/banner-flag-red-white.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "180",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "squad-on-me",
+    "keywords": [
+      "area"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 1,
+      "secondary": 0,
+      "tertiary": null
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the start of your next turn, each target has a bonus to stability equal to your Might score. Additionally, each target gains 2 surges.</p>",
+      "after": ""
+    },
+    "spend": {
+      "value": null,
+      "text": ""
+    },
+    "story": "Together we are invincible!"
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.kT1PdUuDnWdd8E5j",
+      "transfer": false,
+      "_id": "2A1jYk66M5GxGRpO",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755477050019,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!kT1PdUuDnWdd8E5j.2A1jYk66M5GxGRpO"
+    }
+  ],
+  "folder": "cFVtfkYEyx9FXpdn",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1751140828692,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "kT1PdUuDnWdd8E5j",
+  "sort": 0,
+  "_key": "!items!kT1PdUuDnWdd8E5j"
+}

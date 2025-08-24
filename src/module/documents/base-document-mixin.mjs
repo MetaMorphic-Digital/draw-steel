@@ -1,26 +1,18 @@
-/** @import Document from "@common/abstract/document.mjs"; */
+/**
+ * @import Document from "@common/abstract/document.mjs";
+ * @import { Constructor } from "@common/_types.mjs";
+ */
 
 /**
  * Mixin for common functions used across most or all document classes in this system.
  * Requires the document to have a `system` field.
- * @template {import("@common/_types.mjs").Constructor<Document>} BaseDocument
+ * @template {Constructor<Document>} BaseDocument
  * @param {BaseDocument} base
  *
  */
 export default base => {
+  // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DrawSteelDocument extends base {
-    /** @inheritdoc */
-    getEmbeddedDocument(embeddedName, id, { invalid = false, strict = false } = {}) {
-      const systemEmbeds = this.system?.constructor.metadata.embedded ?? {};
-      if (embeddedName in systemEmbeds) {
-        const path = systemEmbeds[embeddedName];
-        return foundry.utils.getProperty(this, path).get(id, { invalid, strict }) ?? null;
-      }
-      return super.getEmbeddedDocument(embeddedName, id, { invalid, strict });
-    }
-
-    /* -------------------------------------------------- */
-
     /**
      * Obtain the embedded collection of a given pseudo-document type.
      * @param {string} embeddedName   The document name of the embedded collection.
@@ -29,11 +21,21 @@ export default base => {
     getEmbeddedPseudoDocumentCollection(embeddedName) {
       const collectionPath = this.system?.constructor.metadata.embedded?.[embeddedName];
       if (!collectionPath) {
-        throw new Error(
-          `${embeddedName} is not a valid embedded Pseudo-Document within the [${this.type}] ${this.documentName} subtype!`,
-        );
+        throw new Error(`${embeddedName} is not a valid embedded Pseudo-Document within the [${this.type}] ${this.documentName} subtype!`);
       }
       return foundry.utils.getProperty(this, collectionPath);
+    }
+
+    /* -------------------------------------------------- */
+
+    /** @inheritdoc */
+    getEmbeddedDocument(embeddedName, id, { invalid = false, strict = false } = {}) {
+      const systemEmbeds = this.system?.constructor.metadata.embedded ?? {};
+      if (embeddedName in systemEmbeds) {
+        const path = systemEmbeds[embeddedName];
+        return foundry.utils.getProperty(this, path).get(id, { invalid, strict }) ?? null;
+      }
+      return super.getEmbeddedDocument(embeddedName, id, { invalid, strict });
     }
 
     /* -------------------------------------------------- */

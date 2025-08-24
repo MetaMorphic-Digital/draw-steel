@@ -3,33 +3,34 @@ import { PowerRollModifiers } from "../../_types.js";
 import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
-import { DamagePowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
+import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
+import { ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
 
-export type ItemMetaData = Readonly<{
-  /** The expected `type` value */
-  type: string;
-  /** Actor types that this item cannot be placed on */
+export type ItemMetaData = Readonly<SubtypeMetadata & {
+  /** Actor types that this item cannot be placed on. */
   invalidActorTypes: string[];
+  /** Is this item type restricted to only appearing in compendium packs? */
+  packOnly: boolean;
   /** Are there any partials to fill in the Details tab of the item? */
   detailsPartial?: string[];
-} & SubtypeMetadata>;
+}>;
 
 declare module "./base.mjs" {
   export default interface BaseItemModel {
     parent: DrawSteelItem;
     description: {
       value: string;
-      gm: string;
+      director: string;
     }
     source: SourceModel;
-    /** The Draw Steel ID, indicating a unique game rules element */
+    /** The Draw Steel ID, indicating a unique game rules element. */
     _dsid: string;
   }
 }
 
 declare module "./ability.mjs" {
 
-  type PowerRollEffects = DamagePowerRollEffect | OtherPowerRollEffect;
+  type PowerRollEffects = AppliedPowerRollEffect | DamagePowerRollEffect | ForcedMovementPowerRollEffect | OtherPowerRollEffect;
 
   export default interface AbilityModel {
     description: never;
@@ -42,22 +43,23 @@ declare module "./ability.mjs" {
       type: keyof typeof ds["CONFIG"]["abilities"]["distances"];
       primary: number;
       secondary: number;
+      tertiary: number;
     }
     trigger: string;
     target: {
       type: string;
-      /** Null value indicates "all"*/
+      /** Null value indicates "all". */
       value: number | null;
     }
     power: {
-      /** Added during base data prep, not a schema value */
+      /** Added during base data prep, not a schema value. */
       characteristic: {
         key: string;
-        /** Null value during data prep or if no parent actor */
+        /** Null value during data prep or if no parent actor. */
         value: null | number;
       }
       roll: {
-        /** Added during data prep */
+        /** Added during data prep. */
         enabled: boolean;
         formula: string;
         characteristics: Set<string>;
@@ -80,18 +82,31 @@ declare module "./ability.mjs" {
   }
 }
 
+declare module "./advancement.mjs" {
+  type Advancement = ItemGrantAdvancement | LanguageAdvancement | SkillAdvancement;
+
+  export default interface AdvancementModel {
+    advancements: ModelCollection<Advancement>;
+  }
+}
+
 declare module "./ancestry.mjs" {
   // export default interface AncestryModel { }
 }
 
 declare module "./career.mjs" {
-  // export default interface CareerModel { }
+  export default interface CareerModel {
+    projectPoints: number;
+    renown: number;
+    wealth: number;
+  }
 }
 
 declare module "./class.mjs" {
   export default interface ClassModel {
     level: number;
     primary: string;
+    epic: string;
     turnGain: string;
     minimum: string;
     characteristics: {
@@ -113,8 +128,8 @@ declare module "./culture.mjs" {
   // export default interface CultureModel { }
 }
 
-declare module "./equipment.mjs" {
-  export default interface EquipmentModel {
+declare module "./treasure.mjs" {
+  export default interface TreasureModel {
     kind: keyof typeof ds["CONFIG"]["equipment"]["kinds"];
     category: keyof typeof ds["CONFIG"]["equipment"]["categories"];
     echelon: keyof typeof ds["CONFIG"]["echelons"];
@@ -138,6 +153,11 @@ declare module "./feature.mjs" {
       value: string;
       subtype: string;
     }
+    prerequisites: {
+      value: string;
+    }
+    story: string;
+    points: number;
   }
 }
 
@@ -186,5 +206,11 @@ declare module "./project.mjs" {
       amount: string;
       display: string
     }
+  }
+}
+
+declare module "./subclass.mjs" {
+  export default interface SubclassModel {
+    classLink: string;
   }
 }

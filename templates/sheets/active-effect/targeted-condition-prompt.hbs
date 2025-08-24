@@ -1,0 +1,16 @@
+<div>
+  <div class="header">{{localize "DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Prompt" condition=condition}}</div>
+  <div class="condition-target">
+    {{#if target}}
+    {{localize "DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Selected"}} {{target.name}}
+    {{else}}
+    {{localize "DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.NoneSelected" condition=condition}}
+    {{/if}}
+  </div>
+
+  <footer class="form-footer">
+    <button type="submit">
+      <i class="fa-solid fa-user"></i> {{localize "DRAW_STEEL.ActiveEffect.TargetedConditionPrompt.Choose"}}
+    </button>
+  </footer>
+</div>

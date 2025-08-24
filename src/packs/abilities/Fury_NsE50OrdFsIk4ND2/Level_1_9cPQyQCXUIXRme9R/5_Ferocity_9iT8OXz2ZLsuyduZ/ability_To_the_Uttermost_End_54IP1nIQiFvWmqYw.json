@@ -1,0 +1,86 @@
+{
+  "folder": "9iT8OXz2ZLsuyduZ",
+  "name": "To the Uttermost End",
+  "type": "ability",
+  "_id": "54IP1nIQiFvWmqYw",
+  "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "134",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "to-the-uttermost-end",
+    "story": "You gut your life force to ensure a foe’s demise.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "UZzL5kwla7Qtvarz": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "UZzL5kwla7Qtvarz",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr"
+            },
+            "tier2": {
+              "value": "11 + @chr"
+            },
+            "tier3": {
+              "value": "16 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "While you are winded, this ability deals an extra  1d6 damage for each ferocity spent. While you are dying, it deals an  extra 1d10 damage for each ferocity spent. In either case, you lose 1d6 Stamina after making this strike.",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755580494983,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!54IP1nIQiFvWmqYw"
+}
