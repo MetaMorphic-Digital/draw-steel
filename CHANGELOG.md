@@ -18,6 +18,14 @@
 ### Known Issues
 -->
 
+## 0.8.1
+
+### Added
+
+- Expanded end of encounter prompt to reset surges. (#931)
+
+### Changed
+
 ## 0.8.0
 
 ### Added
