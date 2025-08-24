@@ -486,10 +486,9 @@ export default class HeroModel extends BaseActorModel {
       throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
     }
 
-    const levelRange = { start: this.level + 1, end: this.level + levels };
-
-    if (!cls) item.system.applyAdvancements({ actor: this.parent, levels: levelRange });
+    if (!cls) item.system.applyAdvancements({ actor: this.parent });
     else {
+      const levelRange = { start: this.level + 1, end: this.level + levels };
       const chains = (await Promise.all(this.parent.items.map(i => {
         if (i.supportsAdvancements) return i.system.createChains(levelRange.start, levelRange.end);
         return [];
