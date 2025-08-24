@@ -913,6 +913,10 @@ export const monsters = {
       label: "DRAW_STEEL.Actor.npc.KEYWORDS.Plant",
       group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
     },
+    soulless: {
+      label: "DRAW_STEEL.Actor.npc.KEYWORDS.Soulless",
+      group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
+    },
     swarm: {
       label: "DRAW_STEEL.Actor.npc.KEYWORDS.Swarm",
       group: "DRAW_STEEL.Actor.npc.KeywordGroups.General",
