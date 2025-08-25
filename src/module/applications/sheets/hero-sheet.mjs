@@ -36,7 +36,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
   static PARTS = {
     header: {
       template: systemPath("templates/sheets/actor/hero-sheet/header.hbs"),
-      templates: ["templates/sheets/actor/hero-sheet/header.hbs"].map(t => systemPath(t)),
+      templates: ["templates/sheets/actor/hero-sheet/header.hbs"].map((t) => systemPath(t)),
     },
     tabs: {
       // Foundry-provided generic template
@@ -44,12 +44,14 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     },
     stats: {
       template: systemPath("templates/sheets/actor/hero-sheet/stats.hbs"),
-      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/stats/${t}`)),
+      templates: ["characteristics.hbs", "combat.hbs", "movement.hbs", "immunities-weaknesses.hbs"].map((t) =>
+        systemPath(`templates/sheets/actor/shared/partials/stats/${t}`),
+      ),
       scrollable: [""],
     },
     features: {
       template: systemPath("templates/sheets/actor/hero-sheet/features.hbs"),
-      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map(t => systemPath(t)),
+      templates: ["templates/sheets/actor/shared/partials/features/features.hbs"].map((t) => systemPath(t)),
       scrollable: [""],
     },
     equipment: {
@@ -70,7 +72,9 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     },
     biography: {
       template: systemPath("templates/sheets/actor/hero-sheet/biography.hbs"),
-      templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map(t => systemPath(`templates/sheets/actor/shared/partials/biography/${t}`)),
+      templates: ["languages.hbs", "biography.hbs", "director-notes.hbs"].map((t) =>
+        systemPath(`templates/sheets/actor/shared/partials/biography/${t}`),
+      ),
       scrollable: [""],
     },
   };
@@ -113,11 +117,13 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @returns {string}
    */
   _getSkillList() {
-    const list = this.actor.system.hero.skills.reduce((skills, skill) => {
-      skill = ds.CONFIG.skills.list[skill]?.label;
-      if (skill) skills.push(skill);
-      return skills;
-    }, []);
+    const list = this.actor.system.hero.skills
+      .reduce((skills, skill) => {
+        skill = ds.CONFIG.skills.list[skill]?.label;
+        if (skill) skills.push(skill);
+        return skills;
+      }, [])
+      .sort();
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
   }
@@ -234,16 +240,24 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    */
   _getMeasurements() {
     const heightOptions = Object.entries(ds.CONFIG.measurements.height).map(([value, config]) => ({
-      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
+      value,
+      label: config.label,
+      group: ds.CONFIG.measurements.groups[config.group]?.label,
     }));
     const weightOptions = Object.entries(ds.CONFIG.measurements.weight).map(([value, config]) => ({
-      value, label: config.label, group: ds.CONFIG.measurements.groups[config.group]?.label,
+      value,
+      label: config.label,
+      group: ds.CONFIG.measurements.groups[config.group]?.label,
     }));
 
     return {
-      heightUnit: ds.CONFIG.measurements.height[this.actor.system.biography.height.units]?.label ?? this.actor.system.biography.height.units,
+      heightUnit:
+        ds.CONFIG.measurements.height[this.actor.system.biography.height.units]?.label ??
+        this.actor.system.biography.height.units,
       heightOptions,
-      weightUnit: ds.CONFIG.measurements.weight[this.actor.system.biography.weight.units]?.label ?? this.actor.system.biography.weight.units,
+      weightUnit:
+        ds.CONFIG.measurements.weight[this.actor.system.biography.weight.units]?.label ??
+        this.actor.system.biography.weight.units,
       weightOptions,
     };
   }
@@ -382,7 +396,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     if (!item) return;
 
     const quantity = item.system.quantity ?? 0;
-    const updatedQuantity = (quantityModification === "increase") ? quantity + 1 : quantity - 1;
+    const updatedQuantity = quantityModification === "increase" ? quantity + 1 : quantity - 1;
 
     item.update({ "system.quantity": updatedQuantity });
   }
@@ -399,11 +413,12 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     const { type } = target.dataset;
 
     const appOptions = {
-      advancements: this.actor.system._unfilledTraits[type].map(uuid => fromUuidSync(uuid, { relative: this.actor })),
+      advancements: this.actor.system._unfilledTraits[type].map((uuid) => fromUuidSync(uuid, { relative: this.actor })),
     };
 
     // special name for the language title
-    if (type === "language") foundry.utils.setProperty(appOptions, "window.title", "DRAW_STEEL.ADVANCEMENT.FillTrait.languageTitle");
+    if (type === "language")
+      foundry.utils.setProperty(appOptions, "window.title", "DRAW_STEEL.ADVANCEMENT.FillTrait.languageTitle");
 
     FillTraitDialog.create(appOptions);
   }
@@ -446,8 +461,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
           const message = game.i18n.localize("DRAW_STEEL.Item.subclass.ERRORS.NeedClass");
           ui.notifications.error(message, { console: false });
           throw new Error(message);
-        }
-        else if (cls.dsid !== item.system.classLink) {
+        } else if (cls.dsid !== item.system.classLink) {
           const message = game.i18n.format("DRAW_STEEL.Item.subclass.ERRORS.WrongDSID", {
             expected: item.system.classLink,
             actual: cls.dsid,
@@ -490,8 +504,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         if (projectDropTarget && (item.type === "treasure")) {
           const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
           return { name, type: "project", "system.yield.item": item.uuid };
-        }
-        else if (item.supportsAdvancements && (item.getEmbeddedPseudoDocumentCollection("Advancement").size > 0)) {
+        } else if (item.supportsAdvancements && (item.getEmbeddedPseudoDocumentCollection("Advancement").size > 0)) {
           ui.notifications.error("DRAW_STEEL.SHEET.NoCreateAdvancement", { format: { name: item.name } });
           return null;
         }
@@ -501,7 +514,11 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
         return game.items.fromCompendium(item, { keepId, clearFolder: true });
       }),
     );
-    await this.actor.createEmbeddedDocuments("Item", droppedItemData.filter(_ => _), { keepId: true });
+    await this.actor.createEmbeddedDocuments(
+      "Item",
+      droppedItemData.filter((_) => _),
+      { keepId: true },
+    );
     return folder;
   }
 }
