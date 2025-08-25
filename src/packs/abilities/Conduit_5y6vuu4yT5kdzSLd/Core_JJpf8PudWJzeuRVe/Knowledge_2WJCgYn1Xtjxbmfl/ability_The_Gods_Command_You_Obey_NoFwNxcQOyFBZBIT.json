@@ -1,0 +1,123 @@
+{
+  "folder": "2WJCgYn1Xtjxbmfl",
+  "name": "The Gods Command You Obey",
+  "type": "ability",
+  "_id": "NoFwNxcQOyFBZBIT",
+  "img": "icons/magic/control/debuff-energy-hold-levitate-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "102",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "the-gods-command-you-obey",
+    "story": "You speak with the voice of your saint, commanding your enemies.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "Z4jruXqCHnJb3RFn": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "Z4jruXqCHnJb3RFn",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier2": {
+              "value": "7 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "11 + @chr",
+              "types": [
+                "holy"
+              ]
+            }
+          }
+        },
+        "emXoqbpvmMzxglP0": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "emXoqbpvmMzxglP0",
+          "other": {
+            "tier1": {
+              "potency": {
+                "characteristic": "presence"
+              },
+              "display": "{{Potency}}, before taking damage, the target makes a free strike against a target you choose."
+            },
+            "tier2": {
+              "display": "{{Potency}}, before taking damage, the  target uses an ability of your choice and you choose any  targets for that ability",
+              "potency": {
+                "characteristic": "presence"
+              }
+            },
+            "tier3": {
+              "display": "{{Potency}}, before taking damage, the  target shifts up to their speed to a location you choose, uses  an ability of your choice, and you choose any targets for that  ability",
+              "potency": {
+                "characteristic": "presence"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756153992063,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!NoFwNxcQOyFBZBIT"
+}

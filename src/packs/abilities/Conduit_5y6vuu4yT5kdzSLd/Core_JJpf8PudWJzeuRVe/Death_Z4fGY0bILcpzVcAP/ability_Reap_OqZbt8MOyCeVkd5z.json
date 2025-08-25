@@ -1,0 +1,67 @@
+{
+  "folder": "Z4fGY0bILcpzVcAP",
+  "name": "Reap",
+  "type": "ability",
+  "_id": "OqZbt8MOyCeVkd5z",
+  "img": "icons/magic/death/weapon-scythe-rune-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "103",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "reap",
+    "story": "The gods reward those who smite their foes.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the start of your next turn, each time a target kills an enemy, they regain Stamina equal to 5 + your Intuition score.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756154752353,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!OqZbt8MOyCeVkd5z"
+}

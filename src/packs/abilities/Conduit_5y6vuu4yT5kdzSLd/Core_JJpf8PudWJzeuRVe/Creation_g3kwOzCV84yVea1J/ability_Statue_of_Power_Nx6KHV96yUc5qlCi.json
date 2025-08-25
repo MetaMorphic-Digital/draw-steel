@@ -1,25 +1,25 @@
 {
-  "folder": "JJpf8PudWJzeuRVe",
-  "name": "Healing Grace",
+  "folder": "g3kwOzCV84yVea1J",
+  "name": "Statue of Power",
   "type": "ability",
-  "_id": "S1KR2X2c81VGQqsO",
-  "img": "icons/magic/life/heart-hand-gold-green.webp",
+  "_id": "Nx6KHV96yUc5qlCi",
+  "img": "icons/environment/people/cleric-orange.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "98",
+      "page": "103",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "healing-grace",
-    "story": "Your divine energy restores the righteous.",
+    "_dsid": "statue-of-power",
+    "story": "A marble statue of your deity rises from the earth.",
     "keywords": [
       "magic",
       "ranged"
     ],
     "type": "maneuver",
     "category": "heroic",
-    "resource": null,
+    "resource": 5,
     "trigger": "",
     "distance": {
       "type": "ranged",
@@ -27,7 +27,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "selfOrAlly"
+      "type": "special"
     },
     "power": {
       "roll": {
@@ -37,12 +37,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The target can spend a Recovery.</p>",
-      "after": "<p>Spend 1+ Piety: For each piety spent, choose one of the following enhancements:</p><ul><li><p>You can target one additional ally within distance.</p></li><li><p>You can end one effect on a target that is ended by a saving throw or that ends at the end of their turn.</p></li><li><p>A prone target can stand up.</p></li><li><p>A target can spend 1 additional Recovery.</p></li></ul>"
+      "before": "<p>A size 2 statue rises out of the ground in an unoccupied space within distance and lasts until the end of the encounter. While within 3 squares of the statue, you gain 1 surge at the start of each of your turns. Each ally within 3 squares of the statue gains this same benefit. The statue is destroyed if it takes 20 or more damage. It has immunity all to poison and psychic damage.</p>",
+      "after": ""
     },
     "spend": {
       "text": "",
-      "value": 1
+      "value": null
     }
   },
   "effects": [],
@@ -57,10 +57,10 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755647191067,
+    "systemVersion": "0.8.1",
+    "createdTime": 1756155380781,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!S1KR2X2c81VGQqsO"
+  "_key": "!items!Nx6KHV96yUc5qlCi"
 }
