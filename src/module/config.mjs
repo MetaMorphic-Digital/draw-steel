@@ -1749,3 +1749,41 @@ export const projects = {
   ],
 };
 preLocalize("projects.types", { key: "label" });
+
+/**
+ * @typedef SourceBook
+ * @property {string} name A longer human-readable title for the book that will display in the Compendium Browser.
+ */
+
+/**
+ * Source books provided in the data list for the Document Source Input.
+ * The keys are abbreviations or other-human readable text that will display in the header of NPC & Item sheets.
+ * @type {Record<string, SourceBook>}
+ */
+const sourceBooks = {
+  Heroes: {
+    name: "Draw Steel Heroes",
+  },
+  Monsters: {
+    name: "Draw Steel Monsters",
+  },
+};
+
+/**
+ * @typedef ContentLicense
+ * @property {string} [name] A longer version of the name of the license.
+ */
+
+/**
+ * Licenses for Draw Steel content.
+ * The keys are human readable in the sources panel.
+ * @type {Record<string, ContentLicense>}
+ */
+const sourceLicenses = {
+  "Draw Steel Creator License": {},
+};
+
+export const sourceInfo = {
+  books: sourceBooks,
+  licenses: sourceLicenses,
+};
