@@ -26,6 +26,10 @@
 
 ### Changed
 
+### Fixed
+
+- Fixed an issue where the migration would error when migrating personal compendiums.
+
 ## 0.8.0
 
 ### Added
