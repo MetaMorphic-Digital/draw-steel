@@ -1,8 +1,9 @@
 {
-  "folder": "roGg2qsPifapFQEN",
-  "name": "Furious Charge",
+  "folder": "EGlYHDfO6nZCu5ql",
+  "name": "Lines of Force",
   "type": "ability",
-  "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+  "_id": "6JirKNIULN4f4Ii0",
+  "img": "icons/skills/movement/arrow-upward-yellow.webp",
   "system": {
     "source": {
       "book": "Heroes",
@@ -10,8 +11,8 @@
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "furious-charge",
-    "story": "In your anger, you revert to a more bestial form.",
+    "_dsid": "lines-of-force",
+    "story": "You redirect the energy of motion.",
     "keywords": [
       "magic",
       "melee"
@@ -19,14 +20,14 @@
     "type": "triggered",
     "category": "",
     "resource": null,
-    "trigger": "You lose Stamina and are not dying.",
+    "trigger": "The target would be force moved",
     "distance": {
-      "type": "self",
+      "type": "melee",
       "primary": 1
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "selfOrAlly"
     },
     "power": {
       "roll": {
@@ -40,11 +41,12 @@
       "after": ""
     },
     "spend": {
-      "text": "if you are not dying, you can spend a Recovery.",
+      "text": "The forced movement distance gains a bonus equal to twice your Might score instead.",
       "value": 1
     }
   },
   "effects": [],
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -56,11 +58,9 @@
     "coreVersion": "13.347",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755577635719,
+    "createdTime": 1755576846558,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "DVAuB3PvTz4Q5Jmq",
-  "sort": 100000,
-  "_key": "!items!DVAuB3PvTz4Q5Jmq"
+  "_key": "!items!6JirKNIULN4f4Ii0"
 }
