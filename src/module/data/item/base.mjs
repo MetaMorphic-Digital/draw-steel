@@ -68,7 +68,8 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+    super.prepareDerivedData();
+    this.source.prepareData();
   }
 
   /* -------------------------------------------------- */

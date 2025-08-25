@@ -1752,26 +1752,28 @@ preLocalize("projects.types", { key: "label" });
 
 /**
  * @typedef SourceBook
- * @property {string} name A longer human-readable title for the book that will display in the Compendium Browser.
+ * @property {string} label   An i18n key for the label that will show in sheet headers.
+ * @property {string} name    An i18n key for the longer title that will display in the Compendium Browser.
  */
 
 /**
  * Source books provided in the data list for the Document Source Input.
- * The keys are abbreviations or other-human readable text that will display in the header of NPC & Item sheets.
  * @type {Record<string, SourceBook>}
  */
 const sourceBooks = {
   Heroes: {
-    name: "Draw Steel Heroes",
+    label: "DRAW_STEEL.SOURCE.Books.Heroes.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Heroes.Title",
   },
   Monsters: {
-    name: "Draw Steel Monsters",
+    label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
   },
 };
 
 /**
  * @typedef ContentLicense
- * @property {string} [name] A longer version of the name of the license.
+ * @property {string} [label] An i18n key pointing to longer version of the name of the license.
  */
 
 /**
@@ -1780,10 +1782,14 @@ const sourceBooks = {
  * @type {Record<string, ContentLicense>}
  */
 const sourceLicenses = {
-  "Draw Steel Creator License": {},
+  "Draw Steel Creator License": {
+    label: "DRAW_STEEL.SOURCE.Licenses.DSCL",
+  },
 };
 
 export const sourceInfo = {
   books: sourceBooks,
   licenses: sourceLicenses,
 };
+preLocalize("sourceInfo.books", { keys: ["label", "title"] });
+preLocalize("sourceInfo.licenses", { keys: ["label"] });

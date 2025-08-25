@@ -49,15 +49,11 @@ export default class DocumentSourceInput extends DocumentInput {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
     context.book = {
-      options: Object.entries(ds.CONFIG.sourceInfo.books).map(([value, { name }]) => ({ label: name, value })),
+      options: Object.entries(ds.CONFIG.sourceInfo.books).map(([value, { title }]) => ({ label: title, value })),
       listId: this.document.id + "-bookList",
     };
     context.license = {
-      options: Object.entries(ds.CONFIG.sourceInfo.licenses).map(([value, config]) => {
-        const opt = { value };
-        if (config.name) opt.label = config.name;
-        return opt;
-      }),
+      options: Object.entries(ds.CONFIG.sourceInfo.licenses).map(([value, { label }]) => ({ label, value })),
       listId: this.document.id + "-licenseList",
     };
     context.sourceValues = this.document.system.source._source;

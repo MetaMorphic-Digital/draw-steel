@@ -117,7 +117,7 @@ export default class NPCModel extends BaseActorModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+    this.source.prepareData();
   }
 
   /* -------------------------------------------------- */
