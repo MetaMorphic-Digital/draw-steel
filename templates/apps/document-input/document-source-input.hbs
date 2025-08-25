@@ -3,21 +3,21 @@
     <label>{{sourceFields.book.label}}</label>
     <div class="form-fields">
       <input type="text" name="system.source.book" value="{{sourceValues.book}}" list="{{book.listId}}">
+      <datalist id="{{book.listId}}">
+        {{selectOptions book.options}}
+      </datalist>
     </div>
   </div>
-  <datalist id="{{book.listId}}">
-    {{selectOptions book.options}}
-  </datalist>
   {{formGroup sourceFields.page value=sourceValues.page rootId=rootId}}
   <div class="form-group">
     <label>{{sourceFields.license.label}}</label>
     <div class="form-fields">
       <input type="text" name="system.source.license" value="{{sourceValues.license}}" list="{{license.listId}}">
+      <datalist id="{{license.listId}}">
+        {{selectOptions license.options}}
+      </datalist>
     </div>
   </div>
-  <datalist id="{{license.listId}}">
-    {{selectOptions license.options}}
-  </datalist>
   {{formGroup sourceFields.revision value=sourceValues.revision rootId=rootId}}
   {{#if systemFields._dsid}}
   {{formGroup systemFields._dsid value=systemSource._dsid rootId=rootId}}

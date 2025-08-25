@@ -28,6 +28,23 @@ export default class DocumentSourceInput extends DocumentInput {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Fetches source info from module manifests and adds it to CONFIG.DRAW_STEEL.
+   * This allows modules that don't otherwise have code to add to the sources.
+   * @internal Only run once inside `init` hook.
+   */
+  static addModuleSources() {
+    for (const m of game.modules) {
+      if (!m.active) continue;
+      const books = foundry.utils.getProperty(m, "flags.draw-steel.books");
+      if (books) Object.assign(ds.CONFIG.sourceInfo.books, books);
+      const licenses = foundry.utils.getProperty(m, "flags.draw-steel.licenses");
+      if (licenses) Object.assign(ds.CONFIG.sourceInfo.licenses, licenses);
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
