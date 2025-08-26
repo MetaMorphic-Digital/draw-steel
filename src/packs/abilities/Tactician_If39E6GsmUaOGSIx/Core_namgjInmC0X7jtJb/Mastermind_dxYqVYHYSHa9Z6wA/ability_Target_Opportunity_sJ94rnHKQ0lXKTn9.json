@@ -1,0 +1,66 @@
+{
+  "folder": "dxYqVYHYSHa9Z6wA",
+  "name": "Target Opportunity",
+  "type": "ability",
+  "_id": "sJ94rnHKQ0lXKTn9",
+  "img": "icons/skills/targeting/crosshair-triple-strike-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "179",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "target-opportunity",
+    "story": "You point out easy targets to your friends, allowing them to include  more enemies in their attacks.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 2
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each target is marked by you, and you gain two surges.</p><p><strong>Mark Benefit:</strong> Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to add one additional target to the strike.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756168805191,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!sJ94rnHKQ0lXKTn9"
+}

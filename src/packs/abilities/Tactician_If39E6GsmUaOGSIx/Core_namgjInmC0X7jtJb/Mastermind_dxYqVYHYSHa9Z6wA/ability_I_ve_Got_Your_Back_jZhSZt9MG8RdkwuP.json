@@ -1,0 +1,121 @@
+{
+  "folder": "dxYqVYHYSHa9Z6wA",
+  "name": "I've Got Your Back",
+  "type": "ability",
+  "_id": "jZhSZt9MG8RdkwuP",
+  "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "ive-got-your-back",
+    "story": "Your enemy will think twice about attacking your friend.",
+    "keywords": [
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "rmCAcu21XDboZggx": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "rmCAcu21XDboZggx",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr"
+            },
+            "tier2": {
+              "value": "9 + @chr"
+            },
+            "tier3": {
+              "value": "12 + @chr"
+            }
+          }
+        },
+        "EViJxKZ1GzVq47sX": {
+          "name": "Taunted",
+          "img": null,
+          "type": "applied",
+          "_id": "EViJxKZ1GzVq47sX",
+          "applied": {
+            "tier1": {
+              "display": "taunted (EoT)",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>One ally adjacent to the target can spend a Recovery.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756168602015,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!jZhSZt9MG8RdkwuP"
+}
