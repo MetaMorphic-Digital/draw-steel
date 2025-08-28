@@ -1,4 +1,4 @@
-/** @import { CombatantGroupData } from "@common/types.mjs"; */
+/** @import { CombatantGroupData } from "@common/documents/_types.mjs"; */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass.
