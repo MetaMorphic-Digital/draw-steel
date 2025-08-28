@@ -1,6 +1,6 @@
 import { systemPath } from "../constants.mjs";
 
-/** @import {HotReloadData} from "@client/types.mjs" */
+/** @import {HotReloadData} from "@client/_types.mjs" */
 
 /**
  * A hook event that fires when a package that is being watched by the hot reload system has a file changed.
@@ -14,7 +14,7 @@ export function hotReload(data) {
   // Possible need to update this if we add other languages into the base system
   if (data.path === systemPath("lang/en.json")) {
     // Hook is called *before* i18n is updated so need to wait for that to resolve
-    // Can be removed if https://github.com/foundryvtt/foundryvtt/issues/11762 is implemented
+    // Revisit in v14 vis a vis https://github.com/foundryvtt/foundryvtt/issues/13285
     queueMicrotask(() => {
       // Repeat the i18n process from Localization.#localizeDataModels
       for (const documentName of CONST.ALL_DOCUMENT_TYPES) {

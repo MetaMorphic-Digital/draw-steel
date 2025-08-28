@@ -3,10 +3,12 @@ import { requiredInteger, setOptions } from "../helpers.mjs";
 import BaseActorModel from "./base.mjs";
 import SourceModel from "../models/source.mjs";
 
-/** @import DrawSteelItem from "../../documents/item.mjs"; */
-/** @import AbilityModel from "../item/ability.mjs"; */
-/** @import { MaliceModel } from "../settings/_module.mjs"; */
-/** @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs"; */
+/**
+ * @import DrawSteelItem from "../../documents/item.mjs";
+ * @import AbilityModel from "../item/ability.mjs";
+ * @import { MaliceModel } from "../settings/_module.mjs";
+ * @import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
+ */
 
 /**
  * NPCs are created and controlled by the director.

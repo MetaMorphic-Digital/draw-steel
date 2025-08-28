@@ -1,8 +1,10 @@
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
-/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import DrawSteelActor from "../../../documents/actor.mjs" */
+/**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
+ */
 
 const { ux, sidebar } = foundry.applications;
 

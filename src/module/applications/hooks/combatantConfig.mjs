@@ -1,6 +1,8 @@
-/** @import DrawSteelCombatant from "../../documents/combatant.mjs" */
-/** @import { ApplicationRenderOptions } from "@client/applications/_types.mjs" */
-/** @import CombatantConfig from "@client/applications/sheets/combatant-config.mjs" */
+/**
+ * @import DrawSteelCombatant from "../../documents/combatant.mjs";
+ * @import { ApplicationRenderOptions } from "@client/applications/_types.mjs";
+ * @import CombatantConfig from "@client/applications/sheets/combatant-config.mjs";
+ */
 
 /**
  * A hook event that fires when the CombatantConfig application is rendered.

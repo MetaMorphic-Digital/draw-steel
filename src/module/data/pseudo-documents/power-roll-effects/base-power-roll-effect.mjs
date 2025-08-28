@@ -1,8 +1,10 @@
 import FormulaField from "../../fields/formula-field.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 
-/** @import { DataSchema } from "@common/abstract/_types.mjs" */
-/** @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs"; */
+/**
+ * @import { DataSchema } from "@common/abstract/_types.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
+ */
 
 const { SchemaField, StringField } = foundry.data.fields;
 
