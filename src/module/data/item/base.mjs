@@ -68,7 +68,8 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+    super.prepareDerivedData();
+    this.source.prepareData();
   }
 
   /* -------------------------------------------------- */
@@ -87,7 +88,23 @@ export default class BaseItemModel extends DrawSteelSystemModel {
 
     if (this.constructor.metadata.invalidActorTypes?.includes(this.parent.actor?.type)) return false;
 
-    if (!this._dsid) this.updateSource({ _dsid: data.name.slugify({ strict: true }) });
+    const updates = {};
+
+    const compendium = game.packs.get(this.parent.pack);
+    if (compendium) {
+      if (compendium.metadata.packageType === "system") foundry.utils.setProperty(updates, "source.license", "Draw Steel Creator License");
+      else if (compendium.metadata.packageType === "module") {
+        const m = game.modules.get(compendium.metadata.packageName);
+        const defaultBook = foundry.utils.getProperty(m, "flags.draw-steel.defaultBook");
+        if (defaultBook) foundry.utils.setProperty(updates, "source.book", defaultBook);
+        const defaultLicense = foundry.utils.getProperty(m, "flags.draw-steel.defaultLicense");
+        if (defaultLicense) foundry.utils.setProperty(updates, "source.license", defaultLicense);
+      }
+    }
+
+    if (!this._dsid) updates._dsid = data.name.slugify({ strict: true });
+
+    if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
   }
 
   /* -------------------------------------------------- */

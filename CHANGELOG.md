@@ -22,6 +22,7 @@
 
 ### Added
 
+- Added suggested books and licenses in the source input form. (#841)
 - Expanded end of encounter prompt to reset surges. (#931)
 
 ### Changed
