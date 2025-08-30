@@ -117,7 +117,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       skill = ds.CONFIG.skills.list[skill]?.label;
       if (skill) skills.push(skill);
       return skills;
-    }, []);
+    }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
     const formatter = game.i18n.getListFormatter();
     return formatter.format(list);
   }
