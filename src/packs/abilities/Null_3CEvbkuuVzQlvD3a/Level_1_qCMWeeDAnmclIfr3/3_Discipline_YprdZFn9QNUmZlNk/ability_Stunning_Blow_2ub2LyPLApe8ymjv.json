@@ -1,0 +1,171 @@
+{
+  "folder": "YprdZFn9QNUmZlNk",
+  "name": "Stunning Blow",
+  "type": "ability",
+  "_id": "2ub2LyPLApe8ymjv",
+  "img": "icons/magic/lightning/bolts-strike-salvo-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "150",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "stunning-blow",
+    "story": "You focus your psionic technique into a concussive punch.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "PLikxV71NQBG4nre": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "PLikxV71NQBG4nre",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "7 + @chr"
+            }
+          }
+        },
+        "3HjyE0x1VRkcdIgn": {
+          "name": "Dazed and Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "3HjyE0x1VRkcdIgn",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, dazed and slowed (save ends)",
+              "effects": {
+                "iSjalAP8mLwf5Sl9": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "intuition"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "iSjalAP8mLwf5Sl9": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "iSjalAP8mLwf5Sl9": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Dazed and Slowed",
+      "img": "icons/svg/daze.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.2ub2LyPLApe8ymjv",
+      "transfer": false,
+      "_id": "iSjalAP8mLwf5Sl9",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "dazed",
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755821553820,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!2ub2LyPLApe8ymjv.iSjalAP8mLwf5Sl9"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755821423468,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!2ub2LyPLApe8ymjv"
+}

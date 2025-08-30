@@ -1,0 +1,68 @@
+{
+  "folder": "JJyffioQwIEokL6D",
+  "name": "Blocking",
+  "type": "ability",
+  "_id": "YkV7rgFk8ijY9UTc",
+  "img": "icons/magic/control/energy-stream-link-white.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "205",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "blocking",
+    "story": "No, no, no, you lose the audience that way. Try it like this …",
+    "keywords": [
+      "area",
+      "magic",
+      "none"
+    ],
+    "type": "none",
+    "category": "",
+    "resource": null,
+    "trigger": "A round of combat starts.",
+    "distance": {
+      "type": "aura",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>At the end of each of your turns while this performance is active, you can choose up to a number of targets equal to your Presence score and teleport those targets to unoccupied spaces in the area. A target can’t be teleported in a way that would harm them (such as over a cliff), leave them dying, or result in them suffering a condition or other negative effect. </p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755794113296,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!YkV7rgFk8ijY9UTc"
+}

@@ -1,4 +1,3 @@
-import { systemPath } from "../../constants.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 /**
@@ -10,6 +9,7 @@ export default class FeatureModel extends AdvancementModel {
     return {
       ...super.metadata,
       type: "feature",
+      packOnly: false,
       // Not currently in use
       // detailsPartial: [systemPath("templates/sheets/item/partials/feature.hbs")],
     };

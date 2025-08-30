@@ -1,7 +1,8 @@
-import { BaseAdvancement, TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
+import { TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
 
 /**
  * @import { AdvancementChain } from "../_types"
+ * @import { BaseAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
  */
 
 /**
@@ -72,21 +73,16 @@ export default class AdvancementChain {
 
   /**
    * Create a new instance of instances of a chain.
-   * @param {BaseAdvancement|foundry.documents.Item} root       An advancement or item with advancements.
+   * @param {BaseAdvancement} root       An advancement or item with advancements.
    * @param {AdvancementChain} [parent]                         Parent chain link.
-   * @param {number} [_depth]                                   Current tree depth.
+   * @param {object} [options={}]                               Additional information about this advancement chain.
+   * @param {number} [options._depth=0]                         Current tree depth.
+   * @param {number} [options.start=null]                       Starting level for advancements.
+   * @param {number} [options.end=1]                            Final level for advancements.
    * @returns {Promise<AdvancementChain|AdvancementChain[]>}    A promise that resolves to the chain or chain link.
    */
-  static async create(root, parent = null, _depth = 0) {
-    if (root instanceof foundry.documents.Item) {
-
-      const chains = [];
-      for (const adv of root.getEmbeddedPseudoDocumentCollection("Advancement")) {
-        const chain = await this.create(adv);
-        chains.push(chain);
-      }
-      return chains;
-    }
+  static async create(root, parent = null, options = {}) {
+    const { _depth: _depth = 0, start: levelStart = null, end: levelEnd = 1 } = options;
 
     const advancement = root;
     const nodeData = {
@@ -122,8 +118,18 @@ export default class AdvancementChain {
 
         // Find any "child" advancements.
         for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
-          choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, _depth + 1);
-          choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
+          const validRange = advancement.levels.some(level => {
+            if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
+            else return levelStart === null;
+          });
+          if (validRange) {
+            choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
+              _depth: _depth + 1,
+              start: levelStart,
+              end: levelEnd,
+            });
+            choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
+          }
         }
       }
     } else if (advancement instanceof TraitAdvancement) {

@@ -75,7 +75,7 @@
           "level": 1
         },
         "_id": "XsWPIcFxdWOgB9mr",
-        "description": "<p>Choose two skills from the interpersonal skill group and one skill from the intrigue or lore skill groups. (<em>Quick Build:</em> Brag, Rumors, Society.)</p>",
+        "description": "<p>Choose two skills from the interpersonal skill group and one skill from the intrigue or lore skill groups. (<em>Quick Build:</em> Brag, Flirt, Read Person, Rumors.)</p>",
         "chooseN": 3,
         "skills": {
           "groups": [
@@ -87,24 +87,46 @@
       },
       "RnlXI12YDhR68bUI": {
         "name": "Troubadour Class Act",
-        "img": null,
+        "img": "icons/tools/instruments/harp-red.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
         "_id": "RnlXI12YDhR68bUI",
         "description": "<p>Choose a troubadour class act from the following options, each of which grants you a skill. (<em>Quick Build:</em> Virtuoso.)</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.2hctjtw0GxZUW0Mb"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.cTrcnc9SZQ05yyf8"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.mpeU95QHdpNHrMwD"
+          }
+        ]
       },
       "ol8LbqFLWrJemKiw": {
         "name": "Features",
-        "img": null,
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
         "_id": "ol8LbqFLWrJemKiw",
-        "description": "<p>You gain the following features.</p>"
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.hIFCsWK6K5rysHe3"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vs3c0arnViTm68he"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.kMpx0qvmvBgYrGqi"
+          }
+        ]
       },
       "biz5s6KQHKhXIddz": {
         "name": "Signature Ability",
@@ -115,29 +137,71 @@
         },
         "_id": "biz5s6KQHKhXIddz",
         "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. (<em>Quick Build:</em> Witty Banter.)</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.LdnzFM6YpeLSkUgA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.z5I9aGvMY0BgA5ze"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.I98PX6JIFBaA2crE"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.HFBg8GX26gYRzQPR"
+          }
+        ]
       },
       "FTRNYKzPAPe8ihAj": {
         "name": "3 Drama",
-        "img": null,
+        "img": "icons/tools/instruments/pipe-flute-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
         "_id": "FTRNYKzPAPe8ihAj",
         "description": "<p>Choose one heroic ability from the following options, each of which costs 3 drama to use. (<em>Quick Build:</em> Harsh Critic.)</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.uTxZZZqzbq9FpEwD"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cBz8cjDqRS8lOZwV"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.KEdGX2qGCkZBXK8z"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3tHh6ENnHj044CJi"
+          }
+        ]
       },
       "Wq0LVQSvUo2IUflL": {
         "name": "5 Drama",
-        "img": null,
+        "img": "icons/tools/instruments/pipe-flute-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
         "_id": "Wq0LVQSvUo2IUflL",
         "description": "<p>Choose one heroic ability from the following options, each of which costs 5 drama to use. (<em>Quick Build:</em> Dramatic Reversal.)</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.7QbUwkUxIiAVUNmk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Da8pzPaW9ByflIgG"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.0JvMC1hvOSelVBo3"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.f4tcFRmGjmGQVTm8"
+          }
+        ]
       },
       "Vtjk6oGiz0SZo3Sx": {
         "name": "Kit",
@@ -214,6 +278,53 @@
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ]
+      },
+      "bUc7AbUQrg38DeXx": {
+        "name": "Invocation",
+        "img": "icons/skills/trades/academics-merchant-scribe.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "bUc7AbUQrg38DeXx",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.BbRjIdFaxqvpz0Ro"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UKAWlJW6P2f9HUao"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.10AvUbXDUxwfdgty"
+          }
+        ],
+        "description": "<p>You have a specific manner that helps define your presence on the battlefield. Choose one of the following features.</p>"
+      },
+      "G44KRpdK8w88nw4l": {
+        "name": "Appeal to the Muses",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "G44KRpdK8w88nw4l",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.QyOQyWQTeD80Bs53"
+          }
+        ]
+      },
+      "HKlhtcykSx92MKui": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "HKlhtcykSx92MKui",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1
       }
     },
     "level": 0,
@@ -231,8 +342,7 @@
       "starting": 18,
       "level": 6
     },
-    "recoveries": 8,
-    "kits": 1
+    "recoveries": 8
   },
   "effects": [],
   "sort": 0,

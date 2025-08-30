@@ -1,8 +1,9 @@
 import { systemID } from "../../constants.mjs";
 import BaseItemModel from "./base.mjs";
+import AdvancementChain from "../../utils/advancement-chain.mjs";
 
 /**
- * @import DrawSteelActor from "../../documents/actor.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  */
 
 export default class AdvancementModel extends BaseItemModel {
@@ -65,6 +66,26 @@ export default class AdvancementModel extends BaseItemModel {
   /* -------------------------------------------------- */
 
   /**
+   * Creates the advancement chains for this item given a level range.
+   * @param {number} levelStart
+   * @param {number} levelEnd
+   * @returns {Promise<AdvancementChain[]>}
+   */
+  async createChains(levelStart, levelEnd) {
+    const chains = [];
+    for (const advancement of this.advancements) {
+      const validRange = advancement.levels.some(level => {
+        if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
+        else return levelStart === null;
+      });
+      if (validRange) chains.push(await AdvancementChain.create(advancement, null, { start: levelStart, end: levelEnd }));
+    }
+    return chains;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Helper method to add an item's advancements and create or update this item.
    * @param {object} [options]                  Optional properties to configure this advancement's creation.
    * @param {DrawSteelActor} [options.actor]    The actor to create this item within.
@@ -77,8 +98,16 @@ export default class AdvancementModel extends BaseItemModel {
    * @param {object} [options.toUpdate]         Record of existing items' ids to the updates to be performed.
    * @param {object} [options.actorUpdate]      Record of actor data to update with the advancement.
    * @param {Map<string, string>} [options._idMap]  Internal map to aid in retrieving 'new' ids of created items.
+   * @returns {DrawSteelItem}
    */
-  async applyAdvancements({ actor = this.actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, actorUpdate = {}, ...options } = {}) {
+  async applyAdvancements({
+    actor = this.actor,
+    levels = { start: null, end: 1 },
+    toCreate = {},
+    toUpdate = {},
+    actorUpdate = {},
+    ...options } = {},
+  ) {
     if (!actor) throw new Error("An item without a parent must provide an actor to be created within");
     const { start: levelStart = null, end: levelEnd = 1 } = levels;
     const _idMap = options._idMap ?? new Map();
@@ -93,13 +122,14 @@ export default class AdvancementModel extends BaseItemModel {
       } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
     }
 
-    const chains = [];
-    for (const advancement of this.advancements) {
-      const validRange = advancement.levels.some(level => {
-        if (Number.isNumeric(level)) return level.between(levelStart ?? 0, levelEnd);
-        else return levelStart === null;
-      });
-      if (validRange) chains.push(await ds.utils.AdvancementChain.create(advancement));
+    const chains = await this.createChains(levelStart, levelEnd);
+
+    const [firstUpdate, ...rest] = Object.values(toUpdate);
+    const noUpdates = (Object.keys(firstUpdate ?? {}).length <= 1) && (rest.length === 0);
+
+    if (!chains.length && foundry.utils.isEmpty(toCreate) && noUpdates) {
+      console.debug("No advancements to apply for", this.parent.name);
+      return null;
     }
 
     const title = this.actor ?
@@ -111,58 +141,10 @@ export default class AdvancementModel extends BaseItemModel {
     });
     if (!configured) return;
 
-    // First gather all new items that are to be created.
-    for (const chain of chains) for (const node of chain.active()) {
-      if (node.advancement.type !== "itemGrant") continue;
-      const parentItem = node.advancement.document;
-
-      for (const uuid of node.chosenSelection) {
-        const item = node.choices[uuid].item;
-        const keepId = !actor.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
-        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-        if (!keepId) itemData._id = foundry.utils.randomID();
-        toCreate[item.uuid] = itemData;
-        _idMap.set(item.id, itemData._id);
-        itemData._parentId = parentItem.id;
-        itemData._advId = node.advancement.id;
-      }
-    }
-
-    // Apply flags to store "parent" item's id and origin advancement.
-    for (const uuid in toCreate) {
-      const itemData = toCreate[uuid];
-      const { _parentId, _advId } = itemData;
-      delete itemData._parentId;
-      delete itemData._advId;
-
-      // Fall back to the _parentId, in the case of existing items being
-      // updated to grant more items (eg a class leveling up).
-      const parentId = _idMap.get(_parentId) ?? _parentId;
-      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement`, { parentId: parentId, advancementId: _advId });
-    }
-
-    // Perform item data modifications or store item updates.
-    for (const chain of chains) for (const node of chain.active()) {
-      if (!node.advancement.isTrait) continue;
-      const { document: item, id } = node.advancement;
-      const isExisting = item.parent === actor;
-      let itemData;
-
-      if (isExisting) {
-        toUpdate[item.id] ??= { _id: item.id };
-        itemData = toUpdate[item.id];
-      } else {
-        itemData = toCreate[item.uuid];
-      }
-
-      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
-    }
-
-    const transactions = await Promise.all([
-      actor.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: { levels } }),
-      actor.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: { levels } }),
-      actor.update(actorUpdate, { ds: { levels } }),
-    ]);
+    const transactions = await actor.system._finalizeAdvancements(
+      { chains, toCreate, toUpdate, actorUpdate, _idMap },
+      { levels },
+    );
 
     return transactions[0].find(i => i.type === this.parent.type);
   }

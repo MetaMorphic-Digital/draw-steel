@@ -5,6 +5,13 @@
 }
 
 .draw-steel.configure-advancement {
+  /* Managing overflow for long list e.g. kits */
+  .dialog-form {
+    max-height: 80vh;
+    .dialog-content {
+      overflow-y: auto;
+    }
+  }
   multi-checkbox:has(fieldset) {
     display: flex;
     flex-wrap: wrap;

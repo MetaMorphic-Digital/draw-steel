@@ -15,9 +15,59 @@ The Foundry [Knowledge Base](https://foundryvtt.com/article/active-effects/) has
 
 On the actor sheet, at the top of 'Effects' tab is now a new section with buttons for the DS core conditions. Clicking any of these will apply those conditions to the actor linked to the actor sheet. Applying them this way will set no duration for them.
 
-Applying any of these DS core conditions applies a active effect, details for which can be found in the `System Automatios` section.
-
 When creating a new temporary active effect by clicking on the `+ New Effect` button on the right of a active effect section header on this page, the duration is by default set to EoT (End of Turn).
+
+### Status Conditions
+
+Certain status effects and their function are automated, with some requiring a targeted actor to act as a source.
+
+Any of the status conditions can be applied to a Token via the Token HUD. When doing so, the conditions window is a drop down menu that lets you choose the duration of the effect: `EoT (End of Turn)`, `Save Ends`, or `EoE (End of Encounter)`. These individual durations are explained further below.
+
+Clicking any of the token status effects will apply that effect with the chosen duration. Clicking the same status again, no matter with which duration chosen, will deactivate it again.
+
+Active statuses are highlighted, while inactive ones are displayed in muted colors. Additionally, each effect is documented in the system compendiums.
+
+#### Dazed
+
+If the `Dazed` effect is applied to an actor, then a warning symbol will appear next to that actor's triggered actions, free triggered actions, and free maneuvers, to indicate that these abilities can't be used while affected by the `Dazed` effect.
+
+### Dying
+
+If an Actor's stamina falls below zero they automatically get the `Dying` status effect applied to them. This status does not have any effects by itself and is removed automatically if an actor's stamina returns to above zero.
+
+### Frightened
+
+If the `Frightened` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the affected actor's fear and the ability power rolls of the frightened actor that are targeted at the source actor automatically have a bane.
+
+### Grabbed
+
+If the `Grabbed` status effect is applied to an actor, while another actor is targeted, the targeted actor becomes the source of the Grab and the ability power rolls of the grabbed actor that are targeted at actors other than the source actor automatically have a bane. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
+
+### Prone
+
+If the `Prone` status effect is applied to an actor, the available movement types of that actor become only `Crawl`, `Burrow`, and `Teleport`. If the movement mode `Crawl` is chosen the movement costs 1 square extra. (see ***Movement***)
+
+### Restrained
+
+If the `Restrained` status effect is applied to an actor, the ability power rolls of the restrained actor automatically have a bane and abilities with the restrained actor being targeted have an edge. Additionally the displayed movement speed on the grabbed actor's character sheet is set to zero.
+
+### Slowed
+
+If the `Slowed` status effect is applied to an actor, the displayed maximum speed on the character sheet of that actor is changed to 2 and the in-game token ruler of that actor displays allowed speed accordingly. (see ***Movement***)
+
+Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which allows setting the "slowed" speed to 3 instead of 2.
+
+### Taunted
+
+If the `Taunted` status effect is applied to an actor while another actor is targeted, the targeted actor becomes the source of the `Taunt`, and afterwards abilities that are targeted at actors other than the `Taunted` source actor automatically have a double bane while in line of effect to the `Taunted` source.
+
+### Weakened
+
+If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
+
+### Winded
+
+If an actor falls below 50% of their maximum stamina, they automatically get the `Winded` status effect applied to them. This status does not have any effects by itself. If the actor's stamina gets healed above the 50% threshold, the `Winded` status is automatically removed.
 
 ## Active Effect Config
 
@@ -31,9 +81,9 @@ The Draw Steel System uses the "Apply Effect to Actor" as a way to decide if an 
 
 #### Linking status effects
 
-At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions (see **System Automations**) then this effect will include that condition in it's functionality a token will behave as if that status condition is applied to it.
+At the bottom of the Details page is the `Status Condition` dropdown menu. This allows you to link on of the system's default Status Conditions to the effect. If it is one of the automated conditions then this effect will include that condition in its functionality, and an Actor will behave as if that status condition is applied to it.
 
-If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the Active Effect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
+If it is one of the automated conditions that require a targeted token as the source (`Frightened`, `Grabbed`, `Taunted`), and a token is targeted while applying the ActiveEffect, this targeted token will function as source for those conditions, applying edges and banes accordingly.
 
 ### Duration
 
@@ -44,7 +94,7 @@ Additionally, the Save Ends duration allows for defining the saving throw formul
 + `Save Ends` will prompt the combatant's owners to configure the save threshold and add any situational bonuses. The roll message has a button to spend a hero token to automatically succeed. If multiple players own an actor, the active GM will receive a dialog to help delegate rolls.
 + `End of Encounter` effects will automatically self-disable alongside the encounter.
 
-Additional options for duration are timed durations, and durations base don rounds and turns, however, as these are not part of the Draw Steel rules, it is recommended not to utilise these.
+The system also supports timed durations. Effects that have outlasted their duration are automatically suppressed; keep in mind that turn-based durations are unreliable due to Draw Steel's dynamic initiative count.
 
 ### Changes
 
@@ -86,7 +136,9 @@ While there are similarities with roll data, active effects generally lead with 
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
+|Bonus Recovery Value|`system.recoveries.bonus`|
 |Speed|`system.movement.value`|
+|Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 

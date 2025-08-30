@@ -18,11 +18,36 @@
 ### Known Issues
 -->
 
+## 0.8.1
+
+### Added
+
+- Expanded end of encounter prompt to reset surges. (#931)
+
+### Changed
+
+- The skill list on the character sheet is now sorted alphabetically.
+
+### Fixed
+
+- Fixed an issue where the migration would error when migrating personal compendiums.
+- Compendium data fixes:
+  - Various monster role and level fixes. (#981)
+  - Corrected Talent "Distance Augmentation" filters & bonus.
+
 ## 0.8.0
 
 ### Added
 
+- Compendiums (#757, #758)
+  - Compendiums are how the system includes and distributes the rules elements that have been openly licensed.
+  - This release includes material for first level play, as well as many of the monsters used in the starter adventures.
+  - Added Compendiums for classes, monsters, roll tables, character options, character origins, and rewards.
+  - Compendium content will continue to be a work in progress throughout the 0.8 series.
 - Advancements (#51)
+  - Advancements allow items like classes, kits, and features to make complex adjustments to an actor.
+  - Simply dragging an ancestry or class onto an actor will prompt you through the advancements.
+  - See the system documentation either in game or on the github wiki for more information.
 - Added a new Active Effect subtype for ability bonuses. See wiki or in-game journal for usage details. (#713)
 - Added a button to ability use messages to apply effects from the ability. (#214)
 - Added Epic Resource display. (#537)
@@ -38,7 +63,7 @@
   - If set to "Roll for Event", a roll button will appear in the chat message.
   - If set to "Event Milestones", if an event milestone is reached, text will indicate the number of milestones reached.
 - Added name and image inputs to Power Roll Effect creation. (#718)
-- Added "Self or Ally" and "Self and Allies" targeting options.
+- Added "Self or ally", "Self and allies", and "Self or one creature" targeting options. (#872)
 - When a project roll is a breakthrough, a button will appear to roll the project again.
 - The Source Information popout will show the Compendium Source of an item if it is available.
 - Added a generic "spend hero token" option available to all users.
@@ -78,6 +103,7 @@
 - Removed direct kit limitations derived from class information in favor of handling kits as advancements. (#863)
 - Removed the Hide and Search maneuvers as basic abilities; the final versions no longer fit the standard ability structure.
 - Removed "Melee" range as a separate listing from the character sheet stats tab to match the official character sheet.
+- Removed the "End Encounter" button from the bottom of the combat tracker.
 
 ## 0.7.3
 
