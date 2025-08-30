@@ -57,16 +57,38 @@
           }
         },
         "CSU2UsZILKz14scA": {
-          "name": "slowed",
+          "name": "Slowed",
           "img": null,
           "type": "applied",
           "_id": "CSU2UsZILKz14scA",
           "applied": {
             "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
               "potency": {
                 "characteristic": "intuition"
               },
-              "display": "{{potency}}, slowed (save ends)"
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }

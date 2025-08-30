@@ -94,6 +94,7 @@
           "_id": "zndmWLZT9u2K6iSz",
           "applied": {
             "tier1": {
+              "display": "{{potency}}, dazed (save ends)",
               "potency": {
                 "characteristic": "might"
               },
@@ -102,8 +103,23 @@
                   "condition": "failure",
                   "end": "save"
                 }
-              },
-              "display": "{{potency}}, dazed (save ends)"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }

@@ -23,6 +23,8 @@
 ### Added
 
 - Expanded end of encounter prompt to reset surges. (#931)
+- New compendium content:
+  - Level 2 items for all classes
 
 ### Changed
 
