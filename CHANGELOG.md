@@ -26,9 +26,13 @@
 
 ### Changed
 
+- The skill list on the character sheet is now sorted alphabetically.
+
 ### Fixed
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
+- Compendium data fixes
+  - Corrected Talent "Distance Augmentation" filters & bonus
 
 ## 0.8.0
 
