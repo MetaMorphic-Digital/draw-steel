@@ -31,8 +31,9 @@
 ### Fixed
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
-- Compendium data fixes
-  - Corrected Talent "Distance Augmentation" filters & bonus
+- Compendium data fixes:
+  - Various monster role and level fixes. (#981)
+  - Corrected Talent "Distance Augmentation" filters & bonus.
 
 ## 0.8.0
 
