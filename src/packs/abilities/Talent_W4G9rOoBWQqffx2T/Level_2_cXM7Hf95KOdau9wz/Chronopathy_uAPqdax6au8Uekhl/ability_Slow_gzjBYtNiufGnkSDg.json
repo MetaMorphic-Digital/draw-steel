@@ -1,0 +1,219 @@
+{
+  "folder": "uAPqdax6au8Uekhl",
+  "name": "Slow",
+  "type": "ability",
+  "_id": "gzjBYtNiufGnkSDg",
+  "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "192",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "slow",
+    "story": "Perhaps they wonder why everyone else is moving so quickly?",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "chronopathy"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "8VCkXXVwF2cWLWXg": {
+          "name": "Speed/Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "8VCkXXVwF2cWLWXg",
+          "applied": {
+            "tier1": {
+              "display": "The target’s speed is halved (save ends), or if {{potency}}, the  target is slowed (save ends).",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "3bIFJfKokgJqFwn9": {
+                  "condition": "success",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "presence"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "success",
+                  "end": "save"
+                },
+                "P9cMm0DCloMyEZ2p": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "The target’s is slowed (save ends), or if {{potency}}, the  target's speed is 0 (save ends)."
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "success",
+                  "end": "save"
+                },
+                "P9cMm0DCloMyEZ2p": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>A target can’t use triggered actions while their speed is reduced this way.</p><p><strong>Strained:</strong> The potency of this ability increases by 1 and you take [[/damage 1d6]] damage. At the start of each combat round while any target is affected by this ability, you take [[/damage 1d6]] damage. You can end the effect on all affected targets at any time (no action required).</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Speed Halved",
+      "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.gzjBYtNiufGnkSDg",
+      "transfer": false,
+      "_id": "3bIFJfKokgJqFwn9",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 1,
+          "value": "0.5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756617312389,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!gzjBYtNiufGnkSDg.3bIFJfKokgJqFwn9"
+    },
+    {
+      "name": "Speed 0",
+      "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.gzjBYtNiufGnkSDg",
+      "transfer": false,
+      "_id": "P9cMm0DCloMyEZ2p",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 3,
+          "value": "0",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756617404368,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!gzjBYtNiufGnkSDg.P9cMm0DCloMyEZ2p"
+    }
+  ],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756181641727,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!gzjBYtNiufGnkSDg"
+}
