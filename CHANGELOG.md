@@ -23,8 +23,19 @@
 ### Added
 
 - Expanded end of encounter prompt to reset surges. (#931)
+- New compendium content:
+  - Level 2 items for all classes
 
 ### Changed
+
+- The skill list on the character sheet is now sorted alphabetically.
+
+### Fixed
+
+- Fixed an issue where the migration would error when migrating personal compendiums.
+- Compendium data fixes:
+  - Various monster role and level fixes. (#981)
+  - Corrected Talent "Distance Augmentation" filters & bonus.
 
 ## 0.8.0
 
