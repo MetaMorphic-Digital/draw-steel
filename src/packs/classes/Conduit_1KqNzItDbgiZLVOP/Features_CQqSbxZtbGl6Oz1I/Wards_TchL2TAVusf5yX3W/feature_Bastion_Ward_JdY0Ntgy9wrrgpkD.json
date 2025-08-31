@@ -1,0 +1,89 @@
+{
+  "folder": "TchL2TAVusf5yX3W",
+  "name": "Bastion Ward",
+  "type": "feature",
+  "_id": "JdY0Ntgy9wrrgpkD",
+  "img": "icons/magic/defensive/shield-barrier-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your god grants you a holy countenance that protects you at all times. You gain a +1 bonus to saving throws.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "bastion-ward",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Bastion Ward",
+      "img": "icons/magic/defensive/shield-barrier-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.JdY0Ntgy9wrrgpkD",
+      "transfer": true,
+      "_id": "yMFNbhkY9UElWJ0Q",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.save.bonus",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your god grants you a holy countenance that protects you at all times. You gain a +1 bonus to saving throws.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755918125478,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!JdY0Ntgy9wrrgpkD.yMFNbhkY9UElWJ0Q"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755918061946,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!JdY0Ntgy9wrrgpkD"
+}

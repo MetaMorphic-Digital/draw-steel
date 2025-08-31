@@ -27,7 +27,7 @@
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "creature",
+      "type": "selfOrCreature",
       "value": 1
     },
     "power": {
@@ -38,7 +38,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Note: Self or one creature</p><p>You can use this ability after seeing the result of the triggering roll. The target must reroll the power roll and use the new roll.</p>",
+      "before": "<p>You can use this ability after seeing the result of the triggering roll. The target must reroll the power roll and use the new roll.</p>",
       "after": ""
     },
     "spend": {

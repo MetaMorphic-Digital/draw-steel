@@ -1,0 +1,170 @@
+{
+  "folder": "mrOptVMwR2qMHSc6",
+  "name": "Death...Death!",
+  "type": "ability",
+  "_id": "ozByaCzDqRAgPwfb",
+  "img": "icons/magic/death/projectile-skull-flaming-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "135",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "deathdeath",
+    "story": "Your unbridled rage strikes terror in their hearts.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "6lMkVWMImkTYSKMU": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "6lMkVWMImkTYSKMU",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "5 + @chr"
+            },
+            "tier3": {
+              "value": "8 + @chr"
+            }
+          }
+        },
+        "JGHX0IxtKw2HWNzb": {
+          "name": "Dazed and Frightened (save ends)",
+          "img": null,
+          "type": "applied",
+          "_id": "JGHX0IxtKw2HWNzb",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "presence"
+              },
+              "display": "{{potency}}, dazed and frightened (save ends)",
+              "effects": {
+                "PR8Gy5DvastyogbF": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "PR8Gy5DvastyogbF": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "PR8Gy5DvastyogbF": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "dazed and frightened",
+      "img": "icons/magic/death/projectile-skull-flaming-yellow.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.ozByaCzDqRAgPwfb",
+      "transfer": false,
+      "_id": "PR8Gy5DvastyogbF",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "dazed",
+        "frightened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1756080617004,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ozByaCzDqRAgPwfb.PR8Gy5DvastyogbF"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1756080452102,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ozByaCzDqRAgPwfb"
+}

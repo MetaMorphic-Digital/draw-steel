@@ -1,0 +1,70 @@
+{
+  "folder": "lV0kAMQlAVsMO4xU",
+  "name": "Love",
+  "type": "subclass",
+  "_id": "KQVARkvjGEpL9iKA",
+  "img": "icons/magic/life/heart-red-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Piety:</strong> You gain 2 piety the first time in an encounter that you or any ally within 10 squares uses the Aid Attack maneuver or an ability that targets an ally.</p><p><strong>Prayer Effect:</strong> Each ally within 10 squares of you gains temporary Stamina equal to two times your Intuition score. [[/heal 2*@I type=temporary]]</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "96",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "love",
+    "advancements": {
+      "HtpM2XBKriUfAdUs": {
+        "name": "Skill (Interpersonal)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "HtpM2XBKriUfAdUs",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "interpersonal"
+          ]
+        }
+      },
+      "Ti0DqYB4LEDAuTnG": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "Ti0DqYB4LEDAuTnG",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.D0ef3sDvAeB8Tre7"
+          }
+        ]
+      }
+    },
+    "classLink": "conduit"
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755670975417,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!KQVARkvjGEpL9iKA"
+}

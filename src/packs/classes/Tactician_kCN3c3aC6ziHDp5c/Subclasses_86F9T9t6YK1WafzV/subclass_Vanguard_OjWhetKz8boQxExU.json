@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "175",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "vanguard",
     "advancements": {
@@ -46,12 +46,45 @@
           ]
         },
         "chooseN": 1
+      },
+      "GK5Xal3qdQKHwNvz": {
+        "name": "Melee Superiority",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "GK5Xal3qdQKHwNvz",
+        "description": "<p>Your tactical doctrine grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aFOYtWMepJpHjzp6"
+          }
+        ]
+      },
+      "QAdeLYiBfERpAnYN": {
+        "name": "2nd-Level Vanguard Ability",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "QAdeLYiBfERpAnYN",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.dmRvrbXgLuHdLdSt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.VeIMrwu1dIHsJcwA"
+          }
+        ]
       }
     },
     "classLink": "tactician"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },
@@ -60,9 +93,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1752598038716,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -88,7 +88,7 @@ export default class ClassModel extends AdvancementModel {
   }
 
   /** @inheritdoc */
-  async applyAdvancements({ actor, levels = { start: 1, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
+  async applyAdvancements({ actor, levels = { start: null, end: 1 }, toCreate = {}, toUpdate = {}, ...options } = {}) {
     const { end: levelEnd = 1 } = levels;
 
     const _idMap = new Map();

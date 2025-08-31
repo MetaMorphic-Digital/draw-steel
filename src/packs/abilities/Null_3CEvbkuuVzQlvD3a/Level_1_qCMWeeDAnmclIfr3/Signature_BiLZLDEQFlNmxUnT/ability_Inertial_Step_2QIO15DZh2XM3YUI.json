@@ -1,0 +1,84 @@
+{
+  "folder": "BiLZLDEQFlNmxUnT",
+  "name": "Inertial Step",
+  "type": "ability",
+  "_id": "2QIO15DZh2XM3YUI",
+  "img": "icons/magic/light/projectile-smoke-blue-white.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "151",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "inertial-step",
+    "story": "",
+    "keywords": [],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "ngza60LBOaTLOvE0": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ngza60LBOaTLOvE0",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr"
+            },
+            "tier2": {
+              "value": "7 + @chr"
+            },
+            "tier3": {
+              "value": "10 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can shift up to half your speed before or after you make this strike.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755823699422,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!2QIO15DZh2XM3YUI"
+}

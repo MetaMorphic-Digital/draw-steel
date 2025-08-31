@@ -1,15 +1,14 @@
-import AdvancementModel from "./advancement.mjs";
+import FeatureModel from "./feature.mjs";
 
 /**
  * A complication is an optional feature that provides both a positive benefit and a negative drawback.
  */
-export default class ComplicationModel extends AdvancementModel {
+export default class ComplicationModel extends FeatureModel {
   /** @inheritdoc */
   static get metadata() {
     return {
       ...super.metadata,
       type: "complication",
-      packOnly: false,
       invalidActorTypes: ["npc"],
     };
   }

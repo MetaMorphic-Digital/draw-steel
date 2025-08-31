@@ -12,4 +12,4 @@ There are no "recommended" modules for use with Draw Steel. The system is design
 
 ### How can I integrate a module with Draw Steel?
 
-Reach out via Discord where you can be provided with guidance on integrating modules for personal configuration, adding compatibility directly to modules, or creating compatibility modules. Pull requests to Draw Steel directly will only be accepted on an limited basis; the system currently only provides native integration for **Dice so Nice**.
+Reach out via Discord where you can be provided with guidance on integrating modules for personal configuration, adding compatibility directly to modules, or creating compatibility modules. Pull requests to Draw Steel directly for the purpose of module compatibility will only be accepted on a limited basis; the system currently only provides native integration for **Dice so Nice**.

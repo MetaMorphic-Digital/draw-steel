@@ -1,0 +1,124 @@
+{
+  "folder": "BiLZLDEQFlNmxUnT",
+  "name": "Joint Lock",
+  "type": "ability",
+  "_id": "kJaluygXdksbgNtA",
+  "img": "icons/magic/light/beam-impact-deflect-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "149",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "joint-lock",
+    "story": "You contort your enemy’s body into a stance they struggle to escape from.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "zgytCWMbhY4jptKW": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "zgytCWMbhY4jptKW",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "7 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        },
+        "5rnRgxoMD35tkTOb": {
+          "name": "grabbed",
+          "img": null,
+          "type": "applied",
+          "_id": "5rnRgxoMD35tkTOb",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, grabbed",
+              "potency": {
+                "characteristic": "agility"
+              },
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755811840775,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!kJaluygXdksbgNtA"
+}

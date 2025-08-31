@@ -1,0 +1,95 @@
+{
+  "folder": "RtJjFiM68S5EQfvi",
+  "name": "Prayer of Distance",
+  "type": "feature",
+  "_id": "6RjkGZBL3BBegXDY",
+  "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your god blesses you with the ability to stretch your divine magic farther. You have a +2 bonus to the distance of your ranged magic abilities.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "99",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "prayer-of-distance",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Prayer of Distance",
+      "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.6RjkGZBL3BBegXDY",
+      "transfer": true,
+      "_id": "tuzvToYgzn80ZiSp",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "magic",
+            "ranged"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "system.abilityBonuses.ranged.distance",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You have a +2 bonus to the distance of your ranged magic abilities.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755915907968,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6RjkGZBL3BBegXDY.tuzvToYgzn80ZiSp"
+    }
+  ],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755915879595,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!6RjkGZBL3BBegXDY"
+}

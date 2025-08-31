@@ -1,0 +1,66 @@
+{
+  "folder": "7Z2cHVVXlT5l3q7i",
+  "name": "Fog of War",
+  "type": "ability",
+  "_id": "lXBts5HfbqQiG8I5",
+  "img": "icons/environment/people/charge.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "179",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "fog-of-war",
+    "story": "Your unorthodox strategy causes enemies to lash out in fear, heedless  of who they might be attacking.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 2
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each target is marked by you, and must immediately make a free strike against a creature of your choice within 5 squares of them.</p><p><strong>Mark Benefit</strong>: Until the end of the encounter, whenever you or any ally makes a strike against a creature marked by you, you can spend 2 focus to force that target to make a free strike against a creature of your choice within 5 squares of them.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756168153191,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!lXBts5HfbqQiG8I5"
+}

@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "175",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "mastermind",
     "advancements": {
@@ -42,12 +42,45 @@
           ]
         },
         "chooseN": 1
+      },
+      "iUZk5e6ESjUfcPxj": {
+        "name": "Goaded",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "iUZk5e6ESjUfcPxj",
+        "description": "<p>Your tactical doctrine grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.4LfPih11ovksHOcR"
+          }
+        ]
+      },
+      "103Opabsm7LC3fkE": {
+        "name": "2nd-Level Mastermind Ability",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "103Opabsm7LC3fkE",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.jZhSZt9MG8RdkwuP"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.sJ94rnHKQ0lXKTn9"
+          }
+        ]
       }
     },
     "classLink": "tactician"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },
@@ -56,9 +89,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1752598050570,
     "modifiedTime": null,
     "lastModifiedBy": null
