@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "147",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "cryokinetic",
     "advancements": {
@@ -46,6 +46,40 @@
             "uuid": "Compendium.draw-steel.classes.Item.TseUqw7uV5nOcKOZ"
           }
         ]
+      },
+      "QUZwMIPlp17DsdLy": {
+        "name": "Entropic Adaptability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "QUZwMIPlp17DsdLy",
+        "description": "<p>Your null tradition grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.tv0Rt75IyBTY7kbm"
+          }
+        ]
+      },
+      "EpRvLvwuMqJFln4V": {
+        "name": "2nd-Level Cryokinetic Ability",
+        "img": "icons/magic/water/elemental-water.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "EpRvLvwuMqJFln4V",
+        "description": "<p>Choose one of the following heroic abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.fbM16z6mgrQsUJIh"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.KPmPmv8x7T1BvwQv"
+          }
+        ]
       }
     },
     "classLink": "null"
@@ -62,7 +96,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755803710294,
     "modifiedTime": null,
     "lastModifiedBy": null

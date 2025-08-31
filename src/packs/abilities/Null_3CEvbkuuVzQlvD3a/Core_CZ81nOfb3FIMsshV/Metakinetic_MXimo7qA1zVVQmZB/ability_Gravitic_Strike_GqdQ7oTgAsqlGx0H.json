@@ -1,0 +1,133 @@
+{
+  "folder": "MXimo7qA1zVVQmZB",
+  "name": "Gravitic Strike",
+  "type": "ability",
+  "_id": "GqdQ7oTgAsqlGx0H",
+  "img": "icons/magic/movement/trail-streak-impact-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "152",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "gravitic-strike",
+    "story": "Your fist emanates gravitic force that pulls a distant enemy closer.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "E4XyGS8iE5OekANl": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "E4XyGS8iE5OekANl",
+          "damage": {
+            "tier1": {
+              "value": "8 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "12 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "16 + @chr",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "YtPt7w4mhVRliWVj": {
+          "name": "Pull",
+          "img": null,
+          "type": "forced",
+          "_id": "YtPt7w4mhVRliWVj",
+          "forced": {
+            "tier1": {
+              "properties": [
+                "vertical"
+              ],
+              "movement": [
+                "pull"
+              ],
+              "distance": "3"
+            },
+            "tier2": {
+              "movement": [
+                "pull"
+              ],
+              "distance": "5",
+              "properties": [
+                "vertical"
+              ]
+            },
+            "tier3": {
+              "distance": "7",
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756087360439,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!GqdQ7oTgAsqlGx0H"
+}
