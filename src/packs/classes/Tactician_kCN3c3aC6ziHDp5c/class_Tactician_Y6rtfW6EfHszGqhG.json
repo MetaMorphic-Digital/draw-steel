@@ -3,6 +3,13 @@
   "type": "class",
   "img": "icons/skills/melee/strike-weapons-orange.webp",
   "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "174",
+      "license": "Draw Steel Creator License",
+      "revision": 2
+    },
+    "_dsid": "tactician",
     "description": {
       "value": "<p>Strategist. Defender. Leader. With weapon in hand, you lead allies into the maw of battle, barking out commands that inspire your fellow heroes to move faster and strike more precisely. All the while, you stand between your compatriots and death, taunting the followers of evil to best you if they can.</p><p>As a tactician, you have abilities that heal your allies and grant them increased damage, movement, and attacks, even as you leave your enemies struggling to respond.</p>",
       "director": ""
@@ -198,15 +205,18 @@
             "uuid": "Compendium.draw-steel.abilities.Item.eiwrW9TL342wPNea"
           }
         ]
+      },
+      "ypbZTcMPbIMvHBh4": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "ypbZTcMPbIMvHBh4",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
       }
     },
-    "source": {
-      "book": "Heroes",
-      "page": "174",
-      "license": "Draw Steel Creator License",
-      "revision": 1
-    },
-    "_dsid": "tactician",
     "level": 0,
     "primary": "Focus",
     "turnGain": "2",
@@ -236,7 +246,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1751140107957,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,5 +1,5 @@
 {
-  "folder": "aG0eTj9GqEEeqEoT",
+  "folder": "86F9T9t6YK1WafzV",
   "name": "Insurgent",
   "type": "subclass",
   "_id": "VfwdbL1GG2Dx0zv7",
@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "175",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "insurgent",
     "advancements": {
@@ -45,6 +45,40 @@
           ]
         },
         "chooseN": 1
+      },
+      "rWyQCkQjYe7BdqnS": {
+        "name": "Infiltration Tactics",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "rWyQCkQjYe7BdqnS",
+        "description": "<p>Your tactical doctrine grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.h9n9hOvO9ivTHDDl"
+          }
+        ]
+      },
+      "7NLicUQgElWYE5q0": {
+        "name": "2nd-Level Insurgent Ability",
+        "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "7NLicUQgElWYE5q0",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.lXBts5HfbqQiG8I5"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.kyP17StswrMKVB1B"
+          }
+        ]
       }
     },
     "classLink": "tactician"
@@ -59,9 +93,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1752598011662,
     "modifiedTime": null,
     "lastModifiedBy": null
