@@ -58,7 +58,7 @@
           }
         },
         "BGcMtNhcLF0ddeKK": {
-          "name": "restrained",
+          "name": "Restrained",
           "img": null,
           "type": "applied",
           "_id": "BGcMtNhcLF0ddeKK",
@@ -67,6 +67,28 @@
               "display": "{{potency}}, restrained (save ends)",
               "potency": {
                 "characteristic": "presence"
+              },
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
               }
             }
           }
@@ -92,9 +114,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1756093183042,
     "modifiedTime": null,
     "lastModifiedBy": null
