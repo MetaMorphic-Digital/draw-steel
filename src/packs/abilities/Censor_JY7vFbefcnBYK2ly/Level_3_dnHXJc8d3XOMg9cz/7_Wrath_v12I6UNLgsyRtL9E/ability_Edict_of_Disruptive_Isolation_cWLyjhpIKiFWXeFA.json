@@ -1,0 +1,67 @@
+{
+  "folder": "v12I6UNLgsyRtL9E",
+  "name": "Edict of Disruptive Isolation",
+  "type": "ability",
+  "_id": "cWLyjhpIKiFWXeFA",
+  "img": "icons/magic/control/debuff-chains-ropes-net-red-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "85",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "edict-of-disruptive-isolation",
+    "story": "The evil within your foes detonates with holy fire that burns only the guilty.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the encounter or until you are dying, each target takes holy damage equal to your Presence score at the end of each of your turns. A target takes an extra [[/damage 2d6]] holy damage if they are judged by you or if they are adjacent to any enemy.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756678281677,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!cWLyjhpIKiFWXeFA"
+}
