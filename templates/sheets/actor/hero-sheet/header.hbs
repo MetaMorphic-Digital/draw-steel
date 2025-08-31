@@ -5,14 +5,14 @@
   <a class="filled" data-action="viewDoc">
     {{lookup originDoc "name"}}
   </a>
-  {{#unless (or isPlay noEdit)}}
+  {{#unless (or @root.isPlay noEdit)}}
   <a data-action="deleteDoc">
     <i class="fa-solid fa-trash-can"></i>
   </a>
   {{/unless}}
 </span>
 {{else}}
-{{#if isPlay}}
+{{#if @root.isPlay}}
 <span class="unfilled">
   {{localize "DRAW_STEEL.SHEET.NoDocument" documentName=(localize (concat "TYPES.Item." originType))}}
 </span>
@@ -57,9 +57,11 @@
       <div class="class tag">
         {{> headerTag originDoc=document.system.class originType="class"}}
       </div>
+      {{#each document.system.subclasses as |subclass|}}
       <div class="subclass tag">
-        {{> headerTag originDoc=document.system.subclass originType="subclass" noEdit=true}}
+        {{> headerTag originDoc=subclass originType="subclass" noEdit=true}}
       </div>
+      {{/each}}
     </div>
   </div>
   <div class="header-right flexcol">

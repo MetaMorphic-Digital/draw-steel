@@ -1,3 +1,4 @@
+import { systemID } from "../../constants.mjs";
 import { DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSRoll from "../../rolls/base.mjs";
 import BaseEffectModel from "../effect/base.mjs";
@@ -8,6 +9,8 @@ import BaseActorModel from "./base.mjs";
  * @import { DamageSchema } from "../pseudo-documents/power-roll-effects/_types";
  * @import DrawSteelItem from "../../documents/item.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
+ * @import AdvancementChain from "../../utils/advancement-chain.mjs";
+ * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
  */
 
 const fields = foundry.data.fields;
@@ -162,8 +165,6 @@ export default class HeroModel extends BaseActorModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
-
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
     this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
@@ -173,6 +174,9 @@ export default class HeroModel extends BaseActorModel {
     }
 
     super.prepareDerivedData();
+
+    // allows for stamina bonuses to apply first
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
@@ -243,7 +247,8 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a respite resetting the hero's stamina and recoveries, converting victories to XP, and disabling "Next Respite" active effects.
+   * Take a respite resetting the hero's stamina and recoveries, converting victories
+   * to XP, and disabling "Next Respite" active effects.
    * @returns {Promise<DrawSteelActor>}
    */
   async takeRespite() {
@@ -279,11 +284,15 @@ export default class HeroModel extends BaseActorModel {
    */
   async spendRecovery() {
     if (this.recoveries.value === 0) {
-      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", { format: { actor: this.parent.name } });
+      ui.notifications.error("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.NoRecoveries", {
+        format: { actor: this.parent.name },
+      });
       return this.parent;
     }
 
-    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", { format: { actor: this.parent.name } });
+    ui.notifications.success("DRAW_STEEL.Actor.base.SpendRecovery.Notifications.Success", {
+      format: { actor: this.parent.name },
+    });
     await this.parent.update({ "system.recoveries.value": this.recoveries.value - 1 });
 
     return this.parent.modifyTokenAttribute("stamina", this.recoveries.recoveryValue, true);
@@ -394,11 +403,11 @@ export default class HeroModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /**
-   * Finds the actor's current subclass.
-   * @returns {undefined | (Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})}
+   * Finds the actor's current subclasses.
+   * @returns {Set<(Omit<DrawSteelItem, "type" | "system"> & { type: "subclass", system: import("../item/subclass.mjs").default})>}
    */
-  get subclass() {
-    return this.parent.itemTypes.subclass[0];
+  get subclasses() {
+    return new Set(this.parent.itemTypes.subclass);
   }
 
   /* -------------------------------------------------- */
@@ -474,12 +483,107 @@ export default class HeroModel extends BaseActorModel {
     if (cls && item && (item.dsid !== cls.dsid))
       throw new Error("A class item cannot be provided for advancing when a hero already has a class.");
     if (levels < 1) throw new Error("A hero cannot advance a negative number of levels.");
-    if (this.level + levels > ds.CONFIG.hero.xp_track.length) throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
+    if (this.level + levels > ds.CONFIG.hero.xp_track.length) {
+      throw new Error(`A hero cannot advance beyond level ${ds.CONFIG.hero.xp_track.length}.`);
+    }
 
-    cls = cls ? cls : item;
+    if (!cls) item.system.applyAdvancements({ actor: this.parent });
+    else {
+      const levelRange = { start: this.level + 1, end: this.level + levels };
+      const chains = (await Promise.all(this.parent.items.map(i => {
+        if (i.supportsAdvancements) return i.system.createChains(levelRange.start, levelRange.end);
+        return [];
+      }))).flat();
 
-    await cls.system.applyAdvancements({ actor: this.parent, levels: { start: this.level + 1, end: this.level + levels } });
+      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+        chains, actor: this.parent, window: {
+          title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ChainConfiguration.levelUpTitle", { name: this.parent.name }),
+        },
+      });
+      if (!configured) return;
+
+      const toUpdate = { [cls.id]: { _id: cls.id, "system.level": levelRange.end } };
+
+      this._finalizeAdvancements({ chains, toUpdate }, { levels: levelRange });
+    }
 
     return this.class;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Perform document operations for advancements.
+   * @param {object} config
+   * @param {AdvancementChain[]} config.chains
+   * @param {ItemData[]} [config.toCreate={}]
+   * @param {ItemData[]} [config.toUpdate={}]
+   * @param {ActorData} [config.actorUpdate={}]
+   * @param {Map<string>} [config._idMap]
+   * @param {object} [options]                                      Operation options.
+   * @param {{ start: number, end: number }} [options.levels]       Level information about these advancements.
+   * @returns {[DrawSteelItem[], DrawSteelItem[], DrawSteelActor]}
+   * @internal          End consumers should use the {@link advance}, AdvancementModel#applyAdvancements,
+   *                    or ItemGrantAdvancement#reconfigure methods
+   */
+  async _finalizeAdvancements(
+    { chains, toCreate = {}, toUpdate = {}, actorUpdate = {}, _idMap = new Map() },
+    { levels } = {},
+  ) {
+    // First gather all new items that are to be created.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (node.advancement.type !== "itemGrant") continue;
+      const parentItem = node.advancement.document;
+
+      for (const uuid of node.chosenSelection ?? []) {
+        const item = node.choices[uuid].item;
+        const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
+        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+        if (!keepId) itemData._id = foundry.utils.randomID();
+        toCreate[item.uuid] = itemData;
+        _idMap.set(item.id, itemData._id);
+        itemData._parentId = parentItem.id;
+        itemData._advId = node.advancement.id;
+      }
+    }
+
+    // Apply flags to store "parent" item's id and origin advancement.
+    for (const uuid in toCreate) {
+      const itemData = toCreate[uuid];
+      const { _parentId, _advId } = itemData;
+      delete itemData._parentId;
+      delete itemData._advId;
+
+      // Fall back to the _parentId, in the case of existing items being
+      // updated to grant more items (eg a class leveling up).
+      const parentId = _idMap.get(_parentId) ?? _parentId;
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement`, { parentId: parentId, advancementId: _advId });
+    }
+
+    // Perform item data modifications or store item updates.
+    for (const chain of chains) for (const node of chain.active()) {
+      if (!node.advancement.isTrait) continue;
+      const { document: item, id } = node.advancement;
+      const isExisting = item.parent === this.parent;
+      let itemData;
+
+      if (isExisting) {
+        toUpdate[item.id] ??= { _id: item.id };
+        itemData = toUpdate[item.id];
+      } else {
+        itemData = toCreate[item.uuid];
+      }
+
+      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
+    }
+
+    const operationOptions = {};
+    if (levels) operationOptions.levels = levels;
+
+    return await Promise.all([
+      this.parent.createEmbeddedDocuments("Item", Object.values(toCreate), { keepId: true, ds: operationOptions }),
+      this.parent.updateEmbeddedDocuments("Item", Object.values(toUpdate), { ds: operationOptions }),
+      this.parent.update(actorUpdate, { ds: operationOptions }),
+    ]);
   }
 }

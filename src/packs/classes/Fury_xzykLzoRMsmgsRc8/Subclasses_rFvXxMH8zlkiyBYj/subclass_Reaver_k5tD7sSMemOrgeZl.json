@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "131",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "reaver",
     "advancements": {
@@ -29,7 +29,8 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.KUCByYUPKEzXFSW7"
           }
-        ]
+        ],
+        "description": "<p>Your primordial aspect grants you the following feature.</p>"
       },
       "7VRpAxONCZtWcYs3": {
         "name": "Unearthly Reflexes",
@@ -43,7 +44,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.CsIpGSv52h9optwM"
           }
-        ]
+        ],
+        "description": "<p>Your primordial aspect grants you a triggered action.</p>"
       },
       "VwoCOtpp9ne4DEgq": {
         "name": "Kit",
@@ -53,6 +55,7 @@
           "level": 1
         },
         "_id": "VwoCOtpp9ne4DEgq",
+        "chooseN": 1,
         "pool": [
           {
             "uuid": "Compendium.draw-steel.character-options.Item.DfUznZyAwRkgQ7Cq"
@@ -117,7 +120,8 @@
           {
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
-        ]
+        ],
+        "description": "<p>Choose one of the following kits <em>(quick build: Panther)</em>.</p>"
       },
       "86dezZH7IFwXBLG4": {
         "name": "Hide",
@@ -131,10 +135,45 @@
           "choices": [
             "hide"
           ]
-        }
+        },
+        "description": "<p>Your promordial aspect grants you the following skill.</p>"
+      },
+      "DIThO62imszo6fpP": {
+        "name": "Inescapable Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "DIThO62imszo6fpP",
+        "description": "<p>Your primordial aspect grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.TQITgGg6sLvg0kem"
+          }
+        ]
+      },
+      "o7p4DsHlsDfvghi7": {
+        "name": "2nd-Level Reaver Ability",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "o7p4DsHlsDfvghi7",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ozByaCzDqRAgPwfb"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.s9BN7D8qzckGdfxs"
+          }
+        ]
       }
     },
-    "classLink": ""
+    "classLink": "fury"
   },
   "effects": [],
   "sort": 0,

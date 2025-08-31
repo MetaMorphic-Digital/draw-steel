@@ -13,18 +13,51 @@
       "book": "Heroes",
       "page": "130",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "fury",
     "advancements": {
-      "GI8Fwxs3MaDlGRk1": {
+      "vsxWbN6W3rgdbB7h": {
+        "name": "Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "vsxWbN6W3rgdbB7h",
+        "skills": {
+          "choices": [
+            "nature"
+          ]
+        },
+        "chooseN": 1,
+        "description": "<p>You gain the Nature skill.</p>"
+      },
+      "UkhBvtjA3OxcP4c4": {
+        "name": "Choose Skill",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "UkhBvtjA3OxcP4c4",
+        "chooseN": 2,
+        "skills": {
+          "groups": [
+            "exploration",
+            "intrigue"
+          ]
+        },
+        "description": "<p>Choose any two skills from the exploration or intrigue skill groups. <em>(Quick Build: Alertness, Jump, Nature.)</em></p>"
+      },
+      "F1SV8pE24DkIDxtA": {
         "name": "Primordial Aspect",
-        "img": "icons/magic/fire/dagger-rune-enchant-flame-red.webp",
+        "img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "GI8Fwxs3MaDlGRk1",
+        "_id": "F1SV8pE24DkIDxtA",
         "chooseN": 1,
         "pool": [
           {
@@ -37,45 +70,34 @@
             "uuid": "Compendium.draw-steel.classes.Item.OV3nfjXGHEzv4gUQ"
           }
         ],
-        "description": "<p>Choose a primordial aspect from the following options, each of which grants you a skill.</p>"
+        "description": "<p>Choose a primordial aspect from the following options, each of which grants you a skill. <em>(Quick Build: Berserker.)</em></p>"
       },
-      "3efftKE93hIxv2ms": {
-        "name": "Ferocity",
-        "img": null,
+      "2gM4VoC4XmaJAxpi": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "3efftKE93hIxv2ms",
+        "_id": "2gM4VoC4XmaJAxpi",
+        "description": "<p>You gain the following features.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.F8JyT7pwBmV3fYj2"
-          }
-        ]
-      },
-      "YBqOKxzUcPDD1HAp": {
-        "name": "Mighty Leap",
-        "img": null,
-        "type": "itemGrant",
-        "requirements": {
-          "level": 1
-        },
-        "_id": "YBqOKxzUcPDD1HAp",
-        "pool": [
+          },
           {
             "uuid": "Compendium.draw-steel.classes.Item.5Q9C9fs5pzztX6zJ"
           }
         ]
       },
-      "rg9rduhRKPkuRkw4": {
+      "OCayU87edJQCroxu": {
         "name": "Signature Ability",
-        "img": "icons/weapons/hammers/hammer-double-wood.webp",
+        "img": "icons/tools/scribal/pen-steel-grey-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "rg9rduhRKPkuRkw4",
-        "chooseN": 1,
+        "_id": "OCayU87edJQCroxu",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.nHYS3JAp9m264mQO"
@@ -90,16 +112,17 @@
             "uuid": "Compendium.draw-steel.abilities.Item.i3mzybXIZtT5F3GN"
           }
         ],
-        "description": "<p>Choose one Signature Ability.</p>"
+        "description": "<p>Choose one signature ability from the following options. Signature abilities can be used at will. <em>(Quick Build: To the Death!)</em></p>",
+        "chooseN": 1
       },
-      "Pm8AHtKD5wXl9nfK": {
-        "name": "3 Ferocity",
-        "img": "icons/weapons/hammers/hammer-double-engraved.webp",
+      "pHoGNliceTIIehzI": {
+        "name": "3 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-wood.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "Pm8AHtKD5wXl9nfK",
+        "_id": "pHoGNliceTIIehzI",
         "chooseN": 1,
         "pool": [
           {
@@ -115,17 +138,17 @@
             "uuid": "Compendium.draw-steel.abilities.Item.1C3skjTgPyL1haOZ"
           }
         ],
-        "description": "<p>Choose one 3-Ferocity Ability.</p>"
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 3 ferocity to use. <em>(Quick Build: Back!)</em></p>"
       },
-      "978C9NZLdmAJlKsn": {
-        "name": "5 Ferocity",
-        "img": "icons/weapons/hammers/hammer-double-engraved-green.webp",
+      "hN844cKi9NqjVT2X": {
+        "name": "5 Ferocity Ability",
+        "img": "icons/weapons/hammers/hammer-double-engraved.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
         },
-        "_id": "978C9NZLdmAJlKsn",
-        "chooseN": 1,
+        "_id": "hN844cKi9NqjVT2X",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 ferocity to use. <em>(Quick Build: Blood for Blood!)</em></p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.CD27c6U0GUSIJPDT"
@@ -140,7 +163,17 @@
             "uuid": "Compendium.draw-steel.abilities.Item.54IP1nIQiFvWmqYw"
           }
         ],
-        "description": "<p>Choose one 5-Ferocity Ability.</p>"
+        "chooseN": 1
+      },
+      "qpOkC2pqAKsdSFJO": {
+        "name": "Perk",
+        "img": "icons/svg/aura.svg",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "qpOkC2pqAKsdSFJO",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>"
       }
     },
     "level": 0,
@@ -158,8 +191,7 @@
       "starting": 21,
       "level": 9
     },
-    "recoveries": 10,
-    "kits": 1
+    "recoveries": 10
   },
   "effects": [],
   "sort": 0,

@@ -1,0 +1,66 @@
+{
+  "folder": "JJpf8PudWJzeuRVe",
+  "name": "Healing Grace",
+  "type": "ability",
+  "_id": "S1KR2X2c81VGQqsO",
+  "img": "icons/magic/life/heart-hand-gold-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "98",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "healing-grace",
+    "story": "Your divine energy restores the righteous.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target can spend a Recovery.</p>",
+      "after": "<p>Spend 1+ Piety: For each piety spent, choose one of the following enhancements:</p><ul><li><p>You can target one additional ally within distance.</p></li><li><p>You can end one effect on a target that is ended by a saving throw or that ends at the end of their turn.</p></li><li><p>A prone target can stand up.</p></li><li><p>A target can spend 1 additional Recovery.</p></li></ul>"
+    },
+    "spend": {
+      "text": "Spend one or more piety for enhancements",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755647191067,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!S1KR2X2c81VGQqsO"
+}

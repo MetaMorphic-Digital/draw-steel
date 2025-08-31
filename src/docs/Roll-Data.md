@@ -50,6 +50,7 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
 
 ## Hero specific roll data and values
+
 ### Heroic Resource
 + Heroic resource label - `@hero.primary.label`
 + Heroic resource value - `@hero.primary.value`
@@ -62,7 +63,6 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Accumulated XP - `@hero.xp`
 
 ### Immunities and Weaknesses
-The below roll data entries work add damage immunities and weaknesses, for example added in effects. The numerical value determines how much of a weakness of immunity the actor has
 
 #### Immunities
 + Acid damage -`@damage.immunities.acid`
@@ -116,86 +116,26 @@ Value indicates if actor currently has status (1/yes, 0/no)
 
 ## NPC Actor Roll Data
 
-**This section only includes roll data entries that are specific to NPC actors.**
-
-### Monter Roll data
-+ Encounter Value - `@monster.ev`
+### Monster Roll data
 + Free Strike damage: - `@monster.freeStrike`
-+ Monster Keywords - `@monster.keywords`
-+ Monster Level - `@monster.level`
-+ Monster Organization - `@monster.organization`
-+ Monster Role - `@monster.role`
 
 ### Monster Negotiation Roll Data
 + Impression Score - `@negotiation.impression`
 + Interest - `@negotiation.interest`
 + Patience - `@negotiation.patience`
-+ Motivations - `@negotiation.motivations`
-+ Pitfalls - `@negotiation.pitfalls`
 
 ## Item Roll Data
-**First example: a craftable consumable**
-#### Item Descriptors
-+ Item category - `@item.category `
-+ Item Director Description - `@item.description.director`
-+ Item Type - `@item.kind`
-+ Item Name - `@item.name`
+
 #### Downtime Project roll data
-+ Project Prerequisites - `@item.prerequisites`
 + Project Goal - `@item.project.goal`
-+ Project Roll Characteristic - `@item.project.rollCharacteristic`
-+ Project Source - `@item.project.source`
-+ Project Yield - `@item.project.yield`
-#### Source data
-+ Source Book - `@item.source.book`
-+ Source Book Placeholder - `@item.source.bookPlaceholder`
-+ Source Label - `@item.source.label`
-+ Source License - `@item.source.license`
-+ Source Page - `@item.source.page`
-+ Source Revision - `@item.source.revision`
-+ Source Slug - `@item.source.slug`
-+ Source Value - `@item.source.value`
-
-**Second example: An equipment kit**
-+ Item Bonus on Disengage distance - `@item.bonuses.disengage`
-+ Item Bonus on Melee Damage Tier 1 - `@item.bonuses.melee.damage.tier1`
-+ Item Bonus on Melee Damage Tier 2 - `@item.bonuses.melee.damage.tier2`
-+ Item Bonus on Melee Damage Tier 3 - `@item.bonuses.melee.damage.tier3`
-+ Item Bonus on Melee Distance - `@item.bonuses.melee.distance`
-+ Item Bonus on Ranged Damage Tier 1 - `@item.bonuses.ranged.damage.tier1`
-+ Item Bonus on Ranged Damage Tier 2 - `@item.bonuses.ranged.damage.tier2`
-+ Item Bonus on Ranged Damage Tier 3 - `@item.bonuses.ranged.damage.tier3`
-+ Item Bonus on Ranged Distance - `@item.bonuses.ranged.distance`
-+ Item Bonus on Speed - `@item.bonuses.speed`
-+ Item Bonus on Stability - `@item.bonuses.stability`
-+ Item Bonus on Stamina - `@tem.bonuses.stamina`
-+ Item Director Description - `@item.description.director`
-+ Item description - `@item.description.value`
-+ Item Armor type - `@item.equipment.armor`
-+ Item is/has shield (true/false) - `@item.equipment.shield`
-+ Item Keywords - `@item.equipment.weapon`
-
 
 ### Abilities
 
-+ Ability Category - `@item.category`
-+ Ability damage display (Melee/Ranged) - `@item.damageDisplay`
-+ Ability Story Text - `@item.story`
-+ Ability primary distance (distance/AoE size eg Burst **5**) - `@item.distance.primary`
-+ Ability secondary distance (AoE distance eg. Cube 3 within **10**) - `@item.distance.secondary`
-+ Ability tertiary distance (secondary AoE distance eg. 1x10 line within **1**)- `@item.distance.tertiary`
-+ Ability Distance type - `@item.distance.type`
-+ Ability Effect (Before) - `@item.effect.before`
-+ Ability Effect (After) - `@item.effect.after`
-+ Ability Name - `@item.name`
++ Ability primary distance  - `@item.distance.primary`
++ Ability secondary distance - `@item.distance.secondary`
++ Ability tertiary distance - `@item.distance.tertiary`
 + Ability Power Roll Characteristic - `@item.powerRoll.characteristics`
-+ Ability has Power Roll (true/false) - `@item.powerRoll.enabled`
 + Ability Power Roll Characteristic formula - `@item.powerRoll.formula`
 + Ability Heroic Resource/Malice Cost -`@item.resource`
-+ Ability Additional Heroic Resource/Malice spent effect - `@item.spend.text`
 + Ability Additional Heroic Resource/Malice Cost - `@item.spend.value`
-+ Type of Target - `@item.target.type`
 + Number of targets - `@item.target.value`
-+ Trigger (if triggered action) - `@item.trigger`
-+ Ability type - `@item.type`
-

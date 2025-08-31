@@ -1,0 +1,106 @@
+{
+  "folder": "BiLZLDEQFlNmxUnT",
+  "name": "Phase Inversion Strike",
+  "type": "ability",
+  "_id": "3hGD5Y0bdbna4cUt",
+  "img": "icons/magic/sonic/projectile-shock-wave-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "150",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "phase-inversion-strike",
+    "story": "You step momentarily out of phase as you pull an enemy through you.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "SXRbnL8QYf3QqgXQ": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "SXRbnL8QYf3QqgXQ",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "8 + @chr"
+            }
+          }
+        },
+        "1jW6jWk35aGSZ8d2": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "1jW6jWk35aGSZ8d2",
+          "forced": {
+            "tier1": {
+              "distance": "2"
+            },
+            "tier2": {
+              "distance": "4"
+            },
+            "tier3": {
+              "distance": "6"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Before the push is resolved, you teleport the target to a square adjacent to you and opposite the one they started in. If the target can’t be teleported this way, you can’t push them.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755812845844,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!3hGD5Y0bdbna4cUt"
+}

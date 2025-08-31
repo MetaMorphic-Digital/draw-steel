@@ -1,0 +1,89 @@
+{
+  "folder": "Hua1VikI1490yY1R",
+  "name": "Spirit Sword",
+  "type": "ability",
+  "_id": "OK7FFzXmDaKn8nim",
+  "img": "icons/weapons/swords/sword-flanged-lightning.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "190",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "spirit-sword",
+    "story": "You form a blade of mind energy and stab your target, invigorating yourself.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "animapathy"
+    ],
+    "type": "main",
+    "category": "signature",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "khaj2M6Rk78z6QhI": {
+          "name": "Damage",
+          "img": null,
+          "type": "damage",
+          "_id": "khaj2M6Rk78z6QhI",
+          "damage": {
+            "tier1": {
+              "value": "3 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "9 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You gain 1 surge.</p><p><strong>Strained:</strong> The target takes an extra 3 damage.[[/damage 3]] You also take 3 damage [[/damage 3]] that can’t be reduced in any way.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755842549254,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!OK7FFzXmDaKn8nim"
+}
