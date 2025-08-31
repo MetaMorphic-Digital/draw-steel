@@ -5,7 +5,7 @@ import * as helpers from "./src/module/helpers/_module.mjs";
 import * as rolls from "./src/module/rolls/_module.mjs";
 import * as data from "./src/module/data/_module.mjs";
 import * as utils from "./src/module/utils/_module.mjs";
-import { DRAW_STEEL } from "./src/module/config.mjs";
+import * as DS_CONFIG from "./src/module/config.mjs";
 import * as DS_CONST from "./src/module/constants.mjs";
 
 globalThis.ds = {
@@ -17,7 +17,7 @@ globalThis.ds = {
   data,
   utils,
   CONST: DS_CONST,
-  CONFIG: DRAW_STEEL,
+  CONFIG: DS_CONFIG,
 };
 
 // Register custom elements.
@@ -26,7 +26,7 @@ for (const element of Object.values(applications.elements)) {
 }
 
 Hooks.once("init", function () {
-  CONFIG.DRAW_STEEL = DRAW_STEEL;
+  CONFIG.DRAW_STEEL = DS_CONFIG;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
   helpers.DrawSteelSettingsHandler.registerSettings();
 
@@ -64,7 +64,7 @@ Hooks.once("init", function () {
   const toRemove = ["bleeding", "bless", "corrode", "curse", "degen", "disease", "upgrade", "fireShield", "fear", "holyShield", "hover", "coldShield", "magicShield", "paralysis", "poison", "prone", "regen", "restrain", "shock", "silence", "stun", "unconscious", "downgrade"];
   CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !toRemove.includes(effect.id));
   // Status Effect Transfer
-  for (const [id, value] of Object.entries(DRAW_STEEL.conditions)) {
+  for (const [id, value] of Object.entries(DS_CONFIG.conditions)) {
     CONFIG.statusEffects.push({ id, _id: id.padEnd(16, "0"), ...value });
   }
   for (const [id, value] of Object.entries(DS_CONST.staminaEffects)) {

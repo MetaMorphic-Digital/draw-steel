@@ -19,9 +19,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   static DEFAULT_OPTIONS = {
     classes: ["item"],
     position: {
-      // Allows "Their Lack of Focus is Their Undoing" to fit in two lines
+      // Allows "Allow Me to Introduce Tonight’s Players" to fit in two lines
       // Also ensures the prosemirror editor bar doesn't overflow to a second line when selecting a paragraph element
-      width: 560,
+      width: 580,
     },
     actions: {
       toggleMode: this.#toggleMode,
@@ -218,6 +218,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         name: model.name,
         img: model.img,
         id: model.id,
+        canReconfigure: model.canReconfigure,
       };
       if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
       advs[model.requirements.level].documents.push(advancementContext);

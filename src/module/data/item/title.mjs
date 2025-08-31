@@ -16,7 +16,7 @@ export default class TitleModel extends FeatureModel {
     return {
       ...super.metadata,
       type: "title",
-      packOnly: false,
+      invalidActorTypes: ["npc"],
       detailsPartial: [systemPath("templates/sheets/item/partials/title.hbs")],
     };
   }

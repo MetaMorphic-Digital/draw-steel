@@ -1,0 +1,67 @@
+{
+  "folder": "inlCRuoVqrlKipgA",
+  "name": "Invisible Force",
+  "type": "ability",
+  "_id": "tbK37ZbePfblneBD",
+  "img": "icons/magic/air/air-smoke-casting.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "231",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "invisible-force",
+    "story": "You manipulate a tiny object with your mind.",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "object",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You can grab or manipulate the target object with your mind, moving the object up to a number of squares equal to your Reason, Intuition, or Presence score (your choice). You can use this ability to turn doorknobs, pull levers, and so forth. You can manipulate any small movable piece of a larger object as long as the piece is unattended and size 1T. You can’t use this ability to break a smaller piece off a larger object.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755830437620,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!tbK37ZbePfblneBD"
+}

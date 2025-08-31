@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "112",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "elementalist",
     "advancements": {
@@ -284,6 +284,41 @@
           }
         ],
         "chooseN": 1
+      },
+      "obJZO7tdAOXGnoyW": {
+        "name": "Perk",
+        "img": "icons/svg/aura.svg",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "obJZO7tdAOXGnoyW",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>"
+      },
+      "NyffE8PhSBk2tmP8": {
+        "name": "New 5-Essence Ability",
+        "img": "icons/weapons/wands/wand-gem-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "NyffE8PhSBk2tmP8",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 5 essence to use. Alternatively, you can choose one of the 5-essence abilities you didn’t select at 1st level</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.L16CCFQTJf8BdjwW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.MFmfkvNh1XDHEBHT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.lWDx0dbTtiyXGM9B"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.03OhmJSPSM4jge9O"
+          }
+        ]
       }
     },
     "level": 0,
@@ -300,8 +335,7 @@
       "starting": 18,
       "level": 6
     },
-    "recoveries": 8,
-    "kits": 0
+    "recoveries": 8
   },
   "effects": [],
   "sort": 0,
@@ -315,7 +349,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1754707581859,
     "modifiedTime": null,
     "lastModifiedBy": null

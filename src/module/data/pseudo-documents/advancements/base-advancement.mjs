@@ -1,10 +1,10 @@
-import AdvancementChain from "../../../utils/advancement-chain.mjs";
 import TypedPseudoDocument from "../typed-pseudo-document.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /**
  * @import { DataSchema } from "@common/abstract/_types.mjs"
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs"
+ * @import AdvancementChain from "../../../utils/advancement-chain.mjs";
  */
 
 const { HTMLField, NumberField, SchemaField } = foundry.data.fields;

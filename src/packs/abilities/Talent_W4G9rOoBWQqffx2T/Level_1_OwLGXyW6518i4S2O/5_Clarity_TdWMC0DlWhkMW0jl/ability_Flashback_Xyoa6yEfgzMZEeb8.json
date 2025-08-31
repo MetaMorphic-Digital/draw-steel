@@ -1,0 +1,67 @@
+{
+  "folder": "TdWMC0DlWhkMW0jl",
+  "name": "Flashback",
+  "type": "ability",
+  "_id": "Xyoa6yEfgzMZEeb8",
+  "img": "icons/magic/time/hourglass-brown-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "191",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "flashback",
+    "story": "The target is thrown several seconds back through time and gets to do it all again.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "chronopathy"
+    ],
+    "type": "maneuver",
+    "category": "signature",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target uses an ability with a base Heroic Resource cost of 7 or lower that they’ve previously used this round, without needing to spend the base cost. Augmentations to the ability can be paid for as usual.</p><p><strong>Strained:</strong> You take [[/damage 1d6]] damage and are slowed (save ends).</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755872277059,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Xyoa6yEfgzMZEeb8"
+}

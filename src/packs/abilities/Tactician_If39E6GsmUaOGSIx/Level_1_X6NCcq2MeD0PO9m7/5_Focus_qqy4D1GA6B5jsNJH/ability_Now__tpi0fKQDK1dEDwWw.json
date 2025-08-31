@@ -1,7 +1,7 @@
 {
   "name": "Now!",
   "type": "ability",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/magic/time/clock-spinning-gold-pink.webp",
   "system": {
     "source": {
       "book": "Heroes",
@@ -20,13 +20,13 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 5,
+      "primary": 10,
       "secondary": 0,
       "tertiary": null
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "allies",
+      "type": "ally",
       "value": 3
     },
     "power": {
@@ -38,7 +38,7 @@
     },
     "effect": {
       "before": "",
-      "after": "Each target can make a free strike."
+      "after": "<p>Each target can make a free strike.</p>"
     },
     "spend": {
       "value": null,
