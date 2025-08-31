@@ -1,0 +1,95 @@
+{
+  "folder": "gWcqrI8cFJGHNpit",
+  "name": "Disciple of Fire",
+  "type": "feature",
+  "_id": "9eVhXUk8hdRjddvH",
+  "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your connection to fire allows you to protect yourself from it, even as you rip away the protections of others. You have fire immunity equal to 5 plus your level. Additionally, fire damage you deal ignores a target’s fire immunity.</p><p>At the start of a combat encounter, you gain a number of surges equal to your Victories. Whenever you spend a surge to deal extra damage, you can make that damage fire damage.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "118",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "disciple-of-fire",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Disciple of Fire Effect",
+      "img": "icons/magic/fire/flame-burning-fist-strike.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.9eVhXUk8hdRjddvH",
+      "_id": "qxMzgA6f3hn6YeLx",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.fire.level",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756082847773,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!9eVhXUk8hdRjddvH.qxMzgA6f3hn6YeLx"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756082750757,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!9eVhXUk8hdRjddvH"
+}
