@@ -19,16 +19,16 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       forced: this.duplicateTierSchema(() => ({
         display: new StringField({
           required: true,
-          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
-          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hintForced",
+          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.label",
+          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.hintForced",
           initial: "{{forced}}",
         }),
         movement: new SetField(
           setOptions(),
-          { initial: ["push"], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.movement.label" },
+          { initial: ["push"], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.movement.label" },
         ),
-        distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
-        properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
+        distance: new FormulaField({ deterministic: true, initial: "1", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.distance.label" }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }

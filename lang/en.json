@@ -104,6 +104,80 @@
         }
       }
     },
+    "POWER_ROLL_EFFECT": {
+      "FIELDS": {
+        "damage": {
+          "label": "Damage"
+        },
+        "types": {
+          "label": "Damage Types"
+        },
+        "display": {
+          "label": "Display",
+          "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
+          "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
+        },
+        "effects": {
+          "element": {
+            "condition": {
+              "label": "Potency Condition"
+            },
+            "end": {
+              "label": "Override End"
+            },
+            "properties": {
+              "label": "Properties"
+            }
+          }
+        },
+        "movement": {
+          "label": "Forced Movement Type"
+        },
+        "distance": {
+          "label": "Distance"
+        },
+        "potency": {
+          "label": "Potency",
+          "value": {
+            "label": "Potency Value"
+          },
+          "characteristic": {
+            "label": "Potency Characteristic",
+            "hint": "Tiers 2 and 3 will default to the chosen characteristic of the prior tier."
+          }
+        },
+        "properties": {
+          "label": "Properties"
+        }
+      },
+      "APPLIED": {
+        "CONDITIONS": {
+          "always": "Always",
+          "failure": "Failure",
+          "success": "Success"
+        },
+        "Properties": {
+          "stacking": "Stacking"
+        },
+        "AddEffect": "Add Effect",
+        "CreateCustomEffect": "Create Custom Effect",
+        "CustomEffects": "Custom Effects"
+      },
+      "DAMAGE": {
+        "formatted": "{value} {damageTypes} damage",
+        "formattedTypeless": "{value} damage",
+        "formattedPotency": "{potency} {damage}",
+        "Properties": {
+          "IgnoresImmunity": "Ignores Immunities"
+        }
+      },
+      "FORCED": {
+        "Properties": {
+          "IgnoresStability": "Ignores Stability",
+          "Vertical": "Vertical"
+        }
+      }
+    },
     "SHEET": {
       "Labels": {
         "Character": "Draw Steel Character Sheet",
@@ -1290,80 +1364,6 @@
         },
         "type": {
           "label": "Type"
-        }
-      },
-      "POWER_ROLL_EFFECT": {
-        "FIELDS": {
-          "damage": {
-            "label": "Damage"
-          },
-          "types": {
-            "label": "Damage Types"
-          },
-          "display": {
-            "label": "Display",
-            "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
-            "hintForced": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2). '{{forced}}' will be replaced with the derived forced movement info (i.e. Push or Pull 3)."
-          },
-          "effects": {
-            "element": {
-              "condition": {
-                "label": "Potency Condition"
-              },
-              "end": {
-                "label": "Override End"
-              },
-              "properties": {
-                "label": "Properties"
-              }
-            }
-          },
-          "movement": {
-            "label": "Forced Movement Type"
-          },
-          "distance": {
-            "label": "Distance"
-          },
-          "potency": {
-            "label": "Potency",
-            "value": {
-              "label": "Potency Value"
-            },
-            "characteristic": {
-              "label": "Potency Characteristic",
-              "hint": "Tiers 2 and 3 will default to the chosen characteristic of the prior tier."
-            }
-          },
-          "properties": {
-            "label": "Properties"
-          }
-        },
-        "APPLIED": {
-          "CONDITIONS": {
-            "always": "Always",
-            "failure": "Failure",
-            "success": "Success"
-          },
-          "Properties": {
-            "stacking": "Stacking"
-          },
-          "AddEffect": "Add Effect",
-          "CreateCustomEffect": "Create Custom Effect",
-          "CustomEffects": "Custom Effects"
-        },
-        "DAMAGE": {
-          "formatted": "{value} {damageTypes} damage",
-          "formattedTypeless": "{value} damage",
-          "formattedPotency": "{potency} {damage}",
-          "Properties": {
-            "IgnoresImmunity": "Ignores Immunities"
-          }
-        },
-        "FORCED": {
-          "Properties": {
-            "IgnoresStability": "Ignores Stability",
-            "Vertical": "Vertical"
-          }
         }
       },
       "SHEET": {
