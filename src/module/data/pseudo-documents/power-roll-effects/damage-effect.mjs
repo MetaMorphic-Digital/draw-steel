@@ -13,9 +13,9 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     // TODO: Remove manual label assignment when localization bug is fixed
     return Object.assign(super.defineSchema(), {
       damage: this.duplicateTierSchema(() => ({
-        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
-        types: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.types.label" }),
-        properties: new SetField(setOptions(), { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
+        value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
+        types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
+        properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
       })),
     });
   }
@@ -101,7 +101,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     const { value, types, potency } = this.damage[`tier${tier}`];
 
     let damageTypes;
-    let i18nString = "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formatted";
+    let i18nString = "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formatted";
     if (types.size) {
       const formatter = game.i18n.getListFormatter({ type: "disjunction" });
       damageTypes = formatter.format(Array.from(types).map(type => ds.CONFIG.damageTypes[type].label));
@@ -113,7 +113,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     const potencyString = this.toPotencyText(tier);
 
-    return game.i18n.format("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
+    return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
       damage: formattedDamageString,
       potency: potencyString,
     });

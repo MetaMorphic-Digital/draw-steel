@@ -67,12 +67,12 @@ export const staminaEffects = Object.freeze({
  */
 export const potencyConditions = Object.freeze({
   always: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.always",
+    label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.always",
   },
   failure: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.failure",
+    label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.failure",
   },
   success: {
-    label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.success",
+    label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.success",
   },
 });
