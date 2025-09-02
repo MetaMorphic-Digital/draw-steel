@@ -1,0 +1,64 @@
+{
+  "folder": "jZQCOC1rb6xjcnAE",
+  "name": "Demon Unleashed",
+  "type": "ability",
+  "_id": "58J77Q87NMAHKcM9",
+  "img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "136",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "demon-unleashed",
+    "story": "Foes tremble at the sight of you.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the encounter or until you are dying, each enemy who starts their turn adjacent to you and has P &lt; STRONG is frightened until the end of their turn.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756686098265,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!58J77Q87NMAHKcM9"
+}

@@ -1,0 +1,90 @@
+{
+  "folder": "OGqDQ6zaKGn95aCZ",
+  "name": "Maw of Earth",
+  "type": "ability",
+  "_id": "tB0xg8mfktpimBWZ",
+  "img": "icons/magic/earth/explosion-lava-stone-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "121",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "maw-of-earth",
+    "story": "You open up the ground, spewing out shrapnel of stone and debris.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged",
+      "earth"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 3,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "nigv37EKZcu7Jm6c": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "nigv37EKZcu7Jm6c",
+          "damage": {
+            "tier1": {
+              "value": "5"
+            },
+            "tier2": {
+              "value": "9"
+            },
+            "tier3": {
+              "value": "12"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The ground in or directly beneath the area drops 3 squares.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756684151049,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!tB0xg8mfktpimBWZ"
+}
