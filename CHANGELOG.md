@@ -24,7 +24,7 @@
 
 - Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
-  - Level 2 abilities and features for all classes
+  - Level 2 & 3 abilities and features for all classes
 
 ### Changed
 
