@@ -13,8 +13,8 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
       other: this.duplicateTierSchema(() => ({
         display: new StringField({
           required: true,
-          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
-          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
+          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.label",
+          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.hint",
         }),
       })),
     });

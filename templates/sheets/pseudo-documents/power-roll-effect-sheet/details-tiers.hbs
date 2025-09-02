@@ -29,7 +29,7 @@
     <label>{{localize "DRAW_STEEL.ActiveEffect.Applied"}}</label>
     <div class="form-field">
       <select data-name="{{effects.name}}">
-        {{selectOptions effects.options blank=(localize "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CreateCustomEffect")}}
+        {{selectOptions effects.options blank=(localize "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CreateCustomEffect")}}
       </select>
     </div>
     <button type="button" class="icon fa-solid fa-plus" data-action="addAppliedEffect" data-path="{{effects.name}}"></button>

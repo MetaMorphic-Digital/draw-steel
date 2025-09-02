@@ -29,6 +29,7 @@
 ### Changed
 
 - The skill list on the character sheet is now sorted alphabetically.
+- Adjusted i18n structure for Power Roll Effects.
 
 ### Fixed
 
