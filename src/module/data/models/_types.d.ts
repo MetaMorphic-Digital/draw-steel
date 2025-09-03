@@ -11,9 +11,6 @@ declare module "./source.mjs" {
     page: string;
     license: string;
     revision: number;
-    bookPlaceHolder: string;
     label: string;
-    value: string;
-    slug: string;
   }
 }
