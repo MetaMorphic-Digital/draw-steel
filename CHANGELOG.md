@@ -22,6 +22,7 @@
 
 ### Added
 
+- Characteristic Advancement. (#707)
 - Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
@@ -30,6 +31,10 @@
 
 - The skill list on the character sheet is now sorted alphabetically.
 - Adjusted i18n structure for Power Roll Effects.
+
+### Removed
+
+- Removed minimum and maximums on characteristic values. (#707)
 
 ### Fixed
 
