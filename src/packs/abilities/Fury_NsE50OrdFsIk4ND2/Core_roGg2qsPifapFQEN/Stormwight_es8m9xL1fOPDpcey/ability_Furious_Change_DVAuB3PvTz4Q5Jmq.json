@@ -1,6 +1,6 @@
 {
   "folder": "es8m9xL1fOPDpcey",
-  "name": "Furious Charge",
+  "name": "Furious Change",
   "type": "ability",
   "img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
   "system": {
@@ -8,14 +8,11 @@
       "book": "Heroes",
       "page": "132",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
-    "_dsid": "furious-charge",
+    "_dsid": "furious-change",
     "story": "In your anger, you revert to a more bestial form.",
-    "keywords": [
-      "magic",
-      "melee"
-    ],
+    "keywords": [],
     "type": "triggered",
     "category": "",
     "resource": null,
@@ -36,7 +33,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Note: This ability should be listed as <strong>'Self or One Creature'</strong></p><p>You can select a new target of the same size or smaller within distance to be force moved instead. You become the source of the forced movement, determine the new target’s destination, and can push the target instead of using the original forced movement type. Additionally, the forced movement distance gains a bonus equal to your Might score.</p>",
+      "before": "<p>You gain [[/heal @M temp]]{temporary Stamina equal to your Might score} and can enter your animal form or hybrid form.</p>",
       "after": ""
     },
     "spend": {
@@ -53,9 +50,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755577635719,
     "modifiedTime": null,
     "lastModifiedBy": null

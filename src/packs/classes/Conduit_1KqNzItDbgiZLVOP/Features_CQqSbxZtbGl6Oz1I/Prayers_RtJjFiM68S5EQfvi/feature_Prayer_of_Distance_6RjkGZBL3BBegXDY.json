@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "99",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "prayer-of-distance",
     "advancements": {}
@@ -24,7 +24,6 @@
       "img": "icons/skills/ranged/target-bullseye-arrow-blue.webp",
       "type": "abilityModifier",
       "origin": "Compendium.draw-steel.classes.Item.6RjkGZBL3BBegXDY",
-      "transfer": true,
       "_id": "tuzvToYgzn80ZiSp",
       "system": {
         "end": {
@@ -40,7 +39,7 @@
       },
       "changes": [
         {
-          "key": "system.abilityBonuses.ranged.distance",
+          "key": "distance",
           "mode": 2,
           "value": "2",
           "priority": null
@@ -58,6 +57,7 @@
       },
       "description": "<p>You have a +2 bonus to the distance of your ranged magic abilities.</p>",
       "tint": "#ffffff",
+      "transfer": true,
       "statuses": [],
       "sort": 0,
       "flags": {},
@@ -65,10 +65,10 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755915907968,
+        "systemVersion": "0.8.1",
+        "createdTime": 1756934784988,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
