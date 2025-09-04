@@ -1,13 +1,13 @@
 {
   "folder": "y0titlZe5vQIjdy5",
-  "name": "Mohler",
+  "name": "Orc Glorifier",
   "type": "npc",
-  "_id": "My8y85XQkQHc0cqp",
+  "_id": "MRtQiQWUQmy4rUYk",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 4,
-      "max": 4,
+      "value": 3,
+      "max": 3,
       "temporary": 0
     },
     "characteristics": {
@@ -15,16 +15,16 @@
         "value": 0
       },
       "agility": {
-        "value": 2
-      },
-      "reason": {
-        "value": -4
-      },
-      "intuition": {
         "value": 1
       },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 0
+      },
       "presence": {
-        "value": -3
+        "value": 2
       }
     },
     "combat": {
@@ -34,9 +34,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
@@ -45,10 +45,9 @@
       "languages": []
     },
     "movement": {
-      "value": 7,
+      "value": 6,
       "types": [
-        "walk",
-        "burrow"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -93,18 +92,18 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "animal"
+        "humanoid"
       ],
       "level": 1,
       "ev": 3,
-      "role": "ambusher",
+      "role": "controller",
       "organization": "minion"
     }
   },
   "prototypeToken": {
-    "name": "Mohler",
+    "name": "Orc Glorifier",
     "displayName": 0,
     "actorLink": false,
     "width": 1,
@@ -205,7 +204,7 @@
       "img": "icons/skills/social/intimidation-impressing.webp",
       "system": {
         "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to speed</p>",
+          "value": "<p>With Captain: +5 bonus to ranged distance</p>",
           "director": ""
         },
         "source": {
@@ -226,249 +225,57 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.guwqOTm4GC4M3VoM"
-    },
-    {
-      "name": "Seismic Sense",
-      "type": "feature",
-      "_id": "FYLJLioc7dtsLvvh",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler doesn’t need line of effect to use abilities against crea tures or objects touching the ground.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "seismic-sense",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.FYLJLioc7dtsLvvh"
-    },
-    {
-      "name": "Ground Grinder",
-      "type": "feature",
-      "_id": "fUfeP3yCyiAmOvHn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler can use the Dig maneuver at the start of the encoun ter. Additionally, while the mohler burrows within 1 square below the ground, the ground above where they burrow is difficult terrain.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "ground-grinder",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.fUfeP3yCyiAmOvHn"
-    },
-    {
-      "name": "Earth Bump",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "earth-bump",
-        "story": "",
-        "keywords": [
-          "melee",
-          "strike",
-          "weapon"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "LYZM71ztUwYBmaRB": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "LYZM71ztUwYBmaRB",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "fluUrsdSXyy5iXG0": {
-              "name": "Prone",
-              "img": null,
-              "type": "applied",
-              "_id": "fluUrsdSXyy5iXG0",
-              "applied": {
-                "tier1": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The distance increases to melee 2. If the mohler is 1 or more squares beneath the target before they use this ability, a target who has [[m&lt;1]] is also knocked prone.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "ckfqQV4AsEGy3Oa4",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.My8y85XQkQHc0cqp.Item.guwqOTm4GC4M3VoM",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1756956386218,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.ckfqQV4AsEGy3Oa4"
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.guwqOTm4GC4M3VoM"
+    },
+    {
+      "name": "Bloodfire Burn",
+      "type": "feature",
+      "_id": "cD0TrJyrk2SfV6Zx",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the glorifier is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.3y2tRRGSXTCi59k3.Item.cD0TrJyrk2SfV6Zx",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756956399253,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.cD0TrJyrk2SfV6Zx"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -527,11 +334,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956234020,
+        "createdTime": 1756956403414,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.wRlM0yKql0bXpAAe"
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.wRlM0yKql0bXpAAe"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -590,11 +397,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956235547,
+        "createdTime": 1756956404594,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.BStQdG3SobeFUDES"
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.BStQdG3SobeFUDES"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -653,11 +460,141 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956237707,
+        "createdTime": 1756956405781,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.OMNyXoF5k0h6ffBa"
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.OMNyXoF5k0h6ffBa"
+    },
+    {
+      "name": "Call to Victory",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "melee",
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "meleeRanged",
+          "primary": 1,
+          "secondary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "BH8OouasVRSiqZq6": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "BH8OouasVRSiqZq6",
+              "damage": {
+                "tier1": {
+                  "value": "1",
+                  "types": [
+                    "sonic"
+                  ]
+                },
+                "tier2": {
+                  "value": "2",
+                  "types": [
+                    "sonic"
+                  ]
+                },
+                "tier3": {
+                  "value": "3",
+                  "types": [
+                    "sonic"
+                  ]
+                }
+              }
+            },
+            "NlsynKV9fkWzrmYq": {
+              "name": "Slowed",
+              "img": null,
+              "type": "applied",
+              "_id": "NlsynKV9fkWzrmYq",
+              "applied": {
+                "tier1": {
+                  "potency": {
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Allies gain an edge on melee strikes against the target until the glorifier and each other glorifier in their squad are killed.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Y6fDVhHBKpg2bwO6",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756956412056,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!MRtQiQWUQmy4rUYk.Y6fDVhHBKpg2bwO6"
     }
   ],
   "effects": [],
@@ -670,12 +607,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922204554,
+    "systemVersion": "0.8.1",
+    "createdTime": 1756956256058,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!My8y85XQkQHc0cqp"
+  "_key": "!actors!MRtQiQWUQmy4rUYk"
 }
