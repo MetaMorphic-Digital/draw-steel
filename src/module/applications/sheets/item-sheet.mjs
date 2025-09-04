@@ -78,6 +78,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     },
     advancement: {
       template: systemPath("templates/sheets/item/advancement.hbs"),
+      scrollable: [""],
     },
     impact: {
       template: systemPath("templates/sheets/item/impact.hbs"),

@@ -86,6 +86,10 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
           link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
         });
       }
+
+      // Drop logic
+      ctx.expansionTypes = Object.entries(ItemGrantAdvancement.EXPANSION_TYPES).map(([value, { label }]) => ({ value, label }));
+      if (context.document.requirements.expansion === "perk") ctx.perkTypes = ds.CONFIG.perks.typeOptions;
     }
 
     else if (context.document.type === "skill") {

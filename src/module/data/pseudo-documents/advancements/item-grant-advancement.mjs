@@ -1,12 +1,13 @@
 import BaseAdvancement from "./base-advancement.mjs";
 import DSDialog from "../../../applications/api/dialog.mjs";
 import { systemID } from "../../../constants.mjs";
+import { setOptions } from "../../helpers.mjs";
 
 /**
  * @import DrawSteelActor from "../../../documents/actor.mjs";
  */
 
-const { ArrayField, DocumentUUIDField, NumberField, SchemaField } = foundry.data.fields;
+const { ArrayField, DocumentUUIDField, NumberField, SchemaField, SetField, StringField } = foundry.data.fields;
 
 /**
  * An advancement representing a fixed or chosen item grant from a known set of items.
@@ -19,6 +20,16 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static defineRequirements() {
+    return Object.assign(super.defineRequirements(), {
+      expansion: new StringField({ blank: false }),
+      perkType: new SetField(setOptions()),
     });
   }
 
@@ -41,6 +52,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
    * @type {Set<string>}
    */
   static ALLOWED_TYPES = new Set(["ability", "treasure", "feature", "kit", "project"]);
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Allowed expansion types.
+   * @type {Record<string, { label: string }>}
+   */
+  static EXPANSION_TYPES = {
+    perk: {
+      label: "TYPES.Item.perk",
+    },
+  };
 
   /* -------------------------------------------------- */
 

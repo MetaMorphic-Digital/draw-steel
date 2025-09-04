@@ -1697,13 +1697,21 @@ export const features = { };
 export const perks = {
   /**
    * Types of perks in addition to the available skill groups.
-   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
+   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.".
    * @type {Record<string, {label: string}>}
    */
   types: {
     supernatural: {
       label: "DRAW_STEEL.Item.perk.Types.Supernatural",
     },
+  },
+  /**
+   * All perk type options.
+   * @type {FormSelectOption[]}
+   */
+  get typeOptions() {
+    const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, entry]) => ({ value, label: entry.label }));
+    return skillGroups.concat(Object.entries(ds.CONFIG.perks.types).map(([value, entry]) => ({ value, label: entry.label })));
   },
 };
 preLocalize("perks.types", { key: "label" });

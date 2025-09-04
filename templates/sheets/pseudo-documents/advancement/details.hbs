@@ -3,6 +3,18 @@
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
     {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" type="number" classes="slim"}}
     {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
+    {{#if fields.requirements.fields.expansion}}
+    {{formGroup
+    fields.requirements.fields.expansion
+    value=source.requirements.expansion
+    name="requirements.expansion"
+    options=ctx.expansionTypes
+    blank="None"
+    localize=true}}
+    {{#if (eq source.requirements.expansion "perk")}}
+    {{formGroup fields.requirements.fields.perkType value=source.requirements.perkType name="requirements.perkType" options=ctx.perkTypes}}
+    {{/if}}
+    {{/if}}
   </fieldset>
 
   {{!-- ITEM GRANT POOL --}}
