@@ -20,16 +20,10 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  static defineRequirements() {
-    return Object.assign(super.defineRequirements(), {
-      expansion: new StringField({ blank: false }),
-      perkType: new SetField(setOptions()),
+      expansion: new SchemaField({
+        type: new StringField({ blank: false }),
+        perkType: new SetField(setOptions()),
+      }),
     });
   }
 
@@ -56,7 +50,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Allowed expansion types.
+   * Allowed expansion types, where a user can add an unknown document to the advancement chain.
    * @type {Record<string, { label: string }>}
    */
   static EXPANSION_TYPES = {

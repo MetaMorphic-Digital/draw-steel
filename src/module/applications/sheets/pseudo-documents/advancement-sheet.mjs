@@ -89,7 +89,11 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
       // Drop logic
       ctx.expansionTypes = Object.entries(ItemGrantAdvancement.EXPANSION_TYPES).map(([value, { label }]) => ({ value, label }));
-      if (context.document.requirements.expansion === "perk") ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+      switch (context.document.expansion.type) {
+        case "perk":
+          ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+          break;
+      }
     }
 
     else if (context.document.type === "skill") {

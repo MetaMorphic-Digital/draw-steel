@@ -26,14 +26,6 @@
           "level": {
             "label": "Level",
             "hint": "The level at which this advancement can be granted."
-          },
-          "expansion": {
-            "label": "Expansion Type",
-            "hint": "Allow other items of the selected type."
-          },
-          "perkType": {
-            "label": "Perk Type",
-            "hint": "If empty, all perk types are allowed."
           }
         }
       },
@@ -42,6 +34,16 @@
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          },
+          "expansion": {
+            "type": {
+              "label": "Expansion Type",
+              "hint": "Allow other items of the selected type."
+            },
+            "perkType": {
+              "label": "Perk Type",
+              "hint": "If empty, all perk types are allowed."
+            }
           }
         }
       },
@@ -77,6 +79,7 @@
       },
       "SHEET": {
         "requirements": "Requirements",
+        "expansion": "Expansion",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
         "reconfigure": "Reconfigure Advancement"
