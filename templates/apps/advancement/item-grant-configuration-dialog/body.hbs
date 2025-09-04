@@ -1,0 +1,22 @@
+<section>
+  <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN" n=chooseN}}</p>
+  {{#if items.length}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ItemChoices"}}</legend>
+    {{#each items}}
+    <div class="form-group">
+      <label>{{link}}</label>
+      <div class="form-fields">
+        <input type="checkbox" value="uuid" name="choices" {{checked chosen}}>
+      </div>
+    </div>
+    {{/each}}
+  </fieldset>
+  {{/if}}
+  {{#if expansion}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.expansion"}}</legend>
+    <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.DropHere"}}</p>
+  </fieldset>
+  {{/if}}
+</section>
