@@ -1,13 +1,13 @@
 {
   "folder": "zBFE173ZFzlEPX1o",
-  "name": "Human Brawler",
+  "name": "Giant Hawk",
   "type": "npc",
-  "_id": "DSEkUDEnQeS4LsWr",
-  "img": "systems/draw-steel/assets/roles/brute.webp",
+  "_id": "5GcG7VaEuDKSbO5Q",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
   "system": {
     "stamina": {
-      "value": 40,
-      "max": 40,
+      "value": 30,
+      "max": 30,
       "temporary": 0
     },
     "characteristics": {
@@ -15,16 +15,16 @@
         "value": 2
       },
       "agility": {
-        "value": 1
+        "value": 2
       },
       "reason": {
-        "value": 0
+        "value": -3
       },
       "intuition": {
-        "value": 0
+        "value": 1
       },
       "presence": {
-        "value": 0
+        "value": -2
       }
     },
     "combat": {
@@ -33,21 +33,22 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
+        "value": 2,
         "letter": "M"
       },
       "stability": 0,
       "turns": 1
     },
     "biography": {
-      "value": "",
-      "languages": [],
-      "director": ""
+      "value": "<p></p>",
+      "director": "",
+      "languages": []
     },
     "movement": {
       "value": 5,
       "types": [
-        "walk"
+        "walk",
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -57,12 +58,12 @@
         "all": 0,
         "acid": 0,
         "cold": 0,
-        "corruption": 1,
+        "corruption": 0,
         "fire": 0,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
-        "psychic": 1,
+        "psychic": 0,
         "sonic": 0
       },
       "weaknesses": {
@@ -80,7 +81,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "181",
+      "page": "185",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,24 +93,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 4,
+      "freeStrike": 3,
       "keywords": [
-        "humanoid"
+        "animal"
       ],
       "level": 1,
       "ev": 6,
-      "role": "brute",
+      "role": "mount",
       "organization": "platoon"
     }
   },
   "prototypeToken": {
-    "name": "Human Brawler",
+    "name": "Giant Hawk",
     "displayName": 0,
     "actorLink": false,
-    "width": 1,
-    "height": 1,
+    "width": 2,
+    "height": 2,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/brute.webp",
+      "src": "systems/draw-steel/assets/roles/mount.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -178,7 +179,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -193,22 +194,62 @@
     "movementAction": null,
     "flags": {},
     "randomImg": false,
-    "appendNumber": true,
+    "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Haymaker",
+      "name": "Mounted Platform",
+      "type": "feature",
+      "_id": "gEq26SRcXuoaFXGd",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Once per turn when the hawk moves, any creature riding the hawk can make a free strike during or after the movement.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012267953,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.gEq26SRcXuoaFXGd"
+    },
+    {
+      "name": "Talons",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
+          "book": "",
+          "page": "",
+          "license": "",
           "revision": 1
         },
-        "_dsid": "haymaker",
+        "_dsid": "ability",
         "story": "",
         "keywords": [
           "melee",
@@ -231,279 +272,77 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
+              "agility"
             ]
           },
           "effects": {
-            "Ie17tQRpGgNplROT": {
+            "KAQsMUcG8kSDHdEp": {
+              "name": "",
+              "img": null,
               "type": "damage",
-              "_id": "Ie17tQRpGgNplROT",
+              "_id": "KAQsMUcG8kSDHdEp",
               "damage": {
                 "tier1": {
-                  "value": "6",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
+                  "value": "5"
                 },
                 "tier2": {
-                  "value": "9",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
+                  "value": "7"
                 },
                 "tier3": {
-                  "value": "12",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
+                  "value": "9"
                 }
-              },
-              "name": "",
-              "img": null
+              }
             },
-            "wMsRzNzm2i5xigUA": {
+            "iRoJGiz3Dq9OFHg6": {
+              "name": "Grabbed",
+              "img": null,
               "type": "applied",
-              "_id": "wMsRzNzm2i5xigUA",
-              "name": "Wrestling Grab",
+              "_id": "iRoJGiz3Dq9OFHg6",
               "applied": {
                 "tier3": {
-                  "display": "{{potency}} grabbed and the target takes a bane on the Escape Grab maneuver",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "@potency.strong"
-                  },
+                  "display": "grabbed",
                   "effects": {
                     "grabbed": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
+                      "condition": "always",
+                      "end": ""
                     }
                   }
-                },
-                "tier1": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  },
-                  "effects": {}
-                },
-                "tier2": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  },
-                  "effects": {}
                 }
-              },
-              "img": null
+              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>A target who is already grabbed takes an extra 2 damage.</p>"
+          "after": ""
         },
         "spend": {
-          "text": "",
-          "value": null
+          "text": "If this ability gains an edge or has a double edge, it deals an  extra 2 damage.",
+          "value": 2
         }
       },
-      "_id": "daL7FIljzSpRRHSu",
+      "_id": "5zpMeQs1oKtDNI5e",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.daL7FIljzSpRRHSu"
-    },
-    {
-      "name": "Throw (1 Malice)",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "throw-1-malice",
-        "story": "",
-        "keywords": [
-          "melee"
-        ],
-        "category": "heroic",
-        "resource": 1,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p><strong>Note:</strong> One creature grabbed by the brawler</p><p>The brawler pushes the target up to 5 squares.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "F66XwHHFuTzPM9TM",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.F66XwHHFuTzPM9TM"
-    },
-    {
-      "name": "Shoot the Hostage!",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shoot-the-hostage",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "The brawler is targeted with a strike",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The brawler halves the damage from any strike if they have a creature or object grabbed of size 1S or larger. The grabbed creature or object takes the remaining damage.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "gtOLdsMVkl7yYDKh",
-      "img": "icons/skills/movement/arrow-upward-blue.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.gtOLdsMVkl7yYDKh"
-    },
-    {
-      "name": "Supernatural Insight",
-      "type": "feature",
-      "_id": "W54VgR1A3eMCWbFb",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The brawler ignores concealment if it’s granted by a supernatural effect.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "supernatural-insight",
-        "advancements": {}
-      },
       "effects": [],
       "folder": null,
       "sort": 0,
       "ownership": {
         "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012296552,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.W54VgR1A3eMCWbFb"
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.5zpMeQs1oKtDNI5e"
     },
     {
       "name": "Alchemical Device",
@@ -658,14 +497,14 @@
         "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714297835,
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012467150,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.lVlwo9eIp8HBjfth"
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.lVlwo9eIp8HBjfth"
     },
     {
       "name": "Exploit Opening",
@@ -717,10 +556,10 @@
         "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.8BzL1WGLdRmlM5U0",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714298826,
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012468076,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
@@ -728,7 +567,7 @@
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.LYYyN9iD2PjepIFo"
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.LYYyN9iD2PjepIFo"
     },
     {
       "name": "Staying Power",
@@ -780,10 +619,10 @@
         "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.UgORNnmUgijjyizj",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714299675,
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012469247,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
@@ -791,11 +630,74 @@
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!DSEkUDEnQeS4LsWr.vxocmPyA9uKwrgEq"
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.vxocmPyA9uKwrgEq"
+    },
+    {
+      "name": "Dive",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": "",
+          "revision": 1
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 1,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The hawk moves up to their speed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "72F0hMJVwQhheXPW",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757012765426,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!5GcG7VaEuDKSbO5Q.72F0hMJVwQhheXPW"
     }
   ],
   "effects": [],
-  "sort": 1400000,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },
@@ -806,10 +708,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755639586219,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757012182442,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!DSEkUDEnQeS4LsWr"
+  "_key": "!actors!5GcG7VaEuDKSbO5Q"
 }
