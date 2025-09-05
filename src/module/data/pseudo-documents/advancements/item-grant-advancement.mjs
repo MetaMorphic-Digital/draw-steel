@@ -55,6 +55,9 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
    * @type {Record<string, { label: string }>}
    */
   static EXPANSION_TYPES = {
+    kit: {
+      label: "TYPES.Item.kit",
+    },
     perk: {
       label: "TYPES.Item.perk",
     },

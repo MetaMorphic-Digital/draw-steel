@@ -1,8 +1,9 @@
 <section>
-  <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN" n=chooseN}}</p>
-  {{#if items.length}}
+  {{#if enrichedDescription}}
+  <p class="note">{{enrichedDescription}}</p>
+  {{/if}}
   <fieldset>
-    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ItemChoices"}}</legend>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN" n=chooseN}}</legend>
     {{#each items}}
     <div class="form-group">
       <label>{{link}}</label>
@@ -12,7 +13,6 @@
     </div>
     {{/each}}
   </fieldset>
-  {{/if}}
   {{#if expansion}}
   <fieldset>
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.expansion"}}</legend>

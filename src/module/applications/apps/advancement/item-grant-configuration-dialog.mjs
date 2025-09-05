@@ -7,6 +7,7 @@ import { systemPath } from "../../../constants.mjs";
 /**
  * @import { DrawSteelItem } from "../../../documents/item.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
+ * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
 
 /**
@@ -14,6 +15,8 @@ import { systemPath } from "../../../constants.mjs";
  * @property {ItemGrantAdvancement} [advancement] Inferred from the node.
  * @property {AdvancementChain} [node]            The node, if available.
  */
+
+const { DragDrop, TextEditor } = foundry.applications.ux;
 
 /**
  * An application that controls the configuration of an item grant advancement.
@@ -171,6 +174,16 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     });
 
     context.expansion = this.advancement.expansion.type;
+
+    context.enrichedDescription = enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    if (this.advancement.expansion.type) this.#dragDrop.bind(this.element);
   }
 
   /* -------------------------------------------------- */
@@ -189,5 +202,45 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     }
 
     return fd;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The Drag Drop handler for this dialog.
+   */
+  #dragDrop = new DragDrop.implementation({
+    callbacks: {
+      drop: this._onDrop.bind(this),
+    },
+  });
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handle a dragged element dropped on a droppable target.
+   * Only active if the advancement has `expansion.type` set.
+   * @param {DragEvent} event   The drag event being handled.
+   */
+  async _onDrop(event) {
+    const data = TextEditor.implementation.getDragEventData(event);
+    console.log(data);
+    const item = await fromUuid(data.uuid);
+    if (item?.documentName !== "Item") {
+      ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.MustItem", { localize: true });
+      return;
+    }
+    let allowed = true;
+    const expansionInfo = this.advancement.expansion;
+    if (item.type !== this.advancement.expansion.type) allowed = false;
+    switch (item.type) {
+      case "perk":
+        if (expansionInfo.perkType.size && !expansionInfo.perkType.has(item.system.perkType)) allowed = false;
+        break;
+    }
+    if (!allowed) {
+      ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
+      return;
+    }
   }
 }
