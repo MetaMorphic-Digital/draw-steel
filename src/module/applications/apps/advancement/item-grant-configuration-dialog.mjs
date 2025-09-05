@@ -88,7 +88,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /**
    * Cached reference to the items this can be configuring. Constructed during the first run of _prepareContext.
-   * @type {DrawSteelItem[]}
+   * @type {Set<DrawSteelItem>}
    */
   #items;
   // eslint-disable-next-line @jsdoc/require-jsdoc
@@ -105,12 +105,36 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Helper function to determine the currently selected IDs.
+   * @returns {Set<string>}
+   * @protected
+   */
+  get _selected() {
+    if (this.node) {
+      return Object.entries(this.node.selected).reduce((selected, [uuid, value]) => {
+        if (value) selected.add(uuid);
+        return selected;
+      }, new Set());
+    }
+    else {
+      /** @type {DrawSteelItem} */
+      const item = this.advancement.document;
+      const path = `flags.draw-steel.advancement.${this.advancement.id}.selected`;
+      return item.isEmbedded
+        ? new Set(foundry.utils.getProperty(item, path) ?? [])
+        : new Set();
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _prepareContext(options) {
     if (options.isFirstRender) {
-      this.#items = this.node ?
+      this.#items = new Set(this.node ?
         Object.values(this.node.choices).map(choice => choice.item)
-        : (await Promise.all(this.advancement.pool.map(p => fromUuid(p.uuid)))).filter(_ => _);
+        : (await Promise.all(this.advancement.pool.map(p => fromUuid(p.uuid)))).filter(_ => _));
     }
 
     return super._prepareContext(options);
@@ -132,9 +156,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
           action: "close",
           label: "Confirm",
           icon: "fa-solid fa-check",
-          disabled: Array.from(this.element.querySelectorAll("input[name=choices]"))
-            .reduce((acc, checkbox) => acc + checkbox.checked, 0)
-            !== this.advancement.chooseN,
+          disabled: this._selected.size !== this.advancement.chooseN,
         }];
         break;
     }
@@ -148,34 +170,26 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * Prepare context for the body section.
    * @param {object} context
    * @param {ApplicationRenderOptions} options
+   * @protected
    */
   async _prepareBody(context, options) {
     context.chooseN = this.advancement.chooseN;
 
-    /** @type {DrawSteelItem} */
-    const item = this.advancement.document;
-    const path = `flags.draw-steel.advancement.${this.advancement.id}.selected`;
-    const selected = this.node
-      ? Object.entries(this.node.selected).reduce((selected, [uuid, value]) => {
-        if (value) selected.push(uuid);
-        return selected;
-      }, [])
-      : item.isEmbedded
-        ? foundry.utils.getProperty(item, path) ?? []
-        : [];
+    const selected = this._selected;
+
     context.items = this.items.map(i => {
-      const chosen = selected.includes(i.uuid);
+      const chosen = selected.has(i.uuid);
       return {
         chosen,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
-        disabled: !chosen && (selected.length >= this.advancement.chooseN),
+        disabled: !chosen && (selected.size >= this.advancement.chooseN),
       };
     });
 
     context.expansion = this.advancement.expansion.type;
 
-    context.enrichedDescription = enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
+    context.enrichedDescription = await enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
   }
 
   /* -------------------------------------------------- */
@@ -192,7 +206,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   _processFormData(event, form, formData) {
     const fd = super._processFormData(event, form, formData);
 
-    const uuids = new Set(fd.choices);
+    const uuids = new Set(Array.isArray(fd.choices) ? fd.choices : [fd.choices]);
 
     if (this.node) {
       this.node.selected = this.items.reduce((selected, item) => {
@@ -200,6 +214,8 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         return selected;
       }, {});
     }
+
+    if (event.type === "change") this.render();
 
     return fd;
   }
@@ -224,7 +240,6 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    */
   async _onDrop(event) {
     const data = TextEditor.implementation.getDragEventData(event);
-    console.log(data);
     const item = await fromUuid(data.uuid);
     if (item?.documentName !== "Item") {
       ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.MustItem", { localize: true });
@@ -233,14 +248,20 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     let allowed = true;
     const expansionInfo = this.advancement.expansion;
     if (item.type !== this.advancement.expansion.type) allowed = false;
+    // specific filtering per type
     switch (item.type) {
       case "perk":
         if (expansionInfo.perkType.size && !expansionInfo.perkType.has(item.system.perkType)) allowed = false;
         break;
     }
-    if (!allowed) {
-      ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
-      return;
+    if (allowed && !this.items.has(item)) {
+      this.items.add(item);
+      if (this.node) {
+        this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node);
+        this.node.selected[item.uuid] = true;
+      }
+      this.render();
     }
+    else if (!allowed) ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
   }
 }

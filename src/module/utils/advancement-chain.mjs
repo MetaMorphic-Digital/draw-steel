@@ -1,8 +1,9 @@
 import { TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
 
 /**
- * @import { AdvancementChain } from "../_types"
+ * @import DrawSteelItem from "../documents/item.mjs";
  * @import { BaseAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
+ * @import { AdvancementChainItemGrantLeaf } from "../_types";
  */
 
 /**
@@ -100,37 +101,7 @@ export default class AdvancementChain {
         const item = await fromUuid(uuid);
         if (!item) continue;
 
-        const choice = node.choices[item.uuid] = {
-          item, node,
-          itemLink: item.toAnchor(),
-          children: {},
-        };
-
-        Object.defineProperty(choice, "isChosen", {
-          get() {
-            if (!node.isChosen) return false;
-            if (!node.advancement.isChoice) return true;
-            return node.selected[item.uuid] === true;
-          },
-        });
-
-        if (!item.supportsAdvancements) continue;
-
-        // Find any "child" advancements.
-        for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
-          const validRange = advancement.levels.some(level => {
-            if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
-            else return levelStart === null;
-          });
-          if (validRange) {
-            choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
-              _depth: _depth + 1,
-              start: levelStart,
-              end: levelEnd,
-            });
-            choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
-          }
-        }
+        node.choices[item.uuid] = this.createItemGrantChoice(item, node);
       }
     } else if (advancement instanceof TraitAdvancement) {
       for (const trait of advancement.traitOptions) {
@@ -152,6 +123,48 @@ export default class AdvancementChain {
     }
 
     return node;
+  }
+
+  /**
+   *
+   * @param {DrawSteelItem} item
+   * @param {AdvancementChain} node
+   * @returns {Promise<AdvancementChainItemGrantLeaf>}
+   */
+  static async createItemGrantChoice(item, node) {
+    const choice = {
+      item, node,
+      itemLink: item.toAnchor(),
+      children: {},
+    };
+
+    Object.defineProperty(choice, "isChosen", {
+      get() {
+        if (!node.isChosen) return false;
+        if (!node.advancement.isChoice) return true;
+        return node.selected[item.uuid] === true;
+      },
+    });
+
+    if (!item.supportsAdvancements) return;
+
+    // Find any "child" advancements.
+    for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
+      const validRange = advancement.levels.some(level => {
+        if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
+        else return levelStart === null;
+      });
+      if (validRange) {
+        choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
+          _depth: _depth + 1,
+          start: levelStart,
+          end: levelEnd,
+        });
+        choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
+      }
+    }
+
+    return choice;
   }
 
   /* -------------------------------------------------- */
