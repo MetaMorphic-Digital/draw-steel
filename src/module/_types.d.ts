@@ -57,7 +57,7 @@ export interface AdvancementChainItemGrantLeaf {
   item: DrawSteelItem;
   node: AdvancementChain;
   itemLink: HTMLElement;
-  children: Record<string, AdvancementChainTraitLeaf>;
+  children: Record<string, AdvancementChain>;
 
   // Whether this specific choice has been selected.
   isChosen: boolean;

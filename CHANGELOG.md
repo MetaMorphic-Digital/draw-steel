@@ -22,6 +22,7 @@
 
 ### Added
 
+- Added an "Expansion" configuration to Item Grant advancements, which allows players to drop in items.
 - Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
