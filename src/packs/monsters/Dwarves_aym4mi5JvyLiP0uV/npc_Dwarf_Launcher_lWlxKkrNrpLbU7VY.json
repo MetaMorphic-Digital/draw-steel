@@ -1,13 +1,11 @@
 {
-  "folder": "aym4mi5JvyLiP0uV",
-  "name": "Dwarf Stone Whisperer",
+  "name": "Dwarf Launcher",
   "type": "npc",
-  "_id": "0wvOWjLAh0BeOvCp",
-  "img": "systems/draw-steel/assets/roles/controller.webp",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
   "system": {
     "stamina": {
-      "value": 52,
-      "max": 52,
+      "value": 39,
+      "max": 39,
       "temporary": 0
     },
     "characteristics": {
@@ -18,7 +16,7 @@
         "value": 0
       },
       "reason": {
-        "value": 2
+        "value": 0
       },
       "intuition": {
         "value": 2
@@ -36,19 +34,13 @@
         "value": 1,
         "letter": "M"
       },
-      "stability": 2,
+      "stability": 3,
       "turns": 1
-    },
-    "biography": {
-      "value": "<p></p>",
-      "languages": [],
-      "director": ""
     },
     "movement": {
       "value": 5,
       "types": [
-        "walk",
-        "burrow"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -79,9 +71,14 @@
         "sonic": 0
       }
     },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
     "source": {
       "book": "Monsters",
-      "page": "109",
+      "page": "107",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -93,318 +90,93 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 5,
+      "freeStrike": 4,
       "keywords": [
         "humanoid"
       ],
-      "level": 3,
-      "ev": 10,
-      "role": "controller",
+      "level": 1,
+      "ev": 8,
+      "role": "hexer",
       "organization": "platoon"
     }
   },
-  "prototypeToken": {
-    "name": "Dwarf Stone Whisperer",
-    "displayName": 20,
-    "actorLink": false,
-    "width": 1,
-    "height": 1,
-    "texture": {
-      "src": "systems/draw-steel/assets/roles/controller.webp",
-      "anchorX": 0.5,
-      "anchorY": 0.5,
-      "offsetX": 0,
-      "offsetY": 0,
-      "fit": "contain",
-      "scaleX": 1.45,
-      "scaleY": 1.45,
-      "rotation": 0,
-      "tint": "#ffffff",
-      "alphaThreshold": 0.75
-    },
-    "lockRotation": false,
-    "rotation": 0,
-    "alpha": 1,
-    "disposition": -1,
-    "displayBars": 0,
-    "bar1": {
-      "attribute": "stamina"
-    },
-    "bar2": {
-      "attribute": "hero.resources"
-    },
-    "light": {
-      "negative": false,
-      "priority": 0,
-      "alpha": 0.5,
-      "angle": 360,
-      "bright": 0,
-      "color": null,
-      "coloration": 1,
-      "dim": 0,
-      "attenuation": 0.5,
-      "luminosity": 0.5,
-      "saturation": 0,
-      "contrast": 0,
-      "shadows": 0,
-      "animation": {
-        "type": null,
-        "speed": 5,
-        "intensity": 5,
-        "reverse": false
-      },
-      "darkness": {
-        "min": 0,
-        "max": 1
-      }
-    },
-    "sight": {
-      "enabled": true,
-      "range": 0,
-      "angle": 360,
-      "visionMode": "basic",
-      "color": null,
-      "attenuation": 0.1,
-      "brightness": 0,
-      "saturation": 0,
-      "contrast": 0
-    },
-    "detectionModes": [],
-    "occludable": {
-      "radius": 0
-    },
-    "ring": {
-      "enabled": false,
-      "colors": {
-        "ring": null,
-        "background": null
-      },
-      "effects": 0,
-      "subject": {
-        "scale": 1,
-        "texture": null
-      }
-    },
-    "turnMarker": {
-      "mode": 1,
-      "animation": null,
-      "src": null,
-      "disposition": false
-    },
-    "movementAction": null,
-    "flags": {
-      "token-aura-ring": {
-        "aura-rings": []
-      },
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
-    "randomImg": false,
-    "appendNumber": false,
-    "prependAdjective": false
-  },
   "items": [
     {
-      "name": "Tile Slide",
-      "type": "ability",
+      "name": "Indirect Fire",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
-        "type": "main",
+        "description": {
+          "value": "<p>The launcher ignores concealment and cover, and doesn't need line of effect to use their abilities as long as a size 1 opening exists between the dwarf and the target.</p>",
+          "director": ""
+        },
         "source": {
           "book": "Monsters",
-          "page": "109",
           "license": "Draw Steel Creator License",
-          "revision": 1
+          "revision": 1,
+          "page": ""
         },
-        "_dsid": "tile-slide",
-        "story": "",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "cube",
-          "primary": 2,
-          "secondary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
-          },
-          "effects": {
-            "fuNoLDZEGFNM5dwv": {
-              "type": "damage",
-              "_id": "fuNoLDZEGFNM5dwv",
-              "damage": {
-                "tier1": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "8",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "11",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            },
-            "JofqLQqq2eHq4mTO": {
-              "type": "applied",
-              "_id": "JofqLQqq2eHq4mTO",
-              "name": "Slowed",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} slowed (save ends)",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "0"
-                  },
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier3": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "{{potency}} restrained (save ends)",
-                  "effects": {
-                    "restrained": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                }
-              },
-              "img": null
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A target restrained by a dwarf can be force moved by this ability. This forced movement doesn’t end the restrained condition unless the Director determines otherwise.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
+        "_dsid": "indirect-fire",
+        "advancements": {}
       },
-      "_id": "NEakfBuaAxqTaUBC",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "_id": "C8G9ztIQT7I52KTp",
       "effects": [],
       "folder": null,
       "sort": 0,
+      "ownership": {
+        "default": 0
+      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.8.1",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.NEakfBuaAxqTaUBC"
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.C8G9ztIQT7I52KTp"
     },
     {
-      "name": "Stone Wave",
+      "name": "Concussive Grenade",
       "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "109",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "stone-wave",
-        "story": "",
+        "type": "main",
+        "category": "signature",
         "keywords": [
           "area",
-          "magic",
-          "ranged"
+          "ranged",
+          "weapon"
         ],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
         "distance": {
           "type": "cube",
           "primary": 3,
-          "secondary": 10
+          "secondary": 5
         },
-        "damageDisplay": "melee",
         "target": {
           "type": "enemy",
           "value": null
         },
+        "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "2",
-            "characteristics": []
+            "formula": "@chr",
+            "characteristics": [
+              "intuition"
+            ]
           },
           "effects": {
-            "H3pbwJAcDcy6JLwJ": {
+            "WukvbrtpLxovu32B": {
+              "_id": "WukvbrtpLxovu32B",
               "type": "damage",
-              "_id": "H3pbwJAcDcy6JLwJ",
+              "name": "",
+              "img": null,
               "damage": {
                 "tier1": {
-                  "value": "4",
+                  "value": "3",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -422,7 +194,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "9",
+                  "value": "8",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -430,19 +202,176 @@
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             },
-            "6fj9kR4yFPP6m3Yl": {
+            "2pBLNhucqla8Tt5f": {
+              "_id": "2pBLNhucqla8Tt5f",
               "type": "forced",
-              "_id": "6fj9kR4yFPP6m3Yl",
+              "name": "push",
+              "img": null,
               "forced": {
                 "tier1": {
-                  "distance": "2",
-                  "display": "{{forced}}",
                   "movement": [
                     "push"
+                  ],
+                  "distance": "1",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier2": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "intuition"
+                  }
+                }
+              }
+            },
+            "0eUUFd9KbWc2xMxO": {
+              "_id": "0eUUFd9KbWc2xMxO",
+              "type": "applied",
+              "name": "Slowed",
+              "img": null,
+              "applied": {
+                "tier2": {
+                  "display": "{{potency}} slowed (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} slowed (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A target restrained by a dwarf can be force moved by this ability. This forced movement doesn't end the restrained condition unless the Director determines otherwise.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "concussive-grenade",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "oTaJ9Jry7ewaC84e",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.oTaJ9Jry7ewaC84e"
+    },
+    {
+      "name": "Sleep Grenade",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "ranged",
+          "weapon"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 3,
+          "secondary": 5
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "intuition"
+            ]
+          },
+          "effects": {
+            "mCzURpJPQEyGAZBw": {
+              "_id": "mCzURpJPQEyGAZBw",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [
+                    "poison"
                   ],
                   "properties": [],
                   "potency": {
@@ -451,10 +380,9 @@
                   }
                 },
                 "tier2": {
-                  "distance": "3",
-                  "display": "{{forced}}",
-                  "movement": [
-                    "push"
+                  "value": "6",
+                  "types": [
+                    "poison"
                   ],
                   "properties": [],
                   "potency": {
@@ -463,10 +391,9 @@
                   }
                 },
                 "tier3": {
-                  "distance": "3",
-                  "display": "{{forced}}",
-                  "movement": [
-                    "push"
+                  "value": "8",
+                  "types": [
+                    "poison"
                   ],
                   "properties": [],
                   "potency": {
@@ -474,23 +401,22 @@
                     "characteristic": ""
                   }
                 }
-              },
-              "name": "",
-              "img": null
+              }
             },
-            "rMb99yePISbKHJN7": {
+            "IJeRRVRqgCfZ9GZ2": {
+              "_id": "IJeRRVRqgCfZ9GZ2",
               "type": "applied",
-              "_id": "rMb99yePISbKHJN7",
-              "name": "Slowed",
+              "name": "Dazed",
+              "img": null,
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} slowed (save ends)",
+                  "display": "{{potency}} dazed (save ends)",
                   "potency": {
-                    "value": "1",
-                    "characteristic": "reason"
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
                   },
                   "effects": {
-                    "slowed": {
+                    "dazed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -498,13 +424,13 @@
                   }
                 },
                 "tier2": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
                   "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "intuition"
+                  },
                   "effects": {
-                    "slowed": {
+                    "dazed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -512,91 +438,124 @@
                   }
                 },
                 "tier3": {
-                  "potency": {
-                    "value": "3",
-                    "characteristic": ""
-                  },
                   "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "intuition"
+                  },
                   "effects": {
-                    "slowed": {
+                    "dazed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
                   }
                 }
-              },
-              "img": null
+              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>The area is difficult terrain for enemies. A target restrained by a dwarf can be force moved by this ability. This forced movement doesn’t end the restrained condition unless the Director determines otherwise.</p>"
+          "after": "<p>A target dazed this way treats their characteristic scores as 1 lower for the purpose of resisting potencies.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "sleep-grenade",
+        "story": "",
+        "resource": 3,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Q31jfTdVqBAuNgeW",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.Q31jfTdVqBAuNgeW"
+    },
+    {
+      "name": "Breaching Charge",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "105",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "breaching-charge",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A dwarf starts their turn",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage ([[/damage 3]] for wood, [[/damage 6]] for stone, or [[/damage 9]] for metal).</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "xdpHBlsUeL4e9RlN",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "_id": "UsBSwuFSEE8zpLvM",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": null,
-      "sort": 0,
+      "folder": "zR2leIjgt7VcKr8l",
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.BTY5NhyrQYgUF5Aw",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757032632206,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.xdpHBlsUeL4e9RlN"
-    },
-    {
-      "name": "Stone Walker",
-      "type": "feature",
-      "_id": "e3rFxz1AWauMaFZi",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Whenever the stone whisperer willingly moves, they can phase through up to 2 squares of stone as part of that movement. If they end their movement inside stone, they are shunted out into the space from which they entered it.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "109",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "stone-walker",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.e3rFxz1AWauMaFZi"
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.UsBSwuFSEE8zpLvM"
     },
     {
       "name": "Rappelling Barrage",
@@ -609,7 +568,7 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "rappelling-barrage",
+        "_dsid": "ability",
         "story": "",
         "keywords": [],
         "category": "heroic",
@@ -652,14 +611,14 @@
         "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.AEnNkuhdPqY0mGNo",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714170457,
+        "systemVersion": "0.8.1",
+        "createdTime": 1757032633292,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.jeKfV8aI1rqyfkj4"
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.jeKfV8aI1rqyfkj4"
     },
     {
       "name": "Snaring Line",
@@ -719,10 +678,10 @@
         "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714172089,
+        "systemVersion": "0.8.1",
+        "createdTime": 1757032634342,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
@@ -730,74 +689,105 @@
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.iV1xZa3LFqKK1Xgu"
-    },
-    {
-      "name": "Breaching Charge",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "105",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "breaching-charge",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A dwarf starts their turn",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A dwarf can destroy one adjacent object or square of wall for each 3 Malice spent. Each enemy adjacent to the destroyed object or square takes the object’s Stamina in damage ([[/damage 3]] for wood, [[/damage 6]] for stone, or [[/damage 9]] for metal).</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "UsBSwuFSEE8zpLvM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "zR2leIjgt7VcKr8l",
-      "sort": 200000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.BTY5NhyrQYgUF5Aw",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755715163713,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!0wvOWjLAh0BeOvCp.UsBSwuFSEE8zpLvM"
+      "_key": "!actors.items!lWlxKkrNrpLbU7VY.iV1xZa3LFqKK1Xgu"
     }
   ],
+  "folder": "aym4mi5JvyLiP0uV",
+  "prototypeToken": {
+    "name": "Dwarf Launcher",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
   "effects": [],
-  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -808,10 +798,12 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755639582980,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757031594718,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!0wvOWjLAh0BeOvCp"
+  "_id": "lWlxKkrNrpLbU7VY",
+  "sort": 400000,
+  "_key": "!actors!lWlxKkrNrpLbU7VY"
 }
