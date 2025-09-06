@@ -1,9 +1,11 @@
-/** @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs" */
-/** @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs" */
-
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
+
+/**
+ * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
+ * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
+ */
 
 /**
  * Implementation logic for all roll-style enrichers.

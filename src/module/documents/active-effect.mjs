@@ -1,7 +1,10 @@
 import TargetedConditionPrompt from "../applications/apps/targeted-condition-prompt.mjs";
 
-/** @import { StatusEffectConfig } from "@client/config.mjs" */
-/** @import DrawSteelActor from "./actor.mjs"; */
+/**
+ * @import { StatusEffectConfig } from "@client/config.mjs";
+ * @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types";
+ * @import DrawSteelActor from "./actor.mjs";
+ */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.ActiveEffect.documentClass.
@@ -89,8 +92,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   }
 
   /* -------------------------------------------------- */
-
-  /** @import { ActiveEffectDuration, EffectDurationData } from "../data/effect/_types" */
 
   /**
    * Compute derived data related to active effect duration.

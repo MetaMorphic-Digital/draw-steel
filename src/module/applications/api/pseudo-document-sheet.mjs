@@ -73,7 +73,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
 
   /**
    * Retrieve or register a new instance of a pseudo-document sheet.
-   * @param {ds.data.pseudoDocuments.PseudoDocument} pseudoDocument   The pseudo-document.
+   * @param {PseudoDocument} pseudoDocument   The pseudo-document.
    * @returns {PseudoDocumentSheet|null}    An existing or new instance of a sheet, or null if the pseudo-
    *                                        document does not have a sheet class.
    */

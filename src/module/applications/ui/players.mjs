@@ -1,8 +1,10 @@
 import { systemID, systemPath } from "../../constants.mjs";
 
-/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs"; */
-/** @import { MaliceModel } from "../../data/settings/malice.mjs"; */
+/**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
+ * @import { HeroTokenModel } from "../../data/settings/hero-tokens.mjs";
+ * @import { MaliceModel } from "../../data/settings/malice.mjs";
+ */
 
 /**
  * An extension of the core Players display that adds controls for hero tokens and malice.
