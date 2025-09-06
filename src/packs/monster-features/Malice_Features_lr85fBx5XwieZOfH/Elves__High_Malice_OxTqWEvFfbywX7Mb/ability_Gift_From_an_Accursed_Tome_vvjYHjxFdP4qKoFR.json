@@ -1,0 +1,207 @@
+{
+  "folder": "OxTqWEvFfbywX7Mb",
+  "name": "Gift From an Accursed Tome",
+  "type": "ability",
+  "_id": "vvjYHjxFdP4qKoFR",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "119",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "gift-from-an-accursed-tome",
+    "story": "",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 5,
+      "secondary": 1,
+      "tertiary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "2",
+        "characteristics": []
+      },
+      "effects": {
+        "MHZRMgetPqMBjeRG": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "MHZRMgetPqMBjeRG",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "cold",
+                "corruption",
+                "poison"
+              ]
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "cold",
+                "corruption",
+                "poison"
+              ]
+            },
+            "tier3": {
+              "value": "12",
+              "types": [
+                "cold",
+                "corruption",
+                "poison"
+              ]
+            }
+          }
+        },
+        "7wFlAnp9aHcFYTRq": {
+          "name": "chosen condition",
+          "img": null,
+          "type": "applied",
+          "_id": "7wFlAnp9aHcFYTRq",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} chosen condition (save ends)",
+              "potency": {
+                "characteristic": "reason",
+                "value": "1"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "weakened": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "value": "2"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "weakened": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "potency": {
+                "value": "3"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "weakened": {
+                  "condition": "failure",
+                  "end": "save"
+                },
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>The high elf chooses a damage type and condition from one of the following combinations: cold damage and slowed, poison dam age and weakened, or corruption damage and frightened.</p>",
+      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
+      "transfer": false,
+      "_id": "DyViKrQtR5lHA0fY",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757111602530,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!vvjYHjxFdP4qKoFR.DyViKrQtR5lHA0fY"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757111299243,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!vvjYHjxFdP4qKoFR"
+}
