@@ -37,6 +37,7 @@
 - Compendium data fixes:
   - Various monster role and level fixes. (#981)
   - Corrected Talent "Distance Augmentation" filters & bonus.
+- Fixed combatant groups turns not resetting on new round. (#991)
 
 ## 0.8.0
 
