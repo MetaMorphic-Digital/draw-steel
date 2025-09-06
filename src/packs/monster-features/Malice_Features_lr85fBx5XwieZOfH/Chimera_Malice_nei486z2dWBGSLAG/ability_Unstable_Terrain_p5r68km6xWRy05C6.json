@@ -1,0 +1,62 @@
+{
+  "folder": "nei486z2dWBGSLAG",
+  "name": "Unstable Terrain",
+  "type": "ability",
+  "_id": "p5r68km6xWRy05C6",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "56",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "unstable-terrain",
+    "story": "",
+    "keywords": [],
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The chimera shakes the ground, causing an eruption of loose rocks and debris that creates three size 2 stone objects anywhere on the encounter map. Each creature adjacent to one or more objects when they appear who has A&lt;2 takes [[/damage 5]] damage.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757096415927,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!p5r68km6xWRy05C6"
+}
