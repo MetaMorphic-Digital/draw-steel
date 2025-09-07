@@ -11,7 +11,6 @@ const packs = await fs.readdir("./packs");
 for (const pack of packs) {
   if ((pack === ".gitattributes") || (pack === ".DS_Store")) continue;
   console.log("Unpacking " + pack);
-  const directory = `./src/packs/${pack}`;
   await extractPack(
     `${SYSTEM_ID}/packs/${pack}`,
     `${SYSTEM_ID}/src/packs/${pack}`,
@@ -22,6 +21,7 @@ for (const pack of packs) {
       expandAdventures,
       folders,
       clean: true,
+      omitVolatile: true,
     },
   );
 }
@@ -46,6 +46,11 @@ function transformName(doc, context) {
  * @returns {Promise<false|void>}  Return boolean false to indicate that this entry should be discarded.
  */
 async function transformEntry(entry) {
+  // Reducing churn
+  Object.assign(entry._stats, {
+    modifiedTime: null,
+    lastModifiedBy: null,
+  });
   // Remove module flags
   for (const key of Object.keys(entry.flags)) if (!["core", "draw-steel"].includes(key)) delete entry.flags[key];
 
@@ -53,6 +58,15 @@ async function transformEntry(entry) {
   if (entry.ownership) entry.ownership = { default: 0 };
 
   // Update if we ever start including other document types, e.g. Adventures
+  for (const embeddedCollection of ["items", "effects", "pages"]) {
+    if (entry[embeddedCollection]) {
+      for (const e of entry[embeddedCollection]) {
+        Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
+        if (e["effects"]) for (const grandchild of e["effects"]) Object.assign(grandchild._stats, { modifiedTime: null, lastModifiedBy: null });
+      }
+    }
+  }
+
   if (entry._key !== "!journal!2OWtCOMKRpGuBxrI") return;
 
   for (const jep of entry.pages) {
