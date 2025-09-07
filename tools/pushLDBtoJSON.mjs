@@ -62,7 +62,7 @@ async function transformEntry(entry) {
     if (entry[embeddedCollection]) {
       for (const e of entry[embeddedCollection]) {
         Object.assign(e._stats, { modifiedTime: null, lastModifiedBy: null });
-        if (e["effects"]) for (const grandchild of e["effects"]) Object.assign(grandchild._stats, { modifiedTime: null, lastModifiedBy: null });
+        if (e["effects"]) for (const grandchild of e["effects"]) Object.assign(grandchild._stats, { lastModifiedBy: null });
       }
     }
   }
