@@ -34,9 +34,22 @@
 ### Fixed
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
-- Compendium data fixes:
+- Player-Facing Compendium data fixes:
+  - Standardized prototype token settings. (#946)
+  - Description for Studied Commander. (#948)
+  - Added missing item grant advancements to Tactician subclasses. (#949)
+  - Stormwight kit abilities were double counting their kit bonuses (#954)
+  - College of Black Ash no longer gives all lore skills. (#980)
+  - Talent "Distance Augmentation" filters & bonus. (#998)
+  - Conduit "Prayer of Distance" filters & bonus. (#999)
+  - Leaping Lightning effect enricher damage type. (#1015)
+  - Corrected name of the Stormwights "Furious Change".
+  - Added effect to Acolyte of Fire.
+- GM-Facing Compendium Data fixes:
+  - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
-  - Corrected Talent "Distance Augmentation" filters & bonus.
+  - Bugbear Channeler action corrections. (#1027)
+  - Ogre Goon action corrections.
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
 
