@@ -106,7 +106,7 @@
   },
   "prototypeToken": {
     "name": "Angulotl Daybringer",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -123,11 +123,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -210,12 +210,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "toxiferous",
         "advancements": {}
       },
       "effects": [],
@@ -250,12 +250,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "wet",
         "advancements": {}
       },
       "effects": [
@@ -297,9 +297,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.LCVUFvkic3ekh34p.X66mp8MbRILfgKS6",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.LCVUFvkic3ekh34p.X66mp8MbRILfgKS6"
         }
       ],
       "folder": null,
@@ -333,12 +333,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "moisturizing-end-effect",
         "advancements": {}
       },
       "effects": [],
@@ -368,12 +368,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "acid-grasp",
         "story": "",
         "keywords": [
           "melee",
@@ -466,7 +466,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The next time the target makes a strike against the daybringer, the target takes 4 acid damage after the strike is resolved.</p>"
+          "after": "<p>The next time the target makes a strike against the daybringer, the target takes [[/damage 4 acid]] damage after the strike is resolved.</p>"
         },
         "spend": {
           "text": "The daybringer jumps up to 3 squares before or after using this ability.",
@@ -502,12 +502,12 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "sun-lamp",
         "story": "",
         "keywords": [],
         "category": "",
@@ -565,12 +565,12 @@
       "system": {
         "type": "triggered",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "tongue-slap",
         "story": "",
         "keywords": [],
         "category": "",
@@ -630,12 +630,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "new-dawn",
         "story": "",
         "keywords": [
           "ranged"
@@ -659,7 +659,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Four angulotl pollywogs erupt from the daybringer’s back and waddle into unoccupied spaces within distance.</p>",
+          "before": "<p>Four @UUID[Compendium.draw-steel.monsters.Actor.UIerVsSyMb36Bm4D]{angulotl pollywogs} erupt from the daybringer’s back and waddle into unoccupied spaces within distance.</p>",
           "after": ""
         },
         "spend": {
@@ -696,12 +696,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "plague-of-frogs",
         "story": "",
         "keywords": [
           "area"
@@ -763,12 +763,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "it-is-day",
         "story": "",
         "keywords": [],
         "category": "",
@@ -1079,9 +1079,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk"
         }
       ],
       "sort": 0,

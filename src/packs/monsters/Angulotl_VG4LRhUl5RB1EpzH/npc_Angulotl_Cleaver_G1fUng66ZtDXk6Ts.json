@@ -106,7 +106,7 @@
   },
   "prototypeToken": {
     "name": "Angulotl Cleaver",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -123,11 +123,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -210,12 +210,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "35",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "toxiferous",
         "advancements": {}
       },
       "effects": [],
@@ -245,12 +245,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "35",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "hop-and-chop",
         "story": "",
         "keywords": [
           "melee",
@@ -455,46 +455,6 @@
       "_key": "!actors.items!G1fUng66ZtDXk6Ts.SMNH5LxY8st7IyDf"
     },
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "AQGeCCUlc2tTbZV5",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p>+1 damage bonus to strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1
-        },
-        "_dsid": "feature",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757014463087,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!G1fUng66ZtDXk6Ts.AQGeCCUlc2tTbZV5"
-    },
-    {
       "name": "Wet",
       "type": "feature",
       "_id": "LCVUFvkic3ekh34p",
@@ -505,12 +465,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "35",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "wet",
         "advancements": {}
       },
       "effects": [
@@ -552,9 +512,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!G1fUng66ZtDXk6Ts.LCVUFvkic3ekh34p.X66mp8MbRILfgKS6",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!G1fUng66ZtDXk6Ts.LCVUFvkic3ekh34p.X66mp8MbRILfgKS6"
         }
       ],
       "folder": null,
@@ -710,9 +670,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!G1fUng66ZtDXk6Ts.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!G1fUng66ZtDXk6Ts.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk"
         }
       ],
       "sort": 0,
@@ -735,7 +695,74 @@
       "_key": "!actors.items!G1fUng66ZtDXk6Ts.chuInXNQ28dtiMPI"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.G1fUng66ZtDXk6Ts",
+      "_id": "kLQvgoJjRhTLLyWH",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 3,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>+1 damage bonus to strikes.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757276792324,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!G1fUng66ZtDXk6Ts.kLQvgoJjRhTLLyWH"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
