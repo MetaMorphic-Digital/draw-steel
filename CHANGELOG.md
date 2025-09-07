@@ -25,6 +25,7 @@
 - Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
+  - Remaining Echelon 1 Monsters
 
 ### Changed
 
