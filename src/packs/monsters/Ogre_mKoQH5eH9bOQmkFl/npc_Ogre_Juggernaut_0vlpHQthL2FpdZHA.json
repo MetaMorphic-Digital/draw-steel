@@ -1,13 +1,13 @@
 {
   "folder": "mKoQH5eH9bOQmkFl",
-  "name": "Ogre Goon",
+  "name": "Ogre Juggernaut",
   "type": "npc",
-  "_id": "c9ltn5pwCDDrXdaa",
-  "img": "systems/draw-steel/assets/roles/brute.webp",
+  "_id": "0vlpHQthL2FpdZHA",
+  "img": "systems/draw-steel/assets/roles/harrier.webp",
   "system": {
     "stamina": {
-      "value": 100,
-      "max": 100,
+      "value": 80,
+      "max": 80,
       "temporary": 0
     },
     "characteristics": {
@@ -15,7 +15,7 @@
         "value": 2
       },
       "agility": {
-        "value": 0
+        "value": 1
       },
       "reason": {
         "value": -1
@@ -36,7 +36,7 @@
         "value": 2,
         "letter": "M"
       },
-      "stability": 4,
+      "stability": 2,
       "turns": 1
     },
     "biography": {
@@ -45,7 +45,7 @@
       "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
         "walk"
       ],
@@ -98,18 +98,18 @@
       ],
       "level": 2,
       "ev": 16,
-      "role": "brute",
+      "role": "harrier",
       "organization": "elite"
     }
   },
   "prototypeToken": {
-    "name": "Ogre Goon",
-    "displayName": 0,
+    "name": "Ogre Juggernaut",
+    "displayName": 20,
     "actorLink": false,
     "width": 2,
     "height": 2,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/brute.webp",
+      "src": "systems/draw-steel/assets/roles/harrier.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -239,7 +239,7 @@
           ],
           "disabled": true,
           "duration": {
-            "startTime": null,
+            "startTime": 0,
             "combat": null,
             "seconds": null,
             "rounds": null,
@@ -262,11 +262,50 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!c9ltn5pwCDDrXdaa.QAaF24sCe237zVtE.auIZ6Zj71xcAvXFz"
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.QAaF24sCe237zVtE.auIZ6Zj71xcAvXFz"
         }
       ],
       "folder": null,
-      "sort": 0,
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.c9ltn5pwCDDrXdaa.Item.QAaF24sCe237zVtE",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.QAaF24sCe237zVtE"
+    },
+    {
+      "name": "Destructive Path",
+      "type": "feature",
+      "_id": "XDiNFNBdTC29p72D",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are forced moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "destructive-path",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -282,10 +321,10 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.QAaF24sCe237zVtE"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.XDiNFNBdTC29p72D"
     },
     {
-      "name": "Club Swing",
+      "name": "Pitchfork Catapult",
       "type": "ability",
       "system": {
         "type": "main",
@@ -295,9 +334,10 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "club-swing",
+        "_dsid": "pitchfork-catapult",
         "story": "",
         "keywords": [
+          "charge",
           "melee",
           "strike",
           "weapon"
@@ -322,11 +362,11 @@
             ]
           },
           "effects": {
-            "VBFyZmxEB13gQDv3": {
+            "keMu39vBGf2YtsEf": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "VBFyZmxEB13gQDv3",
+              "_id": "keMu39vBGf2YtsEf",
               "damage": {
                 "tier1": {
                   "value": "7",
@@ -338,7 +378,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "11",
+                  "value": "10",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -347,7 +387,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "14",
+                  "value": "13",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -357,18 +397,16 @@
                 }
               }
             },
-            "TkIF5QdY51waqdeM": {
-              "name": "Push",
+            "x1C7gPfjJCPVipx3": {
+              "name": "",
               "img": null,
               "type": "forced",
-              "_id": "TkIF5QdY51waqdeM",
+              "_id": "x1C7gPfjJCPVipx3",
               "forced": {
                 "tier1": {
-                  "distance": "2",
-                  "display": "{{forced}}",
-                  "movement": [
-                    "push"
-                  ],
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -376,64 +414,80 @@
                   }
                 },
                 "tier2": {
-                  "distance": "4",
-                  "display": "{{forced}}",
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "characteristic": "agility",
+                    "value": "@potency.average"
+                  },
+                  "display": "{{potency}} {{forced}}",
                   "movement": [
                     "push"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
+                  ]
                 },
                 "tier3": {
-                  "distance": "6",
-                  "display": "{{forced}}",
-                  "movement": [
-                    "push"
+                  "properties": [
+                    "vertical"
                   ],
-                  "properties": [],
+                  "distance": "3",
+                  "movement": [
+                    "slide"
+                  ],
                   "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
+                    "characteristic": "agility",
+                    "value": "@potency.strong"
+                  },
+                  "display": "{{potency}} {{forced}}"
                 }
               }
             },
-            "0DWnxna0LTJTyc3x": {
-              "name": "Prone",
+            "i5uABjUX2v6jxXhu": {
+              "name": "Bleeding",
               "img": null,
               "type": "applied",
-              "_id": "0DWnxna0LTJTyc3x",
+              "_id": "i5uABjUX2v6jxXhu",
               "applied": {
-                "tier3": {
-                  "display": "prone",
+                "tier1": {
                   "effects": {
-                    "prone": {
-                      "condition": "always",
-                      "end": "",
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
                   "display": "",
-                  "effects": {},
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
                   }
                 },
                 "tier2": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
                   "display": "",
-                  "effects": {},
                   "potency": {
                     "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
@@ -443,14 +497,14 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>Any target who takes damage from this forced movement takes an extra [[/damage 4]] damage.</p>"
+          "after": ""
         },
         "spend": {
-          "text": "",
-          "value": null
+          "text": "Each target who has m<1 is bleeding (save ends).",
+          "value": 1
         }
       },
-      "_id": "zHqcLoiiKZxdeaTw",
+      "_id": "DOHkGFBXLdn10M17",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -470,37 +524,36 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.zHqcLoiiKZxdeaTw"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.DOHkGFBXLdn10M17"
     },
     {
-      "name": "Grabby Hand",
+      "name": "Earth-Breaking Jump",
       "type": "ability",
       "system": {
-        "type": "maneuver",
+        "type": "main",
         "source": {
           "book": "Monsters",
           "page": "210",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "grabby-hand",
+        "_dsid": "earth-breaking-jump",
         "story": "",
         "keywords": [
-          "melee",
-          "strike",
-          "weapon"
+          "area",
+          "magic"
         ],
-        "category": "heroic",
-        "resource": 1,
+        "category": "",
+        "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": 1
+          "type": "burst",
+          "primary": 3
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creatureObject",
-          "value": 1
+          "type": "creature",
+          "value": null
         },
         "power": {
           "roll": {
@@ -510,14 +563,14 @@
             ]
           },
           "effects": {
-            "aT78cZ0Yv8zizitF": {
+            "8RXsupfhfT98yYqB": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "aT78cZ0Yv8zizitF",
+              "_id": "8RXsupfhfT98yYqB",
               "damage": {
                 "tier1": {
-                  "value": "7",
+                  "value": "4",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -526,7 +579,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "11",
+                  "value": "6",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -535,7 +588,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "14",
+                  "value": "9",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -545,17 +598,67 @@
                 }
               }
             },
-            "DiICQ71H0xNTA1oY": {
-              "name": "Grabbed",
+            "VBXHHOnEAq1eueC8": {
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "VBXHHOnEAq1eueC8",
+              "forced": {
+                "tier1": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "85CpWHadNFf5Gi4d": {
+              "name": "Prone",
               "img": null,
               "type": "applied",
-              "_id": "DiICQ71H0xNTA1oY",
+              "_id": "85CpWHadNFf5Gi4d",
               "applied": {
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "@potency.weak"
+                  },
+                  "effects": {}
+                },
                 "tier2": {
-                  "display": "grabbed",
+                  "display": "{{potency}} prone",
                   "effects": {
-                    "grabbed": {
-                      "condition": "always",
+                    "prone": {
+                      "condition": "failure",
                       "end": "",
                       "properties": []
                     }
@@ -567,9 +670,8 @@
                 },
                 "tier3": {
                   "effects": {
-                    "grabbed": {
-                      "condition": "always",
-                      "end": "",
+                    "prone": {
+                      "condition": "failure",
                       "properties": []
                     }
                   },
@@ -578,30 +680,22 @@
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
                 }
               }
             }
           }
         },
         "effect": {
-          "before": "",
-          "after": "<p>A target grabbed this way takes a bane on the Escape Grab maneuver.</p>"
+          "before": "<p>The juggernaut jumps up to 6 squares before using this ability.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "RLbtnOwR1jUwSXis",
-      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "_id": "4b3BqKQfD8xnV9PS",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -614,16 +708,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.347",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.8.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.RLbtnOwR1jUwSXis"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.4b3BqKQfD8xnV9PS"
     },
     {
-      "name": "People Bowling",
+      "name": "Horrible Bellow",
       "type": "ability",
       "system": {
         "type": "maneuver",
@@ -633,25 +727,21 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "people-bowling",
+        "_dsid": "horrible-bellow",
         "story": "",
         "keywords": [
-          "area",
-          "strike",
-          "weapon"
+          "area"
         ],
         "category": "heroic",
-        "resource": 3,
+        "resource": 2,
         "trigger": "",
         "distance": {
-          "type": "line",
-          "primary": 6,
-          "secondary": 1,
-          "tertiary": 1
+          "type": "burst",
+          "primary": 3
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creatureObject",
+          "type": "enemy",
           "value": null
         },
         "power": {
@@ -662,74 +752,51 @@
             ]
           },
           "effects": {
-            "IrvQljXvyFtH3JlZ": {
+            "Hxowkzn5D9dfosqm": {
               "name": "",
               "img": null,
-              "type": "damage",
-              "_id": "IrvQljXvyFtH3JlZ",
-              "damage": {
-                "tier1": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "9",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "12",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "L3dWY4a8YTAL0Dwj": {
-              "name": "Prone",
-              "img": null,
               "type": "applied",
-              "_id": "L3dWY4a8YTAL0Dwj",
+              "_id": "Hxowkzn5D9dfosqm",
               "applied": {
-                "tier3": {
-                  "display": "Prone",
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
                   "effects": {
-                    "prone": {
-                      "condition": "success",
-                      "end": "",
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
                   "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
+                    "characteristic": "intuition",
+                    "value": "@potency.weak"
                   }
                 },
                 "tier2": {
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
                   "display": "",
-                  "effects": {},
                   "potency": {
                     "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
@@ -738,15 +805,15 @@
           }
         },
         "effect": {
-          "before": "<p>The goon must have a size 1 creature or object grabbed, which they hurl across the area, ending the grab. The hurled creature or object is targeted by the ability, and lands in the last square of the line or the nearest unoccupied square of the goon’s choice.</p>",
-          "after": ""
+          "before": "",
+          "after": "<p>While a target is frightened this way, any ogre gains an edge on strikes against them.</p>"
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "iDaZY2sj2tEow0nF",
+      "_id": "0v4xbUzxuFoflNvW",
       "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "effects": [],
       "folder": null,
@@ -760,41 +827,37 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.347",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.8.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.iDaZY2sj2tEow0nF"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.0v4xbUzxuFoflNvW"
     },
     {
-      "name": "Swat the Fly",
+      "name": "Hrraaaaaagh!",
       "type": "ability",
       "system": {
-        "type": "triggered",
+        "type": "none",
         "source": {
           "book": "Monsters",
           "page": "210",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "swat-the-fly",
+        "_dsid": "hrraaaaaagh",
         "story": "",
-        "keywords": [
-          "melee"
-        ],
+        "keywords": [],
         "category": "",
         "resource": null,
-        "trigger": "A creature or object within distance moves or shifts away  from the goon.",
+        "trigger": "The juggernaut takes damage.",
         "distance": {
-          "type": "melee",
-          "primary": 1
+          "type": "self"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creatureObject",
-          "value": 1
+          "type": "self"
         },
         "power": {
           "roll": {
@@ -804,7 +867,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The goon slides the target up to 5 squares.</p>",
+          "before": "<p>The juggernaut moves up to their speed and can make a [[/damage @monster.freeStrike]]{Free Strike}.</p>",
           "after": ""
         },
         "spend": {
@@ -812,11 +875,11 @@
           "value": null
         }
       },
-      "_id": "9KP1DjgQ7iN1JjqH",
-      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "_id": "P2nbeXfn6Y4rZyYu",
+      "img": "icons/skills/movement/arrow-upward-blue.webp",
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": 100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -832,69 +895,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.9KP1DjgQ7iN1JjqH"
-    },
-    {
-      "folder": "KO4AMPLGcdxEaE0R",
-      "name": "Shockwave",
-      "type": "ability",
-      "_id": "BfYM0KbWwQsW3CrX",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "209",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shockwave",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Item.BfYM0KbWwQsW3CrX",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.BfYM0KbWwQsW3CrX"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.P2nbeXfn6Y4rZyYu"
     },
     {
       "folder": "KO4AMPLGcdxEaE0R",
@@ -940,7 +941,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": 300000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -956,7 +957,69 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.sil0ZkALq4OO2YUG"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.sil0ZkALq4OO2YUG"
+    },
+    {
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Shockwave",
+      "type": "ability",
+      "_id": "BfYM0KbWwQsW3CrX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shockwave",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Item.BfYM0KbWwQsW3CrX",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.BfYM0KbWwQsW3CrX"
     },
     {
       "folder": "KO4AMPLGcdxEaE0R",
@@ -1047,7 +1110,7 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!c9ltn5pwCDDrXdaa.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw"
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw"
         },
         {
           "name": "Rampage Damage Bonus",
@@ -1107,10 +1170,9 @@
             "coreVersion": "13.347",
             "systemId": "draw-steel",
             "systemVersion": "0.8.0",
-            "lastModifiedBy": null,
-            "modifiedTime": 1755965733715
+            "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!c9ltn5pwCDDrXdaa.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY"
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY"
         }
       ],
       "sort": 0,
@@ -1126,11 +1188,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755965695880,
+        "createdTime": 1755965698589,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!c9ltn5pwCDDrXdaa.idA5w30OnHM2AQpF"
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF"
     }
   ],
   "effects": [],
@@ -1145,10 +1207,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.8.0",
     "createdTime": 1755922148660,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!c9ltn5pwCDDrXdaa"
+  "_key": "!actors!0vlpHQthL2FpdZHA"
 }
