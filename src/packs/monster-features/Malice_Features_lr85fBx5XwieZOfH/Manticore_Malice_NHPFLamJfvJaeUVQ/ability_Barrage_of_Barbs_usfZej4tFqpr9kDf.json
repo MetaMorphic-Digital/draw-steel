@@ -1,0 +1,62 @@
+{
+  "name": "Barrage of Barbs",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A manticore starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has A&lt;3 is bleeding (save ends). Additionally, the area is difficult terrain, and any enemy takes [[/damage 3 poison]] damage for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "202",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "barrage-of-barbs",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "NHPFLamJfvJaeUVQ",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757287711235,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "usfZej4tFqpr9kDf",
+  "sort": 400000,
+  "_key": "!items!usfZej4tFqpr9kDf"
+}
