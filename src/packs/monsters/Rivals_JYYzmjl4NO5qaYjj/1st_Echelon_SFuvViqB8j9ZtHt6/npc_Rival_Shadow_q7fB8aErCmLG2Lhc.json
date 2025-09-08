@@ -1,8 +1,7 @@
 {
-  "folder": "SFuvViqB8j9ZtHt6",
-  "name": "Rival Null",
+  "name": "Rival Shadow",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/harrier.webp",
+  "img": "systems/draw-steel/assets/roles/ambusher.webp",
   "system": {
     "stamina": {
       "value": 80,
@@ -17,13 +16,13 @@
         "value": 2
       },
       "reason": {
-        "value": 1
+        "value": 0
       },
       "intuition": {
-        "value": 2
+        "value": 0
       },
       "presence": {
-        "value": 0
+        "value": 1
       }
     },
     "combat": {
@@ -35,13 +34,8 @@
         "value": 1,
         "letter": "M"
       },
-      "stability": 3,
+      "stability": 1,
       "turns": 1
-    },
-    "biography": {
-      "value": "",
-      "director": "",
-      "languages": []
     },
     "movement": {
       "value": 7,
@@ -77,6 +71,11 @@
         "sonic": 0
       }
     },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
     "source": {
       "book": "Monsters",
       "page": "234",
@@ -97,18 +96,616 @@
       ],
       "level": 2,
       "ev": 16,
-      "role": "harrier",
+      "role": "ambusher",
       "organization": "elite"
     }
   },
+  "items": [
+    {
+      "name": "Exploit Opening",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The shadow deals an extra [[/damage 5]] damage to any bleeding target.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "exploit-opening",
+        "advancements": {}
+      },
+      "_id": "1gyx3cBSfTWRkLtp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.1gyx3cBSfTWRkLtp"
+    },
+    {
+      "name": "Rivalry",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the start of an encounter, the shadow chooses one creature within their line of effect. Both the shadow and the creature can add a [[/roll d3]] roll to power rolls they make against each other.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "rivalry",
+        "advancements": {}
+      },
+      "_id": "tlCWTs3BGSmbI8rD",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.tlCWTs3BGSmbI8rD"
+    },
+    {
+      "name": "Swift Serration",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {
+            "Bx962NbG5cueiB4j": {
+              "_id": "Bx962NbG5cueiB4j",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "K7ykF9JGVdXHBpub": {
+              "_id": "K7ykF9JGVdXHBpub",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier3": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The shadow can teleport up to 5 squares, then can attempt to hide.</p>"
+        },
+        "spend": {
+          "text": "The shadow can teleport up to 5 squares, then can attempt to hide.",
+          "value": 1
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "swift-serration",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "lzLkI9Cn3WdliOMb",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.lzLkI9Cn3WdliOMb"
+    },
+    {
+      "name": "Poison the Blade",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "-"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The shadow coats their weapon with poison. They gain an edge on their next strike, and any potency for that strike increases by 1.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "poison-the-blade",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LIj4MFRPiEQ5kQcg",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.LIj4MFRPiEQ5kQcg"
+    },
+    {
+      "name": "Calling the Shots",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "calling-the-shots",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "xB9Vd4t5keqs1JDR",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 250000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.xB9Vd4t5keqs1JDR"
+    },
+    {
+      "name": "Check Out Our Loot",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "check-out-our-loot",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an Agility test. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>[[/damage 11 sonic poison fire]] damage; the condition affects the target (save ends)</p></td></tr><tr><td><p>12-16</p></td><td><p>[[/damage 8 sonic poison fire]]  damage; the condition affects the target (EoT)</p></td></tr><tr><td><p>17+</p></td><td><p>[[/damage 5 sonic poison fire]]  damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "UarPvMGwBUArRMi9",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.UarPvMGwBUArRMi9"
+    },
+    {
+      "name": "Coordinated Takedown",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "coordinated-takedown",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "A Rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "NC26Xynp5N9nETPD",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 600000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.NC26Xynp5N9nETPD"
+    },
+    {
+      "name": "We Just Do It Better",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "we-just-do-it-better",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, whenever any rival makes a power roll against the target of their Rivalry trait, they roll a [[/r d3]] and add it to the power roll.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "8e54PBDCLRgBpCkU",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 150000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.8e54PBDCLRgBpCkU"
+    },
+    {
+      "name": "Work as One",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "work-as-one",
+        "story": "Work as One",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, each rival can impose a bane on a strike made against an adjacent rival as a free triggered action.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "9wDgHxxo5PamhM3w",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!q7fB8aErCmLG2Lhc.9wDgHxxo5PamhM3w"
+    }
+  ],
+  "folder": "SFuvViqB8j9ZtHt6",
   "prototypeToken": {
-    "name": "Rival Null",
-    "displayName": 20,
+    "name": "Rival Shadow",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/harrier.webp",
+      "src": "systems/draw-steel/assets/roles/ambusher.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -120,11 +717,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -195,722 +792,6 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Inertial Shield",
-      "type": "feature",
-      "_id": "8aCb3qSNZbWTkkuE",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The first time each round that the null is targeted by a damage-dealing strike, they halve the damage.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "234",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "inertial-shield",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.8aCb3qSNZbWTkkuE"
-    },
-    {
-      "name": "Rivalry",
-      "type": "feature",
-      "_id": "9c01FZG1c1kaRydM",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>At the start of an encounter, the null chooses one creature within their line of effect. Both the null and the creature can add a d3 roll to power rolls they make against each other.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "234",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "rivalry",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.9c01FZG1c1kaRydM"
-    },
-    {
-      "name": "Nimble Step",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "234",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "nimble-step",
-        "story": "",
-        "keywords": [
-          "melee",
-          "strike",
-          "weapon"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 2
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "ZByRm76RMKsNHFai": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "ZByRm76RMKsNHFai",
-              "damage": {
-                "tier1": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "10",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "13",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "OTT6tS0ng7WD1ive": {
-              "name": "Null Shift",
-              "img": null,
-              "type": "other",
-              "_id": "OTT6tS0ng7WD1ive",
-              "other": {
-                "tier1": {
-                  "display": "the null shifts up to 2 squares",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "the null shifts up to 3 squares",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "the null shifts up to 4 squares",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "rS83DLdeC1s3rks4",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.rS83DLdeC1s3rks4"
-    },
-    {
-      "name": "Numb",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "234",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "numb",
-        "story": "",
-        "keywords": [
-          "melee",
-          "psionic",
-          "strike",
-          "weapon"
-        ],
-        "category": "heroic",
-        "resource": 2,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "wIg0p75jvUtDOGUo": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "wIg0p75jvUtDOGUo",
-              "damage": {
-                "tier1": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "10",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "13",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "GDKfd3Gcxc8cRBRf": {
-              "name": "Slowed and Dazed",
-              "img": null,
-              "type": "applied",
-              "_id": "GDKfd3Gcxc8cRBRf",
-              "applied": {
-                "tier1": {
-                  "potency": {
-                    "characteristic": "reason",
-                    "value": "@potency.weak"
-                  },
-                  "display": "{{potency}} slowed (EoT)",
-                  "effects": {}
-                },
-                "tier3": {
-                  "display": "{{potency}} dazed and slowed (EoT)",
-                  "effects": {
-                    "gOF7LZWRfW9zXk1w": {
-                      "condition": "failure",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "4SroNlLLU7vYc81q",
-      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
-      "effects": [
-        {
-          "name": "Dazed and Slowed",
-          "img": "icons/svg/daze.svg",
-          "origin": "Actor.lBaQCTSClBH8x2Vv.Item.4SroNlLLU7vYc81q",
-          "transfer": false,
-          "_id": "gOF7LZWRfW9zXk1w",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "turn",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "slowed",
-            "dazed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
-          "_key": "!actors.items.effects!aoWQpSc0poFyHs60.4SroNlLLU7vYc81q.gOF7LZWRfW9zXk1w"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.4SroNlLLU7vYc81q"
-    },
-    {
-      "name": "Calling the Shots",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "calling-the-shots",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A rival's turn starts",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "xB9Vd4t5keqs1JDR",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 250000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.xB9Vd4t5keqs1JDR"
-    },
-    {
-      "name": "Check Out Our Loot",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "check-out-our-loot",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A rival's turn starts",
-        "distance": {
-          "type": "self"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "self"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an Agility test. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>[[/damage 11 sonic poison fire]] damage; the condition affects the target (save ends)</p></td></tr><tr><td><p>12-16</p></td><td><p>[[/damage 8 sonic poison fire]]  damage; the condition affects the target (EoT)</p></td></tr><tr><td><p>17+</p></td><td><p>[[/damage 5 sonic poison fire]]  damage</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "UarPvMGwBUArRMi9",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 300000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.UarPvMGwBUArRMi9"
-    },
-    {
-      "name": "Coordinated Takedown",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "coordinated-takedown",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 10,
-        "trigger": "A Rival's turn starts",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "NC26Xynp5N9nETPD",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 400000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.NC26Xynp5N9nETPD"
-    },
-    {
-      "name": "We Just Do It Better",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "we-just-do-it-better",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A rival's turn starts",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, whenever any rival makes a power roll against the target of their Rivalry trait, they roll a [[/r d3]] and add it to the power roll.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "8e54PBDCLRgBpCkU",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 200000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.8e54PBDCLRgBpCkU"
-    },
-    {
-      "name": "Work as One",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "work-as-one",
-        "story": "Work as One",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A rival's turn starts",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, each rival can impose a bane on a strike made against an adjacent rival as a free triggered action.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "9wDgHxxo5PamhM3w",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 100000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!aoWQpSc0poFyHs60.9wDgHxxo5PamhM3w"
-    }
-  ],
   "effects": [],
   "ownership": {
     "default": 0
@@ -922,12 +803,12 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922208355,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757290100593,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "aoWQpSc0poFyHs60",
-  "sort": 100000,
-  "_key": "!actors!aoWQpSc0poFyHs60"
+  "_id": "q7fB8aErCmLG2Lhc",
+  "sort": 300000,
+  "_key": "!actors!q7fB8aErCmLG2Lhc"
 }
