@@ -1,0 +1,680 @@
+{
+  "name": "War Dog Pestilite",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
+  "system": {
+    "stamina": {
+      "value": 20,
+      "max": 20,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 0
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": 2
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 3,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "301",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 2,
+      "keywords": [
+        "humanoid"
+      ],
+      "level": 3,
+      "ev": 5,
+      "role": "controller",
+      "organization": "horde"
+    }
+  },
+  "items": [
+    {
+      "name": "Loyalty Collar",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When the pestilite is reduced to 0 Stamina, their loyalty collar explodes, dealing [[/damage 1d6]] damage to each adjacent enemy and object.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "loyalty-collar",
+        "advancements": {}
+      },
+      "_id": "C7EEvU8kPvOea4R2",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.C7EEvU8kPvOea4R2"
+    },
+    {
+      "name": "Plaguecaster",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 3,
+          "secondary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "NfVMo0A1RjX5k4nr": {
+              "_id": "NfVMo0A1RjX5k4nr",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "2",
+                  "types": [
+                    "poison"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [
+                    "poison"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [
+                    "poison"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "g8fbzuCnusHFLshd": {
+              "_id": "g8fbzuCnusHFLshd",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The area is filled with a cloud of pestilence that lasts until the start of the pestilite's next turn. Any creature who enters the area for the first time in a round or starts their turn there takes [[/damage 2 poison]] damage.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "plaguecaster",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "faDl5cGmPf1cAVup",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.faDl5cGmPf1cAVup"
+    },
+    {
+      "name": "Posthumous Promotion",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "special",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Note: Targets One War Dog</p>",
+          "after": "<p>If the target has a loyalty collar, they are reduced to 0 Stamina.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "posthumous-promotion",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "a839xJHkoQwEHZyL",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.a839xJHkoQwEHZyL"
+    },
+    {
+      "folder": "zKtLcYoIeEal58CU",
+      "name": "Fire for Effect",
+      "type": "ability",
+      "_id": "qcpbsqefhcNsWcZd",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "299",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "fire-for-effect",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "type": "maneuver",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 4,
+          "secondary": 10
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target makes an <strong>Agility test</strong>. The same condition is imposed on each affected target.</p><p></p><table><tbody><tr><td data-colwidth=\"97\"><p>11 or less</p></td><td><p>[[/damage 5 fire]] damage; slowed or weakened (save ends)</p></td></tr><tr><td data-colwidth=\"97\"><p>12-16</p></td><td><p>[[/damage 5 fire]] damage; slowed or weakened (EoT)</p></td></tr><tr><td data-colwidth=\"97\"><p>17+</p></td><td><p>[[/damage 5 fire]] damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.qcpbsqefhcNsWcZd"
+    },
+    {
+      "folder": "zKtLcYoIeEal58CU",
+      "name": "Fodder Run",
+      "type": "ability",
+      "_id": "I47ueLHjVHGTY83Y",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "299",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "fodder-run",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each war dog minion in the encounter shifts up to their speed and can make a free strike. A minion who does so is then reduced to 0 Stamina.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 150000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.I47ueLHjVHGTY83Y"
+    },
+    {
+      "folder": "zKtLcYoIeEal58CU",
+      "name": "Reconstitute",
+      "type": "ability",
+      "_id": "ihKkMlptBoQemUBc",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "299",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "reconstitute",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One war dog acting this turn tears apart a nearby corpse of a humanoid and incorporates its body parts into their own. The war dog regains Stamina equal to 5 times their level.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!MP2Ev6fcBPIStnEL.ihKkMlptBoQemUBc"
+    }
+  ],
+  "folder": "DYl6Qljp14rd7e7s",
+  "_id": "MP2Ev6fcBPIStnEL",
+  "prototypeToken": {
+    "name": "War Dog Pestilite",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/controller.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "sort": 575000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": "Actor.MP2Ev6fcBPIStnEL",
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757298904081,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!MP2Ev6fcBPIStnEL"
+}
