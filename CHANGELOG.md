@@ -50,9 +50,11 @@
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
   - Bugbear Channeler action corrections. (#1027)
+  - Corrected shared Radenwight actions. (#1037)
   - Ogre Goon action corrections.
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
+- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
 
 ## 0.8.0
 
