@@ -1,13 +1,13 @@
 {
-  "folder": "Awroz7YqtpURNlF5",
-  "name": "Skeleton",
+  "folder": "qZ8RbdImvXjWh2yn",
+  "name": "Ghoul",
   "type": "npc",
-  "_id": "2h6PhbOuGeraFQZm",
-  "img": "systems/draw-steel/assets/roles/artillery.webp",
+  "_id": "DXM53Md2acyvSVNo",
+  "img": "systems/draw-steel/assets/roles/harrier.webp",
   "system": {
     "stamina": {
-      "value": 10,
-      "max": 10,
+      "value": 15,
+      "max": 15,
       "temporary": 0
     },
     "characteristics": {
@@ -18,7 +18,7 @@
         "value": 2
       },
       "reason": {
-        "value": 1
+        "value": -2
       },
       "intuition": {
         "value": 0
@@ -45,7 +45,7 @@
       "director": ""
     },
     "movement": {
-      "value": 5,
+      "value": 7,
       "types": [
         "walk"
       ],
@@ -92,24 +92,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
         "undead"
       ],
       "level": 1,
       "ev": 3,
-      "role": "artillery",
+      "role": "harrier",
       "organization": "horde"
     }
   },
   "prototypeToken": {
-    "name": "Skeleton",
-    "displayName": 20,
+    "name": "Ghoul",
+    "displayName": 30,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/artillery.webp",
+      "src": "systems/draw-steel/assets/roles/harrier.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -158,7 +158,7 @@
       }
     },
     "sight": {
-      "enabled": false,
+      "enabled": true,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -191,20 +191,14 @@
       "disposition": false
     },
     "movementAction": null,
-    "flags": {
-      "healthEstimate": {
-        "dontMarkDead": false,
-        "hideHealthEstimate": false,
-        "hideName": false
-      }
-    },
+    "flags": {},
     "randomImg": false,
     "appendNumber": false,
     "prependAdjective": false
   },
   "items": [
     {
-      "name": "Bone Shards",
+      "name": "Razor Claws",
       "type": "ability",
       "system": {
         "type": "main",
@@ -214,11 +208,11 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bone-shards",
+        "_dsid": "razor-claws",
         "story": "",
         "keywords": [
+          "charge",
           "melee",
-          "ranged",
           "strike",
           "weapon"
         ],
@@ -226,9 +220,8 @@
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 10
+          "type": "melee",
+          "primary": 1
         },
         "damageDisplay": "melee",
         "target": {
@@ -243,12 +236,12 @@
             ]
           },
           "effects": {
-            "z2ytVSoA8EIjP9Pc": {
+            "4CQjGvtYKZpe08U1": {
               "type": "damage",
-              "_id": "z2ytVSoA8EIjP9Pc",
+              "_id": "4CQjGvtYKZpe08U1",
               "damage": {
                 "tier1": {
-                  "value": "4",
+                  "value": "3",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -257,7 +250,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
+                  "value": "4",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -266,7 +259,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "7",
+                  "value": "5",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -277,19 +270,57 @@
               },
               "name": "",
               "img": null
+            },
+            "uzc7ZBgbPsmznKxB": {
+              "type": "applied",
+              "_id": "uzc7ZBgbPsmznKxB",
+              "applied": {
+                "tier3": {
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "2"
+                  },
+                  "display": "{{potency}} bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "potency": {
+                    "characteristic": "none",
+                    "value": "@potency.average"
+                  },
+                  "display": "",
+                  "effects": {}
+                },
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  },
+                  "effects": {}
+                }
+              },
+              "name": "",
+              "img": null
             }
           }
         },
         "effect": {
-          "before": "",
-          "after": "<p>Until the start of the skeletonʼs next turn, the target takes 2 damage the first time they willingly move on their turn.</p>"
+          "before": "<p><strong>Hunger: </strong>When the ghoul uses the Charge main action, they gain a +2 bonus to speed until the end of their turn</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "TL45obcwD3gxH4YD",
+      "_id": "Tkj0PVMB3z6KiURr",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -308,10 +339,10 @@
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.TL45obcwD3gxH4YD"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.Tkj0PVMB3z6KiURr"
     },
     {
-      "name": "Bone Spur",
+      "name": "Leap",
       "type": "ability",
       "system": {
         "type": "maneuver",
@@ -321,128 +352,37 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bone-spur",
+        "_dsid": "leap",
         "story": "",
-        "keywords": [
-          "weapon",
-          "area"
-        ],
-        "category": "heroic",
-        "resource": 2,
+        "keywords": [],
+        "category": "",
+        "resource": null,
         "trigger": "",
         "distance": {
-          "type": "burst",
-          "primary": 1
+          "type": "self"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "enemy",
-          "value": null
+          "type": "self"
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": []
           },
-          "effects": {
-            "EyD6Cf26e35itR9d": {
-              "type": "damage",
-              "_id": "EyD6Cf26e35itR9d",
-              "damage": {
-                "tier1": {
-                  "value": "1",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "3",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            },
-            "lBY3N9Du98l4Fr1W": {
-              "type": "applied",
-              "_id": "lBY3N9Du98l4Fr1W",
-              "name": "Bleeding",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} bleeding (save ends)",
-                  "potency": {
-                    "value": "0",
-                    "characteristic": "might"
-                  },
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "",
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier3": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "",
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                }
-              },
-              "img": null
-            }
-          }
+          "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target takes a bane on their next strike.</p>"
+          "before": "<p>The ghoul jumps up to 3 squares. If they land on a size 1 enemy, that enemy is knocked prone and the ghoul can make a free strike against them.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "GNMkT6RTuBTUHg53",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "_id": "cuDz18vafhxuWfMg",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -460,7 +400,45 @@
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.GNMkT6RTuBTUHg53"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.cuDz18vafhxuWfMg"
+    },
+    {
+      "name": "Hunger",
+      "type": "feature",
+      "_id": "v31nKF7iZFLMCOwj",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When the ghoul uses the Charge main action, they gain a +2 bonus to speed until the end of their turn.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "262",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "hunger",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!DXM53Md2acyvSVNo.v31nKF7iZFLMCOwj"
     },
     {
       "name": "Arise",
@@ -469,7 +447,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The first time the skeleton is reduced to 0 Stamina by damage that isnʼt fire damage or holy damage and their body isnʼt destroyed, they instead have 1 Stamina and fall prone.</p>",
+          "value": "<p>The first time the ghoul is reduced to 0 Stamina by damage that isnʼt fire damage or holy damage and their body isnʼt destroyed, they instead have 1 Stamina and fall prone.</p>",
           "director": ""
         },
         "source": {
@@ -486,7 +464,7 @@
       "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.xaafURmvxWgmnJPK",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.347",
@@ -496,10 +474,9 @@
         "modifiedTime": null
       },
       "ownership": {
-        "default": 0,
-        "ZJ4Z3nifR8NNIWxP": 3
+        "default": 0
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.xaafURmvxWgmnJPK"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.xaafURmvxWgmnJPK"
     },
     {
       "name": "Dread March",
@@ -558,11 +535,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714534846,
+        "createdTime": 1755714496357,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.EzWvhVW1uXUmKhV5"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.EzWvhVW1uXUmKhV5"
     },
     {
       "name": "Paranormal Fling",
@@ -608,7 +585,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 125000,
+      "sort": 200000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -621,11 +598,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714536190,
+        "createdTime": 1755714497651,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.da4wUZrJsfQ3EMZ3"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.da4wUZrJsfQ3EMZ3"
     },
     {
       "name": "Ravenous Horde",
@@ -684,11 +661,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714537281,
+        "createdTime": 1755714498726,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.gSoRE2jY58pVAtXf"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.gSoRE2jY58pVAtXf"
     },
     {
       "name": "The Grasping, the Hungry",
@@ -747,15 +724,15 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715278827,
+        "createdTime": 1755715259681,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!2h6PhbOuGeraFQZm.5lQ9od53YUhk2eDw"
+      "_key": "!actors.items!DXM53Md2acyvSVNo.5lQ9od53YUhk2eDw"
     }
   ],
   "effects": [],
-  "sort": 500000,
+  "sort": 123438,
   "ownership": {
     "default": 0
   },
@@ -771,5 +748,5 @@
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!2h6PhbOuGeraFQZm"
+  "_key": "!actors!DXM53Md2acyvSVNo"
 }
