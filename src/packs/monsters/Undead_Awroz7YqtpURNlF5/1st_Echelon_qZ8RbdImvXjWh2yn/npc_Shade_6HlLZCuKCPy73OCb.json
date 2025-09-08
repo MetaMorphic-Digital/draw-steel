@@ -1,17 +1,17 @@
 {
-  "folder": "Awroz7YqtpURNlF5",
-  "name": "Soulwight",
+  "folder": "qZ8RbdImvXjWh2yn",
+  "name": "Shade",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 10,
-      "max": 10,
+      "value": 4,
+      "max": 4,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 2
+        "value": -5
       },
       "agility": {
         "value": 1
@@ -23,7 +23,7 @@
         "value": 0
       },
       "presence": {
-        "value": 1
+        "value": 2
       }
     },
     "combat": {
@@ -35,7 +35,7 @@
         "value": 1,
         "letter": "M"
       },
-      "stability": 0,
+      "stability": 1,
       "turns": 1
     },
     "biography": {
@@ -46,9 +46,9 @@
     "movement": {
       "value": 5,
       "types": [
-        "walk"
+        "fly"
       ],
-      "hover": false,
+      "hover": true,
       "disengage": 1
     },
     "damage": {
@@ -79,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "263",
+      "page": "261",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -91,24 +91,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 1,
+      "freeStrike": 2,
       "keywords": [
         "undead"
       ],
       "level": 1,
       "ev": 3,
-      "role": "hexer",
-      "organization": "horde"
+      "role": "ambusher",
+      "organization": "minion"
     }
   },
   "prototypeToken": {
-    "name": "Soulwight",
-    "displayName": 20,
+    "name": "Shade",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "src": "systems/draw-steel/assets/roles/minion.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -120,11 +120,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -197,22 +197,22 @@
   },
   "items": [
     {
-      "name": "Arise",
+      "name": "With Captain",
       "type": "feature",
-      "_id": "5NQSsKKbwf3Sispt",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "_id": "YOSnGSTs0w88OhL1",
+      "img": "icons/skills/social/intimidation-impressing.webp",
       "system": {
         "description": {
-          "value": "<p>The first time the soulwight is reduced to 0 Stamina by damage that isn’t fire damage or holy damage and their body isn’t de stroyed, they instead have 1 Stamina and fall prone.</p>",
+          "value": "<p><strong>With Captain:</strong> +2 bonus to speed</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "263",
+          "page": "261",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "arise",
+        "_dsid": "with-captain",
         "advancements": {}
       },
       "effects": [],
@@ -233,55 +233,27 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.5NQSsKKbwf3Sispt"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.YOSnGSTs0w88OhL1"
     },
     {
-      "name": "Stolen Vitality",
-      "type": "ability",
+      "name": "Shadow Phasing",
+      "type": "feature",
+      "_id": "QdD8DgcctpCXfSh1",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
-        "type": "maneuver",
+        "description": {
+          "value": "<p>The shade can move through creatures and objects at their usual speed, but can’t end their turn inside a creature or object. The first time in a round that the shade moves through a creature, that creature takes 1 corruption damage. The shade doesn’t take damage from being force moved into objects</p>",
+          "director": ""
+        },
         "source": {
           "book": "Monsters",
-          "page": "263",
+          "page": "261",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "stolen-vitality",
-        "story": "",
-        "keywords": [
-          "magic",
-          "ranged"
-        ],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "ranged",
-          "primary": 5
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "ally",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target regains [[/heal 10]]. The soulwight can’t use this maneuver again until after they strike a creature with their Soulstealer Longsword.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
+        "_dsid": "shadow-phasing",
+        "advancements": {}
       },
-      "_id": "ppxgzlfLdNAEHkgg",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -300,20 +272,20 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.ppxgzlfLdNAEHkgg"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.QdD8DgcctpCXfSh1"
     },
     {
-      "name": "Soulstealer Longsword",
+      "name": "Life Drain",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "263",
+          "page": "261",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "soulstealer-longsword",
+        "_dsid": "life-drain",
         "story": "",
         "keywords": [
           "melee",
@@ -336,18 +308,18 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "might"
+              "presence"
             ]
           },
           "effects": {
-            "R0wDlQgQt1ZMXMtP": {
+            "kTtlGoTZgzqtlLew": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "R0wDlQgQt1ZMXMtP",
+              "_id": "kTtlGoTZgzqtlLew",
               "damage": {
                 "tier1": {
-                  "value": "3",
+                  "value": "2",
                   "types": [
                     "corruption"
                   ],
@@ -381,43 +353,37 @@
                 }
               }
             },
-            "bYmw8Hll6SNxqF4s": {
+            "BqnHl6rc7PTyazw8": {
               "name": "",
               "img": null,
-              "type": "applied",
-              "_id": "bYmw8Hll6SNxqF4s",
-              "applied": {
-                "tier2": {
-                  "display": "{{potency}} slowed (save ends)",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
+              "type": "forced",
+              "_id": "BqnHl6rc7PTyazw8",
+              "forced": {
                 "tier3": {
-                  "display": "{{potency}} slowed and weakened (save ends)",
-                  "effects": {
-                    "1XC4RokOmULqp1LI": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
+                  "display": "the target must move up to their speed  and can’t end that movement closer to any shade",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
                 },
+                "tier2": {
+                  "movement": [],
+                  "distance": "",
+                  "display": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
                 "tier1": {
                   "display": "",
-                  "effects": {},
+                  "distance": "",
+                  "movement": [],
+                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
@@ -429,62 +395,16 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The target appears to rapidly age each time they take damage from this ability. The target regains their former appearance when the soulwight is destroyed.</p>"
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "HtcTwuGlQNsNi2wI",
+      "_id": "pdaJd0uXysZym9YM",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [
-        {
-          "name": "Slowed and Weakened",
-          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-          "origin": "Actor.Rslc88u25SrzNjIz.Item.HtcTwuGlQNsNi2wI",
-          "transfer": false,
-          "_id": "1XC4RokOmULqp1LI",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "slowed",
-            "weakened"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
-          "_key": "!actors.items.effects!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI.1XC4RokOmULqp1LI"
-        }
-      ],
+      "effects": [],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -502,7 +422,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.HtcTwuGlQNsNi2wI"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.pdaJd0uXysZym9YM"
     },
     {
       "name": "Dread March",
@@ -548,7 +468,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 400000,
+      "sort": 300000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -561,11 +481,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714554784,
+        "createdTime": 1755714513591,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.EzWvhVW1uXUmKhV5"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.EzWvhVW1uXUmKhV5"
     },
     {
       "name": "Paranormal Fling",
@@ -611,7 +531,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 200000,
+      "sort": 125000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -624,11 +544,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714555814,
+        "createdTime": 1755714514758,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.da4wUZrJsfQ3EMZ3"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.da4wUZrJsfQ3EMZ3"
     },
     {
       "name": "Ravenous Horde",
@@ -687,11 +607,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714556678,
+        "createdTime": 1755714515797,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.gSoRE2jY58pVAtXf"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.gSoRE2jY58pVAtXf"
     },
     {
       "name": "The Grasping, the Hungry",
@@ -750,11 +670,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715285864,
+        "createdTime": 1755715267646,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!NkO0TYxtdVNVRjYB.5lQ9od53YUhk2eDw"
+      "_key": "!actors.items!6HlLZCuKCPy73OCb.5lQ9od53YUhk2eDw"
     }
   ],
   "effects": [],
@@ -769,11 +689,11 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755701962870,
+    "createdTime": 1755701961562,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "NkO0TYxtdVNVRjYB",
-  "sort": 200000,
-  "_key": "!actors!NkO0TYxtdVNVRjYB"
+  "_id": "6HlLZCuKCPy73OCb",
+  "sort": 121875,
+  "_key": "!actors!6HlLZCuKCPy73OCb"
 }
