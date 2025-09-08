@@ -1,0 +1,84 @@
+{
+  "folder": "MXimo7qA1zVVQmZB",
+  "name": "Kinetic Shield",
+  "type": "ability",
+  "_id": "AQK60y5FMgiLwPeH",
+  "img": "icons/magic/defensive/shield-barrier-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "152",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "kinetic-shield",
+    "story": "You manifest a force barrier that absorbs incoming kinetic energy.",
+    "keywords": [
+      "psionic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "CDJI6TH7I43rbSf8": {
+          "name": "Temp Stamina",
+          "img": null,
+          "type": "other",
+          "_id": "CDJI6TH7I43rbSf8",
+          "other": {
+            "tier1": {
+              "display": "You gain 10 [​[/heal 10 type=temporary]]"
+            },
+            "tier2": {
+              "display": "You gain 15 [​[/heal 15 type=temporary]]"
+            },
+            "tier3": {
+              "display": "You gain 20 [​[/heal 20 type=temporary]]"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756087730304,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!AQK60y5FMgiLwPeH"
+}

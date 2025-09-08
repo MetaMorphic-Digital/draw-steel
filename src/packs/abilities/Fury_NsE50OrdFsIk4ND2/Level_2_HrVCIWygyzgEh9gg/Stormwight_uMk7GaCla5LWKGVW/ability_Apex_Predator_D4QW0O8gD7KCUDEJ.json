@@ -1,0 +1,124 @@
+{
+  "folder": "uMk7GaCla5LWKGVW",
+  "name": "Apex Predator",
+  "type": "ability",
+  "_id": "D4QW0O8gD7KCUDEJ",
+  "img": "icons/skills/targeting/crosshair-pointed-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "145",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "apex-predator",
+    "story": "I will hunt you down.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "uxqYDrJPuH4Za0Lb": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "uxqYDrJPuH4Za0Lb",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "10 + @chr"
+            }
+          }
+        },
+        "CSU2UsZILKz14scA": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "CSU2UsZILKz14scA",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The target can’t be hidden from you for 24 hours. Until the end of the encounter, whenever the target willingly moves, you can use a free triggered action to move.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1756081110349,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!D4QW0O8gD7KCUDEJ"
+}

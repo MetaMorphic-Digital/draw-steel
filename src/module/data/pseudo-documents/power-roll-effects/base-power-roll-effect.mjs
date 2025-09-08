@@ -25,7 +25,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT");
+  static LOCALIZATION_PREFIXES = super.LOCALIZATION_PREFIXES.concat("DRAW_STEEL.POWER_ROLL_EFFECT");
 
   /* -------------------------------------------------- */
 
@@ -48,15 +48,15 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       tiersSchema[`tier${n}`] = new SchemaField({
         ...fieldsFn(n),
         potency: new SchemaField({
-          value: new FormulaField({ deterministic: true, initial: potencyFormula[n], label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
+          value: new FormulaField({ deterministic: true, initial: potencyFormula[n], label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.value.label" }),
           characteristic: new StringField({
             required: true,
             initial: n > 1 ? "" : "none",
             blank: n > 1,
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label",
-            hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.hint",
+            label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.label",
+            hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.characteristic.hint",
           }),
-        }, { label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
+        }, { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.potency.label" }),
       });
     }
 

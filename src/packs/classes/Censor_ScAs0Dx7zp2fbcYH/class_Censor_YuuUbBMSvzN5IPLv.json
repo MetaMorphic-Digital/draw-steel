@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "78",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "censor",
     "advancements": {
@@ -313,7 +313,7 @@
       },
       "UL1Cu9PGD4lWRDiu": {
         "name": "5 Wrath",
-        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "img": "icons/magic/symbols/runes-star-orange.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -333,6 +333,56 @@
           },
           {
             "uuid": "Compendium.draw-steel.abilities.Item.4m5rgK9RH2QXg9S5"
+          }
+        ]
+      },
+      "pbujOq8KUhenV5t2": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "pbujOq8KUhenV5t2",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+      },
+      "xMJS8JqsP6dYGqlH": {
+        "name": "Look On My Work and Despair",
+        "img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "xMJS8JqsP6dYGqlH",
+        "description": "<p>you gain the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.CDq4lOvXJyqB2BMd"
+          }
+        ]
+      },
+      "1Kze4GliEzN8HmGH": {
+        "name": "7 Wrath",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "1Kze4GliEzN8HmGH",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 wrath to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cWLyjhpIKiFWXeFA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cRBY7tLttHD1fzPv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ljGP3YxZSeSCfRrt"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.320N35zYLSePKNpf"
           }
         ]
       }
@@ -366,7 +416,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1754678969669,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,0 +1,1222 @@
+{
+  "folder": "mKoQH5eH9bOQmkFl",
+  "name": "Ogre Juggernaut",
+  "type": "npc",
+  "_id": "0vlpHQthL2FpdZHA",
+  "img": "systems/draw-steel/assets/roles/harrier.webp",
+  "system": {
+    "stamina": {
+      "value": 80,
+      "max": 80,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": -1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "210",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [
+        "giant"
+      ],
+      "level": 2,
+      "ev": 16,
+      "role": "harrier",
+      "organization": "elite"
+    }
+  },
+  "prototypeToken": {
+    "name": "Ogre Juggernaut",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/harrier.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Defiant Anger",
+      "type": "feature",
+      "_id": "QAaF24sCe237zVtE",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While winded, the goon has damage immunity 2.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "defiant-anger",
+        "advancements": {}
+      },
+      "effects": [
+        {
+          "name": "Defiant Anger",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "origin": "Actor.c9ltn5pwCDDrXdaa.Item.QAaF24sCe237zVtE",
+          "_id": "auIZ6Zj71xcAvXFz",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "2",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.QAaF24sCe237zVtE.auIZ6Zj71xcAvXFz"
+        }
+      ],
+      "folder": null,
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.c9ltn5pwCDDrXdaa.Item.QAaF24sCe237zVtE",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.QAaF24sCe237zVtE"
+    },
+    {
+      "name": "Destructive Path",
+      "type": "feature",
+      "_id": "XDiNFNBdTC29p72D",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are forced moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "destructive-path",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.XDiNFNBdTC29p72D"
+    },
+    {
+      "name": "Pitchfork Catapult",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "pitchfork-catapult",
+        "story": "",
+        "keywords": [
+          "charge",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 2
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "keMu39vBGf2YtsEf": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "keMu39vBGf2YtsEf",
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "x1C7gPfjJCPVipx3": {
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "x1C7gPfjJCPVipx3",
+              "forced": {
+                "tier1": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "characteristic": "agility",
+                    "value": "@potency.average"
+                  },
+                  "display": "{{potency}} {{forced}}",
+                  "movement": [
+                    "push"
+                  ]
+                },
+                "tier3": {
+                  "properties": [
+                    "vertical"
+                  ],
+                  "distance": "3",
+                  "movement": [
+                    "slide"
+                  ],
+                  "potency": {
+                    "characteristic": "agility",
+                    "value": "@potency.strong"
+                  },
+                  "display": "{{potency}} {{forced}}"
+                }
+              }
+            },
+            "i5uABjUX2v6jxXhu": {
+              "name": "Bleeding",
+              "img": null,
+              "type": "applied",
+              "_id": "i5uABjUX2v6jxXhu",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "Each target who has m<1 is bleeding (save ends).",
+          "value": 1
+        }
+      },
+      "_id": "DOHkGFBXLdn10M17",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.DOHkGFBXLdn10M17"
+    },
+    {
+      "name": "Earth-Breaking Jump",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "earth-breaking-jump",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "8RXsupfhfT98yYqB": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "8RXsupfhfT98yYqB",
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "VBXHHOnEAq1eueC8": {
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "VBXHHOnEAq1eueC8",
+              "forced": {
+                "tier1": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "85CpWHadNFf5Gi4d": {
+              "name": "Prone",
+              "img": null,
+              "type": "applied",
+              "_id": "85CpWHadNFf5Gi4d",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "characteristic": "might",
+                    "value": "@potency.weak"
+                  },
+                  "effects": {}
+                },
+                "tier2": {
+                  "display": "{{potency}} prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>The juggernaut jumps up to 6 squares before using this ability.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "4b3BqKQfD8xnV9PS",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.4b3BqKQfD8xnV9PS"
+    },
+    {
+      "name": "Horrible Bellow",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "horrible-bellow",
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "heroic",
+        "resource": 2,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "Hxowkzn5D9dfosqm": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "Hxowkzn5D9dfosqm",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "characteristic": "intuition",
+                    "value": "@potency.weak"
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>While a target is frightened this way, any ogre gains an edge on strikes against them.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "0v4xbUzxuFoflNvW",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.0v4xbUzxuFoflNvW"
+    },
+    {
+      "name": "Hrraaaaaagh!",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "210",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "hrraaaaaagh",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "The juggernaut takes damage.",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The juggernaut moves up to their speed and can make a [[/damage @monster.freeStrike]]{Free Strike}.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "P2nbeXfn6Y4rZyYu",
+      "img": "icons/skills/movement/arrow-upward-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.P2nbeXfn6Y4rZyYu"
+    },
+    {
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Bully",
+      "type": "ability",
+      "_id": "sil0ZkALq4OO2YUG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bully",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each ogre in the encounter shifts up to their speed and can make a free strike. If they can, they gang up on the same target rather than picking different targets.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Item.sil0ZkALq4OO2YUG",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.sil0ZkALq4OO2YUG"
+    },
+    {
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Shockwave",
+      "type": "ability",
+      "_id": "BfYM0KbWwQsW3CrX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shockwave",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Item.BfYM0KbWwQsW3CrX",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.BfYM0KbWwQsW3CrX"
+    },
+    {
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Rampage",
+      "type": "ability",
+      "_id": "idA5w30OnHM2AQpF",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "rampage",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, each ogre has damage immunity 5 and deals an extra [[/damage 5]] damage with abilities, and heroic abilities that target any ogre have their Heroic Resource cost reduced by 1 (to a minimum of 1).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Rampage Immunity",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Item.idA5w30OnHM2AQpF",
+          "_id": "AhlSegSTQ5dRarFw",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw"
+        },
+        {
+          "name": "Rampage Damage Bonus",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monster-features.Item.idA5w30OnHM2AQpF",
+          "disabled": true,
+          "_id": "fBEKoTahYc1lmsMY",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": []
+            }
+          },
+          "changes": [
+            {
+              "key": "damage.tier1.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier2.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier3.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY"
+        }
+      ],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "cpRCYfteS3IEfu8O": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Item.idA5w30OnHM2AQpF",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "createdTime": 1755965698589,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755922148660,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!0vlpHQthL2FpdZHA"
+}

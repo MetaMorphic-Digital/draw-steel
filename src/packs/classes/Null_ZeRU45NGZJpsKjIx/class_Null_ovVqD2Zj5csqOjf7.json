@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "146",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "null",
     "advancements": {
@@ -253,6 +253,59 @@
             "uuid": "Compendium.draw-steel.abilities.Item.4e6uHozJPeiF4lMy"
           }
         ]
+      },
+      "UkbPCnEjONyv8mam": {
+        "name": "Perk",
+        "img": "icons/svg/aura.svg",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "UkbPCnEjONyv8mam",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
+      },
+      "jCv2x0YSzQZFw5QQ": {
+        "name": "3rd-Level Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "jCv2x0YSzQZFw5QQ",
+        "description": "<p>As a 3rd-level null, you gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.qYPjuoAIP06vthjJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Hdh6iKMZQ0JakwbQ"
+          }
+        ]
+      },
+      "bOauCZ463KuLvYUn": {
+        "name": "7 Discipline Abilities",
+        "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "bOauCZ463KuLvYUn",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 discipline to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.nqpuERihgh0QHIOF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.vcSr5VS8d0qtY5Ds"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.1QsPWGMu0I3O3yV2"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.SX70R4CqoQRiUa6I"
+          }
+        ]
       }
     },
     "level": 0,
@@ -284,7 +337,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1754708293668,
     "modifiedTime": null,
     "lastModifiedBy": null
