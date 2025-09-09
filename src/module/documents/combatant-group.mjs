@@ -145,4 +145,14 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     // Provide a default image
     if (!data.img) this.updateSource(this.constructor.getDefaultArtwork(data));
   }
+
+  /** @inheritdoc */
+  get hidden () {
+    return !this.members?.size || this.members.every(member => member.hidden);
+  }
+
+  /** @inheritdoc */
+  get visible () {
+    return this.isOwner || !this.hidden;
+  }
 }

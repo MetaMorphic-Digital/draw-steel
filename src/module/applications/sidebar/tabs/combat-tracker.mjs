@@ -121,6 +121,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
 
     context.groupTurns = combat?.groups.reduce((acc, cg) => {
+      if (!cg.visible) return acc;
+
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
       const active = turns.some(t => t.id === currentTurn?.id);
