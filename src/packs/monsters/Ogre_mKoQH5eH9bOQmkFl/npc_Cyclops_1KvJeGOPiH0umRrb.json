@@ -108,13 +108,13 @@
       "system": {
         "description": {
           "value": "<p>The cyclops has line of effect only within 3 squares. Whenever the cyclops takes damage from a ranged ability, they can move up to 3 squares toward the source of the damage.</p>",
-          "director": ""
+          "director": "<p>The prototype token has vision enabled and set to a distance of 3</p>"
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "211"
         },
         "_dsid": "limited-vision",
         "advancements": {}
@@ -290,9 +290,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!1KvJeGOPiH0umRrb.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!1KvJeGOPiH0umRrb.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw"
         },
         {
           "name": "Rampage Damage Bonus",
@@ -354,9 +354,9 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!1KvJeGOPiH0umRrb.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!1KvJeGOPiH0umRrb.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY"
         }
       ],
       "sort": 100000,
@@ -445,12 +445,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "211",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "wild-slam",
         "story": "",
         "keywords": [],
         "category": "",
@@ -656,7 +656,7 @@
   "folder": "mKoQH5eH9bOQmkFl",
   "prototypeToken": {
     "name": "Cyclops",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -673,11 +673,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -711,7 +711,7 @@
     },
     "sight": {
       "enabled": false,
-      "range": 0,
+      "range": 3,
       "angle": 360,
       "visionMode": "basic",
       "color": null,
@@ -730,7 +730,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 1,
+      "effects": 0,
       "subject": {
         "scale": 1,
         "texture": null
