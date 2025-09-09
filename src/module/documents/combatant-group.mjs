@@ -147,11 +147,6 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
   }
 
   /** @inheritdoc */
-  get hidden () {
-    return !this.members?.size || this.members.every(member => member.hidden);
-  }
-
-  /** @inheritdoc */
   get visible () {
     return this.isOwner || !this.hidden;
   }
