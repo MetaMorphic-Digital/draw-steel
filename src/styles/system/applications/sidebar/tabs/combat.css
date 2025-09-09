@@ -57,7 +57,12 @@
       &:not(.expanded) .group-turns {
         display: none;
       }
+      &.hide .group-header {
+        color: var(--color-text-subtle);
+        img {
+          opacity: 0.3;
+        }
+      }
     }
   }
-
 }
