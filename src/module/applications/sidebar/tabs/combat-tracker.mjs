@@ -424,6 +424,16 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
           },
         }).render({ force: true }),
       },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ToggleVisibility",
+        icon: "<i class=\"fa-solid fa-eye-slash\"></i>",
+        condition: li => game.user.isGM && getCombatantGroup(li).members.size,
+        callback: li => {
+          const combatantGroup = getCombatantGroup(li);
+          const updates = Array.from(combatantGroup.members).map(member => ({ _id: member.id, hidden: !combatantGroup.hidden }));
+          combatantGroup.parent.updateEmbeddedDocuments("Combatant", updates);
+        },
+      },
     ];
   }
 
