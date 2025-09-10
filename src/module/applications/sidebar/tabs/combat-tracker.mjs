@@ -338,7 +338,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const getCombatant = li => this.viewed.combatants.get(li.dataset.combatantId);
     entryOptions.push({
       name: "DRAW_STEEL.Combatant.ToggleCaptain",
-      icon: "",
+      icon: "<i class=\"fa-solid fa-helmet-battle\"></i>",
       condition: li => {
         const combatant = getCombatant(li);
         return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
