@@ -59,6 +59,7 @@
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
 - Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
+- Fixed talent resource minimum to correctly be -1 - @R. (#1058)
 
 ## 0.8.0
 
