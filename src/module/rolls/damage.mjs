@@ -17,7 +17,29 @@ export default class DamageRoll extends DSRoll {
     const roll = message.rolls[event.currentTarget.dataset.index];
 
     let amount = roll.total;
-    if (event.shiftKey) amount = Math.floor(amount / 2);
+    let damageType = roll.type;
+
+    if (event.altKey) {
+      // Prompt damage modification window and set new amount and type.
+      const fd = await this.#damageModificationDialog(roll);
+
+      if (fd) {
+        if (fd.damageType) damageType = fd.damageType;
+        let rollData = {};
+        let ability;
+        if (message.type === "abilityUse") ability = await fromUuid(message.system.uuid);
+
+        if (ability) rollData = ability.getRollData();
+        else rollData = message.getRollData();
+
+        const newDamageRoll = await new this(fd.formula, rollData, { type: damageType, ignoredImmunities: roll.ignoredImmunities, isHeal: roll.isHeal }).evaluate();
+        newDamageRoll.toMessage();
+
+        amount = newDamageRoll.total;
+      }
+    }
+    else if (event.shiftKey) amount = Math.floor(amount / 2);
+
     for (const actor of ds.utils.tokensToActors()) {
       if (roll.isHeal) {
         const isTemp = roll.type !== "value";
@@ -26,7 +48,7 @@ export default class DamageRoll extends DSRoll {
         });
         else await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
       }
-      else await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
+      else await actor.system.takeDamage(amount, { type: damageType, ignoredImmunities: roll.ignoredImmunities });
     }
   }
 
@@ -95,6 +117,52 @@ export default class DamageRoll extends DSRoll {
       },
       classes: ["apply-damage"],
       icon: this.isHeal ? "fa-solid fa-heart-pulse" : "fa-solid fa-burst",
+    });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Prompt a dialog for modifying the damage roll.
+   * @param {DamageRoll} roll The initital roll to modify
+   * @returns {object}
+   */
+  static async #damageModificationDialog(roll) {
+    const content = document.createElement("div");
+
+    const formulaInput = foundry.applications.fields.createTextInput({ name: "formula", value: roll.total });
+    const formulaGroup = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.DamageFormula.Label",
+      input: formulaInput,
+      localize: true,
+    });
+    content.append(formulaGroup);
+
+    if (!roll.isHeal) {
+      const damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
+      const damageSelection = foundry.applications.fields.createSelectInput({
+        name: "damageType",
+        blank: "",
+        options: damageTypes,
+        value: roll.type,
+      });
+      const damageSelectionGroup = foundry.applications.fields.createFormGroup({
+        label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.DamageType.Label",
+        input: damageSelection,
+        localize: true,
+      });
+      content.append(damageSelectionGroup);
+    }
+
+    return ds.applications.api.DSDialog.input({
+      window: {
+        title: roll.isHeal ? "DRAW_STEEL.ROLL.Damage.ModificationDialog.Title.Heal" : "DRAW_STEEL.ROLL.Damage.ModificationDialog.Title.Damage",
+        icon: "fa-solid fa-burst",
+      },
+      content,
+      ok: {
+        label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.Apply",
+      },
     });
   }
 }
