@@ -24,6 +24,7 @@
 
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- Added an Alt-Click option on the Apply Damage/Heal buttons to allow modifying damage/heal amount and damage type before applying. (#1054)
 
 ## 0.8.1
 
