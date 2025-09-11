@@ -1720,7 +1720,7 @@ const consumableTypes = {
     label: "DRAW_STEEL.Item.treasure.Consumable.Potion",
   },
   scroll: {
-    label: "DRAW_STEEL.Item.treasures.Consumable.Scroll",
+    label: "DRAW_STEEL.Item.treasure.Consumable.Scroll",
   },
 };
 
