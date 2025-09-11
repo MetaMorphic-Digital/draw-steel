@@ -47,6 +47,7 @@
   - Talent "Distance Augmentation" filters & bonus. (#998)
   - Conduit "Prayer of Distance" filters & bonus. (#999)
   - Leaping Lightning effect enricher damage type. (#1015)
+  - Fixed talent resource minimum. (#1058)
   - Corrected name of the Stormwights "Furious Change".
   - Added effect to Acolyte of Fire.
 - GM-Facing Compendium Data fixes:
