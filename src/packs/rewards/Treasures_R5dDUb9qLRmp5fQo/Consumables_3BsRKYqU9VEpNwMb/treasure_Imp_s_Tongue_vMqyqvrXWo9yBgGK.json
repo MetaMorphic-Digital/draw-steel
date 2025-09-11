@@ -1,0 +1,101 @@
+{
+  "folder": "3BsRKYqU9VEpNwMb",
+  "name": "Imp's Tongue",
+  "type": "treasure",
+  "_id": "vMqyqvrXWo9yBgGK",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": {
+      "value": "<p><em>The tongue of an imp has been dried and preserved. Yuck.</em></p><p><strong>Effect:</strong> As a maneuver, you place the imp's tongue on your own tongue, causing it to reconstitute and attach itself to your tongue. While attached, the Imp's Tongue allows you to speak any language and understand any language spoken to you. This benefit ends after 1 hour, when the tongue is absorbed into your body.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "imps-tongue",
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 1,
+    "keywords": [
+      "magic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "One imp's tongue",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": "Tongue"
+      },
+      "goal": 45
+    }
+  },
+  "effects": [
+    {
+      "name": "Imp Tongue",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.vMqyqvrXWo9yBgGK",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": ""
+        }
+      },
+      "_id": "OhHwRXcX95IaQ911",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": 3600,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Speak any language and understand any language spoken to you</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757256093710,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!vMqyqvrXWo9yBgGK.OhHwRXcX95IaQ911"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757256026147,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!vMqyqvrXWo9yBgGK"
+}
