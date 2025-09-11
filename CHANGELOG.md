@@ -47,6 +47,7 @@
   - Talent "Distance Augmentation" filters & bonus. (#998)
   - Conduit "Prayer of Distance" filters & bonus. (#999)
   - Leaping Lightning effect enricher damage type. (#1015)
+  - Fixed talent resource minimum. (#1058)
   - Corrected name of the Stormwights "Furious Change".
   - Added effect to Acolyte of Fire.
 - GM-Facing Compendium Data fixes:
@@ -59,7 +60,6 @@
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
 - Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
-- Fixed talent resource minimum to correctly be -1 - @R. (#1058)
 
 ## 0.8.0
 
