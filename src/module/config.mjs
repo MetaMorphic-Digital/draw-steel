@@ -1388,6 +1388,12 @@ preLocalize("PowerRollEffect", { key: "label" });
 
 /** @type {Record<string, AdvancementType>} */
 export const Advancement = {
+  characteristic: {
+    label: "TYPES.Advancement.characteristic",
+    defaultImage: "",
+    itemTypes: new Set(["class", "title"]),
+    documentClass: pseudoDocuments.advancements.CharacteristicAdvancement,
+  },
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
