@@ -34,6 +34,8 @@
 
 - The skill list on the character sheet is now sorted alphabetically.
 - Adjusted i18n structure for Power Roll Effects.
+- Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
+  - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
 
 ### Fixed
 
