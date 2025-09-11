@@ -29,6 +29,7 @@
 - Added Combatant Group tracker visibility controls. (#973)
   - If all combatants in a group are hidden, the group is hidden.
   - Added context menu option to quickly hide/unhide each combatant in the group.
+- Added an Alt-Click option on the Apply Damage/Heal buttons to allow modifying damage/heal amount and damage type before applying. (#1054)
 
 ### Changed
 
