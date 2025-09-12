@@ -675,6 +675,10 @@
                 },
                 "tier3": {
                   "effects": {
+                    "grabbed": {
+                      "condition": "always",
+                      "end": ""
+                    },
                     "dazed": {
                       "condition": "failure",
                       "end": "save"
@@ -682,7 +686,8 @@
                   },
                   "potency": {
                     "characteristic": "intuition"
-                  }
+                  },
+                  "display": "grabbed; {{potency}} dazed (save ends)"
                 }
               }
             }
