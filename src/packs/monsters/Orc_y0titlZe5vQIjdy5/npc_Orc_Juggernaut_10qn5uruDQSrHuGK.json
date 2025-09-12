@@ -1,30 +1,30 @@
 {
   "folder": "y0titlZe5vQIjdy5",
-  "name": "Mohler",
+  "name": "Orc Juggernaut",
   "type": "npc",
-  "_id": "My8y85XQkQHc0cqp",
-  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "_id": "10qn5uruDQSrHuGK",
+  "img": "systems/draw-steel/assets/roles/brute.webp",
   "system": {
     "stamina": {
-      "value": 4,
-      "max": 4,
+      "value": 60,
+      "max": 60,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 2
       },
       "agility": {
         "value": 2
       },
       "reason": {
-        "value": -4
+        "value": -1
       },
       "intuition": {
-        "value": 1
+        "value": -1
       },
       "presence": {
-        "value": -3
+        "value": 2
       }
     },
     "combat": {
@@ -34,9 +34,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "L"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
@@ -45,10 +45,9 @@
       "languages": []
     },
     "movement": {
-      "value": 7,
+      "value": 6,
       "types": [
-        "walk",
-        "burrow"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -81,7 +80,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "216",
+      "page": "219",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -93,24 +92,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 5,
       "keywords": [
-        "animal"
+        "humanoid"
       ],
-      "level": 1,
-      "ev": 3,
-      "role": "ambusher",
-      "organization": "minion"
+      "level": 3,
+      "ev": 10,
+      "role": "brute",
+      "organization": "platoon"
     }
   },
   "prototypeToken": {
-    "name": "Mohler",
+    "name": "Orc Juggernaut",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "src": "systems/draw-steel/assets/roles/brute.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -199,61 +198,22 @@
   },
   "items": [
     {
-      "name": "With Captain",
+      "name": "Relentless",
       "type": "feature",
-      "_id": "guwqOTm4GC4M3VoM",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to speed</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.guwqOTm4GC4M3VoM"
-    },
-    {
-      "name": "Seismic Sense",
-      "type": "feature",
-      "_id": "FYLJLioc7dtsLvvh",
+      "_id": "j1MgGQuUebn2LoiL",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The mohler doesn’t need line of effect to use abilities against crea tures or objects touching the ground.</p>",
+          "value": "<p>If the juggernaut is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying. If the target of the free strike is reduced to 0 Stamina, the juggernaut is reduced to 1 Stamina instead.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "216",
+          "page": "219",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "seismic-sense",
+        "_dsid": "relentless",
         "advancements": {}
       },
       "effects": [],
@@ -265,68 +225,30 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.eKCLLyQ2xbOcJ09p.Item.j1MgGQuUebn2LoiL",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003073853,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.FYLJLioc7dtsLvvh"
+      "_key": "!actors.items!10qn5uruDQSrHuGK.j1MgGQuUebn2LoiL"
     },
     {
-      "name": "Ground Grinder",
-      "type": "feature",
-      "_id": "fUfeP3yCyiAmOvHn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler can use the Dig maneuver at the start of the encoun ter. Additionally, while the mohler burrows within 1 square below the ground, the ground above where they burrow is difficult terrain.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "ground-grinder",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.fUfeP3yCyiAmOvHn"
-    },
-    {
-      "name": "Earth Bump",
+      "name": "Haymaker Greataxe",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "216",
+          "page": "219",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "earth-bump",
+        "_dsid": "haymaker-greataxe",
         "story": "",
         "keywords": [
           "melee",
@@ -342,97 +264,63 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creature",
+          "type": "creatureObject",
           "value": 1
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
           "effects": {
-            "LYZM71ztUwYBmaRB": {
+            "NI5DMHa7J3RzRJfF": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "LYZM71ztUwYBmaRB",
+              "_id": "NI5DMHa7J3RzRJfF",
               "damage": {
                 "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
+                  "value": "7"
                 },
                 "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
+                  "value": "11"
                 },
                 "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
+                  "value": "14"
                 }
               }
             },
-            "fluUrsdSXyy5iXG0": {
+            "omUavJ4SJrWmuqra": {
               "name": "Prone",
               "img": null,
               "type": "applied",
-              "_id": "fluUrsdSXyy5iXG0",
+              "_id": "omUavJ4SJrWmuqra",
               "applied": {
-                "tier1": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
                 "tier2": {
+                  "display": "Prone",
                   "effects": {
                     "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
+                      "condition": "always",
+                      "end": ""
                     }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
                   }
                 },
                 "tier3": {
+                  "display": "Prone; {{potency}} bleeding (save ends)",
+                  "potency": {
+                    "characteristic": "might"
+                  },
                   "effects": {
                     "prone": {
+                      "condition": "always",
+                      "end": ""
+                    },
+                    "bleeding": {
                       "condition": "failure",
-                      "properties": []
+                      "end": "save"
                     }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
                   }
                 }
               }
@@ -441,14 +329,14 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The distance increases to melee 2. If the mohler is 1 or more squares beneath the target before they use this ability, a target who has [[m&lt;1]] is also knocked prone.</p>"
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "ckfqQV4AsEGy3Oa4",
+      "_id": "qk7pzOEAgUUBIP4M",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -465,10 +353,240 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1757003103308,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.ckfqQV4AsEGy3Oa4"
+      "_key": "!actors.items!10qn5uruDQSrHuGK.qk7pzOEAgUUBIP4M"
+    },
+    {
+      "name": "Blood in the Water",
+      "type": "feature",
+      "_id": "Q9iDh3jmf5wmM6aN",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever the juggernaut willingly moves, they can move 3 additional squares if they end their movement closer to a prone creature.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "219",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "blood-in-the-water",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": -100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003281811,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!10qn5uruDQSrHuGK.Q9iDh3jmf5wmM6aN"
+    },
+    {
+      "name": "Hrraaaaaagh!",
+      "type": "ability",
+      "system": {
+        "type": "freeTriggered",
+        "source": {
+          "book": "Monsters",
+          "page": "219",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "hrraaaaaagh",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 1,
+        "trigger": "The juggernaut takes damage.",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The juggernaut moves up to their speed and can make a [[/damage @monster.freeStrike]]{Free Strike}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "HBmmckpKCwNeu2AZ",
+      "img": "icons/skills/movement/arrow-upward-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003311116,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!10qn5uruDQSrHuGK.HBmmckpKCwNeu2AZ"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Trench",
+      "type": "ability",
+      "_id": "BStQdG3SobeFUDES",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-trench",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003387651,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!10qn5uruDQSrHuGK.BStQdG3SobeFUDES"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Cavity",
+      "type": "ability",
+      "_id": "OMNyXoF5k0h6ffBa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-cavity",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; the target falls</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the pit.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003388923,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!10qn5uruDQSrHuGK.OMNyXoF5k0h6ffBa"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -527,137 +645,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956234020,
+        "createdTime": 1757003390131,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.wRlM0yKql0bXpAAe"
-    },
-    {
-      "folder": "AdywKuAnx2ognLdU",
-      "name": "Mohler Trench",
-      "type": "ability",
-      "_id": "BStQdG3SobeFUDES",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "215",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "mohler-trench",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1756956235547,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.BStQdG3SobeFUDES"
-    },
-    {
-      "folder": "AdywKuAnx2ognLdU",
-      "name": "Mohler Cavity",
-      "type": "ability",
-      "_id": "OMNyXoF5k0h6ffBa",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "215",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "mohler-cavity",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; the target falls</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the pit.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1756956237707,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.OMNyXoF5k0h6ffBa"
+      "_key": "!actors.items!10qn5uruDQSrHuGK.wRlM0yKql0bXpAAe"
     }
   ],
   "effects": [],
@@ -672,10 +664,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922204554,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757002960589,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!My8y85XQkQHc0cqp"
+  "_key": "!actors!10qn5uruDQSrHuGK"
 }
