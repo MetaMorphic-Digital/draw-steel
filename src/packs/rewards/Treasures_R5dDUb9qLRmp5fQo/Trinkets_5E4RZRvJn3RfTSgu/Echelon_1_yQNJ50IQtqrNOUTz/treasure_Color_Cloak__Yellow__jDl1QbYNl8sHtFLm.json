@@ -1,22 +1,22 @@
 {
-  "folder": "5E4RZRvJn3RfTSgu",
+  "folder": "yQNJ50IQtqrNOUTz",
   "name": "Color Cloak (Yellow)",
   "type": "treasure",
   "_id": "jDl1QbYNl8sHtFLm",
-  "img": "icons/svg/item-bag.svg",
+  "img": "icons/equipment/back/cape-layered-brown-gold.webp",
   "system": {
     "description": {
       "value": "<p>Keyword: Neck</p><p><em>This yellow rubbery hooded cloak is emblazoned with a golden Anjali sigil meaning \"lightning.\"</em></p><p><strong>Effect:</strong> While worn, a yellow Color Cloak grants you lightning immunity equal to your level.</p><p>Additionally, when you are targeted by any effect that deals lightning damage, you can use a triggered action to cause the next damage-dealing ability you use to deal extra lightning damage equal to your level. Once you deal this extra damage, your lightning immunity becomes lightning weakness with the same value until the end of the next round. You can't use this triggered action again until this weakness ends.</p>",
       "director": ""
     },
     "source": {
-      "book": "",
+      "book": "Heroes",
       "page": "",
-      "license": "",
+      "license": "Draw Steel Creator License",
       "revision": 1
     },
     "_dsid": "color-cloak-yellow",
-    "kind": "other",
+    "kind": "",
     "category": "trinket",
     "echelon": 1,
     "keywords": [
@@ -32,7 +32,7 @@
       ],
       "yield": {
         "amount": "1",
-        "display": "Cloak"
+        "display": ""
       },
       "goal": 150
     }
@@ -40,7 +40,7 @@
   "effects": [
     {
       "name": "Color Cloak (Yellow)",
-      "img": "icons/svg/item-bag.svg",
+      "img": "icons/equipment/back/cape-layered-brown-gold.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.rewards.Item.jDl1QbYNl8sHtFLm",
       "_id": "l64HqDbLkHny9pYH",
@@ -52,9 +52,9 @@
       },
       "changes": [
         {
-          "key": "@character.immunity.lightning",
+          "key": "system.damage.immunities.lightning",
           "mode": 2,
-          "value": "@chrlvl",
+          "value": "2",
           "priority": null
         }
       ],
@@ -68,7 +68,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>While worn, a yellow Color Cloak grants you lightning immunity equal to your level.</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -78,7 +78,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757257427398,
@@ -88,7 +88,7 @@
       "_key": "!items.effects!jDl1QbYNl8sHtFLm.l64HqDbLkHny9pYH"
     }
   ],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -97,7 +97,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757257343386,
