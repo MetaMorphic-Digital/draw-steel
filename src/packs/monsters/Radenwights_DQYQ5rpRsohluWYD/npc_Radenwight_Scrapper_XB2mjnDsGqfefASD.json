@@ -1,30 +1,28 @@
 {
-  "folder": "DQYQ5rpRsohluWYD",
-  "name": "Radenwight Redeye",
+  "name": "Radenwight Scrapper",
   "type": "npc",
-  "_id": "KwdPnQj8bc4JlTqB",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 3,
-      "max": 3,
+      "value": 5,
+      "max": 5,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 1
+        "value": -1
       },
       "agility": {
-        "value": 2
+        "value": 1
       },
       "reason": {
-        "value": -1
+        "value": 0
       },
       "intuition": {
         "value": 0
       },
       "presence": {
-        "value": 0
+        "value": 2
       }
     },
     "combat": {
@@ -36,18 +34,12 @@
         "value": 1,
         "letter": "S"
       },
-      "stability": 0,
+      "stability": 1,
       "turns": 1
-    },
-    "biography": {
-      "value": "",
-      "director": "",
-      "languages": []
     },
     "movement": {
       "value": 5,
       "types": [
-        "walk",
         "climb"
       ],
       "hover": false,
@@ -79,6 +71,11 @@
         "sonic": 0
       }
     },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
     "source": {
       "book": "Monsters",
       "page": "226",
@@ -93,18 +90,364 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
         "humanoid"
       ],
       "level": 1,
       "ev": 3,
-      "role": "artillery",
+      "role": "defender",
       "organization": "minion"
     }
   },
+  "items": [
+    {
+      "name": "Buckler Bash",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "charge",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "IIIgMu2IBj6y3SO9": {
+              "_id": "IIIgMu2IBj6y3SO9",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "1",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "2",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "3",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "StcheqF3QzGGKDKa": {
+              "_id": "StcheqF3QzGGKDKa",
+              "type": "applied",
+              "name": "Taunted",
+              "img": null,
+              "applied": {
+                "tier2": {
+                  "display": "taunted (EoT)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "taunted": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "taunted (EoT)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "taunted": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "226"
+        },
+        "_dsid": "buckler-bash",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "TPGhlTxMooYo9OEw",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!XB2mjnDsGqfefASD.TPGhlTxMooYo9OEw"
+    },
+    {
+      "name": "Ready Rodent",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "",
+        "keywords": [
+          "melee",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The scrapper makes a free strike against the target.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "226"
+        },
+        "_dsid": "ready-rodent",
+        "story": "",
+        "resource": null,
+        "trigger": "An ally deals damage to the target."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "cQlVkai7u2RCQHt7",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!XB2mjnDsGqfefASD.cQlVkai7u2RCQHt7"
+    },
+    {
+      "folder": "03K0sUwNwFfBqFBD",
+      "name": "Rat Race",
+      "type": "ability",
+      "_id": "0zjdyVm5OyRADecM",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "225",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "rat-race",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A Radenwight's turn starts.",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each radenwight in the encounter shifts up to their speed. If a radenwight ends this shift adjacent to one or more radenwights, they can make a melee free strike against each enemy adjacent to them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!XB2mjnDsGqfefASD.0zjdyVm5OyRADecM"
+    },
+    {
+      "folder": "03K0sUwNwFfBqFBD",
+      "name": "Rally the Rodents",
+      "type": "ability",
+      "_id": "jhYQClVszlAUFkeJ",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "225",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "rally-the-rodents",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A Radenwight's turn starts.",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A radenwight uses music to coordinate living rats, forming a 10 wall of rats scurrying atop one another into unoccupied spaces anywhere on the encounter map. The wall doesn’t block line of effect for radenwights and their allies, but it does for other creatures as the rats coordinate their movements with the radenwights. Each square of the wall has 10 Stamina.</p><p>If the last radenwight in the encounter dies and the wall is still standing, the rats let out a hideous screech as they disperse. Each enemy on the encounter map makes an Intuition test.</p><p></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 7 sonic]] damage; the target can’t take a respite activity during their next respite.</p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 5 sonic]] damage.</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!XB2mjnDsGqfefASD.jhYQClVszlAUFkeJ"
+    }
+  ],
+  "folder": "DQYQ5rpRsohluWYD",
   "prototypeToken": {
-    "name": "Radenwight Redeye",
+    "name": "Radenwight Scrapper",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -179,7 +522,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -197,331 +540,43 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Eyes-On-Me-Shot",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "226",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "eyes-on-me-shot",
-        "story": "",
-        "keywords": [
-          "ranged",
-          "strike"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "ranged",
-          "primary": 10
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "TtxQV0c87H3o3Q01": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "TtxQV0c87H3o3Q01",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>One ally of the redeye within 2 squares of the target shifts up to 2 squares.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "GXdJEhOMD3MVGmvI",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!KwdPnQj8bc4JlTqB.GXdJEhOMD3MVGmvI"
-    },
-    {
-      "name": "Ready Rodent",
-      "type": "ability",
-      "system": {
-        "type": "triggered",
-        "source": {
-          "book": "Monsters",
-          "page": "226",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "ready-rodent",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "An ally deals damage to the target.",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The redeye makes a free strike against the target.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "RnL0XP3PK3GN0KUJ",
-      "img": "icons/skills/movement/arrow-upward-yellow.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.KwdPnQj8bc4JlTqB.Item.RnL0XP3PK3GN0KUJ",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!KwdPnQj8bc4JlTqB.RnL0XP3PK3GN0KUJ"
-    },
-    {
-      "folder": "03K0sUwNwFfBqFBD",
-      "name": "Rat Race",
-      "type": "ability",
-      "_id": "0zjdyVm5OyRADecM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "225",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "rat-race",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A Radenwight's turn starts.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each radenwight in the encounter shifts up to their speed. If a radenwight ends this shift adjacent to one or more radenwights, they can make a melee free strike against each enemy adjacent to them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Item.0zjdyVm5OyRADecM",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!KwdPnQj8bc4JlTqB.0zjdyVm5OyRADecM"
-    },
-    {
-      "folder": "03K0sUwNwFfBqFBD",
-      "name": "Rally the Rodents",
-      "type": "ability",
-      "_id": "jhYQClVszlAUFkeJ",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "225",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "rally-the-rodents",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "A Radenwight's turn starts.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A radenwight uses music to coordinate living rats, forming a 10 wall of rats scurrying atop one another into unoccupied spaces anywhere on the encounter map. The wall doesn’t block line of effect for radenwights and their allies, but it does for other creatures as the rats coordinate their movements with the radenwights. Each square of the wall has 10 Stamina.</p><p>If the last radenwight in the encounter dies and the wall is still standing, the rats let out a hideous screech as they disperse. Each enemy on the encounter map makes an Intuition test.</p><p></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 7 sonic]] damage; the target can’t take a respite activity during their next respite.</p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 5 sonic]] damage.</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.jhYQClVszlAUFkeJ",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714965470,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!KwdPnQj8bc4JlTqB.jhYQClVszlAUFkeJ"
-    }
-  ],
   "effects": [
     {
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
       "type": "abilityModifier",
-      "origin": "Compendium.draw-steel.monsters.Actor.KwdPnQj8bc4JlTqB",
-      "disabled": true,
-      "_id": "7d6tkUCfRnTYO9ZL",
+      "origin": "Actor.y2e5ucf6rx2Djor5",
+      "_id": "CeZBQVqAnfumZcCD",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
         },
         "filters": {
-          "keywords": []
+          "keywords": [
+            "melee"
+          ]
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "distance",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": true,
       "duration": {
         "startTime": 0,
         "combat": null,
-        "startRound": 3,
-        "startTurn": 0,
         "seconds": null,
         "rounds": null,
-        "turns": null
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
       },
-      "description": "<p>Gain an edge on strikes.</p>",
+      "description": "<p>+2 bonus to melee distance</p>",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -534,14 +589,12 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1757292189850,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!actors.effects!KwdPnQj8bc4JlTqB.7d6tkUCfRnTYO9ZL"
+      "_key": "!actors.effects!XB2mjnDsGqfefASD.CeZBQVqAnfumZcCD"
     }
   ],
-  "sort": 50000,
   "ownership": {
     "default": 0
   },
@@ -552,10 +605,12 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755708893523,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757283901400,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!KwdPnQj8bc4JlTqB"
+  "_id": "XB2mjnDsGqfefASD",
+  "sort": 75000,
+  "_key": "!actors!XB2mjnDsGqfefASD"
 }

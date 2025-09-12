@@ -1,0 +1,1125 @@
+{
+  "folder": "VG4LRhUl5RB1EpzH",
+  "name": "Angulotl Daybringer",
+  "type": "npc",
+  "_id": "PgfqdFL9IvSAPf3B",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "system": {
+    "stamina": {
+      "value": 80,
+      "max": 80,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 2
+      },
+      "presence": {
+        "value": 0
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 1,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk",
+        "swim",
+        "climb"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 3,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "38",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 4,
+      "keywords": [
+        "humanoid"
+      ],
+      "level": 1,
+      "ev": 12,
+      "role": "",
+      "organization": "leader"
+    }
+  },
+  "prototypeToken": {
+    "name": "Angulotl Daybringer",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Toxiferous",
+      "type": "feature",
+      "_id": "JaY3PYZYxl8oisGn",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever an adjacent enemy grabs the daybringer or uses a melee ability against them, that enemy takes [[/damage 3 poison]] damage.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "toxiferous",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": -100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.G1fUng66ZtDXk6Ts.Item.JaY3PYZYxl8oisGn",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017281328,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.JaY3PYZYxl8oisGn"
+    },
+    {
+      "name": "Wet",
+      "type": "feature",
+      "_id": "LCVUFvkic3ekh34p",
+      "img": "icons/magic/water/water-drop-swirl-blue.webp",
+      "system": {
+        "description": {
+          "value": "<p>Angulotls make use of a unique effect called “wet.” While wet, an angulotl doesn’t provoke opportunity attacks by moving. At the same time, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone. Several angulotl abilities can impose this effect, but a creature in an encounter featuring angulotls can also become wet by entering water, as the Director determines.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "wet",
+        "advancements": {}
+      },
+      "effects": [
+        {
+          "name": "Wet",
+          "img": "icons/magic/water/water-drop-swirl-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.R1CEitcfoGyEwRZY.Item.LCVUFvkic3ekh34p",
+          "disabled": true,
+          "_id": "X66mp8MbRILfgKS6",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While wet, an angulotl doesn’t provoke opportunity attacks by moving.</p><p>While wet, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.LCVUFvkic3ekh34p.X66mp8MbRILfgKS6"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.R1CEitcfoGyEwRZY.Item.LCVUFvkic3ekh34p",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017295512,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.LCVUFvkic3ekh34p"
+    },
+    {
+      "name": "Moisturizing End Effect",
+      "type": "feature",
+      "_id": "JqUwUnUyk4Qbq7fB",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of the daybringer’s turns, they can either take [[/damage 5]] damage or end the wet effect on an adjacent creature in order to end one effect on them that can be ended by a saving throw. This damage can’t be reduced in any way.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "moisturizing-end-effect",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": -200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017301878,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.JqUwUnUyk4Qbq7fB"
+    },
+    {
+      "name": "Acid Grasp",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "acid-grasp",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "URvSzomCQF4HtSZy": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "URvSzomCQF4HtSZy",
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [
+                    "acid"
+                  ]
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "acid"
+                  ]
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [
+                    "acid"
+                  ]
+                }
+              }
+            },
+            "TZLvFGfyJrXspJic": {
+              "name": "Dazed",
+              "img": null,
+              "type": "applied",
+              "_id": "TZLvFGfyJrXspJic",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "potency": {
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The next time the target makes a strike against the daybringer, the target takes [[/damage 4 acid]] damage after the strike is resolved.</p>"
+        },
+        "spend": {
+          "text": "The daybringer jumps up to 3 squares before or after using this ability.",
+          "value": 1
+        }
+      },
+      "_id": "HwYAQUHqsYcyj3dL",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017386143,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.HwYAQUHqsYcyj3dL"
+    },
+    {
+      "name": "Sun Lamp",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "sun-lamp",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The daybringer expands their throat to make it resemble the sun until the start of their next turn. During that time, each angulotl who starts their turn within 10 squares of the daybringer regains [[/heal 5]] and gains a +3 bonus to speed until the end of their turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Fq2taR5apO4OprqG",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017510630,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.Fq2taR5apO4OprqG"
+    },
+    {
+      "name": "Tongue Slap",
+      "type": "ability",
+      "system": {
+        "type": "triggered",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "tongue-slap",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "The target makes a strike against the daybringer or an ally that isn’t a critical hit.",
+        "distance": {
+          "type": "melee",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The outcome of the strike’s power roll is reduced by one tier.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "The target is pulled up to 4 squares after the strike resolves.",
+          "value": 2
+        }
+      },
+      "_id": "iRyl00voIYp5YDAh",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017557302,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.iRyl00voIYp5YDAh"
+    },
+    {
+      "name": "New Dawn",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "new-dawn",
+        "story": "",
+        "keywords": [
+          "ranged"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Four @UUID[Compendium.draw-steel.monsters.Actor.UIerVsSyMb36Bm4D]{angulotl pollywogs} erupt from the daybringer’s back and waddle into unoccupied spaces within distance.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "W52FagagYf2lfT4Q",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017641792,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.W52FagagYf2lfT4Q"
+    },
+    {
+      "name": "Plague of Frogs",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "plague-of-frogs",
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 8
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "selfAlly",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target can jump up to 4 squares. Each non-minion target can make a free strike at the end of the jump.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "FjfiI6iBggxqj9ah",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017707073,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.FjfiI6iBggxqj9ah"
+    },
+    {
+      "name": "It Is Day",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "38",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "it-is-day",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The encounter map dries up and each enemy and object on it is illuminated until the end of the encounter. An illuminated creature or object can’t hide or become invisible, and any strike made against an illuminated target gains an edge. Additionally, each enemy in the encounter who is wet has that effect end and takes [[/damage 6 acid]] damage. Each angulotl in the encounter has a double edge on their next strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "6kzQGdYZBgFqtAMP",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017746688,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.6kzQGdYZBgFqtAMP"
+    },
+    {
+      "folder": "QCHesWzKjphCQmCU",
+      "name": "Leapfrog",
+      "type": "ability",
+      "_id": "UZtOR8SSJC71RuS3",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "34",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "leapfrog",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, when an angulotl moves through an inactive angulotl’s space, the inactive angulotl can use a free triggered action to jump 3 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.UZtOR8SSJC71RuS3",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017785357,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.UZtOR8SSJC71RuS3"
+    },
+    {
+      "folder": "QCHesWzKjphCQmCU",
+      "name": "Resonating Croak",
+      "type": "ability",
+      "_id": "SMNH5LxY8st7IyDf",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "34",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "resonating-croak",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"103\"><p>11 or less</p></td><td><p>[[/damage 5 sonic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"103\"><p>12-16</p></td><td><p>[[/damage 4 sonic]] damage</p></td></tr><tr><td data-colwidth=\"103\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SMNH5LxY8st7IyDf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017786805,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.SMNH5LxY8st7IyDf"
+    },
+    {
+      "folder": "QCHesWzKjphCQmCU",
+      "name": "Rainfall",
+      "type": "ability",
+      "_id": "chuInXNQ28dtiMPI",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "34",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "rainfall",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {
+            "g8BNA1tbnI9d59oQ": {
+              "name": "Wet",
+              "img": null,
+              "type": "applied",
+              "_id": "g8BNA1tbnI9d59oQ",
+              "applied": {
+                "tier1": {
+                  "effects": {
+                    "Du8EMyrd7nZQ66Yk": {
+                      "condition": "always",
+                      "end": "encounter",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "Du8EMyrd7nZQ66Yk": {
+                      "condition": "always",
+                      "end": "encounter",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "Du8EMyrd7nZQ66Yk": {
+                      "condition": "always",
+                      "end": "encounter",
+                      "properties": []
+                    }
+                  },
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is wet until the end of the encounter.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Wet",
+          "img": "icons/magic/water/water-drop-swirl-blue.webp",
+          "origin": "Compendium.draw-steel.monster-features.Item.chuInXNQ28dtiMPI",
+          "transfer": false,
+          "_id": "Du8EMyrd7nZQ66Yk",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "encounter",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While wet, an angulotl doesn’t provoke opportunity attacks by moving.</p><p>While wet, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!PgfqdFL9IvSAPf3B.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk"
+        }
+      ],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.chuInXNQ28dtiMPI",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757017788172,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!PgfqdFL9IvSAPf3B.chuInXNQ28dtiMPI"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757017201208,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!PgfqdFL9IvSAPf3B"
+}

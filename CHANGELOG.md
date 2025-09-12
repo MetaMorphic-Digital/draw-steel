@@ -25,6 +25,11 @@
 - Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
+  - Remaining Echelon 1 Monsters
+  - Echelon 1 Trinkets & Consumables
+- Added Combatant Group tracker visibility controls. (#973)
+  - If all combatants in a group are hidden, the group is hidden.
+  - Added context menu option to quickly hide/unhide each combatant in the group.
 
 ### Changed
 
@@ -43,15 +48,19 @@
   - Talent "Distance Augmentation" filters & bonus. (#998)
   - Conduit "Prayer of Distance" filters & bonus. (#999)
   - Leaping Lightning effect enricher damage type. (#1015)
+  - Fixed talent resource minimum. (#1058)
   - Corrected name of the Stormwights "Furious Change".
   - Added effect to Acolyte of Fire.
 - GM-Facing Compendium Data fixes:
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
   - Bugbear Channeler action corrections. (#1027)
+  - Corrected shared Radenwight actions. (#1037)
   - Ogre Goon action corrections.
+- Fixed Perks and Ancestry Traits not being able to be added to Item Grant advancements. (#961)
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
+- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
 
 ## 0.8.0
 
