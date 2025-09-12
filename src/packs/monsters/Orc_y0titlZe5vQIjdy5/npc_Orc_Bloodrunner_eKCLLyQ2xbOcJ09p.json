@@ -1,30 +1,30 @@
 {
   "folder": "y0titlZe5vQIjdy5",
-  "name": "Mohler",
+  "name": "Orc Bloodrunner",
   "type": "npc",
-  "_id": "My8y85XQkQHc0cqp",
-  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "_id": "eKCLLyQ2xbOcJ09p",
+  "img": "systems/draw-steel/assets/roles/harrier.webp",
   "system": {
     "stamina": {
-      "value": 4,
-      "max": 4,
+      "value": 50,
+      "max": 50,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 2
       },
       "agility": {
         "value": 2
       },
       "reason": {
-        "value": -4
+        "value": 0
       },
       "intuition": {
         "value": 1
       },
       "presence": {
-        "value": -3
+        "value": 1
       }
     },
     "combat": {
@@ -34,9 +34,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
@@ -45,10 +45,9 @@
       "languages": []
     },
     "movement": {
-      "value": 7,
+      "value": 8,
       "types": [
-        "walk",
-        "burrow"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -81,7 +80,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "216",
+      "page": "217",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -93,24 +92,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 5,
       "keywords": [
-        "animal"
+        "humanoid"
       ],
-      "level": 1,
-      "ev": 3,
-      "role": "ambusher",
-      "organization": "minion"
+      "level": 3,
+      "ev": 10,
+      "role": "harrier",
+      "organization": "platoon"
     }
   },
   "prototypeToken": {
-    "name": "Mohler",
+    "name": "Orc Bloodrunner",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "src": "systems/draw-steel/assets/roles/harrier.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -199,257 +198,24 @@
   },
   "items": [
     {
-      "name": "With Captain",
+      "name": "Unimpeded",
       "type": "feature",
-      "_id": "guwqOTm4GC4M3VoM",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to speed</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.guwqOTm4GC4M3VoM"
-    },
-    {
-      "name": "Seismic Sense",
-      "type": "feature",
-      "_id": "FYLJLioc7dtsLvvh",
+      "_id": "ObGnr78se3e2p8yL",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The mohler doesn’t need line of effect to use abilities against crea tures or objects touching the ground.</p>",
+          "value": "<p>The bloodrunner can end their movement in a prone creature’s space. The first time on a turn that a bloodrunner enters any crea ture’s space, that creature takes [[/damage 3]] damage.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "216",
+          "page": "217",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "seismic-sense",
+        "_dsid": "unimpeded",
         "advancements": {}
       },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.FYLJLioc7dtsLvvh"
-    },
-    {
-      "name": "Ground Grinder",
-      "type": "feature",
-      "_id": "fUfeP3yCyiAmOvHn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler can use the Dig maneuver at the start of the encoun ter. Additionally, while the mohler burrows within 1 square below the ground, the ground above where they burrow is difficult terrain.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "ground-grinder",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.fUfeP3yCyiAmOvHn"
-    },
-    {
-      "name": "Earth Bump",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "earth-bump",
-        "story": "",
-        "keywords": [
-          "melee",
-          "strike",
-          "weapon"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "LYZM71ztUwYBmaRB": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "LYZM71ztUwYBmaRB",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "fluUrsdSXyy5iXG0": {
-              "name": "Prone",
-              "img": null,
-              "type": "applied",
-              "_id": "fluUrsdSXyy5iXG0",
-              "applied": {
-                "tier1": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The distance increases to melee 2. If the mohler is 1 or more squares beneath the target before they use this ability, a target who has [[m&lt;1]] is also knocked prone.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "ckfqQV4AsEGy3Oa4",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -465,10 +231,51 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1756957253905,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.ckfqQV4AsEGy3Oa4"
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.ObGnr78se3e2p8yL"
+    },
+    {
+      "name": "Relentless",
+      "type": "feature",
+      "_id": "j1MgGQuUebn2LoiL",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the bloodrunner is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying. If the target of the free strike is reduced to 0 Stamina, the bloodrunner is reduced to 1 Stamina instead.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "relentless",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756957288256,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.j1MgGQuUebn2LoiL"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -527,11 +334,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956234020,
+        "createdTime": 1756957376045,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.wRlM0yKql0bXpAAe"
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.wRlM0yKql0bXpAAe"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -590,11 +397,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956235547,
+        "createdTime": 1756957377214,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.BStQdG3SobeFUDES"
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.BStQdG3SobeFUDES"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -653,11 +460,133 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956237707,
+        "createdTime": 1756957379045,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.OMNyXoF5k0h6ffBa"
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.OMNyXoF5k0h6ffBa"
+    },
+    {
+      "name": "Shield Bash",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shield-bash",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "rrzMNzhEiKPxd4mY": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "rrzMNzhEiKPxd4mY",
+              "damage": {
+                "tier1": {
+                  "value": "7"
+                },
+                "tier2": {
+                  "value": "10"
+                },
+                "tier3": {
+                  "value": "13"
+                }
+              }
+            },
+            "dCRdz0mv8qqjLPYv": {
+              "name": "Push",
+              "img": null,
+              "type": "other",
+              "_id": "dCRdz0mv8qqjLPYv",
+              "other": {
+                "tier1": {
+                  "display": "push special"
+                },
+                "tier2": {
+                  "display": "push special"
+                },
+                "tier3": {
+                  "display": "push special or prone"
+                }
+              }
+            },
+            "ExZ2oVSAODIpPBim": {
+              "name": "Prone",
+              "img": null,
+              "type": "applied",
+              "_id": "ExZ2oVSAODIpPBim",
+              "applied": {
+                "tier3": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The forced movement distance is equal to the number of squares the bloodrunner moved on their turn before using this abili ty. An ally targeted by this ability ignores the damage and can move up to that same distance.</p>"
+        },
+        "spend": {
+          "text": "An ally targeted by this ability can make a free strike after  the forced movement is resolved.",
+          "value": 2
+        }
+      },
+      "_id": "2Dxk6ZIFgSndpQ10",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756957390273,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!eKCLLyQ2xbOcJ09p.2Dxk6ZIFgSndpQ10"
     }
   ],
   "effects": [],
@@ -672,10 +601,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922204554,
+    "systemVersion": "0.8.1",
+    "createdTime": 1756957162793,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!My8y85XQkQHc0cqp"
+  "_key": "!actors!eKCLLyQ2xbOcJ09p"
 }

@@ -1,8 +1,8 @@
 {
   "folder": "y0titlZe5vQIjdy5",
-  "name": "Mohler",
+  "name": "Orc Blitzer",
   "type": "npc",
-  "_id": "My8y85XQkQHc0cqp",
+  "_id": "ZX7i3OxKuj1FPTqJ",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
@@ -12,19 +12,19 @@
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 1
       },
       "agility": {
         "value": 2
       },
       "reason": {
-        "value": -4
+        "value": 0
       },
       "intuition": {
-        "value": 1
+        "value": 0
       },
       "presence": {
-        "value": -3
+        "value": 0
       }
     },
     "combat": {
@@ -34,9 +34,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
-      "stability": 1,
+      "stability": 0,
       "turns": 1
     },
     "biography": {
@@ -47,8 +47,7 @@
     "movement": {
       "value": 7,
       "types": [
-        "walk",
-        "burrow"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -93,18 +92,18 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
-        "animal"
+        "humanoid"
       ],
       "level": 1,
       "ev": 3,
-      "role": "ambusher",
+      "role": "harrier",
       "organization": "minion"
     }
   },
   "prototypeToken": {
-    "name": "Mohler",
+    "name": "Orc Blitzer",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -199,6 +198,135 @@
   },
   "items": [
     {
+      "name": "Lugged Spear",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "216",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "lugged-spear",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {
+            "IPSsUANToSGX947Q": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "IPSsUANToSGX947Q",
+              "damage": {
+                "tier1": {
+                  "value": "1"
+                },
+                "tier2": {
+                  "value": "2"
+                },
+                "tier3": {
+                  "value": "3"
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A target who starts their next turn adjacent to three or more blitzers takes [[/damage 3]] damage.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "KcUz3mbICBRFkhpC",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756956090071,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.KcUz3mbICBRFkhpC"
+    },
+    {
+      "name": "Bloodfire Burn",
+      "type": "feature",
+      "_id": "cD0TrJyrk2SfV6Zx",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the blitzer is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "216",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bloodfire-burn",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.3y2tRRGSXTCi59k3.Item.cD0TrJyrk2SfV6Zx",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756956182923,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.cD0TrJyrk2SfV6Zx"
+    },
+    {
       "name": "With Captain",
       "type": "feature",
       "_id": "guwqOTm4GC4M3VoM",
@@ -219,256 +347,24 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": -100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.guwqOTm4GC4M3VoM"
-    },
-    {
-      "name": "Seismic Sense",
-      "type": "feature",
-      "_id": "FYLJLioc7dtsLvvh",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler doesn’t need line of effect to use abilities against crea tures or objects touching the ground.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "seismic-sense",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.FYLJLioc7dtsLvvh"
-    },
-    {
-      "name": "Ground Grinder",
-      "type": "feature",
-      "_id": "fUfeP3yCyiAmOvHn",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The mohler can use the Dig maneuver at the start of the encoun ter. Additionally, while the mohler burrows within 1 square below the ground, the ground above where they burrow is difficult terrain.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "ground-grinder",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.fUfeP3yCyiAmOvHn"
-    },
-    {
-      "name": "Earth Bump",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "earth-bump",
-        "story": "",
-        "keywords": [
-          "melee",
-          "strike",
-          "weapon"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "LYZM71ztUwYBmaRB": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "LYZM71ztUwYBmaRB",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "fluUrsdSXyy5iXG0": {
-              "name": "Prone",
-              "img": null,
-              "type": "applied",
-              "_id": "fluUrsdSXyy5iXG0",
-              "applied": {
-                "tier1": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "prone": {
-                      "condition": "failure",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The distance increases to melee 2. If the mohler is 1 or more squares beneath the target before they use this ability, a target who has [[m&lt;1]] is also knocked prone.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "ckfqQV4AsEGy3Oa4",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.My8y85XQkQHc0cqp.Item.guwqOTm4GC4M3VoM",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1756956183523,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.ckfqQV4AsEGy3Oa4"
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.guwqOTm4GC4M3VoM"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -527,11 +423,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956234020,
+        "createdTime": 1756956215357,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.wRlM0yKql0bXpAAe"
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.wRlM0yKql0bXpAAe"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -590,11 +486,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956235547,
+        "createdTime": 1756956217617,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.BStQdG3SobeFUDES"
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.BStQdG3SobeFUDES"
     },
     {
       "folder": "AdywKuAnx2ognLdU",
@@ -653,11 +549,11 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1756956237707,
+        "createdTime": 1756956224006,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!My8y85XQkQHc0cqp.OMNyXoF5k0h6ffBa"
+      "_key": "!actors.items!ZX7i3OxKuj1FPTqJ.OMNyXoF5k0h6ffBa"
     }
   ],
   "effects": [],
@@ -672,10 +568,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922204554,
+    "systemVersion": "0.8.1",
+    "createdTime": 1756956004249,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!My8y85XQkQHc0cqp"
+  "_key": "!actors!ZX7i3OxKuj1FPTqJ"
 }

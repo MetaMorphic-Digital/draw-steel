@@ -1,28 +1,28 @@
 {
-  "name": "Radenwight Scrapper",
+  "name": "Ogre Tantrum",
   "type": "npc",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 5,
-      "max": 5,
+      "value": 10,
+      "max": 10,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": -1
+        "value": 4
       },
       "agility": {
-        "value": 1
+        "value": 2
       },
       "reason": {
-        "value": 0
+        "value": -1
       },
       "intuition": {
         "value": 0
       },
       "presence": {
-        "value": 2
+        "value": -1
       }
     },
     "combat": {
@@ -31,16 +31,16 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
-        "letter": "S"
+        "value": 2,
+        "letter": "M"
       },
-      "stability": 1,
+      "stability": 2,
       "turns": 1
     },
     "movement": {
       "value": 5,
       "types": [
-        "climb"
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -78,7 +78,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "226",
+      "page": "211",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -90,36 +90,73 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 1,
+      "freeStrike": 4,
       "keywords": [
-        "humanoid"
+        "giant"
       ],
-      "level": 1,
-      "ev": 3,
-      "role": "defender",
+      "level": 7,
+      "ev": 9,
+      "role": "artillery",
       "organization": "minion"
     }
   },
   "items": [
     {
-      "name": "Buckler Bash",
+      "name": "Excessive Anger",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The tantrum has damage immunity 3 and speed 8 while their squad has two or fewer minions in it.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "211"
+        },
+        "_dsid": "excessive-anger",
+        "advancements": {}
+      },
+      "_id": "8jDyl89GVa2Q15Xl",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!HNt4p9nPWlekoh0y.8jDyl89GVa2Q15Xl"
+    },
+    {
+      "name": "Throw Fit",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
         "type": "main",
         "category": "signature",
         "keywords": [
-          "charge",
-          "melee",
+          "ranged",
           "strike",
           "weapon"
         ],
         "distance": {
-          "type": "melee",
-          "primary": 1
+          "type": "ranged",
+          "primary": 8
         },
         "target": {
-          "type": "creature",
+          "type": "creatureObject",
           "value": 1
         },
         "damageDisplay": "melee",
@@ -127,18 +164,18 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "presence"
+              "might"
             ]
           },
           "effects": {
-            "IIIgMu2IBj6y3SO9": {
-              "_id": "IIIgMu2IBj6y3SO9",
+            "QOOLsVjHctbGwCNU": {
+              "_id": "QOOLsVjHctbGwCNU",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "1",
+                  "value": "4",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -147,7 +184,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "2",
+                  "value": "7",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -156,7 +193,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "3",
+                  "value": "8",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -166,43 +203,41 @@
                 }
               }
             },
-            "StcheqF3QzGGKDKa": {
-              "_id": "StcheqF3QzGGKDKa",
-              "type": "applied",
-              "name": "Taunted",
+            "scC8pUf83MEcjf0Q": {
+              "_id": "scC8pUf83MEcjf0Q",
+              "type": "forced",
+              "name": "push",
               "img": null,
-              "applied": {
+              "forced": {
                 "tier2": {
-                  "display": "taunted (EoT)",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "taunted": {
-                      "condition": "failure",
-                      "end": "turn",
-                      "properties": []
-                    }
+                    "characteristic": "might"
                   }
                 },
                 "tier3": {
-                  "display": "taunted (EoT)",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "taunted": {
-                      "condition": "failure",
-                      "end": "turn",
-                      "properties": []
-                    }
+                    "characteristic": "might"
                   }
                 },
                 "tier1": {
-                  "display": "",
-                  "effects": {},
+                  "display": "{{forced}}",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
@@ -213,8 +248,8 @@
           }
         },
         "effect": {
-          "before": "",
-          "after": ""
+          "before": "<p>The tantrum unearths a rock or a hunk of terrain and tosses it. If a size 1L, 1M, or 1S creature or object adjacent to the tantrum has A &lt; 3 the tantrum can grab them to use as the projectile for this ability.</p>",
+          "after": "<p>A creature or object used as a projectile is vertically pushed 8 (or 13 with a captain), ignoring stability.</p>"
         },
         "spend": {
           "text": "",
@@ -224,9 +259,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "226"
+          "page": "211"
         },
-        "_dsid": "buckler-bash",
+        "_dsid": "throw-fit",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -245,63 +280,61 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "TPGhlTxMooYo9OEw",
+      "_id": "kgX4HWMSOUcb4VnI",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!XB2mjnDsGqfefASD.TPGhlTxMooYo9OEw"
+      "_key": "!actors.items!HNt4p9nPWlekoh0y.kgX4HWMSOUcb4VnI"
     },
     {
-      "name": "Ready Rodent",
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Shockwave",
       "type": "ability",
-      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "_id": "BfYM0KbWwQsW3CrX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "triggered",
-        "category": "",
-        "keywords": [
-          "melee",
-          "weapon"
-        ],
-        "distance": {
-          "type": "melee",
-          "primary": 1
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License",
+          "revision": 1
         },
-        "target": {
-          "type": "creature",
-          "value": 1
+        "_dsid": "shockwave",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
         },
         "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
+            "characteristics": []
           },
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The scrapper makes a free strike against the target.</p>"
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "226"
-        },
-        "_dsid": "ready-rodent",
-        "story": "",
-        "resource": null,
-        "trigger": "An ally deals damage to the target."
+        }
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
+      "sort": -100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -313,39 +346,34 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "cQlVkai7u2RCQHt7",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!XB2mjnDsGqfefASD.cQlVkai7u2RCQHt7"
+      "_key": "!actors.items!HNt4p9nPWlekoh0y.BfYM0KbWwQsW3CrX"
     },
     {
-      "folder": "03K0sUwNwFfBqFBD",
-      "name": "Rat Race",
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Bully",
       "type": "ability",
-      "_id": "0zjdyVm5OyRADecM",
+      "_id": "sil0ZkALq4OO2YUG",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "225",
+          "page": "209",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "rat-race",
+        "_dsid": "bully",
         "story": "",
         "keywords": [],
         "type": "none",
         "category": "heroic",
         "resource": 5,
-        "trigger": "A Radenwight's turn starts.",
+        "trigger": "",
         "distance": {
           "type": "special"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special",
-          "value": null
+          "type": "special"
         },
         "power": {
           "roll": {
@@ -355,7 +383,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each radenwight in the encounter shifts up to their speed. If a radenwight ends this shift adjacent to one or more radenwights, they can make a melee free strike against each enemy adjacent to them.</p>",
+          "before": "<p>Each ogre in the encounter shifts up to their speed and can make a free strike. If they can, they gang up on the same target rather than picking different targets.</p>",
           "after": ""
         },
         "spend": {
@@ -380,28 +408,28 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!XB2mjnDsGqfefASD.0zjdyVm5OyRADecM"
+      "_key": "!actors.items!HNt4p9nPWlekoh0y.sil0ZkALq4OO2YUG"
     },
     {
-      "folder": "03K0sUwNwFfBqFBD",
-      "name": "Rally the Rodents",
+      "folder": "KO4AMPLGcdxEaE0R",
+      "name": "Rampage",
       "type": "ability",
-      "_id": "jhYQClVszlAUFkeJ",
+      "_id": "idA5w30OnHM2AQpF",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "225",
+          "page": "209",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "rally-the-rodents",
+        "_dsid": "rampage",
         "story": "",
         "keywords": [],
         "type": "none",
         "category": "heroic",
         "resource": 7,
-        "trigger": "A Radenwight's turn starts.",
+        "trigger": "",
         "distance": {
           "type": "special"
         },
@@ -417,7 +445,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A radenwight uses music to coordinate living rats, forming a 10 wall of rats scurrying atop one another into unoccupied spaces anywhere on the encounter map. The wall doesn’t block line of effect for radenwights and their allies, but it does for other creatures as the rats coordinate their movements with the radenwights. Each square of the wall has 10 Stamina.</p><p>If the last radenwight in the encounter dies and the wall is still standing, the rats let out a hideous screech as they disperse. Each enemy on the encounter map makes an Intuition test.</p><p></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 7 sonic]] damage; the target can’t take a respite activity during their next respite.</p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 5 sonic]] damage.</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Until the end of the round, each ogre has damage immunity 5 and deals an extra [[/damage 5]] damage with abilities, and heroic abilities that target any ogre have their Heroic Resource cost reduced by 1 (to a minimum of 1).</p>",
           "after": ""
         },
         "spend": {
@@ -425,8 +453,122 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 0,
+      "effects": [
+        {
+          "name": "Rampage Immunity",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Item.idA5w30OnHM2AQpF",
+          "_id": "AhlSegSTQ5dRarFw",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!HNt4p9nPWlekoh0y.idA5w30OnHM2AQpF.AhlSegSTQ5dRarFw"
+        },
+        {
+          "name": "Rampage Damage Bonus",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monster-features.Item.idA5w30OnHM2AQpF",
+          "disabled": true,
+          "_id": "fBEKoTahYc1lmsMY",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": []
+            }
+          },
+          "changes": [
+            {
+              "key": "damage.tier1.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier2.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier3.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "_key": "!actors.items.effects!HNt4p9nPWlekoh0y.idA5w30OnHM2AQpF.fBEKoTahYc1lmsMY"
+        }
+      ],
+      "sort": 100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -442,12 +584,12 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!XB2mjnDsGqfefASD.jhYQClVszlAUFkeJ"
+      "_key": "!actors.items!HNt4p9nPWlekoh0y.idA5w30OnHM2AQpF"
     }
   ],
-  "folder": "DQYQ5rpRsohluWYD",
+  "folder": "mKoQH5eH9bOQmkFl",
   "prototypeToken": {
-    "name": "Radenwight Scrapper",
+    "name": "Ogre Tantrum",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -545,8 +687,9 @@
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
       "type": "abilityModifier",
-      "origin": "Actor.y2e5ucf6rx2Djor5",
-      "_id": "CeZBQVqAnfumZcCD",
+      "origin": "Actor.h7umizpx6X0EZXxR",
+      "disabled": true,
+      "_id": "zl0HaYh4UqtDuj3n",
       "system": {
         "end": {
           "type": "",
@@ -554,7 +697,7 @@
         },
         "filters": {
           "keywords": [
-            "melee"
+            "ranged"
           ]
         }
       },
@@ -562,11 +705,10 @@
         {
           "key": "distance",
           "mode": 2,
-          "value": "2",
+          "value": "5",
           "priority": null
         }
       ],
-      "disabled": true,
       "duration": {
         "startTime": 0,
         "combat": null,
@@ -576,7 +718,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>+2 bonus to melee distance</p>",
+      "description": "",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -592,7 +734,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.effects!XB2mjnDsGqfefASD.CeZBQVqAnfumZcCD"
+      "_key": "!actors.effects!HNt4p9nPWlekoh0y.zl0HaYh4UqtDuj3n"
     }
   ],
   "ownership": {
@@ -606,11 +748,11 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757283901400,
+    "createdTime": 1757299738520,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "XB2mjnDsGqfefASD",
-  "sort": 75000,
-  "_key": "!actors!XB2mjnDsGqfefASD"
+  "_id": "HNt4p9nPWlekoh0y",
+  "sort": 0,
+  "_key": "!actors!HNt4p9nPWlekoh0y"
 }
