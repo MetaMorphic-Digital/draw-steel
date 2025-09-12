@@ -1,30 +1,30 @@
 {
-  "folder": "OygqHojAVhOF59fl",
-  "name": "Clawfish",
+  "folder": "iEPVvWezLlidfEbg",
+  "name": "Worg",
   "type": "npc",
-  "_id": "rmkUHKgXlVPjsH25",
-  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "_id": "6M62ZA9L6xuu0AHz",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
   "system": {
     "stamina": {
-      "value": 5,
-      "max": 5,
+      "value": 15,
+      "max": 15,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 1
       },
       "agility": {
         "value": 2
       },
       "reason": {
-        "value": -3
+        "value": -1
       },
       "intuition": {
-        "value": -2
+        "value": 0
       },
       "presence": {
-        "value": 1
+        "value": -1
       }
     },
     "combat": {
@@ -34,9 +34,9 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "L"
       },
-      "stability": 0,
+      "stability": 1,
       "turns": 1
     },
     "biography": {
@@ -80,7 +80,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "35",
+      "page": "165",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,24 +92,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 1,
       "keywords": [
         "animal"
       ],
       "level": 1,
       "ev": 3,
-      "role": "brute",
-      "organization": "minion"
+      "role": "mount",
+      "organization": "horde"
     }
   },
   "prototypeToken": {
-    "name": "Clawfish",
-    "displayName": 0,
+    "name": "Worg",
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "src": "systems/draw-steel/assets/roles/mount.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -198,61 +198,22 @@
   },
   "items": [
     {
-      "name": "With Captain",
+      "name": "Mounted Charger",
       "type": "feature",
-      "_id": "UfJda2znQj36N2cg",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain</strong>: Gain an edge on strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "35",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.UfJda2znQj36N2cg"
-    },
-    {
-      "name": "Shocking",
-      "type": "feature",
-      "_id": "W7XaSohNbEJJGxTS",
+      "_id": "yIEIBvp5qqYRujYp",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the start of each of their turns, the clawfish deals [[/damage 2 lightning]] damage to each wet enemy within 2 squares.</p>",
+          "value": "<p>If a worg used as a mount charges, their rider gains an edge on melee strikes until the end of the rider’s turn.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "35",
+          "page": "165",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "shocking",
+        "_dsid": "mounted-charger",
         "advancements": {}
       },
       "effects": [],
@@ -273,22 +234,62 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.W7XaSohNbEJJGxTS"
+      "_key": "!actors.items!6M62ZA9L6xuu0AHz.yIEIBvp5qqYRujYp"
     },
     {
-      "name": "Hookclaw",
+      "name": "Shared Crafty",
+      "type": "feature",
+      "_id": "HKP3O63N7SrOsfXM",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the worg’s rider has the Crafty trait, the worg also has that trait.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "165",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shared-crafty",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!6M62ZA9L6xuu0AHz.HKP3O63N7SrOsfXM"
+    },
+    {
+      "name": "Bite",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "35",
+          "page": "165",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "hookclaw",
+        "_dsid": "bite",
         "story": "",
         "keywords": [
+          "charge",
           "melee",
           "strike",
           "weapon"
@@ -313,14 +314,14 @@
             ]
           },
           "effects": {
-            "U7AMA9XrFJepnKcv": {
+            "4uzM5nz6OquLszVd": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "U7AMA9XrFJepnKcv",
+              "_id": "4uzM5nz6OquLszVd",
               "damage": {
                 "tier1": {
-                  "value": "2",
+                  "value": "3",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -347,57 +348,19 @@
                   }
                 }
               }
-            },
-            "Tewr8ZcB9FpBzNdV": {
-              "name": "Grabbed",
-              "img": null,
-              "type": "applied",
-              "_id": "Tewr8ZcB9FpBzNdV",
-              "applied": {
-                "tier3": {
-                  "display": "grabbed",
-                  "effects": {
-                    "grabbed": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>Any target grabbed this way takes [[/damage 2 lightning]] damage at the start of each of their turns.</p>"
+          "after": ""
         },
         "spend": {
           "text": "",
           "value": null
         }
       },
-      "_id": "5YC0OmYhorbc0o35",
+      "_id": "PyyRBqQqXsFevSBY",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -417,11 +380,73 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.5YC0OmYhorbc0o35"
+      "_key": "!actors.items!6M62ZA9L6xuu0AHz.PyyRBqQqXsFevSBY"
+    },
+    {
+      "name": "Sprint",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "165",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "sprint",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 1,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The worg moves up to their speed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "My5nG3LvTLkz8aUP",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!6M62ZA9L6xuu0AHz.My5nG3LvTLkz8aUP"
     }
   ],
   "effects": [],
-  "sort": 100000,
+  "sort": 1050000,
   "ownership": {
     "default": 0
   },
@@ -430,12 +455,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1755922143745,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!rmkUHKgXlVPjsH25"
+  "_key": "!actors!6M62ZA9L6xuu0AHz"
 }
