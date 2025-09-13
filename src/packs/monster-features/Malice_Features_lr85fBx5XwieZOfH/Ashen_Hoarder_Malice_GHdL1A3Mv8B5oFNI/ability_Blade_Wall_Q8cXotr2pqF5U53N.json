@@ -1,0 +1,62 @@
+{
+  "name": "Blade Wall",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A ashen starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The ashen hoarder summons a 10 wall of bones and blades into unoccupied squares within 5 squares of them. Each square of the wall has 5 Stamina. An enemy who comes adjacent to the wall for the first time in a round or starts their turn there takes [[/damage 3]] damage.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "46",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "blade-wall",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "GHdL1A3Mv8B5oFNI",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757725232285,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "Q8cXotr2pqF5U53N",
+  "sort": 300000,
+  "_key": "!items!Q8cXotr2pqF5U53N"
+}
