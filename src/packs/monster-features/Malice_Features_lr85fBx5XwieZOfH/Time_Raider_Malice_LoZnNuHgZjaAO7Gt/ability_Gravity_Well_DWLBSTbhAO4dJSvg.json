@@ -1,0 +1,69 @@
+{
+  "folder": "LoZnNuHgZjaAO7Gt",
+  "name": "Gravity Well",
+  "type": "ability",
+  "_id": "DWLBSTbhAO4dJSvg",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "248",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "gravity-well",
+    "story": "",
+    "keywords": [
+      "area",
+      "psionic",
+      "ranged",
+      "weapon"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 5,
+      "secondary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>A time raider acting this turn activates a gravity well in the area. The gravity well sits at the center of the cube and lasts until the end of the encounter, or until a creature adjacent to the well uses a maneuver to deactivate it. The area is difficult terrain for enemies. Any enemy who ends their turn in the area is pulled up to 4 squares toward the well.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757293718384,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!DWLBSTbhAO4dJSvg"
+}
