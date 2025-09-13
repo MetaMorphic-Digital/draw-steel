@@ -1,0 +1,89 @@
+{
+  "folder": "y82tzOi2Jyl31NrN",
+  "name": "Translation (2 Points)",
+  "type": "feature",
+  "_id": "JjB5VvXFs0nrfb0S",
+  "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>The animal can teleport.</p><p><strong>+1 Point:</strong> The animal can also hover. </p><ul><li><p><strong>Typically Used By:</strong> Quantum spiders, thrazzes.</p></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "40",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "translation-2-points",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Translation",
+      "img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.JjB5VvXFs0nrfb0S",
+      "_id": "kJD5ydBKwxyGJLoB",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "teleport",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757723620009,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!JjB5VvXFs0nrfb0S.kJD5ydBKwxyGJLoB"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757723556291,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!JjB5VvXFs0nrfb0S"
+}
