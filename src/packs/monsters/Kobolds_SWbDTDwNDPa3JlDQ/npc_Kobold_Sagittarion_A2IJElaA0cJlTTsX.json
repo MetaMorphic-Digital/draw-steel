@@ -104,7 +104,7 @@
   },
   "prototypeToken": {
     "name": "Kobold Sagittarion",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -208,12 +208,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "191",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "with-captain",
         "advancements": {}
       },
       "effects": [
@@ -262,9 +262,8 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!A2IJElaA0cJlTTsX.a7emInE4cQxOrYoq.VrJFy5V3UeGxf8bP",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "_key": "!actors.items.effects!A2IJElaA0cJlTTsX.a7emInE4cQxOrYoq.VrJFy5V3UeGxf8bP"
         }
       ],
       "folder": null,
@@ -298,15 +297,65 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "191",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "shield-shield",
         "advancements": {}
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Shield? Shield!",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "disabled": true,
+          "_id": "eUgoKSLwcZjK6op4",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 4,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The kobold has stability 1, has cover, and grants cover to allies.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757799739949,
+            "modifiedTime": 1757799739949,
+            "lastModifiedBy": null
+          },
+          "origin": null,
+          "_key": "!actors.items.effects!A2IJElaA0cJlTTsX.3fdmNUhuqakwyz18.eUgoKSLwcZjK6op4"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -333,12 +382,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "191",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "composite-bow",
         "story": "",
         "keywords": [
           "ranged",

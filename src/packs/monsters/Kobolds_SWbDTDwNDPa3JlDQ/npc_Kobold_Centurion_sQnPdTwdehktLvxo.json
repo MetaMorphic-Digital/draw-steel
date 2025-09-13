@@ -104,7 +104,7 @@
   },
   "prototypeToken": {
     "name": "Kobold Centurion",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -204,19 +204,69 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>While adjacent to an ally who also has this trait, the venator has stability 1, has cover, and grants cover to allies.</p>",
+          "value": "<p>While adjacent to an ally who also has this trait, the centurion has stability 3, has cover, and grants cover to allies.</p>",
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "shield-shield",
         "advancements": {}
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Shield? Shield!",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "disabled": true,
+          "_id": "Pln75B5jY27eUKbU",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 4,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The kobold has stability 3, has cover, and grants cover to allies.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757797841157,
+            "modifiedTime": 1757797847680,
+            "lastModifiedBy": null
+          },
+          "origin": null,
+          "_key": "!actors.items.effects!sQnPdTwdehktLvxo.3fdmNUhuqakwyz18.Pln75B5jY27eUKbU"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -248,12 +298,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "end-effect",
         "advancements": {}
       },
       "effects": [],
@@ -472,12 +522,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "boom-pilum",
         "story": "",
         "keywords": [
           "area",
@@ -541,12 +591,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "firetail-pilum",
         "story": "",
         "keywords": [],
         "category": "",
@@ -679,11 +729,10 @@
             "systemVersion": "0.8.1",
             "createdTime": 1756951474777,
             "modifiedTime": 1756951655412,
-            "lastModifiedBy": "R75FAhxK5fADaoJF"
+            "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!sQnPdTwdehktLvxo.FDvPM7SAZNSNdlj8.7j7mrAssAYhW4Cpc",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "_key": "!actors.items.effects!sQnPdTwdehktLvxo.FDvPM7SAZNSNdlj8.7j7mrAssAYhW4Cpc"
         }
       ],
       "folder": null,
@@ -712,12 +761,12 @@
       "system": {
         "type": "villain",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "are-you-not-entertained",
         "story": "",
         "keywords": [
           "area"
@@ -779,12 +828,12 @@
       "system": {
         "type": "triggered",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "testudo",
         "story": "",
         "keywords": [
           "area"
@@ -846,12 +895,12 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "concentrate-all-fire-on-that-hero",
         "story": "",
         "keywords": [
           "ranged"
@@ -913,12 +962,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "194",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "pilum",
         "story": "",
         "keywords": [
           "melee",
@@ -1102,11 +1151,10 @@
             "systemVersion": "0.8.1",
             "createdTime": 1756952676243,
             "modifiedTime": 1756952802404,
-            "lastModifiedBy": "R75FAhxK5fADaoJF"
+            "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!sQnPdTwdehktLvxo.IR7YlWCnkBJ30U5w.vXLk5HAJ3tyspyll",
           "modifiedTime": null,
-          "lastModifiedBy": null
+          "_key": "!actors.items.effects!sQnPdTwdehktLvxo.IR7YlWCnkBJ30U5w.vXLk5HAJ3tyspyll"
         }
       ],
       "folder": null,
