@@ -1,5 +1,5 @@
 {
-  "folder": "yQNJ50IQtqrNOUTz",
+  "folder": "5E4RZRvJn3RfTSgu",
   "name": "Color Cloak (Yellow)",
   "type": "treasure",
   "_id": "jDl1QbYNl8sHtFLm",
@@ -11,12 +11,12 @@
     },
     "source": {
       "book": "Heroes",
-      "page": "",
+      "page": "321",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
     "_dsid": "color-cloak-yellow",
-    "kind": "",
+    "kind": "other",
     "category": "trinket",
     "echelon": 1,
     "keywords": [
@@ -32,7 +32,7 @@
       ],
       "yield": {
         "amount": "1",
-        "display": ""
+        "display": "Cloak"
       },
       "goal": 150
     }
@@ -40,7 +40,7 @@
   "effects": [
     {
       "name": "Color Cloak (Yellow)",
-      "img": "icons/equipment/back/cape-layered-brown-gold.webp",
+      "img": "icons/svg/item-bag.svg",
       "type": "base",
       "origin": "Compendium.draw-steel.rewards.Item.jDl1QbYNl8sHtFLm",
       "_id": "l64HqDbLkHny9pYH",
@@ -52,9 +52,9 @@
       },
       "changes": [
         {
-          "key": "system.damage.immunities.lightning",
+          "key": "@character.immunity.lightning",
           "mode": 2,
-          "value": "2",
+          "value": "@chrlvl",
           "priority": null
         }
       ],
@@ -68,7 +68,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>While worn, a yellow Color Cloak grants you lightning immunity equal to your level.</p>",
+      "description": "",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -81,14 +81,13 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1757257427398,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
       "_key": "!items.effects!jDl1QbYNl8sHtFLm.l64HqDbLkHny9pYH"
     }
   ],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -100,7 +99,7 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757257343386,
+    "createdTime": 1757755155522,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
