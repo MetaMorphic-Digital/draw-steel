@@ -1,13 +1,13 @@
 {
-  "folder": "OygqHojAVhOF59fl",
-  "name": "Clawfish",
+  "folder": "y0titlZe5vQIjdy5",
+  "name": "Orc Bloodspark",
   "type": "npc",
-  "_id": "rmkUHKgXlVPjsH25",
+  "_id": "3y2tRRGSXTCi59k3",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 5,
-      "max": 5,
+      "value": 3,
+      "max": 3,
       "temporary": 0
     },
     "characteristics": {
@@ -15,16 +15,16 @@
         "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 1
       },
       "reason": {
-        "value": -3
+        "value": 0
       },
       "intuition": {
-        "value": -2
+        "value": 0
       },
       "presence": {
-        "value": 1
+        "value": 2
       }
     },
     "combat": {
@@ -34,7 +34,7 @@
       },
       "size": {
         "value": 1,
-        "letter": "S"
+        "letter": "M"
       },
       "stability": 0,
       "turns": 1
@@ -45,7 +45,7 @@
       "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
         "walk"
       ],
@@ -80,7 +80,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "35",
+      "page": "216",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -94,17 +94,17 @@
     "monster": {
       "freeStrike": 2,
       "keywords": [
-        "animal"
+        "humanoid"
       ],
       "level": 1,
       "ev": 3,
-      "role": "brute",
+      "role": "artillery",
       "organization": "minion"
     }
   },
   "prototypeToken": {
-    "name": "Clawfish",
-    "displayName": 0,
+    "name": "Orc Bloodspark",
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -200,16 +200,16 @@
     {
       "name": "With Captain",
       "type": "feature",
-      "_id": "UfJda2znQj36N2cg",
+      "_id": "guwqOTm4GC4M3VoM",
       "img": "icons/skills/social/intimidation-impressing.webp",
       "system": {
         "description": {
-          "value": "<p><strong>With Captain</strong>: Gain an edge on strikes</p>",
+          "value": "<p><strong>With Captain:</strong> +2 bonus to forced movement distance</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "35",
+          "page": "216",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
@@ -225,34 +225,155 @@
       },
       "flags": {},
       "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.My8y85XQkQHc0cqp.Item.guwqOTm4GC4M3VoM",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756955695978,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.guwqOTm4GC4M3VoM"
+    },
+    {
+      "name": "Explosive Mote",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "216",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "explosive-mote",
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "45zMfCxJsPchTgZm": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "45zMfCxJsPchTgZm",
+              "damage": {
+                "tier1": {
+                  "value": "2"
+                },
+                "tier2": {
+                  "value": "4"
+                },
+                "tier3": {
+                  "value": "5"
+                }
+              }
+            },
+            "ZbW1NHHSHnsu561m": {
+              "name": "Push",
+              "img": null,
+              "type": "forced",
+              "_id": "ZbW1NHHSHnsu561m",
+              "forced": {
+                "tier2": {
+                  "distance": "2"
+                },
+                "tier3": {
+                  "distance": "4"
+                }
+              }
+            },
+            "5IqS3xXb75utDlY8": {
+              "name": "Shift",
+              "img": null,
+              "type": "other",
+              "_id": "5IqS3xXb75utDlY8",
+              "other": {
+                "tier1": {
+                  "display": "or the bloodspark can shift 1 square away from the target."
+                },
+                "tier2": {
+                  "display": "or the bloodspark can shift 2 square away from the target."
+                },
+                "tier3": {
+                  "display": "or the bloodspark can shift 4 square away from the target."
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "jwDd5l57zt2NpYGF",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1756955719799,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.UfJda2znQj36N2cg"
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.jwDd5l57zt2NpYGF"
     },
     {
-      "name": "Shocking",
+      "name": "Bloodfire Burn",
       "type": "feature",
-      "_id": "W7XaSohNbEJJGxTS",
+      "_id": "cD0TrJyrk2SfV6Zx",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the start of each of their turns, the clawfish deals [[/damage 2 lightning]] damage to each wet enemy within 2 squares.</p>",
+          "value": "<p>If the bloodspark is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "35",
+          "page": "216",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "shocking",
+        "_dsid": "bloodfire-burn",
         "advancements": {}
       },
       "effects": [],
@@ -267,161 +388,18 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1756955880104,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.W7XaSohNbEJJGxTS"
-    },
-    {
-      "name": "Hookclaw",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "35",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "hookclaw",
-        "story": "",
-        "keywords": [
-          "melee",
-          "strike",
-          "weapon"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "U7AMA9XrFJepnKcv": {
-              "name": "",
-              "img": null,
-              "type": "damage",
-              "_id": "U7AMA9XrFJepnKcv",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "5",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "Tewr8ZcB9FpBzNdV": {
-              "name": "Grabbed",
-              "img": null,
-              "type": "applied",
-              "_id": "Tewr8ZcB9FpBzNdV",
-              "applied": {
-                "tier3": {
-                  "display": "grabbed",
-                  "effects": {
-                    "grabbed": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Any target grabbed this way takes [[/damage 2 lightning]] damage at the start of each of their turns.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "5YC0OmYhorbc0o35",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!rmkUHKgXlVPjsH25.5YC0OmYhorbc0o35"
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.cD0TrJyrk2SfV6Zx"
     }
   ],
   "effects": [],
-  "sort": 100000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -430,12 +408,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922143745,
+    "systemVersion": "0.8.1",
+    "createdTime": 1756955629960,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!rmkUHKgXlVPjsH25"
+  "_key": "!actors!3y2tRRGSXTCi59k3"
 }
