@@ -1,12 +1,13 @@
 {
   "folder": "zBFE173ZFzlEPX1o",
-  "name": "Human Trickshot",
+  "name": "Human Storm Mage",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/artillery.webp",
+  "_id": "jDsNfbQ953UKHmCj",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 20,
+      "value": 40,
+      "max": 40,
       "temporary": 0
     },
     "characteristics": {
@@ -14,16 +15,16 @@
         "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 0
       },
       "reason": {
-        "value": 0
+        "value": 2
       },
       "intuition": {
-        "value": 1
+        "value": 0
       },
       "presence": {
-        "value": 0
+        "value": 1
       }
     },
     "combat": {
@@ -56,12 +57,12 @@
         "all": 0,
         "acid": 0,
         "cold": 0,
-        "corruption": 1,
+        "corruption": 3,
         "fire": 0,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
-        "psychic": 1,
+        "psychic": 3,
         "sonic": 0
       },
       "weaknesses": {
@@ -91,24 +92,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 4,
+      "freeStrike": 5,
       "keywords": [
         "humanoid"
       ],
-      "level": 1,
-      "ev": 6,
-      "role": "artillery",
+      "level": 3,
+      "ev": 10,
+      "role": "controller",
       "organization": "platoon"
     }
   },
   "prototypeToken": {
-    "name": "Human Trickshot",
+    "name": "Human Storm Mage",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/artillery.webp",
+      "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -199,11 +200,52 @@
     {
       "name": "Supernatural Insight",
       "type": "feature",
-      "_id": "qizjNOgSeA1odtUQ",
+      "_id": "W54VgR1A3eMCWbFb",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The trickshot ignores concealment if it’s granted by a supernatural effect.</p>",
+          "value": "<p>The storm mage ignores concealment if it’s granted by a supernatural effect.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
+          "revision": null
+        },
+        "_dsid": "supernatural-insight",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "ZJ4Z3nifR8NNIWxP": 3,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.DSEkUDEnQeS4LsWr.Item.W54VgR1A3eMCWbFb",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011666787,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.W54VgR1A3eMCWbFb"
+    },
+    {
+      "name": "Arcane Shield",
+      "type": "feature",
+      "_id": "2MaSwzZse4We3LLH",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Any melee ability targeting the storm mage takes a bane. Additionally, whenever the mage takes damage from an adjacent enemy, the enemy takes 2 lightning damage, and if they have R&lt;1 they are pushed up to 2 squares.</p>",
           "director": ""
         },
         "source": {
@@ -212,7 +254,7 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "supernatural-insight",
+        "_dsid": "arcane-shield",
         "advancements": {}
       },
       "effects": [],
@@ -227,16 +269,17 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011721058,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!aky9I9tbWEWgNQ25.qizjNOgSeA1odtUQ"
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.2MaSwzZse4We3LLH"
     },
     {
-      "name": "Trick Crossbow",
+      "name": "Lightning Bolt",
       "type": "ability",
       "system": {
         "type": "main",
@@ -246,67 +289,57 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "trick-crossbow",
+        "_dsid": "lightning-bolt",
         "story": "",
         "keywords": [
-          "melee",
+          "magic",
           "ranged",
-          "strike",
-          "weapon"
+          "strike"
         ],
         "category": "signature",
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "meleeRanged",
-          "primary": 1,
-          "secondary": 15
+          "type": "ranged",
+          "primary": 15,
+          "secondary": null
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": null
+          "value": 1
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "reason"
             ]
           },
           "effects": {
-            "aylCzCUm6Be7bIu9": {
+            "Ug2iXzEaEmczKA6Y": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "aylCzCUm6Be7bIu9",
+              "_id": "Ug2iXzEaEmczKA6Y",
               "damage": {
                 "tier1": {
-                  "value": "6",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
+                  "value": "7",
+                  "types": [
+                    "lightning"
+                  ]
                 },
                 "tier2": {
-                  "value": "9",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
+                  "value": "10",
+                  "types": [
+                    "lightning"
+                  ]
                 },
                 "tier3": {
-                  "value": "12",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
+                  "value": "13",
+                  "types": [
+                    "lightning"
+                  ]
                 }
               }
             }
@@ -314,14 +347,14 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>This ability ignores cover and concealment.</p>"
+          "after": ""
         },
         "spend": {
-          "text": "This ability targets one additional target.",
-          "value": 3
+          "text": "The ability loses the Ranged and Strike keywords, takes the  Area keyword, and is a 10 × 1 line within 15 that targets each enemy  and object in the area.",
+          "value": 5
         }
       },
-      "_id": "Hy5QNQVTfh8tPpWE",
+      "_id": "i68RzyORRY0OONYz",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -335,13 +368,14 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011815555,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!aky9I9tbWEWgNQ25.Hy5QNQVTfh8tPpWE"
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.i68RzyORRY0OONYz"
     },
     {
       "name": "Alchemical Device",
@@ -493,16 +527,17 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011937075,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!aky9I9tbWEWgNQ25.lVlwo9eIp8HBjfth"
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.lVlwo9eIp8HBjfth"
     },
     {
       "name": "Exploit Opening",
@@ -551,20 +586,21 @@
       "sort": 200000,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.8BzL1WGLdRmlM5U0",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011938274,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!aky9I9tbWEWgNQ25.LYYyN9iD2PjepIFo"
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.LYYyN9iD2PjepIFo"
     },
     {
       "name": "Staying Power",
@@ -613,23 +649,159 @@
       "sort": 300000,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.UgORNnmUgijjyizj",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011939171,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!aky9I9tbWEWgNQ25.vxocmPyA9uKwrgEq"
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.vxocmPyA9uKwrgEq"
+    },
+    {
+      "name": "Gust of Wind",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "gust-of-wind",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 5,
+          "secondary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "1wkF9BFBG3MDNQJm": {
+              "name": "Slide",
+              "img": null,
+              "type": "forced",
+              "_id": "1wkF9BFBG3MDNQJm",
+              "forced": {
+                "tier1": {
+                  "distance": "2",
+                  "movement": [
+                    "slide"
+                  ]
+                },
+                "tier2": {
+                  "movement": [
+                    "slide"
+                  ],
+                  "distance": "4"
+                },
+                "tier3": {
+                  "movement": [
+                    "slide"
+                  ],
+                  "distance": "6"
+                }
+              }
+            },
+            "WxfIB9mvSgILPBle": {
+              "name": "Slowed",
+              "img": null,
+              "type": "applied",
+              "_id": "WxfIB9mvSgILPBle",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} slowed (save ends)",
+                  "potency": {
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The gust of wind disperses gas or vapor and extinguishes any flames, including supernatural effects.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "n0DL6dWtuzqNFjLe",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757011959146,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.n0DL6dWtuzqNFjLe"
     }
   ],
   "effects": [],
+  "sort": 600000,
   "ownership": {
     "default": 0
   },
@@ -640,12 +812,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1755922189438,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757011499748,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "aky9I9tbWEWgNQ25",
-  "sort": 1300000,
-  "_key": "!actors!aky9I9tbWEWgNQ25"
+  "_key": "!actors!jDsNfbQ953UKHmCj"
 }
