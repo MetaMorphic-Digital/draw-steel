@@ -104,7 +104,7 @@
   },
   "prototypeToken": {
     "name": "Human Storm Mage",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -121,11 +121,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -208,12 +208,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
           "revision": null
         },
-        "_dsid": "",
+        "_dsid": "supernatural-insight",
         "advancements": {}
       },
       "effects": [],
@@ -249,12 +249,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "arcane-shield",
         "advancements": {}
       },
       "effects": [],
@@ -284,12 +284,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "lightning-bolt",
         "story": "",
         "keywords": [
           "magic",
@@ -490,9 +490,9 @@
                   }
                 },
                 "tier3": {
-                  "display": "",
+                  "display": "{{potency}}, restrained (save ends)",
                   "effects": {
-                    "slowed": {
+                    "restrained": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -671,12 +671,12 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "183",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "gust-of-wind",
         "story": "",
         "keywords": [
           "area",

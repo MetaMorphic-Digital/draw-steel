@@ -105,7 +105,7 @@
   },
   "prototypeToken": {
     "name": "Giant Hawk",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 2,
     "height": 2,
@@ -122,11 +122,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -209,12 +209,12 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "185",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "feature",
+        "_dsid": "mounted-platform",
         "advancements": {}
       },
       "effects": [],
@@ -244,12 +244,12 @@
       "system": {
         "type": "main",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "185",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "talons",
         "story": "",
         "keywords": [
           "melee",
@@ -457,9 +457,9 @@
                   }
                 },
                 "tier3": {
-                  "display": "",
+                  "display": "{{potency}}, restrained (save ends)",
                   "effects": {
-                    "slowed": {
+                    "restrained": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -638,12 +638,12 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": "",
+          "book": "Monsters",
+          "page": "185",
+          "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "ability",
+        "_dsid": "dive",
         "story": "",
         "keywords": [],
         "category": "heroic",
