@@ -1,7 +1,9 @@
 import BaseMessageModel from "./base.mjs";
 
-/** @import { SavingThrowRoll } from "../../rolls/saving-throw.mjs" */
-/** @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"; */
+/**
+ * @import { SavingThrowRoll } from "../../rolls/saving-throw.mjs";
+ * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+ */
 
 const fields = foundry.data.fields;
 
