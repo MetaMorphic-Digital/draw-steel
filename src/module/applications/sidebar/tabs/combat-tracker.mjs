@@ -1,8 +1,10 @@
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
-/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import DrawSteelActor from "../../../documents/actor.mjs" */
+/**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
+ */
 
 const { ux, sidebar } = foundry.applications;
 
@@ -121,6 +123,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
 
     context.groupTurns = combat?.groups.reduce((acc, cg) => {
+      if (!cg.visible) return acc;
+
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
       const active = turns.some(t => t.id === currentTurn?.id);
@@ -421,6 +425,16 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
             left: window.innerWidth - 720,
           },
         }).render({ force: true }),
+      },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ToggleVisibility",
+        icon: "<i class=\"fa-solid fa-eye-slash\"></i>",
+        condition: li => game.user.isGM && getCombatantGroup(li).members.size,
+        callback: li => {
+          const combatantGroup = getCombatantGroup(li);
+          const updates = Array.from(combatantGroup.members).map(member => ({ _id: member.id, hidden: !combatantGroup.hidden }));
+          combatantGroup.parent.updateEmbeddedDocuments("Combatant", updates);
+        },
       },
     ];
   }
