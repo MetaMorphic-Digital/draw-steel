@@ -1033,6 +1033,17 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   }
 
   /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _processFormData(event, form, formData) {
+    formData = super._processFormData(event, form, formData);
+    if ("value" in (formData.system?.stamina ?? {})) {
+      formData.system.stamina.spent = this.document.system.stamina.max - Number(formData.system.stamina.value);
+    }
+    return formData;
+  }
+
+  /* -------------------------------------------------- */
   /*   Actor Override Handling                          */
   /* -------------------------------------------------- */
 
