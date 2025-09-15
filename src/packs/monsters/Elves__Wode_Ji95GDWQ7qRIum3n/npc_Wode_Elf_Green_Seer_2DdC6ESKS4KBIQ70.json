@@ -115,7 +115,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "138"
         },
         "_dsid": "masking-glamor",
         "advancements": {}
@@ -262,9 +262,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "138"
         },
-        "_dsid": "the-forest's-embrace",
+        "_dsid": "the-forests-embrace",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -401,21 +401,6 @@
                   }
                 }
               }
-            },
-            "RvLcBfUHKMpNbVAX": {
-              "_id": "RvLcBfUHKMpNbVAX",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier3": {
-                  "display": "the target has a double bane on strikes (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  }
-                }
-              }
             }
           }
         },
@@ -431,7 +416,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "138"
         },
         "_dsid": "the-natural-cycle",
         "story": "",
@@ -445,11 +430,14 @@
           "origin": "Actor.2DdC6ESKS4KBIQ70.Item.m0UjVYvvy2zBo8p4",
           "transfer": false,
           "_id": "3K2d0h2983KZE3av",
-          "type": "base",
+          "type": "abilityModifier",
           "system": {
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": ["strike"]
             }
           },
           "changes": [],
@@ -477,9 +465,7 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!2DdC6ESKS4KBIQ70.m0UjVYvvy2zBo8p4.3K2d0h2983KZE3av",
-          "modifiedTime": null,
-          "lastModifiedBy": null
+          "_key": "!actors.items.effects!2DdC6ESKS4KBIQ70.m0UjVYvvy2zBo8p4.3K2d0h2983KZE3av"
         }
       ],
       "folder": null,
@@ -541,7 +527,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "138"
         },
         "_dsid": "foreseen-punishment",
         "story": "",
@@ -759,7 +745,7 @@
   "_id": "2DdC6ESKS4KBIQ70",
   "prototypeToken": {
     "name": "Wode Elf Green Seer",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -776,11 +762,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
