@@ -1,16 +1,16 @@
 {
-  "name": "Gnoll Abyssal Summoner",
+  "name": "Field of Growth",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/support.webp",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 20,
+      "value": 120,
+      "max": 120,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 1
+        "value": 2
       },
       "agility": {
         "value": 0
@@ -31,15 +31,16 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
+        "value": 3,
         "letter": "M"
       },
-      "stability": 1,
+      "stability": 2,
       "turns": 1
     },
     "movement": {
-      "value": 5,
+      "value": 8,
       "types": [
+        "climb",
         "walk"
       ],
       "hover": false,
@@ -54,7 +55,7 @@
         "fire": 0,
         "holy": 0,
         "lightning": 0,
-        "poison": 0,
+        "poison": 5,
         "psychic": 0,
         "sonic": 0
       },
@@ -72,13 +73,13 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "155",
+      "page": "115",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -90,36 +91,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 2,
+      "freeStrike": 6,
       "keywords": [
-        "abyssal"
+        "elemental"
       ],
-      "level": 2,
-      "ev": 4,
-      "role": "support",
-      "organization": "horde"
+      "level": 3,
+      "ev": 28,
+      "role": "controller",
+      "organization": "elite"
     }
   },
   "items": [
     {
-      "name": "Death Frenzy",
+      "name": "Fickle and Free",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Whenever a non-minion ally within 5 squares of the abyssal summoner is reduced to 0 Stamina, the abyssal summoner moves up to their speed and can make a melee free strike.</p>",
+          "value": "<p>The field can't be restrained, slowed, or knocked prone, and they ignore difficult terrain.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "155"
+          "page": "115"
         },
-        "_dsid": "death-frenzy",
+        "_dsid": "fickle-and-free",
         "advancements": {}
       },
-      "_id": "HuwtnkHCPsc7zabc",
+      "_id": "HFUTw7TbzR5Ea4Lr",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -137,10 +138,48 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.HuwtnkHCPsc7zabc"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.HFUTw7TbzR5Ea4Lr"
     },
     {
-      "name": "Flame Wad",
+      "name": "Roots Run Deep",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The field can target any creature touching the ground with their abilities, even if they don't have line of effect to that creature.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "115"
+        },
+        "_dsid": "roots-run-deep",
+        "advancements": {}
+      },
+      "_id": "gaSg8uGhnbyL9NZF",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.gaSg8uGhnbyL9NZF"
+    },
+    {
+      "name": "Hampering Roots",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
@@ -153,32 +192,30 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 5
+          "primary": 8
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 2
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "intuition"
+              "might"
             ]
           },
           "effects": {
-            "DD6NDAXd8sTY9kt7": {
-              "_id": "DD6NDAXd8sTY9kt7",
+            "lM0twKPSBU0TChmq": {
+              "_id": "lM0twKPSBU0TChmq",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "4",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "8",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -186,10 +223,8 @@
                   }
                 },
                 "tier2": {
-                  "value": "5",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "13",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.average",
@@ -197,10 +232,8 @@
                   }
                 },
                 "tier3": {
-                  "value": "7",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "16",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.strong",
@@ -209,40 +242,66 @@
                 }
               }
             },
-            "rYxVdjrua2a9f9Dv": {
-              "name": "Burning",
-              "img": null,
+            "lOftshz1FFG8H5fS": {
+              "_id": "lOftshz1FFG8H5fS",
               "type": "applied",
-              "_id": "rYxVdjrua2a9f9Dv",
+              "name": "Prone",
+              "img": null,
               "applied": {
+                "tier2": {
+                  "display": "{{potency}} prone and can't stand (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  },
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    },
+                    "swNw5lHNUQRxxiID": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  },
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "swNw5lHNUQRxxiID": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
                 "tier1": {
                   "display": "",
                   "effects": {},
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "{{potency}} the target is burning (save ends)",
-                  "effects": {
-                    "tmnFcC8Lgm4HV9VA": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
                   }
                 }
               }
@@ -251,7 +310,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>A burning creature takes [[/damage 1d6 fire]] damage at the start of each of their turns. A burning object takes 1d6 fire damage at the end of each round.</p>"
+          "after": "<p>If a target made prone this way is already prone, they are instead restrained (save ends). If the target was also unable to stand, that effect ends when they are no longer restrained this way.</p>"
         },
         "spend": {
           "text": "",
@@ -261,20 +320,20 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "155"
+          "page": "115"
         },
-        "_dsid": "flame-wad",
+        "_dsid": "hampering-roots",
         "story": "",
         "resource": null,
         "trigger": ""
       },
       "effects": [
         {
-          "name": "Burning",
-          "img": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
-          "origin": "Actor.mNtGL8Wbj8mqpCzy.Item.08ypYGW739Qq6UWD",
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "origin": "Actor.PXW5yXKwvf2N0voc.Item.LoHB91xQOd2DL6Qs",
           "transfer": false,
-          "_id": "tmnFcC8Lgm4HV9VA",
+          "_id": "swNw5lHNUQRxxiID",
           "type": "base",
           "system": {
             "end": {
@@ -293,7 +352,7 @@
             "startRound": null,
             "startTurn": null
           },
-          "description": "<p>The target takes [[/damage 1d6 fire]] at the start of their turns.</p>",
+          "description": "",
           "tint": "#ffffff",
           "statuses": [],
           "sort": 0,
@@ -307,7 +366,7 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!mNtGL8Wbj8mqpCzy.08ypYGW739Qq6UWD.tmnFcC8Lgm4HV9VA"
+          "_key": "!actors.items.effects!PXW5yXKwvf2N0voc.LoHB91xQOd2DL6Qs.swNw5lHNUQRxxiID"
         }
       ],
       "folder": null,
@@ -323,20 +382,21 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "08ypYGW739Qq6UWD",
+      "_id": "LoHB91xQOd2DL6Qs",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.08ypYGW739Qq6UWD"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.LoHB91xQOd2DL6Qs"
     },
     {
-      "name": "Call Abyssal Hyenas",
+      "name": "Convocation of Verdure",
       "type": "ability",
       "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "system": {
         "type": "maneuver",
-        "category": "heroic",
+        "category": "signature",
         "keywords": [
+          "magic",
           "ranged"
         ],
         "distance": {
@@ -344,36 +404,36 @@
           "primary": 5
         },
         "target": {
-          "type": "special",
-          "value": null
+          "type": "selfOrAlly",
+          "value": 1
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "intuition"
+              "might"
             ]
           },
           "effects": {}
         },
         "effect": {
           "before": "",
-          "after": "<p>Two abyssal hyenas claw up from the ground in unoccupied spaces within distance.</p>"
+          "after": "<p>The target gains [[/heal 15 temporary]] that lasts until the start of the field's next turn.</p>"
         },
         "spend": {
-          "text": "",
-          "value": null
+          "text": "Until the end of the encounter, the ground within 1 square  of the target is overgrown with underbrush and vines. Whenever any  enemy makes a strike against the target while within line of effect  of that area, the enemy is pulled 5 squares toward the area after the  strike is resolved. Any enemy who enters the area for the first time in  a round or starts their turn there is knocked prone.",
+          "value": 3
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "155"
+          "page": "115"
         },
-        "_dsid": "call-abyssal-hyenas",
+        "_dsid": "convocation-of-verdure",
         "story": "",
-        "resource": 3,
+        "resource": null,
         "trigger": ""
       },
       "effects": [],
@@ -390,43 +450,44 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "2xN6SvhIcT3bc6YM",
+      "_id": "RxaakIZRH5D9g1Qb",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.2xN6SvhIcT3bc6YM"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.RxaakIZRH5D9g1Qb"
     },
     {
-      "name": "Summoner's Cackletongue",
+      "name": "Rose Thorn Lash",
       "type": "ability",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
       "system": {
-        "type": "maneuver",
+        "type": "triggered",
         "category": "heroic",
         "keywords": [
-          "area"
+          "magic",
+          "melee"
         ],
         "distance": {
-          "type": "burst",
-          "primary": 2
+          "type": "melee",
+          "primary": 3
         },
         "target": {
-          "type": "ally",
-          "value": null
+          "type": "creatureObject",
+          "value": 1
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "intuition"
+              "might"
             ]
           },
           "effects": {}
         },
         "effect": {
           "before": "",
-          "after": "<p>One abyssal hyena target turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder}, keeping their current Stamina. If any target hasn't used their own Cackletongue maneuver on this turn, they can use it immediately at no cost.</p>"
+          "after": "<p>The target takes [[/damage 6]] damage, and if they have A &lt; 2, they are bleeding (save ends).</p>"
         },
         "spend": {
           "text": "",
@@ -436,12 +497,12 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "155"
+          "page": "115"
         },
-        "_dsid": "summoners-cackletongue",
+        "_dsid": "rose-thorn-lash",
         "story": "",
-        "resource": 4,
-        "trigger": ""
+        "resource": 1,
+        "trigger": "A creature or object within distance deals damage to the field."
       },
       "effects": [],
       "folder": null,
@@ -457,26 +518,136 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "oGKOwSqNkJHuYdAs",
+      "_id": "gEGqLJA5kv1A7kjy",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.oGKOwSqNkJHuYdAs"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.gEGqLJA5kv1A7kjy"
     },
     {
-      "folder": "aDi1dYz0yHDdrvpt",
-      "name": "Bloodpool",
+      "folder": "hE191ksRhzkku5Ov",
+      "name": "Elemental Swap",
       "type": "ability",
-      "_id": "38qnomOvMFz9ES4D",
+      "_id": "ivYpZCg1VqdHPv1k",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "155",
+          "page": "113",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "bloodpool",
+        "_dsid": "elemental-swap",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Two elementals on the encounter map teleport to swap places, and each has damage immunity 2 until the end of the round.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Elemental Swap (Immunity)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.ivYpZCg1VqdHPv1k",
+          "disabled": true,
+          "_id": "0q7DcAIYxiQ09fCG",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "2",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>Two elementals on the encounter map teleport to swap places, and each has damage immunity 2 until the end of the round.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!PXW5yXKwvf2N0voc.ivYpZCg1VqdHPv1k.0q7DcAIYxiQ09fCG"
+        }
+      ],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.ivYpZCg1VqdHPv1k",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.ivYpZCg1VqdHPv1k"
+    },
+    {
+      "folder": "hE191ksRhzkku5Ov",
+      "name": "Split",
+      "type": "ability",
+      "_id": "nepObNKqvUUHrr8q",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "113",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "split",
         "story": "",
         "keywords": [],
         "type": "none",
@@ -498,7 +669,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>One gnoll minion suddenly explodes into a pool of blood, splattering the area within 3 squares of them. Any gnoll who starts their turn in this area deals an extra [[/damage 5]] damage on their next strike before the end of their turn. Once per round, an abyssal hyena who starts their turn in the area turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder}, keeping their current Stamina</p>",
+          "before": "<p>An elemental acting this turn cleaves themself into two separate elementals. Each elemental has the same statistics as the original, except that each has half the original’s current Stamina and is one size smaller. Both elementals can then shift up to their speed.</p>",
           "after": ""
         },
         "spend": {
@@ -514,7 +685,7 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.38qnomOvMFz9ES4D",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.nepObNKqvUUHrr8q",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -523,34 +694,35 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.38qnomOvMFz9ES4D"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.nepObNKqvUUHrr8q"
     },
     {
-      "folder": "aDi1dYz0yHDdrvpt",
-      "name": "Echoes of Laughter",
+      "folder": "hE191ksRhzkku5Ov",
+      "name": "Convocation of Chaos",
       "type": "ability",
-      "_id": "wvrInGnyn0e0mj0n",
+      "_id": "vDtUjuLPjntj32co",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "155",
+          "page": "113",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "echoes-of-laughter",
+        "_dsid": "convocation-of-chaos",
         "story": "",
         "keywords": [],
-        "type": "none",
+        "type": "maneuver",
         "category": "heroic",
         "resource": 7,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "ranged",
+          "primary": 8
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "selfOrAlly"
         },
         "power": {
           "roll": {
@@ -560,7 +732,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Until the end of the encounter, the encounter map is encased in a soundscape of laughter and howling. Each enemy takes a bane on the first power roll they make each round. Whenever a gnoll is killed, this effect is suppressed until the start of the next round.</p>",
+          "before": "<p>Note: Targets Self or one Elemental</p><p>Until the end of the encounter, the target has a +5 bonus to speed and a +5 damage bonus to strikes. Additionally, whenever an elemental within the target’s line of effect uses an ability with “Convocation” in the name, the target also gains the effects of that ability.</p>",
           "after": ""
         },
         "spend": {
@@ -568,75 +740,119 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wvrInGnyn0e0mj0n",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.wvrInGnyn0e0mj0n"
-    },
-    {
-      "folder": "aDi1dYz0yHDdrvpt",
-      "name": "Iron Jaws",
-      "type": "ability",
-      "_id": "9bdZ4N6vu3nGUvPk",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "153",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "iron-jaws",
-        "story": "",
-        "keywords": [
-          "area",
-          "ranged",
-          "weapon"
-        ],
-        "type": "maneuver",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "cube",
-          "primary": 1,
-          "secondary": 3
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
+      "effects": [
+        {
+          "name": "Convocation of Chaos (Speed)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.vDtUjuLPjntj32co",
+          "_id": "Hba04T6CgjrjwaOu",
+          "system": {
+            "end": {
+              "type": "encounter",
+              "roll": "1d10 + @combat.save.bonus"
+            }
           },
-          "effects": {}
+          "changes": [
+            {
+              "key": "system.movement.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!PXW5yXKwvf2N0voc.vDtUjuLPjntj32co.Hba04T6CgjrjwaOu"
         },
-        "effect": {
-          "before": "<p>A gnoll acting this turn drops an iron-jawed snare into the area. The first time any enemy moves into the area, they make an <strong>Agility test</strong>. If they were unaware of the snare, the test takes a bane.</p><p></p><table><tbody><tr><td data-colwidth=\"107\"><p>11 or less</p></td><td><p>[[/damage 6]] damage; bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"107\"><p>12-16</p></td><td><p>[[/damage 4]] damage; bleeding (EoT)</p></td></tr><tr><td data-colwidth=\"107\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": "<p>While an enemy is bleeding this way, each gnoll in the en counter gains an edge on strikes made against them.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
+        {
+          "name": "Convocation of Chaos (Strike)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monster-features.Item.vDtUjuLPjntj32co",
+          "_id": "oOlOeEi6rpWKvkJ4",
+          "system": {
+            "end": {
+              "type": "encounter",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": [
+                "strike"
+              ]
+            }
+          },
+          "changes": [
+            {
+              "key": "damage.tier1.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier2.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            },
+            {
+              "key": "damage.tier3.value",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!PXW5yXKwvf2N0voc.vDtUjuLPjntj32co.oOlOeEi6rpWKvkJ4"
         }
-      },
-      "effects": [],
+      ],
       "sort": 0,
       "ownership": {
         "default": 0,
@@ -644,7 +860,7 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.9bdZ4N6vu3nGUvPk",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.vDtUjuLPjntj32co",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -653,19 +869,19 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!mNtGL8Wbj8mqpCzy.9bdZ4N6vu3nGUvPk"
+      "_key": "!actors.items!PXW5yXKwvf2N0voc.vDtUjuLPjntj32co"
     }
   ],
-  "folder": "6ZOnXQw3kIUDhVuS",
-  "_id": "mNtGL8Wbj8mqpCzy",
+  "folder": "hatSTUdV3EGvlnvE",
+  "_id": "PXW5yXKwvf2N0voc",
   "prototypeToken": {
-    "name": "Gnoll Abyssal Summoner",
+    "name": "Field of Growth",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/support.webp",
+      "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -753,21 +969,21 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 600000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": "Actor.mNtGL8Wbj8mqpCzy",
+    "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757047900718,
+    "createdTime": 1757110809738,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!mNtGL8Wbj8mqpCzy"
+  "_key": "!actors!PXW5yXKwvf2N0voc"
 }
