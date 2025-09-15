@@ -502,7 +502,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     /** @type {HTMLDivElement} */
     const editorContainer = wrapper.querySelector(".editor-content");
     const content = foundry.utils.getProperty(this.item, target.dataset.fieldName);
-    this.#editor = await ProseMirrorEditor.create(editorContainer, content, {
+    this.#editor = await ux.ProseMirrorEditor.create(editorContainer, content, {
       document: this.item,
       fieldName: target.dataset.fieldName,
       relativeLinks: true,
