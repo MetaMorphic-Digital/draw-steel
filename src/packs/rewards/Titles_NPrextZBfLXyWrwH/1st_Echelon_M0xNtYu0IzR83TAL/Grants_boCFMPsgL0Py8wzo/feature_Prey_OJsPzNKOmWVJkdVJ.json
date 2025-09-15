@@ -18,7 +18,63 @@
     "_dsid": "prey",
     "advancements": {}
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Medicinal Draught",
+      "img": "icons/sundries/books/book-embossed-gold-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.OJsPzNKOmWVJkdVJ",
+      "_id": "ufbvzQJZ11EDkVJj",
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.recoveries.max",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Each of you is given a medicinal draught that grants a +1 bonus to speed and increases your Recoveries by 2. This benefit lasts until the end of your next respite.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757916274362,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!OJsPzNKOmWVJkdVJ.ufbvzQJZ11EDkVJj"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
