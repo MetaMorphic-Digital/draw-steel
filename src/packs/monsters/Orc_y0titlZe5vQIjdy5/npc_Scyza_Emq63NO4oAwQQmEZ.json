@@ -1,0 +1,892 @@
+{
+  "folder": "y0titlZe5vQIjdy5",
+  "name": "Scyza",
+  "type": "npc",
+  "_id": "Emq63NO4oAwQQmEZ",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
+  "system": {
+    "stamina": {
+      "value": 20,
+      "max": 100,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": -4
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": -1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 4,
+        "letter": "M"
+      },
+      "stability": 3,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "222",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [
+        "animal"
+      ],
+      "level": 3,
+      "ev": 20,
+      "role": "mount",
+      "organization": "elite"
+    }
+  },
+  "prototypeToken": {
+    "name": "Scyza",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 4,
+    "height": 4,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/mount.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Terrible Beast",
+      "type": "feature",
+      "_id": "eY9cVPxML5LXGoRN",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The scyza deals an extra [[/damage 6]] damage with abilities used against objects.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "terrible-beast",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006207767,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.eY9cVPxML5LXGoRN"
+    },
+    {
+      "name": "War Harness",
+      "type": "feature",
+      "_id": "ScoXHAqwjcqf9H8X",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While riding the scyza, three size 1 allies can occupy the same space.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "war-harness",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006242501,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.ScoXHAqwjcqf9H8X"
+    },
+    {
+      "name": "Brace and Break",
+      "type": "ability",
+      "system": {
+        "type": "triggered",
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "brace-and-break",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "The scyza or an ally riding the scyza is targeted by an ability.",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Any damage dealt by the triggering ability is halved. If the creature or object who used the ability is within 3 squares of the scyza, the scyza can make a [[/damage @monster.freeStrike]]{Free Strike} against them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "xXaJzZrGWQEdZ4pD",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006271405,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.xXaJzZrGWQEdZ4pD"
+    },
+    {
+      "name": "Clawed Kick",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "clawed-kick",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 2
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "HcD91j970RkJIiR5": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "HcD91j970RkJIiR5",
+              "damage": {
+                "tier1": {
+                  "value": "7"
+                },
+                "tier2": {
+                  "value": "11"
+                },
+                "tier3": {
+                  "value": "14"
+                }
+              }
+            },
+            "piQRLP7X7Z49rkaB": {
+              "name": "Prone",
+              "img": null,
+              "type": "applied",
+              "_id": "piQRLP7X7Z49rkaB",
+              "applied": {
+                "tier2": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  },
+                  "display": "Prone"
+                },
+                "tier3": {
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  },
+                  "display": "Prone"
+                }
+              }
+            },
+            "zNOa86yEYaEC8Tyv": {
+              "name": "Frightened",
+              "img": null,
+              "type": "applied",
+              "_id": "zNOa86yEYaEC8Tyv",
+              "applied": {
+                "tier1": {
+                  "potency": {
+                    "characteristic": "intuition",
+                    "value": "2"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "potency": {
+                    "value": "2"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "potency": {
+                    "value": "2"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The scyza roars, and if the target has i&lt;2 they are frightened (save ends).</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "cLWZp7byzXgxHauk",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006390565,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.cLWZp7byzXgxHauk"
+    },
+    {
+      "name": "Whiptail",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "whiptail",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "oFTjik1ZPTvjx3JU": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "oFTjik1ZPTvjx3JU",
+              "damage": {
+                "tier1": {
+                  "value": "8"
+                },
+                "tier2": {
+                  "value": "13"
+                },
+                "tier3": {
+                  "value": "16"
+                }
+              }
+            },
+            "YdkpjsrawHxqEiwB": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "YdkpjsrawHxqEiwB",
+              "applied": {
+                "tier2": {
+                  "display": "Prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "always",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier3": {
+                  "potency": {
+                    "characteristic": "agility"
+                  },
+                  "display": "{{potency}} bleeding (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Against a target on top of the scyza, this ability gains an edge, and the target is pushed into an unoccupied adjacent square and knocked prone.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "xWq1YxJcGjBUBKzs",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006556070,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.xWq1YxJcGjBUBKzs"
+    },
+    {
+      "name": "Crestfall",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "crestfall",
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "category": "heroic",
+        "resource": 2,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 3,
+          "secondary": 2
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "PejAPPcDU5C5uaM0": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "PejAPPcDU5C5uaM0",
+              "damage": {
+                "tier1": {
+                  "value": "4"
+                },
+                "tier2": {
+                  "value": "7"
+                },
+                "tier3": {
+                  "value": "9"
+                }
+              }
+            },
+            "LUkwqo2uUTzB8g3P": {
+              "name": "Sonic Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "LUkwqo2uUTzB8g3P",
+              "damage": {
+                "tier1": {
+                  "types": [
+                    "sonic"
+                  ],
+                  "value": "1"
+                },
+                "tier2": {
+                  "value": "2",
+                  "types": [
+                    "sonic"
+                  ]
+                },
+                "tier3": {
+                  "value": "3",
+                  "types": [
+                    "sonic"
+                  ]
+                }
+              }
+            },
+            "k3j0lVe6lE0ixxCg": {
+              "name": "Dazed",
+              "img": null,
+              "type": "applied",
+              "_id": "k3j0lVe6lE0ixxCg",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "Tldqn4NHS8pPb9r4",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006708301,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.Tldqn4NHS8pPb9r4"
+    },
+    {
+      "name": "Sandstorm",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "222",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "sandstorm",
+        "story": "",
+        "keywords": [
+          "area"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The scyza kicks up a sandstorm, granting concealment to themself and any ally in the area until the end of the scyza’s next turn. Each enemy in the area makes an <strong>Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; prone; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>[[/damage 7]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>[[/damage 4]] damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "SSux2dz3EHW06cls",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006830804,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.SSux2dz3EHW06cls"
+    }
+  ],
+  "effects": [
+    {
+      "_id": "winded0000000000",
+      "name": "Winded",
+      "img": "icons/svg/windmill.svg",
+      "statuses": [
+        "winded"
+      ],
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": 0,
+        "combat": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757006194676,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!Emq63NO4oAwQQmEZ.winded0000000000"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757006151823,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!Emq63NO4oAwQQmEZ"
+}
