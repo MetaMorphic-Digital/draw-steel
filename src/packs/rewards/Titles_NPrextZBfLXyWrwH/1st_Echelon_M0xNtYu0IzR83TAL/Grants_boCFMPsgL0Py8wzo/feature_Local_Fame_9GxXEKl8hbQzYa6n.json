@@ -1,37 +1,44 @@
 {
   "folder": "boCFMPsgL0Py8wzo",
-  "name": "Susurrus Codex",
+  "name": "Local Fame",
   "type": "feature",
-  "_id": "oguIqYgmInTkOepA",
+  "_id": "9GxXEKl8hbQzYa6n",
   "img": "icons/sundries/books/book-embossed-gold-green.webp",
   "system": {
     "description": {
-      "value": "<p>You find a sinister book that whispers advice in a voice no one else can hear. As long as you follow the book’s advice, you gain an edge on Reason tests and take a bane on Presence tests. You can stop following the book’s advice at any time, but the book won’t speak to you for the rest of the day.</p>",
+      "value": "<p>You earn 1 Renown.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "339",
+      "page": "340",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "susurrus-codex",
+    "_dsid": "local-fame",
     "advancements": {}
   },
   "effects": [
     {
-      "name": "Sinister Advice",
+      "name": "Local Fame",
       "img": "icons/sundries/books/book-embossed-gold-green.webp",
       "type": "base",
-      "origin": "Compendium.draw-steel.rewards.Item.oguIqYgmInTkOepA",
-      "_id": "3nNR0k4T2ye4BoyZ",
+      "origin": "Compendium.draw-steel.rewards.Item.9GxXEKl8hbQzYa6n",
+      "_id": "kSQLdVMEx5LgMlJL",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.hero.renown",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
       "disabled": false,
       "duration": {
         "startTime": null,
@@ -42,7 +49,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>As long as you follow the book’s advice, you gain an edge on Reason tests and take a bane on Presence tests. You can stop following the book’s advice at any time, but the book won’t speak to you for the rest of the day.</p>",
+      "description": "",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -55,14 +62,14 @@
         "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1757915497100,
+        "createdTime": 1757916138688,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!items.effects!oguIqYgmInTkOepA.3nNR0k4T2ye4BoyZ"
+      "_key": "!items.effects!9GxXEKl8hbQzYa6n.kSQLdVMEx5LgMlJL"
     }
   ],
-  "sort": 200000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -73,10 +80,10 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
-    "createdTime": 1754978854422,
+    "systemVersion": "0.8.1",
+    "createdTime": 1757643521025,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!oguIqYgmInTkOepA"
+  "_key": "!items!9GxXEKl8hbQzYa6n"
 }
