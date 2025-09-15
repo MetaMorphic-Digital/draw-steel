@@ -1,7 +1,7 @@
 import { systemID } from "../constants.mjs";
 import { HeroTokenModel, MaliceModel } from "../data/settings/_module.mjs";
 
-/** @import { SettingConfig } from "@common/types.mjs" */
+/** @import { SettingConfig } from "@client/_types.mjs" */
 
 const fields = foundry.data.fields;
 
