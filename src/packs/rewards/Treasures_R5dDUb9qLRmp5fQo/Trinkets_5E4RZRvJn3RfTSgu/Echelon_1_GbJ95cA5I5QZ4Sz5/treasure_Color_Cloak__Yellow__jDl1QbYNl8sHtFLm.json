@@ -1,5 +1,5 @@
 {
-  "folder": "5E4RZRvJn3RfTSgu",
+  "folder": "GbJ95cA5I5QZ4Sz5",
   "name": "Color Cloak (Yellow)",
   "type": "treasure",
   "_id": "jDl1QbYNl8sHtFLm",
@@ -16,7 +16,7 @@
       "revision": 1
     },
     "_dsid": "color-cloak-yellow",
-    "kind": "other",
+    "kind": "",
     "category": "trinket",
     "echelon": 1,
     "keywords": [
@@ -32,15 +32,15 @@
       ],
       "yield": {
         "amount": "1",
-        "display": "Cloak"
+        "display": ""
       },
       "goal": 150
     }
   },
   "effects": [
     {
-      "name": "Color Cloak (Yellow)",
-      "img": "icons/svg/item-bag.svg",
+      "name": "Lightning Immunity",
+      "img": "icons/equipment/back/cape-layered-brown-gold.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.rewards.Item.jDl1QbYNl8sHtFLm",
       "_id": "l64HqDbLkHny9pYH",
@@ -52,9 +52,9 @@
       },
       "changes": [
         {
-          "key": "@character.immunity.lightning",
+          "key": "system.damage.immunities.lightning",
           "mode": 2,
-          "value": "@chrlvl",
+          "value": "1",
           "priority": null
         }
       ],
@@ -85,9 +85,58 @@
         "modifiedTime": null
       },
       "_key": "!items.effects!jDl1QbYNl8sHtFLm.l64HqDbLkHny9pYH"
+    },
+    {
+      "name": "Lightning Weakness",
+      "img": "icons/equipment/back/cape-layered-brown-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.jDl1QbYNl8sHtFLm",
+      "disabled": true,
+      "_id": "RNr2GUoXYaUQ6HtD",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 1,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your lightning immunity becomes lightning weakness with the same value until the end of the next round.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757913973199,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!jDl1QbYNl8sHtFLm.RNr2GUoXYaUQ6HtD"
     }
   ],
-  "sort": 0,
+  "sort": 150000,
   "ownership": {
     "default": 0
   },
