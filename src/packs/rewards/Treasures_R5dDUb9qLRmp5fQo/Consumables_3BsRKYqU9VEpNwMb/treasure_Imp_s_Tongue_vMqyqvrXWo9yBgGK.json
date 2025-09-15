@@ -1,22 +1,22 @@
 {
-  "folder": "77VzvLcI68PG8Glt",
-  "name": "Buzz Balm",
+  "folder": "3BsRKYqU9VEpNwMb",
+  "name": "Imp's Tongue",
   "type": "treasure",
-  "_id": "0UEuam82ZIE31Qv7",
-  "img": "icons/svg/item-bag.svg",
+  "_id": "vMqyqvrXWo9yBgGK",
+  "img": "icons/commodities/biological/tongue-red.webp",
   "system": {
     "description": {
-      "value": "<p>Keyword: oil</p><p><em>his cooling orange salve crackles and pops when exposed to the air.</em></p><p><strong>Effect:</strong> As a maneuver, you rub the balm on your body and feel it tingle across your skin. You immediately end the bleeding and weakened conditions on yourself, and you gain a +2 bonus to speed until the start of your next turn.</p>",
+      "value": "<p><em>The tongue of an imp has been dried and preserved. Yuck.</em></p><p><strong>Effect:</strong> As a maneuver, you place the imp's tongue on your own tongue, causing it to reconstitute and attach itself to your tongue. While attached, the Imp's Tongue allows you to speak any language and understand any language spoken to you. This benefit ends after 1 hour, when the tongue is absorbed into your body.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
-      "page": "",
+      "page": "316",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
-    "_dsid": "buzz-balm",
-    "kind": "",
+    "_dsid": "imps-tongue",
+    "kind": "other",
     "category": "consumable",
     "echelon": 1,
     "keywords": [
@@ -24,51 +24,44 @@
     ],
     "quantity": 1,
     "project": {
-      "prerequisites": "An ounce of demon honey",
-      "source": "Texts or lore in Kalliak",
+      "prerequisites": "One imp's tongue",
+      "source": "Texts or lore in Caelian",
       "rollCharacteristic": [
         "reason",
         "intuition"
       ],
       "yield": {
         "amount": "1",
-        "display": ""
+        "display": "Tongue"
       },
       "goal": 45
     }
   },
   "effects": [
     {
-      "name": "Quickened",
+      "name": "Imp Tongue",
       "img": "icons/svg/item-bag.svg",
       "type": "base",
-      "origin": "Compendium.draw-steel.rewards.Item.0UEuam82ZIE31Qv7",
+      "origin": "Compendium.draw-steel.rewards.Item.vMqyqvrXWo9yBgGK",
       "system": {
         "end": {
           "type": "",
           "roll": ""
         }
       },
-      "_id": "aDFBAt6bAypcSJF2",
-      "changes": [
-        {
-          "key": "@character.speed",
-          "mode": 2,
-          "value": "2",
-          "priority": null
-        }
-      ],
+      "_id": "OhHwRXcX95IaQ911",
+      "changes": [],
       "disabled": false,
       "duration": {
         "startTime": null,
         "combat": null,
-        "seconds": null,
+        "seconds": 3600,
         "rounds": null,
-        "turns": 1,
+        "turns": null,
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>Speak any language and understand any language spoken to you</p>",
       "tint": "#ffffff",
       "transfer": true,
       "statuses": [],
@@ -78,17 +71,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
-        "createdTime": 1757255335493,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_key": "!items.effects!0UEuam82ZIE31Qv7.aDFBAt6bAypcSJF2"
+      "_key": "!items.effects!vMqyqvrXWo9yBgGK.OhHwRXcX95IaQ911"
     }
   ],
-  "sort": 150000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -100,9 +92,9 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757178784688,
+    "createdTime": 1757755174216,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!0UEuam82ZIE31Qv7"
+  "_key": "!items!vMqyqvrXWo9yBgGK"
 }
