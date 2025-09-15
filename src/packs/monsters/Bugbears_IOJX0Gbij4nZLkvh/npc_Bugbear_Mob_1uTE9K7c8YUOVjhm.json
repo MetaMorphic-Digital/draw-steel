@@ -1,0 +1,731 @@
+{
+  "name": "Bugbear Mob",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "system": {
+    "stamina": {
+      "value": 10,
+      "max": 10,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": -1
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": 0
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 3,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "55",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 3,
+      "keywords": [
+        "fey",
+        "humanoid"
+      ],
+      "level": 5,
+      "ev": 7,
+      "role": "brute",
+      "organization": "minion"
+    }
+  },
+  "items": [
+    {
+      "name": "With Captain",
+      "type": "feature",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>With Captain:</strong> +[[/damage 2]] damage bonus to strikes</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "55"
+        },
+        "_dsid": "with-captain",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": -100000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "wtLoHUlc0uEr0y38",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.wtLoHUlc0uEr0y38"
+    },
+    {
+      "name": "Swarm",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The mob can move through spaces as if they were a size 1L creature, and can occupy other creatures' spaces. At the start of each of the mob's turns, they can make a free strike against each creature whose space they share.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "55"
+        },
+        "_dsid": "swarm",
+        "advancements": {}
+      },
+      "_id": "YDvXvlRp1S6VP9YR",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.YDvXvlRp1S6VP9YR"
+    },
+    {
+      "name": "Mug and Tear",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "UOYzzdVlC9S9t2WB": {
+              "_id": "UOYzzdVlC9S9t2WB",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "ZzJNGGV4KIdZkiBe": {
+              "_id": "ZzJNGGV4KIdZkiBe",
+              "type": "forced",
+              "name": "pull",
+              "img": null,
+              "forced": {
+                "tier1": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "Ig8b9qHSZOdiiwjN": {
+              "_id": "Ig8b9qHSZOdiiwjN",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier3": {
+                  "display": "grabbed",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>If the target is pulled into the mob, that forced movement deals damage only at the Director's determination.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "55"
+        },
+        "_dsid": "mug-and-tear",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "bnc4bML1LsI4tJNS",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.bnc4bML1LsI4tJNS"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Goblin Malice Features",
+      "type": "ability",
+      "_id": "06sDqIj5EE1bUxw1",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "goblin-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.06sDqIj5EE1bUxw1"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Iron Ball",
+      "type": "ability",
+      "_id": "OE8d20QnSaE7ZHfI",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-iron-ball",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.OE8d20QnSaE7ZHfI"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Javelin",
+      "type": "ability",
+      "_id": "5stni4cw4IVUjzqM",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-javelin",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.5stni4cw4IVUjzqM"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Show Them the Great Fear",
+      "type": "ability",
+      "_id": "XPiOlpj5iRNcFIvP",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "show-them-the-great-fear",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1uTE9K7c8YUOVjhm.XPiOlpj5iRNcFIvP"
+    }
+  ],
+  "folder": "IOJX0Gbij4nZLkvh",
+  "prototypeToken": {
+    "name": "Bugbear Mob",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757089813037,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "1uTE9K7c8YUOVjhm",
+  "sort": 500000,
+  "_key": "!actors!1uTE9K7c8YUOVjhm"
+}

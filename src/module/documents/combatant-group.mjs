@@ -1,4 +1,4 @@
-/** @import { CombatantGroupData } from "@common/types.mjs"; */
+/** @import { CombatantGroupData } from "@common/documents/_types.mjs"; */
 
 /**
  * A document subclass adding system-specific behavior and registered in CONFIG.CombatantGroup.documentClass.
@@ -144,5 +144,10 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
 
     // Provide a default image
     if (!data.img) this.updateSource(this.constructor.getDefaultArtwork(data));
+  }
+
+  /** @inheritdoc */
+  get visible () {
+    return this.isOwner || !this.hidden;
   }
 }
