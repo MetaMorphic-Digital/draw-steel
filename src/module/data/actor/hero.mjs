@@ -448,7 +448,7 @@ export default class HeroModel extends BaseActorModel {
    * @type {boolean}
    */
   get advancementReady() {
-    return this.hero.xp > (this.nextLevelXP ?? Infinity);
+    return this.hero.xp >= (this.nextLevelXP ?? Infinity);
   }
 
   /* -------------------------------------------------- */
