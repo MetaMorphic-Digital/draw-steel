@@ -48,6 +48,7 @@
   - Conduit "Prayer of Distance" filters & bonus. (#999)
   - Leaping Lightning effect enricher damage type. (#1015)
   - Fixed talent resource minimum. (#1058)
+  - Fixed Wodewalker AE key. (#1078)
   - Added effect to Acolyte of Fire.
   - Beggar career no longer gives all interpersonal skills.
 - GM-Facing Compendium Data fixes:
