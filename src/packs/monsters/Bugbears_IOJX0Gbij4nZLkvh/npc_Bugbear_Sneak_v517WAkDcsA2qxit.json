@@ -1,30 +1,28 @@
 {
-  "folder": "IOJX0Gbij4nZLkvh",
-  "name": "Bugbear Channeler",
+  "name": "Bugbear Sneak",
   "type": "npc",
-  "_id": "ZaENuomw1aFn4Ffw",
-  "img": "systems/draw-steel/assets/roles/controller.webp",
+  "img": "systems/draw-steel/assets/roles/ambusher.webp",
   "system": {
     "stamina": {
-      "value": 60,
-      "max": 60,
+      "value": 80,
+      "max": 80,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 1
+        "value": 2
       },
       "agility": {
-        "value": 1
+        "value": 2
       },
       "reason": {
-        "value": 2
+        "value": 0
       },
       "intuition": {
-        "value": 2
+        "value": 0
       },
       "presence": {
-        "value": 2
+        "value": 0
       }
     },
     "combat": {
@@ -39,13 +37,8 @@
       "stability": 0,
       "turns": 1
     },
-    "biography": {
-      "value": "",
-      "languages": [],
-      "director": ""
-    },
     "movement": {
-      "value": 5,
+      "value": 7,
       "types": [
         "walk"
       ],
@@ -78,9 +71,14 @@
         "sonic": 0
       }
     },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
     "source": {
       "book": "Monsters",
-      "page": "53",
+      "page": "54",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -99,18 +97,993 @@
       ],
       "level": 2,
       "ev": 16,
-      "role": "controller",
+      "role": "ambusher",
       "organization": "elite"
     }
   },
+  "items": [
+    {
+      "name": "Sucker Punch",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "pKfo4mdY94QNMo8H": {
+              "_id": "pKfo4mdY94QNMo8H",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "92GuK1CYI0FW9zbL": {
+              "_id": "92GuK1CYI0FW9zbL",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} grabbed",
+                  "potency": {
+                    "value": "@potency.weak+1",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average+1",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "grabbed",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The target can't use triggered actions until the start of the next round. Additionally, if the sneak started their turn hidden from the target, this ability deals an extra [[/damage 4]] damage.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "sucker-punch",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "TX5X3NdOjglMzle7",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.TX5X3NdOjglMzle7"
+    },
+    {
+      "name": "Shadow Cloak",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 2
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "PdUTweOvX5yojMN8": {
+              "_id": "PdUTweOvX5yojMN8",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "2",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "3",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "GhoLqMC9DJ3AiEpg": {
+              "_id": "GhoLqMC9DJ3AiEpg",
+              "type": "special",
+              "name": "Special",
+              "img": null,
+              "special": {
+                "tier1": {
+                  "display": "I < 0 the sneak has concealment from the target (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "display": "I < 1 the sneak has concealment from the target (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  }
+                },
+                "tier3": {
+                  "display": "I < 2 the sneak has concealment from the target (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  }
+                }
+              }
+            },
+            "XqHG6yCslmFtFjn9": {
+              "name": "Concealment",
+              "img": null,
+              "type": "applied",
+              "_id": "XqHG6yCslmFtFjn9",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the sneak has concealment from the target (save ends)",
+                  "potency": {
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The sneak shifts up to their speed and can attempt to hide.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "shadow-cloak",
+        "story": "",
+        "resource": 3,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Shadow Cloak",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.v517WAkDcsA2qxit.Item.Iv7ZaT9iEcUmXAEn",
+          "transfer": false,
+          "_id": "lQU5PDlkO3bqsVP6",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The sneak has concealment from the target</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757911026540,
+            "modifiedTime": 1757911119243,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!v517WAkDcsA2qxit.Iv7ZaT9iEcUmXAEn.lQU5PDlkO3bqsVP6"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Iv7ZaT9iEcUmXAEn",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.Iv7ZaT9iEcUmXAEn"
+    },
+    {
+      "name": "Carving Dagger",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 8
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "UDsHlK9Mq2X3mepB": {
+              "_id": "UDsHlK9Mq2X3mepB",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "N7TSQDSkn5Z3pcAY": {
+              "_id": "N7TSQDSkn5Z3pcAY",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>While bleeding this way, the target can't hide from the sneak or their allies.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "carving-dagger",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "XD23zy44QaY4naZ1",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.XD23zy44QaY4naZ1"
+    },
+    {
+      "name": "Throw",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target must be grabbed by the sneak.</p>",
+          "after": "<p>The target is vertical pushed up to 4 squares. An ally doesn’t take damage from being force moved this way.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "throw",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "j9fuTxNZr4h2PG43",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.j9fuTxNZr4h2PG43"
+    },
+    {
+      "name": "Catcher",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "signature",
+        "keywords": [
+          "melee"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target is grabbed by the sneak.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "catcher",
+        "story": "",
+        "resource": null,
+        "trigger": "A size 1 creature or object is force moved within distance, or a size 1 ally willingly moves within distance."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "PZOhoKGy6tqpnu0I",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.PZOhoKGy6tqpnu0I"
+    },
+    {
+      "name": "Clever Trick",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [],
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "enemy",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The sneak chooses one enemy within distance of the strike to become the target of the strike.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "54"
+        },
+        "_dsid": "clever-trick",
+        "story": "",
+        "resource": 1,
+        "trigger": "The sneak is targeted by a strike."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "VkBaNdjyl0RM5Gaj",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.VkBaNdjyl0RM5Gaj"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Goblin Malice Features",
+      "type": "ability",
+      "_id": "06sDqIj5EE1bUxw1",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "goblin-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.06sDqIj5EE1bUxw1",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757089889090,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.06sDqIj5EE1bUxw1"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Iron Ball",
+      "type": "ability",
+      "_id": "OE8d20QnSaE7ZHfI",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-iron-ball",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757089890435,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.OE8d20QnSaE7ZHfI"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Show Them the Great Fear",
+      "type": "ability",
+      "_id": "XPiOlpj5iRNcFIvP",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "show-them-the-great-fear",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 400000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.XPiOlpj5iRNcFIvP",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757089892603,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.XPiOlpj5iRNcFIvP"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Javelin",
+      "type": "ability",
+      "_id": "5stni4cw4IVUjzqM",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-javelin",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757089896819,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!v517WAkDcsA2qxit.5stni4cw4IVUjzqM"
+    }
+  ],
+  "folder": "IOJX0Gbij4nZLkvh",
   "prototypeToken": {
-    "name": "Bugbear Channeler",
+    "name": "Bugbear Sneak",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/controller.webp",
+      "src": "systems/draw-steel/assets/roles/ambusher.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -179,7 +1152,7 @@
         "ring": null,
         "background": null
       },
-      "effects": 0,
+      "effects": 1,
       "subject": {
         "scale": 1,
         "texture": null
@@ -197,969 +1170,7 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "items": [
-    {
-      "name": "Shadow Drag",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shadow-drag",
-        "story": "",
-        "keywords": [
-          "magic",
-          "ranged",
-          "strike"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "ranged",
-          "primary": 8
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 2
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {
-            "wlZGIzO2aF0SOuc7": {
-              "type": "damage",
-              "_id": "wlZGIzO2aF0SOuc7",
-              "damage": {
-                "tier1": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "10",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "13",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            },
-            "UT7Ll64zdpaswbyH": {
-              "type": "forced",
-              "_id": "UT7Ll64zdpaswbyH",
-              "name": "Pull",
-              "forced": {
-                "tier1": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "0"
-                  },
-                  "display": "{{forced}}",
-                  "properties": []
-                },
-                "tier2": {
-                  "distance": "3",
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "{{forced}}",
-                  "movement": [
-                    "pull"
-                  ],
-                  "properties": []
-                },
-                "tier3": {
-                  "distance": "4",
-                  "movement": [
-                    "pull"
-                  ],
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "{{forced}}",
-                  "properties": []
-                }
-              },
-              "img": null
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target must be on the ground, and each square a target is pulled through is difficult terrain for enemies.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "W42xNXONogrgZ0Fi",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.W42xNXONogrgZ0Fi"
-    },
-    {
-      "name": "Blistering Element",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "blistering-element",
-        "story": "",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "category": "signature",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "burst",
-          "primary": 3
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {
-            "uXkvkUpIJm0zYlep": {
-              "type": "damage",
-              "_id": "uXkvkUpIJm0zYlep",
-              "damage": {
-                "tier1": {
-                  "value": "2",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "3",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "4",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            },
-            "awbNXjg2aYwT5JgQ": {
-              "type": "applied",
-              "_id": "awbNXjg2aYwT5JgQ",
-              "name": "Bleeding",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} bleeding (save ends)",
-                  "potency": {
-                    "value": "0",
-                    "characteristic": "might"
-                  },
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "",
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier3": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "",
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                }
-              },
-              "img": null
-            }
-          }
-        },
-        "effect": {
-          "before": "<p>The channeler chooses one of the following damage types: acid, cold, corruption, fire, or poison.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "T5p9mzimLuGPRQiv",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.T5p9mzimLuGPRQiv"
-    },
-    {
-      "name": "Twist Shape (5 Malice)",
-      "type": "ability",
-      "system": {
-        "type": "main",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "twist-shape-5-malice",
-        "story": "",
-        "keywords": [
-          "magic",
-          "ranged",
-          "strike"
-        ],
-        "category": "",
-        "resource": 5,
-        "trigger": "",
-        "distance": {
-          "type": "ranged",
-          "primary": 5
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "intuition"
-            ]
-          },
-          "effects": {
-            "mTwybvptKE8bgCk9": {
-              "type": "damage",
-              "_id": "mTwybvptKE8bgCk9",
-              "damage": {
-                "tier1": {
-                  "value": "5",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "8",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "11",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              },
-              "name": "",
-              "img": null
-            },
-            "LDvvnDFOHNDsx65w": {
-              "type": "applied",
-              "_id": "LDvvnDFOHNDsx65w",
-              "name": "Shapechange",
-              "applied": {
-                "tier1": {
-                  "potency": {
-                    "characteristic": "presence",
-                    "value": "0"
-                  },
-                  "display": "{{potency}} slowed (save ends)",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
-                  },
-                  "display": "{{potency}} the target is shapechanged (save ends)",
-                  "effects": {
-                    "I38SNfnEpqjEgNCH": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": [
-                        "stacking"
-                      ]
-                    }
-                  }
-                },
-                "tier3": {
-                  "potency": {
-                    "value": "2",
-                    "characteristic": ""
-                  },
-                  "display": "{{potency}} the target is shapechanged (save ends)",
-                  "effects": {
-                    "I38SNfnEpqjEgNCH": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": [
-                        "stacking"
-                      ]
-                    }
-                  }
-                }
-              },
-              "img": null
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>A shapechanged creature is slowed and has fire weakness 10 as their limbs stretch and their skin becomes paper thin.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "Pmr5YR7vdwTOKdru",
-      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
-      "effects": [
-        {
-          "name": "Shapechanged",
-          "img": "icons/magic/nature/plant-sprout-hand-flower-pink.webp",
-          "origin": "Actor.ZaENuomw1aFn4Ffw.Item.Pmr5YR7vdwTOKdru",
-          "transfer": false,
-          "_id": "I38SNfnEpqjEgNCH",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.damage.weaknesses.fire",
-              "mode": 2,
-              "value": "10",
-              "priority": null
-            }
-          ],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "<p>A shapechanged creature is slowed and has fire weakness 10 as their limbs stretch and their skin becomes paper thin.</p>",
-          "tint": "#ffffff",
-          "statuses": [
-            "slowed"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.Pmr5YR7vdwTOKdru.I38SNfnEpqjEgNCH"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.Pmr5YR7vdwTOKdru"
-    },
-    {
-      "name": "Throw",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "throw",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": 1
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Special: The target must be grabbed by the channeler.</p><p>Effect: The target is vertical pushed up to 3 squares. An ally doesnʼt take damage from being force moved this way.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "koat5ibW2aOPjA8i",
-      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.koat5ibW2aOPjA8i"
-    },
-    {
-      "name": "Catcher",
-      "type": "ability",
-      "system": {
-        "type": "freeTriggered",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "catcher",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "A size 1 creature or object is force moved within distance, or a size 1 ally willingly moves within distance.",
-        "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "creatureObject",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target is grabbed by the channeler.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "b4nxh0lciBh5J1ls",
-      "img": "icons/skills/movement/arrow-upward-blue.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.b4nxh0lciBh5J1ls"
-    },
-    {
-      "name": "Shadow Veil",
-      "type": "ability",
-      "system": {
-        "type": "triggered",
-        "source": {
-          "book": "Monsters",
-          "page": "53",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shadow-veil",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "An ally within distance takes damage.",
-        "distance": {
-          "type": "ranged",
-          "primary": 5
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "ally",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The target is wrapped in shadow and halves the damage. The target canʼt be targeted by strikes until the start of their next turn.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "w2DSZ78Y2rAjp449",
-      "img": "icons/skills/movement/arrow-upward-yellow.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.w2DSZ78Y2rAjp449"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Show Them the Great Fear",
-      "type": "ability",
-      "_id": "XPiOlpj5iRNcFIvP",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "show-them-the-great-fear",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 10,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 500000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.XPiOlpj5iRNcFIvP",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757087595483,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.XPiOlpj5iRNcFIvP"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Goblin Malice Features",
-      "type": "ability",
-      "_id": "06sDqIj5EE1bUxw1",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "goblin-malice-features",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 112500,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.06sDqIj5EE1bUxw1",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757087618023,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.06sDqIj5EE1bUxw1"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Iron Ball",
-      "type": "ability",
-      "_id": "OE8d20QnSaE7ZHfI",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-iron-ball",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 125000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757088986805,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.OE8d20QnSaE7ZHfI"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Javelin",
-      "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-javelin",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 325000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757088990828,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.5stni4cw4IVUjzqM"
-    }
-  ],
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -1171,9 +1182,11 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1755639584661,
+    "createdTime": 1757089810422,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!ZaENuomw1aFn4Ffw"
+  "_id": "v517WAkDcsA2qxit",
+  "sort": 250000,
+  "_key": "!actors!v517WAkDcsA2qxit"
 }
