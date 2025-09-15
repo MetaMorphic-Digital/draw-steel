@@ -1,0 +1,107 @@
+{
+  "folder": "rusZqMj7kWieXI2t",
+  "name": "Buzz Balm",
+  "type": "treasure",
+  "_id": "0UEuam82ZIE31Qv7",
+  "img": "icons/consumables/potions/potion-tube-corked-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>Keyword: oil</p><p><em>his cooling orange salve crackles and pops when exposed to the air.</em></p><p><strong>Effect:</strong> As a maneuver, you rub the balm on your body and feel it tingle across your skin. You immediately end the bleeding and weakened conditions on yourself, and you gain a +2 bonus to speed until the start of your next turn.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "316",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "buzz-balm",
+    "kind": "",
+    "category": "consumable",
+    "echelon": 1,
+    "keywords": [
+      "magic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "An ounce of demon honey",
+      "source": "Texts or lore in Kalliak",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 45
+    }
+  },
+  "effects": [
+    {
+      "name": "Quickened",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.0UEuam82ZIE31Qv7",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": ""
+        }
+      },
+      "_id": "aDFBAt6bAypcSJF2",
+      "changes": [
+        {
+          "key": "@character.speed",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": 1,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!0UEuam82ZIE31Qv7.aDFBAt6bAypcSJF2"
+    }
+  ],
+  "sort": 150000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757755174216,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!0UEuam82ZIE31Qv7"
+}
