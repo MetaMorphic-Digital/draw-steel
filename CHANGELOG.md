@@ -27,6 +27,7 @@
   - Level 2 & 3 abilities and features for all classes
   - Remaining Echelon 1 Monsters
   - Echelon 1 Trinkets & Consumables
+  - Echelon 1 Titles
 - Added Combatant Group tracker visibility controls. (#973)
   - If all combatants in a group are hidden, the group is hidden.
   - Added context menu option to quickly hide/unhide each combatant in the group.
