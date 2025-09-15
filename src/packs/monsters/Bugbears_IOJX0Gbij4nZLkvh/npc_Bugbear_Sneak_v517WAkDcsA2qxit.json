@@ -181,7 +181,7 @@
                   "effects": {
                     "grabbed": {
                       "condition": "failure",
-                      "end": "save",
+                      "end": "",
                       "properties": []
                     }
                   }
@@ -195,7 +195,7 @@
                   "effects": {
                     "grabbed": {
                       "condition": "failure",
-                      "end": "save",
+                      "end": "",
                       "properties": []
                     }
                   }
@@ -208,8 +208,8 @@
                   },
                   "effects": {
                     "grabbed": {
-                      "condition": "failure",
-                      "end": "save",
+                      "condition": "always",
+                      "end": "",
                       "properties": []
                     }
                   }
@@ -230,7 +230,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "sucker-punch",
         "story": "",
@@ -348,31 +348,38 @@
                 }
               }
             },
-            "Eo6jlnr2g3pbczLt": {
+            "XqHG6yCslmFtFjn9": {
               "name": "Concealment",
               "img": null,
-              "type": "other",
-              "_id": "Eo6jlnr2g3pbczLt",
-              "other": {
+              "type": "applied",
+              "_id": "XqHG6yCslmFtFjn9",
+              "applied": {
                 "tier1": {
                   "display": "{{potency}} the sneak has concealment from the target (save ends)",
                   "potency": {
-                    "value": "@potency.weak",
                     "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
                   }
                 },
                 "tier2": {
-                  "display": "{{potency}} the sneak has concealment from the target (save ends)",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
                   }
                 },
                 "tier3": {
-                  "display": "{{potency}} the sneak has concealment from the target (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
+                  "effects": {
+                    "lQU5PDlkO3bqsVP6": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
                   }
                 }
               }
@@ -391,14 +398,57 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "shadow-cloak",
         "story": "",
         "resource": 3,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Shadow Cloak",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.v517WAkDcsA2qxit.Item.Iv7ZaT9iEcUmXAEn",
+          "transfer": false,
+          "_id": "lQU5PDlkO3bqsVP6",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The sneak has concealment from the target</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757911026540,
+            "modifiedTime": 1757911119243,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!v517WAkDcsA2qxit.Iv7ZaT9iEcUmXAEn.lQU5PDlkO3bqsVP6"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -546,7 +596,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "carving-dagger",
         "story": "",
@@ -614,7 +664,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "throw",
         "story": "",
@@ -681,7 +731,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "catcher",
         "story": "",
@@ -745,7 +795,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "54"
         },
         "_dsid": "clever-trick",
         "story": "",
@@ -1028,7 +1078,7 @@
   "folder": "IOJX0Gbij4nZLkvh",
   "prototypeToken": {
     "name": "Bugbear Sneak",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -1045,11 +1095,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
