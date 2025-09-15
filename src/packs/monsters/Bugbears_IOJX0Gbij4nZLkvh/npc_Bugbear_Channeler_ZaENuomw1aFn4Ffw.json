@@ -105,7 +105,7 @@
   },
   "prototypeToken": {
     "name": "Bugbear Channeler",
-    "displayName": 30,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -122,11 +122,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -159,7 +159,7 @@
       }
     },
     "sight": {
-      "enabled": true,
+      "enabled": false,
       "range": 0,
       "angle": 360,
       "visionMode": "basic",
@@ -695,8 +695,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.Pmr5YR7vdwTOKdru.I38SNfnEpqjEgNCH"
         },
         {
@@ -732,8 +730,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.Pmr5YR7vdwTOKdru.kDGqDokg1Ao5CKWo"
         }
       ],
@@ -822,7 +818,7 @@
       "name": "Catcher",
       "type": "ability",
       "system": {
-        "type": "none",
+        "type": "freeTriggered",
         "source": {
           "book": "Monsters",
           "page": "53",
@@ -872,7 +868,7 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.8.1",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1113,48 +1109,120 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 125000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757088986805,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!ZaENuomw1aFn4Ffw.OE8d20QnSaE7ZHfI"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Javelin",
-      "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
+      "_id": "vZMdicLidQzWMkgm",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+      "effects": [
+        {
+          "name": "Weakened",
+          "img": "icons/svg/downgrade.svg",
+          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
+          "transfer": false,
+          "_id": "q7HlyoZVCjDQjV8N",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": ""
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": 1,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "weakened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
         },
-        "_dsid": "grab-javelin",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
+        {
+          "name": "Active Effect",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
+          "transfer": false,
+          "_id": "diY2QfVz88MGGy8p",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
+        },
+        {
+          "name": "Active Effect (2)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
+          "transfer": false,
+          "_id": "pQmjqzyTzWCf2nj4",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ZaENuomw1aFn4Ffw.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
         },
         "damageDisplay": "melee",
         "target": {

@@ -1,0 +1,750 @@
+{
+  "folder": "SWbDTDwNDPa3JlDQ",
+  "name": "Kobold Legionary",
+  "type": "npc",
+  "_id": "1rcyL6J5vNBSuPV0",
+  "img": "systems/draw-steel/assets/roles/defender.webp",
+  "system": {
+    "stamina": {
+      "value": 20,
+      "max": 20,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": 0
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "S"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "192",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 1,
+      "keywords": [
+        "humanoid"
+      ],
+      "level": 1,
+      "ev": 3,
+      "role": "defender",
+      "organization": "horde"
+    }
+  },
+  "prototypeToken": {
+    "name": "Kobold Legionary",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/defender.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Shield? Shield!",
+      "type": "feature",
+      "_id": "3fdmNUhuqakwyz18",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While adjacent to an ally who also has this trait, the legionary has stability 1, has cover, and grants cover to allies.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "192",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shield-shield",
+        "advancements": {}
+      },
+      "effects": [
+        {
+          "name": "Shield? Shield!",
+          "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+          "type": "base",
+          "disabled": true,
+          "_id": "23SDXe4V066ielDj",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 4,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The kobold has stability 1, has cover, and grants cover to allies.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757797878367,
+            "modifiedTime": 1757797878367,
+            "lastModifiedBy": null
+          },
+          "origin": null,
+          "_key": "!actors.items.effects!1rcyL6J5vNBSuPV0.3fdmNUhuqakwyz18.23SDXe4V066ielDj"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.3fdmNUhuqakwyz18",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948220179,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.3fdmNUhuqakwyz18"
+    },
+    {
+      "folder": "xuS3HDBwVVF8JHHi",
+      "name": "Maniple Tactics",
+      "type": "ability",
+      "_id": "KOsnxnQvSid3ZahG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "190",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "maniple-tactics",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a [[/damage @monster.freeStrike]]</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.KOsnxnQvSid3ZahG",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948233177,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.KOsnxnQvSid3ZahG"
+    },
+    {
+      "folder": "xuS3HDBwVVF8JHHi",
+      "name": "Set the Initiative",
+      "type": "ability",
+      "_id": "fyuPK3F17a7SWmWO",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "190",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "set-the-initiative",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Two kobolds take their turns in a row.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.fyuPK3F17a7SWmWO",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948234334,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.fyuPK3F17a7SWmWO"
+    },
+    {
+      "folder": "xuS3HDBwVVF8JHHi",
+      "name": "Shield Wall",
+      "type": "ability",
+      "_id": "FTBTYYIqhMaTU882",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "190",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shield-wall",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, all kobolds with <strong>Shield? Shield!</strong> Impose an additional bane on incoming strikes and abilities.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.FTBTYYIqhMaTU882",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948235870,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.FTBTYYIqhMaTU882"
+    },
+    {
+      "name": "Gladius",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "192",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "gladius",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "ts5bBsRsOZ4iqQ5G": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "ts5bBsRsOZ4iqQ5G",
+              "damage": {
+                "tier1": {
+                  "value": "3"
+                },
+                "tier2": {
+                  "value": "4"
+                },
+                "tier3": {
+                  "value": "5"
+                }
+              }
+            },
+            "ALCmI1LoqwebRnsm": {
+              "name": "Taunted",
+              "img": null,
+              "type": "applied",
+              "_id": "ALCmI1LoqwebRnsm",
+              "applied": {
+                "tier1": {
+                  "display": "taunted (EoT)",
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "If the legionary is acting as a captain, they and each mem ber of their squad shift up to 2 squares before this ability is used.",
+          "value": 3
+        }
+      },
+      "_id": "UCsi6iRPr6IaaJE6",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948239992,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.UCsi6iRPr6IaaJE6"
+    },
+    {
+      "name": "Shield Bash",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "192",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shield-bash",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "2ZjlDcrEoz2gzFzu": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "2ZjlDcrEoz2gzFzu",
+              "damage": {
+                "tier1": {
+                  "value": "2"
+                },
+                "tier2": {
+                  "value": "3"
+                },
+                "tier3": {
+                  "value": "4"
+                }
+              }
+            },
+            "FWRSIF51y02dbOtY": {
+              "name": "Push",
+              "img": null,
+              "type": "forced",
+              "_id": "FWRSIF51y02dbOtY"
+            },
+            "V6oxqEJnKgQfHMPX": {
+              "name": "Prone",
+              "img": null,
+              "type": "applied",
+              "_id": "V6oxqEJnKgQfHMPX",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} prone",
+                  "potency": {
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "prone": {
+                      "condition": "failure"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "599n8Cx95o0oAhgh",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756948398641,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!1rcyL6J5vNBSuPV0.599n8Cx95o0oAhgh"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756948115322,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!1rcyL6J5vNBSuPV0"
+}

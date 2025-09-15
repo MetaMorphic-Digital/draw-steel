@@ -85,9 +85,11 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     this.turn = null;
     await super.nextRound();
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return this;
     const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.combat.turns ?? 1 }));
     await this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+    const combatantGroupUpdates = this.groups.map(c => ({ _id: c.id, initiative: 1 }));
+    await this.updateEmbeddedDocuments("CombatantGroup", combatantGroupUpdates);
     return this;
   }
 
