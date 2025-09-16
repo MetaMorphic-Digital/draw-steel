@@ -47,25 +47,46 @@
             "tier1": {
               "value": "5",
               "types": [
-                "fire"
-              ]
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
             },
             "tier2": {
               "value": "8",
               "types": [
-                "fire"
-              ]
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
             },
             "tier3": {
               "value": "11",
               "types": [
-                "fire"
-              ]
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
             }
           }
         },
         "EeYEO4u7ex2EywNz": {
-          "name": "Frightened",
+          "name": "Condition",
           "img": null,
           "type": "applied",
           "_id": "EeYEO4u7ex2EywNz",
@@ -78,32 +99,69 @@
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
                 }
               },
               "display": "{{potency}} frightened (save ends)"
             },
             "tier2": {
               "potency": {
-                "value": "2"
+                "value": "2",
+                "characteristic": ""
               },
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
                 }
-              }
+              },
+              "display": ""
             },
             "tier3": {
               "effects": {
                 "frightened": {
                   "condition": "failure",
-                  "end": "save"
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
                 }
               },
               "potency": {
-                "value": "3"
-              }
+                "value": "3",
+                "characteristic": ""
+              },
+              "display": ""
             }
           }
         }
