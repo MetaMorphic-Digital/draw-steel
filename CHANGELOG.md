@@ -22,12 +22,12 @@
 
 ### Added
 
-- Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
   - Remaining Echelon 1 Monsters
   - Echelon 1 Trinkets & Consumables
   - Echelon 1 Titles
+- Expanded end of encounter prompt to reset surges. (#931)
 - Added Combatant Group tracker visibility controls. (#973)
   - If all combatants in a group are hidden, the group is hidden.
   - Added context menu option to quickly hide/show each combatant in the group.
