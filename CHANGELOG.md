@@ -66,6 +66,8 @@
 - Addressed ProseMirror deprecation warning. (#1080)
 - Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses. (#1086)
 - Fixed some broken labels & css from the equipment => treasure rename.
+- Removed invalid roles from leaders and solo monsters. (#1087)
+  - Improved monster tag templates to filter out invalid roles and organizations to prevent blank tags.
 
 ## 0.8.0
 

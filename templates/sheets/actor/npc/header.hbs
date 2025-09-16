@@ -22,10 +22,10 @@
       <div class="tag">{{keyword}}</div>
       {{/each}}
       {{!-- Organization/Role Tags --}}
-      {{#if system.monster.organization}}
+      {{#if organizationLabel}}
       <div class="tag">{{organizationLabel}}</div>
       {{/if}}
-      {{#if system.monster.role}}
+      {{#if roleLabel}}
       <div class="tag">{{roleLabel}}</div>
       {{/if}}
       {{#unless isPlay}}
