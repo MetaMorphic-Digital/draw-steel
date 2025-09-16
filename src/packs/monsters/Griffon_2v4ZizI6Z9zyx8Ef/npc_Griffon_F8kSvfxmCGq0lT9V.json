@@ -1,28 +1,28 @@
 {
-  "name": "Wode Elf Green Seer",
+  "name": "Griffon",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "img": "systems/draw-steel/assets/roles/mount.webp",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 20,
+      "value": 80,
+      "max": 80,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 0
-      },
-      "agility": {
-        "value": 1
-      },
-      "reason": {
-        "value": 0
-      },
-      "intuition": {
         "value": 2
       },
-      "presence": {
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
         "value": 1
+      },
+      "presence": {
+        "value": 2
       }
     },
     "combat": {
@@ -31,16 +31,16 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
+        "value": 2,
         "letter": "M"
       },
-      "stability": 0,
+      "stability": 2,
       "turns": 1
     },
     "movement": {
-      "value": 7,
+      "value": 9,
       "types": [
-        "walk"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -72,13 +72,13 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "138",
+      "page": "167",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -90,37 +90,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 5,
       "keywords": [
-        "fey",
-        "humanoid"
+        "beast"
       ],
-      "level": 1,
-      "ev": 6,
-      "role": "hexer",
-      "organization": "platoon"
+      "level": 2,
+      "ev": 16,
+      "role": "mount",
+      "organization": "elite"
     }
   },
   "items": [
     {
-      "name": "Masking Glamor",
+      "name": "Beast of Prey",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Abilities targeting the green seer that would take a bane from cover or concealment have a double bane instead.</p>",
+          "value": "<p>While grabbed by the griffon, a creature has a double bane on the Escape Grab maneuver.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "138"
+          "page": "167"
         },
-        "_dsid": "masking-glamor",
+        "_dsid": "beast-of-prey",
         "advancements": {}
       },
-      "_id": "FpcCdK7vO8MFk01S",
+      "_id": "i6tJb5aL3OCnCQtj",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -138,45 +137,83 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.FpcCdK7vO8MFk01S"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.i6tJb5aL3OCnCQtj"
     },
     {
-      "name": "The Forest's Embrace",
-      "type": "ability",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "name": "Steady",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
-        "type": "main",
-        "category": "signature",
+        "description": {
+          "value": "<p>Any power roll that could knock the griffon or their rider prone takes a bane.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "167"
+        },
+        "_dsid": "steady",
+        "advancements": {}
+      },
+      "_id": "nW2sOBdIL5mfzJ7u",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.nW2sOBdIL5mfzJ7u"
+    },
+    {
+      "name": "Crack the Earth",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
         "keywords": [
-          "magic",
-          "ranged",
-          "strike"
+          "area",
+          "ranged"
         ],
         "distance": {
-          "type": "ranged",
-          "primary": 10
+          "type": "cube",
+          "primary": 3,
+          "secondary": 8
         },
         "target": {
-          "type": "creatureObject",
-          "value": 1
+          "type": "enemy",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "intuition"
+              "might"
             ]
           },
           "effects": {
-            "OiVu40Ko04xX2sq0": {
-              "_id": "OiVu40Ko04xX2sq0",
+            "uY3TjJig6WEfkOO6": {
+              "_id": "uY3TjJig6WEfkOO6",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "5",
+                  "value": "4",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -185,7 +222,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "7",
+                  "value": "6",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -204,38 +241,60 @@
                 }
               }
             },
-            "52fZXh8P2bsJ0hsu": {
-              "_id": "52fZXh8P2bsJ0hsu",
-              "type": "applied",
-              "name": "Restrained",
+            "3tVZbHvqRhO6C2Nc": {
+              "_id": "3tVZbHvqRhO6C2Nc",
+              "type": "forced",
+              "name": "push",
               "img": null,
-              "applied": {
+              "forced": {
                 "tier2": {
-                  "display": "{{potency}} restrained (save ends)",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "display": "{{potency}} {{forced}}",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "restrained": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
+                    "characteristic": "might"
                   }
                 },
                 "tier3": {
-                  "display": "",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "display": "{{potency}} {{forced}}",
+                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "restrained": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
+                    "characteristic": "might"
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            },
+            "kRg2fOAM7xxX4rxf": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "kRg2fOAM7xxX4rxf",
+              "applied": {
+                "tier3": {
+                  "display": "prone",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 },
                 "tier1": {
@@ -245,6 +304,14 @@
                     "value": "@potency.weak",
                     "characteristic": "none"
                   }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
                 }
               }
             }
@@ -252,7 +319,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>While restrained this way, a target can't search for hidden creatures.</p>"
+          "after": "<p>The griffon must be flying and must have a creature or object grabbed.</p>"
         },
         "spend": {
           "text": "",
@@ -262,9 +329,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "138"
+          "page": "167"
         },
-        "_dsid": "the-forests-embrace",
+        "_dsid": "crack-the-earth",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -283,121 +350,81 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "NhRpdb1PwUoqUxGu",
+      "_id": "I9f4VBwOwfHDsHsF",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.NhRpdb1PwUoqUxGu"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.I9f4VBwOwfHDsHsF"
     },
     {
-      "name": "The Natural Cycle",
+      "name": "Wing Buffet",
       "type": "ability",
       "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "system": {
         "type": "maneuver",
         "category": "heroic",
         "keywords": [
-          "magic",
-          "ranged",
-          "strike"
+          "area"
         ],
         "distance": {
-          "type": "ranged",
-          "primary": 10
+          "type": "line",
+          "primary": 4,
+          "secondary": 2,
+          "tertiary": 1
         },
         "target": {
           "type": "creature",
-          "value": 2
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "intuition"
+              "might"
             ]
           },
           "effects": {
-            "JXZR6CMPgBGUbtMn": {
-              "_id": "JXZR6CMPgBGUbtMn",
-              "type": "damage",
-              "name": "",
+            "VORHgDEDUqheAbKE": {
+              "_id": "VORHgDEDUqheAbKE",
+              "type": "forced",
+              "name": "push",
               "img": null,
-              "damage": {
+              "forced": {
                 "tier1": {
-                  "value": "2",
-                  "types": [],
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "none"
+                    "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "value": "4",
-                  "types": [],
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "display": "{{forced}}",
                   "properties": [],
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": ""
+                    "characteristic": "might"
                   }
                 },
                 "tier3": {
-                  "value": "6",
-                  "types": [],
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "5",
+                  "display": "{{forced}}",
                   "properties": [],
                   "potency": {
                     "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "AKVEQzovhVaKAOsx": {
-              "_id": "AKVEQzovhVaKAOsx",
-              "type": "applied",
-              "name": "Weakened and Bleeding",
-              "img": null,
-              "applied": {
-                "tier2": {
-                  "display": "{{potency}} weakened (save ends)",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "weakened": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier3": {
-                  "display": "{{potency}} bleeding (save ends); the target has a double bane on strikes (save ends)",
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    },
-                    "3K2d0h2983KZE3av": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "1",
-                    "characteristic": ""
+                    "characteristic": "might"
                   }
                 }
               }
@@ -406,7 +433,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>While bleeding or weakened this way, a target is covered in lichen.</p>"
+          "after": "<p>A target object must be size 2 or smaller.</p>"
         },
         "spend": {
           "text": "",
@@ -416,125 +443,12 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "138"
+          "page": "167"
         },
-        "_dsid": "the-natural-cycle",
+        "_dsid": "wing-buffet",
         "story": "",
         "resource": 3,
         "trigger": ""
-      },
-      "effects": [
-        {
-          "name": "Strike Double Bane",
-          "img": "icons/magic/air/wind-vortex-swirl-purple.webp",
-          "origin": "Actor.2DdC6ESKS4KBIQ70.Item.m0UjVYvvy2zBo8p4",
-          "transfer": false,
-          "_id": "3K2d0h2983KZE3av",
-          "type": "abilityModifier",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            },
-            "filters": {
-              "keywords": [
-                "strike"
-              ]
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "<p>You have a double bane on strikes</p>",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!2DdC6ESKS4KBIQ70.m0UjVYvvy2zBo8p4.3K2d0h2983KZE3av"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "m0UjVYvvy2zBo8p4",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.m0UjVYvvy2zBo8p4"
-    },
-    {
-      "name": "Foreseen Punishment",
-      "type": "ability",
-      "img": "icons/magic/air/air-wave-gust-blue.webp",
-      "system": {
-        "type": "freeTriggered",
-        "category": "signature",
-        "keywords": [
-          "ranged"
-        ],
-        "distance": {
-          "type": "ranged",
-          "primary": 5
-        },
-        "target": {
-          "type": "creature",
-          "value": 1
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "intuition"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The green seer makes a free strike against the target after the target’s triggered action is resolved.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "138"
-        },
-        "_dsid": "foreseen-punishment",
-        "story": "",
-        "resource": null,
-        "trigger": "A creature uses a triggered action targeting the green seer or an ally within distance."
       },
       "effects": [],
       "folder": null,
@@ -550,38 +464,102 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "XLbngO2oVUklZM1g",
+      "_id": "KTg5XSpFj1X8hUJC",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.XLbngO2oVUklZM1g"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.KTg5XSpFj1X8hUJC"
     },
     {
-      "folder": "g8UHG2eyUpTG7CVk",
-      "name": "Forest Network",
+      "name": "Zephyr Feint",
       "type": "ability",
-      "_id": "DNQTI31GwxJLJaKh",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The griffon halves the damage, ignores any nondamaging effects associated with it, and shifts up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "167"
+        },
+        "_dsid": "zephyr-feint",
+        "story": "",
+        "resource": 1,
+        "trigger": "The griffon takes damage"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "dMFLGApxDlqiI9kP",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.dMFLGApxDlqiI9kP"
+    },
+    {
+      "folder": "A7uroZLjUlKkmO16",
+      "name": "Swoop",
+      "type": "ability",
+      "_id": "bizrmMLXIn2MZWsn",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "135",
+          "page": "166",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "forest-network",
+        "_dsid": "swoop",
         "story": "",
         "keywords": [],
-        "type": "none",
+        "type": "maneuver",
         "category": "heroic",
         "resource": 3,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "self"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "self"
         },
         "power": {
           "roll": {
@@ -591,7 +569,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each wode elf who ends this turn hidden can shift up to their speed while remaining hidden.</p>",
+          "before": "<p>The griffon flies up to their speed, and can make a free strike against each creature who makes an opportunity attack against them during this movement.</p>",
           "after": ""
         },
         "spend": {
@@ -607,7 +585,7 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.DNQTI31GwxJLJaKh",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.bizrmMLXIn2MZWsn",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -616,22 +594,22 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.DNQTI31GwxJLJaKh"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.bizrmMLXIn2MZWsn"
     },
     {
-      "folder": "g8UHG2eyUpTG7CVk",
-      "name": "Punishing Regrowth",
+      "folder": "A7uroZLjUlKkmO16",
+      "name": "Piercing Cry",
       "type": "ability",
-      "_id": "4M0YYV4gUX0n98tl",
+      "_id": "kzbgt1woQJVtPwsG",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "135",
+          "page": "166",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "punishing-regrowth",
+        "_dsid": "piercing-cry",
         "story": "",
         "keywords": [],
         "type": "none",
@@ -653,7 +631,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Until the end of the round, each wode elf gains an edge on abili ties, and their strikes can slide a target up to 2 squares in addition to their usual effects. If a strike already imposes forced movement, this slide happens after that forced movement. A creature force moved by a wode elf’s strike who ends this forced movement in difficult terrain is restrained until the end of their next turn.</p>",
+          "before": "<p>A griffon acting this turn unleashes a hideous screech at one enemy within 5 squares of them, forcing that creature to make an <strong>Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"122\"><p>11 or less</p></td><td><p>Frightened (save ends)</p></td></tr><tr><td data-colwidth=\"122\"><p>12-16</p></td><td><p>Frightened (EoT)</p></td></tr><tr><td data-colwidth=\"122\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -669,7 +647,7 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.4M0YYV4gUX0n98tl",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.kzbgt1woQJVtPwsG",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -678,34 +656,34 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.4M0YYV4gUX0n98tl"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.kzbgt1woQJVtPwsG"
     },
     {
-      "folder": "g8UHG2eyUpTG7CVk",
-      "name": "Vines Everywhere",
+      "folder": "A7uroZLjUlKkmO16",
+      "name": "Wildwinds",
       "type": "ability",
-      "_id": "Xo0apOKkrnZ7lnKM",
+      "_id": "Uudy5DxOsE8X0LQ3",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "135",
+          "page": "166",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "vines-everywhere",
+        "_dsid": "wildwinds",
         "story": "",
         "keywords": [],
         "type": "none",
-        "category": "heroic",
-        "resource": 7,
+        "category": "villain",
+        "resource": 10,
         "trigger": "",
         "distance": {
-          "type": "special"
+          "type": "self"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "self"
         },
         "power": {
           "roll": {
@@ -715,7 +693,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Vines rapidly grow across the entire encounter map. Each enemy in the encounter makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 8]] damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>Restrained (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Winds bluster and blow across the encounter map. Until the end of the encounter, each creature who can’t fly or isn’t mounted on a fly ing creature takes a −3 penalty to stability, and any forced movement effect targeting such a creature moves them an additional 5 squares.</p>",
           "after": ""
         },
         "spend": {
@@ -731,7 +709,7 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.Xo0apOKkrnZ7lnKM",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.Uudy5DxOsE8X0LQ3",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -740,19 +718,155 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!2DdC6ESKS4KBIQ70.Xo0apOKkrnZ7lnKM"
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.Uudy5DxOsE8X0LQ3"
+    },
+    {
+      "name": "Claw Swipes",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "167",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "claw-swipes",
+        "story": "",
+        "keywords": [
+          "charge",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "nhjhxzjjens59Vpd": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "nhjhxzjjens59Vpd",
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "O5Bl6Quw9y6pfpTd": {
+              "name": "Shift",
+              "img": null,
+              "type": "other",
+              "_id": "O5Bl6Quw9y6pfpTd",
+              "other": {
+                "tier1": {
+                  "display": "the griffon can shift 1 square",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the griffon shifts up to 2 squares",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "the griffon shifts up to 3 squares",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>If this ability is used as part of the Charge main action, the griffon can grab one of the targets.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "E0qyZXEyp8VoqWcC",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.E0qyZXEyp8VoqWcC"
     }
   ],
-  "folder": "Ji95GDWQ7qRIum3n",
-  "_id": "2DdC6ESKS4KBIQ70",
+  "folder": "2v4ZizI6Z9zyx8Ef",
+  "_id": "F8kSvfxmCGq0lT9V",
   "prototypeToken": {
-    "name": "Wode Elf Green Seer",
+    "name": "Griffon",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "src": "systems/draw-steel/assets/roles/mount.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -840,7 +954,7 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 400000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -852,9 +966,9 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757131092988,
+    "createdTime": 1757285040458,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!2DdC6ESKS4KBIQ70"
+  "_key": "!actors!F8kSvfxmCGq0lT9V"
 }

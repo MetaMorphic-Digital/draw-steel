@@ -30,7 +30,7 @@
   - Echelon 1 Titles
 - Added Combatant Group tracker visibility controls. (#973)
   - If all combatants in a group are hidden, the group is hidden.
-  - Added context menu option to quickly hide/unhide each combatant in the group.
+  - Added context menu option to quickly hide/show each combatant in the group.
 
 ### Changed
 
@@ -64,7 +64,7 @@
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
 - Addressed ProseMirror deprecation warning. (#1080)
-- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
+- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses. (#1086)
 - Fixed some broken labels & css from the equipment => treasure rename.
 
 ## 0.8.0

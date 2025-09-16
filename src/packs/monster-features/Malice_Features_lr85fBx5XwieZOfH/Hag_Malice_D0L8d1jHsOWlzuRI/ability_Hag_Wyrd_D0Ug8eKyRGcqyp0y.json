@@ -1,0 +1,197 @@
+{
+  "folder": "D0L8d1jHsOWlzuRI",
+  "name": "Hag Wyrd",
+  "type": "ability",
+  "_id": "D0Ug8eKyRGcqyp0y",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "168",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "hag-wyrd",
+    "story": "",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 10,
+      "secondary": 1,
+      "tertiary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "3",
+        "characteristics": []
+      },
+      "effects": {
+        "AHQJOeeWUwhVYNaQ": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "AHQJOeeWUwhVYNaQ",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "8",
+              "types": [
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "11",
+              "types": [
+                "cold",
+                "fire",
+                "lightning"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "EeYEO4u7ex2EywNz": {
+          "name": "Condition",
+          "img": null,
+          "type": "applied",
+          "_id": "EeYEO4u7ex2EywNz",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "value": "1",
+                "characteristic": "reason"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "display": "{{potency}} frightened (save ends)"
+            },
+            "tier2": {
+              "potency": {
+                "value": "2",
+                "characteristic": ""
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "display": ""
+            },
+            "tier3": {
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "dazed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                },
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "3",
+                "characteristic": ""
+              },
+              "display": ""
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>After making the power roll, the hag can choose to replace the damage type and condition with lightning damage and dazed, or cold damage and slowed.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757285517611,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!D0Ug8eKyRGcqyp0y"
+}
