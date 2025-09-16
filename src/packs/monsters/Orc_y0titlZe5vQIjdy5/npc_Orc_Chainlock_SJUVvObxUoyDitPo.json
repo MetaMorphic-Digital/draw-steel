@@ -1,0 +1,800 @@
+{
+  "folder": "y0titlZe5vQIjdy5",
+  "name": "Orc Chainlock",
+  "type": "npc",
+  "_id": "SJUVvObxUoyDitPo",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "system": {
+    "stamina": {
+      "value": 20,
+      "max": 20,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": 1
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": 0
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "L"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "217",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 3,
+      "keywords": [
+        "humanoid"
+      ],
+      "level": 1,
+      "ev": 6,
+      "role": "hexer",
+      "organization": "platoon"
+    }
+  },
+  "prototypeToken": {
+    "name": "Orc Chainlock",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Chain Link",
+      "type": "feature",
+      "_id": "a4LhswsOZlhWy26G",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever the chainlock is force moved by a creature’s melee abil ity, the creature is pulled the same distance toward the chainlock after the forced movement is resolved.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "chain-link",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756957767350,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.a4LhswsOZlhWy26G"
+    },
+    {
+      "name": "Relentless",
+      "type": "feature",
+      "_id": "Ieo5IzPMKEmkh0EI",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the chainlock is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying. If the target of the free strike is reduced to 0 Stamina, the chainlock is reduced to 1 Stamina instead.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "relentless",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756957788639,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.Ieo5IzPMKEmkh0EI"
+    },
+    {
+      "name": "Hook and Chain",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "hook-and-chain",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "QuzKLVhKACPNxsEn": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "QuzKLVhKACPNxsEn",
+              "damage": {
+                "tier1": {
+                  "value": "5"
+                },
+                "tier2": {
+                  "value": "7"
+                },
+                "tier3": {
+                  "value": "9"
+                }
+              }
+            },
+            "wiEEGELiIPlwys8v": {
+              "name": "Pull",
+              "img": null,
+              "type": "forced",
+              "_id": "wiEEGELiIPlwys8v",
+              "forced": {
+                "tier2": {
+                  "distance": "2"
+                },
+                "tier3": {
+                  "distance": "3"
+                }
+              }
+            },
+            "ZaTNdkaAcS0uhS5p": {
+              "name": "Hooked",
+              "img": null,
+              "type": "applied",
+              "_id": "ZaTNdkaAcS0uhS5p",
+              "applied": {
+                "tier1": {
+                  "potency": {
+                    "characteristic": "might"
+                  },
+                  "display": "{{potency}} the target is hooked (save ends)",
+                  "effects": {
+                    "Qlv8Kwqa1kc2fr2t": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "Qlv8Kwqa1kc2fr2t": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "Qlv8Kwqa1kc2fr2t": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A hooked target can’t move more than 3 squares away from the chainlock’s position when this ability is used.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "8pAnrWZXSXGscKK1",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [
+        {
+          "name": "Hooked",
+          "img": "icons/skills/melee/strike-blade-blood-red.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.SJUVvObxUoyDitPo.Item.8pAnrWZXSXGscKK1",
+          "transfer": false,
+          "_id": "Qlv8Kwqa1kc2fr2t",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>A hooked target can’t move more than 3 squares away from the chainlock’s position when this ability is used.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1756957968376,
+            "modifiedTime": 1756958026417,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!SJUVvObxUoyDitPo.8pAnrWZXSXGscKK1.Qlv8Kwqa1kc2fr2t"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756957853272,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.8pAnrWZXSXGscKK1"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Overwhelming March",
+      "type": "ability",
+      "_id": "wRlM0yKql0bXpAAe",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "overwhelming-march",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"101\"><p>11 or less</p></td><td><p>[[/damage 6]] damage; prone</p></td></tr><tr><td data-colwidth=\"101\"><p>12-16</p></td><td><p>[[/damage 4]] damage; prone</p></td></tr><tr><td data-colwidth=\"101\"><p>17+</p></td><td><p>Push 2</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756958070114,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.wRlM0yKql0bXpAAe"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Trench",
+      "type": "ability",
+      "_id": "BStQdG3SobeFUDES",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-trench",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756958071528,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.BStQdG3SobeFUDES"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Cavity",
+      "type": "ability",
+      "_id": "OMNyXoF5k0h6ffBa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-cavity",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; the target falls</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the pit.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756958072926,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.OMNyXoF5k0h6ffBa"
+    },
+    {
+      "name": "Heavy Crossbolt",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "217",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "heavy-crossbolt",
+        "story": "",
+        "keywords": [
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {
+            "Oyg1weNy3p9avcsk": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "Oyg1weNy3p9avcsk",
+              "damage": {
+                "tier1": {
+                  "value": "5"
+                },
+                "tier2": {
+                  "value": "7"
+                },
+                "tier3": {
+                  "value": "9"
+                }
+              }
+            },
+            "ZNeQaeNkt2jRe7DT": {
+              "name": "Slowed",
+              "img": null,
+              "type": "applied",
+              "_id": "ZNeQaeNkt2jRe7DT",
+              "applied": {
+                "tier1": {
+                  "potency": {
+                    "characteristic": "agility"
+                  },
+                  "display": "{{potency}} slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "Prone; {{potency}} slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    },
+                    "prone": {
+                      "condition": "failure",
+                      "end": ""
+                    }
+                  }
+                },
+                "tier2": {
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "1q0q8JFvggJWNxWu",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756958105353,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!SJUVvObxUoyDitPo.1q0q8JFvggJWNxWu"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756957665584,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!SJUVvObxUoyDitPo"
+}
