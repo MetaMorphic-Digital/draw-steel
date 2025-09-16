@@ -619,68 +619,6 @@
       "img": "icons/skills/movement/arrow-upward-blue.webp",
       "effects": [],
       "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!CfTBjxc0S0zbpYFU.E1rzwE72ls2rnpO6"
-    },
-    {
-      "name": "Goblin Mode",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "goblin-mode",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A goblin starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each goblin in the encounter gains a +2 bonus to speed until the end of the round.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "4IYmvaux8p8vaWR6",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "vxOVWECtypuYigNy",
       "sort": 100000,
       "ownership": {
         "default": 0,
@@ -691,278 +629,34 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!CfTBjxc0S0zbpYFU.4IYmvaux8p8vaWR6"
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.E1rzwE72ls2rnpO6"
     },
     {
-      "name": "Swamp Stink",
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Goblin Malice Features",
       "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "swamp-stink",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "A goblin starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": [
-              "might"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The encounter map is covered in a green mist that lasts until the end of the round, and which can’t be dispersed by wind. All areas of the map are difficult terrain for non-goblins, and each non-goblin on the map makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Might test.</span></strong></span></p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 5 poison]] damage; the creature is weakened until the mist disappears</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The creature is weakened until the mist disappears</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No Effect</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "vZMdicLidQzWMkgm",
+      "_id": "06sDqIj5EE1bUxw1",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [
-        {
-          "name": "Weakened",
-          "img": "icons/svg/downgrade.svg",
-          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
-          "transfer": false,
-          "_id": "q7HlyoZVCjDQjV8N",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": ""
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": 1,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "weakened"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
-        },
-        {
-          "name": "Active Effect",
-          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
-          "transfer": false,
-          "_id": "diY2QfVz88MGGy8p",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
-        },
-        {
-          "name": "Active Effect (2)",
-          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
-          "transfer": false,
-          "_id": "pQmjqzyTzWCf2nj4",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
-        },
-        {
-          "name": "Active Effect (3)",
-          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
-          "transfer": false,
-          "_id": "sHqFyZPtZEXdviKs",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
-        },
-        {
-          "name": "Active Effect (4)",
-          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-          "origin": "Actor.6SR8siFeC5lWUzoO.Item.ia7W3kon7iUSQp4N",
-          "transfer": false,
-          "_id": "KYZB3U4Batf1yIgd",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.347",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
-        }
-      ],
-      "folder": "vxOVWECtypuYigNy",
-      "sort": 500000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!CfTBjxc0S0zbpYFU.vZMdicLidQzWMkgm"
-    },
-    {
-      "name": "Tiny Stabs",
-      "type": "ability",
       "system": {
-        "type": "none",
         "source": {
           "book": "Monsters",
-          "page": "160",
+          "page": "52",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "tiny-stabs",
+        "_dsid": "goblin-malice-features",
         "story": "",
         "keywords": [],
+        "type": "none",
         "category": "heroic",
-        "resource": 5,
-        "trigger": "A goblin starts its turn.",
+        "resource": null,
+        "trigger": "",
         "distance": {
           "type": "special"
         },
@@ -978,7 +672,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each enemy in the encounter takes 1 damage for each goblin adjacent to them.</p>",
+          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
           "after": ""
         },
         "spend": {
@@ -986,10 +680,133 @@
           "value": null
         }
       },
-      "_id": "Oa0MhwS1yeyeJ5qG",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": "vxOVWECtypuYigNy",
+      "sort": 200000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.06sDqIj5EE1bUxw1",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757088935538,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.06sDqIj5EE1bUxw1"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Show Them the Great Fear",
+      "type": "ability",
+      "_id": "XPiOlpj5iRNcFIvP",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "show-them-the-great-fear",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 600000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.XPiOlpj5iRNcFIvP",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757088941598,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.XPiOlpj5iRNcFIvP"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Iron Ball",
+      "type": "ability",
+      "_id": "OE8d20QnSaE7ZHfI",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-iron-ball",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
       "sort": 400000,
       "ownership": {
         "default": 0,
@@ -997,16 +814,80 @@
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OE8d20QnSaE7ZHfI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.8.1",
+        "createdTime": 1757088962126,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!CfTBjxc0S0zbpYFU.Oa0MhwS1yeyeJ5qG"
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.OE8d20QnSaE7ZHfI"
+    },
+    {
+      "folder": "wOmSdK6NadZYxvlf",
+      "name": "Grab Javelin",
+      "type": "ability",
+      "_id": "5stni4cw4IVUjzqM",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "grab-javelin",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 500000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757088963388,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!CfTBjxc0S0zbpYFU.5stni4cw4IVUjzqM"
     }
   ],
   "effects": [],
