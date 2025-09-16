@@ -211,7 +211,8 @@
         "story": "",
         "keywords": [
           "melee",
-          "strike"
+          "strike",
+          "weapon"
         ],
         "category": "signature",
         "resource": null,
@@ -241,7 +242,7 @@
               "_id": "rt0uXwE7aQACHFZN",
               "damage": {
                 "tier1": {
-                  "value": "8",
+                  "value": "7",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -250,7 +251,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "13",
+                  "value": "11",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -259,7 +260,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "16",
+                  "value": "14",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -269,101 +270,47 @@
                 }
               }
             },
-            "BbtKhVk34jkIIRA5": {
-              "name": "grabbed",
+            "smuXsLN43WJjOgyP": {
+              "name": "Push",
               "img": null,
-              "type": "applied",
-              "_id": "BbtKhVk34jkIIRA5",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} grabbed",
-                  "potency": {
-                    "characteristic": "might",
-                    "value": "@potency.weak"
-                  },
-                  "effects": {
-                    "grabbed": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  }
-                },
+              "type": "forced",
+              "_id": "smuXsLN43WJjOgyP",
+              "forced": {
                 "tier2": {
-                  "display": "",
-                  "effects": {
-                    "grabbed": {
-                      "condition": "failure",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
+                  "distance": "2"
                 },
                 "tier3": {
-                  "effects": {
-                    "grabbed": {
-                      "condition": "failure",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
+                  "distance": "3"
                 }
               }
             },
-            "66bEaHFwUdRLZlsx": {
+            "9zBpmWpDVZDE3atd": {
               "name": "Slowed",
               "img": null,
               "type": "applied",
-              "_id": "66bEaHFwUdRLZlsx",
+              "_id": "9zBpmWpDVZDE3atd",
               "applied": {
                 "tier1": {
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "end": "save"
                     }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
                   }
                 },
                 "tier2": {
                   "effects": {
                     "slowed": {
                       "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "end": "save"
                     }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "effects": {
                     "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "condition": "failure"
                     }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
                   }
                 }
               }
@@ -393,9 +340,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.8.1",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -939,7 +886,7 @@
     }
   ],
   "effects": [],
-  "sort": 150000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },

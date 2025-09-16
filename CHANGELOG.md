@@ -22,13 +22,15 @@
 
 ### Added
 
-- Expanded end of encounter prompt to reset surges. (#931)
 - New compendium content:
   - Level 2 & 3 abilities and features for all classes
   - Remaining Echelon 1 Monsters
+  - Echelon 1 Trinkets & Consumables
+  - Echelon 1 Titles
+- Expanded end of encounter prompt to reset surges. (#931)
 - Added Combatant Group tracker visibility controls. (#973)
   - If all combatants in a group are hidden, the group is hidden.
-  - Added context menu option to quickly hide/unhide each combatant in the group.
+  - Added context menu option to quickly hide/show each combatant in the group.
 
 ### Changed
 
@@ -41,18 +43,20 @@
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
 - Player-Facing Compendium data fixes:
-  - Standardized prototype token settings. (#946)
   - Description for Studied Commander. (#948)
   - Added missing item grant advancements to Tactician subclasses. (#949)
   - Stormwight kit abilities were double counting their kit bonuses (#954)
+  - Corrected name of the Stormwights "Furious Change". (#956)
   - College of Black Ash no longer gives all lore skills. (#980)
   - Talent "Distance Augmentation" filters & bonus. (#998)
   - Conduit "Prayer of Distance" filters & bonus. (#999)
   - Leaping Lightning effect enricher damage type. (#1015)
   - Fixed talent resource minimum. (#1058)
-  - Corrected name of the Stormwights "Furious Change".
+  - Fixed Wodewalker AE key. (#1078)
   - Added effect to Acolyte of Fire.
+  - Beggar career no longer gives all interpersonal skills.
 - GM-Facing Compendium Data fixes:
+  - Standardized prototype token settings. (#946)
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
   - Bugbear Channeler action corrections. (#1027)
@@ -61,7 +65,13 @@
 - Fixed Perks and Ancestry Traits not being able to be added to Item Grant advancements. (#961)
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
-- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses.
+- Addressed ProseMirror deprecation warning. (#1080)
+- Improved the display of an ability's tier effects to filter out blank effects. (#1081)
+   - Removed zero damage effect rolls and buttons from the ability use message.
+- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses. (#1086)
+- Fixed some broken labels & css from the equipment => treasure rename.
+- Removed invalid roles from leaders and solo monsters. (#1087)
+  - Improved monster tag templates to filter out invalid roles and organizations to prevent blank tags.
 
 ## 0.8.0
 

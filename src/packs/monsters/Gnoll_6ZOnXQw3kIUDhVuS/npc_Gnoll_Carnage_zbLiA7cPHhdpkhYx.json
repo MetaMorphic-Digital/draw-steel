@@ -1,0 +1,995 @@
+{
+  "name": "Gnoll Carnage",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "system": {
+    "stamina": {
+      "value": 100,
+      "max": 100,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 3
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": 3
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 1,
+      "turns": 1
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "158",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [
+        "abyssal"
+      ],
+      "level": 2,
+      "ev": 16,
+      "role": "",
+      "organization": "leader"
+    }
+  },
+  "items": [
+    {
+      "name": "Death Rampage",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever a non-minion ally within 5 squares of the carnage is reduced to 0 Stamina, the carnage can move up to their speed, then can either make a melee free strike against two creatures or use Shrapnel Whip against one creature.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "death-rampage",
+        "advancements": {}
+      },
+      "_id": "T9rRkONSNZ4ykZ1d",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.T9rRkONSNZ4ykZ1d"
+    },
+    {
+      "name": "End Effect",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the carnage can take [[/damage 5]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "end-effect",
+        "advancements": {}
+      },
+      "_id": "v8Gvm3MMYJqJO1xt",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.v8Gvm3MMYJqJO1xt"
+    },
+    {
+      "name": "Endless Hunger",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the carnage is reduced to 0 Stamina while there are still gnolls on the encounter map, one gnoll on the map is transformed into a gnoll carnage, keeping their current Stamina.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "endless-hunger",
+        "advancements": {}
+      },
+      "_id": "2JUu6dPhbG5ZfkK7",
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.zbLiA7cPHhdpkhYx.Item.2JUu6dPhbG5ZfkK7",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.2JUu6dPhbG5ZfkK7"
+    },
+    {
+      "name": "Shrapnel Whip",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "PuME1DRm1neg8ZTK": {
+              "_id": "PuME1DRm1neg8ZTK",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "YWyyQEF38cTSMhay": {
+              "_id": "YWyyQEF38cTSMhay",
+              "type": "applied",
+              "name": "Bleeding and dazed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} bleeding and dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "djensfHmTU8RzHZe": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>An ally targeted by this ability ignores the damage and can make a free strike.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "shrapnel-whip",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Bleeding and Dazed",
+          "img": "icons/skills/wounds/blood-spurt-spray-red.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.zbLiA7cPHhdpkhYx.Item.LsCWGc4wd41Aa2o5",
+          "transfer": false,
+          "_id": "djensfHmTU8RzHZe",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "bleeding",
+            "dazed"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757047936742,
+            "modifiedTime": 1757047978935,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!zbLiA7cPHhdpkhYx.LsCWGc4wd41Aa2o5.djensfHmTU8RzHZe"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LsCWGc4wd41Aa2o5",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.LsCWGc4wd41Aa2o5"
+    },
+    {
+      "name": "Carnage's Cackletongue",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "heroic",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "selfAlly",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target deals an extra 3 damage with their next strike until the start of the carnage's next turn. If any target hasn't used their own Cackletongue maneuver on this turn, they can use it immediately at no cost.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "carnages-cackletongue",
+        "story": "",
+        "resource": 4,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Xrsu4NolOSqupt7i",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.Xrsu4NolOSqupt7i"
+    },
+    {
+      "name": "Call Up From the Abyss",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "signature",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "special",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The carnage summons four abyssal hyenas into unoccupied spaces within distance.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "call-up-from-the-abyss",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "IDULffSNjtZuhzxJ",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.IDULffSNjtZuhzxJ"
+    },
+    {
+      "name": "Edacity",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "signature",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 10
+        },
+        "target": {
+          "type": "selfAlly",
+          "value": 3
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target moves up to their speed and can make a free strike. Any creature damaged by one of these free strikes who has M &lt; 2 is knocked prone.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "edacity",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "i051KUdORnhQ7Lg0",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.i051KUdORnhQ7Lg0"
+    },
+    {
+      "name": "Deepest Wounds",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "signature",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The carnage's eyes and all exposed blood within distance glow bright red. Each target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"113\"><p>11 or less</p></td><td><p>The target can’t regain Stamina until the end of the encounter.</p></td></tr><tr><td data-colwidth=\"113\"><p>12-16</p></td><td><p>The target can’t regain Stamina (save ends).</p></td></tr><tr><td data-colwidth=\"113\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": "<p>Until the end of the encounter, all gnolls have a double edge on power rolls that target a winded enemy.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "158"
+        },
+        "_dsid": "deepest-wounds",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "MGJs5KVtzkkZ4R8y",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.MGJs5KVtzkkZ4R8y"
+    },
+    {
+      "folder": "aDi1dYz0yHDdrvpt",
+      "name": "Bloodpool",
+      "type": "ability",
+      "_id": "38qnomOvMFz9ES4D",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "158",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bloodpool",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One gnoll minion suddenly explodes into a pool of blood, splattering the area within 3 squares of them. Any gnoll who starts their turn in this area deals an extra [[/damage 5]] damage on their next strike before the end of their turn. Once per round, an abyssal hyena who starts their turn in the area turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder}, keeping their current Stamina</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.38qnomOvMFz9ES4D",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.38qnomOvMFz9ES4D"
+    },
+    {
+      "folder": "aDi1dYz0yHDdrvpt",
+      "name": "Echoes of Laughter",
+      "type": "ability",
+      "_id": "wvrInGnyn0e0mj0n",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "158",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "echoes-of-laughter",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the encounter, the encounter map is encased in a soundscape of laughter and howling. Each enemy takes a bane on the first power roll they make each round. Whenever a gnoll is killed, this effect is suppressed until the start of the next round.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wvrInGnyn0e0mj0n",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.wvrInGnyn0e0mj0n"
+    },
+    {
+      "folder": "aDi1dYz0yHDdrvpt",
+      "name": "Iron Jaws",
+      "type": "ability",
+      "_id": "9bdZ4N6vu3nGUvPk",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "153",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "iron-jaws",
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "type": "maneuver",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 1,
+          "secondary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A gnoll acting this turn drops an iron-jawed snare into the area. The first time any enemy moves into the area, they make an <strong>Agility test</strong>. If they were unaware of the snare, the test takes a bane.</p><p></p><table><tbody><tr><td data-colwidth=\"107\"><p>11 or less</p></td><td><p>[[/damage 6]] damage; bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"107\"><p>12-16</p></td><td><p>[[/damage 4]] damage; bleeding (EoT)</p></td></tr><tr><td data-colwidth=\"107\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": "<p>While an enemy is bleeding this way, each gnoll in the en counter gains an edge on strikes made against them.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.9bdZ4N6vu3nGUvPk",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zbLiA7cPHhdpkhYx.9bdZ4N6vu3nGUvPk"
+    }
+  ],
+  "folder": "6ZOnXQw3kIUDhVuS",
+  "_id": "zbLiA7cPHhdpkhYx",
+  "prototypeToken": {
+    "name": "Gnoll Carnage",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": "Actor.zbLiA7cPHhdpkhYx",
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757047900718,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!zbLiA7cPHhdpkhYx"
+}
