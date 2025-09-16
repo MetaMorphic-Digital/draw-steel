@@ -1,20 +1,20 @@
 {
-  "folder": "Awroz7YqtpURNlF5",
-  "name": "Specter",
+  "folder": "qZ8RbdImvXjWh2yn",
+  "name": "Ghost",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
   "system": {
     "stamina": {
-      "value": 20,
-      "max": 10,
+      "value": 80,
+      "max": 80,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": -5
+        "value": -2
       },
       "agility": {
-        "value": 1
+        "value": 2
       },
       "reason": {
         "value": 0
@@ -23,7 +23,7 @@
         "value": 0
       },
       "presence": {
-        "value": 2
+        "value": 3
       }
     },
     "combat": {
@@ -44,7 +44,7 @@
       "languages": []
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
         "fly"
       ],
@@ -56,11 +56,11 @@
         "all": 0,
         "acid": 0,
         "cold": 0,
-        "corruption": 1,
+        "corruption": 3,
         "fire": 0,
         "holy": 0,
         "lightning": 0,
-        "poison": 1,
+        "poison": 3,
         "psychic": 0,
         "sonic": 0
       },
@@ -79,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "262",
+      "page": "264",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -91,24 +91,24 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 1,
+      "freeStrike": 4,
       "keywords": [
         "undead"
       ],
       "level": 1,
-      "ev": 3,
-      "role": "hexer",
-      "organization": "horde"
+      "ev": 12,
+      "role": "",
+      "organization": "leader"
     }
   },
   "prototypeToken": {
-    "name": "Specter",
+    "name": "Ghost",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "src": "systems/draw-steel/assets/roles/leader.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -197,18 +197,57 @@
   },
   "items": [
     {
-      "name": "Corruptive Phasing",
+      "name": "Phantom Flow",
       "type": "feature",
-      "_id": "2rzcfW3DoIxN9YlV",
+      "_id": "5mjFjJwVBDM0McDQ",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The specter can move through creatures and objects at their usual speed, but can’t end their turn inside a creature or object. The first time in a round that the specter moves through a creature, that creature takes 2 corruption damage. The specter doesn’t take damage from being force moved into objects.</p>",
+          "value": "<p>Each undead with a Phasing trait within 10 squares of the ghost can’t be made slowed or weakened.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
-          "page": "262",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "phantom-flow",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.5mjFjJwVBDM0McDQ"
+    },
+    {
+      "name": "Corruptive Phasing",
+      "type": "feature",
+      "_id": "KiiuXsfREhzP9RHH",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The ghost can move through creatures and objects at their usual speed, but can’t end their turn inside a creature or object. The first time in a round that the ghost moves through a creature, that creature takes 2 corruption damage. The ghost doesn’t take damage from being force moved into objects.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "264",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
@@ -233,99 +272,37 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.2rzcfW3DoIxN9YlV"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.KiiuXsfREhzP9RHH"
     },
     {
-      "name": "Hidden Movement",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "262",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "hidden-movement",
-        "story": "",
-        "keywords": [],
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "self"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "self"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The specter turns invisible, moves up to their speed, and is visible again.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "qkngGY3lEkBO0EhX",
-      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.qkngGY3lEkBO0EhX"
-    },
-    {
-      "name": "Decaying Touch",
+      "name": "Heat Death",
       "type": "ability",
       "system": {
         "type": "main",
         "source": {
           "book": "Monsters",
-          "page": "262",
+          "page": "264",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "decaying-touch",
+        "_dsid": "heat-death",
         "story": "",
         "keywords": [
           "magic",
-          "melee",
+          "ranged",
           "strike"
         ],
         "category": "signature",
         "resource": null,
         "trigger": "",
         "distance": {
-          "type": "melee",
-          "primary": 1
+          "type": "ranged",
+          "primary": 5
         },
         "damageDisplay": "melee",
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 2
         },
         "power": {
           "roll": {
@@ -335,16 +312,16 @@
             ]
           },
           "effects": {
-            "uqaVSwE97TZFgQS3": {
+            "PmEXJxwWOIXO9MgW": {
               "name": "",
               "img": null,
               "type": "damage",
-              "_id": "uqaVSwE97TZFgQS3",
+              "_id": "PmEXJxwWOIXO9MgW",
               "damage": {
                 "tier1": {
-                  "value": "3",
+                  "value": "7",
                   "types": [
-                    "corruption"
+                    "cold"
                   ],
                   "properties": [],
                   "potency": {
@@ -353,9 +330,9 @@
                   }
                 },
                 "tier2": {
-                  "value": "4",
+                  "value": "10",
                   "types": [
-                    "corruption"
+                    "cold"
                   ],
                   "properties": [],
                   "potency": {
@@ -364,9 +341,9 @@
                   }
                 },
                 "tier3": {
-                  "value": "5",
+                  "value": "13",
                   "types": [
-                    "corruption"
+                    "cold"
                   ],
                   "properties": [],
                   "potency": {
@@ -376,20 +353,20 @@
                 }
               }
             },
-            "pos2evZzwWF6Bv9I": {
-              "name": "weakened",
+            "KbM1jp9SKI4VIhPI": {
+              "name": "slowed",
               "img": null,
               "type": "applied",
-              "_id": "pos2evZzwWF6Bv9I",
+              "_id": "KbM1jp9SKI4VIhPI",
               "applied": {
                 "tier1": {
+                  "display": "{{potency}} slowed (save ends)",
                   "potency": {
                     "characteristic": "presence",
                     "value": "@potency.weak"
                   },
-                  "display": "{{potency}} weakened (save ends)",
                   "effects": {
-                    "weakened": {
+                    "slowed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -398,7 +375,7 @@
                 },
                 "tier2": {
                   "effects": {
-                    "weakened": {
+                    "slowed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -412,7 +389,7 @@
                 },
                 "tier3": {
                   "effects": {
-                    "weakened": {
+                    "slowed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -430,14 +407,14 @@
         },
         "effect": {
           "before": "",
-          "after": ""
+          "after": "<p>The next strike made against the target gains an edge.</p>"
         },
         "spend": {
-          "text": "The potency increases by 1. Any living creature who dies  from this damage rises at the start of the next round in the target’s  space as a specter under the Director’s control.",
-          "value": 2
+          "text": "",
+          "value": null
         }
       },
-      "_id": "nuPApUGbvEAlzQ50",
+      "_id": "Y791xyKsgSYiOWgE",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "effects": [],
       "folder": null,
@@ -457,7 +434,479 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.nuPApUGbvEAlzQ50"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.Y791xyKsgSYiOWgE"
+    },
+    {
+      "name": "Haunt",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "haunt",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 8
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "selfOrAlly"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p><strong>Note: Self or one ally with a Phasing trait.</strong></p><p>The target shifts up to their speed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "The ghost chooses one additional target.",
+          "value": 2
+        }
+      },
+      "_id": "o2IKgGTSKYU96Ts0",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.o2IKgGTSKYU96Ts0"
+    },
+    {
+      "name": "Shriek",
+      "type": "ability",
+      "system": {
+        "type": "triggered",
+        "source": {
+          "book": "Monsters",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shriek",
+        "story": "",
+        "keywords": [
+          "magic",
+          "melee"
+        ],
+        "category": "heroic",
+        "resource": 1,
+        "trigger": "A creature within distance targets the ghost with a strike.",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ghost halves the damage from the strike and the target takes 2 sonic damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "HLmVT9b4H6JPDkZt",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.HLmVT9b4H6JPDkZt"
+    },
+    {
+      "name": "Paranormal Activity",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "paranormal-activity",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "object",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Note: Targets Each 3 size or smaller object in the area</p><p>Each target rises 1 square into the air and is vertically pulled up to 5 squares toward the nearest enemy within 3 squares of the target.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "mY7viReOG10cc9XE",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.mY7viReOG10cc9XE"
+    },
+    {
+      "name": "Spirited Away",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "spirited-away",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "7ugBCKN4ylSTKnVV": {
+              "name": "Levitated",
+              "img": null,
+              "type": "applied",
+              "_id": "7ugBCKN4ylSTKnVV",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is levitated (EoT)",
+                  "effects": {
+                    "WQ3ZqbDJ5jujIlKb": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} the target is levitated (EoT)",
+                  "effects": {
+                    "WQ3ZqbDJ5jujIlKb": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} the target is levitated until the end of the encounter",
+                  "effects": {
+                    "WQ3ZqbDJ5jujIlKb": {
+                      "condition": "failure",
+                      "end": "encounter",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A levitated target floats 1 square off the ground when first affected, then rises 1 square at the end of each of their turns. If a levitated target can’t already fly, they can fly but are slowed and weakened while flying this way.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "hxuil5LvV6cRJ9Ly",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [
+        {
+          "name": "Levitating",
+          "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+          "origin": "Actor.P53oMgSvFeDeXqlM.Item.hxuil5LvV6cRJ9Ly",
+          "transfer": false,
+          "_id": "WQ3ZqbDJ5jujIlKb",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "weakened",
+            "slowed"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.347",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!hCxrYde7uzidWWWp.hxuil5LvV6cRJ9Ly.WQ3ZqbDJ5jujIlKb"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.hxuil5LvV6cRJ9Ly"
+    },
+    {
+      "name": "Awful Wail",
+      "type": "ability",
+      "system": {
+        "type": "villain",
+        "source": {
+          "book": "Monsters",
+          "page": "264",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "awful-wail",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "txs3yq3vULjpkn1F": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "txs3yq3vULjpkn1F",
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "5",
+                  "types": [
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "8",
+                  "types": [
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A target who has p&lt;2 is reduced to 1 Stamina if they are winded after taking this damage.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "mT6ywEHpoVBINewY",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!hCxrYde7uzidWWWp.mT6ywEHpoVBINewY"
     },
     {
       "name": "Dread March",
@@ -503,7 +952,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 400000,
+      "sort": 300000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -516,11 +965,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714579141,
+        "createdTime": 1755714474460,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.EzWvhVW1uXUmKhV5"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.EzWvhVW1uXUmKhV5"
     },
     {
       "name": "Paranormal Fling",
@@ -566,7 +1015,7 @@
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
       "folder": "dDubEbmnbWGRYlvn",
-      "sort": 112500,
+      "sort": 125000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -579,11 +1028,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714580124,
+        "createdTime": 1755714475730,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.da4wUZrJsfQ3EMZ3"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.da4wUZrJsfQ3EMZ3"
     },
     {
       "name": "Ravenous Horde",
@@ -642,11 +1091,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755714580973,
+        "createdTime": 1755714476764,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.gSoRE2jY58pVAtXf"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.gSoRE2jY58pVAtXf"
     },
     {
       "name": "The Grasping, the Hungry",
@@ -705,11 +1154,11 @@
         "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
-        "createdTime": 1755715291217,
+        "createdTime": 1755715253739,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!4uRj8zIBAqukwmrN.5lQ9od53YUhk2eDw"
+      "_key": "!actors.items!hCxrYde7uzidWWWp.5lQ9od53YUhk2eDw"
     }
   ],
   "effects": [],
@@ -724,11 +1173,11 @@
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
-    "createdTime": 1755701964099,
+    "createdTime": 1755701960243,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "4uRj8zIBAqukwmrN",
+  "_id": "hCxrYde7uzidWWWp",
   "sort": 0,
-  "_key": "!actors!4uRj8zIBAqukwmrN"
+  "_key": "!actors!hCxrYde7uzidWWWp"
 }
