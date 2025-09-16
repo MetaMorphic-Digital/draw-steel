@@ -64,6 +64,8 @@
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
 - Addressed ProseMirror deprecation warning. (#1080)
+- Improved the display of an ability's tier effects to filter out blank effects. (#1081)
+   - Removed zero damage effect rolls and buttons from the ability use message.
 - Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses. (#1086)
 - Fixed some broken labels & css from the equipment => treasure rename.
 - Removed invalid roles from leaders and solo monsters. (#1087)
