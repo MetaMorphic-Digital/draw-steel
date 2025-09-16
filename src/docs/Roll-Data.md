@@ -49,7 +49,14 @@ Foundry's rolls support variable substitution through roll data, as explained in
 + Speed - `@movement.value`
 + Teleport - `@movement.teleport` (Unaffected by most speed adjustments)
 
-## Hero specific roll data and values
+## Echelon and Level
++ Echelon - `@echelon`
++ Level - `@level`
+
+## Biography
++ Number of Languages: `@biography.languages.size`
+
+## Hero Roll Data
 
 ### Heroic Resource
 + Heroic resource label - `@hero.primary.label`
@@ -110,11 +117,7 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Weakened - `@statuses.weakened`
 + Winded - `@statuses.winded`
 
-## Echelon and Level
-+ Echelon - `@echelon`
-+ Level - `@level`
-
-## NPC Actor Roll Data
+## NPC Roll Data
 
 ### Monster Roll data
 + Free Strike damage: - `@monster.freeStrike`
@@ -124,12 +127,12 @@ Value indicates if actor currently has status (1/yes, 0/no)
 + Interest - `@negotiation.interest`
 + Patience - `@negotiation.patience`
 
-## Item Roll Data
+# Item Roll Data
 
-#### Downtime Project roll data
+## Downtime Project roll data
 + Project Goal - `@item.project.goal`
 
-### Abilities
+## Abilities
 
 + Ability primary distance  - `@item.distance.primary`
 + Ability secondary distance - `@item.distance.secondary`
