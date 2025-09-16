@@ -176,7 +176,8 @@ export default class AbilityModel extends BaseItemModel {
         let applyBonus = true;
         if (this.keywords.has("melee") && this.keywords.has("ranged")) {
           // melee & ranged abilities only display one set of bonuses at a time
-          applyBonus = bonus.filters.keywords.has(this.damageDisplay);
+          const filterMeleeRanged = bonus.filters.keywords.has("melee") || bonus.filters.keywords.has("ranged");
+          applyBonus = !filterMeleeRanged || bonus.filters.keywords.has(this.damageDisplay);
         }
 
         if (applyBonus) {

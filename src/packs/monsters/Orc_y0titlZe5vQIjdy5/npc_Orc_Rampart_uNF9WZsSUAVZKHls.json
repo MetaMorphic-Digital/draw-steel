@@ -1,0 +1,689 @@
+{
+  "folder": "y0titlZe5vQIjdy5",
+  "name": "Orc Rampart",
+  "type": "npc",
+  "_id": "uNF9WZsSUAVZKHls",
+  "img": "systems/draw-steel/assets/roles/defender.webp",
+  "system": {
+    "stamina": {
+      "value": 59,
+      "max": 59,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": 2
+      },
+      "intuition": {
+        "value": 2
+      },
+      "presence": {
+        "value": 2
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "L"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "220",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 4,
+      "keywords": [
+        "humanoid"
+      ],
+      "level": 2,
+      "ev": 8,
+      "role": "defender",
+      "organization": "platoon"
+    }
+  },
+  "prototypeToken": {
+    "name": "Orc Rampart",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/defender.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Relentless",
+      "type": "feature",
+      "_id": "j1MgGQuUebn2LoiL",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If the rampart is reduced to 0 Stamina, they can make a [[/damage @monster.freeStrike]]{Free Strike} before dying. If the target of the free strike is reduced to 0 Stamina, the rampart is reduced to 1 Stamina instead.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "220",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "relentless",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.eKCLLyQ2xbOcJ09p.Item.j1MgGQuUebn2LoiL",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003497981,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.j1MgGQuUebn2LoiL"
+    },
+    {
+      "name": "No.",
+      "type": "ability",
+      "system": {
+        "type": "triggered",
+        "source": {
+          "book": "Monsters",
+          "page": "220",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "no",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "A creature targets an ally adjacent to the rampart with an  ability that doesn’t also target the rampart.",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The rampart becomes the target of the triggering ability instead.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "jZB1AhQfHhIC35e5",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003551012,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.jZB1AhQfHhIC35e5"
+    },
+    {
+      "name": "Castling",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "220",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "castling",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The rampart moves or shifts up to their speed adjacent to the target, then can swap places with the target.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "eAWPMESvginAJJSo",
+      "img": "icons/skills/ranged/projectile-spiral-gray.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003602927,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.eAWPMESvginAJJSo"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Trench",
+      "type": "ability",
+      "_id": "BStQdG3SobeFUDES",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-trench",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003645852,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.BStQdG3SobeFUDES"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Mohler Cavity",
+      "type": "ability",
+      "_id": "OMNyXoF5k0h6ffBa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "mohler-cavity",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; the target falls</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the pit.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003647094,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.OMNyXoF5k0h6ffBa"
+    },
+    {
+      "folder": "AdywKuAnx2ognLdU",
+      "name": "Overwhelming March",
+      "type": "ability",
+      "_id": "wRlM0yKql0bXpAAe",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "overwhelming-march",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"101\"><p>11 or less</p></td><td><p>[[/damage 6]] damage; prone</p></td></tr><tr><td data-colwidth=\"101\"><p>12-16</p></td><td><p>[[/damage 4]] damage; prone</p></td></tr><tr><td data-colwidth=\"101\"><p>17+</p></td><td><p>Push 2</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003648845,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.wRlM0yKql0bXpAAe"
+    },
+    {
+      "name": "My Spear, My Foe",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Monsters",
+          "page": "220",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "my-spear-my-foe",
+        "story": "",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "FudiXFjJk7IFs4Ur": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "FudiXFjJk7IFs4Ur",
+              "damage": {
+                "tier1": {
+                  "value": "6"
+                },
+                "tier2": {
+                  "value": "9"
+                },
+                "tier3": {
+                  "value": "12"
+                }
+              }
+            },
+            "t9q6cPQwAOd0n3zA": {
+              "name": "taunted",
+              "img": null,
+              "type": "applied",
+              "_id": "t9q6cPQwAOd0n3zA",
+              "applied": {
+                "tier2": {
+                  "display": "taunted (Eot)",
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                },
+                "tier3": {
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>This ability has a double edge against any target who dealt damage to the rampart this round.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "YAlHgqkF8TFNyT9F",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757003655204,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!uNF9WZsSUAVZKHls.YAlHgqkF8TFNyT9F"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757003428748,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!uNF9WZsSUAVZKHls"
+}
