@@ -375,6 +375,11 @@
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "might"
+                  },
+                  "effects": {
+                    "CeHsuaeJBSk9zHLW": {
+                      "condition": "failure"
+                    }
                   }
                 },
                 "tier2": {
@@ -382,6 +387,11 @@
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
+                  },
+                  "effects": {
+                    "fsrOwbQJuzkl0P5M": {
+                      "condition": "failure"
+                    }
                   }
                 },
                 "tier3": {
@@ -389,6 +399,11 @@
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
+                  },
+                  "effects": {
+                    "5foqFKboxvzrPq2M": {
+                      "condition": "failure"
+                    }
                   }
                 }
               }
@@ -414,7 +429,134 @@
         "resource": 2,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "LoE 4",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.3JbQAIlCMulw2YKv.Item.tcUbBtABqk8S0zI9",
+          "transfer": false,
+          "_id": "CeHsuaeJBSk9zHLW",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target has line of effect only within 4 squares</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757995793921,
+            "modifiedTime": 1757995837787,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!3JbQAIlCMulw2YKv.tcUbBtABqk8S0zI9.CeHsuaeJBSk9zHLW"
+        },
+        {
+          "name": "LoE 3",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.3JbQAIlCMulw2YKv.Item.tcUbBtABqk8S0zI9",
+          "transfer": false,
+          "_id": "fsrOwbQJuzkl0P5M",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target has line of effect only within 3 squares</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757995849693,
+            "modifiedTime": 1757995865628,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!3JbQAIlCMulw2YKv.tcUbBtABqk8S0zI9.fsrOwbQJuzkl0P5M"
+        },
+        {
+          "name": "LoE 2",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.3JbQAIlCMulw2YKv.Item.tcUbBtABqk8S0zI9",
+          "transfer": false,
+          "_id": "5foqFKboxvzrPq2M",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target has line of effect only within 2 squares</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757995873996,
+            "modifiedTime": 1757995889618,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!3JbQAIlCMulw2YKv.tcUbBtABqk8S0zI9.5foqFKboxvzrPq2M"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
