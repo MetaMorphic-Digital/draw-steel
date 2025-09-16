@@ -235,45 +235,6 @@
       "_key": "!actors.items!Xw0gZCS09gdMjaw8.IpnEqs83JkgZpvZJ"
     },
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "hoEauWQhpDNCsRsF",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain: </strong>Gain an edge on strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "161",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!Xw0gZCS09gdMjaw8.hoEauWQhpDNCsRsF"
-    },
-    {
       "name": "Club Charge",
       "type": "ability",
       "system": {
@@ -527,8 +488,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
         },
         {
@@ -564,8 +523,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
         },
         {
@@ -601,8 +558,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
         },
         {
@@ -638,8 +593,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
         },
         {
@@ -675,8 +628,6 @@
             "systemVersion": "0.8.0",
             "lastModifiedBy": null
           },
-          "modifiedTime": null,
-          "lastModifiedBy": null,
           "_key": "!actors.items.effects!Xw0gZCS09gdMjaw8.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
         }
       ],
@@ -762,7 +713,53 @@
       "_key": "!actors.items!Xw0gZCS09gdMjaw8.Oa0MhwS1yeyeJ5qG"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.Xw0gZCS09gdMjaw8",
+      "disabled": true,
+      "_id": "7d6tkUCfRnTYO9ZL",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "changes": [],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 3,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>Gain an edge on strikes.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.KwdPnQj8bc4JlTqB.ActiveEffect.7d6tkUCfRnTYO9ZL",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757292444079,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!Xw0gZCS09gdMjaw8.7d6tkUCfRnTYO9ZL"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -779,6 +776,6 @@
     "lastModifiedBy": null
   },
   "_id": "Xw0gZCS09gdMjaw8",
-  "sort": 400000,
+  "sort": 0,
   "_key": "!actors!Xw0gZCS09gdMjaw8"
 }
