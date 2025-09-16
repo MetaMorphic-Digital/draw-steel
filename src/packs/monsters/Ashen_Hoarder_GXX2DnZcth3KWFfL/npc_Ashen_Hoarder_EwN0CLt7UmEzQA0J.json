@@ -116,7 +116,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "solo-monster",
         "advancements": {}
@@ -154,7 +154,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "bladed-body",
         "advancements": {}
@@ -192,7 +192,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "soul-singularity",
         "advancements": {}
@@ -395,7 +395,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "claw-and-blade",
         "story": "",
@@ -556,7 +556,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "corpse-bomb",
         "story": "",
@@ -699,14 +699,19 @@
               }
             },
             "5npn93SY4p2IGhfc": {
-              "name": "Weakened",
+              "name": "Impaled",
               "img": null,
               "type": "applied",
               "_id": "5npn93SY4p2IGhfc",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} weakened (save ends)",
-                  "effects": {},
+                  "display": "{{potency}} the target is impaled (save ends)",
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "might"
@@ -714,7 +719,12 @@
                 },
                 "tier2": {
                   "display": "",
-                  "effects": {},
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
@@ -722,7 +732,12 @@
                 },
                 "tier3": {
                   "display": "",
-                  "effects": {},
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
@@ -744,14 +759,60 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "impale",
         "story": "",
         "resource": 3,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Impaled",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.EwN0CLt7UmEzQA0J.Item.Nadm6rJRnHX2nET4",
+          "transfer": false,
+          "_id": "ox9pBhgG6jaEsZxa",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>An impaled creature is restrained and bleeding, and moves with the ashen hoarder. The ashen hoarder can have three creatures impaled with this ability at a time.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained",
+            "bleeding"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1758001882732,
+            "modifiedTime": 1758001916093,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.Nadm6rJRnHX2nET4.ox9pBhgG6jaEsZxa"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -808,7 +869,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "bone-dozer",
         "story": "",
@@ -872,7 +933,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "armor-of-corpses",
         "story": "",
@@ -1093,7 +1154,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "skeletal-eruption",
         "story": "",
@@ -1198,7 +1259,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "mobile-mine-field",
         "story": "",
@@ -1266,7 +1327,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "46"
         },
         "_dsid": "ossuary-assault",
         "story": "",
@@ -1618,7 +1679,7 @@
   "folder": "GXX2DnZcth3KWFfL",
   "prototypeToken": {
     "name": "Ashen Hoarder",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -1635,11 +1696,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
