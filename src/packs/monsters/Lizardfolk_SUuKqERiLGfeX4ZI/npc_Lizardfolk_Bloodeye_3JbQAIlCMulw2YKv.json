@@ -114,7 +114,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "200"
         },
         "_dsid": "reptilian-escape",
         "advancements": {}
@@ -267,7 +267,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "200"
         },
         "_dsid": "bola-knock",
         "story": "",
@@ -364,41 +364,12 @@
                 }
               }
             },
-            "RTabu1fJm8JhxOsG": {
-              "_id": "RTabu1fJm8JhxOsG",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier1": {
-                  "display": "M < 0 the target has line of effect only within 4 squares (save ends)",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier2": {
-                  "display": "M < 1 the target has line of effect only within 3 squares (save ends)",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier3": {
-                  "display": "M < 2 the target has line of effect only within 2 squares (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  }
-                }
-              }
-            },
             "jjDb1yvmsx0azqxW": {
               "name": "Line of Effect",
               "img": null,
-              "type": "other",
+              "type": "applied",
               "_id": "jjDb1yvmsx0azqxW",
-              "other": {
+              "applied": {
                 "tier1": {
                   "display": "{{potency}} the target has line of effect only within 4 squares (save ends)",
                   "potency": {
@@ -436,7 +407,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "200"
         },
         "_dsid": "bloodshot",
         "story": "",
@@ -468,7 +439,7 @@
   "_id": "3JbQAIlCMulw2YKv",
   "prototypeToken": {
     "name": "Lizardfolk Bloodeye",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -485,11 +456,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
