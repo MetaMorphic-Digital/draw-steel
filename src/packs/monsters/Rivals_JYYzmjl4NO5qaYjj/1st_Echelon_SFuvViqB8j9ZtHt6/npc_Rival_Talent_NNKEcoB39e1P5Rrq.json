@@ -1,28 +1,28 @@
 {
-  "name": "Chorogaunt",
+  "name": "Rival Talent",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
   "system": {
     "stamina": {
-      "value": 120,
-      "max": 120,
+      "value": 60,
+      "max": 60,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 2
+        "value": 0
       },
       "agility": {
-        "value": 2
+        "value": 0
       },
       "reason": {
         "value": 2
       },
       "intuition": {
-        "value": 2
+        "value": 0
       },
       "presence": {
-        "value": 3
+        "value": 1
       }
     },
     "combat": {
@@ -32,7 +32,7 @@
       },
       "size": {
         "value": 1,
-        "letter": "L"
+        "letter": "M"
       },
       "stability": 2,
       "turns": 1
@@ -52,7 +52,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 5,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -72,13 +72,13 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "64",
+      "page": "235",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,34 +92,34 @@
     "monster": {
       "freeStrike": 5,
       "keywords": [
-        "abyssal"
+        "humanoid"
       ],
-      "level": 3,
-      "ev": 20,
-      "role": "leader",
-      "organization": "leader"
+      "level": 2,
+      "ev": 16,
+      "role": "hexer",
+      "organization": "elite"
     }
   },
   "items": [
     {
-      "name": "End Effect",
+      "name": "Rivalry",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the end of each of their turns, the chorogaunt can take [[/damage 5]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "value": "<p>At the start of an encounter, the talent chooses one creature within their line of effect. Both the talent and the creature can add a [[/roll d3]] roll to power rolls they make against each other.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "64"
+          "page": "235"
         },
-        "_dsid": "end-effect",
+        "_dsid": "rivalry",
         "advancements": {}
       },
-      "_id": "nq7e6zgW1Wn4h9eH",
+      "_id": "Ythyhzcvb5WWJrQP",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -137,120 +137,46 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.nq7e6zgW1Wn4h9eH"
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.Ythyhzcvb5WWJrQP"
     },
     {
-      "name": "Lethe",
-      "type": "feature",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>While the chorogaunt is winded, they gain an edge on strikes, and any strike made against them gains an edge.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "lethe",
-        "advancements": {}
-      },
-      "_id": "lZofFoBwskocUaCH",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.lZofFoBwskocUaCH"
-    },
-    {
-      "name": "Soulsight",
-      "type": "feature",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Any creature within 2 squares of the chorogaunt can't be hidden from them.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "soulsight",
-        "advancements": {}
-      },
-      "_id": "Q52didoOlsVyQScy",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.Q52didoOlsVyQScy"
-    },
-    {
-      "name": "Agonizing Harmony",
+      "name": "Reverberating Blast",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
         "type": "main",
         "category": "signature",
         "keywords": [
-          "area",
-          "weapon"
+          "psionic",
+          "ranged",
+          "strike",
+          "telekinesis"
         ],
         "distance": {
-          "type": "burst",
-          "primary": 5
+          "type": "ranged",
+          "primary": 10
         },
         "target": {
-          "type": "enemy",
-          "value": null
+          "type": "creatureObject",
+          "value": 2
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "presence"
+              "reason"
             ]
           },
           "effects": {
-            "16cvjyhnf22s78AZ": {
-              "_id": "16cvjyhnf22s78AZ",
+            "jopkQk7ERXcMyKUk": {
+              "_id": "jopkQk7ERXcMyKUk",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "4",
+                  "value": "7",
                   "types": [
                     "psychic"
                   ],
@@ -261,7 +187,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "7",
+                  "value": "10",
                   "types": [
                     "psychic"
                   ],
@@ -272,7 +198,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "10",
+                  "value": "13",
                   "types": [
                     "psychic"
                   ],
@@ -284,17 +210,178 @@
                 }
               }
             },
-            "vf0PFZgh81jupyeK": {
-              "_id": "vf0PFZgh81jupyeK",
+            "c3GNwsO4hRSDZ2KN": {
+              "_id": "c3GNwsO4hRSDZ2KN",
+              "type": "forced",
+              "name": "push",
+              "img": null,
+              "forced": {
+                "tier2": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "movement": [],
+                  "distance": "",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            },
+            "kuUe5Qt8KoH3pJ6u": {
+              "name": "Prone",
+              "img": null,
               "type": "applied",
-              "name": "Slowed",
+              "_id": "kuUe5Qt8KoH3pJ6u",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} prone",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "235"
+        },
+        "_dsid": "reverberating-blast",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "2UC44oczG8pumJ4X",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.2UC44oczG8pumJ4X"
+    },
+    {
+      "name": "Muddle the Mind",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "heroic",
+        "keywords": [
+          "psionic",
+          "ranged",
+          "telepathy"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "ikkfA63sbJnOGGp6": {
+              "_id": "ikkfA63sbJnOGGp6",
+              "type": "applied",
+              "name": "Slowed and Dazed",
               "img": null,
               "applied": {
                 "tier1": {
                   "display": "{{potency}} slowed (save ends)",
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "intuition"
+                    "characteristic": "reason"
                   },
                   "effects": {
                     "slowed": {
@@ -305,31 +392,31 @@
                   }
                 },
                 "tier2": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "intuition"
-                  },
+                  "display": "{{potency}} dazed (save ends)",
                   "effects": {
-                    "slowed": {
+                    "dazed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  },
+                  "display": "{{potency}} dazed and slowed (save ends)",
                   "effects": {
-                    "slowed": {
+                    "9EnCQ5K6JLmZL18E": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
                   }
                 }
               }
@@ -338,7 +425,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>One ally within 10 squares of the chorogaunt shifts up to their speed.</p>"
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -348,183 +435,29 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "64"
+          "page": "235"
         },
-        "_dsid": "agonizing-harmony",
+        "_dsid": "muddle-the-mind",
         "story": "",
-        "resource": null,
+        "resource": 2,
         "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "gBC9kzfL4JpX5roh",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.gBC9kzfL4JpX5roh"
-    },
-    {
-      "name": "Chaotic Entrancing Harmony",
-      "type": "ability",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
-      "system": {
-        "type": "maneuver",
-        "category": "signature",
-        "keywords": [
-          "area"
-        ],
-        "distance": {
-          "type": "burst",
-          "primary": 10
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>The chorogaunt slides each target up to 3 squares, ignoring stability.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "chaotic-entrancing-harmony",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "cmfhuafch1tgMACQ",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.cmfhuafch1tgMACQ"
-    },
-    {
-      "name": "I Thrive on Pain",
-      "type": "ability",
-      "img": "icons/skills/movement/arrow-upward-yellow.webp",
-      "system": {
-        "type": "triggered",
-        "category": "heroic",
-        "keywords": [
-          "magic"
-        ],
-        "distance": {
-          "type": "self"
-        },
-        "target": {
-          "type": "self",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Any damage from the strike is halved, and the chorogaunt's abilities deal an extra 3 damage until the end of their next turn.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "i-thrive-on-pain",
-        "story": "",
-        "resource": 3,
-        "trigger": "The chorogaunt is targeted by a strike."
       },
       "effects": [
         {
-          "name": "I Thrive on Pain Effect",
-          "img": "icons/skills/movement/arrow-upward-yellow.webp",
-          "type": "abilityModifier",
-          "origin": "Actor.GqufFfTfLOy6sHxx.Item.poNjR1P1p3uPgOCH",
-          "disabled": true,
-          "_id": "atXMBOmwH4e3zyhG",
+          "name": "Slowed and Dazed",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "origin": "Actor.xAZMNgOdBYFVvbQ0.Item.wpLk5wWFjvBr72QA",
+          "transfer": false,
+          "_id": "9EnCQ5K6JLmZL18E",
+          "type": "base",
           "system": {
             "end": {
               "type": "",
               "roll": "1d10 + @combat.save.bonus"
-            },
-            "filters": {
-              "keywords": []
             }
           },
-          "changes": [
-            {
-              "key": "damage.tier1.value",
-              "mode": 2,
-              "value": "3",
-              "priority": null
-            },
-            {
-              "key": "damage.tier2.value",
-              "mode": 2,
-              "value": "3",
-              "priority": null
-            },
-            {
-              "key": "damage.tier3.value",
-              "mode": 2,
-              "value": "3",
-              "priority": null
-            }
-          ],
+          "changes": [],
+          "disabled": false,
           "duration": {
             "startTime": null,
             "combat": null,
@@ -536,8 +469,10 @@
           },
           "description": "",
           "tint": "#ffffff",
-          "transfer": true,
-          "statuses": [],
+          "statuses": [
+            "slowed",
+            "dazed"
+          ],
           "sort": 0,
           "flags": {},
           "_stats": {
@@ -549,7 +484,7 @@
             "systemVersion": "0.8.1",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!GqufFfTfLOy6sHxx.poNjR1P1p3uPgOCH.atXMBOmwH4e3zyhG"
+          "_key": "!actors.items.effects!NNKEcoB39e1P5Rrq.wpLk5wWFjvBr72QA.9EnCQ5K6JLmZL18E"
         }
       ],
       "folder": null,
@@ -565,156 +500,21 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "poNjR1P1p3uPgOCH",
+      "_id": "wpLk5wWFjvBr72QA",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.poNjR1P1p3uPgOCH"
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.wpLk5wWFjvBr72QA"
     },
     {
-      "name": "Frightening Tones",
+      "name": "Precognitive Shift",
       "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
       "system": {
-        "type": "villain",
-        "category": "",
+        "type": "triggered",
+        "category": "heroic",
         "keywords": [
-          "ranged"
-        ],
-        "distance": {
-          "type": "ranged",
-          "primary": 10
-        },
-        "target": {
-          "type": "special",
-          "value": 3
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>Each target must choose between taking [[/damage 5 psychic]] damage, or being frightened (save ends).</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "frightening-tones",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "UhttMf7Zz2RZRkJQ",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.UhttMf7Zz2RZRkJQ"
-    },
-    {
-      "name": "Bully the Weak",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "signature",
-        "keywords": [
-          "magic",
-          "ranged"
-        ],
-        "distance": {
-          "type": "ranged",
-          "primary": 10
-        },
-        "target": {
-          "type": "ally",
-          "value": 1
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "presence"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The chorogaunt kills the target, and each other ally in the encounter deals an extra [[/damage 3]] damage with strikes until the end of the round. The Director gains Malice equal to the number of heroes in the encounter.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "64"
-        },
-        "_dsid": "bully-the-weak",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "yAPha1bgoKEojLRE",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.yAPha1bgoKEojLRE"
-    },
-    {
-      "name": "Running Cacophony",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "signature",
-        "keywords": [
-          "magic"
+          "psionic"
         ],
         "distance": {
           "type": "self"
@@ -728,14 +528,14 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "presence"
+              "reason"
             ]
           },
           "effects": {}
         },
         "effect": {
           "before": "",
-          "after": "<p>The chorogaunt shifts up to their speed, uses Agonizing Harmony, shifts up to their speed, and then uses Agonizing Harmony again.</p>"
+          "after": "<p>The talent halves the damage and shifts up to 2 squares</p>"
         },
         "spend": {
           "text": "",
@@ -745,12 +545,12 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "64"
+          "page": "235"
         },
-        "_dsid": "running-cacophony",
+        "_dsid": "precognitive-shift",
         "story": "",
-        "resource": null,
-        "trigger": ""
+        "resource": 1,
+        "trigger": "A creature deals damage to the talent."
       },
       "effects": [],
       "folder": null,
@@ -766,36 +566,217 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "APeZzlnTFev0IiZl",
+      "_id": "IzCG60wHII30AgvH",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.APeZzlnTFev0IiZl"
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.IzCG60wHII30AgvH"
     },
     {
-      "folder": "2qh7vaUC82R9wTpn",
-      "name": "Soulburn",
+      "name": "Calling the Shots",
       "type": "ability",
-      "_id": "RXLSjlORw6A3YBHN",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
+        "type": "none",
         "source": {
           "book": "Monsters",
-          "page": "60",
+          "page": "232",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "soulburn",
+        "_dsid": "calling-the-shots",
         "story": "",
         "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each rival regains [[/heal 10]] Until the end of the round, when ever a rival uses an ability against an enemy, each other rival adjacent to that enemy can make a free strike against them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "xB9Vd4t5keqs1JDR",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 250000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.xB9Vd4t5keqs1JDR"
+    },
+    {
+      "name": "Check Out Our Loot",
+      "type": "ability",
+      "system": {
         "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "check-out-our-loot",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an Agility test. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>[[/damage 11 sonic poison fire]] damage; the condition affects the target (save ends)</p></td></tr><tr><td><p>12-16</p></td><td><p>[[/damage 8 sonic poison fire]]  damage; the condition affects the target (EoT)</p></td></tr><tr><td><p>17+</p></td><td><p>[[/damage 5 sonic poison fire]]  damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "UarPvMGwBUArRMi9",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.UarPvMGwBUArRMi9"
+    },
+    {
+      "name": "Coordinated Takedown",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "coordinated-takedown",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "A Rival's turn starts",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each rival moves up to their speed and uses a main action or maneuver that doesn’t cost Malice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "NC26Xynp5N9nETPD",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 400000,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.NC26Xynp5N9nETPD"
+    },
+    {
+      "name": "We Just Do It Better",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "we-just-do-it-better",
+        "story": "",
+        "keywords": [],
         "category": "heroic",
         "resource": 3,
-        "trigger": "",
+        "trigger": "A rival's turn starts",
         "distance": {
-          "type": "special",
-          "primary": null,
-          "secondary": null
+          "type": "special"
         },
         "damageDisplay": "melee",
         "target": {
@@ -809,7 +790,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each demon acting this turn has a double edge on abilities.</p>",
+          "before": "<p>Until the end of the round, whenever any rival makes a power roll against the target of their Rivalry trait, they roll a [[/r d3]] and add it to the power roll.</p>",
           "after": ""
         },
         "spend": {
@@ -817,15 +798,18 @@
           "value": null
         }
       },
+      "_id": "8e54PBDCLRgBpCkU",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "sort": 0,
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 200000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -834,28 +818,25 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.RXLSjlORw6A3YBHN"
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.8e54PBDCLRgBpCkU"
     },
     {
-      "folder": "2qh7vaUC82R9wTpn",
-      "name": "Abyssal Evolution",
+      "name": "Work as One",
       "type": "ability",
-      "_id": "koF8i0TPdYrfcm4F",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
+        "type": "none",
         "source": {
           "book": "Monsters",
-          "page": "60",
+          "page": "232",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "abyssal-evolution",
-        "story": "",
+        "_dsid": "work-as-one",
+        "story": "Work as One",
         "keywords": [],
-        "type": "none",
         "category": "heroic",
-        "resource": 7,
-        "trigger": "",
+        "resource": 3,
+        "trigger": "A rival's turn starts",
         "distance": {
           "type": "special"
         },
@@ -871,7 +852,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A demon minion of your choice transforms into a non-minion horde demon of the same level.</p>",
+          "before": "<p>Until the end of the round, each rival can impose a bane on a strike made against an adjacent rival as a free triggered action.</p>",
           "after": ""
         },
         "spend": {
@@ -879,77 +860,18 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.koF8i0TPdYrfcm4F"
-    },
-    {
-      "folder": "2qh7vaUC82R9wTpn",
-      "name": "Abyssal Rift",
-      "type": "ability",
-      "_id": "G1VEc1g9pr75VU0O",
+      "_id": "9wDgHxxo5PamhM3w",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "60",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "abyssal-rift",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Two size 2 rifts to the Abyssal Wasteland appear at locations of your choice. Any demon can use an abyssal rift as a portal to another abyssal rift in the encounter, moving into any space in one rift and appearing immediately in any unoccupied space in the other rift. A non-demon who enters a rift for the first time in a round or starts their turn there takes corruption damage equal to the level of the highest-level demon on the encounter map. An abyssal rift is an immovable object that has 25 Stamina, damage immunity 2, and holy weakness 5. The rift closes when there are no demons remaining on the encounter map. Additionally, a creature who has the Magic or Psionics skill can make a <strong>Reason test or Intuition test</strong> as a maneuver while adjacent to a rift to destabilize and close it.</p><p></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>The rift remains open and regains [[/heal 5]] Stamina.</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>The rift remains open.</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>The rift closes.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
       "effects": [],
-      "sort": 0,
+      "folder": "IUueWB8qKCPanWCy",
+      "sort": 100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.348",
@@ -958,19 +880,18 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!GqufFfTfLOy6sHxx.G1VEc1g9pr75VU0O"
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.9wDgHxxo5PamhM3w"
     }
   ],
-  "folder": "6DKl8v5ROTdmTFsZ",
-  "_id": "GqufFfTfLOy6sHxx",
+  "folder": "SFuvViqB8j9ZtHt6",
   "prototypeToken": {
-    "name": "Chorogaunt",
+    "name": "Rival Talent",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -1058,21 +979,22 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 0,
   "ownership": {
     "default": 0
   },
   "flags": {},
   "_stats": {
-    "compendiumSource": "Actor.GqufFfTfLOy6sHxx",
+    "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1757100460782,
+    "createdTime": 1757290364799,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!actors!GqufFfTfLOy6sHxx"
+  "_id": "NNKEcoB39e1P5Rrq",
+  "sort": 0,
+  "_key": "!actors!NNKEcoB39e1P5Rrq"
 }
