@@ -115,7 +115,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "251"
         },
         "_dsid": "foresight",
         "advancements": {}
@@ -301,7 +301,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "251"
         },
         "_dsid": "golden-scythe",
         "story": "",
@@ -411,10 +411,9 @@
                     "characteristic": "might"
                   },
                   "effects": {
-                    "slowed": {
+                    "wcRFIIgjuxEiWtuz": {
                       "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "end": "save"
                     }
                   }
                 },
@@ -425,10 +424,9 @@
                     "characteristic": "might"
                   },
                   "effects": {
-                    "slowed": {
+                    "wcRFIIgjuxEiWtuz": {
                       "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "end": "save"
                     }
                   }
                 },
@@ -439,10 +437,9 @@
                     "characteristic": "might"
                   },
                   "effects": {
-                    "slowed": {
+                    "wcRFIIgjuxEiWtuz": {
                       "condition": "failure",
-                      "end": "save",
-                      "properties": []
+                      "end": "save"
                     }
                   }
                 }
@@ -462,14 +459,59 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "251"
         },
         "_dsid": "kinetic-crush",
         "story": "",
         "resource": 2,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Kinetic Crush",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.mw33S1pehccuDhxF.Item.rdkXxShTVENsgFKv",
+          "transfer": false,
+          "_id": "wcRFIIgjuxEiWtuz",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>Any creature slowed this way takes [[/damage 2 damage]] for each square they move or are force moved until that condition ends.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "slowed"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1757997587563,
+            "modifiedTime": 1757997611924,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!mw33S1pehccuDhxF.rdkXxShTVENsgFKv.wcRFIIgjuxEiWtuz"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -687,7 +729,7 @@
   "_id": "mw33S1pehccuDhxF",
   "prototypeToken": {
     "name": "Time Raider Nemesis",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -704,11 +746,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -780,7 +822,7 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 800000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
