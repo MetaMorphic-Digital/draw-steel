@@ -1,0 +1,99 @@
+{
+  "folder": "YS6vQm6YbK1iAd5s",
+  "name": "Subvert the Green Within",
+  "type": "ability",
+  "_id": "MFmfkvNh1XDHEBHT",
+  "img": "icons/magic/nature/stealth-hide-eyes-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "120",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "subvert-the-green-within",
+    "story": "Fungal spores sprout inside your enemy’s brain, allowing you to  control their actions.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike",
+      "green",
+      "void"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "AL5KXOqJx3kvxDyx": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "AL5KXOqJx3kvxDyx",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier2": {
+              "value": "9 + @chr",
+              "types": [
+                "poison"
+              ]
+            },
+            "tier3": {
+              "value": "12 + @chr",
+              "types": [
+                "poison"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>The target uses their signature ability against a creature of your choice. This signature ability can target the creature even if it usually wouldn’t. You then make a power roll against the target of this ability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756084635574,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!MFmfkvNh1XDHEBHT"
+}

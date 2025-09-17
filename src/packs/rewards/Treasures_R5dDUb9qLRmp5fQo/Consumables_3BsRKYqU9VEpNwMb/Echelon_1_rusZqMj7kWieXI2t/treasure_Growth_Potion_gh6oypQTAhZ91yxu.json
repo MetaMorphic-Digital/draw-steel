@@ -1,0 +1,192 @@
+{
+  "folder": "rusZqMj7kWieXI2t",
+  "name": "Growth Potion",
+  "type": "treasure",
+  "_id": "gh6oypQTAhZ91yxu",
+  "img": "icons/consumables/potions/round-decorated-snake-green.webp",
+  "system": {
+    "description": {
+      "value": "<p>Keyword: Potion</p><p><em>This thick green liquid tastes of licorice and potatoes.</em></p><p><strong>Effect:</strong> As a maneuver, you can drink this potion or pour it over an object of size 2 or smaller, causing the target's size to increase by 1(to a minimum size of 2). If you are the target, your Stamina maximum and Stability are doubled, you gain an edge on Might tests, and your weapon abilities that deal rolled damage gain a damage bonus equal to your highest characteristic score. You shrink back to your original size after 3 rounds, halving your current Stamina maximum and Stability, and losing the potion's other benefits. Objects maintain their new size permanently.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "316",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "growth-potion",
+    "kind": "",
+    "category": "consumable",
+    "echelon": 1,
+    "keywords": [
+      "magic"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A half-pound of seagrass",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 45
+    }
+  },
+  "effects": [
+    {
+      "name": "Growth Potion",
+      "img": "icons/consumables/potions/round-decorated-snake-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.gh6oypQTAhZ91yxu",
+      "disabled": true,
+      "_id": "h6xPQ3vK1jUzSvI4",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 1,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "system.combat.stability",
+          "mode": 1,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "system.combat.size.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.combat.size.value",
+          "mode": 4,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 3,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The target's size increases by 1, to a minimum size of 2. Your Stamina maximum and Stability are doubled, you gain an edge on Might tests.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757914485517,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!gh6oypQTAhZ91yxu.h6xPQ3vK1jUzSvI4"
+    },
+    {
+      "name": "Growth Potion",
+      "img": "icons/consumables/potions/round-decorated-snake-green.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.rewards.Item.gh6oypQTAhZ91yxu",
+      "disabled": true,
+      "_id": "Bxpt1cQjVxJzkmAv",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": 3,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your weapon abilities that deal rolled damage gain a damage bonus equal to your highest characteristic score.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757914557229,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!gh6oypQTAhZ91yxu.Bxpt1cQjVxJzkmAv"
+    }
+  ],
+  "sort": 100782,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757755174216,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!gh6oypQTAhZ91yxu"
+}

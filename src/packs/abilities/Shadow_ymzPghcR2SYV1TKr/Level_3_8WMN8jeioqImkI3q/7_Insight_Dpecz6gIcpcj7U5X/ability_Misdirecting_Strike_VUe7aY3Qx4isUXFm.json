@@ -1,0 +1,90 @@
+{
+  "folder": "Dpecz6gIcpcj7U5X",
+  "name": "Misdirecting Strike",
+  "type": "ability",
+  "_id": "VUe7aY3Qx4isUXFm",
+  "img": "icons/magic/light/beam-impact-deflect-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "166",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "misdirecting-strike",
+    "story": "“Why are you looking at ME?!”",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "oKjrDAEI4XwwV4f4": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "oKjrDAEI4XwwV4f4",
+          "damage": {
+            "tier1": {
+              "value": "9 + @chr"
+            },
+            "tier2": {
+              "value": "13 + @chr"
+            },
+            "tier3": {
+              "value": "18 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The target is taunted by a willing ally within 5 squares of you until the end of the target’s next turn.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756688374295,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!VUe7aY3Qx4isUXFm"
+}

@@ -22,23 +22,23 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
       applied: this.duplicateTierSchema(() => ({
         display: new StringField({
           required: true,
-          label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.label",
-          hint: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.display.hint",
+          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.label",
+          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.display.hint",
         }),
         effects: new TypedObjectField(new SchemaField({
           condition: new StringField({
             required: true,
             choices: ds.CONST.potencyConditions,
             initial: "always",
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.element.condition.label",
+            label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.effects.element.condition.label",
           }),
           end: new StringField({
             choices: config.effectEnds,
             blank: true,
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.element.end.label",
+            label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.effects.element.end.label",
           }),
           properties: new SetField(setOptions(), {
-            label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FIELDS.effects.element.properties.label",
+            label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.effects.element.properties.label",
           }),
         })),
       })),
@@ -78,7 +78,7 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
     await super._tierRenderingContext(context);
 
     const effectOptions = this.item.effects.filter(e => !e.transfer)
-      .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
+      .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
     const statusOptions = CONFIG.statusEffects.filter(s => (s._id && (s.hud !== false)))
       .map(s => ({ value: s.id, label: s.name, group: game.i18n.localize("DRAW_STEEL.ActiveEffect.StatusConditions") }));
 

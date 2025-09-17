@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "187",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "telekinesis",
     "advancements": {
@@ -46,6 +46,40 @@
           }
         ],
         "description": "<p>You gain the following ability.</p>"
+      },
+      "2jJer3FU7WQ7vEPq": {
+        "name": "Ease Their Fall",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "2jJer3FU7WQ7vEPq",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.daTWba9ReAJ1kmS7"
+          }
+        ],
+        "description": "<p>Your talent tradition grants you the following feature.</p>"
+      },
+      "sL1aSuQxjAo1lMyx": {
+        "name": "2nd-Level Telepathy Ability",
+        "img": "icons/magic/movement/pinwheel-turning-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "sL1aSuQxjAo1lMyx",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.P0iTaDgpRLxIpEC1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.dwhjMDvFu6CMO1Dv"
+          }
+        ]
       }
     },
     "classLink": "talent"
@@ -62,7 +96,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755828440257,
     "modifiedTime": null,
     "lastModifiedBy": null

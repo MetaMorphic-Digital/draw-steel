@@ -1,0 +1,1372 @@
+{
+  "name": "Phantom Bredbeddle",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 300,
+      "max": 24,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 0
+      },
+      "reason": {
+        "value": -3
+      },
+      "intuition": {
+        "value": 2
+      },
+      "presence": {
+        "value": 2
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M"
+      },
+      "stability": 4,
+      "turns": 1
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "walk",
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 10,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "51",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 6,
+      "keywords": [
+        "giant"
+      ],
+      "level": 3,
+      "ev": 60,
+      "role": "",
+      "organization": "solo"
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Phantom Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the phantom bredbeddle can take [[/damage 5]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "solo-phantom-monster",
+        "advancements": {}
+      },
+      "_id": "0Xjj7rWdrxwFTE5s",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.0Xjj7rWdrxwFTE5s"
+    },
+    {
+      "name": "Heady or Not",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While headless, the bredbeddle can move into a space containing a severed head and attach it to their neck as a main action. Doing so physically transforms the bredbeddle, who takes on the appearance, size, weight, and stability of the head's original owner. If the bredbeddle takes the form of a creature of size 1L or smaller, the distance of their melee and burst area abilities decreases by 1. These effects last until the bredbeddle is killed or beheaded, or until the head falls off after 24 hours. A head that falls off this way can no longer be attached to this bredbeddle.\n\nA creature must succeed on a **hard Might test** made as a maneuver to rip a head off the bredbeddle. If they fail, the bredbeddle can make a free strike against them.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "heady-or-not",
+        "advancements": {}
+      },
+      "_id": "4xo04obJNsWXhK1S",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.4xo04obJNsWXhK1S"
+    },
+    {
+      "name": "Resilient Form",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The bredbeddle can't be physically transformed in any way except by their Heady or Not trait.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "resilient-form",
+        "advancements": {}
+      },
+      "_id": "bIwzkptXEmgvcVkR",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.bIwzkptXEmgvcVkR"
+    },
+    {
+      "name": "Executioner's Swing",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 2
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "cfVH06xmJy7SA7s0": {
+              "_id": "cfVH06xmJy7SA7s0",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "2",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "5",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "Fva9qS7fdEiZsKmt": {
+              "_id": "Fva9qS7fdEiZsKmt",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            },
+            "JAz8q50V7TqsYkyj": {
+              "_id": "JAz8q50V7TqsYkyj",
+              "type": "applied",
+              "name": "Dazed",
+              "img": null,
+              "applied": {
+                "tier3": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "The phantom bredbeddle shifts up to 2 squares, and can target additional enemies who come within distance of this ability during the shift.",
+          "value": 3
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "executioners-swing",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "80Aku5BD8Ifr9uyc",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.80Aku5BD8Ifr9uyc"
+    },
+    {
+      "name": "Lop",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "bCI0vu7AzMtEv755": {
+              "_id": "bCI0vu7AzMtEv755",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "9",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "qOEeJOhjxeWraCPR": {
+              "_id": "qOEeJOhjxeWraCPR",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            },
+            "TX1W43IlFKbZhAWp": {
+              "name": "Beheaded",
+              "img": null,
+              "type": "applied",
+              "_id": "TX1W43IlFKbZhAWp",
+              "applied": {
+                "tier1": {
+                  "display": "or if the target has {{potency}} they are beheaded",
+                  "effects": {
+                    "YNeXGE8nBkueam3O": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "YNeXGE8nBkueam3O": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "YNeXGE8nBkueam3O": {
+                      "condition": "failure",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A beheaded target has their head fall into an unoccupied square adjacent to the bredbeddle, but they remain alive. While beheaded this way, the target is bleeding and has line of effect only to adjacent squares. The beheaded target can survive without their head for 24 hours, and can reattach their head as a maneuver by entering its square. A target who remains beheaded for 24 hours dies.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "lop",
+        "story": "",
+        "resource": 3,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Beheaded",
+          "img": "icons/equipment/head/greathelm-shemagh.webp",
+          "origin": "Actor.2Z5QkQ5LkhMX9Dlp.Item.WUqmC7FuqZnmfenM",
+          "transfer": false,
+          "_id": "YNeXGE8nBkueam3O",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>A beheaded target has their head fall into an unoccupied square adjacent to the bredbeddle, but they remain alive. While beheaded this way, the target is bleeding and has line of effect only to adjacent squares. The beheaded target can survive without their head for 24 hours, and can reattach their head as a maneuver by entering its square. A target who remains beheaded for 24 hours dies.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "bleeding"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!gYUnLS5eDPZZtcGA.WUqmC7FuqZnmfenM.YNeXGE8nBkueam3O"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "WUqmC7FuqZnmfenM",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.WUqmC7FuqZnmfenM"
+    },
+    {
+      "name": "Scramble",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "signature",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>While the phantom bredbeddle is headless, they shift up to their speed. Each time a creature comes adjacent to the bredbeddle during the shift, the bredbeddle can push that creature 1 square. Each square the bredbeddle exits during the shift is difficult terrain.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "scramble",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "CaZU5H5U22SpPXha",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.CaZU5H5U22SpPXha"
+    },
+    {
+      "name": "Headway",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "heroic",
+        "keywords": [
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 20
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "q13uUdW3Or0Ja41c": {
+              "_id": "q13uUdW3Or0Ja41c",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "9",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "pU6GLLTZhfzztSeH": {
+              "_id": "pU6GLLTZhfzztSeH",
+              "type": "applied",
+              "name": "Prone and Dazed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "prone; {{potency}} dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "prone": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "prone; {{potency}} dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "prone": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The phantom bredbeddle must have a head in their possession (attached to them or not), which they throw at the target. If the head was attached, the bredbeddle is left headless.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "headway",
+        "story": "",
+        "resource": 5,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "d6cP3vTu2gkIcZCY",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.d6cP3vTu2gkIcZCY"
+    },
+    {
+      "name": "Envious Imitation",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [
+          "magic"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The phantom bredbeddle uses the same ability against the triggering creature after the triggering strike is resolved, using that creature's bonus to any power rolls they make.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "51"
+        },
+        "_dsid": "envious-imitation",
+        "story": "",
+        "resource": 2,
+        "trigger": "A creature targets the bredbeddle with a ranged strike."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "XCNC3IwEB7LriaQs",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.XCNC3IwEB7LriaQs"
+    },
+    {
+      "folder": "2VtLQ8tg0DVZeZy1",
+      "name": "Engreen",
+      "type": "ability",
+      "_id": "UGcSPj3TxSF9JTSh",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "50",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "engreen",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The bredbeddle’s axe lengthens and turns a ghastly green, granting a +1 bonus to the distance of the bredbeddle’s melee strikes and the dimensions of their burst area abilities until the end of their turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Engreen Distance effect",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "abilityModifier",
+          "origin": "Compendium.draw-steel.monster-features.Item.UGcSPj3TxSF9JTSh",
+          "disabled": true,
+          "_id": "7AVRL5qZ2fKq4089",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": [
+                "melee",
+                "strike"
+              ]
+            }
+          },
+          "changes": [
+            {
+              "key": "distance",
+              "mode": 2,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!gYUnLS5eDPZZtcGA.UGcSPj3TxSF9JTSh.7AVRL5qZ2fKq4089"
+        }
+      ],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.UGcSPj3TxSF9JTSh"
+    },
+    {
+      "folder": "2VtLQ8tg0DVZeZy1",
+      "name": "Shadow Stockade",
+      "type": "ability",
+      "_id": "hIAXL5GSBAJOmp9w",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "50",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "shadow-stockade",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A ghostly size 1L stockade seeps out from under the bredbeddle’s feet to fill an unoccupied square within 10 squares. When a size 1L or smaller enemy enters the stockade’s square, they are restrained (save ends). When a restrained creature is no longer restrained, the stock ade fades away. At the start of each of the bredbeddle’s turns, they can slide an active stockade and any creature in it up to 5 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.hIAXL5GSBAJOmp9w"
+    },
+    {
+      "folder": "2VtLQ8tg0DVZeZy1",
+      "name": "Solo Action",
+      "type": "ability",
+      "_id": "mQMBQ1XKQyZs53gm",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "50",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The bredbeddle takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.mQMBQ1XKQyZs53gm"
+    },
+    {
+      "folder": "2VtLQ8tg0DVZeZy1",
+      "name": "Green Phantom",
+      "type": "ability",
+      "_id": "SBKfZ0m7IJLOEOah",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "50",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "green-phantom",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A phantom second bredbeddle phases into view, appearing in an unoccupied space anywhere on the encounter map, then vanishing at the end of the round. The phantom bredbeddle shares the original bredbeddle’s statistics but has 24 Stamina, corruption immunity 10, and can fly. The phantom bredbeddle can take one turn and use any of the bredbeddle’s abilities except for villain actions. Only one phantom bredbeddle can be active at a time.</p><p>@UUID[Compendium.draw-steel.monsters.gYUnLS5eDPZZtcGA]{Phantom Bredbeddle}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SBKfZ0m7IJLOEOah",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1757096756868,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!gYUnLS5eDPZZtcGA.SBKfZ0m7IJLOEOah"
+    }
+  ],
+  "folder": "O7zizfGvMA07rRKX",
+  "prototypeToken": {
+    "name": "Phantom Bredbeddle",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757095981355,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "gYUnLS5eDPZZtcGA",
+  "sort": 0,
+  "_key": "!actors!gYUnLS5eDPZZtcGA"
+}

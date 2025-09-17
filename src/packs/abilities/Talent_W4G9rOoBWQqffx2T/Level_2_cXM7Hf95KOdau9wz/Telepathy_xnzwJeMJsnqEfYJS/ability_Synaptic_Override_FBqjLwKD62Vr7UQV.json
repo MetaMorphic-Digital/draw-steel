@@ -1,0 +1,88 @@
+{
+  "folder": "xnzwJeMJsnqEfYJS",
+  "name": "Synaptic Override",
+  "type": "ability",
+  "_id": "FBqjLwKD62Vr7UQV",
+  "img": "icons/magic/control/energy-stream-link-spiral-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "193",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "synaptic-override",
+    "story": "You control an enemy’s nervous system. How pleasant for them.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "telepathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "aVBGb0RyPYnBlt0j": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "aVBGb0RyPYnBlt0j",
+          "other": {
+            "tier1": {
+              "display": "The target makes a free strike against one enemy of your  choice."
+            },
+            "tier2": {
+              "display": "The target shifts up to their speed and uses their signature  ability against any enemies of your choice."
+            },
+            "tier3": {
+              "display": "The target moves up to their speed and uses their signature  ability against any enemies of your choice."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You control the target’s movement. The target can’t be moved in a way that would harm them (such as over a cliff), leave them dying, or result in them suffering a condition or other negative effect. However, you can move them to provoke opportunity attacks.</p><p><strong>Strained:</strong> You take 1d6 damage and are weakened until the end of your turn. </p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756182716279,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!FBqjLwKD62Vr7UQV"
+}

@@ -1,0 +1,114 @@
+{
+  "folder": "86F9T9t6YK1WafzV",
+  "name": "Mastermind",
+  "type": "subclass",
+  "_id": "aYjVEZyiYqtdGGPS",
+  "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+  "system": {
+    "description": {
+      "value": "<p>You have an encyclopedic knowledge of warfare, viewing the battlefield as a game board and seeking victory by thinking steps ahead of your opponents. You gain a skill from the lore skill group.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "175",
+      "license": "Draw Steel Creator License",
+      "revision": 2
+    },
+    "_dsid": "mastermind",
+    "advancements": {
+      "DkSOOli3zGqQRSyh": {
+        "name": "Doctrine Feature",
+        "img": null,
+        "type": "itemGrant",
+        "_id": "DkSOOli3zGqQRSyh",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.X8RA9Fp6vFF5AeKR"
+          }
+        ]
+      },
+      "wtisjb3YMdfLfihz": {
+        "name": "Skill (Lore)",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": null
+        },
+        "_id": "wtisjb3YMdfLfihz",
+        "skills": {
+          "groups": [
+            "lore"
+          ]
+        },
+        "chooseN": 1
+      },
+      "iUZk5e6ESjUfcPxj": {
+        "name": "Goaded",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "iUZk5e6ESjUfcPxj",
+        "description": "<p>Your tactical doctrine grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.4LfPih11ovksHOcR"
+          }
+        ]
+      },
+      "103Opabsm7LC3fkE": {
+        "name": "2nd-Level Mastermind Ability",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "103Opabsm7LC3fkE",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.auSGLJVN4CdVjtOd"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.zLKvoysqHElI2q54"
+          }
+        ]
+      },
+      "8cT3ShBsHYaf5C4n": {
+        "name": "Doctrine Triggered Action",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "8cT3ShBsHYaf5C4n",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.44Pkw50vZeqyqtiQ"
+          }
+        ]
+      }
+    },
+    "classLink": "tactician"
+  },
+  "effects": [],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1752598050570,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!aYjVEZyiYqtdGGPS"
+}

@@ -1,0 +1,1793 @@
+{
+  "name": "Ashen Hoarder",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 350,
+      "max": 350,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": -1
+      },
+      "reason": {
+        "value": -2
+      },
+      "intuition": {
+        "value": 0
+      },
+      "presence": {
+        "value": -5
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 3,
+        "letter": "M"
+      },
+      "stability": 3,
+      "turns": 1
+    },
+    "movement": {
+      "value": 8,
+      "types": [
+        "walk",
+        "burrow"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 5,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "46",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 6,
+      "keywords": [
+        "construct",
+        "undead"
+      ],
+      "level": 4,
+      "ev": 72,
+      "role": "",
+      "organization": "solo"
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the ashen hoarder can take [[/damage 10]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The ashen hoarder can take two turns each round. They can't take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "solo-monster",
+        "advancements": {}
+      },
+      "_id": "tc9XGpXdSLlrj7wb",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.tc9XGpXdSLlrj7wb"
+    },
+    {
+      "name": "Bladed Body",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>An adjacent enemy who grabs the ashen hoarder or uses a melee ability against them takes [[/damage 3]] damage.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "bladed-body",
+        "advancements": {}
+      },
+      "_id": "kedDJsO10WudPYqM",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.kedDJsO10WudPYqM"
+    },
+    {
+      "name": "Soul Singularity",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>When the ashen hoarder is reduced to 0 Stamina, they explode in a swirling singularity of bone shards and soul energy. Each creature within 5 squares of the ashen hoarder who has M &lt; 3 takes [[/damage 11 corruption]] damage. A creature killed by this damage has their soul sucked into the vortex and lost somewhere in the Abyssal Wasteland, and can't be brought back to life until their soul is recovered.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "soul-singularity",
+        "advancements": {}
+      },
+      "_id": "2ULaERjfRJsYXmDJ",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.2ULaERjfRJsYXmDJ"
+    },
+    {
+      "name": "Claw and Blade",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 2
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "pQgBpr9V87s8iZNk": {
+              "_id": "pQgBpr9V87s8iZNk",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "15",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "18",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "stXJM1Mk1AxiuTna": {
+              "_id": "stXJM1Mk1AxiuTna",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "if one target has {{potency}} they are bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            },
+            "9kjvEbXIASNguXcF": {
+              "_id": "9kjvEbXIASNguXcF",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "if the other target {{potency}} they are grabbed",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The ashen hoarder can have up to two size 1 creatures grabbed at a time.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "claw-and-blade",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Gmr1fJQOKhwIN4cI",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.Gmr1fJQOKhwIN4cI"
+    },
+    {
+      "name": "Corpse Bomb",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 4,
+          "secondary": 20
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "WfBdvTUZBnWvAUqs": {
+              "_id": "WfBdvTUZBnWvAUqs",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "kVRIntWLp4evdbZZ": {
+              "_id": "kVRIntWLp4evdbZZ",
+              "type": "applied",
+              "name": "Weakened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} weakened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "JHJutruYIpauxNj7": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p><strong>3 Malice</strong>: The ashen hoarder targets a second 4 cube within distance.</p>"
+        },
+        "spend": {
+          "text": "Any enemy weakened this way is instead slowed and weakened (save ends).",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "corpse-bomb",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Slowed and Weakened",
+          "img": "icons/skills/movement/arrow-down-pink.webp",
+          "origin": "Actor.TToAa8EW2JlNFH0C.Item.dDvZDYIU3dNme3bU",
+          "transfer": false,
+          "_id": "JHJutruYIpauxNj7",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "slowed",
+            "weakened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.dDvZDYIU3dNme3bU.JHJutruYIpauxNj7"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "dDvZDYIU3dNme3bU",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.dDvZDYIU3dNme3bU"
+    },
+    {
+      "name": "Impale",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "distance": {
+          "type": "line",
+          "primary": 4,
+          "secondary": 1,
+          "tertiary": 1
+        },
+        "target": {
+          "type": "creature",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "SOSrdEXIo8Hbd4zF": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "SOSrdEXIo8Hbd4zF",
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "5npn93SY4p2IGhfc": {
+              "name": "Impaled",
+              "img": null,
+              "type": "applied",
+              "_id": "5npn93SY4p2IGhfc",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is impaled (save ends)",
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "ox9pBhgG6jaEsZxa": {
+                      "condition": "failure",
+                      "end": "save"
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>An impaled creature is restrained and bleeding, and moves with the ashen hoarder. The ashen hoarder can have three creatures impaled with this ability at a time.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "impale",
+        "story": "",
+        "resource": 3,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Impaled",
+          "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.EwN0CLt7UmEzQA0J.Item.Nadm6rJRnHX2nET4",
+          "transfer": false,
+          "_id": "ox9pBhgG6jaEsZxa",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>An impaled creature is restrained and bleeding, and moves with the ashen hoarder. The ashen hoarder can have three creatures impaled with this ability at a time.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained",
+            "bleeding"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "createdTime": 1758001882732,
+            "modifiedTime": 1758001916093,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.Nadm6rJRnHX2nET4.ox9pBhgG6jaEsZxa"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Nadm6rJRnHX2nET4",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.Nadm6rJRnHX2nET4"
+    },
+    {
+      "name": "Bone Dozer",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder moves up to twice their speed in a straight line. Each creature or object in the path of this movement is either pushed into the nearest unoccupied space outside the path, or if they have M &lt; 3 is pushed forward until the movement ends. Any creature who is force moved forward into an obstacle is dazed (save ends).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "bone-dozer",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "qQpLgQkS7Eg8HE2w",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.qQpLgQkS7Eg8HE2w"
+    },
+    {
+      "name": "Armor of Corpses",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder halves the damage. If the ashen hoarder has one or more creatures impaled, the Malice cost of this feature is reduced by 1 and one impaled creature takes the other half of the damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "armor-of-corpses",
+        "story": "",
+        "resource": 2,
+        "trigger": "The ashen hoarder takes damage."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "kfQahPW7AA6DwxiW",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.kfQahPW7AA6DwxiW"
+    },
+    {
+      "name": "Skeletal Eruption",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "distance": {
+          "type": "line",
+          "primary": 8,
+          "secondary": 3,
+          "tertiary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "kZLJK9jOM8ANUqgd": {
+              "_id": "kZLJK9jOM8ANUqgd",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "UWLCQJ1kz4R8Lv4L": {
+              "name": "Push",
+              "img": null,
+              "type": "forced",
+              "_id": "UWLCQJ1kz4R8Lv4L",
+              "forced": {
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "3",
+                  "properties": [
+                    "vertical"
+                  ],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "hxbq2DReGMZdXm3l": {
+              "name": "Restrained",
+              "img": null,
+              "type": "applied",
+              "_id": "hxbq2DReGMZdXm3l",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    },
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    },
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "prone": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    },
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target is force moved straight up, then falls. A target who would normally land prone after falling is instead restrained (save ends).</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "skeletal-eruption",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Active Effect",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "origin": "Actor.TToAa8EW2JlNFH0C.Item.at8zpGISlK4xg0q5",
+          "transfer": false,
+          "_id": "LMLt6hlEMCRKcle1",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.at8zpGISlK4xg0q5.LMLt6hlEMCRKcle1"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "at8zpGISlK4xg0q5",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.at8zpGISlK4xg0q5"
+    },
+    {
+      "name": "Mobile Mine Field",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 10,
+          "secondary": 20
+        },
+        "target": {
+          "type": "special",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder sprays out six size 1M zombie mines that appear in unoccupied squares within distance. Any enemy who moves adjacent to a zombie mine for the first time in a round or starts their turn there causes the mine to explode, dealing [[/damage 4 corruption]] damage to each creature adjacent to the mine. Any other zombie mines adjacent to the exploding mine also explode. At the start of each of the ashen hoarder's turns, each unexploded zombie mine can be moved up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "mobile-mine-field",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "OjrKo1PQGMXK702N",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.OjrKo1PQGMXK702N"
+    },
+    {
+      "name": "Ossuary Assault",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder moves up to their speed and uses Claw and Blade with a double edge against one target. On a tier 3 outcome, the ashen hoarder can use Impale without spending Malice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "46"
+        },
+        "_dsid": "ossuary-assault",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "vzzAPKzWjVOhKs7G",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.vzzAPKzWjVOhKs7G"
+    },
+    {
+      "name": "Relentless Strikes",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A ashen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder moves up to their speed and can make a free strike against two targets.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "46",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "relentless-strikes",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "wQ1PEgnfO5HCOGRK",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.wQ1PEgnfO5HCOGRK"
+    },
+    {
+      "name": "Blade Wall",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A ashen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder summons a 10 wall of bones and blades into unoccupied squares within 5 squares of them. Each square of the wall has 5 Stamina. An enemy who comes adjacent to the wall for the first time in a round or starts their turn there takes [[/damage 3]] damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "46",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "blade-wall",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "o9XUCxec7w22VDBH",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.o9XUCxec7w22VDBH"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A ashen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder takes an additional main action on their turn.</p><p>They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "46",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "qvQskX0aMUg203Pm",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.qvQskX0aMUg203Pm"
+    },
+    {
+      "name": "Bone Storm",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A ashen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder launches bone lances into the air, raining them</p><p>down on enemies and impaling those unlucky enough to be on</p><p>the receiving end. Each enemy within 20 squares of the ashen</p><p>hoarder makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; restrained and bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; bleeding (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "46",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bone-storm",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Restrained",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_id": "iKSKZkUWnJLq8yB9",
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3.iKSKZkUWnJLq8yB9"
+        },
+        {
+          "name": "Bleeding",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": ""
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": 1,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "bleeding"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_id": "e8jY6RqE90bVzKNF",
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3.e8jY6RqE90bVzKNF"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "fv0Mx9PZ5CNDXvU3",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3"
+    }
+  ],
+  "folder": "GXX2DnZcth3KWFfL",
+  "prototypeToken": {
+    "name": "Ashen Hoarder",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757726088504,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "EwN0CLt7UmEzQA0J",
+  "sort": 0,
+  "_key": "!actors!EwN0CLt7UmEzQA0J"
+}

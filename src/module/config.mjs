@@ -1341,7 +1341,7 @@ export const PowerRollEffect = {
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
     properties: {
       ignoresImmunity: {
-        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
       },
     },
   },
@@ -1351,7 +1351,7 @@ export const PowerRollEffect = {
     documentClass: pseudoDocuments.powerRollEffects.AppliedPowerRollEffect,
     properties: {
       stacking: {
-        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.APPLIED.Properties.stacking",
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.Properties.stacking",
       },
     },
   },
@@ -1361,10 +1361,10 @@ export const PowerRollEffect = {
     documentClass: pseudoDocuments.powerRollEffects.ForcedMovementPowerRollEffect,
     properties: {
       ignoresImmunity: {
-        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.IgnoresStability",
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.FORCED.Properties.IgnoresStability",
       },
       vertical: {
-        label: "DRAW_STEEL.PSEUDO.POWER_ROLL_EFFECT.FORCED.Properties.Vertical",
+        label: "DRAW_STEEL.POWER_ROLL_EFFECT.FORCED.Properties.Vertical",
       },
     },
   },

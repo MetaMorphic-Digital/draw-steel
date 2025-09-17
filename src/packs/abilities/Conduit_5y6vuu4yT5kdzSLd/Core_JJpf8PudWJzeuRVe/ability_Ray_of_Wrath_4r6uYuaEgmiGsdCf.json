@@ -9,7 +9,7 @@
       "book": "Heroes",
       "page": "98",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "ray-of-wrath",
     "story": "You unleash a blast of holy light upon your foe.",
@@ -47,28 +47,22 @@
           "damage": {
             "tier2": {
               "value": "4 + @chr",
-              "types": [
-                "holy"
-              ]
+              "types": []
             },
             "tier3": {
-              "value": "5 + @chr",
-              "types": [
-                "holy"
-              ]
+              "value": "6 + @chr",
+              "types": []
             },
             "tier1": {
-              "types": [
-                "holy"
-              ]
+              "types": []
             }
           }
         }
       }
     },
     "effect": {
-      "before": "<p>You can have this ability deal untyped or holy damage.</p>",
-      "after": ""
+      "before": "",
+      "after": "<p>You can have this ability deal holy damage.</p>"
     },
     "spend": {
       "text": "",
@@ -85,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755647205102,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -85,9 +85,11 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     this.turn = null;
     await super.nextRound();
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (game.settings.get(systemID, "initiativeMode") !== "default") return this;
     const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.combat.turns ?? 1 }));
     await this.updateEmbeddedDocuments("Combatant", combatantUpdates);
+    const combatantGroupUpdates = this.groups.map(c => ({ _id: c.id, initiative: 1 }));
+    await this.updateEmbeddedDocuments("CombatantGroup", combatantGroupUpdates);
     return this;
   }
 
@@ -312,7 +314,14 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
       localize: true,
     });
 
-    content.append(victoryGroup, resetTempStamina, resetHeroicResources);
+    const resetSurgeResources = foundry.applications.fields.createFormGroup({
+      label: "DRAW_STEEL.Combat.CompleteEncounter.ResetSurgeResources.label",
+      input: foundry.applications.fields.createCheckboxInput({ name: "resetSurgeResources", value: true }),
+      classes: ["slim"],
+      localize: true,
+    });
+
+    content.append(victoryGroup, resetTempStamina, resetHeroicResources, resetSurgeResources);
     const fd = await ds.applications.api.DSDialog.input({
       content,
       classes: ["complete-encounter"],
@@ -329,6 +338,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
         if (actor.type === "hero") {
           updates.system.hero = { victories: actor.system.hero.victories + fd.victories };
           if (fd.resetHeroicResources) updates.system.hero.primary = { value: 0 };
+          if (fd.resetSurgeResources) updates.system.hero.surges = 0;
         }
         if (fd.resetTempStamina) updates.system.stamina = { temporary: 0 };
 

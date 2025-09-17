@@ -48,7 +48,7 @@ export async function migrateWorld() {
       await pack.getDocuments();
       const wasLocked = pack.config.locked;
       if (wasLocked) await pack.configure({ locked: false });
-      await migrateType(pack);
+      await migrateType(pack, { pack: pack.collection });
       if (pack.documentName === "Actor") {
         for (const actor of pack) await migrateType(actor.items, { parent: actor, pack: pack.collection });
       }

@@ -13,7 +13,7 @@
       "book": "Heroes",
       "page": "187",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "telepathy",
     "advancements": {
@@ -45,6 +45,40 @@
           }
         ],
         "description": "<p>You gain the following ability.</p>"
+      },
+      "xgNFvlHfzw5tk7IU": {
+        "name": "Ease The Mind",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "xgNFvlHfzw5tk7IU",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ztVzshPtpAszQnst"
+          }
+        ],
+        "description": "<p>Your talent tradition grants you the following feature.</p>"
+      },
+      "oWaL1Sd9B5YsYOnA": {
+        "name": "2nd-Level Telepathy Ability",
+        "img": "icons/skills/wounds/anatomy-organ-brain-pink-red.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "oWaL1Sd9B5YsYOnA",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.4wVqvmOcELkTd0DI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.FBqjLwKD62Vr7UQV"
+          }
+        ],
+        "chooseN": 1
       }
     },
     "classLink": "talent"
@@ -61,7 +95,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755828483600,
     "modifiedTime": null,
     "lastModifiedBy": null

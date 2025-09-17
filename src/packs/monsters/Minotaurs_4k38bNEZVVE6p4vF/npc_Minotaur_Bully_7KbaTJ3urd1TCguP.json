@@ -1,0 +1,697 @@
+{
+  "name": "Minotaur Bully",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "system": {
+    "stamina": {
+      "value": 14,
+      "max": 14,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": 2
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 3
+      },
+      "presence": {
+        "value": -1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "208",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 4,
+      "keywords": [
+        "accursed",
+        "humanoid"
+      ],
+      "level": 8,
+      "ev": 10,
+      "role": "brute",
+      "organization": "minion"
+    }
+  },
+  "items": [
+    {
+      "name": "Minotaur Sense",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The bully can't obtain less than a tier 2 outcome when making tests to navigate, search, or seek.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "208"
+        },
+        "_dsid": "minotaur-sense",
+        "advancements": {}
+      },
+      "_id": "E0sHLtMViGgc2ldj",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!7KbaTJ3urd1TCguP.E0sHLtMViGgc2ldj"
+    },
+    {
+      "name": "Javelin and Bellow",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "charge",
+          "melee",
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "meleeRanged",
+          "primary": 2,
+          "secondary": 5
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "TJyv5hsz9akdlOdd": {
+              "_id": "TJyv5hsz9akdlOdd",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "lM1lbGiwLFCvUfdY": {
+              "_id": "lM1lbGiwLFCvUfdY",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier3": {
+                  "display": "{{potency}} taunted (EoT) or frightened of all minotaurs (Save Ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "taunted": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "208"
+        },
+        "_dsid": "javelin-and-bellow",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "5RPBFQ2YuKxKTCPY",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!7KbaTJ3urd1TCguP.5RPBFQ2YuKxKTCPY"
+    },
+    {
+      "name": "Bull Rush",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "special",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A minotaur starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For each 3 Malice spent, one minotaur acting this turn gains a +4 bonus to speed and ignores difficult terrain until the start of their next turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "208",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bull-rush",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "1aIkhVj6Gc0pA24i",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!7KbaTJ3urd1TCguP.1aIkhVj6Gc0pA24i"
+    },
+    {
+      "name": "Cut the … Nonsense!",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "special",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A minotaur starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One minotaur acting this turn halves any damage they take, and can use the Knockback maneuver as a free triggered action whenever an enemy comes adjacent to them, all until the start of their next turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "208",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "cut-the--nonsense",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "6inrbcpk8BVQJLSw",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!7KbaTJ3urd1TCguP.6inrbcpk8BVQJLSw"
+    },
+    {
+      "name": "Bullseye",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "special",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A minotaur starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <span style=\"text-decoration:underline\"><strong>Intuition test</strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target has line of effect only within 3 squares and is frightened of all minotaurs (save ends).</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target has line of effect only within 3 squares (EoT).</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "208",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bullseye",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Frightened",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "frightened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.8.1",
+            "lastModifiedBy": null
+          },
+          "_id": "k2bSsXTVsGEq8nHx",
+          "_key": "!actors.items.effects!7KbaTJ3urd1TCguP.q4UwfxHj7fuHEKlQ.k2bSsXTVsGEq8nHx"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "q4UwfxHj7fuHEKlQ",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!7KbaTJ3urd1TCguP.q4UwfxHj7fuHEKlQ"
+    }
+  ],
+  "folder": "4k38bNEZVVE6p4vF",
+  "_id": "7KbaTJ3urd1TCguP",
+  "prototypeToken": {
+    "name": "Minotaur Bully",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Actor.7KbaTJ3urd1TCguP",
+      "_id": "DmT8Bg2b5RmxGRBo",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>+3 damage bonus to strikes</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!7KbaTJ3urd1TCguP.DmT8Bg2b5RmxGRBo"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1757728401104,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!7KbaTJ3urd1TCguP"
+}
