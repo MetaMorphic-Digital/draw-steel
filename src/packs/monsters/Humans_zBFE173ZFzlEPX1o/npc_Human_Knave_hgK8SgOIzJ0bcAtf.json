@@ -95,7 +95,7 @@
       "keywords": [
         "humanoid"
       ],
-      "level": 1,
+      "level": 2,
       "ev": 8,
       "role": "defender",
       "organization": "platoon"
@@ -103,7 +103,7 @@
   },
   "prototypeToken": {
     "name": "Human Knave",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -120,11 +120,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -388,56 +388,6 @@
                 }
               }
             },
-            "wQdKWUqYdPUyloDB": {
-              "name": "Taunted",
-              "img": null,
-              "type": "applied",
-              "_id": "wQdKWUqYdPUyloDB",
-              "applied": {
-                "tier2": {
-                  "effects": {
-                    "taunted": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier1": {
-                  "effects": {
-                    "taunted": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "taunted": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
             "Xop08QW1wjcbHCfb": {
               "name": "",
               "img": null,
@@ -450,11 +400,21 @@
                     "characteristic": "might",
                     "value": "@potency.weak"
                   },
-                  "effects": {}
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  }
                 },
                 "tier3": {
                   "display": "{{potency}} the target has a double bane on their next  power roll",
-                  "effects": {},
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  },
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
@@ -462,7 +422,12 @@
                 },
                 "tier2": {
                   "display": "",
-                  "effects": {},
+                  "effects": {
+                    "taunted": {
+                      "condition": "always",
+                      "end": "turn"
+                    }
+                  },
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
@@ -495,9 +460,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.8.1",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -616,9 +581,9 @@
                   }
                 },
                 "tier3": {
-                  "display": "",
+                  "display": "{{potency}}, restrained (save ends)",
                   "effects": {
-                    "slowed": {
+                    "restrained": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -656,7 +621,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "lastModifiedBy": null,
@@ -798,7 +763,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.8.0",
     "createdTime": 1755922193154,
@@ -806,6 +771,6 @@
     "lastModifiedBy": null
   },
   "_id": "hgK8SgOIzJ0bcAtf",
-  "sort": 300000,
+  "sort": 0,
   "_key": "!actors!hgK8SgOIzJ0bcAtf"
 }

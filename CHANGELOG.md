@@ -18,14 +18,74 @@
 ### Known Issues
 -->
 
-## 0.8.1
+## 0.9.0
 
 ### Added
 
 - Added suggested books and licenses in the source input form. (#841)
-- Expanded end of encounter prompt to reset surges. (#931)
 
 ### Changed
+
+- Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
+  - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+
+## 0.8.1
+
+### Added
+
+- New compendium content:
+  - Level 2 & 3 abilities and features for all classes
+  - Remaining Echelon 1 Monsters
+  - Echelon 1 Trinkets & Consumables
+  - Echelon 1 Titles
+- Expanded end of encounter prompt to reset surges. (#931)
+- Added Combatant Group tracker visibility controls. (#973)
+  - If all combatants in a group are hidden, the group is hidden.
+  - Added context menu option to quickly hide/show each combatant in the group.
+
+### Changed
+
+- The skill list on the character sheet is now sorted alphabetically.
+- Adjusted i18n structure for Power Roll Effects.
+
+### Fixed
+
+- Fixed an issue where the migration would error when migrating personal compendiums.
+- Player-Facing Compendium data fixes:
+  - Corrected Studied Commander description. (#948)
+  - Added missing item grant advancements to Tactician subclasses. (#949)
+  - Stormwight kit abilities no longer double up on kit bonuses (#954)
+  - Corrected name of the Stormwights "Furious Change". (#956)
+  - College of Black Ash no longer gives all lore skills. (#980)
+  - Corrected Talent "Distance Augmentation" filters & bonus. (#998)
+  - Corrected Conduit "Prayer of Distance" filters & bonus. (#999)
+  - Corrected Leaping Lightning effect enricher damage type. (#1015)
+  - Corrected talent resource minimum. (#1058)
+  - Corrected Wodewalker AE key. (#1078)
+  - Added descriptions to Dwarf Ancestry Trait effects.
+  - Beggar career no longer gives all interpersonal skills.
+  - Added bonus damage on fire abilities effect to Acolyte of Fire.
+  - Corrected Ray of Wrath tier 3 damage.
+  - Added description to Sacrificial Offer.
+  - Corrected Inertial Step keywords.
+- GM-Facing Compendium Data fixes:
+  - Standardized prototype token settings. (#946)
+  - Human Archer Crossbow attack stats. (#979)
+  - Various monster role and level fixes. (#981)
+  - Corrected Bugbear Channeler actions. (#1027)
+  - Corrected shared Radenwight actions. (#1037)
+  - Corrected "Brutal Impact" ability of Fury rival.
+  - Corrected Ogre Goon actions.
+- Fixed Perks and Ancestry Traits not being able to be added to Item Grant advancements. (#961)
+- Fixed combatant groups turns not resetting on new round. (#991)
+- Fixed level up button not showing unless XP exceeded the next level XP. (#996)
+- Addressed ProseMirror deprecation warning. (#1080)
+- Improved the display of an ability's tier effects to filter out blank effects. (#1081)
+   - Removed zero damage effect rolls and buttons from the ability use message.
+- Fixed ability bonuses to strikes that don't specify melee or ranged not giving damage bonuses. (#1086)
+- Fixed some broken labels & css from the equipment => treasure rename.
+- Removed invalid roles from leaders and solo monsters. (#1087)
+  - Improved monster tag templates to filter out invalid roles and organizations to prevent blank tags.
 
 ## 0.8.0
 

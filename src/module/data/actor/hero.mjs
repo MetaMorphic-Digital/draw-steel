@@ -165,8 +165,6 @@ export default class HeroModel extends BaseActorModel {
 
   /** @inheritdoc */
   prepareDerivedData() {
-    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
-
     this.hero.primary.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
     this.hero.epic.label = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label");
     const heroClass = this.class;
@@ -176,6 +174,9 @@ export default class HeroModel extends BaseActorModel {
     }
 
     super.prepareDerivedData();
+
+    // allows for stamina bonuses to apply first
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
@@ -447,7 +448,7 @@ export default class HeroModel extends BaseActorModel {
    * @type {boolean}
    */
   get advancementReady() {
-    return this.hero.xp > (this.nextLevelXP ?? Infinity);
+    return this.hero.xp >= (this.nextLevelXP ?? Infinity);
   }
 
   /* -------------------------------------------------- */

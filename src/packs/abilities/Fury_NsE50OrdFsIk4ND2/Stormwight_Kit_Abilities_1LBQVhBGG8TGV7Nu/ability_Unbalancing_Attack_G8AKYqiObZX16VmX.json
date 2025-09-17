@@ -9,7 +9,7 @@
       "book": "Heroes",
       "page": "145",
       "license": "Draw Steel Creator License",
-      "revision": 1
+      "revision": 2
     },
     "_dsid": "unbalancing-attack",
     "story": "A wild assault forces your foe onto their back.",
@@ -46,13 +46,13 @@
           "_id": "qrIcg67CG34MxqtU",
           "damage": {
             "tier1": {
-              "value": "4 + @chr"
+              "value": "2 + @chr"
             },
             "tier2": {
-              "value": "7 + @chr"
+              "value": "5 + @chr"
             },
             "tier3": {
-              "value": "9 + @chr"
+              "value": "7 + @chr"
             }
           }
         },
@@ -69,6 +69,9 @@
                   "condition": "failure",
                   "end": ""
                 }
+              },
+              "potency": {
+                "characteristic": "agility"
               }
             },
             "tier2": {
@@ -82,7 +85,8 @@
             "tier3": {
               "effects": {
                 "prone": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "end": ""
                 }
               }
             }
@@ -109,9 +113,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.8.1",
     "createdTime": 1755755239858,
     "modifiedTime": null,
     "lastModifiedBy": null

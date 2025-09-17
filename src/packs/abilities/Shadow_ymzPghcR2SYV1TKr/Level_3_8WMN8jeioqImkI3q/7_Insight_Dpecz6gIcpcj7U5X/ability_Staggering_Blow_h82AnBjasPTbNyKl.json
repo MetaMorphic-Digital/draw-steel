@@ -1,0 +1,178 @@
+{
+  "folder": "Dpecz6gIcpcj7U5X",
+  "name": "Staggering Blow",
+  "type": "ability",
+  "_id": "h82AnBjasPTbNyKl",
+  "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "166",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "staggering-blow",
+    "story": "There’s no recovering from this.",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "xogjpMYIAMvhjlPV": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "xogjpMYIAMvhjlPV",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr"
+            },
+            "tier2": {
+              "value": "11 + @chr"
+            },
+            "tier3": {
+              "value": "16 + @chr"
+            }
+          }
+        },
+        "MrMTb6aMk3Vlu7AC": {
+          "name": "Slowed or Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "MrMTb6aMk3Vlu7AC",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "{{potency}}, prone and can't stand (save ends)",
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                },
+                "GbHGAVFUWyiAm7yx": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                },
+                "GbHGAVFUWyiAm7yx": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Can't Stand",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.h82AnBjasPTbNyKl",
+      "transfer": false,
+      "_id": "GbHGAVFUWyiAm7yx",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "createdTime": 1756791704722,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!h82AnBjasPTbNyKl.GbHGAVFUWyiAm7yx"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756688646182,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!h82AnBjasPTbNyKl"
+}

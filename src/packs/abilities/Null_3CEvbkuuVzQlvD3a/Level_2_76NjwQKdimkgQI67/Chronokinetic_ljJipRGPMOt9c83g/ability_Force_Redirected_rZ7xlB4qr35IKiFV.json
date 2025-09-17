@@ -1,0 +1,114 @@
+{
+  "folder": "ljJipRGPMOt9c83g",
+  "name": "Force Redirected",
+  "type": "ability",
+  "_id": "rZ7xlB4qr35IKiFV",
+  "img": "icons/magic/defensive/shield-barrier-deflect-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "152",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "_dsid": "force-redirected",
+    "story": "The force of your strike moves your target in a surprising direction.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "N0H34DbhjR6cRHko": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "N0H34DbhjR6cRHko",
+          "damage": {
+            "tier1": {
+              "value": "8 + @chr"
+            },
+            "tier2": {
+              "value": "12 + @chr"
+            },
+            "tier3": {
+              "value": "16 + @chr"
+            }
+          }
+        },
+        "BVaGuAzvjiai0YTe": {
+          "name": "slide",
+          "img": null,
+          "type": "forced",
+          "_id": "BVaGuAzvjiai0YTe",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "slide"
+              ]
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "3"
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "5"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.1",
+    "createdTime": 1756086990944,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!rZ7xlB4qr35IKiFV"
+}
