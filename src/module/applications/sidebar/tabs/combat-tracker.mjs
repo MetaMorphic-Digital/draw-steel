@@ -206,7 +206,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
     turn.group = combatant.group;
 
-    if ((turn.group?.type === "squad") && !combatant.actor?.isMinion) turn.captain = true;
+    if (combatant.system.isCaptain) turn.captain = true;
 
     return turn;
   }
@@ -300,10 +300,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     if (groupLI) {
       /** @type {DrawSteelCombatantGroup} */
       const group = this.viewed.groups.get(groupLI.dataset.groupId);
-      if (group.system.captain && !combatant.actor?.isMinion) {
-        ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.SquadOneCaptain", { localize: true });
-      }
-      else if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
+      if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
         ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.MinionMustSquad", { localize: true });
       }
       else {
@@ -338,6 +335,23 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
     }
+
+    // Add captain context menu option.
+    const getCombatant = li => this.viewed.combatants.get(li.dataset.combatantId);
+    entryOptions.push({
+      name: "DRAW_STEEL.Combatant.ToggleCaptain",
+      icon: "<i class=\"fa-solid fa-helmet-battle\"></i>",
+      condition: li => {
+        const combatant = getCombatant(li);
+        return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
+      },
+      callback: li => {
+        const combatant = getCombatant(li);
+        const newCaptain = (!combatant.system.isCaptain) ? combatant.id : null;
+
+        combatant.group.update({ "system.captainId": newCaptain });
+      },
+    });
 
     return entryOptions;
   }

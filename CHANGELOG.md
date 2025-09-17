@@ -18,6 +18,13 @@
 ### Known Issues
 -->
 
+## 0.9.0
+
+### Changed
+
+- Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
+  - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+
 ## 0.8.1
 
 ### Added
