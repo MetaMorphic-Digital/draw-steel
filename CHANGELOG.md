@@ -41,25 +41,30 @@
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
 - Player-Facing Compendium data fixes:
-  - Description for Studied Commander. (#948)
+  - Corrected Studied Commander description. (#948)
   - Added missing item grant advancements to Tactician subclasses. (#949)
-  - Stormwight kit abilities were double counting their kit bonuses (#954)
+  - Stormwight kit abilities no longer double up on kit bonuses (#954)
   - Corrected name of the Stormwights "Furious Change". (#956)
   - College of Black Ash no longer gives all lore skills. (#980)
-  - Talent "Distance Augmentation" filters & bonus. (#998)
-  - Conduit "Prayer of Distance" filters & bonus. (#999)
-  - Leaping Lightning effect enricher damage type. (#1015)
-  - Fixed talent resource minimum. (#1058)
-  - Fixed Wodewalker AE key. (#1078)
-  - Added effect to Acolyte of Fire.
+  - Corrected Talent "Distance Augmentation" filters & bonus. (#998)
+  - Corrected Conduit "Prayer of Distance" filters & bonus. (#999)
+  - Corrected Leaping Lightning effect enricher damage type. (#1015)
+  - Corrected talent resource minimum. (#1058)
+  - Corrected Wodewalker AE key. (#1078)
+  - Added descriptions to Dwarf Ancestry Trait effects.
   - Beggar career no longer gives all interpersonal skills.
+  - Added bonus damage on fire abilities effect to Acolyte of Fire.
+  - Corrected Ray of Wrath tier 3 damage.
+  - Added description to Sacrificial Offer.
+  - Corrected Inertial Step keywords.
 - GM-Facing Compendium Data fixes:
   - Standardized prototype token settings. (#946)
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
-  - Bugbear Channeler action corrections. (#1027)
+  - Corrected Bugbear Channeler actions. (#1027)
   - Corrected shared Radenwight actions. (#1037)
-  - Ogre Goon action corrections.
+  - Corrected "Brutal Impact" ability of Fury rival.
+  - Corrected Ogre Goon actions.
 - Fixed Perks and Ancestry Traits not being able to be added to Item Grant advancements. (#961)
 - Fixed combatant groups turns not resetting on new round. (#991)
 - Fixed level up button not showing unless XP exceeded the next level XP. (#996)
