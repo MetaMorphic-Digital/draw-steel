@@ -1,28 +1,28 @@
 {
-  "name": "Bugbear Knightmare",
+  "name": "Gunge",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
   "system": {
     "stamina": {
-      "value": 12,
-      "max": 12,
+      "value": 25,
+      "max": 25,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 4
+        "value": 3
       },
       "agility": {
-        "value": 3
+        "value": 2
       },
       "reason": {
         "value": 1
       },
       "intuition": {
-        "value": 1
+        "value": 2
       },
       "presence": {
-        "value": 4
+        "value": -1
       }
     },
     "combat": {
@@ -31,14 +31,14 @@
         "bonus": ""
       },
       "size": {
-        "value": 1,
-        "letter": "L"
+        "value": 3,
+        "letter": "M"
       },
-      "stability": 2,
+      "stability": 0,
       "turns": 1
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
         "walk"
       ],
@@ -64,7 +64,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 0,
+        "holy": 5,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -72,13 +72,13 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "55",
+      "page": "67",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -90,75 +90,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 2,
       "keywords": [
-        "fey",
-        "humanoid"
+        "abyssal"
       ],
-      "level": 8,
-      "ev": 10,
-      "role": "hexer",
-      "organization": "minion"
+      "level": 4,
+      "ev": 6,
+      "role": "controller",
+      "organization": "horde"
     }
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> Gain an edge on strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "55"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "PtZrnyNxq2BK3bqI",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!BUM1285qoUoaorwL.PtZrnyNxq2BK3bqI"
-    },
-    {
-      "name": "Bu'gathic Inspiration",
+      "name": "Lethe",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Any ally has a +1 bonus to power rolls, saving throws, or damage rolled as a d6 or a d3 for each knightmare adjacent to them.</p>",
+          "value": "<p>While the gunge is winded, they gain an edge on strikes, and any strike made against them gains an edge.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "55"
+          "page": ""
         },
-        "_dsid": "bugathic-inspiration",
+        "_dsid": "lethe",
         "advancements": {}
       },
-      "_id": "BCPM6klagaz5Zqco",
+      "_id": "KgmfGD3hEjYtahRP",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -172,31 +133,31 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!BUM1285qoUoaorwL.BCPM6klagaz5Zqco"
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.KgmfGD3hEjYtahRP"
     },
     {
-      "name": "Magic Terror",
+      "name": "Soulsight",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Each enemy has a −1 penalty to power rolls, saving throws, or damage rolled as a d6 or a d3 for each knightmare adjacent to them.</p>",
+          "value": "<p>Any creature within 2 squares of the gunge can't be hidden from them.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "55"
+          "page": ""
         },
-        "_dsid": "magic-terror",
+        "_dsid": "soulsight",
         "advancements": {}
       },
-      "_id": "fCS49k5QYsdVc9sf",
+      "_id": "foiRCNYHiWbM3Xwk",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -210,31 +171,30 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!BUM1285qoUoaorwL.fCS49k5QYsdVc9sf"
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.foiRCNYHiWbM3Xwk"
     },
     {
-      "name": "Corrosive Blade",
+      "name": "Bilious Expulsion",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
         "type": "main",
         "category": "signature",
         "keywords": [
-          "magic",
-          "melee",
-          "strike",
+          "area",
+          "ranged",
           "weapon"
         ],
         "distance": {
-          "type": "melee",
+          "type": "burst",
           "primary": 1
         },
         "target": {
-          "type": "creature",
+          "type": "creatureObject",
           "value": 1
         },
         "damageDisplay": "melee",
@@ -246,16 +206,16 @@
             ]
           },
           "effects": {
-            "oCVbLp4QJgm8QYNw": {
-              "_id": "oCVbLp4QJgm8QYNw",
+            "y7tCIJXng2JN4CDJ": {
+              "_id": "y7tCIJXng2JN4CDJ",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "3",
+                  "value": "5",
                   "types": [
-                    "corruption"
+                    "acid"
                   ],
                   "properties": [],
                   "potency": {
@@ -264,9 +224,9 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
+                  "value": "7",
                   "types": [
-                    "corruption"
+                    "acid"
                   ],
                   "properties": [],
                   "potency": {
@@ -275,9 +235,9 @@
                   }
                 },
                 "tier3": {
-                  "value": "8",
+                  "value": "9",
                   "types": [
-                    "corruption"
+                    "acid"
                   ],
                   "properties": [],
                   "potency": {
@@ -287,76 +247,44 @@
                 }
               }
             },
-            "utmhjdgTKLyjiZCX": {
-              "name": "grabbed",
-              "img": null,
+            "A1X8uU1TD911CR0P": {
+              "_id": "A1X8uU1TD911CR0P",
               "type": "applied",
-              "_id": "utmhjdgTKLyjiZCX",
+              "name": "Slowed and Restrained",
+              "img": null,
               "applied": {
                 "tier1": {
-                  "display": "",
-                  "effects": {},
+                  "display": "{{potency}} slowed (save ends)",
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "grabbed",
-                  "effects": {
-                    "grabbed": {
-                      "condition": "always",
-                      "end": "",
-                      "properties": []
-                    }
+                    "characteristic": "might"
                   },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "aEsac3ywxPYiuU6M": {
-              "name": "bleeding",
-              "img": null,
-              "type": "applied",
-              "_id": "aEsac3ywxPYiuU6M",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "{{potency}} bleeding (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "slowed": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
-                  },
+                  }
+                },
+                "tier2": {
+                  "display": "",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "presence"
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
                   }
                 },
                 "tier3": {
-                  "display": "",
+                  "display": "{{potency}} restrained (save ends)",
                   "effects": {
-                    "bleeding": {
+                    "restrained": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
@@ -372,8 +300,8 @@
           }
         },
         "effect": {
-          "before": "",
-          "after": "<p>A target grabbed this way or already grabbed by the knightmare can be vertical pushed up to 5 squares.</p>"
+          "before": "<p>Note: range is <strong>1 burst, or 3 cube within 5</strong></p>",
+          "after": "<p>The ground and any surfaces in the area pool with slime. The slime is difficult terrain for enemies, and any enemy is bleeding while in the area.</p>"
         },
         "spend": {
           "text": "",
@@ -383,9 +311,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "55"
+          "page": ""
         },
-        "_dsid": "corrosive-blade",
+        "_dsid": "bilious-expulsion",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -400,30 +328,94 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "LRzmlhqUKyKgv6No",
+      "_id": "ZP4P7YcJNsLHFo6q",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!BUM1285qoUoaorwL.LRzmlhqUKyKgv6No"
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.ZP4P7YcJNsLHFo6q"
     },
     {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Goblin Malice Features",
+      "name": "Spew Slide",
       "type": "ability",
-      "_id": "06sDqIj5EE1bUxw1",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "heroic",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The gunge vomits with great force, letting them shift up to their speed and ignore any additional effects from the strike. The space the gunge occupied before the shift is covered in slime that is difficult terrain for enemies. Additionally, any enemy is bleeding while in the slime.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": ""
+        },
+        "_dsid": "spew-slide",
+        "story": "",
+        "resource": 1,
+        "trigger": "The gunge takes damage from a melee strike."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "lv3p5XbuUA8jp9lG",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.lv3p5XbuUA8jp9lG"
+    },
+    {
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "_id": "2PmYNyLNcEt2Ufaa",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "52",
+          "page": "65",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "goblin-malice-features",
+        "_dsid": "prior-malice-features",
         "story": "",
         "keywords": [],
         "type": "none",
@@ -445,7 +437,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
           "after": ""
         },
         "spend": {
@@ -466,93 +458,31 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!BUM1285qoUoaorwL.06sDqIj5EE1bUxw1"
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.2PmYNyLNcEt2Ufaa"
     },
     {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Iron Ball",
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Abyssal Jaunt",
       "type": "ability",
-      "_id": "OE8d20QnSaE7ZHfI",
+      "_id": "d298nvIWsIOh0Kl7",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "52",
+          "page": "65",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "grab-iron-ball",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!BUM1285qoUoaorwL.OE8d20QnSaE7ZHfI"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Javelin",
-      "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-javelin",
+        "_dsid": "abyssal-jaunt",
         "story": "",
         "keywords": [],
         "type": "none",
         "category": "heroic",
-        "resource": null,
+        "resource": 3,
         "trigger": "",
         "distance": {
           "type": "special"
@@ -569,7 +499,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
           "after": ""
         },
         "spend": {
@@ -590,84 +520,22 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!BUM1285qoUoaorwL.5stni4cw4IVUjzqM"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Show Them the Great Fear",
-      "type": "ability",
-      "_id": "XPiOlpj5iRNcFIvP",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "show-them-the-great-fear",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 10,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!BUM1285qoUoaorwL.XPiOlpj5iRNcFIvP"
+      "_key": "!actors.items!cHfXpw0gAtswgtvd.d298nvIWsIOh0Kl7"
     }
   ],
-  "folder": "IOJX0Gbij4nZLkvh",
+  "folder": "fgQNWiICJVzfSdZ8",
   "prototypeToken": {
-    "name": "Bugbear Knightmare",
-    "displayName": 20,
+    "name": "Gunge",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -679,11 +547,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -765,12 +633,12 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757089811510,
+    "systemVersion": "0.9.0",
+    "createdTime": 1758136964278,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "BUM1285qoUoaorwL",
-  "sort": 81250,
-  "_key": "!actors!BUM1285qoUoaorwL"
+  "_id": "cHfXpw0gAtswgtvd",
+  "sort": 700000,
+  "_key": "!actors!cHfXpw0gAtswgtvd"
 }

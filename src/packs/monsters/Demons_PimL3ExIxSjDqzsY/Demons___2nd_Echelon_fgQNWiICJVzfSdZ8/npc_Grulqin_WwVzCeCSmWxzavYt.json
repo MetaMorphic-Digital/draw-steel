@@ -1,5 +1,5 @@
 {
-  "name": "Bugbear Snare",
+  "name": "Grulqin",
   "type": "npc",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
@@ -10,19 +10,19 @@
     },
     "characteristics": {
       "might": {
-        "value": 2
-      },
-      "agility": {
         "value": 3
       },
+      "agility": {
+        "value": 2
+      },
       "reason": {
-        "value": 0
+        "value": -1
       },
       "intuition": {
-        "value": 0
+        "value": -1
       },
       "presence": {
-        "value": 1
+        "value": -1
       }
     },
     "combat": {
@@ -34,11 +34,11 @@
         "value": 1,
         "letter": "L"
       },
-      "stability": 2,
+      "stability": 1,
       "turns": 1
     },
     "movement": {
-      "value": 6,
+      "value": 8,
       "types": [
         "walk"
       ],
@@ -64,7 +64,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 0,
+        "holy": 5,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -78,7 +78,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "55",
+      "page": "65",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -92,37 +92,40 @@
     "monster": {
       "freeStrike": 3,
       "keywords": [
-        "fey",
-        "humanoid"
+        "abyssal"
       ],
-      "level": 5,
-      "ev": 7,
-      "role": "ambusher",
+      "level": 4,
+      "ev": 6,
+      "role": "minion",
       "organization": "minion"
     }
   },
   "items": [
     {
-      "name": "With Captain",
+      "name": "Soulsight",
       "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p><strong>With Captain:</strong> +3 bonus to speed</p>",
+          "value": "<p>Any creature within 2 squares of the grulqin can't be hidden from them.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "55"
+          "page": ""
         },
-        "_dsid": "with-captain",
+        "_dsid": "soulsight",
         "advancements": {}
       },
+      "_id": "iOgG2lc2E5UX6oHa",
       "effects": [],
       "folder": null,
-      "sort": -100000,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -130,18 +133,14 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "LoVXpiYfdsnMMDhG",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.LoVXpiYfdsnMMDhG"
+      "_key": "!actors.items!WwVzCeCSmWxzavYt.iOgG2lc2E5UX6oHa"
     },
     {
-      "name": "Cut 'Em Low!",
+      "name": "Spinning Bone Blade",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
@@ -158,7 +157,7 @@
           "primary": 1
         },
         "target": {
-          "type": "creature",
+          "type": "creatureObject",
           "value": 1
         },
         "damageDisplay": "melee",
@@ -166,12 +165,12 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
           "effects": {
-            "gKoBjPEYopsnSKfE": {
-              "_id": "gKoBjPEYopsnSKfE",
+            "tHQrptjn7MgCXeov": {
+              "_id": "tHQrptjn7MgCXeov",
               "type": "damage",
               "name": "",
               "img": null,
@@ -186,7 +185,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "6",
+                  "value": "5",
                   "types": [],
                   "properties": [],
                   "potency": {
@@ -204,50 +203,12 @@
                   }
                 }
               }
-            },
-            "QAp8tFGc0EgsTWy9": {
-              "_id": "QAp8tFGc0EgsTWy9",
-              "type": "applied",
-              "name": "Slowed",
-              "img": null,
-              "applied": {
-                "tier3": {
-                  "display": "{{potency}} slowed (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "agility"
-                  },
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
             }
           }
         },
         "effect": {
           "before": "",
-          "after": "<p>If the snare started their turn hidden from the target, the target is automatically grabbed. A target grabbed this way or already grabbed by the snare can be vertical pushed up to 4 squares.</p>"
+          "after": "<p>The grulqin gains an edge on this ability if they previously moved 3 or more squares in a straight line on their turn.</p>"
         },
         "spend": {
           "text": "",
@@ -257,9 +218,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "55"
+          "page": ""
         },
-        "_dsid": "cut-em-low",
+        "_dsid": "spinning-bone-blade",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -274,30 +235,92 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "BQKrR8gwoqk0Ddhs",
+      "_id": "2P2sbyZcwOQm3yry",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.BQKrR8gwoqk0Ddhs"
+      "_key": "!actors.items!WwVzCeCSmWxzavYt.2P2sbyZcwOQm3yry"
     },
     {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Goblin Malice Features",
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Abyssal Jaunt",
       "type": "ability",
-      "_id": "06sDqIj5EE1bUxw1",
+      "_id": "d298nvIWsIOh0Kl7",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "52",
+          "page": "65",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "goblin-malice-features",
+        "_dsid": "abyssal-jaunt",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!WwVzCeCSmWxzavYt.d298nvIWsIOh0Kl7"
+    },
+    {
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "_id": "2PmYNyLNcEt2Ufaa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "65",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "prior-malice-features",
         "story": "",
         "keywords": [],
         "type": "none",
@@ -319,7 +342,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The bugbear activates a Malice Feature available to goblins, spending the required malice to use those features.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.4IYmvaux8p8vaWR6]{Goblin Mode}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm]{Swamp Stink}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.Oa0MhwS1yeyeJ5qG]{Tiny Stabs}</p>",
+          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
           "after": ""
         },
         "spend": {
@@ -328,7 +351,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": -100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -340,203 +363,17 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.06sDqIj5EE1bUxw1"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Iron Ball",
-      "type": "ability",
-      "_id": "OE8d20QnSaE7ZHfI",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-iron-ball",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 3 Malice spent, one non-minion bugbear acting this turn grabs an iron ball and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 8 – the number of squares the iron ball was thrown, and if they have m&lt;1 they are slowed (save ends).</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.OE8d20QnSaE7ZHfI"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Javelin",
-      "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-javelin",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.5stni4cw4IVUjzqM"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
-      "name": "Show Them the Great Fear",
-      "type": "ability",
-      "_id": "XPiOlpj5iRNcFIvP",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "show-them-the-great-fear",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 10,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A bugbear infuses the encounter map with bu’gathic magic. Until the end of the encounter, all bugbears and allies have their speed doubled and can automatically climb at full speed while moving. Additionally, if the target of any bugbear or ally’s strike has I&lt;1 the target is also frightened (save ends) and must move their speed in a straight line away from the creature who made the strike.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!YpvSj9tJzpiPSmLl.XPiOlpj5iRNcFIvP"
+      "_key": "!actors.items!WwVzCeCSmWxzavYt.2PmYNyLNcEt2Ufaa"
     }
   ],
-  "folder": "IOJX0Gbij4nZLkvh",
+  "folder": "fgQNWiICJVzfSdZ8",
   "prototypeToken": {
-    "name": "Bugbear Snare",
-    "displayName": 20,
+    "name": "Grulqin",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -553,11 +390,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -628,7 +465,73 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Actor.J5bzc2TBanrGzwxw",
+      "_id": "cz6PA03oJxHtU2yK",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!WwVzCeCSmWxzavYt.cz6PA03oJxHtU2yK"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -639,12 +542,12 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757089814017,
+    "systemVersion": "0.9.0",
+    "createdTime": 1758136941019,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "YpvSj9tJzpiPSmLl",
-  "sort": 500000,
-  "_key": "!actors!YpvSj9tJzpiPSmLl"
+  "_id": "WwVzCeCSmWxzavYt",
+  "sort": 100000,
+  "_key": "!actors!WwVzCeCSmWxzavYt"
 }
