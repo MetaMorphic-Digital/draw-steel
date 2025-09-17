@@ -89,7 +89,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     } else if (item && tierKey) {
       content.insertAdjacentHTML("afterbegin", `<p class="powerResult"><strong>${
         game.i18n.localize(`DRAW_STEEL.ROLL.Power.Results.Tier${this.tier}`)
-      }: </strong>${item.system.power.effects.contents.map(effect => effect.toText(this.tier)).join("; ")}</p>`,
+      }: </strong>${item.system.power.effects.contents.map(effect => effect.toText(this.tier)).filter(_ => _).join("; ")}</p>`,
       );
     } else console.warn("Invalid configuration");
   }
