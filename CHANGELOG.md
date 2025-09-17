@@ -22,9 +22,9 @@
 
 ### Changed
 
-- Added "custom" target property to abilities, which will override the target label. (#886)
-  - Also added "Enemy or Object" as a new type
-  - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature"
+- Added a "Custom Label" property for ability targets, which will override the default label. (#886)
+  - Also added "Enemy or Object" as a new target type.
+  - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
 
