@@ -1226,6 +1226,11 @@ const abilityTargets = {
     all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
   },
+  enemyObject: {
+    label: "DRAW_STEEL.Item.ability.Target.EnemyObject",
+    all: "DRAW_STEEL.Item.ability.Target.AllEnemyObject",
+    embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyObjectEmbed",
+  },
   ally: {
     label: "DRAW_STEEL.Item.ability.Target.Ally",
     all: "DRAW_STEEL.Item.ability.Target.AllAllies",
