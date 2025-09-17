@@ -99,6 +99,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const { value, types, potency } = this.damage[`tier${tier}`];
+    if (Number(value) === 0) return "";
 
     let damageTypes;
     let i18nString = "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formatted";
