@@ -20,6 +20,10 @@
 
 ## 0.9.0
 
+### Added
+
+- New Advancement Type: Characteristic. (#707)
+
 ### Changed
 
 - Changed available keywords on treasures to be more accurate. (#270)
@@ -49,6 +53,10 @@
 
 - The skill list on the character sheet is now sorted alphabetically.
 - Adjusted i18n structure for Power Roll Effects.
+
+### Removed
+
+- Removed minimum and maximums on characteristic values. (#707)
 
 ### Fixed
 
