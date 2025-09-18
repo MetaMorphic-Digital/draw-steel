@@ -233,7 +233,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     const formatter = game.i18n.getListFormatter();
     const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
     const languageOptions = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
-    for (const language of this.actor.system.biography.languages) {
+    for (const language of this.actor.system._source.biography.languages) {
       if (!(language in ds.CONFIG.languages)) languageOptions.push({ value: language });
     }
     return {

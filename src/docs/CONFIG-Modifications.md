@@ -9,14 +9,14 @@ Hooks.once("init", () => {
   // Add a language
   CONFIG.DRAW_STEEL.languages.foo = { label: "Foo" };
   // Remove a language
-  delete CONFIG.DRAW_STEEL.languages.anjali
+  delete CONFIG.DRAW_STEEL.languages.anjali;
   // Remove all default languages
   for (const key in CONFIG.DRAW_STEEL.languages) delete CONFIG.DRAW_STEEL.languages[key];
   // Add many languages
   Object.assign(CONFIG.DRAW_STEEL.languages, {
     foo: { label: "Foo" },
-    bar: { label: "Bar" }
-  })
+    bar: { label: "Bar" },
+  });
 });
 ```
 
@@ -29,13 +29,13 @@ Hooks.once("init", () => {
   // Add a new skill
   CONFIG.DRAW_STEEL.skills.list.painting = {
     label: "Painting",
-    group: "crafting"
-  }
+    group: "crafting",
+  };
   // Remove a skill
-  delete CONFIG.DRAW_STEEL.skills.list.flirt
+  delete CONFIG.DRAW_STEEL.skills.list.flirt;
   // Add a skill group
   CONFIG.DRAW_STEEL.skills.groups.technology = {
-    label: "Technology"
-  }
-})
+    label: "Technology",
+  };
+});
 ```
