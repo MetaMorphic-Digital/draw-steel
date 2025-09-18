@@ -63,7 +63,7 @@ export default class AbilityModel extends BaseItemModel {
     }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
-      custom: new fields.StringField(),
+      custom: new fields.StringField({ required: true }),
       value: new fields.NumberField({ integer: true }),
     });
 
