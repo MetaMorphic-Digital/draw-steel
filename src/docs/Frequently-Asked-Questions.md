@@ -1,5 +1,3 @@
-# Frequently Asked Questions
-
 ## Is Draw Steel available in other languages?
 
 The system fully implements Foundry's i18n framework, so non-English languages can be provided as modules. The [Babele](https://foundryvtt.com/packages/babele) module is a popular option for translating compendium content.
