@@ -6,9 +6,9 @@ import { setOptions } from "../helpers.mjs";
  */
 
 /**
- * An Active Effect subtype that represents bonuses to an actor's abilities.
+ * An Active Effect subtype that represents adjustments to an actor's abilities.
  */
-export default class AbilityBonus extends BaseEffectModel {
+export default class AbilityModifier extends BaseEffectModel {
   /** @inheritdoc */
   static get metadata() {
     return {
