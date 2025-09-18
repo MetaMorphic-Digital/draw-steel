@@ -275,7 +275,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _prepareItemContext(item) {
     const context = {
       item,
-      expanded: this._expandedDocumentEmbeds.has(item.id),
+      expanded: this._expandedDocumentDescriptions.has(item.id),
     };
 
     // only generate the item embed when it's expanded
@@ -460,7 +460,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         expanded: false,
       };
 
-      if (this._expandedDocumentEmbeds.has(e.id)) {
+      if (this._expandedDocumentDescriptions.has(e.id)) {
         effectContext.expanded = true;
         effectContext.enrichedDescription = await e.system.toEmbed({});
       }

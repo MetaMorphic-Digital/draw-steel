@@ -1,6 +1,7 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
 /** @import { Constructor } from "@common/_types.mjs" */
+/** @import { Document } from "@common/abstract/_module.mjs" */
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -75,7 +76,7 @@ export default base => {
      * A set of the currently expanded document ids.
      * @type {Set<string>}
      */
-    _expandedDocumentEmbeds = new Set();
+    _expandedDocumentDescriptions = new Set();
 
     /* -------------------------------------------------- */
 
@@ -134,28 +135,19 @@ export default base => {
     /*   Helper Functions                                 */
     /* -------------------------------------------------- */
 
-    /* -------------------------------------------------- */
-
     /**
      * Fetches the embedded document representing the containing HTML element.
      *
      * @param {HTMLElement} target    The element subject to search.
-     * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect.
+     * @returns {Document} The embedded document
      */
     _getEmbeddedDocument(target) {
-      const docRow = target.closest("[data-document-class]");
-      if (docRow.dataset.documentClass === "Item") {
-        return this.actor.items.get(docRow.dataset.itemId);
-      } else if (docRow.dataset.documentClass === "ActiveEffect") {
-        let parent;
-        if (this.actor) {
-          parent = docRow.dataset.parentId === this.actor.id
-            ? this.actor
-            : this.actor.items.get(docRow?.dataset.parentId);
-        } else parent = this.item;
+      const parentUuid = target.closest("[data-parent-uuid]").dataset.parentUuid;
+      const documentClass = target.closest("[data-document-class]").dataset.documentClass;
+      const documentId = target.closest("[data-document-id").dataset.documentId;
+      const parentDocument = fromUuidSync(parentUuid);
 
-        return parent.effects.get(docRow?.dataset.effectId);
-      } else return console.warn("Could not find document class");
+      return parentDocument.getEmbeddedDocument(documentClass, documentId);
     }
 
     /* -------------------------------------------------- */
@@ -171,10 +163,10 @@ export default base => {
       const parentElement = target.closest(".expandable-document");
       const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentEmbed\"]");
       const { documentId } = parentElement.dataset;
-      const embedContainer = parentElement.querySelector(".document-embed");
-      const isExpanded = this._expandedDocumentEmbeds.has(documentId);
+      const embedContainer = parentElement.querySelector(".document-description");
+      const isExpanded = this._expandedDocumentDescriptions.has(documentId);
 
-      if (isExpanded) this._expandedDocumentEmbeds.delete(documentId);
+      if (isExpanded) this._expandedDocumentDescriptions.delete(documentId);
       else {
         // Only generate the embed HTML once.
         if (!embedContainer.innerHTML.trim()) {
@@ -182,7 +174,7 @@ export default base => {
           const embed = await document?.system?.toEmbed({});
           if (embed) embedContainer.innerHTML = embed.outerHTML;
         }
-        this._expandedDocumentEmbeds.add(documentId);
+        this._expandedDocumentDescriptions.add(documentId);
       }
 
       // Force toggle html classes
