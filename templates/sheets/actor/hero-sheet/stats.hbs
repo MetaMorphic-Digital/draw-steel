@@ -145,9 +145,9 @@
       {{/if}}
     </legend>
     {{#if isPlay}}
-    {{skills}}
+    {{skills.list}}
     {{else}}
-    {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=config.skills.optgroups dataset=datasets.isSource}}
+    {{formInput systemFields.hero.fields.skills value=systemSource.hero.skills options=skills.options dataset=datasets.isSource}}
     {{/if}}
   </fieldset>
 </section>

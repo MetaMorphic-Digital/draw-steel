@@ -626,7 +626,8 @@
             "blank": "Match Token"
           }
         }
-      }
+      },
+      "ToggleCaptain": "Toggle Captain"
     },
     "CombatantGroup": {
       "squad": {
@@ -638,10 +639,10 @@
       "ResetSquadHP": "Reset Squad HP To Max",
       "Error": {
         "MinionMustSquad": "Minions can only be added to Squad groups.",
-        "SquadOneCaptain": "A squad can only have one captain.",
         "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
         "TooManySquad": "Applying damage directly to a minion because it's in multiple squads."
-      }
+      },
+      "ToggleVisibility": "Toggle Visibility"
     },
     "Item": {
       "Tabs": {
@@ -713,6 +714,9 @@
             "label": "Target",
             "type": {
               "label": "Type"
+            },
+            "custom": {
+              "label": "Custom Label"
             },
             "value": {
               "label": "Value"
@@ -837,19 +841,22 @@
           "All": "All",
           "Creature": "Creature",
           "CreatureEmbed": "{value} creature(s)",
-          "AllCreatures": "All creatures",
+          "AllCreatures": "Each creature",
           "Object": "Object",
           "ObjectEmbed": "{value} object(s)",
-          "AllObjects": "All objects",
+          "AllObjects": "Each object",
           "CreatureObject": "Creature or Object",
           "CreatureObjectEmbed": "{value} creature(s) or object(s)",
-          "AllCreatureObject": "All creatures and objects",
+          "AllCreatureObject": "Each creature and object",
           "Enemy": "Enemy",
           "EnemyEmbed": "{value} enemies",
-          "AllEnemies": "All enemies",
+          "EnemyObject": "Enemy or Object",
+          "AllEnemyObject": "Each enemy or object",
+          "EnemyObjectEmbed": "{value} enemies or object(s)",
+          "AllEnemies": "Each enemy",
           "Ally": "Ally",
           "AllyEmbed": "{value} allies",
-          "AllAllies": "All allies",
+          "AllAllies": "Each ally",
           "Self": "Self",
           "SelfOrAlly": "Self or one ally",
           "SelfOrCreature": "Self or one creature",
@@ -1020,6 +1027,10 @@
             }
           }
         },
+        "Keywords": {
+          "Magic": "Magic",
+          "Psionic": "Psionic"
+        },
         "Categories": {
           "Consumable": "Consumable",
           "Trinket": "Trinket",
@@ -1051,18 +1062,22 @@
           "Whip": "Whip"
         },
         "Implements": {
-          "Bone": "Bone",
-          "Crystal": "Crystal",
-          "Glass": "Glass",
-          "Metal": "Metal",
-          "Stone": "Stone",
-          "Wood": "Wood"
+          "Orb": "Orb",
+          "Wand": "Wand"
         },
         "Other": {
+          "Arms": "Arms",
           "Feet": "Feet",
           "Hands": "Hands",
+          "Head": "Head",
           "Neck": "Neck",
-          "Ring": "Ring"
+          "Ring": "Ring",
+          "Waist": "Waist"
+        },
+        "Consumable": {
+          "Oil": "Oil",
+          "Potion": "Potion",
+          "Scroll": "Scroll"
         }
       },
       "feature": {

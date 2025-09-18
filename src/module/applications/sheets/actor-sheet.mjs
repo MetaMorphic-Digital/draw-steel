@@ -232,9 +232,13 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     if (!this.actor.system.schema.getField("biography.languages")) return { list: "", options: [] };
     const formatter = game.i18n.getListFormatter();
     const languageList = Array.from(this.actor.system.biography.languages).map(l => ds.CONFIG.languages[l]?.label ?? l);
+    const languageOptions = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
+    for (const language of this.actor.system._source.biography.languages) {
+      if (!(language in ds.CONFIG.languages)) languageOptions.push({ value: language });
+    }
     return {
       list: formatter.format(languageList),
-      options: Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label })),
+      options: languageOptions,
     };
   }
 
@@ -582,13 +586,13 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       },
       // Equipment specific options
       {
-        name: "DRAW_STEEL.Item.project.Craft.FromEquipment.Label",
+        name: "DRAW_STEEL.Item.project.Craft.FromTreasure.Label",
         icon: "<i class=\"fa-solid fa-hammer\"></i>",
         condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           const project = await item.system.createProject(this.actor);
-          if (project) ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromEquipment.Notification", { format: { item: item.name } });
+          if (project) ui.notifications.success("DRAW_STEEL.Item.project.Craft.FromTreasure.Notification", { format: { item: item.name } });
         },
       },
       // All applicable options

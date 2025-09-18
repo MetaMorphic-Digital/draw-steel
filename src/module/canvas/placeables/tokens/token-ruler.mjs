@@ -1,8 +1,10 @@
 import { systemPath } from "../../../constants.mjs";
 
-/** @import { TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs" */
-/** @import { DeepReadonly } from "@common/_types.mjs" */
-/** @import DrawSteelTokenDocument from "../../../documents/token.mjs"; */
+/**
+ * @import { TokenMovementActionConfig, TokenRulerWaypoint } from "@client/_types.mjs";
+ * @import { DeepReadonly } from "@common/_types.mjs";
+ * @import DrawSteelTokenDocument from "../../../documents/token.mjs";
+ */
 
 /**
  * Draw Steel implementation of the core token ruler.

@@ -1,6 +1,5 @@
 import BaseCombatantGroupModel from "./base.mjs";
-
-/** @import DrawSteelActor from "../../documents/actor.mjs"; */
+import DrawSteelCombatant from "../../documents/combatant.mjs";
 
 const fields = foundry.data.fields;
 
@@ -30,6 +29,7 @@ export default class SquadModel extends BaseCombatantGroupModel {
 
     return Object.assign(schema, {
       staminaValue: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
+      captainId: new fields.ForeignDocumentField(DrawSteelCombatant, { idOnly: true }),
     });
   }
 
@@ -37,17 +37,21 @@ export default class SquadModel extends BaseCombatantGroupModel {
 
   /**
    * Finds the captain.
-   * @type {DrawSteelActor | null}
+   * @type {DrawSteelCombatant | null}
    */
   get captain() {
-    return this.parent.members.find(c => !c.actor?.isMinion)?.actor ?? null;
+    const combatant = this.combat.combatants.get(this.captainId);
+    // Make sure combatant exists in the combat and is still a part of this squad.
+    if (!combatant || (combatant.group?.id !== this.parent.id)) return null;
+
+    return combatant;
   }
 
   /* -------------------------------------------------- */
 
   /**
    * Finds all the minions in the squad.
-   * @type {Set<DrawSteelActor>}
+   * @type {Set<DrawSteelCombatant>}
    */
   get minions() {
     return this.parent.members.filter(c => c.actor?.isMinion);

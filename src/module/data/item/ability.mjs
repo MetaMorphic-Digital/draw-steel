@@ -63,6 +63,7 @@ export default class AbilityModel extends BaseItemModel {
     }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      custom: new fields.StringField({ required: true }),
       value: new fields.NumberField({ integer: true }),
     });
 
@@ -176,7 +177,8 @@ export default class AbilityModel extends BaseItemModel {
         let applyBonus = true;
         if (this.keywords.has("melee") && this.keywords.has("ranged")) {
           // melee & ranged abilities only display one set of bonuses at a time
-          applyBonus = bonus.filters.keywords.has(this.damageDisplay);
+          const filterMeleeRanged = bonus.filters.keywords.has("melee") || bonus.filters.keywords.has("ranged");
+          applyBonus = !filterMeleeRanged || bonus.filters.keywords.has(this.damageDisplay);
         }
 
         if (applyBonus) {
@@ -238,9 +240,9 @@ export default class AbilityModel extends BaseItemModel {
     labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
-    labels.target = this.target.value === null ?
+    labels.target = this.target.custom || (this.target.value === null ?
       targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, { value: this.target.value });
+      game.i18n.format(targetConfig.embedLabel, { value: this.target.value }));
 
     return labels;
   }
@@ -282,7 +284,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.contents.map(effect => effect.toText(tier)).join("; ") },
+      { text: this.power.effects.contents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -470,7 +472,12 @@ export default class AbilityModel extends BaseItemModel {
           messageDataCopy.rolls.push(powerRoll);
         }
 
-        const damageEffects = this.power.effects.getByType("damage").map(effect => effect.damage[`tier${tierNumber}`]);
+        // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
+        const damageEffects = this.power.effects.getByType("damage").reduce((effects, currentEffect) => {
+          const damage = currentEffect.damage[`tier${tierNumber}`];
+          if (Number(damage.value) !== 0) effects.push(damage);
+          return effects;
+        }, []);
 
         for (const damageEffect of damageEffects) {
           // If the damage types size is only 1, get the only value. If there are multiple, set the type to the returned value from the dialog.

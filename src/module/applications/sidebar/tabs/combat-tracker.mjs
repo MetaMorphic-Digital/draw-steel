@@ -1,8 +1,10 @@
 import { systemID, systemPath } from "../../../constants.mjs";
 import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
 
-/** @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs" */
-/** @import DrawSteelActor from "../../../documents/actor.mjs" */
+/**
+ * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
+ * @import DrawSteelActor from "../../../documents/actor.mjs";
+ */
 
 const { ux, sidebar } = foundry.applications;
 
@@ -121,6 +123,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     const invertedDisposition = foundry.utils.invertObject(CONST.TOKEN_DISPOSITIONS);
 
     context.groupTurns = combat?.groups.reduce((acc, cg) => {
+      if (!cg.visible) return acc;
+
       const { _expanded, id, name, isOwner, defeated: isDefeated, hidden, disposition, initiative, img } = cg;
       const turns = groups[id] ?? [];
       const active = turns.some(t => t.id === currentTurn?.id);
@@ -202,7 +206,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
     turn.group = combatant.group;
 
-    if ((turn.group?.type === "squad") && !combatant.actor?.isMinion) turn.captain = true;
+    if (combatant.system.isCaptain) turn.captain = true;
 
     return turn;
   }
@@ -296,10 +300,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     if (groupLI) {
       /** @type {DrawSteelCombatantGroup} */
       const group = this.viewed.groups.get(groupLI.dataset.groupId);
-      if (group.system.captain && !combatant.actor?.isMinion) {
-        ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.SquadOneCaptain", { localize: true });
-      }
-      else if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
+      if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
         ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.MinionMustSquad", { localize: true });
       }
       else {
@@ -334,6 +335,23 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
     }
+
+    // Add captain context menu option.
+    const getCombatant = li => this.viewed.combatants.get(li.dataset.combatantId);
+    entryOptions.push({
+      name: "DRAW_STEEL.Combatant.ToggleCaptain",
+      icon: "<i class=\"fa-solid fa-helmet-battle\"></i>",
+      condition: li => {
+        const combatant = getCombatant(li);
+        return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
+      },
+      callback: li => {
+        const combatant = getCombatant(li);
+        const newCaptain = (!combatant.system.isCaptain) ? combatant.id : null;
+
+        combatant.group.update({ "system.captainId": newCaptain });
+      },
+    });
 
     return entryOptions;
   }
@@ -421,6 +439,16 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
             left: window.innerWidth - 720,
           },
         }).render({ force: true }),
+      },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ToggleVisibility",
+        icon: "<i class=\"fa-solid fa-eye-slash\"></i>",
+        condition: li => game.user.isGM && getCombatantGroup(li).members.size,
+        callback: li => {
+          const combatantGroup = getCombatantGroup(li);
+          const updates = Array.from(combatantGroup.members).map(member => ({ _id: member.id, hidden: !combatantGroup.hidden }));
+          combatantGroup.parent.updateEmbeddedDocuments("Combatant", updates);
+        },
       },
     ];
   }
