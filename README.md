@@ -17,12 +17,12 @@ You can also use one of the following alternative installation methods:
 
 ## Frequently Asked Questions
 
-The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is under active construction but is the best place to find out information about the system's features.
+The [Wiki](https://github.com/MetaMorphic-Digital/draw-steel/wiki) is the best place to find out information about the system's features.
 
 ## System Discussion
 
 We have two dedicated channels in appropriate discord forums:
-- In the [MCDM Discord](https://mcdm.gg/discord) look inside the ds_homebrew forum. The MCDM discord server is also the best place to ask about playing Draw Steel as a TTRPG.
+- In the [MCDM Discord](https://mcdm.gg/discord) look inside the ds_creations forum. The MCDM discord server is also the best place to ask about playing Draw Steel as a TTRPG.
 - In the [Foundry Discord](https://discord.gg/foundryvtt) look inside the other-game-systems forum. The Foundry VTT discord server is also the best place to ask about using the Foundry VTT software.
 
 ## Community Contribution
