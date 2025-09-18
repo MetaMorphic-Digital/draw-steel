@@ -17,7 +17,7 @@
     </div>
     <ol class="item-list project-list">
       {{#each projects as |projectContext|}}
-      <li class="item project draggable" data-item-id="{{projectContext.item.id}}" data-document-class="Item">
+      <li class="item project draggable expandable-document" data-document-id="{{projectContext.item.id}}" data-item-id="{{projectContext.item.id}}" data-document-class="Item">
         <div class="item-row">
           <div class="item-column item-name rollable" data-action="rollProject">
             <img class="item-image" src="{{projectContext.item.img}}" alt="{{projectContext.item.name}}">
@@ -28,12 +28,10 @@
           <div class="item-column item-points">{{ifThen projectContext.item.system.points projectContext.item.system.points "0"}} / {{projectContext.item.system.goal}}</div>
           <div class="item-column item-type">{{lookup (lookup @root.config.projects.types projectContext.item.system.type) "label"}}</div>
           <div class="item-column item-controls">
-            <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}"></i>
-            </a>
+            <a class="fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}" data-action="toggleDocumentEmbed"></a>
           </div>
         </div>
-        <div class="item-embed">
+        <div class="document-embed item-embed {{#if projectContext.expanded}}expanded{{/if}}">
           {{#if projectContext.expanded}}{{{projectContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>

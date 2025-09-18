@@ -26,6 +26,7 @@ export default base => {
         createPseudoDocument: DSDocumentSheet.#createPseudoDocument,
         deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
         renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
+        toggleDocumentEmbed: DSDocumentSheet.#toggleDocumentEmbed,
       },
     };
 
@@ -67,6 +68,14 @@ export default base => {
     get isEditMode() {
       return this._mode === DSDocumentSheet.MODES.EDIT;
     }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * A set of the currently expanded document ids.
+     * @type {Set<string>}
+     */
+    _expandedDocumentEmbeds = new Set();
 
     /* -------------------------------------------------- */
 
@@ -119,6 +128,67 @@ export default base => {
         config: ds.CONFIG,
       });
       return context;
+    }
+
+    /* -------------------------------------------------- */
+    /*   Helper Functions                                 */
+    /* -------------------------------------------------- */
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Fetches the embedded document representing the containing HTML element.
+     *
+     * @param {HTMLElement} target    The element subject to search.
+     * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect.
+     */
+    _getEmbeddedDocument(target) {
+      const docRow = target.closest("[data-document-class]");
+      if (docRow.dataset.documentClass === "Item") {
+        return this.actor.items.get(docRow.dataset.itemId);
+      } else if (docRow.dataset.documentClass === "ActiveEffect") {
+        let parent;
+        if (this.actor) {
+          parent = docRow.dataset.parentId === this.actor.id
+            ? this.actor
+            : this.actor.items.get(docRow?.dataset.parentId);
+        } else parent = this.item;
+
+        return parent.effects.get(docRow?.dataset.effectId);
+      } else return console.warn("Could not find document class");
+    }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Toggle the document embed between visible and hidden.
+     * @this DSDocumentSheet
+     * @param {PointerEvent} event   The originating click event.
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+     * @protected
+     */
+    static async #toggleDocumentEmbed(event, target) {
+      const parentElement = target.closest(".expandable-document");
+      const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentEmbed\"]");
+      const { documentId } = parentElement.dataset;
+      const embedContainer = parentElement.querySelector(".document-embed");
+      const isExpanded = this._expandedDocumentEmbeds.has(documentId);
+
+      if (isExpanded) this._expandedDocumentEmbeds.delete(documentId);
+      else {
+        // Only generate the embed HTML once.
+        if (!embedContainer.innerHTML.trim()) {
+          const document = this._getEmbeddedDocument(parentElement);
+          const embed = await document?.system?.toEmbed({});
+          if (embed) embedContainer.innerHTML = embed.outerHTML;
+        }
+        this._expandedDocumentEmbeds.add(documentId);
+      }
+
+      // Force toggle html classes
+      toggleIcon.classList.toggle("fa-angle-down", !isExpanded);
+      toggleIcon.classList.toggle("fa-angle-right", isExpanded);
+      embedContainer.classList.toggle("expanded", !isExpanded);
     }
 
     /* -------------------------------------------------- */

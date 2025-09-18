@@ -32,7 +32,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       createDoc: this.#createEffect,
       deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
-      toggleEffectDescription: this.#toggleEffectDescription,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
     },
@@ -87,14 +86,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       template: systemPath("templates/sheets/item/effects.hbs"),
     },
   };
-
-  /* -------------------------------------------------- */
-
-  /**
-   * A set of the currently expanded effect IDs.
-   * @type {Set<string>}
-   */
-  #expanded = new Set();
 
   /* -------------------------------------------------- */
 
@@ -278,7 +269,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         expanded: false,
       };
 
-      if (this.#expanded.has(e.id)) {
+      if (this._expandedDocumentEmbeds.has(e.id)) {
         effectContext.expanded = true;
         effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
       }
@@ -530,7 +521,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @protected
    */
   static async #viewEffect(event, target) {
-    const effect = this._getEffect(target);
+    const effect = this._getEmbeddedDocument(target);
     effect.sheet.render(true);
   }
 
@@ -545,7 +536,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @protected
    */
   static async #deleteEffect(event, target) {
-    const effect = this._getEffect(target);
+    const effect = this._getEmbeddedDocument(target);
     await effect.deleteDialog();
   }
 
@@ -584,28 +575,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @private
    */
   static async #toggleEffect(event, target) {
-    const effect = this._getEffect(target);
+    const effect = this._getEmbeddedDocument(target);
     await effect.update({ disabled: !effect.disabled });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions.
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #toggleEffectDescription(event, target) {
-    const effect = this._getEffect(target);
-
-    if (this.#expanded.has(effect.id)) this.#expanded.delete(effect.id);
-    else this.#expanded.add(effect.id);
-
-    const part = target.closest("[data-application-part]").dataset.applicationPart;
-    this.render({ parts: [part] });
   }
 
   /* -------------------------------------------------- */
@@ -679,21 +650,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     if (!this.document.parent) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
     const advancement = this._getPseudoDocument(target);
     await advancement.reconfigure();
-  }
-
-  /* -------------------------------------------------- */
-  /*   Helper Functions                                 */
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the row with the data for the rendered embedded document.
-   *
-   * @param {HTMLElement} target  The element with the action.
-   * @returns {DrawSteelActiveEffect} The document's row.
-   */
-  _getEffect(target) {
-    const li = target.closest(".effect");
-    return this.item.effects.get(li?.dataset?.effectId);
   }
 
   /* -------------------------------------------------- */
