@@ -1,0 +1,9 @@
+/* CSS for DrawSteelJournalEntrySheet */
+.draw-steel.journal-sheet.journal-entry {
+  .theme-dark &:not(.theme-light), &.themed.theme-dark {
+    background-color: fuchsia;
+  }
+  .theme-light &:not(.theme-dark), &.themed.theme-light {
+    background-color: lime;
+  }
+}
