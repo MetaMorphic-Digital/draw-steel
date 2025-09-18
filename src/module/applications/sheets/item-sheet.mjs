@@ -271,7 +271,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
       if (this._expandedDocumentEmbeds.has(e.id)) {
         effectContext.expanded = true;
-        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+        effectContext.enrichedDescription = await e.system.toEmbed({});
       }
 
       if (!e.transfer) categories.applied.effects.push(effectContext);

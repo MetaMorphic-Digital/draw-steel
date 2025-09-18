@@ -462,7 +462,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
 
       if (this._expandedDocumentEmbeds.has(e.id)) {
         effectContext.expanded = true;
-        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+        effectContext.enrichedDescription = await e.system.toEmbed({});
       }
 
       if (!e.active) categories.inactive.effects.push(effectContext);
