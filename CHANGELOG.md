@@ -22,6 +22,7 @@
 
 ### Changed
 
+- Changed available keywords on treasures to be more accurate. (#270)
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
