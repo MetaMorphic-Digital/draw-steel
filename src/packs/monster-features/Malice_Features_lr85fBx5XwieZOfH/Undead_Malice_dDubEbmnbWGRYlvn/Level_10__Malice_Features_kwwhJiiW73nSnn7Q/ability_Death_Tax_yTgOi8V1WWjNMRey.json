@@ -1,0 +1,62 @@
+{
+  "folder": "kwwhJiiW73nSnn7Q",
+  "name": "Death Tax",
+  "type": "ability",
+  "_id": "yTgOi8V1WWjNMRey",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "",
+      "revision": 1
+    },
+    "_dsid": "death-tax",
+    "story": "",
+    "keywords": [],
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The undead attempts to rend the vitality of their foes. Each ene my within 5 squares of the undead makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 10 corruption]] damage; the target loses 2 Recoveries</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 8 corruption]] damage; the target loses 1 Recovery</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>[[/damage 5 corruption]] damage</p></td></tr></tbody></table>",
+      "after": "<p>A target who has fewer Recoveries than they would lose is also weakened (save ends).</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758210672381,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!yTgOi8V1WWjNMRey"
+}
