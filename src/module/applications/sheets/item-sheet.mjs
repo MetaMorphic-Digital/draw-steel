@@ -261,6 +261,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     for (const e of this.item.effects) {
       const effectContext = {
         id: e.id,
+        uuid: e.uuid,
         name: e.name,
         img: e.img,
         sourceName: e.sourceName,

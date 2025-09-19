@@ -15,7 +15,7 @@
   </div>
   <ol class="item-list feature-list">
     {{#each features as |featureContext|}}
-    <li class="item feature draggable expandable-document" data-document-id="{{featureContext.item.id}}" data-item-id="{{featureContext.item.id}}" data-document-class="Item" data-parent-uuid="{{featureContext.item.parent.uuid}}">
+    <li class="item feature draggable expandable-document" data-document-uuid="{{featureContext.item.uuid}}" data-document-id="{{featureContext.item.id}}" data-item-id="{{featureContext.item.id}}" data-document-class="Item" data-parent-uuid="{{featureContext.item.parent.uuid}}">
       <div class="item-row">
         <div class="item-column item-name">
           <img class="item-image" src="{{featureContext.item.img}}" alt="{{featureContext.item.name}}">
@@ -25,7 +25,7 @@
         </div>
         <div class="item-column item-type">{{localize typeLabel}}</div>
         <div class="item-column item-controls">
-          <a class="fa-solid fa-angle-{{ifThen featureContext.expanded "down" "right"}}" data-action="toggleDocumentEmbed"></a>
+          <a class="fa-solid fa-angle-{{ifThen featureContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
         </div>
       </div>
       <div class="document-description item-embed {{#if featureContext.expanded}}expanded{{/if}}">

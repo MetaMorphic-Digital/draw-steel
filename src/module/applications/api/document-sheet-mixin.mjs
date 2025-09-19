@@ -29,7 +29,7 @@ export default base => {
         createPseudoDocument: DSDocumentSheet.#createPseudoDocument,
         deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
         renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
-        toggleDocumentEmbed: DSDocumentSheet.#toggleDocumentEmbed,
+        toggleDocumentDescription: DSDocumentSheet.#toggleDocumentDescription,
       },
     };
 
@@ -141,15 +141,20 @@ export default base => {
      * Fetches the embedded document representing the containing HTML element.
      *
      * @param {HTMLElement} target    The element subject to search.
-     * @returns {Document} The embedded document
+     * @returns {Document} The embedded document.
      */
     _getEmbeddedDocument(target) {
-      const parentUuid = target.closest("[data-parent-uuid]").dataset.parentUuid;
-      const documentClass = target.closest("[data-document-class]").dataset.documentClass;
-      const documentId = target.closest("[data-document-id").dataset.documentId;
-      const parentDocument = fromUuidSync(parentUuid);
+      const documentUuid = target.closest("[data-document-uuid]").dataset.documentUuid;
 
-      return parentDocument.getEmbeddedDocument(documentClass, documentId);
+      // fromUuidSync doesn't allow  retrieving embedded compendium documents, so manually retrieving each child document from the base document.
+      const { collection, embedded, documentId } = foundry.utils.parseUuid(documentUuid);
+      let document = collection.get(documentId);
+      while (document && (embedded.length > 1)) {
+        const [embeddedName, embeddedId] = embedded.splice(0, 2);
+        document = document.getEmbeddedDocument(embeddedName, embeddedId);
+      }
+
+      return document;
     }
 
     /* -------------------------------------------------- */
@@ -161,9 +166,9 @@ export default base => {
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
      * @protected
      */
-    static async #toggleDocumentEmbed(event, target) {
+    static async #toggleDocumentDescription(event, target) {
       const parentElement = target.closest(".expandable-document");
-      const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentEmbed\"]");
+      const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentDescription\"]");
       const { documentId } = parentElement.dataset;
       const embedContainer = parentElement.querySelector(".document-description");
       const isExpanded = this._expandedDocumentDescriptions.has(documentId);

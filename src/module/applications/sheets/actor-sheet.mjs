@@ -451,6 +451,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     for (const e of this.actor.allApplicableEffects()) {
       const effectContext = {
         id: e.id,
+        uuid: e.uuid,
         name: e.name,
         img: e.img,
         parent: e.parent,
