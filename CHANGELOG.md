@@ -22,12 +22,25 @@
 
 ### Added
 
+- New Compendium Content:
+  - Demon Echelons 2-4
 - Added an "Expansion" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added suggested books and licenses in the source input form. (#841)
 
 ### Changed
 
+- Changed available keywords on treasures to be more accurate. (#270)
+- Added a "Custom Label" property for ability targets, which will override the default label. (#886)
+  - Also added "Enemy or Object" as a new target type.
+  - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
+- Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
+
+### Removed
+
+- Removed the "source.revision" property from items and NPCs.
 
 ## 0.8.1
 

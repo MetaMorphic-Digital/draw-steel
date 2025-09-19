@@ -1,2 +1,2 @@
-export { default as AbilityBonus } from "./ability-bonus.mjs";
+export { default as AbilityModifier } from "./ability-modifier.mjs";
 export { default as BaseEffectModel } from "./base.mjs";

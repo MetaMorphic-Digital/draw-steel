@@ -98,11 +98,21 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
     else if (context.document.type === "skill") {
       ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
+      for (const group of this.pseudoDocument.skills.groups) {
+        if (!(skill in ds.CONFIG.skills.groups)) ctx.skillGroups.push({ value: group });
+      }
+
       ctx.skillChoices = ds.CONFIG.skills.optgroups;
+      for (const skill of this.pseudoDocument.skills.choices) {
+        if (!(skill in ds.CONFIG.skills.list)) ctx.skillChoices.push({ value: skill });
+      }
     }
 
     else if (context.document.type === "language") {
       ctx.languageChoices = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
+      for (const language of this.pseudoDocument.languages) {
+        if (!(language in ds.CONFIG.languages)) ctx.languageChoices.push({ value: language });
+      }
     }
 
     return context;
