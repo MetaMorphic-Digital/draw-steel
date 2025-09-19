@@ -257,7 +257,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
       if (this.node) {
-        this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node);
+        console.log(this);
+        this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node,
+          { levelStart: null, levelEnd: 1 },
+        );
         this.node.selected[item.uuid] = true;
       }
       this.render();

@@ -101,7 +101,7 @@ export default class AdvancementChain {
         const item = await fromUuid(uuid);
         if (!item) continue;
 
-        node.choices[item.uuid] = this.createItemGrantChoice(item, node);
+        node.choices[item.uuid] = await this.createItemGrantChoice(item, node, { levelStart, levelEnd, _depth });
       }
     } else if (advancement instanceof TraitAdvancement) {
       for (const trait of advancement.traitOptions) {
@@ -126,12 +126,16 @@ export default class AdvancementChain {
   }
 
   /**
-   *
+   * Construct the choices for an item grant recursively.
    * @param {DrawSteelItem} item
    * @param {AdvancementChain} node
+   * @param {object} config
+   * @param {number} config.levelStart
+   * @param {number} config.levelEnd
+   * @param {number} config._depth
    * @returns {Promise<AdvancementChainItemGrantLeaf>}
    */
-  static async createItemGrantChoice(item, node) {
+  static async createItemGrantChoice(item, node, { levelStart, levelEnd, _depth }) {
     const choice = {
       item, node,
       itemLink: item.toAnchor(),
@@ -146,7 +150,7 @@ export default class AdvancementChain {
       },
     });
 
-    if (!item.supportsAdvancements) return;
+    if (!item.supportsAdvancements) return choice;
 
     // Find any "child" advancements.
     for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
