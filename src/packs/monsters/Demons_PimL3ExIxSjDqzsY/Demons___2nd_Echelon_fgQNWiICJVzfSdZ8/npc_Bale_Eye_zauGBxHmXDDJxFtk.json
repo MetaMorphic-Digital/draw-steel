@@ -1,0 +1,958 @@
+{
+  "name": "Bale Eye",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "system": {
+    "stamina": {
+      "value": 30,
+      "max": 30,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 0
+      },
+      "agility": {
+        "value": 0
+      },
+      "reason": {
+        "value": 3
+      },
+      "intuition": {
+        "value": 3
+      },
+      "presence": {
+        "value": 3
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 4,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk",
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 5,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "66",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 3,
+      "keywords": [
+        "abyssal"
+      ],
+      "level": 5,
+      "ev": 7,
+      "role": "hexer",
+      "organization": "horde"
+    }
+  },
+  "items": [
+    {
+      "name": "Lethe",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While the bale eye is winded, they gain an edge on strikes, and any strike made against them gains an edge.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "66"
+        },
+        "_dsid": "lethe",
+        "advancements": {}
+      },
+      "_id": "o812RPLIUuvAV1Rz",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.o812RPLIUuvAV1Rz"
+    },
+    {
+      "name": "Soulsight",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Any creature within 5 squares of the bale eye can't be hidden from them.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "66"
+        },
+        "_dsid": "soulsight",
+        "advancements": {}
+      },
+      "_id": "SFA2G2ax6TDuS3Tt",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.SFA2G2ax6TDuS3Tt"
+    },
+    {
+      "name": "Wilting Visions",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 15
+        },
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "ykeDrKkZhlLvxKbJ": {
+              "_id": "ykeDrKkZhlLvxKbJ",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "8",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "47fy0B9VAJjs8hni": {
+              "name": "Corruption Weakness 5",
+              "img": null,
+              "type": "applied",
+              "_id": "47fy0B9VAJjs8hni",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {
+                    "4DwuSoiqBEFoV7pg": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "4DwuSoiqBEFoV7pg": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "4DwuSoiqBEFoV7pg": {
+                      "condition": "always",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "MyLx05xNoRoUrG1V": {
+              "name": "Corruption Weakness Save Ends",
+              "img": null,
+              "type": "applied",
+              "_id": "MyLx05xNoRoUrG1V",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {
+                    "Q6ud29n1b4LtoEA4": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "2",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "Q6ud29n1b4LtoEA4": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "2",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "Q6ud29n1b4LtoEA4": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "2",
+                    "characteristic": "intuition"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The target has corruption weakness 5 (EoT).</p>"
+        },
+        "spend": {
+          "text": "If the target has i<2, they have corruption weakness 5  (save ends).",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "66"
+        },
+        "_dsid": "wilting-visions",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Corruption Weakness (EoT)",
+          "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
+          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
+          "transfer": false,
+          "_id": "4DwuSoiqBEFoV7pg",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.corruption",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.4DwuSoiqBEFoV7pg"
+        },
+        {
+          "name": "Corruption Weakness (Save Ends)",
+          "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
+          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
+          "transfer": false,
+          "_id": "Q6ud29n1b4LtoEA4",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.corruption",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.Q6ud29n1b4LtoEA4"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "4RO7XgAVkS45CD0T",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T"
+    },
+    {
+      "name": "Demonwarp Tears",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 4,
+          "secondary": 5
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "9b1WNV0MLKDhg0nx": {
+              "_id": "9b1WNV0MLKDhg0nx",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "3",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "5",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "6",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "46Qh1waDdbco9Dae": {
+              "_id": "46Qh1waDdbco9Dae",
+              "type": "special",
+              "name": "Special",
+              "img": null,
+              "special": {
+                "tier1": {
+                  "display": "A < 1 the target is warped (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "A < 2 the target is warped (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier3": {
+                  "display": "A < 3 the target is warped (save ends)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  }
+                }
+              }
+            },
+            "whCpgmVG94hwnisr": {
+              "name": "Warped",
+              "img": null,
+              "type": "applied",
+              "_id": "whCpgmVG94hwnisr",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is warped (Save Ends)",
+                  "effects": {
+                    "WlWQ0LyAVTn8gdCi": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "WlWQ0LyAVTn8gdCi": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "WlWQ0LyAVTn8gdCi": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p><strong>Special:</strong> The bale eye must create the cube beneath themself.</p>",
+          "after": "<p>While warped, a creature has a double bane on power rolls using any characteristic higher than 0, and has a double edge on power rolls using any characteristic lower than 0.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "66"
+        },
+        "_dsid": "demonwarp-tears",
+        "story": "",
+        "resource": 5,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Warped",
+          "img": "icons/magic/water/vortex-water-whirlpool.webp",
+          "origin": "Actor.IOIpHzznehQjGL7o.Item.9QFRWBJiuWpjaZME",
+          "transfer": false,
+          "_id": "WlWQ0LyAVTn8gdCi",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While warped, a creature has a double bane on power rolls using any characteristic higher than 0, and has a double edge on power rolls using any characteristic lower than 0.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.9QFRWBJiuWpjaZME.WlWQ0LyAVTn8gdCi"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "9QFRWBJiuWpjaZME",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.9QFRWBJiuWpjaZME"
+    },
+    {
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "_id": "2PmYNyLNcEt2Ufaa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "65",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.2PmYNyLNcEt2Ufaa"
+    },
+    {
+      "folder": "27ZVGFIPsDJErf4E",
+      "name": "Abyssal Jaunt",
+      "type": "ability",
+      "_id": "d298nvIWsIOh0Kl7",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "65",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "abyssal-jaunt",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!zauGBxHmXDDJxFtk.d298nvIWsIOh0Kl7"
+    }
+  ],
+  "folder": "fgQNWiICJVzfSdZ8",
+  "prototypeToken": {
+    "name": "Bale Eye",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758136946208,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "zauGBxHmXDDJxFtk",
+  "sort": 0,
+  "_key": "!actors!zauGBxHmXDDJxFtk"
+}

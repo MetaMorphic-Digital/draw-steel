@@ -20,6 +20,11 @@
 
 ## 0.9.0
 
+### Added
+
+- New Compendium Content
+  - Demon Echelons 2-4
+
 ### Changed
 
 - Changed available keywords on treasures to be more accurate. (#270)
