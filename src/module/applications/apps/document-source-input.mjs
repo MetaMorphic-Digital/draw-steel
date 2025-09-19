@@ -34,12 +34,23 @@ export default class DocumentSourceInput extends DocumentInput {
    * @internal Only run once inside `init` hook.
    */
   static addModuleSources() {
+    const helper = (m, property) => {
+      const record = foundry.utils.getProperty(m, `flags.draw-steel.${property}`);
+      if (foundry.utils.getType(record) === "Object") {
+        for (const [k, v] of Object.entries(record)) {
+          if (foundry.utils.getType(v) === "string") ds.CONFIG.sourceInfo[property][k] ??= v;
+          else console.warn(`Attempted to register invalid ${property} '${v}' for module '${m.id}'.`);
+        }
+      } else if (record) {
+        console.warn(`The ${property} to register of module '${m.id}' were in invalid format.`);
+      }
+    };
+
+
     for (const m of game.modules) {
       if (!m.active) continue;
-      const books = foundry.utils.getProperty(m, "flags.draw-steel.books");
-      if (books) Object.assign(ds.CONFIG.sourceInfo.books, books);
-      const licenses = foundry.utils.getProperty(m, "flags.draw-steel.licenses");
-      if (licenses) Object.assign(ds.CONFIG.sourceInfo.licenses, licenses);
+      helper(m, "books");
+      helper(m, "licenses");
     }
   }
 
