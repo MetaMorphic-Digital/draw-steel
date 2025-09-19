@@ -63,6 +63,7 @@ export default class AbilityModel extends BaseItemModel {
     }, initial: "melee", required: true, blank: false });
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
+      custom: new fields.StringField({ required: true }),
       value: new fields.NumberField({ integer: true }),
     });
 
@@ -239,9 +240,9 @@ export default class AbilityModel extends BaseItemModel {
     labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
-    labels.target = this.target.value === null ?
+    labels.target = this.target.custom || (this.target.value === null ?
       targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
-      game.i18n.format(targetConfig.embedLabel, { value: this.target.value });
+      game.i18n.format(targetConfig.embedLabel, { value: this.target.value }));
 
     return labels;
   }
