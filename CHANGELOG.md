@@ -24,6 +24,7 @@
 
 - New Compendium Content:
   - Demon Echelons 2-4
+- Added an "Expansion" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
 
 ### Changed
