@@ -2,6 +2,10 @@ import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
+ * @import {ActiveEffectData} from "@common/documents/_types.mjs";
+ */
+
+/**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
@@ -69,6 +73,43 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     if (this.system._dsid) return this.system._dsid;
     const dsid = this.name.replaceAll(/(\w+)([\\|/])(\w+)/g, "$1-$3");
     return dsid.slugify({ strict: true });
+  }
+
+  /**
+   * Update this item based on its compendium version.
+   * @param {string} [uuid] An optional reference for a UUID to use in place of the stored compendiumSource.
+   */
+  async updateFromCompendium(uuid) {
+    const sourceItem = await fromUuid(uuid ?? this._stats.compendiumSource);
+
+    if (!sourceItem) throw new Error("Failed to find the source document!");
+
+    // TODO: Update to use batched operations in v14
+
+    await this.update({ "==system": sourceItem.toObject().system });
+
+    const createData = [];
+    const updateData = [];
+    const deleteIds = [];
+
+    for (const effect of sourceItem.effects) {
+      /** @type {ActiveEffectData} */
+      const effectData = effect.toObject();
+      const currentEffect = this.effects.get(effect.id);
+      if (currentEffect) updateData.push({
+        _id: effect.id,
+        "==system": effectData.system,
+        duration: effectData.duration,
+        changes: effectData.changes,
+        description: effectData.description,
+      });
+      else createData.push(effectData);
+    }
+    for (const effect of this.effects) if (!sourceItem.effects.get(effect.id)) deleteIds.push(effect.id);
+
+    await this.updateEmbeddedDocuments("ActiveEffect", updateData);
+    await this.createEmbeddedDocuments("ActiveEffect", createData, { keepId: true });
+    await this.deleteEmbeddedDocuments("ActiveEffect", deleteIds);
   }
 
   /* -------------------------------------------------- */
