@@ -37,6 +37,10 @@
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 
+### Removed
+
+- Removed the "source.revision" property from items and NPCs.
+
 ## 0.8.1
 
 ### Added

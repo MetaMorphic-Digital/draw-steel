@@ -13,7 +13,6 @@ export default class SourceModel extends foundry.abstract.DataModel {
       book: new fields.StringField({ required: true }),
       page: new fields.StringField({ required: true }),
       license: new fields.StringField({ required: true }),
-      revision: new fields.NumberField({ initial: 1 }),
     };
   }
 
