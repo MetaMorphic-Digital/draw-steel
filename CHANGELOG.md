@@ -22,8 +22,9 @@
 
 ### Added
 
-- New Compendium Content
+- New Compendium Content:
   - Demon Echelons 2-4
+- Added suggested books and licenses in the source input form. (#841)
 
 ### Changed
 
