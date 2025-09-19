@@ -1,7 +1,9 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
-/** @import { Constructor } from "@common/_types.mjs" */
-/** @import { Document } from "@common/abstract/_module.mjs" */
+/**
+ * @import { Constructor } from "@common/_types.mjs"
+ * @import { Document } from "@common/abstract/_module.mjs"
+ */
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
