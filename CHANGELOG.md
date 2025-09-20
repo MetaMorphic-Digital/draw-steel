@@ -43,6 +43,13 @@
 ### Removed
 
 - Removed the "source.revision" property from items and NPCs.
+- Player-Facing Compendium data fixes:
+
+### Fixed
+
+- Player-Facing Compendium data fixes:
+- GM-Facing Compendium Data fixes:
+  - Bredbeddle Malice Ability costs. (#1114)
 
 ## 0.8.1
 
@@ -69,7 +76,7 @@
 - Player-Facing Compendium data fixes:
   - Corrected Studied Commander description. (#948)
   - Added missing item grant advancements to Tactician subclasses. (#949)
-  - Stormwight kit abilities no longer double up on kit bonuses (#954)
+  - Stormwight kit abilities no longer double up on kit bonuses. (#954)
   - Corrected name of the Stormwights "Furious Change". (#956)
   - College of Black Ash no longer gives all lore skills. (#980)
   - Corrected Talent "Distance Augmentation" filters & bonus. (#998)
