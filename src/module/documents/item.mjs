@@ -77,12 +77,32 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
 
   /**
    * Update this item based on its compendium version.
-   * @param {string} [uuid] An optional reference for a UUID to use in place of the stored compendiumSource.
+   * @param {object}  [config]              Options to modify the update logic.
+   * @param {string}  [config.uuid]         An optional reference for a UUID to use in place of the stored compendiumSource.
+   * @param {boolean} [config.skipDialog]   Whether to skip the confirmation dialog.
    */
-  async updateFromCompendium(uuid) {
+  async updateFromCompendium({ uuid, skipDialog } = {}) {
     const sourceItem = await fromUuid(uuid ?? this._stats.compendiumSource);
 
     if (!sourceItem) throw new Error("Failed to find the source document!");
+
+    if (!skipDialog) {
+      const content = document.createElement("div");
+
+      content.insertAdjacentHTML("afterbegin", `<p>${
+        game.i18n.localize("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.ContentItem")
+      }</p>`);
+
+      const proceed = await ds.applications.api.DSDialog.confirm({
+        content,
+        window: {
+          title: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Title",
+          icon: "fa-solid fa-file-arrow-down",
+        },
+      });
+
+      if (!proceed) return;
+    }
 
     // TODO: Update to use batched operations in v14
 
