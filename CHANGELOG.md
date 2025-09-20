@@ -25,6 +25,7 @@
 - New Compendium Content:
   - Demon Echelons 2-4
 - Added suggested books and licenses in the source input form. (#841)
+- In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
 ### Changed
 
@@ -34,6 +35,7 @@
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 
