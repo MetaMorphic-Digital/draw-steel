@@ -30,7 +30,7 @@
       </li>
       <ol class="effect-list">
         {{#each section.effects as |effect|}}
-        <li class="effect draggable" data-effect-id="{{effect.id}}">
+        <li class="effect draggable expandable-document" data-document-class="ActiveEffect" data-document-uuid="{{effect.uuid}}" data-document-id="{{effect.id}}" data-effect-id="{{effect.id}}" data-parent-id="{{@root.document.id}}" data-parent-uuid="{{@root.document.uuid}}" data-parent-document-name="{{effect.parent.documentName}}">
           <div class="effect-row">
             <div class="effect-name">
               <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}">
@@ -50,11 +50,11 @@
               {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
               <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"></a>
               {{/if}}
-              <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleEffectDescription"></a>
+              <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleDocumentDescription"></a>
             </div>
           </div>
-          <div class="effect-description">
-            {{#if effect.expanded}}{{{effect.enrichedDescription}}}{{/if}}
+          <div class="document-description effect-description {{#if effect.expanded}}expanded{{/if}}">
+            {{#if effect.expanded}}{{{effect.enrichedDescription.outerHTML}}}{{/if}}
           </div>
         </li>
         {{/each}}

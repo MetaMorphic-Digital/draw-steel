@@ -29,6 +29,7 @@
 ### Changed
 
 - Changed available keywords on treasures to be more accurate. (#270)
+- Refactor the toggling of item and effect description dropdowns to use a CSS transition instead of re-rendering the application. (#626)
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".

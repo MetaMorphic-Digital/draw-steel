@@ -15,7 +15,7 @@
     </div>
     <ol class="item-list complications-list">
       {{#each complications.complications as |complicationContext|}}
-      <li class="item complication draggable" data-item-id="{{complicationContext.item.id}}" data-document-class="Item">
+      <li class="item complication draggable expandable-document" data-document-uuid="{{complicationContext.item.uuid}}" data-document-id="{{complicationContext.item.id}}" data-item-id="{{complicationContext.item.id}}" data-document-class="Item" data-parent-uuid="{{complicationContext.item.parent.uuid}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{complicationContext.item.img}}" alt="{{complicationContext.item.name}}">
@@ -24,12 +24,10 @@
             </div>
           </div>
           <div class="item-column item-controls">
-            <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen complicationContext.expanded "down" "right"}}"></i>
-            </a>
+            <a class="fa-solid fa-angle-{{ifThen complicationContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
-        <div class="item-embed">
+        <div class="document-description item-embed {{#if complicationContext.expanded}}expanded{{/if}}">
           {{#if complicationContext.expanded}}{{{complicationContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
