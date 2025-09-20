@@ -43,11 +43,12 @@
 ### Removed
 
 - Removed the "source.revision" property from items and NPCs.
-- Player-Facing Compendium data fixes:
 
 ### Fixed
 
 - Player-Facing Compendium data fixes:
+  - Dragon Knight Wyrmplate and Prismatic Scales referred to wrong attribute key. (#1108)
+  - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
 - GM-Facing Compendium Data fixes:
   - Bredbeddle Malice Ability costs. (#1114)
 
