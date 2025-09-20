@@ -50,6 +50,7 @@
   - Dragon Knight Wyrmplate and Prismatic Scales referred to wrong attribute key. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
 - GM-Facing Compendium Data fixes:
+  - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
 
 ## 0.8.1
