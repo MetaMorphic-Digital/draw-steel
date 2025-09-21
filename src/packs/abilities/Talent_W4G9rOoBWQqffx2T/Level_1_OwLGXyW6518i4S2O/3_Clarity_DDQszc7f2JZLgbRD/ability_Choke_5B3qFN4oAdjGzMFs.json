@@ -69,6 +69,9 @@
                   "condition": "failure",
                   "end": "save"
                 }
+              },
+              "potency": {
+                "characteristic": "might"
               }
             },
             "tier2": {
@@ -101,45 +104,7 @@
       "value": null
     }
   },
-  "effects": [
-    {
-      "name": "Active Effect",
-      "img": "icons/svg/item-bag.svg",
-      "origin": "Compendium.draw-steel.abilities.Item.5B3qFN4oAdjGzMFs",
-      "transfer": false,
-      "_id": "55iwy505cFzsdzYd",
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "combat": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755873350311,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!items.effects!5B3qFN4oAdjGzMFs.55iwy505cFzsdzYd"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -149,9 +114,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755872238967,
     "modifiedTime": null,
     "lastModifiedBy": null
