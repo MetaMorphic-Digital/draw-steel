@@ -49,6 +49,7 @@
 - Player-Facing Compendium data fixes:
   - Dragon Knight Wyrmplate and Prismatic Scales referred to wrong attribute key. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
+  - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
 - GM-Facing Compendium Data fixes:
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
