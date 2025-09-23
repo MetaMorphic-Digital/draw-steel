@@ -165,8 +165,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     });
     if (!configuration) return;
 
-    console.log(chains);
-
     const toDelete = this.grantedItemsChain().map(i => i.id);
     if (toDelete.size) await actor.deleteEmbeddedDocuments("Item", Array.from(toDelete));
 
