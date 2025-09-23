@@ -58,7 +58,6 @@
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
 
-
 ## 0.8.1
 
 ### Added
