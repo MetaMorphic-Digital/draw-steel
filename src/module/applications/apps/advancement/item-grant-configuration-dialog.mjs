@@ -98,33 +98,18 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  get title() {
-    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.advancement.name });
-  }
+  /**
+   * Set of uuids chosen by this dialog, which will be saved in the submit process.
+   * A new set is constructed each time the form data is processed.
+   * @type {Set<string>}
+   */
+  chosen = new Set();
 
   /* -------------------------------------------------- */
 
-  /**
-   * Helper function to determine the currently selected IDs.
-   * @returns {Set<string>}
-   * @protected
-   */
-  get _selected() {
-    if (this.node) {
-      return Object.entries(this.node.selected).reduce((selected, [uuid, value]) => {
-        if (value) selected.add(uuid);
-        return selected;
-      }, new Set());
-    }
-    else {
-      /** @type {DrawSteelItem} */
-      const item = this.advancement.document;
-      const path = `flags.draw-steel.advancement.${this.advancement.id}.selected`;
-      return item.isEmbedded
-        ? new Set(foundry.utils.getProperty(item, path) ?? [])
-        : new Set();
-    }
+  /** @inheritdoc */
+  get title() {
+    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.advancement.name });
   }
 
   /* -------------------------------------------------- */
@@ -135,6 +120,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       this.#items = new Set(this.node ?
         Object.values(this.node.choices).map(choice => choice.item)
         : (await Promise.all(this.advancement.pool.map(p => fromUuid(p.uuid)))).filter(_ => _));
+
+      for (const item of this.items && this.node) {
+        if (this.node.selected[item.uuid]) this.chosen.add(item.uuid);
+      }
     }
 
     return super._prepareContext(options);
@@ -156,7 +145,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
           action: "close",
           label: "Confirm",
           icon: "fa-solid fa-check",
-          disabled: this._selected.size !== this.advancement.chooseN,
+          disabled: this.chosen.size !== this.advancement.chooseN,
         }];
         break;
     }
@@ -175,15 +164,13 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   async _prepareBody(context, options) {
     context.chooseN = this.advancement.chooseN;
 
-    const selected = this._selected;
-
     context.items = this.items.map(i => {
-      const chosen = selected.has(i.uuid);
+      const chosen = this.chosen.has(i.uuid);
       return {
         chosen,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
-        disabled: !chosen && (selected.size >= this.advancement.chooseN),
+        disabled: !chosen && (this.chosen.size >= this.advancement.chooseN),
       };
     });
 
@@ -202,26 +189,6 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _processFormData(event, form, formData) {
-    const fd = super._processFormData(event, form, formData);
-
-    const uuids = new Set(Array.isArray(fd.choices) ? fd.choices : [fd.choices]);
-
-    if (this.node) {
-      this.node.selected = this.items.reduce((selected, item) => {
-        selected[item.uuid] = uuids.has(item.uuid);
-        return selected;
-      }, {});
-    }
-
-    if (event.type === "change") this.render();
-
-    return fd;
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * The Drag Drop handler for this dialog.
    */
@@ -230,6 +197,20 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       drop: this._onDrop.bind(this),
     },
   });
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _processFormData(event, form, formData) {
+    const fd = super._processFormData(event, form, formData);
+
+    if (fd.choices) this.chosen = new Set(Array.isArray(fd.choices) ? fd.choices.filter(_ => _) : [fd.choices]);
+    else this.chosen = new Set();
+
+    if (event.type === "change") this.render();
+
+    return fd;
+  }
 
   /* -------------------------------------------------- */
 
@@ -257,11 +238,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
       if (this.node) {
-        console.log(this);
         this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node,
-          { levelStart: null, levelEnd: 1 },
+          { levelStart: null, levelEnd: 1 }, // TODO: Figure out levelEnd
         );
-        this.node.selected[item.uuid] = true;
+        this.chosen.add(item.uuid);
       }
       this.render();
     }

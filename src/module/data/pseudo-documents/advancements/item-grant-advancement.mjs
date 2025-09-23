@@ -1,5 +1,4 @@
 import BaseAdvancement from "./base-advancement.mjs";
-import DSDialog from "../../../applications/api/dialog.mjs";
 import { systemID } from "../../../constants.mjs";
 import { setOptions } from "../../helpers.mjs";
 import ItemGrantConfigurationDialog from "../../../applications/apps/advancement/item-grant-configuration-dialog.mjs";
@@ -129,7 +128,15 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     if (!selection) return null;
 
+    /** @type {string[]} */
     const uuids = Array.isArray(selection.choices) ? selection.choices : [selection.choices];
+
+    if (node) {
+      node.selected = uuids.reduce((selected, uuid) => {
+        selected[uuid] = uuids.includes(uuid);
+        return selected;
+      }, {});
+    }
 
     return { [`flags.draw-steel.advancement.${this.id}.selected`]: uuids.filter(_ => _) };
   }
