@@ -53,6 +53,11 @@
 - GM-Facing Compendium Data fixes:
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
+  - Multiple corrections to the Ogre Juggernaut.
+    - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
+    - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
+    - Corrected the description of the Destructive Path feature per errata.
+
 
 ## 0.8.1
 
