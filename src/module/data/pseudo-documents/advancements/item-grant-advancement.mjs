@@ -123,8 +123,8 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async configureAdvancement(node = null) {
-    const selection = await ItemGrantConfigurationDialog.create({ node, advancement: this });
+  async configureAdvancement(node) {
+    const selection = await ItemGrantConfigurationDialog.create({ node });
 
     if (!selection) return null;
 
@@ -164,6 +164,8 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       chains, actor, window: { title: "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.reconfigureTitle" },
     });
     if (!configuration) return;
+
+    console.log(chains);
 
     const toDelete = this.grantedItemsChain().map(i => i.id);
     if (toDelete.size) await actor.deleteEmbeddedDocuments("Item", Array.from(toDelete));

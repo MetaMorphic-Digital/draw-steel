@@ -12,8 +12,7 @@ import { systemPath } from "../../../constants.mjs";
 
 /**
  * @typedef ItemGrantConfigurationOptions
- * @property {ItemGrantAdvancement} [advancement] Inferred from the node.
- * @property {AdvancementChain} [node]            The node, if available.
+ * @property {AdvancementChain} node   The node to configure.
  */
 
 const { DragDrop, TextEditor } = foundry.applications.ux;
@@ -25,13 +24,12 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /**
    * @param {ApplicationConfiguration & ItemGrantConfigurationOptions} options
    */
-  constructor({ advancement, node, ...options }) {
-    if (!(advancement?.type === "itemGrant")) {
+  constructor({ node, ...options }) {
+    if (!(node.advancement?.type === "itemGrant")) {
       throw new Error("An item grant configuration dialog must be passed an advancement.");
     }
     super(options);
-    this.#node = node ?? null;
-    this.#advancement = advancement ?? node.advancement;
+    this.#node = node;
   }
 
   /* -------------------------------------------------- */
@@ -66,10 +64,8 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * The advancement being configured.
    * @type {ItemGrantAdvancement}
    */
-  #advancement;
-  // eslint-disable-next-line @jsdoc/require-jsdoc
   get advancement() {
-    return this.#advancement;
+    return this.#node.advancement;
   }
 
   /* -------------------------------------------------- */
@@ -117,11 +113,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   async _prepareContext(options) {
     if (options.isFirstRender) {
-      this.#items = new Set(this.node ?
-        Object.values(this.node.choices).map(choice => choice.item)
-        : (await Promise.all(this.advancement.pool.map(p => fromUuid(p.uuid)))).filter(_ => _));
+      this.#items = new Set(Object.values(this.node.choices).map(choice => choice.item));
 
-      for (const item of this.items && this.node) {
+      for (const item of this.items) {
         if (this.node.selected[item.uuid]) this.chosen.add(item.uuid);
       }
     }
@@ -201,13 +195,20 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  _processFormData(event, form, formData) {
-    const fd = super._processFormData(event, form, formData);
+  _processFormData(event, form, formData, submitOptions = {}) {
+    const fd = super._processFormData(event, form, formData, submitOptions);
 
-    if (fd.choices) this.chosen = new Set(Array.isArray(fd.choices) ? fd.choices.filter(_ => _) : [fd.choices]);
-    else this.chosen = new Set();
+    if (!fd.choices) fd.choices = [];
+    else if (!Array.isArray(fd.choices)) fd.choices = [fd.choices];
 
-    if (event.type === "change") this.render();
+    // Passed by the onDrop logic
+    if (submitOptions.expansion) fd.choices.push(...submitOptions.expansion);
+
+    fd.choices = fd.choices.filter(_ => _);
+
+    this.chosen = new Set(fd.choices);
+
+    this.element.querySelector("button[type='submit'][data-action='close']").disabled = this.chosen.size !== this.advancement.chooseN;
 
     return fd;
   }
@@ -237,13 +238,12 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     }
     if (allowed && !this.items.has(item)) {
       this.items.add(item);
-      if (this.node) {
-        this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node,
-          { levelStart: null, levelEnd: 1 }, // TODO: Figure out levelEnd
-        );
-        this.chosen.add(item.uuid);
-      }
-      this.render();
+      this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node,
+        { levelStart: null, levelEnd: 1 }, // TODO: Figure out levelEnd
+      );
+      this.chosen.add(item.uuid);
+      await this.submit({ expansion: [item.uuid] });
+      await this.render();
     }
     else if (!allowed) ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
   }
