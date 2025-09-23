@@ -2,14 +2,7 @@
 {{#*inline "headerTag"}}
 {{#if originDoc}}
 
-<span
-  data-document-class="Item"
-  data-item-id="{{lookup originDoc "id"}}"
-  data-parent-uuid="{{@root.document.uuid}}"
-  {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
-  data-document-id="{{lookup originDoc "id"}}"
-  data-document-uuid="{{lookup originDoc "uuid"}}"
->
+<span data-document-uuid="{{lookup originDoc "uuid"}}">
   <a class="filled" data-action="viewDoc">
     {{lookup originDoc "name"}}
   </a>

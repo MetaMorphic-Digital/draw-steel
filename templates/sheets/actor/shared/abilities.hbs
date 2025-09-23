@@ -24,7 +24,7 @@
     </div>
     <ol class="item-list abilities-list">
       {{#each abilityType.abilities as |abilityContext|}}
-      <li class="item ability draggable expandable-document" data-document-uuid="{{abilityContext.item.uuid}}" data-document-id="{{abilityContext.item.id}}" data-item-id="{{abilityContext.item.id}}" data-document-class="Item" data-parent-uuid="{{abilityContext.item.parent.uuid}}">
+      <li class="item ability draggable expandable-document" data-document-uuid="{{abilityContext.item.uuid}}" data-item-id="{{abilityContext.item.id}}">
         <div class="item-row">
           <div class="item-column item-name rollable" data-action="useAbility">
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">

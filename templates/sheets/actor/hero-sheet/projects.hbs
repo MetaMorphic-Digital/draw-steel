@@ -17,7 +17,7 @@
     </div>
     <ol class="item-list project-list">
       {{#each projects as |projectContext|}}
-      <li class="item project draggable expandable-document" data-document-uuid="{{projectContext.item.uuid}}" data-document-id="{{projectContext.item.id}}" data-item-id="{{projectContext.item.id}}" data-document-class="Item" data-parent-uuid="{{projectContext.item.parent.uuid}}">
+      <li class="item project draggable expandable-document" data-document-uuid="{{projectContext.item.uuid}}" data-item-id="{{projectContext.item.id}}">
         <div class="item-row">
           <div class="item-column item-name rollable" data-action="rollProject">
             <img class="item-image" src="{{projectContext.item.img}}" alt="{{projectContext.item.name}}">
