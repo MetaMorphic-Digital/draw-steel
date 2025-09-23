@@ -92,6 +92,7 @@ export default class AdvancementChain {
       isRoot: !_depth,
       choices: {},
       selected: {},
+      levels: [levelStart, levelEnd],
     };
 
     const node = new this(nodeData);
@@ -101,7 +102,7 @@ export default class AdvancementChain {
         const item = await fromUuid(uuid);
         if (!item) continue;
 
-        node.choices[item.uuid] = await this.createItemGrantChoice(item, node, { levelStart, levelEnd, _depth });
+        node.choices[item.uuid] = await this.createItemGrantChoice(item, node, { _depth });
       }
     } else if (advancement instanceof TraitAdvancement) {
       for (const trait of advancement.traitOptions) {
@@ -135,7 +136,8 @@ export default class AdvancementChain {
    * @param {number} config._depth
    * @returns {Promise<AdvancementChainItemGrantLeaf>}
    */
-  static async createItemGrantChoice(item, node, { levelStart, levelEnd, _depth }) {
+  static async createItemGrantChoice(item, node, { _depth }) {
+    const [levelStart, levelEnd] = node.levels;
     const choice = {
       item, node,
       itemLink: item.toAnchor(),
