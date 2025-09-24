@@ -876,6 +876,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
 
+  /* -------------------------------------------------- */
+
   /**
    * Handle a dropped Active Effect on the Actor Sheet.
    * The default implementation creates an Active Effect embedded document on the Actor.
