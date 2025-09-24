@@ -153,21 +153,24 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @protected
    */
   async _prepareBody(context, options) {
-    context.chooseN = this.advancement.chooseN;
+    context.chooseLabel = (this.advancement.chooseN == null) ?
+      game.i18n.localize("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseNull") :
+      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: this.advancement.chooseN });
 
     context.items = this.items.map(i => {
-      const chosen = this.chosen.has(i.uuid);
+      const chosen = this.chosen.has(i.uuid) || (this.advancement.chooseN == null);
       return {
         chosen,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
-        disabled: (this.advancement.chooseN !== null) && !chosen && (this.chosen.size >= this.advancement.chooseN),
+        disabled: !chosen && (this.chosen.size >= this.advancement.chooseN),
       };
     });
 
     context.expansion = this.advancement.expansion.type;
 
     context.enrichedDescription = await enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
+
   }
 
   /* -------------------------------------------------- */
