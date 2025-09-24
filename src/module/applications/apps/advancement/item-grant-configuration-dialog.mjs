@@ -26,7 +26,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    */
   constructor({ node, ...options }) {
     if (!(node.advancement?.type === "itemGrant")) {
-      throw new Error("An item grant configuration dialog must be passed an advancement.");
+      throw new Error("An item grant configuration dialog must be passed an AdvancementChain with an Item Grant.");
     }
     super(options);
     this.#node = node;
@@ -37,10 +37,6 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["configure-advancement"],
-    form: {
-      closeOnSubmit: false,
-      submitOnChange: true,
-    },
     window: {
       icon: "fa-solid fa-edit",
     },
@@ -136,10 +132,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       case "footer":
         context.buttons = [{
           type: "submit",
-          action: "close",
           label: "Confirm",
-          icon: "fa-solid fa-check",
-          disabled: this.chosen.size !== this.advancement.chooseN,
+          icon: "fa-solid fa-fw fa-check",
+          disabled: (this.advancement.chooseN == null) || (this.chosen.size !== this.advancement.chooseN),
         }];
         break;
     }
@@ -164,7 +159,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         chosen,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
-        disabled: !chosen && (this.chosen.size >= this.advancement.chooseN),
+        disabled: (this.advancement.chooseN !== null) && !chosen && (this.chosen.size >= this.advancement.chooseN),
       };
     });
 
@@ -179,6 +174,28 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   async _onRender(context, options) {
     await super._onRender(context, options);
     if (this.advancement.expansion.type) this.#dragDrop.bind(this.element);
+    this.form.addEventListener("change", ev => {
+      const checkbox = ev.target;
+      if (checkbox.checked) this.chosen.add(checkbox.value);
+      else this.chosen.delete(checkbox.value);
+
+      this.#refreshDisabled(ev.target);
+    });
+  }
+
+  /**
+   * Refresh the disabled state of checkboxes and the submit button in this app.
+   */
+  #refreshDisabled() {
+    if (this.advancement.chooseN == null) return;
+
+    const checkboxes = [];
+    // could be a RadioNodeList or could be a single checkbox
+    if (this.form.choices?.length) checkboxes.push(...this.form.choices);
+    else if (this.form.choices) checkboxes.push(this.form.choices);
+
+    for (const input of checkboxes) input.disabled = !this.chosen.has(input.value) && (this.chosen.size >= this.advancement.chooseN);
+    this.element.querySelector("button[type='submit']").disabled = this.chosen.size !== this.advancement.chooseN;
   }
 
   /* -------------------------------------------------- */
@@ -201,14 +218,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     if (!fd.choices) fd.choices = [];
     else if (!Array.isArray(fd.choices)) fd.choices = [fd.choices];
 
-    // Passed by the onDrop logic
-    if (submitOptions.expansion) fd.choices.push(...submitOptions.expansion);
-
     fd.choices = fd.choices.filter(_ => _);
-
-    this.chosen = new Set(fd.choices);
-
-    this.element.querySelector("button[type='submit'][data-action='close']").disabled = this.chosen.size !== this.advancement.chooseN;
 
     return fd;
   }
@@ -240,8 +250,13 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       this.items.add(item);
       this.node.choices[item.uuid] = await AdvancementChain.createItemGrantChoice(item, this.node);
       this.chosen.add(item.uuid);
-      await this.submit({ expansion: [item.uuid] });
-      await this.render();
+      this.element.querySelector(".item-choices").insertAdjacentHTML("beforeend", `<div class="form-group">
+        <label>${item.toAnchor().outerHTML}</label>
+        <div class="form-fields">
+          <input type="checkbox" value="${item.uuid}" name="choices" checked>
+        </div>
+      </div>`);
+      this.#refreshDisabled();
     }
     else if (!allowed) ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.FilterFail", { localize: true });
   }

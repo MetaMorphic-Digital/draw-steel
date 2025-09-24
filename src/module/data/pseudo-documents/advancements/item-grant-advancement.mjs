@@ -128,17 +128,14 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     if (!selection) return null;
 
-    /** @type {string[]} */
-    const uuids = Array.isArray(selection.choices) ? selection.choices : [selection.choices];
-
     if (node) {
-      node.selected = uuids.reduce((selected, uuid) => {
-        selected[uuid] = uuids.includes(uuid);
+      node.selected = selection.choices.reduce((selected, uuid) => {
+        selected[uuid] = true;
         return selected;
       }, {});
     }
 
-    return { [`flags.draw-steel.advancement.${this.id}.selected`]: uuids.filter(_ => _) };
+    return { [`flags.draw-steel.advancement.${this.id}.selected`]: selection.choices };
   }
 
   /* -------------------------------------------------- */
