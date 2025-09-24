@@ -24,7 +24,7 @@
 
 - New Compendium Content:
   - Demon Echelons 2-4
-- Added "Update from Compendium" header control to NPC and Item documents. (#557)
+- Added `updateFromCompendium` API method for actors and items. (#557)
 - Added suggested books and licenses in the source input form. (#841)
 
 ### Changed

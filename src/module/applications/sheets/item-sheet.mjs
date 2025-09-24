@@ -25,7 +25,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     },
     actions: {
       toggleMode: this.#toggleMode,
-      updateFromCompendium: this.#updateFromCompendium,
       showImage: this.#showImage,
       updateSource: this.#updateSource,
       editHTML: this.#editHTML,
@@ -36,14 +35,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       toggleEffectDescription: this.#toggleEffectDescription,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
-    },
-    window: {
-      controls: [{
-        icon: "fa-solid fa-file-arrow-down",
-        label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
-        action: "updateFromCompendium",
-        visible: DrawSteelItemSheet.#canUpdateFromCompendium,
-      }],
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
@@ -438,30 +429,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     this._mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
     if (this.isPlayMode && this.#editor) await this.#saveEditor();
     this.render();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Whether this item can be updated from a compendium source.
-   *
-   * @this DrawSteelItemSheet
-   */
-  static #canUpdateFromCompendium() {
-    return !!fromUuidSync(this.document._stats.compendiumSource, { strict: false });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Update this item from compendium.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #updateFromCompendium(event, target) {
-    return this.document.updateFromCompendium();
   }
 
   /* -------------------------------------------------- */
