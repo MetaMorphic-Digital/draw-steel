@@ -47,8 +47,9 @@
 ### Fixed
 
 - Player-Facing Compendium data fixes:
-  - Dragon Knight Wyrmplate and Prismatic Scales referred to wrong attribute key. (#1108)
+  - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
+  - Corrected attribute key for Acolyte of Fire. (#1151)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
 - GM-Facing Compendium Data fixes:
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
