@@ -101,7 +101,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /** @inheritdoc */
   get title() {
-    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.advancement.name });
+    return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", {
+      name: this.advancement.name,
+    });
   }
 
   /* -------------------------------------------------- */
