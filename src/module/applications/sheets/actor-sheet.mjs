@@ -486,7 +486,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-uuid]", {
       hookName: "getDocumentListContextOptions",
       parentClassHooks: false,
       fixed: true,

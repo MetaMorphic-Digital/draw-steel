@@ -75,7 +75,7 @@ export default base => {
     /* -------------------------------------------------- */
 
     /**
-     * A set of the currently expanded document ids.
+     * A set of the currently expanded document uuids.
      * @type {Set<string>}
      */
     _expandedDocumentDescriptions = new Set();
@@ -169,11 +169,11 @@ export default base => {
     static async #toggleDocumentDescription(event, target) {
       const parentElement = target.closest(".expandable-document");
       const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentDescription\"]");
-      const { documentId } = parentElement.dataset;
+      const { documentUuid } = parentElement.dataset;
       const embedContainer = parentElement.querySelector(".document-description");
-      const isExpanded = this._expandedDocumentDescriptions.has(documentId);
+      const isExpanded = this._expandedDocumentDescriptions.has(documentUuid);
 
-      if (isExpanded) this._expandedDocumentDescriptions.delete(documentId);
+      if (isExpanded) this._expandedDocumentDescriptions.delete(documentUuid);
       else {
         // Only generate the embed HTML once.
         if (!embedContainer.innerHTML.trim()) {
@@ -181,7 +181,7 @@ export default base => {
           const embed = await document?.system?.toEmbed({});
           if (embed) embedContainer.innerHTML = embed.outerHTML;
         }
-        this._expandedDocumentDescriptions.add(documentId);
+        this._expandedDocumentDescriptions.add(documentUuid);
       }
 
       // Force toggle html classes

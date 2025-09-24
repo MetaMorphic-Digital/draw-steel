@@ -15,7 +15,7 @@
     </div>
     <ol class="item-list complications-list">
       {{#each complications.complications as |complicationContext|}}
-      <li class="item complication draggable expandable-document" data-document-uuid="{{complicationContext.item.uuid}}" data-document-id="{{complicationContext.item.id}}" data-item-id="{{complicationContext.item.id}}" data-document-class="Item" data-parent-uuid="{{complicationContext.item.parent.uuid}}">
+      <li class="item complication draggable expandable-document" data-document-uuid="{{complicationContext.item.uuid}}" data-item-id="{{complicationContext.item.id}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{complicationContext.item.img}}" alt="{{complicationContext.item.name}}">
