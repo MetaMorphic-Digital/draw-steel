@@ -60,6 +60,8 @@
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+- Fixed active effects not sorting on actor and item sheets. (#1149)
+- Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 
 ## 0.8.1
 
