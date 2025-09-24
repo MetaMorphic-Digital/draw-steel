@@ -20,7 +20,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
-      expansion: new SchemaField({
+      additional: new SchemaField({
         type: new StringField({ blank: false }),
         perkType: new SetField(setOptions()),
       }),
@@ -50,10 +50,10 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /**
-   * Allowed expansion types, where a user can add an unknown document to the advancement chain.
+   * Allowed additional types, where a user can add an unknown document to the advancement chain.
    * @type {Record<string, { label: string }>}
    */
-  static EXPANSION_TYPES = {
+  static ADDITIONAL_TYPES = {
     kit: {
       label: "TYPES.Item.kit",
     },
@@ -66,7 +66,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /** @inheritdoc */
   get isChoice() {
-    if (this.expansion.type) return true;
+    if (this.additional.type) return true;
     if (this.chooseN === null) return false;
     if (this.chooseN >= Object.values(this.pool).length) return false;
     return true;

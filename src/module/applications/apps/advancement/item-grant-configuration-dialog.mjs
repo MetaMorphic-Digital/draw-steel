@@ -167,7 +167,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       };
     });
 
-    context.expansion = this.advancement.expansion.type;
+    context.additional = this.advancement.additional.type;
 
     context.enrichedDescription = await enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
 
@@ -178,7 +178,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    if (this.advancement.expansion.type) this.#dragDrop.bind(this.element);
+    if (this.advancement.additional.type) this.#dragDrop.bind(this.element);
     this.form.addEventListener("change", ev => {
       const checkbox = ev.target;
       if (checkbox.checked) this.chosen.add(checkbox.value);
@@ -232,7 +232,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /**
    * Handle a dragged element dropped on a droppable target.
-   * Only active if the advancement has `expansion.type` set.
+   * Only active if the advancement has `additional.type` set.
    * @param {DragEvent} event   The drag event being handled.
    */
   async _onDrop(event) {
@@ -243,12 +243,12 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       return;
     }
     let allowed = true;
-    const expansionInfo = this.advancement.expansion;
-    if (item.type !== this.advancement.expansion.type) allowed = false;
+    const additionalInfo = this.advancement.additional;
+    if (item.type !== this.advancement.additional.type) allowed = false;
     // specific filtering per type
     switch (item.type) {
       case "perk":
-        if (expansionInfo.perkType.size && !expansionInfo.perkType.has(item.system.perkType)) allowed = false;
+        if (additionalInfo.perkType.size && !additionalInfo.perkType.has(item.system.perkType)) allowed = false;
         break;
     }
     if (allowed && !this.items.has(item)) {

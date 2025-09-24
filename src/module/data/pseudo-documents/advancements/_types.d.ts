@@ -18,7 +18,7 @@ declare module "./item-grant-advancement.mjs" {
     pool: ItemGrantPool[];
     /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool. */
     chooseN: number | null;
-    expansion: {
+    additional: {
       type: string | undefined;
       perkType: Set<string>;
     }
