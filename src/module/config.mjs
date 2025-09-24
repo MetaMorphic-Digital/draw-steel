@@ -813,6 +813,12 @@ export const hero = {
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
     // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
+    // Advance
+    "Compendium.draw-steel.abilities.Item.ucR2C7lMvXrKIMZ7",
+    // Disengage
+    "Compendium.draw-steel.abilities.Item.vBlTvHRZ5JBXWYt6",
+    // Ride
+    "Compendium.draw-steel.abilities.Item.QXOkflcYF6DITJE3",
   ]),
   /**
    * XP progression for heroes.
@@ -1097,6 +1103,9 @@ const abilityTypes = {
   freeTriggered: {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
+  },
+  move: {
+    label: "DRAW_STEEL.Item.ability.Type.Move",
   },
   none: {
     label: "DRAW_STEEL.Item.ability.Type.None",

@@ -26,21 +26,39 @@
   - Demon Echelons 2-4
 - Added an "Expansion" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
+- In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
 ### Changed
 
 - Changed available keywords on treasures to be more accurate. (#270)
+- Refactor the toggling of item and effect description dropdowns to use a CSS transition instead of re-rendering the application. (#626)
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 
 ### Removed
 
 - Removed the "source.revision" property from items and NPCs.
+
+### Fixed
+
+- Player-Facing Compendium data fixes:
+  - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
+  - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
+  - Corrected attribute key for Acolyte of Fire. (#1151)
+  - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
+- GM-Facing Compendium Data fixes:
+  - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
+  - Bredbeddle Malice Ability costs. (#1114)
+  - Multiple corrections to the Ogre Juggernaut.
+    - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
+    - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
+    - Corrected the description of the Destructive Path feature per errata.
 
 ## 0.8.1
 
@@ -67,7 +85,7 @@
 - Player-Facing Compendium data fixes:
   - Corrected Studied Commander description. (#948)
   - Added missing item grant advancements to Tactician subclasses. (#949)
-  - Stormwight kit abilities no longer double up on kit bonuses (#954)
+  - Stormwight kit abilities no longer double up on kit bonuses. (#954)
   - Corrected name of the Stormwights "Furious Change". (#956)
   - College of Black Ash no longer gives all lore skills. (#980)
   - Corrected Talent "Distance Augmentation" filters & bonus. (#998)

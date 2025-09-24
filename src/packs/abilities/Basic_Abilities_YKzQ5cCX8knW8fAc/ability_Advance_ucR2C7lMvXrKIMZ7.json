@@ -1,28 +1,29 @@
 {
-  "folder": "2VtLQ8tg0DVZeZy1",
-  "name": "Solo Action",
+  "folder": "YKzQ5cCX8knW8fAc",
+  "name": "Advance",
   "type": "ability",
-  "_id": "mQMBQ1XKQyZs53gm",
-  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "_id": "ucR2C7lMvXrKIMZ7",
+  "img": "icons/skills/movement/feet-bladed-boots-fire.webp",
   "system": {
     "source": {
-      "book": "Monsters",
-      "page": "50",
+      "book": "Heroes",
+      "page": "272",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "solo-action",
+    "_dsid": "advance",
     "story": "",
     "keywords": [],
-    "type": "none",
-    "category": "heroic",
-    "resource": 5,
+    "type": "move",
+    "category": "",
+    "resource": null,
     "trigger": "",
     "distance": {
-      "type": "special"
+      "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "self",
+      "custom": ""
     },
     "power": {
       "roll": {
@@ -32,7 +33,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The bredbeddle takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+      "before": "<p>When a creature takes the Advance move action, they move a number of squares up to their speed. They can break up this movement with their maneuver and main action however they wish.</p>",
       "after": ""
     },
     "spend": {
@@ -50,12 +51,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1757094317682,
+    "createdTime": 1758665540843,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!mQMBQ1XKQyZs53gm"
+  "_key": "!items!ucR2C7lMvXrKIMZ7"
 }

@@ -289,7 +289,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are forced moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
+          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are force moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
           "director": ""
         },
         "source": {
@@ -312,9 +312,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -833,7 +833,7 @@
       "name": "Hrraaaaaagh!",
       "type": "ability",
       "system": {
-        "type": "none",
+        "type": "freeTriggered",
         "source": {
           "book": "Monsters",
           "page": "210",
@@ -843,7 +843,7 @@
         "story": "",
         "keywords": [],
         "category": "",
-        "resource": null,
+        "resource": 1,
         "trigger": "The juggernaut takes damage.",
         "distance": {
           "type": "self"
@@ -882,9 +882,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
