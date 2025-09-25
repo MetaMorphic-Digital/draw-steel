@@ -75,63 +75,6 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     return dsid.slugify({ strict: true });
   }
 
-  /**
-   * Update this item based on its compendium version.
-   * @param {object}  [config]              Options to modify the update logic.
-   * @param {string}  [config.uuid]         An optional reference for a UUID to use in place of the stored compendiumSource.
-   * @param {boolean} [config.skipDialog]   Whether to skip the confirmation dialog.
-   */
-  async updateFromCompendium({ uuid, skipDialog } = {}) {
-    const sourceItem = await fromUuid(uuid ?? this._stats.compendiumSource);
-
-    if (!sourceItem) throw new Error("Failed to find the source document!");
-
-    if (!skipDialog) {
-      const content = document.createElement("div");
-
-      content.insertAdjacentHTML("afterbegin", `<p>${
-        game.i18n.localize("DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.ContentItem")
-      }</p>`);
-
-      const proceed = await ds.applications.api.DSDialog.confirm({
-        content,
-        window: {
-          title: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Title",
-          icon: "fa-solid fa-file-arrow-down",
-        },
-      });
-
-      if (!proceed) return;
-    }
-
-    // TODO: Update to use batched operations in v14
-
-    await this.update({ "==system": sourceItem.toObject().system });
-
-    const createData = [];
-    const updateData = [];
-    const deleteIds = [];
-
-    for (const effect of sourceItem.effects) {
-      /** @type {ActiveEffectData} */
-      const effectData = effect.toObject();
-      const currentEffect = this.effects.get(effect.id);
-      if (currentEffect) updateData.push({
-        _id: effect.id,
-        "==system": effectData.system,
-        duration: effectData.duration,
-        changes: effectData.changes,
-        description: effectData.description,
-      });
-      else createData.push(effectData);
-    }
-    for (const effect of this.effects) if (!sourceItem.effects.get(effect.id)) deleteIds.push(effect.id);
-
-    await this.updateEmbeddedDocuments("ActiveEffect", updateData);
-    await this.createEmbeddedDocuments("ActiveEffect", createData, { keepId: true });
-    await this.deleteEmbeddedDocuments("ActiveEffect", deleteIds);
-  }
-
   /* -------------------------------------------------- */
   /*   Advancements                                     */
   /* -------------------------------------------------- */
