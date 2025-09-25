@@ -1,0 +1,67 @@
+{
+  "name": "Memory Thief",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A voiceless starts its turn.",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "target": {
+      "type": "creature",
+      "value": 1,
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Psionic, Ranged Maneuver</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 6 psychic]] damage; R&lt;1 the target can’t treat their allies as allies (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10 psychic]] damage; R&lt;2 the target perceives their allies as enemies (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 13 psychic]] damage; R&lt;3 the target perceives their allies as enemies (save ends) Special: This ability can’t be used by a minion.</p></td></tr></tbody></table>",
+      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "286",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "memory-thief",
+    "story": "",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ]
+  },
+  "effects": [],
+  "folder": "BRh61Jblgho2nIWC",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758820804883,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "chjWo71vjEugh9fC",
+  "sort": 100000,
+  "_key": "!items!chjWo71vjEugh9fC"
+}
