@@ -59,6 +59,7 @@
     - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
+  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
 
 ## 0.8.1
 
