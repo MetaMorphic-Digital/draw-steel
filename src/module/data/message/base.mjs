@@ -121,7 +121,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   async modifyDamageRoll(roll, { additionalFormula = "", surges = 0, damageType }) {
     let rollData = this.parent.speakerActor?.getRollData() ?? {};
 
-    // Roll data is not saved to the chat message, so if it's an ability, the ability roll data should be retrieved.
+    // If this is an abilityUse message, the ability roll data should be retrieved.
     if (this.parent.type === "abilityUse") {
       const ability = await fromUuid(this.uuid);
       rollData = ability.getRollData();
