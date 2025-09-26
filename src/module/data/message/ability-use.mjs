@@ -183,12 +183,15 @@ export default class AbilityUseModel extends BaseMessageModel {
   /**
    * Consume a resource on the speaker actor.
    * Currently, only surges are accounted for.
-   * @param {number} value The new resource value.
-   * @returns {DrawSteelActor | false}
+   * @param {number} surges The new resource value.
+   * @returns {DrawSteelActor}
    */
-  async consumeSurges(value) {
-    if (!this.parent.speakerActor) return false;
+  async consumeSurges(surges) {
+    if (this.parent.speakerActor?.type !== "hero") return this.parent.speakerActor;
 
-    return this.parent.speakerActor.update({ "system.hero.surges": value });
+    const oldSurges = this.parent.speakerActor.system.hero.surges;
+    const newSurges = Math.max(0, oldSurges - surges);
+
+    return this.parent.speakerActor.update({ "system.hero.surges": newSurges });
   }
 }
