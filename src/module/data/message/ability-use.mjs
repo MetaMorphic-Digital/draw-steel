@@ -152,42 +152,36 @@ export default class AbilityUseModel extends BaseMessageModel {
   /* -------------------------------------------------- */
 
   /**
-   * Take a given damage roll and apply the given modifications.
+   * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+   * After creation, the new roll is added to the message rolls.
    * @param {DamageRoll} roll The damage roll to modify.
    * @param {object} modifications The modification options to apply.
-   * @param {string} [modifications.additionalFormula] Additional formula components to append to the roll.
-   * @param {number} [modifications.surges] How many surges to apply to the roll.
+   * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
    * @param {string} [modifications.damageType] The damage type to use for the modified roll.
    * @returns {DamageRoll}
    */
-  async modifyDamageRoll(roll, { additionalFormula = "", surges = 0, damageType }) {
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }) {
     const ability = await fromUuid(this.uuid);
     const rollData = ability?.getRollData() ?? this.parent.speakerActor?.getRollData() ?? {};
 
-    let formula = String(roll.total);
-    if (additionalFormula) formula = `${formula} + ${additionalFormula}`;
+    const formula = additionalTerms ? `${roll.total} + ${additionalTerms}` : String(roll.total);
+    const options = { ...roll.options };
+    if (damageType) options.type = damageType;
 
-    // Surges are based on highest characteristic, so we can't apply surge damage when there's no characteristics.
-    if (surges && rollData.characteristics) {
-      const highestCharacteristic = Math.max(0, ...Object.values(rollData.characteristics).map(c => c.value));
-      formula = `${formula} + (${surges}*${highestCharacteristic})`;
-    }
-
-    const type = damageType ?? roll.type;
-
-    const newRoll = new DamageRoll(formula, rollData, { type, ignoredImmunities: roll.ignoredImmunities });
+    const newRoll = new DamageRoll(formula, rollData, options);
     await newRoll.evaluate();
+
+    this.parent.update({ rolls: [...this.parent.rolls, newRoll] });
 
     return newRoll;
   }
 
   /**
-   * Consume a resource on the speaker actor.
-   * Currently, only surges are accounted for.
+   * Spend the speaker actor's surges.
    * @param {number} surges The new resource value.
    * @returns {DrawSteelActor}
    */
-  async consumeSurges(surges) {
+  async spendSurges(surges) {
     if (this.parent.speakerActor?.type !== "hero") return this.parent.speakerActor;
 
     const oldSurges = this.parent.speakerActor.system.hero.surges;
