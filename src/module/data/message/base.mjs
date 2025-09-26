@@ -110,91 +110,52 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
   /* -------------------------------------------------- */
 
   /**
-   * From a DamageRoll, allow modificiation of the damage type and formula, and application of any surges.
-   * Create a new chat message with the new DamageRoll.
-   * @param {DamageRoll} roll The damage roll to use as a base for modification.
+   * Take a given damage roll and apply the given modifications.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalFormula] Additional formula components to append to the roll.
+   * @param {number} [modifications.surges] How many surges to apply to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @returns {DamageRoll}
    */
-  async _modifyDamage(roll) {
-    const fd = await this.#damageModificationDialog(roll);
-    if (!fd) return;
+  async modifyDamageRoll(roll, { additionalFormula = "", surges = 0, damageType }) {
+    let rollData = this.parent.speakerActor?.getRollData() ?? {};
 
-    let rollData = {};
+    // Roll data is not saved to the chat message, so if it's an ability, the ability roll data should be retrieved.
     if (this.parent.type === "abilityUse") {
       const ability = await fromUuid(this.uuid);
       rollData = ability.getRollData();
     }
 
-    fd.damageSurges = Number(fd.damageSurges);
-    if (fd.damageSurges && rollData.characteristics) {
+    let formula = roll.formula;
+    if (additionalFormula) formula = `${formula} + ${additionalFormula}`;
+
+    // Surges are based on highest characteristic, so we can't apply surge damage when there's no characteristics.
+    if (surges && rollData.characteristics) {
       const highestCharacteristic = Math.max(0, ...Object.values(rollData.characteristics).map(c => c.value));
-      fd.formula = `${fd.formula} + (${fd.damageSurges}*${highestCharacteristic})`;
+      formula = `${formula} + (${surges}*${highestCharacteristic})`;
     }
-    // TODO: Automatically update actor surges?
 
-    if ((fd.formula === String(roll.total)) && (fd.damageType === roll.type)) return void ui.notifications.warn("DRAW_STEEL.ROLL.Damage.ModificationDialog.NoModification", { localize: true });
+    const type = damageType ?? roll.type;
 
-    const newRoll = await new DamageRoll(fd.formula, rollData, { type: fd.damageType, ignoredImmunities: roll.ignoredImmunities });
-    newRoll.toMessage();
+    const newRoll = new DamageRoll(formula, rollData, { type, ignoredImmunities: roll.ignoredImmunities });
+    await newRoll.evaluate();
+
+    return newRoll;
   }
 
-  /* -------------------------------------------------- */
-
   /**
-   * Prompt a dialog for modifying the damage roll.
-   * @param {DamageRoll} roll The initital roll to modify
-   * @returns {object}
+   * Consume a resource on the speaker actor.
+   * Currently, only surges are accounted for.
+   * @param {string} resourceName What resource to consume.
+   * @param {number} value The new resource value.
+   * @returns {DrawSteelActor | false}
    */
-  async #damageModificationDialog(roll) {
-    const content = document.createElement("div");
+  async consumeResource(resourceName, value) {
+    if (!this.parent.speakerActor) return false;
 
-    const formulaInput = foundry.applications.fields.createTextInput({ name: "formula", value: roll.total });
-    const formulaGroup = foundry.applications.fields.createFormGroup({
-      label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.DamageFormula.Label",
-      input: formulaInput,
-      localize: true,
-    });
-    content.append(formulaGroup);
+    if (resourceName === "surges") return this.parent.speakerActor.update({ "system.hero.surges": value });
 
-    if (!roll.isHeal) {
-      const damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
-      const damageSelection = foundry.applications.fields.createSelectInput({
-        name: "damageType",
-        blank: "",
-        options: damageTypes,
-        value: roll.type,
-      });
-      const damageSelectionGroup = foundry.applications.fields.createFormGroup({
-        label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.DamageType.Label",
-        input: damageSelection,
-        localize: true,
-      });
-      content.append(damageSelectionGroup);
-    }
-
-    // TODO: Limit selection to number of surges the actor has?
-    // Only show surges when origin actor is a hero.
-    const surgeOptions = [0, 1, 2, 3].map(option => ({ value: option, label: option }));
-    const damageSurgeSelection = foundry.applications.fields.createSelectInput({
-      name: "damageSurges",
-      options: surgeOptions,
-      value: 0,
-    });
-    const damageSurgeGroup = foundry.applications.fields.createFormGroup({
-      label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.DamageSurges.Label",
-      input: damageSurgeSelection,
-      localize: true,
-    });
-    content.append(damageSurgeGroup);
-
-    return ds.applications.api.DSDialog.input({
-      window: {
-        title: roll.isHeal ? "DRAW_STEEL.ROLL.Damage.ModificationDialog.Title.Heal" : "DRAW_STEEL.ROLL.Damage.ModificationDialog.Title.Damage",
-        icon: "fa-solid fa-burst",
-      },
-      content,
-      ok: {
-        label: "DRAW_STEEL.ROLL.Damage.ModificationDialog.Apply",
-      },
-    });
+    return false;
   }
 }
