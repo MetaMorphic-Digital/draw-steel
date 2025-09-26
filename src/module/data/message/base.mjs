@@ -127,7 +127,7 @@ export default class BaseMessageModel extends foundry.abstract.TypeDataModel {
       rollData = ability.getRollData();
     }
 
-    let formula = roll.formula;
+    let formula = roll.total;
     if (additionalFormula) formula = `${formula} + ${additionalFormula}`;
 
     // Surges are based on highest characteristic, so we can't apply surge damage when there's no characteristics.
