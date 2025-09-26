@@ -162,7 +162,7 @@ export default class AbilityUseModel extends BaseMessageModel {
    */
   async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }) {
     const ability = await fromUuid(this.uuid);
-    const rollData = ability?.getRollData() ?? this.parent.speakerActor?.getRollData() ?? {};
+    const rollData = ability?.getRollData() ?? this.parent.getRollData();
 
     const formula = additionalTerms ? `${roll.total} + ${additionalTerms}` : String(roll.total);
     const options = { ...roll.options };
