@@ -1,6 +1,7 @@
 
 import BaseMessageModel from "./base.mjs";
 import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
@@ -163,7 +164,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const ability = await fromUuid(this.uuid);
     const rollData = ability?.getRollData() ?? this.parent.speakerActor?.getRollData() ?? {};
 
-    let formula = roll.total;
+    let formula = String(roll.total);
     if (additionalFormula) formula = `${formula} + ${additionalFormula}`;
 
     // Surges are based on highest characteristic, so we can't apply surge damage when there's no characteristics.
