@@ -147,4 +147,48 @@ export default class AbilityUseModel extends BaseMessageModel {
       }
     });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Take a given damage roll and apply the given modifications.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalFormula] Additional formula components to append to the roll.
+   * @param {number} [modifications.surges] How many surges to apply to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @returns {DamageRoll}
+   */
+  async modifyDamageRoll(roll, { additionalFormula = "", surges = 0, damageType }) {
+    const ability = await fromUuid(this.uuid);
+    const rollData = ability?.getRollData() ?? this.parent.speakerActor?.getRollData() ?? {};
+
+    let formula = roll.total;
+    if (additionalFormula) formula = `${formula} + ${additionalFormula}`;
+
+    // Surges are based on highest characteristic, so we can't apply surge damage when there's no characteristics.
+    if (surges && rollData.characteristics) {
+      const highestCharacteristic = Math.max(0, ...Object.values(rollData.characteristics).map(c => c.value));
+      formula = `${formula} + (${surges}*${highestCharacteristic})`;
+    }
+
+    const type = damageType ?? roll.type;
+
+    const newRoll = new DamageRoll(formula, rollData, { type, ignoredImmunities: roll.ignoredImmunities });
+    await newRoll.evaluate();
+
+    return newRoll;
+  }
+
+  /**
+   * Consume a resource on the speaker actor.
+   * Currently, only surges are accounted for.
+   * @param {number} value The new resource value.
+   * @returns {DrawSteelActor | false}
+   */
+  async consumeSurges(value) {
+    if (!this.parent.speakerActor) return false;
+
+    return this.parent.speakerActor.update({ "system.hero.surges": value });
+  }
 }
