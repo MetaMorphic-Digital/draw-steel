@@ -60,6 +60,7 @@
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+  - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
 
 ## 0.8.1
 
