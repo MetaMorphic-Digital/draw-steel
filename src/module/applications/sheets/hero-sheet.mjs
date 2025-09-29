@@ -83,7 +83,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "stats":
         context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
-        context.skills = this._getSkillList();
+        context.skills = this._getSkills();
         break;
       case "features":
         context.complications = await this._prepareComplicationsContext();
@@ -112,14 +112,24 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * Constructs a string listing the actor's skills.
    * @returns {string}
    */
-  _getSkillList() {
+  _getSkills() {
     const list = this.actor.system.hero.skills.reduce((skills, skill) => {
       skill = ds.CONFIG.skills.list[skill]?.label;
       if (skill) skills.push(skill);
       return skills;
     }, []).sort((a, b) => a.localeCompare(b, game.i18n.lang));
     const formatter = game.i18n.getListFormatter();
-    return formatter.format(list);
+
+    const skillOptions = ds.CONFIG.skills.optgroups;
+
+    for (const skill of this.actor.system.hero.skills) {
+      if (!(skill in ds.CONFIG.skills.list)) skillOptions.push({ value: skill });
+    }
+
+    return {
+      list: formatter.format(list),
+      options: skillOptions,
+    };
   }
 
   /* -------------------------------------------------- */
