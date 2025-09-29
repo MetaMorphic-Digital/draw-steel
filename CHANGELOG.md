@@ -53,10 +53,11 @@
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
   - Implemented the "custom" target text for many abilities.
+  - Corrected action types for many echelon 1 abilities.
+  - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
   - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
   - Corrected keywords on Tactician's "Now".
-  - Corrected action types on several Tactician abilities.
   - Corrected text on Vanguard's Parry.
 - GM-Facing Compendium Data fixes:
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
