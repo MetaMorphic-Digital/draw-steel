@@ -52,6 +52,9 @@
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
+  - Implemented the "custom" target text for many elementalist abilities.
+  - Added missing damage type to the elementalist's Grasp of Beyond.
+  - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
 - GM-Facing Compendium Data fixes:
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
