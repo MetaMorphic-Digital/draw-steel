@@ -47,19 +47,21 @@
 ### Fixed
 
 - Player-Facing Compendium data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Corrected action types for many echelon 1 abilities.
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
-  - Implemented the "custom" target text for many abilities.
-  - Corrected action types for many echelon 1 abilities.
   - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
   - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
   - Corrected keywords on Tactician's "Now".
   - Corrected text on Vanguard's Parry.
 - GM-Facing Compendium Data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Converted "With Captain" features to "With Captain" effects.
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
   - Multiple corrections to the Ogre Juggernaut.
