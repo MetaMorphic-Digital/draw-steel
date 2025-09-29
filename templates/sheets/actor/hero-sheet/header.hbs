@@ -1,7 +1,8 @@
 {{!-- Partial for header tags --}}
 {{#*inline "headerTag"}}
 {{#if originDoc}}
-<span data-document-class="Item" data-item-id="{{lookup originDoc "id"}}">
+
+<span data-document-uuid="{{lookup originDoc "uuid"}}">
   <a class="filled" data-action="viewDoc">
     {{lookup originDoc "name"}}
   </a>
