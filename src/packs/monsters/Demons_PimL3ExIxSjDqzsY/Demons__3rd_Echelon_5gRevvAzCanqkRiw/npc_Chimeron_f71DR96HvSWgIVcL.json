@@ -1,0 +1,677 @@
+{
+  "name": "Chimeron",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/brute.webp",
+  "system": {
+    "stamina": {
+      "value": 90,
+      "max": 90,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": 0
+      },
+      "reason": {
+        "value": 2
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": 2
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 3,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 5,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "70",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [
+        "abyssal"
+      ],
+      "level": 9,
+      "ev": 9,
+      "role": "brute",
+      "organization": "horde"
+    }
+  },
+  "items": [
+    {
+      "name": "Lethe",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While the chimeron is winded, they gain an edge on strikes, and any strike made against them gains an edge.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "70"
+        },
+        "_dsid": "lethe",
+        "advancements": {}
+      },
+      "_id": "bWNXe3pRRyq8BuZi",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.bWNXe3pRRyq8BuZi"
+    },
+    {
+      "name": "Soulsight",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Any creature within 2 squares of the chimeron can't be hidden from them.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "70"
+        },
+        "_dsid": "soulsight",
+        "advancements": {}
+      },
+      "_id": "fzvGF5zpFXvCFJOU",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.fzvGF5zpFXvCFJOU"
+    },
+    {
+      "name": "Flux Gnash",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 2
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "DnPJOXKYxJUkvLYf": {
+              "_id": "DnPJOXKYxJUkvLYf",
+              "type": "special",
+              "name": "Special",
+              "img": null,
+              "special": {
+                "tier1": {
+                  "display": "9 cold, fire, or sonic damage",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "display": "11 cold, fire, or sonic damage",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  }
+                },
+                "tier3": {
+                  "display": "13 cold, fire, or sonic damage",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  }
+                }
+              }
+            },
+            "k5vKTIhnJEc4AC6d": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "k5vKTIhnJEc4AC6d",
+              "damage": {
+                "tier1": {
+                  "value": "9",
+                  "types": [
+                    "cold",
+                    "fire",
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "11",
+                  "types": [
+                    "cold",
+                    "fire",
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [
+                    "cold",
+                    "fire",
+                    "sonic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "pmgUcKI2x30agHbO": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "pmgUcKI2x30agHbO",
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} bleeding, dazed, or slowed (save ends)",
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    },
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "4",
+                    "characteristic": "might"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>After making the power roll, the chimeron decides what damage type the ability deals and which condition it imposes.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "70"
+        },
+        "_dsid": "flux-gnash",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "HC3QFMUSUbD7hSWP",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.HC3QFMUSUbD7hSWP"
+    },
+    {
+      "name": "Pain Absorption",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The chimeron halves the damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "70"
+        },
+        "_dsid": "pain-absorption",
+        "story": "",
+        "resource": 1,
+        "trigger": "The chimeron is targeted by a damage-dealing strike."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "M7DbbaDmSmP87Fa9",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.M7DbbaDmSmP87Fa9"
+    },
+    {
+      "folder": "e60cYU2JbHzpOXni",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "_id": "z8mciv1uVsm7b9ws",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "69",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The demon activates a Malice feature available to demons of level 6 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.d298nvIWsIOh0Kl7]{Abyssal Jaunt}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.z8mciv1uVsm7b9ws"
+    },
+    {
+      "folder": "e60cYU2JbHzpOXni",
+      "name": "Seeping Blight",
+      "type": "ability",
+      "_id": "9jFigb63a6bVSeDX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "69",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "seeping-blight",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One demon acting this turn expels blight—digested soul juice— onto the ground around them in a 3 burst that lingers until the start of their next turn. Any enemy who enters the area or starts their turn there takes [[/damage 6 corruption]] damage, and has a double bane on power rolls until the start of their next turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!f71DR96HvSWgIVcL.9jFigb63a6bVSeDX"
+    }
+  ],
+  "folder": "5gRevvAzCanqkRiw",
+  "prototypeToken": {
+    "name": "Chimeron",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/brute.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758140381819,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "f71DR96HvSWgIVcL",
+  "sort": 0,
+  "_key": "!actors!f71DR96HvSWgIVcL"
+}
