@@ -377,7 +377,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Two goblin runners appear in unoccupied spaces within distance.</p>",
+          "before": "<p>Two @UUID[Compendium.draw-steel.monsters.Actor.Xw0gZCS09gdMjaw8]{goblin runners} appear in unoccupied spaces within distance.</p>",
           "after": ""
         },
         "spend": {
@@ -399,9 +399,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -497,7 +497,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "power": {
           "roll": {
@@ -529,9 +530,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -561,8 +562,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creatureObject",
-          "value": 1
+          "type": "enemyObject",
+          "value": 1,
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -572,7 +574,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: One enemy or object</p><p>Each ally within 10 squares of the target can move up to their speed toward the target.</p>",
+          "before": "<p>Each ally within 10 squares of the target can move up to their speed toward the target.</p>",
           "after": ""
         },
         "spend": {
@@ -594,9 +596,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
