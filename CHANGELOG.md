@@ -24,6 +24,7 @@
 
 - New Compendium Content:
   - Demon Echelons 2-4
+  - Rivals Echelons 2-4
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
@@ -59,7 +60,7 @@
   - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
   - Corrected keywords on Tactician's "Now".
   - Corrected text on Vanguard's Parry.
-- GM-Facing Compendium Data fixes:
+- Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
@@ -110,7 +111,7 @@
   - Corrected Ray of Wrath tier 3 damage.
   - Added description to Sacrificial Offer.
   - Corrected Inertial Step keywords.
-- GM-Facing Compendium Data fixes:
+- Director-Facing Compendium Data fixes:
   - Standardized prototype token settings. (#946)
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
