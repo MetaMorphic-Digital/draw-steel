@@ -10,10 +10,6 @@ declare module "./source.mjs" {
     book: string;
     page: string;
     license: string;
-    revision: number;
-    bookPlaceHolder: string;
     label: string;
-    value: string;
-    slug: string;
   }
 }

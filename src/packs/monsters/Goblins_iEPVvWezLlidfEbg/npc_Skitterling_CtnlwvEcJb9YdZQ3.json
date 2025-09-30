@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "160",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -358,8 +357,7 @@
         "source": {
           "book": "Monsters",
           "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "claws",
         "keywords": [
@@ -378,8 +376,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "creatureObject",
-          "value": 1
+          "type": "creature",
+          "value": 1,
+          "custom": "One creature per minion"
         },
         "effect": {
           "after": "<p>The target takes a bane on their next strike.</p>",
@@ -456,7 +455,7 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
