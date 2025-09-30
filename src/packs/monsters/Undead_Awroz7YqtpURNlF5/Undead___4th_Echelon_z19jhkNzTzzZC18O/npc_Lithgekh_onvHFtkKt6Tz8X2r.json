@@ -114,7 +114,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "274"
         },
         "_dsid": "devour-magic",
         "advancements": {}
@@ -273,7 +273,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "274"
         },
         "_dsid": "heartstopper",
         "story": "",
@@ -341,7 +341,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "274"
         },
         "_dsid": "mystic-battery",
         "story": "",
@@ -367,12 +367,138 @@
         "default": 0
       },
       "_key": "!actors.items!onvHFtkKt6Tz8X2r.DvKkOBVPpDGZTAY0"
+    },
+    {
+      "folder": "kwwhJiiW73nSnn7Q",
+      "name": "Death Tax",
+      "type": "ability",
+      "_id": "yTgOi8V1WWjNMRey",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "273",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "death-tax",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The undead attempts to rend the vitality of their foes. Each ene my within 5 squares of the undead makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 10 corruption]] damage; the target loses 2 Recoveries</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 8 corruption]] damage; the target loses 1 Recovery</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>[[/damage 5 corruption]] damage</p></td></tr></tbody></table>",
+          "after": "<p>A target who has fewer Recoveries than they would lose is also weakened (save ends).</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.yTgOi8V1WWjNMRey",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1759212799309,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!onvHFtkKt6Tz8X2r.yTgOi8V1WWjNMRey"
+    },
+    {
+      "folder": "kwwhJiiW73nSnn7Q",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "273",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.g3I8pfaRJv4SU7k0]{Blood Hunger}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.NLIeDdubVVzbOyqX]{Necrotic Rupture}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "TJSowGV8FgjirefO": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.NFDkY7f9KYShLYbk",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1759212810355,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "NFDkY7f9KYShLYbk",
+      "sort": -100000,
+      "_key": "!actors.items!onvHFtkKt6Tz8X2r.NFDkY7f9KYShLYbk"
     }
   ],
   "folder": "z19jhkNzTzzZC18O",
   "prototypeToken": {
     "name": "Lithgekh",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -389,11 +515,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
