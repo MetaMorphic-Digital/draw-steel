@@ -21,8 +21,8 @@
     </div>
   </div>
   {{#each targets as |target|}}
-  <div class="target group">
-    <div class="header">{{target.actor.name}}</div>
+  <div class="target group" data-token-uuid="{{target.token.uuid}}">
+    <div class="header">{{target.token.name}}</div>
     <div class="modifiers">
       <label>
         <span>{{localize "DRAW_STEEL.ROLL.Power.Modifier.Edges"}}</span>
