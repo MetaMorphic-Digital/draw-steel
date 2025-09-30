@@ -23,8 +23,9 @@
 ### Added
 
 - New Compendium Content:
-  - Demon Echelons 2-4
-  - Rivals Echelons 2-4
+  - Demon Echelons 2–4
+  - Rivals Echelons 2–4
+  - Undead Echelons 2–4
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
