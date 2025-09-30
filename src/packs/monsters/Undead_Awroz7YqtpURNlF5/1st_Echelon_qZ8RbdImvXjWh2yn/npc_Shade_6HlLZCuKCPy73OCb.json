@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "261",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -197,45 +196,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "YOSnGSTs0w88OhL1",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to speed</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "261",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!6HlLZCuKCPy73OCb.YOSnGSTs0w88OhL1"
-    },
-    {
       "name": "Shadow Phasing",
       "type": "feature",
       "_id": "QdD8DgcctpCXfSh1",
@@ -248,8 +208,7 @@
         "source": {
           "book": "Monsters",
           "page": "261",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "shadow-phasing",
         "advancements": {}
@@ -282,8 +241,7 @@
         "source": {
           "book": "Monsters",
           "page": "261",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "life-drain",
         "story": "",
@@ -302,7 +260,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "power": {
           "roll": {
@@ -416,9 +375,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -432,8 +391,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "dread-march",
         "story": "",
@@ -495,8 +453,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "paranormal-fling",
         "story": "",
@@ -558,8 +515,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "ravenous-horde",
         "story": "",
@@ -621,8 +577,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "the-grasping-the-hungry",
         "story": "",
@@ -677,7 +632,57 @@
       "_key": "!actors.items!6HlLZCuKCPy73OCb.5lQ9od53YUhk2eDw"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.6HlLZCuKCPy73OCb",
+      "disabled": true,
+      "_id": "8xnirqVhDdznINmm",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>+2 bonus to speed</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1758899543797,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!6HlLZCuKCPy73OCb.8xnirqVhDdznINmm"
+    }
+  ],
   "ownership": {
     "default": 0
   },

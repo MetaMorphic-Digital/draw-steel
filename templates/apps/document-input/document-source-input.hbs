@@ -1,16 +1,31 @@
 <section class="standard-form">
-  {{formGroup sourceFields.book value=sourceValues.book}}
-  {{formGroup sourceFields.page value=sourceValues.page}}
-  {{formGroup sourceFields.license value=sourceValues.license}}
-  {{formGroup sourceFields.revision value=sourceValues.revision}}
+  <div class="form-group">
+    <label>{{sourceFields.book.label}}</label>
+    <div class="form-fields">
+      <input type="text" name="system.source.book" value="{{sourceValues.book}}" list="{{book.listId}}">
+      <datalist id="{{book.listId}}">
+        {{selectOptions book.options}}
+      </datalist>
+    </div>
+  </div>
+  {{formGroup sourceFields.page value=sourceValues.page rootId=rootId}}
+  <div class="form-group">
+    <label>{{sourceFields.license.label}}</label>
+    <div class="form-fields">
+      <input type="text" name="system.source.license" value="{{sourceValues.license}}" list="{{license.listId}}">
+      <datalist id="{{license.listId}}">
+        {{selectOptions license.options}}
+      </datalist>
+    </div>
+  </div>
   {{#if systemFields._dsid}}
-  {{formGroup systemFields._dsid value=systemSource._dsid}}
+  {{formGroup systemFields._dsid value=systemSource._dsid rootId=rootId}}
   {{/if}}
   {{#if sourceLink}}
   <div class="form-group inline">
     <label>{{localize "DRAW_STEEL.SOURCE.CompendiumSource.Label"}}</label>
     <div class="form-fields">
-      {{!-- Don't want the link border to expand, so wrappin in another element --}}
+      {{!-- Don't want the link border to expand, so wrapping in another element --}}
       <span>{{{sourceLink.outerHTML}}}</span>
       <button
         type="button"

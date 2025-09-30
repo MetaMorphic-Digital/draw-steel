@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "264",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -209,8 +208,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "phantom-flow",
         "advancements": {}
@@ -248,8 +246,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "corruptive-phasing",
         "advancements": {}
@@ -282,8 +279,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "heat-death",
         "story": "",
@@ -444,8 +440,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "haunt",
         "story": "",
@@ -459,7 +454,8 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "selfOrAlly"
+          "type": "selfOrAlly",
+          "custom": "Self or one ally with a Phasing trait"
         },
         "power": {
           "roll": {
@@ -469,7 +465,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p><strong>Note: Self or one ally with a Phasing trait.</strong></p><p>The target shifts up to their speed.</p>",
+          "before": "<p>The target shifts up to their speed.</p>",
           "after": ""
         },
         "spend": {
@@ -491,9 +487,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -507,8 +503,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "shriek",
         "story": "",
@@ -526,7 +521,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": 1
+          "value": 1,
+          "custom": "The triggering creature"
         },
         "power": {
           "roll": {
@@ -558,9 +554,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -574,8 +570,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "paranormal-activity",
         "story": "",
@@ -593,7 +588,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "object",
-          "value": null
+          "value": null,
+          "custom": "Each size 3 or smaller object in the area"
         },
         "power": {
           "roll": {
@@ -603,7 +599,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets Each 3 size or smaller object in the area</p><p>Each target rises 1 square into the air and is vertically pulled up to 5 squares toward the nearest enemy within 3 squares of the target.</p>",
+          "before": "<p>Each target rises 1 square into the air and is vertically pulled up to 5 squares toward the nearest enemy within 3 squares of the target.</p>",
           "after": ""
         },
         "spend": {
@@ -625,9 +621,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -641,8 +637,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "spirited-away",
         "story": "",
@@ -660,7 +655,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -789,9 +785,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -805,8 +801,7 @@
         "source": {
           "book": "Monsters",
           "page": "264",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "awful-wail",
         "story": "",
@@ -824,7 +819,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -900,9 +896,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -916,8 +912,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "dread-march",
         "story": "",
@@ -979,8 +974,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "paranormal-fling",
         "story": "",
@@ -1042,8 +1036,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "ravenous-horde",
         "story": "",
@@ -1105,8 +1098,7 @@
         "source": {
           "book": "Monsters",
           "page": "260",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "the-grasping-the-hungry",
         "story": "",

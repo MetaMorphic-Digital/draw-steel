@@ -64,11 +64,12 @@ export default class TreasureModel extends BaseItemModel {
 
     context.characteristics = Object.entries(ds.CONFIG.characteristics).map(([value, { label }]) => ({ value, label }));
 
-    context.keywords = Object.entries(ds.CONFIG.abilities.keywords).map(([value, { label }]) => ({ value, label }));
+    context.keywords = Object.entries(ds.CONFIG.equipment.keywords).map(([value, { label }]) => ({ value, label }));
+
     if (this.category) context.keywords.push(...ds.CONFIG.equipment.categories[this.category].keywords);
     if (this.kind) {
       for (const [value, { label }] of Object.entries(ds.CONFIG.equipment[this.kind])) {
-        context.keywords.push({ value, label });
+        context.keywords.push({ value, label, group: ds.CONFIG.equipment.kinds[this.kind].label });
       }
     }
   }

@@ -13,24 +13,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
       book: new fields.StringField({ required: true }),
       page: new fields.StringField({ required: true }),
       license: new fields.StringField({ required: true }),
-      revision: new fields.NumberField({ initial: 1 }),
     };
-  }
-
-  /* -------------------------------------------- */
-
-  /**
-   * Check if the provided package has any source books registered in its manifest. If it has only one, then return
-   * that book's key.
-   * @param {BasePackage} pkg  The package.
-   * @returns {string|null}
-   */
-  static getModuleBook(pkg) {
-    if (!pkg) return null;
-    const sourceBooks = foundry.utils.getProperty(pkg, "flags.draw-steel.sourceBooks");
-    const keys = Object.keys(sourceBooks ?? {});
-    if (keys.length !== 1) return null;
-    return keys[0];
   }
 
   /* -------------------------------------------- */
@@ -66,17 +49,12 @@ export default class SourceModel extends foundry.abstract.DataModel {
    * Prepare the source label.
    * @param {string} uuid  Compendium source or document UUID.
    */
-  prepareData(uuid) {
-    const pkg = SourceModel.getPackage(uuid);
-    this.bookPlaceholder ??= SourceModel.getModuleBook(pkg) ?? "";
-    if (!this.book) this.book = this.bookPlaceholder;
+  prepareData() {
+    const bookLabel = game.i18n.localize(ds.CONFIG.sourceInfo.books[this.book]?.label);
 
     const page = Number.isNumeric(this.page)
       ? game.i18n.format("DRAW_STEEL.SOURCE.Display.Page", { page: this.page }) : (this.page ?? "");
-    this.label = game.i18n.format("DRAW_STEEL.SOURCE.Display.Full", { book: this.book, page }).trim();
-
-    this.value = this.book || (pkg?.title ?? "");
-    this.slug = this.value.slugify({ strict: true });
+    this.label = game.i18n.format("DRAW_STEEL.SOURCE.Display.Full", { book: bookLabel || this.book, page }).trim();
   }
 
   /* -------------------------------------------------- */

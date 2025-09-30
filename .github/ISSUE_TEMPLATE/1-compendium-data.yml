@@ -1,0 +1,38 @@
+name: Compendium Data
+description: Problems with existing compendium data
+labels: ["compendium"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request a change for one or more compendium documents in the Draw Steel system for FoundryVTT.
+        If you have multiple, unrelated requests, please submit separate issues.
+  - type: dropdown
+    id: compendium
+    attributes:
+      label: Which compendiums is this in?
+      multiple: true
+      options:
+        - Abilities
+        - Ancestries & Backgrounds
+        - Complications, Perks, and Kits
+        - Classes
+        - System Journals
+        - Monster Features
+        - Monsters
+        - Projects & Rewards
+        - Roll Tables
+    validations:
+      required: true
+  - type: input
+    id: documents
+    attributes:
+      label: Documents
+      description: Which documents need a change?
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: What changes need to be made?
+      description: Typos, attribute keys, additional configuration, etc.
