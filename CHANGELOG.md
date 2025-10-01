@@ -27,6 +27,7 @@
   - Rivals Echelons 2–4
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
+- Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
