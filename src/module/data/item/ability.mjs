@@ -443,6 +443,7 @@ export default class AbilityModel extends BaseItemModel {
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
+            tokenUuid: target.document.uuid,
             uuid: target.actor?.uuid ?? "",
             modifiers: this.getTargetModifiers(target),
           });
