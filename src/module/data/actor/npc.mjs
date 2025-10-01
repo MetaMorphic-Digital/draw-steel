@@ -93,9 +93,33 @@ export default class NPCModel extends BaseActorModel {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    const updates = {};
+
+    const compendium = game.packs.get(this.parent.pack);
+    if (compendium) {
+      if (compendium.metadata.packageType === "system") foundry.utils.setProperty(updates, "source.license", "Draw Steel Creator License");
+      else if (compendium.metadata.packageType === "module") {
+        const m = game.modules.get(compendium.metadata.packageName);
+        const defaultBook = foundry.utils.getProperty(m, "flags.draw-steel.defaultBook");
+        if (defaultBook) foundry.utils.setProperty(updates, "source.book", defaultBook);
+        const defaultLicense = foundry.utils.getProperty(m, "flags.draw-steel.defaultLicense");
+        if (defaultLicense) foundry.utils.setProperty(updates, "source.license", defaultLicense);
+      }
+    }
+
+    if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+    this.source.prepareData();
   }
 
   /* -------------------------------------------------- */
