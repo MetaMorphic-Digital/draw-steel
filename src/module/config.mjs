@@ -813,6 +813,12 @@ export const hero = {
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
     // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
+    // Advance
+    "Compendium.draw-steel.abilities.Item.ucR2C7lMvXrKIMZ7",
+    // Disengage
+    "Compendium.draw-steel.abilities.Item.vBlTvHRZ5JBXWYt6",
+    // Ride
+    "Compendium.draw-steel.abilities.Item.QXOkflcYF6DITJE3",
   ]),
   /**
    * XP progression for heroes.
@@ -1098,6 +1104,9 @@ const abilityTypes = {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
   },
+  move: {
+    label: "DRAW_STEEL.Item.ability.Type.Move",
+  },
   none: {
     label: "DRAW_STEEL.Item.ability.Type.None",
   },
@@ -1225,6 +1234,11 @@ const abilityTargets = {
     label: "DRAW_STEEL.Item.ability.Target.Enemy",
     all: "DRAW_STEEL.Item.ability.Target.AllEnemies",
     embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyEmbed",
+  },
+  enemyObject: {
+    label: "DRAW_STEEL.Item.ability.Target.EnemyObject",
+    all: "DRAW_STEEL.Item.ability.Target.AllEnemyObject",
+    embedLabel: "DRAW_STEEL.Item.ability.Target.EnemyObjectEmbed",
   },
   ally: {
     label: "DRAW_STEEL.Item.ability.Target.Ally",
@@ -1539,148 +1553,213 @@ export const kits = {};
  */
 
 /**
+ * Keywords available to all treasure types.
+ * @type {Record<string, {label: string}>}
+ */
+const treasureKeywords = {
+  magic: {
+    label: "DRAW_STEEL.Item.treasure.Keywords.Magic",
+  },
+  psionic: {
+    label: "DRAW_STEEL.Item.treasure.Keywords.Psionic",
+  },
+};
+
+/**
+ * Core types of treasures.
+ * @type {Record<string, TreasureCategory>}
+ */
+const treasureCategories = {
+  consumable: {
+    label: "DRAW_STEEL.Item.treasure.Categories.Consumable",
+    get keywords() {
+      return Object.entries(ds.CONFIG.equipment.consumables)
+        .map(([value, { label }]) => ({ label, value, group: ds.CONFIG.equipment.categories.consumable.label }));
+    },
+  },
+  trinket: {
+    label: "DRAW_STEEL.Item.treasure.Categories.Trinket",
+    get keywords() {
+      return Object.entries(ds.CONFIG.equipment.other)
+        .map(([value, { label }]) => ({ label, value, group: ds.CONFIG.equipment.categories.trinket.label }));
+    },
+  },
+  leveled: {
+    label: "DRAW_STEEL.Item.treasure.Categories.Leveled",
+    get keywords() {
+      return [];
+    },
+  },
+  artifact: {
+    label: "DRAW_STEEL.Item.treasure.Categories.Artifact",
+    get keywords() {
+      return [];
+    },
+  },
+};
+
+/**
+ * Used by Leveled Treasures and Artifacts.
+ * @type {Record<string, {label: string}>}
+ */
+const equipmentKinds = {
+  other: {
+    label: "DRAW_STEEL.Item.treasure.Kinds.Other",
+  },
+  armor: {
+    label: "DRAW_STEEL.Item.treasure.Kinds.Armor",
+  },
+  implement: {
+    label: "DRAW_STEEL.Item.treasure.Kinds.Implement",
+  },
+  weapon: {
+    label: "DRAW_STEEL.Item.treasure.Kinds.Weapon",
+  },
+};
+
+/**
+ * Also used by kits.
+ * @type {Record<string, {label: string, kitEquipment: boolean}>}
+ */
+const armorTypes = {
+  none: {
+    label: "DRAW_STEEL.Item.treasure.Armor.None",
+    kitEquipment: true,
+  },
+  light: {
+    label: "DRAW_STEEL.Item.treasure.Armor.Light",
+    kitEquipment: true,
+  },
+  medium: {
+    label: "DRAW_STEEL.Item.treasure.Armor.Medium",
+    kitEquipment: true,
+  },
+  heavy: {
+    label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
+    kitEquipment: true,
+  },
+  shield: {
+    label: "DRAW_STEEL.Item.treasure.Armor.Shield",
+    kitEquipment: false,
+  },
+};
+
+/**
+ * Also used by kits.
+ * @type {Record<string, {label: string}>}
+ */
+const weaponTypes = {
+  none: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.None",
+  },
+  bow: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Bow",
+  },
+  ensnaring: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Ensnaring",
+  },
+  heavy: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Heavy",
+  },
+  light: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Light",
+  },
+  medium: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Medium",
+  },
+  polearm: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Polearm",
+  },
+  unarmed: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Unarmed",
+  },
+  whip: {
+    label: "DRAW_STEEL.Item.treasure.Weapons.Whip",
+  },
+};
+
+/**
+ * Implements are pieces of jewelry, orbs, staffs, tomes, wands, and other objects used by magic and psionic heroes to focus their power.
+ * @type {Record<string, {label: string}>}
+ */
+const implementTypes = {
+  implement: {
+    label: "DRAW_STEEL.Item.treasure.Kinds.Implement",
+  },
+  orb: {
+    label: "DRAW_STEEL.Item.treasure.Implements.Orb",
+  },
+  wand: {
+    label: "DRAW_STEEL.Item.treasure.Implements.Wand",
+  },
+};
+
+/**
+ * Used by "Other Leveled Treasures" and trinkets.
+ * @type {Record<string, {label: string}>}
+ */
+const otherTypes = {
+  arms: {
+    label: "DRAW_STEEL.Item.treasure.Other.Arms",
+  },
+  feet: {
+    label: "DRAW_STEEL.Item.treasure.Other.Feet",
+  },
+  hands: {
+    label: "DRAW_STEEL.Item.treasure.Other.Hands",
+  },
+  head: {
+    label: "DRAW_STEEL.Item.treasure.Other.Head",
+  },
+  neck: {
+    label: "DRAW_STEEL.Item.treasure.Other.Neck",
+  },
+  ring: {
+    label: "DRAW_STEEL.Item.treasure.Other.Ring",
+  },
+  waist: {
+    label: "DRAW_STEEL.Item.treasure.Other.Waist",
+  },
+};
+
+/**
+ * Valid keywords for consumables.
+ * @type {Record<string, {label: string}>}
+ */
+const consumableTypes = {
+  oil: {
+    label: "DRAW_STEEL.Item.treasure.Consumable.Oil",
+  },
+  potion: {
+    label: "DRAW_STEEL.Item.treasure.Consumable.Potion",
+  },
+  scroll: {
+    label: "DRAW_STEEL.Item.treasure.Consumable.Scroll",
+  },
+};
+
+/**
  * Configuration details for Treasure items
  * Also used by Kits.
  */
 export const equipment = {
-  /** @type {Record<string, TreasureCategory>} */
-  categories: {
-    consumable: {
-      label: "DRAW_STEEL.Item.treasure.Categories.Consumable",
-      get keywords() {
-        return [];
-      },
-    },
-    trinket: {
-      label: "DRAW_STEEL.Item.treasure.Categories.Trinket",
-      get keywords() {
-        return [];
-      },
-    },
-    leveled: {
-      label: "DRAW_STEEL.Item.treasure.Categories.Leveled",
-      get keywords() {
-        return [];
-      },
-    },
-    artifact: {
-      label: "DRAW_STEEL.Item.treasure.Categories.Artifact",
-      get keywords() {
-        return [];
-      },
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  kinds: {
-    other: {
-      label: "DRAW_STEEL.Item.treasure.Kinds.Other",
-    },
-    armor: {
-      label: "DRAW_STEEL.Item.treasure.Kinds.Armor",
-    },
-    implement: {
-      label: "DRAW_STEEL.Item.treasure.Kinds.Implement",
-    },
-    weapon: {
-      label: "DRAW_STEEL.Item.treasure.Kinds.Weapon",
-    },
-  },
-  /** @type {Record<string, {label: string, kitEquipment: boolean}>} */
-  armor: {
-    none: {
-      label: "DRAW_STEEL.Item.treasure.Armor.None",
-      kitEquipment: true,
-    },
-    light: {
-      label: "DRAW_STEEL.Item.treasure.Armor.Light",
-      kitEquipment: true,
-    },
-    medium: {
-      label: "DRAW_STEEL.Item.treasure.Armor.Medium",
-      kitEquipment: true,
-    },
-    heavy: {
-      label: "DRAW_STEEL.Item.treasure.Armor.Heavy",
-      kitEquipment: true,
-    },
-    shield: {
-      label: "DRAW_STEEL.Item.treasure.Armor.Shield",
-      kitEquipment: false,
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  weapon: {
-    none: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.None",
-    },
-    bow: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Bow",
-    },
-    ensnaring: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Ensnaring",
-    },
-    heavy: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Heavy",
-    },
-    light: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Light",
-    },
-    medium: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Medium",
-    },
-    polearm: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Polearm",
-    },
-    unarmed: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Unarmed",
-    },
-    whip: {
-      label: "DRAW_STEEL.Item.treasure.Weapons.Whip",
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  implement: {
-    bone: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Bone",
-    },
-    crystal: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Crystal",
-    },
-    glass: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Glass",
-    },
-    metal: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Metal",
-    },
-    stone: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Stone",
-    },
-    wood: {
-      label: "DRAW_STEEL.Item.treasure.Implements.Wood",
-    },
-  },
-  /** @type {Record<string, {label: string}>} */
-  other: {
-    feet: {
-      label: "DRAW_STEEL.Item.treasure.Other.Feet",
-    },
-    hands: {
-      label: "DRAW_STEEL.Item.treasure.Other.Hands",
-    },
-    neck: {
-      label: "DRAW_STEEL.Item.treasure.Other.Neck",
-    },
-    ring: {
-      label: "DRAW_STEEL.Item.treasure.Other.Ring",
-    },
-  },
+  keywords: treasureKeywords,
+  categories: treasureCategories,
+  kinds: equipmentKinds,
+  armor: armorTypes,
+  weapon: weaponTypes,
+  implement: implementTypes,
+  other: otherTypes,
+  consumables: consumableTypes,
 };
+preLocalize("equipment.keywords", { key: "label" });
 preLocalize("equipment.categories", { key: "label" });
 preLocalize("equipment.kinds", { key: "label" });
 preLocalize("equipment.armor", { key: "label" });
 preLocalize("equipment.weapon", { key: "label" });
 preLocalize("equipment.implement", { key: "label" });
 preLocalize("equipment.other", { key: "label" });
+preLocalize("equipment.consumables", { key: "label" });
 
 /* -------------------------------------------------- */
 
@@ -1697,13 +1776,21 @@ export const features = { };
 export const perks = {
   /**
    * Types of perks in addition to the available skill groups.
-   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
+   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.".
    * @type {Record<string, {label: string}>}
    */
   types: {
     supernatural: {
       label: "DRAW_STEEL.Item.perk.Types.Supernatural",
     },
+  },
+  /**
+   * All perk type options.
+   * @type {FormSelectOption[]}
+   */
+  get typeOptions() {
+    const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, entry]) => ({ value, label: entry.label }));
+    return skillGroups.concat(Object.entries(ds.CONFIG.perks.types).map(([value, entry]) => ({ value, label: entry.label })));
   },
 };
 preLocalize("perks.types", { key: "label" });
@@ -1749,3 +1836,47 @@ export const projects = {
   ],
 };
 preLocalize("projects.types", { key: "label" });
+
+/**
+ * @typedef SourceBook
+ * @property {string} label   An i18n key for the label that will show in sheet headers.
+ * @property {string} name    An i18n key for the longer title that will display in the Compendium Browser.
+ */
+
+/**
+ * Source books provided in the data list for the Document Source Input.
+ * @type {Record<string, SourceBook>}
+ */
+const sourceBooks = {
+  Heroes: {
+    label: "DRAW_STEEL.SOURCE.Books.Heroes.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Heroes.Title",
+  },
+  Monsters: {
+    label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
+  },
+};
+
+/**
+ * @typedef ContentLicense
+ * @property {string} [label] An i18n key pointing to longer version of the name of the license.
+ */
+
+/**
+ * Licenses for Draw Steel content.
+ * The keys are human readable in the sources panel.
+ * @type {Record<string, ContentLicense>}
+ */
+const sourceLicenses = {
+  "Draw Steel Creator License": {
+    label: "DRAW_STEEL.SOURCE.Licenses.DSCL",
+  },
+};
+
+export const sourceInfo = {
+  books: sourceBooks,
+  licenses: sourceLicenses,
+};
+preLocalize("sourceInfo.books", { keys: ["label", "title"] });
+preLocalize("sourceInfo.licenses", { keys: ["label"] });

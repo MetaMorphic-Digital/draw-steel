@@ -86,15 +86,33 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
           link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
         });
       }
+
+      // Drop logic
+      ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES).map(([value, { label }]) => ({ value, label }));
+      switch (context.document.additional.type) {
+        case "perk":
+          ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+          break;
+      }
     }
 
     else if (context.document.type === "skill") {
       ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
+      for (const group of this.pseudoDocument.skills.groups) {
+        if (!(skill in ds.CONFIG.skills.groups)) ctx.skillGroups.push({ value: group });
+      }
+
       ctx.skillChoices = ds.CONFIG.skills.optgroups;
+      for (const skill of this.pseudoDocument.skills.choices) {
+        if (!(skill in ds.CONFIG.skills.list)) ctx.skillChoices.push({ value: skill });
+      }
     }
 
     else if (context.document.type === "language") {
       ctx.languageChoices = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
+      for (const language of this.pseudoDocument.languages) {
+        if (!(language in ds.CONFIG.languages)) ctx.languageChoices.push({ value: language });
+      }
     }
 
     return context;

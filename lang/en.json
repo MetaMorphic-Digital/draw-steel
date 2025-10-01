@@ -34,6 +34,16 @@
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          },
+          "additional": {
+            "type": {
+              "label": "Additional Type",
+              "hint": "Allow other items of the selected type."
+            },
+            "perkType": {
+              "label": "Perk Type",
+              "hint": "If empty, all perk types are allowed."
+            }
           }
         }
       },
@@ -69,6 +79,7 @@
       },
       "SHEET": {
         "requirements": "Requirements",
+        "additional": "Additional",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
         "reconfigure": "Reconfigure Advancement"
@@ -91,7 +102,13 @@
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
-        "ChooseN": "Choose {n}"
+        "ChooseN": "Choose {n}",
+        "ChooseNull": "Choose Any",
+        "DropHere": "Drop other items here.",
+        "Error": {
+          "FilterFail": "Dropped Item did not conform to requirements.",
+          "MustItem": "You can only drop items into an item grant."
+        }
       },
       "DeleteDialog": {
         "ReplaceTitle": "Replace {type}",
@@ -242,11 +259,30 @@
         "Label": "Compendium Source",
         "Clear": "Clear compendium source",
         "ConfirmDeleteTitle": "Clear Compendium Source",
-        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata."
+        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata.",
+        "UpdateFrom": {
+          "Label": "Update from Compendium",
+          "Title": "Overwrite Document Data",
+          "Content": "Updating {name} will reset its data to match the compendium copy, including any embedded documents and descriptions.",
+          "Completion": "Successfully updated {name}!"
+        }
       },
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
+      },
+      "Books": {
+        "Heroes": {
+          "Label": "Heroes",
+          "Title": "Draw Steel Heroes"
+        },
+        "Monsters": {
+          "Label": "Monsters",
+          "Title": "Draw Steel Monsters"
+        }
+      },
+      "Licenses": {
+        "DSCL": "Draw Steel Creator License"
       }
     },
     "MEASUREMENT": {
@@ -713,6 +749,9 @@
             "type": {
               "label": "Type"
             },
+            "custom": {
+              "label": "Custom Label"
+            },
             "value": {
               "label": "Value"
             }
@@ -798,6 +837,7 @@
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
           "FreeTriggered": "Free Triggered Action",
+          "Move": "Move",
           "None": "No Action",
           "Villain": "Villain Action"
         },
@@ -836,19 +876,22 @@
           "All": "All",
           "Creature": "Creature",
           "CreatureEmbed": "{value} creature(s)",
-          "AllCreatures": "All creatures",
+          "AllCreatures": "Each creature",
           "Object": "Object",
           "ObjectEmbed": "{value} object(s)",
-          "AllObjects": "All objects",
+          "AllObjects": "Each object",
           "CreatureObject": "Creature or Object",
           "CreatureObjectEmbed": "{value} creature(s) or object(s)",
-          "AllCreatureObject": "All creatures and objects",
+          "AllCreatureObject": "Each creature and object",
           "Enemy": "Enemy",
           "EnemyEmbed": "{value} enemies",
-          "AllEnemies": "All enemies",
+          "EnemyObject": "Enemy or Object",
+          "AllEnemyObject": "Each enemy or object",
+          "EnemyObjectEmbed": "{value} enemies or object(s)",
+          "AllEnemies": "Each enemy",
           "Ally": "Ally",
           "AllyEmbed": "{value} allies",
-          "AllAllies": "All allies",
+          "AllAllies": "Each ally",
           "Self": "Self",
           "SelfOrAlly": "Self or one ally",
           "SelfOrCreature": "Self or one creature",
@@ -1019,6 +1062,10 @@
             }
           }
         },
+        "Keywords": {
+          "Magic": "Magic",
+          "Psionic": "Psionic"
+        },
         "Categories": {
           "Consumable": "Consumable",
           "Trinket": "Trinket",
@@ -1050,18 +1097,22 @@
           "Whip": "Whip"
         },
         "Implements": {
-          "Bone": "Bone",
-          "Crystal": "Crystal",
-          "Glass": "Glass",
-          "Metal": "Metal",
-          "Stone": "Stone",
-          "Wood": "Wood"
+          "Orb": "Orb",
+          "Wand": "Wand"
         },
         "Other": {
+          "Arms": "Arms",
           "Feet": "Feet",
           "Hands": "Hands",
+          "Head": "Head",
           "Neck": "Neck",
-          "Ring": "Ring"
+          "Ring": "Ring",
+          "Waist": "Waist"
+        },
+        "Consumable": {
+          "Oil": "Oil",
+          "Potion": "Potion",
+          "Scroll": "Scroll"
         }
       },
       "feature": {

@@ -29,6 +29,7 @@ Hooks.once("init", function () {
   CONFIG.DRAW_STEEL = DS_CONFIG;
   game.system.socketHandler = new helpers.DrawSteelSocketHandler();
   helpers.DrawSteelSettingsHandler.registerSettings();
+  applications.apps.DocumentSourceInput.addModuleSources();
 
   // Assign document classes
   for (const docCls of Object.values(documents)) {
