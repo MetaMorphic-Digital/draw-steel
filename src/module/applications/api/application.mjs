@@ -87,9 +87,10 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
    * @param {SubmitEvent} event           The submit event.
    * @param {HTMLFormElement} form        The form element.
    * @param {FormDataExtended} formData   The form data.
+   * @param {object} [submitOptions]      Additional info potentially forwarded by {@link Application#submit}.
    */
-  static #submitHandler(event, form, formData) {
-    this.#config = this._processFormData(event, form, formData);
+  static #submitHandler(event, form, formData, submitOptions = {}) {
+    this.#config = this._processFormData(event, form, formData, submitOptions);
   }
 
   /* -------------------------------------------------- */
@@ -99,9 +100,10 @@ export default class DSApplication extends HandlebarsApplicationMixin(Applicatio
    * @param {SubmitEvent} event           The submit event.
    * @param {HTMLFormElement} form        The form element.
    * @param {FormDataExtended} formData   The form data.
+   * @param {object} submitOptions        Additional info potentially forwarded by {@link Application#submit}.
    * @returns {object}                    The data to return from this application.
    */
-  _processFormData(event, form, formData) {
+  _processFormData(event, form, formData, submitOptions) {
     return foundry.utils.expandObject(formData.object);
   }
 }

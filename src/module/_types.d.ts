@@ -57,7 +57,7 @@ export interface AdvancementChainItemGrantLeaf {
   item: DrawSteelItem;
   node: AdvancementChain;
   itemLink: HTMLElement;
-  children: Record<string, AdvancementChainTraitLeaf>;
+  children: Record<string, AdvancementChain>;
 
   // Whether this specific choice has been selected.
   isChosen: boolean;
@@ -80,6 +80,7 @@ declare module "./utils/advancement-chain.mjs" {
     isRoot: boolean;
     choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
     selected: Record<string, boolean>;
+    levels: [number, number];
 
     // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
     parentChoice?: AdvancementChainItemGrantLeaf;

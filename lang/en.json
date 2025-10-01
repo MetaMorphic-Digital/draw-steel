@@ -34,6 +34,16 @@
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          },
+          "additional": {
+            "type": {
+              "label": "Additional Type",
+              "hint": "Allow other items of the selected type."
+            },
+            "perkType": {
+              "label": "Perk Type",
+              "hint": "If empty, all perk types are allowed."
+            }
           }
         }
       },
@@ -69,6 +79,7 @@
       },
       "SHEET": {
         "requirements": "Requirements",
+        "additional": "Additional",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
         "reconfigure": "Reconfigure Advancement"
@@ -91,7 +102,13 @@
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
-        "ChooseN": "Choose {n}"
+        "ChooseN": "Choose {n}",
+        "ChooseNull": "Choose Any",
+        "DropHere": "Drop other items here.",
+        "Error": {
+          "FilterFail": "Dropped Item did not conform to requirements.",
+          "MustItem": "You can only drop items into an item grant."
+        }
       },
       "DeleteDialog": {
         "ReplaceTitle": "Replace {type}",
