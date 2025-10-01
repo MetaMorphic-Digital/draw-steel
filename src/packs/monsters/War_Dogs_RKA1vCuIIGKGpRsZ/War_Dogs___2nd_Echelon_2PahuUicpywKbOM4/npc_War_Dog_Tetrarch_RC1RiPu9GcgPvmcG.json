@@ -1,0 +1,1113 @@
+{
+  "name": "War Dog Tetrarch",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "system": {
+    "stamina": {
+      "value": 180,
+      "max": 180,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": 3
+      },
+      "reason": {
+        "value": 2
+      },
+      "intuition": {
+        "value": 3
+      },
+      "presence": {
+        "value": 4
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 7,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "309",
+      "license": "Draw Steel Creator License",
+      "revision": 1
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 7,
+      "keywords": [
+        "humanoid",
+        "soulless"
+      ],
+      "level": 6,
+      "ev": 32,
+      "role": "",
+      "organization": "leader"
+    }
+  },
+  "items": [
+    {
+      "name": "End Effect",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the tetrarch can take [[/damage 10]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "end-effect",
+        "advancements": {}
+      },
+      "_id": "7zhdjxqOSx0Ob3Ig",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.7zhdjxqOSx0Ob3Ig"
+    },
+    {
+      "name": "Houndblade",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "charge",
+          "melee",
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "meleeRanged",
+          "primary": 1,
+          "secondary": 3
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "DnCYi3ZW64cKRnO0": {
+              "_id": "DnCYi3ZW64cKRnO0",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "19",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "rFx1l397FiWGE6ja": {
+              "_id": "rFx1l397FiWGE6ja",
+              "type": "applied",
+              "name": "Taunted",
+              "img": null,
+              "applied": {
+                "tier2": {
+                  "display": "taunted (EoT)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "taunted": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "taunted (EoT)",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "taunted": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A creature taunted this way takes a bane on strikes.</p><p>[[/r 1d3]]{1d3 recovery loss}</p>"
+        },
+        "spend": {
+          "text": "Each target loses 1d3 Recoveries.",
+          "value": 3
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "houndblade",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "KpLJLMhV7RjJaRJD",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.KpLJLMhV7RjJaRJD"
+    },
+    {
+      "name": "Get Them, You Dolts!",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "heroic",
+        "keywords": [
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": 3
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Note: Costs 1 Malice per target</p><p>Each target shifts up to their speed and can make a free strike. If the free strike targets an enemy taunted by the tetrarch, it deals an extra [[/damage 4]] damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "get-them-you-dolts",
+        "story": "",
+        "resource": 1,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "hgDrs5cjQLVQWKWf",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.hgDrs5cjQLVQWKWf"
+    },
+    {
+      "name": "Sneering Disregard",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "",
+        "keywords": [
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": 1
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The power roll has a double bane. If the target obtains a tier 1 outcome, the tetrarch ignores any of the power roll's effects other than damage and the target is frightened of the tetrarch (save ends).</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "sneering-disregard",
+        "story": "",
+        "resource": null,
+        "trigger": "A creature within distance who is not taunted by the tetrarch targets the tetrarch with a power roll."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "edElIxuC5T9QoeVT",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.edElIxuC5T9QoeVT"
+    },
+    {
+      "name": "Enter the Fray",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 2
+        },
+        "target": {
+          "type": "enemy",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "Ed9Q2MGtWKWfHbz9": {
+              "_id": "Ed9Q2MGtWKWfHbz9",
+              "type": "forced",
+              "name": "push",
+              "img": null,
+              "forced": {
+                "tier1": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  }
+                },
+                "tier2": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "push"
+                  ],
+                  "distance": "5",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  }
+                }
+              }
+            },
+            "K9HV67MBoSD00iey": {
+              "_id": "K9HV67MBoSD00iey",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "intuition"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>The tetrarch can jump up to 7 squares before using this ability.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "enter-the-fray",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LsdXwRRYlQpZHlv5",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.LsdXwRRYlQpZHlv5"
+    },
+    {
+      "name": "Lay Waste",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 2,
+          "secondary": 20
+        },
+        "target": {
+          "type": "creature",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "FujDvnX4x7yCDDIC": {
+              "_id": "FujDvnX4x7yCDDIC",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "ZpinBAPGCZf7Ps3U": {
+              "_id": "ZpinBAPGCZf7Ps3U",
+              "type": "applied",
+              "name": "Slowed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} slowed (EoT)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} slowed (save ends)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The area is set ablaze until the end of the encounter. While ablaze, the area is difficult terrain, and any creature takes [[/damage 2 fire]] damage for each square in the area they enter for the first time in a round</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "lay-waste",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "JhuZtn0WbhovQrgu",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.JhuZtn0WbhovQrgu"
+    },
+    {
+      "name": "You Would Dare?!",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "-"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Until the end of the encounter, the tetrarch has damage immunity 2, and their Houndblade ability targets three creatures or objects.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "309"
+        },
+        "_dsid": "you-would-dare",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "xXiUb8pLk0PAq2Ku",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.xXiUb8pLk0PAq2Ku"
+    },
+    {
+      "folder": "4GSCmcDZJY4KGwzb",
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "304",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LhmUJ3w2ByDwwNJi",
+      "sort": 0,
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.LhmUJ3w2ByDwwNJi"
+    },
+    {
+      "folder": "4GSCmcDZJY4KGwzb",
+      "name": "Loyalty Unto Death",
+      "type": "ability",
+      "_id": "1qhCLAaWCcnCLT2b",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "309",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "loyalty-unto-death",
+        "story": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "type": "maneuver",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "ranged",
+          "primary": 10,
+          "secondary": null
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "ally",
+          "value": 2
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p><strong>Note:</strong> Targets Two War Dogs</p><p>Each target who has a loyalty collar shifts up to their speed, then is reduced to 0 Stamina. After each target’s Loyalty Collar trait is resolved, each enemy adjacent to either target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>Push 4; the enemy is frightened of the nearest non-minion war dog (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>Push 2; the enemy is frightened of the nearest non-minion war dog (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>Push 2</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!RC1RiPu9GcgPvmcG.1qhCLAaWCcnCLT2b"
+    }
+  ],
+  "folder": "2PahuUicpywKbOM4",
+  "prototypeToken": {
+    "name": "War Dog Tetrarch",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [
+    {
+      "name": "You Would Dare!? Effect",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "type": "base",
+      "origin": "Actor.vn8lpziiOlxnfIRD",
+      "disabled": true,
+      "_id": "5gxEt91upuQ8g3fO",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.all",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>Until the end of the encounter, the tetrarch has damage immunity 2, and their Houndblade ability targets three creatures or objects.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!RC1RiPu9GcgPvmcG.5gxEt91upuQ8g3fO"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758219209239,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "RC1RiPu9GcgPvmcG",
+  "sort": 0,
+  "_key": "!actors!RC1RiPu9GcgPvmcG"
+}
