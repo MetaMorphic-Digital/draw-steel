@@ -46,7 +46,6 @@ export default class DocumentSourceInput extends DocumentInput {
       }
     };
 
-
     for (const m of game.modules) {
       if (!m.active) continue;
       helper(m, "books");

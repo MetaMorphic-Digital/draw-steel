@@ -50,7 +50,7 @@ export default class SourceModel extends foundry.abstract.DataModel {
    * @param {string} uuid  Compendium source or document UUID.
    */
   prepareData() {
-    const bookLabel = game.i18n.localize(ds.CONFIG.sourceInfo.books[this.book]?.label);
+    const bookLabel = ds.CONFIG.sourceInfo.books[this.book]?.label;
 
     const page = Number.isNumeric(this.page)
       ? game.i18n.format("DRAW_STEEL.SOURCE.Display.Page", { page: this.page }) : (this.page ?? "");
