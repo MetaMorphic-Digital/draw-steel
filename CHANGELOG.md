@@ -23,7 +23,11 @@
 ### Added
 
 - New Compendium Content:
-  - Demon Echelons 2-4
+  - Demon Echelons 2–4
+  - Rivals Echelons 2–4
+  - Undead Echelons 2–4
+  - War Dogs Echelons 2–4
+- Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
@@ -48,17 +52,29 @@
 ### Fixed
 
 - Player-Facing Compendium data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Corrected action types for many echelon 1 abilities.
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
+  - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
-- GM-Facing Compendium Data fixes:
+  - Corrected damage values for the censor's "Your Allies Cannot Save You".
+  - Added missing damage type to the elementalist's Grasp of Beyond.
+  - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
+  - Corrected keywords on Tactician's "Now".
+  - Corrected text on Vanguard's Parry.
+- Director-Facing Compendium Data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Converted "With Captain" features to "With Captain" effects.
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
   - Multiple corrections to the Ogre Juggernaut.
     - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
+  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+  - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
 
 ## 0.8.1
 
@@ -99,7 +115,7 @@
   - Corrected Ray of Wrath tier 3 damage.
   - Added description to Sacrificial Offer.
   - Corrected Inertial Step keywords.
-- GM-Facing Compendium Data fixes:
+- Director-Facing Compendium Data fixes:
   - Standardized prototype token settings. (#946)
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)
