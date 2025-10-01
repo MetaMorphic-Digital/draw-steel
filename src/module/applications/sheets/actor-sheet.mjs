@@ -448,7 +448,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     };
 
     // Iterate over active effects, classifying them into categories
-    for (const e of this.actor.allApplicableEffects()) {
+    const applicableEffects = [...this.actor.allApplicableEffects()].sort((a, b) => a.sort - b.sort);
+    for (const e of applicableEffects) {
       const effectContext = {
         id: e.id,
         uuid: e.uuid,
@@ -859,6 +860,24 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   /*   Drag and Drop                                    */
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _onDragStart(event) {
+    const target = event.currentTarget;
+    if ("link" in event.target.dataset) return;
+    let dragData;
+
+    if (target.dataset.documentUuid) {
+      const document = this._getEmbeddedDocument(target);
+      dragData = document.toDragData();
+    }
+
+    // Set data transfer
+    if (!dragData) return;
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Handle a dropped Active Effect on the Actor Sheet.
    * The default implementation creates an Active Effect embedded document on the Actor.
@@ -905,7 +924,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     }
 
     // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(effect, {
+    const sortUpdates = foundry.utils.performIntegerSort(effect, {
       target,
       siblings,
     });
