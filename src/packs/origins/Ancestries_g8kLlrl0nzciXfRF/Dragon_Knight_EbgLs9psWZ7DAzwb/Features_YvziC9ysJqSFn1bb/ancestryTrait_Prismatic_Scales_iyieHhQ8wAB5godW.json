@@ -7,13 +7,12 @@
   "system": {
     "description": {
       "value": "<p>Select one damage immunity granted by your Wyrmplate trait. You always have this immunity, in addition to the immunity granted by Wyrmplate.</p>",
-      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunity.[damage type]</code> , where [damage type] is replaced with <span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">acid, cold, corruption, fire, lightning, or poison.</span></p>"
+      "director": "<p>The effect of this item needs to be customized to the damage type and amount of immunity desired. The attribute key to use is <code>system.damage.immunities.[damage type]</code> , where [damage type] is replaced with <span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">acid, cold, corruption, fire, lightning, or poison.</span></p>"
     },
     "source": {
       "book": "Heroes",
       "page": "29",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "prismatic-scales",
     "advancements": {},
@@ -24,7 +23,7 @@
       "name": "Prismatic Scales",
       "origin": "Compendium.draw-steel.origins.Item.iyieHhQ8wAB5godW",
       "img": "icons/equipment/shield/heater-crystal-blue.webp",
-      "disabled": true,
+      "disabled": false,
       "_id": "7HS8NQ0J2U2ZEmuf",
       "type": "base",
       "system": {
@@ -35,9 +34,9 @@
       },
       "changes": [
         {
-          "key": "system.damage.immunity.acid",
-          "mode": 2,
-          "value": "2",
+          "key": "system.damage.immunities.acid",
+          "mode": 4,
+          "value": "1",
           "priority": null
         }
       ],
@@ -60,7 +59,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.346",
+        "coreVersion": "13.347",
         "systemId": "draw-steel",
         "systemVersion": "0.8.0",
         "createdTime": 1754599926702,
@@ -81,7 +80,7 @@
     "exportSource": null,
     "coreVersion": "13.347",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754522589314,
     "modifiedTime": null,
     "lastModifiedBy": null

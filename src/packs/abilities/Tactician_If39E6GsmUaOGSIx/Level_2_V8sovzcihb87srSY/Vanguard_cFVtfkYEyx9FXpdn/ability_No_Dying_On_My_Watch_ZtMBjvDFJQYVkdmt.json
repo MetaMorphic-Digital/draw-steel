@@ -6,8 +6,7 @@
     "source": {
       "book": "Heroes",
       "page": "180",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "no-dying-on-my-watch",
     "keywords": [
@@ -15,10 +14,10 @@
       "strike",
       "weapon"
     ],
-    "type": "main",
+    "type": "triggered",
     "category": "heroic",
     "resource": 5,
-    "trigger": "",
+    "trigger": "The target deals damage to an ally.",
     "distance": {
       "type": "ranged",
       "primary": 5,
@@ -87,7 +86,7 @@
       }
     },
     "effect": {
-      "before": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains 5 temporary Stamina for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
+      "before": "<p>You move up to your speed toward the triggering ally, ending this movement adjacent to them or in the nearest square if you can’t reach an adjacent square. The triggering ally can spend a Recovery and gains [[/heal 5 temporary]] for each enemy you came adjacent to during the move. You then make a power roll against the target.</p>",
       "after": ""
     },
     "spend": {
@@ -103,9 +102,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1751140822395,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -24,7 +24,7 @@
     </div>
     <ol class="item-list abilities-list">
       {{#each abilityType.abilities as |abilityContext|}}
-      <li class="item ability draggable" data-item-id="{{abilityContext.item.id}}" data-document-class="Item">
+      <li class="item ability draggable expandable-document" data-document-uuid="{{abilityContext.item.uuid}}" data-item-id="{{abilityContext.item.id}}">
         <div class="item-row">
           <div class="item-column item-name rollable" data-action="useAbility">
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
@@ -52,12 +52,10 @@
           <div class="item-column item-distance">{{abilityContext.formattedLabels.distance}}</div>
           <div class="item-column item-target">{{abilityContext.formattedLabels.target}}</div>
           <div class="item-column item-controls">
-            <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}"></i>
-            </a>
+            <a class="fa-solid fa-angle-{{ifThen abilityContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
-        <div class="item-embed content-embed">
+        <div class="document-description item-embed content-embed {{#if abilityContext.expanded}}expanded{{/if}}">
           {{#if abilityContext.expanded}}{{{abilityContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
