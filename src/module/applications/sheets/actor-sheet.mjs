@@ -866,7 +866,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     if ("link" in event.target.dataset) return;
     let dragData;
 
-    if (target.dataset.itemId || target.dataset.effectId) {
+    if (target.dataset.documentUuid) {
       const document = this._getEmbeddedDocument(target);
       dragData = document.toDragData();
     }
