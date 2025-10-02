@@ -1,3 +1,4 @@
+import { systemID } from "../../../constants.mjs";
 import { setOptions } from "../../helpers.mjs";
 import BaseAdvancement from "./base-advancement.mjs";
 
@@ -57,8 +58,6 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
     const path = `flags.draw-steel.advancement.${this.id}.selected`;
     if (!this.isChoice) return { [path]: increases };
 
-    console.log(this, node);
-
     const content = document.createElement("div");
 
     const characteristics = Object.entries(ds.CONFIG.characteristics).reduce((arr, [value, { label }]) => {
@@ -107,6 +106,29 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
     await super.reconfigure();
 
     const configuration = await this.configureAdvancement();
-    if (configuration) await this.document.update(configuration);
+    if (configuration) {
+      const flagPath = `advancement.${this.id}.selected`;
+      const previous = new Set(this.document.getFlag(systemID, flagPath) ?? []);
+      const chosen = new Set(configuration[`flags.${systemID}.${flagPath}`]);
+      const increases = chosen.difference(previous);
+      const decreases = previous.difference(chosen);
+      await this.document.update(configuration);
+
+      const updateData = {};
+      const actor = this.document.parent;
+
+      for (const chr of increases) {
+        const path = `system.characteristics.${chr}.value`;
+        const currentValue = foundry.utils.getProperty(actor, path);
+        foundry.utils.setProperty(updateData, path, currentValue + 1);
+      }
+      for (const chr of decreases) {
+        const path = `system.characteristics.${chr}.value`;
+        const currentValue = foundry.utils.getProperty(actor, path);
+        foundry.utils.setProperty(updateData, path, currentValue - 1);
+      }
+
+      await actor.update(updateData);
+    }
   }
 }

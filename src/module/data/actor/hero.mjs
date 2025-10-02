@@ -532,18 +532,39 @@ export default class HeroModel extends BaseActorModel {
   ) {
     // First gather all new items that are to be created.
     for (const chain of chains) for (const node of chain.active()) {
-      if (node.advancement.type !== "itemGrant") continue;
-      const parentItem = node.advancement.document;
+      if (node.advancement.type === "itemGrant") {
+        const parentItem = node.advancement.document;
 
-      for (const uuid of node.chosenSelection ?? []) {
-        const item = node.choices[uuid].item;
-        const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
-        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-        if (!keepId) itemData._id = foundry.utils.randomID();
-        toCreate[item.uuid] = itemData;
-        _idMap.set(item.id, itemData._id);
-        itemData._parentId = parentItem.id;
-        itemData._advId = node.advancement.id;
+        for (const uuid of node.chosenSelection ?? []) {
+          const item = node.choices[uuid].item;
+          const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
+          const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+          if (!keepId) itemData._id = foundry.utils.randomID();
+          toCreate[item.uuid] = itemData;
+          _idMap.set(item.id, itemData._id);
+          itemData._parentId = parentItem.id;
+          itemData._advId = node.advancement.id;
+        }
+      } else if (node.advancement.type === "characteristic") {
+        const parentItem = node.advancement.document;
+        const previous = new Set(parentItem.getFlag(systemID, `advancement.${node.advancement.id}.selected`) ?? []);
+        const chosen = Object.values(node.choices).reduce((set, { characteristic, isChosen }) => {
+          if (isChosen) set.add(characteristic);
+          return set;
+        }, new Set());
+        const increases = chosen.difference(previous);
+        const decreases = previous.difference(chosen);
+
+        for (const chr of increases) {
+          const path = `characteristics.${chr}.value`;
+          const currentValue = foundry.utils.getProperty(actorUpdate.system, path) ?? foundry.utils.getProperty(this, path);
+          foundry.utils.setProperty(actorUpdate, `system.${path}`, currentValue + 1);
+        }
+        for (const chr of decreases) {
+          const path = `characteristics.${chr}.value`;
+          const currentValue = foundry.utils.getProperty(actorUpdate.system, path) ?? foundry.utils.getProperty(this, path);
+          foundry.utils.setProperty(actorUpdate, `system.${path}`, currentValue - 1);
+        }
       }
     }
 

@@ -42,7 +42,11 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *active() {
-    // eslint-disable-next-line @jsdoc/require-jsdoc
+    /**
+     * Recursive helper function.
+     * @param {AdvancementChain} node The advancement chain to iterate on.
+     * @returns {Iterable<AdvancementChain>}
+     */
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {

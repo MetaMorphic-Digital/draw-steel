@@ -55,7 +55,7 @@ export interface ProjectRollPrompt {
 
 interface AdvancementLeaf {
   node: AdvancementChain;
-
+  children: Record<string, AdvancementChain>;
   /** Whether this specific choice has been selected. */
   isChosen: boolean;
 }
@@ -63,15 +63,16 @@ interface AdvancementLeaf {
 export interface AdvancementChainItemGrantLeaf extends AdvancementLeaf {
   item: DrawSteelItem;
   itemLink: HTMLElement;
-  children: Record<string, AdvancementChain>;
 }
 
 export interface AdvancementChainTraitLeaf extends AdvancementLeaf {
+  choice: string;
   trait: string;
-  children: object;
 }
 
 export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
+  choice: string;
+  characteristic: string;
 }
 
 declare module "./utils/advancement-chain.mjs" {
