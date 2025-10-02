@@ -43,4 +43,11 @@
   {{#if (eq document.type "language")}}
   {{formGroup fields.languages value=source.languages name="languages" options=ctx.languageChoices}}
   {{/if}}
+
+  {{!-- CHARACTERISTIC --}}
+  {{#if (eq document.type "characteristic")}}
+  {{formGroup fields.guaranteed value=source.guaranteed name="guaranteed" options=ctx.characteristics}}
+  {{formGroup fields.choices value=source.choices name="choices" options=ctx.characteristics}}
+  {{formGroup fields.max value=source.max name="max"}}
+  {{/if}}
 </section>

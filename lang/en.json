@@ -30,7 +30,19 @@
         }
       },
       "CHARACTERISTIC": {
-        "FIELDS": {}
+        "FIELDS": {
+          "guaranteed": {
+            "label": "Guaranteed Increases",
+            "hint": "Increase each of these scores by 1."
+          },
+          "choices": {
+            "label": "Increase Choices",
+            "hint": "Increase one of these scores by 1. Overlap with guaranteed will be ignored."
+          },
+          "max": {
+            "label": "Score Maximum"
+          }
+        }
       },
       "ITEM_GRANT": {
         "FIELDS": {
@@ -1746,7 +1758,7 @@
       "npc": "NPC"
     },
     "Advancement": {
-      "characteristic": "Characteristic",
+      "characteristic": "Characteristic Increase",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"
