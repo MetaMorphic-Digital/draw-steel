@@ -150,7 +150,7 @@ export default class AdvancementChain {
     if (!item.supportsAdvancements) return choice;
 
     // Find any "child" advancements.
-    for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
+    for (const advancement of item.getEmbeddedCollection("Advancement")) {
       const validRange = advancement.levels.some(level => {
         if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
         else return levelStart === null;

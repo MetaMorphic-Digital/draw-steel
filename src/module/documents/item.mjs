@@ -84,7 +84,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
    * @type {boolean}
    */
   get supportsAdvancements() {
-    return !!this.system.constructor.metadata.embedded?.Advancement;
+    return !!this.pseudoCollections?.Advancement;
   }
 
   /* -------------------------------------------------- */
@@ -96,7 +96,8 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
   get hasGrantedItems() {
     if (!this.supportsAdvancements || !this.parent) return false;
     return this.collection.some(item => {
-      if (item.getFlag(systemID, "advancement.parentId") === this.id) return !!this.getEmbeddedPseudoDocumentCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
+      if (item.getFlag(systemID, "advancement.parentId") === this.id)
+        return !!this.getEmbeddedCollection("Advancement").get(item.getFlag(systemID, "advancement.advancementId"));
       return false;
     });
   }
@@ -126,7 +127,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     content.append(this.toAnchor());
 
     const itemIds = new Set([this.id]);
-    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").documentsByType.itemGrant) {
+    for (const advancement of this.getEmbeddedCollection("Advancement").documentsByType.itemGrant) {
       for (const item of advancement.grantedItemsChain()) {
         content.append(item.toAnchor());
         itemIds.add(item.id);
