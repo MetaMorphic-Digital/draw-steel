@@ -32,13 +32,6 @@ export default class TraitAdvancement extends BaseAdvancement {
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  get levels() {
-    return [this.requirements.level];
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Getter to indicate that this is a trait advancement.
    */
