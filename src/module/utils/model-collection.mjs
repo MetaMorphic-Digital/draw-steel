@@ -16,8 +16,9 @@ import BasePowerRollEffect from "../data/pseudo-documents/power-roll-effects/bas
 export default class ModelCollection extends foundry.utils.Collection {
   constructor(documentName, document, data) {
     super();
+    const name = CONFIG[document.documentName].dataModels[document._source.type].metadata.embedded[documentName];
     Object.defineProperties(this, {
-      name: { value: documentName, writable: false },
+      name: { value: name, writable: false },
       _source: { value: data, writable: false },
       documentClass: { value: ModelCollection.documentClasses[documentName], writable: false },
     });
