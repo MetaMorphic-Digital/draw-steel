@@ -57,8 +57,44 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
     const path = `flags.draw-steel.advancement.${this.id}.selected`;
     if (!this.isChoice) return { [path]: increases };
 
+    console.log(this, node);
+
+    const content = document.createElement("div");
+
+    const characteristics = Object.entries(ds.CONFIG.characteristics).reduce((arr, [value, { label }]) => {
+      if (this.choices.has(value) && !this.guaranteed.has(value)) arr.push({ value, label });
+      return arr;
+    }, []);
+
+    const choiceSelect = foundry.applications.fields.createSelectInput({
+      options: characteristics,
+      name: "choices",
+      type: "checkboxes",
+    });
+
+    const formGroup = foundry.applications.fields.createFormGroup({
+      input: choiceSelect,
+      label: game.i18n.localize("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.label"),
+      hint: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Characteristic.hint", { n: this.max }),
+    });
+
+    content.append(formGroup);
+
+    const selection = await ds.applications.api.DSDialog.input({
+      content,
+      classes: ["configure-advancement"],
+      window: {
+        title: game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", { name: this.name }),
+        icon: "fa-solid fa-edit",
+      },
+    });
+
+    if (!selection) return;
+
+    increases.push(selection.choices);
+
     if (node) {
-      node.selected = increases;
+      node.selected = increases.reduce((obj, choice) => { obj[choice] = true; return obj; }, {});
     }
 
     return { [path]: increases };

@@ -120,6 +120,24 @@ export default class AdvancementChain {
           },
         });
       }
+    } else if (advancement.type === "characteristic") {
+      for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
+        if (!advancement.guaranteed.has(chr) && !advancement.choices.has(chr)) continue;
+
+        const choice = node.choices[chr] = {
+          node,
+          choice: label,
+          characteristic: chr,
+          children: {},
+        };
+
+        Object.defineProperty(choice, "isChosen", {
+          get() {
+            if (advancement.guaranteed.has(chr)) return true;
+            else return !!node.selected[chr];
+          },
+        });
+      }
     }
 
     return node;

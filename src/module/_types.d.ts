@@ -53,23 +53,25 @@ export interface ProjectRollPrompt {
 
 /* -------------------------------------------------- */
 
-export interface AdvancementChainItemGrantLeaf {
-  item: DrawSteelItem;
+interface AdvancementLeaf {
   node: AdvancementChain;
-  itemLink: HTMLElement;
-  children: Record<string, AdvancementChain>;
 
-  // Whether this specific choice has been selected.
+  /** Whether this specific choice has been selected. */
   isChosen: boolean;
 }
 
-export interface AdvancementChainTraitLeaf {
-  node: AdvancementChain;
+export interface AdvancementChainItemGrantLeaf extends AdvancementLeaf {
+  item: DrawSteelItem;
+  itemLink: HTMLElement;
+  children: Record<string, AdvancementChain>;
+}
+
+export interface AdvancementChainTraitLeaf extends AdvancementLeaf {
   trait: string;
   children: object;
+}
 
-  // Whether this specific choice has been selected.
-  isChosen: boolean;
+export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
 }
 
 declare module "./utils/advancement-chain.mjs" {
@@ -78,7 +80,7 @@ declare module "./utils/advancement-chain.mjs" {
     parent?: AdvancementChain;
     depth: number;
     isRoot: boolean;
-    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
+    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf | AdvancementChainCharacteristicLeaf>;
     selected: Record<string, boolean>;
     levels: [number, number];
 
