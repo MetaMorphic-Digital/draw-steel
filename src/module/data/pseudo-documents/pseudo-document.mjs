@@ -100,13 +100,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @type {string}
    */
   get fieldPath() {
-    const fp = this.schema.fieldPath;
-    let path = fp.slice(0, fp.lastIndexOf("element") - 1);
-
-    if (this.parent instanceof PseudoDocument) {
-      path = [this.parent.fieldPath, this.parent.id, path].join(".");
-    }
-
+    let path = this.parent.constructor.metadata.embedded[this.documentName];
+    if (this.parent instanceof PseudoDocument) path = [this.parent.fieldPath, this.parent.id, path].join(".");
     return path;
   }
 

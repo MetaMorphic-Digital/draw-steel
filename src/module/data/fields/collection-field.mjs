@@ -28,6 +28,21 @@ export default class CollectionField extends TypedObjectField {
 
   /* -------------------------------------------------- */
 
+  /** @override */
+  static hierarchical = true;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The Collection implementation to use when initializing the collection.
+   * @type {typeof ModelCollection}
+   */
+  static get implementation() {
+    return ModelCollection;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * The pseudo-document class.
    * @type {typeof PseudoDocument}
@@ -42,17 +57,39 @@ export default class CollectionField extends TypedObjectField {
 
   /** @inheritdoc */
   initialize(value, model, options = {}) {
-    const collection = new ModelCollection();
-    options.collection = collection;
-    const init = super.initialize(value, model, options);
-    for (const [id, model] of Object.entries(init)) {
-      if (model instanceof ds.data.pseudoDocuments.PseudoDocument) {
-        collection.set(id, model);
-      } else {
-        collection.setInvalid(model);
-      }
-    }
-    collection.documentClass = this.documentClass;
+    const name = this.documentClass.metadata.documentName;
+    const collection = model.parent.pseudoCollections[name];
+    collection.initialize(model, options);
     return collection;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @override */
+  _updateCommit(source, key, value, diff, options) {
+    let src = source[key];
+
+    // Special Cases: * -> undefined, * -> null, undefined -> *, null -> *
+    if (!src || !value) {
+      source[key] = value;
+      return;
+    }
+
+    // Reconstruct the source array, retaining object references
+    for (let [id, d] of Object.entries(diff)) {
+      if (foundry.utils.isDeletionKey(id)) {
+        if (id[0] === "-") {
+          delete source[key][id.slice(2)];
+          continue;
+        }
+        id = id.slice(2);
+      }
+      const prior = src[id];
+      if (prior) {
+        this.element._updateCommit(src, id, value[id], d, options);
+        src[id] = prior;
+      }
+      else src[id] = d;
+    }
   }
 }

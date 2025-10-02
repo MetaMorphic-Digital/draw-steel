@@ -95,7 +95,7 @@ export default class PowerRollDialog extends RollDialog {
     context.damageOptions = null;
     for (const tier of PowerRoll.TIER_NAMES) {
 
-      const effect = context.ability.system.power.effects.getByType("damage").find(e => e.damage[tier].types.size > 1);
+      const effect = context.ability.system.power.effects.documentsByType.damage.find(e => e.damage[tier].types.size > 1);
       if (!effect) continue;
 
       context.damageOptions = Object.entries(ds.CONFIG.damageTypes)

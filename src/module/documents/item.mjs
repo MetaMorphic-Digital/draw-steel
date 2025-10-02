@@ -126,7 +126,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
     content.append(this.toAnchor());
 
     const itemIds = new Set([this.id]);
-    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").getByType("itemGrant")) {
+    for (const advancement of this.getEmbeddedPseudoDocumentCollection("Advancement").documentsByType.itemGrant) {
       for (const item of advancement.grantedItemsChain()) {
         content.append(item.toAnchor());
         itemIds.add(item.id);

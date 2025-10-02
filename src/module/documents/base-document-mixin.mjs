@@ -13,6 +13,25 @@
 export default base => {
   // eslint-disable-next-line @jsdoc/require-jsdoc
   return class DrawSteelDocument extends base {
+    /** @inheritdoc */
+    _configure(options = {}) {
+      super._configure(options);
+
+      const collections = {};
+      const model = CONFIG[this.documentName].dataModels[this._source.type];
+      const embedded = model?.metadata?.embedded ?? {};
+      for (const [documentName, fieldPath] of Object.entries(embedded)) {
+        const data = foundry.utils.getProperty(this._source, fieldPath);
+        const field = model.schema.getField(fieldPath.slice("system.".length));
+        const c = collections[documentName] = new field.constructor.implementation(documentName, this, data);
+        Object.defineProperty(this, documentName, { value: c, writable: false });
+      }
+
+      Object.defineProperty(this, "pseudoCollections", { value: Object.seal(collections), writable: false });
+    }
+
+    /* -------------------------------------------------- */
+
     /**
      * Obtain the embedded collection of a given pseudo-document type.
      * @param {string} embeddedName   The document name of the embedded collection.
