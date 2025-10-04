@@ -41,24 +41,29 @@ export default class AdvancementModel extends BaseItemModel {
 
     if ((this.actor?.type !== "hero")) return;
 
+    const flags = this.parent.getFlag(systemID, "advancement") ?? {};
+
     const record = this.actor.system._traits;
     const unfilled = this.actor.system._unfilledTraits;
-    const flags = this.parent.flags[systemID]?.advancement ?? {};
     const addTrait = (type, trait) => {
       record[type] ??= new Set();
       for (const k of trait) record[type].add(k);
     };
+
     const level = this.actor.system.level;
     for (const advancement of this.advancements) {
-      if (!advancement.isTrait) continue;
       if (!advancement.levels.some(l => l <= level)) continue;
-      const selected = advancement.isChoice
-        ? flags[advancement.id]?.selected ?? []
-        : advancement.traitOptions.map(option => option.value);
-      addTrait(advancement.type, selected);
-      if (selected.length < advancement.chooseN) {
-        unfilled[advancement.type] ??= new Set();
-        unfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
+      if (advancement.isTrait) {
+        const selected = advancement.isChoice
+          ? flags[advancement.id]?.selected ?? []
+          : advancement.traitOptions.map(option => option.value);
+        addTrait(advancement.type, selected);
+        if (selected.length < advancement.chooseN) {
+          unfilled[advancement.type] ??= new Set();
+          unfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
+        }
+      } else if (advancement.type === "characteristic") {
+        for (const chr of flags[advancement.id]?.selected ?? []) this.actor.system.characteristics[chr].value += 1;
       }
     }
   }
