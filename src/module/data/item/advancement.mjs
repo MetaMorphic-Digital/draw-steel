@@ -63,7 +63,10 @@ export default class AdvancementModel extends BaseItemModel {
           unfilled[advancement.type].add(advancement.getRelativeUUID(this.actor));
         }
       } else if (advancement.type === "characteristic") {
-        for (const chr of flags[advancement.id]?.selected ?? []) this.actor.system.characteristics[chr].value += 1;
+        for (const chr of flags[advancement.id]?.selected ?? []) {
+          const chrInfo = this.actor.system.characteristics[chr];
+          chrInfo.value = Math.min(chrInfo.value + 1, advancement.max);
+        }
       }
     }
   }

@@ -45,6 +45,7 @@
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
+- Sealed the characteristics object to prevent adding or removing characteristics.
 
 ### Removed
 

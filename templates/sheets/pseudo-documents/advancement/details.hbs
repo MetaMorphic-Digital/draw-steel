@@ -52,5 +52,6 @@
   {{#each ctx.characteristics}}
   {{formGroup field value=value name=name label=label localize=true}}
   {{/each}}
+  {{formGroup fields.max value=source.max name="max"}}
   {{/if}}
 </section>
