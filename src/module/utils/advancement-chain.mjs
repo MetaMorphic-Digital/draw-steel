@@ -126,7 +126,7 @@ export default class AdvancementChain {
       }
     } else if (advancement.type === "characteristic") {
       for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
-        if (!advancement.guaranteed.has(chr) && !advancement.choices.has(chr)) continue;
+        if (advancement.characteristics[chr] === -1) continue;
 
         const choice = node.choices[chr] = {
           node,
@@ -137,7 +137,7 @@ export default class AdvancementChain {
 
         Object.defineProperty(choice, "isChosen", {
           get() {
-            if (advancement.guaranteed.has(chr)) return true;
+            if (advancement.characteristics[chr] === 1) return true;
             else return !!node.selected[chr];
           },
         });

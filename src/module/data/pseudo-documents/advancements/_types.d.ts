@@ -11,8 +11,7 @@ declare module "./base-advancement.mjs" {
 
 declare module "./characteristic.mjs" {
   export default interface CharacteristicAdvancement {
-      guaranteed: Set<string>;
-      choices: Set<string>;
+      characteristics: Record<string, number>;
       max: number;
   }
 }

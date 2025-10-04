@@ -545,26 +545,6 @@ export default class HeroModel extends BaseActorModel {
           itemData._parentId = parentItem.id;
           itemData._advId = node.advancement.id;
         }
-      } else if (node.advancement.type === "characteristic") {
-        const parentItem = node.advancement.document;
-        const previous = new Set(parentItem.getFlag(systemID, `advancement.${node.advancement.id}.selected`) ?? []);
-        const chosen = Object.values(node.choices).reduce((set, { characteristic, isChosen }) => {
-          if (isChosen) set.add(characteristic);
-          return set;
-        }, new Set());
-        const increases = chosen.difference(previous);
-        const decreases = previous.difference(chosen);
-
-        for (const chr of increases) {
-          const path = `characteristics.${chr}.value`;
-          const currentValue = foundry.utils.getProperty(actorUpdate.system, path) ?? foundry.utils.getProperty(this, path);
-          foundry.utils.setProperty(actorUpdate, `system.${path}`, currentValue + 1);
-        }
-        for (const chr of decreases) {
-          const path = `characteristics.${chr}.value`;
-          const currentValue = foundry.utils.getProperty(actorUpdate.system, path) ?? foundry.utils.getProperty(this, path);
-          foundry.utils.setProperty(actorUpdate, `system.${path}`, currentValue - 1);
-        }
       }
     }
 
@@ -583,19 +563,20 @@ export default class HeroModel extends BaseActorModel {
 
     // Perform item data modifications or store item updates.
     for (const chain of chains) for (const node of chain.active()) {
-      if (!node.advancement.isTrait) continue;
-      const { document: item, id } = node.advancement;
-      const isExisting = item.parent === this.parent;
-      let itemData;
+      if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
+        const { document: item, id } = node.advancement;
+        const isExisting = item.parent === this.parent;
+        let itemData;
 
-      if (isExisting) {
-        toUpdate[item.id] ??= { _id: item.id };
-        itemData = toUpdate[item.id];
-      } else {
-        itemData = toCreate[item.uuid];
+        if (isExisting) {
+          toUpdate[item.id] ??= { _id: item.id };
+          itemData = toUpdate[item.id];
+        } else {
+          itemData = toCreate[item.uuid];
+        }
+
+        foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
       }
-
-      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
     }
 
     const operationOptions = {};
