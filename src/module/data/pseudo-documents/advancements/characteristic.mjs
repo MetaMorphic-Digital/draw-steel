@@ -125,29 +125,6 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
     await super.reconfigure();
 
     const configuration = await this.configureAdvancement();
-    if (configuration) {
-      const flagPath = `advancement.${this.id}.selected`;
-      const previous = new Set(this.document.getFlag(systemID, flagPath) ?? []);
-      const chosen = new Set(configuration[`flags.${systemID}.${flagPath}`]);
-      const increases = chosen.difference(previous);
-      const decreases = previous.difference(chosen);
-      await this.document.update(configuration);
-
-      const updateData = {};
-      const actor = this.document.parent;
-
-      for (const chr of increases) {
-        const path = `system.characteristics.${chr}.value`;
-        const currentValue = foundry.utils.getProperty(actor, path);
-        foundry.utils.setProperty(updateData, path, currentValue + 1);
-      }
-      for (const chr of decreases) {
-        const path = `system.characteristics.${chr}.value`;
-        const currentValue = foundry.utils.getProperty(actor, path);
-        foundry.utils.setProperty(updateData, path, currentValue - 1);
-      }
-
-      await actor.update(updateData);
-    }
+    if (configuration) await this.document.update(configuration);
   }
 }
