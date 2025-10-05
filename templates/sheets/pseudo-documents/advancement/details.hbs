@@ -5,6 +5,22 @@
     {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
   </fieldset>
 
+  {{#if fields.additional}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.additional"}}</legend>
+    {{formGroup
+    fields.additional.fields.type
+    value=source.additional.type
+    name="additional.type"
+    options=ctx.additionalTypes
+    blank="None"
+    localize=true}}
+    {{#if (eq source.additional.type "perk")}}
+    {{formGroup fields.additional.fields.perkType value=source.additional.perkType name="additional.perkType" options=ctx.perkTypes}}
+    {{/if}}
+  </fieldset>
+  {{/if}}
+
   {{!-- ITEM GRANT POOL --}}
   {{#if (eq document.type "itemGrant")}}
   <section class="drop-target-area">
