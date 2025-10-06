@@ -501,7 +501,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
           const name = game.i18n.format("DRAW_STEEL.Item.project.Craft.ItemName", { name: item.name });
           return { name, type: "project", "system.yield.item": item.uuid };
         }
-        else if (item.supportsAdvancements && (item.getEmbeddedPseudoDocumentCollection("Advancement").size > 0)) {
+        else if (item.supportsAdvancements && (item.getEmbeddedCollection("Advancement").size > 0)) {
           ui.notifications.error("DRAW_STEEL.SHEET.NoCreateAdvancement", { format: { name: item.name } });
           return null;
         }
