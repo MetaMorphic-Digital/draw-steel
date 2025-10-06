@@ -73,6 +73,15 @@ export default class ModelCollection extends foundry.utils.Collection {
   invalidDocumentIds = new Set();
 
   /* -------------------------------------------------- */
+
+  /**
+   * Underlying source data of each embedded pseudo-document. The
+   * collection is responsible for performing mutations to this data.
+   * @type {Record<string, object>}
+   */
+  _source;
+
+  /* -------------------------------------------------- */
   /*  Methods                                           */
   /* -------------------------------------------------- */
 
