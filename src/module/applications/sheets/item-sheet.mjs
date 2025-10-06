@@ -192,7 +192,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     // Advancements
     const advs = {};
     /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
-    const models = this.document.getEmbeddedPseudoDocumentCollection("Advancement")[
+    const models = this.document.getEmbeddedCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
