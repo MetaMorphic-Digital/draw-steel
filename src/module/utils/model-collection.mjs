@@ -91,40 +91,21 @@ export default class ModelCollection extends foundry.utils.Collection {
 
   /** @inheritdoc */
   set(key, value, { modifySource = true } = {}) {
-    if (modifySource) this._set(key, value);
+    // Perform the modifications to the source when adding a new entry.
+    if (modifySource) this._source[key] = value._source;
     if (super.get(key) !== value) this.#documentsByType = null;
     return super.set(key, value);
   }
 
   /* -------------------------------------------------- */
 
-  /**
-   * Perform the modifications to the source when adding a new entry.
-   * @param {string} key
-   * @param {Model} model
-   */
-  _set(key, model) {
-    this._source[key] = model._source;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   delete(key, { modifySource = true } = {}) {
-    if (modifySource) this._delete(key);
+    // Handle modifications to the source data when deleting an entry.
+    if (modifySource) delete this._source[key];
     const result = super.delete(key);
     if (result) this.#documentsByType = null;
     return result;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle modifications to the source data when deleting an entry.
-   * @param {string} k
-   */
-  _delete(k) {
-    delete this._source[k];
   }
 
   /* -------------------------------------------------- */
@@ -212,10 +193,13 @@ export default class ModelCollection extends foundry.utils.Collection {
       return d;
     }
 
-    if (!data._id) data._id = foundry.utils.randomID();
+    if (!data._id) {
+      data._id = foundry.utils.randomID();
+      console.warn(`PseudoDocument was constructed without an _id. Replaced with id '${data._id}'.`);
+    }
     try {
       // Create a new instance.
-      d = this.createDocument(data, options);
+      d = this.#createDocument(data, options);
       super.set(d.id, d);
     } catch (err) {
       this._handleInvalidDocument(data._id, err, options);
@@ -233,7 +217,7 @@ export default class ModelCollection extends foundry.utils.Collection {
    * @param {object} [context={}]
    * @returns {Model}
    */
-  createDocument(data, context = {}) {
+  #createDocument(data, context = {}) {
     const Cls = this.documentClass.TYPES[data.type];
     if (!Cls)
       throw new Error(`Type '${data.type}' is not a valid subtype for a ${this.documentClass.metadata.documentName}.`);
