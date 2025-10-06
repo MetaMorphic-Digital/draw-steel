@@ -33,7 +33,7 @@ export default base => {
 
     /** @inheritdoc */
     getEmbeddedCollection(embeddedName) {
-      return this.pseudoCollections?.[embeddedName] ?? super.getEmbeddedCollection(embeddedName);
+      return this.pseudoCollections[embeddedName] ?? super.getEmbeddedCollection(embeddedName);
     }
 
     /* -------------------------------------------------- */
