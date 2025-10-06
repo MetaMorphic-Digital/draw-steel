@@ -174,7 +174,7 @@ export default class ModelCollection extends foundry.utils.Collection {
 
     const initIds = new Set();
     for (const o of Object.values(this._source)) {
-      const d = this._initializeDocument(o, options);
+      const d = this.#initializeDocument(o, options);
       if (d) initIds.add(d.id);
     }
 
@@ -194,7 +194,7 @@ export default class ModelCollection extends foundry.utils.Collection {
    * @param {object} [options]
    * @returns {Model|null}
    */
-  _initializeDocument(data, options) {
+  #initializeDocument(data, options) {
     let d = this.get(data._id);
     if (d) {
       // The document exists, reinitialize with new source data.
@@ -211,7 +211,7 @@ export default class ModelCollection extends foundry.utils.Collection {
       d = this.#createDocument(data, options);
       super.set(d.id, d);
     } catch (err) {
-      this._handleInvalidDocument(data._id, err, options);
+      this.#handleInvalidDocument(data._id, err, options);
       return null;
     }
 
@@ -242,7 +242,7 @@ export default class ModelCollection extends foundry.utils.Collection {
    * @param {object} [options={}]
    * @param {boolean} [options.strict=true]   Throw an error.
    */
-  _handleInvalidDocument(id, err, { strict = true } = {}) {
+  #handleInvalidDocument(id, err, { strict = true } = {}) {
     const documentName = this.documentClass.metadata.documentName;
     const parent = this.parent;
     this.invalidDocumentIds.add(id);
