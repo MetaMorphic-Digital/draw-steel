@@ -42,7 +42,7 @@ export default base => {
     prepareBaseData() {
       super.prepareBaseData();
 
-      for (const collection of Object.values(this.pseudoCollections ?? {}))
+      for (const collection of Object.values(this.pseudoCollections))
         for (const pseudo of collection)
           pseudo.prepareBaseData();
     }
@@ -53,7 +53,7 @@ export default base => {
     prepareDerivedData() {
       super.prepareDerivedData();
 
-      for (const collection of Object.values(this.pseudoCollections ?? {}))
+      for (const collection of Object.values(this.pseudoCollections))
         for (const pseudo of collection)
           pseudo.prepareDerivedData();
     }
