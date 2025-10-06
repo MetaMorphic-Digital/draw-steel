@@ -117,9 +117,9 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
     else if (context.document.type === "characteristic") {
       ctx.characteristics = Object.entries(ds.CONFIG.characteristics).map(([key, { label }]) => ({
-        name: `characteristics.${key}`,
-        value: context.document._source.characteristics[key] ?? -1,
         label,
+        value: context.document._source.characteristics[key] ?? -1,
+        name: `characteristics.${key}`,
         field: context.document.schema.fields.characteristics.element,
       }));
     }
