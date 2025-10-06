@@ -86,7 +86,14 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
 
     const content = document.createElement("div");
 
+    let value;
+
+    const selected = this.document.getFlag(systemID, `advancement.${this.id}.selected`);
+
+    if (selected) value = selected.find(chr => this.characteristics[chr] === 0);
+
     const choiceSelect = foundry.applications.fields.createSelectInput({
+      value,
       options: characteristics,
       name: "choices",
       type: "checkboxes",

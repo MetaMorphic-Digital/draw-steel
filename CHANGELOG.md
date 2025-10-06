@@ -29,6 +29,8 @@
   - War Dogs Echelons 2–4
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - New Advancement Type: Characteristic. (#707)
+  - Characteristic advances allow classes and titles to increase characteristics.
+  - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.

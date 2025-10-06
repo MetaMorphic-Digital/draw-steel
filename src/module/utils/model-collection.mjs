@@ -244,11 +244,12 @@ export default class ModelCollection extends foundry.utils.Collection {
    */
   #handleInvalidDocument(id, err, { strict = true } = {}) {
     const documentName = this.documentClass.metadata.documentName;
-    const parent = this.parent;
+    // may need to adjust if we ever double nest pseudo documents
+    const parentDocument = this.parent.parent;
     this.invalidDocumentIds.add(id);
 
     // Wrap the error with more information
-    const uuid = foundry.utils.buildUuid({ id, documentName, parent });
+    const uuid = foundry.utils.buildUuid({ id, documentName, parent: parentDocument });
     const msg = `Failed to initialize ${documentName} [${uuid}]:\n${err.message}`;
     const error = new Error(msg, { cause: err });
 
