@@ -2,10 +2,6 @@ import { systemID, systemPath } from "../constants.mjs";
 import BaseDocumentMixin from "./base-document-mixin.mjs";
 
 /**
- * @import {ActiveEffectData} from "@common/documents/_types.mjs";
- */
-
-/**
  * A document subclass adding system-specific behavior and registered in CONFIG.Item.documentClass.
  */
 export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.Item) {
@@ -84,7 +80,7 @@ export default class DrawSteelItem extends BaseDocumentMixin(foundry.documents.I
    * @type {boolean}
    */
   get supportsAdvancements() {
-    return !!this.pseudoCollections?.Advancement;
+    return "Advancement" in this.pseudoCollections;
   }
 
   /* -------------------------------------------------- */
