@@ -42,7 +42,11 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *active() {
-    // eslint-disable-next-line @jsdoc/require-jsdoc
+    /**
+     * Recursive helper function.
+     * @param {AdvancementChain} node The advancement chain to iterate on.
+     * @returns {Iterable<AdvancementChain>}
+     */
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
@@ -117,6 +121,24 @@ export default class AdvancementChain {
             if (!node.isChosen) return false;
             if (!node.advancement.isChoice) return true;
             return node.selected[trait.value] === true;
+          },
+        });
+      }
+    } else if (advancement.type === "characteristic") {
+      for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
+        if (advancement.characteristics[chr] === -1) continue;
+
+        const choice = node.choices[chr] = {
+          node,
+          choice: label,
+          characteristic: chr,
+          children: {},
+        };
+
+        Object.defineProperty(choice, "isChosen", {
+          get() {
+            if (advancement.characteristics[chr] === 1) return true;
+            else return !!node.selected[chr];
           },
         });
       }
