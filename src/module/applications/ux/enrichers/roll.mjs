@@ -4,6 +4,7 @@ import DSDialog from "../../api/dialog.mjs";
 import { parseConfig, createLink, addDataset } from "../helpers.mjs";
 
 /**
+ * @import { ParsedConfig } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  */
@@ -36,7 +37,7 @@ export function enricher(match, options) {
   let { type, config, label } = match.groups;
   /** @type {typeof rollTypes} */
   type = type.toLowerCase();
-  const parsedConfig = parseConfig(config, { multiple: ["damage", "heal", "healing"].includes(type) });
+  const parsedConfig = parseConfig(config, { multiple: true });
   parsedConfig._input = match[0];
 
   switch (type) {
@@ -71,7 +72,7 @@ export async function onRender(element) {
 
 /**
  * Enrich a damage link.
- * @param {object[]} parsedConfig      Configuration data.
+ * @param {ParsedConfig[]} parsedConfig      Configuration data.
  * @param {string} [label]             Optional label to replace default text.
  * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.

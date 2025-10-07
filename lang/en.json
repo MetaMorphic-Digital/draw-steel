@@ -255,6 +255,18 @@
             "damage": "Damage Roll",
             "healing": "Healing Roll"
           }
+        },
+        "ApplyEffect": {
+          "FormatString": "{name} {end}",
+          "EffectEnds": {
+            "encounter": "(Encounter)",
+            "respite": "(Respite)",
+            "save": "(save ends)",
+            "turn": "(EoT)"
+          },
+          "LinkTooltip": "Apply {name} to selected tokens.",
+          "NoSelection": "You must select tokens to apply the effect to.",
+          "CreateText": "+Applied {name}"
         }
       }
     },

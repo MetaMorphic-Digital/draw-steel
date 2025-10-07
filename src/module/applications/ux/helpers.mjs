@@ -1,3 +1,8 @@
+/**
+ * @typedef ParsedConfig
+ * @property {string} _config
+ * @property {string[]} values
+ */
 
 /**
  * Parse an enricher string into a configuration object.
@@ -5,7 +10,7 @@
  * @param {object} [options={}]
  * @param {boolean} [options.multiple=false]  Support splitting configuration by "&" into multiple sub-configurations.
  *                                            If set to `true` then an array of configs will be returned.
- * @returns {object|object[]}
+ * @returns {ParsedConfig[] | ParsedConfig} Array if Multiple is true, else object.
  */
 export function parseConfig(match = "", { multiple = false } = {}) {
   if (multiple) return match.split("&").map(s => parseConfig(s));
