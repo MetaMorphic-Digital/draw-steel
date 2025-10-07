@@ -81,6 +81,8 @@ export async function enricher(match, options) {
     }
   }
 
+  if (!linkConfig.type) return null;
+
   if (parsedConfig.name) linkConfig.tooltip = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.LinkTooltip", { name: parsedConfig.name });
 
   label ||= linkConfig.end ?
