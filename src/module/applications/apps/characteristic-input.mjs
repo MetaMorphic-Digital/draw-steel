@@ -43,7 +43,6 @@ export default class CharacteristicInput extends DocumentInput {
         if (!item.supportsAdvancements) continue;
         for (const advancement of item.getEmbeddedCollection("Advancement").documentsByType.characteristic) {
           const selected = item.getFlag(systemID, `advancement.${advancement.id}.selected`) ?? [];
-          console.log(advancement, selected);
           for (const chr of selected) context.characteristics[chr].advancements += 1;
         }
       }
