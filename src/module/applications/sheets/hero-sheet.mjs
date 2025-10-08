@@ -84,6 +84,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
+        context.characteristics = this._getCharacteristics(false);
         context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkills();
         break;

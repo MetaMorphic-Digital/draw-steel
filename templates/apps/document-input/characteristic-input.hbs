@@ -3,7 +3,7 @@
     <label>{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Label"}}</label>
     <div class="form-fields">
       <span>{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Input"}}</span>
-      <span class="advancement">{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Advancement"}}</span>
+      <span>{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Advancement"}}</span>
     </div>
   </div>
   {{#each characteristics}}
@@ -11,7 +11,7 @@
     <label>{{field.label}}</label>
     <div class="form-fields">
       {{formInput field value=value placeholder="0"}}
-      <span class="advancement">{{advancements}}</span>
+      <span class="advancement">{{numberFormat advancements sign=true}}</span>
     </div>
   </div>
   {{/each}}

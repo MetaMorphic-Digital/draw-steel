@@ -1,8 +1,20 @@
 <fieldset class="characteristics flexrow">
-  <legend>{{systemFields.characteristics.label}}</legend>
+  <legend>
+    {{systemFields.characteristics.label}}
+    {{#unless (or isPlay editCharacteristics)}}
+    <button type="button" class="icon fa-solid fa-cog" data-action="editCharacteristics"></button>
+    {{/unless}}
+  </legend>
   {{#each characteristics as |chr key|}}
-  {{#if @root.isPlay}}
-  <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}">
+  {{#unless ../editCharacteristics}}
+  <a
+    class="characteristic play"
+    data-action="roll"
+    data-roll-type="characteristic"
+    data-characteristic="{{key}}"
+    data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}"
+    {{disabled (not @root.isPlay)}}
+  >
     {{chr.field.label}} {{numberFormat chr.value sign=true}}
   </a>
   {{else}}
@@ -10,6 +22,6 @@
     <span class="label">{{chr.field.hint}}</span>
     {{formInput chr.field value=chr.value placeholder="0"}}
   </label>
-  {{/if}}
+  {{/unless}}
   {{/each}}
 </fieldset>
