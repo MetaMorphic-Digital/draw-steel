@@ -137,7 +137,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     if (node) {
       node.selected = selection.choices.reduce((selected, uuid) => {
-        selected[uuid] = true;
+        selected[uuid] = this.pointBuy ? node.choices[uuid].item.system.points : true;
         return selected;
       }, {});
     }

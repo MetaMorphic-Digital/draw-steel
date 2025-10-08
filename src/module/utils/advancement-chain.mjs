@@ -120,7 +120,7 @@ export default class AdvancementChain {
           get() {
             if (!node.isChosen) return false;
             if (!node.advancement.isChoice) return true;
-            return node.selected[trait.value] === true;
+            return !!node.selected[trait.value];
           },
         });
       }
@@ -165,7 +165,7 @@ export default class AdvancementChain {
       get() {
         if (!node.isChosen) return false;
         if (!node.advancement.isChoice) return true;
-        return node.selected[item.uuid] === true;
+        return !!node.selected[item.uuid];
       },
     });
 
