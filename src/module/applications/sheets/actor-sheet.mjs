@@ -834,7 +834,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
    * @protected
    */
   static async #editCombat(event, target) {
-    new ActorCombatStatsInput({ document: this.document }).render({ force: true });
+    return new ActorCombatStatsInput({ document: this.document }).render({ force: true });
   }
 
   /* -------------------------------------------------- */

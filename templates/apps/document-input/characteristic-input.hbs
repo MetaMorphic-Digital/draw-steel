@@ -1,0 +1,18 @@
+<section class="standard-form">
+  <div class="form-group slim">
+    <label>{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Label"}}</label>
+    <div class="form-fields">
+      <span>{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Input"}}</span>
+      <span class="advancement">{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.ColumnHeaders.Advancement"}}</span>
+    </div>
+  </div>
+  {{#each characteristics}}
+  <div class="form-group slim">
+    <label>{{field.label}}</label>
+    <div class="form-fields">
+      {{formInput field value=value placeholder="0"}}
+      <span class="advancement">{{advancements}}</span>
+    </div>
+  </div>
+  {{/each}}
+</section>

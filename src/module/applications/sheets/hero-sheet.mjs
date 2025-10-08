@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, TreasureModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import CharacteristicInput from "../apps/characteristic-input.mjs";
 import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
@@ -388,7 +389,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #editCharacteristics(event, target) {
-    console.log(this, event, target);
+    return new CharacteristicInput({ document: this.document }).render({ force: true });
   }
 
   /* -------------------------------------------------- */
