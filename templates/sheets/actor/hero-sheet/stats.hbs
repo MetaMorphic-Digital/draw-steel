@@ -117,7 +117,14 @@
     </div>
   </fieldset>
   {{/if}}
+  {{#if isPlay}}
   {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
+  {{else}}
+  <button type="button" data-action="editCharacteristics">
+    <i class="fa-solid fa-cog"></i>
+    {{localize "DRAW_STEEL.SHEET.EditCharacteristics"}}
+  </button>
+  {{/if}}
   {{#if isPlay}}
   <div class="form-group">
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}

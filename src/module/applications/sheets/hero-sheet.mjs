@@ -21,6 +21,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
+      editCharacteristics: this.#editCharacteristics,
       modifyItemQuantity: this.#modifyItemQuantity,
       fillTrait: this.#fillTrait,
     },
@@ -374,8 +375,20 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static async #spendStaminaHeroToken() {
+  static async #spendStaminaHeroToken(event, target) {
     await this.actor.system.spendStaminaHeroToken();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a configuration app to edit this hero's characteristics.
+   * @this DrawSteelHeroSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editCharacteristics(event, target) {
+    console.log(this, event, target);
   }
 
   /* -------------------------------------------------- */
