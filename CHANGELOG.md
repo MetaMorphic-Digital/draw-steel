@@ -33,6 +33,7 @@
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
+- Added "point buy" support for Ancestry trait advancements. (#1192)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
 ### Changed

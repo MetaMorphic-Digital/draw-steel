@@ -82,7 +82,7 @@ declare module "./utils/advancement-chain.mjs" {
     depth: number;
     isRoot: boolean;
     choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf | AdvancementChainCharacteristicLeaf>;
-    selected: Record<string, boolean>;
+    selected: Record<string, boolean | number>;
     levels: [number, number];
 
     // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.

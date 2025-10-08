@@ -51,7 +51,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /**
    * Allowed additional types, where a user can add an unknown document to the advancement chain.
-   * @type {Record<string, { label: string }>}
+   * @type {Record<string, { label: string, points?: boolean }>}
    */
   static ADDITIONAL_TYPES = {
     kit: {
@@ -59,6 +59,10 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     },
     perk: {
       label: "TYPES.Item.perk",
+    },
+    ancestryTrait: {
+      label: "TYPES.Item.ancestryTrait",
+      points: true,
     },
   };
 
@@ -70,6 +74,16 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     if (this.chooseN === null) return false;
     if (this.chooseN >= Object.values(this.pool).length) return false;
     return true;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Does this item grant advancement use point buy rather than a simple count.
+   * @type {boolean}
+   */
+  get pointBuy() {
+    return !!this.constructor.ADDITIONAL_TYPES[this.additional.type]?.points;
   }
 
   /* -------------------------------------------------- */

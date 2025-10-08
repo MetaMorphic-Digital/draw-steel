@@ -99,6 +99,20 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
   /* -------------------------------------------------- */
 
+  /**
+   * Total choices made, accounting for possible point buy mechanics.
+   * @type {number}
+   */
+  get totalChosen() {
+    if (!this.advancement.pointBuy) return this.chosen.size;
+    else return this.items.reduce((points, item) => {
+      if (this.chosen.has(item.uuid)) points += item.system.points;
+      return points;
+    }, 0);
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   get title() {
     return game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Title", {
@@ -136,7 +150,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
           type: "submit",
           label: "Confirm",
           icon: "fa-solid fa-fw fa-check",
-          disabled: (this.advancement.chooseN == null) || (this.chosen.size !== this.advancement.chooseN),
+          disabled: (this.advancement.chooseN == null) || (this.totalChosen !== this.advancement.chooseN),
         }];
         break;
     }
@@ -155,19 +169,27 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   async _prepareBody(context, options) {
     context.chooseLabel = (this.advancement.chooseN == null) ?
       game.i18n.localize("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseNull") :
-      game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: this.advancement.chooseN });
+      this.advancement.pointBuy ?
+        game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.SpendPoints", { points: this.advancement.chooseN }) :
+        game.i18n.format("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.ChooseN", { n: this.advancement.chooseN });
+
+    context.additional = this.advancement.additional.type;
+
+    context.points = this.advancement.pointBuy;
+
+    const totalChosen = this.totalChosen;
 
     context.items = this.items.map(i => {
       const chosen = this.chosen.has(i.uuid) || (this.advancement.chooseN == null);
+      const value = context.points ? i.system.points : 1;
       return {
         chosen,
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
-        disabled: !chosen && (this.chosen.size >= this.advancement.chooseN),
+        points: context.points ? i.system.points : false,
+        disabled: !chosen && (value > (this.advancement.chooseN - totalChosen)),
       };
     });
-
-    context.additional = this.advancement.additional.type;
 
     context.enrichedDescription = await enrichHTML(this.advancement.description, { relativeTo: this.advancement.document });
 
@@ -199,8 +221,17 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     if (this.form.choices?.length) checkboxes.push(...this.form.choices);
     else if (this.form.choices) checkboxes.push(this.form.choices);
 
-    for (const input of checkboxes) input.disabled = !this.chosen.has(input.value) && (this.chosen.size >= this.advancement.chooseN);
-    this.element.querySelector("button[type='submit']").disabled = this.chosen.size !== this.advancement.chooseN;
+    const totalChosen = this.totalChosen;
+
+    for (const input of checkboxes) {
+      if (this.advancement.pointBuy) {
+        // if unchosen, potential value is compared to remaining points
+        const value = !this.chosen.has(input.value) ? this.items.find(i => i.uuid === input.value).system.points : 0;
+        input.disabled = value > (this.advancement.chooseN - totalChosen);
+      }
+      else input.disabled = !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
+    }
+    this.element.querySelector("button[type='submit']").disabled = totalChosen !== this.advancement.chooseN;
   }
 
   /* -------------------------------------------------- */

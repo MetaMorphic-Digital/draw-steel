@@ -229,7 +229,7 @@ export default class AdvancementChain {
    */
   get isConfigured() {
     if (!this.advancement.isChoice) return true;
-    const selected = Object.values(this.selected).reduce((acc, b) => acc + Boolean(b), 0);
+    const selected = Object.values(this.selected).reduce((acc, b) => acc + b, 0);
     return selected === this.chooseN;
   }
 
