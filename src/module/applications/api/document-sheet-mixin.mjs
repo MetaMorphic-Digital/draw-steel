@@ -1,6 +1,9 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
-/** @import { Constructor } from "@common/_types.mjs" */
+/**
+ * @import { Constructor } from "@common/_types.mjs"
+ * @import { Document } from "@common/abstract/_module.mjs"
+ */
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -26,6 +29,7 @@ export default base => {
         createPseudoDocument: DSDocumentSheet.#createPseudoDocument,
         deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
         renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
+        toggleDocumentDescription: DSDocumentSheet.#toggleDocumentDescription,
       },
     };
 
@@ -67,6 +71,14 @@ export default base => {
     get isEditMode() {
       return this._mode === DSDocumentSheet.MODES.EDIT;
     }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * A set of the currently expanded document uuids.
+     * @type {Set<string>}
+     */
+    _expandedDocumentDescriptions = new Set();
 
     /* -------------------------------------------------- */
 
@@ -122,6 +134,63 @@ export default base => {
     }
 
     /* -------------------------------------------------- */
+    /*   Helper Functions                                 */
+    /* -------------------------------------------------- */
+
+    /**
+     * Fetches the embedded document representing the containing HTML element.
+     *
+     * @param {HTMLElement} target    The element subject to search.
+     * @returns {Document} The embedded document.
+     */
+    _getEmbeddedDocument(target) {
+      const documentUuid = target.closest("[data-document-uuid]").dataset.documentUuid;
+
+      // fromUuidSync doesn't allow  retrieving embedded compendium documents, so manually retrieving each child document from the base document.
+      const { collection, embedded, documentId } = foundry.utils.parseUuid(documentUuid);
+      let document = collection.get(documentId);
+      while (document && (embedded.length > 1)) {
+        const [embeddedName, embeddedId] = embedded.splice(0, 2);
+        document = document.getEmbeddedDocument(embeddedName, embeddedId);
+      }
+
+      return document;
+    }
+
+    /* -------------------------------------------------- */
+
+    /**
+     * Toggle the document embed between visible and hidden.
+     * @this DSDocumentSheet
+     * @param {PointerEvent} event   The originating click event.
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+     * @protected
+     */
+    static async #toggleDocumentDescription(event, target) {
+      const parentElement = target.closest(".expandable-document");
+      const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentDescription\"]");
+      const { documentUuid } = parentElement.dataset;
+      const embedContainer = parentElement.querySelector(".document-description");
+      const isExpanded = this._expandedDocumentDescriptions.has(documentUuid);
+
+      if (isExpanded) this._expandedDocumentDescriptions.delete(documentUuid);
+      else {
+        // Only generate the embed HTML once.
+        if (!embedContainer.innerHTML.trim()) {
+          const document = this._getEmbeddedDocument(parentElement);
+          const embed = await document?.system?.toEmbed({});
+          if (embed) embedContainer.innerHTML = embed.outerHTML;
+        }
+        this._expandedDocumentDescriptions.add(documentUuid);
+      }
+
+      // Force toggle html classes
+      toggleIcon.classList.toggle("fa-angle-down", !isExpanded);
+      toggleIcon.classList.toggle("fa-angle-right", isExpanded);
+      embedContainer.classList.toggle("expanded", !isExpanded);
+    }
+
+    /* -------------------------------------------------- */
 
     /**
      * Helper method to retrieve an embedded pseudo-document.
@@ -145,7 +214,7 @@ export default base => {
     static #createPseudoDocument(event, target) {
       const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
       const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
-      const Cls = this.document.getEmbeddedPseudoDocumentCollection(documentName).documentClass;
+      const Cls = this.document.getEmbeddedCollection(documentName).documentClass;
 
       if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
         Cls.createDialog({}, { parent: this.document });

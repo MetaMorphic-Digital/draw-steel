@@ -29,11 +29,42 @@
           }
         }
       },
+      "CHARACTERISTIC": {
+        "FIELDS": {
+          "guaranteed": {
+            "label": "Guaranteed Increases",
+            "hint": "Increase each of these scores by 1."
+          },
+          "choices": {
+            "label": "Increase Choices",
+            "hint": "Increase one of these scores by 1. Overlap with guaranteed will be ignored."
+          },
+          "max": {
+            "label": "Score Maximum"
+          }
+        },
+        "Options": {
+          "Guaranteed": "Guaranteed",
+          "Choice": "Choice",
+          "Never": "Never"
+        },
+        "CharacteristicHint": "All guaranteed increases will be given, and the advancement will provide an option between the choices."
+      },
       "ITEM_GRANT": {
         "FIELDS": {
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          },
+          "additional": {
+            "type": {
+              "label": "Additional Type",
+              "hint": "Allow other items of the selected type."
+            },
+            "perkType": {
+              "label": "Perk Type",
+              "hint": "If empty, all perk types are allowed."
+            }
           }
         }
       },
@@ -69,6 +100,7 @@
       },
       "SHEET": {
         "requirements": "Requirements",
+        "additional": "Additional",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
         "reconfigure": "Reconfigure Advancement"
@@ -87,11 +119,22 @@
       "ChainConfiguration": {
         "levelUpTitle": "Level Up: {name}",
         "createWithAdvancementsTitle": "Create {name} with Advancements",
-        "reconfigureTitle": "Reconfigure Advancement"
+        "reconfigureTitle": "Reconfigure Advancement",
+        "CharacteristicIncrease": "+1 {chr}"
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
-        "ChooseN": "Choose {n}"
+        "ChooseN": "Choose {n}",
+        "ChooseNull": "Choose Any",
+        "DropHere": "Drop other items here.",
+        "Characteristic": {
+          "label": "Characteristic",
+          "hint": "Increase choice by 1 to a maximum of {n}."
+        },
+        "Error": {
+          "FilterFail": "Dropped Item did not conform to requirements.",
+          "MustItem": "You can only drop items into an item grant."
+        }
       },
       "DeleteDialog": {
         "ReplaceTitle": "Replace {type}",
@@ -241,11 +284,30 @@
         "Label": "Compendium Source",
         "Clear": "Clear compendium source",
         "ConfirmDeleteTitle": "Clear Compendium Source",
-        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata."
+        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata.",
+        "UpdateFrom": {
+          "Label": "Update from Compendium",
+          "Title": "Overwrite Document Data",
+          "Content": "Updating {name} will reset its data to match the compendium copy, including any embedded documents and descriptions.",
+          "Completion": "Successfully updated {name}!"
+        }
       },
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
+      },
+      "Books": {
+        "Heroes": {
+          "Label": "Heroes",
+          "Title": "Draw Steel Heroes"
+        },
+        "Monsters": {
+          "Label": "Monsters",
+          "Title": "Draw Steel Monsters"
+        }
+      },
+      "Licenses": {
+        "DSCL": "Draw Steel Creator License"
       }
     },
     "MEASUREMENT": {
@@ -800,6 +862,7 @@
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
           "FreeTriggered": "Free Triggered Action",
+          "Move": "Move",
           "None": "No Action",
           "Villain": "Villain Action"
         },
@@ -1706,6 +1769,7 @@
       "npc": "NPC"
     },
     "Advancement": {
+      "characteristic": "Characteristic Increase",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"

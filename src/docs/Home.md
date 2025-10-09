@@ -14,4 +14,5 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 * [[Roll Data]]
 
 ## Development
-[[CONFIG Modifications]]
+- [[CONFIG Modifications]]
+- [[Registering Sources]]

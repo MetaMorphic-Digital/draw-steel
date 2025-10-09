@@ -13,7 +13,7 @@ import { preLocalize } from "./helpers/localization.mjs";
  * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
-export const characteristics = {
+export const characteristics = Object.seal({
   might: {
     label: "DRAW_STEEL.Actor.characteristics.might.full",
     hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
@@ -39,7 +39,7 @@ export const characteristics = {
     hint: "DRAW_STEEL.Actor.characteristics.presence.abbreviation",
     rollKey: "P",
   },
-};
+});
 preLocalize("characteristics", { keys: ["label", "hint"] });
 
 /* -------------------------------------------------- */
@@ -813,6 +813,12 @@ export const hero = {
     "Compendium.draw-steel.abilities.Item.eqUobBcm81mqZVgJ",
     // Stand Up
     "Compendium.draw-steel.abilities.Item.XeUU0Blvi0fy0b2G",
+    // Advance
+    "Compendium.draw-steel.abilities.Item.ucR2C7lMvXrKIMZ7",
+    // Disengage
+    "Compendium.draw-steel.abilities.Item.vBlTvHRZ5JBXWYt6",
+    // Ride
+    "Compendium.draw-steel.abilities.Item.QXOkflcYF6DITJE3",
   ]),
   /**
    * XP progression for heroes.
@@ -1097,6 +1103,9 @@ const abilityTypes = {
   freeTriggered: {
     label: "DRAW_STEEL.Item.ability.Type.FreeTriggered",
     triggered: true,
+  },
+  move: {
+    label: "DRAW_STEEL.Item.ability.Type.Move",
   },
   none: {
     label: "DRAW_STEEL.Item.ability.Type.None",
@@ -1393,6 +1402,12 @@ preLocalize("PowerRollEffect", { key: "label" });
 
 /** @type {Record<string, AdvancementType>} */
 export const Advancement = {
+  characteristic: {
+    label: "TYPES.Advancement.characteristic",
+    defaultImage: "icons/svg/upgrade.svg",
+    itemTypes: new Set(["class", "title"]),
+    documentClass: pseudoDocuments.advancements.CharacteristicAdvancement,
+  },
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",
@@ -1767,13 +1782,21 @@ export const features = { };
 export const perks = {
   /**
    * Types of perks in addition to the available skill groups.
-   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.
+   * Heroes pg 227, "Five of those [perk] types reflect the setup of the five skill groups.".
    * @type {Record<string, {label: string}>}
    */
   types: {
     supernatural: {
       label: "DRAW_STEEL.Item.perk.Types.Supernatural",
     },
+  },
+  /**
+   * All perk type options.
+   * @type {FormSelectOption[]}
+   */
+  get typeOptions() {
+    const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, entry]) => ({ value, label: entry.label }));
+    return skillGroups.concat(Object.entries(ds.CONFIG.perks.types).map(([value, entry]) => ({ value, label: entry.label })));
   },
 };
 preLocalize("perks.types", { key: "label" });
@@ -1819,3 +1842,47 @@ export const projects = {
   ],
 };
 preLocalize("projects.types", { key: "label" });
+
+/**
+ * @typedef SourceBook
+ * @property {string} label   An i18n key for the label that will show in sheet headers.
+ * @property {string} name    An i18n key for the longer title that will display in the Compendium Browser.
+ */
+
+/**
+ * Source books provided in the data list for the Document Source Input.
+ * @type {Record<string, SourceBook>}
+ */
+const sourceBooks = {
+  Heroes: {
+    label: "DRAW_STEEL.SOURCE.Books.Heroes.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Heroes.Title",
+  },
+  Monsters: {
+    label: "DRAW_STEEL.SOURCE.Books.Monsters.Label",
+    title: "DRAW_STEEL.SOURCE.Books.Monsters.Title",
+  },
+};
+
+/**
+ * @typedef ContentLicense
+ * @property {string} [label] An i18n key pointing to longer version of the name of the license.
+ */
+
+/**
+ * Licenses for Draw Steel content.
+ * The keys are human readable in the sources panel.
+ * @type {Record<string, ContentLicense>}
+ */
+const sourceLicenses = {
+  "Draw Steel Creator License": {
+    label: "DRAW_STEEL.SOURCE.Licenses.DSCL",
+  },
+};
+
+export const sourceInfo = {
+  books: sourceBooks,
+  licenses: sourceLicenses,
+};
+preLocalize("sourceInfo.books", { keys: ["label", "title"] });
+preLocalize("sourceInfo.licenses", { keys: ["label"] });

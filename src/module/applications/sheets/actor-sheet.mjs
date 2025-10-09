@@ -35,8 +35,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       roll: this.#onRoll,
       editCombat: this.#editCombat,
       useAbility: this.#useAbility,
-      toggleItemEmbed: this.#toggleItemEmbed,
-      toggleEffectDescription: this.#toggleEffectDescription,
     },
   };
 
@@ -58,22 +56,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       labelPrefix: "DRAW_STEEL.Actor.Tabs",
     },
   };
-
-  /* -------------------------------------------------- */
-
-  /**
-   * A set of the currently expanded item ids.
-   * @type {Set<string>}
-   */
-  #expanded = new Set();
-
-  /* -------------------------------------------------- */
-
-  /**
-   * A set of the currently expanded effect UUIDs.
-   * @type {Set<string>}
-   */
-  #expandedDescriptions = new Set();
 
   /* -------------------------------------------------- */
 
@@ -293,7 +275,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _prepareItemContext(item) {
     const context = {
       item,
-      expanded: this.#expanded.has(item.id),
+      expanded: this._expandedDocumentDescriptions.has(item.id),
     };
 
     // only generate the item embed when it's expanded
@@ -466,9 +448,11 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     };
 
     // Iterate over active effects, classifying them into categories
-    for (const e of this.actor.allApplicableEffects()) {
+    const applicableEffects = [...this.actor.allApplicableEffects()].sort((a, b) => a.sort - b.sort);
+    for (const e of applicableEffects) {
       const effectContext = {
         id: e.id,
+        uuid: e.uuid,
         name: e.name,
         img: e.img,
         parent: e.parent,
@@ -478,9 +462,9 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
         expanded: false,
       };
 
-      if (this.#expandedDescriptions.has(e.uuid)) {
+      if (this._expandedDocumentDescriptions.has(e.id)) {
         effectContext.expanded = true;
-        effectContext.enrichedDescription = await enrichHTML(e.description, { relativeTo: e });
+        effectContext.enrichedDescription = await e.system.toEmbed({});
       }
 
       if (!e.active) categories.inactive.effects.push(effectContext);
@@ -503,7 +487,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
-    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-class][data-item-id], [data-document-class][data-effect-id]", {
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-uuid]", {
       hookName: "getDocumentListContextOptions",
       parentClassHooks: false,
       fixed: true,
@@ -873,70 +857,25 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
   }
 
   /* -------------------------------------------------- */
-
-  /**
-   * Toggle the effect description between visible and hidden. Only visible descriptions are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions.
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #toggleEffectDescription(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-
-    if (this.#expandedDescriptions.has(effect.uuid)) this.#expandedDescriptions.delete(effect.uuid);
-    else this.#expandedDescriptions.add(effect.uuid);
-
-    const part = target.closest("[data-application-part]").dataset.applicationPart;
-    this.render({ parts: [part] });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggle the item embed between visible and hidden. Only visible embeds are generated in the HTML
-   * TODO: Refactor re-rendering to instead use CSS transitions.
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #toggleItemEmbed(event, target) {
-    const { itemId } = target.closest(".item").dataset;
-
-    if (this.#expanded.has(itemId)) this.#expanded.delete(itemId);
-    else this.#expanded.add(itemId);
-
-    const part = target.closest("[data-application-part]").dataset.applicationPart;
-    this.render({ parts: [part] });
-  }
-
-  /* -------------------------------------------------- */
-  /*   Helper Functions                                 */
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the embedded document representing the containing HTML element.
-   *
-   * @param {HTMLElement} target    The element subject to search.
-   * @returns {DrawSteelItem | DrawSteelActiveEffect} The embedded Item or ActiveEffect.
-   */
-  _getEmbeddedDocument(target) {
-    const docRow = target.closest("[data-document-class]");
-    if (docRow.dataset.documentClass === "Item") {
-      return this.actor.items.get(docRow.dataset.itemId);
-    } else if (docRow.dataset.documentClass === "ActiveEffect") {
-      const parent =
-        docRow.dataset.parentId === this.actor.id
-          ? this.actor
-          : this.actor.items.get(docRow?.dataset.parentId);
-      return parent.effects.get(docRow?.dataset.effectId);
-    } else return console.warn("Could not find document class");
-  }
-
-  /* -------------------------------------------------- */
   /*   Drag and Drop                                    */
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDragStart(event) {
+    const target = event.currentTarget;
+    if ("link" in event.target.dataset) return;
+    let dragData;
+
+    if (target.dataset.documentUuid) {
+      const document = this._getEmbeddedDocument(target);
+      dragData = document.toDragData();
+    }
+
+    // Set data transfer
+    if (!dragData) return;
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
+  }
+
   /* -------------------------------------------------- */
 
   /**
@@ -985,7 +924,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
     }
 
     // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(effect, {
+    const sortUpdates = foundry.utils.performIntegerSort(effect, {
       target,
       siblings,
     });

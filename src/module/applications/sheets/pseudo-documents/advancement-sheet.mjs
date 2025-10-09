@@ -86,6 +86,14 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
           link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
         });
       }
+
+      // Drop logic
+      ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES).map(([value, { label }]) => ({ value, label }));
+      switch (context.document.additional.type) {
+        case "perk":
+          ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+          break;
+      }
     }
 
     else if (context.document.type === "skill") {
@@ -105,6 +113,15 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
       for (const language of this.pseudoDocument.languages) {
         if (!(language in ds.CONFIG.languages)) ctx.languageChoices.push({ value: language });
       }
+    }
+
+    else if (context.document.type === "characteristic") {
+      ctx.characteristics = Object.entries(ds.CONFIG.characteristics).map(([key, { label }]) => ({
+        label,
+        value: context.document._source.characteristics[key] ?? -1,
+        name: `characteristics.${key}`,
+        field: context.document.schema.fields.characteristics.element,
+      }));
     }
 
     return context;

@@ -29,7 +29,10 @@
         {{#if node.advancement.isTrait}}
         <li class="advancement-choice">{{choice}}</li>
         {{/if}}
-
+        {{!-- CHARACTERISTIC SELECTED CHOICES --}}
+        {{#if (eq node.advancement.type "characteristic")}}
+        <li>{{localize "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.CharacteristicIncrease" chr=choice}}</li>
+        {{/if}}
         {{/if}}
         {{/each}}
       </ul>

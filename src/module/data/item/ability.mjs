@@ -443,6 +443,7 @@ export default class AbilityModel extends BaseItemModel {
         modifiers: options.modifiers,
         targets: [...game.user.targets].reduce((accumulator, target) => {
           accumulator.push({
+            tokenUuid: target.document.uuid,
             uuid: target.actor?.uuid ?? "",
             modifiers: this.getTargetModifiers(target),
           });
@@ -473,7 +474,7 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         // Filter to the non-zero damage tiers and map them to the tier damage in one loop.
-        const damageEffects = this.power.effects.getByType("damage").reduce((effects, currentEffect) => {
+        const damageEffects = this.power.effects.documentsByType.damage.reduce((effects, currentEffect) => {
           const damage = currentEffect.damage[`tier${tierNumber}`];
           if (Number(damage.value) !== 0) effects.push(damage);
           return effects;
