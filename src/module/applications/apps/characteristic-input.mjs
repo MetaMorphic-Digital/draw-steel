@@ -12,6 +12,9 @@ export default class CharacteristicInput extends DocumentInput {
       title: "DRAW_STEEL.Actor.base.CharacteristicInput.Title",
       icon: "fa-solid fa-dumbbell",
     },
+    position: {
+      width: 480,
+    },
   };
 
   /* -------------------------------------------------- */
