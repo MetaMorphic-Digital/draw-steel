@@ -1,0 +1,22 @@
+<section>
+  {{#if enrichedDescription}}
+  <p class="note">{{{enrichedDescription}}}</p>
+  {{/if}}
+  <fieldset class="item-choices">
+    <legend>{{chooseLabel}}</legend>
+    {{#each items}}
+    <div class="form-group">
+      <label>{{{link}}}</label>
+      <div class="form-fields">
+        <input type="checkbox" value="{{uuid}}" name="choices" {{checked chosen}}>
+      </div>
+    </div>
+    {{/each}}
+  </fieldset>
+  {{#if additional}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.additional"}}</legend>
+    <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.DropHere"}}</p>
+  </fieldset>
+  {{/if}}
+</section>
