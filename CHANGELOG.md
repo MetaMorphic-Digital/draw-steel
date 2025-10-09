@@ -29,6 +29,7 @@
   - Elves (Shadow)
   - Hobgoblins
   - Rivals Echelons 2–4
+  - Trolls
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
