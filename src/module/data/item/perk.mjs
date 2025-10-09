@@ -36,11 +36,6 @@ export default class PerkModel extends FeatureModel {
 
   /** @inheritdoc */
   async getSheetContext(context) {
-    const perkConfig = ds.CONFIG.perks;
-
-    // Perk types also include the skill groups
-    const skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, entry]) => ({ value, label: entry.label }));
-
-    context.perkTypes = skillGroups.concat(Object.entries(perkConfig.types).map(([value, entry]) => ({ value, label: entry.label })));
+    context.perkTypes = ds.CONFIG.perks.typeOptions;
   }
 }

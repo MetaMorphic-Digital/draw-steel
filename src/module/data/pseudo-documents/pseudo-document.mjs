@@ -100,13 +100,8 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @type {string}
    */
   get fieldPath() {
-    const fp = this.schema.fieldPath;
-    let path = fp.slice(0, fp.lastIndexOf("element") - 1);
-
-    if (this.parent instanceof PseudoDocument) {
-      path = [this.parent.fieldPath, this.parent.id, path].join(".");
-    }
-
+    let path = this.parent.constructor.metadata.embedded[this.documentName];
+    if (this.parent instanceof PseudoDocument) path = [this.parent.fieldPath, this.parent.id, path].join(".");
     return path;
   }
 
@@ -144,7 +139,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   prepareBaseData() {
     const documentNames = Object.keys(this.constructor.metadata.embedded);
     for (const documentName of documentNames) {
-      for (const pseudoDocument of this.getEmbeddedPseudoDocumentCollection(documentName)) {
+      for (const pseudoDocument of this.getEmbeddedCollection(documentName)) {
         pseudoDocument.prepareBaseData();
       }
     }
@@ -159,7 +154,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   prepareDerivedData() {
     const documentNames = Object.keys(this.constructor.metadata.embedded);
     for (const documentName of documentNames) {
-      for (const pseudoDocument of this.getEmbeddedPseudoDocumentCollection(documentName)) {
+      for (const pseudoDocument of this.getEmbeddedCollection(documentName)) {
         pseudoDocument.prepareDerivedData();
       }
     }
@@ -207,12 +202,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @returns {PseudoDocument|null}
    */
   getEmbeddedDocument(embeddedName, id, { invalid = false, strict = false } = {}) {
-    const embeds = this.constructor.metadata.embedded ?? {};
-    if (embeddedName in embeds) {
-      const path = embeds[embeddedName];
-      return foundry.utils.getProperty(this, path).get(id, { invalid, strict }) ?? null;
-    }
-    return null;
+    return this.getEmbeddedCollection(embeddedName).get(id, { invalid, strict }) ?? null;
   }
 
   /* -------------------------------------------------- */
@@ -222,7 +212,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @param {string} embeddedName   The document name of the embedded collection.
    * @returns {ModelCollection}     The embedded collection.
    */
-  getEmbeddedPseudoDocumentCollection(embeddedName) {
+  getEmbeddedCollection(embeddedName) {
     const collectionPath = this.constructor.metadata.embedded[embeddedName];
     if (!collectionPath) {
       throw new Error(`${embeddedName} is not a valid embedded Pseudo-Document within the [${this.type}] ${this.documentName} subtype!`);
