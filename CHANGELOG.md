@@ -27,6 +27,7 @@
   - Devils
   - Draconians
   - Elves (Shadow)
+  - Giants
   - Hobgoblins
   - Rivals Echelons 2–4
   - Trolls

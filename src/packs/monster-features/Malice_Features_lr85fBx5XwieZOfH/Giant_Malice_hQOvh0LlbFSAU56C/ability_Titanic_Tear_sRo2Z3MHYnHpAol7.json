@@ -1,0 +1,62 @@
+{
+  "name": "Titanic Tear",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A giant starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; the target falls into the fissure, and is prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10]] damage; the target is prone and hanging onto the edge of the fissure</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the fissure.</p></td></tr></tbody></table>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "144",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "titanic-tear",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "hQOvh0LlbFSAU56C",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758823084823,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "sRo2Z3MHYnHpAol7",
+  "sort": 0,
+  "_key": "!items!sRo2Z3MHYnHpAol7"
+}
