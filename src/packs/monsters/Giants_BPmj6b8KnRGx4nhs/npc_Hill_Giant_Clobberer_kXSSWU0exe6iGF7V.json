@@ -113,7 +113,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
         "_dsid": "destructive-path",
         "advancements": {}
@@ -130,7 +130,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -150,7 +150,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
         "_dsid": "distracted",
         "advancements": {}
@@ -167,7 +167,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -298,9 +298,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
-        "_dsid": "clobberin'-club",
+        "_dsid": "clobberin-club",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -313,7 +313,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -440,28 +440,6 @@
                 }
               }
             },
-            "QGbs6ktnIboEamki": {
-              "_id": "QGbs6ktnIboEamki",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier2": {
-                  "display": "M < 3 can't stand (save ends)",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "might"
-                  }
-                },
-                "tier3": {
-                  "display": "M < 4 can't stand (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "might"
-                  }
-                }
-              }
-            },
             "lgotlRCCAz6vCwi6": {
               "name": "can't stand",
               "img": null,
@@ -519,7 +497,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
         "_dsid": "stomp",
         "story": "",
@@ -575,7 +553,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -627,7 +605,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
         "_dsid": "hill-quake",
         "story": "",
@@ -642,7 +620,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -677,27 +655,9 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": [
-              "might"
-            ]
+            "characteristics": []
           },
-          "effects": {
-            "MFlewNwWDfHif3HU": {
-              "_id": "MFlewNwWDfHif3HU",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier3": {
-                  "display": "No effect",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "might"
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
           "before": "<p>The target makes an <strong>Agility test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"100\"><p>11 or less</p></td><td><p>Grabbed, and the target takes a bane on the Escape Grab maneuver</p></td></tr><tr><td data-colwidth=\"100\"><p>12-16</p></td><td><p>Grabbed</p></td></tr><tr><td data-colwidth=\"100\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table><p>[[/damage 5]] damage.</p>",
@@ -710,9 +670,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "150"
         },
-        "_dsid": "you-ain't-getting-away",
+        "_dsid": "you-aint-getting-away",
         "story": "",
         "resource": null,
         "trigger": "A creature within distance moves or shifts away from the clobberer."
@@ -725,7 +685,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -935,7 +895,7 @@
   "_id": "kXSSWU0exe6iGF7V",
   "prototypeToken": {
     "name": "Hill Giant Clobberer",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -952,11 +912,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -1028,7 +988,7 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 158204,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -1037,7 +997,7 @@
     "compendiumSource": "Actor.kXSSWU0exe6iGF7V",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758827761768,
