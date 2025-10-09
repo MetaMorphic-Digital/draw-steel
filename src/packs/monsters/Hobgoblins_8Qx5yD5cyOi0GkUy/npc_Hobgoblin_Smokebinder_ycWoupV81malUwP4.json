@@ -114,7 +114,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "176"
         },
         "_dsid": "essence-of-smoke",
         "advancements": {}
@@ -131,7 +131,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -151,7 +151,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "176"
         },
         "_dsid": "infernal-ichor",
         "advancements": {}
@@ -168,7 +168,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -298,7 +298,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "176"
         },
         "_dsid": "choking-bolt",
         "story": "",
@@ -313,7 +313,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -349,34 +349,9 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
+            "characteristics": []
           },
-          "effects": {
-            "CdWAmn3TuAP9d3tC": {
-              "_id": "CdWAmn3TuAP9d3tC",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier1": {
-                  "display": "the target has a double bane on their next power roll",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "agility"
-                  }
-                },
-                "tier2": {
-                  "display": "the target takes a bane on their next power roll",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "agility"
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
           "before": "<p>Each target makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"94\"><p>11 or less</p></td><td><p>[[/damage 11]] damage; the target has a double bane on their next power roll</p></td></tr><tr><td data-colwidth=\"94\"><p>12-16</p></td><td><p>[[/damage 9]] damage; the target takes a bane on their next power roll</p></td></tr><tr><td data-colwidth=\"94\"><p>17+</p></td><td><p>[[/damage 5]] damage</p></td></tr></tbody></table>",
@@ -389,7 +364,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "176"
         },
         "_dsid": "smoke-bomb",
         "story": "",
@@ -404,7 +379,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -427,7 +402,7 @@
           "page": "171",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "prior-malice-features",
+        "_dsid": "goblin-malice-features",
         "story": "",
         "keywords": [],
         "type": "none",
@@ -468,7 +443,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -668,7 +643,7 @@
   "folder": "8Qx5yD5cyOi0GkUy",
   "prototypeToken": {
     "name": "Hobgoblin Smokebinder",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -685,11 +660,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -769,7 +744,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758773986362,

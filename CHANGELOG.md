@@ -27,6 +27,7 @@
   - Devils
   - Draconians
   - Elves (Shadow)
+  - Hobgoblins
   - Rivals Echelons 2–4
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
