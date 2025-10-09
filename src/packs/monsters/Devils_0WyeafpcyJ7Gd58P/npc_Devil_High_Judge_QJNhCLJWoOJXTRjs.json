@@ -1,28 +1,28 @@
 {
-  "name": "Bale Eye",
+  "name": "Devil High Judge",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/hexer.webp",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
   "system": {
     "stamina": {
-      "value": 30,
-      "max": 30,
+      "value": 181,
+      "max": 181,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 0
+        "value": 1
       },
       "agility": {
-        "value": 0
+        "value": 3
       },
       "reason": {
-        "value": 3
+        "value": 0
       },
       "intuition": {
-        "value": 3
+        "value": 1
       },
       "presence": {
-        "value": 3
+        "value": 2
       }
     },
     "combat": {
@@ -31,17 +31,17 @@
         "bonus": ""
       },
       "size": {
-        "value": 4,
+        "value": 1,
         "letter": "M"
       },
       "stability": 2,
       "turns": 1
     },
     "movement": {
-      "value": 6,
+      "value": 7,
       "types": [
-        "walk",
-        "fly"
+        "fly",
+        "walk"
       ],
       "hover": false,
       "disengage": 1
@@ -52,7 +52,7 @@
         "acid": 0,
         "cold": 0,
         "corruption": 0,
-        "fire": 0,
+        "fire": 8,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
@@ -65,7 +65,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 5,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -73,14 +73,15 @@
       }
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "66",
-      "license": "Draw Steel Creator License"
+      "page": "82",
+      "license": "Draw Steel Creator License",
+      "revision": 1
     },
     "negotiation": {
       "interest": 5,
@@ -90,35 +91,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 3,
+      "freeStrike": 6,
       "keywords": [
-        "abyssal"
+        "infernal"
       ],
-      "level": 5,
-      "ev": 7,
-      "role": "hexer",
-      "organization": "horde"
+      "level": 6,
+      "ev": 32,
+      "role": "leader",
+      "organization": "leader"
     }
   },
   "items": [
     {
-      "name": "Lethe",
+      "name": "End Effect",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>While the bale eye is winded, they gain an edge on strikes, and any strike made against them gains an edge.</p>",
+          "value": "<p>At the end of each of their turns, the high judge can take [[/damage 10]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "66"
+          "revision": 1,
+          "page": "82"
         },
-        "_dsid": "lethe",
+        "_dsid": "end-effect",
         "advancements": {}
       },
-      "_id": "o812RPLIUuvAV1Rz",
+      "_id": "bVKisSDB6go4OWeb",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -130,32 +132,33 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.o812RPLIUuvAV1Rz"
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.bVKisSDB6go4OWeb"
     },
     {
-      "name": "Soulsight",
+      "name": "True Name",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Any creature within 5 squares of the bale eye can't be hidden from them.</p>",
+          "value": "<p>If a creature within 10 squares speaks the high judge's true name, the high judge loses their damage immunities, any nondamaging effects of their signature ability, and their Devilish Suggestion triggered action until the end of the encounter.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "66"
+          "revision": 1,
+          "page": "82"
         },
-        "_dsid": "soulsight",
+        "_dsid": "true-name",
         "advancements": {}
       },
-      "_id": "SFA2G2ax6TDuS3Tt",
+      "_id": "BB1R9CXTuGeOgNc6",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -167,16 +170,16 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.SFA2G2ax6TDuS3Tt"
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.BB1R9CXTuGeOgNc6"
     },
     {
-      "name": "Wilting Visions",
+      "name": "Infernal Decree",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
@@ -189,32 +192,31 @@
         ],
         "distance": {
           "type": "ranged",
-          "primary": 15
+          "primary": 12
         },
         "target": {
-          "type": "creature",
-          "value": 1
+          "type": "creatureObject",
+          "value": 3,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "reason"
+              "agility"
             ]
           },
           "effects": {
-            "ykeDrKkZhlLvxKbJ": {
-              "_id": "ykeDrKkZhlLvxKbJ",
+            "sa2z7nucJHTqzBK1": {
+              "_id": "sa2z7nucJHTqzBK1",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "6",
-                  "types": [
-                    "psychic"
-                  ],
+                  "value": "10",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -222,10 +224,8 @@
                   }
                 },
                 "tier2": {
-                  "value": "8",
-                  "types": [
-                    "psychic"
-                  ],
+                  "value": "15",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.average",
@@ -233,10 +233,8 @@
                   }
                 },
                 "tier3": {
-                  "value": "9",
-                  "types": [
-                    "psychic"
-                  ],
+                  "value": "19",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.strong",
@@ -245,18 +243,18 @@
                 }
               }
             },
-            "47fy0B9VAJjs8hni": {
-              "name": "Corruption Weakness 5",
+            "dc5zA0gPlNmOKjsD": {
+              "name": "Can't Hide",
               "img": null,
               "type": "applied",
-              "_id": "47fy0B9VAJjs8hni",
+              "_id": "dc5zA0gPlNmOKjsD",
               "applied": {
                 "tier1": {
-                  "display": "",
+                  "display": "{{potency}} the target can’t hide (save ends)",
                   "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
@@ -268,9 +266,9 @@
                 "tier2": {
                   "display": "",
                   "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
@@ -282,65 +280,15 @@
                 "tier3": {
                   "display": "",
                   "effects": {
-                    "4DwuSoiqBEFoV7pg": {
-                      "condition": "always",
-                      "end": "turn",
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
                       "properties": []
                     }
                   },
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
-                  }
-                }
-              }
-            },
-            "MyLx05xNoRoUrG1V": {
-              "name": "Corruption Weakness Save Ends",
-              "img": null,
-              "type": "applied",
-              "_id": "MyLx05xNoRoUrG1V",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "Q6ud29n1b4LtoEA4": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "2",
-                    "characteristic": "intuition"
                   }
                 }
               }
@@ -349,285 +297,30 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The target has corruption weakness 5 (EoT).</p>"
+          "after": ""
         },
         "spend": {
-          "text": "If the target has i<2, they have corruption weakness 5  (save ends).",
+          "text": "While a target is unable to hide this way, any strike against them made by a devil gains an edge.",
           "value": 2
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "66"
+          "revision": 1,
+          "page": "82"
         },
-        "_dsid": "wilting-visions",
+        "_dsid": "infernal-decree",
         "story": "",
         "resource": null,
         "trigger": ""
       },
       "effects": [
         {
-          "name": "Corruption Weakness (EoT)",
-          "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
-          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
+          "name": "Can't Hide",
+          "img": "icons/magic/perception/eye-tendrils-web-purple.webp",
+          "origin": "Actor.WlmvVRI5X2IYU1zg.Item.DT0W9PtAWFstGheT",
           "transfer": false,
-          "_id": "4DwuSoiqBEFoV7pg",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.damage.weaknesses.corruption",
-              "mode": 2,
-              "value": "5",
-              "priority": null
-            }
-          ],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.4DwuSoiqBEFoV7pg"
-        },
-        {
-          "name": "Corruption Weakness (Save Ends)",
-          "img": "icons/skills/wounds/illness-disease-glowing-green.webp",
-          "origin": "Actor.IOIpHzznehQjGL7o.Item.4RO7XgAVkS45CD0T",
-          "transfer": false,
-          "_id": "Q6ud29n1b4LtoEA4",
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.damage.weaknesses.corruption",
-              "mode": 2,
-              "value": "5",
-              "priority": null
-            }
-          ],
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.9.0",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T.Q6ud29n1b4LtoEA4"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "4RO7XgAVkS45CD0T",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.4RO7XgAVkS45CD0T"
-    },
-    {
-      "name": "Demonwarp Tears",
-      "type": "ability",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "system": {
-        "type": "main",
-        "category": "heroic",
-        "keywords": [
-          "area",
-          "magic",
-          "ranged"
-        ],
-        "distance": {
-          "type": "cube",
-          "primary": 4,
-          "secondary": 5
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
-          },
-          "effects": {
-            "9b1WNV0MLKDhg0nx": {
-              "_id": "9b1WNV0MLKDhg0nx",
-              "type": "damage",
-              "name": "",
-              "img": null,
-              "damage": {
-                "tier1": {
-                  "value": "3",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "5",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "6",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "whCpgmVG94hwnisr": {
-              "name": "Warped",
-              "img": null,
-              "type": "applied",
-              "_id": "whCpgmVG94hwnisr",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} the target is warped (Save Ends)",
-                  "effects": {
-                    "WlWQ0LyAVTn8gdCi": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "agility"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "WlWQ0LyAVTn8gdCi": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "WlWQ0LyAVTn8gdCi": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "<p><strong>Special:</strong> The bale eye must create the cube beneath themself.</p>",
-          "after": "<p>While warped, a creature has a double bane on power rolls using any characteristic higher than 0, and has a double edge on power rolls using any characteristic lower than 0.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "66"
-        },
-        "_dsid": "demonwarp-tears",
-        "story": "",
-        "resource": 5,
-        "trigger": ""
-      },
-      "effects": [
-        {
-          "name": "Warped",
-          "img": "icons/magic/water/vortex-water-whirlpool.webp",
-          "origin": "Actor.IOIpHzznehQjGL7o.Item.9QFRWBJiuWpjaZME",
-          "transfer": false,
-          "_id": "WlWQ0LyAVTn8gdCi",
+          "_id": "UkE7Zsr78dlCNRfW",
           "type": "base",
           "system": {
             "end": {
@@ -646,7 +339,7 @@
             "startRound": null,
             "startTurn": null
           },
-          "description": "<p>While warped, a creature has a double bane on power rolls using any characteristic higher than 0, and has a double edge on power rolls using any characteristic lower than 0.</p>",
+          "description": "<p>While a target is unable to hide this way, any strike against them made by a devil gains an edge.</p>",
           "tint": "#ffffff",
           "statuses": [],
           "sort": 0,
@@ -660,7 +353,7 @@
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
-          "_key": "!actors.items.effects!zauGBxHmXDDJxFtk.9QFRWBJiuWpjaZME.WlWQ0LyAVTn8gdCi"
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.DT0W9PtAWFstGheT.UkE7Zsr78dlCNRfW"
         }
       ],
       "folder": null,
@@ -670,150 +363,466 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "9QFRWBJiuWpjaZME",
+      "_id": "DT0W9PtAWFstGheT",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.9QFRWBJiuWpjaZME"
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.DT0W9PtAWFstGheT"
     },
     {
-      "folder": "27ZVGFIPsDJErf4E",
-      "name": "Prior Malice Features",
+      "name": "Compel the Jury",
       "type": "ability",
-      "_id": "2PmYNyLNcEt2Ufaa",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 12
+        },
+        "target": {
+          "type": "creature",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {
+            "itebqcMqxqZZfDr0": {
+              "name": "Charmed",
+              "img": null,
+              "type": "applied",
+              "_id": "itebqcMqxqZZfDr0",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is charmed (save ends)",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
         "source": {
           "book": "Monsters",
-          "page": "65",
-          "license": "Draw Steel Creator License"
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "82"
         },
-        "_dsid": "prior-malice-features",
+        "_dsid": "compel-the-jury",
         "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
         "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Charmed",
+          "img": "icons/magic/control/voodoo-doll-pain-damage-pink.webp",
+          "origin": "Actor.WlmvVRI5X2IYU1zg.Item.jFEOAFPc4BxLTIuP",
+          "transfer": false,
+          "_id": "sDYDma2WFpKiPqIF",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
           },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The demon activates a Malice feature available to demons of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.jFEOAFPc4BxLTIuP.sDYDma2WFpKiPqIF"
         }
-      },
-      "effects": [],
+      ],
+      "folder": null,
       "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.2PmYNyLNcEt2Ufaa"
+      "_id": "jFEOAFPc4BxLTIuP",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.jFEOAFPc4BxLTIuP"
     },
     {
-      "folder": "27ZVGFIPsDJErf4E",
-      "name": "Abyssal Jaunt",
+      "name": "All Rise",
       "type": "ability",
-      "_id": "d298nvIWsIOh0Kl7",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
       "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "65",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "abyssal-jaunt",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
         "distance": {
-          "type": "special"
+          "type": "burst",
+          "primary": 3
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ]
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>One demon acting this turn folds space around them, temporarily slipping in and out of the Abyssal Wasteland. Until the start of the demon’s next turn, they ignore difficult terrain, can move through solid matter, and don’t provoke opportunity attacks by moving. If the demon ends their turn inside solid matter, they are shunted out into the space from which they entered it.</p>",
-          "after": ""
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 15 psychic]] damage; the target is charmed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 12 psychic]] damage; the target is charmed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 7 psychic]] damage</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "after": "<p>The target makes a **Presence test**.</p>"
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "82"
+        },
+        "_dsid": "all-rise",
+        "story": "",
+        "resource": null,
+        "trigger": ""
       },
       "effects": [],
+      "folder": null,
       "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!zauGBxHmXDDJxFtk.d298nvIWsIOh0Kl7"
+      "_id": "0uPSa1xfRM4JGKIh",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.0uPSa1xfRM4JGKIh"
+    },
+    {
+      "name": "Heed My Decree",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "ally",
+          "value": null,
+          "custom": "Self and each ally in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target shifts up to their speed. The high judge can make each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion move up to half that creature's speed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "82"
+        },
+        "_dsid": "heed-my-decree",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "IZFzsIn8PS1h8q9j",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.IZFzsIn8PS1h8q9j"
+    },
+    {
+      "name": "Deceptive Stratagem",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 12
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>If the target is an ally or a creature charmed by All Rise, Compel the Jury, or Devilish Suggestion, the high judge and the target teleport to swap places. Each ally within 12 squares of the high judge can then make a free strike against a target of the high judge's choice. Each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion makes a free strike against a target of the high judge's choice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "82"
+        },
+        "_dsid": "deceptive-stratagem",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "OghjJFgeY3lxYyfR",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.OghjJFgeY3lxYyfR"
+    },
+    {
+      "name": "Devilish Suggestion",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "The triggering creature"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"102\"><p>11 or less</p></td><td><p>The target is charmed (save ends).</p></td></tr><tr><td data-colwidth=\"102\"><p>12-16</p></td><td><p>The high judge chooses a new target for the strike.</p></td></tr><tr><td data-colwidth=\"102\"><p>17+</p></td><td><p>The target takes a bane on the strike.</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "82"
+        },
+        "_dsid": "devilish-suggestion",
+        "story": "",
+        "resource": 2,
+        "trigger": "A creature targets the magistrate with a strike."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "xOe0dvNF9lYVASWj",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.xOe0dvNF9lYVASWj"
     }
   ],
-  "folder": "fgQNWiICJVzfSdZ8",
+  "folder": "0WyeafpcyJ7Gd58P",
   "prototypeToken": {
-    "name": "Bale Eye",
+    "name": "Devil High Judge",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/hexer.webp",
+      "src": "systems/draw-steel/assets/roles/leader.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -909,14 +918,14 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758136946208,
+    "createdTime": 1758248177166,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "zauGBxHmXDDJxFtk",
+  "_id": "QJNhCLJWoOJXTRjs",
   "sort": 0,
-  "_key": "!actors!zauGBxHmXDDJxFtk"
+  "_key": "!actors!QJNhCLJWoOJXTRjs"
 }

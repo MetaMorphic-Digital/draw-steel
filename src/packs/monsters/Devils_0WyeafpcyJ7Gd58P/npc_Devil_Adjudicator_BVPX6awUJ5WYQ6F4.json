@@ -1,25 +1,25 @@
 {
-  "name": "War Dog Taxiarch",
+  "name": "Devil Adjudicator",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
   "system": {
     "stamina": {
-      "value": 240,
-      "max": 240,
+      "value": 140,
+      "max": 140,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 1
+        "value": 0
       },
       "agility": {
-        "value": 3
+        "value": 1
       },
       "reason": {
-        "value": 5
+        "value": 2
       },
       "intuition": {
-        "value": 4
+        "value": 1
       },
       "presence": {
         "value": 3
@@ -38,10 +38,9 @@
       "turns": 1
     },
     "movement": {
-      "value": 7,
+      "value": 6,
       "types": [
-        "walk",
-        "teleport"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -52,7 +51,7 @@
         "acid": 0,
         "cold": 0,
         "corruption": 0,
-        "fire": 0,
+        "fire": 5,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
@@ -73,13 +72,13 @@
       }
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "314",
+      "page": "78",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -91,37 +90,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 9,
+      "freeStrike": 7,
       "keywords": [
-        "humanoid",
-        "soulless"
+        "infernal"
       ],
-      "level": 9,
-      "ev": 44,
-      "role": "",
-      "organization": "leader"
+      "level": 6,
+      "ev": 32,
+      "role": "controller",
+      "organization": "elite"
     }
   },
   "items": [
     {
-      "name": "End Effect",
+      "name": "Vexatious Litigation",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the end of each of their turns, the taxiarch can take [[/damage 15]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "value": "<p>Any creature within 10 squares of the adjudicator who has P &lt; 3 takes a −2 penalty to saving throws.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "314"
+          "page": "78"
         },
-        "_dsid": "end-effect",
+        "_dsid": "vexatious-litigation",
         "advancements": {}
       },
-      "_id": "CFiWhKjKUQRYEqGr",
+      "_id": "9MWquEjYAJZDXKhh",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -133,16 +131,54 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.CFiWhKjKUQRYEqGr"
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.9MWquEjYAJZDXKhh"
     },
     {
-      "name": "Stunning Surge",
+      "name": "True Name",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If a creature within 10 squares speaks the adjudicator's true name, the adjudicator loses their damage immunities, any nondamaging effects of their signature ability, and their Devilish Charm ability until the end of the encounter.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "78"
+        },
+        "_dsid": "true-name",
+        "advancements": {}
+      },
+      "_id": "BqrXQfAqeZKTaIC2",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.BqrXQfAqeZKTaIC2"
+    },
+    {
+      "name": "Infernal Injunction",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
@@ -159,27 +195,28 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "reason"
+              "presence"
             ]
           },
           "effects": {
-            "sh7UyZjnykW9Yyxc": {
-              "_id": "sh7UyZjnykW9Yyxc",
+            "cUFkEel3ZUhYH8Wl": {
+              "_id": "cUFkEel3ZUhYH8Wl",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "14",
+                  "value": "10",
                   "types": [
-                    "lightning"
+                    "fire"
                   ],
                   "properties": [],
                   "potency": {
@@ -188,9 +225,9 @@
                   }
                 },
                 "tier2": {
-                  "value": "19",
+                  "value": "15",
                   "types": [
-                    "lightning"
+                    "fire"
                   ],
                   "properties": [],
                   "potency": {
@@ -199,9 +236,9 @@
                   }
                 },
                 "tier3": {
-                  "value": "23",
+                  "value": "18",
                   "types": [
-                    "lightning"
+                    "fire"
                   ],
                   "properties": [],
                   "potency": {
@@ -211,131 +248,52 @@
                 }
               }
             },
-            "F44lS1pRMRW22cEM": {
-              "name": "",
-              "img": null,
-              "type": "other",
-              "_id": "F44lS1pRMRW22cEM",
-              "other": {
-                "tier1": {
-                  "display": "the lightning spreads 1 square",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "the lightning spreads 2 square",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "the lightning spreads 3 square",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "8zNsGrLLXJgo081I": {
-              "name": "Dazed",
-              "img": null,
+            "dTEUHEtQLBKQjWBN": {
+              "_id": "dTEUHEtQLBKQjWBN",
               "type": "applied",
-              "_id": "8zNsGrLLXJgo081I",
+              "name": "Frightened",
+              "img": null,
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} dazed (save ends)",
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
+                  "display": "{{potency}} frightened (save ends)",
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "intuition"
-                  }
-                },
-                "tier2": {
-                  "display": "",
+                  },
                   "effects": {
-                    "dazed": {
+                    "frightened": {
                       "condition": "failure",
                       "end": "save",
                       "properties": []
                     }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "IWKOil7H0LT0HTBU": {
-              "name": "Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "IWKOil7H0LT0HTBU",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": "might"
                   }
                 },
                 "tier2": {
                   "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  },
                   "effects": {
-                    "slowed": {
+                    "frightened": {
                       "condition": "failure",
-                      "end": "turn",
+                      "end": "save",
                       "properties": []
                     }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": ""
                   }
                 },
                 "tier3": {
                   "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  },
                   "effects": {
-                    "slowed": {
+                    "frightened": {
                       "condition": "failure",
-                      "end": "turn",
+                      "end": "save",
                       "properties": []
                     }
-                  },
-                  "potency": {
-                    "value": "4",
-                    "characteristic": ""
                   }
                 }
               }
@@ -344,19 +302,19 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The spread is the distance the charge arcs from a target to nearby enemies. Each enemy within spread takes [[/damage 5 lightning]] damage.</p>"
+          "after": "<p>The adjudicator can slide a target frightened by this ability up to 2 squares.</p>"
         },
         "spend": {
-          "text": "The lighting spread increases by 2 squares. Additionally,  any creature who takes lightning damage from this ability and who has M<4 is slowed until the end of their next turn",
-          "value": 2
+          "text": "",
+          "value": null
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "314"
+          "page": "78"
         },
-        "_dsid": "stunning-surge",
+        "_dsid": "infernal-injunction",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -369,51 +327,50 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "db1NRinWVxiAiX0K",
+      "_id": "T9PBjt3Sj5veLWvk",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.db1NRinWVxiAiX0K"
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.T9PBjt3Sj5veLWvk"
     },
     {
-      "name": "Overcharge",
+      "name": "Adjudicator's Interdiction",
       "type": "ability",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
-        "type": "maneuver",
-        "category": "heroic",
+        "type": "main",
+        "category": "",
         "keywords": [
-          "area",
           "magic",
           "ranged"
         ],
         "distance": {
-          "type": "cube",
-          "primary": 4,
-          "secondary": 10
+          "type": "ranged",
+          "primary": 10
         },
         "target": {
-          "type": "special",
-          "value": null
+          "type": "creature",
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "reason"
+              "presence"
             ]
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets each War Dog in the area</p><p>Each target shifts up to their speed and can make a free strike that deals an extra [[/damage 5 lightning]] damage.</p>",
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"103\"><p>11 or less</p></td><td><p>The target is slowed, takes a bane on power rolls, and can’t regain Stamina (save ends).</p></td></tr><tr><td data-colwidth=\"103\"><p>12-16</p></td><td><p>The target is slowed and takes a bane on power rolls (save ends).</p></td></tr><tr><td data-colwidth=\"103\"><p>17+</p></td><td><p>Slowed (save ends)</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -424,11 +381,11 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "314"
+          "page": "78"
         },
-        "_dsid": "overcharge",
+        "_dsid": "adjudicators-interdiction",
         "story": "",
-        "resource": 2,
+        "resource": null,
         "trigger": ""
       },
       "effects": [],
@@ -439,185 +396,119 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "SfwzeV5giahJISML",
+      "_id": "sPm4b0X48PTYRJZA",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.SfwzeV5giahJISML"
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.sPm4b0X48PTYRJZA"
     },
     {
-      "name": "Thunderstruck",
+      "name": "Quid Pro Quo",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "One ally or frightened creature"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The adjudicator and the target teleport to switch places.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "revision": 1,
+          "page": "78"
+        },
+        "_dsid": "quid-pro-quo",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "BxtfHqEPzjsb8GLH",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.BxtfHqEPzjsb8GLH"
+    },
+    {
+      "name": "Devilish Charm",
       "type": "ability",
       "img": "icons/skills/movement/arrow-upward-yellow.webp",
       "system": {
         "type": "triggered",
-        "category": "",
+        "category": "heroic",
         "keywords": [
           "magic",
-          "melee"
+          "ranged"
         ],
         "distance": {
-          "type": "melee",
-          "primary": 1
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>After the ability is resolved, the target is teleported up to 5 squares and is thunderstruck (save ends). A thunderstruck creature has lightning weakness 5, and the taxiarch gains an edge on power rolls against them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "314"
-        },
-        "_dsid": "thunderstruck",
-        "story": "",
-        "resource": null,
-        "trigger": "An enemy within distance deals damage to the taxiarch."
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "IomGrfVzaAr7jf11",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.IomGrfVzaAr7jf11"
-    },
-    {
-      "name": "Magnetic Trickery",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "villain",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "distance": {
-          "type": "burst",
-          "primary": 10
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Slide 5, and if the the target has M &lt; 4, they fall prone.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "314"
-        },
-        "_dsid": "magnetic-trickery",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "ngCZtuL7F8BCug8z",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.ngCZtuL7F8BCug8z"
-    },
-    {
-      "name": "Conductor of Combat",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "villain",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "distance": {
-          "type": "burst",
+          "type": "ranged",
           "primary": 5
         },
         "target": {
-          "type": "special",
-          "value": null
+          "type": "creature",
+          "value": null,
+          "custom": "the triggering the creature"
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "reason"
+              "presence"
             ]
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets each war dog in the area</p><p>Each target shifts up to their speed, then can make a free strike or use a maneuver.</p>",
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"96\"><p>11 or less</p></td><td><p>The adjudicator chooses a new target for the strike.</p></td></tr><tr><td data-colwidth=\"96\"><p>12-16</p></td><td><p>The adjudicator halves the triggering damage.</p></td></tr><tr><td data-colwidth=\"96\"><p>17+</p></td><td><p>The target takes a bane on the strike.</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -628,12 +519,12 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "314"
+          "page": "78"
         },
-        "_dsid": "conductor-of-combat",
+        "_dsid": "devilish-charm",
         "story": "",
-        "resource": null,
-        "trigger": ""
+        "resource": 2,
+        "trigger": "A creature targets the adjudicator with a strike."
       },
       "effects": [],
       "folder": null,
@@ -643,50 +534,45 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "ck60XMtfprgqnPxg",
+      "_id": "Wz3U0A95VcjObUBv",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.ck60XMtfprgqnPxg"
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.Wz3U0A95VcjObUBv"
     },
     {
-      "name": "Unlimited Power!",
+      "name": "Bureaucratic Tape",
       "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "villain",
-        "category": "villain",
-        "keywords": [
-          "area",
-          "magic"
-        ],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A devil starts its turn.",
         "distance": {
-          "type": "burst",
-          "primary": 3
+          "type": "special"
         },
         "target": {
-          "type": "creature",
-          "value": null
+          "type": "special",
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "reason"
-            ]
+            "formula": "",
+            "characteristics": []
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 18 lightning]] damage; the target is thunderstruck (save ends)</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 14 lightning]] damage; the target is thunderstruck (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>[[/damage 9 lightning]] damage</p></td></tr></tbody></table>",
-          "after": "<p>See @UUID[Actor.dek0gTmQS4vrSRyZ.Item.IomGrfVzaAr7jf11]{Thunderstruck}. Additionally, until the end of the encounter, any enemy who moves within 3 squares of the taxiarch for the first time in a round or starts their turn there takes [[/damage 3 lightning]] damage.</p>"
+          "before": "<p>One devil acting this turn uses a signature ability against an adjacent creature. On a tier 3 outcome, the target of the ability has a double bane on strikes (save ends).</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -694,18 +580,16 @@
         },
         "source": {
           "book": "Monsters",
+          "page": "76",
           "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "314"
+          "revision": 1
         },
-        "_dsid": "unlimited-power",
+        "_dsid": "bureaucratic-tape",
         "story": "",
-        "resource": null,
-        "trigger": ""
+        "keywords": []
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
+      "folder": "2tWRLk096tKY77Bv",
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -717,37 +601,38 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "WDpA88ydy34f2VSr",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.WDpA88ydy34f2VSr"
+      "_id": "cKvync2UMUolwWPe",
+      "sort": 0,
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.cKvync2UMUolwWPe"
     },
     {
-      "folder": "i2de6zKmA8OVN5i8",
-      "name": "Prior Malice Features",
+      "name": "Underhanded Tactics",
       "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
+        "type": "none",
         "source": {
           "book": "Monsters",
-          "page": "310",
+          "page": "76",
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "prior-malice-features",
+        "_dsid": "underhanded-tactics",
         "story": "",
         "keywords": [],
-        "type": "none",
         "category": "heroic",
-        "resource": null,
+        "resource": 5,
         "trigger": "",
         "distance": {
           "type": "special"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -757,15 +642,17 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
+          "before": "<p>One or two devils can teleport to a space adjacent to one or more creatures who aren’t hidden and make a free strike. </p>",
           "after": ""
         },
         "spend": {
-          "text": "",
+          "text": "For each 2 additional Malice spent on this feature, one additional devil can teleport.",
           "value": null
         }
       },
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
+      "folder": "2tWRLk096tKY77Bv",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -775,65 +662,60 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "ffAT6RdoCBdyscSr",
+      "_id": "UJIrxJ5a9QdrMhPW",
       "sort": 0,
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.ffAT6RdoCBdyscSr"
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.UJIrxJ5a9QdrMhPW"
     },
     {
-      "folder": "i2de6zKmA8OVN5i8",
-      "name": "Alchemical Cloud",
+      "name": "Read the Small Print",
       "type": "ability",
-      "_id": "nOF8y0Xd415kriB6",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "314",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "alchemical-cloud",
-        "story": "",
-        "keywords": [],
         "type": "none",
         "category": "heroic",
         "resource": 7,
-        "trigger": "",
+        "trigger": "A devil starts its turn.",
         "distance": {
           "type": "special"
         },
-        "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": ""
         },
+        "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "@chr",
+            "formula": "",
             "characteristics": []
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"96\"><p>11 or less</p></td><td><p>[[/damage 8 poison]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>12-16</p></td><td><p>[[/damage 7 poison]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>17+</p></td><td><p>[[/damage 4 poison]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each enemy in the encounter is subject to a bad deal proposed by the devils. An enemy must choose between having damage weakness 5 or taking a bane on power rolls. The bad deal lasts until the end of the encounter.</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "76",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "read-the-small-print",
+        "story": "",
+        "keywords": []
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
+      "folder": "2tWRLk096tKY77Bv",
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -845,18 +727,24 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!C9jqb1wwJf2JuY8z.nOF8y0Xd415kriB6"
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "iM4sWoDNNcX2StX1",
+      "sort": 0,
+      "_key": "!actors.items!BVPX6awUJ5WYQ6F4.iM4sWoDNNcX2StX1"
     }
   ],
-  "folder": "hv76ZwIjIugo1fhp",
+  "folder": "0WyeafpcyJ7Gd58P",
   "prototypeToken": {
-    "name": "War Dog Taxiarch",
+    "name": "Devil Adjudicator",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "src": "systems/draw-steel/assets/roles/controller.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -952,14 +840,14 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758223840060,
+    "createdTime": 1758248168762,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "C9jqb1wwJf2JuY8z",
+  "_id": "BVPX6awUJ5WYQ6F4",
   "sort": 0,
-  "_key": "!actors!C9jqb1wwJf2JuY8z"
+  "_key": "!actors!BVPX6awUJ5WYQ6F4"
 }

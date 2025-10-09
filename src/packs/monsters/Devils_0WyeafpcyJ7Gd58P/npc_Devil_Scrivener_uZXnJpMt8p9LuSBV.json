@@ -1,28 +1,28 @@
 {
-  "name": "War Dog Socialite",
+  "name": "Devil Scrivener",
   "type": "npc",
   "img": "systems/draw-steel/assets/roles/minion.webp",
   "system": {
     "stamina": {
-      "value": 14,
-      "max": 14,
+      "value": 9,
+      "max": 9,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 2
+        "value": 0
       },
       "agility": {
-        "value": 2
-      },
-      "reason": {
-        "value": 4
-      },
-      "intuition": {
         "value": 3
       },
+      "reason": {
+        "value": 1
+      },
+      "intuition": {
+        "value": 1
+      },
       "presence": {
-        "value": 5
+        "value": 2
       }
     },
     "combat": {
@@ -38,9 +38,10 @@
       "turns": 1
     },
     "movement": {
-      "value": 5,
+      "value": 6,
       "types": [
-        "walk"
+        "walk",
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -51,11 +52,11 @@
         "acid": 0,
         "cold": 0,
         "corruption": 0,
-        "fire": 0,
+        "fire": 5,
         "holy": 0,
         "lightning": 0,
         "poison": 0,
-        "psychic": 10,
+        "psychic": 0,
         "sonic": 0
       },
       "weaknesses": {
@@ -78,7 +79,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "315",
+      "page": "77",
       "license": "Draw Steel Creator License",
       "revision": 1
     },
@@ -90,36 +91,36 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 4,
+      "freeStrike": 3,
       "keywords": [
-        "humanoid"
+        "infernal"
       ],
-      "level": 10,
-      "ev": 12,
-      "role": "minion",
+      "level": 5,
+      "ev": 7,
+      "role": "harrier",
       "organization": "minion"
     }
   },
   "items": [
     {
-      "name": "Loyalty Collar",
+      "name": "True Name",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>When the socialite is reduced to 0 Stamina, their loyalty collar explodes, dealing [[/damage 3d6]] damage to each adjacent enemy and object.</p>",
+          "value": "<p>If a creature within 10 squares speaks the scrivener's true name, the scrivener loses their fire immunity and any nondamaging effects of their signature ability until the end of the encounter.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "315"
+          "page": "77"
         },
-        "_dsid": "loyalty-collar",
+        "_dsid": "true-name",
         "advancements": {}
       },
-      "_id": "HAgFYXgc5oROLyeS",
+      "_id": "jCBYYxrApauG7jdm",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -131,68 +132,126 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!ngHux8UJoI0DeVH5.HAgFYXgc5oROLyeS"
+      "_key": "!actors.items!uZXnJpMt8p9LuSBV.jCBYYxrApauG7jdm"
     },
     {
-      "name": "Call to Self-Sabotage",
+      "name": "Litigation",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
         "type": "main",
         "category": "signature",
         "keywords": [
-          "psionic",
-          "ranged",
+          "charge",
+          "magic",
+          "melee",
           "strike"
         ],
         "distance": {
-          "type": "ranged",
-          "primary": 5
+          "type": "melee",
+          "primary": 1
         },
         "target": {
-          "type": "creature",
-          "value": 1
+          "type": "creatureObject",
+          "value": 1,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "presence"
+              "agility"
             ]
           },
           "effects": {
-            "4ck00Sp1BXyYBBj8": {
+            "yYjZwDudSGFybt5J": {
+              "_id": "yYjZwDudSGFybt5J",
+              "type": "damage",
               "name": "",
               "img": null,
-              "type": "other",
-              "_id": "4ck00Sp1BXyYBBj8",
-              "other": {
+              "damage": {
                 "tier1": {
-                  "display": "The target makes a free strike (tier 1 result) against themself",
+                  "value": "3",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "none"
                   }
                 },
                 "tier2": {
-                  "display": "The target makes a free strike (tier 2 result) against themself",
+                  "value": "5",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": ""
                   }
                 },
                 "tier3": {
-                  "display": "The target makes a free strike (tier 3 result) against themself",
+                  "value": "6",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
+                  }
+                }
+              }
+            },
+            "Uqvhf8C8NPWfwBVg": {
+              "_id": "Uqvhf8C8NPWfwBVg",
+              "type": "applied",
+              "name": "Slowed",
+              "img": null,
+              "applied": {
+                "tier2": {
+                  "display": "slowed (EoT)",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
                   }
                 }
               }
@@ -201,7 +260,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The target takes an extra [[/damage 5]] damage for each surge they have.</p>"
+          "after": "<p>The scrivener can shift 1 square.</p>"
         },
         "spend": {
           "text": "",
@@ -211,9 +270,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": "315"
+          "page": "77"
         },
-        "_dsid": "call-to-self-sabotage",
+        "_dsid": "litigation",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -226,65 +285,62 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "20te3FeTf0szOJJH",
+      "_id": "Pi64Px9MAttXw1g0",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!ngHux8UJoI0DeVH5.20te3FeTf0szOJJH"
+      "_key": "!actors.items!uZXnJpMt8p9LuSBV.Pi64Px9MAttXw1g0"
     },
     {
-      "folder": "bWTYtV0FTi2aS4TJ",
-      "name": "Prior Malice Features",
+      "name": "Bureaucratic Tape",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "315",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "prior-malice-features",
-        "story": "",
-        "keywords": [],
         "type": "none",
         "category": "heroic",
-        "resource": null,
-        "trigger": "",
+        "resource": 3,
+        "trigger": "A devil starts its turn.",
         "distance": {
           "type": "special"
         },
-        "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": ""
         },
+        "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "@chr",
+            "formula": "",
             "characteristics": []
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6]{Alchemical Cloud}</p>",
+          "before": "<p>One devil acting this turn uses a signature ability against an adjacent creature. On a tier 3 outcome, the target of the ability has a double bane on strikes (save ends).</p>",
           "after": ""
         },
         "spend": {
           "text": "",
           "value": null
-        }
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "76",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "bureaucratic-tape",
+        "story": "",
+        "keywords": []
       },
       "effects": [],
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
+      "folder": "2tWRLk096tKY77Bv",
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -296,14 +352,144 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "RnsgvVE79ASj5Wjw",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "cKvync2UMUolwWPe",
       "sort": 0,
-      "_key": "!actors.items!ngHux8UJoI0DeVH5.RnsgvVE79ASj5Wjw"
+      "_key": "!actors.items!uZXnJpMt8p9LuSBV.cKvync2UMUolwWPe"
+    },
+    {
+      "name": "Underhanded Tactics",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "76",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "underhanded-tactics",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One or two devils can teleport to a space adjacent to one or more creatures who aren’t hidden and make a free strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "For each 2 additional Malice spent on this feature, one additional devil can teleport.",
+          "value": null
+        }
+      },
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": "2tWRLk096tKY77Bv",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "UJIrxJ5a9QdrMhPW",
+      "sort": 0,
+      "_key": "!actors.items!uZXnJpMt8p9LuSBV.UJIrxJ5a9QdrMhPW"
+    },
+    {
+      "name": "Read the Small Print",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A devil starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each enemy in the encounter is subject to a bad deal proposed by the devils. An enemy must choose between having damage weakness 5 or taking a bane on power rolls. The bad deal lasts until the end of the encounter.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "76",
+          "license": "Draw Steel Creator License",
+          "revision": 1
+        },
+        "_dsid": "read-the-small-print",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": "2tWRLk096tKY77Bv",
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "iM4sWoDNNcX2StX1",
+      "sort": 0,
+      "_key": "!actors.items!uZXnJpMt8p9LuSBV.iM4sWoDNNcX2StX1"
     }
   ],
-  "folder": "oLU8ovgRlnjQCSRA",
+  "folder": "0WyeafpcyJ7Gd58P",
   "prototypeToken": {
-    "name": "War Dog Socialite",
+    "name": "Devil Scrivener",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -400,22 +586,24 @@
     {
       "name": "With Captain",
       "img": "icons/skills/social/intimidation-impressing.webp",
-      "type": "abilityModifier",
-      "origin": "Actor.nITz0Rn1NNtviWTR",
+      "type": "base",
+      "origin": "Actor.M2K1hogQy38lX0em",
       "disabled": true,
-      "_id": "qZoU3HOcLDljGWAV",
+      "_id": "ZPRTLjM5aYLbKMjQ",
       "system": {
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        },
-        "filters": {
-          "keywords": [
-            "strike"
-          ]
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
       "duration": {
         "startTime": 0,
         "combat": null,
@@ -425,7 +613,7 @@
         "rounds": null,
         "turns": null
       },
-      "description": "<p>Gain an edge on strikes</p>",
+      "description": "",
       "tint": "#ffffff",
       "transfer": false,
       "statuses": [],
@@ -441,7 +629,7 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.effects!ngHux8UJoI0DeVH5.qZoU3HOcLDljGWAV"
+      "_key": "!actors.effects!uZXnJpMt8p9LuSBV.ZPRTLjM5aYLbKMjQ"
     }
   ],
   "ownership": {
@@ -452,14 +640,14 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758224697555,
+    "createdTime": 1758248166616,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "ngHux8UJoI0DeVH5",
+  "_id": "uZXnJpMt8p9LuSBV",
   "sort": 0,
-  "_key": "!actors!ngHux8UJoI0DeVH5"
+  "_key": "!actors!uZXnJpMt8p9LuSBV"
 }
