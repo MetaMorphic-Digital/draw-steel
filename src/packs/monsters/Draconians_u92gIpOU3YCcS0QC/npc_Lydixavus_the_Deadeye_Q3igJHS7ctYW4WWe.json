@@ -116,7 +116,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "88"
         },
         "_dsid": "scorekeeping-scales",
         "advancements": {}
@@ -133,7 +133,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -212,28 +212,6 @@
                 }
               }
             },
-            "VkbWaDEEF5E1RGuT": {
-              "_id": "VkbWaDEEF5E1RGuT",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier2": {
-                  "display": "the target takes a bane on their next strike",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "agility"
-                  }
-                },
-                "tier3": {
-                  "display": "the target has a double bane on their next strike",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "agility"
-                  }
-                }
-              }
-            },
             "G9ywpMp6ZhoZpPpQ": {
               "name": "",
               "img": null,
@@ -280,7 +258,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "88"
         },
         "_dsid": "breathsnipe",
         "story": "",
@@ -295,7 +273,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -443,7 +421,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "88"
         },
         "_dsid": "ice-lob",
         "story": "",
@@ -458,7 +436,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -508,7 +486,7 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "88"
         },
         "_dsid": "parting-gift",
         "story": "",
@@ -523,7 +501,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -573,9 +551,9 @@
           "book": "Monsters",
           "license": "Draw Steel Creator License",
           "revision": 1,
-          "page": ""
+          "page": "88"
         },
-        "_dsid": "wasn't-aiming-for-you",
+        "_dsid": "wasnt-aiming-for-you",
         "story": "",
         "resource": null,
         "trigger": "Lydixavus obtains a tier 1 outcome on their signature ability."
@@ -588,7 +566,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -683,7 +661,7 @@
           "license": "Draw Steel Creator License",
           "revision": 1
         },
-        "_dsid": "breath-weapon-2d10-+-3",
+        "_dsid": "breath-weapon",
         "story": "",
         "keywords": []
       },
@@ -694,7 +672,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sYhsflyKKJHDSS8C",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -894,10 +872,9 @@
         "source": {
           "book": "Monsters",
           "page": "85",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "scaleshatter-burst-2d10-+-3",
+        "_dsid": "scaleshatter-burst",
         "story": "",
         "keywords": [
           "area",
@@ -921,8 +898,14 @@
           "changes": [
             {
               "key": "system.damage.weaknesses.all",
-              "mode": 2,
+              "mode": 4,
               "value": "5",
+              "priority": null
+            },
+            {
+              "key": "system.combat.turns",
+              "mode": 4,
+              "value": "2",
               "priority": null
             }
           ],
@@ -945,7 +928,7 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
@@ -959,15 +942,16 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.wsFt66DHjAhjWcgR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1759975939933,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "ownership": {
         "default": 0,
-        "R75FAhxK5fADaoJF": 3
+        "TJSowGV8FgjirefO": 3
       },
       "_id": "wsFt66DHjAhjWcgR",
       "sort": 300000,
@@ -978,7 +962,7 @@
   "_id": "Q3igJHS7ctYW4WWe",
   "prototypeToken": {
     "name": "Lydixavus the Deadeye",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -995,11 +979,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
@@ -1071,7 +1055,7 @@
     "prependAdjective": false
   },
   "effects": [],
-  "sort": 125000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -1080,7 +1064,7 @@
     "compendiumSource": "Actor.Q3igJHS7ctYW4WWe",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758730573415,
