@@ -714,7 +714,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>All voiceless talkers link their minds, creating a circuit that the encounter. While this circuit is active, any psionic strike made by a voiceless talker deals an extra [[/damage 5]] damage. Additionally, when a non-minion voiceless talker takes damage, they can use a free on the encounter map. The minion takes the damage instead.</p>",
+          "before": "<p>All voiceless talkers link their minds, creating a circuit that the encounter. While this circuit is active, any psionic strike made by a voiceless talker deals an extra [[/damage 5]] damage. Additionally, when a non-minion voiceless talker takes damage, they can use a free triggered action to swap places with any voiceless talker minion on the encounter map. The minion takes the damage instead.</p>",
           "after": ""
         },
         "spend": {
@@ -837,10 +837,101 @@
             "formula": "",
             "characteristics": []
           },
-          "effects": {}
+          "effects": {
+            "ufr51n6syCjNdFuF": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "ufr51n6syCjNdFuF",
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "yLK8MzpBXyyBRFoG": {
+              "name": "",
+              "img": null,
+              "type": "applied",
+              "_id": "yLK8MzpBXyyBRFoG",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target can't treat their allies as allies (save ends)",
+                  "effects": {
+                    "pimQVRZtdUDI911o": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} the target perceives their allies as enemies (save ends)",
+                  "effects": {
+                    "WeIzrImwA15HNJCA": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "WeIzrImwA15HNJCA": {
+                      "condition": "failure",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
         },
         "effect": {
-          "before": "<p>Psionic, Ranged Maneuver</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 6 psychic]] damage; R&lt;1 the target can’t treat their allies as allies (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10 psychic]] damage; R&lt;2 the target perceives their allies as enemies (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 13 psychic]] damage; R&lt;3 the target perceives their allies as enemies (save ends) Special: This ability can’t be used by a minion.</p></td></tr></tbody></table>",
+          "before": "",
           "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
         },
         "spend": {
@@ -859,22 +950,104 @@
           "ranged"
         ]
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Stolen Memories (Tier 1)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "origin": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
+          "transfer": false,
+          "_id": "pimQVRZtdUDI911o",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target can't treat their allies as allies</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.chjWo71vjEugh9fC.pimQVRZtdUDI911o"
+        },
+        {
+          "name": "Stolen Memories (Tier 2+)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "origin": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
+          "transfer": false,
+          "_id": "WeIzrImwA15HNJCA",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target perceives their allies as enemies.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.chjWo71vjEugh9fC.WeIzrImwA15HNJCA"
+        }
+      ],
       "folder": "BRh61Jblgho2nIWC",
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1759980697058,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "ownership": {
         "default": 0,
-        "R75FAhxK5fADaoJF": 3
+        "TJSowGV8FgjirefO": 3
       },
       "_id": "chjWo71vjEugh9fC",
       "sort": 100000,
