@@ -214,7 +214,7 @@ export default base => {
     static #createPseudoDocument(event, target) {
       const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
       const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
-      const Cls = this.document.getEmbeddedPseudoDocumentCollection(documentName).documentClass;
+      const Cls = this.document.getEmbeddedCollection(documentName).documentClass;
 
       if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
         Cls.createDialog({}, { parent: this.document });

@@ -34,7 +34,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
    * @type {Record<string, typeof TypedPseudoDocument>}
    */
   static get TYPES() {
-    return Object.values(ds.CONFIG[this.metadata.documentName]).reduce((acc, { documentClass }) => {
+    return Object.values(this.documentConfig).reduce((acc, { documentClass }) => {
       if (documentClass.TYPE) acc[documentClass.TYPE] = documentClass;
       return acc;
     }, {});
@@ -47,10 +47,20 @@ export default class TypedPseudoDocument extends PseudoDocument {
 
   /* -------------------------------------------------- */
 
+  /**
+   * The object that defines this model's subtypes.
+   * @type {object}
+   */
+  static get documentConfig() {
+    return ds.CONFIG[this.metadata.documentName];
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
-    this.img ||= ds.CONFIG[this.constructor.metadata.documentName][this.type].defaultImage;
+    this.img ||= this.constructor.documentConfig[this.type].defaultImage;
   }
 
   /* -------------------------------------------------- */
@@ -81,7 +91,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   static _prepareCreateDialogContext(parent) {
 
     /** @type {FormSelectOption[]} */
-    const typeOptions = Object.entries(ds.CONFIG[this.metadata.documentName]).map(([value, { label }]) => ({ value, label }));
+    const typeOptions = Object.entries(this.documentConfig).map(([value, { label }]) => ({ value, label }));
 
     return {
       typeOptions,
@@ -95,7 +105,7 @@ export default class TypedPseudoDocument extends PseudoDocument {
   static _createDialogRenderCallback(event, dialog) {
     const typeInput = dialog.element.querySelector("[name=\"type\"]");
     const nameInput = dialog.element.querySelector("[name=\"name\"]");
-    nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label;
-    typeInput.addEventListener("change", () => nameInput.placeholder = ds.CONFIG[this.metadata.documentName][typeInput.value].label);
+    nameInput.placeholder = this.documentConfig[typeInput.value].label;
+    typeInput.addEventListener("change", () => nameInput.placeholder = this.documentConfig[typeInput.value].label);
   }
 }

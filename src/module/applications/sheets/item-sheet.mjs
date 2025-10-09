@@ -77,6 +77,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     },
     advancement: {
       template: systemPath("templates/sheets/item/advancement.hbs"),
+      scrollable: [""],
     },
     impact: {
       template: systemPath("templates/sheets/item/impact.hbs"),
@@ -191,7 +192,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     // Advancements
     const advs = {};
     /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
-    const models = this.document.getEmbeddedPseudoDocumentCollection("Advancement")[
+    const models = this.document.getEmbeddedCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
@@ -258,7 +259,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     };
 
     // Iterate over active effects, classifying them into categories
-    for (const e of this.item.effects) {
+    const effects = this.item.effects.contents.sort((a, b) => a.sort - b.sort);
+    for (const e of effects) {
       const effectContext = {
         id: e.id,
         uuid: e.uuid,
@@ -786,7 +788,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     }
 
     // Perform the sort
-    const sortUpdates = SortingHelpers.performIntegerSort(effect, {
+    const sortUpdates = foundry.utils.performIntegerSort(effect, {
       target,
       siblings,
     });
