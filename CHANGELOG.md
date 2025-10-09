@@ -32,6 +32,7 @@
   - Trolls
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
+  - Voiceless Talkers
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
