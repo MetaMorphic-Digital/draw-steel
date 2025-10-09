@@ -26,6 +26,7 @@
   - Demon Echelons 2–4
   - Devils
   - Draconians
+  - Elves (Shadow)
   - Rivals Echelons 2–4
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
