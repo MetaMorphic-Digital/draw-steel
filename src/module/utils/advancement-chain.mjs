@@ -1,8 +1,9 @@
 import { TraitAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
 
 /**
- * @import { AdvancementChain } from "../_types"
+ * @import DrawSteelItem from "../documents/item.mjs";
  * @import { BaseAdvancement } from "../data/pseudo-documents/advancements/_module.mjs";
+ * @import { AdvancementChainItemGrantLeaf } from "../_types";
  */
 
 /**
@@ -41,7 +42,11 @@ export default class AdvancementChain {
    * @yields {AdvancementChain}
    */
   *active() {
-    // eslint-disable-next-line @jsdoc/require-jsdoc
+    /**
+     * Recursive helper function.
+     * @param {AdvancementChain} node The advancement chain to iterate on.
+     * @returns {Iterable<AdvancementChain>}
+     */
     function* yielder(node) {
       yield node;
       for (const k in node.choices) {
@@ -76,21 +81,21 @@ export default class AdvancementChain {
    * @param {BaseAdvancement} root       An advancement or item with advancements.
    * @param {AdvancementChain} [parent]                         Parent chain link.
    * @param {object} [options={}]                               Additional information about this advancement chain.
-   * @param {number} [options._depth=0]                         Current tree depth.
    * @param {number} [options.start=null]                       Starting level for advancements.
    * @param {number} [options.end=1]                            Final level for advancements.
    * @returns {Promise<AdvancementChain|AdvancementChain[]>}    A promise that resolves to the chain or chain link.
    */
   static async create(root, parent = null, options = {}) {
-    const { _depth: _depth = 0, start: levelStart = null, end: levelEnd = 1 } = options;
+    const { start: levelStart = null, end: levelEnd = 1 } = options;
 
     const advancement = root;
     const nodeData = {
       advancement, parent,
-      depth: _depth,
-      isRoot: !_depth,
+      depth: (parent?.depth ?? -1) + 1,
+      isRoot: !parent,
       choices: {},
       selected: {},
+      levels: [levelStart, levelEnd],
     };
 
     const node = new this(nodeData);
@@ -100,37 +105,7 @@ export default class AdvancementChain {
         const item = await fromUuid(uuid);
         if (!item) continue;
 
-        const choice = node.choices[item.uuid] = {
-          item, node,
-          itemLink: item.toAnchor(),
-          children: {},
-        };
-
-        Object.defineProperty(choice, "isChosen", {
-          get() {
-            if (!node.isChosen) return false;
-            if (!node.advancement.isChoice) return true;
-            return node.selected[item.uuid] === true;
-          },
-        });
-
-        if (!item.supportsAdvancements) continue;
-
-        // Find any "child" advancements.
-        for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
-          const validRange = advancement.levels.some(level => {
-            if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
-            else return levelStart === null;
-          });
-          if (validRange) {
-            choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
-              _depth: _depth + 1,
-              start: levelStart,
-              end: levelEnd,
-            });
-            choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
-          }
-        }
+        node.choices[item.uuid] = await this.createItemGrantChoice(item, node);
       }
     } else if (advancement instanceof TraitAdvancement) {
       for (const trait of advancement.traitOptions) {
@@ -149,9 +124,69 @@ export default class AdvancementChain {
           },
         });
       }
+    } else if (advancement.type === "characteristic") {
+      for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
+        if (advancement.characteristics[chr] === -1) continue;
+
+        const choice = node.choices[chr] = {
+          node,
+          choice: label,
+          characteristic: chr,
+          children: {},
+        };
+
+        Object.defineProperty(choice, "isChosen", {
+          get() {
+            if (advancement.characteristics[chr] === 1) return true;
+            else return !!node.selected[chr];
+          },
+        });
+      }
     }
 
     return node;
+  }
+
+  /**
+   * Construct the choices for an item grant recursively.
+   * @param {DrawSteelItem} item
+   * @param {AdvancementChain} node
+   * @returns {Promise<AdvancementChainItemGrantLeaf>}
+   */
+  static async createItemGrantChoice(item, node) {
+    const [levelStart, levelEnd] = node.levels;
+    const choice = {
+      item, node,
+      itemLink: item.toAnchor(),
+      children: {},
+    };
+
+    Object.defineProperty(choice, "isChosen", {
+      get() {
+        if (!node.isChosen) return false;
+        if (!node.advancement.isChoice) return true;
+        return node.selected[item.uuid] === true;
+      },
+    });
+
+    if (!item.supportsAdvancements) return choice;
+
+    // Find any "child" advancements.
+    for (const advancement of item.getEmbeddedCollection("Advancement")) {
+      const validRange = advancement.levels.some(level => {
+        if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
+        else return levelStart === null;
+      });
+      if (validRange) {
+        choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
+          start: levelStart,
+          end: levelEnd,
+        });
+        choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
+      }
+    }
+
+    return choice;
   }
 
   /* -------------------------------------------------- */
@@ -165,17 +200,8 @@ export default class AdvancementChain {
    * @type {number|null}
    */
   get chooseN() {
-    switch (this.advancement.type) {
-      case "language":
-      case "skill":
-        if (!this.advancement.isChoice) return null;
-        return this.advancement.chooseN;
-      case "itemGrant":
-        if (this.advancement.chooseN === null) return null;
-        if (this.advancement.chooseN >= Object.values(this.choices).length) return null;
-        return this.advancement.chooseN;
-    }
-    return null;
+    if (!this.advancement.isChoice) return null;
+    return this.advancement.chooseN;
   }
 
   /* -------------------------------------------------- */

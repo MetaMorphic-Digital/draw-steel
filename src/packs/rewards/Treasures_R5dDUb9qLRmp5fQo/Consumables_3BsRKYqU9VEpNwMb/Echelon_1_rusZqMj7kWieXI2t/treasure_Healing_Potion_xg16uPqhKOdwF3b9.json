@@ -6,7 +6,7 @@
   "img": "icons/consumables/potions/vial-cork-red.webp",
   "system": {
     "description": {
-      "value": "<p>Keyword: potion</p><p><em>Thick and red, this liquid tastes of sour beer.</em></p><p><strong>Effect:</strong> When you drink this potion as a maneuver, you regain Stamina equal to your recovery value without spending a Recovery. [[/heal @recoveries.recoveryValue]]</p>",
+      "value": "<p><em>Thick and red, this liquid tastes of sour beer.</em></p><p><strong>Effect:</strong> When you drink this potion as a maneuver, you regain Stamina equal to your recovery value without spending a Recovery. [[/heal @recoveries.recoveryValue]]</p>",
       "director": ""
     },
     "source": {
@@ -19,7 +19,8 @@
     "category": "consumable",
     "echelon": 1,
     "keywords": [
-      "magic"
+      "magic",
+      "potion"
     ],
     "quantity": 1,
     "project": {
@@ -48,7 +49,7 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757755174216,
     "modifiedTime": null,
     "lastModifiedBy": null

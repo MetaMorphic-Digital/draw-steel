@@ -1,0 +1,215 @@
+{
+  "name": "Memory Thief",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A voiceless starts its turn.",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "target": {
+      "type": "creature",
+      "value": 1,
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {
+        "ufr51n6syCjNdFuF": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ufr51n6syCjNdFuF",
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "10",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "13",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "yLK8MzpBXyyBRFoG": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "yLK8MzpBXyyBRFoG",
+          "applied": {
+            "tier1": {
+              "effects": {
+                "pimQVRZtdUDI911o": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              },
+              "display": "{{potency}} the target can't treat their allies as allies (save ends)",
+              "potency": {
+                "characteristic": "reason"
+              }
+            },
+            "tier2": {
+              "display": "{{potency}} the target perceives their allies as enemies (save ends)",
+              "effects": {
+                "WeIzrImwA15HNJCA": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "WeIzrImwA15HNJCA": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "286",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "memory-thief",
+    "story": "",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ]
+  },
+  "effects": [
+    {
+      "name": "Stolen Memories (Tier 1)",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
+      "transfer": false,
+      "_id": "pimQVRZtdUDI911o",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The target can't treat their allies as allies</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1759980447110,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!chjWo71vjEugh9fC.pimQVRZtdUDI911o"
+    },
+    {
+      "name": "Stolen Memories (Tier 2+)",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "origin": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
+      "transfer": false,
+      "_id": "WeIzrImwA15HNJCA",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The target perceives their allies as enemies.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1759980542955,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!chjWo71vjEugh9fC.WeIzrImwA15HNJCA"
+    }
+  ],
+  "folder": "BRh61Jblgho2nIWC",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758820804883,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "chjWo71vjEugh9fC",
+  "sort": 100000,
+  "_key": "!items!chjWo71vjEugh9fC"
+}
