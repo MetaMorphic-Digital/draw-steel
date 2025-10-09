@@ -13,13 +13,13 @@
       "melee",
       "weapon"
     ],
-    "type": "main",
+    "type": "triggered",
     "category": "signature",
     "resource": null,
     "trigger": "",
     "distance": {
       "type": "melee",
-      "primary": 1,
+      "primary": 2,
       "secondary": 0,
       "tertiary": null
     },
@@ -36,12 +36,12 @@
       "effects": {}
     },
     "effect": {
-      "before": "",
-      "after": "<p>The damage is halved. If any effect of the damage has a potency effect, you decrease the potency by 1.</p>"
+      "before": "<p>You can shift 1 square. If the target is you, or if you end this shift adjacent to the target, the target takes half the damage. If the damage has any potency effect associated with it, the potency is decreased by 1.</p>",
+      "after": ""
     },
     "spend": {
-      "value": null,
-      "text": ""
+      "value": 1,
+      "text": "This ability’s distance becomes Melee 1 + your  Reason score, and you can shift up to a number of squares equal to  your Reason score instead of 1 square."
     },
     "story": "Your quick reflexes cost an enemy the precision they seek."
   },
@@ -52,9 +52,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1751141730791,
     "modifiedTime": null,
     "lastModifiedBy": null
