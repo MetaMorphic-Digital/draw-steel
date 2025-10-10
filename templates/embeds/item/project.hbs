@@ -10,7 +10,7 @@
     <dd class="characteristics">{{formattedCharacteristics}}</dd>
 
     <dt class="goal">{{systemFields.goal.label}}</dt>
-    <dd class="goal">{{system.goal}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}</dd>
+    <dd class="goal">{{ifThen system.goal system.goal (localize "DRAW_STEEL.Item.project.Varies")}} {{#if system.yield.display}}({{system.yield.display}}){{/if}}</dd>
 
     {{#if system.points}}
     <dt class="points">{{systemFields.points.label}}</dt>
