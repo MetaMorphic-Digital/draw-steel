@@ -42,7 +42,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.rollCharacteristic = new fields.SetField(setOptions());
     schema.goal = new fields.NumberField({ nullable: true, integer: true, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
-    schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk" });
+    schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk", type: "RollTable" });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
