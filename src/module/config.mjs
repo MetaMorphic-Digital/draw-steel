@@ -13,7 +13,7 @@ import { preLocalize } from "./helpers/localization.mjs";
  * @remarks "none" is reserved for cases where we want an explicit non-option *and* default fallbacks
  * @type {Record<string, {label: string; hint: string; rollKey: string}>}
  */
-export const characteristics = {
+export const characteristics = Object.seal({
   might: {
     label: "DRAW_STEEL.Actor.characteristics.might.full",
     hint: "DRAW_STEEL.Actor.characteristics.might.abbreviation",
@@ -39,7 +39,7 @@ export const characteristics = {
     hint: "DRAW_STEEL.Actor.characteristics.presence.abbreviation",
     rollKey: "P",
   },
-};
+});
 preLocalize("characteristics", { keys: ["label", "hint"] });
 
 /* -------------------------------------------------- */
@@ -1402,6 +1402,12 @@ preLocalize("PowerRollEffect", { key: "label" });
 
 /** @type {Record<string, AdvancementType>} */
 export const Advancement = {
+  characteristic: {
+    label: "TYPES.Advancement.characteristic",
+    defaultImage: "icons/svg/upgrade.svg",
+    itemTypes: new Set(["class", "title"]),
+    documentClass: pseudoDocuments.advancements.CharacteristicAdvancement,
+  },
   itemGrant: {
     label: "TYPES.Advancement.itemGrant",
     defaultImage: "icons/svg/item-bag.svg",

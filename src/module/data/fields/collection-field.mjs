@@ -1,26 +1,27 @@
-import ModelCollection from "../../utils/model-collection.mjs";
 import LazyTypedSchemaField from "./lazy-typed-schema-field.mjs";
+import ModelCollection from "../../utils/model-collection.mjs";
+import TypedPseudoDocument from "../pseudo-documents/typed-pseudo-document.mjs";
 
 /**
  * @import { DataFieldContext, DataFieldOptions } from "@common/data/_types.mjs";
- * @import PseudoDocument from "../pseudo-documents/pseudo-document.mjs";
  */
 
-const { EmbeddedDataField, TypedObjectField } = foundry.data.fields;
+const { TypedObjectField } = foundry.data.fields;
 
 /**
  * A collection that houses pseudo-documents.
  */
 export default class CollectionField extends TypedObjectField {
   /**
-   * @param {typeof PseudoDocument} model   The value type of each entry in this object.
-   * @param {DataFieldOptions} [options]    Options which configure the behavior of the field.
-   * @param {DataFieldContext} [context]    Additional context which describes the field.
+   * @param {typeof TypedPseudoDocument} model    The value type of each entry in this object.
+   * @param {DataFieldOptions} [options]          Options which configure the behavior of the field.
+   * @param {DataFieldContext} [context]          Additional context which describes the field.
    */
   constructor(model, options = {}, context = {}) {
-    let field = foundry.utils.isSubclass(model, ds.data.pseudoDocuments.TypedPseudoDocument)
-      ? new LazyTypedSchemaField(model.TYPES)
-      : new EmbeddedDataField(model);
+    if (!foundry.utils.isSubclass(model, TypedPseudoDocument)) {
+      throw new Error("A CollectionField can only be instantiated with a TypedPseudoDocument subclass.");
+    }
+    let field = new LazyTypedSchemaField(model.TYPES);
     options.validateKey ||= ((key) => foundry.data.validators.isValidId(key));
     super(field, options, context);
     this.#documentClass = model;
@@ -28,12 +29,33 @@ export default class CollectionField extends TypedObjectField {
 
   /* -------------------------------------------------- */
 
+  /** @override */
+  static hierarchical = true;
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The Collection implementation to use when initializing the collection.
+   * @type {typeof ModelCollection}
+   */
+  static get implementation() {
+    return ModelCollection;
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * The pseudo-document class.
-   * @type {typeof PseudoDocument}
+   * @type {typeof TypedPseudoDocument}
    */
   #documentClass;
-  // eslint-disable-next-line @jsdoc/require-jsdoc
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The pseudo-document class.
+   * @type {typeof TypedPseudoDocument}
+   */
   get documentClass() {
     return this.#documentClass;
   }
@@ -42,17 +64,39 @@ export default class CollectionField extends TypedObjectField {
 
   /** @inheritdoc */
   initialize(value, model, options = {}) {
-    const collection = new ModelCollection();
-    options.collection = collection;
-    const init = super.initialize(value, model, options);
-    for (const [id, model] of Object.entries(init)) {
-      if (model instanceof ds.data.pseudoDocuments.PseudoDocument) {
-        collection.set(id, model);
-      } else {
-        collection.setInvalid(model);
-      }
-    }
-    collection.documentClass = this.documentClass;
+    const name = this.documentClass.metadata.documentName;
+    const collection = model.parent.pseudoCollections[name];
+    collection.initialize(model, options);
     return collection;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @override */
+  _updateCommit(source, key, value, diff, options) {
+    let src = source[key];
+
+    // Special Cases: * -> undefined, * -> null, undefined -> *, null -> *
+    if (!src || !value) {
+      source[key] = value;
+      return;
+    }
+
+    // Reconstruct the source array, retaining object references
+    for (let [id, d] of Object.entries(diff)) {
+      if (foundry.utils.isDeletionKey(id)) {
+        if (id.startsWith("-")) {
+          delete source[key][id.slice(2)];
+          continue;
+        }
+        id = id.slice(2);
+      }
+      const prior = src[id];
+      if (prior) {
+        this.element._updateCommit(src, id, value[id], d, options);
+        src[id] = prior;
+      }
+      else src[id] = d;
+    }
   }
 }

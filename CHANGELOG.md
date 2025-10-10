@@ -24,10 +24,20 @@
 
 - New Compendium Content:
   - Demon Echelons 2–4
+  - Devils
+  - Draconians
+  - Elves (Shadow)
+  - Giants
+  - Hobgoblins
   - Rivals Echelons 2–4
+  - Trolls
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
+  - Voiceless Talkers
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+- New Advancement Type: Characteristic. (#707)
+  - Characteristic advances allow classes and titles to increase characteristics.
+  - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
@@ -44,6 +54,7 @@
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
+- Sealed the characteristics object to prevent adding or removing characteristics.
 
 ### Removed
 
@@ -75,6 +86,8 @@
     - Corrected the description of the Destructive Path feature per errata.
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+- Fixed active effects not sorting on actor and item sheets. (#1149)
+- Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 
 ## 0.8.1
 
@@ -94,6 +107,10 @@
 
 - The skill list on the character sheet is now sorted alphabetically.
 - Adjusted i18n structure for Power Roll Effects.
+
+### Removed
+
+- Removed minimum and maximums on characteristic values. (#707)
 
 ### Fixed
 

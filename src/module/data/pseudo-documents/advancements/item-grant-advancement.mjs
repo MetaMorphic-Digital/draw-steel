@@ -75,13 +75,6 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  get levels() {
-    return [this.requirements.level];
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
   prepareBaseData() {
     super.prepareBaseData();
     // Item grants that are only granting a single item should have a matching icon
@@ -110,7 +103,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       if ((advancementFlags?.advancementId === this.id) && (advancementFlags.parentId === this.document.id)) {
         items.add(item);
         if (item.hasGrantedItems) {
-          for (const advancement of item.getEmbeddedPseudoDocumentCollection("Advancement")) {
+          for (const advancement of item.getEmbeddedCollection("Advancement")) {
             for (const a of advancement.grantedItemsChain?.() ?? []) items.add(a);
           }
         }

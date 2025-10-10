@@ -101,7 +101,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    * @type {number[]}
    */
   get levels() {
-    return [];
+    return [this.requirements.level];
   }
 
   /* -------------------------------------------------- */

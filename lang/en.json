@@ -29,6 +29,27 @@
           }
         }
       },
+      "CHARACTERISTIC": {
+        "FIELDS": {
+          "guaranteed": {
+            "label": "Guaranteed Increases",
+            "hint": "Increase each of these scores by 1."
+          },
+          "choices": {
+            "label": "Increase Choices",
+            "hint": "Increase one of these scores by 1. Overlap with guaranteed will be ignored."
+          },
+          "max": {
+            "label": "Score Maximum"
+          }
+        },
+        "Options": {
+          "Guaranteed": "Guaranteed",
+          "Choice": "Choice",
+          "Never": "Never"
+        },
+        "CharacteristicHint": "All guaranteed increases will be given, and the advancement will provide an option between the choices."
+      },
       "ITEM_GRANT": {
         "FIELDS": {
           "chooseN": {
@@ -98,13 +119,18 @@
       "ChainConfiguration": {
         "levelUpTitle": "Level Up: {name}",
         "createWithAdvancementsTitle": "Create {name} with Advancements",
-        "reconfigureTitle": "Reconfigure Advancement"
+        "reconfigureTitle": "Reconfigure Advancement",
+        "CharacteristicIncrease": "+1 {chr}"
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
         "ChooseN": "Choose {n}",
         "ChooseNull": "Choose Any",
         "DropHere": "Drop other items here.",
+        "Characteristic": {
+          "label": "Characteristic",
+          "hint": "Increase choice by 1 to a maximum of {n}."
+        },
         "Error": {
           "FilterFail": "Dropped Item did not conform to requirements.",
           "MustItem": "You can only drop items into an item grant."
@@ -1744,6 +1770,7 @@
       "npc": "NPC"
     },
     "Advancement": {
+      "characteristic": "Characteristic Increase",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"
