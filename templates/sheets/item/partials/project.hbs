@@ -9,6 +9,7 @@
 {{#if document.isOwned}}
 {{formGroup systemFields.points value=system.points}}
 {{/if}}
+{{formGroup systemFields.events value=system.events}}
 <fieldset>
   <legend>{{systemFields.yield.label}}</legend>
   {{formGroup systemFields.yield.fields.item value=system.yield.item}}

@@ -42,6 +42,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.rollCharacteristic = new fields.SetField(setOptions());
     schema.goal = requiredInteger({ initial: 1, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
+    schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk" });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
@@ -350,5 +351,17 @@ export default class ProjectModel extends BaseItemModel {
     }
 
     return eventsOccured;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Draw an event from the provided events roll table.
+   */
+  async drawEventsTable() {
+    const table = await fromUuid(this.events);
+    if (!table) return void ui.notifications.error("DRAW_STEEL.Item.project.Events.NoTable", { localize: true });
+
+    table.draw();
   }
 }
