@@ -343,7 +343,16 @@
           "level": 2
         },
         "_id": "pbujOq8KUhenV5t2",
-        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "chooseN": 1
       },
       "xMJS8JqsP6dYGqlH": {
         "name": "Look On My Work and Despair",
@@ -353,7 +362,7 @@
           "level": 3
         },
         "_id": "xMJS8JqsP6dYGqlH",
-        "description": "<p>you gain the following feature.</p>",
+        "description": "<p>You gain the following feature.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.CDq4lOvXJyqB2BMd"
@@ -431,6 +440,72 @@
           "presence": 1
         },
         "max": 5
+      },
+      "4EjKHOhmL8Q1FoC7": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "4EjKHOhmL8Q1FoC7",
+        "additional": {
+          "type": "perk"
+        },
+        "chooseN": 1,
+        "description": "<p>You gain one perk of your choice.</p>"
+      },
+      "uwAppNdsFLP4Jrwp": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "uwAppNdsFLP4Jrwp",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
+      },
+      "PIMxp8BISYUZ0CJf": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "PIMxp8BISYUZ0CJf",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "a3Mq5cSwgrerV4TM": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "a3Mq5cSwgrerV4TM",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
       }
     },
     "level": 0,
