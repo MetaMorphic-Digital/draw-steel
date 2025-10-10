@@ -5,7 +5,7 @@
 {{formGroup systemFields.prerequisites value=system.prerequisites}}
 {{formGroup systemFields.projectSource value=system.projectSource}}
 {{formGroup systemFields.rollCharacteristic value=system.rollCharacteristic options=characteristics}}
-{{formGroup systemFields.goal value=system.goal}}
+{{formGroup systemFields.goal value=system.goal placeholder=(localize "DRAW_STEEL.Item.project.Varies")}}
 {{#if document.isOwned}}
 {{formGroup systemFields.points value=system.points}}
 {{/if}}
