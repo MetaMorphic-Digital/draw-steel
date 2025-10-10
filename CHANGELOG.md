@@ -39,6 +39,7 @@
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 
