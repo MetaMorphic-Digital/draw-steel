@@ -21,7 +21,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       })),
       chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
       additional: new SchemaField({
-        type: new StringField({ blank: false }),
+        type: new StringField({ required: true }),
         perkType: new SetField(setOptions()),
       }),
     });
