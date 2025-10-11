@@ -42,24 +42,28 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
           action: "configureToken",
           icon: "fa-regular fa-circle-user",
           label: "DOCUMENT.Token",
+          visible: this.#canConfigureToken,
           ownership: "OWNER",
         },
         {
           action: "configurePrototypeToken",
           icon: "fa-solid fa-circle-user",
           label: "TOKEN.TitlePrototype",
+          visible: this.#canConfigurePrototype,
           ownership: "OWNER",
         },
         {
           action: "showPortraitArtwork",
           icon: "fa-solid fa-image",
           label: "SIDEBAR.CharArt",
+          visible: this.#canViewCharacterArt,
           ownership: "OWNER",
         },
         {
           action: "showTokenArtwork",
           icon: "fa-solid fa-image",
           label: "SIDEBAR.TokenArt",
+          visible: this.#canViewTokenArt,
           ownership: "OWNER",
         },
       ],
@@ -767,6 +771,48 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Include "Prototype Token" in the window controls.
+   * @this DrawSteelActorSheet
+   */
+  static #canConfigurePrototype() {
+    return this.isEditable && !this.actor.isToken;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Include "Token" in the window controls.
+   * @this DrawSteelActorSheet
+   */
+  static #canConfigureToken() {
+    return this.isEditable && this.actor.isToken;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Include "View Character Artwork" in the window controls.
+   * @this DrawSteelActorSheet
+   */
+  static #canViewCharacterArt() {
+    return this.actor.img !== CONST.DEFAULT_TOKEN;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Include "View Token Artwork" in the window controls.
+   * @this DrawSteelActorSheet
+   */
+  static #canViewTokenArt() {
+    const prototypeToken = this.actor.prototypeToken;
+    const tex = prototypeToken.texture.src;
+    return (!prototypeToken.randomImg && ![null, undefined, CONST.DEFAULT_TOKEN].includes(tex));
+  }
+
   /* -------------------------------------------------- */
 
   /**
