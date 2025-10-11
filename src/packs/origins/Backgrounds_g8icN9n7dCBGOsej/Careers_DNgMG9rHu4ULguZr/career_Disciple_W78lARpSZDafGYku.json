@@ -48,14 +48,21 @@
         }
       },
       "rUEv1cZVO8FQYAng": {
-        "name": "One Supernatural Perk",
-        "img": null,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
         "_id": "rUEv1cZVO8FQYAng",
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>One supernatural perk (<em>Quick Build:</em> Ritualist.)</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "supernatural"
+          ]
+        }
       }
     },
     "projectPoints": 240,
@@ -72,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754495048112,
     "modifiedTime": null,
     "lastModifiedBy": null
