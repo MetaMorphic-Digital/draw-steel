@@ -357,14 +357,18 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   async _onDrop(event) {
     const data = ux.TextEditor.implementation.getDragEventData(event);
     const allowed = Hooks.call(`drop${this.document.documentName}SheetData`, this.document, this, data);
-    if (allowed === false) return;
+    if (allowed === false) return false;
 
     // Dropped Documents
     const documentClass = foundry.utils.getDocumentClass(data.type);
     if (documentClass) {
       const document = await documentClass.fromDropData(data);
-      await this._onDropDocument(event, document);
+      return this._onDropDocument(event, document);
     }
+
+    // TODO: Add drag and drop for PseudoDocuments
+
+    return data;
   }
 
   /* -------------------------------------------- */
