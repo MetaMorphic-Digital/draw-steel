@@ -13,7 +13,7 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
-const { sheets, ux } = foundry.applications;
+const { sheets } = foundry.applications;
 
 /**
  * AppV2-based sheet that each actor subtype is expected to be extended for each actor subtype.
