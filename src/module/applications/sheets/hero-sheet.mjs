@@ -478,8 +478,6 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       return item.system.applyAdvancements({ actor: this.actor, levels: { end: this.actor.system.level } });
     }
 
-    // Fixed default implementation, see https://github.com/foundryvtt/foundryvtt/issues/13166
-
     const keepId = !this.actor.items.has(item.id);
     const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
     const result = await Item.implementation.create(itemData, { parent: this.actor, keepId });
