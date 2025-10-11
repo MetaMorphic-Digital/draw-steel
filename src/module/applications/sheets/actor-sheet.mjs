@@ -30,10 +30,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
       // We're not extending ActorSheetV2 because we ultimately don't want to inherit most of the framework Foundry defaults to
       // Because these actions are all hard private, the best place to access them is via static DEFAULT_OPTIONS
       ...sheets.ActorSheet.DEFAULT_OPTIONS.actions,
-      toggleMode: this.#toggleMode,
-      viewDoc: this.#viewDoc,
-      createDoc: this.#createDoc,
-      deleteDoc: this.#deleteDoc,
       toggleStatus: this.#toggleStatus,
       toggleEffect: this.#toggleEffect,
       roll: this.#onRoll,
@@ -771,85 +767,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
-  /* -------------------------------------------------- */
-
-  /**
-   * Toggle Edit vs. Play mode.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleMode(event, target) {
-    if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable");
-      return;
-    }
-    this._mode = this.isPlayMode ? DrawSteelActorSheet.MODES.EDIT : DrawSteelActorSheet.MODES.PLAY;
-    this.render();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Renders an embedded document's sheet in play or edit mode based on the actor sheet view mode.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #viewDoc(event, target) {
-    const doc = this._getEmbeddedDocument(target);
-    if (!doc) {
-      console.error("Could not find document");
-      return;
-    }
-    await doc.sheet.render({ force: true, mode: this._mode });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handles item deletion.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #deleteDoc(event, target) {
-    const doc = this._getEmbeddedDocument(target);
-    if (doc.hasGrantedItems) await doc.advancementDeletionPrompt();
-    else await doc.deleteDialog();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
-   *
-   * @this DrawSteelActorSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #createDoc(event, target) {
-    const docCls = getDocumentClass(target.dataset.documentClass);
-    const docData = {
-      name: docCls.defaultName({ type: target.dataset.type, parent: this.actor }),
-    };
-    // Loop through the dataset and add it to our docData
-    for (const [dataKey, value] of Object.entries(target.dataset)) {
-      // These data attributes are reserved for the action handling
-      if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
-      // Nested properties use dot notation like `data-system.prop`
-      foundry.utils.setProperty(docData, dataKey, value);
-    }
-
-    await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
-  }
-
   /* -------------------------------------------------- */
 
   /**

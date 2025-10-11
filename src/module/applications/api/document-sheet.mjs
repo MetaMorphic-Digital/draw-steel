@@ -9,6 +9,7 @@ const { api, ux } = foundry.applications;
 
 /**
  * Augments a Document Sheet with Draw-Steel specific behavior.
+ * This includes drag and drop, play/edit mode, and PseudoDocument support.
  */
 export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.DocumentSheet) {
   /** @inheritdoc */
@@ -22,6 +23,10 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       resizable: true,
     },
     actions: {
+      toggleMode: DSDocumentSheet.#toggleMode,
+      viewDoc: DSDocumentSheet.#viewDoc,
+      createDoc: DSDocumentSheet.#createDoc,
+      deleteDoc: DSDocumentSheet.#deleteDoc,
       createPseudoDocument: DSDocumentSheet.#createPseudoDocument,
       deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
       renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
@@ -129,6 +134,86 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       config: ds.CONFIG,
     });
     return context;
+  }
+
+  /* -------------------------------------------------- */
+  /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Toggle Edit vs. Play mode.
+   *
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #toggleMode(event, target) {
+    if (!this.isEditable) {
+      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      return;
+    }
+    await this.render({ mode: this.isPlayMode ? DSDocumentSheet.MODES.EDIT : DSDocumentSheet.MODES.PLAY });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Renders an embedded document's sheet in play or edit mode based on the document sheet view mode.
+   *
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @protected
+   */
+  static async #viewDoc(event, target) {
+    const doc = this._getEmbeddedDocument(target);
+    if (!doc) {
+      console.error("Could not find document");
+      return;
+    }
+    await doc.sheet.render({ force: true, mode: this._mode });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handles document deletion.
+   *
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @protected
+   */
+  static async #deleteDoc(event, target) {
+    const doc = this._getEmbeddedDocument(target);
+    if (doc.hasGrantedItems) await doc.advancementDeletionPrompt();
+    else await doc.deleteDialog();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handle creating a new embedded document using initial data defined in the HTML dataset.
+   *
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @private
+   */
+  static async #createDoc(event, target) {
+    const docCls = getDocumentClass(target.dataset.documentClass);
+    const docData = {
+      name: docCls.defaultName({ type: target.dataset.type, parent: this.item }),
+    };
+    // Loop through the dataset and add it to our docData
+    for (const [dataKey, value] of Object.entries(target.dataset)) {
+      // These data attributes are reserved for the action handling
+      if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
+      // Nested properties use dot notation like `data-system.prop`
+      foundry.utils.setProperty(docData, dataKey, value);
+    }
+
+    await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
   }
 
   /* -------------------------------------------------- */

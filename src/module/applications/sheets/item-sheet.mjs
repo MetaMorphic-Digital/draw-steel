@@ -24,13 +24,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       width: 580,
     },
     actions: {
-      toggleMode: this.#toggleMode,
       showImage: this.#showImage,
       updateSource: this.#updateSource,
       editHTML: this.#editHTML,
-      viewDoc: this.#viewEffect,
-      createDoc: this.#createEffect,
-      deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
@@ -427,25 +423,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Toggle Edit vs. Play mode.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleMode(event, target) {
-    if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable");
-      return;
-    }
-    this._mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
-    if (this.isPlayMode && this.#editor) await this.#saveEditor();
-    this.render();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Display the item image.
    *
    * @this DrawSteelItemSheet
@@ -529,60 +506,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         }),
       },
     });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Renders an embedded document's sheet.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #viewEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    effect.sheet.render(true);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handles item deletion.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #deleteEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.deleteDialog();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #createEffect(event, target) {
-    const aeCls = getDocumentClass("ActiveEffect");
-    const effectData = {
-      name: aeCls.defaultName({ type: target.dataset.type, parent: this.item }),
-    };
-    for (const [dataKey, value] of Object.entries(target.dataset)) {
-      if (["action", "documentClass"].includes(dataKey)) continue;
-      // Nested properties require dot notation in the HTML, e.g. anything with `system`
-      foundry.utils.setProperty(effectData, dataKey, value);
-    }
-
-    await aeCls.create(effectData, { parent: this.item });
   }
 
   /* -------------------------------------------------- */
