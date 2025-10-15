@@ -1,6 +1,7 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
 
 /**
+ * @import { DragDrop } from "@client/applications/ux/_module.mjs";
  * @import { Document } from "@common/abstract/_module.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem } from "../../documents/_module.mjs";
  */
@@ -39,8 +40,8 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Available sheet modes.
-     */
+   * Available sheet modes.
+   */
   static MODES = Object.freeze({
     PLAY: 1,
     EDIT: 2,
@@ -49,18 +50,18 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * The mode the sheet is currently in.
-     * @type {typeof DSDocumentSheet.MODES[keyof typeof DSDocumentSheet.MODES]}
-     * @protected
-     */
+   * The mode the sheet is currently in.
+   * @type {typeof DSDocumentSheet.MODES[keyof typeof DSDocumentSheet.MODES]}
+   * @protected
+   */
   _mode = DSDocumentSheet.MODES.PLAY;
 
   /* -------------------------------------------------- */
 
   /**
-     * Is this sheet in Play Mode?
-     * @returns {boolean}
-     */
+   * Is this sheet in Play Mode?
+   * @returns {boolean}
+   */
   get isPlayMode() {
     return this._mode === DSDocumentSheet.MODES.PLAY;
   }
@@ -68,9 +69,9 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Is this sheet in Edit Mode?
-     * @returns {boolean}
-     */
+   * Is this sheet in Edit Mode?
+   * @returns {boolean}
+   */
   get isEditMode() {
     return this._mode === DSDocumentSheet.MODES.EDIT;
   }
@@ -78,9 +79,9 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * A set of the currently expanded document uuids.
-     * @type {Set<string>}
-     */
+   * A set of the currently expanded document uuids.
+   * @type {Set<string>}
+   */
   _expandedDocumentDescriptions = new Set();
 
   /* -------------------------------------------------- */
@@ -136,8 +137,14 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     return context;
   }
 
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    this.#dragDrop.forEach((d) => d.bind(this.element));
+  }
+
   /* -------------------------------------------------- */
-  /*   Actions                                          */
+  /*   Actions                                        */
   /* -------------------------------------------------- */
 
   /**
@@ -203,7 +210,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   static async #createDoc(event, target) {
     const docCls = getDocumentClass(target.dataset.documentClass);
     const docData = {
-      name: docCls.defaultName({ type: target.dataset.type, parent: this.item }),
+      name: docCls.defaultName({ type: target.dataset.type, parent: this.document }),
     };
     // Loop through the dataset and add it to our docData
     for (const [dataKey, value] of Object.entries(target.dataset)) {
@@ -213,19 +220,19 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       foundry.utils.setProperty(docData, dataKey, value);
     }
 
-    await docCls.create(docData, { parent: this.actor, renderSheet: target.dataset.renderSheet });
+    await docCls.create(docData, { parent: this.document, renderSheet: target.dataset.renderSheet });
   }
 
   /* -------------------------------------------------- */
-  /*   Helper Functions                                 */
+  /*   Helper Functions                               */
   /* -------------------------------------------------- */
 
   /**
-     * Fetches the embedded document representing the containing HTML element.
-     *
-     * @param {HTMLElement} target    The element subject to search.
-     * @returns {Document} The embedded document.
-     */
+   * Fetches the embedded document representing the containing HTML element.
+   *
+   * @param {HTMLElement} target    The element subject to search.
+   * @returns {Document} The embedded document.
+   */
   _getEmbeddedDocument(target) {
     const documentUuid = target.closest("[data-document-uuid]").dataset.documentUuid;
 
@@ -243,12 +250,12 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Toggle the document embed between visible and hidden.
-     * @this DSDocumentSheet
-     * @param {PointerEvent} event   The originating click event.
-     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-     * @protected
-     */
+   * Toggle the document embed between visible and hidden.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   * @protected
+   */
   static async #toggleDocumentDescription(event, target) {
     const parentElement = target.closest(".expandable-document");
     const toggleIcon = parentElement.querySelector("a[data-action=\"toggleDocumentDescription\"]");
@@ -276,10 +283,10 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Helper method to retrieve an embedded pseudo-document.
-     * @param {HTMLElement} element   The element with relevant data.
-     * @returns {ds.data.pseudoDocuments.PseudoDocument}
-     */
+   * Helper method to retrieve an embedded pseudo-document.
+   * @param {HTMLElement} element   The element with relevant data.
+   * @returns {ds.data.pseudoDocuments.PseudoDocument}
+   */
   _getPseudoDocument(element) {
     const documentName = element.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
     const id = element.closest("[data-pseudo-id]").dataset.pseudoId;
@@ -289,11 +296,11 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Create a pseudo-document.
-     * @this {DSDocumentSheet}
-     * @param {PointerEvent} event    The initiating click event.
-     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-     */
+   * Create a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
   static #createPseudoDocument(event, target) {
     const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
     const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
@@ -309,11 +316,11 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Delete a pseudo-document.
-     * @this {DSDocumentSheet}
-     * @param {PointerEvent} event    The initiating click event.
-     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-     */
+   * Delete a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
   static #deletePseudoDocument(event, target) {
     const doc = this._getPseudoDocument(target);
     doc.delete();
@@ -322,24 +329,24 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Render the sheet of a pseudo-document.
-     * @this {DSDocumentSheet}
-     * @param {PointerEvent} event    The initiating click event.
-     * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-     */
+   * Render the sheet of a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
   static #renderPseudoDocumentSheet(event, target) {
     const doc = this._getPseudoDocument(target);
     doc.sheet.render({ force: true });
   }
 
   /* -------------------------------------------------- */
-  /*   Drag and Drop                                    */
+  /*   Drag and Drop                                  */
   /* -------------------------------------------------- */
 
   /**
-     * Returns an array of DragDrop instances.
-     * @type {DragDrop[]}
-     */
+   * Returns an array of DragDrop instances.
+   * @type {DragDrop[]}
+   */
   get dragDrop() {
     return this.#dragDrop;
   }
@@ -347,10 +354,10 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Create drag-and-drop workflow handlers for this Application.
-     * @returns {DragDrop[]}     An array of DragDrop handlers.
-     * @private
-     */
+   * Create drag-and-drop workflow handlers for this Application.
+   * @returns {DragDrop[]}     An array of DragDrop handlers.
+   * @private
+   */
   #createDragDropHandlers() {
     return this.options.dragDrop.map((d) => {
       d.permissions = {
@@ -375,23 +382,23 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
-     * Define whether a user is able to begin a dragstart workflow for a given drag selector.
-     * @param {string} selector       The candidate HTML selector for dragging.
-     * @returns {boolean}             Can the current user drag this selector?
-     * @protected
-     */
+   * Define whether a user is able to begin a dragstart workflow for a given drag selector.
+   * @param {string} selector       The candidate HTML selector for dragging.
+   * @returns {boolean}             Can the current user drag this selector?
+   * @protected
+   */
   _canDragStart(selector) {
-    return this.isEditable;
+    return true;
   }
 
   /* -------------------------------------------- */
 
   /**
-     * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
-     * @param {string} selector       The candidate HTML selector for the drop target.
-     * @returns {boolean}             Can the current user drop on this selector?
-     * @protected
-     */
+   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
+   * @param {string} selector       The candidate HTML selector for the drop target.
+   * @returns {boolean}             Can the current user drop on this selector?
+   * @protected
+   */
   _canDragDrop(selector) {
     return this.isEditable;
   }
@@ -440,6 +447,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * @protected
    */
   async _onDrop(event) {
+    if (!this.isEditable) return;
     const data = ux.TextEditor.implementation.getDragEventData(event);
     const allowed = Hooks.call(`drop${this.document.documentName}SheetData`, this.document, this, data);
     if (allowed === false) return false;
@@ -460,9 +468,9 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
 
   /**
    * Handle a dropped document on the Document Sheet.
-   * @template {foundry.abstract.Document} TDocument
-   * @param {DragEvent} event         The initiating drop event.
-   * @param {TDocument} document       The resolved Document class.
+   * @template {Document} TDocument
+   * @param {DragEvent} event           The initiating drop event.
+   * @param {TDocument} document        The resolved Document class.
    * @returns {Promise<TDocument|null>} A Document of the same type as the dropped one in case of a successful result,
    *                                    or null in case of failure or no action being taken.
    * @protected
@@ -482,42 +490,55 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     }
   }
 
+  /* -------------------------------------------- */
+
   /**
    * Handle a dropped Active Effect.
    * @param {DragEvent} event       The initiating drop event.
    * @param {DrawSteelActiveEffect} effect   The dropped ActiveEffect document.
+   * @returns {Promise<DrawSteelActiveEffect|null>} A Promise resolving to the dropped ActiveEffect (if sorting), a newly created ActiveEffect,
+   *                                         or a nullish value in case of failure or no action being taken.
    * @protected
    */
   async _onDropActiveEffect(event, effect) {
     return null;
   }
 
+  /* -------------------------------------------- */
+
   /**
    * Handle a dropped Actor.
    * @param {DragEvent} event       The initiating drop event.
-   * @param {DrawSteelActor} actor   The dropped Actor document.
+   * @param {DrawSteelActor} actor  The dropped Actor document.
+   * @returns {Promise<DrawSteelActor|null>} A Promise resolving to the dropped Actor (if sorting), a newly created Actor,
+   *                                         or a nullish value in case of failure or no action being taken.
    * @protected
    */
   async _onDropActor(event, actor) {
     return null;
   }
 
+  /* -------------------------------------------- */
+
   /**
    * Handle a dropped Item.
    * @param {DragEvent} event     The initiating drop event.
-   * @param {DrawSteelItem} item           The dropped Item document.
-   * @returns {Promise<DrawSteelItem|null|undefined>} A Promise resolving to the dropped Item (if sorting), a newly created Item,
+   * @param {DrawSteelItem} item  The dropped Item document.
+   * @returns {Promise<DrawSteelItem|null>} A Promise resolving to the dropped Item (if sorting), a newly created Item,
    *                                         or a nullish value in case of failure or no action being taken.
    * @protected
    */
   async _onDropItem(event, item) {
     return null;
   }
+
+  /* -------------------------------------------- */
+
   /**
    * Handle a dropped Folder.
-   * @param {DragEvent} event     The initiating drop event.
-   * @param {foundry.documents.Folder} folder       The dropped Folder document.
-   * @returns {Promise<foundry.documents.Folder|null|undefined>} A Promise resolving to the dropped Folder indicate success, or a nullish
+   * @param {DragEvent} event                   The initiating drop event.
+   * @param {foundry.documents.Folder} folder   The dropped Folder document.
+   * @returns {Promise<foundry.documents.Folder|null>} A Promise resolving to the dropped Folder indicate success, or a nullish
    *                                           value to indicate failure or no action being taken.
    * @protected
    */

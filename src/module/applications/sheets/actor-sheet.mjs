@@ -627,7 +627,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           await item.update({ "system.damageDisplay": "melee" });
-          await this.render();
         },
       },
       {
@@ -640,7 +639,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
           await item.update({ "system.damageDisplay": "ranged" });
-          await this.render();
         },
       },
       // Active Effect options
@@ -765,7 +763,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.dragDrop.forEach((d) => d.bind(this.element));
     this.#disableOverrides();
   }
 

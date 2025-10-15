@@ -377,7 +377,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.dragDrop.forEach((d) => d.bind(this.element));
 
     // Bubble editor active class state to containing formGroup
     /** @type {Array<HTMLButtonElement>} */
