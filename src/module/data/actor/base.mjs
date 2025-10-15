@@ -126,8 +126,13 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       },
     });
 
-    // Teleport speeds are unaffected by conditions and effects
-    this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
+    Object.assign(this.movement, {
+      // Teleport speeds are unaffected by conditions and effects
+      teleport: this.movement.types.has("teleport") ? this.movement.value : null,
+      // Kit bonus is added in derived data, which means multipliers need to happen after
+      // Can consider removing in v14 after phases are introduced
+      multiplier: 1,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -143,6 +148,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
+
+    this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
 
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
