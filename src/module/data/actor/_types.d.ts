@@ -121,10 +121,14 @@ declare module "./npc.mjs" {
     monster: {
       freeStrike: number;
       keywords: Set<string>;
+      keywordList: string;
       level: number;
       ev: number;
+      evLabel: number;
       role: string;
+      roleLabel: string;
       organization: string;
+      organizationLabel: string;
     }
   }
 }

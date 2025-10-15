@@ -92,34 +92,6 @@ export default class NPCModel extends BaseActorModel {
 
   /* -------------------------------------------------- */
 
-  /**
-   * The formatted text strings for monster properties.
-   * @returns {Record<"keywords" | "organization" | "role" | "ev", string>}
-   */
-  get formattedLabels() {
-    const labels = {};
-    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
-
-    const monsterKeywords = ds.CONFIG.monsters.keywords;
-    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
-    labels.keywords = keywordFormatter.format(keywordList);
-
-    const organizations = ds.CONFIG.monsters.organizations;
-    labels.organization = organizations[this.monster.organization]?.label ?? "";
-
-    const roles = ds.CONFIG.monsters.roles;
-    labels.role = roles[this.monster.role]?.label ?? "";
-
-    const data = { value: this.monster.ev };
-    labels.ev = this.isMinion ?
-      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data) :
-      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
-
-    return labels;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
@@ -148,6 +120,23 @@ export default class NPCModel extends BaseActorModel {
   prepareDerivedData() {
     super.prepareDerivedData();
     this.source.prepareData();
+
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
+    this.monster.keywordList = keywordFormatter.format(keywordList);
+
+    const organizations = ds.CONFIG.monsters.organizations;
+    this.monster.organizationLabel = organizations[this.monster.organization]?.label ?? "";
+
+    const roles = ds.CONFIG.monsters.roles;
+    this.monster.roleLabel = roles[this.monster.role]?.label ?? "";
+
+    const data = { value: this.monster.ev };
+    this.monster.evLabel = this.isMinion ?
+      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data) :
+      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
   /* -------------------------------------------------- */
