@@ -34,7 +34,7 @@ export default class KitModel extends AdvancementModel {
     const schema = super.defineSchema();
 
     schema.equipment = new fields.SchemaField({
-      armor: new fields.StringField({ required: true, blank: true }),
+      armor: new fields.StringField({ required: true }),
       weapon: new fields.SetField(setOptions()),
       shield: new fields.BooleanField(),
     });
