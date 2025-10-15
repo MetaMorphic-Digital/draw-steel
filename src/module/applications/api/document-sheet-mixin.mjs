@@ -178,7 +178,7 @@ export default base => {
         // Only generate the embed HTML once.
         if (!embedContainer.innerHTML.trim()) {
           const document = this._getEmbeddedDocument(parentElement);
-          const embed = await document?.system?.toEmbed({});
+          const embed = await document?.system?.toEmbed({ includeName: false });
           if (embed) embedContainer.innerHTML = embed.outerHTML;
         }
         this._expandedDocumentDescriptions.add(documentUuid);

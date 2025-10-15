@@ -213,7 +213,16 @@
           "level": 2
         },
         "_id": "ypbZTcMPbIMvHBh4",
-        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
       },
       "o9nuiB0R6xyDLyeq": {
         "name": "7 Focus Ability",
@@ -239,6 +248,119 @@
             "uuid": "Compendium.draw-steel.abilities.Item.LK3bFBBEUL44o7FG"
           }
         ]
+      },
+      "xNHyFFc7jN1Stbxe": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "xNHyFFc7jN1Stbxe",
+        "description": "<p>Your Might and Reason scores each increase to 3.</p>",
+        "characteristics": {
+          "might": 1,
+          "reason": 1
+        }
+      },
+      "mbh82wJVgbnvv8or": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "mbh82wJVgbnvv8or",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        }
+      },
+      "zYEInq4FXtwupYWN": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "zYEInq4FXtwupYWN",
+        "description": "<p>Your Might and Reason scores each increase to 5.</p>",
+        "characteristics": {
+          "might": 1,
+          "reason": 1
+        },
+        "max": 5
+      },
+      "tbCrwC96tQ8SDe4N": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "tbCrwC96tQ8SDe4N",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "6HohsaQF3JEgjZUJ": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "6HohsaQF3JEgjZUJ",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
+      },
+      "L9f2tZP6FyF3Hal2": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "L9f2tZP6FyF3Hal2",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "IxyX5vyAOE0dJNGL": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "IxyX5vyAOE0dJNGL",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
       }
     },
     "level": 0,
@@ -268,9 +390,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1751140107957,
     "modifiedTime": null,
     "lastModifiedBy": null

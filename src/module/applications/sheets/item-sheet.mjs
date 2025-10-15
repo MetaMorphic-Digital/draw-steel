@@ -70,6 +70,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     },
     description: {
       template: systemPath("templates/sheets/item/description.hbs"),
+      scrollable: [""],
     },
     details: {
       template: systemPath("templates/sheets/item/details.hbs"),

@@ -166,11 +166,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       if (isSlowed && (this.movement.value > this.statuses.slowed.speed)) this.movement.value = this.statuses.slowed.speed;
       if (isGrabbedOrRestrained) this.movement.value = 0;
     }
-
-    // prepare derived item data that relies on derived actor values (i.e. ability potencies)
-    for (const item of this.parent.items) {
-      item.system.preparePostActorPrepData();
-    }
   }
 
   /* -------------------------------------------------- */

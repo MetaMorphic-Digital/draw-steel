@@ -252,7 +252,16 @@
           "level": 2
         },
         "_id": "RQml4NvsZOnJFzBo",
-        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
       },
       "QFnpzyV4alu4UoZ7": {
         "name": "Scan",
@@ -292,6 +301,119 @@
             "uuid": "Compendium.draw-steel.abilities.Item.vIWdPG8WnnCpQ5b2"
           }
         ]
+      },
+      "KNWCVeiFDdL5h6JE": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "KNWCVeiFDdL5h6JE",
+        "description": "<p>Your Reason and Presence scores each increase to 3.</p>",
+        "characteristics": {
+          "reason": 1,
+          "presence": 1
+        }
+      },
+      "VAwZ604FHDBIPGKd": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "VAwZ604FHDBIPGKd",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "max": 4
+      },
+      "yy1WxHORg4I5YV8O": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "yy1WxHORg4I5YV8O",
+        "description": "<p>Your Reason and Presence scores each increase to 5.</p>",
+        "characteristics": {
+          "reason": 1,
+          "presence": 1
+        },
+        "max": 5
+      },
+      "itA8YQrgke8oRZM8": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "itA8YQrgke8oRZM8",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "HGsr3NQVzl5X6rre": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "HGsr3NQVzl5X6rre",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
+      },
+      "Da1s9i5smJ4WdeCA": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "Da1s9i5smJ4WdeCA",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "OhKvqTBa5ua50VHb": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "OhKvqTBa5ua50VHb",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
       }
     },
     "level": 0,
@@ -321,9 +443,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754708515987,
     "modifiedTime": null,
     "lastModifiedBy": null

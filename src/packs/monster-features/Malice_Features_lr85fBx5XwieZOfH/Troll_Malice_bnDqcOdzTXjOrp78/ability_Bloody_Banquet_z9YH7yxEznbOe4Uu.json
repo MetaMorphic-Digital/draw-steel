@@ -1,0 +1,62 @@
+{
+  "name": "Bloody Banquet",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A troll starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each winded troll in the encounter disgorges the contents of their stomach onto the ground around them, creating a 1 burst of foul vomitus that lasts until the end of the encounter. Each non-troll turn there takes [[/damage 5 acid]] damage. Each troll in the area has a double edge on power rolls.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "254",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "bloody-banquet",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "bnDqcOdzTXjOrp78",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758816471080,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "z9YH7yxEznbOe4Uu",
+  "sort": 200000,
+  "_key": "!items!z9YH7yxEznbOe4Uu"
+}

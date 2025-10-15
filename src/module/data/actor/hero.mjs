@@ -83,7 +83,7 @@ export default class HeroModel extends BaseActorModel {
       units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
     });
 
-    bio.age = new fields.StringField({ blank: false });
+    bio.age = new fields.StringField({ required: true });
 
     return bio;
   }
