@@ -276,7 +276,10 @@
           {
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
-        ]
+        ],
+        "additional": {
+          "type": "kit"
+        }
       },
       "bUc7AbUQrg38DeXx": {
         "name": "Invocation",
@@ -323,7 +326,15 @@
         },
         "_id": "HKlhtcykSx92MKui",
         "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
       },
       "mtALQ1GabSoqYdAH": {
         "name": "7 Drama Ability",
@@ -349,6 +360,119 @@
             "uuid": "Compendium.draw-steel.abilities.Item.inaOphrVCXorfRjP"
           }
         ]
+      },
+      "6XbB9blJmaxpLji3": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "6XbB9blJmaxpLji3",
+        "description": "<p>Your Agility and Presence scores each increase to 3.</p>",
+        "characteristics": {
+          "agility": 1,
+          "presence": 1
+        }
+      },
+      "1X8QXHMoKGEJVgjy": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "1X8QXHMoKGEJVgjy",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        }
+      },
+      "O4LLYyPMwqF0FH3e": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "O4LLYyPMwqF0FH3e",
+        "description": "<p>Your Agility and Presence scores each increase to 5.</p>",
+        "max": 5,
+        "characteristics": {
+          "agility": 1,
+          "presence": 1
+        }
+      },
+      "aaTXvPfC2AuhbFna": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "aaTXvPfC2AuhbFna",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "RtFvW5zdHrDgg73f": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "RtFvW5zdHrDgg73f",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
+      },
+      "tObOLO3sMCJbjTlI": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "tObOLO3sMCJbjTlI",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "additional": {
+          "type": "perk"
+        },
+        "chooseN": 1
+      },
+      "Qt0Ac98kM6Fw0oMk": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "Qt0Ac98kM6Fw0oMk",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        }
       }
     },
     "level": 0,
@@ -378,9 +502,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754708706476,
     "modifiedTime": null,
     "lastModifiedBy": null

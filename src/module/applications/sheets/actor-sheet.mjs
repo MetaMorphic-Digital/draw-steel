@@ -542,7 +542,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       // Kit specific options
       {
         name: "DRAW_STEEL.Item.kit.PreferredKit.MakePreferred",
-        icon: "<i class=\"fa-solid fa-star\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-star\"></i>",
         condition: (target) => this._getEmbeddedDocument(target)?.type === "kit",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);
@@ -553,7 +553,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
       // Project specific options
       {
         name: "DRAW_STEEL.Item.project.SpendCareerPoints.Title",
-        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-hammer\"></i>",
         condition: (target) => {
           const item = this._getEmbeddedDocument(target);
           if (item.type !== "project") return false;
@@ -569,10 +569,22 @@ export default class DrawSteelActorSheet extends DSDocumentSheetMixin(sheets.Act
           await this.render();
         },
       },
+      {
+        name: "DRAW_STEEL.Item.project.Events.DrawEvent",
+        icon: "<i class=\"fa-solid fa-fw fa-table-list\"></i>",
+        condition: (target) => {
+          const item = this._getEmbeddedDocument(target);
+          return item.type === "project";
+        },
+        callback: async (target) => {
+          const item = this._getEmbeddedDocument(target);
+          await item.system.drawEventsTable();
+        },
+      },
       // Equipment specific options
       {
         name: "DRAW_STEEL.Item.project.Craft.FromTreasure.Label",
-        icon: "<i class=\"fa-solid fa-hammer\"></i>",
+        icon: "<i class=\"fa-solid fa-fw fa-hammer\"></i>",
         condition: (target) => this._getEmbeddedDocument(target)?.type === "treasure",
         callback: async (target) => {
           const item = this._getEmbeddedDocument(target);

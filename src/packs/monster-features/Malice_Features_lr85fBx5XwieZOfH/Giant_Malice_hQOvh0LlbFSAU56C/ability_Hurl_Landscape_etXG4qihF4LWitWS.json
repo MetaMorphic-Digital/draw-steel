@@ -1,0 +1,69 @@
+{
+  "name": "Hurl Landscape",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "main",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "A giant starts its turn.",
+    "distance": {
+      "type": "cube",
+      "primary": 4,
+      "secondary": 10
+    },
+    "target": {
+      "type": "enemy",
+      "value": null,
+      "custom": "Each enemy in the area"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>map and launches it to fill the area. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 18]] damage; prone and can’t stand (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 14]] damage; prone</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 9]] damage</p></td></tr></tbody></table>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "144",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "hurl-landscape",
+    "story": "",
+    "keywords": [
+      "area",
+      "ranged",
+      "weapon"
+    ]
+  },
+  "effects": [],
+  "folder": "hQOvh0LlbFSAU56C",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758823082086,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "etXG4qihF4LWitWS",
+  "sort": 0,
+  "_key": "!items!etXG4qihF4LWitWS"
+}

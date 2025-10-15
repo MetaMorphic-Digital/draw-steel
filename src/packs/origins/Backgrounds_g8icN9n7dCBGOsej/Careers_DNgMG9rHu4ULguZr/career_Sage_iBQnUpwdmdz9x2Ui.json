@@ -42,14 +42,21 @@
         "chooseN": 1
       },
       "jszhgYCA0kH3nopS": {
-        "name": "One Lore Perk",
-        "img": null,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
         "_id": "jszhgYCA0kH3nopS",
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>One lore perk (<em>Quick Build:</em> Expert Sage.)</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "lore"
+          ]
+        }
       }
     },
     "projectPoints": 240,
@@ -66,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754496963701,
     "modifiedTime": null,
     "lastModifiedBy": null

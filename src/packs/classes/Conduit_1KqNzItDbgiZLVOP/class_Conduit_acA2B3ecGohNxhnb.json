@@ -342,7 +342,16 @@
           "level": 2
         },
         "_id": "QbovibZvxKYD1ybQ",
-        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
       },
       "vBjjJeBeezefEfdV": {
         "name": "2nd-Level Domain Feature",
@@ -442,6 +451,125 @@
             "uuid": "Compendium.draw-steel.abilities.Item.eoSLTArMhMz1Z5gg"
           }
         ]
+      },
+      "rqUaqQBjKSONHbyw": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "rqUaqQBjKSONHbyw",
+        "description": "<p>Your Intuition score increases to 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 3.</p>",
+        "characteristics": {
+          "intuition": 1,
+          "might": 0,
+          "agility": 0,
+          "reason": 0,
+          "presence": 0
+        }
+      },
+      "HSLYPxSRckoK0qv9": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "HSLYPxSRckoK0qv9",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        }
+      },
+      "8P2fFC5RAULYjyin": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "8P2fFC5RAULYjyin",
+        "description": "<p>Your Intuition score increases to 5. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 5.</p>",
+        "max": 5,
+        "characteristics": {
+          "intuition": 1,
+          "might": 0,
+          "agility": 0,
+          "reason": 0,
+          "presence": 0
+        }
+      },
+      "H1gzNlYJ00RU4dh4": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "H1gzNlYJ00RU4dh4",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "rGjYXz5FYllGrhuR": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "rGjYXz5FYllGrhuR",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
+      },
+      "y2ymCizIs13AIDP0": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "y2ymCizIs13AIDP0",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "FNrOlKRHEqBlWbWS": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "FNrOlKRHEqBlWbWS",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
       }
     },
     "level": 0,
@@ -470,9 +598,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754707164421,
     "modifiedTime": null,
     "lastModifiedBy": null

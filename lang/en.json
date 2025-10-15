@@ -126,6 +126,7 @@
         "Title": "Configure {name}",
         "ChooseN": "Choose {n}",
         "ChooseNull": "Choose Any",
+        "SpendPoints": "Spend {points} Points",
         "DropHere": "Drop other items here.",
         "Characteristic": {
           "label": "Characteristic",
@@ -1287,6 +1288,9 @@
           "points": {
             "label": "Project Points"
           },
+          "events": {
+            "label": "Events Roll Table"
+          },
           "yield": {
             "label": "Yield",
             "item": {
@@ -1320,11 +1324,14 @@
           "Success": "{actor} has spent {points} project points from their career on {project}."
         },
         "Events": {
+          "NoTable": "No events roll table found.",
+          "DrawEvent": "Draw Event from Roll Table",
           "RollForEvent": "Roll for Event",
           "RollTriggered": "The event roll triggers an event!",
           "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
         },
-        "RollBreakThrough": "Roll Breakthrough"
+        "RollBreakThrough": "Roll Breakthrough",
+        "Varies": "Varies"
       }
     },
     "ActiveEffect": {

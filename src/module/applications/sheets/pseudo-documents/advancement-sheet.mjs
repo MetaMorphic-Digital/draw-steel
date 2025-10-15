@@ -99,7 +99,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
     else if (context.document.type === "skill") {
       ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
       for (const group of this.pseudoDocument.skills.groups) {
-        if (!(skill in ds.CONFIG.skills.groups)) ctx.skillGroups.push({ value: group });
+        if (!(group in ds.CONFIG.skills.groups)) ctx.skillGroups.push({ value: group });
       }
 
       ctx.skillChoices = ds.CONFIG.skills.optgroups;

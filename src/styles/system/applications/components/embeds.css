@@ -1,4 +1,5 @@
-.content-embed {
+/* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
+document-embed, .content-embed {
   div.ability {
     h5 {
       margin: 0;
@@ -17,8 +18,11 @@
 
     .powerResult {
       margin-top: 1rem;
-      .potency {
-        color: red
+      dt.tier1, dt.tier2, dt.tier3 {
+        font-family: "Draw Steel Glyphs";
+        font-size: var(--font-size-24);
+        font-weight: 500;
+        line-height: 0.9;
       }
     }
 

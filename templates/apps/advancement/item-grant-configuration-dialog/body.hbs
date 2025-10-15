@@ -8,7 +8,10 @@
     <div class="form-group">
       <label>{{{link}}}</label>
       <div class="form-fields">
-        <input type="checkbox" value="{{uuid}}" name="choices" {{checked chosen}}>
+        {{#if points}}
+        <span class="points">{{numberFormat points sign=true}}</span>
+        {{/if}}
+        <input type="checkbox" value="{{uuid}}" name="choices" {{checked chosen}} {{disabled disabled}}>
       </div>
     </div>
     {{/each}}

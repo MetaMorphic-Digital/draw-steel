@@ -117,6 +117,13 @@ Hooks.once("init", function () {
 
   // Register enrichers
   CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll];
+
+  CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
+    editor: false,
+    fonts: [
+      { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
+    ],
+  };
 });
 
 /**
