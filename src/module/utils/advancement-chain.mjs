@@ -120,7 +120,7 @@ export default class AdvancementChain {
           get() {
             if (!node.isChosen) return false;
             if (!node.advancement.isChoice) return true;
-            return node.selected[trait.value] === true;
+            return !!node.selected[trait.value];
           },
         });
       }
@@ -165,7 +165,7 @@ export default class AdvancementChain {
       get() {
         if (!node.isChosen) return false;
         if (!node.advancement.isChoice) return true;
-        return node.selected[item.uuid] === true;
+        return !!node.selected[item.uuid];
       },
     });
 
@@ -229,7 +229,7 @@ export default class AdvancementChain {
    */
   get isConfigured() {
     if (!this.advancement.isChoice) return true;
-    const selected = Object.values(this.selected).reduce((acc, b) => acc + Boolean(b), 0);
+    const selected = Object.values(this.selected).reduce((acc, b) => acc + b, 0);
     return selected === this.chooseN;
   }
 
