@@ -106,55 +106,60 @@ export async function enricher(match, options) {
 export async function onRender(element) {
   const link = element.querySelector("a");
 
-  link.addEventListener("click", async (ev) => {
-    const tokens = canvas?.tokens?.controlled ?? [];
-    if (!tokens.length) {
-      ui.notifications.error("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.NoSelection", { localize: true });
-      return;
-    }
+  link.addEventListener("click", onClickAnchor);
+}
 
-    const noStack = !link.dataset.stacking;
+/**
+ * Helper function to apply the effect to a selected token's actor.
+ */
+async function onClickAnchor() {
+  const tokens = canvas?.tokens?.controlled ?? [];
+  if (!tokens.length) {
+    ui.notifications.error("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.NoSelection", { localize: true });
+    return;
+  }
 
-    const tempEffect = link.dataset.type === "custom" ?
-      (await fromUuid(link.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
-      await DrawSteelActiveEffect.fromStatusEffect(link.dataset.status);
+  const noStack = !link.dataset.stacking;
 
-    /** @type {ActiveEffectData} */
-    const updates = {
-      transfer: true,
-      origin: link.dataset.origin,
-      system: {},
-    };
+  const tempEffect = link.dataset.type === "custom" ?
+    (await fromUuid(link.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
+    await DrawSteelActiveEffect.fromStatusEffect(link.dataset.status);
 
-    if (link.dataset.end) updates.system.end = { type: link.dataset.end };
-    tempEffect.updateSource(updates);
+  /** @type {ActiveEffectData} */
+  const updates = {
+    transfer: true,
+    origin: link.dataset.origin,
+    system: {},
+  };
 
-    const actors = new Set();
+  if (link.dataset.end) updates.system.end = { type: link.dataset.end };
+  tempEffect.updateSource(updates);
 
-    for (const token of tokens) {
-      const actor = token.actor;
-      if (!actor) continue;
-      else if (actors.has(actor)) continue;
-      else actors.add(actor);
-      // reusing the ID will block creation if it's already on the actor
-      // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
-      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+  const actors = new Set();
 
-      // statuses automatically create scrolling text themselves
-      if (link.dataset.type === "status") continue;
+  for (const token of tokens) {
+    const actor = token.actor;
+    if (!actor) continue;
+    else if (actors.has(actor)) continue;
+    else actors.add(actor);
+    // reusing the ID will block creation if it's already on the actor
+    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+    actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
 
-      const scrollingTextArgs = [
-        token.center,
-        game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
-        {
-          fill: "white",
-          fontSize: 32,
-          stroke: 0x000000,
-          strokeThickness: 4,
-        },
-      ];
+    // statuses automatically create scrolling text themselves
+    if (link.dataset.type === "status") continue;
 
-      canvas.interface.createScrollingText(...scrollingTextArgs);
-    }
-  });
+    const scrollingTextArgs = [
+      token.center,
+      game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
+      {
+        fill: "white",
+        fontSize: 32,
+        stroke: 0x000000,
+        strokeThickness: 4,
+      },
+    ];
+
+    canvas.interface.createScrollingText(...scrollingTextArgs);
+  }
 }

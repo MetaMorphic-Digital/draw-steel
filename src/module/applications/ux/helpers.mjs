@@ -27,9 +27,7 @@ export function parseConfig(match = "", { multiple = false } = {}) {
   return config;
 }
 
-/**
- * HTML Construction Helper Functions.
- */
+/* -------------------------------------------------- */
 
 /**
  * Create a link.
