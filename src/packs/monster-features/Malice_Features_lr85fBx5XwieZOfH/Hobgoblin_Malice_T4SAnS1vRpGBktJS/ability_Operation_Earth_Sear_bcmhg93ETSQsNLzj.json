@@ -1,0 +1,62 @@
+{
+  "name": "Operation Earth Sear",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A hobgoblin starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the round, the ground throughout the encounter map becomes blazing hot. Any enemy takes [[/damage 1 fire]] damage for each square of the ground they enter. Any enemy who ends their turn on the ground has fire weakness 2 until the start of their next turn.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "171",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "operation-earth-sear",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "T4SAnS1vRpGBktJS",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758769556686,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "bcmhg93ETSQsNLzj",
+  "sort": 0,
+  "_key": "!items!bcmhg93ETSQsNLzj"
+}

@@ -286,13 +286,22 @@
       },
       "obJZO7tdAOXGnoyW": {
         "name": "Perk",
-        "img": "icons/svg/aura.svg",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 2
         },
         "_id": "obJZO7tdAOXGnoyW",
-        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
       },
       "NyffE8PhSBk2tmP8": {
         "name": "New 5-Essence Ability",
@@ -343,6 +352,125 @@
             "uuid": "Compendium.draw-steel.abilities.Item.Nb8DrY3lFv9NDcy2"
           }
         ]
+      },
+      "qGtr9Vq2BZq7zDi5": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "qGtr9Vq2BZq7zDi5",
+        "description": "<p>Your Reason score increases to 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 3.</p>",
+        "characteristics": {
+          "reason": 1,
+          "might": 0,
+          "agility": 0,
+          "intuition": 0,
+          "presence": 0
+        }
+      },
+      "K7o3iqZKLnhQ0tKR": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "K7o3iqZKLnhQ0tKR",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "max": 4
+      },
+      "QATlAcA9aHkGyQUt": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "QATlAcA9aHkGyQUt",
+        "description": "<p>Your Reason score increases to 5. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 5.</p>",
+        "characteristics": {
+          "reason": 1,
+          "might": 0,
+          "agility": 0,
+          "intuition": 0,
+          "presence": 0
+        },
+        "max": 5
+      },
+      "JvmbhstZHzv0snJg": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "JvmbhstZHzv0snJg",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "Qq9C4BJWThK1RTD0": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Qq9C4BJWThK1RTD0",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
+      },
+      "KVQsFKQKE5uuhltN": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "KVQsFKQKE5uuhltN",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "sC3UMDKZ21nFr7Zz": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "sC3UMDKZ21nFr7Zz",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        }
       }
     },
     "level": 0,
@@ -371,9 +499,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754707581859,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,0 +1,658 @@
+{
+  "name": "Hill Giant Mosstooth",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/minion.webp",
+  "system": {
+    "stamina": {
+      "value": 13,
+      "max": 13,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": -1
+      },
+      "reason": {
+        "value": -1
+      },
+      "intuition": {
+        "value": -1
+      },
+      "presence": {
+        "value": -1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 4,
+        "letter": "M"
+      },
+      "stability": 5,
+      "turns": 1
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "climb",
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 3,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "145",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 4,
+      "keywords": [
+        "giant"
+      ],
+      "level": 7,
+      "ev": 9,
+      "role": "brute",
+      "organization": "minion"
+    }
+  },
+  "items": [
+    {
+      "name": "Distracted",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever the mosstooth targets a creature or object with an ability, any enemy within distance of the ability can use a free triggered action to distract the mosstooth. The mosstooth targets that enemy instead.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "145"
+        },
+        "_dsid": "distracted",
+        "advancements": {}
+      },
+      "_id": "TWYQKyyCZ3qwd0tR",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!1ij88bUePtVGhGWw.TWYQKyyCZ3qwd0tR"
+    },
+    {
+      "name": "Swing",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 3
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1,
+          "custom": "One creature or object per minion"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "lWcI41WapA0tK1oU": {
+              "_id": "lWcI41WapA0tK1oU",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "8",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "DHoDgwceXT6aklIE": {
+              "_id": "DHoDgwceXT6aklIE",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier3": {
+                  "display": "grabbed",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The mosstooth can use a creature or object they have grabbed as a weapon for this ability, dealing an extra [[/damage 5]] damage to that creature or object and the target. They then end the grab and leave the creature or object prone in an unoccupied space adjacent to the target.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "145"
+        },
+        "_dsid": "swing",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "sBgUSNvSbIinjyVB",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!1ij88bUePtVGhGWw.sBgUSNvSbIinjyVB"
+    },
+    {
+      "name": "Bellow",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A giant starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each giant in the encounter takes a deep breath and yells, pushing each creature within 3 squares of them up to 10 squares. A creature giant of your choice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "144",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "bellow",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": "hQOvh0LlbFSAU56C",
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.F1EpvH1YM6k7hgia",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "F1EpvH1YM6k7hgia",
+      "sort": 0,
+      "_key": "!actors.items!1ij88bUePtVGhGWw.F1EpvH1YM6k7hgia"
+    },
+    {
+      "name": "Hurl Landscape",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A giant starts its turn.",
+        "distance": {
+          "type": "cube",
+          "primary": 4,
+          "secondary": 10
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>map and launches it to fill the area. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 18]] damage; prone and can’t stand (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 14]] damage; prone</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 9]] damage</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "144",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "hurl-landscape",
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ]
+      },
+      "effects": [],
+      "folder": "hQOvh0LlbFSAU56C",
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "etXG4qihF4LWitWS",
+      "sort": 0,
+      "_key": "!actors.items!1ij88bUePtVGhGWw.etXG4qihF4LWitWS"
+    },
+    {
+      "name": "Titanic Tear",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A giant starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; the target falls into the fissure, and is prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10]] damage; the target is prone and hanging onto the edge of the fissure</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the fissure.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "144",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "titanic-tear",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": "hQOvh0LlbFSAU56C",
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_id": "sRo2Z3MHYnHpAol7",
+      "sort": 0,
+      "_key": "!actors.items!1ij88bUePtVGhGWw.sRo2Z3MHYnHpAol7"
+    }
+  ],
+  "folder": "BPmj6b8KnRGx4nhs",
+  "_id": "1ij88bUePtVGhGWw",
+  "prototypeToken": {
+    "name": "Hill Giant Mosstooth",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/minion.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Actor.38EbGw84maEiWy3j",
+      "disabled": true,
+      "_id": "b9hfBOWNXh2lYFaR",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Actor.38EbGw84maEiWy3j.ActiveEffect.b9hfBOWNXh2lYFaR",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!1ij88bUePtVGhGWw.b9hfBOWNXh2lYFaR"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758827761768,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!1ij88bUePtVGhGWw"
+}

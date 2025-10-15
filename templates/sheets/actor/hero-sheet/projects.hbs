@@ -25,7 +25,7 @@
               <div class="label">{{projectContext.item.name}}</div>
             </div>
           </div>
-          <div class="item-column item-points">{{ifThen projectContext.item.system.points projectContext.item.system.points "0"}} / {{projectContext.item.system.goal}}</div>
+          <div class="item-column item-points">{{ifThen projectContext.item.system.points projectContext.item.system.points "0"}} / {{ifThen projectContext.item.system.goal projectContext.item.system.goal (localize "DRAW_STEEL.Item.project.Varies")}}</div>
           <div class="item-column item-type">{{lookup (lookup @root.config.projects.types projectContext.item.system.type) "label"}}</div>
           <div class="item-column item-controls">
             <a class="fa-solid fa-angle-{{ifThen projectContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>

@@ -40,12 +40,13 @@ export default class ProjectModel extends BaseItemModel {
     schema.prerequisites = new fields.StringField({ required: true });
     schema.projectSource = new fields.StringField({ required: true });
     schema.rollCharacteristic = new fields.SetField(setOptions());
-    schema.goal = requiredInteger({ initial: 1, min: 1 });
+    schema.goal = new fields.NumberField({ nullable: true, integer: true, min: 1 });
     schema.points = new fields.NumberField({ required: true, integer: true, min: 0, initial: 0 });
+    schema.events = new fields.DocumentUUIDField({ initial: "Compendium.draw-steel.tables.RollTable.ebiZk3Sfa6Jw1JKk", type: "RollTable" });
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
-      display: new fields.StringField(),
+      display: new fields.StringField({ required: true }),
     });
 
     return schema;
@@ -105,7 +106,7 @@ export default class ProjectModel extends BaseItemModel {
 
     if (foundry.utils.hasProperty(changes, "system.points") && this.actor) {
       // Mark the project for completion only if the points meet the goal and it hasn't already been completed.
-      options.completeProject = (changes.system.points >= this.goal) && (this.points < this.goal);
+      options.completeProject = !!this.goal && (changes.system.points >= this.goal) && (this.points < this.goal);
     }
   }
 
@@ -318,6 +319,7 @@ export default class ProjectModel extends BaseItemModel {
    * @type {number[]}
    */
   get milestoneEventThresholds() {
+    if (!this.goal) return [];
     const milestone = ds.CONFIG.projects.milestones.find(milestone => (this.goal >= milestone.min) && (this.goal <= milestone.max));
     const events = milestone?.events ?? 0;
 
@@ -350,5 +352,17 @@ export default class ProjectModel extends BaseItemModel {
     }
 
     return eventsOccured;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Draw an event from the provided events roll table.
+   */
+  async drawEventsTable() {
+    const table = await fromUuid(this.events);
+    if (!table) return void ui.notifications.error("DRAW_STEEL.Item.project.Events.NoTable", { localize: true });
+
+    table.draw();
   }
 }

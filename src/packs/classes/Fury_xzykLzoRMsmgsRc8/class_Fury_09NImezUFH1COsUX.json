@@ -166,13 +166,22 @@
       },
       "qpOkC2pqAKsdSFJO": {
         "name": "Perk",
-        "img": "icons/svg/aura.svg",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 2
         },
         "_id": "qpOkC2pqAKsdSFJO",
-        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>"
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "exploration",
+            "intrigue"
+          ]
+        }
       },
       "Fuep5ltkI9rweisR": {
         "name": "7 Ferocity Ability",
@@ -198,6 +207,119 @@
             "uuid": "Compendium.draw-steel.abilities.Item.TzomPq7Jkd9jEwE9"
           }
         ]
+      },
+      "x1UyQl0VGl5GZ70H": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "x1UyQl0VGl5GZ70H",
+        "description": "<p>Your Might and Agility scores each increase to 3.</p>",
+        "characteristics": {
+          "might": 1,
+          "agility": 1
+        }
+      },
+      "jH4R9rt6LyLphEX1": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "jH4R9rt6LyLphEX1",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        }
+      },
+      "PFqG7t29d5oz1l6N": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "PFqG7t29d5oz1l6N",
+        "description": "<p>Your Might and Agility scores each increase to 5.</p>",
+        "max": 5,
+        "characteristics": {
+          "might": 1,
+          "agility": 1
+        }
+      },
+      "3PpPkWNV8FKTEqeY": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "3PpPkWNV8FKTEqeY",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "O9gmhBM5M2FrpFv1": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "O9gmhBM5M2FrpFv1",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "exploration",
+            "intrigue"
+          ]
+        }
+      },
+      "2dvrlOFVLXIk9yTQ": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "2dvrlOFVLXIk9yTQ",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "1o8WajVxMEMqNbrs": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "1o8WajVxMEMqNbrs",
+        "description": "<p>You gain one crafting, exploration, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "exploration",
+            "intrigue"
+          ]
+        }
       }
     },
     "level": 0,
@@ -227,9 +349,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754707776139,
     "modifiedTime": null,
     "lastModifiedBy": null

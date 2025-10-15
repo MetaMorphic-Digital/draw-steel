@@ -42,14 +42,21 @@
         "chooseN": 1
       },
       "nS8bobDV2p1szqhy": {
-        "name": "One Crafting Perk",
-        "img": null,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
         "_id": "nS8bobDV2p1szqhy",
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>One crafting perk (<em>Quick Build:</em> Area of Expertise.)</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting"
+          ]
+        }
       }
     },
     "projectPoints": 240,
@@ -66,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.346",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754489545841,
     "modifiedTime": null,
     "lastModifiedBy": null
