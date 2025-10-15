@@ -137,7 +137,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (options.endTurn && game.user.isActiveGM) {
       const prev = this.previous;
       const combatant = this.combatants.get(prev.combatantId);
-      if (combatant && (this.current.turn === null)) {
+      if (combatant && (this.current.turn == null)) {
         if (CONFIG.debug.combat) console.debug(` | Combat End Turn: ${combatant.name}`);
         const context = { round: prev.round, turn: prev.turn, skipped: false };
         await this._onEndTurn(combatant, context);

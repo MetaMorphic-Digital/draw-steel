@@ -90,6 +90,7 @@
     - Corrected the description of the Destructive Path feature per errata.
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+- Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 
