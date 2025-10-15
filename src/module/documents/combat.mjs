@@ -82,7 +82,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /** @inheritdoc */
   async nextRound() {
     // In memory adjustment that will get committed during the super call
-    this.turn = null;
+    if (game.settings.get(systemID, "initiativeMode") === "default") this.turn = null;
     await super.nextRound();
 
     if (game.settings.get(systemID, "initiativeMode") !== "default") return this;

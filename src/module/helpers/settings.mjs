@@ -29,6 +29,8 @@ export default class DrawSteelSettingsHandler {
         type: new fields.StringField({ choices: ds.CONST.initiativeModes, initial: "default", required: true }),
         config: true,
         scope: "world",
+        // HBS Mixin does not like adding/deleting parts so need full re-render
+        requiresReload: true,
       },
       heroTokens: {
         name: HeroTokenModel.label,
