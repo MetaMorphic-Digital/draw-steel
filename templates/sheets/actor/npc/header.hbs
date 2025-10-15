@@ -21,13 +21,15 @@
       {{#each monsterKeywords as |keyword|}}
       <div class="tag">{{keyword}}</div>
       {{/each}}
+      {{#with system.formattedLabels}}
       {{!-- Organization/Role Tags --}}
-      {{#if organizationLabel}}
-      <div class="tag">{{organizationLabel}}</div>
+      {{#if organization}}
+      <div class="tag">{{organization}}</div>
       {{/if}}
-      {{#if roleLabel}}
-      <div class="tag">{{roleLabel}}</div>
+      {{#if role}}
+      <div class="tag">{{role}}</div>
       {{/if}}
+      {{/with}}
       {{#unless isPlay}}
       <a data-action="editMonsterMetadata">
         <i class="fa-solid fa-gear"></i>
@@ -44,7 +46,7 @@
       <dd class="level">{{systemSource.monster.level}}</dd>
 
       <dt class="ev">{{localize "DRAW_STEEL.Actor.npc.EVLabel.Label"}}</dt>
-      <dd class="ev">{{evLabel}}</dd>
+      <dd class="ev">{{system.formattedLabels.ev}}</dd>
     </dl>
     {{#if showMalice}}
     <div class="malice">

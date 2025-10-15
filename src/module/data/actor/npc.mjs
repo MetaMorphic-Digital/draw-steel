@@ -87,7 +87,35 @@ export default class NPCModel extends BaseActorModel {
 
   /** @inheritdoc */
   get isMinion() {
-    return foundry.utils.getProperty(this, "monster.organization") === "minion";
+    return this.monster.organization === "minion";
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The formatted text strings for monster properties.
+   * @returns {Record<"keywords" | "organization" | "role" | "ev", string>}
+   */
+  get formattedLabels() {
+    const labels = {};
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
+    labels.keywords = keywordFormatter.format(keywordList);
+
+    const organizations = ds.CONFIG.monsters.organizations;
+    labels.organization = organizations[this.monster.organization]?.label ?? "";
+
+    const roles = ds.CONFIG.monsters.roles;
+    labels.role = roles[this.monster.role]?.label ?? "";
+
+    const data = { value: this.monster.ev };
+    labels.ev = this.isMinion ?
+      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data) :
+      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
+
+    return labels;
   }
 
   /* -------------------------------------------------- */
