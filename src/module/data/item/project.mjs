@@ -46,7 +46,7 @@ export default class ProjectModel extends BaseItemModel {
     schema.yield = new fields.SchemaField({
       item: new fields.DocumentUUIDField(),
       amount: new FormulaField({ initial: "1" }),
-      display: new fields.StringField(),
+      display: new fields.StringField({ required: true }),
     });
 
     return schema;

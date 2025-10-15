@@ -45,7 +45,7 @@ export default class AbilityModel extends BaseItemModel {
     // Items don't have descriptions
     delete schema.description;
 
-    schema.story = new fields.StringField({ required: true, blank: true });
+    schema.story = new fields.StringField({ required: true });
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
     schema.category = new fields.StringField({ required: true });
