@@ -3,6 +3,7 @@ import PowerRoll from "../../rolls/power.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
+import { systemID } from "../../constants.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
@@ -350,6 +351,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {DrawSteelCombatant} combatant The combatant representation.
    */
   async startCombat(combatant) {
+    if (!game.combats.isDefaultInitiativeMode) return;
     await combatant.update({ initiative: this.combat.turns });
   }
 

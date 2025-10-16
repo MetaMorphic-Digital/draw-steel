@@ -1,8 +1,7 @@
 {
   "folder": "jAT3sb3QtWQpc3iw",
-  "name": "Revenant",
+  "name": "Revenant (Small)",
   "type": "ancestry",
-  "_id": "2dUOZ1eYinund6MQ",
   "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
   "system": {
     "description": {
@@ -31,7 +30,13 @@
           {
             "uuid": "Compendium.draw-steel.origins.Item.S2OsBBFHqBoHZYUu"
           }
-        ]
+        ],
+        "description": "",
+        "chooseN": null,
+        "additional": {
+          "type": "",
+          "perkType": []
+        }
       },
       "wjCnH9cOfQON5aTl": {
         "name": "Purchased Traits",
@@ -42,9 +47,6 @@
         },
         "_id": "wjCnH9cOfQON5aTl",
         "description": "<p>You have 2 ancestry points to spend on the following traits, or 3 ancestry points if your size is 1S. (Quick Build: Bloodless, plus Undead Influence if size 1S.)</p>",
-        "additional": {
-          "type": "ancestryTrait"
-        },
         "pool": [
           {
             "uuid": "Compendium.draw-steel.origins.Item.77tLSEIDpNRpkwnn"
@@ -62,15 +64,65 @@
             "uuid": "Compendium.draw-steel.origins.Item.4rkruRy4WbjyM7Vx"
           }
         ],
-        "chooseN": 2
+        "chooseN": 3,
+        "additional": {
+          "type": "ancestryTrait",
+          "perkType": []
+        }
       }
     }
   },
-  "effects": [],
-  "sort": 100000,
-  "ownership": {
-    "default": 0
-  },
+  "effects": [
+    {
+      "name": "Small",
+      "origin": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT",
+      "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+      "_id": "GVjHMRfMXtPUVAif",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "S",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your size is 1S.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT.ActiveEffect.zA4EgMRsL0I76cou",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760633087503,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!WlGCGFS86w4VSABT.GVjHMRfMXtPUVAif"
+    }
+  ],
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -79,9 +131,14 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1754456936630,
+    "createdTime": 1760629197193,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!2dUOZ1eYinund6MQ"
+  "ownership": {
+    "default": 0
+  },
+  "_id": "WlGCGFS86w4VSABT",
+  "sort": 0,
+  "_key": "!items!WlGCGFS86w4VSABT"
 }
