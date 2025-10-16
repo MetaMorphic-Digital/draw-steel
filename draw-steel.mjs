@@ -52,6 +52,7 @@ Hooks.once("init", function () {
 
   // Custom collections
   CONFIG.Actor.collection = documents.collections.DrawSteelActors;
+  CONFIG.Combat.collection = documents.collections.DrawSteelCombatEncounters;
 
   // Assign canvas-related classes
   CONFIG.Token.objectClass = canvas.placeables.DrawSteelToken;
