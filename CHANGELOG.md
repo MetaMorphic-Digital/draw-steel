@@ -45,6 +45,7 @@
 - Added the official licensed glyphs. (#1209)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
+- Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 
 ### Changed
 
