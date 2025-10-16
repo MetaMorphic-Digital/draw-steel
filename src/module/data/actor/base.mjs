@@ -351,7 +351,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {DrawSteelCombatant} combatant The combatant representation.
    */
   async startCombat(combatant) {
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (!game.combats.isDefaultInitiativeMode) return;
     await combatant.update({ initiative: this.combat.turns });
   }
 

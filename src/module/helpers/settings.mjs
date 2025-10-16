@@ -23,6 +23,7 @@ export default class DrawSteelSettingsHandler {
         default: "",
         scope: "world",
       },
+      // Can be accessed at game.combats.isDefaultInitiativeMode
       initiativeMode: {
         name: "DRAW_STEEL.Combat.Initiative.Modes.Label",
         hint: "DRAW_STEEL.Combat.Initiative.Modes.Hint",
@@ -32,6 +33,7 @@ export default class DrawSteelSettingsHandler {
         // HBS Mixin does not like adding/deleting parts so need full re-render
         requiresReload: true,
       },
+      // Can be accessed at game.actors.heroTokens
       heroTokens: {
         name: HeroTokenModel.label,
         hint: HeroTokenModel.hint,
@@ -40,6 +42,7 @@ export default class DrawSteelSettingsHandler {
         default: { value: 0 },
         onChange: () => ui.players.render(),
       },
+      // Can be accessed at game.actors.malice
       malice: {
         name: MaliceModel.label,
         hint: MaliceModel.hint,
