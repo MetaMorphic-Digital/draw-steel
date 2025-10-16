@@ -175,6 +175,18 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
     context.additional = this.advancement.additional.type;
 
+    if (context.additional) {
+      const perkOptions = ds.CONFIG.perks.typeOptions;
+      const perkLabels = Array.from(this.advancement.additional.perkType).map(p => perkOptions.find(o => o.value === p)?.label).filter(_ => _);
+      const listFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+      const formatData = {
+        perkTypes: listFormatter.format(perkLabels),
+        itemName: this.advancement.document.name,
+      };
+      console.log(perkLabels, formatData);
+      context.additionalText = game.i18n.format(`DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.AdditionalText.${context.additional}`, formatData);
+    }
+
     context.points = this.advancement.pointBuy;
 
     const totalChosen = this.totalChosen;
