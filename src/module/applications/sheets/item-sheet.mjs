@@ -5,8 +5,9 @@ import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs"
- * @import BaseItemModel from "../../data/item/base.mjs"
+ * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+ * @import BaseItemModel from "../../data/item/base.mjs";
+ * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
  */
 
 const { sheets, ux } = foundry.applications;
@@ -508,6 +509,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
           onSave: this.#saveEditor.bind(this),
         }),
         keyMaps: ProseMirror.ProseMirrorKeyMaps.build(ProseMirror.defaultSchema, {
+          onSave: this.#saveEditor.bind(this),
+        }),
+        highlightDocumentMatches: ProseMirror.ProseMirrorHighlightMatchesPlugin.build(ProseMirror.defaultSchema, {
           onSave: this.#saveEditor.bind(this),
         }),
       },
