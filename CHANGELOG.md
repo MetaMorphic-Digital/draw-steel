@@ -22,7 +22,9 @@
 
 ### Added
 
-- New Compendium Content:
+- New Player-Facing Compendium Content:
+  - Updated all ancestries to offer a choice of purchased traits.
+- New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
   - Draconians
