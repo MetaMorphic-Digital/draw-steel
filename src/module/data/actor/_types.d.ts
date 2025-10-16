@@ -64,6 +64,9 @@ declare module "./base.mjs" {
     }
     potency: {
       bonuses: number;
+      weak: number;
+      average: number;
+      strong: number;
     }
   }
 }
@@ -87,12 +90,6 @@ declare module "./hero.mjs" {
       wealth: number;
       skills: Set<string>;
       preferredKit: string;
-    }
-    potency: {
-      bonuses: number;
-      weak: number;
-      average: number;
-      strong: number;
     }
     biography: Biography & {
       age: string;
