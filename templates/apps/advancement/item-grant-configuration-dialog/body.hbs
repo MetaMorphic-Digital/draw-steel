@@ -1,6 +1,6 @@
 <section>
   {{#if enrichedDescription}}
-  <p class="note">{{{enrichedDescription}}}</p>
+  {{{enrichedDescription}}}
   {{/if}}
   <fieldset class="item-choices">
     <legend>{{chooseLabel}}</legend>
@@ -19,7 +19,7 @@
   {{#if additional}}
   <fieldset>
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.additional"}}</legend>
-    <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.DropHere"}}</p>
+    <p class="hint">{{additionalText}}</p>
   </fieldset>
   {{/if}}
 </section>
