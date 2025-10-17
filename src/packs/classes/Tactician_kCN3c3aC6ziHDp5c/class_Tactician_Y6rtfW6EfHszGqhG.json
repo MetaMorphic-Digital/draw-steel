@@ -377,16 +377,6 @@
           }
         ]
       },
-      "ohfeBnd9ZJiqPegw": {
-        "name": "Doctrine Feature",
-        "img": "icons/sundries/documents/document-sealed-red-tan.webp",
-        "type": "characteristic",
-        "requirements": {
-          "level": 2
-        },
-        "_id": "ohfeBnd9ZJiqPegw",
-        "description": "<p>Your tactical doctrine grants you a feature, as shown on the 2nd-Level Doctrine Features table.</p><table><tbody><tr><td><table><tbody><tr><td><p><strong>Doctrine</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Insurgent</p></td><td><p>Infiltration Tactics</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Goaded</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Melee Superiority</p></td></tr></tbody></table></td></tr></tbody></table>"
-      },
       "lngXJbyA9SFznrv1": {
         "name": "Focus on Their Weakness",
         "img": "icons/creatures/eyes/human-single-brown.webp",
@@ -396,16 +386,6 @@
         },
         "_id": "lngXJbyA9SFznrv1",
         "description": "<p>The first time each combat round that you or any ally damages a target marked by you, you gain 2 focus instead of 1.</p>"
-      },
-      "6kW9yB49QHKYAPtt": {
-        "name": "Doctrine Feature",
-        "img": "icons/sundries/documents/envelope-sealed-red-tan.webp",
-        "type": "itemGrant",
-        "requirements": {
-          "level": 5
-        },
-        "_id": "6kW9yB49QHKYAPtt",
-        "description": "<p>Your tactical doctrine grants you two features, as shown on the 5th-Level Doctrine Features table.</p><p></p><table><tbody><tr><td><p>Doctrine</p></td><td><p>Feature</p></td></tr><tr><td><p>Insurgent</p></td><td><p>Distracted, Leave No Trace</p></td></tr><tr><td><p>Mastermind</p></td><td><p>Anticipation, I Predicted That</p></td></tr><tr><td><p>Vanguard</p></td><td><p>Shake It Off, Tactical Offense</p></td></tr></tbody></table>"
       },
       "PnuYwZSGtg5kXrNV": {
         "name": "9 Focus Ability",
@@ -425,7 +405,17 @@
           "level": 4
         },
         "_id": "XjVFdrkrQJsy8DHa",
-        "description": "<p>You gain one skill of your choice.</p>"
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        }
       }
     },
     "level": 0,
