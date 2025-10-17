@@ -1,4 +1,5 @@
 export { default as ActorCombatStatsInput } from "./actor-combat-stats-input.mjs";
+export { default as CharacteristicInput } from "./characteristic-input.mjs";
 export { default as DocumentSourceInput } from "./document-source-input.mjs";
 export { default as MonsterMetadataInput } from "./monster-metadata-input.mjs";
 export { default as PowerRollDialog } from "./power-roll-dialog.mjs";
