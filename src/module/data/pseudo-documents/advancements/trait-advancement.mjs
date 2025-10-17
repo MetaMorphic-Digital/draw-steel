@@ -14,7 +14,7 @@ export default class TraitAdvancement extends BaseAdvancement {
   /** @inheritdoc */
   static defineSchema() {
     return Object.assign(super.defineSchema(), {
-      chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
+      chooseN: new NumberField({ required: true, integer: true, min: 1 }),
     });
   }
 
