@@ -5,7 +5,7 @@ import enrichHTML from "../../../utils/enrich-html.mjs";
 import { systemPath } from "../../../constants.mjs";
 
 /**
- * @import { DrawSteelItem } from "../../../documents/item.mjs";
+ * @import DrawSteelItem from "../../../documents/item.mjs";
  * @import { ApplicationConfiguration, ApplicationRenderOptions } from "@client/applications/_types.mjs";
  * @import DragDrop from "@client/applications/ux/drag-drop.mjs";
  */
@@ -175,6 +175,17 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
 
     context.additional = this.advancement.additional.type;
 
+    if (context.additional) {
+      const perkOptions = ds.CONFIG.perks.typeOptions;
+      const perkLabels = Array.from(this.advancement.additional.perkType).map(p => perkOptions.find(o => o.value === p)?.label).filter(_ => _);
+      const listFormatter = game.i18n.getListFormatter({ type: "disjunction" });
+      const formatData = {
+        perkTypes: listFormatter.format(perkLabels),
+        itemName: this.advancement.document.name,
+      };
+      context.additionalText = game.i18n.format(`DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.AdditionalText.${context.additional}`, formatData);
+    }
+
     context.points = this.advancement.pointBuy;
 
     const totalChosen = this.totalChosen;
@@ -268,6 +279,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    */
   async _onDrop(event) {
     const data = TextEditor.implementation.getDragEventData(event);
+    /** @type {DrawSteelItem} */
     const item = await fromUuid(data.uuid);
     if (item?.documentName !== "Item") {
       ui.notifications.error("DRAW_STEEL.ADVANCEMENT.ConfigureAdvancement.Error.MustItem", { localize: true });
@@ -280,6 +292,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     switch (item.type) {
       case "perk":
         if (additionalInfo.perkType.size && !additionalInfo.perkType.has(item.system.perkType)) allowed = false;
+        break;
+      case "subclass":
+        if (item.system.classLink !== this.advancement.document.dsid) allowed = false;
         break;
     }
     if (allowed && !this.items.has(item)) {

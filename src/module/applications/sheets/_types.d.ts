@@ -11,11 +11,6 @@ declare module "./active-effect-config.mjs" {
   }
 }
 
-declare module "./actor-sheet.mjs" {
-  export default interface DrawSteelActorSheet extends sheets.ActorSheet {
-    actor: documents.DrawSteelActor;
-  }
-}
 declare module "./hero.mjs" {
   export default interface DrawSteelHeroSheet {
     actor: documents.DrawSteelActor & { system: data.Actor.HeroModel };
@@ -30,12 +25,6 @@ declare module "./npc.mjs" {
 declare module "./combatant-group-config.mjs" {
   export default interface DrawSteelCombatantGroupConfig extends foundry.applications.api.DocumentSheet {
     document: documents.DrawSteelCombatantGroup;
-  }
-}
-
-declare module "./item-sheet.mjs" {
-  export default interface DrawSteelItemSheet extends sheets.ItemSheet {
-    item: documents.DrawSteelItem;
   }
 }
 

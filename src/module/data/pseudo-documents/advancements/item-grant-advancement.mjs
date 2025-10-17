@@ -54,15 +54,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
    * @type {Record<string, { label: string, points?: boolean }>}
    */
   static ADDITIONAL_TYPES = {
+    ancestryTrait: {
+      label: "TYPES.Item.ancestryTrait",
+      points: true,
+    },
     kit: {
       label: "TYPES.Item.kit",
     },
     perk: {
       label: "TYPES.Item.perk",
     },
-    ancestryTrait: {
-      label: "TYPES.Item.ancestryTrait",
-      points: true,
+    subclass: {
+      label: "TYPES.Item.subclass",
     },
   };
 
