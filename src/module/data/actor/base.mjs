@@ -3,6 +3,7 @@ import PowerRoll from "../../rolls/power.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
+import { systemID } from "../../constants.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
@@ -126,8 +127,13 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       },
     });
 
-    // Teleport speeds are unaffected by conditions and effects
-    this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
+    Object.assign(this.movement, {
+      // Teleport speeds are unaffected by conditions and effects
+      teleport: this.movement.types.has("teleport") ? this.movement.value : null,
+      // Kit bonus is added in derived data, which means multipliers need to happen after
+      // Can consider removing in v14 after phases are introduced
+      multiplier: 1,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -143,6 +149,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
+
+    this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
 
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
@@ -350,6 +358,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {DrawSteelCombatant} combatant The combatant representation.
    */
   async startCombat(combatant) {
+    if (!game.combats.isDefaultInitiativeMode) return;
     await combatant.update({ initiative: this.combat.turns });
   }
 

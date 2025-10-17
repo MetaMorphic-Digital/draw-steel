@@ -25,7 +25,7 @@
     </div>
     <ol class="item-list kit-list">
       {{#each kits as |kitContext|}}
-      <li class="item feature draggable expandable-document" data-document-uuid="{{kitContext.item.uuid}}" data-item-id="{{kitContext.item.id}}">
+      <li class="item feature draggable expandable-document" data-document-uuid="{{kitContext.item.uuid}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{kitContext.item.img}}" alt="{{kitContext.item.name}}">
@@ -72,7 +72,7 @@
     </div>
     <ol class="item-list treasure-list">
       {{#each treasureType.treasure as |treasureContext|}}
-      <li class="item treasure draggable expandable-document" data-document-uuid="{{treasureContext.item.uuid}}" data-item-id="{{treasureContext.item.id}}">
+      <li class="item treasure draggable expandable-document" data-document-uuid="{{treasureContext.item.uuid}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{treasureContext.item.img}}" alt="{{treasureContext.item.name}}">
