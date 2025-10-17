@@ -5,4 +5,5 @@
  * so it can be directly thrown in the `CONFIG.TextEditor.enrichers` array.
  */
 
+export * as applyEffect from "./apply-effect.mjs";
 export * as roll from "./roll.mjs";

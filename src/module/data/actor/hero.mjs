@@ -138,7 +138,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     this.stamina.max = kitBonuses["stamina"] * this.echelon;
-    this.movement.value += kitBonuses["speed"];
+    this.movement.kitBonus = kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
 
@@ -172,6 +172,8 @@ export default class HeroModel extends BaseActorModel {
       if (heroClass.system.primary) this.hero.primary.label = heroClass.system.primary;
       if (heroClass.system.epic) this.hero.epic.label = heroClass.system.epic;
     }
+
+    this.movement.value += this.movement.kitBonus;
 
     super.prepareDerivedData();
 
