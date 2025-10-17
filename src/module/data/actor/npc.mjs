@@ -124,8 +124,8 @@ export default class NPCModel extends BaseActorModel {
     const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
 
     const monsterKeywords = ds.CONFIG.monsters.keywords;
-    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
-    this.monster.keywordList = keywordFormatter.format(keywordList);
+    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
+    this.monster.keywordLabels = keywordFormatter.format(keywordList);
 
     const organizations = ds.CONFIG.monsters.organizations;
     this.monster.organizationLabel = organizations[this.monster.organization]?.label ?? "";
@@ -134,9 +134,9 @@ export default class NPCModel extends BaseActorModel {
     this.monster.roleLabel = roles[this.monster.role]?.label ?? "";
 
     const data = { value: this.monster.ev };
-    this.monster.evLabel = this.isMinion ?
-      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data) :
-      game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
+    this.monster.evLabel = this.isMinion
+      ? game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data)
+      : game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
   /* -------------------------------------------------- */
