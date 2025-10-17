@@ -45,6 +45,7 @@
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
+- Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added the official licensed glyphs. (#1209)
 - Improved handling of private messages for power and damage rolls. (#1221)
@@ -58,6 +59,7 @@
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
+- Kit bonuses to speed are now applied after active effects. (#957)
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
@@ -75,6 +77,8 @@
 - Player-Facing Compendium data fixes:
   - Implemented the "custom" target text for many abilities.
   - Corrected action types for many echelon 1 abilities.
+  - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
+  - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
