@@ -325,11 +325,13 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         condition: () => this.isEditable,
         callback: (target) => {
           const effectClass = getDocumentClass("ActiveEffect");
+
           const effectData = {
             name: effectClass.defaultName({ parent: this.item }),
             img: this.item.img,
             type: "base",
-            origin: this.item.uuid,
+            // if item is unowned this is just the item's UUID
+            origin: foundry.utils.parseUuid(this.item.uuid, { relative: this.item.actor }).uuid,
           };
           for (const [dataKey, value] of Object.entries(target.dataset)) {
             if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
@@ -349,7 +351,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
             name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
             img: this.item.img,
             type: "abilityModifier",
-            origin: this.item.uuid,
+            // if item is unowned this is just the item's UUID
+            origin: foundry.utils.parseUuid(this.item.uuid, { relative: this.item.actor }).uuid,
           };
           for (const [dataKey, value] of Object.entries(target.dataset)) {
             if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;

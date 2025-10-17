@@ -134,7 +134,8 @@ export default class AbilityUseModel extends BaseMessageModel {
       /** @type {ActiveEffectData} */
       const updates = {
         transfer: true,
-        origin: pre.uuid,
+        // v14 is turning this into a DocumentUUID field so needs to be a real document
+        origin: pre.item.uuid,
         system: {},
       };
       if (config.end) updates.system.end = { type: config.end };
