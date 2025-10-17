@@ -156,7 +156,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    */
   static async #toggleMode(event, target) {
     if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable");
+      console.error("You can't switch to Edit mode if the sheet is uneditable.");
       return;
     }
     await this.render({ mode: this.isPlayMode ? DSDocumentSheet.MODES.EDIT : DSDocumentSheet.MODES.PLAY });
@@ -172,13 +172,9 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    * @protected
    */
-  static async #viewDoc(event, target) {
+  static #viewDoc(event, target) {
     const doc = this._getEmbeddedDocument(target);
-    if (!doc) {
-      console.error("Could not find document");
-      return;
-    }
-    await doc.sheet.render({ force: true, mode: this._mode });
+    doc.sheet.render({ force: true, mode: this._mode });
   }
 
   /* -------------------------------------------------- */
