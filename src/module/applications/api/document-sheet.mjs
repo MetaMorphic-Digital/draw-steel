@@ -1,4 +1,5 @@
 import constructHTMLButton from "../../utils/construct-html-button.mjs";
+import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
 
 /**
  * @import { DragDrop } from "@client/applications/ux/_module.mjs";
@@ -281,7 +282,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /**
    * Helper method to retrieve an embedded pseudo-document.
    * @param {HTMLElement} element   The element with relevant data.
-   * @returns {ds.data.pseudoDocuments.PseudoDocument}
+   * @returns {PseudoDocument}
    */
   _getPseudoDocument(element) {
     const documentName = element.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
@@ -416,6 +417,11 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       dragData = document.toDragData();
     }
 
+    if (target.dataset.pseudoId) {
+      const pseudo = this._getPseudoDocument(target);
+      dragData = pseudo.toDragData();
+    }
+
     // Set data transfer
     if (!dragData) return;
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
@@ -451,6 +457,11 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     }
 
     // TODO: Add drag and drop for PseudoDocuments
+    const pseudoClass = ds.utils.ModelCollection.documentClasses[data.type];
+    if (pseudoClass) {
+      const pseudo = await pseudoClass.fromDropData(data);
+      return this._onDropPseudoDocument(event, pseudo);
+    }
 
     return data;
   }
@@ -461,7 +472,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * Handle a dropped document on the Document Sheet.
    * @template {Document} TDocument
    * @param {DragEvent} event           The initiating drop event.
-   * @param {TDocument} document        The resolved Document class.
+   * @param {TDocument} document        The resolved Document instance.
    * @returns {Promise<TDocument|null>} A Document of the same type as the dropped one in case of a successful result,
    *                                    or null in case of failure or no action being taken.
    * @protected
@@ -488,7 +499,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * @param {DragEvent} event       The initiating drop event.
    * @param {DrawSteelActiveEffect} effect   The dropped ActiveEffect document.
    * @returns {Promise<DrawSteelActiveEffect|null>} A Promise resolving to the dropped ActiveEffect (if sorting), a newly created ActiveEffect,
-   *                                         or a nullish value in case of failure or no action being taken.
+   *                                         or null in case of failure or no action being taken.
    * @protected
    */
   async _onDropActiveEffect(event, effect) {
@@ -502,7 +513,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * @param {DragEvent} event       The initiating drop event.
    * @param {DrawSteelActor} actor  The dropped Actor document.
    * @returns {Promise<DrawSteelActor|null>} A Promise resolving to the dropped Actor (if sorting), a newly created Actor,
-   *                                         or a nullish value in case of failure or no action being taken.
+   *                                         or null in case of failure or no action being taken.
    * @protected
    */
   async _onDropActor(event, actor) {
@@ -516,7 +527,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * @param {DragEvent} event     The initiating drop event.
    * @param {DrawSteelItem} item  The dropped Item document.
    * @returns {Promise<DrawSteelItem|null>} A Promise resolving to the dropped Item (if sorting), a newly created Item,
-   *                                         or a nullish value in case of failure or no action being taken.
+   *                                         or null in case of failure or no action being taken.
    * @protected
    */
   async _onDropItem(event, item) {
@@ -529,11 +540,26 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
    * Handle a dropped Folder.
    * @param {DragEvent} event                   The initiating drop event.
    * @param {foundry.documents.Folder} folder   The dropped Folder document.
-   * @returns {Promise<foundry.documents.Folder|null>} A Promise resolving to the dropped Folder indicate success, or a nullish
-   *                                           value to indicate failure or no action being taken.
+   * @returns {Promise<foundry.documents.Folder|null>} A Promise resolving to the dropped Folder indicate success,
+   *                                            or null to indicate failure or no action being taken.
    * @protected
    */
   async _onDropFolder(event, folder) {
+    return null;
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Handle a dropped PseudoDocument on the Document Sheet.
+   * @template {PseudoDocument} TDocument
+   * @param {DragEvent} event           The initiating drop event.
+   * @param {TDocument} pseudo          The resolved PseudoDocument instance.
+   * @returns {Promise<TDocument|null>} A PseudoDocument of the same type as the dropped one in case of a successful result,
+   *                                    or null in case of failure or no action being taken.
+   * @protected
+   */
+  async _onDropPseudoDocument(event, pseudo) {
     return null;
   }
 }

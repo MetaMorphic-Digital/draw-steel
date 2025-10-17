@@ -39,7 +39,7 @@ export default class ModelCollection extends foundry.utils.Collection {
   /**
    * The base classes of the pseudo-documents that can be stored in a model such as this.
    * Each class must implement `documentConfig` to map to the subtype.
-   * @type {Record<string, PseudoDocument>}
+   * @type {Record<string, typeof PseudoDocument>}
    */
   static documentClasses = {
     Advancement: BaseAdvancement,
