@@ -673,14 +673,21 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @protected
    */
   async _onDropAdvancement(event, advancement) {
-    console.log(event, advancement);
     if (!this.item.isOwner || !advancement) return false;
 
     if (this.item.uuid === advancement.document?.uuid) {
       const result = await this._onSortPseudoDocument(event, advancement);
       return result?.length ? advancement : null;
     }
-    return null;
+
+    const keepId = !this.item.getEmbeddedCollection("Advancement").has(advancement.id);
+    const advancementData = advancement.toObject();
+
+    const result = await BaseAdvancement.create(advancementData, { keepId, parent: this.item, renderSheet: false });
+
+    // TODO: Do we run the advancement?
+
+    return result ?? null;
   }
 
   /* -------------------------------------------------- */
@@ -700,9 +707,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       const result = await this._onSortPseudoDocument(event, effect);
       return result?.length ? effect : null;
     }
+
     const keepId = !this.item.getEmbeddedCollection("PowerRollEffect").has(effect.id);
-    // const effectData = game.items.fromCompendium(effect);
-    // const result = await ActiveEffect.implementation.create(effectData, { parent: this.item, keepId });
+    const effectData = effect.toObject();
+
+    const result = await BasePowerRollEffect.create(effectData, { keepId, parent: this.item, renderSheet: false });
+
     return result ?? null;
   }
 
