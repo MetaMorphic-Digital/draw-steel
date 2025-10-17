@@ -183,7 +183,6 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         perkTypes: listFormatter.format(perkLabels),
         itemName: this.advancement.document.name,
       };
-      console.log(perkLabels, formatData);
       context.additionalText = game.i18n.format(`DRAW_STEEL.ADVANCEMENT.ITEM_GRANT.AdditionalText.${context.additional}`, formatData);
     }
 
