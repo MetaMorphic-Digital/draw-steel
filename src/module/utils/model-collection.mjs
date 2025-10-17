@@ -98,6 +98,16 @@ export default class ModelCollection extends foundry.utils.Collection {
 
   /* -------------------------------------------------- */
 
+  /**
+   * A sorted array of the model instances.
+   * @type {Model[]}
+   */
+  get sortedContents() {
+    return this.contents.sort((a, b) => a.sort - b.sort);
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   set(key, value, { modifySource = true } = {}) {
     // Perform the modifications to the source when adding a new entry.
