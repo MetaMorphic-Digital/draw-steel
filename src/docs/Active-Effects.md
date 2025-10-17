@@ -138,12 +138,14 @@ While there are similarities with roll data, active effects generally lead with 
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
 |Speed|`system.movement.value`|
+|Movement Multiplier|`system.movement.multiplier`|
 |Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
+> **!**: Effects which multiply movement (e.g. set to 0 or double) should target `system.movement.multiplier | MULTIPLY | 2` to ensure that it is applied at the right stage.
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >
