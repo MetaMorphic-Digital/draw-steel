@@ -22,11 +22,11 @@
       <div class="tag">{{keyword}}</div>
       {{/each}}
       {{!-- Organization/Role Tags --}}
-      {{#if organizationLabel}}
-      <div class="tag">{{organizationLabel}}</div>
+      {{#if system.monster.organizationLabel}}
+      <div class="tag">{{system.monster.organizationLabel}}</div>
       {{/if}}
-      {{#if roleLabel}}
-      <div class="tag">{{roleLabel}}</div>
+      {{#if system.monster.roleLabel}}
+      <div class="tag">{{system.monster.roleLabel}}</div>
       {{/if}}
       {{#unless isPlay}}
       <a data-action="editMonsterMetadata">
@@ -37,14 +37,14 @@
   </div>
   <div class="header-right flexcol">
     <div class="actor-source">
-      {{document.system.source.label}}
+      {{system.source.label}}
     </div>
     <dl>
       <dt class="level">{{systemFields.monster.fields.level.label}}</dt>
       <dd class="level">{{systemSource.monster.level}}</dd>
 
       <dt class="ev">{{localize "DRAW_STEEL.Actor.npc.EVLabel.Label"}}</dt>
-      <dd class="ev">{{evLabel}}</dd>
+      <dd class="ev">{{system.monster.evLabel}}</dd>
     </dl>
     {{#if showMalice}}
     <div class="malice">
