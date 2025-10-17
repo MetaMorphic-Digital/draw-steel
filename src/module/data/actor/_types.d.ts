@@ -57,6 +57,9 @@ declare module "./base.mjs" {
       hover: boolean;
       disengage: number;
       teleport: number | null;
+      multiplier: number;
+      /** Only defined for heroes */
+      kitBonus?: number;
     }
     damage: {
       immunities: Record<string, number>;

@@ -17,8 +17,8 @@
     "_dsid": "polder",
     "advancements": {
       "NrOnyWpRHJYurm2Y": {
-        "name": "",
-        "img": null,
+        "name": "Signature Trait",
+        "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
@@ -30,6 +30,40 @@
           },
           {
             "uuid": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT"
+          }
+        ]
+      },
+      "mG08KGdUdTlTPddN": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "mG08KGdUdTlTPddN",
+        "description": "<p>You have 4 ancestry points to spend on the following traits. (<em>Quick Build:</em> Corruption Immunity, Fearless, Graceful Retreat.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "chooseN": 4,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.WFaKeDhxONumCRek"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.sAzlkp3b67AYwucx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.Rv80kYretCbPaguq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.WrLBhTDLbX80T7hN"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.EsJYMF39KZwneS4F"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.n9J7I0TzxJOYgucN"
           }
         ]
       }
@@ -45,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456927170,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -163,7 +163,6 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
-        context.characteristics = this._getCharacteristics();
         context.combatTooltip = this._getCombatTooltip();
         context.movement = this._getMovement();
         context.damageIW = this._getImmunitiesWeaknesses();
@@ -194,17 +193,19 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
 
   /**
    * Constructs a record of valid characteristics and their associated field.
+   * @param {boolean} edit Are the characteristics editable inline?
    * @returns {Record<string, {field: NumberField, value: number}>}
    * @protected
    */
-  _getCharacteristics() {
-    const isPlay = this.isPlayMode;
-    const data = isPlay ? this.actor : this.actor._source;
+  _getCharacteristics(edit) {
+    const isEdit = this.isEditMode && edit;
+    const data = isEdit ? this.actor._source : this.actor;
     return Object.keys(ds.CONFIG.characteristics).reduce((obj, chc) => {
       const value = foundry.utils.getProperty(data, `system.characteristics.${chc}.value`);
       obj[chc] = {
+        isEdit,
         field: this.actor.system.schema.getField(["characteristics", chc, "value"]),
-        value: isPlay ? (value ?? 0) : (value || null),
+        value: isEdit ? (value || null) : (value ?? 0),
       };
       return obj;
     }, {});
@@ -872,7 +873,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
    * @protected
    */
   static async #editCombat(event, target) {
-    new ActorCombatStatsInput({ document: this.actor }).render({ force: true });
+    return new ActorCombatStatsInput({ document: this.actor }).render({ force: true });
   }
 
   /* -------------------------------------------------- */

@@ -57,7 +57,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
 
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       delete parts.tracker;
       delete parts.footer;
     } else {
@@ -107,7 +107,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (!game.combats.isDefaultInitiativeMode) return;
 
     const combat = this.viewed;
 
@@ -217,7 +217,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (!game.combats.isDefaultInitiativeMode) return;
 
     // These buttons/methods are inappropriate for default initiative handling
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
@@ -331,7 +331,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
     }
@@ -362,7 +362,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   _getCombatContextOptions() {
     const entryOptions = super._getCombatContextOptions();
 
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       entryOptions.findSplice(o => o.name === "COMBAT.RollAll");
       entryOptions.findSplice(o => o.name === "COMBAT.RollNPC");
 

@@ -239,6 +239,7 @@
       "Share": "Share",
       "Delete": "Delete",
       "Resources": "Resources",
+      "EditCharacteristics": "Edit Characteristics",
       "Other": "Other",
       "LevelUp": "Level Up Available",
       "ToggleMode": "Toggle Play/Edit Mode",
@@ -256,6 +257,18 @@
             "damage": "Damage Roll",
             "healing": "Healing Roll"
           }
+        },
+        "ApplyEffect": {
+          "FormatString": "{name} {end}",
+          "EffectEnds": {
+            "encounter": "(Encounter)",
+            "respite": "(Respite)",
+            "save": "(save ends)",
+            "turn": "(EoT)"
+          },
+          "LinkTooltip": "Apply {name} to selected tokens.",
+          "NoSelection": "You must select tokens to apply the effect to.",
+          "CreateText": "+Applied {name}"
         }
       }
     },
@@ -479,6 +492,15 @@
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
+        },
+        "CharacteristicInput": {
+          "Title": "Edit Characteristics",
+          "Advancement": "Advancement Bonus",
+          "Hint": "The inputs represent initial values before active effects and advancements. The bottom row represents increases from advancements.",
+          "Rows": {
+            "Input": "Base",
+            "Advancement": "Advancement"
+          }
         }
       },
       "hero": {
@@ -644,13 +666,12 @@
       "Initiative": {
         "Modes": {
           "Label": "Initiative Mode",
-          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order",
+          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order.",
           "Default": "Default",
           "Alternative": "Alternative"
         },
         "Actions": {
           "RollFirst": {
-            "Tooltip": "Roll a d10 to determine which side goes first",
             "Heroes": "Heroes Go First!",
             "Enemies": "Enemies Go First!"
           },

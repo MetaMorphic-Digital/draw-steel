@@ -1,5 +1,6 @@
 import { systemPath } from "../../constants.mjs";
 import { AdvancementModel, TreasureModel, KitModel, ProjectModel } from "../../data/item/_module.mjs";
+import CharacteristicInput from "../apps/characteristic-input.mjs";
 import FillTraitDialog from "../apps/advancement/fill-trait-dialog.mjs";
 import DrawSteelActorSheet from "./actor-sheet.mjs";
 
@@ -21,6 +22,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
       takeRespite: this.#takeRespite,
       spendRecovery: this.#spendRecovery,
       spendStaminaHeroToken: this.#spendStaminaHeroToken,
+      editCharacteristics: this.#editCharacteristics,
       modifyItemQuantity: this.#modifyItemQuantity,
       fillTrait: this.#fillTrait,
     },
@@ -82,6 +84,7 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
     await super._preparePartContext(partId, context, options);
     switch (partId) {
       case "stats":
+        context.characteristics = this._getCharacteristics(false);
         context.unfilledSkill = !!this.actor.system._unfilledTraits.skill?.size;
         context.skills = this._getSkills();
         break;
@@ -374,8 +377,20 @@ export default class DrawSteelHeroSheet extends DrawSteelActorSheet {
    * @param {PointerEvent} event   The originating click event.
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
-  static async #spendStaminaHeroToken() {
+  static async #spendStaminaHeroToken(event, target) {
     await this.actor.system.spendStaminaHeroToken();
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Open a configuration app to edit this hero's characteristics.
+   * @this DrawSteelHeroSheet
+   * @param {PointerEvent} event   The originating click event.
+   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
+   */
+  static async #editCharacteristics(event, target) {
+    return new CharacteristicInput({ document: this.document }).render({ force: true });
   }
 
   /* -------------------------------------------------- */

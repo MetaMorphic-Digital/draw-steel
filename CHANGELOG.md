@@ -22,7 +22,10 @@
 
 ### Added
 
-- New Compendium Content:
+- New Player-Facing Compendium Content:
+  - Updated all ancestries to offer a choice of purchased traits.
+  - Remaining Non-imbue projects.
+- New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
   - Draconians
@@ -39,12 +42,15 @@
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
+- Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added the official licensed glyphs. (#1209)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
+- Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 
 ### Changed
 
@@ -53,9 +59,11 @@
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
+- Kit bonuses to speed are now applied after active effects. (#957)
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
+- Heroes now have a helper app for adjusting characteristics. (#1206)
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
@@ -69,6 +77,8 @@
 - Player-Facing Compendium data fixes:
   - Implemented the "custom" target text for many abilities.
   - Corrected action types for many echelon 1 abilities.
+  - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
+  - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
@@ -90,8 +100,10 @@
     - Corrected the description of the Destructive Path feature per errata.
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+- Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
+- Fixed issues with "Alternative" initiative. (#1168)
 
 ## 0.8.1
 

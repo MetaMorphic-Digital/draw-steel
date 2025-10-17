@@ -17,7 +17,7 @@
     "_dsid": "high-elf",
     "advancements": {
       "mC9IWGVI31c4SkOL": {
-        "name": "",
+        "name": "Signature Trait",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -27,6 +27,40 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.origins.Item.Zh8ZNVJqtJgJpW7m"
+          }
+        ]
+      },
+      "5T4BvFmxVEiwp77W": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "5T4BvFmxVEiwp77W",
+        "description": "<p>You have 3 ancestry points to spend on the following traits. (<em>Quick Build:</em> High Senses, Otherworldly Grace.)</p>",
+        "chooseN": 3,
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.uHpwLB8wTL47WJr5"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.VF6zaUKLsLN1Im3W"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.m1tQ43tT1hnixVBn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.YrnkrcvZSkecn21f"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.3Y0oPwqk2tDFlaTp"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.cs8jldLJrjpmpRfl"
           }
         ]
       }
@@ -42,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456808540,
     "modifiedTime": null,
     "lastModifiedBy": null
