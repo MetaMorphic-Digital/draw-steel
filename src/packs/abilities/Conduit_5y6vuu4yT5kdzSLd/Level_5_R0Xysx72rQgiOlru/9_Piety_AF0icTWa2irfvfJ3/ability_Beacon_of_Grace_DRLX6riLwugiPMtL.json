@@ -1,0 +1,146 @@
+{
+  "folder": "AF0icTWa2irfvfJ3",
+  "name": "Beacon of Grace",
+  "type": "ability",
+  "_id": "DRLX6riLwugiPMtL",
+  "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "105",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "beacon-of-grace",
+    "story": "You ignite a foe with holy radiance, rewarding allies who attack them.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "aSsOk5oxJSKnLqH5": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "aSsOk5oxJSKnLqH5",
+          "damage": {
+            "tier1": {
+              "value": "8 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier2": {
+              "value": "13 + @chr",
+              "types": [
+                "holy"
+              ]
+            },
+            "tier3": {
+              "value": "17 + @chr",
+              "types": [
+                "holy"
+              ]
+            }
+          }
+        },
+        "GL681vrvK4k54KhI": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "GL681vrvK4k54KhI"
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Beacon of Grace",
+      "img": "icons/magic/light/explosion-glow-spiral-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.DRLX6riLwugiPMtL",
+      "transfer": false,
+      "_id": "X8Pxv2NzUOGIrXnG",
+      "system": {
+        "end": {
+          "type": "encounter",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Until the end of the encounter, whenever you or any ally damages the target using an ability, that creature can spend a Recovery. If the target is reduced to 0 Stamina before the end of the encounter, you can use a free triggered action to move this effect to another creature within distance.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760686095359,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!DRLX6riLwugiPMtL.X8Pxv2NzUOGIrXnG"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760685855485,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!DRLX6riLwugiPMtL"
+}
