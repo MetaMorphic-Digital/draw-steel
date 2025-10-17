@@ -424,11 +424,6 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     if (!dragData) return;
     event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
-  /**
-   * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent.
-   * @protected
-   */
 
   /* -------------------------------------------- */
 

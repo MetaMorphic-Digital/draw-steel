@@ -95,16 +95,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
   /* -------------------------------------------------- */
 
-  /**
-   * The Actor instance which owns this Item, if any.
-   * @type {Actor|null}
-   */
-  get actor() {
-    return this.document.actor;
-  }
-
-  /* -------------------------------------------------- */
-
   /** @inheritdoc */
   _configureRenderParts(options) {
     const { header, tabs, description, details, advancement, impact, effects } = super._configureRenderParts(options);
