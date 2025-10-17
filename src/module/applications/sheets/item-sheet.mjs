@@ -685,7 +685,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     const result = await BaseAdvancement.create(advancementData, { keepId, parent: this.item, renderSheet: false });
 
-    // TODO: Do we run the advancement?
+    if (this.item.actor) {
+      // TODO: Create advancement chain, configuration dialog
+    }
 
     return result ?? null;
   }

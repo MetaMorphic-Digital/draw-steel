@@ -45,6 +45,8 @@
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
+- Added drag and drop support for pseudodocuments (Power Roll Effects & Advancements). (#907)
+  - This allows them to be dragged from one sheet to another to make a copy, or onto the same sheet to sort.
 - Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
@@ -68,6 +70,7 @@
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
+- PseudoDocument.create now returns the pseudo document instead of the parent.
 
 ### Removed
 
