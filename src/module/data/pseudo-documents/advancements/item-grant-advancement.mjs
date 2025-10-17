@@ -19,7 +19,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
-      chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
+      chooseN: new NumberField({ required: true, integer: true, min: 1 }),
       additional: new SchemaField({
         type: new StringField({ required: true }),
         perkType: new SetField(setOptions()),
@@ -54,15 +54,18 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
    * @type {Record<string, { label: string, points?: boolean }>}
    */
   static ADDITIONAL_TYPES = {
+    ancestryTrait: {
+      label: "TYPES.Item.ancestryTrait",
+      points: true,
+    },
     kit: {
       label: "TYPES.Item.kit",
     },
     perk: {
       label: "TYPES.Item.perk",
     },
-    ancestryTrait: {
-      label: "TYPES.Item.ancestryTrait",
-      points: true,
+    subclass: {
+      label: "TYPES.Item.subclass",
     },
   };
 

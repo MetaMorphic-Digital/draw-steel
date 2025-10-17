@@ -57,6 +57,9 @@ declare module "./base.mjs" {
       hover: boolean;
       disengage: number;
       teleport: number | null;
+      multiplier: number;
+      /** Only defined for heroes */
+      kitBonus?: number;
     }
     damage: {
       immunities: Record<string, number>;
@@ -117,11 +120,14 @@ declare module "./npc.mjs" {
     }
     monster: {
       freeStrike: number;
-      keywords: Set<string>;
+      keywords: Set<string> & { list: string[]; labels: string };
       level: number;
       ev: number;
+      evLabel: number;
       role: string;
+      roleLabel: string;
       organization: string;
+      organizationLabel: string;
     }
   }
 }

@@ -1,21 +1,21 @@
 import { systemPath } from "../../constants.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
-import DSDocumentSheetMixin from "../api/document-sheet-mixin.mjs";
+import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
- * @import BaseItemModel from "../../data/item/base.mjs";
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs"
+ * @import BaseItemModel from "../../data/item/base.mjs"
  */
 
-const { sheets, ux } = foundry.applications;
+const { ux } = foundry.applications;
 
 /**
- * AppV2-based sheet for all item classes.
+ * AppV2-based sheet for all item subtypes.
  */
-export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.ItemSheet) {
+export default class DrawSteelItemSheet extends DSDocumentSheet {
   /** @inheritdoc */
   static DEFAULT_OPTIONS = {
     classes: ["item"],
@@ -25,19 +25,13 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
       width: 580,
     },
     actions: {
-      toggleMode: this.#toggleMode,
       showImage: this.#showImage,
       updateSource: this.#updateSource,
       editHTML: this.#editHTML,
-      viewDoc: this.#viewEffect,
-      createDoc: this.#createEffect,
-      deleteDoc: this.#deleteEffect,
       toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
     },
-    // Custom property that's merged into `this.options`
-    dragDrop: [{ dragSelector: ".draggable", dropSelector: null }],
   };
 
   /* -------------------------------------------------- */
@@ -92,6 +86,16 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
   /* -------------------------------------------------- */
 
+  /**
+   * The Item document managed by this sheet.
+   * @type {DrawSteelItem}
+   */
+  get item() {
+    return this.document;
+  }
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   _configureRenderParts(options) {
     const { header, tabs, description, details, advancement, impact, effects } = super._configureRenderParts(options);
@@ -103,7 +107,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
 
     // Don't re-render the description tab if there's an active editor
     if (!this.#editor && itemModel.schema.has("description")) parts.description = description;
-    if (this.document.limited) return;
+    if (this.item.limited) return;
     if (this.item.system.constructor.metadata.detailsPartial) parts.details = details;
     if ("Advancement" in itemModel.metadata.embedded) parts.advancement = advancement;
     if ("PowerRollEffect" in itemModel.metadata.embedded) parts.impact = impact;
@@ -194,7 +198,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     // Advancements
     const advs = {};
     /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
-    const models = this.document.getEmbeddedCollection("Advancement")[
+    const models = this.item.getEmbeddedCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
     ];
     for (const model of models) {
@@ -214,7 +218,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         id: model.id,
         canReconfigure: model.canReconfigure,
       };
-      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.document });
+      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.item });
       advs[model.requirements.level].documents.push(advancementContext);
     }
 
@@ -324,7 +328,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.item }),
-            img: this.document.img,
+            img: this.item.img,
             type: "base",
             origin: this.item.uuid,
           };
@@ -344,7 +348,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
           const effectClass = getDocumentClass("ActiveEffect");
           const effectData = {
             name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
-            img: this.document.img,
+            img: this.item.img,
             type: "abilityModifier",
             origin: this.item.uuid,
           };
@@ -364,7 +368,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /** @inheritdoc */
   async _onRender(context, options) {
     await super._onRender(context, options);
-    this.#dragDrop.forEach((d) => d.bind(this.element));
 
     // Bubble editor active class state to containing formGroup
     /** @type {Array<HTMLButtonElement>} */
@@ -411,25 +414,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Toggle Edit vs. Play mode.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   */
-  static async #toggleMode(event, target) {
-    if (!this.isEditable) {
-      console.error("You can't switch to Edit mode if the sheet is uneditable");
-      return;
-    }
-    this._mode = this.isPlayMode ? DrawSteelItemSheet.MODES.EDIT : DrawSteelItemSheet.MODES.PLAY;
-    if (this.isPlayMode && this.#editor) await this.#saveEditor();
-    this.render();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Display the item image.
    *
    * @this DrawSteelItemSheet
@@ -451,7 +435,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
    */
   static async #updateSource(event, target) {
-    new DocumentSourceInput({ document: this.document }).render({ force: true });
+    new DocumentSourceInput({ document: this.item }).render({ force: true });
   }
 
   /* -------------------------------------------------- */
@@ -521,60 +505,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
   /* -------------------------------------------------- */
 
   /**
-   * Renders an embedded document's sheet.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #viewEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    effect.sheet.render(true);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handles item deletion.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @protected
-   */
-  static async #deleteEffect(event, target) {
-    const effect = this._getEmbeddedDocument(target);
-    await effect.deleteDialog();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle creating a new Owned Item or ActiveEffect for the actor using initial data defined in the HTML dataset.
-   *
-   * @this DrawSteelItemSheet
-   * @param {PointerEvent} event   The originating click event.
-   * @param {HTMLElement} target   The capturing HTML element which defined a [data-action].
-   * @private
-   */
-  static async #createEffect(event, target) {
-    const aeCls = getDocumentClass("ActiveEffect");
-    const effectData = {
-      name: aeCls.defaultName({ type: target.dataset.type, parent: this.item }),
-    };
-    for (const [dataKey, value] of Object.entries(target.dataset)) {
-      if (["action", "documentClass"].includes(dataKey)) continue;
-      // Nested properties require dot notation in the HTML, e.g. anything with `system`
-      foundry.utils.setProperty(effectData, dataKey, value);
-    }
-
-    await aeCls.create(effectData, { parent: this.item });
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * Determines effect parent to pass to helper.
    *
    * @this DrawSteelItemSheet
@@ -598,7 +528,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @private
    */
   static async #createCultureAdvancement(event, target) {
-    const context = BaseAdvancement._prepareCreateDialogContext(this.document);
+    const context = BaseAdvancement._prepareCreateDialogContext(this.item);
 
     const aspectPrefix = "cultureAspect";
 
@@ -643,7 +573,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
         },
       };
     } else createData = { type };
-    ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.document });
+    ds.data.pseudoDocuments.advancements.SkillAdvancement.create(createData, { parent: this.item });
   }
 
   /**
@@ -655,131 +585,43 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
    * @private
    */
   static async #reconfigureAdvancement(event, target) {
-    if (!this.document.parent) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
+    if (!this.item.parent) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
     const advancement = this._getPseudoDocument(target);
     await advancement.reconfigure();
   }
 
   /* -------------------------------------------------- */
-  /*   DragDrop                                         */
+  /*   Drag and Drop                                    */
   /* -------------------------------------------------- */
 
-  /**
-   * Define whether a user is able to begin a dragstart workflow for a given drag selector.
-   * @param {string} selector       The candidate HTML selector for dragging.
-   * @returns {boolean}             Can the current user drag this selector?
-   * @protected
-   */
-  _canDragStart(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
-   * @param {string} selector       The candidate HTML selector for the drop target.
-   * @returns {boolean}             Can the current user drop on this selector?
-   * @protected
-   */
-  _canDragDrop(selector) {
-    // game.user fetches the current user
-    return this.isEditable;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Callback actions which occur at the beginning of a drag start workflow.
-   * @param {DragEvent} event       The originating DragEvent.
-   * @protected
-   */
-  _onDragStart(event) {
-    const li = event.currentTarget;
-    if ("link" in event.target.dataset) return;
-
-    let dragData = null;
-
-    // Active Effect
-    if (li.dataset.effectId) {
-      const effect = this.item.effects.get(li.dataset.effectId);
-      dragData = effect.toDragData();
-    }
-
-    if (!dragData) return;
-
-    // Set data transfer
-    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Callback actions which occur when a dragged element is over a drop target.
-   * @param {DragEvent} event       The originating DragEvent.
-   * @protected
-   */
-  _onDragOver(event) {}
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Callback actions which occur when a dragged element is dropped on a target.
-   * @param {DragEvent} event       The originating DragEvent.
-   * @protected
-   */
-  async _onDrop(event) {
-    const data = ux.TextEditor.implementation.getDragEventData(event);
-    const item = this.item;
-    const allowed = Hooks.call("dropItemSheetData", item, this, data);
-    if (allowed === false) return;
-
-    // Handle different data types
-    switch (data.type) {
-      case "ActiveEffect":
-        return this._onDropActiveEffect(event, data);
-      case "Actor":
-        return this._onDropActor(event, data);
-      case "Item":
-        return this._onDropItem(event, data);
-      case "Folder":
-        return this._onDropFolder(event, data);
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle the dropping of ActiveEffect data onto an Actor Sheet.
-   * @param {DragEvent} event                  The concluding DragEvent which contains drop data.
-   * @param {object} data                      The data transfer extracted from the event.
-   * @returns {Promise<ActiveEffect|boolean>}  The created ActiveEffect object or false if it couldn't be created.
-   * @protected
-   */
-  async _onDropActiveEffect(event, data) {
-    const aeCls = getDocumentClass("ActiveEffect");
-    const effect = await aeCls.fromDropData(data);
+  /** @inheritdoc */
+  async _onDropActiveEffect(event, effect) {
     if (!this.item.isOwner || !effect) return false;
 
-    if (this.item.uuid === effect.parent?.uuid)
-      return this._onEffectSort(event, effect);
-    return aeCls.create(effect, { parent: this.item });
+    if (this.item.uuid === effect.parent?.uuid) {
+      const result = await this._onSortActiveEffect(event, effect);
+      return result?.length ? effect : null;
+    }
+    const keepId = !this.item.effects.has(effect.id);
+    const effectData = game.items.fromCompendium(effect);
+    const result = await ActiveEffect.implementation.create(effectData, { parent: this.item, keepId });
+    return result ?? null;
   }
 
   /* -------------------------------------------------- */
 
   /**
-   * Sorts an Active Effect based on its surrounding attributes.
+   * Handle a drop event for an existing embedded Active Effect to sort that Active Effect relative to its siblings.
    *
-   * @param {DragEvent} event
-   * @param {ActiveEffect} effect
+   * @param {DragEvent} event       The initiating drop event.
+   * @param {DrawSteelActiveEffect} effect   The dropped ActiveEffect document.
+   * @returns {Promise<DrawSteelActiveEffect[]>|void}
+   * @protected
    */
-  _onEffectSort(event, effect) {
-    const effects = this.item.effects;
-    const dropTarget = event.target.closest("[data-effect-id]");
+  async _onSortActiveEffect(event, effect) {
+    const dropTarget = event.target.closest("[data-document-uuid]");
     if (!dropTarget) return;
-    const target = effects.get(dropTarget.dataset.effectId);
+    const target = this._getEmbeddedDocument(dropTarget);
 
     // Don't sort on yourself
     if (effect.id === target.id) return;
@@ -787,9 +629,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     // Identify sibling items based on adjacent HTML elements
     const siblings = [];
     for (let el of dropTarget.parentElement.children) {
-      const siblingId = el.dataset.effectId;
-      if (siblingId && (siblingId !== effect.id))
-        siblings.push(effects.get(el.dataset.effectId));
+      const sibling = this._getEmbeddedDocument(el);
+      if (sibling.uuid !== effect.uuid) siblings.push(this._getEmbeddedDocument(el));
     }
 
     // Perform the sort
@@ -806,83 +647,4 @@ export default class DrawSteelItemSheet extends DSDocumentSheetMixin(sheets.Item
     // Perform the update
     return this.item.updateEmbeddedDocuments("ActiveEffect", updateData);
   }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle dropping of an Actor data onto another Actor sheet.
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data.
-   * @param {object} data                The data transfer extracted from the event.
-   * @returns {Promise<object|boolean>}  A data object which describes the result of the drop, or false if the drop was
-   *                                     not permitted.
-   * @protected
-   */
-  async _onDropActor(event, data) {
-    if (!this.item.isOwner) return false;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle dropping of an item reference or item data onto an Actor Sheet.
-   * @param {DragEvent} event            The concluding DragEvent which contains drop data.
-   * @param {object} data                The data transfer extracted from the event.
-   * @returns {Promise<Item[]|boolean>}  The created or updated Item instances, or false if the drop was not permitted.
-   * @protected
-   */
-  async _onDropItem(event, data) {
-    if (!this.item.isOwner) return false;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Handle dropping of a Folder on an Actor Sheet.
-   * The core sheet currently supports dropping a Folder of Items to create all items as owned items.
-   * @param {DragEvent} event     The concluding DragEvent which contains drop data.
-   * @param {object} data         The data transfer extracted from the event.
-   * @returns {Promise<Item[]>}
-   * @protected
-   */
-  async _onDropFolder(event, data) {
-    if (!this.item.isOwner) return [];
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Returns an array of DragDrop instances.
-   * @type {DragDrop[]}
-   */
-  get dragDrop() {
-    return this.#dragDrop;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Create drag-and-drop workflow handlers for this Application.
-   * @returns {DragDrop[]}     An array of DragDrop handlers.
-   * @private
-   */
-  #createDragDropHandlers() {
-    return this.options.dragDrop.map((d) => {
-      d.permissions = {
-        dragstart: this._canDragStart.bind(this),
-        drop: this._canDragDrop.bind(this),
-      };
-      d.callbacks = {
-        dragstart: this._onDragStart.bind(this),
-        dragover: this._onDragOver.bind(this),
-        drop: this._onDrop.bind(this),
-      };
-      return new ux.DragDrop.implementation(d);
-    });
-  }
-
-  /* -------------------------------------------------- */
-
-  // This is marked as private because there's no real need
-  // for subclasses or external hooks to mess with it directly
-  #dragDrop = this.#createDragDropHandlers();
 }

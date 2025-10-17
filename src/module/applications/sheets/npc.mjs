@@ -63,13 +63,11 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
     switch (partId) {
       case "header":
         context.monsterKeywords = this._getMonsterKeywords();
-        context.organizationLabel = this._getOrganizationLabel();
-        context.roleLabel = this._getRoleLabel();
-        context.evLabel = this._getEVLabel();
-        context.showMalice = game.user.isGM && (this.actor.system.monster.organization !== "minion");
+        context.showMalice = game.user.isGM && !this.actor.system.isMinion;
         context.malice = game.actors.malice;
         break;
       case "stats":
+        context.characteristics = this._getCharacteristics(true);
         context.isSingleSquadMinion = this.actor.isMinion && (this.actor.system.combatGroups.size === 1);
         if (context.isSingleSquadMinion) context.combatGroup = this.actor.system.combatGroup;
         break;
@@ -89,40 +87,6 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
   _getMonsterKeywords() {
     const monsterKeywords = ds.CONFIG.monsters.keywords;
     return Array.from(this.actor.system.monster.keywords).map(k => monsterKeywords[k]?.label).filter(k => k);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the label for the monster's organization.
-   * @returns {string}
-   */
-  _getOrganizationLabel() {
-    const organizations = ds.CONFIG.monsters.organizations;
-    return organizations[this.actor.system.monster.organization]?.label ?? "";
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the label for the monster's role.
-   * @returns {string}
-   */
-  _getRoleLabel() {
-    const roles = ds.CONFIG.monsters.roles;
-    return roles[this.actor.system.monster.role]?.label ?? "";
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Fetches the label for the monster's Encounter Value.
-   * @returns {string}
-   */
-  _getEVLabel() {
-    const data = { value: this.actor.system.monster.ev };
-    if (this.actor.system.monster.organization === "minion") return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data);
-    else return game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
   /* -------------------------------------------------- */

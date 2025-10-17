@@ -117,7 +117,7 @@ Hooks.once("init", function () {
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 
   // Register enrichers
-  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll];
+  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll, applications.ux.enrichers.applyEffect];
 
   CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
     editor: false,
