@@ -77,7 +77,7 @@
       </div>
     </fieldset>
   </div>
-  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"}}
+  {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/characteristics.hbs"  editCharacteristics=(not isPlay)}}
   {{#if isPlay}}
   <div class="form-group">
     {{> "systems/draw-steel/templates/sheets/actor/shared/partials/stats/combat.hbs"}}
