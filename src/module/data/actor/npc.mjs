@@ -125,7 +125,8 @@ export default class NPCModel extends BaseActorModel {
 
     const monsterKeywords = ds.CONFIG.monsters.keywords;
     const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
-    this.monster.keywordLabels = keywordFormatter.format(keywordList);
+    this.monster.keywords.list = keywordList;
+    this.monster.keywords.labels = keywordFormatter.format(keywordList);
 
     const organizations = ds.CONFIG.monsters.organizations;
     this.monster.organizationLabel = organizations[this.monster.organization]?.label ?? "";
