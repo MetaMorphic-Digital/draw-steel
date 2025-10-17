@@ -111,6 +111,7 @@ export async function onRender(element) {
 
 /**
  * Helper function to apply the effect to a selected token's actor.
+ * @this {HTMLAnchorElement}
  */
 async function onClickAnchor() {
   const tokens = canvas?.tokens?.controlled ?? [];
@@ -119,20 +120,20 @@ async function onClickAnchor() {
     return;
   }
 
-  const noStack = !link.dataset.stacking;
+  const noStack = !this.dataset.stacking;
 
-  const tempEffect = link.dataset.type === "custom" ?
-    (await fromUuid(link.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
-    await DrawSteelActiveEffect.fromStatusEffect(link.dataset.status);
+  const tempEffect = this.dataset.type === "custom" ?
+    (await fromUuid(this.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
+    await DrawSteelActiveEffect.fromStatusEffect(this.dataset.status);
 
   /** @type {ActiveEffectData} */
   const updates = {
     transfer: true,
-    origin: link.dataset.origin,
+    origin: this.dataset.origin,
     system: {},
   };
 
-  if (link.dataset.end) updates.system.end = { type: link.dataset.end };
+  if (this.dataset.end) updates.system.end = { type: this.dataset.end };
   tempEffect.updateSource(updates);
 
   const actors = new Set();
@@ -147,7 +148,7 @@ async function onClickAnchor() {
     actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
 
     // statuses automatically create scrolling text themselves
-    if (link.dataset.type === "status") continue;
+    if (this.dataset.type === "status") continue;
 
     const scrollingTextArgs = [
       token.center,
