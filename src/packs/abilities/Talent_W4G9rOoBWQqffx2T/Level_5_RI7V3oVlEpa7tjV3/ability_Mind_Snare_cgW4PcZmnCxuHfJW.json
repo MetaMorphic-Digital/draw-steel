@@ -1,0 +1,131 @@
+{
+  "folder": "RI7V3oVlEpa7tjV3",
+  "name": "Mind Snare",
+  "type": "ability",
+  "_id": "cgW4PcZmnCxuHfJW",
+  "img": "icons/magic/control/debuff-energy-snare-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "195",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "mind-snare",
+    "story": "You latch onto your prey’s brain and don’t let go, like a song they can’t get out of their head.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "telepathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "QBxmisNcWNpmd3xO": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "QBxmisNcWNpmd3xO",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "reason"
+              }
+            },
+            "tier2": {
+              "value": "14 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "reason"
+              }
+            },
+            "tier3": {
+              "value": "20 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "reason"
+              }
+            }
+          }
+        },
+        "gmeDnGz1DCMKjZqw": {
+          "name": "Applied Effect",
+          "img": null,
+          "type": "applied",
+          "_id": "gmeDnGz1DCMKjZqw",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "reason"
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "reason"
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "reason"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While slowed this way, the target takes 3 psychic damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes 5 psychic damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760749557007,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!cgW4PcZmnCxuHfJW"
+}
