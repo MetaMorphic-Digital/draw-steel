@@ -80,16 +80,19 @@ export default class ProjectModel extends BaseItemModel {
     const yieldItem = await fromUuid(itemUUID);
     if (yieldItem?.type === "treasure") {
       const { prerequisites, rollCharacteristic, goal, source } = yieldItem.system.project;
-      this.updateSource({
-        type: "crafting",
-        prerequisites,
-        rollCharacteristic,
-        goal,
-        projectSource: source,
-        yield: {
-          item: itemUUID,
-          amount: yieldItem.system.project.yield.amount,
-          display: yieldItem.system.project.yield.display,
+      this.parent.updateSource({
+        img: yieldItem.img,
+        system: {
+          type: "crafting",
+          prerequisites,
+          rollCharacteristic,
+          goal,
+          projectSource: source,
+          yield: {
+            item: itemUUID,
+            amount: yieldItem.system.project.yield.amount,
+            display: yieldItem.system.project.yield.display,
+          },
         },
       });
     }
