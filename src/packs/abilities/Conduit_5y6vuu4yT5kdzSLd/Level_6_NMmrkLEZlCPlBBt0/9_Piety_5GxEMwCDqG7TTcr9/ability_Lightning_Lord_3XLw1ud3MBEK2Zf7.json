@@ -1,0 +1,112 @@
+{
+  "folder": "5GxEMwCDqG7TTcr9",
+  "name": "Lightning Lord",
+  "type": "ability",
+  "_id": "3XLw1ud3MBEK2Zf7",
+  "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "107",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "lightning-lord",
+    "story": "Lightning bursts forth from your body in several directions.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 10,
+      "secondary": 1,
+      "tertiary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "4TG0ixZYuuwUkCY3": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "4TG0ixZYuuwUkCY3",
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [
+                "lightning"
+              ]
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "lightning"
+              ]
+            },
+            "tier3": {
+              "value": "13",
+              "types": [
+                "lightning"
+              ]
+            }
+          }
+        },
+        "cmQZfvv1fgReS9F7": {
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "cmQZfvv1fgReS9F7",
+          "forced": {
+            "tier2": {
+              "distance": "2"
+            },
+            "tier3": {
+              "distance": "3"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>This ability targets three 10 × 1 lines within 1</p>",
+      "after": "<p>The targets are force moved one at a time, starting with the target nearest to you, and can be pushed into other targets in the same line.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760754850682,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!3XLw1ud3MBEK2Zf7"
+}
