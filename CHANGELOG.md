@@ -25,6 +25,7 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
+  - Level 4 & 5 features for Conduit.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
