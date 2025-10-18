@@ -1,0 +1,109 @@
+{
+  "folder": "moV0Nfvo7p8nnBRS",
+  "name": "Arise!",
+  "type": "ability",
+  "_id": "QLZzCb8KFe8oeGhD",
+  "img": "icons/magic/holy/barrier-shield-winged-cross.webp",
+  "system": {
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "arise",
+    "story": "Your deity rewards you or an ally on the verge of defeat with a miracle burst of strength and resolve.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": ""
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target can spend any number of Recoveries, can end any effects on them that are ended by a saving throw or that end at the end of their turn, and can stand up if they are prone. Additionally, at the start of each of their turns until the end of the encounter or until they are dying, the target gains 3 surges.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Gain 3 Surges",
+      "img": "icons/magic/holy/barrier-shield-winged-cross.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.QLZzCb8KFe8oeGhD",
+      "_id": "kw5lmjvbJjZf1Mix",
+      "system": {
+        "end": {
+          "type": "encounter",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.347",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760806236688,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!QLZzCb8KFe8oeGhD.kw5lmjvbJjZf1Mix"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760806162913,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!QLZzCb8KFe8oeGhD"
+}
