@@ -1,0 +1,66 @@
+{
+  "folder": "74QzFbDwViB8RhtB",
+  "name": "One Vial Makes You Better",
+  "type": "ability",
+  "_id": "vsQla3y1GO388SMZ",
+  "img": "icons/consumables/potions/conical-ornate-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "169",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "one-vial-makes-you-better",
+    "story": "A well-timed throw of a potion will keep your allies in the fight.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You ready, hand, or lob a potion to each target, who can immediately quaff the potion (no action required). If they don’t drink the potion right away, they must use the Use Consumable maneuver to consume it later. The potion loses its potency at the end of the encounter. </p><p>A creature who drinks the potion can spend up to 2 Recoveries, and has acid immunity, fire immunity, or poison immunity (their choice) equal to your level until the end of the encounter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760836630508,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!vsQla3y1GO388SMZ"
+}

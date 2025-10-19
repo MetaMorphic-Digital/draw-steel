@@ -1,0 +1,86 @@
+{
+  "folder": "74QzFbDwViB8RhtB",
+  "name": "One Vial Makes You Faster",
+  "type": "ability",
+  "_id": "q6xGWUqrfXUX2gCx",
+  "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "169",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "one-vial-makes-you-faster",
+    "story": "Each ally who catches a potion you throw can take the battle to the next level.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "C9rqJuvmvRcDtnpJ": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "C9rqJuvmvRcDtnpJ",
+          "other": {
+            "tier1": {
+              "display": "The creature’s speed is increased by 2 until the end of the encounter."
+            },
+            "tier2": {
+              "display": "The creature can fly until the end of the encounter"
+            },
+            "tier3": {
+              "display": "The creature turns invisible until the end of their next turn."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You ready, hand, or lob a potion to each target, who can immediately quaff the potion (no action required). If they don’t drink the potion right away, they must use the Use Consumable maneuver to consume it later. The potion loses its potency at the end of the encounter.</p><p>A creature who drinks the potion receives benefits based on your power roll.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760837311517,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!q6xGWUqrfXUX2gCx"
+}
