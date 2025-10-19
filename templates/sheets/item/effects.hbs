@@ -13,7 +13,7 @@
         <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
         <div class="effect-controls flexrow">
           <a
-            class="effect-control effect-create"
+            class="effect-control effect-create fa-solid fa-fw fa-plus"
             {{#if (eq section.type "inactive")}}
             data-disabled="true"
             {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
@@ -23,8 +23,6 @@
             data-transfer="false"
             {{/if}}
           >
-            <i class="fa-solid fa-plus"></i>
-            {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}
           </a>
         </div>
       </li>
@@ -41,15 +39,7 @@
             <div class="effect-source">{{effect.sourceName}}</div>
             <div class="effect-duration">{{effect.duration.label}}</div>
             <div class="effect-controls">
-              {{#if @root.editable}}
-              <a class="effect-control fa-fw fa-solid fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.ActiveEffect.Toggle"></a>
-              {{/if}}
-              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fa-solid fa-edit" data-action="viewDoc" data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"></a>
-              {{#if @root.editable}}
-              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"></a>
-              {{/if}}
+              <a class="fa-fw fa-solid fa-ellipsis-vertical"></a>
               <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleDocumentDescription"></a>
             </div>
           </div>
