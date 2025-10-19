@@ -40,7 +40,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -388,7 +388,7 @@
               "applied": {
                 "tier1": {
                   "effects": {
-                    "weakened": {
+                    "tKizfQrV9zksd5Zm": {
                       "condition": "failure",
                       "end": "save"
                     }
@@ -400,7 +400,7 @@
                 },
                 "tier2": {
                   "effects": {
-                    "weakened": {
+                    "tKizfQrV9zksd5Zm": {
                       "condition": "failure",
                       "end": "save"
                     }
@@ -411,7 +411,7 @@
                 },
                 "tier3": {
                   "effects": {
-                    "weakened": {
+                    "tKizfQrV9zksd5Zm": {
                       "condition": "failure",
                       "end": "save"
                     }
@@ -429,13 +429,56 @@
           "after": ""
         },
         "spend": {
-          "text": "A target who has M < 2 is weakened (save ends). A target  weakened this way takes 2 poison damage at the start of each of  their turns.",
+          "text": "A target who has M < 2 is weakened (save ends) A target weakened this way takes 2 poison damage at the start of each of their turns.",
           "value": 2
         }
       },
       "_id": "7Er7q8iJv52i6B1W",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Weakened (Poisoned)",
+          "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.MJ9n87vH7gWykWh5.Item.7Er7q8iJv52i6B1W",
+          "transfer": false,
+          "_id": "tKizfQrV9zksd5Zm",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>while weakened this way takes [[/damage 2 poison]] damage at the start of each of their turns.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1760845391976,
+            "modifiedTime": 1760845499878,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!MJ9n87vH7gWykWh5.7Er7q8iJv52i6B1W.tKizfQrV9zksd5Zm"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -447,9 +490,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "createdTime": 1757015546026,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -519,69 +562,6 @@
       "_key": "!actors.items!MJ9n87vH7gWykWh5.UZtOR8SSJC71RuS3"
     },
     {
-      "folder": "QCHesWzKjphCQmCU",
-      "name": "Resonating Croak",
-      "type": "ability",
-      "_id": "SMNH5LxY8st7IyDf",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "34",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "resonating-croak",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"103\"><p>11 or less</p></td><td><p>[[/damage 5 sonic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"103\"><p>12-16</p></td><td><p>[[/damage 4 sonic]] damage</p></td></tr><tr><td data-colwidth=\"103\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SMNH5LxY8st7IyDf",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757015691177,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!MJ9n87vH7gWykWh5.SMNH5LxY8st7IyDf"
-    },
-    {
-      "folder": "QCHesWzKjphCQmCU",
       "name": "Rainfall",
       "type": "ability",
       "_id": "chuInXNQ28dtiMPI",
@@ -604,68 +584,19 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": []
           },
-          "effects": {
-            "g8BNA1tbnI9d59oQ": {
-              "name": "Wet",
-              "img": null,
-              "type": "applied",
-              "_id": "g8BNA1tbnI9d59oQ",
-              "applied": {
-                "tier1": {
-                  "effects": {
-                    "Du8EMyrd7nZQ66Yk": {
-                      "condition": "always",
-                      "end": "encounter",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "effects": {
-                    "Du8EMyrd7nZQ66Yk": {
-                      "condition": "always",
-                      "end": "encounter",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "effects": {
-                    "Du8EMyrd7nZQ66Yk": {
-                      "condition": "always",
-                      "end": "encounter",
-                      "properties": []
-                    }
-                  },
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
-          "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is wet until the end of the encounter.</p>",
+          "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is [[/apply Du8EMyrd7nZQ66Yk encounter]] until the end of the encounter.</p>",
           "after": ""
         },
         "spend": {
@@ -707,32 +638,97 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!MJ9n87vH7gWykWh5.chuInXNQ28dtiMPI.Du8EMyrd7nZQ66Yk"
         }
       ],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chuInXNQ28dtiMPI",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757015692324,
+        "systemVersion": "0.9.0",
+        "createdTime": 1760845280103,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 200000,
       "_key": "!actors.items!MJ9n87vH7gWykWh5.chuInXNQ28dtiMPI"
+    },
+    {
+      "name": "Resonating Croak",
+      "type": "ability",
+      "_id": "SMNH5LxY8st7IyDf",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "34",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "resonating-croak",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each angulotl in the encounter puffs out their throat and starts loudly droning Any non-angulotl adjacent to an angulotl makes an <strong>Intuition test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"103\"><p>11 or less</p></td><td><p>[[/damage 5 sonic]] damage; [[/apply slowed turn]]</p></td></tr><tr><td data-colwidth=\"103\"><p>12-16</p></td><td><p>[[/damage 4 sonic]] damage</p></td></tr><tr><td data-colwidth=\"103\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.SMNH5LxY8st7IyDf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760845281518,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 100000,
+      "_key": "!actors.items!MJ9n87vH7gWykWh5.SMNH5LxY8st7IyDf"
     }
   ],
   "effects": [],
