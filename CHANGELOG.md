@@ -107,6 +107,7 @@
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Fixed broken image links in the in-game documentation.
 
 ## 0.8.1
 

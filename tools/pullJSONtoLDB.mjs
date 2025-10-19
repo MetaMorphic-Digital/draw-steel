@@ -41,7 +41,11 @@ async function transformEntry(entry) {
     const mdSource = await fs.readFile(docsPath, {
       encoding: "utf8",
     });
-    const htmlContent = converter.makeHtml(mdSource);
+
+    // re-route wiki image links to in-game asset links
+    const htmlContent = converter.makeHtml(
+      mdSource.replaceAll("https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs", "systems/draw-steel/assets/docs"),
+    );
     jep.text.markdown = mdSource;
     jep.text.content = htmlContent;
   }
