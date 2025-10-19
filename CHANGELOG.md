@@ -30,6 +30,7 @@
   - Demon Echelons 2–4
   - Devils
   - Draconians
+  - Dragons
   - Elves (Shadow)
   - Giants
   - Hobgoblins
