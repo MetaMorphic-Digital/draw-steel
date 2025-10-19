@@ -1,18 +1,19 @@
 {
-  "name": "Guarding Gale",
+  "name": "Meltdown",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A draconian starts its turn.",
+    "resource": 7,
+    "trigger": "A crucible starts its turn.",
     "distance": {
       "type": "special"
     },
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
@@ -23,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked [[/apply prone]].</p>",
+      "before": "<p>The dragon superheats the ground across the encounter map until the end of the round. Any enemy who starts their turn on the ground is slagged as if affected by the dragon’s Slag Spew ability.</p>",
       "after": ""
     },
     "spend": {
@@ -32,15 +33,15 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "85",
+      "page": "99",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "guarding-gale",
+    "_dsid": "meltdown",
     "story": "",
     "keywords": []
   },
   "effects": [],
-  "folder": "Anf2Qw7ez1DyXYy7",
+  "folder": "cx9N3RRMIVHM0HVm",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -49,14 +50,14 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758727253459,
+    "createdTime": 1760902106380,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "q0vibNzVqcIeS9TW",
-  "sort": 200000,
-  "_key": "!items!q0vibNzVqcIeS9TW"
+  "_id": "YqgWAJ17BUyTxaXQ",
+  "sort": 0,
+  "_key": "!items!YqgWAJ17BUyTxaXQ"
 }

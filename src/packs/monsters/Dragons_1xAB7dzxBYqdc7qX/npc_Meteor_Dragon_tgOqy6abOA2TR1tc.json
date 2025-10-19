@@ -1,28 +1,28 @@
 {
-  "name": "Gloom Dragon",
+  "name": "Meteor Dragon",
   "type": "npc",
   "img": "systems/draw-steel/assets/roles/solo.webp",
   "system": {
     "stamina": {
-      "value": 350,
-      "max": 350,
+      "value": 650,
+      "max": 650,
       "temporary": 0
     },
     "characteristics": {
       "might": {
-        "value": 2
+        "value": 5
       },
       "agility": {
-        "value": 4
+        "value": 5
       },
       "reason": {
-        "value": 1
+        "value": 3
       },
       "intuition": {
         "value": 3
       },
       "presence": {
-        "value": 4
+        "value": 5
       }
     },
     "combat": {
@@ -31,18 +31,18 @@
         "bonus": ""
       },
       "size": {
-        "value": 4,
+        "value": 3,
         "letter": "M"
       },
-      "stability": 2,
+      "stability": 6,
       "turns": 1
     },
     "movement": {
-      "value": 8,
+      "value": 15,
       "types": [
         "fly"
       ],
-      "hover": true,
+      "hover": false,
       "disengage": 1
     },
     "damage": {
@@ -55,7 +55,7 @@
         "holy": 0,
         "lightning": 0,
         "poison": 0,
-        "psychic": 5,
+        "psychic": 0,
         "sonic": 0
       },
       "weaknesses": {
@@ -78,7 +78,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "97",
+      "page": "103",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -89,14 +89,14 @@
       "impression": 1
     },
     "monster": {
-      "freeStrike": 6,
+      "freeStrike": 10,
       "keywords": [
         "dragon",
         "elemental"
       ],
-      "level": 4,
-      "ev": 72,
-      "role": "",
+      "level": 10,
+      "ev": 144,
+      "role": "solo",
       "organization": "solo"
     }
   },
@@ -107,92 +107,18 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>At the end of each of their turns, the dragon can take [[/damage 10]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The dragon can take two turns each round. They can't take turns consecutively.</p>",
+          "value": "<p>At the end of each of their turns, the dragon can take 20 damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The dragon can take two turns each round. They can't take turns consecutively.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103"
         },
         "_dsid": "solo-monster",
         "advancements": {}
       },
-      "_id": "wEAZVxDLqOFov1iI",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!awNlSowdCYs0igx0.wEAZVxDLqOFov1iI"
-    },
-    {
-      "name": "Gloaming Wyrmscale Aura",
-      "type": "feature",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>The dragon's scales create a 3 aura of dark supernatural fog around them that feeds on their victims' fears and provides concealment to the dragon only. Each enemy who starts their turn in the area takes [[/damage 2 psychic]] damage. Additionally, whenever one or more enemies is in the area, the dragon's abilities deal an extra [[/damage 3 psychic]] damage.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "97"
-        },
-        "_dsid": "gloaming-wyrmscale-aura",
-        "advancements": {}
-      },
-      "_id": "Bsicf9e6oV3SioG1",
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!awNlSowdCYs0igx0.Bsicf9e6oV3SioG1"
-    },
-    {
-      "name": "Shadow Skulk",
-      "type": "feature",
-      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p>Once per turn, the dragon can shift up to their speed, leaving behind a 4 cube area of magical darkness in their starting space that lasts until the end of the encounter. The dragon ignores concealment created by this darkness. Any enemy who ends their turn in the area and has I &lt; 3 is [[/apply frightened turn]] of the dragon until the end of their next turn.</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "97"
-        },
-        "_dsid": "shadow-skulk",
-        "advancements": {}
-      },
-      "_id": "mERCrYNfbZTbrq1d",
+      "_id": "HkSBF5W8CY1D5vkz",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -210,10 +136,232 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.mERCrYNfbZTbrq1d"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.HkSBF5W8CY1D5vkz"
     },
     {
-      "name": "Breath of Brume",
+      "name": "Voidshroud Wyrmscale Aura",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The dragon's scales create a 1 aura of void space around them. Any enemy who starts their turn in the area takes 10 cold damage and is suffocating. Each time the dragon takes damage, the area of the aura increases by 1 (to a maximum of 5), and they deal an extra 5 damage the next time they use an ability that deals rolled damage.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "voidshroud-wyrmscale-aura",
+        "advancements": {}
+      },
+      "_id": "l8H0roCPeW2eUtat",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.l8H0roCPeW2eUtat"
+    },
+    {
+      "name": "Crescent Claws",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Once per turn, the dragon chooses a target within 3 squares. The dragon can make a free strike against the target, and ignores banes when using abilities against the target until the start of their next turn.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "crescent-claws",
+        "advancements": {}
+      },
+      "_id": "q1tih9MoZkKWne3F",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.q1tih9MoZkKWne3F"
+    },
+    {
+      "name": "Liftoff",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The next time the dragon uses their Crescent Claws ability, they can also slide the target up to 5 squares. If the target is dragonsealed, the dragon can vertical slide them instead.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "liftoff",
+        "advancements": {}
+      },
+      "_id": "QaC1OWczoOuMSyHK",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.QaC1OWczoOuMSyHK"
+    },
+    {
+      "name": "Solo Action",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "solo-action",
+        "advancements": {}
+      },
+      "_id": "NLYHqu6dUjWGnZGi",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.NLYHqu6dUjWGnZGi"
+    },
+    {
+      "name": "Starfall",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an **Agility test**.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "starfall",
+        "advancements": {}
+      },
+      "_id": "gYRUgcYGxlt6I55M",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.gYRUgcYGxlt6I55M"
+    },
+    {
+      "name": "Event Horizon",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>A black hole manifests as a 1 cube within 20 squares of the dragon in an unoccupied space. Each creature who has M &lt; 5 and each object of size 3 or smaller is vertical pulled 2 squares toward the area at the start of each round, ignoring stability. Any creature who starts their turn in the area or any object in the area at the end of the round suffers the effect of the dragon's Voidlight Breath ability, and the black hole disappears.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "event-horizon",
+        "advancements": {}
+      },
+      "_id": "p9Wv5w3DX2WmUDAQ",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.p9Wv5w3DX2WmUDAQ"
+    },
+    {
+      "name": "Gravity Well",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
@@ -230,23 +378,23 @@
           "secondary": 10
         },
         "target": {
-          "type": "enemyObject",
+          "type": "creatureObject",
           "value": null,
-          "custom": "Each enemy and object in the area"
+          "custom": "Each creature and object in the area"
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 14 cold]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 11 cold]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 6 cold]] damage</p></td></tr></tbody></table>",
-          "after": ""
+          "before": "<p>Each target makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 20 sonic]] damage; the target is [[/apply Actor.iF26pHaViOldYwvB.Item.oARN5a64Y0k5bZFU.ActiveEffect.LSJMwYhEddUWz94r save]] </p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 16 sonic]] damage; the target is [[/apply Actor.iF26pHaViOldYwvB.Item.oARN5a64Y0k5bZFU.ActiveEffect.LSJMwYhEddUWz94r save]]</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>[[/damage 10 sonic]] damage</p></td></tr></tbody></table>",
+          "after": "<p>A dragonsealed target emits a golden aura, and takes 2 damage per square moved when falling or when force moved into an obstacle.</p>"
         },
         "spend": {
           "text": "",
@@ -255,9 +403,213 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103"
         },
-        "_dsid": "breath-of-brume",
+        "_dsid": "gravity-well",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Dragonsealed",
+          "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+          "origin": "Actor.ppX4EvIyyST6XGZG.Item.RnNLHlAB5q48V5PG",
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>A dragonsealed target emits a golden aura, and takes [[/damage 2]] damage per square moved when falling or when force moved into an obstacle.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "LSJMwYhEddUWz94r",
+          "sort": 0,
+          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.oARN5a64Y0k5bZFU.LSJMwYhEddUWz94r"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "oARN5a64Y0k5bZFU",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.oARN5a64Y0k5bZFU"
+    },
+    {
+      "name": "Cosmic Tail Ray",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "magic",
+          "melee",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "meleeRanged",
+          "primary": 2,
+          "secondary": 15
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "z657vcf1TR6Afmox": {
+              "_id": "z657vcf1TR6Afmox",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "15",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "21",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "25",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "uaU2jrbo9NtsZbmj": {
+              "name": "weakened",
+              "img": null,
+              "type": "applied",
+              "_id": "uaU2jrbo9NtsZbmj",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} weakened (save ends)",
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "4",
+                    "characteristic": "agility"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "5",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "weakened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "6",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>If a target made weakened this way is already weakened, they are instead dazed until the end of their next turn.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "cosmic-tail-ray",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -276,44 +628,175 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "rlV6oPVV1KR3Y4iQ",
+      "_id": "GDiZJsgvogZEUqsk",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.rlV6oPVV1KR3Y4iQ"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.GDiZJsgvogZEUqsk"
     },
     {
-      "name": "Phantom Tail Swing",
+      "name": "Investiture of Gravity",
       "type": "ability",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "system": {
-        "type": "main",
-        "category": "",
+        "type": "maneuver",
+        "category": "heroic",
         "keywords": [
-          "charge",
-          "magic",
-          "melee",
-          "strike"
+          "area",
+          "magic"
         ],
         "distance": {
-          "type": "melee",
-          "primary": 3
+          "type": "burst",
+          "primary": 15
         },
         "target": {
-          "type": "creatureObject",
-          "value": 2
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target must be dragonsealed. The dragon chooses a direction and vertical slides each target 10 squares in that direction, ignoring stability. A target who strikes an obstacle takes damage as if they had fallen the forced movement distance.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "investiture-of-gravity",
+        "story": "",
+        "resource": 5,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "xptimp0DXKSmy0Z2",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.xptimp0DXKSmy0Z2"
+    },
+    {
+      "name": "Field Collapse",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon halves the damage. Each enemy and object in the area of the dragon's Voidshroud Wyrmscale Aura trait takes [[/damage 5 sonic]] damage and is pulled up to 5 squares toward the dragon. The area of the wyrmscale aura then resets to 1.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "field-collapse",
+        "story": "",
+        "resource": null,
+        "trigger": "The dragon takes damage from an ability while the area of their Voidshroud Wyrmscale Aura is 2 or more."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "IYgLyEy5wbUNwo8F",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.IYgLyEy5wbUNwo8F"
+    },
+    {
+      "name": "A Hero Faces the Void",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "The triggering creature"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
             ]
           },
           "effects": {
-            "GBSp4Aj06ZcUbMOA": {
-              "_id": "GBSp4Aj06ZcUbMOA",
+            "KOuAd5kuJFdk7HIo": {
+              "_id": "KOuAd5kuJFdk7HIo",
               "type": "damage",
               "name": "",
               "img": null,
@@ -330,7 +813,7 @@
                   }
                 },
                 "tier2": {
-                  "value": "15",
+                  "value": "16",
                   "types": [
                     "psychic"
                   ],
@@ -341,7 +824,7 @@
                   }
                 },
                 "tier3": {
-                  "value": "18",
+                  "value": "20",
                   "types": [
                     "psychic"
                   ],
@@ -353,46 +836,52 @@
                 }
               }
             },
-            "wpoR6Tm88rmcs4l7": {
-              "_id": "wpoR6Tm88rmcs4l7",
-              "type": "forced",
-              "name": "pull",
+            "ApyBWafcr1jK8gB7": {
+              "_id": "ApyBWafcr1jK8gB7",
+              "type": "applied",
+              "name": "Frightened",
               "img": null,
-              "forced": {
+              "applied": {
                 "tier1": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "{{potency}} frightened (save ends)",
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "agility"
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
                   }
                 },
                 "tier2": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "agility"
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
                   }
                 },
                 "tier3": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "6",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "",
                   "potency": {
                     "value": "@potency.strong",
-                    "characteristic": "agility"
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
                   }
                 }
               }
@@ -401,18 +890,86 @@
         },
         "effect": {
           "before": "",
-          "after": ""
+          "after": "<p>While frightened this way, the target can't use the triggering ability.</p>"
         },
         "spend": {
-          "text": "The pull becomes a vertical slide.",
-          "value": 3
+          "text": "",
+          "value": null
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103"
         },
-        "_dsid": "phantom-tail-swing",
+        "_dsid": "a-hero-faces-the-void",
+        "story": "",
+        "resource": 2,
+        "trigger": "A creature within distance spends their Heroic Resource to use an ability."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "8nbPkFAPBjXQgBoY",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.8nbPkFAPBjXQgBoY"
+    },
+    {
+      "name": "Impactful Arrival",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": null,
+          "custom": "Each creature and object in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Note: the area is a 1 mile burst.</p><p>Each target takes [[/damage 30 fire]] damage, and if they have M &lt; 5, they are knocked [[/apply prone]].</p><p><strong>Special:</strong> The dragon can use this ability before the encounter begins.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "103"
+        },
+        "_dsid": "impactful-arrival",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -425,112 +982,46 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "W8sPCSpWTpkM3eyF",
+      "_id": "RgW58RbbQBaEGry9",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.W8sPCSpWTpkM3eyF"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.RgW58RbbQBaEGry9"
     },
     {
-      "name": "Visions in the Dark",
+      "name": "Burning Aurora",
       "type": "ability",
-      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
       "system": {
-        "type": "maneuver",
-        "category": "heroic",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "distance": {
-          "type": "burst",
-          "primary": 10
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Each target must be dragonsealed. Each target takes [[/damage 3 psychic]] damage, and if they have I &lt; 3 they immediately make a free strike against one ally of the dragon's choice.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "97"
-        },
-        "_dsid": "visions-in-the-dark",
-        "story": "",
-        "resource": 5,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "cJC17ju0XxXeacoJ",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!awNlSowdCYs0igx0.cJC17ju0XxXeacoJ"
-    },
-    {
-      "name": "Encroaching Darkness",
-      "type": "ability",
-      "img": "icons/magic/air/air-wave-gust-blue.webp",
-      "system": {
-        "type": "freeTriggered",
-        "category": "heroic",
+        "type": "villain",
+        "category": "villain",
         "keywords": [],
         "distance": {
           "type": "self"
         },
         "target": {
           "type": "self",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon moves two existing cubes of magical darkness they created up to 10 squares each.</p>",
+          "before": "<p>Until the end of the encounter, each enemy who is dragonsealed and weakened and who the dragon has line of effect to loses 1 of their Heroic Resource at the start of each of their turns (to a minimum of 0). The dragon then uses their Cosmic Tail Ray ability with a double edge, targeting four creatures or objects.</p>",
           "after": ""
         },
         "spend": {
@@ -540,172 +1031,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103"
         },
-        "_dsid": "encroaching-darkness",
-        "story": "",
-        "resource": 1,
-        "trigger": "A creature within 10 squares moves."
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "9lmbnnRpiwhFrTh7",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!awNlSowdCYs0igx0.9lmbnnRpiwhFrTh7"
-    },
-    {
-      "name": "Enveloping Umbrage",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "villain",
-        "keywords": [
-          "area",
-          "magic"
-        ],
-        "distance": {
-          "type": "burst",
-          "primary": 5
-        },
-        "target": {
-          "type": "enemy",
-          "value": null,
-          "custom": "Each enemy in the area"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
-          },
-          "effects": {
-            "wBavUWXspR22pPLJ": {
-              "_id": "wBavUWXspR22pPLJ",
-              "type": "forced",
-              "name": "pull",
-              "img": null,
-              "forced": {
-                "tier1": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "2",
-                  "display": "{{forced}}",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "agility"
-                  }
-                },
-                "tier2": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "4",
-                  "display": "{{forced}}",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "agility"
-                  }
-                },
-                "tier3": {
-                  "movement": [
-                    "pull"
-                  ],
-                  "distance": "6",
-                  "display": "{{forced}}",
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "agility"
-                  }
-                }
-              }
-            },
-            "eQOtSJVHVHLt6Xn7": {
-              "_id": "eQOtSJVHVHLt6Xn7",
-              "type": "applied",
-              "name": "Frightened",
-              "img": null,
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} frightened (EoT)",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "frightened": {
-                      "condition": "failure",
-                      "end": "turn",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "display": "{{potency}} frightened (save ends)",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "frightened": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "frightened": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "97"
-        },
-        "_dsid": "enveloping-umbrage",
+        "_dsid": "burning-aurora",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -724,14 +1052,14 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "81MHP5127w5z13uI",
+      "_id": "JMkjx8blAZ9LZpxs",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.81MHP5127w5z13uI"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.JMkjx8blAZ9LZpxs"
     },
     {
-      "name": "Pall of Nightmares",
+      "name": "Voidlight Breath",
       "type": "ability",
       "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
       "system": {
@@ -742,119 +1070,29 @@
           "magic"
         ],
         "distance": {
-          "type": "burst",
-          "primary": 10
+          "type": "line",
+          "primary": null,
+          "secondary": 3,
+          "tertiary": 1
         },
         "target": {
-          "type": "enemy",
+          "type": "enemyObject",
           "value": null,
-          "custom": "Each enemy in the area"
+          "custom": "Each enemy and object in the area"
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "might"
             ]
           },
-          "effects": {
-            "ACgxxZfFf6agIKV4": {
-              "_id": "ACgxxZfFf6agIKV4",
-              "type": "damage",
-              "name": "",
-              "img": null,
-              "damage": {
-                "tier1": {
-                  "value": "6",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "11",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "14",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "TT4lnx7SLnQ1abda": {
-              "name": "Dazed",
-              "img": null,
-              "type": "applied",
-              "_id": "TT4lnx7SLnQ1abda",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target must be dragonsealed. Any target who has I &lt; 3 is also dazed (save ends).</p>"
+          "before": "<p>Note: the length is listed as an infinity simple in the book.</p><p>Each target makes an <strong>Agility test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 25]] damage; I&lt;6 the target is annihilated</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 21]] damage; I&lt;6 the target is annihilated.</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>[[/damage 15]] damage; I&lt;6 the target is annihilated.</p></td></tr></tbody></table>",
+          "after": "<p>An annihilated target must make the test again, decreasing the potency for themself by 2 each time they are annihilated. A creature reduced to 0 Stamina by this dies and their soul is destroyed.</p>"
         },
         "spend": {
           "text": "",
@@ -863,9 +1101,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103"
         },
-        "_dsid": "pall-of-nightmares",
+        "_dsid": "voidlight-breath",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -884,39 +1122,39 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "J4SrPa1Xb4awe0s9",
+      "_id": "JvXqemGBqPkOQU9i",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.J4SrPa1Xb4awe0s9"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.JvXqemGBqPkOQU9i"
     },
     {
-      "name": "Absence of All Light",
+      "name": "Liftoff",
       "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "villain",
-        "category": "villain",
-        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A meteor starts its turn.",
         "distance": {
           "type": "special"
         },
         "target": {
           "type": "special",
+          "custom": "",
           "value": null
         },
         "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "agility"
-            ]
+            "formula": "",
+            "characteristics": []
           },
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon disappears from the encounter map. The dragon and three hallucinatory illusions of themself then immediately reappear in unoccupied spaces on the encounter map, and the dragon and each illusion uses Breath of Brume. Each illusion is indistinguishable from the dragon except by supernatural means, has 1 Stamina, and has the dragon's speed. An illusion acts on the dragon's turns but can take only move actions. Once per round before or after using an ability, the dragon can trade places with any duplicate.</p>",
+          "before": "<p>The next time the dragon uses their Crescent Claws ability, they can also slide the target up to 5 squares. If the target is dragonsealed, the dragon can vertical slide them instead.</p>",
           "after": ""
         },
         "spend": {
@@ -925,13 +1163,12 @@
         },
         "source": {
           "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "97"
+          "page": "103",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "absence-of-all-light",
+        "_dsid": "liftoff",
         "story": "",
-        "resource": null,
-        "trigger": ""
+        "keywords": []
       },
       "effects": [],
       "folder": null,
@@ -947,11 +1184,11 @@
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "rchyNugzoECUyQ0Z",
+      "_id": "3nri66YvVB0GPgQe",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.rchyNugzoECUyQ0Z"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.3nri66YvVB0GPgQe"
     },
     {
       "name": "Solo Action",
@@ -961,12 +1198,14 @@
         "type": "none",
         "category": "heroic",
         "resource": 5,
-        "trigger": "A gloom starts its turn.",
+        "trigger": "A meteor starts its turn.",
         "distance": {
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -986,7 +1225,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "97",
+          "page": "103",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
@@ -995,7 +1234,7 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 350000,
+      "sort": 0,
       "flags": {},
       "_stats": {
         "compendiumSource": null,
@@ -1003,25 +1242,25 @@
         "exportSource": null,
         "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "AXBlkjqVdirSBFwS",
+      "_id": "noCfuRr8E3MiIWhF",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.AXBlkjqVdirSBFwS"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.noCfuRr8E3MiIWhF"
     },
     {
-      "name": "Doleful Visions",
+      "name": "Starfall",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
         "category": "heroic",
         "resource": 5,
-        "trigger": "A gloom starts its turn.",
+        "trigger": "A meteor starts its turn.",
         "distance": {
           "type": "special"
         },
@@ -1039,7 +1278,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Intuition test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; [[/apply dazed save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; [[/apply dazed turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 20 holy]] damage; [[/apply slowed save]], [[/apply prone]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 16 holy]] damage; [[/apply slowed save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 10 holy]] damage</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -1048,16 +1287,16 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "97",
+          "page": "103",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "doleful-visions",
+        "_dsid": "starfall",
         "story": "",
         "keywords": []
       },
       "effects": [
         {
-          "name": "Dazed",
+          "name": "Slowed",
           "img": "icons/svg/downgrade.svg",
           "origin": null,
           "transfer": false,
@@ -1078,7 +1317,7 @@
           "description": "",
           "tint": "#ffffff",
           "statuses": [
-            "dazed"
+            "slowed"
           ],
           "sort": 0,
           "flags": {},
@@ -1091,32 +1330,32 @@
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
-          "_id": "Ko0JnLBGsDeM2GHX",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.Ko0JnLBGsDeM2GHX"
+          "_id": "VMZcmg6ODTFVScX1",
+          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.mntTpezNK1pTaQsT.VMZcmg6ODTFVScX1"
         },
         {
-          "name": "Dazed",
+          "name": "Slowed",
           "img": "icons/svg/downgrade.svg",
           "origin": null,
           "transfer": false,
           "type": "base",
           "system": {
             "end": {
-              "type": "turn",
-              "roll": ""
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
             }
           },
           "changes": [],
           "disabled": false,
           "duration": {
-            "rounds": 1,
+            "rounds": null,
             "startTime": null,
             "combat": null
           },
           "description": "",
           "tint": "#ffffff",
           "statuses": [
-            "dazed"
+            "slowed"
           ],
           "sort": 0,
           "flags": {},
@@ -1129,104 +1368,38 @@
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
-          "_id": "ZLT1TAz0WNCRZTMe",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.ZLT1TAz0WNCRZTMe"
+          "_id": "v4LTXUAsAmgqCeQM",
+          "_key": "!actors.items.effects!tgOqy6abOA2TR1tc.mntTpezNK1pTaQsT.v4LTXUAsAmgqCeQM"
         }
       ],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.Z1EoT4Tm4QFmUkw6",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.350",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1760901535912,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_id": "Z1EoT4Tm4QFmUkw6",
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "folder": null,
-      "sort": 300000,
-      "_key": "!actors.items!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6"
-    },
-    {
-      "name": "Dread and Terror",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A gloom starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special",
-          "custom": "",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The dragon thickens the fog of their Gloaming Wyrmscale Aura trait and the horrors within it. Each creature in the area takes a bane on strikes made against the dragon until the start of the dragon’s next turn.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "97",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "dread-and-terror",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.dC861UmVU30rAYsf",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.350",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1760901536856,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_id": "dC861UmVU30rAYsf",
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!awNlSowdCYs0igx0.dC861UmVU30rAYsf"
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "mntTpezNK1pTaQsT",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.mntTpezNK1pTaQsT"
     },
     {
-      "name": "Phantasmagoria!",
+      "name": "Event Horizon",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
         "category": "heroic",
-        "resource": 7,
-        "trigger": "A gloom starts its turn.",
+        "resource": 10,
+        "trigger": "A meteor starts its turn.",
         "distance": {
           "type": "special"
         },
@@ -1244,7 +1417,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon summons macabre, disquieting phantasms in a 10 cube within 1 square that lasts until the end of the encounter. Any enemy who enters the area for the first time in a round or starts their turn there takes [[/damage 6 psychic]] damage, or [[/damage 8 psychic]] damage if they are dragonsealed by the gloom dragon. Additionally, the enemy’s Intuition score is treated as 1 lower for the purpose of resisting potencies until the end of the encounter.</p>",
+          "before": "<p>A black hole manifests as a 1 cube within 20 squares of the dragon in an unoccupied space. Each creature who has m&lt;5 and each object of size 3 or smaller is vertical pulled 2 squares toward the area at the start of each round, ignoring stability. Any creature who starts their turn in the area or any object in the area at the end of the round suffers the effect of the dragon’s Voidlight Breath ability, and the black hole disappears.</p>",
           "after": ""
         },
         "spend": {
@@ -1253,39 +1426,37 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "97",
+          "page": "103",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "phantasmagoria",
+        "_dsid": "event-horizon",
         "story": "",
         "keywords": []
       },
       "effects": [],
+      "folder": null,
+      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.sb9X9PBRRHhwcgOq",
+        "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "createdTime": 1760901538215,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
-      "_id": "sb9X9PBRRHhwcgOq",
+      "_id": "5dbkKn1OCimu7XOg",
       "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
+        "default": 0
       },
-      "folder": null,
-      "sort": 400000,
-      "_key": "!actors.items!awNlSowdCYs0igx0.sb9X9PBRRHhwcgOq"
+      "_key": "!actors.items!tgOqy6abOA2TR1tc.5dbkKn1OCimu7XOg"
     }
   ],
   "folder": "1xAB7dzxBYqdc7qX",
   "prototypeToken": {
-    "name": "Gloom Dragon",
+    "name": "Meteor Dragon",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -1378,63 +1549,7 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [
-    {
-      "name": "Dragonsealed",
-      "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
-      "origin": "Actor.ppX4EvIyyST6XGZG.Item.RnNLHlAB5q48V5PG",
-      "transfer": false,
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.damage.weaknesses.cold",
-          "mode": 2,
-          "value": "3",
-          "priority": null
-        },
-        {
-          "key": "system.damage.weaknesses.psychic",
-          "mode": 2,
-          "value": "3",
-          "priority": null
-        }
-      ],
-      "disabled": true,
-      "duration": {
-        "startTime": 0,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": 1,
-        "startTurn": 0
-      },
-      "description": "<p>A dragonsealed creature has psychic weakness 3 and cold weakness 3.</p>",
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.s8Dvj26hssemdUrw.ActiveEffect.VE5hM241DRNO06JB",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.350",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1760901709823,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_id": "vTgN9J24tIdxmXfg",
-      "sort": 0,
-      "_key": "!actors.effects!awNlSowdCYs0igx0.vTgN9J24tIdxmXfg"
-    }
-  ],
+  "effects": [],
   "ownership": {
     "default": 0
   },
@@ -1445,12 +1560,12 @@
     "exportSource": null,
     "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757726953946,
+    "systemVersion": "0.9.0",
+    "createdTime": 1760907043689,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "awNlSowdCYs0igx0",
+  "_id": "tgOqy6abOA2TR1tc",
   "sort": 0,
-  "_key": "!actors!awNlSowdCYs0igx0"
+  "_key": "!actors!tgOqy6abOA2TR1tc"
 }

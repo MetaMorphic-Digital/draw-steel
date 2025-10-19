@@ -1,32 +1,24 @@
 {
-  "folder": "cYiq2Fg2tNaHRx28",
   "name": "Solo Action",
   "type": "ability",
-  "_id": "3voCfk8tIY74X0I1",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
-    "source": {
-      "book": "Monsters",
-      "page": "95",
-      "license": "Draw Steel Creator License"
-    },
-    "_dsid": "solo-action",
-    "story": "",
-    "keywords": [],
     "type": "none",
     "category": "heroic",
     "resource": 5,
-    "trigger": "",
+    "trigger": "A crucible starts its turn.",
     "distance": {
       "type": "special"
     },
-    "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
+    "damageDisplay": "melee",
     "power": {
       "roll": {
-        "formula": "@chr",
+        "formula": "",
         "characteristics": []
       },
       "effects": {}
@@ -38,24 +30,34 @@
     "spend": {
       "text": "",
       "value": null
-    }
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "99",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "solo-action",
+    "story": "",
+    "keywords": []
   },
   "effects": [],
-  "sort": 0,
-  "ownership": {
-    "default": 0
-  },
+  "folder": "cx9N3RRMIVHM0HVm",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757106511592,
+    "systemVersion": "0.9.0",
+    "createdTime": 1760902105310,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!3voCfk8tIY74X0I1"
+  "ownership": {
+    "default": 0
+  },
+  "_id": "tqgWXYWPHLJvnGKi",
+  "sort": 0,
+  "_key": "!items!tqgWXYWPHLJvnGKi"
 }

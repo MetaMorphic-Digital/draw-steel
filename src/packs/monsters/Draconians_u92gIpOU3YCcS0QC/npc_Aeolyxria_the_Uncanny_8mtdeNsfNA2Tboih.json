@@ -631,7 +631,7 @@
                   "display": "{{potency}} bleeding (save ends)",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "intuition"
+                    "characteristic": "agility"
                   },
                   "effects": {
                     "bleeding": {
@@ -645,7 +645,7 @@
                   "display": "",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "intuition"
+                    "characteristic": "agility"
                   },
                   "effects": {
                     "bleeding": {
@@ -736,7 +736,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked prone.</p>",
+          "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked [[/apply prone]].</p>",
           "after": ""
         },
         "spend": {
@@ -760,7 +760,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
