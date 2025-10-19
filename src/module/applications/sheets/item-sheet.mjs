@@ -1,11 +1,12 @@
 import { systemPath } from "../../constants.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs"
+ * @import { DrawSteelItem } from "../../documents/_module.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
  */
 
@@ -303,6 +304,21 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
+    // General right click on row
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-document-uuid]", {
+      hookName: "getDocumentListContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+    });
+
+    // Same menu but for the specific vertical ellipsis control
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-action=\"documentListContext\"]", {
+      hookName: "getDocumentListContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+      eventName: "click",
+    });
+
     this._createContextMenu(this._createEffectContextOptions, ".effect-list-container .effect-create", {
       hookName: "createEffectContextOptions",
       parentClassHooks: false,
@@ -314,7 +330,99 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Get context menu entries for creating.
+   * Get context menu entries for embedded document lists.
+   * @returns {ContextMenuEntry[]}
+   * @protected
+   */
+  _getDocumentListContextOptions() {
+    return [
+      {
+        name: "DRAW_STEEL.ActiveEffect.RollSave",
+        icon: "<i class=\"fa-solid fa-fw fa-dice-d10\"></i>",
+        condition: (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          return effect.system.end.type === "save";
+        },
+        callback: async (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          await effect.system.rollSave();
+        },
+      },
+      {
+        name: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "<i class=\"fa-solid fa-fw fa-check\"></i>",
+        condition: (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          return !effect.active;
+        },
+        callback: async (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          const updateData = DrawSteelActiveEffect.getInitialDuration();
+
+          updateData.disabled = false;
+
+          await effect.update(updateData);
+        },
+      },
+      {
+        name: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "<i class=\"fa-solid fa-fw fa-times\"></i>",
+        condition: (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          return effect.active;
+        },
+        callback: async (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          await effect.update({ disabled: true });
+        },
+      },
+      {
+        name: "DRAW_STEEL.SHEET.View",
+        icon: "<i class=\"fa-solid fa-fw fa-eye\"></i>",
+        condition: () => this.isPlayMode,
+        callback: async (target) => {
+          const document = this._getEmbeddedDocument(target);
+          await document.sheet.render({ force: true });
+        },
+      },
+      {
+        name: "DRAW_STEEL.SHEET.Edit",
+        icon: "<i class=\"fa-solid fa-fw fa-edit\"></i>",
+        condition: () => this.isEditMode,
+        callback: async (target) => {
+          const document = this._getEmbeddedDocument(target);
+          await document.sheet.render({ force: true });
+        },
+      },
+      {
+        name: "DRAW_STEEL.SHEET.Share",
+        icon: "<i class=\"fa-solid fa-fw fa-share-from-square\"></i>",
+        callback: async (target) => {
+          const document = this._getEmbeddedDocument(target);
+          await DrawSteelChatMessage.create({
+            content: `@Embed[${document.uuid} caption=false]`,
+            speaker: DrawSteelChatMessage.getSpeaker({ actor: this.item.actor }),
+            title: document.name,
+            flags: {
+              core: { canPopout: true },
+            },
+          });
+        },
+      },
+      {
+        name: "DRAW_STEEL.SHEET.Delete",
+        icon: "<i class=\"fa-solid fa-fw fa-trash\"></i>",
+        condition: () => this.item.isOwner,
+        callback: async (target) => {
+          const document = this._getEmbeddedDocument(target);
+          document.deleteDialog();
+        },
+      },
+    ];
+  }
+
+  /**
+   * Get context menu entries for creating Active Effects.
    * @returns {ContextMenuEntry[]}
    */
   _createEffectContextOptions() {
