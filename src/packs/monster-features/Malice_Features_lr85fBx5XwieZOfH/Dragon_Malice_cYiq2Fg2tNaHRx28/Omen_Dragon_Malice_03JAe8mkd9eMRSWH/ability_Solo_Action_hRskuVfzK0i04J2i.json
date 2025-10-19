@@ -1,18 +1,19 @@
 {
-  "name": "Guarding Gale",
+  "name": "Solo Action",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A draconian starts its turn.",
+    "resource": 5,
+    "trigger": "A omen starts its turn.",
     "distance": {
       "type": "special"
     },
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
@@ -23,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked [[/apply prone]].</p>",
+      "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
       "after": ""
     },
     "spend": {
@@ -32,15 +33,15 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "85",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "guarding-gale",
+    "_dsid": "solo-action",
     "story": "",
     "keywords": []
   },
   "effects": [],
-  "folder": "Anf2Qw7ez1DyXYy7",
+  "folder": "03JAe8mkd9eMRSWH",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -49,14 +50,14 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758727253459,
+    "createdTime": 1760903465298,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "q0vibNzVqcIeS9TW",
+  "_id": "hRskuVfzK0i04J2i",
   "sort": 200000,
-  "_key": "!items!q0vibNzVqcIeS9TW"
+  "_key": "!items!hRskuVfzK0i04J2i"
 }

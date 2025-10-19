@@ -72,13 +72,13 @@
       }
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
-      "page": "207",
+      "page": "107",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -154,7 +154,7 @@
           "primary": 10
         },
         "target": {
-          "type": "creature",
+          "type": "creatureObject",
           "value": 1
         },
         "damageDisplay": "melee",
@@ -323,9 +323,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -352,7 +352,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "One prone, restrained, or slowed creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -365,7 +366,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>NOTE: Targets one prone, restrained, or slowed creature</p><p>The gunner makes a [[/damage @monster.freeStrike]]{Free Strike} against the target, and the prone, restrained, and slowed conditions on the target end. The target is then restrained (save ends).</p>",
+          "before": "<p>The gunner makes a free strike against the target, and the prone, restrained, and slowed conditions on the target end. The target is then [[/apply restrained save]]</p>",
           "after": ""
         },
         "spend": {
@@ -390,9 +391,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -555,7 +556,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -565,7 +567,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an Agility Test.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>8 damage; restrained (EoT)</p></td></tr><tr><td><p>12-16</p></td><td><p>6 damage; slowed (EoT)</p></td></tr><tr><td><p>17</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an Agility Test.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>8 damage; [[/apply restrained turn]]</p></td></tr><tr><td><p>12-16</p></td><td><p>6 damage; [[/apply slowed turn]]</p></td></tr><tr><td><p>17</p></td><td><p>No effect.</p></td></tr></tbody></table>",
           "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Special:</span></strong></span> This ability canʼt be used by a minion.</p>"
         },
         "spend": {
@@ -576,17 +578,15 @@
       "_id": "iV1xZa3LFqKK1Xgu",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": "zR2leIjgt7VcKr8l",
-      "sort": 100000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.iV1xZa3LFqKK1Xgu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757032604957,
+        "systemVersion": "0.9.0",
+        "createdTime": 1760907483350,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
@@ -594,6 +594,8 @@
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!r44P94IM2nXlCbR9.iV1xZa3LFqKK1Xgu"
     }
   ],
@@ -701,9 +703,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757031385649,
     "modifiedTime": null,
     "lastModifiedBy": null

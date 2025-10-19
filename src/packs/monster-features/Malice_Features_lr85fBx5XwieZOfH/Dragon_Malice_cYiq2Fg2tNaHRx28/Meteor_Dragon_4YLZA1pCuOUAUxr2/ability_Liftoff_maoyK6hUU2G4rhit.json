@@ -1,18 +1,19 @@
 {
-  "name": "Guarding Gale",
+  "name": "Liftoff",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
     "resource": 3,
-    "trigger": "A draconian starts its turn.",
+    "trigger": "A meteor starts its turn.",
     "distance": {
       "type": "special"
     },
     "target": {
       "type": "special",
-      "custom": ""
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
@@ -23,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked [[/apply prone]].</p>",
+      "before": "<p>The next time the dragon uses their Crescent Claws ability, they can also slide the target up to 5 squares. If the target is dragonsealed, the dragon can vertical slide them instead.</p>",
       "after": ""
     },
     "spend": {
@@ -32,15 +33,15 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "85",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "guarding-gale",
+    "_dsid": "liftoff",
     "story": "",
     "keywords": []
   },
   "effects": [],
-  "folder": "Anf2Qw7ez1DyXYy7",
+  "folder": "4YLZA1pCuOUAUxr2",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -49,14 +50,14 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758727253459,
+    "createdTime": 1760904509929,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "q0vibNzVqcIeS9TW",
-  "sort": 200000,
-  "_key": "!items!q0vibNzVqcIeS9TW"
+  "_id": "maoyK6hUU2G4rhit",
+  "sort": 300000,
+  "_key": "!items!maoyK6hUU2G4rhit"
 }
