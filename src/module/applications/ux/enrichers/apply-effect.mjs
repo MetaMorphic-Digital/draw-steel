@@ -122,6 +122,7 @@ async function onClickAnchor() {
 
   const noStack = !this.dataset.stacking;
 
+  /** @type {DrawSteelActiveEffect} */
   const tempEffect = this.dataset.type === "custom" ?
     (await fromUuid(this.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
     await DrawSteelActiveEffect.fromStatusEffect(this.dataset.status);
@@ -138,29 +139,39 @@ async function onClickAnchor() {
 
   const actors = new Set();
 
+  // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
     else if (actors.has(actor)) continue;
     else actors.add(actor);
-    // reusing the ID will block creation if it's already on the actor
-    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
-    actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
 
     // statuses automatically create scrolling text themselves
-    if (this.dataset.type === "status") continue;
+    if (this.dataset.type === "status") {
+      // reusing the ID will block creation if it's already on the actor
+      const existing = actor.effects.get(tempEffect.id);
+      // deleting instead of updating because there may be variances between the old copy and new
+      if (existing && existing.disabled) await existing.delete();
 
-    const scrollingTextArgs = [
-      token.center,
-      game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
-      {
-        fill: "white",
-        fontSize: 32,
-        stroke: 0x000000,
-        strokeThickness: 4,
-      },
-    ];
+      // not awaited to allow parallel processing
+      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+    } else {
 
-    canvas.interface.createScrollingText(...scrollingTextArgs);
+      // not awaited to allow parallel processing
+      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+
+      const scrollingTextArgs = [
+        token.center,
+        game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
+        {
+          fill: "white",
+          fontSize: 32,
+          stroke: 0x000000,
+          strokeThickness: 4,
+        },
+      ];
+
+      canvas.interface.createScrollingText(...scrollingTextArgs);
+    }
   }
 }

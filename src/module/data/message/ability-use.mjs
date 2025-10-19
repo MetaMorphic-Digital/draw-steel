@@ -126,10 +126,12 @@ export default class AbilityUseModel extends BaseMessageModel {
 
       const noStack = !config.properties.has("stacking");
 
+      const isStatus = effectButton.dataset.type === "status";
+
       /** @type {DrawSteelActiveEffect} */
-      const tempEffect = effectButton.dataset.type === "custom" ?
-        pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true }) :
-        await DrawSteelActiveEffect.fromStatusEffect(effectId);
+      const tempEffect = isStatus ?
+        await DrawSteelActiveEffect.fromStatusEffect(effectId) :
+        pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
 
       /** @type {ActiveEffectData} */
       const updates = {
@@ -141,9 +143,15 @@ export default class AbilityUseModel extends BaseMessageModel {
       if (config.end) updates.system.end = { type: config.end };
       tempEffect.updateSource(updates);
 
+      // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
       for (const actor of ds.utils.tokensToActors()) {
-        // reusing the ID will block creation if it's already on the actor
-        // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+        if (isStatus) {
+          // reusing the ID will block creation if it's already on the actor
+          const existing = actor.effects.get(tempEffect.id);
+          // deleting instead of updating because there may be variances between the old copy and new
+          if (existing && existing.disabled) await existing.delete();
+        }
+        // not awaited to allow parallel processing
         actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }
     });
