@@ -1,0 +1,90 @@
+{
+  "folder": "0xfBO0LMaZzI9DGX",
+  "name": "Shadowfall",
+  "type": "ability",
+  "_id": "wxzpnE9EDlFTxSGR",
+  "img": "icons/skills/melee/strike-dagger-white-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "168",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "shadowfall",
+    "story": "You vanish. They fall. You reappear",
+    "keywords": [
+      "area",
+      "melee",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 10,
+      "secondary": 1,
+      "tertiary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "Each enemy in the area",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "LiiThCiGsFKlGijH": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "LiiThCiGsFKlGijH",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr"
+            },
+            "tier2": {
+              "value": "14 + @chr"
+            },
+            "tier3": {
+              "value": "20 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You disappear before making the power roll. After the power roll is resolved, you appear in the first unoccupied space at the far end of the line</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760803550005,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wxzpnE9EDlFTxSGR"
+}
