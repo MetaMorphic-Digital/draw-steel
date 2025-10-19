@@ -145,12 +145,10 @@ export default class AbilityUseModel extends BaseMessageModel {
 
       // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
       for (const actor of ds.utils.tokensToActors()) {
-        if (isStatus) {
-          // reusing the ID will block creation if it's already on the actor
-          const existing = actor.effects.get(tempEffect.id);
-          // deleting instead of updating because there may be variances between the old copy and new
-          if (existing && existing.disabled) await existing.delete();
-        }
+        // reusing the ID will block creation if it's already on the actor
+        const existing = actor.effects.get(tempEffect.id);
+        // deleting instead of updating because there may be variances between the old copy and new
+        if (existing?.disabled) await existing.delete();
         // not awaited to allow parallel processing
         actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }

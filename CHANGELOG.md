@@ -64,7 +64,7 @@
 - Kit bonuses to speed are now applied after active effects. (#957)
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
-- Applying a status effect to an actor with a disabled copy will delete the old version first. (#1103)
+- Applying an effect to an actor with a disabled copy will delete the old version first. (#1103)
   - This is a change for applied power roll effects that also applies to the new Apply enricher.
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Heroes now have a helper app for adjusting characteristics. (#1206)

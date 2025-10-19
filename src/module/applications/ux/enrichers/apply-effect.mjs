@@ -146,20 +146,16 @@ async function onClickAnchor() {
     else if (actors.has(actor)) continue;
     else actors.add(actor);
 
+    // reusing the ID will block creation if it's already on the actor
+    const existing = actor.effects.get(tempEffect.id);
+    // deleting instead of updating because there may be variances between the old copy and new
+    if (existing?.disabled) await existing.delete();
+
+    // not awaited to allow parallel processing
+    actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
+
     // statuses automatically create scrolling text themselves
-    if (this.dataset.type === "status") {
-      // reusing the ID will block creation if it's already on the actor
-      const existing = actor.effects.get(tempEffect.id);
-      // deleting instead of updating because there may be variances between the old copy and new
-      if (existing && existing.disabled) await existing.delete();
-
-      // not awaited to allow parallel processing
-      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
-    } else {
-
-      // not awaited to allow parallel processing
-      actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
-
+    if (this.dataset.type !== "status") {
       const scrollingTextArgs = [
         token.center,
         game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
