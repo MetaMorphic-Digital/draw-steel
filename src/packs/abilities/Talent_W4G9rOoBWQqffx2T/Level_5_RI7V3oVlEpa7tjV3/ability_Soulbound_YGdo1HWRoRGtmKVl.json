@@ -65,7 +65,7 @@
           }
         },
         "D1d4phISaR4pfXsf": {
-          "name": "Applied Effect",
+          "name": "Stitched",
           "img": null,
           "type": "applied",
           "_id": "D1d4phISaR4pfXsf",
@@ -74,11 +74,23 @@
               "display": "{{potency}}, stitched (save ends)",
               "potency": {
                 "characteristic": "agility"
+              },
+              "effects": {
+                "VbUIoNCHnJmdmHOA": {
+                  "condition": "failure"
+                }
               }
             },
             "tier2": {
               "potency": {
                 "characteristic": "agility"
+              },
+              "display": "{{potency}}, stitched (save ends)",
+              "effects": {
+                "VbUIoNCHnJmdmHOA": {
+                  "condition": "failure",
+                  "end": "save"
+                }
               }
             },
             "tier3": {
@@ -87,6 +99,10 @@
                   "condition": "failure",
                   "end": "save"
                 }
+              },
+              "display": "{{potency}}, stitched (save ends)",
+              "potency": {
+                "characteristic": "agility"
               }
             }
           }
@@ -104,7 +120,7 @@
   },
   "effects": [
     {
-      "name": "Active Effect",
+      "name": "Stitched",
       "img": "icons/magic/control/energy-stream-link-blue.webp",
       "origin": "Compendium.draw-steel.abilities.Item.YGdo1HWRoRGtmKVl",
       "transfer": false,
@@ -120,9 +136,14 @@
       "disabled": false,
       "duration": {
         "startTime": null,
-        "combat": null
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
       },
-      "description": "",
+      "description": "<p>While stitched together, a target takes a bane on power rolls while not adjacent to a creature they’re stitched to.</p><p>Whenever a stitched target takes damage that wasn’t dealt by or also taken by another stitched target, each other stitched target takes half the damage the initial target took.</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
