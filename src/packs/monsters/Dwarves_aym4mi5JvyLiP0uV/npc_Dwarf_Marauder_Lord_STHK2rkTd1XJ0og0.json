@@ -1,5 +1,5 @@
 {
-  "name": "Dwarf Marauder",
+  "name": "Dwarf Marauder Lord",
   "type": "npc",
   "img": "systems/draw-steel/assets/roles/leader.webp",
   "system": {
@@ -442,7 +442,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -480,9 +481,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -508,7 +509,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -546,9 +548,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -778,7 +780,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -788,7 +791,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an Agility Test.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>8 damage; restrained (EoT)</p></td></tr><tr><td><p>12-16</p></td><td><p>6 damage; slowed (EoT)</p></td></tr><tr><td><p>17</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an Agility Test.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>8 damage; [[/apply restrained turn]]</p></td></tr><tr><td><p>12-16</p></td><td><p>6 damage; [[/apply slowed turn]]</p></td></tr><tr><td><p>17</p></td><td><p>No effect.</p></td></tr></tbody></table>",
           "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Special:</span></strong></span> This ability canʼt be used by a minion.</p>"
         },
         "spend": {
@@ -799,17 +802,15 @@
       "_id": "iV1xZa3LFqKK1Xgu",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": "zR2leIjgt7VcKr8l",
-      "sort": 100000,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.iV1xZa3LFqKK1Xgu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757032645455,
+        "systemVersion": "0.9.0",
+        "createdTime": 1760908285638,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
@@ -817,12 +818,14 @@
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!STHK2rkTd1XJ0og0.iV1xZa3LFqKK1Xgu"
     }
   ],
   "folder": "aym4mi5JvyLiP0uV",
   "prototypeToken": {
-    "name": "Dwarf Marauder",
+    "name": "Dwarf Marauder Lord",
     "displayName": 20,
     "actorLink": false,
     "width": 1,
@@ -924,7 +927,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757032384889,
