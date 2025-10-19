@@ -52,7 +52,7 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "none"
               }
             },
             "tier2": {
@@ -61,7 +61,7 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "none"
               }
             },
             "tier3": {
@@ -70,7 +70,7 @@
                 "psychic"
               ],
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "none"
               }
             }
           }
@@ -85,19 +85,37 @@
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
                 "characteristic": "reason"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
               }
             },
             "tier2": {
               "potency": {
                 "characteristic": "reason"
               },
-              "display": "{{potency}}, slowed (save ends)"
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier3": {
               "potency": {
                 "characteristic": "reason"
               },
-              "display": "{{potency}}, slowed (save ends)"
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }
@@ -105,7 +123,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>While slowed this way, the target takes 3 psychic damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes 5 psychic damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
+      "after": "<p>While slowed this way, the target takes [[/damage 3 type=psychic]] damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5 type=psychic]] damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
     },
     "spend": {
       "text": "",
@@ -156,6 +174,43 @@
         "lastModifiedBy": null
       },
       "_key": "!items.effects!cgW4PcZmnCxuHfJW.4VNUTZ3jWRGqD7SQ"
+    },
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/control/debuff-energy-snare-blue.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW",
+      "transfer": false,
+      "_id": "oCsO9QcithqyHJ9C",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760912956745,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!cgW4PcZmnCxuHfJW.oCsO9QcithqyHJ9C"
     }
   ],
   "sort": 0,
