@@ -2,7 +2,7 @@
   <legend>{{systemFields.characteristics.label}}</legend>
   {{#each characteristics as |chr key|}}
   {{#if @root.isPlay}}
-  <a class="characteristic play" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}">
+  <a class="characteristic play {{disabled (not @root.owner)}}" data-action="roll" data-roll-type="characteristic" data-characteristic="{{key}}" data-tooltip-text="{{localize "DRAW_STEEL.ROLL.Prompt" prompt=chr.field.label}}">
     {{chr.field.label}} {{numberFormat chr.value sign=true}}
   </a>
   {{else}}
