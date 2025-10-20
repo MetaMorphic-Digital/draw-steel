@@ -1,0 +1,101 @@
+{
+  "folder": "zMxluewCWxNAHGdI",
+  "name": "Chain Reaction",
+  "type": "ability",
+  "_id": "y6rgNYVNxpRzuOsb",
+  "img": "icons/skills/ranged/bomb-grenade-thrown-stars-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "172",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "chain-reaction",
+    "story": "One explosion, an offense. Three explosions, an assault. Nine explosions, a celebration.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "2dNco57R5bAZFX6E": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "2dNco57R5bAZFX6E",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "types": [
+                "acid",
+                "fire",
+                "poison"
+              ]
+            },
+            "tier2": {
+              "value": "10",
+              "types": [
+                "acid",
+                "fire",
+                "poison"
+              ]
+            },
+            "tier3": {
+              "value": "15",
+              "types": [
+                "acid",
+                "fire",
+                "poison"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Each enemy within 3 squares of the target who is not currently targeted by this ability also becomes targeted by this ability. This effect continues until there are no more available targets. The ability deals acid, fire, or poison damage (your choice).</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760927577411,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!y6rgNYVNxpRzuOsb"
+}
