@@ -1,0 +1,124 @@
+{
+  "folder": "XAgGWoa5fpF1jscs",
+  "name": "Debilitating Strike",
+  "type": "ability",
+  "_id": "t7b3Qy660mq5UraJ",
+  "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "137",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "debilitating-strike",
+    "story": "You need just one blow to sabotage your target.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "Dx2nHDunKSEfbwnY": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "Dx2nHDunKSEfbwnY",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr"
+            },
+            "tier2": {
+              "value": "14 + @chr"
+            },
+            "tier3": {
+              "value": "20 + @chr"
+            }
+          }
+        },
+        "ddmOkY1YY3CiGQml": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "ddmOkY1YY3CiGQml",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>While slowed this way, the target takes 1 damage for every square they move, including from forced movement.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760984543220,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!t7b3Qy660mq5UraJ"
+}
