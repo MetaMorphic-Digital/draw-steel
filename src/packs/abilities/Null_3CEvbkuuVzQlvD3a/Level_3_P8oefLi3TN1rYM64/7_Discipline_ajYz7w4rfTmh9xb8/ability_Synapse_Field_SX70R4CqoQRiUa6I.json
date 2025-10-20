@@ -1,17 +1,17 @@
 {
-  "folder": "P8oefLi3TN1rYM64",
-  "name": "Molecular Rearrangement Field",
+  "folder": "ajYz7w4rfTmh9xb8",
+  "name": "Synapse Field",
   "type": "ability",
-  "_id": "vcSr5VS8d0qtY5Ds",
-  "img": "icons/magic/air/wind-stream-purple-blue.webp",
+  "_id": "SX70R4CqoQRiUa6I",
+  "img": "icons/magic/control/debuff-chains-ropes-blue.webp",
   "system": {
     "source": {
       "book": "Heroes",
       "page": "153",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "molecular-rearrangement-field",
-    "story": "Your enemies’ wounds open, your allies’ wounds close.",
+    "_dsid": "synapse-field",
+    "story": "Attacks made by allies in your null field disrupt your enemies’ thoughts, causing psychic pain.",
     "keywords": [
       "psionic"
     ],
@@ -34,7 +34,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the end of the encounter, the size of your Null Field abil ity increases by 1. While the area of that ability is enlarged this way, each enemy who has I &lt; AVERAGE and enters the area for the first time in a combat round or starts their turn there is bleeding (save ends). Each ally who enters the area for the first time in a combat round or starts their turn there gains temporary Stamina equal to your Intuition score.</p>",
+      "before": "<p>Until the end of the encounter, the size of your Null Field ability increases by 1. While the area of that ability is enlarged this way, whenever an enemy in the area takes rolled damage, they take extra psychic damage equal to twice your Intuition score.</p>",
       "after": ""
     },
     "spend": {
@@ -43,7 +43,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 125000,
   "ownership": {
     "default": 0
   },
@@ -52,12 +52,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
-    "createdTime": 1756687341591,
+    "createdTime": 1756687639696,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!vcSr5VS8d0qtY5Ds"
+  "_key": "!items!SX70R4CqoQRiUa6I"
 }

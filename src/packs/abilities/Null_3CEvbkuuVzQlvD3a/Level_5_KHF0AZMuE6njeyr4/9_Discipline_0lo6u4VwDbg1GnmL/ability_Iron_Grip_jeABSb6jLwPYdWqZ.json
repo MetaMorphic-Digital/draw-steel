@@ -1,0 +1,162 @@
+{
+  "folder": "0lo6u4VwDbg1GnmL",
+  "name": "Iron Grip",
+  "type": "ability",
+  "_id": "jeABSb6jLwPYdWqZ",
+  "img": "icons/skills/melee/unarmed-punch-fist.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "154",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "iron-grip",
+    "story": "You grab the target with supernatural force.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "YpPnFE0IDjf8bTnx": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "YpPnFE0IDjf8bTnx",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr"
+            },
+            "tier2": {
+              "value": "14 + @chr"
+            },
+            "tier3": {
+              "value": "18 + @chr"
+            }
+          }
+        },
+        "TUr74BaE27xVLVl0": {
+          "name": "Grabbed",
+          "img": null,
+          "type": "applied",
+          "_id": "TUr74BaE27xVLVl0",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              },
+              "potency": {
+                "characteristic": "agility"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "Zhabg9uE19Jmvl1Z": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>While grabbed this way, the target takes a bane on the Escape Grab maneuver. Each time they use that maneuver, they take damage equal to twice your Agility score [[/damage 2*@A]].</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/skills/melee/unarmed-punch-fist.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.jeABSb6jLwPYdWqZ",
+      "transfer": false,
+      "_id": "Zhabg9uE19Jmvl1Z",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760974247602,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!jeABSb6jLwPYdWqZ.Zhabg9uE19Jmvl1Z"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760973272895,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!jeABSb6jLwPYdWqZ"
+}

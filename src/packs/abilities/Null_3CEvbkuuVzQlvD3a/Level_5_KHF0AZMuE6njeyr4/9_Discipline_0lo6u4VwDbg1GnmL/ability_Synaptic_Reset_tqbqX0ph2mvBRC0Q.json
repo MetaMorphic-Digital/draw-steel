@@ -1,30 +1,34 @@
 {
-  "folder": "P8oefLi3TN1rYM64",
-  "name": "Synapse Field",
+  "folder": "0lo6u4VwDbg1GnmL",
+  "name": "Synaptic Reset",
   "type": "ability",
-  "_id": "SX70R4CqoQRiUa6I",
-  "img": "icons/magic/control/debuff-chains-ropes-blue.webp",
+  "_id": "tqbqX0ph2mvBRC0Q",
+  "img": "icons/magic/holy/barrier-shield-winged-cross.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "153",
+      "page": "154",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "synapse-field",
-    "story": "Attacks made by allies in your null field disrupt your enemies’ thoughts, causing psychic pain.",
+    "_dsid": "synaptic-reset",
+    "story": "You expand your nullifying power to mitigate harmful effects.",
     "keywords": [
+      "area",
       "psionic"
     ],
     "type": "maneuver",
     "category": "heroic",
-    "resource": 7,
+    "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "self"
+      "type": "burst",
+      "primary": 3
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -34,7 +38,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the end of the encounter, the size of your Null Field ability increases by 1. While the area of that ability is enlarged this way, whenever an enemy in the area takes rolled damage, they take extra psychic damage equal to twice your Intuition score.</p>",
+      "before": "<p>Each target can end any conditions or effects on themself, and gains 5 temporary Stamina for each condition or effect removed [[/heal 5 temp]].</p>",
       "after": ""
     },
     "spend": {
@@ -52,12 +56,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1756687639696,
+    "systemVersion": "0.9.0",
+    "createdTime": 1760974748068,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!SX70R4CqoQRiUa6I"
+  "_key": "!items!tqbqX0ph2mvBRC0Q"
 }
