@@ -1,0 +1,182 @@
+{
+  "folder": "RI7V3oVlEpa7tjV3",
+  "name": "Soulbound",
+  "type": "ability",
+  "_id": "YGdo1HWRoRGtmKVl",
+  "img": "icons/magic/control/energy-stream-link-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "195",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "soulbound",
+    "story": "You fire a piercing bolt of psychic energy that lances through two foes and leaves a faint intangible thread between them.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "animapathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 2
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "t4OekUSe1r27wUte": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "t4OekUSe1r27wUte",
+          "damage": {
+            "tier1": {
+              "value": "8",
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "13",
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "17",
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "D1d4phISaR4pfXsf": {
+          "name": "Stitched",
+          "img": null,
+          "type": "applied",
+          "_id": "D1d4phISaR4pfXsf",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, stitched (save ends)",
+              "potency": {
+                "characteristic": "agility"
+              },
+              "effects": {
+                "VbUIoNCHnJmdmHOA": {
+                  "condition": "failure"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "agility"
+              },
+              "display": "{{potency}}, stitched (save ends)",
+              "effects": {
+                "VbUIoNCHnJmdmHOA": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "VbUIoNCHnJmdmHOA": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "{{potency}}, stitched (save ends)",
+              "potency": {
+                "characteristic": "agility"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If any target becomes [[/apply stitched]] to the other, both targets are stitched together. While stitched together, a target takes a bane on power rolls while not adjacent to a creature they’re stitched to.</p><p>Whenever a stitched target takes damage that wasn’t dealt by or also taken by another stitched target, each other stitched target takes half the damage the initial target took.</p><p><strong>Strained</strong>: You target yourself and three enemies instead.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "stitched",
+      "img": "icons/magic/control/energy-stream-link-blue.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.YGdo1HWRoRGtmKVl",
+      "transfer": false,
+      "_id": "VbUIoNCHnJmdmHOA",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While stitched together, a target takes a bane on power rolls while not adjacent to a creature they’re stitched to.</p><p>Whenever a stitched target takes damage that wasn’t dealt by or also taken by another stitched target, each other stitched target takes half the damage the initial target took.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760750417962,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!YGdo1HWRoRGtmKVl.VbUIoNCHnJmdmHOA"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760750166728,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!YGdo1HWRoRGtmKVl"
+}

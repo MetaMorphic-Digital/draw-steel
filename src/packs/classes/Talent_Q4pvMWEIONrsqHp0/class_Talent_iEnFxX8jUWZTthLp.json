@@ -271,7 +271,7 @@
           "level": 3
         },
         "_id": "QFnpzyV4alu4UoZ7",
-        "description": "<p>As a 3rd-level talent, you gain the following feature.</p>",
+        "description": "<p>You can extend your psionic senses beyond their usual range.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.RBNmrLpJpXlVQzBD"
@@ -300,7 +300,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.vIWdPG8WnnCpQ5b2"
           }
-        ]
+        ],
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 clarity to use</p>"
       },
       "KNWCVeiFDdL5h6JE": {
         "name": "",
@@ -414,6 +415,94 @@
             "supernatural"
           ]
         }
+      },
+      "Usg9qKC5YPDusiHJ": {
+        "name": "Mind Projection",
+        "img": "icons/magic/perception/third-eye-blue-red.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "Usg9qKC5YPDusiHJ",
+        "description": "<p>As a maneuver, you project your mind outside your body.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UcICLl9dpCdavWG0"
+          }
+        ]
+      },
+      "qF4R0aLfCWYYI5Bi": {
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "qF4R0aLfCWYYI5Bi",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        }
+      },
+      "0nD9U1OKmxfcibUV": {
+        "name": "Suspensor Field",
+        "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "0nD9U1OKmxfcibUV",
+        "description": "<p>You can fly.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OXKhxDJFuUFopkx8"
+          }
+        ]
+      },
+      "MrhrrCmfewW70nzs": {
+        "name": "Mind Recovery",
+        "img": "icons/skills/movement/ball-spinning-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "MrhrrCmfewW70nzs",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8d0UWGKdPdDyHGPn"
+          }
+        ]
+      },
+      "3FEUzOwesu41WHbP": {
+        "name": "9 Clarity Abilities",
+        "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "3FEUzOwesu41WHbP",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 clarity to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mBu5t70koxCSfs3B"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.iaCQ1GvXc721iT5U"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YGdo1HWRoRGtmKVl"
+          }
+        ]
       }
     },
     "level": 0,
