@@ -1,0 +1,170 @@
+{
+  "folder": "6vnfBHBmGld6FLFn",
+  "name": "Shadowgrasp",
+  "type": "ability",
+  "_id": "OnF7sg9uc0gLFRO0",
+  "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "171",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "shadowgrasp",
+    "story": "The shadows around you give way, allowing the shadow creature within you to grasp at your foes.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "ZxIkKlKqRJD1hfgX": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ZxIkKlKqRJD1hfgX",
+          "damage": {
+            "tier1": {
+              "value": "11",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "16",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "21",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        },
+        "NQoEDzmvUyKOW5wb": {
+          "name": "Restrained",
+          "img": null,
+          "type": "applied",
+          "_id": "NQoEDzmvUyKOW5wb",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, restrained (save ends)",
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "agility"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/unholy/hand-claw-glow-orange.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.OnF7sg9uc0gLFRO0",
+      "transfer": false,
+      "_id": "MfS1I8lapmYrrvoD",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760924876665,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!OnF7sg9uc0gLFRO0.MfS1I8lapmYrrvoD"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760924552388,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!OnF7sg9uc0gLFRO0"
+}

@@ -1,0 +1,66 @@
+{
+  "folder": "AF0icTWa2irfvfJ3",
+  "name": "Sanctuary",
+  "type": "ability",
+  "_id": "mxZpod4GbkRjFq91",
+  "img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "105",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "sanctuary",
+    "story": "You send yourself or an ally to a divine manifold to instantaneously regain health.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": ""
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target is removed from the encounter map until the start of their next turn and can spend any number of Recoveries. At the start of their turn, the target reappears in the space they left or the nearest unoccupied space of their choice.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760686849640,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!mxZpod4GbkRjFq91"
+}

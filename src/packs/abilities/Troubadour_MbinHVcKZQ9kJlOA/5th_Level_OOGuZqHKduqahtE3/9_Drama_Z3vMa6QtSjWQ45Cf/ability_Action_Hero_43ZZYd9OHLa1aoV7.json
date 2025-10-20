@@ -1,0 +1,88 @@
+{
+  "folder": "Z3vMa6QtSjWQ45Cf",
+  "name": "Action Hero",
+  "type": "ability",
+  "_id": "43ZZYd9OHLa1aoV7",
+  "img": "icons/skills/melee/maneuver-greatsword-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "211",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "action-hero",
+    "story": "You wield your weapon at blistering speed, leaving everyone around you fighting for their lives.",
+    "keywords": [
+      "area",
+      "melee",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "EdUzJM88JjepI7sg": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "EdUzJM88JjepI7sg",
+          "damage": {
+            "tier1": {
+              "value": "10"
+            },
+            "tier2": {
+              "value": "14"
+            },
+            "tier3": {
+              "value": "20"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Unless you score a critical hit, this ability can’t reduce a non-minion target below 1 Stamina.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760916435665,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!43ZZYd9OHLa1aoV7"
+}

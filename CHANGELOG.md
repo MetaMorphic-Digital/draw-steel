@@ -25,10 +25,17 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
+  - Conduit levels 4–5 features and abilities.
+  - Null levels 4–5 features and abilities.
+  - Shadow levels 4–9 features and abilities.
+  - Tactician levels 4–5 features and abilities.
+  - Talent levels 4–5 features and abilities.
+  - Troubadour levels 4–5 features and abilities.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
   - Draconians
+  - Dragons
   - Elves (Shadow)
   - Giants
   - Hobgoblins
@@ -52,6 +59,7 @@
 - Improved handling of private messages for power and damage rolls. (#1221)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
+- Creating crafting projects from treasures will now use the treasure image as the project image.
 
 ### Changed
 

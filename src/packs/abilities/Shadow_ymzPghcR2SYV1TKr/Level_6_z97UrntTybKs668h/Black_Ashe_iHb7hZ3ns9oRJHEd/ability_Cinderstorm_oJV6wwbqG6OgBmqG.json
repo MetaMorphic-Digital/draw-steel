@@ -1,0 +1,68 @@
+{
+  "folder": "iHb7hZ3ns9oRJHEd",
+  "name": "Cinderstorm",
+  "type": "ability",
+  "_id": "oJV6wwbqG6OgBmqG",
+  "img": "icons/magic/fire/blast-jet-stream-embers-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "169",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "cinderstorm",
+    "story": "You teleport your friends in a burst of ash and fire.",
+    "keywords": [
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 4
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each target can teleport up to 5 squares. For each target in addition to you who teleports away from or into a space adjacent to an enemy, that enemy takes fire damage equal to your Agility score [[/damage @A fire]]. Additionally, a target who ends this movement in concealment or cover can use the Hide maneuver even if they are observed.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760836101120,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!oJV6wwbqG6OgBmqG"
+}

@@ -1,0 +1,68 @@
+{
+  "folder": "hYLecNzrZ7EdeXZl",
+  "name": "Take Two!",
+  "type": "ability",
+  "_id": "EX8fOSlYX4r8BrtA",
+  "img": "icons/sundries/gaming/dice-pair-white-green.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "211",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "take-two",
+    "story": "One more, and this time make it interesting.",
+    "keywords": [
+      "area",
+      "magic",
+      "performance"
+    ],
+    "type": "none",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>While this performance is active, each target who starts their turn in the area can reroll the first power roll that turn that obtains a tier 2 outcome. They must use the new roll.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760915690721,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!EX8fOSlYX4r8BrtA"
+}

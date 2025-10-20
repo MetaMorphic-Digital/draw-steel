@@ -26,7 +26,7 @@
       {{#each abilityType.abilities as |abilityContext|}}
       <li class="item ability draggable expandable-document" data-document-uuid="{{abilityContext.item.uuid}}">
         <div class="item-row">
-          <div class="item-column item-name rollable" data-action="useAbility">
+          <div class="item-column item-name rollable {{disabled (not @root.owner)}}" data-action="useAbility">
             <img class="item-image" src="{{abilityContext.item.img}}" alt="{{abilityContext.item.name}}">
             {{#if abilityContext.item.system.restricted}}
             <div class="restricted-warning" data-tooltip="DRAW_STEEL.Item.ability.Restricted">
