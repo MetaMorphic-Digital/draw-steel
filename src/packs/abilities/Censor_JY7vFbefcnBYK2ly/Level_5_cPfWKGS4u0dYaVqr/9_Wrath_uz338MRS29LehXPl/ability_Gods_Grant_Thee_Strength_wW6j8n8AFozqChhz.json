@@ -1,0 +1,66 @@
+{
+  "folder": "uz338MRS29LehXPl",
+  "name": "Gods Grant Thee Strength",
+  "type": "ability",
+  "_id": "wW6j8n8AFozqChhz",
+  "img": "icons/magic/control/buff-strength-muscle-damage.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "88",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "gods-grant-thee-strength",
+    "story": "You channel divine force for movement that cannot be stopped.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target ends any condition or effect on them that is ended by a saving throw or that ends at the end of their turn, or a prone target can stand up. The target then gains 2 surges, can shift up to their speed while ignoring difficult terrain, and can use a strike signature ability as a free triggered action.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760989285389,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wW6j8n8AFozqChhz"
+}
