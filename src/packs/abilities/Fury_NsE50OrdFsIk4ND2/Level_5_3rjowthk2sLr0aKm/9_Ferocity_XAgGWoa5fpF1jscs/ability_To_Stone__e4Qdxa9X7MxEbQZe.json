@@ -57,40 +57,23 @@
             }
           }
         },
-        "fb7wkSl8yy4wNy9X": {
+        "eWuPMD1oOnUed3K4": {
           "name": "",
           "img": null,
-          "type": "applied",
-          "_id": "fb7wkSl8yy4wNy9X",
-          "applied": {
+          "type": "other",
+          "_id": "eWuPMD1oOnUed3K4",
+          "other": {
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
                 "characteristic": "might"
-              },
-              "effects": {
-                "slowed": {
-                  "condition": "failure",
-                  "end": "save"
-                }
               }
             },
             "tier2": {
-              "effects": {
-                "slowed": {
-                  "condition": "failure",
-                  "end": "save"
-                }
-              }
+              "display": "{{potency}}, slowed (save ends)"
             },
             "tier3": {
-              "display": "{{potency}}, restrained (save ends)",
-              "effects": {
-                "restrained": {
-                  "condition": "failure",
-                  "end": "save"
-                }
-              }
+              "display": "{{potency}}, restrained (save ends)"
             }
           }
         }
@@ -105,7 +88,96 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Slowed",
+      "img": "icons/magic/earth/strike-body-stone-crumble.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.e4Qdxa9X7MxEbQZe",
+      "transfer": false,
+      "_id": "IOeJcovdBiIZuh35",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While the target is slowed this way, any other effect that would make the target slowed instead makes them [[/apply restrained]] by this ability. Additionally, a creature who fails the saving throw while restrained this way is petrified until they are given a supernatural cure or you choose to reverse the effect (no action required). </p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760994108426,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!e4Qdxa9X7MxEbQZe.IOeJcovdBiIZuh35"
+    },
+    {
+      "name": "Restrained",
+      "img": "icons/magic/earth/strike-body-stone-crumble.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.e4Qdxa9X7MxEbQZe",
+      "transfer": false,
+      "_id": "1NiegIDac5q4O7Qv",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While the target is slowed this way, any other effect that would make the target slowed instead makes them restrained by this ability. Additionally, a creature who fails the saving throw while restrained this way is petrified until they are given a supernatural cure or you choose to reverse the effect (no action required).</p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "restrained"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760994180904,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!e4Qdxa9X7MxEbQZe.1NiegIDac5q4O7Qv"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

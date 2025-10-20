@@ -56,39 +56,23 @@
             }
           }
         },
-        "ddmOkY1YY3CiGQml": {
-          "name": "Slowed",
+        "an5eUO0JRGzCks2t": {
+          "name": "Slow",
           "img": null,
-          "type": "applied",
-          "_id": "ddmOkY1YY3CiGQml",
-          "applied": {
+          "type": "other",
+          "_id": "an5eUO0JRGzCks2t",
+          "other": {
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
                 "characteristic": "might"
-              },
-              "effects": {
-                "slowed": {
-                  "condition": "failure",
-                  "end": "save"
-                }
               }
             },
             "tier2": {
-              "effects": {
-                "slowed": {
-                  "condition": "failure",
-                  "end": "save"
-                }
-              }
+              "display": "{{potency}}, slowed (save ends)"
             },
             "tier3": {
-              "effects": {
-                "slowed": {
-                  "condition": "failure",
-                  "end": "save"
-                }
-              }
+              "display": "{{potency}}, slowed (save ends)"
             }
           }
         }
@@ -103,7 +87,52 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Slowed",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.t7b3Qy660mq5UraJ",
+      "transfer": false,
+      "_id": "QevpI7ACSq52Q46m",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While slowed this way, the target takes 1 damage for every square they move, including from forced movement.</p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760993056066,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!t7b3Qy660mq5UraJ.QevpI7ACSq52Q46m"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
