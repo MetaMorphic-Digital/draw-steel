@@ -25,7 +25,12 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
-  - Level 4 & 5 features for Conduit.
+  - Conduit levels 4–5 features and abilities.
+  - Null levels 4–5 features and abilities.
+  - Shadow levels 4–9 features and abilities.
+  - Tactician levels 4–5 features and abilities.
+  - Talent levels 4–5 features and abilities.
+  - Troubadour levels 4–5 features and abilities.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
