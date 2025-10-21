@@ -1,0 +1,117 @@
+{
+  "folder": "xWOmayivNZqodD07",
+  "name": "Web of All That’s Come Before",
+  "type": "ability",
+  "_id": "SSiGpLWLSyTzGQ7b",
+  "img": "icons/creatures/invertebrates/spider-web-black.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "123",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "web-of-all-thats-come-before",
+    "story": "Threads you’ve been weaving through your adventures create a vibrant, pearlescent web.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged",
+      "green"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 4,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "Gk3r4P0goHs7vxgc": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "Gk3r4P0goHs7vxgc",
+          "damage": {
+            "tier1": {
+              "value": "2",
+              "types": [
+                "corruption"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "3",
+              "types": [
+                "corruption"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "5",
+              "types": [
+                "corruption"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "wAceEUL6rbnpAyVx": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "wAceEUL6rbnpAyVx",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, restrained (saved ends)"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The area is difficult terrain until the start of your next turn. Each enemy who ends their turn in the area is [[/apply restrained save]].</p><p><strong>Persistent 1</strong>: The area remains until the start of your next turn.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761072834749,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!SSiGpLWLSyTzGQ7b"
+}
