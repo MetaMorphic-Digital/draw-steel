@@ -25,10 +25,19 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
+  - Censor levels 4–5 features and abilities.
+  - Conduit levels 4–5 features and abilities.
+  - Fury levels 4–5 features and abilities.
+  - Null levels 4–5 features and abilities.
+  - Shadow levels 4–9 features and abilities.
+  - Tactician levels 4–5 features and abilities.
+  - Talent levels 4–5 features and abilities.
+  - Troubadour levels 4–5 features and abilities.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
   - Draconians
+  - Dragons
   - Elves (Shadow)
   - Giants
   - Hobgoblins
@@ -52,21 +61,27 @@
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
 - Added the official licensed glyphs. (#1209)
 - Improved handling of private messages for power and damage rolls. (#1221)
+- Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
+- Creating crafting projects from treasures will now use the treasure image as the project image.
 
 ### Changed
 
 - Changed available keywords on treasures to be more accurate. (#270)
 - Refactor the toggling of item and effect description dropdowns to use a CSS transition instead of re-rendering the application. (#626)
+- Added vertical ellipses to all document lists for context options (#823)
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
 - Kit bonuses to speed are now applied after active effects. (#957)
 - Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
   - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- Applying an effect to an actor with a disabled copy will delete the old version first. (#1103)
+  - This is a change for applied power roll effects that also applies to the new Apply enricher.
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Heroes now have a helper app for adjusting characteristics. (#1206)
+- Slightly increased the size of item icons on the actor sheets to match the size of effect icons.
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.

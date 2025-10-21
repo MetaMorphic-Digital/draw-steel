@@ -17,3 +17,18 @@
   display: flex;
   justify-content: space-between;
 }
+
+/**
+ * General use CSS
+ **/
+dl.power-roll-display {
+  dt.tier1, dt.tier2, dt.tier3 {
+    font-family: "Draw Steel Glyphs";
+    font-size: var(--font-size-24);
+    font-weight: 500;
+    line-height: 0.9;
+  }
+  dd > p, dt > p {
+    margin: 0;
+  }
+}

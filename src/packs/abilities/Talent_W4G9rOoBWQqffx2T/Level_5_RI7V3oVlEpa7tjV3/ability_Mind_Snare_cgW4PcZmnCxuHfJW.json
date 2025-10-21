@@ -1,0 +1,233 @@
+{
+  "folder": "RI7V3oVlEpa7tjV3",
+  "name": "Mind Snare",
+  "type": "ability",
+  "_id": "cgW4PcZmnCxuHfJW",
+  "img": "icons/magic/control/debuff-energy-snare-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "195",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "mind-snare",
+    "story": "You latch onto your prey’s brain and don’t let go, like a song they can’t get out of their head.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "telepathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "QBxmisNcWNpmd3xO": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "QBxmisNcWNpmd3xO",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "14 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "20 + @chr",
+              "types": [
+                "psychic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "gmeDnGz1DCMKjZqw": {
+          "name": "Applied Effect",
+          "img": null,
+          "type": "applied",
+          "_id": "gmeDnGz1DCMKjZqw",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "reason"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "potency": {
+                "characteristic": "reason"
+              },
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "reason"
+              },
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While slowed this way, the target takes [[/damage 3 type=psychic]] damage for each square they willingly leave.</p><p><strong>Strained</strong>: While slowed this way, the target instead takes [[/damage 5 type=psychic]] damage for each square they willingly leave. You have a double bane on ability rolls made against the target while they are slowed this way.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Slowed",
+      "img": "icons/magic/control/debuff-energy-snare-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "_id": "4VNUTZ3jWRGqD7SQ",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760901185426,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!cgW4PcZmnCxuHfJW.4VNUTZ3jWRGqD7SQ"
+    },
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/control/debuff-energy-snare-blue.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW",
+      "transfer": false,
+      "_id": "oCsO9QcithqyHJ9C",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760912956745,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!cgW4PcZmnCxuHfJW.oCsO9QcithqyHJ9C"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760749557007,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!cgW4PcZmnCxuHfJW"
+}

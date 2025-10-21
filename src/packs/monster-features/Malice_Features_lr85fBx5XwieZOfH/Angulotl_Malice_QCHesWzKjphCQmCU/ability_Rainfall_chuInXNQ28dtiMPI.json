@@ -29,43 +29,10 @@
         "formula": "@chr",
         "characteristics": []
       },
-      "effects": {
-        "g8BNA1tbnI9d59oQ": {
-          "name": "Wet",
-          "img": null,
-          "type": "applied",
-          "_id": "g8BNA1tbnI9d59oQ",
-          "applied": {
-            "tier1": {
-              "effects": {
-                "Du8EMyrd7nZQ66Yk": {
-                  "condition": "always",
-                  "end": "encounter"
-                }
-              }
-            },
-            "tier2": {
-              "effects": {
-                "Du8EMyrd7nZQ66Yk": {
-                  "condition": "always",
-                  "end": "encounter"
-                }
-              }
-            },
-            "tier3": {
-              "effects": {
-                "Du8EMyrd7nZQ66Yk": {
-                  "condition": "always",
-                  "end": "encounter"
-                }
-              }
-            }
-          }
-        }
-      }
+      "effects": {}
     },
     "effect": {
-      "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is wet until the end of the encounter.</p>",
+      "before": "<p>An angulotl calls clouds to cover the encounter map and unleash rain until the end of the round. Any creature or object that is exposed to the sky is [[/apply Du8EMyrd7nZQ66Yk encounter]] until the end of the encounter.</p>",
       "after": ""
     },
     "spend": {
@@ -126,9 +93,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757014034853,
     "modifiedTime": null,
     "lastModifiedBy": null
