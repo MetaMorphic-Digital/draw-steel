@@ -79,18 +79,30 @@
               "effects": {
                 "kpvI9YZtx2l4kCrq": {
                   "condition": "always",
-                  "end": "turn"
+                  "end": ""
                 }
               },
               "display": "Combustion Deferred"
             },
             "tier2": {
-              "display": "Combustion Deferred"
+              "display": "Combustion Deferred",
+              "effects": {
+                "kpvI9YZtx2l4kCrq": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
             },
             "tier3": {
               "display": "Combustion Deferred",
               "potency": {
                 "characteristic": "none"
+              },
+              "effects": {
+                "kpvI9YZtx2l4kCrq": {
+                  "condition": "always",
+                  "end": ""
+                }
               }
             }
           }
@@ -99,7 +111,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes fire damage equal to twice your Reason score [[/damage 2*@R type=fire]]. Each affected enemy then gains this same effect [[/apply Combustion]]</p>"
+      "after": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes fire damage equal to twice your Reason score [[/damage 2*@R type=fire]]. Each affected enemy then gains this same effect [[/apply kpvI9YZtx2l4kCrq]]</p>"
     },
     "spend": {
       "text": "",
@@ -131,7 +143,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes fire damage equal to twice your Reason score. Each affected enemy then gains this same effect.</p>",
+      "description": "<p>When the target ends their next turn, or if they drop to 0 Stamina before then, each enemy adjacent to them takes fire damage equal to twice your Reason score. Each affected enemy then gains this same effect [[/apply .kpvI9YZtx2l4kCrq]].</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,

@@ -91,7 +91,13 @@
               }
             },
             "tier3": {
-              "display": "the target has line of effect only to adjacent creatures and objects until the start of your next turn"
+              "display": "the target has line of effect only to adjacent creatures and objects until the start of your next turn",
+              "effects": {
+                "RCjJamvgB3KFLEfe": {
+                  "condition": "always",
+                  "end": ""
+                }
+              }
             }
           }
         }
@@ -108,8 +114,8 @@
   },
   "effects": [
     {
-      "name": "Perception of Space",
-      "img": "icons/svg/item-bag.svg",
+      "name": "Subverted Perception (Tier 2)",
+      "img": "icons/magic/control/debuff-chains-ropes-blue.webp",
       "origin": "Compendium.draw-steel.abilities.Item.zX6D8OyFrPxVsVht",
       "transfer": false,
       "_id": "g3nZRYkT75YEz0BN",
@@ -131,7 +137,7 @@
         "startRound": null,
         "startTurn": null
       },
-      "description": "",
+      "description": "<p>The target has line of effect only to creatures and objects within 4 squares of them until the start of your next turn</p>",
       "tint": "#ffffff",
       "statuses": [],
       "sort": 0,
@@ -148,6 +154,48 @@
         "lastModifiedBy": null
       },
       "_key": "!items.effects!zX6D8OyFrPxVsVht.g3nZRYkT75YEz0BN"
+    },
+    {
+      "name": "Subverted Perception (Tier 3)",
+      "img": "icons/magic/control/debuff-chains-ropes-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.zX6D8OyFrPxVsVht",
+      "transfer": false,
+      "_id": "RCjJamvgB3KFLEfe",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The target has line of effect only to adjacent creatures and objects until the start of your next turn</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761078829185,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!zX6D8OyFrPxVsVht.RCjJamvgB3KFLEfe"
     }
   ],
   "sort": 0,

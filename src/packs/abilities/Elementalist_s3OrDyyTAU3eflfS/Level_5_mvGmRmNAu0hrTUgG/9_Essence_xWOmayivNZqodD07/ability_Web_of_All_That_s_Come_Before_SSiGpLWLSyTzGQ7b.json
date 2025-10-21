@@ -81,7 +81,32 @@
           "_id": "wAceEUL6rbnpAyVx",
           "applied": {
             "tier1": {
-              "display": "{{potency}}, restrained (saved ends)"
+              "display": "{{potency}}, restrained (saved ends)",
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "agility"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }
