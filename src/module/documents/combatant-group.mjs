@@ -60,13 +60,6 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     // Sort alphabetically
     documentTypes.sort((a, b) => a.label.localeCompare(b.label, game.i18n.lang));
 
-    // Identify destination collection
-    let collection;
-    if (!parent) {
-      if (pack) collection = game.packs.get(pack);
-      else collection = game.collections.get(this.documentName);
-    }
-
     // Collect Data
     const label = game.i18n.localize(this.metadata.label);
     const title = game.i18n.format("DOCUMENT.Create", { type: label });

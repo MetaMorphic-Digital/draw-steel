@@ -48,6 +48,11 @@
   - War Dogs Echelons 2–4
   - Voiceless Talkers
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+- Added a "Group Selected" option to the Combat Tracker options. (#690)
+  - This will create any missing combatants and then add them all to a new group.
+  - The group's name will use the actor's name if all tokens have matching actor names.
+  - The group's image will use the token's image if all tokens have matching token images.
+  - Any squads created will be created at full stamina.
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
