@@ -1,0 +1,115 @@
+{
+  "folder": "IieL73wShKOQGlAX",
+  "name": "Demon Door",
+  "type": "ability",
+  "_id": "icka1SrvVDJfIwxJ",
+  "img": "icons/magic/unholy/hand-claw-fire-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "172",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "demon-door",
+    "story": "You create a temporary portal to allow a massive demonic hand to reach through.",
+    "keywords": [
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "WqWP7wFrh2DN2r2t": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "WqWP7wFrh2DN2r2t",
+          "damage": {
+            "tier1": {
+              "value": "13 + @chr",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "18 + @chr",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "25 + @chr",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        },
+        "X2ndqwBSECtq0ZCX": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "X2ndqwBSECtq0ZCX",
+          "forced": {
+            "tier1": {
+              "distance": "3"
+            },
+            "tier2": {
+              "distance": "5"
+            },
+            "tier3": {
+              "distance": "7"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>On a critical hit, the target is grabbed by the demon and pulled through the portal before it closes, never to be seen again.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760927052929,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!icka1SrvVDJfIwxJ"
+}

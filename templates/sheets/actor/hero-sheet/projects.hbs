@@ -19,7 +19,7 @@
       {{#each projects as |projectContext|}}
       <li class="item project draggable expandable-document" data-document-uuid="{{projectContext.item.uuid}}">
         <div class="item-row">
-          <div class="item-column item-name rollable" data-action="rollProject">
+          <div class="item-column item-name rollable {{disabled (not @root.owner)}}" data-action="rollProject">
             <img class="item-image" src="{{projectContext.item.img}}" alt="{{projectContext.item.name}}">
             <div class="name">
               <div class="label">{{projectContext.item.name}}</div>

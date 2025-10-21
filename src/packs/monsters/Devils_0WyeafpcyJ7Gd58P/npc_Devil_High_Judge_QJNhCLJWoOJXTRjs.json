@@ -16,13 +16,13 @@
         "value": 3
       },
       "reason": {
-        "value": 0
+        "value": 2
       },
       "intuition": {
         "value": 1
       },
       "presence": {
-        "value": 2
+        "value": 4
       }
     },
     "combat": {
@@ -40,8 +40,8 @@
     "movement": {
       "value": 7,
       "types": [
-        "fly",
-        "walk"
+        "walk",
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -201,7 +201,7 @@
           "roll": {
             "formula": "@chr",
             "characteristics": [
-              "agility"
+              "presence"
             ]
           },
           "effects": {
@@ -257,7 +257,7 @@
                   },
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "none"
+                    "characteristic": "presence"
                   }
                 },
                 "tier2": {
@@ -563,7 +563,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 15 psychic]] damage; the target is charmed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 12 psychic]] damage; the target is charmed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 7 psychic]] damage</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 15 psychic]] damage; the target is [[/apply ihY2t3izjbz7mvnu save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 12 psychic]] damage; the target is [[/apply ihY2t3izjbz7mvnu save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 7 psychic]] damage</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
           "after": "<p>The target makes a **Presence test**.</p>"
         },
         "spend": {
@@ -580,7 +580,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Charmed",
+          "img": "icons/magic/control/control-influence-puppet.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.QJNhCLJWoOJXTRjs.Item.0uPSa1xfRM4JGKIh",
+          "disabled": true,
+          "_id": "ihY2t3izjbz7mvnu",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1760898753221,
+            "modifiedTime": 1760898837541,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.0uPSa1xfRM4JGKIh.ihY2t3izjbz7mvnu"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -766,7 +809,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"102\"><p>11 or less</p></td><td><p>The target is charmed (save ends).</p></td></tr><tr><td data-colwidth=\"102\"><p>12-16</p></td><td><p>The high judge chooses a new target for the strike.</p></td></tr><tr><td data-colwidth=\"102\"><p>17+</p></td><td><p>The target takes a bane on the strike.</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"102\"><p>11 or less</p></td><td><p>The target is [[/apply Compendium.draw-steel.monsters.Actor.QJNhCLJWoOJXTRjs.Item.0uPSa1xfRM4JGKIh.ActiveEffect.ihY2t3izjbz7mvnu save]]</p></td></tr><tr><td data-colwidth=\"102\"><p>12-16</p></td><td><p>The high judge chooses a new target for the strike.</p></td></tr><tr><td data-colwidth=\"102\"><p>17+</p></td><td><p>The target takes a bane on the strike.</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
           "after": ""
         },
         "spend": {

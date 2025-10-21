@@ -6,8 +6,9 @@ import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
- * @import { DrawSteelItem } from "../../documents/_module.mjs"
- * @import BaseItemModel from "../../data/item/base.mjs"
+ * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
+ * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs";
+ * @import BaseItemModel from "../../data/item/base.mjs";
  */
 
 const { ux } = foundry.applications;
@@ -433,11 +434,13 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         condition: () => this.isEditable,
         callback: (target) => {
           const effectClass = getDocumentClass("ActiveEffect");
+
           const effectData = {
             name: effectClass.defaultName({ parent: this.item }),
             img: this.item.img,
             type: "base",
-            origin: this.item.uuid,
+            // if item is unowned this is just the item's UUID
+            origin: foundry.utils.parseUuid(this.item.uuid, { relative: this.item.actor }).uuid,
           };
           for (const [dataKey, value] of Object.entries(target.dataset)) {
             if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
@@ -457,7 +460,8 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
             name: effectClass.defaultName({ parent: this.item, type: "abilityModifier" }),
             img: this.item.img,
             type: "abilityModifier",
-            origin: this.item.uuid,
+            // if item is unowned this is just the item's UUID
+            origin: foundry.utils.parseUuid(this.item.uuid, { relative: this.item.actor }).uuid,
           };
           for (const [dataKey, value] of Object.entries(target.dataset)) {
             if (["action", "documentClass", "renderSheet"].includes(dataKey)) continue;
@@ -600,6 +604,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
           onSave: this.#saveEditor.bind(this),
         }),
         keyMaps: ProseMirror.ProseMirrorKeyMaps.build(ProseMirror.defaultSchema, {
+          onSave: this.#saveEditor.bind(this),
+        }),
+        highlightDocumentMatches: ProseMirror.ProseMirrorHighlightMatchesPlugin.build(ProseMirror.defaultSchema, {
           onSave: this.#saveEditor.bind(this),
         }),
       },
