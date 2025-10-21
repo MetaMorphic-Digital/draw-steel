@@ -47,6 +47,7 @@
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
+      font-size: var(--font-size-16);
     }
 
     .effect-list {
@@ -75,6 +76,9 @@
                 font-size: var(--font-size-15);
               }
             }
+          }
+          .effect-controls  > * {
+            line-height: 40px;
           }
         }
 
