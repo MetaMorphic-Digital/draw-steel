@@ -423,6 +423,66 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         callback: li => getCombatantGroup(li).clearMovementHistories(),
       },
       {
+        name: "DRAW_STEEL.CombatantGroup.ColorTokens.Label",
+        icon: "<i class=\"fa-solid fa-palette\"></i>",
+        condition: li => getCombatantGroup(li).members.every(c => c.isOwner),
+        callback: async li => {
+
+          const content = document.createElement("div");
+
+          const colorInput = foundry.applications.fields.createFormGroup({
+            label: "DRAW_STEEL.CombatantGroup.ColorTokens.Input",
+            input: foundry.applications.elements.HTMLColorPickerElement.create({
+              name: "color",
+            }),
+            localize: true,
+          });
+
+          content.append(colorInput);
+
+          const fd = await ds.applications.api.DSDialog.wait({
+            content,
+            window: {
+              title: "DRAW_STEEL.CombatantGroup.ColorTokens.Title",
+              icon: "fa-solid fa-palette",
+            },
+            buttons: [
+              {
+                label: "TOKEN.FIELDS.texture.tint.label",
+                action: "texture.tint",
+                callback: (ev, button, dialog) => {
+                  return {
+                    fieldPath: button.dataset.action,
+                    color: button.form.color.value,
+                  };
+                },
+              },
+              {
+                label: "TOKEN.FIELDS.ring.colors.ring.label",
+                action: "ring.colors.ring",
+                callback: (ev, button, dialog) => {
+                  return {
+                    fieldPath: button.dataset.action,
+                    color: button.form.color.value,
+                  };
+                },
+              },
+            ],
+          });
+
+          // TODO: Implement v14 batch update operation
+          const tokens = Array.from(getCombatantGroup(li).members.map(c => c.token));
+          const batchData = tokens.reduce((batch, t) => {
+            batch[t.parent.id] ??= [];
+            batch[t.parent.id].push({ _id: t.id, [fd.fieldPath]: fd.color });
+            return batch;
+          }, {});
+          for (const [sceneId, updateData] of Object.entries(batchData)) {
+            game.scenes.get(sceneId).updateEmbeddedDocuments("Token", updateData);
+          }
+        },
+      },
+      {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-trash\"></i>",
         condition: li => game.user.isGM,
