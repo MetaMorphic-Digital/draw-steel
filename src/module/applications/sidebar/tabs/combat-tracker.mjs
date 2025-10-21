@@ -470,6 +470,8 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
             ],
           });
 
+          if (!fd) return;
+
           // TODO: Implement v14 batch update operation
           const tokens = Array.from(getCombatantGroup(li).members.map(c => c.token));
           const batchData = tokens.reduce((batch, t) => {
