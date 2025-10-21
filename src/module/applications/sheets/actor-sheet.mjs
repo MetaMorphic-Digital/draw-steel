@@ -1,6 +1,5 @@
 import { AbilityModel, FeatureModel } from "../../data/item/_module.mjs";
-import { DrawSteelChatMessage } from "../../documents/_module.mjs";
-import DrawSteelItemSheet from "./item-sheet.mjs";
+import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
@@ -10,7 +9,7 @@ import ActorCombatStatsInput from "../apps/actor-combat-stats-input.mjs";
  * @import { NumberField } from "@common/data/fields.mjs";
  * @import { FormSelectOption } from "@client/applications/forms/fields.mjs";
  * @import { ActiveEffectCategory, ActorSheetItemContext, ActorSheetAbilitiesContext } from "./_types.js";
- * @import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../documents/_module.mjs";
+ * @import { DrawSteelActor, DrawSteelItem, DrawSteelTokenDocument } from "../../documents/_module.mjs";
  */
 
 const { sheets } = foundry.applications;
@@ -540,10 +539,19 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   async _onFirstRender(context, options) {
     await super._onFirstRender(context, options);
 
+    // General right click on row
     this._createContextMenu(this._getDocumentListContextOptions, "[data-document-uuid]", {
       hookName: "getDocumentListContextOptions",
       parentClassHooks: false,
       fixed: true,
+    });
+
+    // Same menu but for the specific vertical ellipsis control
+    this._createContextMenu(this._getDocumentListContextOptions, "[data-action=\"documentListContext\"]", {
+      hookName: "getDocumentListContextOptions",
+      parentClassHooks: false,
+      fixed: true,
+      eventName: "click",
     });
 
     this._createContextMenu(this._createEffectContextOptions, ".effect-list-container .effect-create", {
@@ -655,6 +663,34 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
           await effect.system.rollSave();
         },
       },
+      {
+        name: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "<i class=\"fa-solid fa-fw fa-check\"></i>",
+        condition: (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          return (effect.documentName === "ActiveEffect") && !effect.active;
+        },
+        callback: async (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          const updateData = DrawSteelActiveEffect.getInitialDuration();
+
+          updateData.disabled = false;
+
+          await effect.update(updateData);
+        },
+      },
+      {
+        name: "DRAW_STEEL.ActiveEffect.Toggle",
+        icon: "<i class=\"fa-solid fa-fw fa-times\"></i>",
+        condition: (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          return (effect.documentName === "ActiveEffect") && effect.active;
+        },
+        callback: async (target) => {
+          const effect = this._getEmbeddedDocument(target);
+          await effect.update({ disabled: true });
+        },
+      },
       // All applicable options
       {
         name: "DRAW_STEEL.SHEET.View",
@@ -662,7 +698,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         condition: () => this.isPlayMode,
         callback: async (target) => {
           const document = this._getEmbeddedDocument(target);
-          await document.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.PLAY });
+          await document.sheet.render({ force: true, mode: DSDocumentSheet.MODES.PLAY });
         },
       },
       {
@@ -671,7 +707,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
         condition: () => this.isEditMode,
         callback: async (target) => {
           const document = this._getEmbeddedDocument(target);
-          await document.sheet.render({ force: true, mode: DrawSteelItemSheet.MODES.EDIT });
+          await document.sheet.render({ force: true, mode: DSDocumentSheet.MODES.EDIT });
         },
       },
       {
@@ -705,7 +741,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
   /* -------------------------------------------------- */
 
   /**
-   * Get context menu entries for creating.
+   * Get context menu entries for creating Active Effects.
    * @returns {ContextMenuEntry[]}
    */
   _createEffectContextOptions() {
@@ -989,7 +1025,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     for (const el of dropTarget.parentElement.children) {
       if (!el.dataset.documentUuid) continue;
       const sibling = this._getEmbeddedDocument(el);
-      if (sibling.uuid !== effect.uuid) siblings.push(this._getEmbeddedDocument(el));
+      if (sibling.uuid !== effect.uuid) siblings.push(sibling);
     }
 
     // Perform the sort

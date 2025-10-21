@@ -7,7 +7,7 @@ import { systemPath } from "../../constants.mjs";
  * @import ModelCollection from "../../utils/model-collection.mjs";
  */
 
-const { DocumentIdField, StringField, FilePathField } = foundry.data.fields;
+const { DocumentIdField, IntegerSortField, StringField, FilePathField } = foundry.data.fields;
 
 /**
  * A special subclass of data model that can be treated as a system-defined embedded document.
@@ -34,6 +34,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
       _id: new DocumentIdField({ initial: () => foundry.utils.randomID() }),
       name: new StringField({ required: true }),
       img: new FilePathField({ categories: ["IMAGE"] }),
+      sort: new IntegerSortField(),
     };
   }
 
@@ -221,16 +222,41 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
   }
 
   /* -------------------------------------------------- */
+  /*   Drag and Drop Support                            */
+  /* -------------------------------------------------- */
 
   /**
    * Create drag data for storing on initiated drag events.
-   * @returns {object}
    */
   toDragData() {
     return {
       type: this.documentName,
       uuid: this.uuid,
     };
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A helper function to handle obtaining the relevant PseudoDocument from dropped data provided via a DataTransfer event.
+   * The dropped data must have a UUID.
+   *
+   * @param {object} data           The data object extracted from a DataTransfer event.
+   * @returns {Promise<PseudoDocument>}   The resolved PseudoDocument.
+   * @throws If a Document could not be retrieved from the provided data.
+   */
+  static async fromDropData(data) {
+    const pseudo = await foundry.utils.fromUuid(data.uuid);
+
+    // Ensure that we retrieved a valid document
+    if (!pseudo) {
+      throw new Error("Failed to resolve PseudoDocument from provided DragData. A valid UUID must be provided.");
+    }
+    if (pseudo.documentName !== this.metadata.documentName) {
+      throw new Error(`Invalid Document type '${pseudo.type}' provided to ${this.name}.fromDropData.`);
+    }
+
+    return pseudo;
   }
 
   /* -------------------------------------------------- */
@@ -260,7 +286,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @param {object} operation                              The context of the operation.
    * @param {foundry.abstract.DataModel} operation.parent   The parent of this document.
    * @param {boolean} [operation.renderSheet]               Render the sheet of the created pseudo-document?
-   * @returns {Promise<foundry.abstract.Document>}          A promise that resolves to the updated document.
+   * @returns {Promise<PseudoDocument>} A promise that resolves to the created PseudoDocument.
    */
   static async create(data = {}, { parent, renderSheet = true, ...operation } = {}) {
     if (!parent) {
@@ -278,8 +304,9 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
     const update = { [`${fieldPath}.${id}`]: { ...data, _id: id } };
     this._configureUpdates("create", parent, update, operation);
     await parent.update(update, operation);
-    if (renderSheet) parent.getEmbeddedDocument(this.metadata.documentName, id).sheet?.render({ force: true });
-    return parent;
+    const pseudo = parent.getEmbeddedDocument(this.metadata.documentName, id);
+    if (renderSheet) pseudo.sheet?.render({ force: true });
+    return pseudo;
   }
 
   /* -------------------------------------------------- */
@@ -289,7 +316,7 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
    * @param {object} [data]                                 The data used for the creation.
    * @param {object} operation                              The context of the operation.
    * @param {foundry.abstract.Document} operation.parent    The parent of this document.
-   * @returns {Promise<foundry.abstract.Document|null>}     A promise that resolves to the updated document.
+   * @returns {Promise<PseudoDocument|null>}     A promise that resolves to the updated document.
    */
   static async createDialog(data = {}, { parent, ...operation } = {}) {
     // If there's demand or need we can make the template & context more dynamic
