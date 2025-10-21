@@ -239,26 +239,18 @@ export default class PseudoDocument extends foundry.abstract.DataModel {
 
   /**
    * A helper function to handle obtaining the relevant PseudoDocument from dropped data provided via a DataTransfer event.
-   * The dropped data could have:
-   * 1. A data object explicitly provided
-   * 2. A UUID.
+   * The dropped data must have a UUID.
    *
    * @param {object} data           The data object extracted from a DataTransfer event.
    * @returns {Promise<PseudoDocument>}   The resolved PseudoDocument.
    * @throws If a Document could not be retrieved from the provided data.
    */
   static async fromDropData(data) {
-    let pseudo = null;
-
-    // Case 1 - Data explicitly provided
-    if (data.data) pseudo = new this(data.data);
-
-    // Case 2 - UUID provided
-    else if (data.uuid) pseudo = await foundry.utils.fromUuid(data.uuid);
+    const pseudo = await foundry.utils.fromUuid(data.uuid);
 
     // Ensure that we retrieved a valid document
     if (!pseudo) {
-      throw new Error("Failed to resolve PseudoDocument from provided DragData. Either data or a UUID must be provided.");
+      throw new Error("Failed to resolve PseudoDocument from provided DragData. A valid UUID must be provided.");
     }
     if (pseudo.documentName !== this.metadata.documentName) {
       throw new Error(`Invalid Document type '${pseudo.type}' provided to ${this.name}.fromDropData.`);

@@ -867,7 +867,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       return update;
     }, {});
 
-    // TODO: Create API for batch updates
     return this.item.update({ [pseudo.fieldPath]: updateData });
   }
 }
