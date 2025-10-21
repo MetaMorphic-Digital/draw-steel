@@ -25,6 +25,7 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
+  - Censor levels 4–5 features and abilities.
   - Conduit levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
   - Null levels 4–5 features and abilities.
