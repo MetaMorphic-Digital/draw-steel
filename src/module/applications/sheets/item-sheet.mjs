@@ -5,6 +5,7 @@ import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 
 /**
+ * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs"
  * @import BaseItemModel from "../../data/item/base.mjs"
  */
@@ -495,6 +496,9 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
           onSave: this.#saveEditor.bind(this),
         }),
         keyMaps: ProseMirror.ProseMirrorKeyMaps.build(ProseMirror.defaultSchema, {
+          onSave: this.#saveEditor.bind(this),
+        }),
+        highlightDocumentMatches: ProseMirror.ProseMirrorHighlightMatchesPlugin.build(ProseMirror.defaultSchema, {
           onSave: this.#saveEditor.bind(this),
         }),
       },
