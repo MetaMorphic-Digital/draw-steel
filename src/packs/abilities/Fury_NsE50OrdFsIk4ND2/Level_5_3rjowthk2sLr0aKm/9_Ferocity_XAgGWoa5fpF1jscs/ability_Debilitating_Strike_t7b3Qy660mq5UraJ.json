@@ -56,23 +56,39 @@
             }
           }
         },
-        "an5eUO0JRGzCks2t": {
-          "name": "Slow",
+        "qnRfDKKT1eYmPNU0": {
+          "name": "Slowed",
           "img": null,
-          "type": "other",
-          "_id": "an5eUO0JRGzCks2t",
-          "other": {
+          "type": "applied",
+          "_id": "qnRfDKKT1eYmPNU0",
+          "applied": {
             "tier1": {
               "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
               "potency": {
                 "characteristic": "might"
               }
             },
             "tier2": {
-              "display": "{{potency}}, slowed (save ends)"
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             },
             "tier3": {
-              "display": "{{potency}}, slowed (save ends)"
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
             }
           }
         }
