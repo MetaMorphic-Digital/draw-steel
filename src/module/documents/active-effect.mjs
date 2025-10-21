@@ -72,6 +72,18 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
   }
 
   /* -------------------------------------------------- */
+  /** @inheritdoc */
+  get sourceName() {
+    if (!this.origin) return game.i18n.localize("None");
+    let name;
+    try {
+      // Only difference from core is use of relative-to-target
+      name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
+    } catch (e) { /* empty */ }
+    return name || game.i18n.localize("Unknown");
+  }
+
+  /* -------------------------------------------------- */
 
   /**
    * Automatically deactivate effects with expired durations.

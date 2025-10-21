@@ -111,6 +111,7 @@ export async function onRender(element) {
 
 /**
  * Helper function to apply the effect to a selected token's actor.
+ * @this {HTMLAnchorElement}
  */
 async function onClickAnchor() {
   const tokens = canvas?.tokens?.controlled ?? [];
@@ -119,47 +120,54 @@ async function onClickAnchor() {
     return;
   }
 
-  const noStack = !link.dataset.stacking;
+  const noStack = !this.dataset.stacking;
 
-  const tempEffect = link.dataset.type === "custom" ?
-    (await fromUuid(link.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
-    await DrawSteelActiveEffect.fromStatusEffect(link.dataset.status);
+  /** @type {DrawSteelActiveEffect} */
+  const tempEffect = this.dataset.type === "custom" ?
+    (await fromUuid(this.dataset.uuid)).clone({}, { keepId: noStack, addSource: true }) :
+    await DrawSteelActiveEffect.fromStatusEffect(this.dataset.status);
 
   /** @type {ActiveEffectData} */
   const updates = {
     transfer: true,
-    origin: link.dataset.origin,
+    origin: this.dataset.origin,
     system: {},
   };
 
-  if (link.dataset.end) updates.system.end = { type: link.dataset.end };
+  if (this.dataset.end) updates.system.end = { type: this.dataset.end };
   tempEffect.updateSource(updates);
 
   const actors = new Set();
 
+  // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
   for (const token of tokens) {
     const actor = token.actor;
     if (!actor) continue;
     else if (actors.has(actor)) continue;
     else actors.add(actor);
+
     // reusing the ID will block creation if it's already on the actor
-    // TODO: Update when https://github.com/foundryvtt/foundryvtt/issues/11898 is implemented
+    const existing = actor.effects.get(tempEffect.id);
+    // deleting instead of updating because there may be variances between the old copy and new
+    if (existing?.disabled) await existing.delete();
+
+    // not awaited to allow parallel processing
     actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
 
     // statuses automatically create scrolling text themselves
-    if (link.dataset.type === "status") continue;
+    if (this.dataset.type !== "status") {
+      const scrollingTextArgs = [
+        token.center,
+        game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
+        {
+          fill: "white",
+          fontSize: 32,
+          stroke: 0x000000,
+          strokeThickness: 4,
+        },
+      ];
 
-    const scrollingTextArgs = [
-      token.center,
-      game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.ApplyEffect.CreateText", { name: tempEffect.name }),
-      {
-        fill: "white",
-        fontSize: 32,
-        stroke: 0x000000,
-        strokeThickness: 4,
-      },
-    ];
-
-    canvas.interface.createScrollingText(...scrollingTextArgs);
+      canvas.interface.createScrollingText(...scrollingTextArgs);
+    }
   }
 }
