@@ -6,7 +6,7 @@ import { createLink, parseConfig } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  * @import { ParsedConfig } from "../helpers.mjs";
- * @import DrawSteelItem from "../../../documents/item.mjs";
+ * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
  */
 
 /** @type {TextEditorEnricherConfig["id"]} */
@@ -39,13 +39,13 @@ export async function enricher(match, options) {
   if (options.relativeTo) linkConfig.origin = options.relativeTo.uuid;
 
   /** @type {DrawSteelItem} */
-  const item = (options.relativeTo?.documentName === "Item") ? options.relativeTo : null;
+  const doc = (["Actor", "Item"].includes(options.relativeTo?.documentName)) ? options.relativeTo : null;
 
   for (const val of parsedConfig.values) {
 
     // ID or Name
-    if (item) {
-      const effect = item.effects.get(val) || item.effects.getName(val);
+    if (doc) {
+      const effect = doc.effects.get(val) || doc.effects.getName(val);
       if (effect) {
         linkConfig.type = "custom";
         linkConfig.uuid = effect.uuid;
