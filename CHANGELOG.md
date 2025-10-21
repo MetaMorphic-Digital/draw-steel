@@ -24,12 +24,13 @@
 
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
-  - Remaining Non-imbue projects.
+  - Remaining non-imbue projects.
   - Censor levels 4–5 features and abilities.
   - Conduit levels 4–5 features and abilities.
+  - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
   - Null levels 4–5 features and abilities.
-  - Shadow levels 4–9 features and abilities.
+  - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–5 features and abilities.
   - Talent levels 4–5 features and abilities.
   - Troubadour levels 4–5 features and abilities.
