@@ -26,6 +26,7 @@
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining Non-imbue projects.
   - Conduit levels 4–5 features and abilities.
+  - Fury levels 4–5 features and abilities.
   - Null levels 4–5 features and abilities.
   - Shadow levels 4–9 features and abilities.
   - Tactician levels 4–5 features and abilities.
