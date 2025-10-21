@@ -67,3 +67,18 @@ export interface ActorSheetComplicationsContext {
   showAdd: boolean;
   showHeader: boolean;
 }
+
+interface AdvancementModelContext {
+  name: string;
+  img: string;
+  sort: number;
+  id: string;
+  canReconfigure: boolean;
+  enrichedDescription: string;
+}
+
+export interface AdvancementContext {
+  level: number;
+  section: string;
+  documents: AdvancementModelContext[];
+}

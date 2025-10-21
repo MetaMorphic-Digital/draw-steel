@@ -1025,7 +1025,7 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     for (const el of dropTarget.parentElement.children) {
       if (!el.dataset.documentUuid) continue;
       const sibling = this._getEmbeddedDocument(el);
-      if (sibling.uuid !== effect.uuid) siblings.push(this._getEmbeddedDocument(el));
+      if (sibling.uuid !== effect.uuid) siblings.push(sibling);
     }
 
     // Perform the sort
