@@ -68,6 +68,7 @@
 
 - Changed available keywords on treasures to be more accurate. (#270)
 - Refactor the toggling of item and effect description dropdowns to use a CSS transition instead of re-rendering the application. (#626)
+- Added vertical ellipses to all document lists for context options (#823)
 - Added a "Custom Label" property for ability targets, which will override the default label. (#886)
   - Also added "Enemy or Object" as a new target type.
   - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
@@ -78,6 +79,7 @@
   - This is a change for applied power roll effects that also applies to the new Apply enricher.
 - In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
 - Heroes now have a helper app for adjusting characteristics. (#1206)
+- Slightly increased the size of item icons on the actor sheets to match the size of effect icons.
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
