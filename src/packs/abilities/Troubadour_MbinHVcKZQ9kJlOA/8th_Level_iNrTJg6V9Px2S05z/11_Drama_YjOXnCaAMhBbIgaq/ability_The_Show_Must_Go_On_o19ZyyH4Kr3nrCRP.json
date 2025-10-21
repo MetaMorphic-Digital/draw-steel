@@ -1,0 +1,228 @@
+{
+  "folder": "YjOXnCaAMhBbIgaq",
+  "name": "The Show Must Go On",
+  "type": "ability",
+  "_id": "o19ZyyH4Kr3nrCRP",
+  "img": "icons/environment/settlement/well.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "213",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "the-show-must-go-on",
+    "story": "You shine a bright light on the players on the stage and compel them to finish the performance.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 5,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "1Gem5EVqzWZKOPRF": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "1Gem5EVqzWZKOPRF",
+          "damage": {
+            "tier1": {
+              "value": "6"
+            },
+            "tier2": {
+              "value": "8",
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "12",
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "EWz0h9DWRalpt74g": {
+          "name": "Can't Leave",
+          "img": null,
+          "type": "applied",
+          "_id": "EWz0h9DWRalpt74g",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, the target can't willing leave the area (EoT)",
+              "potency": {
+                "characteristic": "presence"
+              },
+              "effects": {
+                "9HzrBCXn5uIhEKEy": {
+                  "condition": "failure",
+                  "end": "turn"
+                }
+              }
+            },
+            "tier2": {
+              "display": "{{potency}}, the target can't willing leave the area (save ends)",
+              "effects": {
+                "9HzrBCXn5uIhEKEy": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "9HzrBCXn5uIhEKEy": {
+                  "condition": "always",
+                  "end": "turn",
+                  "properties": [
+                    "stacking"
+                  ]
+                },
+                "YYzKElpQKPkbFbdi": {
+                  "condition": "failure",
+                  "end": "save",
+                  "properties": [
+                    "stacking"
+                  ]
+                }
+              },
+              "display": "the target can't willingly leave the area (EoT); if {{potency}}, they can't willing leave the area (save ends)"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Each ally within distance can’t obtain lower than a tier 2 outcome on the next test they make before the start of your next turn.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Can't Leave",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.o19ZyyH4Kr3nrCRP",
+      "transfer": false,
+      "_id": "9HzrBCXn5uIhEKEy",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761079608934,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!o19ZyyH4Kr3nrCRP.9HzrBCXn5uIhEKEy"
+    },
+    {
+      "name": "Can't Leave",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.o19ZyyH4Kr3nrCRP",
+      "transfer": false,
+      "_id": "YYzKElpQKPkbFbdi",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761079703941,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!o19ZyyH4Kr3nrCRP.YYzKElpQKPkbFbdi"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761079459575,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!o19ZyyH4Kr3nrCRP"
+}

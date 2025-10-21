@@ -1,0 +1,117 @@
+{
+  "folder": "Ul3hGBtH5gW532Jt",
+  "name": "Feedback",
+  "type": "ability",
+  "_id": "9MiiAGyHh6k9vdL6",
+  "img": "icons/magic/sonic/projectile-sound-rings-wave.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "212",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "feedback",
+    "story": "Your music pounds the crowd to the beat until their hearts can’t stand it anymore.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 3,
+      "secondary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "9LHUr04spapnTsCH": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "9LHUr04spapnTsCH",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "types": [
+                "sonic"
+              ]
+            },
+            "tier2": {
+              "value": "10",
+              "types": [
+                "sonic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            },
+            "tier3": {
+              "value": "13",
+              "types": [
+                "sonic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        },
+        "9SH8REZtsQoXyMC6": {
+          "name": "prone",
+          "img": null,
+          "type": "applied",
+          "_id": "9SH8REZtsQoXyMC6",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, prone",
+              "potency": {
+                "characteristic": "presence"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p> A prone target ignores this ability.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761076946886,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!9MiiAGyHh6k9vdL6"
+}

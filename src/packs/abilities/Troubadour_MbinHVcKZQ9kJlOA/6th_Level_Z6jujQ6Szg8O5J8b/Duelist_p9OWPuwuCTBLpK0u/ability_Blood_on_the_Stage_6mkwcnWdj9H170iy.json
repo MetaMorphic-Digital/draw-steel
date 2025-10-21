@@ -1,0 +1,159 @@
+{
+  "folder": "p9OWPuwuCTBLpK0u",
+  "name": "Blood on the Stage",
+  "type": "ability",
+  "_id": "6mkwcnWdj9H170iy",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "212",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "blood-on-the-stage",
+    "story": "It’s love and blood or drama and blood. Either way, there’s always blood.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "OrDSEr7vKXRpCWe6": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "OrDSEr7vKXRpCWe6",
+          "damage": {
+            "tier1": {
+              "value": "12 + @chr"
+            },
+            "tier2": {
+              "value": "18 + @chr"
+            },
+            "tier3": {
+              "value": "24 + @chr"
+            }
+          }
+        },
+        "4Ons8NcMkcuKfzSQ": {
+          "name": "bleeding",
+          "img": null,
+          "type": "applied",
+          "_id": "4Ons8NcMkcuKfzSQ",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, bleeding (save ends)",
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier3": {
+              "display": "bleeding (EoT). or if {{potency}}, bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "always",
+                  "end": "turn",
+                  "properties": [
+                    "stacking"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Bleeding",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "_id": "F796gX0qH3XehjaW",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [
+        "bleeding"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761076555734,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.F796gX0qH3XehjaW"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761076268387,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!6mkwcnWdj9H170iy"
+}
