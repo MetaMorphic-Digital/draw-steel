@@ -29,10 +29,10 @@
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
-  - Null levels 4–5 features and abilities.
+  - Null levels 4–7 features and abilities.
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–5 features and abilities.
-  - Talent levels 4–5 features and abilities.
+  - Talent levels 4–7 features and abilities.
   - Troubadour levels 4–5 features and abilities.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
