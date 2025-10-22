@@ -1,0 +1,115 @@
+{
+  "folder": "xVL4LnjEmlBPeE4Q",
+  "name": "Synaptic Conditioning",
+  "type": "ability",
+  "_id": "byRI3ZSQFvdKJc5D",
+  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "197",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "synaptic-conditioning",
+    "story": "It’s a subtle mindset shift. It’s not that they’re your enemy—you just don’t like them!",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "telepathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 2
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "qsCasGcrXlJk6lut": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "qsCasGcrXlJk6lut",
+          "damage": {
+            "tier1": {
+              "value": "10",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "14",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "20",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "vChGqfpzo6xKwtZg": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "vChGqfpzo6xKwtZg",
+          "other": {
+            "tier1": {
+              "display": "the target takes a bane on ability rolls made to harm you or your allies (save ends)"
+            },
+            "tier2": {
+              "display": "the target has a double bane on ability rolls made to harm you or your allies (save ends)"
+            },
+            "tier3": {
+              "display": "the target considers you and your allies to be their allies when using abilities and features (save ends)"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p><strong>Strained:</strong> While the target is under this effect, you no longer consider your enemies to be your enemies when using your abilities and features.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761077739922,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!byRI3ZSQFvdKJc5D"
+}
