@@ -1,3 +1,5 @@
+import DrawSteelTokenDocument from "./token.mjs";
+
 /** @import { CombatantGroupData } from "@common/documents/_types.mjs"; */
 
 /**
@@ -107,6 +109,30 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
         },
       },
     }, dialogOptions));
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Creates a combat group and populates it with the combatants linked to the provided tokens.
+   * @param {DrawSteelCombat} combat            The parent combat.
+   * @param {DrawSteelTokenDocument[]} [tokens] The tokens to create from. Defaults to selected.
+   */
+  static async createFromTokens(combat, tokens) {
+    tokens ??= canvas.tokens.controlled.map(t => t.document);
+    await DrawSteelTokenDocument.createCombatants(tokens);
+    const combatants = tokens.map(t => t.combatant);
+    const actorName = tokens[0]?.actor.name;
+    const tokenImage = tokens[0].texture.src;
+    const type = tokens.some(t => t.actor?.system.isMinion) ? "squad" : "base";
+    const group = await this.create({
+      type,
+      name: tokens.every(t => t.actor?.name === actorName) ? actorName : this.defaultName({ type, parent: this.viewed }),
+      img: tokens.every(t => t.texture.src === tokenImage) ? tokenImage : null,
+    }, { parent: combat });
+    const updateData = combatants.map(c => ({ _id: c.id, group: group.id }));
+    await combat.updateEmbeddedDocuments("Combatant", updateData);
+    if (group.type === "squad") await group.update({ "system.staminaValue": group.system.staminaMax });
   }
 
   /* -------------------------------------------------- */
