@@ -472,7 +472,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
           if (!fd) return;
 
-          getCombatantGroup(li).updateTokens(fd.fieldPath, fd.color);
+          await getCombatantGroup(li).updateTokens(fd.fieldPath, fd.color);
         },
       },
       {

@@ -157,7 +157,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
    * @param {any} data          The data to update all tokens to.
    * @param {object} [options]  Additional operation options.
    */
-  updateTokens(fieldPath, data, options = {}) {
+  async updateTokens(fieldPath, data, options = {}) {
     // TODO: Implement v14 batch update operation
     const tokens = Array.from(this.members.map(c => c.token));
     const batchData = tokens.reduce((batch, t) => {
@@ -165,8 +165,9 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
       batch[t.parent.id].push({ _id: t.id, [fieldPath]: data });
       return batch;
     }, {});
-    for (const [sceneId, updateData] of Object.entries(batchData)) {
-      game.scenes.get(sceneId).updateEmbeddedDocuments("Token", updateData, options);
-    }
+    return Promise.all(
+      Object.entries(batchData)
+        .map(([sceneId, updateData]) => game.scenes.get(sceneId).updateEmbeddedDocuments("Token", updateData, options)),
+    );
   }
 }
