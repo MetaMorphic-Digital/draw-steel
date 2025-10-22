@@ -427,52 +427,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         icon: "<i class=\"fa-solid fa-palette\"></i>",
         condition: li => getCombatantGroup(li).members.every(c => c.isOwner),
         callback: async li => {
-
-          const content = document.createElement("div");
-
-          const colorInput = foundry.applications.fields.createFormGroup({
-            label: "DRAW_STEEL.CombatantGroup.ColorTokens.Input",
-            input: foundry.applications.elements.HTMLColorPickerElement.create({
-              name: "color",
-            }),
-            localize: true,
-          });
-
-          content.append(colorInput);
-
-          const fd = await ds.applications.api.DSDialog.wait({
-            content,
-            window: {
-              title: "DRAW_STEEL.CombatantGroup.ColorTokens.Title",
-              icon: "fa-solid fa-palette",
-            },
-            buttons: [
-              {
-                label: "TOKEN.FIELDS.texture.tint.label",
-                action: "texture.tint",
-                callback: (ev, button, dialog) => {
-                  return {
-                    fieldPath: button.dataset.action,
-                    color: button.form.color.value,
-                  };
-                },
-              },
-              {
-                label: "TOKEN.FIELDS.ring.colors.ring.label",
-                action: "ring.colors.ring",
-                callback: (ev, button, dialog) => {
-                  return {
-                    fieldPath: button.dataset.action,
-                    color: button.form.color.value,
-                  };
-                },
-              },
-            ],
-          });
-
-          if (!fd) return;
-
-          await getCombatantGroup(li).updateTokens(fd.fieldPath, fd.color);
+          await getCombatantGroup(li).colorTokensDialog();
         },
       },
       {
