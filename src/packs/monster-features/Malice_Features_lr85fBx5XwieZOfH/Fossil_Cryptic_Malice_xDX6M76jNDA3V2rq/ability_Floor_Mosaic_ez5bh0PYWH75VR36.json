@@ -1,8 +1,7 @@
 {
   "folder": "xDX6M76jNDA3V2rq",
-  "name": "Stone Pillars",
+  "name": "Floor Mosaic",
   "type": "ability",
-  "_id": "SGycj4apRIrgGz41",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "source": {
@@ -10,19 +9,21 @@
       "page": "142",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "stone-pillars",
+    "_dsid": "floor-mosaic",
     "story": "",
     "keywords": [],
     "type": "none",
     "category": "heroic",
-    "resource": 5,
+    "resource": 3,
     "trigger": "",
     "distance": {
       "type": "special"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -32,7 +33,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Two pillars of stone 1 square wide either thrust up out of the ground or jut down from the ceiling anywhere on the encounter map, to a height of up to 5 squares. A creature in the area of a pillar before it appears is knocked prone on its surface. If the creature comes into contact with the ceiling above or the floor beneath the pillar and has M&lt;2 they are restrained (save ends).</p>",
+      "before": "<p>The fossil cryptic slides one creature on the ground up to 5 squares. If the creature is prone, this forced movement ignores stability.</p>",
       "after": ""
     },
     "spend": {
@@ -41,7 +42,6 @@
     }
   },
   "effects": [],
-  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -52,10 +52,12 @@
     "exportSource": null,
     "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757284581142,
+    "systemVersion": "0.9.0",
+    "createdTime": 1761101770814,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!SGycj4apRIrgGz41"
+  "_id": "ez5bh0PYWH75VR36",
+  "sort": 300000,
+  "_key": "!items!ez5bh0PYWH75VR36"
 }
