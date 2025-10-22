@@ -56,29 +56,75 @@
             }
           }
         },
-        "4Ons8NcMkcuKfzSQ": {
-          "name": "bleeding",
+        "wIi7T7j7C610hFtm": {
+          "name": "Bleeding EoT",
           "img": null,
           "type": "applied",
-          "_id": "4Ons8NcMkcuKfzSQ",
+          "_id": "wIi7T7j7C610hFtm",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "none"
+              },
+              "display": "",
+              "effects": {}
+            },
+            "tier2": {
+              "display": "",
+              "potency": {
+                "characteristic": "none"
+              },
+              "effects": {}
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "none"
+              },
+              "effects": {
+                "bleeding": {
+                  "condition": "always",
+                  "end": "turn"
+                }
+              },
+              "display": "bleeding (EoT)"
+            }
+          }
+        },
+        "B5fZoUkXsyfomVbO": {
+          "name": "Bleeding",
+          "img": null,
+          "type": "applied",
+          "_id": "B5fZoUkXsyfomVbO",
           "applied": {
             "tier1": {
               "display": "{{potency}}, bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
               "potency": {
                 "characteristic": "might"
               }
             },
-            "tier3": {
-              "display": "bleeding (EoT). or if {{potency}}, bleeding (save ends)",
+            "tier2": {
               "effects": {
                 "bleeding": {
-                  "condition": "always",
-                  "end": "turn",
-                  "properties": [
-                    "stacking"
-                  ]
+                  "condition": "failure",
+                  "end": "save"
                 }
-              }
+              },
+              "display": "{{potency}}, bleeding (save ends)"
+            },
+            "tier3": {
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "or if {{potency}}, bleeding (save ends)"
             }
           }
         }
@@ -137,6 +183,117 @@
         "lastModifiedBy": null
       },
       "_key": "!items.effects!6mkwcnWdj9H170iy.F796gX0qH3XehjaW"
+    },
+    {
+      "name": "Active Effect",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "R7eTeytrT75p8Czz",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761099436660,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.R7eTeytrT75p8Czz"
+    },
+    {
+      "name": "Active Effect (2)",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "h1m5OPt8O6svWAy6",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761100675096,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.h1m5OPt8O6svWAy6"
+    },
+    {
+      "name": "Active Effect (3)",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "fVmZlgr5ibLD3vfR",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761100697974,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.fVmZlgr5ibLD3vfR"
     }
   ],
   "sort": 0,
