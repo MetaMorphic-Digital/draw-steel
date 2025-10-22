@@ -1,0 +1,128 @@
+{
+  "folder": "ukHd9vs5ZMvY8yfO",
+  "name": "Gravitic Well",
+  "type": "ability",
+  "_id": "M0QI30cNWCZuvsVY",
+  "img": "icons/magic/unholy/orb-beam-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "197",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "gravitic-well",
+    "story": "You bend gravity into a fine point and pull your foes toward it.",
+    "keywords": [
+      "area",
+      "psionic",
+      "ranged",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 4,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemyObject",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "o8nWY81jv9HqYYhL": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "o8nWY81jv9HqYYhL",
+          "damage": {
+            "tier1": {
+              "value": "6"
+            },
+            "tier2": {
+              "value": "9"
+            },
+            "tier3": {
+              "value": "13"
+            }
+          }
+        },
+        "EOZFX2EcGVqQSbeB": {
+          "name": "vertical pull",
+          "img": null,
+          "type": "forced",
+          "_id": "EOZFX2EcGVqQSbeB",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "5",
+              "display": "{{forced}} toward the center of the area"
+            },
+            "tier2": {
+              "display": "{{forced}} toward the center of the area",
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "7"
+            },
+            "tier3": {
+              "display": "{{forced}} toward the center of the area",
+              "movement": [
+                "pull"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "10"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Targets closest to the center of the area are pulled first.</p><p><strong>Strained:</strong> The size of the area increases by 2. You also target yourself and each ally within distance.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761075837709,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!M0QI30cNWCZuvsVY"
+}
