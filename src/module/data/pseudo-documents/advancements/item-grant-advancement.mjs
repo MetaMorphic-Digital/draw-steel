@@ -181,4 +181,31 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     await actor.system._finalizeAdvancements({ chains, toUpdate });
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async getSheetContext() {
+    const ctx = {};
+
+    ctx.itemPool = [];
+    for (const [i, pool] of this.pool.entries()) {
+      const item = await fromUuid(pool.uuid);
+      ctx.itemPool.push({
+        ...pool,
+        index: i,
+        link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
+      });
+    }
+
+    // Drop logic
+    ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES).map(([value, { label }]) => ({ value, label }));
+    switch (this.additional.type) {
+      case "perk":
+        ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+        break;
+    }
+
+    return ctx;
+  }
 }

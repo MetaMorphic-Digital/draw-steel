@@ -127,4 +127,15 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   async reconfigure() {
     if (!this.canReconfigure) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Type-specific context prep for this Advancement.
+   * Called by AdvancementSheet##prepareDetailsContext.
+   * @returns {Promise<object>} Additional context information.
+   */
+  async getSheetContext() {
+    return {};
+  }
 }
