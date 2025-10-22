@@ -731,7 +731,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>map and launches it to fill the area. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 18]] damage; prone and can’t stand (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 14]] damage; prone</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 9]] damage</p></td></tr></tbody></table>",
+          "before": "<p>map and launches it to fill the area. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18]]{18 damage}; [[/apply dx8loOnogA4DqJ4J save]]{Prone and Can't stand (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14]]{14 damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9]]{9 Damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -751,24 +751,68 @@
           "weapon"
         ]
       },
-      "effects": [],
-      "folder": "hQOvh0LlbFSAU56C",
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "_id": "dx8loOnogA4DqJ4J",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "prone"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!gg4BDGQWvFOnptcK.etXG4qihF4LWitWS.dx8loOnogA4DqJ4J"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1761167213945,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "_id": "etXG4qihF4LWitWS",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_id": "etXG4qihF4LWitWS",
+      "folder": null,
       "sort": 0,
       "_key": "!actors.items!gg4BDGQWvFOnptcK.etXG4qihF4LWitWS"
     },
@@ -786,7 +830,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -797,7 +842,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; the target falls into the fissure, and is prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10]] damage; the target is prone and hanging onto the edge of the fissure</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the fissure.</p></td></tr></tbody></table>",
+          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; the target falls into the fissure, and is [[/apply 2hXPO1wVP7B7bl2z turn]]{prone and can’t stand (EoT)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the fissure.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -813,24 +858,68 @@
         "story": "",
         "keywords": []
       },
-      "effects": [],
-      "folder": "hQOvh0LlbFSAU56C",
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "prone"
+          ],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "2hXPO1wVP7B7bl2z",
+          "sort": 0,
+          "_key": "!actors.items.effects!gg4BDGQWvFOnptcK.sRo2Z3MHYnHpAol7.2hXPO1wVP7B7bl2z"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1761167217999,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "_id": "sRo2Z3MHYnHpAol7",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_id": "sRo2Z3MHYnHpAol7",
+      "folder": null,
       "sort": 0,
       "_key": "!actors.items!gg4BDGQWvFOnptcK.sRo2Z3MHYnHpAol7"
     }
