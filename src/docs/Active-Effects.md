@@ -142,6 +142,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
+|Condition Immunity|`system.conditionImmunities`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
@@ -165,6 +166,27 @@ While there are similarities with roll data, active effects generally lead with 
 > An Example to add fire immunity 3 would be
 >
 > |`system.damage.immunities.fire`|Add|`3`|
+> |---|---|---|
+>
+></details>
+
+> <details><summary>The viable conditions for Immunities are:</summary>
+>
+> |Condition|Active Effect Attribute Key|
+> |:---:|---|
+> |Bleeding|`bleeding`
+> |Dazed|`dazed`
+> |Frightened|`frightened`
+> |Grabbed|`grabbed`
+> |Prone|`prone`
+> |Restrained|`restrained`
+> |Slowed|`slowed`
+> |Taunted|`taunted`
+> |Weakened|`weakened`
+>
+> An example to add immunity to Slowed would be
+>
+> |`system.conditionImmunities`|Add|`slowed`|
 > |---|---|---|
 >
 ></details>

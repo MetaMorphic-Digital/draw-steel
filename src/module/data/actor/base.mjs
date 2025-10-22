@@ -64,6 +64,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
+    schema.conditionImmunities = new fields.SetField(setOptions());
+
     return schema;
   }
 
@@ -134,6 +136,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
+
+    this.conditionImmunities = new Set([]);
   }
 
   /* -------------------------------------------------- */
@@ -141,6 +145,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    // Apply condition immunities first, in case any effects impact later calculations
+    // Rebuild a derived list of statuses after considering immunities
+    this.parent.statuses = new Set(this.parent.statuses.values().filter((effectId) => !this.conditionImmunities.has(effectId)));
 
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
