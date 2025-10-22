@@ -1,0 +1,115 @@
+{
+  "folder": "t445CkYwWSzvfcQM",
+  "name": "Iron Body",
+  "type": "ability",
+  "_id": "5WDOrWbITYMihgVf",
+  "img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "155",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "iron-body",
+    "story": "You focus until your body becomes as hard as iron.",
+    "keywords": [
+      "psionic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You gain [[/heal 20 temp]] Stamina. Additionally, until the end of the encounter, your stability gains a bonus equal to your Intuition score. [[/apply kPSFL3Wc44FHj0dJ]]</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Iron Body",
+      "img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.5WDOrWbITYMihgVf",
+      "transfer": false,
+      "_id": "kPSFL3Wc44FHj0dJ",
+      "system": {
+        "end": {
+          "type": "encounter",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Your stability gains a bonus equal to your Intuition score.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761166103025,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5WDOrWbITYMihgVf.kPSFL3Wc44FHj0dJ"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761159383323,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!5WDOrWbITYMihgVf"
+}

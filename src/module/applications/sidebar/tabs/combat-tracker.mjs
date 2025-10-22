@@ -423,6 +423,14 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         callback: li => getCombatantGroup(li).clearMovementHistories(),
       },
       {
+        name: "DRAW_STEEL.CombatantGroup.ColorTokens.Label",
+        icon: "<i class=\"fa-solid fa-palette\"></i>",
+        condition: li => getCombatantGroup(li).members.every(c => c.isOwner),
+        callback: async li => {
+          await getCombatantGroup(li).colorTokensDialog();
+        },
+      },
+      {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-trash\"></i>",
         condition: li => game.user.isGM,

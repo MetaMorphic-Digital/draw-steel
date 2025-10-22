@@ -24,14 +24,15 @@
 
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
-  - Remaining Non-imbue projects.
+  - Remaining non-imbue projects.
   - Censor levels 4–5 features and abilities.
   - Conduit levels 4–5 features and abilities.
+  - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
-  - Null levels 4–5 features and abilities.
-  - Shadow levels 4–9 features and abilities.
+  - Null levels 4–7 features and abilities.
+  - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–5 features and abilities.
-  - Talent levels 4–5 features and abilities.
+  - Talent levels 4–7 features and abilities.
   - Troubadour levels 4–5 features and abilities.
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
@@ -46,6 +47,7 @@
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
   - Voiceless Talkers
+- Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
@@ -54,6 +56,8 @@
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
+- Added drag and drop support for pseudodocuments (Power Roll Effects & Advancements). (#907)
+  - This allows them to be dragged from one sheet to another to make a copy, or onto the same sheet to sort.
 - Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
@@ -83,6 +87,7 @@
 - Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
+- PseudoDocument.create now returns the pseudo document instead of the parent.
 
 ### Removed
 
@@ -120,6 +125,7 @@
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Fixed broken image links in the in-game documentation.
 
 ## 0.8.1
 

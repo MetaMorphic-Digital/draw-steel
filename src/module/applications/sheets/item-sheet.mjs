@@ -4,11 +4,13 @@ import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
+import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
 
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
  * @import { DrawSteelActiveEffect, DrawSteelItem } from "../../documents/_module.mjs";
  * @import BaseItemModel from "../../data/item/base.mjs";
+ * @import PseudoDocument from "../../data/pseudo-documents/pseudo-document.mjs";
  */
 
 const { ux } = foundry.applications;
@@ -154,7 +156,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
         context.advancementIcon = BaseAdvancement.metadata.icon;
         break;
       case "impact":
-        context.powerRollEffectIcon = ds.data.pseudoDocuments.powerRollEffects.BasePowerRollEffect.metadata.icon;
+        context.powerRollEffectIcon = BasePowerRollEffect.metadata.icon;
         context.enrichedBeforeEffect = await enrichHTML(this.item.system.effect.before, { relativeTo: this.item });
         context.enrichedAfterEffect = await enrichHTML(this.item.system.effect.after, { relativeTo: this.item });
         break;
@@ -197,11 +199,12 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    */
   async _getAdvancementContext() {
     // Advancements
+    /** @type {Record<string, AdvancementContext>} */
     const advs = {};
-    /** @type {foundry.utils.Collection<string, BaseAdvancement>} */
+    /** @type {BaseAdvancement[]} */
     const models = this.item.getEmbeddedCollection("Advancement")[
       this.isPlayMode ? "contents" : "sourceContents"
-    ];
+    ].sort((a, b) => a.sort - b.sort);
     for (const model of models) {
       if (!advs[model.requirements.level]) {
         const section = Number.isNumeric(model.requirements.level) ?
@@ -213,17 +216,18 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
           documents: [],
         };
       }
-      const advancementContext = {
+      const modelContext = {
         name: model.name,
         img: model.img,
+        sort: model.sort,
         id: model.id,
         canReconfigure: model.canReconfigure,
       };
-      if (model.description) advancementContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.item });
-      advs[model.requirements.level].documents.push(advancementContext);
+      if (model.description) modelContext.enrichedDescription = await enrichHTML(model.description, { relativeTo: this.item });
+      advs[model.requirements.level].documents.push(modelContext);
     }
 
-    return Object.values(advs).sort((a, b) => a.level - b.level);
+    return Object.values(advs).sort((a, b) => (a.level - b.level));
   }
 
   /* -------------------------------------------------- */
@@ -731,17 +735,17 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    */
   async _onSortActiveEffect(event, effect) {
     const dropTarget = event.target.closest("[data-document-uuid]");
-    if (!dropTarget) return;
+    if (!dropTarget) return null;
     const target = this._getEmbeddedDocument(dropTarget);
 
     // Don't sort on yourself
-    if (effect.id === target.id) return;
+    if (effect.id === target.id) return null;
 
     // Identify sibling items based on adjacent HTML elements
     const siblings = [];
     for (let el of dropTarget.parentElement.children) {
       const sibling = this._getEmbeddedDocument(el);
-      if (sibling.uuid !== effect.uuid) siblings.push(this._getEmbeddedDocument(el));
+      if (sibling.uuid !== effect.uuid) siblings.push(sibling);
     }
 
     // Perform the sort
@@ -757,5 +761,112 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     // Perform the update
     return this.item.updateEmbeddedDocuments("ActiveEffect", updateData);
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _onDropPseudoDocument(event, pseudo) {
+    if (!this.item.pseudoCollections[pseudo.documentName]) return;
+    switch (pseudo.documentName) {
+      case "Advancement":
+        return (await this._onDropAdvancement(event, pseudo)) ?? null;
+      case "PowerRollEffect":
+        return (await this._onDropPowerRollEffect(event, pseudo)) ?? null;
+    }
+    return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handle a dropped Advancement.
+   * @param {DragEvent} event             The initiating drop event.
+   * @param {BaseAdvancement} advancement The dropped Advancement.
+   * @returns {Promise<BaseAdvancement|null>} A Promise resolving to the dropped Advancement (if sorting), a newly created Advancement,
+   *                                         or null in case of failure or no action being taken.
+   * @protected
+   */
+  async _onDropAdvancement(event, advancement) {
+    if (!this.item.isOwner || !advancement) return false;
+
+    if (this.item.uuid === advancement.document?.uuid) {
+      const result = await this._onSortPseudoDocument(event, advancement);
+      return result?.length ? advancement : null;
+    }
+
+    const keepId = !this.item.getEmbeddedCollection("Advancement").has(advancement.id);
+    const advancementData = advancement.toObject();
+
+    const result = await BaseAdvancement.create(advancementData, { keepId, parent: this.item, renderSheet: false });
+
+    if (this.item.actor) {
+      // TODO: Create advancement chain, configuration dialog
+    }
+
+    return result ?? null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Handle a dropped PowerRollEffect.
+   * @param {DragEvent} event             The initiating drop event.
+   * @param {BasePowerRollEffect} effect  The dropped PowerRollEffect.
+   * @returns {Promise<BasePowerRollEffect|null>} A Promise resolving to the dropped PowerRollEffect (if sorting), a newly created PowerRollEffect,
+   *                                         or null in case of failure or no action being taken.
+   * @protected
+   */
+  async _onDropPowerRollEffect(event, effect) {
+    if (!this.item.isOwner || !effect) return false;
+
+    if (this.item.uuid === effect.document?.uuid) {
+      const result = await this._onSortPseudoDocument(event, effect);
+      return result?.length ? effect : null;
+    }
+
+    const keepId = !this.item.getEmbeddedCollection("PowerRollEffect").has(effect.id);
+    const effectData = effect.toObject();
+
+    const result = await BasePowerRollEffect.create(effectData, { keepId, parent: this.item, renderSheet: false });
+
+    return result ?? null;
+  }
+
+  /**
+   * Handle a drop event for an existing embedded PseudoDocument to sort that PseudoDocument relative to its siblings.
+   *
+   * @param {DragEvent} event       The initiating drop event.
+   * @param {PseudoDocument} pseudo   The dropped PseudoDocument.
+   * @returns {Promise<PseudoDocument[]>|void}
+   * @protected
+   */
+  _onSortPseudoDocument(event, pseudo) {
+    const dropTarget = event.target.closest("[data-pseudo-id]");
+    if (!dropTarget) return null;
+    const target = this._getPseudoDocument(dropTarget);
+
+    // Don't sort on yourself
+    if (pseudo.id === target.id) return null;
+
+    // Identify sibling items based on adjacent HTML elements
+    const siblings = [];
+    for (const el of dropTarget.parentElement.children) {
+      if (!el.dataset?.pseudoId) continue;
+      const sibling = this._getPseudoDocument(el);
+      if (sibling.id !== pseudo.id) siblings.push(sibling);
+    }
+
+    // Perform the sort
+    const sortUpdates = foundry.utils.performIntegerSort(pseudo, {
+      target,
+      siblings,
+    });
+    const updateData = sortUpdates.reduce((update, obj) => {
+      update[obj.target.id] = obj.update;
+      return update;
+    }, {});
+
+    return this.item.update({ [pseudo.fieldPath]: updateData });
   }
 }

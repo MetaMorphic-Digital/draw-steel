@@ -39,7 +39,7 @@ export default class ModelCollection extends foundry.utils.Collection {
   /**
    * The base classes of the pseudo-documents that can be stored in a model such as this.
    * Each class must implement `documentConfig` to map to the subtype.
-   * @type {Record<string, PseudoDocument>}
+   * @type {Record<string, typeof PseudoDocument>}
    */
   static documentClasses = {
     Advancement: BaseAdvancement,
@@ -94,6 +94,16 @@ export default class ModelCollection extends foundry.utils.Collection {
     const types = Object.fromEntries(Object.keys(this.documentClass.documentConfig).map(t => [t, []]));
     for (const doc of this.values()) types[doc._source.type ?? "base"]?.push(doc);
     return this.#documentsByType = types;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * A sorted array of the model instances.
+   * @type {Model[]}
+   */
+  get sortedContents() {
+    return this.contents.sort((a, b) => a.sort - b.sort);
   }
 
   /* -------------------------------------------------- */
