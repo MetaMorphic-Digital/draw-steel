@@ -47,6 +47,7 @@
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
   - Voiceless Talkers
+- Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - Added a "Group Selected" option to the Combat Tracker options. (#690)
   - This will create any missing combatants and then add them all to a new group.
@@ -129,6 +130,7 @@
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Fixed broken image links in the in-game documentation.
 
 ## 0.8.1
 

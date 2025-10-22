@@ -71,7 +71,11 @@ async function transformEntry(entry) {
 
   for (const jep of entry.pages) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
-    await fs.writeFile(docsPath, jep.text.markdown, { encoding: "utf8" });
+
+    // re-route in-game asset links to wiki image links
+    const mdContent = jep.text.markdown.replaceAll("https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs", "systems/draw-steel/assets/docs");
+
+    await fs.writeFile(docsPath, mdContent, { encoding: "utf8" });
     jep.text = { format: 2 };
   }
 }
