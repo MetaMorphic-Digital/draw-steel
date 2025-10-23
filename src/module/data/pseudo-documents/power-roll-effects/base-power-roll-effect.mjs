@@ -118,9 +118,10 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /**
    * Implement rendering context for tiers 1-3.
    * @param {object} context    Rendering context. **will be mutated**.
+   * @param {object} options The rendering options.
    * @returns {Promise<void>}   A promise that resolves once the rendering context has been mutated.
    */
-  async _tierRenderingContext(context) {
+  async _tierRenderingContext(context, options) {
     for (const n of [1, 2, 3]) {
       const path = `${this.constructor.TYPE}.tier${n}`;
       context.fields[`tier${n}`][`${this.constructor.TYPE}`] = {
