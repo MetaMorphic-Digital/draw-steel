@@ -29,11 +29,12 @@
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
-  - Null levels 4–5 features and abilities.
+  - Null levels 4–7 features and abilities.
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–5 features and abilities.
-  - Talent levels 4–5 features and abilities.
+  - Talent levels 4–7 features and abilities.
   - Troubadour levels 4–5 features and abilities.
+  - Echelon 2 Titles
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
@@ -47,7 +48,13 @@
   - Undead Echelons 2–4
   - War Dogs Echelons 2–4
   - Voiceless Talkers
+- Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+- Added a "Group Selected" option to the Combat Tracker options. (#690)
+  - This will create any missing combatants and then add them all to a new group.
+  - The group's name will use the actor's name if all tokens have matching actor names.
+  - The group's image will use the token's image if all tokens have matching token images.
+  - Any squads created will be created at full stamina.
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
@@ -112,6 +119,7 @@
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
+  - Implemented a new formatting for abilities that require the targets to make a test.
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
   - Multiple corrections to the Ogre Juggernaut.
@@ -124,6 +132,7 @@
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Fixed broken image links in the in-game documentation.
 
 ## 0.8.1
 

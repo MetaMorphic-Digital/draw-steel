@@ -51,4 +51,4 @@ If an enricher is not working as intended, in the text editor in which you are t
 1. click on the `Ⱦ` symbol to "clear formatting" from any selected text (or the whole text box if nothing is selected), this usually fixes the issue. If not, then
 2. click on the `</>` symbol to enter HTML mode and make sure, there is not unnecessary characters or code interfering with the enricher.
 
-![HTML clean-up mode explainer](draw-steel/assets/docs/HTML-mode-explainer.png?raw=true "HTML Mode explainer")
+![HTML clean-up mode explainer](https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs/HTML-mode-explainer.png)
