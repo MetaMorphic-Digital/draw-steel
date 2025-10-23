@@ -1,0 +1,132 @@
+{
+  "folder": "p8upuwPpFr0mIVVc",
+  "name": "Acceleration Field",
+  "type": "ability",
+  "_id": "kegHOFsovS7IsLDn",
+  "img": "icons/magic/movement/trail-streak-zigzag-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "200",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "acceleration-field",
+    "story": "You forcibly stuff more moments into a critical point in time, knowing full well you might need to steal some of your own.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "chronopathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "custom": "",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "R4B9s63S5AKTkFHf": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "R4B9s63S5AKTkFHf",
+          "damage": {
+            "tier1": {
+              "value": "4",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier2": {
+              "value": "6",
+              "types": [
+                "corruption"
+              ]
+            },
+            "tier3": {
+              "value": "10",
+              "types": [
+                "corruption"
+              ]
+            }
+          }
+        },
+        "OQ7iI5MzsDINnein": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "OQ7iI5MzsDINnein",
+          "applied": {
+            "tier1": {
+              "display": "slowed (save ends)",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Each target can use any main action available to them as a free triggered action, but they lose their main action on their next turn.</p><p><strong>Strained:</strong> Make a power roll that targets you and each enemy within distance.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761138561542,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!kegHOFsovS7IsLDn"
+}
