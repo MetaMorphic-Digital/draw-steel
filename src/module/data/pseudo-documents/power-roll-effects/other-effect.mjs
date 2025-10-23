@@ -30,8 +30,8 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _tierRenderingContext(context) {
-    await super._tierRenderingContext(context);
+  async _tierRenderingContext(context, options) {
+    await super._tierRenderingContext(context, options);
 
     for (const n of [1, 2, 3]) {
       const path = `other.tier${n}`;

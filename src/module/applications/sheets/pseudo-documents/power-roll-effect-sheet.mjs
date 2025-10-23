@@ -76,7 +76,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       },
     };
 
-    await context.pseudo._tierRenderingContext?.(context);
+    await pseudo._tierRenderingContext(context, options);
 
     return context;
   }
