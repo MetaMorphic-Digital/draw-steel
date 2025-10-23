@@ -1,0 +1,119 @@
+{
+  "folder": "XSiTcTleGKKWNgo2",
+  "name": "Knightly Challenge",
+  "type": "ability",
+  "_id": "vMKO7J4aBWcruWvK",
+  "img": "icons/skills/melee/weapons-crossed-swords-black-gray.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "345",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "knightly-challenge",
+    "story": "Have at thee!",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "6hW8u1fnsxcrrpnG": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "6hW8u1fnsxcrrpnG",
+          "damage": {
+            "tier1": {
+              "value": "7"
+            },
+            "tier2": {
+              "value": "11"
+            },
+            "tier3": {
+              "value": "16"
+            }
+          }
+        },
+        "fgTbcYgqB8q1MYwL": {
+          "name": "Taunt",
+          "img": null,
+          "type": "applied",
+          "_id": "fgTbcYgqB8q1MYwL",
+          "applied": {
+            "tier1": {
+              "display": "taunted (save ends)",
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "taunted": {
+                  "condition": "always",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You can end the taunted condition on the target as a free maneuver.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761152565637,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!vMKO7J4aBWcruWvK"
+}
