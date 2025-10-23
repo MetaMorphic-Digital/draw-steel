@@ -119,8 +119,13 @@
     .resource-label {
       font-weight: 600;
       text-align: center;
-      display: flex;
+      display: inline-block;
       justify-content: space-around;
+    }
+
+    .resource-label-wrapper {
+      display: flex;
+      justify-content: center;
     }
 
     .resource-divider {
