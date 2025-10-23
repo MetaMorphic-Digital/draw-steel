@@ -24,7 +24,11 @@ export default class SubclassModel extends AdvancementModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.classLink = new fields.StringField({ required: true });
+    schema.classLink = new fields.StringField({
+      required: true,
+      validate: string => string === string.slugify({ strict: true }),
+      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+    });
 
     return schema;
   }

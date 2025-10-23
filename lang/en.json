@@ -328,7 +328,8 @@
       },
       "Licenses": {
         "DSCL": "Draw Steel Creator License"
-      }
+      },
+      "InvalidDSID": "A DSID must be all lowercase with no spaces."
     },
     "MEASUREMENT": {
       "Height": {
@@ -776,6 +777,10 @@
       },
       "ability": {
         "FIELDS": {
+          "class": {
+            "label": "Ability Source",
+            "hint": "The DSID of the Class or Subclass this ability belongs to"
+          },
           "story": {
             "label": "Story Text"
           },
@@ -1175,7 +1180,18 @@
         }
       },
       "feature": {
-        "FIELDS": {}
+        "FIELDS": {
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "The Draw Steel ID of items required by this feature. All prerequisites must be fulfilled."
+            }
+          }
+        }
       },
       "kit": {
         "FIELDS": {
@@ -1277,12 +1293,6 @@
           },
           "story": {
             "label": "Story Text"
-          },
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            }
           }
         }
       },

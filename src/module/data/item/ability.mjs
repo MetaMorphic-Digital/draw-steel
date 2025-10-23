@@ -45,6 +45,12 @@ export default class AbilityModel extends BaseItemModel {
     // Items don't have descriptions
     delete schema.description;
 
+    schema.class = new fields.StringField({
+      required: true,
+      validate: string => string === string.slugify({ strict: true }),
+      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+    });
+
     schema.story = new fields.StringField({ required: true });
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
@@ -254,6 +260,7 @@ export default class AbilityModel extends BaseItemModel {
     const config = ds.CONFIG.abilities;
     const formattedLabels = this.formattedLabels;
 
+    // TODO: Implement a registry of classes and use the class value on the ability to improve the labeling
     const resourceName = this.actor?.system.coreResource?.name ?? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
     context.resourceName = resourceName;

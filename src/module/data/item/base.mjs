@@ -41,7 +41,12 @@ export default class BaseItemModel extends DrawSteelSystemModel {
      * The Draw Steel ID, indicating a unique game rules element.
      * @remarks `readonly: true` makes this non-iterable
      */
-    schema._dsid = new fields.StringField({ required: true, readonly: true });
+    schema._dsid = new fields.StringField({
+      required: true,
+      readonly: true,
+      validate: string => string === string.slugify({ strict: true }),
+      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+    });
 
     return schema;
   }
