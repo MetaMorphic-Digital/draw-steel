@@ -72,7 +72,7 @@
       }
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -170,7 +170,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes either an <strong>Agility test or an Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 18 fire]] damage; prone; weakened (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 14 fire]] damage; prone</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 9 fire]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes either an <strong>Agility test or an Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18 fire]]{18 fire damage}; [[/apply prone]]; [[/apply weakened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14 fire]]{14 fire damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9 fire]]{9 fire damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -656,7 +656,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target shifts up to their speed and can make a free strike. Any enemy who takes damage from a free strike this way and who has A &lt; 4 is burning (save ends). A burning enemy takes [[/damage 1d6 fire]] damage at the start of each of their turns.</p>",
+          "before": "<p>Each target shifts up to their speed and can make a free strike. Any enemy who takes damage from a free strike this way and who has A &lt; 4 is [[/apply cb0mj68diIIMNaU2 save]]. A burning enemy takes [[/damage 1d6 fire]] damage at the start of each of their turns.</p>",
           "after": ""
         },
         "spend": {
@@ -673,7 +673,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Burning",
+          "img": "icons/magic/fire/flame-burning-campfire-orange.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.D8wKCMa1wLvm9SB9.Item.aHXwBR4gVReXAnYg",
+          "transfer": false,
+          "_id": "cb0mj68diIIMNaU2",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>A burning enemy takes [[/damage 1d6 fire]]{1d6 fire damage} at the start of each of their turns.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761168129216,
+            "modifiedTime": 1761168169457,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!D8wKCMa1wLvm9SB9.aHXwBR4gVReXAnYg.cb0mj68diIIMNaU2"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -790,7 +833,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target unleashes a wave of fire, and each enemy within 2 squares of any target makes an <strong>Agility test</strong>. An enemy affected by two targets takes a bane on the test, while an enemy affected by three or more targets has a double bane.</p><table><tbody><tr><td data-colwidth=\"101\"><p>11 or less</p></td><td><p>[[/damage 18 fire]] damage</p></td></tr><tr><td data-colwidth=\"101\"><p>12-16</p></td><td><p>[[/damage 14 fire]] damage</p></td></tr><tr><td data-colwidth=\"101\"><p>17+</p></td><td><p>[[/damage 9 fire]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each target unleashes a wave of fire, and each enemy within 2 squares of any target makes an <strong>Agility test</strong>. An enemy affected by two targets takes a bane on the test, while an enemy affected by three or more targets has a double bane.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18 fire]]{18 fire damage}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14 fire]]{14 fire damage}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9 fire]]{9 fire damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -917,7 +960,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>map and launches it to fill the area. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 18]] damage; prone and can’t stand (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 14]] damage; prone</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 9]] damage</p></td></tr></tbody></table>",
+          "before": "<p>A giant unearths a structure, hazard, or chunk of the encounter map and launches it to fill the area. Each target makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 18]]{18 damage}; [[/apply dx8loOnogA4DqJ4J save]]{Prone and Can't stand (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 14]]{14 damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 9]]{9 Damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -937,24 +980,68 @@
           "weapon"
         ]
       },
-      "effects": [],
-      "folder": "hQOvh0LlbFSAU56C",
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "_id": "dx8loOnogA4DqJ4J",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "prone"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!D8wKCMa1wLvm9SB9.etXG4qihF4LWitWS.dx8loOnogA4DqJ4J"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1761167104767,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "_id": "etXG4qihF4LWitWS",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_id": "etXG4qihF4LWitWS",
+      "folder": null,
       "sort": 0,
       "_key": "!actors.items!D8wKCMa1wLvm9SB9.etXG4qihF4LWitWS"
     },
@@ -972,7 +1059,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -983,7 +1071,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; the target falls into the fissure, and is prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10]] damage; the target is prone and hanging onto the edge of the fissure</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the fissure.</p></td></tr></tbody></table>",
+          "before": "<p>A giant creates a fissure along the ground, either in a 15 × 2 line within 1 or a 10 × 3 line within 2, and that opens up to a depth of 6 squares. Each giant in the area can shift into the nearest unoccupied space outside the fissure. Each non-giant in the area makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; the target falls into the fissure, and is [[/apply 2hXPO1wVP7B7bl2z turn]]{prone and can’t stand (EoT)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the fissure.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -999,24 +1087,68 @@
         "story": "",
         "keywords": []
       },
-      "effects": [],
-      "folder": "hQOvh0LlbFSAU56C",
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "prone"
+          ],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "2hXPO1wVP7B7bl2z",
+          "sort": 0,
+          "_key": "!actors.items.effects!D8wKCMa1wLvm9SB9.sRo2Z3MHYnHpAol7.2hXPO1wVP7B7bl2z"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.sRo2Z3MHYnHpAol7",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "createdTime": 1761167105479,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "_id": "sRo2Z3MHYnHpAol7",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_id": "sRo2Z3MHYnHpAol7",
+      "folder": null,
       "sort": 0,
       "_key": "!actors.items!D8wKCMa1wLvm9SB9.sRo2Z3MHYnHpAol7"
     }

@@ -192,7 +192,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -340,9 +341,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -370,7 +371,8 @@
         },
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "Each creature or object in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -428,8 +430,8 @@
           }
         },
         "effect": {
-          "before": "",
-          "after": "<p>A target object must be size 2 or smaller.</p>"
+          "before": "<p><strong>Special: </strong>A target object must be size 2 or smaller.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -453,9 +455,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -591,67 +593,6 @@
     },
     {
       "folder": "A7uroZLjUlKkmO16",
-      "name": "Piercing Cry",
-      "type": "ability",
-      "_id": "kzbgt1woQJVtPwsG",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "166",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "piercing-cry",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>A griffon acting this turn unleashes a hideous screech at one enemy within 5 squares of them, forcing that creature to make an <strong>Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"122\"><p>11 or less</p></td><td><p>Frightened (save ends)</p></td></tr><tr><td data-colwidth=\"122\"><p>12-16</p></td><td><p>Frightened (EoT)</p></td></tr><tr><td data-colwidth=\"122\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.kzbgt1woQJVtPwsG",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!F8kSvfxmCGq0lT9V.kzbgt1woQJVtPwsG"
-    },
-    {
-      "folder": "A7uroZLjUlKkmO16",
       "name": "Wildwinds",
       "type": "ability",
       "_id": "Uudy5DxOsE8X0LQ3",
@@ -693,7 +634,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": 200000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -703,7 +644,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Uudy5DxOsE8X0LQ3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -845,6 +786,70 @@
         "modifiedTime": null
       },
       "_key": "!actors.items!F8kSvfxmCGq0lT9V.E0qyZXEyp8VoqWcC"
+    },
+    {
+      "name": "Piercing Cry",
+      "type": "ability",
+      "_id": "IB3YILLtoEUj58Ha",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "166",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "piercing-cry",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A griffon acting this turn unleashes a hideous screech at one enemy within 5 squares of them, forcing that creature to make an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Frightened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Frightened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.IB3YILLtoEUj58Ha",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761171913200,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 100000,
+      "_key": "!actors.items!F8kSvfxmCGq0lT9V.IB3YILLtoEUj58Ha"
     }
   ],
   "folder": "2v4ZizI6Z9zyx8Ef",
