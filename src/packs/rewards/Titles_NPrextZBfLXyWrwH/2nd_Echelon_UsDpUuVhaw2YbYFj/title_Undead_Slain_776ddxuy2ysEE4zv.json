@@ -1,0 +1,116 @@
+{
+  "folder": "UsDpUuVhaw2YbYFj",
+  "name": "Undead Slain",
+  "type": "title",
+  "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect:</strong> You return to life 1 minute after being killed with Stamina equal to your winded value. You gain corruption immunity equal to your level and one of the benefits below, based on the type of creature who killed you. If you die again, you rise as an undead creature under the Director’s control.</p><p><em>Ghoul or Vampire:</em> @Embed[Compendium.draw-steel.rewards.Item.WS1B3MGw2rH2bRPI inline]</p><p><em>Incorporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.mvuoYZOsSsROKoCa inline]</p><p><em>Other Corporeal Undead:</em> @Embed[Compendium.draw-steel.rewards.Item.XR5YEaWGLpLqWFUY inline]</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "346",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "undead-slain",
+    "advancements": {
+      "QIP4Yjp5o4xrCvFf": {
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "QIP4Yjp5o4xrCvFf",
+        "description": "<p>You gain one of the benefits below, based on the type of creature who killed you.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.WS1B3MGw2rH2bRPI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.mvuoYZOsSsROKoCa"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.XR5YEaWGLpLqWFUY"
+          }
+        ]
+      }
+    },
+    "echelon": 2,
+    "story": "No, I didn’t get bitten. And yes, I’m fine!",
+    "prerequisites": {
+      "value": "You are killed by an undead creature."
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.776ddxuy2ysEE4zv",
+      "_id": "pApWOcgHNdUecGNZ",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You gain corruption immunity equal to your level.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761160789416,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!776ddxuy2ysEE4zv.pApWOcgHNdUecGNZ"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761069589333,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "776ddxuy2ysEE4zv",
+  "sort": 0,
+  "_key": "!items!776ddxuy2ysEE4zv"
+}

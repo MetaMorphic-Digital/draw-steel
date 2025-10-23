@@ -34,6 +34,7 @@
   - Tactician levels 4–5 features and abilities.
   - Talent levels 4–7 features and abilities.
   - Troubadour levels 4–5 features and abilities.
+  - Echelon 2 Titles
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
   - Devils
