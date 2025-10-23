@@ -90,11 +90,7 @@
             "tier3": {
               "display": "{{potency}}, weakened and slowed (save ends)",
               "effects": {
-                "weakened": {
-                  "condition": "failure",
-                  "end": "save"
-                },
-                "slowed": {
+                "gAWiCwCR7T8jgHm9": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -105,7 +101,7 @@
       }
     },
     "effect": {
-      "before": "<p>This ability gains an edge against a target with a soul. After you make the power roll, you or one ally within distance have a double edge on the next power roll you make before the end of the encounter.</p><p><strong>Strained:</strong> You feel dispirited until you finish a respite. If you obtain a tier 3 outcome on the power roll, you and the target each have [[/apply \"Damage Weakness 5\"]] (save ends).</p>",
+      "before": "<p>This ability gains an edge against a target with a soul. After you make the power roll, you or one ally within distance have a double edge on the next power roll you make before the end of the encounter.</p><p><strong>Strained:</strong> You feel dispirited until you finish a respite. If you obtain a tier 3 outcome on the power roll, you and the target each have [[/apply \"atsPk0jYryV6sL3q\"]] (save ends).</p><p></p>",
       "after": ""
     },
     "spend": {
@@ -162,6 +158,51 @@
         "lastModifiedBy": null
       },
       "_key": "!items.effects!07fuK6yFfpbC2fAm.atsPk0jYryV6sL3q"
+    },
+    {
+      "name": "Weakened and Slowed",
+      "img": "icons/magic/control/debuff-energy-snare-purple-blue.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.07fuK6yFfpbC2fAm",
+      "transfer": false,
+      "_id": "gAWiCwCR7T8jgHm9",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed",
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761223992073,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!07fuK6yFfpbC2fAm.gAWiCwCR7T8jgHm9"
     }
   ],
   "sort": 0,
