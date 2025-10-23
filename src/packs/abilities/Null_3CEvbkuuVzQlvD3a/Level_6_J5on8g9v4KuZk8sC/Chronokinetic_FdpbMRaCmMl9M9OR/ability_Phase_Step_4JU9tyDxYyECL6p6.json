@@ -1,0 +1,122 @@
+{
+  "folder": "FdpbMRaCmMl9M9OR",
+  "name": "Phase Step",
+  "type": "ability",
+  "_id": "4JU9tyDxYyECL6p6",
+  "img": "icons/skills/movement/feet-winged-boots-brown.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "155",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "phase-step",
+    "story": "You weaken your connection to this manifold, allowing you to move through and damage enemies.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "fVRpywggoKaIUqHU": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fVRpywggoKaIUqHU",
+          "damage": {
+            "tier1": {
+              "value": "6"
+            },
+            "tier2": {
+              "value": "8"
+            },
+            "tier3": {
+              "value": "12"
+            }
+          }
+        },
+        "l7IgalCCD5sZ73GE": {
+          "name": "Dazed",
+          "img": null,
+          "type": "applied",
+          "_id": "l7IgalCCD5sZ73GE",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, dazed",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You can shift up to your speed, and squares occupied by enemies or objects are not difficult terrain for this shift. You make one power roll that targets each enemy you moved through during this shift.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761155907225,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!4JU9tyDxYyECL6p6"
+}

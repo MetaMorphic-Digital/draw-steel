@@ -245,7 +245,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 14 cold]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 11 cold]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 6 cold]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 cold]] damage</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -262,7 +262,63 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Dragonsealed",
+          "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.Item.rlV6oPVV1KR3Y4iQ",
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.cold",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            },
+            {
+              "key": "system.damage.weaknesses.psychic",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>A dragonsealed creature has psychic weakness 3 and cold weakness 3.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761168466523,
+            "modifiedTime": 1761168534194,
+            "lastModifiedBy": null
+          },
+          "_id": "RoFAZZPRLjVZwjPY",
+          "sort": 0,
+          "_key": "!actors.items.effects!awNlSowdCYs0igx0.rlV6oPVV1KR3Y4iQ.RoFAZZPRLjVZwjPY"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -1378,63 +1434,7 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [
-    {
-      "name": "Dragonsealed",
-      "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
-      "origin": "Actor.ppX4EvIyyST6XGZG.Item.RnNLHlAB5q48V5PG",
-      "transfer": false,
-      "type": "base",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [
-        {
-          "key": "system.damage.weaknesses.cold",
-          "mode": 2,
-          "value": "3",
-          "priority": null
-        },
-        {
-          "key": "system.damage.weaknesses.psychic",
-          "mode": 2,
-          "value": "3",
-          "priority": null
-        }
-      ],
-      "disabled": true,
-      "duration": {
-        "startTime": 0,
-        "combat": null,
-        "seconds": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": 1,
-        "startTurn": 0
-      },
-      "description": "<p>A dragonsealed creature has psychic weakness 3 and cold weakness 3.</p>",
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.s8Dvj26hssemdUrw.ActiveEffect.VE5hM241DRNO06JB",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.350",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1760901709823,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_id": "vTgN9J24tIdxmXfg",
-      "sort": 0,
-      "_key": "!actors.effects!awNlSowdCYs0igx0.vTgN9J24tIdxmXfg"
-    }
-  ],
+  "effects": [],
   "ownership": {
     "default": 0
   },

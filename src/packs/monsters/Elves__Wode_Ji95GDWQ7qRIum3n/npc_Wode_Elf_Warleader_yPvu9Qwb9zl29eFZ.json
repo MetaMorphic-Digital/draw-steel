@@ -383,7 +383,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -421,9 +422,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -449,7 +450,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": 1
+          "value": 1,
+          "custom": "One enemy"
         },
         "damageDisplay": "melee",
         "power": {
@@ -462,8 +464,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The target must not have taken their turn this round. The target takes their turn immediately, and if they have P &lt; 2 they are bleeding and take a bane on strikes until the end of their turn.</p>"
+          "before": "<p>The target must not have taken their turn this round. The target takes their turn immediately, and if they have P &lt; 2 they are [[/apply bleeding turn]] and take a bane on strikes until the end of their turn.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -487,9 +489,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -515,7 +517,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -528,8 +531,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The warleader uses Wodeblade against each target and gains an edge on the power roll.</p>"
+          "before": "<p>The warleader uses Wodeblade against each target and gains an edge on the power roll.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -553,9 +556,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -581,7 +584,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -594,8 +598,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The warleader can use Wodeblade. Each target can then make a free strike.</p>"
+          "before": "<p>The warleader can use Wodeblade. Each target can then make a free strike.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -619,9 +623,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -647,7 +651,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Self and each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -660,8 +665,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target is invisible until the start of the next round. The warleader then uses Wodeblade.</p>"
+          "before": "<p>Each target is invisible until the start of the next round. The warleader then uses Wodeblade.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -685,9 +690,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -820,7 +825,6 @@
       "_key": "!actors.items!yPvu9Qwb9zl29eFZ.4M0YYV4gUX0n98tl"
     },
     {
-      "folder": "g8UHG2eyUpTG7CVk",
       "name": "Vines Everywhere",
       "type": "ability",
       "_id": "Xo0apOKkrnZ7lnKM",
@@ -843,7 +847,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -853,7 +859,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Vines rapidly grow across the entire encounter map. Each enemy in the encounter makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 8]] damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>Restrained (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Vines rapidly grow across the entire encounter map. Each enemy in the encounter makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8]]{8 damage}; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/Apply Restrained turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -862,22 +868,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Xo0apOKkrnZ7lnKM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761099557538,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!yPvu9Qwb9zl29eFZ.Xo0apOKkrnZ7lnKM"
     }
   ],

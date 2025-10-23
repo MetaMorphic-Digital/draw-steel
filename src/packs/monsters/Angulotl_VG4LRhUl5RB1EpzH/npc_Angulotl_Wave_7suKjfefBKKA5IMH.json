@@ -587,7 +587,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A bubble of toxic gas fills the area, ready to pop. If any creature or object touches the bubble or if the bubble takes damage, it bursts. Each angulotl adjacent to the bubble is wet until the end of the en counter, and each enemy adjacent to the bubble makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 3 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.ActiveEffect.t5k6uIPpcwYin0Ka save]]</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 2 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 save]]</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>[[/damage 1 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 turn]]</p></td></tr></tbody></table>",
+          "before": "<p>A bubble of toxic gas fills the area, ready to pop. If any creature or object touches the bubble or if the bubble takes damage, it bursts. Each angulotl adjacent to the bubble is wet until the end of the encounter, and each enemy adjacent to the bubble makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 3 poison]] damage; the target is [[/apply pmnETcOZRzv4P4WW save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 2 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 1 poison]] damage; the target is [[/apply Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.LCVUFvkic3ekh34p.ActiveEffect.X66mp8MbRILfgKS6 turn]]</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -597,7 +597,52 @@
       },
       "_id": "bPAAa1tXNGQvAual",
       "img": "icons/skills/melee/strike-polearm-light-orange.webp",
-      "effects": [],
+      "effects": [
+        {
+          "name": "Wet and Weakened",
+          "img": "icons/magic/water/water-drop-swirl-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.Item.bPAAa1tXNGQvAual",
+          "disabled": true,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "startRound": 2,
+            "startTurn": 0,
+            "seconds": null,
+            "rounds": null,
+            "turns": null
+          },
+          "description": "<p>While wet, an angulotl doesn’t provoke opportunity attacks by moving.</p><p>While wet, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone.</p>",
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [
+            "weakened"
+          ],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH.ActiveEffect.t5k6uIPpcwYin0Ka",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761167225890,
+            "modifiedTime": 1761167408861,
+            "lastModifiedBy": null
+          },
+          "_id": "pmnETcOZRzv4P4WW",
+          "sort": 0,
+          "_key": "!actors.items.effects!7suKjfefBKKA5IMH.bPAAa1tXNGQvAual.pmnETcOZRzv4P4WW"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "ownership": {
@@ -788,52 +833,7 @@
       "_key": "!actors.items!7suKjfefBKKA5IMH.SMNH5LxY8st7IyDf"
     }
   ],
-  "effects": [
-    {
-      "name": "Wet and Weakened",
-      "img": "icons/magic/water/water-drop-swirl-blue.webp",
-      "type": "base",
-      "origin": "Compendium.draw-steel.monsters.Actor.7suKjfefBKKA5IMH",
-      "disabled": true,
-      "_id": "t5k6uIPpcwYin0Ka",
-      "system": {
-        "end": {
-          "type": "",
-          "roll": "1d10 + @combat.save.bonus"
-        }
-      },
-      "changes": [],
-      "duration": {
-        "startTime": 0,
-        "combat": null,
-        "startRound": 2,
-        "startTurn": 0,
-        "seconds": null,
-        "rounds": null,
-        "turns": null
-      },
-      "description": "<p>While wet, an angulotl doesn’t provoke opportunity attacks by moving.</p><p>While wet, any non-angulotl who is wet and ends their turn with none of their movement remaining slips and falls prone.</p>",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [
-        "weakened"
-      ],
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.350",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "createdTime": 1760846544565,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.effects!7suKjfefBKKA5IMH.t5k6uIPpcwYin0Ka"
-    }
-  ],
+  "effects": [],
   "sort": 0,
   "ownership": {
     "default": 0

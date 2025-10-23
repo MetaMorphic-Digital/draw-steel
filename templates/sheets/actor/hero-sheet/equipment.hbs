@@ -39,6 +39,7 @@
           <div class="item-column item-melee-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.melee.damage}}</div>
           <div class="item-column item-ranged-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.ranged.damage}}</div>
           <div class="item-column item-controls">
+            <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
             <a class="fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>

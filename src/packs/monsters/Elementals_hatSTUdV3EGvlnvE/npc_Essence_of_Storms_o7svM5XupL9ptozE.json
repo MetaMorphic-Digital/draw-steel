@@ -155,7 +155,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -312,9 +313,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -341,7 +342,8 @@
         },
         "target": {
           "type": "selfOrAlly",
-          "value": 1
+          "value": 1,
+          "custom": "Self or one elemental"
         },
         "damageDisplay": "melee",
         "power": {
@@ -354,11 +356,11 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets Self or one Elemental.</p><p>Until the start of the essence’s next turn, the target has light ning immunity 5.</p>",
+          "before": "<p>Until the start of the essence’s next turn, the target has lightning immunity 5.</p><p>[[/apply yKLnFxCBj93Sk8J8]]</p>",
           "after": ""
         },
         "spend": {
-          "text": "Until the end of the encounter, a vortex surrounds the tar get in a 3 aura. The area is difficult terrain for enemies. Additionally,  at the end of each of the target’s turns, they can push one creature in  the area up to 5 squares.",
+          "text": "Until the end of the encounter, a vortex surrounds the target in a 3 aura. The area is difficult terrain for enemies. Additionally,  at the end of each of the target’s turns, they can push one creature in the area up to 5 squares.",
           "value": 3
         },
         "source": {
@@ -427,9 +429,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -456,7 +458,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "The Triggering Creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -494,9 +497,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -677,7 +680,6 @@
       "_key": "!actors.items!o7svM5XupL9ptozE.nepObNKqvUUHrr8q"
     },
     {
-      "folder": "hE191ksRhzkku5Ov",
       "name": "Convocation of Chaos",
       "type": "ability",
       "_id": "vDtUjuLPjntj32co",
@@ -701,7 +703,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "selfOrAlly"
+          "type": "selfOrAlly",
+          "custom": "Self or one elemental",
+          "value": null
         },
         "power": {
           "roll": {
@@ -711,7 +715,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets Self or one Elemental</p><p>Until the end of the encounter, the target has a +5 bonus to speed and a +5 damage bonus to strikes. Additionally, whenever an elemental within the target’s line of effect uses an ability with “Convocation” in the name, the target also gains the effects of that ability.</p>",
+          "before": "<p>Until the end of the encounter, the target has a +5 bonus to speed and a +5 damage bonus to strikes. Additionally, whenever an elemental within the target’s line of effect uses an ability with “Convocation” in the name, the target also gains the effects of that ability.</p>",
           "after": ""
         },
         "spend": {
@@ -747,8 +751,8 @@
             "seconds": null,
             "rounds": null,
             "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "startRound": 1,
+            "startTurn": 0
           },
           "description": "",
           "tint": "#ffffff",
@@ -760,9 +764,9 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!o7svM5XupL9ptozE.vDtUjuLPjntj32co.Hba04T6CgjrjwaOu"
@@ -811,8 +815,8 @@
             "seconds": null,
             "rounds": null,
             "turns": null,
-            "startRound": null,
-            "startTurn": null
+            "startRound": 1,
+            "startTurn": 0
           },
           "description": "",
           "tint": "#ffffff",
@@ -824,30 +828,32 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!o7svM5XupL9ptozE.vDtUjuLPjntj32co.oOlOeEi6rpWKvkJ4"
         }
       ],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vDtUjuLPjntj32co",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761095355182,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!o7svM5XupL9ptozE.vDtUjuLPjntj32co"
     }
   ],
@@ -957,9 +963,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757110809738,
     "modifiedTime": null,
     "lastModifiedBy": null
