@@ -81,6 +81,27 @@
               "display": "{{potency}}, prone",
               "potency": {
                 "characteristic": "presence"
+              },
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "prone": {
+                  "condition": "failure"
+                }
               }
             }
           }
@@ -96,7 +117,45 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/sonic/projectile-sound-rings-wave.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.9MiiAGyHh6k9vdL6",
+      "transfer": false,
+      "_id": "sPj7nWY7Z6SUWFke",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761255602292,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!9MiiAGyHh6k9vdL6.sPj7nWY7Z6SUWFke"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

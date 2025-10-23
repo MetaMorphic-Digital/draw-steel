@@ -74,16 +74,33 @@
               "display": "{{potency}}, frightened (save ends)",
               "potency": {
                 "characteristic": "presence"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": ""
+                }
               }
             },
             "tier3": {
               "potency": {
                 "characteristic": "presence"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure"
+                }
               }
             },
             "tier2": {
               "potency": {
                 "characteristic": "presence"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": ""
+                }
               }
             }
           }
