@@ -1,0 +1,67 @@
+{
+  "folder": "xzxwuo8puhu2f2Ho",
+  "name": "Stasis Shield",
+  "type": "ability",
+  "_id": "J6PRGydLL1WTRp5o",
+  "img": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "199",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "stasis-shield",
+    "story": "You freeze time just long enough to bring the victim to safety!",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ],
+    "type": "triggered",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "The target takes damage.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrCreature",
+      "custom": "Self, or one creature or object",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target is teleported to an unoccupied space adjacent to you, taking no damage and suffering no additional effects if this movement would get them out of harm’s way.</p><p><strong>Strained:</strong> You can’t target yourself, and you take the damage and any additional effects instead of the target.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761098525303,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!J6PRGydLL1WTRp5o"
+}
