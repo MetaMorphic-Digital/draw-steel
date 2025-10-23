@@ -114,6 +114,7 @@
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
+  - Implemented a new formatting for abilities that require the targets to make a test.
   - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
   - Bredbeddle Malice Ability costs. (#1114)
   - Multiple corrections to the Ogre Juggernaut.
