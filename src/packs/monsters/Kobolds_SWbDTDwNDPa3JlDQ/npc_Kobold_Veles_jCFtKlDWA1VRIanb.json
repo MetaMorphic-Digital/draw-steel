@@ -197,93 +197,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "a7emInE4cQxOrYoq",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p>+1 bonus to speed</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "191",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [
-        {
-          "name": "With Captain Bonus",
-          "img": "icons/skills/social/intimidation-impressing.webp",
-          "type": "base",
-          "origin": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.a7emInE4cQxOrYoq",
-          "disabled": true,
-          "_id": "VrJFy5V3UeGxf8bP",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.stamina.max",
-              "mode": 2,
-              "value": "2",
-              "priority": null
-            }
-          ],
-          "duration": {
-            "startTime": 0,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "transfer": true,
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!jCFtKlDWA1VRIanb.a7emInE4cQxOrYoq.VrJFy5V3UeGxf8bP"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.a7emInE4cQxOrYoq",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1756947363422,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!jCFtKlDWA1VRIanb.a7emInE4cQxOrYoq"
-    },
-    {
       "name": "Shield? Shield!",
       "type": "feature",
       "_id": "3fdmNUhuqakwyz18",
@@ -374,68 +287,6 @@
     },
     {
       "folder": "xuS3HDBwVVF8JHHi",
-      "name": "Maniple Tactics",
-      "type": "ability",
-      "_id": "KOsnxnQvSid3ZahG",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "190",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "maniple-tactics",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a [[/damage @monster.freeStrike]]</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.KOsnxnQvSid3ZahG",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1756947413660,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!jCFtKlDWA1VRIanb.KOsnxnQvSid3ZahG"
-    },
-    {
-      "folder": "xuS3HDBwVVF8JHHi",
       "name": "Set the Initiative",
       "type": "ability",
       "_id": "fyuPK3F17a7SWmWO",
@@ -477,7 +328,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": 100000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -487,7 +338,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.fyuPK3F17a7SWmWO",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1756947414886,
@@ -539,7 +390,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": 300000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -549,7 +400,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.FTBTYYIqhMaTU882",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1756947416348,
@@ -647,6 +498,70 @@
         "lastModifiedBy": null
       },
       "_key": "!actors.items!jCFtKlDWA1VRIanb.5oCNezewJ2wWq9qW"
+    },
+    {
+      "name": "Maniple Tactics",
+      "type": "ability",
+      "_id": "KOsnxnQvSid3ZahG",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "190",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "maniple-tactics",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Up to 3 kobolds make a free strike, swaps positions with an adjacent kobold, and then that kobold makes a free strike.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.KOsnxnQvSid3ZahG",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761174764492,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!jCFtKlDWA1VRIanb.KOsnxnQvSid3ZahG"
     }
   ],
   "effects": [],
