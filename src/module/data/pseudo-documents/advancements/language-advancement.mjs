@@ -36,7 +36,7 @@ export default class LanguageAdvancement extends TraitAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async getSheetContext() {
+  async getSheetContext(options) {
     const ctx = {};
 
     ctx.languageChoices = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));

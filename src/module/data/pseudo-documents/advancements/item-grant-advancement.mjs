@@ -185,7 +185,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async getSheetContext() {
+  async getSheetContext(options) {
     const ctx = {};
 
     ctx.itemPool = [];

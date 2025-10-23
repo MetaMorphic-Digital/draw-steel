@@ -133,9 +133,10 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /**
    * Type-specific context prep for this Advancement.
    * Called by AdvancementSheet##prepareDetailsContext.
+   * @param {object} options The rendering options.
    * @returns {Promise<object>} Additional context information.
    */
-  async getSheetContext() {
+  async getSheetContext(options) {
     return {};
   }
 }

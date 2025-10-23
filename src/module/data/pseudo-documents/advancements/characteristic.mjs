@@ -138,7 +138,7 @@ export default class CharacteristicAdvancement extends BaseAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async getSheetContext() {
+  async getSheetContext(options) {
     const ctx = {};
 
     ctx.characteristics = Object.entries(ds.CONFIG.characteristics).map(([key, { label }]) => ({

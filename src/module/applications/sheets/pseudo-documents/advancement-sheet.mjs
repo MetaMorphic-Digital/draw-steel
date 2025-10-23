@@ -48,7 +48,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
       case "identity":
         return this.#prepareIdentityContext(context);
       case "details":
-        return this.#prepareDetailsContext(context);
+        return this.#prepareDetailsContext(context, options);
     }
 
     return context;
@@ -72,9 +72,9 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @param {object} context    Rendering context.
    * @returns {Promise<object>}     Mutated rendering context.
    */
-  async #prepareDetailsContext(context) {
+  async #prepareDetailsContext(context, options) {
 
-    context.ctx = await this.pseudoDocument.getSheetContext();
+    context.ctx = await this.pseudoDocument.getSheetContext(options);
 
     return context;
   }

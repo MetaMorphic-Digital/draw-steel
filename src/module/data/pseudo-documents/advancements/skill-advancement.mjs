@@ -39,7 +39,7 @@ export default class SkillAdvancement extends TraitAdvancement {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async getSheetContext() {
+  async getSheetContext(options) {
     const ctx = {};
 
     ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
