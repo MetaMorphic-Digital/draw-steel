@@ -1,5 +1,5 @@
 {
-  "folder": "ScAs0Dx7zp2fbcYH",
+  "folder": "ZaQazDd1CJFiw3wK",
   "name": "Censor",
   "type": "class",
   "_id": "YuuUbBMSvzN5IPLv",
@@ -569,6 +569,61 @@
         },
         "_id": "RjGXXbgxodBdCER7",
         "description": "<p>Your censor order grants you a feature</p>"
+      },
+      "SuC5lR7aOXOH1XmZ": {
+        "name": "Implement of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "SuC5lR7aOXOH1XmZ",
+        "description": "<p>Each time you finish a respite, you can choose one hero’s weapon, including your own, to channel supernatural power as an implement of your god’s wrath.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Quo7tJUPXumwt0m5"
+          }
+        ]
+      },
+      "FnURQa5japiJN03y": {
+        "name": "Focused Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "FnURQa5japiJN03y",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.TTfm9nJ8JOf1Bi0a"
+          }
+        ],
+        "description": "<p>When you gain wrath at the start of each of your turns during combat, you gain 3 wrath instead of 2.</p>"
+      },
+      "qAwusw0yeIy8dIqf": {
+        "name": "11 Wrath",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "qAwusw0yeIy8dIqf",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 wrath to use.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ZXBZTU8llhEcR41n"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.aMf4Ihdjb8I3IoaU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qp8xUSGJbcPw5EpL"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.SmfA5LuygLrDri7x"
+          }
+        ],
+        "chooseN": 1
       }
     },
     "level": 0,
@@ -589,7 +644,7 @@
     "recoveries": 12
   },
   "effects": [],
-  "sort": 0,
+  "sort": 200000,
   "ownership": {
     "default": 0
   },

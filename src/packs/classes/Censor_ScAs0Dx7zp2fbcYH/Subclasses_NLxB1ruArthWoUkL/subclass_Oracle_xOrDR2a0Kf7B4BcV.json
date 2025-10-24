@@ -79,10 +79,11 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.jOtZZS98VIez8DgX"
           }
-        ]
+        ],
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>"
       },
       "12GAeAvmnWJGf8Qu": {
-        "name": "5th-Level Order Feature",
+        "name": "5th-Level Oracle Feature",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -93,13 +94,48 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.qX5y4Qdj0kUXSQAY"
           }
+        ],
+        "description": "<p>Your censor order grants you a feature</p>"
+      },
+      "Q70XJLd5VB8e8KiK": {
+        "name": "6th-Level Oracle Ability",
+        "img": "icons/magic/perception/third-eye-blue-red.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Q70XJLd5VB8e8KiK",
+        "chooseN": 1,
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.lBe00PCCLjH9m5ei"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.SZrWJwweYmUtLkBX"
+          }
+        ]
+      },
+      "RnDQWFTHhRwvPQdz": {
+        "name": "8th-Level Oracle Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "RnDQWFTHhRwvPQdz",
+        "description": "<p>Your censor order grants you a feature</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.LqqjHW2BnHST6N7E"
+          }
         ]
       }
     },
     "classLink": "censor"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 400000,
   "ownership": {
     "default": 0
   },
