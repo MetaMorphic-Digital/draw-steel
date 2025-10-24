@@ -73,7 +73,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.zLKvoysqHElI2q54"
           }
-        ]
+        ],
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p>"
       },
       "8cT3ShBsHYaf5C4n": {
         "name": "Doctrine Triggered Action",
@@ -88,6 +89,73 @@
             "uuid": "Compendium.draw-steel.abilities.Item.44Pkw50vZeqyqtiQ"
           }
         ]
+      },
+      "39ku7Z4RyJMe4Quj": {
+        "name": "5th-Level Mastermind Features",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "39ku7Z4RyJMe4Quj",
+        "description": "<p>Your tactical doctrine grants you two features, as shown on the 5th-Level Doctrine Features table.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.V6LJeqG5LquNAMIm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.08RXnG11GVxyHlqn"
+          }
+        ]
+      },
+      "KnttyDy3U0vW7QoG": {
+        "name": "6th-Level Mastermind Ability",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "KnttyDy3U0vW7QoG",
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qgJbhDyT1ObmcgMG"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.s49rgUFkQJnTNkMK"
+          }
+        ]
+      },
+      "kfaWSqRdzDOUIjtX": {
+        "name": "8th-Level Mastermind Feature",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "kfaWSqRdzDOUIjtX",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.GDV4BC7WS5IG2kUL"
+          }
+        ],
+        "description": "<p>Your tactical doctrine grants you a feature</p>"
+      },
+      "nX6YQdPA5V6IEC0g": {
+        "name": "7th-Level Mastermind Feature",
+        "img": "icons/commodities/biological/organ-brain-pink-purple.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "nX6YQdPA5V6IEC0g",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aL9BwsLaProtTbFa"
+          }
+        ],
+        "description": "<p>Your tactical doctrine grants you a feature</p>"
       }
     },
     "classLink": "tactician"
@@ -102,9 +170,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1752598050570,
     "modifiedTime": null,
     "lastModifiedBy": null
