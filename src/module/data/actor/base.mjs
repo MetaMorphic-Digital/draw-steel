@@ -64,7 +64,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
-    schema.conditionImmunities = new fields.SetField(setOptions());
+    schema.conditions = new fields.SchemaField({
+      immunities: new fields.SetField(setOptions()),
+      ignored: new fields.SetField(setOptions()),
+    });
 
     return schema;
   }
@@ -136,8 +139,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
-
-    this.conditionImmunities = new Set([]);
   }
 
   /* -------------------------------------------------- */
@@ -146,9 +147,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
-    // Apply condition immunities first, in case any effects impact later calculations
-    // Rebuild a derived list of statuses after considering immunities
-    this.parent.statuses = new Set(this.parent.statuses.values().filter((effectId) => !this.conditionImmunities.has(effectId)));
+    // Account for ignored first, in case any changes impact later calculations
+    // Remove ignored conditions from statuses. While immunities "cure" an actor of a status,
+    // ignored conditions are removed from statuses in this phase rather than hard removed
+    this.conditions.ignored.forEach(ignored => this.parent.statuses.delete(ignored));
 
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
