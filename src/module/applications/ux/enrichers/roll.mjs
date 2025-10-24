@@ -242,14 +242,20 @@ async function rollDamageHeal(link, event) {
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
 function enrichGrant(parsedConfig, label, options) {
-  const linkConfig = { type: "grant", formula: null };
+  const linkConfig = { type: "grant", formula: null, grantType: "heroic" };
 
-  // Parse the formula from configuration
+  // Parse the formula and grant type from configuration
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
+    c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
-      formulaParts.push(value);
+      const normalizedValue = value.toLowerCase();
+      if (["heroic", "surge"].includes(normalizedValue)) {
+        c.type.push(normalizedValue);
+      } else {
+        formulaParts.push(value);
+      }
     }
     c.formula = DSRoll.replaceFormulaData(
       formulaParts.join(" "),
@@ -257,6 +263,7 @@ function enrichGrant(parsedConfig, label, options) {
     );
     if (c.formula) {
       linkConfig.formula = c.formula;
+      linkConfig.grantType = c.type[0] ?? "heroic"; // Default to heroic if no type specified
       break; // Only use first formula
     }
   }
@@ -270,8 +277,13 @@ function enrichGrant(parsedConfig, label, options) {
     );
   }
 
+  const resourceType = linkConfig.grantType === "surge" 
+    ? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label")
+    : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+
   const localizationData = {
     formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
+    type: resourceType,
   };
 
   const link = document.createElement("a");
@@ -290,7 +302,7 @@ function enrichGrant(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollGrant(link, event) {
-  const { formula } = link.dataset;
+  const { formula, grantType = "heroic" } = link.dataset;
 
   if (!formula) throw new Error("Grant link must have a formula");
 
@@ -306,10 +318,15 @@ async function rollGrant(link, event) {
   const roll = new DSRoll(formula);
   await roll.evaluate();
 
+  // Determine the resource label based on grant type
+  const resourceLabel = grantType === "surge"
+    ? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label")
+    : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Grant.MessageTitle"),
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Grant.MessageTitle", { type: resourceLabel }),
     flags: { core: { canPopout: true } },
   });
 
@@ -317,7 +334,11 @@ async function rollGrant(link, event) {
   for (const actor of actors) {
     // Only grant to heroes (actors with heroic resources)
     if (actor.type === "hero") {
-      await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+      if (grantType === "surge") {
+        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
+      } else {
+        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+      }
     }
   }
 }
