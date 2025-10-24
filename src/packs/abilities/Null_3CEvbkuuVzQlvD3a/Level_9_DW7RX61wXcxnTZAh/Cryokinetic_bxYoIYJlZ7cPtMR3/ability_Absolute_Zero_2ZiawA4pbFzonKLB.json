@@ -1,30 +1,32 @@
 {
-  "folder": "MXimo7qA1zVVQmZB",
-  "name": "Kinetic Shield",
+  "folder": "bxYoIYJlZ7cPtMR3",
+  "name": "Absolute Zero",
   "type": "ability",
-  "_id": "AQK60y5FMgiLwPeH",
-  "img": "icons/magic/defensive/shield-barrier-blue.webp",
+  "_id": "2ZiawA4pbFzonKLB",
+  "img": "icons/magic/water/orb-ice-glow.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "152",
+      "page": "158",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "kinetic-shield",
-    "story": "You manifest a force barrier that absorbs incoming kinetic energy.",
+    "_dsid": "absolute-zero",
+    "story": "You become the coldest thing in the timescape.",
     "keywords": [
       "psionic"
     ],
     "type": "maneuver",
     "category": "heroic",
-    "resource": 5,
+    "resource": 11,
     "trigger": "",
     "distance": {
       "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "self"
+      "type": "self",
+      "custom": "",
+      "value": null
     },
     "power": {
       "roll": {
@@ -34,20 +36,20 @@
         ]
       },
       "effects": {
-        "CDJI6TH7I43rbSf8": {
-          "name": "Temp Stamina",
+        "JN4G0MlWrLXq9akZ": {
+          "name": "",
           "img": null,
           "type": "other",
-          "_id": "CDJI6TH7I43rbSf8",
+          "_id": "JN4G0MlWrLXq9akZ",
           "other": {
             "tier1": {
-              "display": "You gain 10 temporary Stamina"
+              "display": "You gain 20 temporary Stamina"
             },
             "tier2": {
-              "display": "You gain 15 temporary Stamina"
+              "display": "You gain 30 temporary Stamina"
             },
             "tier3": {
-              "display": "You gain 20 temporary Stamina"
+              "display": "You gain 40 temporary Stamina"
             }
           }
         }
@@ -55,7 +57,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p><p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p>"
+      "after": "<p>Until the end of the encounter or until you are dead, you become an avatar of uttermost cold. You gain immunity to all damage equal to the cold damage immunity granted by your Entropic Adaptability trait, you ignore the negative effects of dying, and you have a +2 bonus to potencies.</p><p>[[/heal 20 temp]] [[/heal 30 temp]] [[/heal 40 temp]]</p>"
     },
     "spend": {
       "text": "",
@@ -75,9 +77,9 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1756087730304,
+    "createdTime": 1761332320679,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!AQK60y5FMgiLwPeH"
+  "_key": "!items!2ZiawA4pbFzonKLB"
 }
