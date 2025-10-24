@@ -4,7 +4,7 @@ import DrawSteelItem from "../../documents/item.mjs";
 import ModelCollection from "../../utils/model-collection.mjs";
 import SourceModel from "../models/source.mjs";
 import { AppliedPowerRollEffect, DamagePowerRollEffect, ForcedMovementPowerRollEffect, OtherPowerRollEffect } from "../pseudo-documents/power-roll-effects/_module.mjs";
-import { ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
+import { CharacteristicAdvancement, ItemGrantAdvancement, LanguageAdvancement, SkillAdvancement } from "../pseudo-documents/advancements/_module.mjs";
 
 export type ItemMetaData = Readonly<SubtypeMetadata & {
   /** Actor types that this item cannot be placed on. */
@@ -34,6 +34,7 @@ declare module "./ability.mjs" {
 
   export default interface AbilityModel {
     description: never;
+    class: string;
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
     category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";
@@ -84,7 +85,7 @@ declare module "./ability.mjs" {
 }
 
 declare module "./advancement.mjs" {
-  type Advancement = ItemGrantAdvancement | LanguageAdvancement | SkillAdvancement;
+  type Advancement = CharacteristicAdvancement | ItemGrantAdvancement | LanguageAdvancement | SkillAdvancement;
 
   export default interface AdvancementModel {
     advancements: ModelCollection<Advancement>;
@@ -93,6 +94,12 @@ declare module "./advancement.mjs" {
 
 declare module "./ancestry.mjs" {
   // export default interface AncestryModel { }
+}
+
+declare module "./ancestryTrait.mjs" {
+  export default interface AncestryTraitModel {
+    points: number;
+  }
 }
 
 declare module "./career.mjs" {
@@ -150,15 +157,10 @@ declare module "./treasure.mjs" {
 
 declare module "./feature.mjs" {
   export default interface FeatureModel {
-    type: {
-      value: string;
-      subtype: string;
-    }
     prerequisites: {
       value: string;
+      dsid: string;
     }
-    story: string;
-    points: number;
   }
 }
 
@@ -213,5 +215,12 @@ declare module "./project.mjs" {
 declare module "./subclass.mjs" {
   export default interface SubclassModel {
     classLink: string;
+  }
+}
+
+declare module "./title.mjs" {
+  export default interface TitleModel {
+    echelon: number;
+    story: string;
   }
 }

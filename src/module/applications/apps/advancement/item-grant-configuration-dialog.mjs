@@ -198,7 +198,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
         points: context.points ? i.system.points : false,
-        disabled: !chosen && (value > (this.advancement.chooseN - totalChosen)),
+        disabled: this.#fulfillsRequirements(i) && !chosen && (value > (this.advancement.chooseN - totalChosen)),
       };
     });
 
@@ -217,9 +217,28 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       if (checkbox.checked) this.chosen.add(checkbox.value);
       else this.chosen.delete(checkbox.value);
 
-      this.#refreshDisabled(ev.target);
+      this.#refreshDisabled();
     });
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Checks if an item fulfills all of its prerequisites.
+   * @param {DrawSteelItem} item
+   * @returns
+   */
+  #fulfillsRequirements(item) {
+    console.log(item, this.node);
+    if ((item.type === "ability") && item.system.class) {
+      // Check DSID
+    } else if (item.system.prerequisites) {
+      // Check DSID for each prerequisites.dsid
+    }
+    return true;
+  }
+
+  /* -------------------------------------------------- */
 
   /**
    * Refresh the disabled state of checkboxes and the submit button in this app.
@@ -235,12 +254,13 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
     const totalChosen = this.totalChosen;
 
     for (const input of checkboxes) {
+      const item = this.items.find(i => i.uuid === input.value);
       if (this.advancement.pointBuy) {
         // if unchosen, potential value is compared to remaining points
-        const value = !this.chosen.has(input.value) ? this.items.find(i => i.uuid === input.value).system.points : 0;
-        input.disabled = value > (this.advancement.chooseN - totalChosen);
+        const value = !this.chosen.has(input.value) ? item.system.points : 0;
+        input.disabled = this.#fulfillsRequirements(item) && (value > (this.advancement.chooseN - totalChosen));
       }
-      else input.disabled = !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
+      else input.disabled = this.#fulfillsRequirements(item) && !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
     }
     this.element.querySelector("button[type='submit']").disabled = totalChosen !== this.advancement.chooseN;
   }
