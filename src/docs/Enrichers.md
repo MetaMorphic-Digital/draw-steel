@@ -39,26 +39,26 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 The `[[/grant]]` enricher allows you to grant heroic resources (like Fury, Focus, Shadow, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
 
 **Syntax:**
-- `[[/grant formula]]` - Grants heroic resources (default)
-- `[[/grant formula heroic]]` - Explicitly grants heroic resources
-- `[[/grant formula surge]]` - Grants surges instead
+- `[[/grant formula heroic]]` - Grants heroic resources
+- `[[/grant formula surge]]` - Grants surges
+
+**Note:** You must specify either `heroic` or `surge` as the grant type.
 
 **Examples:**
 
-- [&ZeroWidthSpace;[/grant 2]]: Grant 2 heroic resources (default).
-- [&ZeroWidthSpace;[/grant 2 heroic]]: Grant 2 heroic resources (explicit).
+- [&ZeroWidthSpace;[/grant 2 heroic]]: Grant 2 heroic resources.
 - [&ZeroWidthSpace;[/grant 1 surge]]: Grant 1 surge.
-- [&ZeroWidthSpace;[/grant 1d6]]: Grant a random amount of heroic resources based on a roll.
+- [&ZeroWidthSpace;[/grant 1d6 heroic]]: Grant a random amount of heroic resources based on a roll.
 - [&ZeroWidthSpace;[/grant 1d6 surge]]: Grant a random amount of surges based on a roll.
-- [&ZeroWidthSpace;[/grant @level]]: Grant heroic resources equal to the owner's level.
+- [&ZeroWidthSpace;[/grant @level heroic]]: Grant heroic resources equal to the owner's level.
 - [&ZeroWidthSpace;[/grant @level surge]]: Grant surges equal to the owner's level.
-- [&ZeroWidthSpace;[/grant 3]]{Gain Focus}: Brackets will replace the default text for the grant.
+- [&ZeroWidthSpace;[/grant 3 heroic]]{Gain Focus}: Brackets will replace the default text for the grant.
 
 **Notes:**
 - Grant enrichers only work on hero actors (characters with heroic resources).
 - The roll is made once and the total is applied to all selected tokens.
 - Non-hero actors will be skipped when granting resources.
-- Valid grant types are "heroic" (default) and "surge".
+- You must specify the grant type ("heroic" or "surge") - there is no default.
 
 ## Apply Effect
 

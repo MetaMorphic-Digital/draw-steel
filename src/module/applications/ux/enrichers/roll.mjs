@@ -242,7 +242,7 @@ async function rollDamageHeal(link, event) {
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
 function enrichGrant(parsedConfig, label, options) {
-  const linkConfig = { type: "grant", formula: null, grantType: "heroic" };
+  const linkConfig = { type: "grant", formula: null, grantType: null };
 
   // Parse the formula and grant type from configuration
   for (const c of parsedConfig) {
@@ -263,12 +263,12 @@ function enrichGrant(parsedConfig, label, options) {
     );
     if (c.formula) {
       linkConfig.formula = c.formula;
-      linkConfig.grantType = c.type[0] ?? "heroic"; // Default to heroic if no type specified
+      linkConfig.grantType = c.type[0]; // Require type to be specified
       break; // Only use first formula
     }
   }
 
-  if (!linkConfig.formula) return null;
+  if (!linkConfig.formula || !linkConfig.grantType) return null;
 
   if (label) {
     return createLink(label,
@@ -302,9 +302,10 @@ function enrichGrant(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollGrant(link, event) {
-  const { formula, grantType = "heroic" } = link.dataset;
+  const { formula, grantType } = link.dataset;
 
   if (!formula) throw new Error("Grant link must have a formula");
+  if (!grantType) throw new Error("Grant link must have a grant type");
 
   // Get all selected tokens
   const actors = ds.utils.tokensToActors();
