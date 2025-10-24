@@ -1,0 +1,105 @@
+{
+  "folder": "d0FHIeSGxi6trOB7",
+  "name": "Congregation",
+  "type": "ability",
+  "_id": "rgIqCvjd30zhgynw",
+  "img": "icons/magic/life/heart-cross-strong-flame-purple-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "89",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "congregation",
+    "story": "You focus your allies’ wrath on a chosen foe.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "t0ZWjOf2W1794m2d": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "t0ZWjOf2W1794m2d",
+          "damage": {
+            "tier1": {
+              "value": "8 + @chr"
+            },
+            "tier2": {
+              "value": "12 + @chr"
+            },
+            "tier3": {
+              "value": "16 + @chr"
+            }
+          }
+        },
+        "AH6miRQQEMg0MHSP": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "AH6miRQQEMg0MHSP",
+          "other": {
+            "tier1": {
+              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability against the target"
+            },
+            "tier2": {
+              "display": "as a free triggered action, one ally within 10 squares of the target can use a strike signature ability that gains an edge against the target"
+            },
+            "tier3": {
+              "display": "as a free triggered action, two allies within 10 squares of the target can each use a strike signature ability that gains an edge against the target"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Each ally can shift up to 2 squares and gains 2 surges before making the strike.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761257994086,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!rgIqCvjd30zhgynw"
+}

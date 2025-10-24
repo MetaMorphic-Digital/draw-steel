@@ -1,0 +1,67 @@
+{
+  "folder": "JlhNP1mHFJdAfmUe",
+  "name": "Trinity of Trickery",
+  "type": "ability",
+  "_id": "JCuoxyczNjNFdfom",
+  "img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "90",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "trinity-of-trickery",
+    "story": "Hey! I’m over here. No, here, numbskull.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You create two illusory duplicates of the target, which appear anywhere within distance. These duplicates last until the end of the encounter. On each of their turns, the target can move each duplicate up to their speed. If the target is targeted by an ability, they can use a free triggered action to switch places with a duplicate within their line of effect, making the duplicate the target of the ability instead. When either duplicate takes damage, it is destroyed.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761262048555,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!JCuoxyczNjNFdfom"
+}

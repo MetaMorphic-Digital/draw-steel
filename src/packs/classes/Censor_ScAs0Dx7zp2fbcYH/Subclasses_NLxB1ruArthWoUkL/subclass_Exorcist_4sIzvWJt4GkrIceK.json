@@ -71,7 +71,7 @@
           "level": 2
         },
         "_id": "RxfuFaih3NrwfJui",
-        "description": "<p>Choose one of the following abilities.</p>",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.QUChD9H4jFI0N5fi"
@@ -94,13 +94,48 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.2ItIoi4FNQ8N0fng"
           }
+        ],
+        "description": "<p>Your censor order grants you a feature</p>"
+      },
+      "lQLBy4LAh3liV4mF": {
+        "name": "6th-Level Exorcist Ability",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "lQLBy4LAh3liV4mF",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cdaIWsWs1nglDxGC"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.27WKQfxubjt51vvt"
+          }
+        ],
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>"
+      },
+      "7wwPxvhpSz8uQnVg": {
+        "name": "8th-Level Exorcist Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "7wwPxvhpSz8uQnVg",
+        "description": "<p>Your censor order grants you a feature</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.zgPMtWcTZnsgA6GC"
+          }
         ]
       }
     },
     "classLink": "censor"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },

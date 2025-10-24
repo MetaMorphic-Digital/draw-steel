@@ -1,0 +1,68 @@
+{
+  "folder": "GhJ8c1WpjHcQNmkS",
+  "name": "Moonlight Sonata",
+  "type": "ability",
+  "_id": "jSGKgBo1wNRZcuSX",
+  "img": "icons/sundries/flags/banner-standard-moon.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "213",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "moonlight-sonata",
+    "story": "Music pours out of your heart, filling the area with the utmost delica- cy and without damper.",
+    "keywords": [
+      "area",
+      "magic",
+      "performance"
+    ],
+    "type": "none",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>While this performance is active, each target who is dead can choose to continue taking turns after death. On each of their turns, a target can move and use either a main action or a maneuver, but can’t spend Recoveries or use triggered actions. At the end of the encounter, each target who chose to take turns this way turns to dust and blows away.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761078655021,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!jSGKgBo1wNRZcuSX"
+}

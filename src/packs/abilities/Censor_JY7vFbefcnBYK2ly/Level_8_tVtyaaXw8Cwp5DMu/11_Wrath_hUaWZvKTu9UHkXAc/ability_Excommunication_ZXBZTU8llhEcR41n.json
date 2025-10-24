@@ -1,0 +1,123 @@
+{
+  "folder": "hUaWZvKTu9UHkXAc",
+  "name": "Excommunication",
+  "type": "ability",
+  "_id": "ZXBZTU8llhEcR41n",
+  "img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "91",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "excommunication",
+    "story": "You curse your foe to become a bane to their allies.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "c0BLVNolypLXEo3I": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "c0BLVNolypLXEo3I",
+          "damage": {
+            "tier1": {
+              "value": "9 + @chr"
+            },
+            "tier2": {
+              "value": "13 + @chr"
+            },
+            "tier3": {
+              "value": "18 + @chr"
+            }
+          }
+        },
+        "8ZoTAtxZ3CQXWLjJ": {
+          "name": "Weakened",
+          "img": null,
+          "type": "applied",
+          "_id": "8ZoTAtxZ3CQXWLjJ",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, weakened (save ends)",
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "weakened": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "weakened": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>At the end of each of your turns, a target weakened this way deals holy damage equal to twice your Presence score to each enemy within 2 squares of them. Additionally, a target weakened this way can’t be targeted by their allies’ abilities.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761265081858,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ZXBZTU8llhEcR41n"
+}

@@ -629,67 +629,6 @@
       "_key": "!actors.items!NNKEcoB39e1P5Rrq.xB9Vd4t5keqs1JDR"
     },
     {
-      "name": "Check Out Our Loot",
-      "type": "ability",
-      "system": {
-        "type": "none",
-        "source": {
-          "book": "Monsters",
-          "page": "232",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "check-out-our-loot",
-        "story": "",
-        "keywords": [],
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A rival's turn starts",
-        "distance": {
-          "type": "self"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "self"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an Agility test. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>[[/damage 11 sonic poison fire]] damage; the condition affects the target (save ends)</p></td></tr><tr><td><p>12-16</p></td><td><p>[[/damage 8 sonic poison fire]]  damage; the condition affects the target (EoT)</p></td></tr><tr><td><p>17+</p></td><td><p>[[/damage 5 sonic poison fire]]  damage</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "UarPvMGwBUArRMi9",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "IUueWB8qKCPanWCy",
-      "sort": 300000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!NNKEcoB39e1P5Rrq.UarPvMGwBUArRMi9"
-    },
-    {
       "name": "Coordinated Takedown",
       "type": "ability",
       "system": {
@@ -871,6 +810,70 @@
         "modifiedTime": null
       },
       "_key": "!actors.items!NNKEcoB39e1P5Rrq.9wDgHxxo5PamhM3w"
+    },
+    {
+      "name": "Check Out Our Loot",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "232",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "check-out-our-loot",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A rival's turn starts",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One rival pulls out a magic consumable and hurls it, targeting a 5 × 1 line within 1 square of them or a 3 cube within 10 squares of them. Each enemy in the area makes an <strong>Agility test</strong>. The rival chooses a damage type and a condition for the outcome of the test from one of the following pairs: sonic damage and dazed, poison damage and weakened, or fire damage and frightened.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 11 sonic poison fire]] damage; the condition affects the target (save ends)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 8 sonic poison fire]] damage; the condition affects the target (EoT)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 sonic poison fire]] damage</p></dd></dl><p>[[/apply dazed turn]]</p><p>[[/apply weakened turn]]</p><p>[[/apply frightened turn]]</p><p>[[/apply dazed save]]</p><p>[[/apply weakened save]]</p><p>[[/apply frightened save]]</p><p></p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "UarPvMGwBUArRMi9",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.UarPvMGwBUArRMi9",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761243373642,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 325000,
+      "_key": "!actors.items!NNKEcoB39e1P5Rrq.UarPvMGwBUArRMi9"
     }
   ],
   "folder": "SFuvViqB8j9ZtHt6",

@@ -32,7 +32,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 4]] damage; the target falls; prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; the target falls</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>The target can shift into the nearest unoccupied space outside the pit.</p></td></tr></tbody></table>",
+      "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls; [[/apply prone]] and [[/apply 6tfLepwkoZo1d24S turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the pit.</p></dd></dl>",
       "after": ""
     },
     "spend": {
@@ -40,7 +40,50 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Can't Stand",
+      "img": "icons/skills/movement/figure-running-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You cannot stand up.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761240045542,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "6tfLepwkoZo1d24S",
+      "sort": 0,
+      "_key": "!items.effects!OMNyXoF5k0h6ffBa.6tfLepwkoZo1d24S"
+    }
+  ],
   "sort": 300000,
   "ownership": {
     "default": 0
@@ -50,9 +93,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1756955375296,
     "modifiedTime": null,
     "lastModifiedBy": null

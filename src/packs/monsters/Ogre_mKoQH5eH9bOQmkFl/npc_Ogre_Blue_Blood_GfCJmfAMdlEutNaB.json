@@ -192,7 +192,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -310,9 +311,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -321,67 +322,6 @@
         "default": 0
       },
       "_key": "!actors.items!GfCJmfAMdlEutNaB.q7zLz1govSv10xvD"
-    },
-    {
-      "folder": "KO4AMPLGcdxEaE0R",
-      "name": "Shockwave",
-      "type": "ability",
-      "_id": "BfYM0KbWwQsW3CrX",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "209",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "shockwave",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": -100000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!GfCJmfAMdlEutNaB.BfYM0KbWwQsW3CrX"
     },
     {
       "folder": "KO4AMPLGcdxEaE0R",
@@ -614,6 +554,70 @@
         "modifiedTime": null
       },
       "_key": "!actors.items!GfCJmfAMdlEutNaB.idA5w30OnHM2AQpF"
+    },
+    {
+      "name": "Shockwave",
+      "type": "ability",
+      "_id": "BfYM0KbWwQsW3CrX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "shockwave",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5]]{5 damage}; vertical push 3</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; vertical push 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 1</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BfYM0KbWwQsW3CrX",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761239817292,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": -100000,
+      "_key": "!actors.items!GfCJmfAMdlEutNaB.BfYM0KbWwQsW3CrX"
     }
   ],
   "folder": "mKoQH5eH9bOQmkFl",

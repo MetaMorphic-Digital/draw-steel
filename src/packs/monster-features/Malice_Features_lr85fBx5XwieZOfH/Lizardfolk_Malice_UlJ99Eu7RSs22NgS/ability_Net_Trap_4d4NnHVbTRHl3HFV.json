@@ -38,7 +38,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p><table><tbody><tr><td data-colwidth=\"107\"><p>11 or less</p></td><td><p>Restrained (save ends).</p></td></tr><tr><td data-colwidth=\"107\"><p>12-16</p></td><td><p>Restrained (EoT).</p></td></tr><tr><td data-colwidth=\"107\"><p>17+</p></td><td><p>No Effect.</p></td></tr></tbody></table>",
+      "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Restrained save]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Restrained turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No Effect.</p></dd></dl>",
       "after": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>"
     },
     "spend": {
@@ -56,9 +56,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757291229165,
     "modifiedTime": null,
     "lastModifiedBy": null
