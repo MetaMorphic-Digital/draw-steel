@@ -34,6 +34,22 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
 - [&ZeroWidthSpace;[/heal @recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
 
+## Grant Heroic Resource
+
+The `[[/grant]]` enricher allows you to grant heroic resources (like Fury, Focus, Shadow, etc.) to selected hero actors. This is useful for abilities or effects that provide resources to party members.
+
+**Examples:**
+
+- [&ZeroWidthSpace;[/grant 2]]: Grant 2 heroic resources.
+- [&ZeroWidthSpace;[/grant 1d6]]: Grant a random amount of heroic resources based on a roll.
+- [&ZeroWidthSpace;[/grant @level]]: Grant heroic resources equal to the owner's level.
+- [&ZeroWidthSpace;[/grant 3]]{Gain Focus}: Brackets will replace the default text for the grant.
+
+**Notes:**
+- Grant enrichers only work on hero actors (characters with heroic resources).
+- The roll is made once and the total is applied to all selected tokens.
+- Non-hero actors will be skipped when granting resources.
+
 ## Apply Effect
 
 The `[[/apply]]` enricher allows you to link status effects, either from an item or the canonical status effects. This can be especially useful for items like the Censor's Judgment that have an effect but no power roll.

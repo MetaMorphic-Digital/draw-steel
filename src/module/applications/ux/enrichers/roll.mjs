@@ -22,7 +22,7 @@ export const id = "ds.roll";
 /**
  * Valid roll types.
  */
-const rollTypes = ["damage", "heal", "healing"];
+const rollTypes = ["damage", "heal", "healing", "grant"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -44,6 +44,7 @@ export function enricher(match, options) {
     case "heal":
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
+    case "grant": return enrichGrant(parsedConfig, label, options);
   }
 }
 
@@ -60,6 +61,8 @@ export async function onRender(element) {
     switch (link.dataset.type) {
       case "damageHeal":
         return void rollDamageHeal(link, ev);
+      case "grant":
+        return void rollGrant(link, ev);
     }
   });
 }
@@ -223,4 +226,98 @@ async function rollDamageHeal(link, event) {
     flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
     flags: { core: { canPopout: true } },
   });
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Grant Enricher.
+ */
+
+/**
+ * Enrich a grant link for heroic resources.
+ * @param {ParsedConfig[]} parsedConfig      Configuration data.
+ * @param {string} [label]             Optional label to replace default text.
+ * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
+ * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
+ */
+function enrichGrant(parsedConfig, label, options) {
+  const linkConfig = { type: "grant", formula: null };
+
+  // Parse the formula from configuration
+  for (const c of parsedConfig) {
+    const formulaParts = [];
+    if (c.formula) formulaParts.push(c.formula);
+    for (const value of c.values) {
+      formulaParts.push(value);
+    }
+    c.formula = DSRoll.replaceFormulaData(
+      formulaParts.join(" "),
+      options.rollData ?? options.relativeTo?.getRollData?.() ?? {},
+    );
+    if (c.formula) {
+      linkConfig.formula = c.formula;
+      break; // Only use first formula
+    }
+  }
+
+  if (!linkConfig.formula) return null;
+
+  if (label) {
+    return createLink(label,
+      linkConfig,
+      { classes: "roll-link", icon: "fa-dice-d10" },
+    );
+  }
+
+  const localizationData = {
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
+  };
+
+  const link = document.createElement("a");
+  link.className = "roll-link";
+  addDataset(link, linkConfig);
+  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Grant.FormatString", localizationData);
+
+  return link;
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Helper function that constructs the grant roll for heroic resources.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function rollGrant(link, event) {
+  const { formula } = link.dataset;
+
+  if (!formula) throw new Error("Grant link must have a formula");
+
+  // Get all selected tokens
+  const actors = ds.utils.tokensToActors();
+  
+  if (!actors.size) {
+    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Grant.NoSelection"));
+    return;
+  }
+
+  // Roll the formula
+  const roll = new DSRoll(formula);
+  await roll.evaluate();
+
+  // Create the chat message
+  await DrawSteelChatMessage.create({
+    rolls: [roll],
+    flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Grant.MessageTitle"),
+    flags: { core: { canPopout: true } },
+  });
+
+  // Apply the grant to each selected token's actor
+  for (const actor of actors) {
+    // Only grant to heroes (actors with heroic resources)
+    if (actor.type === "hero") {
+      await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+    }
+  }
 }
