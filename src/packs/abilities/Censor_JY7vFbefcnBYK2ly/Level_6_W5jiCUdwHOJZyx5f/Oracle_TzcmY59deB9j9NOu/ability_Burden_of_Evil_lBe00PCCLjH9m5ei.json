@@ -1,0 +1,132 @@
+{
+  "folder": "TzcmY59deB9j9NOu",
+  "name": "Burden of Evil",
+  "type": "ability",
+  "_id": "lBe00PCCLjH9m5ei",
+  "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "89",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "burden-of-evil",
+    "story": "You reveal a vision of your enemies’ fate that causes them to scramble as it staggers them.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": 3
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "in5r1frmUWqVBLqF": {
+          "name": "",
+          "img": null,
+          "type": "forced",
+          "_id": "in5r1frmUWqVBLqF",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "3"
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "5"
+            },
+            "tier3": {
+              "movement": [
+                "slide"
+              ],
+              "distance": "7"
+            }
+          }
+        },
+        "z3IlAAPNhzEjYOjN": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "z3IlAAPNhzEjYOjN",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "display": "{{potency}}, dazed (save ends)",
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761257603142,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!lBe00PCCLjH9m5ei"
+}
