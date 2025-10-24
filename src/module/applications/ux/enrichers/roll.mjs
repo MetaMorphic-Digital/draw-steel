@@ -273,7 +273,7 @@ function enrichGrant(parsedConfig, label, options) {
   if (label) {
     return createLink(label,
       linkConfig,
-      { classes: "roll-link", icon: "fa-dice-d10" },
+      { classes: "roll-link", icon: "fa-bolt" },
     );
   }
 
@@ -282,7 +282,7 @@ function enrichGrant(parsedConfig, label, options) {
     : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
   const localizationData = {
-    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
     type: resourceType,
   };
 
