@@ -118,7 +118,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
   if (label) {
     return createLink(label,
       { ...linkConfig, formulas, damageTypes },
-      { classes: "roll-link-group roll-link", icon: "fa-dice-d10" },
+      { classes: "roll-link-group roll-link", icon: "fa-bolt" },
     );
   }
 
@@ -282,7 +282,7 @@ function enrichGrant(parsedConfig, label, options) {
     : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
   const localizationData = {
-    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
     type: resourceType,
   };
 
@@ -335,10 +335,15 @@ async function rollGrant(link, event) {
   for (const actor of actors) {
     // Only grant to heroes (actors with heroic resources)
     if (actor.type === "hero") {
-      if (grantType === "surge") {
-        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
-      } else {
-        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+      switch (grantType) {
+        case "surge":
+          await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
+          break;
+        case "heroic":
+          await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+          break;
+        default:
+          return;
       }
     }
   }
