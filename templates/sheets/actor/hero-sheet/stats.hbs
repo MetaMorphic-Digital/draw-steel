@@ -4,7 +4,7 @@
   <fieldset class="resources flexrow">
     <legend>{{localize "DRAW_STEEL.SHEET.Resources"}}</legend>
     <div class="resource stamina flexcol">
-      <label class="resource-label">
+      <div class="resource-label">
         {{#if editable}}
         <button
           type="button"
@@ -18,7 +18,7 @@
         {{else}}
         <span>{{systemFields.stamina.label}}</span>
         {{/if}}
-      </label>
+      </div>
       <div class="form-group resource-content">
         <div class="resource-temporary">
           {{formGroup
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="resource recoveries flexcol">
-      <label class="resource-label">
+      <div class="resource-label">
         {{#if editable}}
         <button
           type="button"
@@ -63,7 +63,7 @@
         {{else}}
         <span>{{systemFields.recoveries.label}}</span>
         {{/if}}
-      </label>
+      </div>
       <div class="form-group resource-content">
         <div class="resource-current">
           {{formGroup systemFields.recoveries.fields.value value=system.recoveries.value dataset=datasets.notSource classes="stacked"}}
