@@ -25,15 +25,15 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining non-imbue projects.
-  - Censor levels 4–5 features and abilities.
+  - Censor levels 4–8 features and abilities.
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
   - Null levels 4–7 features and abilities.
   - Shadow levels 4–10 features and abilities.
-  - Tactician levels 4–5 features and abilities.
-  - Talent levels 4–7 features and abilities.
-  - Troubadour levels 4–5 features and abilities.
+  - Tactician levels 4–8 features and abilities.
+  - Talent levels 4–10 features and abilities.
+  - Troubadour levels 4–10 features and abilities.
   - Echelon 2 Titles
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
@@ -104,6 +104,7 @@
 - Player-Facing Compendium data fixes:
   - Implemented the "custom" target text for many abilities.
   - Corrected action types for many echelon 1 abilities.
+  - Added in many missing ability characteristics.
   - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
   - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
@@ -116,6 +117,7 @@
   - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
   - Corrected keywords on Tactician's "Now".
   - Corrected text on Vanguard's Parry.
+  - Corrected the skill grant on the Shipwrecked complication.
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.

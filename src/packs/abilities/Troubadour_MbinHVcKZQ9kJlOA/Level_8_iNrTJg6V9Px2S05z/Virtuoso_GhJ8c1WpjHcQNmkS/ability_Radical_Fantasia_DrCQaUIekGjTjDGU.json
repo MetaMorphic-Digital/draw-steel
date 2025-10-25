@@ -1,0 +1,68 @@
+{
+  "folder": "GhJ8c1WpjHcQNmkS",
+  "name": "Radical Fantasia",
+  "type": "ability",
+  "_id": "DrCQaUIekGjTjDGU",
+  "img": "icons/environment/wilderness/terrain-rocky-ground.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "213",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "radical-fantasia",
+    "story": "Viras, my Viras, will you hold their hands as they cryyy-aaaiigh?",
+    "keywords": [
+      "area",
+      "magic",
+      "performance"
+    ],
+    "type": "none",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>While this performance is active, each target who starts their turn in the area ignores difficult terrain, and any ability they use that imposes forced movement gains a +2 bonus to the forced movement distance until the end of their turn. Additionally, once per combat round, each target can use a triggered action as a free triggered action.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761078792573,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!DrCQaUIekGjTjDGU"
+}

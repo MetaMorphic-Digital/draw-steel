@@ -72,7 +72,7 @@
         },
         "_id": "xuKGm9xQboZSb6JT",
         "chooseN": 1,
-        "description": "<p>Choose one of the following abilities.</p>",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.ozc2X8yG0HTjT1Wn"
@@ -96,12 +96,45 @@
             "uuid": "Compendium.draw-steel.classes.Item.CMIrc1eWFQIgZWbH"
           }
         ]
+      },
+      "5P0LRhfG03P7iQyY": {
+        "name": "6th-Level Paragon Ability",
+        "img": "icons/magic/control/control-influence-crown-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "5P0LRhfG03P7iQyY",
+        "description": "<p>Your censor order grants your choice of one of two heroic abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.rgIqCvjd30zhgynw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.q7MUvrrFr14OnUMP"
+          }
+        ]
+      },
+      "VPjmpFO85Tw0KXHj": {
+        "name": "8th-Level Paragon Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "VPjmpFO85Tw0KXHj",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.QnZ3xkp41YbKtsy6"
+          }
+        ]
       }
     },
     "classLink": "censor"
   },
   "effects": [],
-  "sort": 0,
+  "sort": 300000,
   "ownership": {
     "default": 0
   },

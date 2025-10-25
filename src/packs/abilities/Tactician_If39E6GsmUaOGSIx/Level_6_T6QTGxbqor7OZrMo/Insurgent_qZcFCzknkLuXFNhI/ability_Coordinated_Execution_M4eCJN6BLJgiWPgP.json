@@ -1,0 +1,66 @@
+{
+  "folder": "qZcFCzknkLuXFNhI",
+  "name": "Coordinated Execution",
+  "type": "ability",
+  "_id": "M4eCJN6BLJgiWPgP",
+  "img": "icons/skills/melee/strike-axe-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "182",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "coordinated-execution",
+    "story": "You direct your ally to make a killing blow.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "freeTriggered",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "The target uses an ability to deal rolled damage to a creature while hidden.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "ally",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>If the target of the triggering ability is not a leader or solo creature, they are reduced to 0 Stamina. If the target of the triggering ability is a minion, the entire squad is killed. If the target of the triggering ability is a leader or solo creature, the triggering ability’s power roll automatically obtains a tier 3 outcome.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761254449243,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!M4eCJN6BLJgiWPgP"
+}
