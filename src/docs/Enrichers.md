@@ -34,31 +34,31 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 - [&ZeroWidthSpace;[/heal 5 heal & 10 temp]]: Also like damage you can combine healing types.
 - [&ZeroWidthSpace;[/heal @recoveries.recoveryValue]]: will provide healing equal to the owner's recovery value, e.g. for using a healing potion.
 
-## Grant Heroic Resources and Surges
+## Gain Heroic Resources and Surges
 
-The `[[/grant]]` enricher allows you to grant heroic resources (like Ferocity, Focus, Insight, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
+The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Focus, Shadow, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
 
 **Syntax:**
-- `[[/grant formula heroic]]` - Grants heroic resources
-- `[[/grant formula surge]]` - Grants surges
+- `[[/gain formula heroic]]` - Modifies heroic resources
+- `[[/gain formula surge]]` - Modifies surges
 
-**Note:** You must specify either `heroic` or `surge` as the grant type.
+**Note:** You must specify either `heroic` or `surge` as the type.
 
 **Examples:**
 
-- [&ZeroWidthSpace;[/grant 2 heroic]]: Grant 2 heroic resources.
-- [&ZeroWidthSpace;[/grant 1 surge]]: Grant 1 surge.
-- [&ZeroWidthSpace;[/grant 1d6 heroic]]: Grant a random amount of heroic resources based on a roll.
-- [&ZeroWidthSpace;[/grant 1d6 surge]]: Grant a random amount of surges based on a roll.
-- [&ZeroWidthSpace;[/grant @level heroic]]: Grant heroic resources equal to the owner's level.
-- [&ZeroWidthSpace;[/grant @level surge]]: Grant surges equal to the owner's level.
-- [&ZeroWidthSpace;[/grant 3 heroic]]{Gain Focus}: Brackets will replace the default text for the grant.
+- [&ZeroWidthSpace;[/gain 2 heroic]]: Gain 2 heroic resources.
+- [&ZeroWidthSpace;[/gain 1 surge]]: Gain 1 surge.
+- [&ZeroWidthSpace;[/gain 1d6 heroic]]: Gain a random amount of heroic resources based on a roll.
+- [&ZeroWidthSpace;[/gain 1d6 surge]]: Gain a random amount of surges based on a roll.
+- [&ZeroWidthSpace;[/gain @level heroic]]: Gain heroic resources equal to the owner's level.
+- [&ZeroWidthSpace;[/gain @level surge]]: Gain surges equal to the owner's level.
+- [&ZeroWidthSpace;[/gain 3 heroic]]{Gain Focus}: Brackets will replace the default text for the command.
 
 **Notes:**
-- Grant enrichers only work on hero actors (characters with heroic resources).
+- Gain enrichers only work on hero actors (characters with heroic resources).
 - The roll is made once and the total is applied to all selected tokens.
-- Non-hero actors will be skipped when granting resources.
-- You must specify the grant type ("heroic" or "surge") - there is no default.
+- Non-hero actors will be skipped when gaining resources.
+- You must specify the type ("heroic" or "surge") - there is no default.
 
 ## Apply Effect
 

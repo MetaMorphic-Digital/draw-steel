@@ -22,7 +22,7 @@ export const id = "ds.roll";
 /**
  * Valid roll types.
  */
-const rollTypes = ["damage", "heal", "healing", "grant"];
+const rollTypes = ["damage", "heal", "healing", "gain"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -44,7 +44,7 @@ export function enricher(match, options) {
     case "heal":
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
-    case "grant": return enrichGrant(parsedConfig, label, options);
+    case "gain": return enrichGain(parsedConfig, label, options);
   }
 }
 
@@ -61,8 +61,8 @@ export async function onRender(element) {
     switch (link.dataset.type) {
       case "damageHeal":
         return void rollDamageHeal(link, ev);
-      case "grant":
-        return void rollGrant(link, ev);
+      case "gain":
+        return void rollGain(link, ev);
     }
   });
 }
@@ -231,20 +231,20 @@ async function rollDamageHeal(link, event) {
 /* -------------------------------------------------- */
 
 /**
- * Grant Enricher.
+ * Gain Enricher.
  */
 
 /**
- * Enrich a grant link for heroic resources.
+ * Enrich a gain link for heroic resources.
  * @param {ParsedConfig[]} parsedConfig      Configuration data.
  * @param {string} [label]             Optional label to replace default text.
  * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
-function enrichGrant(parsedConfig, label, options) {
-  const linkConfig = { type: "grant", formula: null, grantType: null };
+function enrichGain(parsedConfig, label, options) {
+  const linkConfig = { type: "gain", formula: null, gainType: null };
 
-  // Parse the formula and grant type from configuration
+  // Parse the formula and type from configuration
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
@@ -263,12 +263,12 @@ function enrichGrant(parsedConfig, label, options) {
     );
     if (c.formula) {
       linkConfig.formula = c.formula;
-      linkConfig.grantType = c.type[0]; // Require type to be specified
+      linkConfig.gainType = c.type[0]; // Require type to be specified
       break; // Only use first formula
     }
   }
 
-  if (!linkConfig.formula || !linkConfig.grantType) return null;
+  if (!linkConfig.formula || !linkConfig.gainType) return null;
 
   if (label) {
     return createLink(label,
@@ -295,7 +295,7 @@ function enrichGrant(parsedConfig, label, options) {
   const link = document.createElement("a");
   link.className = "roll-link";
   addDataset(link, linkConfig);
-  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Grant.FormatString", localizationData);
+  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString", localizationData);
 
   return link;
 }
@@ -303,21 +303,21 @@ function enrichGrant(parsedConfig, label, options) {
 /* -------------------------------------------------- */
 
 /**
- * Helper function that constructs the grant roll for heroic resources.
+ * Helper function that constructs the gain roll for heroic resources.
  * @param {HTMLAnchorElement} link
  * @param {PointerEvent} event
  */
-async function rollGrant(link, event) {
-  const { formula, grantType } = link.dataset;
+async function rollGain(link, event) {
+  const { formula, gainType } = link.dataset;
 
-  if (!formula) throw new Error("Grant link must have a formula");
-  if (!grantType) throw new Error("Grant link must have a grant type");
+  if (!formula) throw new Error("Gain link must have a formula");
+  if (!gainType) throw new Error("Gain link must have a gain type");
 
   // Get all selected tokens
   const actors = ds.utils.tokensToActors();
 
   if (!actors.size) {
-    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Grant.NoSelection"));
+    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
     return;
   }
 
@@ -325,23 +325,23 @@ async function rollGrant(link, event) {
   const roll = new DSRoll(formula);
   await roll.evaluate();
 
-  // Determine the resource label based on grant type
-  const resourceLabel = grantType === "surge"
+  // Determine the resource label based on gain type
+  const resourceLabel = gainType === "surge"
     ? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label")
     : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
 
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Grant.MessageTitle", { type: resourceLabel }),
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel }),
     flags: { core: { canPopout: true } },
   });
 
-  // Apply the grant to each selected token's actor
+  // Apply the gain to each selected token's actor
   for (const actor of actors) {
-    // Only grant to heroes (actors with heroic resources)
+    // Only gain to heroes (actors with heroic resources)
     if (actor.type === "hero") {
-      switch (grantType) {
+      switch (gainType) {
         case "surge":
           await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
           break;
