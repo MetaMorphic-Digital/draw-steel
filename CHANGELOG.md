@@ -33,7 +33,7 @@
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–8 features and abilities.
   - Talent levels 4–10 features and abilities.
-  - Troubadour levels 4–8 features and abilities.
+  - Troubadour levels 4–10 features and abilities.
   - Echelon 2 Titles
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
