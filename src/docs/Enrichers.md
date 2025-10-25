@@ -36,7 +36,7 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 
 ## Grant Heroic Resources and Surges
 
-The `[[/grant]]` enricher allows you to grant heroic resources (like Fury, Focus, Shadow, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
+The `[[/grant]]` enricher allows you to grant heroic resources (like Ferocity, Focus, Insight, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
 
 **Syntax:**
 - `[[/grant formula heroic]]` - Grants heroic resources

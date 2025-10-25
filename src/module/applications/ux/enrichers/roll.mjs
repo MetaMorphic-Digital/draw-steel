@@ -118,7 +118,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
   if (label) {
     return createLink(label,
       { ...linkConfig, formulas, damageTypes },
-      { classes: "roll-link-group roll-link", icon: "fa-bolt" },
+      { classes: "roll-link-group roll-link", icon: "fa-dice-d10" },
     );
   }
 
@@ -277,12 +277,18 @@ function enrichGrant(parsedConfig, label, options) {
     );
   }
 
-  const resourceType = linkConfig.grantType === "surge" 
-    ? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label")
-    : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+  let resourceType;
 
+  switch (linkConfig.grantType) {
+    case "heroic":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+    case "surge":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+  }
   const localizationData = {
-    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
     type: resourceType,
   };
 
@@ -309,7 +315,7 @@ async function rollGrant(link, event) {
 
   // Get all selected tokens
   const actors = ds.utils.tokensToActors();
-  
+
   if (!actors.size) {
     ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Grant.NoSelection"));
     return;
