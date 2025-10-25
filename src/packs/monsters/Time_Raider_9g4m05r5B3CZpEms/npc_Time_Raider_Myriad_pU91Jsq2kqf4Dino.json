@@ -129,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -156,7 +156,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -200,7 +201,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "qApMhoguy335ovyD": {
               "_id": "qApMhoguy335ovyD",
@@ -244,7 +246,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "C1RGx6McFDlV8kfx": {
               "_id": "C1RGx6McFDlV8kfx",
@@ -282,7 +285,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -312,9 +316,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -355,7 +359,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -384,9 +390,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -416,7 +422,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -445,16 +453,15 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
       "_key": "!actors.items!pU91Jsq2kqf4Dino.2rKjwi2thIVeeFZf"
     },
     {
-      "folder": "LoZnNuHgZjaAO7Gt",
       "name": "Psi-Cage",
       "type": "ability",
       "_id": "ELtwiIpyMZafdAEM",
@@ -477,7 +484,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -487,7 +496,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 10 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 7 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 psychic]]{7 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -496,22 +505,23 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!pU91Jsq2kqf4Dino.ELtwiIpyMZafdAEM"
     }
   ],
@@ -669,9 +679,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -687,10 +697,10 @@
     "compendiumSource": "Actor.pU91Jsq2kqf4Dino",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757296065474,
+    "systemVersion": "0.9.0",
+    "createdTime": 1761424412513,
     "modifiedTime": null,
     "lastModifiedBy": null
   },

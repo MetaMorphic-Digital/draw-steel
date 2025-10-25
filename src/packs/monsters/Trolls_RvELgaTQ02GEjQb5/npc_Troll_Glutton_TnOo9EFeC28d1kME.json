@@ -237,7 +237,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "WCsPVVCl2KRcyDGT": {
               "_id": "WCsPVVCl2KRcyDGT",
@@ -281,7 +282,8 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -350,7 +352,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The glutton shifts up to their speed in a straight line, ignoring difficult terrain. The first time during this movement that the glutton moves through the space of a creature or object their size or smaller, that creature or object takes [[/damage 10]] damage, or a creature can choose to fall prone instead. If the glutton moves into a creature or object larger than them and doesn't knock the creature prone or destroy the object, the glutton's movement ends and they are dazed until the end of their next turn.</p>",
+          "before": "<p>The glutton shifts up to their speed in a straight line, ignoring difficult terrain. The first time during this movement that the glutton moves through the space of a creature or object their size or smaller, that creature or object takes [[/damage 10]] damage, or a creature can choose to fall [[/apply prone]] instead. If the glutton moves into a creature or object larger than them and doesn't knock the creature prone or destroy the object, the glutton's movement ends and they are [[/apply dazed turn]] until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -532,7 +534,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -566,7 +569,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.z9YH7yxEznbOe4Uu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -594,7 +597,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -628,7 +632,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2ec0iV4d6tPxMe4A",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -656,7 +660,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -667,7 +672,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <strong>Might test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 12 acid]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10 acid]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6 acid]] damage</p></td></tr></tbody></table>",
+          "before": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <span style=\"text-decoration:underline\"><strong>Might test</strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 12 acid]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10 acid]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6 acid]] damage</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -714,7 +719,7 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
@@ -752,7 +757,7 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
@@ -767,7 +772,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.kU33bPU6W8nUEB2i",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -891,7 +896,7 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758817735448,
+    "createdTime": 1761424410675,
     "modifiedTime": null,
     "lastModifiedBy": null
   },

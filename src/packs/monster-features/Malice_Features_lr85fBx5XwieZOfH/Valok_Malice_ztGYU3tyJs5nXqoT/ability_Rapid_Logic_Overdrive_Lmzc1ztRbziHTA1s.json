@@ -1,0 +1,177 @@
+{
+  "name": "Rapid Logic Overdrive",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A  starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each valok in the encounter can end one effect on them that can be ended by a saving throw, and can move up to their speed (making use of the bonus below). Additionally, until the end of the encounter, all valok deal an extra [[/damage 5]] damage on strikes and gain a +5 bonus to speed. This feature can be activated multiples times, stacking the effects.</p><p>[[/apply Imfv5uj4pCikQdwu]]</p><p>[[/apply HbHoatu1lL1GlLjD]]</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rapid-logic-overdrive",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Overdrive (Damage)",
+      "img": "icons/magic/unholy/orb-swirling-teal.webp",
+      "type": "abilityModifier",
+      "origin": "Actor.I5KWGHvhtXXbRqVt.Item.kTF7nL9m6qDMjyZ3",
+      "transfer": false,
+      "_id": "Imfv5uj4pCikQdwu",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!Lmzc1ztRbziHTA1s.Imfv5uj4pCikQdwu"
+    },
+    {
+      "name": "Overdrive (Speed)",
+      "img": "icons/magic/unholy/orb-swirling-teal.webp",
+      "type": "base",
+      "origin": "Actor.I5KWGHvhtXXbRqVt.Item.kTF7nL9m6qDMjyZ3",
+      "transfer": false,
+      "_id": "HbHoatu1lL1GlLjD",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!Lmzc1ztRbziHTA1s.HbHoatu1lL1GlLjD"
+    }
+  ],
+  "folder": "ztGYU3tyJs5nXqoT",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761432574837,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "Lmzc1ztRbziHTA1s",
+  "sort": 200000,
+  "_key": "!items!Lmzc1ztRbziHTA1s"
+}

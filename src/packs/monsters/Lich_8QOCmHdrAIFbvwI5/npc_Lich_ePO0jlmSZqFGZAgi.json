@@ -1,0 +1,1913 @@
+{
+  "name": "Lich",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 650,
+      "max": 650,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 2
+      },
+      "agility": {
+        "value": 3
+      },
+      "reason": {
+        "value": 5
+      },
+      "intuition": {
+        "value": 5
+      },
+      "presence": {
+        "value": 5
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 1,
+      "turns": 1
+    },
+    "movement": {
+      "value": 10,
+      "types": [
+        "walk",
+        "fly"
+      ],
+      "hover": true,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 10,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 10,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 5,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "280",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 10,
+      "keywords": [
+        "undead"
+      ],
+      "level": 10,
+      "ev": 144,
+      "role": "solo",
+      "organization": "solo"
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the lich can take [[/damage 20]]{20 damage} to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The lich can take two turns each round. They can't take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "solo-monster",
+        "advancements": {}
+      },
+      "_id": "UXMkKQy4dkyjq7aD",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.UXMkKQy4dkyjq7aD"
+    },
+    {
+      "name": "Herald of Oblivion",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>In the lich's presence, death's call is stronger. Any winded creature within 5 squares of the lich is [[/apply bleeding]] and can't use the Catch Breath maneuver.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "herald-of-oblivion",
+        "advancements": {}
+      },
+      "_id": "NO34g5Q9Le2ZJgub",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.NO34g5Q9Le2ZJgub"
+    },
+    {
+      "name": "Glare of Undeath",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the start of each round, the lich chooses a creature within 10 squares. If that creature has R &lt; 4, they are [[/apply restrained]] until the end of the lich's next turn. The lich can't choose the same creature two rounds in a row.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "glare-of-undeath",
+        "advancements": {}
+      },
+      "_id": "6Up5106EsW0BzUx3",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.6Up5106EsW0BzUx3"
+    },
+    {
+      "name": "Rejuvenation",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The lich has a soulstone, which has 50 Stamina and damage immunity all except to sonic damage and holy damage. If the lich is destroyed while their soulstone is intact, their soul retreats into the soulstone. Any creature who has P &lt; 5 and who moves within 5 squares of an inhabited soulstone for the first time in a round or starts their turn there is [[/apply gvdfE7VPjREf7wMg save]]. A compelled creature must do everything in their power to move toward and touch the soulstone. A creature who touches an inhabited soulstone makes a **Might test** that takes a bane.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with full Stamina.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature is reduced to 0 Stamina and the lich manifests adjacent to the soulstone with 300 Stamina.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature has their stamine reduced to their winded value Stamina and the lich manifests adjacent to the soulstone with 100 Stamina.</p></dd></dl>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "rejuvenation",
+        "advancements": {}
+      },
+      "_id": "lT8OdIyV2bzD3iJj",
+      "effects": [
+        {
+          "name": "Compelled",
+          "img": "icons/magic/control/control-influence-puppet.webp",
+          "type": "base",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.lT8OdIyV2bzD3iJj",
+          "transfer": false,
+          "_id": "gvdfE7VPjREf7wMg",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You must do everything in your power to move toward and touch the soulstone.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.lT8OdIyV2bzD3iJj.gvdfE7VPjREf7wMg"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.lT8OdIyV2bzD3iJj"
+    },
+    {
+      "name": "Conflagration",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 20
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "WPqZoxTx2y6drTev": {
+              "_id": "WPqZoxTx2y6drTev",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "15",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "21",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "25",
+                  "types": [
+                    "fire"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "sdOpKhe7eUwSEWRX": {
+              "_id": "sdOpKhe7eUwSEWRX",
+              "type": "special",
+              "name": "Special",
+              "img": null,
+              "special": {
+                "tier1": {
+                  "display": "immolated",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "immolated",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier3": {
+                  "display": "immolated",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  }
+                }
+              }
+            },
+            "2t5MGiXPB7VxvU1v": {
+              "name": "immolated",
+              "img": null,
+              "type": "applied",
+              "_id": "2t5MGiXPB7VxvU1v",
+              "sort": 0,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is immolated (save ends)",
+                  "effects": {
+                    "68ZdpUEXLdG2Z2TP": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "4",
+                    "characteristic": "agility"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "68ZdpUEXLdG2Z2TP": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "5",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "68ZdpUEXLdG2Z2TP": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "6",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>An immolated creature takes [[/damage 10 fire]]{10 fire damage} whenever they use a main action and a maneuver on their turn. This damage can't be reduced in any way.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "conflagration",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Immolated",
+          "img": "icons/magic/fire/explosion-embers-evade-silhouette.webp",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.xj0LJMiaeXpfh5ag",
+          "transfer": false,
+          "_id": "68ZdpUEXLdG2Z2TP",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>An immolated creature takes [[/damage 10 fire]]{10 fire damage} whenever they use a main action and a maneuver on their turn. This damage can’t be reduced in any way.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.xj0LJMiaeXpfh5ag.68ZdpUEXLdG2Z2TP"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "xj0LJMiaeXpfh5ag",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.xj0LJMiaeXpfh5ag"
+    },
+    {
+      "name": "Hopeless Place",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 10
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "7BXXeoOF7jVUSirZ": {
+              "_id": "7BXXeoOF7jVUSirZ",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "LzKuaLdZNEeVp5Ch": {
+              "_id": "LzKuaLdZNEeVp5Ch",
+              "type": "special",
+              "name": "Special",
+              "img": null,
+              "special": {
+                "tier1": {
+                  "display": "hopeless",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "hopeless",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier3": {
+                  "display": "hopeless",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  }
+                }
+              }
+            },
+            "aobSupoCx21HOWeA": {
+              "name": "Hopeless",
+              "img": null,
+              "type": "applied",
+              "_id": "aobSupoCx21HOWeA",
+              "sort": 0,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is hopeless (save ends)",
+                  "effects": {
+                    "jwFRfIhu9b8QEJUD": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "4",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "jwFRfIhu9b8QEJUD": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "5",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "jwFRfIhu9b8QEJUD": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "6",
+                    "characteristic": "presence"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A hopeless creature can't benefit from edges or double edges, can't gain or use surges, and can't gain temporary Stamina.</p>"
+        },
+        "spend": {
+          "text": "The distance of this ability increases to a 20 burst and its potency increases by 1.",
+          "value": 3
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "hopeless-place",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Hopeless",
+          "img": "icons/magic/control/fear-fright-shadow-monster-purple.webp",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.LwAfEsZA5erNBlkk",
+          "transfer": false,
+          "_id": "jwFRfIhu9b8QEJUD",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You can’t benefit from edges or double edges, can’t gain or use surges, and can’t gain temporary Stamina.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.LwAfEsZA5erNBlkk.jwFRfIhu9b8QEJUD"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LwAfEsZA5erNBlkk",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.LwAfEsZA5erNBlkk"
+    },
+    {
+      "name": "Pain Unending",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 20
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "viAli3zD5FyS42k7": {
+              "_id": "viAli3zD5FyS42k7",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "17",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "24",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "29",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "ql5QYqMXzIsYTc2F": {
+              "name": "Wracked with Pain",
+              "img": null,
+              "type": "applied",
+              "_id": "ql5QYqMXzIsYTc2F",
+              "sort": 0,
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {
+                    "2loH7R9j10sYIKQp": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "2loH7R9j10sYIKQp": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "2loH7R9j10sYIKQp": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A target who has M &lt; 4 is wracked with pain (save ends). A creature wracked with pain has a double bane on abilities.</p><p><strong>+2 Malice: </strong>Each creature wracked with pain gains one of the following conditions of the lich's choice for each 2 Malice spent: [[/apply bleeding]], [[/apply slowed]], or [[/apply prone]] and [[/apply uRiVf7aO7uY3RFTk]]. These conditions end when a creature is no longer wracked with pain.</p>"
+        },
+        "spend": {
+          "text": "The lich chooses one additional target.",
+          "value": 3
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "pain-unending",
+        "story": "",
+        "resource": 2,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Wracked with Pain",
+          "img": "icons/skills/wounds/bone-broken-marrow-red.webp",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.7bTRct5gOoqGNEzt",
+          "transfer": false,
+          "_id": "2loH7R9j10sYIKQp",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While you are wracked with pain you have a double bane on abilities.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.7bTRct5gOoqGNEzt.2loH7R9j10sYIKQp"
+        },
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.7bTRct5gOoqGNEzt",
+          "transfer": false,
+          "_id": "uRiVf7aO7uY3RFTk",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.7bTRct5gOoqGNEzt.uRiVf7aO7uY3RFTk"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "7bTRct5gOoqGNEzt",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.7bTRct5gOoqGNEzt"
+    },
+    {
+      "name": "Baleful Swap",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "enemy",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>If the target has P &lt; 4, they swap places with the lich to become the new target of the triggering ability.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "baleful-swap",
+        "story": "",
+        "resource": 2,
+        "trigger": "The lich is targeted using an ability by a creature other than the target."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "BFQwP988coPjojpS",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.BFQwP988coPjojpS"
+    },
+    {
+      "name": "Cages of Wasting",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 3,
+          "secondary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "Each creature in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 corruption]]{20 corruption damage}; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 corruption]]{16 corruption damage}; [[/apply restrained turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 corruption]]{10 corruption damage}</p></dd></dl>",
+          "after": "<p>The lich deals an additional [[/damage 10 corruption]]{10 corruption damage} to each creature restrained this way.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "cages-of-wasting",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "CjQoU5Rd2OifOhNo",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.CjQoU5Rd2OifOhNo"
+    },
+    {
+      "name": "My Power Alone",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 12
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A target can't use heroic abilities until the start of the lich's next turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "my-power-alone",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "kR4RPvyvHXlO9czr",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.kR4RPvyvHXlO9czr"
+    },
+    {
+      "name": "Arms of Necrosis",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 6
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "Each creature in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "Swj7UEOQT0yYNCUK": {
+              "_id": "Swj7UEOQT0yYNCUK",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "8",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "gngJYv1f7ETUGKee": {
+              "_id": "gngJYv1f7ETUGKee",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>At the end of each of the lich's turns, they regain 10 Stamina for each creature frightened this way.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "arms-of-necrosis",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "jtcovNCos74sf034",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.jtcovNCos74sf034"
+    },
+    {
+      "name": "Soul Sip",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A lich starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The lich makes a free strike against one enemy within 20 squares. They then gain an edge on their next power roll.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "soul-sip",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "ckJj57XtDTnGe9zw",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.ckJj57XtDTnGe9zw"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A lich starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The lich takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "PiytpHYTaVaUhB9q",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.PiytpHYTaVaUhB9q"
+    },
+    {
+      "name": "Spirit Shell",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A lich starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The lich summons a swirling cloud of angry spirits to surround them until the start of the next round. Any creature who deals active makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Presence test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 psychic]]{16 psychic damage}[[/apply Dazed save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Dazed save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "spirit-shell",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Dazed",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "dazed"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "TnYHgAGAx11M4aQd",
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.mHctUIjv9G5fFlA9.TnYHgAGAx11M4aQd"
+        },
+        {
+          "name": "Dazed",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "dazed"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "bdFfWM98wiiCFiUf",
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.mHctUIjv9G5fFlA9.bdFfWM98wiiCFiUf"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "mHctUIjv9G5fFlA9",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.mHctUIjv9G5fFlA9"
+    },
+    {
+      "name": "Cloud of Deceit",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A lich starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The lich summons a mind-altering mist, turns invisible until the start of their next turn, and moves up to half their speed. Each enemy within 20 squares of the lich’s starting point who has i&lt;4 is [[/apply 8hDNL0rDby9GJhCS]]. While deceived, a creature perceives all allies and enemies as the lich, and perceives the environment as an unfamiliar wasteland corrupted by necrotic blight. If other creatures attempt to communicate with a deceived creature, that creature interprets their words as ghastly taunts in the lich’s voice.</p><p>This effect lasts until an affected creature takes damage or an ally uses a main action to shake them out of it. Each time this feature is used during an encounter, the distance of the effect decreases by 5 squares (to a minimum of 5 squares) and the potency increases by 1.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "cloud-of-deceit",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Decieved",
+          "img": "icons/magic/perception/hand-eye-pink.webp",
+          "type": "base",
+          "origin": "Actor.VnIhBorYm36EHKod.Item.DaqDvvgRoA7Jz7yY",
+          "transfer": false,
+          "_id": "8hDNL0rDby9GJhCS",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While deceived, you percieve all allies and enemies as the lich, and perceive the environment as an unfamiliar wasteland corrupted by necrotic blight. If other creatures attempt to communicate with you, you interpret their words as ghastly taunts in the lich’s voice.</p><p>This effect lasts until an affected creature takes damage or an ally uses a main action to shake them out of it.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!ePO0jlmSZqFGZAgi.DaqDvvgRoA7Jz7yY.8hDNL0rDby9GJhCS"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "DaqDvvgRoA7Jz7yY",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.DaqDvvgRoA7Jz7yY"
+    },
+    {
+      "name": "Necrotic Form",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [],
+        "category": "",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "self"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "self",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The lich becomes spectral, moves up to their speed, and becomes corporeal again. While spectral, the lich automatically ends the grabbed or restrained conditions, has damage immunity 5, can move through solid matter, and ignores difficult terrain. If the lich ends this movement inside solid matter, they are shunted out into the space from which they entered it.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "7laABBuueBFr3e0T",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!ePO0jlmSZqFGZAgi.7laABBuueBFr3e0T"
+    }
+  ],
+  "folder": "8QOCmHdrAIFbvwI5",
+  "prototypeToken": {
+    "name": "Lich",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761431816078,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "ePO0jlmSZqFGZAgi",
+  "sort": 0,
+  "_key": "!actors!ePO0jlmSZqFGZAgi"
+}
