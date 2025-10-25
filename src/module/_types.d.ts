@@ -77,7 +77,9 @@ export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
 
 declare module "./utils/advancement-chain.mjs" {
   export default interface AdvancementChain {
+    actor: DrawSteelActor;
     advancement: BaseAdvancement;
+    chains?: AdvancementChain[],
     parent?: AdvancementChain;
     depth: number;
     isRoot: boolean;

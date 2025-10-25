@@ -91,6 +91,48 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
+   * Cached reference to the actor's current or pending class.
+   * Null means there's no class on the actor or in the advancement chain, e.g. If you add an Ancestry before a Class.
+   * @type {DrawSteelItem | null}
+   */
+  #actorClass;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
+  get actorClass() {
+    return this.#actorClass;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Cached reference to the actor's current or pending subclasses.
+   * @type {DrawSteelItem[]}
+   */
+  #actorSubclasses;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
+  get actorSubclasses() {
+    return this.#actorSubclasses;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * The set of DSIDs that can be checked to fulfill requirements.
+   * @type {Set<string>}
+   */
+  #fulfilledDSID;
+  // eslint-disable-next-line @jsdoc/require-jsdoc
+  get fulfilledDSID() {
+    if (this.#fulfilledDSID) return this.#fulfilledDSID;
+
+    this.#fulfilledDSID = new Set(this.#actorSubclasses);
+    if (this.actorClass) this.#fulfilledDSID.add(this.actorClass.dsid);
+
+    return this.#fulfilledDSID;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Set of uuids chosen by this dialog, which will be saved in the submit process.
    * A new set is constructed each time the form data is processed.
    * @type {Set<string>}
@@ -126,6 +168,10 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   async _prepareContext(options) {
     if (options.isFirstRender) {
       this.#items = new Set(Object.values(this.node.choices).map(choice => choice.item));
+
+      this.#actorClass = await this.#getActorClass();
+
+      this.#actorSubclasses = await this.#getActorSubclasses();
 
       for (const item of this.items) {
         if (this.node.selected[item.uuid]) this.chosen.add(item.uuid);
@@ -198,7 +244,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
         link: i.toAnchor().outerHTML,
         uuid: i.uuid,
         points: context.points ? i.system.points : false,
-        disabled: this.#fulfillsRequirements(i) && !chosen && (value > (this.advancement.chooseN - totalChosen)),
+        disabled: !this.#fulfillsRequirements(i) || (!chosen && (value > (this.advancement.chooseN - totalChosen))),
       };
     });
 
@@ -229,13 +275,52 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @returns
    */
   #fulfillsRequirements(item) {
-    console.log(item, this.node);
     if ((item.type === "ability") && item.system.class) {
-      // Check DSID
+      return this.fulfilledDSID.has(item.system.class);
     } else if (item.system.prerequisites) {
-      // Check DSID for each prerequisites.dsid
+      for (const prerequisite of item.system.prerequisites.dsid) if (!this.fulfilledDSID.has(prerequisite)) return false;
     }
     return true;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @returns {Promise<DrawSteelItem | null>}
+   */
+  async #getActorClass() {
+    if (this.node.actor.system.class) return this.node.actor.system.class;
+    let node = this.node;
+    while (node && (node.advancement.document.type !== "class")) node = node.parent;
+    if (node.advancement.document.type === "class") return node.advancement.document;
+    else return null;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * @returns {Promise<DrawSteelItem[]>}
+   */
+  async #getActorSubclasses() {
+    if (this.node.actor.system.subclasses?.length) return this.node.actor.system.subclasses;
+    // check if this is ultimately granted by a subclass
+    let node = this.node;
+    while (node && (node.advancement.document.type !== "subclass")) node = node.parent;
+    if (node && (node.advancement.document.type === "subclass")) return [node.advancement.document];
+
+    const subclasses = [];
+    for (const chain of this.node.chains ?? []) {
+      if (chain.advancement.type === "itemGrant") {
+        for (const uuid of chain.chosenSelection ?? []) {
+          const index = fromUuidSync(uuid);
+          if (index.type === "subclass") {
+            const subclass = await fromUuid(uuid);
+            subclasses.push(subclass);
+          }
+        }
+      }
+    }
+    return subclasses;
   }
 
   /* -------------------------------------------------- */

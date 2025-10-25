@@ -83,14 +83,16 @@ export default class AdvancementChain {
    * @param {object} [options={}]                               Additional information about this advancement chain.
    * @param {number} [options.start=null]                       Starting level for advancements.
    * @param {number} [options.end=1]                            Final level for advancements.
+   * @param {DrawSteelActor} [options.actor]                    The actor these advancements are targeting.
+   * @param {AdvancementChain[]} [options.chains]               The other chains in parallel to this advancement.
    * @returns {Promise<AdvancementChain|AdvancementChain[]>}    A promise that resolves to the chain or chain link.
    */
   static async create(root, parent = null, options = {}) {
-    const { start: levelStart = null, end: levelEnd = 1 } = options;
+    const { start: levelStart = null, end: levelEnd = 1, actor, chains } = options;
 
     const advancement = root;
     const nodeData = {
-      advancement, parent,
+      actor, advancement, chains, parent,
       depth: (parent?.depth ?? -1) + 1,
       isRoot: !parent,
       choices: {},
@@ -181,6 +183,7 @@ export default class AdvancementChain {
         choice.children[advancement.uuid] = await AdvancementChain.create(advancement, node, {
           start: levelStart,
           end: levelEnd,
+          actor: node.actor,
         });
         choice.children[advancement.uuid].parentChoice = choice; // Helps detect if chosen.
       }

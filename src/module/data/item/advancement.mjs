@@ -75,18 +75,20 @@ export default class AdvancementModel extends BaseItemModel {
 
   /**
    * Creates the advancement chains for this item given a level range.
-   * @param {number} levelStart
-   * @param {number} levelEnd
+   * @param {object} config
+   * @param {number} config.levelStart
+   * @param {number} config.levelEnd
+   * @param {DrawSteelActor} config.actor
    * @returns {Promise<AdvancementChain[]>}
    */
-  async createChains(levelStart, levelEnd) {
+  async createChains({ levelStart, levelEnd, actor }) {
     const chains = [];
     for (const advancement of this.advancements) {
       const validRange = advancement.levels.some(level => {
         if (Number.isNumeric(level)) return level.between(levelStart, levelEnd);
         else return levelStart === null;
       });
-      if (validRange) chains.push(await AdvancementChain.create(advancement, null, { start: levelStart, end: levelEnd }));
+      if (validRange) chains.push(await AdvancementChain.create(advancement, null, { start: levelStart, end: levelEnd, actor, chains }));
     }
     return chains;
   }
@@ -130,7 +132,7 @@ export default class AdvancementModel extends BaseItemModel {
       } else if (!(this.parent.id in toUpdate)) toUpdate[this.parent.id] = { _id: this.parent.id };
     }
 
-    const chains = await this.createChains(levelStart, levelEnd);
+    const chains = await this.createChains({ levelStart, levelEnd, actor });
 
     const [firstUpdate, ...rest] = Object.values(toUpdate);
     const noUpdates = (Object.keys(firstUpdate ?? {}).length <= 1) && (rest.length === 0);
