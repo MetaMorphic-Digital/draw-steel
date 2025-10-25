@@ -124,7 +124,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   get fulfilledDSID() {
     if (this.#fulfilledDSID) return this.#fulfilledDSID;
 
-    this.#fulfilledDSID = new Set(this.#actorSubclasses);
+    this.#fulfilledDSID = new Set(this.#actorSubclasses.map(i => i.dsid));
     if (this.actorClass) this.#fulfilledDSID.add(this.actorClass.dsid);
 
     return this.#fulfilledDSID;
