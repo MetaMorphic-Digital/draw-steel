@@ -277,8 +277,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   #fulfillsRequirements(item) {
     if ((item.type === "ability") && item.system.class) {
       return this.fulfilledDSID.has(item.system.class);
-    } else if (item.system.prerequisites) {
-      for (const prerequisite of item.system.prerequisites.dsid) if (!this.fulfilledDSID.has(prerequisite)) return false;
+    } else if (item.system.prerequisites?.dsid?.size) {
+      for (const prerequisite of item.system.prerequisites.dsid) if (this.fulfilledDSID.has(prerequisite)) return true;
+      return false;
     }
     return true;
   }
