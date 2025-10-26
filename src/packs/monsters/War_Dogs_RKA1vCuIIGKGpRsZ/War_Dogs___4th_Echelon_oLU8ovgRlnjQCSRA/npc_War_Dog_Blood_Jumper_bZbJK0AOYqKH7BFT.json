@@ -73,7 +73,7 @@
       }
     },
     "biography": {
-      "value": "",
+      "value": "<p></p>",
       "director": "",
       "languages": []
     },
@@ -194,7 +194,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -249,7 +250,7 @@
                 "tier3": {
                   "display": "{{potency}} bleeding (save ends)",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "4",
                     "characteristic": "agility"
                   },
                   "effects": {
@@ -306,7 +307,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

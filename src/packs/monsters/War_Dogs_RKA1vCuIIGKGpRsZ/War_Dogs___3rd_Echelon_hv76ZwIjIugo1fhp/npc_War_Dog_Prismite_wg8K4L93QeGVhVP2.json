@@ -156,7 +156,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -322,7 +323,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -353,7 +354,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -391,7 +393,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -420,7 +422,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "The triggering enemy"
         },
         "damageDisplay": "melee",
         "power": {
@@ -458,7 +461,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -532,7 +535,6 @@
       "_key": "!actors.items!wg8K4L93QeGVhVP2.ffAT6RdoCBdyscSr"
     },
     {
-      "folder": "i2de6zKmA8OVN5i8",
       "name": "Alchemical Cloud",
       "type": "ability",
       "_id": "nOF8y0Xd415kriB6",
@@ -540,7 +542,7 @@
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "313",
+          "page": "310",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "alchemical-cloud",
@@ -555,7 +557,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -565,7 +569,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"96\"><p>11 or less</p></td><td><p>[[/damage 8 poison]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>12-16</p></td><td><p>[[/damage 7 poison]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>17+</p></td><td><p>[[/damage 4 poison]] damage</p></td></tr></tbody></table>",
+          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8 poison]]{8 poison damage}; [[/apply dazed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 poison]]{7 poison damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4 poison]]{4 poison damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -574,22 +578,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761442232916,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!wg8K4L93QeGVhVP2.nOF8y0Xd415kriB6"
     }
   ],
