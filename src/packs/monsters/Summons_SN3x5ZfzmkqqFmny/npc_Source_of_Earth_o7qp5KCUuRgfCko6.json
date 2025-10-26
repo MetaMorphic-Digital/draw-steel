@@ -1,0 +1,442 @@
+{
+  "folder": "SN3x5ZfzmkqqFmny",
+  "name": "Source of Earth",
+  "type": "npc",
+  "_id": "o7qp5KCUuRgfCko6",
+  "img": "icons/magic/earth/construct-stone.webp",
+  "system": {
+    "stamina": {
+      "value": 45,
+      "max": 45,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": -5
+      },
+      "intuition": {
+        "value": -5
+      },
+      "presence": {
+        "value": -3
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 2,
+        "letter": "M"
+      },
+      "stability": 5,
+      "turns": 1
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "movement": {
+      "value": 6,
+      "types": [
+        "walk",
+        "burrow"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 5,
+      "keywords": [],
+      "level": 8,
+      "ev": 4,
+      "role": "brute",
+      "organization": ""
+    }
+  },
+  "prototypeToken": {
+    "name": "Source of Earth",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "icons/magic/earth/construct-stone.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "items": [
+    {
+      "name": "Boulder Bash",
+      "type": "ability",
+      "system": {
+        "type": "main",
+        "source": {
+          "book": "Heroes",
+          "page": "126",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "ability",
+        "story": "",
+        "keywords": [
+          "melee",
+          "ranged",
+          "strike",
+          "weapon"
+        ],
+        "category": "signature",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "meleeRanged",
+          "primary": 2,
+          "secondary": 10
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "creatureObject",
+          "custom": "",
+          "value": 1
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "9CAH69NkRjVF7BS0": {
+              "name": "",
+              "img": null,
+              "type": "damage",
+              "_id": "9CAH69NkRjVF7BS0",
+              "damage": {
+                "tier1": {
+                  "value": "5"
+                },
+                "tier2": {
+                  "value": "9"
+                },
+                "tier3": {
+                  "value": "12"
+                }
+              }
+            },
+            "BLcHX4GdZ8xbz3AZ": {
+              "name": "",
+              "img": null,
+              "type": "forced",
+              "_id": "BLcHX4GdZ8xbz3AZ",
+              "forced": {
+                "tier1": {
+                  "distance": "3"
+                },
+                "tier2": {
+                  "distance": "4"
+                },
+                "tier3": {
+                  "distance": "5"
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "MMZkeTDabCAl7A45",
+      "img": "icons/svg/item-bag.svg",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "odAc2JTDqvZVYRpQ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761512413113,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!o7qp5KCUuRgfCko6.MMZkeTDabCAl7A45"
+    },
+    {
+      "name": "Earthwalk",
+      "type": "feature",
+      "_id": "Hpj9MhpGe4qUdVaW",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": {
+          "value": "<p>Difficult terrain composed of earth and stone doesn’t cost the source extra movement.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Heroes",
+          "page": "126",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "odAc2JTDqvZVYRpQ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761512577957,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!o7qp5KCUuRgfCko6.Hpj9MhpGe4qUdVaW"
+    },
+    {
+      "name": "Tunneler",
+      "type": "feature",
+      "_id": "vQ2NPVjGfBH9DJLM",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": {
+          "value": "<p>When the source burrows, they create a size 2 tunnel.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Heroes",
+          "page": "126",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "odAc2JTDqvZVYRpQ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761512609181,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!o7qp5KCUuRgfCko6.vQ2NPVjGfBH9DJLM"
+    },
+    {
+      "name": "Earth Harness",
+      "type": "feature",
+      "_id": "paqnJCbOCeaYAKFM",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": {
+          "value": "<p>A creature that has the Earth Accepts Me ability can use it as a free action to meld into the source</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Heroes",
+          "page": "126",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "odAc2JTDqvZVYRpQ": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761512628421,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!o7qp5KCUuRgfCko6.paqnJCbOCeaYAKFM"
+    }
+  ],
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761512318289,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!actors!o7qp5KCUuRgfCko6"
+}

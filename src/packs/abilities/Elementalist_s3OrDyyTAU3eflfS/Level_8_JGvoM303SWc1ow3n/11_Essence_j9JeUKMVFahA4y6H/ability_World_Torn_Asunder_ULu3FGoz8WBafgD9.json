@@ -1,0 +1,143 @@
+{
+  "folder": "j9JeUKMVFahA4y6H",
+  "name": "World Torn Asunder",
+  "type": "ability",
+  "_id": "ULu3FGoz8WBafgD9",
+  "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "127",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "world-torn-asunder",
+    "story": "You stomp your foot and quake the whole world over.",
+    "keywords": [
+      "area",
+      "magic",
+      "earth"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "t91luYijUHg9S2bN": {
+          "name": "Prone",
+          "img": null,
+          "type": "applied",
+          "_id": "t91luYijUHg9S2bN",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              },
+              "display": "{{potency}}. prone"
+            },
+            "tier2": {
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>You create a fissure in the ground adjacent to you that is a 10 × 2 line and 6 squares deep. Each creature in the area who is prone and size 2 or smaller falls in. Other creatures can enter the fissure or can shift to the nearest unoccupied space of their choice outside it.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/earth/barrier-stone-explosion-spiked.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.ULu3FGoz8WBafgD9",
+      "transfer": false,
+      "_id": "bM0p3G8JLjfJoHaW",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761516008458,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!ULu3FGoz8WBafgD9.bM0p3G8JLjfJoHaW"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761515765241,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!ULu3FGoz8WBafgD9"
+}

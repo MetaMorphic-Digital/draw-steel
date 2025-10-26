@@ -1,0 +1,88 @@
+{
+  "folder": "xOMksCYxzKzOoFHT",
+  "name": "Meteor",
+  "type": "ability",
+  "_id": "rTO5yxn40wd3XpoT",
+  "img": "icons/commodities/stone/stone-meterorite-glowing-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "124",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "meteor",
+    "story": "You teleport the target into the air and let the ground and the elemental force of fire do the rest.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "earth",
+      "fire",
+      "void"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {
+        "cvSZ0C2KO5RDkNF6": {
+          "name": "Teleport",
+          "img": null,
+          "type": "other",
+          "_id": "cvSZ0C2KO5RDkNF6",
+          "other": {
+            "tier1": {
+              "display": "You teleport the target up to 4 squares."
+            },
+            "tier2": {
+              "display": "You teleport the target up to 6 squares."
+            },
+            "tier3": {
+              "display": "You teleport the target up to 8 squares."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If the target is teleported to a space where they would fall, they immediately do so, treating the fall as if their Agility score were 0. The target takes fire damage from the fall, and each enemy within 3 squares of where they land takes the same amount of fire damage. </p><p>[[/damage 4 fire]] or [[/damage 6 fire]] or [[/damage 8 fire]] or custom</p><p>The ground within 3 squares of where the target lands is difficult terrain.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761510562901,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!rTO5yxn40wd3XpoT"
+}
