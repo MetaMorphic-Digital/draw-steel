@@ -1,0 +1,163 @@
+{
+  "folder": "mpEhZreyN7MCucXa",
+  "name": "Banish",
+  "type": "ability",
+  "_id": "Fl6R6GdRGEu9NQGj",
+  "img": "icons/magic/time/hourglass-brown-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "92",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "banish",
+    "story": "You sever the target’s tenuous connection to the world.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "39MyuAhmna8wkyqr": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "39MyuAhmna8wkyqr",
+          "damage": {
+            "tier1": {
+              "value": "5 + @chr"
+            },
+            "tier2": {
+              "value": "8 + @chr"
+            },
+            "tier3": {
+              "value": "11 + @chr"
+            }
+          }
+        },
+        "KTdDH8oq11MII1K8": {
+          "name": "Banished",
+          "img": null,
+          "type": "applied",
+          "_id": "KTdDH8oq11MII1K8",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, the target is banished (save ends)",
+              "effects": {
+                "ztBgmMZaY9rbNmZD": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "ztBgmMZaY9rbNmZD": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "ztBgmMZaY9rbNmZD": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>This ability gains an edge against demons, devils, undead, and creatures not native to your current world. If you know the target’s true name, this ability has a double edge. While [[/apply ztBgmMZaY9rbNmZD]], the target is sent to another manifold in the timescape and removed from the encounter map. A banished target can do nothing but make saving throws, and takes [[/damage 10 holy]] damage each time they do so. If the target is reduced to 0 Stamina while banished, they are lost to the timescape.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Banished",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.Fl6R6GdRGEu9NQGj",
+      "transfer": false,
+      "_id": "ztBgmMZaY9rbNmZD",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While banished, the target is sent to another manifold in the timescape and removed from the encounter map. A banished target can do nothing but make saving throws, and takes [[/damage 10 holy]] damage each time they do so. </p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761429104701,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!Fl6R6GdRGEu9NQGj.ztBgmMZaY9rbNmZD"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761428955264,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Fl6R6GdRGEu9NQGj"
+}

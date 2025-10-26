@@ -25,15 +25,15 @@
 - New Player-Facing Compendium Content:
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining non-imbue projects.
-  - Censor levels 4–8 features and abilities.
+  - Censor levels 4–10 features and abilities.
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–5 features and abilities.
   - Fury levels 4–5 features and abilities.
-  - Null levels 4–7 features and abilities.
+  - Null levels 4–10 features and abilities.
   - Shadow levels 4–10 features and abilities.
-  - Tactician levels 4–8 features and abilities.
+  - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
-  - Troubadour levels 4–8 features and abilities.
+  - Troubadour levels 4–10 features and abilities.
   - Echelon 2 Titles
 - New Director-Facing Compendium Content:
   - Demon Echelons 2–4
@@ -45,8 +45,9 @@
   - Hobgoblins
   - Rivals Echelons 2–4
   - Trolls
-  - Undead Echelons 2–4
+  - Undead Echelons 2–4, plus the Lich and Rhodar von Glaur
   - War Dogs Echelons 2–4
+  - Valok
   - Voiceless Talkers
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)

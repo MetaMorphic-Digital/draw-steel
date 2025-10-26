@@ -379,7 +379,8 @@
         },
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "The triggering creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -417,7 +418,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -428,6 +429,134 @@
         "default": 0
       },
       "_key": "!actors.items!ifk14URrWIthS4oM.KX0wEFkyTypcxYVK"
+    },
+    {
+      "name": "Blood Hunger",
+      "type": "ability",
+      "_id": "g3I8pfaRJv4SU7k0",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "265",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "blood-hunger",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One undead acting this turn uses a signature ability against a creature who is bleeding. As a free triggered action, each undead within 5 squares of the first undead moves up to their speed and can make a free strike against the same target.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.g3I8pfaRJv4SU7k0",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761426028546,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 200000,
+      "_key": "!actors.items!ifk14URrWIthS4oM.g3I8pfaRJv4SU7k0"
+    },
+    {
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "265",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The undead activates a Malice feature available to undead of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.EzWvhVW1uXUmKhV5]{Dread March}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.da4wUZrJsfQ3EMZ3]{Paranormal Fling}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf]{Ravenous Horde}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw]{The Grasping, the Hungry}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.lql6HakCaCi05z5P",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761426029807,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "lql6HakCaCi05z5P",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 100000,
+      "_key": "!actors.items!ifk14URrWIthS4oM.lql6HakCaCi05z5P"
     }
   ],
   "folder": "bQgGaMhvhgZFC0kO",

@@ -485,7 +485,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>One mummy or four ghoul cravers appear within distance.</p><p>@UUID[Compendium.draw-steel.monsters.Actor.VosGGEvnrw3zCjdo]{Ghoul Craver}</p><p>@UUID[Compendium.draw-steel.monsters.Actor.4hY5HEdJNt2CS8ss]{Mummy}</p><p></p>",
+          "before": "<p>One @UUID[Compendium.draw-steel.monsters.Actor.4hY5HEdJNt2CS8ss]{Mummy} or four @UUID[Compendium.draw-steel.monsters.Actor.VosGGEvnrw3zCjdo]{Ghoul Cravers} appear within distance.</p><p></p><p></p><p></p>",
           "after": ""
         },
         "spend": {
@@ -510,7 +510,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -539,7 +539,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -619,7 +620,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -657,7 +658,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The mummy lord gains a +2 bonus to speed and can automatically burrow at full speed while moving. They can then use the Dig maneuver. The next time the mummy lord breaches the surface, each enemy within 2 squares of the mummy lord makes an <strong>Agility test</strong>.</p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>Prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>Prone</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>No effect</p></td></tr></tbody></table>",
+          "before": "<p>The mummy lord gains a +2 bonus to speed and can automatically burrow at full speed while moving. They can then use the Dig maneuver. The next time the mummy lord breaches the surface, each enemy within 2 squares of the mummy lord makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Prone]] and [[/apply PbmjtjEohVd58x8B turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -674,7 +675,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.RiO4ptj2KnzQObXl.Item.eO0s1MfbaQB4VTzt",
+          "transfer": false,
+          "_id": "PbmjtjEohVd58x8B",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You can't stand.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761426190411,
+            "modifiedTime": 1761426219716,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!RiO4ptj2KnzQObXl.eO0s1MfbaQB4VTzt.PbmjtjEohVd58x8B"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -682,7 +726,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -711,7 +755,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -885,7 +930,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
