@@ -508,7 +508,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The lurker flies up to their speed, then can attempt to hide. Each enemy the lurker moves adjacent to during this movement can choose to take [[/damage 3 sonic]] damage or fall prone.</p>",
+          "before": "<p>The lurker flies up to their speed, then can attempt to hide. Each enemy the lurker moves adjacent to during this movement can choose to take [[/damage 3 sonic]] damage or fall [[/apply prone]].</p>",
           "after": ""
         },
         "spend": {
@@ -533,9 +533,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -561,7 +561,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "The triggering creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -599,9 +600,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -744,7 +745,9 @@
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -755,7 +758,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma</p><p>of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target is taunted by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target is taunted by the nearest creature or object (save ends).</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -802,13 +805,13 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "pcBTfPVzDHzCzWgE",
-          "_key": "!actors.items.effects!GoqG711wxHjEkeKh.okn9m5nIwglhBKAb.pcBTfPVzDHzCzWgE"
+          "_key": "!actors.items.effects!GoqG711wxHjEkeKh.afwiIRP5l4EV8GoE.pcBTfPVzDHzCzWgE"
         },
         {
           "name": "Taunted",
@@ -840,33 +843,35 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "sytzDKyd0JBLGgCq",
-          "_key": "!actors.items.effects!GoqG711wxHjEkeKh.okn9m5nIwglhBKAb.sytzDKyd0JBLGgCq"
+          "_key": "!actors.items.effects!GoqG711wxHjEkeKh.afwiIRP5l4EV8GoE.sytzDKyd0JBLGgCq"
         }
       ],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": "Actor.GoqG711wxHjEkeKh.Item.okn9m5nIwglhBKAb",
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.afwiIRP5l4EV8GoE",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761436189585,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "okn9m5nIwglhBKAb",
+      "_id": "afwiIRP5l4EV8GoE",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!GoqG711wxHjEkeKh.okn9m5nIwglhBKAb"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!GoqG711wxHjEkeKh.afwiIRP5l4EV8GoE"
     }
   ],
   "folder": "ZzGUpnHJpMCEXTe2",
