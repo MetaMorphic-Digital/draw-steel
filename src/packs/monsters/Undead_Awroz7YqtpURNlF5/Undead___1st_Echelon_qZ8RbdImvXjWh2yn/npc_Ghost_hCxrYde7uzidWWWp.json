@@ -240,7 +240,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The ghost can move through creatures and objects at their usual speed, but can’t end their turn inside a creature or object. The first time in a round that the ghost moves through a creature, that creature takes 2 corruption damage. The ghost doesn’t take damage from being force moved into objects.</p>",
+          "value": "<p>The ghost can move through creatures and objects at their usual speed, but can’t end their turn inside a creature or object. The first time in a round that the ghost moves through a creature, that creature takes [[/damage 2 corruption]]{2 corruption damage}. The ghost doesn’t take damage from being force moved into objects.</p>",
           "director": ""
         },
         "source": {
@@ -263,9 +263,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -532,7 +532,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The ghost halves the damage from the strike and the target takes 2 sonic damage.</p>",
+          "before": "<p>The ghost halves the damage from the strike and the target takes [[/damage 2 sonic]]{2 sonic damage}.</p>",
           "after": ""
         },
         "spend": {
@@ -554,7 +554,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -1049,7 +1049,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -1059,7 +1061,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>At the end of this round, each hero not already adjacent to one or more undead is beset by two <strong>rotting zombies</strong> who burst up from the ground to appear in adjacent unoccupied spaces. Each zombie is winded. This feature can’t be used two rounds in a row.</p>",
+          "before": "<p>At the end of this round, each hero not already adjacent to one or more undead is beset by two @UUID[Compendium.draw-steel.monsters.Actor.2KiVCGcov7SmCkWU]{Rotting Zombies} who burst up from the ground to appear in adjacent unoccupied spaces. Each zombie is winded. This feature can’t be used two rounds in a row.</p>",
           "after": ""
         },
         "spend": {
@@ -1070,24 +1072,24 @@
       "_id": "gSoRE2jY58pVAtXf",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": "dDubEbmnbWGRYlvn",
-      "sort": 100000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.gSoRE2jY58pVAtXf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761425439729,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.OhSioZlAOWFwKfus",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714476764,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!hCxrYde7uzidWWWp.gSoRE2jY58pVAtXf"
     },
     {
@@ -1111,7 +1113,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -1121,7 +1125,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Ravenous and rotting undead arms burst forth from 9 connected squares of a vertical or horizontal surface. Any creature who ends their turn adjacent to an affected square makes an Agility test.</p><table><tbody><tr><td data-colwidth=\"130\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"130\"><p>12-16</p></td><td><p>[[/damage 5]] damage; restrained (EoT)</p></td></tr><tr><td data-colwidth=\"130\"><p>17+</p></td><td><p>[[/damage 5]] damage.</p></td></tr></tbody></table>",
+          "before": "<p>Ravenous and rotting undead arms burst forth from 9 connected squares of a vertical or horizontal surface. Any creature who ends their turn adjacent to an affected square makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5]]{5 damage}; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5]]{5 damage}; [[/apply restrained turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5]]{5 damage.}</p></dd></dl>",
           "after": "<p>While restrained this way, a creature takes 1d6 damage at the start of each of their turns.</p>"
         },
         "spend": {
@@ -1132,24 +1136,24 @@
       "_id": "5lQ9od53YUhk2eDw",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "effects": [],
-      "folder": "dDubEbmnbWGRYlvn",
-      "sort": 150000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.5lQ9od53YUhk2eDw",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761425440729,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.DXM53Md2acyvSVNo.Item.4iwC33FHeYSYgZk8",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755715253739,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
+      "folder": null,
+      "sort": 212500,
       "_key": "!actors.items!hCxrYde7uzidWWWp.5lQ9od53YUhk2eDw"
     }
   ],

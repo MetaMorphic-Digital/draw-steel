@@ -45,8 +45,9 @@
   - Hobgoblins
   - Rivals Echelons 2–4
   - Trolls
-  - Undead Echelons 2–4
+  - Undead Echelons 2–4, plus the Lich and Rhodar von Glaur
   - War Dogs Echelons 2–4
+  - Valok
   - Voiceless Talkers
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
