@@ -78,7 +78,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "",
+      "page": "285",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -113,7 +113,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "servok-siege-machine",
         "advancements": {}
@@ -150,7 +150,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "crafted-to-perfection",
         "advancements": {}
@@ -187,7 +187,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "valiar-might",
         "advancements": {}
@@ -336,7 +336,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "blade-rake",
         "story": "",
@@ -487,7 +487,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "prismacore-cannon",
         "story": "",
@@ -551,7 +551,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "destructive-rollout",
         "story": "",
@@ -607,30 +607,7 @@
               "might"
             ]
           },
-          "effects": {
-            "uEZoFarhWMLLDJBS": {
-              "_id": "uEZoFarhWMLLDJBS",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier1": {
-                  "display": "the target is burning (save ends",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "might"
-                  }
-                },
-                "tier2": {
-                  "display": "the target is burning (EoT",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "might"
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
           "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 fire]]{16 fire damage}; the target is [[/apply jqNAhnhTvxJbLu8w save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 12 fire]]{12 fire damage}; the target is [[/apply jqNAhnhTvxJbLu8w turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 8 fire]]{8 fire damage}</p></dd></dl><p>A burning creature takes [[/damage 1d6 fire]]{1d6 fire damage} at the start of each of their turns. A burning object takes 1d6 fire damage at the end of each round. Additionally, the area is burning until the end of the encounter. While the area is burning, it is difficult terrain and any enemy takes [[/damage 1d6 fire]]{3 fire damage} for each square of the area they enter.</p>",
@@ -643,7 +620,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "burning-oil",
         "story": "",
@@ -835,7 +812,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "quick-blast",
         "story": "",
@@ -897,7 +874,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "repeater",
@@ -959,7 +936,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "i-was-not-commanded-to-wait",
@@ -1021,7 +998,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "rapid-logic-overdrive",
@@ -1165,7 +1142,7 @@
   "folder": "3yk7e8cyjJFhJb0g",
   "prototypeToken": {
     "name": "Servok War Engine",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -1182,11 +1159,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },

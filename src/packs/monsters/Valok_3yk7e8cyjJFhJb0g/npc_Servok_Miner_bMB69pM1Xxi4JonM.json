@@ -113,7 +113,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "valiar-tunneler",
         "advancements": {}
@@ -150,7 +150,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "servok-siege-machine",
         "advancements": {}
@@ -187,7 +187,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "crafted-to-perfection",
         "advancements": {}
@@ -224,7 +224,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "valiar-might",
         "advancements": {}
@@ -428,7 +428,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "drill-press",
         "story": "",
@@ -483,23 +483,7 @@
               "might"
             ]
           },
-          "effects": {
-            "tH9WoRqGiscz1YTF": {
-              "_id": "tH9WoRqGiscz1YTF",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier1": {
-                  "display": "the miner's allies have concealment from the target (save ends)",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "might"
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
           "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 damage]]{14 damage}; slide 4; the miner's allies have [[/apply JPiAhKq6ITlPuxtP save]]{concealment from the target (save ends)}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 damage]]{11 damage}; slide 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 7 damage]]{7 damage}</p></dd></dl><p>the area is difficult terrain.</p>",
@@ -512,7 +496,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "unload-rocks",
         "story": "",
@@ -609,23 +593,7 @@
               "might"
             ]
           },
-          "effects": {
-            "9zFdJ1FN0RZVagOX": {
-              "_id": "9zFdJ1FN0RZVagOX",
-              "type": "special",
-              "name": "Special",
-              "img": null,
-              "special": {
-                "tier3": {
-                  "display": "the target can shift into the nearest unoccupied space outside the fissure",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "might"
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
           "before": "<p>A 5-square-deep fissure opens along the ground in the area. Each ally in the area can shift into the nearest unoccupied space outside the fissure. Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 damage]]{14 damage}; the target falls into the fissure, and is [[/apply prone]] and [[/apply teIi6RRa0uSHCbxK turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 damage]]{11 damage}; the target is [[/apply prone]] and hanging onto the edge of the fissure</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><dl class=\"power-roll-display\"><dd><p>[[/damage 7 damage]]{7 damage}the target can shift into the nearest unoccupied space outside the fissure</p></dd></dl></dd></dl>",
@@ -638,7 +606,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "break-ground",
         "story": "",
@@ -745,7 +713,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "285"
         },
         "_dsid": "miner-inconvenience",
         "story": "",
@@ -807,7 +775,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "repeater",
@@ -869,7 +837,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "i-was-not-commanded-to-wait",
@@ -931,7 +899,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "",
+          "page": "285",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "rapid-logic-overdrive",
@@ -1075,7 +1043,7 @@
   "folder": "3yk7e8cyjJFhJb0g",
   "prototypeToken": {
     "name": "Servok Miner",
-    "displayName": 0,
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -1092,11 +1060,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
