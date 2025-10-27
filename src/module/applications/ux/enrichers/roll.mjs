@@ -346,19 +346,20 @@ async function rollGain(link, event) {
       break;
   }
 
-  let flavorTail;
+  let targetList;
 
   const multipleActors = (actors.size > 1);
   if (multipleActors) {
     const names = [...actors].map((a) => DrawSteelChatMessage.getSpeaker({ actor: a }).alias);
-    const combinedNames = names.join(", ");
-    flavorTail = ` (${combinedNames})`;
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    const combinedNames = formatter.format(names);
+    targetList = `(${combinedNames})`;
   }
 
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel }) + (flavorTail ?? ""),
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel, targets: targetList ?? "" }),
     flags: { core: { canPopout: true } },
     speaker: DrawSteelChatMessage.getSpeaker(),
     style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
