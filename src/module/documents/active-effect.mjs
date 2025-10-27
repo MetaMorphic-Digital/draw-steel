@@ -36,7 +36,8 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /** @inheritdoc */
   async _preCreate(data, options, user) {
-    super._preCreate(data, options, user);
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
 
     // Check if actor has immunity to any statuses being applied by this effect
     // If so, return false to prevent creation
