@@ -143,7 +143,6 @@ While there are similarities with roll data, active effects generally lead with 
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 |Condition Immunity|`system.conditions.immunities`|
-|Ignored Conditions|`system.conditions.ignored`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
@@ -171,7 +170,7 @@ While there are similarities with roll data, active effects generally lead with 
 >
 ></details>
 
-> <details><summary>The viable conditions for Immunities and Ignoring are:</summary>
+> <details><summary>The viable conditions for Immunities are:</summary>
 >
 > |Condition|Active Effect Attribute Key|
 > |:---:|---|
@@ -185,17 +184,11 @@ While there are similarities with roll data, active effects generally lead with 
 > |Taunted|`taunted`
 > |Weakened|`weakened`
 >
-> Immunity means the condition will be removed if it is already present, and will prevent assigning that condition in the future.
-> Ignoring a condition will not remove it, but will suppress its effects for other calculations.
+> Immunity to a condition will prevent applying that condition in the future, but will not affect conditions already present.
 >
 > An example to add immunity to Slowed would be
 >
 > |`system.conditions.immunities`|Add|`slowed`|
-> |---|---|---|
->
-> And the same for ignoring, which allows Slowed to be assigned, but has no effect:
->
-> |`system.conditions.ignored`|Add|`slowed`|
 > |---|---|---|
 >
 ></details>

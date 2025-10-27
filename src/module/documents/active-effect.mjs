@@ -49,67 +49,6 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
-  /** @inheritdoc */
-  _onCreate(data, options, userId) {
-    super._onCreate(data, options, userId);
-    if ((game.userId === userId) && (this.parent.documentName === "Actor")) {
-      this.#checkAndRemoveImmuneStatuses();
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /** @inheritdoc */
-  _onUpdate(changed, options, userId) {
-    super._onUpdate(changed, options, userId);
-
-    if ((game.userId === userId) && (this.parent.documentName === "Actor")) {
-      // Undefined or false on disabled means we should perform the check
-      if (this.active && (changed.disabled != true)) {
-        this.#checkAndRemoveImmuneStatuses();
-      }
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Check if the newly created or enabled effect grants immunities and remove any existing
-   * status effects that the actor is now immune to.
-   * @private
-   */
-  async #checkAndRemoveImmuneStatuses() {
-    const grantsImmunity = this.changes.some(c => c.key === "system.conditions.immunities");
-    if (!grantsImmunity) return;
-
-    // We need to wait for the next tick to ensure the active effect changes are fully applied
-    await new Promise(resolve => setTimeout(resolve, 0));
-    // Trigger the actor to re-prepare data to ensure immunity changes are applied
-    this.parent.prepareData();
-
-    const effectsToRemove = [];
-
-    // Check all active effects for immune statuses
-    for (const effect of this.parent.allApplicableEffects()) {
-      // Skip this effect since we just created it
-      if (effect === this) continue;
-
-      for (const statusId of effect.statuses) {
-        if (this.parent.system.conditions.immunities.has(statusId)) {
-          effectsToRemove.push(effect.id);
-          break; // Only need to add this effect once
-        }
-      }
-    }
-
-    // Remove the effects
-    if (effectsToRemove.length > 0) {
-      await this.parent.deleteEmbeddedDocuments("ActiveEffect", effectsToRemove);
-    }
-  }
-
-  /* -------------------------------------------------- */
-
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
    * @param {string} statusId
