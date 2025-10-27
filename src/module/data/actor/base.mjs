@@ -25,7 +25,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     const schema = {};
 
     schema.stamina = new fields.SchemaField({
-      value: new fields.NumberField({ initial: undefined, nullable: false, integer: true }),
+      value: new fields.NumberField({ initial: null, nullable: true, integer: true }),
       max: new fields.NumberField({ initial: 20, nullable: false, integer: true }),
       temporary: new fields.NumberField({ initial: 0, nullable: false, integer: true }),
     });
@@ -140,7 +140,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
 
     // If our current stamina has not been set, match it to max:
-    if (this.stamina.value === undefined) {
+    if (this.stamina.value === null) {
       this.stamina.value = this.stamina.max;
     }
 
