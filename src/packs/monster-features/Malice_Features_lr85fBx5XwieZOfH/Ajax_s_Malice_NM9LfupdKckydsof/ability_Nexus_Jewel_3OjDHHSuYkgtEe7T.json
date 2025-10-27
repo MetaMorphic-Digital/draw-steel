@@ -1,0 +1,63 @@
+{
+  "name": "Nexus Jewel",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A ajax’s starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures.</p><p><strong><span style=\"text-decoration:underline\">Swamp</span></strong>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "32",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "nexus-jewel",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "NM9LfupdKckydsof",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761602037083,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "3OjDHHSuYkgtEe7T",
+  "sort": 200000,
+  "_key": "!items!3OjDHHSuYkgtEe7T"
+}
