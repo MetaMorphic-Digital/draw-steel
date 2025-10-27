@@ -64,6 +64,7 @@
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
