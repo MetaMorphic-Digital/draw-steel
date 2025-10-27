@@ -237,10 +237,8 @@ async function rollDamageHeal(link, event) {
 }
 
 /* -------------------------------------------------- */
-
-/**
- * Gain Enricher.
- */
+/*   Gain Enricher                                    */
+/* -------------------------------------------------- */
 
 /**
  * Enrich a gain link for heroic resources.
