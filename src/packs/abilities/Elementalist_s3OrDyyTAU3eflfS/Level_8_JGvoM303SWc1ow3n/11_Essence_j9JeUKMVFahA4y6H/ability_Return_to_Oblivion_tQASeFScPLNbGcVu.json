@@ -1,0 +1,69 @@
+{
+  "folder": "j9JeUKMVFahA4y6H",
+  "name": "Return to Oblivion",
+  "type": "ability",
+  "_id": "tQASeFScPLNbGcVu",
+  "img": "icons/magic/air/wind-tornado-cyclone-purple-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "127",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "return-to-oblivion",
+    "story": "Return to Oblivion",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged",
+      "void"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You create a @UUID[Compendium.draw-steel.monsters.Actor.r3G6ZaIeQU3hxiXS]{size 1L vortex} that lasts until the end of the encounter. At the start of each combat round while the vortex is unoccupied, the vortex vertical pulls 3 each enemy within 5 squares of it. Each enemy who enters the vortex or starts their turn there is knocked prone. At the end of the round, if a winded enemy who is not a leader or solo creature is in the vortex, they are instantly destroyed.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761515363642,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!tQASeFScPLNbGcVu"
+}
