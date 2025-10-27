@@ -22,7 +22,7 @@ export const id = "ds.roll";
 /**
  * Valid roll types.
  */
-const rollTypes = ["damage", "heal", "healing", "gain"];
+const rollTypes = ["damage", "heal", "healing", "gain", "heroic", "surge"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -45,6 +45,14 @@ export function enricher(match, options) {
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
     case "gain": return enrichGain(parsedConfig, label, options);
+    case "heroic":
+      //[[/heroic 2]] -> [[/gain 2 heroic]]
+      parsedConfig[0].values.push("heroic");
+      return enrichGain(parsedConfig, label, options);
+    case "surge":
+      //[[/surge 2]] -> [[/gain 2 surge]]
+      parsedConfig[0].values.push("surge");
+      return enrichGain(parsedConfig, label, options);
   }
 }
 
@@ -251,7 +259,7 @@ function enrichGain(parsedConfig, label, options) {
     c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
-      if (["heroic", "surge"].includes(normalizedValue)) {
+      if (["hr", "heroic", "surge"].includes(normalizedValue)) {
         c.type.push(normalizedValue);
       } else {
         formulaParts.push(value);
@@ -279,7 +287,8 @@ function enrichGain(parsedConfig, label, options) {
 
   let resourceType;
 
-  switch (linkConfig.grantType) {
+  switch (linkConfig.gainType) {
+    case "hr": // eslint-ignore no-fallthrough
     case "heroic":
       resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
       break;
@@ -313,8 +322,8 @@ async function rollGain(link, event) {
   if (!formula) throw new Error("Gain link must have a formula");
   if (!gainType) throw new Error("Gain link must have a gain type");
 
-  // Get all selected tokens
-  const actors = ds.utils.tokensToActors();
+  // Get all selected hero tokens
+  const actors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
 
   if (!actors.size) {
     ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
@@ -325,32 +334,47 @@ async function rollGain(link, event) {
   const roll = new DSRoll(formula);
   await roll.evaluate();
 
-  // Determine the resource label based on gain type
-  const resourceLabel = gainType === "surge"
-    ? game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label")
-    : game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+  let resourceLabel;
+
+  switch (gainType) {
+    case "surge":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+    case "hr": // eslint-ignore no-fallthrough
+    case "heroic":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+  }
+
+  let flavorTail;
+
+  const multipleActors = (actors.size > 1);
+  if (multipleActors) {
+    const names = [...actors].map((a) => DrawSteelChatMessage.getSpeaker({ actor: a }).alias);
+    const combinedNames = names.join(", ");
+    flavorTail = ` (${combinedNames})`;
+  }
 
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel }),
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel }) + (flavorTail ?? ""),
     flags: { core: { canPopout: true } },
+    speaker: DrawSteelChatMessage.getSpeaker(),
+    style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
   });
 
   // Apply the gain to each selected token's actor
   for (const actor of actors) {
-    // Only gain to heroes (actors with heroic resources)
-    if (actor.type === "hero") {
-      switch (gainType) {
-        case "surge":
-          await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
-          break;
-        case "heroic":
-          await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
-          break;
-        default:
-          return;
-      }
+    switch (gainType) {
+      case "surge":
+        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
+        break;
+      case "heroic":
+        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+        break;
+      default:
+        return;
     }
   }
 }
