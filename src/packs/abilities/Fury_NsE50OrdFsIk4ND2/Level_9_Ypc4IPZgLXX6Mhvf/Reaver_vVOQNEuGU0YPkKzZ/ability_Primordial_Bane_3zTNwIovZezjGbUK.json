@@ -1,0 +1,502 @@
+{
+  "folder": "vVOQNEuGU0YPkKzZ",
+  "name": "Primordial Bane",
+  "type": "ability",
+  "_id": "3zTNwIovZezjGbUK",
+  "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "141",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "primordial-bane",
+    "story": "You attune the target to be weaker to a specific element.",
+    "keywords": [
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "fFEXQ7umoiZMMgzP": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fFEXQ7umoiZMMgzP",
+          "damage": {
+            "tier1": {
+              "value": "11 + @chr",
+              "types": [
+                "acid",
+                "cold",
+                "corruption",
+                "fire",
+                "lightning",
+                "poison",
+                "sonic"
+              ]
+            },
+            "tier2": {
+              "value": "16 + @chr",
+              "types": [
+                "acid",
+                "cold",
+                "corruption",
+                "fire",
+                "lightning",
+                "poison",
+                "sonic"
+              ]
+            },
+            "tier3": {
+              "value": "21 + @chr",
+              "types": [
+                "acid",
+                "cold",
+                "corruption",
+                "fire",
+                "lightning",
+                "poison",
+                "sonic"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Choose acid, cold, corruption, fire, lightning, poison, or sonic damage. The target loses any damage immunity to the chosen type and gains weakness 10 to the chosen type (save ends). </p><p>[[/apply MGQmrgFa7IchnX8z]] [[/apply Z25OIEpHpelUvKWe]]  [[/apply Tp4YLa282D8CY9eX]] [[/apply GZkQv6kUtb5gccNI]] [[/apply 2SJ7L3LBeALSQ4JA]] [[/apply d12CIjzP0dulOpUI]] [[/apply twQIogmZMlG19c4n]]</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Acid Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "MGQmrgFa7IchnX8z",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.acid",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.acid",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761576348803,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.MGQmrgFa7IchnX8z"
+    },
+    {
+      "name": "Cold Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "Z25OIEpHpelUvKWe",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.cold",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.cold",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761576583111,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.Z25OIEpHpelUvKWe"
+    },
+    {
+      "name": "Corruption Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "Tp4YLa282D8CY9eX",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.corruption",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761576642342,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.Tp4YLa282D8CY9eX"
+    },
+    {
+      "name": "Fire Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "GZkQv6kUtb5gccNI",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.fire",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761576942180,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.GZkQv6kUtb5gccNI"
+    },
+    {
+      "name": "Lightning Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "2SJ7L3LBeALSQ4JA",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.lightning",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761577045516,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.2SJ7L3LBeALSQ4JA"
+    },
+    {
+      "name": "Poison Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "d12CIjzP0dulOpUI",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.poison",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.poison",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761577121050,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.d12CIjzP0dulOpUI"
+    },
+    {
+      "name": "Sonic Weakness 10",
+      "img": "icons/magic/control/debuff-energy-hold-blue-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK",
+      "transfer": false,
+      "_id": "twQIogmZMlG19c4n",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.sonic",
+          "mode": 5,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weaknesses.sonic",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761577184017,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!3zTNwIovZezjGbUK.twQIogmZMlG19c4n"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761571365312,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!3zTNwIovZezjGbUK"
+}

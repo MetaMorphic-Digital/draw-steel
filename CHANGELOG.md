@@ -28,7 +28,7 @@
   - Censor levels 4–10 features and abilities.
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–10 features and abilities.
-  - Fury levels 4–7 features and abilities.
+  - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–10 features and abilities.
@@ -99,6 +99,7 @@
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
 - PseudoDocument.create now returns the pseudo document instead of the parent.
+- Widened space for advancement labels to reduce need for line wrapping.
 
 ### Removed
 
