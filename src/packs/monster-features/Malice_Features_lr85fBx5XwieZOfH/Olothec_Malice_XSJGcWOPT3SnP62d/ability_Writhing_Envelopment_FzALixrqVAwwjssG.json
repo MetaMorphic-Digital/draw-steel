@@ -1,0 +1,194 @@
+{
+  "name": "Writhing Envelopment",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "main",
+    "category": "heroic",
+    "resource": 4,
+    "trigger": "A olothec starts its turn.",
+    "distance": {
+      "type": "melee",
+      "primary": 3
+    },
+    "target": {
+      "type": "creature",
+      "value": 1,
+      "custom": "One slimed, transformed, or devolved creature"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {
+        "HG0MQLQEoaEfSovw": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "HG0MQLQEoaEfSovw",
+          "sort": 0,
+          "damage": {
+            "tier1": {
+              "value": "11",
+              "types": [
+                "psychic"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "17",
+              "types": [
+                "psychic"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "20",
+              "types": [
+                "psychic"
+              ],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "mv3SOX9my2shnDP3": {
+          "name": "Grabbed",
+          "img": null,
+          "type": "applied",
+          "_id": "mv3SOX9my2shnDP3",
+          "sort": 0,
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} grabbed",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "agility"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "grabbed": {
+                  "condition": "failure",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The olothec can pull a target grabbed this way adjacent to them. While grabbed this way, a target can’t make saving throws to end any other effects, and the olothec has a double edge on strikes against them.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "writhing-envelopment-2d10-+-4",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "origin": "Actor.bqeXlEbT9eFc3adn.Item.8r0KNCthuq1DqT2m",
+      "transfer": false,
+      "_id": "BljLpEiaRXabwHJK",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!FzALixrqVAwwjssG.BljLpEiaRXabwHJK"
+    }
+  ],
+  "folder": "XSJGcWOPT3SnP62d",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761505918953,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "FzALixrqVAwwjssG",
+  "sort": 200000,
+  "_key": "!items!FzALixrqVAwwjssG"
+}

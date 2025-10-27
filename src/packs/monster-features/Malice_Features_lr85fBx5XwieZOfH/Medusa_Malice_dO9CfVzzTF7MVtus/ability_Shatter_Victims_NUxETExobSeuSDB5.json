@@ -1,0 +1,63 @@
+{
+  "name": "Shatter Victims",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A  starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The medusa causes three stone statues within 10 squares of them to each shatter in a 2-cube explosion. Each enemy in one of those areas makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Might test</span></strong></span>. An enemy restrained or slowed by the medusa’s Petrify ability has a double bane on the test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12]]{12 damage}; vertical push 3; [[/apply bleeding save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10]]{10 damage}; vertical push 3</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6]]{6 damage}</p></dd></dl>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "204",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "shatter-victims",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "dO9CfVzzTF7MVtus",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761498393972,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "NUxETExobSeuSDB5",
+  "sort": 100000,
+  "_key": "!items!NUxETExobSeuSDB5"
+}

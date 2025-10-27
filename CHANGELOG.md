@@ -43,12 +43,16 @@
   - Elves (Shadow)
   - Giants
   - Hobgoblins
+  - Medusa
+  - Olothec
   - Rivals Echelons 2–4
+  - Shambling Mound
   - Trolls
   - Undead Echelons 2–4, plus the Lich and Rhodar von Glaur
   - War Dogs Echelons 2–4
   - Valok
-  - Voiceless Talkers
+  - Voiceless Talkers & Lord Syuul
+  - Xorannox the Tyract and his six, magnificent, beautiful eyeballs
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
 - Added a "Group Selected" option to the Combat Tracker options. (#690)

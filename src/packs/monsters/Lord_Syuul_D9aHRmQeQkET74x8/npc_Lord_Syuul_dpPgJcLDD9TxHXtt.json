@@ -1,0 +1,1589 @@
+{
+  "name": "Lord Syuul",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 450,
+      "max": 450,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 1
+      },
+      "agility": {
+        "value": 3
+      },
+      "reason": {
+        "value": 4
+      },
+      "intuition": {
+        "value": 4
+      },
+      "presence": {
+        "value": 3
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 3,
+      "turns": 1
+    },
+    "movement": {
+      "value": 7,
+      "types": [
+        "teleport"
+      ],
+      "hover": true,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 10,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "294",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 7,
+      "keywords": [
+        "horror"
+      ],
+      "level": 6,
+      "ev": 96,
+      "role": "solo",
+      "organization": "solo"
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>End Effect: </strong>At the end of each of his turns, Lord Syuul can take [[/damage 10]]{10 damage} to end one effect on him that can be ended by a saving throw. This damage can't be reduced in any way.</p><p><strong>Solo Turns: </strong>Lord Syuul can take two turns each round. He can't take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "solo-monster",
+        "advancements": {}
+      },
+      "_id": "2LUgyKg86SRmr22j",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.2LUgyKg86SRmr22j"
+    },
+    {
+      "name": "Mind Over Manners",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Whenever Lord Syuul uses a psionic ability, he can do so as if he were in the space of any creature within his line of effect who he has observed using a psionic ability.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "mind-over-manners",
+        "advancements": {}
+      },
+      "_id": "5I0t4rDy6fc0TywY",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.5I0t4rDy6fc0TywY"
+    },
+    {
+      "name": "Tentacle Grab",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 2
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "lhDWtu5ShrOBWg6V": {
+              "_id": "lhDWtu5ShrOBWg6V",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "17",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "20",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "b441lOwXphsE3r8I": {
+              "_id": "b441lOwXphsE3r8I",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} grabbed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "The distance of this ability increases to melee 10. Each target grabbed by Lord Syuul is pulled up to 10 squares.",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "tentacle-grab",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "JBYppmKgxBuxhx6z",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.JBYppmKgxBuxhx6z"
+    },
+    {
+      "name": "Dampening Grenade",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "area",
+          "psionic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 2,
+          "secondary": 5
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "vUCRufT5spcCZzfK": {
+              "_id": "vUCRufT5spcCZzfK",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "13",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "wzvtQA88E8HbknM8": {
+              "_id": "wzvtQA88E8HbknM8",
+              "type": "other",
+              "name": "other",
+              "img": null,
+              "other": {
+                "tier1": {
+                  "display": "the effect ends after 2 turns",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier2": {
+                  "display": "the effect ends at the end of Lord Syuul's next turn",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "reason"
+                  }
+                },
+                "tier3": {
+                  "display": "the effect lasts until the end of the encounter",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "reason"
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Any supernatural ability used by a creature in the area has a double bane. All reactive tests made against magic or psionic effects in the area have a double edge.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "dampening-grenade",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "x5BNIVOTcOGMRx93",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.x5BNIVOTcOGMRx93"
+    },
+    {
+      "name": "Mind Blown",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "melee",
+          "psionic",
+          "strike"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "enemy",
+          "value": 1,
+          "custom": "One grabbed enemy"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "CQC56EwHxEKSH1UC": {
+              "_id": "CQC56EwHxEKSH1UC",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "12",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "20",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "24",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>If this action reduces the target to 0 Stamina and they have a brain, their brain explodes, instantly killing them.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "mind-blown",
+        "story": "",
+        "resource": 7,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Ym7Rsb2avdgSuHEg",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.Ym7Rsb2avdgSuHEg"
+    },
+    {
+      "name": "You Come With Me",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "psionic"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Lord Syuul can teleport up to 5 squares along with each creature and object he has grabbed. He can release grabbed creatures and objects before or after teleporting</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "you-come-with-me",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "3GkJES5Hh5oN1mxY",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.3GkJES5Hh5oN1mxY"
+    },
+    {
+      "name": "Adaptability",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "",
+        "keywords": [
+          "psionic"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the start of his next turn, Lord Syuul gains immunity 5 to the triggering damage type.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "adaptability",
+        "story": "",
+        "resource": null,
+        "trigger": "Lord Syuul takes damage that has a damage type."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Ci0PM6tjTalFRsNd",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.Ci0PM6tjTalFRsNd"
+    },
+    {
+      "name": "See Only Me",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "psionic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 10
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 16 psychic]]{16 psychic damage}; the target has no line of effect to any creature [[/apply bKxYOKRHIGVnxbNQ]]{except Lord Syuul}, and takes a bane on strikes targeting Lord Syuul (save ends)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 13 psychic]]{13 psychic damage}; the target has no line of effect to any creature [[/apply cjzmFsWWf6SnEKnD]]{except Lord Syuul (save ends)}</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 7 psychic]]{7 psychic damage}</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "see-only-me",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "See Only Me (Tier 1)",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.Epq2bolWftwHg3Z1",
+          "transfer": false,
+          "_id": "bKxYOKRHIGVnxbNQ",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have no line of effect to any creature except Lord Syuul, and take a bane on strikes targeting Lord Syuul.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.Epq2bolWftwHg3Z1.bKxYOKRHIGVnxbNQ"
+        },
+        {
+          "name": "See Only Me (Tier 2)",
+          "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.Epq2bolWftwHg3Z1",
+          "transfer": false,
+          "_id": "cjzmFsWWf6SnEKnD",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have no line of effect to any creature except Lord Syuul.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.Epq2bolWftwHg3Z1.cjzmFsWWf6SnEKnD"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Epq2bolWftwHg3Z1",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.Epq2bolWftwHg3Z1"
+    },
+    {
+      "name": "Phantom Pain",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "psionic"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Lord Syuul becomes invisible, can teleport up to 10 squares, and projects an illusory double within 10 squares. The double can't move or act, but Lord Syuul can use psionic abilities as if he were in its square. Whenever a creature touches or damages the double with a melee strike, they take [[/damage 10 psychic]]{10 psychic damage}. If Lord Syuul takes damage, his invisibility ends and the double disappears.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "phantom-pain",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "jUo8IHRQrZBsliBs",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.jUo8IHRQrZBsliBs"
+    },
+    {
+      "name": "Mindshatter",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "psionic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "Each creature in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "hmSmLrF83rKrX2t7": {
+              "_id": "hmSmLrF83rKrX2t7",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "13",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "16",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>Until the end of the encounter, each target has [[/apply RFz5KOyfwPAefYKV]]damage weakness 3.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "294"
+        },
+        "_dsid": "mindshatter",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Mindshatter",
+          "img": "icons/skills/wounds/anatomy-organ-brain-pink-red.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.iBwjjFiwK9UXQcQ6",
+          "transfer": false,
+          "_id": "RFz5KOyfwPAefYKV",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.all",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have damage weakness 3.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.iBwjjFiwK9UXQcQ6.RFz5KOyfwPAefYKV"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "iBwjjFiwK9UXQcQ6",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.iBwjjFiwK9UXQcQ6"
+    },
+    {
+      "name": "Do It for Me",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A  starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Lord Syuul psionically plunders the minds of each creature within 2 squares of him. Each such creature makes a <strong>Reason test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 13 psychic]]{13 psychic damage}; the target uses a signature ability against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; the target makes a free strike against a creature of Lord Syuul’s choice</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "293",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "do-it-for-me",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "NzLViANmt5HGRow2",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.NzLViANmt5HGRow2"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A  starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Lord Syuul takes an additional main action on his turn. He can use this feature even if he is dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "293",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "VrmCzUdjjQmM5sCL",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.VrmCzUdjjQmM5sCL"
+    },
+    {
+      "name": "Overpower",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A  starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Lord Syuul sends out a psionic burst to completely overpower his greatest threats. He makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Reason test</span></strong></span> (2d10 + 4).</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd></dl><p>Once per round as a maneuver, Lord Syuul can repeat this test, replacing the previous Overpower effect.</p><p>Whenever an Overpower effect is active, any hero who has one or more psionic abilities can use a maneuver to push back by making a <strong>Reason test</strong>, replacing the previous Overpower effect.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd></dl><p>The Overpower effect lasts until the end of the encounter.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "293",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "overpower",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Overpower (Weak 5)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+          "transfer": false,
+          "_id": "G3pmIisK48BtlWbz",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.all",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.DMmMxLn4okIAt3Zw.G3pmIisK48BtlWbz"
+        },
+        {
+          "name": "Overpower (Immune 2)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+          "transfer": false,
+          "_id": "jYSbHU5vWJKVYLb1",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "2",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.DMmMxLn4okIAt3Zw.jYSbHU5vWJKVYLb1"
+        },
+        {
+          "name": "Overpower (Immune 5)",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+          "transfer": false,
+          "_id": "dablVHoMkSQAjH4U",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.immunities.all",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!dpPgJcLDD9TxHXtt.DMmMxLn4okIAt3Zw.dablVHoMkSQAjH4U"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "DMmMxLn4okIAt3Zw",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.DMmMxLn4okIAt3Zw"
+    },
+    {
+      "name": "Guise",
+      "type": "ability",
+      "system": {
+        "type": "none",
+        "source": {
+          "book": "Monsters",
+          "page": "294",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "guise",
+        "story": "",
+        "keywords": [],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Lord Syuul projects a psionic screen over his body, preventing other creatures from treating him as an enemy until the end of his next turn.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "96tTG4IFYxVi8e9Q",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!dpPgJcLDD9TxHXtt.96tTG4IFYxVi8e9Q"
+    }
+  ],
+  "folder": "D9aHRmQeQkET74x8",
+  "prototypeToken": {
+    "name": "Lord Syuul",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761531145140,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "dpPgJcLDD9TxHXtt",
+  "sort": 0,
+  "_key": "!actors!dpPgJcLDD9TxHXtt"
+}
