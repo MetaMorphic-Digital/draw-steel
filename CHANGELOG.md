@@ -99,6 +99,7 @@
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
 - PseudoDocument.create now returns the pseudo document instead of the parent.
+- Widened space for advancement labels to reduce need for line wrapping.
 
 ### Removed
 
