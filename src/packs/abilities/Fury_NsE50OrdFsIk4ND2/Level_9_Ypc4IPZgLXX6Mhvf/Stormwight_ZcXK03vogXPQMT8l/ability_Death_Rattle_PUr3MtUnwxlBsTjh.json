@@ -1,0 +1,113 @@
+{
+  "folder": "ZcXK03vogXPQMT8l",
+  "name": "Death Rattle",
+  "type": "ability",
+  "_id": "PUr3MtUnwxlBsTjh",
+  "img": "icons/magic/sonic/scream-wail-shout-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "141",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "death-rattle",
+    "story": "You unleash an otherworldly cry that rips through your enemies, killing the weakest of them.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "jaAEwq1H6qcQ8aq2": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "jaAEwq1H6qcQ8aq2",
+          "damage": {
+            "tier1": {
+              "value": "4",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "6",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "10",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "nsyitYfudlUh1DIP": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "nsyitYfudlUh1DIP",
+          "other": {
+            "tier1": {
+              "display": "any target who is a minion is reduced to 0 Stamina"
+            },
+            "tier2": {
+              "display": "any target who is a minion is reduced to 0 Stamina, as does one winded target who is not a leader or solo creature"
+            },
+            "tier3": {
+              "display": "each target who is not a leader or solo creature is winded; any target who is a minion is reduced to 0 Stamina, as does one winded target who is not a leader or solo creature"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761572601372,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!PUr3MtUnwxlBsTjh"
+}

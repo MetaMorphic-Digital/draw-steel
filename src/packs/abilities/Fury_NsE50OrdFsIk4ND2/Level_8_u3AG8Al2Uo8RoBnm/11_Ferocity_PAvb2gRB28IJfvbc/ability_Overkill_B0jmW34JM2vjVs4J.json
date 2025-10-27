@@ -1,0 +1,89 @@
+{
+  "folder": "PAvb2gRB28IJfvbc",
+  "name": "Overkill",
+  "type": "ability",
+  "_id": "B0jmW34JM2vjVs4J",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "140",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "overkill",
+    "story": "You strike so no damage is wasted.",
+    "keywords": [
+      "magic",
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "VZx7gN9HUMZUEQpN": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "VZx7gN9HUMZUEQpN",
+          "damage": {
+            "tier1": {
+              "value": "6 + @chr"
+            },
+            "tier2": {
+              "value": "10 + @chr"
+            },
+            "tier3": {
+              "value": "14 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>If the target is a minion or is winded but isn’t a leader or solo creature, they are reduced to 0 Stamina before this ability’s damage is dealt. If the target is killed by this damage, you can deal any damage over what was required to kill them to another creature within 5 squares of the target.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761568724084,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!B0jmW34JM2vjVs4J"
+}
