@@ -1,0 +1,83 @@
+{
+  "folder": "APQZ5fHFsMZFYLtD",
+  "name": "Marauder of the Primordial Chaos",
+  "type": "feature",
+  "_id": "mcv2drEn3X13577b",
+  "img": "icons/magic/control/fear-fright-shadow-monster-red.webp",
+  "system": {
+    "description": {
+      "value": "<p>As your connection to the power of the Primordial Chaos grows ever stronger, you automatically sense any elemental creatures or magic sources of elemental power, such as a lava pool or a lake overlapping with Quintessence, within 1 mile of you.</p><p>Additionally, you can speak with elemental creatures, and when you are in a negotiation with an elemental, you treat your Renown as 1 higher than usual. This stacks with the increase to your effective Renown provided by the Nature’s Knight aspect feature. When any elemental first becomes aware of you in combat, if they have P&lt;AVERAGE, they are [[/apply wRGMbCFEvxpsFLHH]] of you (save ends).</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "138",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "m",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Frightened",
+      "img": "icons/magic/control/fear-fright-shadow-monster-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.mcv2drEn3X13577b",
+      "transfer": false,
+      "_id": "wRGMbCFEvxpsFLHH",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "frightened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761521963379,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!mcv2drEn3X13577b.wRGMbCFEvxpsFLHH"
+    }
+  ],
+  "sort": 700000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761521696502,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!mcv2drEn3X13577b"
+}
