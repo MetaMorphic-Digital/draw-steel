@@ -1,0 +1,118 @@
+{
+  "name": "Slime Trail",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A xorannox’s starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of Xorannox’s next turn, whenever he or any of his eyes leave their space, they secrete a viscous slime onto the ground in that area. Any enemy who enters an affected square has [[/apply ApDXogBwQd5y8qS8]]{lightning weakness 5 and fire weakness 5} until the end of the encounter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "slime-trail",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Slime weakness",
+      "img": "icons/creatures/slimes/slime-blob-pseudopods-green.webp",
+      "type": "base",
+      "origin": "Actor.Jru4gouKtLuDa2m9.Item.ObLvA8zvfFy32lFk",
+      "transfer": false,
+      "_id": "ApDXogBwQd5y8qS8",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weakness.fire",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "system.damage.weakness.lightning",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You have lightning weakness 5 and fire weakness 5 until the end of the encounter.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!BBDl1nS9LEM0HDjF.ApDXogBwQd5y8qS8"
+    }
+  ],
+  "folder": "feRWq4rNNNPaQrRV",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761532245900,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "BBDl1nS9LEM0HDjF",
+  "sort": 300000,
+  "_key": "!items!BBDl1nS9LEM0HDjF"
+}

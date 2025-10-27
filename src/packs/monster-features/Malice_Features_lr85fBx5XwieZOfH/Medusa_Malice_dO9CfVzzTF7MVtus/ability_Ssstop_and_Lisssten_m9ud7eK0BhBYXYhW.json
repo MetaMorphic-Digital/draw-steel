@@ -1,0 +1,149 @@
+{
+  "name": "Ssstop and Lisssten",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A  starts its turn.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "target": {
+      "type": "creature",
+      "value": 3,
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "4",
+        "characteristics": []
+      },
+      "effects": {
+        "MRZXHfc18wMkqWAQ": {
+          "name": "Charmed",
+          "img": null,
+          "type": "applied",
+          "_id": "MRZXHfc18wMkqWAQ",
+          "sort": 0,
+          "applied": {
+            "tier1": {
+              "display": "{{potency}} the target is charmed",
+              "effects": {
+                "yNn58RFexeWohiTo": {
+                  "condition": "failure",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "2",
+                "characteristic": "intuition"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "3",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {},
+              "potency": {
+                "value": "4",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>At a time of the medusa’s choosing, a charmed creature moves up to their speed and makes a free strike against an enemy of the medusa’s choice as a free triggered action. The creature is then no longer charmed.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "204",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "ssstop-and-lisssten-2d10-+-4",
+    "story": "",
+    "keywords": [
+      "magic",
+      "ranged"
+    ]
+  },
+  "effects": [
+    {
+      "name": "Charmed",
+      "img": "icons/magic/life/heart-pink.webp",
+      "origin": "Actor.7GT2uNM8guGX4mVD.Item.sx7K9v7liGd6XlS9",
+      "transfer": false,
+      "_id": "yNn58RFexeWohiTo",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>At a time of the medusa’s choosing, a charmed creature moves up to their speed and makes a free strike against an enemy of the medusa’s choice as a free triggered action. The creature is then no longer charmed.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!m9ud7eK0BhBYXYhW.yNn58RFexeWohiTo"
+    }
+  ],
+  "folder": "dO9CfVzzTF7MVtus",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761498397364,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "m9ud7eK0BhBYXYhW",
+  "sort": 200000,
+  "_key": "!items!m9ud7eK0BhBYXYhW"
+}

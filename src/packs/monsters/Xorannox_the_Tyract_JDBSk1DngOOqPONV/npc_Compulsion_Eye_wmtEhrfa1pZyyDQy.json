@@ -1,0 +1,440 @@
+{
+  "name": "Compulsion Eye",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/controller.webp",
+  "system": {
+    "stamina": {
+      "value": 30,
+      "max": 30,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": -1
+      },
+      "agility": {
+        "value": 1
+      },
+      "reason": {
+        "value": 4
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": -1
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 0,
+      "turns": 1
+    },
+    "movement": {
+      "value": 5,
+      "types": [
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "329",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 3,
+      "keywords": [
+        "horror"
+      ],
+      "level": 6,
+      "ev": 0,
+      "role": "controller",
+      "organization": "minion"
+    }
+  },
+  "items": [
+    {
+      "name": "Psionic Barrier",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The compulsion eye has damage immunity 15. When they use a main action, they lose this immunity until the end of the round.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "psionic-barrier",
+        "advancements": {}
+      },
+      "_id": "JfOdpfWr8oxfvkJ3",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!wmtEhrfa1pZyyDQy.JfOdpfWr8oxfvkJ3"
+    },
+    {
+      "name": "Compulsion Beam",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "psionic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 6
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "reason"
+            ]
+          },
+          "effects": {
+            "7y9fNXkyMjY4IAob": {
+              "name": "Charmed",
+              "img": null,
+              "type": "other",
+              "_id": "7y9fNXkyMjY4IAob",
+              "sort": 0,
+              "other": {
+                "tier1": {
+                  "display": "{{potency}} the target is charmed",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier2": {
+                  "display": "{{potency}} the target is charmed",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}} the target is charmed",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>As a free triggered action, a charmed target immediately moves up to their speed and can make a free strike against an enemy of Xorannox's choice. The target is then no longer charmed.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "compulsion-beam",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Active Effect",
+          "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+          "origin": "Actor.wE86olo3J9qJlYxz.Item.2Zn4GZcDnQhnfgh5",
+          "transfer": false,
+          "_id": "BoD9lcxjUK02O9ZT",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!wmtEhrfa1pZyyDQy.2Zn4GZcDnQhnfgh5.BoD9lcxjUK02O9ZT"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "2Zn4GZcDnQhnfgh5",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!wmtEhrfa1pZyyDQy.2Zn4GZcDnQhnfgh5"
+    }
+  ],
+  "folder": "JDBSk1DngOOqPONV",
+  "prototypeToken": {
+    "name": "Compulsion Eye",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/controller.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [
+    {
+      "name": "Psionic Barrier",
+      "img": "icons/magic/defensive/barrier-shield-dome-blue-purple.webp",
+      "type": "base",
+      "origin": "Actor.wE86olo3J9qJlYxz",
+      "_id": "yszyVK7g0ZSMMJa5",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.all",
+          "mode": 2,
+          "value": "15",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>The compulsion eye has damage immunity 15. When they use a main action, they lose this immunity until the end of the round.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.effects!wmtEhrfa1pZyyDQy.yszyVK7g0ZSMMJa5"
+    }
+  ],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761535141258,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "wmtEhrfa1pZyyDQy",
+  "sort": 600000,
+  "_key": "!actors!wmtEhrfa1pZyyDQy"
+}

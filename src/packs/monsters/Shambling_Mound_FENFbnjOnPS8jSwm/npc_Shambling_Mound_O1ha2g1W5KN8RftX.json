@@ -1,0 +1,1768 @@
+{
+  "name": "Shambling Mound",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 400,
+      "max": 400,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 4
+      },
+      "agility": {
+        "value": -1
+      },
+      "reason": {
+        "value": 0
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": 0
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 3,
+        "letter": "M"
+      },
+      "stability": 5,
+      "turns": 1
+    },
+    "movement": {
+      "value": 3,
+      "types": [
+        "walk"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "<p></p>",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "247",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 7,
+      "keywords": [
+        "plant"
+      ],
+      "level": 5,
+      "ev": 84,
+      "role": "solo",
+      "organization": "solo"
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>End Effect: </strong>At the end of each of their turns, the shambling mound can take [[/damage 10]]{10 damage} to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p><strong>Solo Turns: </strong>The shambling mound can take two turns each round. They can't take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "solo-monster",
+        "advancements": {}
+      },
+      "_id": "OMZUzZzHUikl6MQl",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.OMZUzZzHUikl6MQl"
+    },
+    {
+      "name": "Engulfing Sac",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The shambling mound has a @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{vegetative sack} on their body where they carry engulfed creatures. The sack has 30 Stamina, damage immunity 5, and fire weakness 10. Destroying the sack frees creatures trapped by the shambling mound's Engulf ability. The shambling mound regrows a destroyed sack at the start of their next turn.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "engulfing-sac",
+        "advancements": {}
+      },
+      "_id": "P6LtcTGBP6poft47",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.P6LtcTGBP6poft47"
+    },
+    {
+      "name": "False Appearance",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>While the shambling mound remains motionless, they are indistinguishable from ordinary vegetation.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "false-appearance",
+        "advancements": {}
+      },
+      "_id": "Ker9UmYBHVSTOpY1",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.Ker9UmYBHVSTOpY1"
+    },
+    {
+      "name": "Frothing Flora",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The area within 6 squares of the shambling mound is difficult terrain.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "frothing-flora",
+        "advancements": {}
+      },
+      "_id": "84O47TupX3fbW1Nn",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.84O47TupX3fbW1Nn"
+    },
+    {
+      "name": "Vine Lash",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "zgNiqpuZ7YqABVRv": {
+              "_id": "zgNiqpuZ7YqABVRv",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "11",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "16",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "19",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "wBZXbhmjVolcbGCU": {
+              "_id": "wBZXbhmjVolcbGCU",
+              "type": "applied",
+              "name": "Grabbed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} grabbed (save ends)",
+                  "potency": {
+                    "value": "3",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "4",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "grabbed",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "agility"
+                  },
+                  "effects": {
+                    "grabbed": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target takes 7 poison damage.</p>"
+        },
+        "spend": {
+          "text": "The shambling mound can slide each target up to 6 squares.",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "vine-lash",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "zKyiCatPaFmQx4NA",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.zKyiCatPaFmQx4NA"
+    },
+    {
+      "name": "Seismic Slam",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 6
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "ogOU8SmMgVxJfs3E": {
+              "_id": "ogOU8SmMgVxJfs3E",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "IIJn5fr5fiQWmVap": {
+              "_id": "IIJn5fr5fiQWmVap",
+              "type": "applied",
+              "name": "Dazed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dazed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dazed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "seismic-slam",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "WH1dvvF4M01mjFUU",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.WH1dvvF4M01mjFUU"
+    },
+    {
+      "name": "Engulf",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+      "system": {
+        "type": "main",
+        "category": "heroic",
+        "keywords": [
+          "melee"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 6
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target must be size 1L or smaller. The shambling mound reaches out with writhing vines, and if the target has A &lt; 3, they are engulfed into the shambling mound's @UUID[Compendium.draw-steel.monsters.Actor.OSs5E643DHaEh2zJ]{sack}. If the target is grabbed by the shambling mound, the potency increases by 1. An engulfed creature is [[/apply restrained]], takes [[/damage 3 poison]]{3 poison damage} at the start of each turn, and can't take damage from abilities used from outside the sack. When the shambling mound moves, the engulfed creature moves with them. If the shambling mound dies or their sack is destroyed, each engulfed creature is freed and appears in an unoccupied space within 2 squares of the shambling mound.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "The shambling mound can engulf one additional target for each 2 Malice spent.",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "engulf",
+        "story": "",
+        "resource": 2,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "OUPNximK4KgZQWGn",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.OUPNximK4KgZQWGn"
+    },
+    {
+      "name": "Leech",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each creature engulfed by the shambling mound takes [[/damage 5 poison]]{5 poison damage}. The shambling mound gains [[/heal 5 temp]] for each creature who takes damage this way.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "leech",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "9tDzEVaO6sxZ0ajN",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.9tDzEVaO6sxZ0ajN"
+    },
+    {
+      "name": "Tether Down",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "",
+        "keywords": [
+          "melee"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 6
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "The triggering creature"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "LLcUdvMdQg8enCd6": {
+              "_id": "LLcUdvMdQg8enCd6",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "12",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "15",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "QVUBfw0fTdcDICnM": {
+              "_id": "QVUBfw0fTdcDICnM",
+              "type": "applied",
+              "name": "Restrained",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} restrained (EoT)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "turn",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "tether-down",
+        "story": "",
+        "resource": null,
+        "trigger": "A creature within distance willingly moves."
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "yV1oYb5Jh6XRXlrr",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.yV1oYb5Jh6XRXlrr"
+    },
+    {
+      "name": "Ravenous Overgrowth",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "weapon"
+        ],
+        "distance": {
+          "type": "line",
+          "primary": 10,
+          "secondary": 2,
+          "tertiary": 1
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "Each creature in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "gPgxmjetJI2TvI4r": {
+              "_id": "gPgxmjetJI2TvI4r",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "7",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "12",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "15",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "olDMUCShYTq2hz7s": {
+              "_id": "olDMUCShYTq2hz7s",
+              "type": "forced",
+              "name": "pull",
+              "img": null,
+              "forced": {
+                "tier2": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "4",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "6",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  }
+                },
+                "tier1": {
+                  "display": "{{forced}}",
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "3",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "SVC8C8j1Sg9raV6Q": {
+              "name": "Poison Weakness",
+              "img": null,
+              "type": "applied",
+              "_id": "SVC8C8j1Sg9raV6Q",
+              "sort": 0,
+              "applied": {
+                "tier1": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "the target has poison weakness 3 until the end of the encounter",
+                  "effects": {
+                    "OPRHppbLlbdG1iuy": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "the target has poison weakness 3 until the end of the encounter",
+                  "effects": {
+                    "KveY1zLKCbfkMlGS": {
+                      "condition": "always",
+                      "end": "",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "ravenous-overgrowth",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Poison Weakness (Tier 3)",
+          "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+          "origin": "Actor.yYkJ1SSQRMAOU2IG.Item.IxK7PQO5m2UxfWLp",
+          "transfer": false,
+          "_id": "KveY1zLKCbfkMlGS",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.poison",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!O1ha2g1W5KN8RftX.IxK7PQO5m2UxfWLp.KveY1zLKCbfkMlGS"
+        },
+        {
+          "name": "Poison Weakness (Tier 2)",
+          "img": "icons/magic/acid/dissolve-drip-droplet-smoke.webp",
+          "origin": "Actor.yYkJ1SSQRMAOU2IG.Item.IxK7PQO5m2UxfWLp",
+          "transfer": false,
+          "_id": "OPRHppbLlbdG1iuy",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.poison",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!O1ha2g1W5KN8RftX.IxK7PQO5m2UxfWLp.OPRHppbLlbdG1iuy"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "IxK7PQO5m2UxfWLp",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.IxK7PQO5m2UxfWLp"
+    },
+    {
+      "name": "Composting",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "melee"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 6
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The shambling mound uses Engulf against each target without spending Malice.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "composting",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "UBCtisJwiDYIOOkj",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.UBCtisJwiDYIOOkj"
+    },
+    {
+      "name": "Exposed Crux",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "melee"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The shambling mound rips themself apart, exposing the [[/apply FBlwLn4umUPrTDcC]]{crux of magic} holding them together. The distance of the shambling mound's melee abilities increases to melee 10, the creature has a double edge on power rolls, and strikes made against them gain an edge.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "_dsid": "exposed-crux",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Exposed Crux",
+          "img": "icons/magic/nature/root-vines-knot-brown.webp",
+          "type": "abilityModifier",
+          "origin": "Actor.yYkJ1SSQRMAOU2IG.Item.x5y0pJkJrLHuqW9r",
+          "transfer": false,
+          "_id": "FBlwLn4umUPrTDcC",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            },
+            "filters": {
+              "keywords": [
+                "melee"
+              ]
+            }
+          },
+          "changes": [
+            {
+              "key": "distance",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The Shambling mound's melee abilities increases to melee 10, the creature has a double edge on power rolls, and strikes made against them gain an edge.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!O1ha2g1W5KN8RftX.x5y0pJkJrLHuqW9r.FBlwLn4umUPrTDcC"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "x5y0pJkJrLHuqW9r",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.x5y0pJkJrLHuqW9r"
+    },
+    {
+      "name": "Poisoned Vines",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A shambling starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The shambling mound seeps noxious residue from their vines. of their next turn, they deal an extra [[/damage 12 poison]]{12 poison damage} to each target.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "246",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "poisoned-vines",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "o16pqZfW5JZWO1lk",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.o16pqZfW5JZWO1lk"
+    },
+    {
+      "name": "Frenzy Lash",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A shambling starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The shambling mound lashes out at each enemy within 10 squares of them, driving them back or into the air. Each target makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 7]]{7 damage}; push 7 or vertical push 3; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 6]]{6 damage}; push 5 or vertical push 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 3]]{3 damage}</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "246",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "frenzy-lash",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Restrained",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "RYfK79G9HckTOooZ",
+          "_key": "!actors.items.effects!O1ha2g1W5KN8RftX.vIWsD3glFNfqu9Jf.RYfK79G9HckTOooZ"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "vIWsD3glFNfqu9Jf",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.vIWsD3glFNfqu9Jf"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A shambling starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The shambling mound takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "246",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "0hOjccxTTwyPbJDa",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.0hOjccxTTwyPbJDa"
+    },
+    {
+      "name": "Leeching Wilds",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A shambling starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the shambling mound’s next turn, the area within 10 squares of them is difficult terrain for enemies, and any enemy in the area takes a bane on power rolls. Any enemy who starts their turn in the area takes [[/damage 4 acid]] damage, and the shambling mound regains an equal amount of Stamina.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "246",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "leeching-wilds",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "cSyv4Ayh9SAm3HMg",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.cSyv4Ayh9SAm3HMg"
+    },
+    {
+      "name": "Alchemical Ingredients",
+      "type": "feature",
+      "_id": "kgVBF9jh3oXqX9i9",
+      "img": "icons/commodities/flowers/buds-red-green.webp",
+      "system": {
+        "description": {
+          "value": "<p>After a shambling mound dies, a creature can make a <strong>Reason test</strong> to extract toxins from the remains.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature extracts no toxins.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature extracts enough toxins to craft one vial of poison.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The creature extracts enough toxins to craft three vials of poison.</p></dd></dl><p>Creating poison from the extracted toxins requires the completion of a special crafting project.</p><p><strong>Item Prerequisite:</strong> Shambling mound toxins <br /><strong>Project Source:</strong> Texts or lore in Caelian <br /><strong>Project Roll Characteristic:</strong> Reason or Intuition Project Goal: 45 <br /><br />As a maneuver, one vial of poison can be applied to a weapon. For 1 minute after the poison is applied, damage dealing abilities using that weapon deal an extra [[/damage 4 + 1d6]]{4 + 1d6 poison damage.}</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "",
+          "page": "",
+          "license": ""
+        },
+        "_dsid": "feature",
+        "advancements": {}
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!O1ha2g1W5KN8RftX.kgVBF9jh3oXqX9i9"
+    }
+  ],
+  "folder": "FENFbnjOnPS8jSwm",
+  "prototypeToken": {
+    "name": "Shambling Mound",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761529291855,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "O1ha2g1W5KN8RftX",
+  "sort": 0,
+  "_key": "!actors!O1ha2g1W5KN8RftX"
+}

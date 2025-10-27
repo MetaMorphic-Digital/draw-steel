@@ -1,0 +1,276 @@
+{
+  "name": "Weakening Glare",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "main",
+    "category": "heroic",
+    "resource": 4,
+    "trigger": "A  starts its turn.",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "target": {
+      "type": "creature",
+      "value": 1,
+      "custom": ""
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "4",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "bZgKq58yM66gYtT4": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "bZgKq58yM66gYtT4",
+          "sort": 0,
+          "damage": {
+            "tier1": {
+              "value": "6",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "10",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "12",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "gsqfN3sRxdDDDMRL": {
+          "name": "Weakened",
+          "img": null,
+          "type": "applied",
+          "_id": "gsqfN3sRxdDDDMRL",
+          "sort": 0,
+          "applied": {
+            "tier1": {
+              "display": "weakened (EoT)",
+              "effects": {
+                "weakened": {
+                  "condition": "always",
+                  "end": "turn",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "weakened": {
+                  "condition": "always",
+                  "end": "turn",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "weakened (Save ends)",
+              "effects": {
+                "weakened": {
+                  "condition": "always",
+                  "end": "save",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "204",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "weakening-glare-2d10-+-4",
+    "story": "",
+    "keywords": [
+      "magic",
+      "ranged",
+      "strike"
+    ]
+  },
+  "effects": [
+    {
+      "name": "Weakened",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": ""
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "6LnhYhWIWahuZn8y",
+      "_key": "!items.effects!fIR3iQt5fe0ieF1Q.6LnhYhWIWahuZn8y"
+    },
+    {
+      "name": "Weakened",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": ""
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "04ge2Hdrh7TuBzPF",
+      "_key": "!items.effects!fIR3iQt5fe0ieF1Q.04ge2Hdrh7TuBzPF"
+    },
+    {
+      "name": "Weakened",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "weakened"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "anlJ7K4sTUT53KPM",
+      "_key": "!items.effects!fIR3iQt5fe0ieF1Q.anlJ7K4sTUT53KPM"
+    }
+  ],
+  "folder": "dO9CfVzzTF7MVtus",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761498396454,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "fIR3iQt5fe0ieF1Q",
+  "sort": 300000,
+  "_key": "!items!fIR3iQt5fe0ieF1Q"
+}
