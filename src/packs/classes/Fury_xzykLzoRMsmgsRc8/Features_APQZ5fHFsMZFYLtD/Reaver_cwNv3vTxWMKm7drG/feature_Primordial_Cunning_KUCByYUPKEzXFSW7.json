@@ -6,7 +6,7 @@
   "img": "icons/magic/control/silhouette-aura-energy.webp",
   "system": {
     "description": {
-      "value": "<p>You are never surprised. Additionally, whenever you would push a target with forced movement, you can slide them instead.</p><p>As your ferocity grows, you gain benefits as noted on the Reaver Growing Ferocity table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p><h1>Reaver Growing Ferocity</h1><table><tbody><tr><td data-colwidth=\"123\"><p>Ferocity</p></td><td><p>Benefit</p></td></tr><tr><td data-colwidth=\"123\"><p>2</p></td><td><p>Whenever you use the Knockback maneuver, the forced movement distance gains a bonus equal to your Agility score.</p></td></tr><tr><td data-colwidth=\"123\"><p>4</p></td><td><p>The first time you slide a creature on a turn, you gain 1 surge.</p></td></tr><tr><td data-colwidth=\"123\"><p>6</p></td><td><p>You gain an edge on Agility tests and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>8 (4th level)</p></td><td><p>The first time you slide a creature on a turn, you gain 2 surges.</p></td></tr><tr><td data-colwidth=\"123\"><p>10 (7th level)</p></td><td><p>You have a double edge on Agility tests and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>12 (10th level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temp]]. Additionally, whenever you make a power roll that imposes forced movement on a target, the forced movement distance gains a bonus equal to your Agility score.</p></td></tr></tbody></table>",
+      "value": "<p>You are never surprised. Additionally, whenever you would push a target with forced movement, you can slide them instead.</p><p>As your ferocity grows, you gain benefits as noted on the @UUID[Compendium.draw-steel.classes.Item.0fkMLFZHJZKpAdM6]{Reaver Growing Ferocity} table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p>",
       "director": ""
     },
     "source": {
@@ -15,7 +15,22 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "primordial-cunning",
-    "advancements": {}
+    "advancements": {
+      "xh8ImI0MDAUZvTPJ": {
+        "name": "Growing Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 1
+        },
+        "_id": "xh8ImI0MDAUZvTPJ",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.0fkMLFZHJZKpAdM6"
+          }
+        ]
+      }
+    }
   },
   "effects": [],
   "sort": 100000,
@@ -27,9 +42,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755576059113,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -1,0 +1,81 @@
+{
+  "folder": "LRwhtFK6zgLHfxfO",
+  "name": "Black Hole Star",
+  "type": "feature",
+  "_id": "KvKHG8GUwHdg2E8R",
+  "img": "icons/magic/light/explosion-star-glow-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>You warp gravity around your heavenly body and can pull even the sturdiest titans toward your core. At the end of each of your turns, you target one creature or object within distance of your Hurl Element ability and vertical pull that target up to 5 squares. If their stability reduces this forced movement, they are pulled a minimum of 2 squares. This forced movement ignores stability for your allies.</p><p>Additionally, your Mantle of Essence improves. While in the area of the aura, enemies and objects have their stability reduced by an amount equal to your level [[/apply 7Ca4iFaLWCjRQVSt]].</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "125",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "black-hole-star",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Stability -Level",
+      "img": "icons/magic/light/explosion-star-glow-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.KvKHG8GUwHdg2E8R",
+      "transfer": false,
+      "_id": "7Ca4iFaLWCjRQVSt",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761514072873,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!KvKHG8GUwHdg2E8R.7Ca4iFaLWCjRQVSt"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761513986768,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!KvKHG8GUwHdg2E8R"
+}
