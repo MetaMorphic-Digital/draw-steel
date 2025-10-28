@@ -7,7 +7,7 @@
     "category": "consumable",
     "echelon": 2,
     "description": {
-      "value": "<p><em>A glass vial holds translucent flakes that twinkle in the light.</em><br /><br /></p><p>Effect: Dousing yourself in this powder as a maneuver causes you to weightlessly float off the ground. For 1 hour, your stability is reduced to 0, and you can [[/apply ZsZmCflAcicrTNus]]. Additionally, the hag that the powder is sourced from knows exactly where and when you use it.</p>",
+      "value": "<p><em>A glass vial holds translucent flakes that twinkle in the light.</em></p><p><strong>Effect:</strong> Dousing yourself in this powder as a maneuver causes you to weightlessly float off the ground. For 1 hour, your stability is reduced to 0, and you can [[/apply ZsZmCflAcicrTNus]]{fly and hover}. Additionally, the hag that the powder is sourced from knows exactly where and when you use it.</p>",
       "director": ""
     },
     "keywords": [
@@ -36,7 +36,7 @@
   },
   "effects": [
     {
-      "name": "Fly and Hover",
+      "name": "Float Powder",
       "img": "icons/consumables/potions/potion-bottle-corked-stopper-yellow.webp",
       "type": "base",
       "origin": "Item.hpSeCg378nKxJq5P",
@@ -51,7 +51,7 @@
       "changes": [
         {
           "key": "system.combat.stability",
-          "mode": 5,
+          "mode": 3,
           "value": "0",
           "priority": null
         },
