@@ -66,6 +66,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     schema.conditions = new fields.SchemaField({
       immunities: new fields.SetField(setOptions()),
+      unflankable: new fields.BooleanField({ initial: false }),
     });
 
     return schema;

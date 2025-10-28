@@ -29,6 +29,8 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    */
   get canFlank() {
     if (!this.actor) return true;
+    // Dead actors cannot flank
+    if (this.actor.statuses.has("dead")) return false;
     // Checking if active effects have restricted triggered abilities
     return !this.actor.system.restrictions.type.has("triggered");
   }
@@ -41,6 +43,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    */
   get canBeFlanked() {
     if (!this.actor) return true;
+    if (this.actor.system.conditions.unflankable) return false;
     return this.actor.system.flankable ?? true;
   }
 

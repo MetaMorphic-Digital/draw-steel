@@ -61,6 +61,15 @@ Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which 
 
 If the `Taunted` status effect is applied to an actor while another actor is targeted, the targeted actor becomes the source of the `Taunt`, and afterwards abilities that are targeted at actors other than the `Taunted` source actor automatically have a double bane while in line of effect to the `Taunted` source.
 
+### Unflankable
+
+If an actor has the `Unflankable` condition, they cannot be flanked by enemies regardless of positioning. This prevents adjacent enemies from gaining the flanking bonus against the actor.
+
+An example to make an actor unflankable would be
+
+|`system.conditions.unflankable`|Override|`true`|
+|---|---|---|
+
 ### Weakened
 
 If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
@@ -143,6 +152,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
 |Condition Immunity|`system.conditions.immunities`|
+|Unflankable|`system.conditions.unflankable`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
