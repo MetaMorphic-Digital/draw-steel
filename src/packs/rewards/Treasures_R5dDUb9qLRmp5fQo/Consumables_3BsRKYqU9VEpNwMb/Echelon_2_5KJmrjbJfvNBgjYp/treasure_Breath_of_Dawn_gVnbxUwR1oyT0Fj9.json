@@ -1,0 +1,106 @@
+{
+  "name": "Breath of Dawn",
+  "type": "treasure",
+  "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+  "system": {
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 2,
+    "description": {
+      "value": "<p><em>A glass flask contains a whirl of gentle sunlight.</em><br /><br /></p><p>Effect: As a maneuver, you inhale the Breath of Dawn and are overcome with tranquility. You immediately end the frightened, slowed, and taunted conditions on yourself, and you gain a [[/apply 2CvRvz6ZAz4RhgFz]] until the end of the encounter.</p><p></p><p></p>",
+      "director": ""
+    },
+    "keywords": [
+      "psionic"
+    ],
+    "project": {
+      "prerequisites": "The breath of a mystic sage captured at sunrise",
+      "source": "Texts or lore in Hyrallic",
+      "rollCharacteristic": [
+        "intuition",
+        "presence"
+      ],
+      "goal": 90,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "breath-of-dawn",
+    "source": {
+      "book": "Heroes",
+      "page": "317",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "+8 Bonus Stability",
+      "img": "icons/consumables/potions/bottle-metal-yellow-gray.webp",
+      "type": "base",
+      "origin": "Item.gVnbxUwR1oyT0Fj9",
+      "transfer": false,
+      "_id": "2CvRvz6ZAz4RhgFz",
+      "system": {
+        "end": {
+          "type": "encounter",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "8",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!gVnbxUwR1oyT0Fj9.2CvRvz6ZAz4RhgFz"
+    }
+  ],
+  "folder": "5KJmrjbJfvNBgjYp",
+  "_id": "gVnbxUwR1oyT0Fj9",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761682822282,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!gVnbxUwR1oyT0Fj9"
+}
