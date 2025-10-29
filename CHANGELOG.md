@@ -36,6 +36,7 @@
   - Troubadour levels 4–10 features and abilities.
   - Echelon 2 Titles, Consumables, and Trinkets.
 - New Director-Facing Compendium Content: (All remaining core monsters)
+  - Ajax
   - Demon Echelons 2–4
   - Devils
   - Draconians

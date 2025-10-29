@@ -113,7 +113,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "ajax",
         "advancements": {}
@@ -150,9 +150,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "i'm-not-done-yet.",
+        "_dsid": "im-not-done-yet-leader-version",
         "advancements": {}
       },
       "_id": "SFmHOLTbjCcGU7Yn",
@@ -325,7 +325,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "blade-of-the-gol-king",
         "story": "",
@@ -534,7 +534,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "decree-by-the-jade-hand",
         "story": "",
@@ -642,9 +642,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "is-this-what-they-taught-you?",
+        "_dsid": "is-this-what-they-taught-you",
         "story": "",
         "resource": null,
         "trigger": "A creature within distance marks Ajax."
@@ -710,7 +710,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "shieldbreaker-talisman",
         "story": "",
@@ -774,9 +774,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "who's-hesitating?",
+        "_dsid": "whos-hesitating",
         "story": "",
         "resource": null,
         "trigger": "A creature uses the Hesitation is Weakness ability."
@@ -842,7 +842,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "your-obsession-with-me-betrays-you",
         "story": "",
@@ -908,9 +908,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "you-would-flounder-your-assault?",
+        "_dsid": "you-would-flounder-your-assault",
         "story": "",
         "resource": 2,
         "trigger": "A creature within 10 squares regains Stamina."
@@ -1071,7 +1071,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "phoenix-wing-king",
         "story": "",
@@ -1138,9 +1138,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "i've-learned-their-tricks",
+        "_dsid": "ive-learned-their-tricks",
         "story": "",
         "resource": null,
         "trigger": ""
@@ -1206,7 +1206,7 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
         "_dsid": "awe-of-the-iron-crown",
         "story": "",
@@ -1362,7 +1362,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures.</p><p><strong><span style=\"text-decoration:underline\">Swamp</span></strong>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
+          "before": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures. [[/apply RqFsTSh2IaSnituD]]</p><p><strong><span style=\"text-decoration:underline\">Swamp</span></strong>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
           "after": ""
         },
         "spend": {
@@ -1378,7 +1378,57 @@
         "story": "",
         "keywords": []
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Incredibly High Above the Ground",
+          "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 2,
+              "value": "-3",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>Any creature who can't fly takes a -3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee.ActiveEffect.GuQPGtkIXZ53LJsT",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761703584742,
+            "modifiedTime": null,
+            "lastModifiedBy": null
+          },
+          "_id": "RqFsTSh2IaSnituD",
+          "sort": 0,
+          "_key": "!actors.items.effects!cX05o7vGiHtYWMlq.QQdv4SeqY90z8Yee.RqFsTSh2IaSnituD"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -1488,7 +1538,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 26]]{26 damage}; [[/apply qjXeWgkCqr0K87AF save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 22]]{22 damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 16]]{16 damage}</p></dd></dl><p>3 16 damage Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
+          "before": "<p><strong>NOTE:</strong> area is Four 3 cubes within 10</p><p>Each target makes a test using their highest characteristic.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 26]]{26 damage}; [[/apply qjXeWgkCqr0K87AF save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 22]]{22 damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 16]]{16 damage}</p></dd></dl><p>Ajax then raises his Blade of the Gol King above his head as four giant blades emerge from the ground to fill the area. Each target is pushed into an unoccupied space adjacent to the area after the power roll is resolved. Each blade blocks line of effect and can be dismissed by Ajax at will (no action required).</p>",
           "after": ""
         },
         "spend": {
@@ -1660,11 +1710,11 @@
           "director": ""
         },
         "source": {
-          "book": "",
-          "page": "",
-          "license": ""
+          "book": "Monsters",
+          "page": "33",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "feature",
+        "_dsid": "tactical-stance",
         "advancements": {}
       },
       "effects": [
@@ -1814,11 +1864,11 @@
       "system": {
         "type": "maneuver",
         "source": {
-          "book": "",
-          "page": "",
-          "license": ""
+          "book": "Monsters",
+          "page": "33",
+          "license": "Draw Steel Creator License"
         },
-        "_dsid": "ability",
+        "_dsid": "strike-them-down",
         "story": "",
         "keywords": [
           "ranged"
@@ -1886,9 +1936,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": ""
+          "page": "33"
         },
-        "_dsid": "ajax",
+        "_dsid": "ajax-the-leader",
         "advancements": {}
       },
       "effects": [],
@@ -1916,8 +1966,8 @@
   ],
   "folder": "1duzR7U5imjJBje4",
   "prototypeToken": {
-    "name": "Ajax the Invincible",
-    "displayName": 0,
+    "name": "Ajax the Leader",
+    "displayName": 20,
     "actorLink": false,
     "width": 1,
     "height": 1,
@@ -1934,11 +1984,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": false,
+    "lockRotation": true,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 0,
+    "displayBars": 20,
     "bar1": {
       "attribute": "stamina"
     },
