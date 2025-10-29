@@ -1,17 +1,19 @@
 {
-  "name": "Silent Prow",
+  "name": "Reason",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A lightbender starts its turn.",
+    "resource": 2,
+    "trigger": "A ajax’s starts its turn.",
     "distance": {
       "type": "special"
     },
     "target": {
-      "type": "special"
+      "type": "special",
+      "custom": "",
+      "value": null
     },
     "damageDisplay": "melee",
     "power": {
@@ -22,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Each lightbender acting this turn can teleport up to their speed as a move action and attempt to hide as a free maneuver, all until the start of their next turn.</p>",
+      "before": "<p>Ajax attempts to instill doubt into a creature within line of effect through logic and reason. The creature and Ajax make an opposed <span style=\"text-decoration:underline\"><strong>Reason test</strong></span>. If Ajax wins, he chooses to either deal [[/damage 11 extra]] damage action during the current round. Ajax can’t use this feature against the same creature during the same encounter.</p>",
       "after": ""
     },
     "spend": {
@@ -31,31 +33,31 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "196",
+      "page": "32",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "silent-prow",
+    "_dsid": "reason",
     "story": "",
     "keywords": []
   },
   "effects": [],
-  "folder": "1GwPdwwEnwK1qHBK",
+  "folder": "NM9LfupdKckydsof",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757289100061,
+    "systemVersion": "0.9.0",
+    "createdTime": 1761602035447,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
   "ownership": {
     "default": 0
   },
-  "_id": "SVIMi6MPKsgt966w",
-  "sort": 0,
-  "_key": "!items!SVIMi6MPKsgt966w"
+  "_id": "sXuaswm5mS9dvNCq",
+  "sort": 300000,
+  "_key": "!items!sXuaswm5mS9dvNCq"
 }

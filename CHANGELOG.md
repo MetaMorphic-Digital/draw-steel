@@ -34,8 +34,9 @@
   - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
   - Troubadour levels 4–10 features and abilities.
-  - Echelon 2 Titles
-- New Director-Facing Compendium Content:
+  - Echelon 2 Titles, Consumables, and Trinkets.
+- New Director-Facing Compendium Content: (All remaining core monsters)
+  - Ajax
   - Demon Echelons 2–4
   - Devils
   - Draconians
@@ -43,6 +44,7 @@
   - Elves (Shadow)
   - Giants
   - Hobgoblins
+  - Kingfissure Worm
   - Medusa
   - Olothec
   - Rivals Echelons 2–4
@@ -63,6 +65,8 @@
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
+- Added support for condition immunities as `system.conditions.immunities`. (#704)
+  - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
