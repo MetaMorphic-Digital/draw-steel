@@ -165,12 +165,21 @@ export default class AbilityUseModel extends BaseMessageModel {
     const ability = await fromUuid(this.uuid);
     const rollData = ability?.getRollData() ?? this.parent.getRollData();
 
-    const formula = additionalTerms ? `${roll.result} + ${additionalTerms}` : String(roll.result);
-    const options = { ...roll.options };
-    if (damageType) options.type = damageType;
+    const newRoll = DamageRoll.fromData(roll.toJSON());
 
-    const newRoll = new DamageRoll(formula, rollData, options);
-    await newRoll.evaluate(evaluationOptions);
+    if (additionalTerms) {
+      const terms = DamageRoll.parse(additionalTerms, rollData);
+      for (const term of terms) await term.evaluate(evaluationOptions);
+      newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
+      newRoll.resetFormula();
+      newRoll._total = newRoll._evaluateTotal();
+    }
+
+    if (damageType) {
+      // Without this, changing the new roll damage type changes the original rolls damage type.
+      newRoll.options = { ...newRoll.options };
+      newRoll.options.type = damageType;
+    }
 
     await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
 
