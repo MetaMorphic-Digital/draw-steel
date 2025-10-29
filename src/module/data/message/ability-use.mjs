@@ -165,7 +165,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const ability = await fromUuid(this.uuid);
     const rollData = ability?.getRollData() ?? this.parent.getRollData();
 
-    const formula = additionalTerms ? `${roll.result} + ${additionalTerms}` : String(roll.total);
+    const formula = additionalTerms ? `${roll.result} + ${additionalTerms}` : String(roll.result);
     const options = { ...roll.options };
     if (damageType) options.type = damageType;
 
