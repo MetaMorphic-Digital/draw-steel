@@ -52,7 +52,7 @@ export default class OtherPowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    const potencyString = this.toPotencyText(tier);
+    const potencyString = this.toPotencyHTML(tier);
     return this.other[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
   }
 }

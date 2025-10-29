@@ -153,11 +153,52 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
   /* -------------------------------------------------- */
 
   /**
+   * A helper method for translating potency annotations to glyphs.
+   * @param {object} value The raw potency string, optionally including @potency annotations
+   * @returns {string}    The formatted potency string, suitable for use with DS Glyphs font
+   */
+  #translatePotencyGlyphs(value) {
+    // Numeric glyphs are formatted with square edges on both sides
+    // Append right bracket to any series of digits for more pleasant formatting
+    const closedValue = value.replaceAll(/(\d+)/g, "$1]");
+
+    // Abort early if no potency annotations are found
+    if (value?.indexOf("@potency.") === -1) return closedValue;
+
+    const strengthGlyphs = [
+      {
+        strength: "@potency.weak",
+        glyph: "w",
+      },
+      {
+        strength: "@potency.average",
+        glyph: "v",
+      },
+      {
+        strength: "@potency.strong",
+        glyph: "s",
+      },
+    ];
+
+    let glyphValue = closedValue;
+
+    // No need to include a closing bracket as the word version of potency glyphs feature a rounded right edge
+    // Replace each instance of a potency annotation with its corresponding glyph
+    for (const { strength, glyph } of strengthGlyphs) {
+      glyphValue = glyphValue.replaceAll(strength, glyph);
+    }
+
+    return glyphValue;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * A helper method for generating the potency string (i.e M < 2).
    * @param {1|2|3} n     The tier.
    * @returns {string}    The formatted potency string.
    */
-  toPotencyText(tier) {
+  toPotencyHTML(tier) {
     const tierValue = this[`${this.constructor.TYPE}`][`tier${tier}`];
     const potencyValue = this.actor
       ? ds.utils.evaluateFormula(tierValue.potency.value, this.item.getRollData(), { contextName: this.uuid })
@@ -166,7 +207,9 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       characteristic: ds.CONFIG.characteristics[tierValue.potency.characteristic]?.rollKey ?? "",
       value: potencyValue,
     });
-    return potencyString;
+    // Since the resulting glyph string may contain HTML characters, we need to escape it properly
+    const potencyGlyphs = Handlebars.escapeExpression(this.#translatePotencyGlyphs(potencyString));
+    return `<div class="potency">${potencyGlyphs}</div>`;
   }
 
   /* -------------------------------------------------- */
@@ -177,7 +220,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @returns {string}
    * @abstract
    */
-  toText(tier) {}
+  toText(tier) { }
 
   /* -------------------------------------------------- */
 
