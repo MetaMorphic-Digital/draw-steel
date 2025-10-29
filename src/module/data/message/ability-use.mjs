@@ -169,7 +169,7 @@ export default class AbilityUseModel extends BaseMessageModel {
 
     if (additionalTerms) {
       const terms = DamageRoll.parse(additionalTerms, rollData);
-      for (const term of terms) await term.evaluate(evaluationOptions);
+      for (const term of terms) if (!term._evaluated) await term.evaluate(evaluationOptions);
       newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
       newRoll.resetFormula();
       newRoll._total = newRoll._evaluateTotal();
