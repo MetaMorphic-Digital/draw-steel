@@ -124,6 +124,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       dsid: new Set(),
     };
 
+    this.conditions.flankable = true;
+
     Object.assign(this.stamina, {
       min: 0,
       bonuses: {
