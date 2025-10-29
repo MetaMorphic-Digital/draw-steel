@@ -1,4 +1,4 @@
-import DrawSteelNPCSheet from "../../applications/sheets/npc.mjs";
+import DrawSteelNPCSheet from "../../applications/sheets/npc-sheet.mjs";
 import { systemID } from "../../constants.mjs";
 
 /** @import { DrawSteelActor, DrawSteelCombat } from "../../documents/_module.mjs" */

@@ -16,6 +16,14 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
       editMonsterMetadata: this.#editMonsterMetadata,
       freeStrike: this.#freeStrike,
     },
+    window: {
+      controls: [{
+        icon: "fa-solid fa-file-arrow-down",
+        label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
+        action: "updateFromCompendium",
+        visible: DrawSteelNPCSheet.#canUpdateFromCompendium,
+      }],
+    },
   };
 
   /* -------------------------------------------------- */
@@ -147,6 +155,18 @@ export default class DrawSteelNPCSheet extends DrawSteelActorSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Whether this npc can be updated from a compendium source.
+   *
+   * @this DrawSteelNPCSheet
+   */
+  static #canUpdateFromCompendium() {
+    const sourceDoc = !!fromUuidSync(this.document._stats.compendiumSource, { strict: false });
+    return sourceDoc && game.user.canUpdateFromCompendium();
+  }
+
   /* -------------------------------------------------- */
 
   /**

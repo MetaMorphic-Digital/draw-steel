@@ -33,6 +33,7 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
       deletePseudoDocument: DSDocumentSheet.#deletePseudoDocument,
       renderPseudoDocumentSheet: DSDocumentSheet.#renderPseudoDocumentSheet,
       toggleDocumentDescription: DSDocumentSheet.#toggleDocumentDescription,
+      updateFromCompendium: DSDocumentSheet.#updateFromCompendium,
     },
     // Custom property that's merged into `this.options`
     dragDrop: [{ dragSelector: ".draggable" }],
@@ -221,27 +222,49 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   }
 
   /* -------------------------------------------------- */
-  /*   Helper Functions                               */
+
+  /**
+   * Create a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #createPseudoDocument(event, target) {
+    const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
+    const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
+    const Cls = this.document.getEmbeddedCollection(documentName).documentClass;
+
+    if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
+      await Cls.createDialog({}, { parent: this.document });
+    } else {
+      await Cls.create({ type }, { parent: this.document });
+    }
+  }
+
   /* -------------------------------------------------- */
 
   /**
-   * Fetches the embedded document representing the containing HTML element.
-   *
-   * @param {HTMLElement} target    The element subject to search.
-   * @returns {Document} The embedded document.
+   * Delete a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
    */
-  _getEmbeddedDocument(target) {
-    const documentUuid = target.closest("[data-document-uuid]").dataset.documentUuid;
+  static async #deletePseudoDocument(event, target) {
+    const doc = this._getPseudoDocument(target);
+    await doc.delete();
+  }
 
-    // fromUuidSync doesn't allow  retrieving embedded compendium documents, so manually retrieving each child document from the base document.
-    const { collection, embedded, documentId } = foundry.utils.parseUuid(documentUuid);
-    let document = collection.get(documentId);
-    while (document && (embedded.length > 1)) {
-      const [embeddedName, embeddedId] = embedded.splice(0, 2);
-      document = document.getEmbeddedDocument(embeddedName, embeddedId);
-    }
+  /* -------------------------------------------------- */
 
-    return document;
+  /**
+   * Render the sheet of a pseudo-document.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #renderPseudoDocumentSheet(event, target) {
+    const doc = this._getPseudoDocument(target);
+    await doc.sheet.render({ force: true });
   }
 
   /* -------------------------------------------------- */
@@ -280,6 +303,42 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
   /* -------------------------------------------------- */
 
   /**
+   * Update this document from its compendium source.
+   * @this DSDocumentSheet
+   * @param {PointerEvent} event    The initiating click event.
+   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
+   */
+  static async #updateFromCompendium(event, target) {
+    await ds.utils.updateFromCompendium(this.document);
+  }
+
+  /* -------------------------------------------------- */
+  /*   Helper Functions                               */
+  /* -------------------------------------------------- */
+
+  /**
+   * Fetches the embedded document representing the containing HTML element.
+   *
+   * @param {HTMLElement} target    The element subject to search.
+   * @returns {Document} The embedded document.
+   */
+  _getEmbeddedDocument(target) {
+    const documentUuid = target.closest("[data-document-uuid]").dataset.documentUuid;
+
+    // fromUuidSync doesn't allow  retrieving embedded compendium documents, so manually retrieving each child document from the base document.
+    const { collection, embedded, documentId } = foundry.utils.parseUuid(documentUuid);
+    let document = collection.get(documentId);
+    while (document && (embedded.length > 1)) {
+      const [embeddedName, embeddedId] = embedded.splice(0, 2);
+      document = document.getEmbeddedDocument(embeddedName, embeddedId);
+    }
+
+    return document;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Helper method to retrieve an embedded pseudo-document.
    * @param {HTMLElement} element   The element with relevant data.
    * @returns {PseudoDocument}
@@ -288,52 +347,6 @@ export default class DSDocumentSheet extends api.HandlebarsApplicationMixin(api.
     const documentName = element.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
     const id = element.closest("[data-pseudo-id]").dataset.pseudoId;
     return this.document.getEmbeddedDocument(documentName, id);
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Create a pseudo-document.
-   * @this DSDocumentSheet
-   * @param {PointerEvent} event    The initiating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static #createPseudoDocument(event, target) {
-    const documentName = target.closest("[data-pseudo-document-name]").dataset.pseudoDocumentName;
-    const type = target.closest("[data-pseudo-type]")?.dataset.pseudoType;
-    const Cls = this.document.getEmbeddedCollection(documentName).documentClass;
-
-    if (!type && (foundry.utils.isSubclass(Cls, ds.data.pseudoDocuments.TypedPseudoDocument))) {
-      Cls.createDialog({}, { parent: this.document });
-    } else {
-      Cls.create({ type }, { parent: this.document });
-    }
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Delete a pseudo-document.
-   * @this DSDocumentSheet
-   * @param {PointerEvent} event    The initiating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static #deletePseudoDocument(event, target) {
-    const doc = this._getPseudoDocument(target);
-    doc.delete();
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
-   * Render the sheet of a pseudo-document.
-   * @this DSDocumentSheet
-   * @param {PointerEvent} event    The initiating click event.
-   * @param {HTMLElement} target    The capturing HTML element which defined a [data-action].
-   */
-  static #renderPseudoDocumentSheet(event, target) {
-    const doc = this._getPseudoDocument(target);
-    doc.sheet.render({ force: true });
   }
 
   /* -------------------------------------------------- */
