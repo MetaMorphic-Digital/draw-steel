@@ -264,6 +264,11 @@
             "healing": "Healing Roll"
           }
         },
+        "Gain": {
+          "FormatString": "Gain {formula} {type}",
+          "MessageTitle": "Gain {type} {targets}",
+          "NoSelection": "You must select hero tokens to gain resources."
+        },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
           "EffectEnds": {
@@ -1374,6 +1379,7 @@
       "Applied": "Applied Effects",
       "Expired": "Expired",
       "RollSave": "Roll Save",
+      "ImmunityWarning": "Target has immunity to the following conditions: {conditions}",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
