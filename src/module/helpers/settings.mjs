@@ -59,14 +59,6 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         onChange: () => ui.players.render(),
       },
-      projectEvents: {
-        name: "DRAW_STEEL.Setting.ProjectEvents.Label",
-        hint: "DRAW_STEEL.Setting.ProjectEvents.Hint",
-        type: new fields.StringField({ choices: ds.CONST.projectEventOptions, initial: "none", required: true }),
-        config: true,
-        scope: "world",
-        onChange: () => ui.players.render(),
-      },
       updateFromCompendium: {
         name: "DRAW_STEEL.Setting.UpdateFromCompendium.Label",
         hint: "DRAW_STEEL.Setting.UpdateFromCompendium.Hint",
@@ -78,6 +70,14 @@ export default class DrawSteelSettingsHandler {
         } }),
         config: true,
         scope: "world",
+      },
+      projectEvents: {
+        name: "DRAW_STEEL.Setting.ProjectEvents.Label",
+        hint: "DRAW_STEEL.Setting.ProjectEvents.Hint",
+        type: new fields.StringField({ choices: ds.CONST.projectEventOptions, initial: "none", required: true }),
+        config: true,
+        scope: "world",
+        onChange: () => ui.players.render(),
       },
     };
   }
