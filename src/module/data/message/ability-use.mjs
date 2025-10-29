@@ -171,7 +171,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     const newRoll = new DamageRoll(formula, rollData, options);
     await newRoll.evaluate();
 
-    this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
+    await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
 
     return newRoll;
   }
