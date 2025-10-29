@@ -43,8 +43,7 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    */
   get canBeFlanked() {
     if (!this.actor) return true;
-    if (this.actor.system.conditions.unflankable) return false;
-    return this.actor.system.flankable ?? true;
+    return this.actor.system.conditions.flankable;
   }
 
   /* -------------------------------------------------- */

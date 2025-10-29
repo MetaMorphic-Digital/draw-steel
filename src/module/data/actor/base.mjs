@@ -66,7 +66,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     schema.conditions = new fields.SchemaField({
       immunities: new fields.SetField(setOptions()),
-      unflankable: new fields.BooleanField(),
     });
 
     return schema;
@@ -124,6 +123,8 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       type: new Set(),
       dsid: new Set(),
     };
+
+    this.conditions.flankable = true;
 
     Object.assign(this.stamina, {
       min: 0,
