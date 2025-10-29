@@ -175,18 +175,4 @@ export default class AbilityUseModel extends BaseMessageModel {
 
     return newRoll;
   }
-
-  /**
-   * Spend the speaker actor's surges.
-   * @param {number} surges The new resource value.
-   * @returns {DrawSteelActor}
-   */
-  async spendSurges(surges) {
-    if (this.parent.speakerActor?.type !== "hero") return this.parent.speakerActor;
-
-    const oldSurges = this.parent.speakerActor.system.hero.surges;
-    const newSurges = Math.max(0, oldSurges - surges);
-
-    return this.parent.speakerActor.update({ "system.hero.surges": newSurges });
-  }
 }
