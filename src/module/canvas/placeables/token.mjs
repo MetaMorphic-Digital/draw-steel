@@ -42,8 +42,10 @@ export default class DrawSteelToken extends foundry.canvas.placeables.Token {
    * @type {boolean}
    */
   get canBeFlanked() {
-    if (!this.actor) return true;
-    return this.actor.system.conditions.flankable;
+    // For orphaned tokens, assume they cannot be flanked
+    if (!this.actor) return false;
+    // For actors without the flankable property, assume they cannot be flanked
+    return this.actor.system.conditions?.flankable ?? false;
   }
 
   /* -------------------------------------------------- */
