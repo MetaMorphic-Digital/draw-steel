@@ -1,0 +1,99 @@
+{
+  "name": "Elixir of Saint Elspeth",
+  "type": "treasure",
+  "img": "icons/consumables/potions/potion-tube-corked-glowing-red.webp",
+  "system": {
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 4,
+    "description": {
+      "value": "<p><em>This thick red liquid smells of cinnamon.</em><br /><br /></p><p>Effect: When you pour the elixir onto your forehead as a maneuver, it vanishes and you protect yourself against effects that might harm your body, mind, or soul. For a number of rounds equal to your current Victories, any enemy ability targeting you automatically obtains a tier 1 outcome against you. Additionally, the ability can only deal damage to you, letting you ignore its other effects. [[/apply TxlqE4CSc2vjIR1a]]</p>",
+      "director": ""
+    },
+    "keywords": [
+      "magic",
+      "potion"
+    ],
+    "project": {
+      "prerequisites": "An ounce of the blood of Saint Elspeth",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "presence"
+      ],
+      "goal": 360,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "elixir-of-saint-elspeth",
+    "source": {
+      "book": "Heroes",
+      "page": "321",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Elixir of Saint Elspeth",
+      "img": "icons/consumables/potions/potion-tube-corked-glowing-red.webp",
+      "type": "base",
+      "origin": "Item.BmEOYwQooJIOzYI7",
+      "transfer": false,
+      "_id": "TxlqE4CSc2vjIR1a",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>For a number of rounds equal to your current Victories, any enemy ability targeting you automatically obtains a tier 1 outcome against you. Additionally, the ability can only deal damage to you, letting you ignore its other effects.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!BmEOYwQooJIOzYI7.TxlqE4CSc2vjIR1a"
+    }
+  ],
+  "folder": "vp0GIthFN6mKcMWF",
+  "_id": "BmEOYwQooJIOzYI7",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761758138469,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!BmEOYwQooJIOzYI7"
+}
