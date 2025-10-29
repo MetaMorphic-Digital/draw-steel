@@ -1,25 +1,25 @@
 {
-  "name": "Guise",
+  "name": "Aftershock",
   "type": "ability",
   "system": {
-    "type": "none",
+    "type": "freeTriggered",
     "source": {
       "book": "Monsters",
-      "page": "293",
+      "page": "187",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "guise",
+    "_dsid": "aftershock",
     "story": "",
     "keywords": [],
     "category": "heroic",
     "resource": 3,
-    "trigger": "",
+    "trigger": "A creature deals damage to the kingfissure worm or one of their tongues.",
     "distance": {
-      "type": "special"
+      "type": "self"
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special",
+      "type": "self",
       "custom": "",
       "value": null
     },
@@ -31,7 +31,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Lord Syuul projects a psionic screen over his body, preventing other creatures from treating him as an enemy until the end of his next turn.</p>",
+      "before": "<p>Each creature within 5 squares of the kingfissure worm takes [[/damage 5]]{5 damage}, and if they have a&lt;4 they are knocked [[/apply prone]]. The kingfissure worm can use this ability only once per round.</p>",
       "after": ""
     },
     "spend": {
@@ -41,7 +41,7 @@
   },
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "effects": [],
-  "folder": "w3nS8umrXc9FhzTb",
+  "folder": "Enp13A6zWlyQEFO2",
   "ownership": {
     "default": 0
   },
@@ -53,11 +53,11 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1761531101436,
+    "createdTime": 1761597508988,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "PbNhp3mjDTzKA2Oy",
-  "sort": 0,
-  "_key": "!items!PbNhp3mjDTzKA2Oy"
+  "_id": "3fRvWeQgLkJXQ4TF",
+  "sort": 300000,
+  "_key": "!items!3fRvWeQgLkJXQ4TF"
 }

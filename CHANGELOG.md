@@ -34,8 +34,8 @@
   - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
   - Troubadour levels 4–10 features and abilities.
-  - Echelon 2 Titles, Consumables, and Trinkets
-- New Director-Facing Compendium Content:
+  - Echelon 2 Titles, Consumables, and Trinkets.
+- New Director-Facing Compendium Content: (All remaining core monsters)
   - Demon Echelons 2–4
   - Devils
   - Draconians
@@ -43,6 +43,7 @@
   - Elves (Shadow)
   - Giants
   - Hobgoblins
+  - Kingfissure Worm
   - Medusa
   - Olothec
   - Rivals Echelons 2–4
