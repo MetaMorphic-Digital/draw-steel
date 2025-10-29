@@ -161,6 +161,9 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
 
+    // Enforce a minimum of 0 for stability
+    this.combat.stability = Math.max(0, this.combat.stability);
+
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
     this.potency.weak += highestCharacteristic - 2 + this.potency.bonuses;
