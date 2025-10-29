@@ -28,13 +28,13 @@
   - Censor levels 4–10 features and abilities.
   - Conduit levels 4–5 features and abilities.
   - Elementalist levels 4–10 features and abilities.
-  - Fury levels 4–7 features and abilities.
+  - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
   - Troubadour levels 4–10 features and abilities.
-  - Echelon 2 Titles
+  - Echelon 2 Titles, Consumables, and Trinkets.
 - New Director-Facing Compendium Content: (All remaining core monsters)
   - Demon Echelons 2–4
   - Devils
@@ -64,7 +64,10 @@
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
+- Added support for condition immunities as `system.conditions.immunities`. (#704)
+  - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
@@ -100,6 +103,7 @@
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
 - PseudoDocument.create now returns the pseudo document instead of the parent.
+- Widened space for advancement labels to reduce need for line wrapping.
 
 ### Removed
 
