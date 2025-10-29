@@ -158,18 +158,19 @@ export default class AbilityUseModel extends BaseMessageModel {
    * @param {object} modifications The modification options to apply.
    * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
    * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
    * @returns {DamageRoll}
    */
-  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }) {
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
     const ability = await fromUuid(this.uuid);
     const rollData = ability?.getRollData() ?? this.parent.getRollData();
 
-    const formula = additionalTerms ? `${roll.total} + ${additionalTerms}` : String(roll.total);
+    const formula = additionalTerms ? `${roll.result} + ${additionalTerms}` : String(roll.total);
     const options = { ...roll.options };
     if (damageType) options.type = damageType;
 
     const newRoll = new DamageRoll(formula, rollData, options);
-    await newRoll.evaluate();
+    await newRoll.evaluate(evaluationOptions);
 
     await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
 
