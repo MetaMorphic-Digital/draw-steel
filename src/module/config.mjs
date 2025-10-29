@@ -231,6 +231,14 @@ export const conditions = {
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL",
     defaultSpeed: 2,
   },
+  surprised: {
+    name: "DRAW_STEEL.ActiveEffect.Conditions.Surprised.name",
+    img: "icons/svg/hazard.svg",
+    rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.tmlnHTZhUzy0atvH",
+    restrictions: {
+      type: new Set(["triggered", "freeTriggered"]),
+    },
+  },
   taunted: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
