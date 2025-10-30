@@ -218,7 +218,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @returns {string}
    * @abstract
    */
-  toText(tier) { }
+  toText(tier) {}
 
   /* -------------------------------------------------- */
 
