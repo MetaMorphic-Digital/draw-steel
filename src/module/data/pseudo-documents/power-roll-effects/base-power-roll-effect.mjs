@@ -154,7 +154,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * A helper method for translating potency annotations to glyphs.
-   * @param {object} value The raw potency string, optionally including @potency annotations
+   * @param {string} value The raw potency string, optionally including @potency annotations
    * @returns {string}    The formatted potency string, suitable for use with DS Glyphs font
    */
   #translatePotencyGlyphs(value) {
