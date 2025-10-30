@@ -1,6 +1,7 @@
 
 import BaseMessageModel from "./base.mjs";
 import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
@@ -153,5 +154,42 @@ export default class AbilityUseModel extends BaseMessageModel {
         actor.createEmbeddedDocuments("ActiveEffect", [tempEffect.toObject()], { keepId: noStack });
       }
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+   * After creation, the new roll is added to the message rolls.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
+   * @returns {DamageRoll}
+   */
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
+    const ability = await fromUuid(this.uuid);
+    const rollData = ability?.getRollData() ?? this.parent.getRollData();
+
+    const newRoll = DamageRoll.fromData(roll.toJSON());
+
+    if (additionalTerms) {
+      const terms = DamageRoll.parse(additionalTerms, rollData);
+      for (const term of terms) if (!term._evaluated) await term.evaluate(evaluationOptions);
+      newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
+      newRoll.resetFormula();
+      newRoll._total = newRoll._evaluateTotal();
+    }
+
+    if (damageType) {
+      // Without this, changing the new roll damage type changes the original rolls damage type.
+      newRoll.options = { ...newRoll.options };
+      newRoll.options.type = damageType;
+    }
+
+    await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
+
+    return newRoll;
   }
 }

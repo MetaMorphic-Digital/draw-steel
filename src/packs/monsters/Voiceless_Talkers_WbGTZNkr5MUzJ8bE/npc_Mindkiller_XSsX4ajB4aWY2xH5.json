@@ -588,7 +588,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The target must be grabbed by the mindkiller. If the target has R &lt; 2, they take a −1 penalty to their Reason, Intuition, or Presence score and the mindkiller has a +1 bonus to the same score, all until the end of the encounter.</p>",
+          "before": "<p>The target must be grabbed by the mindkiller. If the target has R &lt; 2, they take a −1 penalty to their [[/apply QJD07ykXK9ynKVyU]]{Reason}, [[/apply owxjyMnwOLFLKpB7]]{Intuition}, or [[/apply D9K9nIHqOpI70W1l]]{Presence} score and the mindkiller has a +1 bonus to the same score, all until the end of the encounter.</p><p>[[/apply MrktnfyqwSaXC5o8]]{Minkiller Reason buff}</p><p>[[/apply y81L7TWJ4MeEKBKF]]{Minkiller Intuition buff}</p><p>[[/apply U6fh4AYL9femqSMD]]{Minkiller Presence buff}</p>",
           "after": ""
         },
         "spend": {
@@ -605,7 +605,302 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Mindwipe (R)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "_id": "QJD07ykXK9ynKVyU",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.reason.value",
+              "mode": 2,
+              "value": "-1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You take a −1 penalty to your Reason until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761774532418,
+            "modifiedTime": 1761775037634,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.QJD07ykXK9ynKVyU"
+        },
+        {
+          "name": "Mindwipe (P)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "_id": "D9K9nIHqOpI70W1l",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.presence.value",
+              "mode": 2,
+              "value": "-1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>You take a −1 penalty to your Presence until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761774655849,
+            "modifiedTime": 1761775313600,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.D9K9nIHqOpI70W1l"
+        },
+        {
+          "name": "Mindwipe (I)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "_id": "owxjyMnwOLFLKpB7",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.intuition.value",
+              "mode": 2,
+              "value": "-1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You take a −1 penalty to your Intuition until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761774791145,
+            "modifiedTime": 1761775045337,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.owxjyMnwOLFLKpB7"
+        },
+        {
+          "name": "Mindwipe (R)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.reason.value",
+              "mode": 2,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>The mindkiller gains a +1 to their Reason until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.QJD07ykXK9ynKVyU",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761774907258,
+            "modifiedTime": 1761775049929,
+            "lastModifiedBy": null
+          },
+          "_id": "MrktnfyqwSaXC5o8",
+          "sort": 0,
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.MrktnfyqwSaXC5o8"
+        },
+        {
+          "name": "Mindwipe (P)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.presence.value",
+              "mode": 2,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>The mindkiller gains a +1 to their presence until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.D9K9nIHqOpI70W1l",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761774959753,
+            "modifiedTime": 1761775467807,
+            "lastModifiedBy": null
+          },
+          "_id": "U6fh4AYL9femqSMD",
+          "sort": 0,
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.U6fh4AYL9femqSMD"
+        },
+        {
+          "name": "Mindwipe (I)",
+          "img": "icons/magic/air/air-pressure-shield-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.characteristics.intuition.value",
+              "mode": 2,
+              "value": "1",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>The mindkiller gains a +1 to their intuition until the end of the encounter</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.XSsX4ajB4aWY2xH5.Item.6eldOC0ap5Kpjytl.ActiveEffect.owxjyMnwOLFLKpB7",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761775057553,
+            "modifiedTime": 1761775080978,
+            "lastModifiedBy": null
+          },
+          "_id": "y81L7TWJ4MeEKBKF",
+          "sort": 0,
+          "_key": "!actors.items.effects!XSsX4ajB4aWY2xH5.6eldOC0ap5Kpjytl.y81L7TWJ4MeEKBKF"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
