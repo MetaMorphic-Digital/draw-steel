@@ -157,7 +157,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
    * @param {string} value The raw potency string, optionally including @potency annotations.
    * @returns {string}    The formatted potency string, suitable for use with DS Glyphs font.
    */
-  #translatePotencyGlyphs(value) {
+  static translatePotencyGlyphs(value) {
     // Numeric glyphs are formatted with square edges on both sides
     // Append right bracket to any series of digits for more pleasant formatting
     let glyphValue = value.replaceAll(/(\d+)/g, "$1]");
