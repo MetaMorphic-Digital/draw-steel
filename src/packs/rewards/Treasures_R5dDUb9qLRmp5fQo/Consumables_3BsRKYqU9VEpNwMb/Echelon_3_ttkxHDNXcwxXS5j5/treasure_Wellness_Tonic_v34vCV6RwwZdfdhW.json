@@ -1,0 +1,99 @@
+{
+  "name": "Wellness Tonic",
+  "type": "treasure",
+  "img": "icons/consumables/potions/bottle-bulb-corked-purple.webp",
+  "system": {
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 3,
+    "description": {
+      "value": "<p><em>This thick purple liquid has a bitter scent that lingers.</em></p><p><strong>Effect:</strong> When you drink this tonic as a maneuver, you feel a surge of physical and spiritual immunity. You can immediately end up to three conditions or effects affecting you. Additionally, until the start of your next turn, you can ignore any effect that would last until the end of your next turn or be ended by a saving throw. [[/apply eRretLiJhAW2QD9Z]]</p>",
+      "director": ""
+    },
+    "keywords": [
+      "psionic"
+    ],
+    "project": {
+      "prerequisites": "An ounce of troll’s blood, raw honey",
+      "source": "Texts or lore in Variac",
+      "rollCharacteristic": [
+        "might",
+        "intuition"
+      ],
+      "goal": 180,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "wellness-tonic",
+    "source": {
+      "book": "Heroes",
+      "page": "320",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Wellness Tonic",
+      "img": "icons/consumables/potions/bottle-bulb-corked-purple.webp",
+      "type": "base",
+      "origin": "Item.v34vCV6RwwZdfdhW",
+      "transfer": false,
+      "_id": "eRretLiJhAW2QD9Z",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!v34vCV6RwwZdfdhW.eRretLiJhAW2QD9Z"
+    }
+  ],
+  "folder": "ttkxHDNXcwxXS5j5",
+  "_id": "v34vCV6RwwZdfdhW",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761753662058,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!v34vCV6RwwZdfdhW"
+}
