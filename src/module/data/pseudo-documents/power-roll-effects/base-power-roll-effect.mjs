@@ -154,16 +154,16 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
 
   /**
    * A helper method for translating potency annotations to glyphs.
-   * @param {string} value The raw potency string, optionally including @potency annotations
-   * @returns {string}    The formatted potency string, suitable for use with DS Glyphs font
+   * @param {string} value The raw potency string, optionally including @potency annotations.
+   * @returns {string}    The formatted potency string, suitable for use with DS Glyphs font.
    */
   #translatePotencyGlyphs(value) {
     // Numeric glyphs are formatted with square edges on both sides
     // Append right bracket to any series of digits for more pleasant formatting
-    const closedValue = value.replaceAll(/(\d+)/g, "$1]");
+    let glyphValue = value.replaceAll(/(\d+)/g, "$1]");
 
     // Abort early if no potency annotations are found
-    if (value?.indexOf("@potency.") === -1) return closedValue;
+    if (value?.indexOf("@potency.") === -1) return glyphValue;
 
     const strengthGlyphs = [
       {
@@ -179,8 +179,6 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
         glyph: "s",
       },
     ];
-
-    let glyphValue = closedValue;
 
     // No need to include a closing bracket as the word version of potency glyphs feature a rounded right edge
     // Replace each instance of a potency annotation with its corresponding glyph
