@@ -173,6 +173,7 @@ preLocalize("healingTypes", { key: "label" });
  * @property {boolean} [targeted]
  * @property {number} [maxSources]
  * @property {number} [defaultSpeed]
+ * @property {boolean} [hud_only]
  * @property {Record<string, Set<string>>} [restrictions]
  */
 
@@ -233,8 +234,9 @@ export const conditions = {
   },
   surprised: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Surprised.name",
-    img: "icons/svg/hazard.svg",
+    img: "systems/draw-steel/assets/icons/surprised.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.tmlnHTZhUzy0atvH",
+    hud_only: true,
     restrictions: {
       type: new Set(["triggered", "freeTriggered"]),
     },
