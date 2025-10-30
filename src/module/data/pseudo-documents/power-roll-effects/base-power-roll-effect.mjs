@@ -206,7 +206,7 @@ export default class BasePowerRollEffect extends TypedPseudoDocument {
       value: potencyValue,
     });
     // Since the resulting glyph string may contain HTML characters, we need to escape it properly
-    const potencyGlyphs = Handlebars.escapeExpression(this.#translatePotencyGlyphs(potencyString));
+    const potencyGlyphs = Handlebars.escapeExpression(this.constructor.translatePotencyGlyphs(potencyString));
     return `<div class="potency">${potencyGlyphs}</div>`;
   }
 
