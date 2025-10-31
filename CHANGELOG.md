@@ -57,6 +57,7 @@
   - Voiceless Talkers & Lord Syuul
   - Xorannox the Tyract and his six, magnificent, beautiful eyeballs
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
+- Added "Surprised" as a condition to the token HUD. (#203)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
   - Directors have access to a button in the header button of the NPC and Item sheets to perform this update.
   - There is a new setting to open this to other permission levels.
@@ -82,6 +83,7 @@
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
 - Added the official licensed glyphs. (#1209)
+  - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
@@ -126,6 +128,7 @@
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
+  - Corrected AE path for fire weakness in the Host complication. (#1325)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
   - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
@@ -149,6 +152,7 @@
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Stability is properly capped at a minimum of 0. (#1308)
 - Fixed broken image links in the in-game documentation.
 
 ## 0.8.1

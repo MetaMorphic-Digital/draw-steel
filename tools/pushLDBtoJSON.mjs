@@ -9,7 +9,7 @@ const folders = true;
 
 const packs = await fs.readdir("./packs");
 for (const pack of packs) {
-  if ((pack === ".gitattributes") || (pack === ".DS_Store")) continue;
+  if (pack.startsWith(".")) continue;
   console.log("Unpacking " + pack);
   await extractPack(
     `${SYSTEM_ID}/packs/${pack}`,
