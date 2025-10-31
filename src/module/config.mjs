@@ -167,14 +167,15 @@ preLocalize("healingTypes", { key: "label" });
 
 /**
  * @typedef DrawSteelCondition
- * @property {string} name
- * @property {string} img
- * @property {string} rule
- * @property {boolean} [sheet]
- * @property {boolean} [targeted]
- * @property {number} [maxSources]
- * @property {number} [defaultSpeed]
- * @property {Record<string, Set<string>>} [restrictions]
+ * @property {string} name            The i18n name of the condition. Localized as part of effect creation.
+ * @property {string} img             An SVG representing the condition.
+ * @property {string} rule            JournalEntryPage UUID Reference for the condition.
+ * @property {boolean} [sheet=true]   Show on the actor sheet? An explicit false is needed to not show.
+ * @property {boolean} [targeted]     Ask for a targeting prompt when this condition is applied.
+ * @property {number} [maxSources]    How many sources can be valid for this condition?
+ * @property {number} [defaultSpeed]  Used by slowed to infer the default speed to reduce to.
+ * @property {Record<string, Set<string>>} [restrictions] Restrictions on ability usage imposed by this condition.
+ *                                    The system currently supports `dsid` and `type` based restrictions.
  */
 
 /**
