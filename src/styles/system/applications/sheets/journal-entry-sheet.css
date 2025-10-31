@@ -1,8 +1,145 @@
 /* CSS for DrawSteelJournalEntrySheet */
-.draw-steel.journal-sheet.journal-entry {
-  .theme-dark &:not(.theme-light), &.themed.theme-dark {
-    background-color: fuchsia;
+
+/*dark*/
+.draw-steel.journal-sheet.journal-entry, .draw-steel .journal-entry-page {
+   --font-h1:'DrawSteelBook',serif;
+    --font-h2:'Newsreader',serif;
+    --font-h3:'Newsreader',serif;
+    --font-h4:'Atkinson Hyperlegible',serif;
+    --font-h5:'Atkinson Hyperlegible',serif;
+    --font-h6:'Atkinson Hyperlegible',serif;
+    --font-h1-size: 2em;
+    --font-h2-size: 1.5em;
+    --font-h3-size: 1.25em;
+    --font-h4-size: 1em;
+    --font-h5-size: 0.83em;
+    --font-h6-size: 0.67em;
+  
+  .journal-header input{
+    font-family: 'DrawSteelBook',serif;
+    color: var(--draw-steel-dark);
   }
+  h1, h1.window-title {
+    font-family: 'DrawSteelBook',serif;
+    size:3em;
+    border-bottom:0px;
+  }
+  h2{
+    font-family: 'Newsreader',serif;
+    border-color: var(--draw-steel-c-laserline);
+    }
+  h3{
+    font-family: 'Newsreader',serif;
+    font-weight:bold;
+  }
+  h4{
+    font-family: 'Atkinson Hyperlegible',serif;
+    font-weight:bold;
+    font-variant:small-caps;
+    }
+  h5{
+    font-family: 'Atkinson Hyperlegible',serif;
+    }
+  h6{
+    font-family: 'Atkinson Hyperlegible',serif;
+  }
+}
+
+/*imports*/
+.glyph {
+  font-family: DrawSteelGlyphs; 
+}
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt {
+  grid-column-start: 1;
+  font-family: DrawSteelGlyphs; 
+}
+
+dd {
+  grid-column-start: 2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--draw-steel-c-faint);
+}
+
+th, td {
+  padding: 16px;
+}
+th{
+  background:white;
+}
+td:nth-child(even) {
+  background: var(--draw-steel-c-faint);
+}
+
+tbody tr:nth-child(odd) {
+  background: var(--draw-steel-c-faint);
+}
+a{
+  font-style: italic;
+  color: #866d4b;
+}
+/* fancy fieldset*/
+ .polygonal-fieldset {
+  position:relative;
+      border: 1px solid #333; /* Standard border for fallback and visual guide */
+      border-radius: 15px; /* Defines the size of the corner */
+      corner-shape: bevel; /* Creates a straight, angled corner */
+      legend{
+        margin:0 auto;
+      }
+      div{
+        inset: 0px;
+        background: var(--draw-steel-c-faint);
+        padding:0.5rem;
+      }
+      .specialDiamond{
+        font-family: DrawSteelGlyphs;
+        position:absolute;
+        bottom: -1em;
+        left: -0.5em;
+        width: calc(100% + 20px);
+        text-align: center;
+      }
+    }
+    .polygonal-fieldset {
+      position:relative;
+      border: 1px solid #866d4b; /* Standard border for fallback and visual guide */
+      border-radius: 15px; /* Defines the size of the corner */
+      corner-shape: bevel; /* Creates a straight, angled corner */
+      legend{
+        margin:0 auto;
+        color: #866d4b;
+      }
+      div{
+        inset: 0px;
+        background: var(--draw-steel-c-faint);
+        color:var(--draw-steel-c-white);
+        padding:0.5rem;
+      }
+      .specialDiamond{
+        font-family: DrawSteelGlyphs;
+        position:absolute;
+        bottom: -1em;
+        left: -0.5em;
+        width: calc(100% + 20px);
+        text-align: center;
+        color: var(--draw-steel-c-laserline);
+      }
+    }
+
+  .theme-dark &:not(.theme-light), &.themed.theme-dark {
+    background-color: tan;
+  }
+/*end dark*/
+/*light*/
   .theme-light &:not(.theme-dark), &.themed.theme-light {
     background-color: lime;
   }
