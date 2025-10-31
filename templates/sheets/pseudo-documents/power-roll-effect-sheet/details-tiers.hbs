@@ -20,6 +20,7 @@
   {{formGroup value.field value=value.src name=value.name placeholder=value.placeholder localize=true}}
   {{formGroup types.field value=types.src name=types.name options=@root.fields.damageTypes localize=true}}
   {{formGroup properties.field value=properties.src name=properties.name options=@root.fields.properties localize=true}}
+  {{formGroup ignoredImmunities.field value=ignoredImmunities.src name=ignoredImmunities.name options=@root.fields.immunityTypes localize=true}}
   {{#> potencyFields potency}}{{/potencyFields}}
   {{/with}}
   {{#with tierFields.applied}}

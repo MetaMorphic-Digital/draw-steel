@@ -16,6 +16,10 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
         value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
         types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
         properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
+        ignoredImmunities: new SetField(setOptions(), {
+          label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
+          hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.hint",
+        }),
       })),
     });
   }
@@ -85,9 +89,19 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
           src: this._source.damage[`tier${n}`].properties,
           name: `${path}.properties`,
         },
+        ignoredImmunities: {
+          field: this.schema.getField(`${path}.ignoredImmunities`),
+          value: this.damage[`tier${n}`].ignoredImmunities,
+          src: this._source.damage[`tier${n}`].ignoredImmunities,
+          name: `${path}.ignoredImmunities`,
+        },
       });
     }
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
+    context.fields.immunityTypes = [
+      { value: "all", label: game.i18n.localize("DRAW_STEEL.Damage.Immunities.All") },
+      ...Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label })),
+    ];
     context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.damage.properties).map(([value, { label }]) => ({ value, label }));
   }
 
@@ -98,7 +112,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    const { value, types, potency } = this.damage[`tier${tier}`];
+    const { value, types, potency, ignoredImmunities } = this.damage[`tier${tier}`];
     if (Number(value) === 0) return "";
 
     let damageTypes;
@@ -110,12 +124,29 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       i18nString += "Typeless";
     }
     const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value, damageTypes }));
-    if (potency.characteristic === "none") return formattedDamageString;
+
+    let result = formattedDamageString;
+
+    if (ignoredImmunities?.size > 0) {
+      const ignoredTypes = Array.from(ignoredImmunities);
+      // Special case for "all" immunity
+      if (ignoredTypes.includes("all")) {
+        result += ` <em>(${game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresAllImmunities")})</em>`;
+      } else {
+        const formatter = game.i18n.getListFormatter({ type: "conjunction" });
+        const typeLabels = ignoredTypes.map(t => ds.CONFIG.damageTypes[t]?.label).filter(Boolean);
+        if (typeLabels.length > 0) {
+          result += ` <em>(${game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresImmunities", { types: formatter.format(typeLabels) })})</em>`;
+        }
+      }
+    }
+
+    if (potency.characteristic === "none") return result;
 
     const potencyString = this.toPotencyHTML(tier);
 
     return game.i18n.format("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.formattedPotency", {
-      damage: formattedDamageString,
+      damage: result,
       potency: potencyString,
     });
   }

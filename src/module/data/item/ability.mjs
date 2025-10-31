@@ -500,7 +500,15 @@ export default class AbilityModel extends BaseItemModel {
 
           const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
           const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
+
+          // Extract ignoredImmunities from the damage effect
+          const ignoredImmunities = Array.from(damageEffect.ignoredImmunities ?? []);
+
+          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, {
+            flavor,
+            type: damageType,
+            ignoredImmunities,
+          });
           await damageRoll.evaluate();
           messageDataCopy.rolls.push(damageRoll);
         }
