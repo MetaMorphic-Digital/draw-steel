@@ -554,6 +554,8 @@ export default class AbilityModel extends BaseItemModel {
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+      // Surprised condition check - targeting surprised gets an edge
+      if (targetActor.statuses.has("surprised")) modifiers.edges += 1;
     }
 
     // Modifiers requiring just a controlled token

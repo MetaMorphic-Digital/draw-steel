@@ -443,8 +443,8 @@ export default class DrawSteelActorSheet extends DSDocumentSheet {
     /** @type {Record<string, StatusInfo>} */
     const statusInfo = {};
     for (const status of CONFIG.statusEffects) {
-      // Only display if it would show in the token HUD *and* it has an assigned _id
-      if ((!status._id) || !ActiveEffect.implementation.validHud(status, this.actor)) continue;
+      // Only display if it would show in the token HUD, is marked for sheet display, *and* it has an assigned _id
+      if ((!status._id) || (status.sheet === false) || !ActiveEffect.implementation.validHud(status, this.actor)) continue;
       statusInfo[status.id] = {
         _id: status._id,
         name: status.name,
