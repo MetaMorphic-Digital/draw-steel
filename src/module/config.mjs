@@ -188,13 +188,11 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Bleeding.name",
     img: "icons/svg/blood.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.YzgERGFhFphgpjKQ",
-    sheet: true,
   },
   dazed: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Dazed.name",
     img: "icons/svg/daze.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.K2dZpCsAOU7xMpWb",
-    sheet: true,
     restrictions: {
       type: new Set(["freeManeuver", "triggered", "freeTriggered"]),
     },
@@ -203,7 +201,6 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Frightened.name",
     img: "icons/svg/terror.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.bXiI9vUF3tF78qXg",
-    sheet: true,
     targeted: true,
     maxSources: 1,
   },
@@ -211,7 +208,6 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Grabbed.name",
     img: "systems/draw-steel/assets/icons/hand-grabbing-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aWBP2vfXXM3fzuVn",
-    sheet: true,
     targeted: true,
     restrictions: {
       dsid: new Set(["knockback"]),
@@ -221,13 +217,11 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Prone.name",
     img: "icons/svg/falling.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.v11clsSMgoFZm3V8",
-    sheet: true,
   },
   restrained: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Restrained.name",
     img: "icons/svg/net.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.6IfH6beu8LjK08Oj",
-    sheet: true,
     restrictions: {
       dsid: new Set(["stand-up"]),
     },
@@ -236,13 +230,13 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Slowed.name",
     img: "systems/draw-steel/assets/icons/snail.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.aFEwQG4OcYDNp8DL",
-    sheet: true,
     defaultSpeed: 2,
   },
   surprised: {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Surprised.name",
     img: "systems/draw-steel/assets/icons/surprised.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.tmlnHTZhUzy0atvH",
+    sheet: false,
     restrictions: {
       type: new Set(["triggered", "freeTriggered"]),
     },
@@ -251,7 +245,6 @@ export const conditions = {
     name: "DRAW_STEEL.ActiveEffect.Conditions.Taunted.name",
     img: "systems/draw-steel/assets/icons/flag-banner-fold-fill.svg",
     rule: "Compendium.draw-steel.journals.JournalEntry.hDhdILCi65wpBgPZ.JournalEntryPage.9zseFmXdcSw8MuKh",
-    sheet: true,
     targeted: true,
     maxSources: 1,
   },
