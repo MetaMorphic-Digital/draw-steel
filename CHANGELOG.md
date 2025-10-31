@@ -58,6 +58,8 @@
   - Xorannox the Tyract and his six, magnificent, beautiful eyeballs
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+  - Directors have access to a button in the header button of the NPC and Item sheets to perform this update.
+  - There is a new setting to open this to other permission levels.
 - Added a "Group Selected" option to the Combat Tracker options. (#690)
   - This will create any missing combatants and then add them all to a new group.
   - The group's name will use the actor's name if all tokens have matching actor names.

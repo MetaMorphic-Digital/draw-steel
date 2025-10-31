@@ -1,4 +1,4 @@
-import { systemPath } from "../../constants.mjs";
+import { systemID, systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
@@ -34,6 +34,14 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
       toggleEffect: this.#toggleEffect,
       createCultureAdvancement: this.#createCultureAdvancement,
       reconfigureAdvancement: this.#reconfigureAdvancement,
+    },
+    window: {
+      controls: [{
+        icon: "fa-solid fa-file-arrow-down",
+        label: "DRAW_STEEL.SOURCE.CompendiumSource.UpdateFrom.Label",
+        action: "updateFromCompendium",
+        visible: DrawSteelItemSheet.#canUpdateFromCompendium,
+      }],
     },
   };
 
@@ -526,6 +534,18 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
   /* -------------------------------------------------- */
   /*   Actions                                          */
+  /* -------------------------------------------------- */
+
+  /**
+   * Whether this item can be updated from a compendium source.
+   *
+   * @this DrawSteelItemSheet
+   */
+  static #canUpdateFromCompendium() {
+    const sourceDoc = !!fromUuidSync(this.document._stats.compendiumSource, { strict: false });
+    return sourceDoc && game.user.canUpdateFromCompendium();
+  }
+
   /* -------------------------------------------------- */
 
   /**
