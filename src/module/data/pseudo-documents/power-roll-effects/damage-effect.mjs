@@ -109,7 +109,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     } else {
       i18nString += "Typeless";
     }
-    const formattedDamageString = game.i18n.format(i18nString, { value, damageTypes });
+    const formattedDamageString = Handlebars.escapeExpression(game.i18n.format(i18nString, { value, damageTypes }));
     if (potency.characteristic === "none") return formattedDamageString;
 
     const potencyString = this.toPotencyHTML(tier);

@@ -136,7 +136,9 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    */
   toText(tier) {
     const potencyString = this.toPotencyHTML(tier);
-    return this.applied[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    // Sanitize any HTML that may be in the base display string
+    const escapedDisplay = Handlebars.escapeExpression(this.applied[`tier${tier}`].display);
+    return escapedDisplay.replaceAll("{{potency}}", potencyString);
   }
 
   /* -------------------------------------------------- */
