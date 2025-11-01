@@ -182,10 +182,13 @@ export default class AbilityUseModel extends BaseMessageModel {
       newRoll._total = newRoll._evaluateTotal();
     }
 
-    if (damageType) {
+    if (damageType !== undefined) {
       // Without this, changing the new roll damage type changes the original rolls damage type.
       newRoll.options = { ...newRoll.options };
       newRoll.options.type = damageType;
+      const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+      const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+      newRoll.options.flavor = flavor;
     }
 
     await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
