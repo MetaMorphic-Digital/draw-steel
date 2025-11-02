@@ -145,6 +145,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
+|Bonus Stamina Per Level|`system.stamina.bonuses.level`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
 |Speed|`system.movement.value`|
 |Movement Multiplier|`system.movement.multiplier`|
