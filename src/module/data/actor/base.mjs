@@ -130,6 +130,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       min: 0,
       bonuses: {
         echelon: 0,
+        level: 0,
       },
     });
 
@@ -153,7 +154,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
 
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
-
+    this.stamina.max += this.level * this.stamina.bonuses.level;
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
     // Presents better if there's a 0 instead of blank
