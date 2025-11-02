@@ -80,6 +80,7 @@
 - Added drag and drop support for pseudodocuments (Power Roll Effects & Advancements). (#907)
   - This allows them to be dragged from one sheet to another to make a copy, or onto the same sheet to sort.
 - Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
+- Added `system.stamina.bonuses.level` which adds bonus stamina per level. (#1120)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
 - Added the official licensed glyphs. (#1209)
@@ -125,6 +126,7 @@
   - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
   - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
+  - Re-implemented "Disciple of Earth" to use `system.stamina.bonuses.level`. (#1120)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
@@ -146,8 +148,8 @@
     - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
-  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
 - Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
