@@ -226,4 +226,9 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
+|`damage.tier1.ignoredImmunities`|Add immunity types to ignore for tier 1 damage (use "Add" mode)|
+|`damage.tier2.ignoredImmunities`|Add immunity types to ignore for tier 2 damage (use "Add" mode)|
+|`damage.tier3.ignoredImmunities`|Add immunity types to ignore for tier 3 damage (use "Add" mode)|
 |`potency`|Give a bonus to all potency values|
+
+**Note:** For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
