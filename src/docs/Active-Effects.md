@@ -147,6 +147,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Bonus Stamina Per Level|`system.stamina.bonuses.level`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
+|Bonus Recovery Divisor|`system.recoveries.divisor`|
 |Speed|`system.movement.value`|
 |Movement Multiplier|`system.movement.multiplier`|
 |Disengage|`system.movement.disengage`|
