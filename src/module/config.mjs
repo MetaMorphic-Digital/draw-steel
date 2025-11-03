@@ -1365,11 +1365,6 @@ export const PowerRollEffect = {
     label: "TYPES.PowerRollEffect.damage",
     defaultImage: "icons/svg/fire.svg",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
-    properties: {
-      ignoresImmunity: {
-        label: "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
-      },
-    },
   },
   applied: {
     label: "TYPES.PowerRollEffect.applied",

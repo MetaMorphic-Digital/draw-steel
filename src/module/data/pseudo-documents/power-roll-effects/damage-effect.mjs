@@ -15,7 +15,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       damage: this.duplicateTierSchema(() => ({
         value: new FormulaField({ initial: "2 + @chr", label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.damage.label" }),
         types: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.types.label" }),
-        properties: new SetField(setOptions(), { label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.properties.label" }),
         ignoredImmunities: new SetField(setOptions(), {
           label: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.label",
           hint: "DRAW_STEEL.POWER_ROLL_EFFECT.FIELDS.ignoredImmunities.hint",
@@ -83,12 +82,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
           src: this._source.damage[`tier${n}`].types,
           name: `${path}.types`,
         },
-        properties: {
-          field: this.schema.getField(`${path}.properties`),
-          value: this.damage[`tier${n}`].properties,
-          src: this._source.damage[`tier${n}`].properties,
-          name: `${path}.properties`,
-        },
         ignoredImmunities: {
           field: this.schema.getField(`${path}.ignoredImmunities`),
           value: this.damage[`tier${n}`].ignoredImmunities,
@@ -102,7 +95,6 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       { value: "all", label: game.i18n.localize("DRAW_STEEL.Damage.Immunities.All") },
       ...Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label })),
     ];
-    context.fields.properties = Object.entries(ds.CONFIG.PowerRollEffect.damage.properties).map(([value, { label }]) => ({ value, label }));
   }
 
   /* -------------------------------------------------- */

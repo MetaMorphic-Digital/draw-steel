@@ -94,6 +94,28 @@ export default class AbilityModel extends BaseItemModel {
     // Game release updates
     if (data.type === "action") data.type = "main";
 
+    // 0.10.0 updates
+    const effects = foundry.utils.getProperty(data, "power.effects") ?? {};
+    for (const effect of Object.values(effects)) {
+      if (effect.type !== "damage") continue;
+
+      for (const tier of ["tier1", "tier2", "tier3"]) {
+        const properties = foundry.utils.getProperty(effect, `damage.${tier}.properties`);
+        if (properties) {
+          // Transform "ignoredImmunities" property into an "all" entry in the new ignoredImmunities set
+          if (properties.some((p) => p === "ignoresImmunity")) {
+            // ignoredImmunities is returned as an array; when it's undefined, the Set ctor will handle it correctly
+            let immunities = new Set(foundry.utils.getProperty(effect, `damage.${tier}.ignoredImmunities`));
+            immunities.add("all");
+            foundry.utils.setProperty(effect, `damage.${tier}.ignoredImmunities`, immunities);
+          }
+
+          // Remove the deprecated properties field
+          foundry.utils.deleteProperty(effect, `damage.${tier}.properties`);
+        }
+      }
+    }
+
     return super.migrateData(data);
   }
 
