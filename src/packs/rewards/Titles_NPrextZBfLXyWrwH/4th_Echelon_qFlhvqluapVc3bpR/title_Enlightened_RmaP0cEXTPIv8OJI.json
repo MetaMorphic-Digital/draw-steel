@@ -1,0 +1,81 @@
+{
+  "folder": "qFlhvqluapVc3bpR",
+  "name": "Enlightened",
+  "type": "title",
+  "_id": "RmaP0cEXTPIv8OJI",
+  "img": "icons/magic/light/orb-hands-humanoid-yellow.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect</strong>: Your choice of your Reason or Intuition increases by 1 (to a maximum of 6). Additionally, choose one of the following benefits: </p><ul><li><p><em>Cosmic Revelation: </em></p><p>When you make a test with a skill from the lore skill group and obtain a tier 1 or tier 2 outcome, you can instead obtain a tier 3 outcome. Once you use this benefit, you can’t use it again until you earn 1 or more Victories. </p></li><li><p><em>Mind Over Matter:</em> </p><p>Whenever you spend a Recovery, you can end one condition on yourself. </p></li><li><p><em>Rearrange the Game Pieces:</em> </p><p>You can reach behind the curtain and alter reality. At the start of combat, choose yourself or any creature within 5 squares. The chosen target must move up to their speed to a space you choose, but can’t enter damaging terrain or terrain that could impose a condition on them. The target doesn’t appear to move or teleport to that space—they are simply there. No one but you has any memory of the target’s previous position.</p></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "348",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "enlightened",
+    "advancements": {
+      "HFtaSdI1ARsGxrp0": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": null
+        },
+        "_id": "HFtaSdI1ARsGxrp0",
+        "characteristics": {
+          "reason": 0,
+          "intuition": 0
+        },
+        "max": 6,
+        "description": "<p>Your choice of your Reason or Intuition increases by 1 (to a maximum of 6).</p>"
+      },
+      "5vi5zQ2TrZiMiGcL": {
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "5vi5zQ2TrZiMiGcL",
+        "chooseN": 1,
+        "description": "<p>Choose one of the following benefits:</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.ZeocNQiMOkZISTDI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.wwtEyFeg2RzAFlbo"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.xbMmK6ANQ5hSyNE5"
+          }
+        ]
+      }
+    },
+    "echelon": 4,
+    "story": "Don’t you see? This world that seems so real to you is nothing but a game, and all the people merely pieces!",
+    "prerequisites": {
+      "value": "You learn a cosmic truth that alters your understanding of reality"
+    }
+  },
+  "effects": [],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762184189854,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!RmaP0cEXTPIv8OJI"
+}
