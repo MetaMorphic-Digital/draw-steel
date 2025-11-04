@@ -1,0 +1,93 @@
+{
+  "folder": "94Zc19TBJw1ywAr0",
+  "name": "Scarred",
+  "type": "title",
+  "_id": "FJquQfA5zDWmv9bu",
+  "img": "icons/skills/targeting/crosshair-arrowhead-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect</strong>: You gain a visible scar in a location of your choice. Additionally, your Stamina maximum increases by 20, and the creature who scarred you takes a bane on abilities against you.</p><p><strong>Special</strong>: You can gain this title multiple times. The second and each subsequent time that you gain it, your Stamima maximum doesn't increase.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "348",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "scarred",
+    "advancements": {},
+    "echelon": 3,
+    "story": "Last time we fought, I gave you a little token to remember me by … now it appears you need another reminder of my power.",
+    "prerequisites": {
+      "value": "An enemy leader or solo creature reduces you to 0 Stamina"
+    }
+  },
+  "effects": [
+    {
+      "name": "Scarred",
+      "img": "icons/skills/targeting/crosshair-arrowhead-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.FJquQfA5zDWmv9bu",
+      "_id": "mdFpcS85Hud9Sm5u",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "20",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">Your Stamina maximum increases by 20.</span></p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762013267479,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!FJquQfA5zDWmv9bu.mdFpcS85Hud9Sm5u"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762013047832,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!FJquQfA5zDWmv9bu"
+}

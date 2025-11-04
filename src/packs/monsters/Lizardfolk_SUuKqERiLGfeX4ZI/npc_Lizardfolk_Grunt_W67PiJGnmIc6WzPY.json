@@ -156,7 +156,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -272,9 +273,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -285,68 +286,6 @@
       "_key": "!actors.items!W67PiJGnmIc6WzPY.MiVmEthm1OvhQx4y"
     },
     {
-      "folder": "UlJ99Eu7RSs22NgS",
-      "name": "Water Pit",
-      "type": "ability",
-      "_id": "CB5NDqhUUzTqd4Vh",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "198",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "water-pit",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>The creature falls into the pit and is knocked prone.</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>The creature fails to empty the pit.</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>The pit empties of water.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.CB5NDqhUUzTqd4Vh",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!W67PiJGnmIc6WzPY.CB5NDqhUUzTqd4Vh"
-    },
-    {
-      "folder": "UlJ99Eu7RSs22NgS",
       "name": "Flood the Shores",
       "type": "ability",
       "_id": "TEOzrcBNKq1Fc4o4",
@@ -369,7 +308,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -379,7 +320,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
+          "before": "<p>Waist-high water floods the entire encounter map. Any lizardfolk submerged in water gains an edge on abilities and doubles their speed while swimming. If there are no open water pits on the encounter map, the water drains away at the end of the round.</p>",
           "after": ""
         },
         "spend": {
@@ -388,26 +329,91 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.TEOzrcBNKq1Fc4o4",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761232244396,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!W67PiJGnmIc6WzPY.TEOzrcBNKq1Fc4o4"
     },
     {
-      "folder": "UlJ99Eu7RSs22NgS",
+      "name": "Water Pit",
+      "type": "ability",
+      "_id": "CB5NDqhUUzTqd4Vh",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "198",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "water-pit",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.CB5NDqhUUzTqd4Vh",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761232246098,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!W67PiJGnmIc6WzPY.CB5NDqhUUzTqd4Vh"
+    },
+    {
       "name": "Net Trap",
       "type": "ability",
       "_id": "4d4NnHVbTRHl3HFV",
@@ -436,7 +442,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -446,7 +454,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p><table><tbody><tr><td data-colwidth=\"107\"><p>11 or less</p></td><td><p>Restrained (save ends).</p></td></tr><tr><td data-colwidth=\"107\"><p>12-16</p></td><td><p>Restrained (EoT).</p></td></tr><tr><td data-colwidth=\"107\"><p>17+</p></td><td><p>No Effect.</p></td></tr></tbody></table>",
+          "before": "<p>A lizardfolk acting this turn sets up a net trap into the area. The first time an enemy steps into a square with a net trap, they make an <strong>Agility test</strong>. If the creature was unaware of the trap, they take a bane on the test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Restrained save]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Restrained turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No Effect.</p></dd></dl>",
           "after": "<p>Any creature not also restrained by a net trap who is adjacent to a creature restrained by the trap can free them as a maneuver.</p>"
         },
         "spend": {
@@ -455,22 +463,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.4d4NnHVbTRHl3HFV",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761232616020,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!W67PiJGnmIc6WzPY.4d4NnHVbTRHl3HFV"
     }
   ],

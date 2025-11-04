@@ -1,0 +1,88 @@
+{
+  "folder": "XSiTcTleGKKWNgo2",
+  "name": "I Reject This Evil Power!",
+  "type": "feature",
+  "_id": "aFFLEW0SjprMBMg5",
+  "img": "icons/magic/defensive/shield-barrier-deflect-gold.webp",
+  "system": {
+    "description": {
+      "value": "<p>You gain corruption immunity equal to your level.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "343",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "i-reject-this-evil-power",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/magic/defensive/shield-barrier-deflect-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.aFFLEW0SjprMBMg5",
+      "_id": "OfGG8o505SKsy8c3",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You gain corruption immunity equal to your level.</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761088583882,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!aFFLEW0SjprMBMg5.OfGG8o505SKsy8c3"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761087157405,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!aFFLEW0SjprMBMg5"
+}

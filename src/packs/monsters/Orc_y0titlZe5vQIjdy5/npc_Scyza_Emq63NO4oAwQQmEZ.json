@@ -637,7 +637,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -748,9 +749,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "createdTime": 1757006708301,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -791,7 +792,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The scyza kicks up a sandstorm, granting concealment to themself and any ally in the area until the end of the scyza’s next turn. Each enemy in the area makes an <strong>Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>[[/damage 10]] damage; prone; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>[[/damage 7]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>[[/damage 4]] damage</p></td></tr></tbody></table>",
+          "before": "<p>The scyza kicks up a sandstorm, granting concealment to themself and any ally in the area until the end of the scyza’s next turn. Each enemy in the area makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10]]{10 damage}; [[/apply prone]]; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7]]{7 damage};[[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4]]{4 damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -813,14 +814,247 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "createdTime": 1757006830804,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
       "_key": "!actors.items!Emq63NO4oAwQQmEZ.SSux2dz3EHW06cls"
+    },
+    {
+      "name": "Overwhelming March",
+      "type": "ability",
+      "_id": "wRlM0yKql0bXpAAe",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "overwhelming-march",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 6]]{6 damage}; [[/apply prone]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 2</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761241763376,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.wRlM0yKql0bXpAAe"
+    },
+    {
+      "name": "Mohler Trench",
+      "type": "ability",
+      "_id": "BStQdG3SobeFUDES",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "mohler-trench",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761241764554,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.BStQdG3SobeFUDES"
+    },
+    {
+      "name": "Mohler Cavity",
+      "type": "ability",
+      "_id": "OMNyXoF5k0h6ffBa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "mohler-cavity",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls; [[/apply prone]] and [[/apply 6tfLepwkoZo1d24S turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the pit.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "6tfLepwkoZo1d24S",
+          "sort": 0,
+          "_key": "!actors.items.effects!Emq63NO4oAwQQmEZ.OMNyXoF5k0h6ffBa.6tfLepwkoZo1d24S"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761241765584,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!Emq63NO4oAwQQmEZ.OMNyXoF5k0h6ffBa"
     }
   ],
   "effects": [

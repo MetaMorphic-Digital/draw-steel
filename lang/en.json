@@ -264,6 +264,11 @@
             "healing": "Healing Roll"
           }
         },
+        "Gain": {
+          "FormatString": "Gain {formula} {type}",
+          "MessageTitle": "Gain {type} {targets}",
+          "NoSelection": "You must select hero tokens to gain resources."
+        },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
           "EffectEnds": {
@@ -722,8 +727,14 @@
           "staminaValue.label": "Current Stamina"
         }
       },
+      "GroupSelected": "Group Selected Tokens",
       "TypeHint": "A Base combatant group can have any number of non-minion members. A Squad can have any number of minions plus up to one non-minion captain.",
       "ResetSquadHP": "Reset Squad HP To Max",
+      "ColorTokens": {
+        "Label": "Color Tokens",
+        "Title": "Color Tokens",
+        "Input": "Color"
+      },
       "Error": {
         "MinionMustSquad": "Minions can only be added to Squad groups.",
         "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
@@ -969,7 +980,7 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic} < {value}",
+          "Embed": "{characteristic}<{value}",
           "Success": "Success",
           "Failure": "Failure"
         },
@@ -1368,6 +1379,7 @@
       "Applied": "Applied Effects",
       "Expired": "Expired",
       "RollSave": "Roll Save",
+      "ImmunityWarning": "Target has immunity to the following conditions: {conditions}",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
@@ -1408,6 +1420,9 @@
         },
         "Slowed": {
           "name": "Slowed"
+        },
+        "Surprised": {
+          "name": "Surprised"
         },
         "Taunted": {
           "name": "Taunted"
@@ -1618,6 +1633,10 @@
         "Hint": "How should project event timing be determined?",
         "Roll": "Roll for Event",
         "Milestone": "Event Milestones"
+      },
+      "UpdateFromCompendium": {
+        "Label": "Update from Compendium",
+        "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
       }
     },
     "SOCKET": {

@@ -1,0 +1,113 @@
+{
+  "folder": "xOMksCYxzKzOoFHT",
+  "name": "Magma Champion",
+  "type": "ability",
+  "_id": "EGSXgFkZDk7rfSOo",
+  "img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "124",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "magma-champion",
+    "story": "Their body swells with lava, mud, and might, towering over their enemies.",
+    "keywords": [
+      "magic",
+      "ranged",
+      "earth",
+      "fire",
+      "green"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the start of your next turn, the target has the following benefits [[/apply csn3x2B2RfWh6loO]]:</p><ul><li><p>Their size and stability increase by 2, with any size 1 target becoming size 3. Each creature who is within the target’s new space slides to the nearest unoccupied space, ignoring stability. If the target doesn’t have space to grow, they grow as much as they can and become restrained until the effect ends.</p></li><li><p>They have fire immunity 10.</p></li><li><p>Their strikes deal extra fire damage equal to twice your Reason score.</p></li><li><p>When the target force moves a creature or object, the forced movement distance gains a +2 bonus.</p></li><li><p>They can use their highest characteristic instead of Might for Might power rolls.</p></li></ul><p><strong>Persistent 2</strong>: The effect lasts until the start of your next turn. Additionally, at the start of your turn, the target can spend 2 Recoveries.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Magma Champion",
+      "img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.EGSXgFkZDk7rfSOo",
+      "transfer": false,
+      "_id": "csn3x2B2RfWh6loO",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<ul><li><p>Their size and stability increase by 2, with any size 1 target becoming size 3. Each creature who is within the target’s new space slides to the nearest unoccupied space, ignoring stability. If the target doesn’t have space to grow, they grow as much as they can and become restrained until the effect ends.</p></li><li><p>They have fire immunity 10.</p></li><li><p>Their strikes deal extra fire damage equal to twice your Reason score.</p></li><li><p>When the target force moves a creature or object, the forced movement distance gains a +2 bonus.</p></li><li><p>They can use their highest characteristic instead of Might for Might power rolls.</p></li></ul>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761510413139,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!EGSXgFkZDk7rfSOo.csn3x2B2RfWh6loO"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761510207210,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!EGSXgFkZDk7rfSOo"
+}

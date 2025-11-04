@@ -22,7 +22,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The ashen hoarder launches bone lances into the air, raining them</p><p>down on enemies and impaling those unlucky enough to be on</p><p>the receiving end. Each enemy within 20 squares of the ashen</p><p>hoarder makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; restrained and bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; bleeding (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+      "before": "<p>The ashen hoarder launches bone lances into the air, raining them</p><p>down on enemies and impaling those unlucky enough to be on</p><p>the receiving end. Each enemy within 20 squares of the ashen</p><p>hoarder makes an <strong>Agility test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; [[/apply eBrxn3KT6rkdyGUS save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; [[/apply bleeding turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
       "after": ""
     },
     "spend": {
@@ -116,6 +116,51 @@
       },
       "_id": "e8jY6RqE90bVzKNF",
       "_key": "!items.effects!vIJRyTNiGZGtsXhe.e8jY6RqE90bVzKNF"
+    },
+    {
+      "name": "Restrained and Bleeding",
+      "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.vIJRyTNiGZGtsXhe",
+      "transfer": false,
+      "_id": "eBrxn3KT6rkdyGUS",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "restrained",
+        "bleeding"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760846937258,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!vIJRyTNiGZGtsXhe.eBrxn3KT6rkdyGUS"
     }
   ],
   "folder": "GHdL1A3Mv8B5oFNI",
@@ -124,9 +169,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757725235457,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -374,167 +374,6 @@
       "_key": "!actors.items!jDsNfbQ953UKHmCj.i68RzyORRY0OONYz"
     },
     {
-      "name": "Alchemical Device",
-      "type": "ability",
-      "system": {
-        "type": "maneuver",
-        "source": {
-          "book": "Monsters",
-          "page": "180",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "alchemical-device",
-        "story": "",
-        "keywords": [
-          "area",
-          "magic",
-          "ranged"
-        ],
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "cube",
-          "primary": 3,
-          "secondary": 10
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "2",
-            "characteristics": []
-          },
-          "effects": {
-            "MhQwsOqVGfNaQFua": {
-              "name": "Damage",
-              "img": null,
-              "type": "damage",
-              "_id": "MhQwsOqVGfNaQFua",
-              "damage": {
-                "tier1": {
-                  "value": "4",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "6",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "9",
-                  "types": [
-                    "corruption"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "WoQ1Q8BcxmPBSXXN": {
-              "name": "Slowed",
-              "img": null,
-              "type": "applied",
-              "_id": "WoQ1Q8BcxmPBSXXN",
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}}, slowed (save ends)",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "slowed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "{{potency}}, restrained (save ends)",
-                  "effects": {
-                    "restrained": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "<p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Note:</span></strong></span> Targets each enemy <strong>and object</strong> in the area.</p><p></p>",
-          "after": "<p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Special:</span></strong></span> This ability can’t be used by a minion.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "_id": "lVlwo9eIp8HBjfth",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "effects": [],
-      "folder": "J4FsuL53D5JLS9q1",
-      "sort": 100000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757011937075,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!jDsNfbQ953UKHmCj.lVlwo9eIp8HBjfth"
-    },
-    {
       "name": "Exploit Opening",
       "type": "ability",
       "system": {
@@ -685,7 +524,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy and object in the area"
         },
         "power": {
           "roll": {
@@ -782,14 +622,176 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "createdTime": 1757011959146,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
       "_key": "!actors.items!jDsNfbQ953UKHmCj.n0DL6dWtuzqNFjLe"
+    },
+    {
+      "name": "Alchemical Device",
+      "type": "ability",
+      "system": {
+        "type": "maneuver",
+        "source": {
+          "book": "Monsters",
+          "page": "180",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "alchemical-device",
+        "story": "",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 3,
+          "secondary": 10
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy and object in the area"
+        },
+        "power": {
+          "roll": {
+            "formula": "2",
+            "characteristics": []
+          },
+          "effects": {
+            "MhQwsOqVGfNaQFua": {
+              "name": "Damage",
+              "img": null,
+              "type": "damage",
+              "_id": "MhQwsOqVGfNaQFua",
+              "damage": {
+                "tier1": {
+                  "value": "4",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "6",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "WoQ1Q8BcxmPBSXXN": {
+              "name": "Slowed",
+              "img": null,
+              "type": "applied",
+              "_id": "WoQ1Q8BcxmPBSXXN",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}}, slowed (save ends)",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "slowed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "{{potency}}, restrained (save ends)",
+                  "effects": {
+                    "restrained": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "_id": "lVlwo9eIp8HBjfth",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.lVlwo9eIp8HBjfth",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761174629962,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!jDsNfbQ953UKHmCj.lVlwo9eIp8HBjfth"
     }
   ],
   "effects": [],

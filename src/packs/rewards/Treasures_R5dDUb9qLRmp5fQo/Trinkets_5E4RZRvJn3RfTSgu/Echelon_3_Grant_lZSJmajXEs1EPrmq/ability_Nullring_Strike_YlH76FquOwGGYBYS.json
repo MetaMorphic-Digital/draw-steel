@@ -1,0 +1,173 @@
+{
+  "folder": "lZSJmajXEs1EPrmq",
+  "name": "Nullring Strike",
+  "type": "ability",
+  "_id": "YlH76FquOwGGYBYS",
+  "img": "icons/equipment/finger/ring-band-copper.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "326",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "nullring-strike",
+    "story": "Your punch delivers a devastating burst of psionic energy",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might",
+          "agility"
+        ]
+      },
+      "effects": {
+        "UXyaZXmj6OinfZBp": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "UXyaZXmj6OinfZBp",
+          "damage": {
+            "tier1": {
+              "value": "3",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "5",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "8",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "ic0w7cZUd8GuKcEj": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "ic0w7cZUd8GuKcEj",
+          "applied": {
+            "tier2": {
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "7ADX3nm1EjirYQHS": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "7ADX3nm1EjirYQHS": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While slowed in this way, the target takes a bane on magic or psionic abilities.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Slowed",
+      "img": "icons/equipment/finger/ring-band-copper.webp",
+      "origin": "Compendium.draw-steel.rewards.Item.YlH76FquOwGGYBYS",
+      "transfer": false,
+      "_id": "7ADX3nm1EjirYQHS",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While slowed in this way, the target takes a bane on magic or psionic abilities.</p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761843088726,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!YlH76FquOwGGYBYS.7ADX3nm1EjirYQHS"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761752943636,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!YlH76FquOwGGYBYS"
+}

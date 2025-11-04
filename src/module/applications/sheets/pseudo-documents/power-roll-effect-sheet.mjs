@@ -76,7 +76,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       },
     };
 
-    await context.pseudo._tierRenderingContext?.(context);
+    await pseudo._tierRenderingContext(context, options);
 
     return context;
   }
@@ -101,7 +101,7 @@ export default class PowerRollEffectSheet extends PseudoDocumentSheet {
       const effect = await ActiveEffect.implementation.create({
         name: ActiveEffect.implementation.defaultName({ parent: item }),
         img: item.img,
-        origin: item.uuid,
+        origin: foundry.utils.parseUuid(item.uuid, { relative: item.actor }).uuid,
         transfer: false,
       }, { parent: item });
 

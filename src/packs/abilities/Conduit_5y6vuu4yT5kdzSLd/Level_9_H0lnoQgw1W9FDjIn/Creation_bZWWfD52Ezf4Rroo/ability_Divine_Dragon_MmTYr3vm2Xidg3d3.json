@@ -1,0 +1,96 @@
+{
+  "folder": "bZWWfD52Ezf4Rroo",
+  "name": "Divine Dragon",
+  "type": "ability",
+  "_id": "MmTYr3vm2Xidg3d3",
+  "img": "icons/creatures/reptiles/dragon-horned-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "110",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "divine-dragon",
+    "story": "From nothing but divine will, you create a powerful ally.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "9kn9bfp9kMeBwLHf": {
+          "name": "Breathe magic fire",
+          "img": null,
+          "type": "damage",
+          "_id": "9kn9bfp9kMeBwLHf",
+          "damage": {
+            "tier1": {
+              "value": "5",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier2": {
+              "value": "9",
+              "types": [
+                "fire"
+              ]
+            },
+            "tier3": {
+              "value": "12",
+              "types": [
+                "fire"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You conjure a size 4 dragon that appears in an unoccupied space within distance. The dragon has speed 6 and can fly, stability 4, 100 Stamina, immunity all to fire damage, and uses your characteristics. The dragon disappears at the end of the encounter, if their Stamina drops to 0, or if you are dying.</p><p>On subsequent turns, you can use a main action to command the dragon to breathe magic fire in a 3 cube within 1 square of them. Make the following power roll targeting each enemy in the area.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761423496815,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!MmTYr3vm2Xidg3d3"
+}

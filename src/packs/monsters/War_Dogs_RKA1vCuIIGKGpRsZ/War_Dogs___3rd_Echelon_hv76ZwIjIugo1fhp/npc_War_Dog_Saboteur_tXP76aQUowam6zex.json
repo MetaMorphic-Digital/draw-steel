@@ -154,8 +154,9 @@
           "primary": 5
         },
         "target": {
-          "type": "creature",
-          "value": 1
+          "type": "creatureObject",
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -277,7 +278,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -288,6 +289,134 @@
         "default": 0
       },
       "_key": "!actors.items!tXP76aQUowam6zex.WGCyZsu8A4id6Dgy"
+    },
+    {
+      "name": "Alchemical Cloud",
+      "type": "ability",
+      "_id": "nOF8y0Xd415kriB6",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "310",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "alchemical-cloud",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8 poison]]{8 poison damage}; [[/apply dazed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 poison]]{7 poison damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4 poison]]{4 poison damage}</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761441530202,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!tXP76aQUowam6zex.nOF8y0Xd415kriB6"
+    },
+    {
+      "name": "Prior Malice Features",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "310",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "prior-malice-features",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The war dog activates a Malice feature available to war dogs of level 3 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.qcpbsqefhcNsWcZd]{Fire for Effect}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.I47ueLHjVHGTY83Y]{Fodder Run}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.ihKkMlptBoQemUBc]{Reconstitute}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b]{Loyalty Unto Death}</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.ffAT6RdoCBdyscSr",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761441531003,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "ffAT6RdoCBdyscSr",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!tXP76aQUowam6zex.ffAT6RdoCBdyscSr"
     }
   ],
   "folder": "hv76ZwIjIugo1fhp",

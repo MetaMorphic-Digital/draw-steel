@@ -156,7 +156,7 @@
         "target": {
           "type": "creature",
           "value": 1,
-          "custom": ""
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -200,7 +200,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "vIbo9gWhw1sQDHZK": {
               "_id": "vIbo9gWhw1sQDHZK",
@@ -244,7 +245,8 @@
                     "characteristic": "none"
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "IAjYFErx1Hh0Rzul": {
               "_id": "IAjYFErx1Hh0Rzul",
@@ -253,9 +255,9 @@
               "img": null,
               "applied": {
                 "tier3": {
-                  "display": "",
+                  "display": "{{potency}} bleeding (save ends)",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "2",
                     "characteristic": "might"
                   },
                   "effects": {
@@ -282,7 +284,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -338,7 +341,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -372,7 +376,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.z9YH7yxEznbOe4Uu",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -400,7 +404,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -434,7 +439,7 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2ec0iV4d6tPxMe4A",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -462,7 +467,8 @@
         },
         "target": {
           "type": "special",
-          "custom": ""
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -473,7 +479,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <span style=\"text-decoration:underline\"><strong>Might test</strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 12 acid]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>12–16</p></td><td><p>[[/damage 10 acid]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6 acid]] damage</p></td></tr></tbody></table>",
+          "before": "<p>One troll acting this turn spews out a half-digested meal in a 5 × 1 line within 1 square of them. Each troll in the area regains 3 Stamina. Each enemy in the area makes a <strong>Might test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 acid]]{12 acid damage}; [[/apply dazed turn]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 10 acid]]{10 acid damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 acid]]{6 acid damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -520,7 +526,7 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
@@ -558,7 +564,7 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
             "systemVersion": "0.9.0",
             "lastModifiedBy": null
@@ -567,24 +573,24 @@
           "_key": "!actors.items.effects!5ZK1agQVKKCif3Fe.kU33bPU6W8nUEB2i.QBpKiP8yMeHembSe"
         }
       ],
-      "folder": "bnDqcOdzTXjOrp78",
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.kU33bPU6W8nUEB2i",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
+      "_id": "kU33bPU6W8nUEB2i",
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "_id": "kU33bPU6W8nUEB2i",
-      "sort": 100000,
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!5ZK1agQVKKCif3Fe.kU33bPU6W8nUEB2i"
     }
   ],
@@ -740,7 +746,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -761,7 +767,7 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758817735448,
+    "createdTime": 1761424410675,
     "modifiedTime": null,
     "lastModifiedBy": null
   },

@@ -1,0 +1,101 @@
+{
+  "name": "Purified Jelly",
+  "type": "treasure",
+  "img": "icons/commodities/materials/slime-thick-green.webp",
+  "system": {
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 2,
+    "description": {
+      "value": "<p><em>This clear, pasty substance has a bitter aroma.</em></p><p><strong>Effect:</strong> Consuming this potion as a maneuver causes your skin to shimmer and a set of tiny gills to appear on your neck or shoulders. For 1 hour, you can breathe in any environment, and you ignore the effects of harmful gases, vapors, and inhaled poisons. [[/apply YnDvzepxKk4hFPLb]]</p>",
+      "director": ""
+    },
+    "keywords": [
+      "psionic",
+      "potion"
+    ],
+    "project": {
+      "prerequisites": "A cup of algae from glacial water",
+      "source": "Texts or lore in Yllyric",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "goal": 90,
+      "yield": {
+        "amount": "1d3",
+        "display": "yields 1d3 doses"
+      }
+    },
+    "_dsid": "purified-jelly",
+    "source": {
+      "book": "Heroes",
+      "page": "318",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Purified Jelly",
+      "img": "icons/commodities/materials/slime-thick-green.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.KFzlWC7H93K8Sua1",
+      "transfer": false,
+      "_id": "YnDvzepxKk4hFPLb",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": 3600,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>For 1 hour, you can breathe in any environment, and you ignore the effects of harmful gases, vapors, and inhaled poisons.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761694229322,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!KFzlWC7H93K8Sua1.YnDvzepxKk4hFPLb"
+    }
+  ],
+  "folder": "5KJmrjbJfvNBgjYp",
+  "_id": "KFzlWC7H93K8Sua1",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761682822282,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!KFzlWC7H93K8Sua1"
+}

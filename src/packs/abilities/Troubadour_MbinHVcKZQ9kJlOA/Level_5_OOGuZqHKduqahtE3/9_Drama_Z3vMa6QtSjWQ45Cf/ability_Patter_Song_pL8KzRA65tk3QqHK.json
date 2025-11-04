@@ -1,0 +1,87 @@
+{
+  "folder": "Z3vMa6QtSjWQ45Cf",
+  "name": "Patter Song",
+  "type": "ability",
+  "_id": "pL8KzRA65tk3QqHK",
+  "img": "icons/skills/movement/feet-winged-boots-glowing-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "211",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "patter-song",
+    "story": "Dazzle them with your fancy patter and they forget where they were.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "cGpDahkxwcqfpA99": {
+          "name": "",
+          "img": null,
+          "type": "other",
+          "_id": "cGpDahkxwcqfpA99",
+          "other": {
+            "tier1": {
+              "display": "One ally within distance can take their turn immediately after yours."
+            },
+            "tier2": {
+              "display": "Two allies within distance can take their turns immediately after yours in any order."
+            },
+            "tier3": {
+              "display": "Three allies within distance can take their turns immediately after yours in any order. One of those allies can have already taken a turn this combat round."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760917037448,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!pL8KzRA65tk3QqHK"
+}

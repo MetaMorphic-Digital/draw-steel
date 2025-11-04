@@ -1,5 +1,5 @@
-import { systemID, systemPath } from "../../../constants.mjs";
-import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
+import { systemPath } from "../../../constants.mjs";
+import { DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
@@ -360,25 +360,24 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /** @inheritdoc */
   _getCombatContextOptions() {
-    const entryOptions = super._getCombatContextOptions();
-
-    if (game.combats.isDefaultInitiativeMode) {
-      entryOptions.findSplice(o => o.name === "COMBAT.RollAll");
-      entryOptions.findSplice(o => o.name === "COMBAT.RollNPC");
-
-      entryOptions.unshift({
+    const entryOptions = [
+      {
         name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-users-rectangle\"></i>",
         callback: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
       }, {
+        name: "DRAW_STEEL.CombatantGroup.GroupSelected",
+        icon: "<i class=\"fa-solid fa-users-viewfinder\"></i>",
+        callback: async () => DrawSteelCombatantGroup.createFromTokens(this.viewed),
+      }, {
         name: "COMBAT.InitiativeRoll",
         icon: "<i class=\"fa-solid fa-dice-d10\"></i>",
+        condition: () => game.combats.isDefaultInitiativeMode,
         callback: () => this.viewed.rollFirst(),
-      });
+      },
+    ];
 
-    }
-
-    return entryOptions;
+    return entryOptions.concat(super._getCombatContextOptions());
   }
 
   /* -------------------------------------------------- */
@@ -421,6 +420,14 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         icon: "<i class=\"fa-solid fa-shoe-prints\"></i>",
         condition: li => game.user.isGM,
         callback: li => getCombatantGroup(li).clearMovementHistories(),
+      },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ColorTokens.Label",
+        icon: "<i class=\"fa-solid fa-palette\"></i>",
+        condition: li => getCombatantGroup(li).members.every(c => c.isOwner),
+        callback: async li => {
+          await getCombatantGroup(li).colorTokensDialog();
+        },
       },
       {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),

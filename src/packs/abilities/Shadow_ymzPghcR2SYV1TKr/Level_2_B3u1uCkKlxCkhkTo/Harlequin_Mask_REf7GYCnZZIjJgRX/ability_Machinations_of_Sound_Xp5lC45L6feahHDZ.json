@@ -34,7 +34,9 @@
     "power": {
       "roll": {
         "formula": "@chr",
-        "characteristics": []
+        "characteristics": [
+          "agility"
+        ]
       },
       "effects": {
         "tODm3eK8eNbCPZBY": {
@@ -47,19 +49,28 @@
               "movement": [
                 "slide"
               ],
-              "distance": "4"
+              "distance": "4",
+              "properties": [
+                "ignoresImmunity"
+              ]
             },
             "tier2": {
               "movement": [
                 "slide"
               ],
-              "distance": "5"
+              "distance": "5",
+              "properties": [
+                "ignoresImmunity"
+              ]
             },
             "tier3": {
               "movement": [
                 "slide"
               ],
-              "distance": "7"
+              "distance": "7",
+              "properties": [
+                "ignoresImmunity"
+              ]
             }
           }
         }
@@ -84,9 +95,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1756090347968,
     "modifiedTime": null,
     "lastModifiedBy": null

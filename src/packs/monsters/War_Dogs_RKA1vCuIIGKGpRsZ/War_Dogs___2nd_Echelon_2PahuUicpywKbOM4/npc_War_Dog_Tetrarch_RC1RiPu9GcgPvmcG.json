@@ -371,7 +371,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "The triggering creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -409,7 +410,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -437,7 +438,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -570,7 +572,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -600,8 +602,9 @@
           "secondary": 20
         },
         "target": {
-          "type": "creature",
-          "value": null
+          "type": "creatureObject",
+          "value": null,
+          "custom": "Each creature and object in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -731,7 +734,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -870,7 +873,6 @@
       "_key": "!actors.items!RC1RiPu9GcgPvmcG.LhmUJ3w2ByDwwNJi"
     },
     {
-      "folder": "4GSCmcDZJY4KGwzb",
       "name": "Loyalty Unto Death",
       "type": "ability",
       "_id": "1qhCLAaWCcnCLT2b",
@@ -878,7 +880,7 @@
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "309",
+          "page": "304",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "loyalty-unto-death",
@@ -899,7 +901,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "ally",
-          "value": 2
+          "value": 2,
+          "custom": "Two war dogs"
         },
         "power": {
           "roll": {
@@ -909,7 +912,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p><strong>Note:</strong> Targets Two War Dogs</p><p>Each target who has a loyalty collar shifts up to their speed, then is reduced to 0 Stamina. After each target’s Loyalty Collar trait is resolved, each enemy adjacent to either target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>Push 4; the enemy is frightened of the nearest non-minion war dog (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>Push 2; the enemy is frightened of the nearest non-minion war dog (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>Push 2</p></td></tr></tbody></table>",
+          "before": "<p><strong>Note:</strong> Targets Two War Dogs</p><p>Each target who has a loyalty collar shifts up to their speed, then is reduced to 0 Stamina. After each target’s Loyalty Collar trait is resolved, each enemy adjacent to either target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Push 4; the enemy is [[/apply frightened save]] of the nearest non-minion war dog</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Push 2; the enemy is [[/apply frightened turn]] of the nearest non-minion war dog</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 2</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -918,22 +921,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.1qhCLAaWCcnCLT2b",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761441156540,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!RC1RiPu9GcgPvmcG.1qhCLAaWCcnCLT2b"
     }
   ],

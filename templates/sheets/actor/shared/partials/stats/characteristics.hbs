@@ -8,7 +8,7 @@
   {{#each characteristics as |chr key|}}
   {{#unless ../editCharacteristics}}
   <a
-    class="characteristic play"
+    class="characteristic play {{disabled (not @root.owner)}}"
     data-action="roll"
     data-roll-type="characteristic"
     data-characteristic="{{key}}"

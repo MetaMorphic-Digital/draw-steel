@@ -30,8 +30,8 @@
     </div>
     {{/unless}}
     {{!-- Using document.system to ensure initialized values in edit mode --}}
-    {{#each document.system.power.effects}}
-    <div class="form-group" data-pseudo-id="{{id}}">
+    {{#each document.system.power.effects.sortedContents}}
+    <div class="form-group draggable" data-pseudo-id="{{id}}">
       <img class="pre-img" src="{{img}}" alt="{{name}}">
       <label> {{name}} </label>
       <div class="form-fields">

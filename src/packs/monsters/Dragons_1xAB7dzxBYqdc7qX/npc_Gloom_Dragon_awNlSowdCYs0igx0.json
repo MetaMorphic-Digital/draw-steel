@@ -35,7 +35,7 @@
         "letter": "M"
       },
       "stability": 2,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 8,
@@ -72,7 +72,7 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -181,7 +181,7 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Once per turn, the dragon can shift up to their speed, leaving behind a 4 cube area of magical darkness in their starting space that lasts until the end of the encounter. The dragon ignores concealment created by this darkness. Any enemy who ends their turn in the area and has I &lt; 3 is frightened of the dragon until the end of their next turn.</p>",
+          "value": "<p>Once per turn, the dragon can shift up to their speed, leaving behind a 4 cube area of magical darkness in their starting space that lasts until the end of the encounter. The dragon ignores concealment created by this darkness. Any enemy who ends their turn in the area and has I &lt; 3 is [[/apply frightened turn]] of the dragon until the end of their next turn.</p>",
           "director": ""
         },
         "source": {
@@ -204,9 +204,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -230,8 +230,9 @@
           "secondary": 10
         },
         "target": {
-          "type": "creatureObject",
-          "value": null
+          "type": "enemyObject",
+          "value": null,
+          "custom": "Each enemy and object in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -244,7 +245,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: targets each Enemy and Object</p><p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 14 cold]] damage; the target is dragonsealed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 11 cold]] damage; the target is dragonsealed (save ends)</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 6 cold]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11 cold]] damage; the target is [[/apply RoFAZZPRLjVZwjPY save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6 cold]] damage</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -261,7 +262,63 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Dragonsealed",
+          "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.Item.rlV6oPVV1KR3Y4iQ",
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.cold",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            },
+            {
+              "key": "system.damage.weaknesses.psychic",
+              "mode": 2,
+              "value": "3",
+              "priority": null
+            }
+          ],
+          "disabled": true,
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>A dragonsealed creature has psychic weakness 3 and cold weakness 3.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.awNlSowdCYs0igx0.ActiveEffect.vTgN9J24tIdxmXfg",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761168466523,
+            "modifiedTime": 1761168534194,
+            "lastModifiedBy": null
+          },
+          "_id": "RoFAZZPRLjVZwjPY",
+          "sort": 0,
+          "_key": "!actors.items.effects!awNlSowdCYs0igx0.rlV6oPVV1KR3Y4iQ.RoFAZZPRLjVZwjPY"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -269,9 +326,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -583,7 +640,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -716,9 +774,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -745,7 +803,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -875,9 +934,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -894,9 +953,7 @@
       "system": {
         "type": "villain",
         "category": "villain",
-        "keywords": [
-          "-"
-        ],
+        "keywords": [],
         "distance": {
           "type": "special"
         },
@@ -915,8 +972,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The dragon disappears from the encounter map. The dragon and three hallucinatory illusions of themself then immediately reappear in unoccupied spaces on the encounter map, and the dragon and each illusion uses Breath of Brume. Each illusion is indistinguishable from the dragon except by supernatural means, has 1 Stamina, and has the dragon's speed. An illusion acts on the dragon's turns but can take only move actions. Once per round before or after using an ability, the dragon can trade places with any duplicate.</p>"
+          "before": "<p>The dragon disappears from the encounter map. The dragon and three hallucinatory illusions of themself then immediately reappear in unoccupied spaces on the encounter map, and the dragon and each illusion uses Breath of Brume. Each illusion is indistinguishable from the dragon except by supernatural means, has 1 Stamina, and has the dragon's speed. An illusion acts on the dragon's turns but can take only move actions. Once per round before or after using an ability, the dragon can trade places with any duplicate.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -940,9 +997,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -953,67 +1010,7 @@
       "_key": "!actors.items!awNlSowdCYs0igx0.rchyNugzoECUyQ0Z"
     },
     {
-      "name": "Dread and Terror",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A gloom starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The dragon thickens the fog of their Gloaming Wyrmscale Aura trait and the horrors within it. Each creature in the area takes a bane on strikes made against the dragon until the start of the dragon’s next turn.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "97",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "dread-and-terror",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "xQmS3uOVJvQRK9bT",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!awNlSowdCYs0igx0.xQmS3uOVJvQRK9bT"
-    },
-    {
-      "name": "Doleful Visions",
+      "name": "Solo Action",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
@@ -1036,7 +1033,69 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Intuition test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; dazed (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+          "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "97",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "solo-action",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 350000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "AXBlkjqVdirSBFwS",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!awNlSowdCYs0igx0.AXBlkjqVdirSBFwS"
+    },
+    {
+      "name": "Doleful Visions",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A gloom starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <strong>Intuition test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; [[/apply dazed save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; [[/apply dazed turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -1083,13 +1142,13 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "Ko0JnLBGsDeM2GHX",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.fnZyQEVpteOGmc6M.Ko0JnLBGsDeM2GHX"
+          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.Ko0JnLBGsDeM2GHX"
         },
         {
           "name": "Dazed",
@@ -1121,48 +1180,52 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "ZLT1TAz0WNCRZTMe",
-          "_key": "!actors.items.effects!awNlSowdCYs0igx0.fnZyQEVpteOGmc6M.ZLT1TAz0WNCRZTMe"
+          "_key": "!actors.items.effects!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6.ZLT1TAz0WNCRZTMe"
         }
       ],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.Z1EoT4Tm4QFmUkw6",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1760901535912,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "fnZyQEVpteOGmc6M",
+      "_id": "Z1EoT4Tm4QFmUkw6",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.fnZyQEVpteOGmc6M"
+      "folder": null,
+      "sort": 300000,
+      "_key": "!actors.items!awNlSowdCYs0igx0.Z1EoT4Tm4QFmUkw6"
     },
     {
-      "name": "Solo Action",
+      "name": "Dread and Terror",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "type": "none",
         "category": "heroic",
-        "resource": 5,
+        "resource": 3,
         "trigger": "A gloom starts its turn.",
         "distance": {
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -1173,7 +1236,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "before": "<p>The dragon thickens the fog of their Gloaming Wyrmscale Aura trait and the horrors within it. Each creature in the area takes a bane on strikes made against the dragon until the start of the dragon’s next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -1185,29 +1248,31 @@
           "page": "97",
           "license": "Draw Steel Creator License"
         },
-        "_dsid": "solo-action",
+        "_dsid": "dread-and-terror",
         "story": "",
         "keywords": []
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.dC861UmVU30rAYsf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1760901536856,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "AXBlkjqVdirSBFwS",
+      "_id": "dC861UmVU30rAYsf",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.AXBlkjqVdirSBFwS"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!awNlSowdCYs0igx0.dC861UmVU30rAYsf"
     },
     {
       "name": "Phantasmagoria!",
@@ -1222,7 +1287,9 @@
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -1250,24 +1317,26 @@
         "keywords": []
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.sb9X9PBRRHhwcgOq",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1760901538215,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "UGUCek9BjLRL2cAT",
+      "_id": "sb9X9PBRRHhwcgOq",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!awNlSowdCYs0igx0.UGUCek9BjLRL2cAT"
+      "folder": null,
+      "sort": 400000,
+      "_key": "!actors.items!awNlSowdCYs0igx0.sb9X9PBRRHhwcgOq"
     }
   ],
   "folder": "1xAB7dzxBYqdc7qX",
@@ -1374,7 +1443,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757726953946,

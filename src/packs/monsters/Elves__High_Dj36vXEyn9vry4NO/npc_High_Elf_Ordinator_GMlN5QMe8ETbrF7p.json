@@ -40,8 +40,8 @@
     "movement": {
       "value": 5,
       "types": [
-        "fly",
-        "walk"
+        "walk",
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -73,7 +73,7 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -316,7 +316,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each elemental ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -329,7 +330,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets Each elemental ally in the area</p><p>Each target can move up to their speed or make a free strike. Elemental mote targets can, instead, use their Spark of Life trait.</p>",
+          "before": "<p>Each target can move up to their speed or make a free strike. Elemental mote targets can, instead, use their Spark of Life trait.</p>",
           "after": ""
         },
         "spend": {
@@ -354,9 +355,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -448,7 +449,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": 1
+          "value": 1,
+          "custom": "The triggering enemy"
         },
         "damageDisplay": "melee",
         "power": {
@@ -486,9 +488,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -515,7 +517,8 @@
         },
         "target": {
           "type": "ally",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -553,9 +556,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -584,7 +587,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -597,7 +601,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes a **Presence test**.</p><table><tbody><tr><td data-colwidth=\"121\"><p>11 or less</p></td><td><p>[[/damage 12 corruption]] damage; pull 5 toward the center of the cube</p></td></tr><tr><td data-colwidth=\"121\"><p>12-16</p></td><td><p>[[/damage 9 corruption]] damage; pull 3 toward the center of the cube</p></td></tr><tr><td data-colwidth=\"121\"><p>17+</p></td><td><p>Pull 1 toward the center of the cube</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes a <strong>Presence test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 corruption]] damage; pull 5 toward the center of the cube</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 corruption]] damage; pull 3 toward the center of the cube</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Pull 1 toward the center of the cube.</p></dd></dl>",
           "after": "<p>The area turns dark and distorted, and is difficult terrain for enemies.</p>"
         },
         "spend": {
@@ -622,9 +626,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -651,7 +655,8 @@
         },
         "target": {
           "type": "selfAlly",
-          "value": null
+          "value": null,
+          "custom": "Self and each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -689,9 +694,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -831,7 +836,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -1024,9 +1030,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1200,7 +1206,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1757118122491,

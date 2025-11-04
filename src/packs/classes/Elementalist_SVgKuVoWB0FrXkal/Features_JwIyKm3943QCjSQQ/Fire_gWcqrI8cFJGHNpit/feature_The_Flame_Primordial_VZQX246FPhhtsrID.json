@@ -1,0 +1,123 @@
+{
+  "folder": "gWcqrI8cFJGHNpit",
+  "name": "The Flame Primordial",
+  "type": "feature",
+  "_id": "VZQX246FPhhtsrID",
+  "img": "icons/magic/fire/flame-burning-earth-yellow.webp",
+  "system": {
+    "description": {
+      "value": "<p>You produce a fire that entrances the fates, distracting them from aiding your foes. Whenever you deal fire damage to a creature or object, they take an extra [[/damage 1d6 fire]] damage. If you deal fire damage to a mundane object, you can use a free triggered action to target it with your @UUID[Compendium.draw-steel.abilities.Item.vldbnWQnyytdagrH]{Return to Formlessness} ability instead.</p><p>Additionally, any enemy who starts their turn adjacent to you has [[/apply uqiVDBgnxj1UMTDp]] equal to your Reason score until the start of their next turn. This increases to twice your Reason score if the enemy is made of or is wearing mostly metal [[/apply SEJIkEUllUvEYgbk]].</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "125",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "the-flame-primordial",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Fire Weakness: Reason",
+      "img": "icons/magic/fire/flame-burning-earth-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.VZQX246FPhhtsrID",
+      "transfer": false,
+      "_id": "uqiVDBgnxj1UMTDp",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761513381274,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!VZQX246FPhhtsrID.uqiVDBgnxj1UMTDp"
+    },
+    {
+      "name": "Fire Weakness: Double Reason",
+      "img": "icons/magic/fire/flame-burning-earth-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.VZQX246FPhhtsrID",
+      "transfer": false,
+      "_id": "SEJIkEUllUvEYgbk",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761513578872,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!VZQX246FPhhtsrID.SEJIkEUllUvEYgbk"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761513211132,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!VZQX246FPhhtsrID"
+}

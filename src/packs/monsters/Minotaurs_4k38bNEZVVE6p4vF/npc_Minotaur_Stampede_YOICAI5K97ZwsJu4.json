@@ -158,7 +158,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -355,9 +356,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -372,7 +373,7 @@
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "special",
+        "type": "none",
         "category": "heroic",
         "resource": 3,
         "trigger": "A minotaur starts its turn.",
@@ -380,7 +381,9 @@
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -400,7 +403,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "208",
+          "page": "206",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "bull-rush",
@@ -408,31 +411,180 @@
         "keywords": []
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.eNlTRp36SIVxLFt4",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761234103649,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "BWXU9HRauKDWb9jQ",
+      "_id": "eNlTRp36SIVxLFt4",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!YOICAI5K97ZwsJu4.BWXU9HRauKDWb9jQ"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!YOICAI5K97ZwsJu4.eNlTRp36SIVxLFt4"
+    },
+    {
+      "name": "Bullseye",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A minotaur starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target has [[/apply F2fGz4WjWIom6q2J save]]{line of effect} only within 3 squares and is frightened of all minotaurs (save ends).</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target has [[/apply j05qfRBPuK0wvtpo turn]]{line of effect} only within 3 squares (EoT).</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "206",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "bullseye",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Bullseye, Tier 2",
+          "img": "icons/magic/perception/eye-tendrils-web-purple.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.VtY6kHACKSkqVe9P",
+          "transfer": false,
+          "_id": "j05qfRBPuK0wvtpo",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>The target has line of effect only within 3 squares.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!YOICAI5K97ZwsJu4.bAt7raSpMfENZiG5.j05qfRBPuK0wvtpo"
+        },
+        {
+          "name": "Bullseye, Tier 1",
+          "img": "icons/magic/unholy/silhouette-evil-horned-giant.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.VtY6kHACKSkqVe9P",
+          "transfer": false,
+          "_id": "F2fGz4WjWIom6q2J",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have line of effect only within 3 squares and are frightened of all minotaurs</p>",
+          "tint": "#ffffff",
+          "statuses": [
+            "frightened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!YOICAI5K97ZwsJu4.bAt7raSpMfENZiG5.F2fGz4WjWIom6q2J"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.bAt7raSpMfENZiG5",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761234104448,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "bAt7raSpMfENZiG5",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!YOICAI5K97ZwsJu4.bAt7raSpMfENZiG5"
     },
     {
       "name": "Cut the … Nonsense!",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
-        "type": "special",
+        "type": "none",
         "category": "heroic",
         "resource": 5,
         "trigger": "A minotaur starts its turn.",
@@ -440,7 +592,9 @@
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -460,7 +614,7 @@
         },
         "source": {
           "book": "Monsters",
-          "page": "208",
+          "page": "206",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "cut-the--nonsense",
@@ -468,123 +622,24 @@
         "keywords": []
       },
       "effects": [],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.NnMyD6br3ACf0Ea3",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761234105537,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "PZiUkgPkYKg7W7OC",
+      "_id": "NnMyD6br3ACf0Ea3",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!YOICAI5K97ZwsJu4.PZiUkgPkYKg7W7OC"
-    },
-    {
-      "name": "Bullseye",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "special",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "A minotaur starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>All minotaurs in the encounter fill the area around them with psychic impressions of feeling lost and isolated. Each enemy within 5 squares of a minotaur is teleported up to 5 squares and makes an <span style=\"text-decoration:underline\"><strong>Intuition test</strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target has line of effect only within 3 squares and is frightened of all minotaurs (save ends).</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target has line of effect only within 3 squares (EoT).</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "208",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "bullseye",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [
-        {
-          "name": "Frightened",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "frightened"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_id": "SqxuIjeHdKC0SnJM",
-          "_key": "!actors.items.effects!YOICAI5K97ZwsJu4.2Vjift3z4W3MCtTZ.SqxuIjeHdKC0SnJM"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "2Vjift3z4W3MCtTZ",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!YOICAI5K97ZwsJu4.2Vjift3z4W3MCtTZ"
+      "_key": "!actors.items!YOICAI5K97ZwsJu4.NnMyD6br3ACf0Ea3"
     }
   ],
   "folder": "4k38bNEZVVE6p4vF",

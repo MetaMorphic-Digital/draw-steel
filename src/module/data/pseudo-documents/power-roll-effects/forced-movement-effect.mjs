@@ -62,8 +62,8 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _tierRenderingContext(context) {
-    await super._tierRenderingContext(context);
+  async _tierRenderingContext(context, options) {
+    await super._tierRenderingContext(context, options);
 
     for (const n of [1, 2, 3]) {
       const path = `forced.tier${n}`;
@@ -111,7 +111,6 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
     const distanceValue = this.actor
       ? ds.utils.evaluateFormula(tierValue.distance, this.item.getRollData(), { contextName: this.uuid })
       : tierValue.distance;
-    const potencyString = this.toPotencyText(tier);
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
     const distanceString = game.i18n.format("DRAW_STEEL.Item.ability.ForcedMovement.Display", {
       movement: formatter.format(tierValue.movement.map(v => {
@@ -120,7 +119,10 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       })),
       distance: distanceValue,
     });
-    let finalText = this.forced[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    const potencyString = this.toPotencyHTML(tier);
+    // Sanitize any HTML that may be in the base display string
+    const escapedDisplay = Handlebars.escapeExpression(this.forced[`tier${tier}`].display);
+    const finalText = escapedDisplay.replaceAll("{{potency}}", potencyString);
     return finalText.replaceAll("{{forced}}", distanceString);
   }
 }

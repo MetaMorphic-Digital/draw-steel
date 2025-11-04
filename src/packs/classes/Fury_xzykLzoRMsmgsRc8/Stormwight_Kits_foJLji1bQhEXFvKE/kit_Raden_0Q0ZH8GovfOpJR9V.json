@@ -6,7 +6,7 @@
   "img": "icons/creatures/mammals/rodent-rat-green.webp",
   "system": {
     "description": {
-      "value": "<p>With this stormwight kit, you channel your primordial ferocity into the form of a rat, becoming mobile and elusive. Raden are associated with the wild nature of the rat, before cities became their habitat. This aspect is associated with the rat flood—a surge of corrupted water that draws forth hordes of rats.</p><h3>Aspect Benefits</h3><p>You gain an edge on tests made to hide and sneak. Additionally, you ignore difficult terrain.</p><h3>Animal Form: Rat</h3><p>While you are in your rat form, your size is 1T and you can automatically climb at full speed while moving. You can use the Hide maneuver as a free maneuver, you can use your allies as cover when you hide, and you can stay hidden while you move through squares occupied by any creature. Additionally, you gain an edge on tests made to climb other creatures. You can’t use any abilities while in this form except for Aspect of the Wild.</p><h3>Hybrid Form: Rat</h3><p>While you are in your hybrid form, your size is your choice of 1S or 1M. At 4th level, you can automatically climb at full speed while moving.</p><h3>Primordial Storm: Rat Flood</h3><p>Your primordial damage type is corruption.</p><h1>Raden Growing Ferocity</h1><p>As your ferocity grows, you gain benefits as noted on the Raden Growing Ferocity table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p><table><tbody><tr><td data-colwidth=\"123\"><p>Ferocity</p></td><td><p>Benefit</p></td></tr><tr><td data-colwidth=\"123\"><p>2</p></td><td><p>Whenever you use the Disengage move action, the distance you can shift gains a bonus equal to your Agility score.</p></td></tr><tr><td data-colwidth=\"123\"><p>4</p></td><td><p>The first time you shift on a turn, you gain 1 surge.</p></td></tr><tr><td data-colwidth=\"123\"><p>6</p></td><td><p>You gain an edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>8 (4th level)</p></td><td><p>The first time you shift on a turn, you gain 2 surges instead of 1.</p></td></tr><tr><td data-colwidth=\"123\"><p>10 (7th level)</p></td><td><p>You have a double edge on Agility tests, the Escape Grab maneuver, and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>12 (10th level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temp]]. Additionally, the potency of any effects targeting you is reduced by 2 for you.</p></td></tr></tbody></table>",
+      "value": "<p>With this stormwight kit, you channel your primordial ferocity into the form of a rat, becoming mobile and elusive. Raden are associated with the wild nature of the rat, before cities became their habitat. This aspect is associated with the rat flood—a surge of corrupted water that draws forth hordes of rats.</p><h3>Aspect Benefits</h3><p>You gain an edge on tests made to hide and sneak. Additionally, you ignore difficult terrain.</p><h3>Animal Form: Rat</h3><p>While you are in your rat form, your size is 1T and you can automatically climb at full speed while moving. You can use the Hide maneuver as a free maneuver, you can use your allies as cover when you hide, and you can stay hidden while you move through squares occupied by any creature. Additionally, you gain an edge on tests made to climb other creatures. You can’t use any abilities while in this form except for Aspect of the Wild.</p><h3>Hybrid Form: Rat</h3><p>While you are in your hybrid form, your size is your choice of 1S or 1M. At 4th level, you can automatically climb at full speed while moving.</p><h3>Primordial Storm: Rat Flood</h3><p>Your primordial damage type is corruption.</p>",
       "director": ""
     },
     "source": {
@@ -44,6 +44,54 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.1Syy7WKXEGvFRO2o"
+          }
+        ]
+      },
+      "l0VJLOcFbzLmQR8o": {
+        "name": "Growing Ferocity",
+        "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "l0VJLOcFbzLmQR8o",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.2POr5VogG2lwJO71"
+          }
+        ]
+      },
+      "6TZqLRrFwEdvkmav": {
+        "name": "Growing Ferocity Improvement",
+        "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "6TZqLRrFwEdvkmav",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aiwxgZHuyYeR7mvw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.2POr5VogG2lwJO71"
+          }
+        ]
+      },
+      "CbW3JH0HmzOKMtxn": {
+        "name": "Growing Ferocity Improvement",
+        "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "CbW3JH0HmzOKMtxn",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Qq2Kh84gcuzN9xNx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.2POr5VogG2lwJO71"
           }
         ]
       }

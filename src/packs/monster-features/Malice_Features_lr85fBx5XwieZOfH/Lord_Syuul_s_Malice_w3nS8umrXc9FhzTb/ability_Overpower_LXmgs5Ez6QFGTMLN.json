@@ -1,0 +1,208 @@
+{
+  "name": "Overpower",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A  starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Lord Syuul sends out a psionic burst to completely overpower his greatest threats. He makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Reason test</span></strong></span> (2d10 + 4).</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd></dl><p>Once per round as a maneuver, Lord Syuul can repeat this test, replacing the previous Overpower effect.</p><p>Whenever an Overpower effect is active, any hero who has one or more psionic abilities can use a maneuver to push back by making a <strong>Reason test</strong>, replacing the previous Overpower effect.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Lord Syuul has [[/apply dablVHoMkSQAjH4U]]{damage immunity 5}.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Lord Syuul has [[/apply jYSbHU5vWJKVYLb1]]{damage immunity 2}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Lord Syuul has [[/apply G3pmIisK48BtlWbz]]{damage weakness 5}.</p></dd></dl><p>The Overpower effect lasts until the end of the encounter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "293",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "overpower",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Overpower (Weak 5)",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "type": "base",
+      "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+      "transfer": false,
+      "_id": "G3pmIisK48BtlWbz",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!LXmgs5Ez6QFGTMLN.G3pmIisK48BtlWbz"
+    },
+    {
+      "name": "Overpower (Immune 2)",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "type": "base",
+      "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+      "transfer": false,
+      "_id": "jYSbHU5vWJKVYLb1",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.all",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!LXmgs5Ez6QFGTMLN.jYSbHU5vWJKVYLb1"
+    },
+    {
+      "name": "Overpower (Immune 5)",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "type": "base",
+      "origin": "Actor.ihjaMctHwc45OQ0n.Item.DMmMxLn4okIAt3Zw",
+      "transfer": false,
+      "_id": "dablVHoMkSQAjH4U",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.all",
+          "mode": 2,
+          "value": "5",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!LXmgs5Ez6QFGTMLN.dablVHoMkSQAjH4U"
+    }
+  ],
+  "folder": "w3nS8umrXc9FhzTb",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761531100420,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "LXmgs5Ez6QFGTMLN",
+  "sort": 200000,
+  "_key": "!items!LXmgs5Ez6QFGTMLN"
+}
