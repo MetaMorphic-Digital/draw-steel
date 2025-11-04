@@ -104,16 +104,16 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
    * Collects the bonuses for forced movement effects.
    * Searches the actor's ability bonuses for keys "forced.[movementType]".
    * 
-   * @returns {Object} An object mapping movement types to their bonus values.
+   * @returns {Record<string, number>} An object mapping movement types to their bonus values.
    */
   #collectForcedMovementBonuses() {
-    let bonuses = {};
-    const abilityBonuses = this.actor?.system._abilityBonuses || {};
+    const bonuses = {};
+    const abilityBonuses = this.actor?.system._abilityBonuses ?? [];
 
     const prefix = "forced.";
     for (const bonus of abilityBonuses) {
       if (!bonus.key.startsWith(prefix)) continue;
-      if (!bonus.filters.keywords.isSubsetOf(this.parent?.keywords)) continue;
+      if (!bonus.filters.keywords.isSubsetOf(this.parent.keywords)) continue;
 
       const key = bonus.key.substring(prefix.length);
       // Bonus change objects are stored as strings, convert to Number
