@@ -87,6 +87,7 @@
   - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
+- Added `system.recoveries.divisor` for adjusting the ratio of stamina to recovery value. (#1336)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 - Creating crafting projects from treasures will now use the treasure image as the project image.
