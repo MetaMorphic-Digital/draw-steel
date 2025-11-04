@@ -67,7 +67,7 @@ By default, all actors can be flanked. If an actor has the `Flankable` condition
 
 An example to make an actor unflankable would be
 
-|`system.conditions.flankable`|Override|`false`|
+|`system.statuses.flankable`|Override|`false`|
 |---|---|---|
 
 ### Weakened
@@ -147,13 +147,15 @@ While there are similarities with roll data, active effects generally lead with 
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
 |Bonus Stamina Per Level|`system.stamina.bonuses.level`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
+|Bonus Recovery Divisor|`system.recoveries.divisor`|
 |Speed|`system.movement.value`|
 |Movement Multiplier|`system.movement.multiplier`|
 |Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
-|Condition Immunity|`system.conditions.immunities`|
-|Flankable|`system.conditions.flankable`|
+|Condition Immunity|`system.statuses.immunities`|
+|Flankable|`system.statuses.flankable`|
+|Slowed Speed|`system.statuses.slowed.speed`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
@@ -199,7 +201,7 @@ While there are similarities with roll data, active effects generally lead with 
 >
 > An example to add immunity to Slowed would be
 >
-> |`system.conditions.immunities`|Add|`slowed`|
+> |`system.statuses.immunities`|Add|`slowed`|
 > |---|---|---|
 >
 ></details>

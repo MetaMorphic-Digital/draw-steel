@@ -69,10 +69,10 @@
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
-- Added support for condition immunities as `system.conditions.immunities`. (#704)
+- Added support for condition immunities as `system.statuses.immunities`. (#704)
   - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
-- Added support for marking actors as unflankable with `system.conditions.flankable`. (#714)
+- Added support for marking actors as unflankable with `system.statuses.flankable`. (#714)
 - Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
@@ -87,6 +87,7 @@
   - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
+- Added `system.recoveries.divisor` for adjusting the ratio of stamina to recovery value. (#1336)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 - Creating crafting projects from treasures will now use the treasure image as the project image.

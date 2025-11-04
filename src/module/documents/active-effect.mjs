@@ -40,7 +40,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (allowed === false) return false;
 
     // Check if actor has immunity to any statuses being applied by this effect
-    const immuneList = this.statuses.filter(statusId => this.parent?.system.conditions?.immunities.has(statusId));
+    const immuneList = this.statuses.filter(statusId => this.parent?.system.statuses?.immunities.has(statusId));
 
     if (immuneList.size) {
       // Warn the user with a list of condition names
