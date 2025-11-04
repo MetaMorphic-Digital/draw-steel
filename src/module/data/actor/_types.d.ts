@@ -38,6 +38,7 @@ declare module "./base.mjs" {
       winded: number;
       bonuses: {
         echelon: number;
+        level: number;
       }
     },
     characteristics: Record<string, { value: number }>;
@@ -84,6 +85,7 @@ declare module "./hero.mjs" {
     recoveries: BarAttribute & {
       bonus: number;
       recoveryValue: number;
+      divisor: number;
     };
     hero: {
       primary: HeroicResource;
