@@ -1,10 +1,11 @@
-import { systemID, systemPath } from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
+import AdvancementChain from "../../utils/advancement-chain.mjs";
 
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
@@ -828,8 +829,27 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
 
     const result = await BaseAdvancement.create(advancementData, { keepId, parent: this.item, renderSheet: false });
 
-    if (this.item.actor) {
-      // TODO: Create advancement chain, configuration dialog
+    const actor = this.item.actor;
+
+    if (actor && (actor.system._finalizeAdvancements instanceof Function)) {
+      const validRange = result.levels.some(level => {
+        if (Number.isNumeric(level)) return level.between(null, actor.system.level);
+        else return true;
+      });
+      if (!validRange) return result ?? null;
+
+      const chains = [await AdvancementChain.create(result, null, { start: null, end: actor.system.level })];
+
+      const configured = await ds.applications.apps.advancement.ChainConfigurationDialog.create({
+        chains, actor, window: { title: "DRAW_STEEL.ADVANCEMENT.ChainConfiguration.dropAdvancementTitle" },
+      });
+
+      if (!configured) return result ?? null;
+
+      await actor.system._finalizeAdvancements(
+        { chains },
+        { start: null, end: actor.system.level },
+      );
     }
 
     return result ?? null;
