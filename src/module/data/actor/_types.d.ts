@@ -66,11 +66,12 @@ declare module "./base.mjs" {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
     }
-    conditions: {
-      immunities: Set<string>;
-    }
     statuses: {
-      slowed: number;
+      immunities: Set<string>;
+      slowed: {
+        speed: number;
+      };
+      flankable: boolean;
     }
     potency: {
       bonuses: number;
