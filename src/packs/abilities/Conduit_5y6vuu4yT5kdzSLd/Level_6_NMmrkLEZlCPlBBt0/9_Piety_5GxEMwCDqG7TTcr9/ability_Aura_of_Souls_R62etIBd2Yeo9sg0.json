@@ -1,0 +1,67 @@
+{
+  "folder": "5GxEMwCDqG7TTcr9",
+  "name": "Aura of Souls",
+  "type": "ability",
+  "_id": "R62etIBd2Yeo9sg0",
+  "img": "icons/magic/unholy/silhouette-light-fire-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "106",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "aura-of-souls",
+    "story": "A whirlwind of souls of the dead flies around you at your command.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "aura",
+      "primary": 4
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the encounter or until you are dying, at the end of each of your turns, you can slide each creature in the area up to a number of squares equal to your Intuition score. This forced movement ignores stability for your allies.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760753576494,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!R62etIBd2Yeo9sg0"
+}

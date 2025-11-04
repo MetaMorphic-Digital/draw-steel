@@ -64,6 +64,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
+    schema.statuses = new fields.SchemaField({
+      immunities: new fields.SetField(setOptions()),
+    });
+
     return schema;
   }
 
@@ -109,11 +113,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       strong: 0,
     };
 
-    this.statuses = {
+    Object.assign(this.statuses, {
+      flankable: false,
       slowed: {
         speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
       },
-    };
+    });
 
     this.restrictions = {
       type: new Set(),
@@ -124,6 +129,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       min: 0,
       bonuses: {
         echelon: 0,
+        level: 0,
       },
     });
 
@@ -142,15 +148,21 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    // Account for immunities first, in case any changes impact later calculations
+    this.statuses.immunities.forEach(imm => this.parent.statuses.delete(imm));
+
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
-
+    this.stamina.max += this.level * this.stamina.bonuses.level;
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
 
     this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
+
+    // Enforce a minimum of 0 for stability
+    this.combat.stability = Math.max(0, this.combat.stability);
 
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 

@@ -1,0 +1,116 @@
+{
+  "folder": "ZcXK03vogXPQMT8l",
+  "name": "Deluge",
+  "type": "ability",
+  "_id": "7z5MCR9cQOeogELH",
+  "img": "icons/magic/air/air-wave-gust-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "141",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "deluge",
+    "story": "You summon your primordial storm.",
+    "keywords": [
+      "area",
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "cube",
+      "primary": 5,
+      "secondary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "ByMHDv84pobN5NKk": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "ByMHDv84pobN5NKk",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "properties": [
+                "ignoresImmunity"
+              ],
+              "types": [
+                "cold",
+                "corruption",
+                "fire",
+                "lightning"
+              ]
+            },
+            "tier2": {
+              "value": "10",
+              "properties": [
+                "ignoresImmunity"
+              ],
+              "types": [
+                "cold",
+                "corruption",
+                "fire",
+                "lightning"
+              ]
+            },
+            "tier3": {
+              "value": "15",
+              "properties": [
+                "ignoresImmunity"
+              ],
+              "types": [
+                "cold",
+                "corruption",
+                "fire",
+                "lightning"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>This ability deals your primordial damage type and ignores damage immunity.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761572846230,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!7z5MCR9cQOeogELH"
+}

@@ -59,6 +59,18 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         onChange: () => ui.players.render(),
       },
+      updateFromCompendium: {
+        name: "DRAW_STEEL.Setting.UpdateFromCompendium.Label",
+        hint: "DRAW_STEEL.Setting.UpdateFromCompendium.Hint",
+        type: new fields.NumberField({ required: true, initial: CONST.USER_ROLES.ASSISTANT, choices: () => {
+          return Object.entries(CONST.USER_ROLES).reduce((obj, [key, value]) => {
+            if (value) obj[key] = game.i18n.localize(`USER.Role${key.titleCase()}`);
+            return obj;
+          }, {});
+        } }),
+        config: true,
+        scope: "world",
+      },
       projectEvents: {
         name: "DRAW_STEEL.Setting.ProjectEvents.Label",
         hint: "DRAW_STEEL.Setting.ProjectEvents.Hint",

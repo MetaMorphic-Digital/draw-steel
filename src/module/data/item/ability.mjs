@@ -291,7 +291,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.contents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
+      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -561,6 +561,8 @@ export default class AbilityModel extends BaseItemModel {
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+      // Surprised condition check - targeting surprised gets an edge
+      if (targetActor.statuses.has("surprised")) modifiers.edges += 1;
     }
 
     // Modifiers requiring just a controlled token

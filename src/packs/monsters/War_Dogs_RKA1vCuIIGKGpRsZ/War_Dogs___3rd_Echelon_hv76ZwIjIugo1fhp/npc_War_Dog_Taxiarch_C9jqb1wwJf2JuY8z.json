@@ -397,7 +397,8 @@
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": "Targets each War Dog in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -410,7 +411,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets each War Dog in the area</p><p>Each target shifts up to their speed and can make a free strike that deals an extra [[/damage 5 lightning]] damage.</p>",
+          "before": "<p>Each target shifts up to their speed and can make a free strike that deals an extra [[/damage 5 lightning]] damage.</p>",
           "after": ""
         },
         "spend": {
@@ -435,7 +436,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -464,7 +465,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "The triggering enemy"
         },
         "damageDisplay": "melee",
         "power": {
@@ -477,7 +479,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>After the ability is resolved, the target is teleported up to 5 squares and is thunderstruck (save ends). A thunderstruck creature has lightning weakness 5, and the taxiarch gains an edge on power rolls against them.</p>",
+          "before": "<p>After the ability is resolved, the target is teleported up to 5 squares and is [[/apply cjyrBYPaq3uSYUax save]] thunderstruck. A thunderstruck creature has lightning weakness 5, and the taxiarch gains an edge on power rolls against them.</p>",
           "after": ""
         },
         "spend": {
@@ -494,7 +496,57 @@
         "resource": null,
         "trigger": "An enemy within distance deals damage to the taxiarch."
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Thunderstruck",
+          "img": "icons/magic/lightning/bolt-strike-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.C9jqb1wwJf2JuY8z.Item.WDpA88ydy34f2VSr",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.lightning",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have lightning weakness 5, and the taxiarch gains an edge on power rolls against you.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.C9jqb1wwJf2JuY8z.Item.WDpA88ydy34f2VSr.ActiveEffect.4mLo7h7x4fOoNZpA",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761442670494,
+            "modifiedTime": 1761442670494,
+            "lastModifiedBy": null
+          },
+          "_id": "cjyrBYPaq3uSYUax",
+          "sort": 0,
+          "_key": "!actors.items.effects!C9jqb1wwJf2JuY8z.IomGrfVzaAr7jf11.cjyrBYPaq3uSYUax"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -502,7 +554,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -531,7 +583,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -569,7 +622,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -598,7 +651,8 @@
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": "Each war dog in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -636,7 +690,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -665,7 +719,8 @@
         },
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "Each creature in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -678,8 +733,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 18 lightning]] damage; the target is thunderstruck (save ends)</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 14 lightning]] damage; the target is thunderstruck (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>[[/damage 9 lightning]] damage</p></td></tr></tbody></table>",
-          "after": "<p>See @UUID[Actor.dek0gTmQS4vrSRyZ.Item.IomGrfVzaAr7jf11]{Thunderstruck}. Additionally, until the end of the encounter, any enemy who moves within 3 squares of the taxiarch for the first time in a round or starts their turn there takes [[/damage 3 lightning]] damage.</p>"
+          "before": "<p>Each target makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 18 lightning]]{18 lightning damage}; the target is [[/apply 4mLo7h7x4fOoNZpA save]]</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 14 lightning]]{14 lightning damage}; the target is [[/apply 4mLo7h7x4fOoNZpA turn]]</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>[[/damage 9 lightning]]{9 lightning damage}</p></td></tr></tbody></table>",
+          "after": "<p>See @UUID[Actor.dek0gTmQS4vrSRyZ.Item.IomGrfVzaAr7jf11]{Thunderstruck}. Additionally, until the end of the encounter, any enemy who moves within 3 squares of the taxiarch for the first time in a round or starts their turn there takes [[/damage 3 lightning]]{3 lightning damage}.</p>"
         },
         "spend": {
           "text": "",
@@ -695,7 +750,57 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Thunderstruck",
+          "img": "icons/magic/lightning/bolt-strike-blue.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.C9jqb1wwJf2JuY8z.Item.WDpA88ydy34f2VSr",
+          "transfer": false,
+          "_id": "4mLo7h7x4fOoNZpA",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.damage.weaknesses.lightning",
+              "mode": 2,
+              "value": "5",
+              "priority": null
+            }
+          ],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You have lightning weakness 5, and the taxiarch gains an edge on power rolls against you.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761442501557,
+            "modifiedTime": 1761442585572,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!C9jqb1wwJf2JuY8z.WDpA88ydy34f2VSr.4mLo7h7x4fOoNZpA"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -703,7 +808,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
@@ -777,7 +882,6 @@
       "_key": "!actors.items!C9jqb1wwJf2JuY8z.ffAT6RdoCBdyscSr"
     },
     {
-      "folder": "i2de6zKmA8OVN5i8",
       "name": "Alchemical Cloud",
       "type": "ability",
       "_id": "nOF8y0Xd415kriB6",
@@ -785,7 +889,7 @@
       "system": {
         "source": {
           "book": "Monsters",
-          "page": "314",
+          "page": "310",
           "license": "Draw Steel Creator License"
         },
         "_dsid": "alchemical-cloud",
@@ -800,7 +904,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -810,7 +916,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"96\"><p>11 or less</p></td><td><p>[[/damage 8 poison]] damage; dazed (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>12-16</p></td><td><p>[[/damage 7 poison]] damage; weakened (EoT)</p></td></tr><tr><td data-colwidth=\"96\"><p>17+</p></td><td><p>[[/damage 4 poison]] damage</p></td></tr></tbody></table>",
+          "before": "<p>A bank of choking chemicals sweeps across the area of the en counter map. Each enemy in the encounter makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8 poison]]{8 poison damage}; [[/apply dazed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 poison]]{7 poison damage}; [[/apply weakened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 4 poison]]{4 poison damage}</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -819,22 +925,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.nOF8y0Xd415kriB6",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761442313805,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!C9jqb1wwJf2JuY8z.nOF8y0Xd415kriB6"
     }
   ],
@@ -942,7 +1050,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1758223840060,

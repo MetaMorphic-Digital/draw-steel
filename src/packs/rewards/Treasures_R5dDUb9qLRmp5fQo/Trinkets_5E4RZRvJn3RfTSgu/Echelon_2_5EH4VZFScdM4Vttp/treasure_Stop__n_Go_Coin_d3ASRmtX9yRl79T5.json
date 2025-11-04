@@ -1,0 +1,107 @@
+{
+  "name": "Stop-’n-Go Coin",
+  "type": "treasure",
+  "img": "icons/commodities/currency/coin-embossed-ruby-gold.webp",
+  "system": {
+    "kind": "other",
+    "category": "trinket",
+    "echelon": 2,
+    "description": {
+      "value": "<p><em>This small, featureless coin is solid green on one side and solid red on the other.</em></p><p><strong>Effect:</strong> As a maneuver, you toss the coin in the air and let it fall to the ground in front of you. Roll a [[/roll 1d3]] to determine the coin’s effect, depending on which face shows when it lands:</p><ol><li><p><strong>Red:</strong> The area within 2 squares of you is difficult terrain for enemies until the end of your next turn.</p></li><li><p><strong>Green:</strong> You and each ally who starts their turn within 2 squares of you gains a +1 bonus to speed until the end of your next turn. [[/apply BuRuT27XYsyd3Xdq]]</p></li><li><p><strong>Spinning Coin:</strong> Both the red and green effects occur while the coin continuously spins.</p></li></ol><p>The coin must be picked up before it can be used again. If any creature picks up the coin, its effects immediately end.</p>",
+      "director": ""
+    },
+    "keywords": [
+      "magic"
+    ],
+    "project": {
+      "prerequisites": "A coin minted during an earthquake",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "goal": 300,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "stop-n-go-coin",
+    "source": {
+      "book": "Heroes",
+      "page": "325",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Green Face",
+      "img": "icons/commodities/currency/coin-embossed-ruby-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.d3ASRmtX9yRl79T5",
+      "transfer": false,
+      "_id": "BuRuT27XYsyd3Xdq",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You gain a +1 bonus to speed.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761694716188,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!d3ASRmtX9yRl79T5.BuRuT27XYsyd3Xdq"
+    }
+  ],
+  "folder": "5EH4VZFScdM4Vttp",
+  "_id": "d3ASRmtX9yRl79T5",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761685033079,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!d3ASRmtX9yRl79T5"
+}

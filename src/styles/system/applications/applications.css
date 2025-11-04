@@ -4,6 +4,7 @@
 
 .application.draw-steel .drop-target-area {
   min-height: 300px;
+  overflow-y: scroll;
   border-radius: 5px;
   border: 1px dashed var(--draw-steel-c-tan);
   margin: 1rem;
@@ -26,6 +27,12 @@ dl.power-roll-display {
     font-family: "Draw Steel Glyphs";
     font-size: var(--font-size-24);
     font-weight: 500;
+    line-height: 0.9;
+  }
+  span.potency {
+    font-family: "Draw Steel Glyphs";
+    font-size: var(--font-size-16);
+    text-transform: lowercase;
     line-height: 0.9;
   }
   dd > p, dt > p {

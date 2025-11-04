@@ -26,16 +26,17 @@
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining non-imbue projects.
   - Censor levels 4–10 features and abilities.
-  - Conduit levels 4–5 features and abilities.
-  - Elementalist levels 4–5 features and abilities.
-  - Fury levels 4–5 features and abilities.
+  - Conduit levels 4–10 features and abilities.
+  - Elementalist levels 4–10 features and abilities.
+  - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
   - Shadow levels 4–10 features and abilities.
   - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
   - Troubadour levels 4–10 features and abilities.
-  - Echelon 2 Titles
-- New Director-Facing Compendium Content:
+  - Echelon 2–4 Consumables, Trinkets, and Titles
+- New Director-Facing Compendium Content: (All remaining core monsters)
+  - Ajax
   - Demon Echelons 2–4
   - Devils
   - Draconians
@@ -43,14 +44,22 @@
   - Elves (Shadow)
   - Giants
   - Hobgoblins
+  - Kingfissure Worm
+  - Medusa
+  - Olothec
   - Rivals Echelons 2–4
+  - Shambling Mound
   - Trolls
   - Undead Echelons 2–4, plus the Lich and Rhodar von Glaur
   - War Dogs Echelons 2–4
   - Valok
-  - Voiceless Talkers
+  - Voiceless Talkers & Lord Syuul
+  - Xorannox the Tyract and his six, magnificent, beautiful eyeballs
 - Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
+- Added "Surprised" as a condition to the token HUD. (#203)
 - Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+  - Directors have access to a button in the header button of the NPC and Item sheets to perform this update.
+  - There is a new setting to open this to other permission levels.
 - Added a "Group Selected" option to the Combat Tracker options. (#690)
   - This will create any missing combatants and then add them all to a new group.
   - The group's name will use the actor's name if all tokens have matching actor names.
@@ -59,18 +68,25 @@
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
+- Added support for condition immunities as `system.statuses.immunities`. (#704)
+  - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added support for marking actors as unflankable with `system.statuses.flankable`. (#714)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
 - Added drag and drop support for pseudodocuments (Power Roll Effects & Advancements). (#907)
   - This allows them to be dragged from one sheet to another to make a copy, or onto the same sheet to sort.
 - Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
+- Added `system.stamina.bonuses.level` which adds bonus stamina per level. (#1120)
 - Added "point buy" support for Ancestry trait advancements. (#1192)
 - Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
 - Added the official licensed glyphs. (#1209)
+  - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
+- Added `system.recoveries.divisor` for adjusting the ratio of stamina to recovery value. (#1336)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 - Creating crafting projects from treasures will now use the treasure image as the project image.
@@ -95,6 +111,7 @@
 - Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
 - Sealed the characteristics object to prevent adding or removing characteristics.
 - PseudoDocument.create now returns the pseudo document instead of the parent.
+- Widened space for advancement labels to reduce need for line wrapping.
 
 ### Removed
 
@@ -109,9 +126,11 @@
   - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
   - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
   - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
+  - Re-implemented "Disciple of Earth" to use `system.stamina.bonuses.level`. (#1120)
   - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
+  - Corrected AE path for fire weakness in the Host complication. (#1325)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
   - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
@@ -129,12 +148,13 @@
     - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
     - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
     - Corrected the description of the Destructive Path feature per errata.
-  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
 - Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
+- Stability is properly capped at a minimum of 0. (#1308)
 - Fixed broken image links in the in-game documentation.
 
 ## 0.8.1

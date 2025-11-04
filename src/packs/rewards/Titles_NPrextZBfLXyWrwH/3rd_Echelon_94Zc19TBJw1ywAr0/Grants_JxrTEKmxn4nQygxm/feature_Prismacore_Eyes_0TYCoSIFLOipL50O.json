@@ -1,0 +1,88 @@
+{
+  "folder": "JxrTEKmxn4nQygxm",
+  "name": "Prismacore Eyes",
+  "type": "feature",
+  "_id": "0TYCoSIFLOipL50O",
+  "img": "icons/magic/perception/eye-slit-orange.webp",
+  "system": {
+    "description": {
+      "value": "<p>Exposure to prismacore has given your eyes a mirrorlike sheen. You have psychic immunity 10, creatures can’t use magic or psionic abilities or other effects to determine your location or read your thoughts unless you allow them to, and you gain a +3 bonus to stability against magic or psionic abilities.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "347",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "prismacore-eyes",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Prismacore Eyes",
+      "img": "icons/magic/perception/eye-slit-orange.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.0TYCoSIFLOipL50O",
+      "_id": "aDaf4FTmJFLw5yze",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.psychic",
+          "mode": 2,
+          "value": "10",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">You have psychic immunity 10.</span></p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762012515179,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!0TYCoSIFLOipL50O.aDaf4FTmJFLw5yze"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762012422466,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!0TYCoSIFLOipL50O"
+}

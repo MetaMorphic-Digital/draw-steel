@@ -264,6 +264,11 @@
             "healing": "Healing Roll"
           }
         },
+        "Gain": {
+          "FormatString": "Gain {formula} {type}",
+          "MessageTitle": "Gain {type} {targets}",
+          "NoSelection": "You must select hero tokens to gain resources."
+        },
         "ApplyEffect": {
           "FormatString": "{name} {end}",
           "EffectEnds": {
@@ -980,7 +985,7 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic} < {value}",
+          "Embed": "{characteristic}<{value}",
           "Success": "Success",
           "Failure": "Failure"
         },
@@ -1384,6 +1389,7 @@
       "Applied": "Applied Effects",
       "Expired": "Expired",
       "RollSave": "Roll Save",
+      "ImmunityWarning": "Target has immunity to the following conditions: {conditions}",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
@@ -1424,6 +1430,9 @@
         },
         "Slowed": {
           "name": "Slowed"
+        },
+        "Surprised": {
+          "name": "Surprised"
         },
         "Taunted": {
           "name": "Taunted"
@@ -1634,6 +1643,10 @@
         "Hint": "How should project event timing be determined?",
         "Roll": "Roll for Event",
         "Milestone": "Event Milestones"
+      },
+      "UpdateFromCompendium": {
+        "Label": "Update from Compendium",
+        "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
       }
     },
     "SOCKET": {

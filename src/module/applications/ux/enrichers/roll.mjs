@@ -22,7 +22,7 @@ export const id = "ds.roll";
 /**
  * Valid roll types.
  */
-const rollTypes = ["damage", "heal", "healing"];
+const rollTypes = ["damage", "heal", "healing", "gain", "heroic", "surge"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -44,6 +44,15 @@ export function enricher(match, options) {
     case "heal":
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
+    case "gain": return enrichGain(parsedConfig, label, options);
+    case "heroic":
+      //[[/heroic 2]] -> [[/gain 2 heroic]]
+      parsedConfig[0].values.push("heroic");
+      return enrichGain(parsedConfig, label, options);
+    case "surge":
+      //[[/surge 2]] -> [[/gain 2 surge]]
+      parsedConfig[0].values.push("surge");
+      return enrichGain(parsedConfig, label, options);
   }
 }
 
@@ -60,6 +69,8 @@ export async function onRender(element) {
     switch (link.dataset.type) {
       case "damageHeal":
         return void rollDamageHeal(link, ev);
+      case "gain":
+        return void rollGain(link, ev);
     }
   });
 }
@@ -223,4 +234,146 @@ async function rollDamageHeal(link, event) {
     flavor: game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.DamageHeal.MessageTitle." + rollType),
     flags: { core: { canPopout: true } },
   });
+}
+
+/* -------------------------------------------------- */
+/*   Gain Enricher                                    */
+/* -------------------------------------------------- */
+
+/**
+ * Enrich a gain link for heroic resources.
+ * @param {ParsedConfig[]} parsedConfig      Configuration data.
+ * @param {string} [label]             Optional label to replace default text.
+ * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
+ * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
+ */
+function enrichGain(parsedConfig, label, options) {
+  const linkConfig = { type: "gain", formula: null, gainType: null };
+
+  // Parse the formula and type from configuration
+  for (const c of parsedConfig) {
+    const formulaParts = [];
+    if (c.formula) formulaParts.push(c.formula);
+    c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
+    for (const value of c.values) {
+      const normalizedValue = value.toLowerCase();
+      if (["hr", "heroic", "surge"].includes(normalizedValue)) {
+        c.type.push(normalizedValue);
+      } else {
+        formulaParts.push(value);
+      }
+    }
+    c.formula = DSRoll.replaceFormulaData(
+      formulaParts.join(" "),
+      options.rollData ?? options.relativeTo?.getRollData?.() ?? {},
+    );
+    if (c.formula) {
+      linkConfig.formula = c.formula;
+      linkConfig.gainType = c.type[0]; // Require type to be specified
+      break; // Only use first formula
+    }
+  }
+
+  if (!linkConfig.formula || !linkConfig.gainType) return null;
+
+  if (label) {
+    return createLink(label,
+      linkConfig,
+      { classes: "roll-link", icon: "fa-bolt" },
+    );
+  }
+
+  let resourceType;
+
+  switch (linkConfig.gainType) {
+    case "hr": // eslint-ignore no-fallthrough
+    case "heroic":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+    case "surge":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+  }
+  const localizationData = {
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
+    type: resourceType,
+  };
+
+  const link = document.createElement("a");
+  link.className = "roll-link";
+  addDataset(link, linkConfig);
+  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString", localizationData);
+
+  return link;
+}
+
+/* -------------------------------------------------- */
+
+/**
+ * Helper function that constructs the gain roll for heroic resources.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
+ */
+async function rollGain(link, event) {
+  const { formula, gainType } = link.dataset;
+
+  if (!formula) throw new Error("Gain link must have a formula");
+  if (!gainType) throw new Error("Gain link must have a gain type");
+
+  // Get all selected hero tokens
+  const actors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
+
+  if (!actors.size) {
+    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
+    return;
+  }
+
+  // Roll the formula
+  const roll = new DSRoll(formula);
+  await roll.evaluate();
+
+  let resourceLabel;
+
+  switch (gainType) {
+    case "surge":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+    case "hr": // eslint-ignore no-fallthrough
+    case "heroic":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+  }
+
+  let targetList;
+
+  const multipleActors = (actors.size > 1);
+  if (multipleActors) {
+    const names = [...actors].map((a) => DrawSteelChatMessage.getSpeaker({ actor: a }).alias);
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    const combinedNames = formatter.format(names);
+    targetList = `(${combinedNames})`;
+  }
+
+  // Create the chat message
+  await DrawSteelChatMessage.create({
+    rolls: [roll],
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel, targets: targetList ?? "" }),
+    flags: { core: { canPopout: true } },
+    speaker: DrawSteelChatMessage.getSpeaker(),
+    style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
+  });
+
+  // Apply the gain to each selected token's actor
+  for (const actor of actors) {
+    switch (gainType) {
+      case "surge":
+        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
+        break;
+      case "heroic":
+        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+        break;
+      default:
+        return;
+    }
+  }
 }
