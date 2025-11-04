@@ -139,17 +139,9 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
       : tierValue.distance;
 
     // Group movement types by their final distance value (base + bonus)
-    const distanceGroups = [...tierValue.movement].reduce((groups, movementType) => {
-      const bonus = bonuses[movementType] || 0;
-      const finalDistance = Number(baseDistance) + bonus;
-
-      if (!groups.has(finalDistance)) {
-        groups.set(finalDistance, []);
-      }
-      groups.get(finalDistance).push(movementType);
-
-      return groups;
-    }, new Map());
+    const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
+      return baseDistance + (bonuses[movementType] ?? 0);
+    });
 
     // Format the output
     const formatter = game.i18n.getListFormatter({ type: "disjunction" });
