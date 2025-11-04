@@ -119,7 +119,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
 
     let result = formattedDamageString;
 
-    if (ignoredImmunities?.size > 0) {
+    if (ignoredImmunities.size > 0) {
       const ignoredTypes = Array.from(ignoredImmunities);
       // Special case for "all" immunity
       if (ignoredImmunities.has("all")) {
