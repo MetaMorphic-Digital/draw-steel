@@ -130,7 +130,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     if (ignoredImmunities?.size > 0) {
       const ignoredTypes = Array.from(ignoredImmunities);
       // Special case for "all" immunity
-      if (ignoredTypes.includes("all")) {
+      if (ignoredImmunities.has("all")) {
         result += ` <em>(${game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.IgnoresAllImmunities")})</em>`;
       } else {
         const formatter = game.i18n.getListFormatter({ type: "conjunction" });
