@@ -51,7 +51,7 @@ declare module "./base.mjs" {
         threshold: number;
       }
     }
-    biography: Biography
+    biography: Biography;
     movement: {
       value: number;
       types: Set<string>;
@@ -65,6 +65,12 @@ declare module "./base.mjs" {
     damage: {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
+    }
+    conditions: {
+      immunities: Set<string>;
+    }
+    statuses: {
+      slowed: number;
     }
     potency: {
       bonuses: number;
