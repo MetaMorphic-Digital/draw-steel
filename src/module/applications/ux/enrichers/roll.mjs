@@ -286,7 +286,9 @@ function enrichGain(parsedConfig, label, options) {
   let resourceType;
 
   switch (linkConfig.gainType) {
-    case "hr": // eslint-ignore no-fallthrough
+    case "hr":
+      // Rewrite the "hr" alias with the full value so that the added dataset is consistent
+      linkConfig.gainType = "heroic"; // eslint-ignore no-fallthrough
     case "heroic":
       resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
       break;
