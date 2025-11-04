@@ -93,6 +93,7 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
     context.fields.damageTypes = Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label }));
     context.fields.immunityTypes = [
       { value: "all", label: game.i18n.localize("DRAW_STEEL.Damage.Immunities.All") },
+      { rule: true },
       ...Object.entries(ds.CONFIG.damageTypes).map(([k, v]) => ({ value: k, label: v.label })),
     ];
   }
