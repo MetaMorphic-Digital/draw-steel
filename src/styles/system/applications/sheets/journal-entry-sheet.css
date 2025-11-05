@@ -1,9 +1,6 @@
 /* CSS for DrawSteelJournalEntrySheet */
 
 /*all*/
-.draw-steel.journal-sheet{
-  background: whitesmoke;
-}
 .draw-steel.journal-sheet .journal-sidebar{
   --color-shadow-primary:#ccccccaa;
   --button-focus-outline-color: var(--draw-steel-c-laserline);
@@ -130,7 +127,7 @@ a{
         font-family: DrawSteelGlyphs;
         position:absolute;
         bottom: -0.8em;
-        left: -0.8em;
+        left: -1em;
         width: calc(100% + 20px);
         text-align: center;
       }
@@ -169,30 +166,28 @@ a{
     border-bottom: 2px solid #866d4b;
     line-height: 0.1em;
     margin:10px 0 20px;
-    border-image: linear-gradient(to right, transparent 25%, #866d4b 50%, transparent 25%);
-     border: 4px solid transparent;  
     border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1; 
     border-image-slice: 1;
     span{
-        background: white;
+        background: var(--draw-steel-c-white);
         padding: 10px 20px;
         position: relative;
         }
     span::before {
         content: "®";
-        top: 1.4em;
+        top: 1.55em;
         font-family: DrawSteelGlyphs;
         color: #866d4b;
         position: absolute;
-        left: -5px;
+        left: -0.5em;
       }
     span::after {
         content: "®";
         font-family: DrawSteelGlyphs;
         color: #866d4b;
         position: absolute;
-        top: 1.4em;
-        right: -4px;
+        top: 1.55em;
+        right: -0.5em;
     }
   }
     }
@@ -231,5 +226,8 @@ a{
 /*    this should be default */
     .journal-sheet.journal-entry, .journal-sheet.journal-entry .journal-entry-content{
       background: var(--draw-steel-c-white);
+    }
+    .draw-steel.journal-sheet{
+      background: whitesmoke;
     }
   }
