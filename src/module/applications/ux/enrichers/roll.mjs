@@ -340,7 +340,6 @@ async function rollGain(link, event) {
     case "surge":
       resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
       break;
-    case "hr": // eslint-ignore no-fallthrough
     case "heroic":
       resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
       break;
