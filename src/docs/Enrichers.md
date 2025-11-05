@@ -4,12 +4,24 @@
 
 All items support the @Embed<s></s>[uuid] syntax, which by default share the description of the item. For abilities, kits, and projects, their embeds feature additional information.
 
+## Lookup
+
+The `[[lookup]]` enricher allows dynamic display of actor, item, and effect data as plain text. It supports both text and numerical values, and uses roll data syntax.
+
+**Examples:**
+<!-- Extra &ZeroWidthSpace; characters are to prevent these from enriching in the in-game journal or rendering as wiki internal links -->
+- [&ZeroWidthSpace;[lookup @name]] Prints the actor's name.
+- [&ZeroWidthSpace;[lookup @item.name]] Prints the item's name (Requires the context of an item or an effect on an item, e.g. the description)
+- [&ZeroWidthSpace;[lookup @effect.name]] Prints the effect's name (Requires the context of an Active Effect, e.g. the description)
+- [&ZeroWidthSpace;[lookup @name lowercase]] Prints the actor's name but lowercase. Valid options are `capitalize`, `lowercase`, and `uppercase`.
+- [&ZeroWidthSpace;[lookup @name style=uppercase]] The style property can be defined explicitly.
+- [&ZeroWidthSpace;[lookup @A+3 formula]] Evaluates the lookup value as a formula. Non-deterministic values like dice are treated as 0.
+
 ## Damage and Healing
 
 You can have inline damage enrichers by using `[[/damage]]`; this is the intended way to handle abilities that do damage as part of their effect, such as the Censor's Judgment. The damage is a formula that is evaluated when the text is rendered; closing and re-opening a sheet will recalculate the values. A roll does not have to include dice; Draw Steel frequently involves static damage values.
 
 **Examples:**
-<!-- Extra &ZeroWidthSpace; characters are to prevent these from enriching in the in-game journal or rendering as wiki internal links -->
 
 - [&ZeroWidthSpace;[/damage 2*@P]]: You can use roll data in the formula. The available values depend on where the enriched text lies, such as an Ability Description.
 - [&ZeroWidthSpace;[/damage 1d6+@level]]{Bleeding}: Brackets will replace the default text for the roll.
