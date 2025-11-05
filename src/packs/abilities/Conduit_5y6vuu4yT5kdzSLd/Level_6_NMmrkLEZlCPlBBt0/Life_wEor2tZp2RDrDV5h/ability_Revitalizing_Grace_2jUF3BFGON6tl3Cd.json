@@ -1,34 +1,34 @@
 {
-  "folder": "5GxEMwCDqG7TTcr9",
-  "name": "Lauded by God",
+  "folder": "wEor2tZp2RDrDV5h",
+  "name": "Revitalizing Grace",
   "type": "ability",
-  "_id": "BpV9vREE34LfeqJG",
-  "img": "icons/skills/social/diplomacy-peace-alliance.webp",
+  "_id": "2jUF3BFGON6tl3Cd",
+  "img": "icons/magic/life/ankh-shadow-green.webp",
   "system": {
     "source": {
       "book": "Heroes",
       "page": "107",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "lauded-by-god",
-    "story": "You beseech the gods to give your allies what they need to win the day, and the gods answer.",
+    "_dsid": "revitalizing-grace",
+    "story": "With a gesture, you restore your health and that of your allies.",
     "keywords": [
-      "magic",
-      "ranged"
+      "area",
+      "magic"
     ],
-    "type": "maneuver",
+    "type": "main",
     "category": "heroic",
     "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "ranged",
-      "primary": 10
+      "type": "burst",
+      "primary": 4
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "ally",
+      "type": "selfAlly",
       "custom": "",
-      "value": 2
+      "value": null
     },
     "power": {
       "roll": {
@@ -38,7 +38,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Each target gains 3 of their Heroic Resource.</p>",
+      "before": "<p>Each target can spend any number of Recoveries. Additionally, each target can end one effect on themself that is ended by a saving throw or that ends at the end of their turn, or they can stand up if prone.</p>",
       "after": ""
     },
     "spend": {
@@ -47,7 +47,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -56,12 +56,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1760754772137,
+    "createdTime": 1760801180959,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!BpV9vREE34LfeqJG"
+  "_key": "!items!2jUF3BFGON6tl3Cd"
 }
