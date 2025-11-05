@@ -129,6 +129,13 @@ Hooks.once("init", function () {
       { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
     ],
   };
+
+  CONFIG.fontDefinitions["Draw Steel Book"] = {
+    editor: true,
+    fonts: [
+      { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
+    ],
+  };
 });
 
 /**
