@@ -101,37 +101,10 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /**
-   * Collects the bonuses for forced movement effects.
-   * Searches the actor's ability bonuses for keys "forced.[movementType]".
-   * 
-   * @returns {Record<string, number>} An object mapping movement types to their bonus values.
-   */
-  #collectForcedMovementBonuses() {
-    const bonuses = {};
-    const abilityBonuses = this.actor?.system._abilityBonuses ?? [];
-
-    const prefix = "forced.";
-    for (const bonus of abilityBonuses) {
-      if (!bonus.key.startsWith(prefix)) continue;
-      if (!bonus.filters.keywords.isSubsetOf(this.parent.keywords)) continue;
-
-      const key = bonus.key.substring(prefix.length);
-      // Bonus change objects are stored as strings, convert to Number
-      bonuses[key] = Number(bonus.value);
-    }
-
-    return bonuses;
-  }
-
-  /* -------------------------------------------------- */
-
-  /**
    * @param {1 | 2 | 3} tier
    * @inheritdoc
    */
   toText(tier) {
-    const bonuses = this.#collectForcedMovementBonuses();
-
     const tierValue = this.forced[`tier${tier}`];
     const isVertical = tierValue.properties.has("vertical");
     const baseDistance = this.actor
@@ -140,7 +113,7 @@ export default class ForcedMovementPowerRollEffect extends BasePowerRollEffect {
 
     // Group movement types by their final distance value (base + bonus)
     const distanceGroups = Map.groupBy([...tierValue.movement], movementType => {
-      return baseDistance + (bonuses[movementType] ?? 0);
+      return baseDistance + (this.bonuses ? this.bonuses[movementType] ?? 0 : 0);
     });
 
     // Format the output
