@@ -63,7 +63,26 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.combat.size.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 4,
+          "value": "10",
+          "priority": null
+        }
+      ],
       "disabled": false,
       "duration": {
         "startTime": null,
