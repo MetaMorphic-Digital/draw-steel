@@ -36,15 +36,19 @@ Healing enrichers work similarly to damage enrichers, except the leading command
 
 ## Gain Heroic Resources and Surges
 
-The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Focus, Insight, etc.) or surges to selected hero actors. This is useful for abilities or effects that provide resources to party members.
+The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Focus, Insight, etc.), epic resources (like Virtue, Divine Power, Breath, etc.), surges, or other progression resources (renown, wealth, victories) to selected hero actors. This is useful for abilities or effects that provide resources to party members.
 
 **Syntax:**
 - `[[/gain formula heroic]]` - Modifies heroic resources
 - `[[/gain formula surge]]` - Modifies surges
+- `[[/gain formula epic]]` - Modifies epic resources
+- `[[/gain formula renown]]` - Modifies renown
+- `[[/gain formula wealth]]` - Modifies wealth
+- `[[/gain formula victories]]` - Modifies victories
 - `[[/heroic formula]]` - Equivalent to `/gain formula heroic`
 - `[[/surge formula]]` - Equivalent to `/gain formula surge`
 
-**Note:** You must specify either `heroic` or `surge` as the type. `h`, and `hr` are synonyms for `heroic`; `s` is short for `surge`
+**Note:** You must specify the resource type (`heroic`, `surge`, `epic`, `renown`, `wealth`, or `victories`).
 
 **Examples:**
 
@@ -52,7 +56,11 @@ The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Fo
 - [&ZeroWidthSpace;[/gain 2 hr]]: Gain 2 heroic resources.
 - [&ZeroWidthSpace;[/heroic 2]]: Gain 2 heroic resources.
 - [&ZeroWidthSpace;[/gain 1 surge]]: Gain 1 surge.
-- [&ZeroWidthSpace;[/surge 1]]: Gain 2 surge.
+- [&ZeroWidthSpace;[/surge 1]]: Gain 1 surge.
+- [&ZeroWidthSpace;[/gain 2 epic]]: Gain 2 epic resources.
+- [&ZeroWidthSpace;[/gain 3 renown]]: Gain 3 renown.
+- [&ZeroWidthSpace;[/gain 5 wealth]]: Gain 5 wealth.
+- [&ZeroWidthSpace;[/gain 1 victories]]: Gain 1 victory.
 - [&ZeroWidthSpace;[/gain 1d6 heroic]]: Gain a random amount of heroic resources based on a roll.
 - [&ZeroWidthSpace;[/gain 1d6 surge]]: Gain a random amount of surges based on a roll.
 - [&ZeroWidthSpace;[/gain @level heroic]]: Gain heroic resources equal to the owner's level.
@@ -63,7 +71,7 @@ The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Fo
 - Gain enrichers only work on hero actors (characters with heroic resources).
 - The roll is made once and the total is applied to all selected tokens.
 - Non-hero actors will be skipped when gaining resources.
-- When using /gain, you must specify the type ("heroic" or "surge") - there is no default.
+- When using /gain, you must specify the type (e.g. "heroic", "surge", "renown").
 
 ## Apply Effect
 

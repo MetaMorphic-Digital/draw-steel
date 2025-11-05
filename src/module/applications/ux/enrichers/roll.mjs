@@ -30,6 +30,22 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
 /* -------------------------------------------------- */
 
 /**
+ * Resource name to localization key mappings for gain enricher.
+ * Maps resource type identifiers to their i18n localization keys.
+ */
+const RESOURCE_LOCALIZATION_MAP = {
+  hr: "DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label",
+  heroic: "DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label",
+  epic: "DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label",
+  surge: "DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label",
+  renown: "DRAW_STEEL.Actor.hero.FIELDS.hero.renown.label",
+  wealth: "DRAW_STEEL.Actor.hero.FIELDS.hero.wealth.label",
+  victories: "DRAW_STEEL.Actor.hero.FIELDS.hero.victories.label",
+};
+
+/* -------------------------------------------------- */
+
+/**
  * Enricher function.
  * @type {TextEditorEnricher}
  */
@@ -257,7 +273,7 @@ function enrichGain(parsedConfig, label, options) {
     c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
-      if (["hr", "heroic", "surge"].includes(normalizedValue)) {
+      if (["hr", "heroic", "epic", "surge", "renown", "wealth", "victories"].includes(normalizedValue)) {
         c.type.push(normalizedValue);
       } else {
         formulaParts.push(value);
@@ -283,28 +299,32 @@ function enrichGain(parsedConfig, label, options) {
     );
   }
 
-  let resourceType;
-
-  switch (linkConfig.gainType) {
-    // Reassign aliases first.
-    case "hr":
-      linkConfig.gainType = "heroic"; // eslint-ignore no-fallthrough
-    case "heroic":
-      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
-      break;
-    case "surge":
-      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
-      break;
+  // Reassign aliases first
+  if (linkConfig.gainType === "hr") {
+    linkConfig.gainType = "heroic";
   }
+
+  const resourceType = game.i18n.localize(RESOURCE_LOCALIZATION_MAP[linkConfig.gainType]);
+
   const localizationData = {
     formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
     type: resourceType,
   };
 
+  let resourceStringName;
+  switch (linkConfig.gainType) {
+    case "victories":
+      resourceStringName = "Victories";
+      break;
+    default:
+      resourceStringName = "Default";
+      break;
+  }
+
   const link = document.createElement("a");
   link.className = "roll-link";
   addDataset(link, linkConfig);
-  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString", localizationData);
+  link.innerHTML = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString.${resourceStringName}`, localizationData);
 
   return link;
 }
@@ -334,16 +354,8 @@ async function rollGain(link, event) {
   const roll = new DSRoll(formula);
   await roll.evaluate();
 
-  let resourceLabel;
-
-  switch (gainType) {
-    case "surge":
-      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
-      break;
-    case "heroic":
-      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
-      break;
-  }
+  // Get the localized resource label
+  const resourceLabel = game.i18n.localize(RESOURCE_LOCALIZATION_MAP[gainType]);
 
   let targetList;
 
@@ -355,10 +367,20 @@ async function rollGain(link, event) {
     targetList = `(${combinedNames})`;
   }
 
+  let messageTitle;
+  switch (gainType) {
+    case "victories":
+      messageTitle = "Victories";
+      break;
+    default:
+      messageTitle = "Default";
+      break;
+  }
+
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel, targets: targetList ?? "" }),
+    flavor: game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${messageTitle}`, { type: resourceLabel, targets: targetList ?? "" }),
     flags: { core: { canPopout: true } },
     speaker: DrawSteelChatMessage.getSpeaker(),
     style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
@@ -372,6 +394,18 @@ async function rollGain(link, event) {
         break;
       case "heroic":
         await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+        break;
+      case "epic":
+        await actor.modifyTokenAttribute("hero.epic.value", roll.total, true, false);
+        break;
+      case "renown":
+        await actor.modifyTokenAttribute("hero.renown", roll.total, true, false);
+        break;
+      case "wealth":
+        await actor.modifyTokenAttribute("hero.wealth", roll.total, true, false);
+        break;
+      case "victories":
+        await actor.modifyTokenAttribute("hero.victories", roll.total, true, false);
         break;
       default:
         return;
