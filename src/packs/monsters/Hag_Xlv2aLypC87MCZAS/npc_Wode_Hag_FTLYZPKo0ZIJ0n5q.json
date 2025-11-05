@@ -35,7 +35,7 @@
         "letter": "L"
       },
       "stability": 1,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 5,
@@ -352,7 +352,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -473,9 +474,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -780,8 +781,8 @@
           }
         },
         "effect": {
-          "before": "<p>The hag attaches an ornate explosive pastry to each target who has A &lt; 2. At the end of the round, the hag makes one power roll against each creature with a pastry attached to them.</p><p></p>",
-          "after": "<p>Special: A creature wearing a pastry or adjacent to a creature wearing a pastry can attempt an Agility test to remove the pastry as a maneuver.</p><table><tbody><tr><td data-colwidth=\"109\"><p>11 or less</p></td><td><p>The hag makes the power roll for all pastries.</p></td></tr><tr><td data-colwidth=\"109\"><p>12-16</p></td><td><p>The pastry is not removed.</p></td></tr><tr><td data-colwidth=\"109\"><p>17+</p></td><td><p>The pastry is removed and can no longer explode.</p></td></tr></tbody></table>"
+          "before": "<p>The hag attaches an ornate explosive pastry to each target who has A &lt; 2. At the end of the round, the hag makes one power roll against each creature with a pastry attached to them.</p>",
+          "after": "<p>Special: A creature wearing a pastry or adjacent to a creature wearing a pastry can attempt an Agility test to remove the pastry as a maneuver.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The hag makes the roll for all pastries.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The pastry is not removed.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pastry is removed and can no longer explode.</p></dd></dl>"
         },
         "spend": {
           "text": "",
@@ -805,9 +806,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1357,7 +1358,6 @@
       "_key": "!actors.items!FTLYZPKo0ZIJ0n5q.pah1PnNusTBRkOb3"
     },
     {
-      "folder": "D0L8d1jHsOWlzuRI",
       "name": "House Call",
       "type": "ability",
       "_id": "jnNFQWrub99ree1F",
@@ -1384,7 +1384,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "self"
+          "type": "self",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -1394,7 +1396,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The hag’s hut springs to life. It enters the encounter map within 10 squares of the hag if it isn’t already there and takes its turn. The hut is size 4, has 75 Stamina and damage immunity 3, and has speed 8 from its powerful set of animal legs. This feature can’t be used if the hut is reduced to 0 Stamina. In addition to its move action, the house can take only the Kick main action.</p><p>@UUID[Actor.QN5z25hC9mmXjOXD]{Hag Hut}</p>",
+          "before": "<p>The hag’s hut springs to life. It enters the encounter map within 10 squares of the hag if it isn’t already there and takes its turn. The hut is size 4, has 75 Stamina and damage immunity 3, and has speed 8 from its powerful set of animal legs. This feature can’t be used if the hut is reduced to 0 Stamina. In addition to its move action, the house can take only the Kick main action.</p><p>@UUID[Compendium.draw-steel.monsters.Actor.NUhSw7w60od1d4tY]{Hag Hut}</p>",
           "after": ""
         },
         "spend": {
@@ -1403,22 +1405,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.jnNFQWrub99ree1F",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761172235705,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!FTLYZPKo0ZIJ0n5q.jnNFQWrub99ree1F"
     }
   ],

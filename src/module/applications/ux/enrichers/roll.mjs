@@ -1,8 +1,10 @@
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
 import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
+import { parseConfig, createLink, addDataset } from "../helpers.mjs";
 
 /**
+ * @import { ParsedConfig } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  */
@@ -20,7 +22,7 @@ export const id = "ds.roll";
 /**
  * Valid roll types.
  */
-const rollTypes = ["damage", "heal", "healing"];
+const rollTypes = ["damage", "heal", "healing", "gain", "heroic", "surge"];
 
 /** @type {TextEditorEnricherConfig["pattern"]} */
 export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
@@ -35,39 +37,23 @@ export function enricher(match, options) {
   let { type, config, label } = match.groups;
   /** @type {typeof rollTypes} */
   type = type.toLowerCase();
-  const parsedConfig = parseConfig(config, { multiple: ["damage", "heal", "healing"].includes(type) });
+  const parsedConfig = parseConfig(config, { multiple: true });
   parsedConfig._input = match[0];
 
   switch (type) {
     case "heal":
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
+    case "gain": return enrichGain(parsedConfig, label, options);
+    case "heroic":
+      //[[/heroic 2]] -> [[/gain 2 heroic]]
+      parsedConfig[0].values.push("heroic");
+      return enrichGain(parsedConfig, label, options);
+    case "surge":
+      //[[/surge 2]] -> [[/gain 2 surge]]
+      parsedConfig[0].values.push("surge");
+      return enrichGain(parsedConfig, label, options);
   }
-}
-
-/* -------------------------------------------------- */
-
-/**
- * Parse a roll string into a configuration object.
- * @param {string} match  Matched configuration string.
- * @param {object} [options={}]
- * @param {boolean} [options.multiple=false]  Support splitting configuration by "&" into multiple sub-configurations.
- *                                            If set to `true` then an array of configs will be returned.
- * @returns {object|object[]}
- */
-function parseConfig(match = "", { multiple = false } = {}) {
-  if (multiple) return match.split("&").map(s => parseConfig(s));
-  const config = { _config: match, values: [] };
-  for (const part of match.match(/(?:[^\s"]+|"[^"]*")+/g) ?? []) {
-    if (!part) continue;
-    const [key, value] = part.split("=");
-    const valueLower = value?.toLowerCase();
-    if (value === undefined) config.values.push(key.replace(/(^"|"$)/g, ""));
-    else if (["true", "false"].includes(valueLower)) config[key] = valueLower === "true";
-    else if (Number.isNumeric(value)) config[key] = Number(value);
-    else config[key] = value.replace(/(^"|"$)/g, "");
-  }
-  return config;
 }
 
 /* -------------------------------------------------- */
@@ -83,6 +69,8 @@ export async function onRender(element) {
     switch (link.dataset.type) {
       case "damageHeal":
         return void rollDamageHeal(link, ev);
+      case "gain":
+        return void rollGain(link, ev);
     }
   });
 }
@@ -95,7 +83,7 @@ export async function onRender(element) {
 
 /**
  * Enrich a damage link.
- * @param {object[]} parsedConfig      Configuration data.
+ * @param {ParsedConfig[]} parsedConfig      Configuration data.
  * @param {string} [label]             Optional label to replace default text.
  * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
@@ -136,7 +124,10 @@ function enrichDamageHeal(parsedConfig, label, options) {
 
   if (!linkConfig.formulas.length) return null;
   if (label) {
-    return createRollLink(label, { ...linkConfig, formulas, damageTypes }, { classes: "roll-link-group roll-link" });
+    return createLink(label,
+      { ...linkConfig, formulas, damageTypes },
+      { classes: "roll-link-group roll-link", icon: "fa-dice-d10" },
+    );
   }
 
   const parts = [];
@@ -146,7 +137,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
       .map(t => ds.CONFIG.damageTypes[t]?.label ?? ds.CONFIG.healingTypes[t]?.label)
       .filter(_ => _);
     const localizationData = {
-      formula: createRollLink(formula, {}, { tag: "span" }).outerHTML,
+      formula: createLink(formula, {}, { tag: "span", icon: "fa-dice-d10" }).outerHTML,
       type: game.i18n.getListFormatter({ type: "disjunction" }).format(types),
     };
 
@@ -155,7 +146,7 @@ function enrichDamageHeal(parsedConfig, label, options) {
 
   const link = document.createElement("a");
   link.className = "roll-link-group";
-  _addDataset(link, { ...linkConfig, formulas, damageTypes });
+  addDataset(link, { ...linkConfig, formulas, damageTypes });
 
   link.innerHTML = game.i18n.getListFormatter().format(parts);
 
@@ -246,39 +237,143 @@ async function rollDamageHeal(link, event) {
 }
 
 /* -------------------------------------------------- */
+/*   Gain Enricher                                    */
+/* -------------------------------------------------- */
 
 /**
- * HTML Construction Helper Functions.
+ * Enrich a gain link for heroic resources.
+ * @param {ParsedConfig[]} parsedConfig      Configuration data.
+ * @param {string} [label]             Optional label to replace default text.
+ * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
+ * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
+function enrichGain(parsedConfig, label, options) {
+  const linkConfig = { type: "gain", formula: null, gainType: null };
 
-/**
- * Create a rollable link.
- * @param {string} label                           Label to display.
- * @param {object} [dataset={}]                    Data that will be added to the link for the rolling method.
- * @param {object} [options={}]
- * @param {boolean} [options.classes="roll-link"]  Class to add to the link.
- * @param {string} [options.tag="a"]               Tag to use for the main link.
- * @returns {HTMLElement}
- */
-function createRollLink(label, dataset = {}, { classes = "roll-link", tag = "a" } = {}) {
-  const link = document.createElement(tag);
-  link.className = classes;
-  link.insertAdjacentHTML("afterbegin", "<i class=\"fa-solid fa-dice-d10\" inert></i>");
-  link.append(label);
-  _addDataset(link, dataset);
+  // Parse the formula and type from configuration
+  for (const c of parsedConfig) {
+    const formulaParts = [];
+    if (c.formula) formulaParts.push(c.formula);
+    c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
+    for (const value of c.values) {
+      const normalizedValue = value.toLowerCase();
+      if (["hr", "heroic", "surge"].includes(normalizedValue)) {
+        c.type.push(normalizedValue);
+      } else {
+        formulaParts.push(value);
+      }
+    }
+    c.formula = DSRoll.replaceFormulaData(
+      formulaParts.join(" "),
+      options.rollData ?? options.relativeTo?.getRollData?.() ?? {},
+    );
+    if (c.formula) {
+      linkConfig.formula = c.formula;
+      linkConfig.gainType = c.type[0]; // Require type to be specified
+      break; // Only use first formula
+    }
+  }
+
+  if (!linkConfig.formula || !linkConfig.gainType) return null;
+
+  if (label) {
+    return createLink(label,
+      linkConfig,
+      { classes: "roll-link", icon: "fa-bolt" },
+    );
+  }
+
+  let resourceType;
+
+  switch (linkConfig.gainType) {
+    case "hr": // eslint-ignore no-fallthrough
+    case "heroic":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+    case "surge":
+      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+  }
+  const localizationData = {
+    formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
+    type: resourceType,
+  };
+
+  const link = document.createElement("a");
+  link.className = "roll-link";
+  addDataset(link, linkConfig);
+  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString", localizationData);
+
   return link;
 }
 
 /* -------------------------------------------------- */
 
 /**
- * Add a dataset object to the provided element.
- * @param {HTMLElement} element  Element to modify.
- * @param {object} dataset       Data properties to add.
- * @private
+ * Helper function that constructs the gain roll for heroic resources.
+ * @param {HTMLAnchorElement} link
+ * @param {PointerEvent} event
  */
-function _addDataset(element, dataset) {
-  for (const [key, value] of Object.entries(dataset)) {
-    if (!key.startsWith("_") && (key !== "values") && value) element.dataset[key] = value;
+async function rollGain(link, event) {
+  const { formula, gainType } = link.dataset;
+
+  if (!formula) throw new Error("Gain link must have a formula");
+  if (!gainType) throw new Error("Gain link must have a gain type");
+
+  // Get all selected hero tokens
+  const actors = ds.utils.tokensToActors().filter((a) => a.type === "hero");
+
+  if (!actors.size) {
+    ui.notifications.warn(game.i18n.localize("DRAW_STEEL.EDITOR.Enrichers.Gain.NoSelection"));
+    return;
+  }
+
+  // Roll the formula
+  const roll = new DSRoll(formula);
+  await roll.evaluate();
+
+  let resourceLabel;
+
+  switch (gainType) {
+    case "surge":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
+      break;
+    case "hr": // eslint-ignore no-fallthrough
+    case "heroic":
+      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
+      break;
+  }
+
+  let targetList;
+
+  const multipleActors = (actors.size > 1);
+  if (multipleActors) {
+    const names = [...actors].map((a) => DrawSteelChatMessage.getSpeaker({ actor: a }).alias);
+    const formatter = game.i18n.getListFormatter({ type: "unit" });
+    const combinedNames = formatter.format(names);
+    targetList = `(${combinedNames})`;
+  }
+
+  // Create the chat message
+  await DrawSteelChatMessage.create({
+    rolls: [roll],
+    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel, targets: targetList ?? "" }),
+    flags: { core: { canPopout: true } },
+    speaker: DrawSteelChatMessage.getSpeaker(),
+    style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
+  });
+
+  // Apply the gain to each selected token's actor
+  for (const actor of actors) {
+    switch (gainType) {
+      case "surge":
+        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
+        break;
+      case "heroic":
+        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
+        break;
+      default:
+        return;
+    }
   }
 }

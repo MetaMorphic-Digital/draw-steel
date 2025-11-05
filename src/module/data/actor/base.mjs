@@ -3,6 +3,7 @@ import PowerRoll from "../../rolls/power.mjs";
 import FormulaField from "../fields/formula-field.mjs";
 import { damageTypes, requiredInteger, setOptions } from "../helpers.mjs";
 import SizeModel from "../models/size.mjs";
+import { systemID } from "../../constants.mjs";
 import DrawSteelSystemModel from "../system-model.mjs";
 
 /**
@@ -63,6 +64,10 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
+    schema.statuses = new fields.SchemaField({
+      immunities: new fields.SetField(setOptions()),
+    });
+
     return schema;
   }
 
@@ -108,11 +113,12 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       strong: 0,
     };
 
-    this.statuses = {
+    Object.assign(this.statuses, {
+      flankable: false,
       slowed: {
         speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
       },
-    };
+    });
 
     this.restrictions = {
       type: new Set(),
@@ -123,11 +129,17 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       min: 0,
       bonuses: {
         echelon: 0,
+        level: 0,
       },
     });
 
-    // Teleport speeds are unaffected by conditions and effects
-    this.movement.teleport = this.movement.types.has("teleport") ? this.movement.value : null;
+    Object.assign(this.movement, {
+      // Teleport speeds are unaffected by conditions and effects
+      teleport: this.movement.types.has("teleport") ? this.movement.value : null,
+      // Kit bonus is added in derived data, which means multipliers need to happen after
+      // Can consider removing in v14 after phases are introduced
+      multiplier: 1,
+    });
   }
 
   /* -------------------------------------------------- */
@@ -136,13 +148,21 @@ export default class BaseActorModel extends DrawSteelSystemModel {
   prepareDerivedData() {
     super.prepareDerivedData();
 
+    // Account for immunities first, in case any changes impact later calculations
+    this.statuses.immunities.forEach(imm => this.parent.statuses.delete(imm));
+
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
-
+    this.stamina.max += this.level * this.stamina.bonuses.level;
     this.stamina.winded = Math.floor(this.stamina.max / 2);
 
     // Presents better if there's a 0 instead of blank
     this.combat.save.bonus ||= "0";
+
+    this.movement.value = Math.floor(this.movement.value * this.movement.multiplier);
+
+    // Enforce a minimum of 0 for stability
+    this.combat.stability = Math.max(0, this.combat.stability);
 
     const highestCharacteristic = Math.max(0, ...Object.values(this.characteristics).map(c => c.value));
 
@@ -165,11 +185,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // If slowed, set all speeds to slowed speed
       if (isSlowed && (this.movement.value > this.statuses.slowed.speed)) this.movement.value = this.statuses.slowed.speed;
       if (isGrabbedOrRestrained) this.movement.value = 0;
-    }
-
-    // prepare derived item data that relies on derived actor values (i.e. ability potencies)
-    for (const item of this.parent.items) {
-      item.system.preparePostActorPrepData();
     }
   }
 
@@ -355,6 +370,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {DrawSteelCombatant} combatant The combatant representation.
    */
   async startCombat(combatant) {
+    if (!game.combats.isDefaultInitiativeMode) return;
     await combatant.update({ initiative: this.combat.turns });
   }
 

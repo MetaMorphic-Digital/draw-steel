@@ -1,0 +1,19 @@
+<section class="standard-form">
+  <p class="hint">{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.Hint"}}</p>
+  <div class="form-group">
+    <div class="form-group stacked row-labels">
+      <span class="empty">&nbsp;</span>
+      <span class="label">{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.Rows.Input"}}</span>
+      <span class="label advancement">{{localize "DRAW_STEEL.Actor.base.CharacteristicInput.Rows.Advancement"}}</span>
+    </div>
+    {{#each characteristics}}
+    <div class="form-group stacked">
+      <label>{{field.label}}</label>
+      <div class="form-fields">
+        {{formInput field value=value placeholder="0"}}
+      </div>
+      <div class="advancement" data-tooltip="DRAW_STEEL.Actor.base.CharacteristicInput.Advancement">{{numberFormat advancements sign=true}}</div>
+    </div>
+    {{/each}}
+  </div>
+</section>

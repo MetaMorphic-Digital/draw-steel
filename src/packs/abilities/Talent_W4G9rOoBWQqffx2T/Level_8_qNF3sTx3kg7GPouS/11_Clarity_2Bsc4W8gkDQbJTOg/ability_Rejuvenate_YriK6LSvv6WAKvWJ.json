@@ -1,0 +1,68 @@
+{
+  "folder": "2Bsc4W8gkDQbJTOg",
+  "name": "Rejuvenate",
+  "type": "ability",
+  "_id": "YriK6LSvv6WAKvWJ",
+  "img": "icons/magic/time/arrows-circling-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "199",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rejuvenate",
+    "story": "You reshape the flow of time in the target’s body to return it to an earlier state",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "chronopathy"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Choose two of the following effects:</p><ul><li><p>The target can spend any number of Recoveries.</p></li><li><p>The target gains 1 of their Heroic Resource, and can end any effects on them that are ended by a saving throw or that end at the end of their turn.</p></li><li><p>The target gains 2 surges, and gains a +3 bonus to speed until the end of the encounter.</p><p><strong>Strained:</strong> You and the target both permanently grow visibly younger (the equivalent of 20 human years, to the minimum of an 18-yearold). Additionally, you are [[/apply weakened]] and [[/apply slowed]] (save ends).</p></li></ul>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761101268332,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!YriK6LSvv6WAKvWJ"
+}

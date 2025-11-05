@@ -94,7 +94,10 @@
             "uuid": "Compendium.draw-steel.classes.Item.uwkXfnDmiQHgfYqn"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "additional": {
+          "type": "kit"
+        }
       },
       "otFZquaHKi7Px3aE": {
         "name": "Tooth and Claw",
@@ -144,6 +147,74 @@
             "uuid": "Compendium.draw-steel.classes.Item.AookK77PXpffosjg"
           }
         ]
+      },
+      "B5l0OVajfLaOFpgT": {
+        "name": "6th-Level Stormwight",
+        "img": "icons/magic/lightning/bolt-forked-large-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "B5l0OVajfLaOFpgT",
+        "chooseN": 1,
+        "description": "<p>Your primordial aspect grants your choice of one of two heroic abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3HUoD0vAQ0YqqRkJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.BcuwCnoVexl0Edkx"
+          }
+        ]
+      },
+      "3Zqp2HBTaQ1Zmrqg": {
+        "name": "Stormborn",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "3Zqp2HBTaQ1Zmrqg",
+        "description": "<p>Your primordial aspect grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DGeBcTEEapojZj9p"
+          }
+        ]
+      },
+      "QMCx2nJmGjw7EMQJ": {
+        "name": "Menagerie",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "QMCx2nJmGjw7EMQJ",
+        "description": "<p>Your primordial aspect grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.k4W2bdppL0zpubCW"
+          }
+        ]
+      },
+      "SM2lTYPgJasY5p9G": {
+        "name": "9th-Level Stormwight Abilities",
+        "img": "icons/magic/lightning/bolt-forked-large-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "SM2lTYPgJasY5p9G",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.PUr3MtUnwxlBsTjh"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.7z5MCR9cQOeogELH"
+          }
+        ]
       }
     },
     "classLink": "fury"
@@ -158,9 +229,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1755575354064,
     "modifiedTime": null,
     "lastModifiedBy": null

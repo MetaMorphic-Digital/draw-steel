@@ -72,7 +72,7 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -129,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -166,9 +166,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -195,7 +195,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -245,7 +246,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -275,9 +277,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -304,7 +306,8 @@
         },
         "target": {
           "type": "special",
-          "value": 3
+          "value": 3,
+          "custom": "Three time raiders"
         },
         "damageDisplay": "melee",
         "power": {
@@ -317,8 +320,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Note: Targets three time raiders.</p>",
-          "after": "<p>Each target can fly up to their speed and make a free strike. If a target doesn't land in an unoccupied space, they fall.</p>"
+          "before": "<p>Each target can fly up to their speed and make a free strike. If a target doesn't land in an unoccupied space, they fall.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -342,9 +345,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -371,7 +374,8 @@
         },
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "The triggering creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -384,8 +388,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The strike takes a bane. After the strike resolves, the tyrannis can make a free strike against the target.</p>"
+          "before": "<p>The strike takes a bane. After the strike resolves, the tyrannis can make a free strike against the target.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -409,9 +413,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -437,8 +441,9 @@
           "primary": 10
         },
         "target": {
-          "type": "self",
-          "value": null
+          "type": "selfAlly",
+          "value": 3,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -451,8 +456,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target gains [[/heal 15 temporary]] Stamina, and has their speed doubled until the end of their next turn.</p>"
+          "before": "<p>Each target gains [[/heal 15 temporary]] Stamina, and has their speed doubled until the end of their next turn.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -476,9 +481,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -503,8 +508,9 @@
           "primary": 10
         },
         "target": {
-          "type": "ally",
-          "value": null
+          "type": "selfAlly",
+          "value": null,
+          "custom": "Self and each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -517,8 +523,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target can end one effect on them or can move up to their speed.</p>"
+          "before": "<p>Each target can end one effect on them or can move up to their speed.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -542,9 +548,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -570,7 +576,8 @@
         },
         "target": {
           "type": "special",
-          "value": null
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -583,8 +590,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The tyrannis fires a sensor mine into each unoccupied square in the area, and creates a gravity well whose area contains one or more squares of the tyrannis's space (see Gravity Well). Whenever an enemy enters a square with a sensor mine in it, the mine explodes, dealing [[/damage 3 damage]] to the enemy.</p>"
+          "before": "<p>The tyrannis fires a sensor mine into each unoccupied square in the area, and creates a gravity well whose area contains one or more squares of the tyrannis's space (see Gravity Well). Whenever an enemy enters a square with a sensor mine in it, the mine explodes, dealing [[/damage 3 damage]] to the enemy.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -608,9 +615,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -651,7 +658,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -680,9 +689,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -712,7 +721,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -741,16 +752,15 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
       "_key": "!actors.items!mTkZYmsNyoV0ihlR.2rKjwi2thIVeeFZf"
     },
     {
-      "folder": "LoZnNuHgZjaAO7Gt",
       "name": "Psi-Cage",
       "type": "ability",
       "_id": "ELtwiIpyMZafdAEM",
@@ -773,7 +783,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -783,7 +795,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 10 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 7 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 psychic]]{7 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -792,22 +804,23 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!mTkZYmsNyoV0ihlR.ELtwiIpyMZafdAEM"
     }
   ],
@@ -917,10 +930,10 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757296065474,
+    "systemVersion": "0.9.0",
+    "createdTime": 1761424412513,
     "modifiedTime": null,
     "lastModifiedBy": null
   },

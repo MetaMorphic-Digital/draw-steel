@@ -1,0 +1,108 @@
+{
+  "name": "Memory of Chaos",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 6,
+    "trigger": "A olothec starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The olothec broadcasts their memory of the universe in its pri mordial state—a sweeping cacophony of transcendental irration ality and unceasing change. Until the end of the encounter, any creature who starts their turn within 3 squares of the olothec and has r&lt;3 is [[/apply XV3JUcixv5fgbYm7 turn]]{dazed and slowed} until the end of their next turn.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "213",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "memory-of-chaos",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Dazed and Slowed",
+      "img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
+      "type": "base",
+      "origin": "Actor.bqeXlEbT9eFc3adn.Item.EaAhpwgG42tLj259",
+      "transfer": false,
+      "_id": "XV3JUcixv5fgbYm7",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "dazed",
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!pZaF9Ph74yUFzVyS.XV3JUcixv5fgbYm7"
+    }
+  ],
+  "folder": "XSJGcWOPT3SnP62d",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761505915799,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "pZaF9Ph74yUFzVyS",
+  "sort": 100000,
+  "_key": "!items!pZaF9Ph74yUFzVyS"
+}

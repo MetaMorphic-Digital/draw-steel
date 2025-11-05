@@ -500,7 +500,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><table><tbody><tr><td data-colwidth=\"94\"><p>11 or less</p></td><td><p>The target uses a signature ability against the nearest enemy within distance.</p></td></tr><tr><td data-colwidth=\"94\"><p>12-16</p></td><td><p>The target makes a free strike against the nearest enemy within distance.</p></td></tr><tr><td data-colwidth=\"94\"><p>17+</p></td><td><p>Frightened (save ends).</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes an <strong>Intuition test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target uses a signature ability against the nearest enemy within distance.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target makes a free strike against the nearest enemy within distance.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/apply Frightened save]]</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -860,7 +860,7 @@
         "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "",
+            "formula": "3",
             "characteristics": []
           },
           "effects": {
@@ -903,7 +903,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "yLK8MzpBXyyBRFoG": {
               "name": "",
@@ -912,7 +913,6 @@
               "_id": "yLK8MzpBXyyBRFoG",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} the target can't treat their allies as allies (save ends)",
                   "effects": {
                     "pimQVRZtdUDI911o": {
                       "condition": "failure",
@@ -920,9 +920,10 @@
                       "properties": []
                     }
                   },
+                  "display": "{{potency}} the target can't treat their allies as allies (save ends)",
                   "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "reason"
+                    "characteristic": "reason",
+                    "value": "@potency.weak"
                   }
                 },
                 "tier2": {
@@ -940,19 +941,20 @@
                   }
                 },
                 "tier3": {
-                  "display": "",
                   "effects": {
                     "WeIzrImwA15HNJCA": {
                       "condition": "failure",
                       "properties": []
                     }
                   },
+                  "display": "",
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -1058,7 +1060,6 @@
           "_key": "!actors.items.effects!XNWVmAZbiVqV7xoL.chjWo71vjEugh9fC.WeIzrImwA15HNJCA"
         }
       ],
-      "folder": "BRh61Jblgho2nIWC",
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
@@ -1067,16 +1068,17 @@
         "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "createdTime": 1759980683911,
+        "createdTime": 1761435220872,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "_id": "chjWo71vjEugh9fC",
       "ownership": {
         "default": 0,
-        "TJSowGV8FgjirefO": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "_id": "chjWo71vjEugh9fC",
-      "sort": 100000,
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!XNWVmAZbiVqV7xoL.chjWo71vjEugh9fC"
     }
   ],

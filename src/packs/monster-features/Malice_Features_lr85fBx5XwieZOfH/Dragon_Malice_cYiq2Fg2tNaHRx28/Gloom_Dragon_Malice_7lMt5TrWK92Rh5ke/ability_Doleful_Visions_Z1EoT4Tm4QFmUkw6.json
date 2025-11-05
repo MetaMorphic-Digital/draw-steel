@@ -1,0 +1,140 @@
+{
+  "name": "Doleful Visions",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A gloom starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The dragon manifests four 2 cubes of nightmarish apparitions anywhere on the encounter map. Each creature in the area when it appears makes an <strong>Intuition test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; [[/apply dazed save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; [[/apply dazed turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "97",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "doleful-visions",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Dazed",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "dazed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Ko0JnLBGsDeM2GHX",
+      "_key": "!items.effects!Z1EoT4Tm4QFmUkw6.Ko0JnLBGsDeM2GHX"
+    },
+    {
+      "name": "Dazed",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": ""
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "dazed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "ZLT1TAz0WNCRZTMe",
+      "_key": "!items.effects!Z1EoT4Tm4QFmUkw6.ZLT1TAz0WNCRZTMe"
+    }
+  ],
+  "folder": "7lMt5TrWK92Rh5ke",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1757726976727,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "Z1EoT4Tm4QFmUkw6",
+  "sort": 200000,
+  "_key": "!items!Z1EoT4Tm4QFmUkw6"
+}

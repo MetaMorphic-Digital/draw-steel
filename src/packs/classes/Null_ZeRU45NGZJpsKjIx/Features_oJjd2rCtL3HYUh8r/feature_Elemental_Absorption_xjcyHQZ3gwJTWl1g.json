@@ -1,0 +1,124 @@
+{
+  "folder": "oJjd2rCtL3HYUh8r",
+  "name": "Elemental Absorption",
+  "type": "feature",
+  "_id": "xjcyHQZ3gwJTWl1g",
+  "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+  "system": {
+    "description": {
+      "value": "<p>Whenever you use your Inertial Shield triggered action, you gain [[/apply Immunity]] to acid, cold, corruption, fire, lightning, poison, and sonic damage equal to your Intuition score against the triggering damage.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "155",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "elemental-absorption",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Immunity",
+      "img": "icons/magic/symbols/elements-air-earth-fire-water.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.xjcyHQZ3gwJTWl1g",
+      "transfer": false,
+      "_id": "R3rZ85VoqOossQX7",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.acid",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.cold",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.poison",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.damage.immunities.sonic",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761154789233,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!xjcyHQZ3gwJTWl1g.R3rZ85VoqOossQX7"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761153214553,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!xjcyHQZ3gwJTWl1g"
+}

@@ -1,0 +1,105 @@
+{
+  "folder": "XAgGWoa5fpF1jscs",
+  "name": "Rebounding Storm",
+  "type": "ability",
+  "_id": "upZmq3xi8bvdborN",
+  "img": "icons/skills/melee/strike-axe-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "137",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "rebounding-storm",
+    "story": "You knock around enemies like playthings.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 2
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "GvAM0cT45keBszlg": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "GvAM0cT45keBszlg",
+          "damage": {
+            "tier1": {
+              "value": "9 + @chr"
+            },
+            "tier2": {
+              "value": "14 + @chr"
+            },
+            "tier3": {
+              "value": "19 + @chr"
+            }
+          }
+        },
+        "ubN2qb7HFQZhKdaK": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "ubN2qb7HFQZhKdaK",
+          "forced": {
+            "tier1": {
+              "distance": "3"
+            },
+            "tier2": {
+              "distance": "5"
+            },
+            "tier3": {
+              "distance": "7"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>When a target would end this forced movement by colliding with a creature or object, they take damage as usual, then are pushed the remaining distance away from the creature or object in the direction they came from. As long as forced movement remains, this effect continues if the target collides with another creature or object.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760985358159,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!upZmq3xi8bvdborN"
+}

@@ -1,0 +1,98 @@
+{
+  "folder": "nL97zYCyanwHuLOG",
+  "name": "Resonant Mind Spike",
+  "type": "ability",
+  "_id": "X4xf8oEFkYPJKUbn",
+  "img": "icons/magic/unholy/hand-light-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "200",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "resonant-mind-spike",
+    "story": "You fire a telepathic bolt empowered by every consciousness within reach directly into your foe’s mind.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "telepathy"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "u2khJdTL2IslQMkG": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "u2khJdTL2IslQMkG",
+          "damage": {
+            "tier1": {
+              "value": "15 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "24 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "28 + @chr",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>This ability ignores cover and concealment.</p><p><strong>Strained:</strong> The ability roll scores a critical hit on a natural 17 or higher. You take half the damage the target takes, and you can’t reduce this damage in any way.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761140923207,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!X4xf8oEFkYPJKUbn"
+}

@@ -83,7 +83,7 @@ export default class HeroModel extends BaseActorModel {
       units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
     });
 
-    bio.age = new fields.StringField({ blank: false });
+    bio.age = new fields.StringField({ required: true });
 
     return bio;
   }
@@ -95,6 +95,7 @@ export default class HeroModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.recoveries.bonus = 0;
+    this.recoveries.divisor = 3;
 
     const kitBonuses = {
       stamina: 0,
@@ -138,7 +139,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     this.stamina.max = kitBonuses["stamina"] * this.echelon;
-    this.movement.value += kitBonuses["speed"];
+    this.movement.kitBonus = kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
 
@@ -173,10 +174,12 @@ export default class HeroModel extends BaseActorModel {
       if (heroClass.system.epic) this.hero.epic.label = heroClass.system.epic;
     }
 
+    this.movement.value += this.movement.kitBonus;
+
     super.prepareDerivedData();
 
     // allows for stamina bonuses to apply first
-    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / this.recoveries.divisor) + this.recoveries.bonus;
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;

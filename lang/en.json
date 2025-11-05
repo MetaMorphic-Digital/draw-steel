@@ -66,6 +66,12 @@
               "hint": "If empty, all perk types are allowed."
             }
           }
+        },
+        "AdditionalText": {
+          "ancestryTrait": "Drop any ancestry trait here.",
+          "kit": "Drop any kit here.",
+          "perk": "Drop any {perkTypes} perk here.",
+          "subclass": "Drop any {itemName} subclass here."
         }
       },
       "TRAIT": {
@@ -126,6 +132,7 @@
         "Title": "Configure {name}",
         "ChooseN": "Choose {n}",
         "ChooseNull": "Choose Any",
+        "SpendPoints": "Spend {points} Points",
         "DropHere": "Drop other items here.",
         "Characteristic": {
           "label": "Characteristic",
@@ -239,6 +246,7 @@
       "Share": "Share",
       "Delete": "Delete",
       "Resources": "Resources",
+      "EditCharacteristics": "Edit Characteristics",
       "Other": "Other",
       "LevelUp": "Level Up Available",
       "ToggleMode": "Toggle Play/Edit Mode",
@@ -256,6 +264,23 @@
             "damage": "Damage Roll",
             "healing": "Healing Roll"
           }
+        },
+        "Gain": {
+          "FormatString": "Gain {formula} {type}",
+          "MessageTitle": "Gain {type} {targets}",
+          "NoSelection": "You must select hero tokens to gain resources."
+        },
+        "ApplyEffect": {
+          "FormatString": "{name} {end}",
+          "EffectEnds": {
+            "encounter": "(Encounter)",
+            "respite": "(Respite)",
+            "save": "(save ends)",
+            "turn": "(EoT)"
+          },
+          "LinkTooltip": "Apply {name} to selected tokens.",
+          "NoSelection": "You must select tokens to apply the effect to.",
+          "CreateText": "+Applied {name}"
         }
       }
     },
@@ -479,6 +504,15 @@
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
+        },
+        "CharacteristicInput": {
+          "Title": "Edit Characteristics",
+          "Advancement": "Advancement Bonus",
+          "Hint": "The inputs represent initial values before active effects and advancements. The bottom row represents increases from advancements.",
+          "Rows": {
+            "Input": "Base",
+            "Advancement": "Advancement"
+          }
         }
       },
       "hero": {
@@ -644,13 +678,12 @@
       "Initiative": {
         "Modes": {
           "Label": "Initiative Mode",
-          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order",
+          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order.",
           "Default": "Default",
           "Alternative": "Alternative"
         },
         "Actions": {
           "RollFirst": {
-            "Tooltip": "Roll a d10 to determine which side goes first",
             "Heroes": "Heroes Go First!",
             "Enemies": "Enemies Go First!"
           },
@@ -695,8 +728,14 @@
           "staminaValue.label": "Current Stamina"
         }
       },
+      "GroupSelected": "Group Selected Tokens",
       "TypeHint": "A Base combatant group can have any number of non-minion members. A Squad can have any number of minions plus up to one non-minion captain.",
       "ResetSquadHP": "Reset Squad HP To Max",
+      "ColorTokens": {
+        "Label": "Color Tokens",
+        "Title": "Color Tokens",
+        "Input": "Color"
+      },
       "Error": {
         "MinionMustSquad": "Minions can only be added to Squad groups.",
         "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
@@ -942,7 +981,7 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic} < {value}",
+          "Embed": "{characteristic}<{value}",
           "Success": "Success",
           "Failure": "Failure"
         },
@@ -1283,6 +1322,9 @@
           "points": {
             "label": "Project Points"
           },
+          "events": {
+            "label": "Events Roll Table"
+          },
           "yield": {
             "label": "Yield",
             "item": {
@@ -1316,11 +1358,14 @@
           "Success": "{actor} has spent {points} project points from their career on {project}."
         },
         "Events": {
+          "NoTable": "No events roll table found.",
+          "DrawEvent": "Draw Event from Roll Table",
           "RollForEvent": "Roll for Event",
           "RollTriggered": "The event roll triggers an event!",
           "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
         },
-        "RollBreakThrough": "Roll Breakthrough"
+        "RollBreakThrough": "Roll Breakthrough",
+        "Varies": "Varies"
       }
     },
     "ActiveEffect": {
@@ -1334,6 +1379,8 @@
       "Inactive": "Inactive Effects",
       "Applied": "Applied Effects",
       "Expired": "Expired",
+      "RollSave": "Roll Save",
+      "ImmunityWarning": "Target has immunity to the following conditions: {conditions}",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
@@ -1374,6 +1421,9 @@
         },
         "Slowed": {
           "name": "Slowed"
+        },
+        "Surprised": {
+          "name": "Surprised"
         },
         "Taunted": {
           "name": "Taunted"
@@ -1584,6 +1634,10 @@
         "Hint": "How should project event timing be determined?",
         "Roll": "Roll for Event",
         "Milestone": "Event Milestones"
+      },
+      "UpdateFromCompendium": {
+        "Label": "Update from Compendium",
+        "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
       }
     },
     "SOCKET": {

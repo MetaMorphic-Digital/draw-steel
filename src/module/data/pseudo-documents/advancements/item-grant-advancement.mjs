@@ -19,9 +19,9 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
       pool: new ArrayField(new SchemaField({
         uuid: new DocumentUUIDField({ embedded: false, type: "Item" }),
       })),
-      chooseN: new NumberField({ required: true, integer: true, nullable: true, initial: null, min: 1 }),
+      chooseN: new NumberField({ required: true, integer: true, min: 1 }),
       additional: new SchemaField({
-        type: new StringField({ blank: false }),
+        type: new StringField({ required: true }),
         perkType: new SetField(setOptions()),
       }),
     });
@@ -51,14 +51,21 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
   /**
    * Allowed additional types, where a user can add an unknown document to the advancement chain.
-   * @type {Record<string, { label: string }>}
+   * @type {Record<string, { label: string, points?: boolean }>}
    */
   static ADDITIONAL_TYPES = {
+    ancestryTrait: {
+      label: "TYPES.Item.ancestryTrait",
+      points: true,
+    },
     kit: {
       label: "TYPES.Item.kit",
     },
     perk: {
       label: "TYPES.Item.perk",
+    },
+    subclass: {
+      label: "TYPES.Item.subclass",
     },
   };
 
@@ -70,6 +77,16 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     if (this.chooseN === null) return false;
     if (this.chooseN >= Object.values(this.pool).length) return false;
     return true;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Does this item grant advancement use point buy rather than a simple count.
+   * @type {boolean}
+   */
+  get pointBuy() {
+    return !!this.constructor.ADDITIONAL_TYPES[this.additional.type]?.points;
   }
 
   /* -------------------------------------------------- */
@@ -123,7 +140,7 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
 
     if (node) {
       node.selected = selection.choices.reduce((selected, uuid) => {
-        selected[uuid] = true;
+        selected[uuid] = this.pointBuy ? node.choices[uuid].item.system.points : true;
         return selected;
       }, {});
     }
@@ -163,5 +180,32 @@ export default class ItemGrantAdvancement extends BaseAdvancement {
     };
 
     await actor.system._finalizeAdvancements({ chains, toUpdate });
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async getSheetContext(options) {
+    const ctx = {};
+
+    ctx.itemPool = [];
+    for (const [i, pool] of this.pool.entries()) {
+      const item = await fromUuid(pool.uuid);
+      ctx.itemPool.push({
+        ...pool,
+        index: i,
+        link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
+      });
+    }
+
+    // Drop logic
+    ctx.additionalTypes = Object.entries(ItemGrantAdvancement.ADDITIONAL_TYPES).map(([value, { label }]) => ({ value, label }));
+    switch (this.additional.type) {
+      case "perk":
+        ctx.perkTypes = ds.CONFIG.perks.typeOptions;
+        break;
+    }
+
+    return ctx;
   }
 }

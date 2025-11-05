@@ -20,8 +20,14 @@ declare module "./actor-combat-stats-input.mjs" {
   }
 }
 
+declare module "./characteristic-input.mjs" {
+  export default interface CharacteristicInput {
+    document: DrawSteelActor;
+  }
+}
+
 declare module "./document-source-input.mjs" {
-  export default interface ActorCombatStatsInput {
+  export default interface DocumentSourceInput {
     document: DrawSteelActor | DrawSteelItem;
   }
 }

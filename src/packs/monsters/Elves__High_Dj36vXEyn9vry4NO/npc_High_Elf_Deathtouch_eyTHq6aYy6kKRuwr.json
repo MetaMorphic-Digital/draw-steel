@@ -72,7 +72,7 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -211,7 +211,7 @@
                 "tier3": {
                   "display": "{{potency}} bleeding (save ends)",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "1",
                     "characteristic": "reason"
                   },
                   "effects": {
@@ -249,7 +249,7 @@
                 "tier3": {
                   "display": "{{potency}} frightened (save ends)",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "1",
                     "characteristic": "intuition"
                   },
                   "effects": {
@@ -287,7 +287,7 @@
                 "tier3": {
                   "display": "{{potency}} restrained (save ends)",
                   "potency": {
-                    "value": "@potency.strong",
+                    "value": "1",
                     "characteristic": "presence"
                   },
                   "effects": {
@@ -323,8 +323,8 @@
           "after": ""
         },
         "spend": {
-          "text": "",
-          "value": null
+          "text": "The ability takes the Area keyword and loses the Strike  keyword, its distance becomes a 3 cube within 10, and it targets each  enemy in the area.",
+          "value": 5
         },
         "source": {
           "book": "Monsters",
@@ -344,9 +344,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -373,7 +373,8 @@
         },
         "target": {
           "type": "ally",
-          "value": 1
+          "value": 1,
+          "custom": "One willing ally"
         },
         "damageDisplay": "melee",
         "power": {
@@ -405,7 +406,7 @@
       },
       "effects": [
         {
-          "name": "Active Effect",
+          "name": "Kiss of Death",
           "img": "icons/magic/air/air-pressure-shield-blue.webp",
           "type": "base",
           "origin": "Compendium.draw-steel.monsters.Actor.eyTHq6aYy6kKRuwr.Item.BXv2RYg09QoWlB7h",
@@ -461,9 +462,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -565,7 +566,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -758,9 +760,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -826,227 +828,6 @@
         "modifiedTime": null
       },
       "_key": "!actors.items!eyTHq6aYy6kKRuwr.oILvREyZahTmzq10"
-    },
-    {
-      "name": "Heartpiercer",
-      "type": "ability",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "system": {
-        "type": "main",
-        "category": "signature",
-        "keywords": [
-          "area",
-          "ranged",
-          "weapon"
-        ],
-        "distance": {
-          "type": "cube",
-          "primary": 3,
-          "secondary": 10
-        },
-        "target": {
-          "type": "enemy",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "might"
-            ]
-          },
-          "effects": {
-            "PcsTtq1CTJUpniK9": {
-              "_id": "PcsTtq1CTJUpniK9",
-              "type": "damage",
-              "name": "",
-              "img": null,
-              "damage": {
-                "tier1": {
-                  "value": "7",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "10",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "13",
-                  "types": [],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "3gNjUsKZtIRpxpSy": {
-              "_id": "3gNjUsKZtIRpxpSy",
-              "type": "applied",
-              "name": "Bleeding",
-              "img": null,
-              "applied": {
-                "tier3": {
-                  "display": "{{potency}} bleeding (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "reason"
-                  },
-                  "effects": {
-                    "bleeding": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "oWM771rsu3DUB2PQ": {
-              "_id": "oWM771rsu3DUB2PQ",
-              "type": "applied",
-              "name": "Frightened",
-              "img": null,
-              "applied": {
-                "tier3": {
-                  "display": "{{potency}} frightened (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "intuition"
-                  },
-                  "effects": {
-                    "frightened": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "CuB0Ap3yrEKMbpuB": {
-              "_id": "CuB0Ap3yrEKMbpuB",
-              "type": "applied",
-              "name": "Restrained",
-              "img": null,
-              "applied": {
-                "tier3": {
-                  "display": "{{potency}} restrained (save ends)",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "restrained": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier1": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {},
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "121"
-        },
-        "_dsid": "heartpiercer",
-        "story": "",
-        "resource": 5,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 200000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757977383618,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "ownership": {
-        "default": 0,
-        "TJSowGV8FgjirefO": 3
-      },
-      "_id": "mqmYjtZrapHLwY2l",
-      "_key": "!actors.items!eyTHq6aYy6kKRuwr.mqmYjtZrapHLwY2l"
     }
   ],
   "folder": "Dj36vXEyn9vry4NO",

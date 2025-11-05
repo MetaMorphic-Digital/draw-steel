@@ -19,7 +19,7 @@ Actors are represented on the canvas via tokens. Draw Steel includes a number of
 
 **Attribute Bars:** The Token attribute bars will assume a "delta" change if you enter a number prefixed with a `+` or `-`, so `-5` means "reduce attribute by 5" rather than "set attribute to `-5`". If you want to *set* an attribute to a negative value, prefix with `=-`, e.g. `=-5` to set to `-5`.
 
-**Flanking:** The system automates the edge on melee strikes from Flanking; it requires line of effect and the ability to take triggered actions.
+**Flanking:** The system automates the edge on melee strikes from Flanking; it requires line of effect and the ability to take triggered actions. It is possible to mark an actor as unflankable. See the `Flankable` condition in [[Active Effects]] for more information.
 
 **Token Ruler:** Dragging a token in Draw Steel will both display distance information based on the token's movement value and selected movement type as well as the *quantity* of free strikes triggered.
 

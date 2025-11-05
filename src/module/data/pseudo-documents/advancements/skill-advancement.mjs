@@ -35,4 +35,23 @@ export default class SkillAdvancement extends TraitAdvancement {
       return arr;
     }, []);
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async getSheetContext(options) {
+    const ctx = {};
+
+    ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
+    for (const group of this.skills.groups) {
+      if (!(group in ds.CONFIG.skills.groups)) ctx.skillGroups.push({ value: group });
+    }
+
+    ctx.skillChoices = ds.CONFIG.skills.optgroups;
+    for (const skill of this.skills.choices) {
+      if (!(skill in ds.CONFIG.skills.list)) ctx.skillChoices.push({ value: skill });
+    }
+
+    return ctx;
+  }
 }

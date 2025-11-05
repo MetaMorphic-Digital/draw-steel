@@ -24,7 +24,7 @@
         <div class="effect-duration">{{localize "EFFECT.TABS.duration"}}</div>
         <div class="effect-controls flexrow">
           <a
-            class="effect-control effect-create"
+            class="effect-control effect-create fa-solid fa-fw fa-plus"
             {{#if (eq section.type "inactive")}}
             data-disabled="true"
             {{! eslint-disable-next-line @html-eslint/no-duplicate-attrs }}
@@ -32,14 +32,12 @@
             data-system.end.type="turn"
             {{/if}}
           >
-            <i class="fa-solid fa-plus"></i>
-            {{localize "DOCUMENT.New" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}
           </a>
         </div>
       </li>
       <ol class="effect-list">
         {{#each section.effects as |effect|}}
-        <li class="effect draggable expandable-document" data-document-uuid="{{effect.uuid}}" data-effect-id="{{effect.id}}" data-parent-id="{{effect.parent.id}}">
+        <li class="effect draggable expandable-document" data-document-uuid="{{effect.uuid}}">
           <div class="effect-row">
             <div class="effect-name">
               <img class="effect-image" src="{{effect.img}}" alt="{{effect.name}}">
@@ -50,16 +48,8 @@
             <div class="effect-source">{{effect.sourceName}}</div>
             <div class="effect-duration">{{effect.duration.label}}</div>
             <div class="effect-controls">
-              {{#if @root.editable}}
-              <a class="effect-control fa-fw fa-solid fa-{{ifThen effect.disabled 'check' 'times'}}" data-action="toggleEffect" data-tooltip="DRAW_STEEL.ActiveEffect.Toggle"></a>
-              {{/if}}
-              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fa-solid fa-edit" data-action="viewDoc" data-tooltip-text="{{localize "DOCUMENT.Update" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"></a>
-              {{#if @root.editable}}
-              {{!-- <!-- eslint-disable-next-line @html-eslint/quotes --> --}}
-              <a class="effect-control fa-fw fa-solid fa-trash" data-action="deleteDoc" data-tooltip-text="{{localize "DOCUMENT.Delete" type=(localize "DRAW_STEEL.ActiveEffect.Name")}}"></a>
+              <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
               <a class="fa-fw fa-solid fa-angle-{{ifThen effect.expanded 'down' 'right'}}" data-action="toggleDocumentDescription"></a>
-              {{/if}}
             </div>
           </div>
           <div class="document-description effect-description {{#if effect.expanded}}expanded{{/if}}">

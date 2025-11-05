@@ -6,7 +6,7 @@
   "img": "icons/magic/nature/tree-twisted-glow-yellow.webp",
   "system": {
     "description": {
-      "value": "<p>Children of the sylvan celestials and masters of the elf-haunted forests called wodes, wode elves see all forests as their domain by birthright. They know and enjoy their reputation among humans for snatching children who wander too far into the woods. Humans should fear the trees.</p><p>The wode elves’ natural ability to mask their presence, called glamor, complements their guerilla style of fighting, letting them strike quickly from cover and then meld back into the underbrush. These traits also make the relatively few wode elves who dwell in cities naturally adept at urban warfare.</p><h4>Wode Elf Traits</h4><p>Wode elf heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Ixiq7cFNRLjbd1ZX]{Wode Elf Glamor}</p><h4>Purchased Wode Elf Traits</h4><p>You have 3 ancestry points to spend on the following traits. (Quick Build: Swift, Otherwordly Grace.)</p><p>@UUID[Compendium.draw-steel.origins.Item.PHL5m176Z04OddCZ]{Forest Walk (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.HMO2DpVxFvI124KZ]{Quick and Brutal (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.F2JlPVFs8n7vWJOI]{Otherwordly Grace (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.HAPtKnmBEjjWYFBX]{Revisit Memory (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.VXwDHExr9y44UrWT]{Swift (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.NeQebjBMtSfCPP1H]{The Wode Defends (2 Points)}</p><p></p>",
+      "value": "<p>Children of the sylvan celestials and masters of the elf-haunted forests called wodes, wode elves see all forests as their domain by birthright. They know and enjoy their reputation among humans for snatching children who wander too far into the woods. Humans should fear the trees.</p><p>The wode elves’ natural ability to mask their presence, called glamor, complements their guerilla style of fighting, letting them strike quickly from cover and then meld back into the underbrush. These traits also make the relatively few wode elves who dwell in cities naturally adept at urban warfare.</p><h4>Wode Elf Traits</h4><p>Wode elf heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Ixiq7cFNRLjbd1ZX]{Wode Elf Glamor}</p><h4>Purchased Wode Elf Traits</h4><p>You have 3 ancestry points to spend on the following traits. (Quick Build: Swift, Otherwordly Grace.)</p><p>@UUID[Compendium.draw-steel.origins.Item.PHL5m176Z04OddCZ]{Forest Walk (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.HMO2DpVxFvI124KZ]{Quick and Brutal (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.F2JlPVFs8n7vWJOI]{Otherwordly Grace (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.HAPtKnmBEjjWYFBX]{Revisit Memory (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.VXwDHExr9y44UrWT]{Swift (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.NeQebjBMtSfCPP1H]{The Wode Defends (2 Points)}</p>",
       "director": ""
     },
     "source": {
@@ -17,7 +17,7 @@
     "_dsid": "wode-elf",
     "advancements": {
       "pa0Hgfjo20fgXkZy": {
-        "name": "",
+        "name": "Signature Trait",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -27,6 +27,40 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.origins.Item.Ixiq7cFNRLjbd1ZX"
+          }
+        ]
+      },
+      "rYZm6w0E1601WxI5": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "rYZm6w0E1601WxI5",
+        "description": "<p>You have 3 ancestry points to spend on the following traits. (<em>Quick Build:</em> Swift, Otherworldly Grace.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "chooseN": 3,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.PHL5m176Z04OddCZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.HMO2DpVxFvI124KZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.F2JlPVFs8n7vWJOI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.HAPtKnmBEjjWYFBX"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.VXwDHExr9y44UrWT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.NeQebjBMtSfCPP1H"
           }
         ]
       }
@@ -42,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456955194,
     "modifiedTime": null,
     "lastModifiedBy": null

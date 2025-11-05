@@ -1,0 +1,133 @@
+{
+  "folder": "bxYoIYJlZ7cPtMR3",
+  "name": "Heat Drain",
+  "type": "ability",
+  "_id": "XkduabC2CKgzGwWH",
+  "img": "icons/magic/water/ice-snowman.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "158",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "heat-drain",
+    "story": "You drain all the heat from the target.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "BGDZUqnTr9B94PjU": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "BGDZUqnTr9B94PjU",
+          "damage": {
+            "tier1": {
+              "types": [
+                "cold"
+              ],
+              "value": "8 + @chr"
+            },
+            "tier2": {
+              "value": "11 + @chr",
+              "types": [
+                "cold"
+              ]
+            },
+            "tier3": {
+              "value": "15 + @chr",
+              "types": [
+                "cold"
+              ]
+            }
+          }
+        },
+        "SKRVmjnC4sjyKJJn": {
+          "name": "Restrained",
+          "img": null,
+          "type": "applied",
+          "_id": "SKRVmjnC4sjyKJJn",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, restrained (save ends)",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While restrained this way, the target takes cold damage equal to your Intuition score [[/damage @I cold]] at the start of each of your turns. Additionally, whenever the target damages another creature while restrained this way, any potency associated with the damage is reduced by 2.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761333744357,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!XkduabC2CKgzGwWH"
+}

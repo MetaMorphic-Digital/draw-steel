@@ -255,16 +255,25 @@
       },
       "UkbPCnEjONyv8mam": {
         "name": "Perk",
-        "img": "icons/svg/aura.svg",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 2
         },
         "_id": "UkbPCnEjONyv8mam",
-        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
       },
       "jCv2x0YSzQZFw5QQ": {
-        "name": "3rd-Level Features",
+        "name": "Features",
         "img": "icons/magic/symbols/runes-star-magenta.webp",
         "type": "itemGrant",
         "requirements": {
@@ -305,6 +314,268 @@
             "uuid": "Compendium.draw-steel.abilities.Item.SX70R4CqoQRiUa6I"
           }
         ]
+      },
+      "SMhIac0pRrFZoqjD": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "SMhIac0pRrFZoqjD",
+        "description": "<p>Your Agility and Intuition scores each increase to 3.</p>",
+        "characteristics": {
+          "agility": 1,
+          "intuition": 1
+        }
+      },
+      "4pYvmZZB6UMgFyKG": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "4pYvmZZB6UMgFyKG",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        }
+      },
+      "nwe9dl9hGkAjxEHK": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "nwe9dl9hGkAjxEHK",
+        "description": "<p>Your Agility and Intuition scores each increase to 5.</p>",
+        "max": 5,
+        "characteristics": {
+          "agility": 1,
+          "intuition": 1
+        }
+      },
+      "tAjfqVbo7wyBjzMg": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "tAjfqVbo7wyBjzMg",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "0AAd12HfhVncAT77": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "0AAd12HfhVncAT77",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
+      },
+      "SzOr174bnxhXAtGh": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "SzOr174bnxhXAtGh",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        }
+      },
+      "6b9TbGD4wdjs9PXD": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "6b9TbGD4wdjs9PXD",
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        }
+      },
+      "5erl6Wi9F39XUh6Y": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "5erl6Wi9F39XUh6Y",
+        "description": "<p>As a 4th-level null, you gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.xeANPhTucEGF5NMr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.LGQh1xPkabV3zpUx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8QazNMWGgWZFuw4E"
+          }
+        ]
+      },
+      "mrxWpqwX3BjQ9zAM": {
+        "name": "9 Discipline Ability",
+        "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "mrxWpqwX3BjQ9zAM",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 discipline to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.544MjDEhUy8pwDnd"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.jeABSb6jLwPYdWqZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.wCDBrWFDdr1P6w6a"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tqbqX0ph2mvBRC0Q"
+          }
+        ]
+      },
+      "0l7ZxoYtx3mhR0v1": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "0l7ZxoYtx3mhR0v1",
+        "description": "<p>As a 6th-level null, you gain the following features</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.xjcyHQZ3gwJTWl1g"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.l8znjlJRg0TzHony"
+          }
+        ]
+      },
+      "bSJG7Z5wkYXVNROI": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "bSJG7Z5wkYXVNROI",
+        "description": "<p>As a 7th-level null, you gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ghA5nv9GrEv6OStn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.LQVdRQwp4p81Zwrm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.C5VbA93NR3z5fVMv"
+          }
+        ]
+      },
+      "2cEhbck0IHvJXwbL": {
+        "name": "11 Discipline Ability",
+        "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "2cEhbck0IHvJXwbL",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 discipline to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yqD6vxevSj6S7Msx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mRVOAmzh7LbSkhA7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.9BKthBMYLAEDHTbm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qswO60JLvr4KeA11"
+          }
+        ]
+      },
+      "Uj1pbcJN9ISxPvjL": {
+        "name": "I Am the Weapon",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "Uj1pbcJN9ISxPvjL",
+        "description": "<p>You gain the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.mi6fYIzXJaVJPNAb"
+          }
+        ]
+      },
+      "n3DN7eJWzc6CinfL": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "n3DN7eJWzc6CinfL",
+        "description": "<p>As a 10th-level null, you gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.uRj48haFHXXGMWur"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.F1eR80fXDmSegCXk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.nH7dYtkSuEpkKvgX"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.LdPe77Cn9FlrzmKh"
+          }
+        ]
       }
     },
     "level": 0,
@@ -334,9 +605,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754708293668,
     "modifiedTime": null,
     "lastModifiedBy": null

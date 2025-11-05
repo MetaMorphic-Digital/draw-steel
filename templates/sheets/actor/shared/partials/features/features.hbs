@@ -15,7 +15,7 @@
   </div>
   <ol class="item-list feature-list">
     {{#each features as |featureContext|}}
-    <li class="item feature draggable expandable-document" data-document-uuid="{{featureContext.item.uuid}}" data-item-id="{{featureContext.item.id}}">
+    <li class="item feature draggable expandable-document" data-document-uuid="{{featureContext.item.uuid}}">
       <div class="item-row">
         <div class="item-column item-name">
           <img class="item-image" src="{{featureContext.item.img}}" alt="{{featureContext.item.name}}">
@@ -25,6 +25,7 @@
         </div>
         <div class="item-column item-type">{{localize typeLabel}}</div>
         <div class="item-column item-controls">
+          <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
           <a class="fa-solid fa-angle-{{ifThen featureContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
         </div>
       </div>

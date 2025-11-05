@@ -1,0 +1,124 @@
+{
+  "name": "Bracers of Strife",
+  "type": "treasure",
+  "img": "icons/equipment/wrist/bracer-armored-steel-blue.webp",
+  "system": {
+    "kind": "other",
+    "category": "trinket",
+    "echelon": 3,
+    "description": {
+      "value": "<p><em>Each of these metallic blue bracers is oversized.</em></p><p><strong>Effect:</strong> While you wear them in combat, these bracers magically double the size of your hands and any melee weapons you wield, automatically compensating for the extra weight. You gain a +2 damage bonus for any weapon ability that deals rolled damage, and a +1 bonus to the distance you push any target with any weapon ability. This damage bonus adds to the damage bonus granted by other treasures.</p>",
+      "director": ""
+    },
+    "keywords": [
+      "magic",
+      "arms"
+    ],
+    "project": {
+      "prerequisites": "The severed hand of a giant",
+      "source": "Texts or lore in Yllyric",
+      "rollCharacteristic": [
+        "reason",
+        "intuition"
+      ],
+      "goal": 450,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "bracers-of-strife",
+    "source": {
+      "book": "Heroes",
+      "page": "325",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Bracers of Strife",
+      "img": "icons/equipment/wrist/bracer-armored-steel-blue.webp",
+      "type": "abilityModifier",
+      "origin": "Item.xCTpmPYoKCMgDCCA",
+      "_id": "CwW0TRA9i5xghqXe",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!xCTpmPYoKCMgDCCA.CwW0TRA9i5xghqXe"
+    }
+  ],
+  "folder": "3Jr2Z1HtiMM7GURB",
+  "_id": "xCTpmPYoKCMgDCCA",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761753681059,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!xCTpmPYoKCMgDCCA"
+}

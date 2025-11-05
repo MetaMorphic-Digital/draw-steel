@@ -30,7 +30,7 @@ export default class TreasureModel extends BaseItemModel {
     const fields = foundry.data.fields;
     const schema = super.defineSchema();
 
-    schema.kind = new fields.StringField({ required: true, blank: true });
+    schema.kind = new fields.StringField({ required: true });
     schema.category = new fields.StringField({ required: true });
     schema.echelon = new fields.NumberField({ initial: 1, integer: true });
 

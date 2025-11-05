@@ -197,43 +197,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "7GiDtF9g6pt8MSW2",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p>With Captain: +5 bonus to speed while a captain is assigned to this minion</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "181",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!3sZIJ1aJRhMF6iK5.7GiDtF9g6pt8MSW2"
-    },
-    {
       "name": "Halberd",
       "type": "ability",
       "system": {
@@ -500,7 +463,60 @@
       "_key": "!actors.items!3sZIJ1aJRhMF6iK5.vxocmPyA9uKwrgEq"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.3sZIJ1aJRhMF6iK5",
+      "disabled": true,
+      "_id": "U29ia2ueMhjidu66",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": []
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>+2 bonus to speed</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761173372305,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!3sZIJ1aJRhMF6iK5.U29ia2ueMhjidu66"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

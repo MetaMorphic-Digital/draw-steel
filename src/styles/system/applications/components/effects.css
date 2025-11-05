@@ -42,14 +42,12 @@
     .effect-controls {
       display: flex;
       padding-left: 10px;
-      width: 100px;
+      width: 50px;
       justify-content: space-evenly;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
-      > * {
-        flex: 1;
-      }
+      font-size: var(--font-size-16);
     }
 
     .effect-list {
@@ -78,6 +76,9 @@
                 font-size: var(--font-size-15);
               }
             }
+          }
+          .effect-controls  > * {
+            line-height: 40px;
           }
         }
 

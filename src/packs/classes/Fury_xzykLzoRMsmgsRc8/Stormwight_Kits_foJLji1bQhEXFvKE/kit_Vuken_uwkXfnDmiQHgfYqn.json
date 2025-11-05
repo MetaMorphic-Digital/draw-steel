@@ -6,7 +6,7 @@
   "img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
   "system": {
     "description": {
-      "value": "<p>With this stormwight kit, you channel your primordial ferocity into the form of a wolf, becoming a fleet-footed hunter. Vuken are tied to forests and open steppes, and this aspect is associated with the thunderstorm.</p><h3>Aspect Benefits</h3><p>Whenever you use the Knockback maneuver, you can then use the Aid Attack maneuver as a free triggered action.</p><h3>Animal Form: Wolf</h3><p>While you are in your wolf form, your size is 1L, you have a +2 bonus to speed, and you ignore difficult terrain</p><h3>Hybrid Form: Wolf</h3><p>While you are in your hybrid form, your size is 1L, you have a +2 bonus to speed, and you ignore difficult terrain. At 4th level, the first time you take hybrid form in an encounter, you gain 10 temporary Stamina.</p><h3>Primordial Storm: Lightning Storm</h3><p>Your primordial damage type is lightning.</p><h3>Vuken Growing Ferocity</h3><p>As your ferocity grows, you gain benefits as noted on the Vuken Growing Ferocity table. Benefits are cumulative except where an improved benefit replaces a lesser benefit.</p><table><tbody><tr><td data-colwidth=\"123\"><p>Ferocity</p></td><td><p>Benefit</p></td></tr><tr><td data-colwidth=\"123\"><p>2</p></td><td><p>Whenever you use the Knockback maneuver, you can target one additional creature.</p></td></tr><tr><td data-colwidth=\"123\"><p>4</p></td><td><p>The first time on a turn that you push a creature or knock a creature prone, you gain 1 surge.</p></td></tr><tr><td data-colwidth=\"123\"><p>6</p></td><td><p>You gain an edge on Agility tests and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>8 (4th level)</p></td><td><p>The first time on a turn that you push a creature or knock a creature prone, you gain 2 surges.</p></td></tr><tr><td data-colwidth=\"123\"><p>10 (7th level)</p></td><td><p>You have a double edge on Agility tests and the Knockback maneuver.</p></td></tr><tr><td data-colwidth=\"123\"><p>12 (10th level)</p></td><td><p>Whenever you use a heroic ability, you gain [[/heal 10 temp]]. Additionally, whenever you make a power roll that imposes forced movement on a target, the forced movement distance gains a bonus equal to your Agility score.</p></td></tr></tbody></table>",
+      "value": "<p>With this stormwight kit, you channel your primordial ferocity into the form of a wolf, becoming a fleet-footed hunter. Vuken are tied to forests and open steppes, and this aspect is associated with the thunderstorm.</p><h3>Aspect Benefits</h3><p>Whenever you use the Knockback maneuver, you can then use the Aid Attack maneuver as a free triggered action.</p><h3>Animal Form: Wolf</h3><p>While you are in your wolf form, your size is 1L, you have a +2 bonus to speed, and you ignore difficult terrain</p><h3>Hybrid Form: Wolf</h3><p>While you are in your hybrid form, your size is 1L, you have a +2 bonus to speed, and you ignore difficult terrain. At 4th level, the first time you take hybrid form in an encounter, you gain 10 temporary Stamina.</p><h3>Primordial Storm: Lightning Storm</h3><p>Your primordial damage type is lightning.</p>",
       "director": ""
     },
     "source": {
@@ -46,6 +46,54 @@
             "uuid": "Compendium.draw-steel.abilities.Item.1Syy7WKXEGvFRO2o"
           }
         ]
+      },
+      "JwTEDEpZAtwx2ukU": {
+        "name": "Growing Ferocity",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "JwTEDEpZAtwx2ukU",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
+          }
+        ]
+      },
+      "EVdfAGLj8c937dvj": {
+        "name": "Growing Ferocity Improvement",
+        "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "EVdfAGLj8c937dvj",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aiwxgZHuyYeR7mvw"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
+          }
+        ]
+      },
+      "ublPW8k38CoW9eYk": {
+        "name": "Growing Ferocity Improvement",
+        "img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "ublPW8k38CoW9eYk",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Qq2Kh84gcuzN9xNx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ZHBBIajGPvdipqSR"
+          }
+        ]
       }
     },
     "equipment": {
@@ -78,7 +126,69 @@
       "disengage": 1
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Animal Form: Vuken",
+      "img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.uwkXfnDmiQHgfYqn",
+      "disabled": true,
+      "_id": "2G5bYA7DxcyJgLq0",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.size.letter",
+          "mode": 5,
+          "value": "L",
+          "priority": null
+        },
+        {
+          "key": "system.combat.size.value",
+          "mode": 5,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While you are in your wolf form, your size is 1L, you have a +2 bonus to speed, and you ignore difficult terrain</p>",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760558043633,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!uwkXfnDmiQHgfYqn.2G5bYA7DxcyJgLq0"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -88,9 +198,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755756337148,
     "modifiedTime": null,
     "lastModifiedBy": null

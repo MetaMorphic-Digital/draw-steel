@@ -446,7 +446,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The first time in an encounter that Aeolyxria makes a power roll for this ability, she can subsequently use the outcome of that roll instead of rolling whenever she uses this ability until the end of the encounter.</p><p></p><p>[[/heal 10]]</p>"
+          "after": "<p>The first time in an encounter that Aeolyxria makes a power roll for this ability, she can subsequently use the outcome of that roll instead of rolling whenever she uses this ability until the end of the encounter.</p><p>[[/heal 10]]</p>"
         },
         "spend": {
           "text": "The ability targets one additional target for each 2 Malice spent.",
@@ -631,7 +631,7 @@
                   "display": "{{potency}} bleeding (save ends)",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "intuition"
+                    "characteristic": "agility"
                   },
                   "effects": {
                     "bleeding": {
@@ -645,7 +645,7 @@
                   "display": "",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "intuition"
+                    "characteristic": "agility"
                   },
                   "effects": {
                     "bleeding": {
@@ -736,7 +736,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked prone.</p>",
+          "before": "<p>A draconian acting this turn flaps their wings and creates a mighty gale. Each creature adjacent to the draconian is pushed up to 4 squares, and if they have M&lt;2, they are knocked [[/apply prone]].</p>",
           "after": ""
         },
         "spend": {
@@ -760,7 +760,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,

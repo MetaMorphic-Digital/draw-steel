@@ -6,7 +6,7 @@
   "img": "icons/magic/light/orbs-hand-gray.webp",
   "system": {
     "description": {
-      "value": "<p>After humans, polders are the most numerous and diverse ancestry in Orden. They are not humans, but they live in and among humans and share their gods and culture. Almost every human culture in Orden has a polder saint or a human saint venerated by polder.</p><p>Short, averaging 31/2 feet tall, the polders’ origins are obscure. They are a young species who, like humans, have no single patron god. Their ability to shadowmeld means they enjoy a reputation as excellent spies and thieves. Many polders consider this a base slander and point out they’re also famed as chefs, though polders can be found in every profession, especially in cities.</p><h4>Polder Traits</h4><p>Polder heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.DbpK06fEyJxin1tA]{Shadowmeld}</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT]{Small!}</p><h4>Purchased Polder Traits</h4><p>You have 4 ancestry points to spend on the following traits. (Quick Build: Corruption Immunity, Fearless, Graceful Retreat.)</p><p>@UUID[Compendium.draw-steel.origins.Item.WFaKeDhxONumCRek]{Corruption Immunity (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.sAzlkp3b67AYwucx]{Fearless (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.Rv80kYretCbPaguq]{Graceful Retreat (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.WrLBhTDLbX80T7hN]{Nimblestep (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.EsJYMF39KZwneS4F]{Polder Geist (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.n9J7I0TzxJOYgucN]{Reactive Tumble (1 Point)}</p><p></p><p></p><p></p>",
+      "value": "<p>After humans, polders are the most numerous and diverse ancestry in Orden. They are not humans, but they live in and among humans and share their gods and culture. Almost every human culture in Orden has a polder saint or a human saint venerated by polder.</p><p>Short, averaging 31/2 feet tall, the polders’ origins are obscure. They are a young species who, like humans, have no single patron god. Their ability to shadowmeld means they enjoy a reputation as excellent spies and thieves. Many polders consider this a base slander and point out they’re also famed as chefs, though polders can be found in every profession, especially in cities.</p><h4>Polder Traits</h4><p>Polder heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.DbpK06fEyJxin1tA]{Shadowmeld}</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT]{Small!}</p><h4>Purchased Polder Traits</h4><p>You have 4 ancestry points to spend on the following traits. (Quick Build: Corruption Immunity, Fearless, Graceful Retreat.)</p><p>@UUID[Compendium.draw-steel.origins.Item.WFaKeDhxONumCRek]{Corruption Immunity (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.sAzlkp3b67AYwucx]{Fearless (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.Rv80kYretCbPaguq]{Graceful Retreat (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.WrLBhTDLbX80T7hN]{Nimblestep (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.EsJYMF39KZwneS4F]{Polder Geist (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.n9J7I0TzxJOYgucN]{Reactive Tumble (1 Point)}</p>",
       "director": ""
     },
     "source": {
@@ -17,8 +17,8 @@
     "_dsid": "polder",
     "advancements": {
       "NrOnyWpRHJYurm2Y": {
-        "name": "",
-        "img": null,
+        "name": "Signature Trait",
+        "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
@@ -30,6 +30,40 @@
           },
           {
             "uuid": "Compendium.draw-steel.origins.Item.Sk03bZTV24MzxYVT"
+          }
+        ]
+      },
+      "mG08KGdUdTlTPddN": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "mG08KGdUdTlTPddN",
+        "description": "<p>You have 4 ancestry points to spend on the following traits. (<em>Quick Build:</em> Corruption Immunity, Fearless, Graceful Retreat.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "chooseN": 4,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.WFaKeDhxONumCRek"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.sAzlkp3b67AYwucx"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.Rv80kYretCbPaguq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.WrLBhTDLbX80T7hN"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.EsJYMF39KZwneS4F"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.n9J7I0TzxJOYgucN"
           }
         ]
       }
@@ -45,9 +79,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456927170,
     "modifiedTime": null,
     "lastModifiedBy": null

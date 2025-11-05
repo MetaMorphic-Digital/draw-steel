@@ -9,7 +9,7 @@ const folders = true;
 
 const packs = await fs.readdir("./packs");
 for (const pack of packs) {
-  if ((pack === ".gitattributes") || (pack === ".DS_Store")) continue;
+  if (pack.startsWith(".")) continue;
   console.log("Unpacking " + pack);
   await extractPack(
     `${SYSTEM_ID}/packs/${pack}`,
@@ -71,7 +71,11 @@ async function transformEntry(entry) {
 
   for (const jep of entry.pages) {
     const docsPath = path.join("src", "docs", jep.flags["draw-steel"].wikiPath);
-    await fs.writeFile(docsPath, jep.text.markdown, { encoding: "utf8" });
+
+    // re-route in-game asset links to wiki image links
+    const mdContent = jep.text.markdown.replaceAll("systems/draw-steel/assets/docs", "https://github.com/MetaMorphic-Digital/draw-steel/blob/develop/assets/docs");
+
+    await fs.writeFile(docsPath, mdContent, { encoding: "utf8" });
     jep.text = { format: 2 };
   }
 }

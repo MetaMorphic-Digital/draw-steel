@@ -45,7 +45,7 @@ export default class AbilityModel extends BaseItemModel {
     // Items don't have descriptions
     delete schema.description;
 
-    schema.story = new fields.StringField({ required: true, blank: true });
+    schema.story = new fields.StringField({ required: true });
     schema.keywords = new fields.SetField(setOptions());
     schema.type = new fields.StringField({ required: true, blank: false, initial: "action" });
     schema.category = new fields.StringField({ required: true });
@@ -64,7 +64,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.target = new fields.SchemaField({
       type: new fields.StringField({ required: true, blank: false, initial: "self" }),
       custom: new fields.StringField({ required: true }),
-      value: new fields.NumberField({ integer: true }),
+      value: new fields.NumberField({ required: true, integer: true }),
     });
 
     schema.power = new fields.SchemaField({
@@ -240,7 +240,7 @@ export default class AbilityModel extends BaseItemModel {
     labels.distance = game.i18n.format(ds.CONFIG.abilities.distances[this.distance.type]?.embedLabel, { ...this.distance });
 
     const targetConfig = ds.CONFIG.abilities.targets[this.target.type] ?? { embedLabel: "Unknown" };
-    labels.target = this.target.custom || (this.target.value === null ?
+    labels.target = this.target.custom || (this.target.value == null ?
       targetConfig.all ?? game.i18n.localize(targetConfig.embedLabel) :
       game.i18n.format(targetConfig.embedLabel, { value: this.target.value }));
 
@@ -284,7 +284,7 @@ export default class AbilityModel extends BaseItemModel {
 
     context.powerRollEffects = Object.fromEntries([1, 2, 3].map(tier => [
       `tier${tier}`,
-      { text: this.power.effects.contents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
+      { text: this.power.effects.sortedContents.map(effect => effect.toText(tier)).filter(_ => _).join("; ") },
     ]));
     context.powerRolls = this.power.effects.size > 0;
 
@@ -554,6 +554,8 @@ export default class AbilityModel extends BaseItemModel {
       if (DrawSteelActiveEffect.isStatusSource(this.actor, targetActor, "grabbed") === false) modifiers.banes += 1;
       // Restrained condition check - targeting restrained gets an edge
       if (targetActor.statuses.has("restrained")) modifiers.edges += 1;
+      // Surprised condition check - targeting surprised gets an edge
+      if (targetActor.statuses.has("surprised")) modifiers.edges += 1;
     }
 
     // Modifiers requiring just a controlled token

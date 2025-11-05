@@ -562,7 +562,7 @@
           }
         },
         "effect": {
-          "before": "<p>A target must be grabbed by the hulking brain, and is no longer grabbed after the power roll is resolved.</p>",
+          "before": "<p><strong>Special: </strong>A target must be grabbed by the hulking brain, and is no longer grabbed after the power roll is resolved.</p>",
           "after": ""
         },
         "spend": {
@@ -737,7 +737,7 @@
         "damageDisplay": "melee",
         "power": {
           "roll": {
-            "formula": "",
+            "formula": "3",
             "characteristics": []
           },
           "effects": {
@@ -780,7 +780,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "yLK8MzpBXyyBRFoG": {
               "name": "",
@@ -789,7 +790,6 @@
               "_id": "yLK8MzpBXyyBRFoG",
               "applied": {
                 "tier1": {
-                  "display": "{{potency}} the target can't treat their allies as allies (save ends)",
                   "effects": {
                     "pimQVRZtdUDI911o": {
                       "condition": "failure",
@@ -797,9 +797,10 @@
                       "properties": []
                     }
                   },
+                  "display": "{{potency}} the target can't treat their allies as allies (save ends)",
                   "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "reason"
+                    "characteristic": "reason",
+                    "value": "@potency.weak"
                   }
                 },
                 "tier2": {
@@ -817,19 +818,20 @@
                   }
                 },
                 "tier3": {
-                  "display": "",
                   "effects": {
                     "WeIzrImwA15HNJCA": {
                       "condition": "failure",
                       "properties": []
                     }
                   },
+                  "display": "",
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -935,7 +937,6 @@
           "_key": "!actors.items.effects!mysCydOd4jWB3P6d.chjWo71vjEugh9fC.WeIzrImwA15HNJCA"
         }
       ],
-      "folder": "BRh61Jblgho2nIWC",
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.chjWo71vjEugh9fC",
@@ -944,16 +945,17 @@
         "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "createdTime": 1759980704407,
+        "createdTime": 1761435090425,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "_id": "chjWo71vjEugh9fC",
       "ownership": {
         "default": 0,
-        "TJSowGV8FgjirefO": 3
+        "R75FAhxK5fADaoJF": 3
       },
-      "_id": "chjWo71vjEugh9fC",
-      "sort": 100000,
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!mysCydOd4jWB3P6d.chjWo71vjEugh9fC"
     }
   ],
