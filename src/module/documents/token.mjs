@@ -40,6 +40,20 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
   /* -------------------------------------------------- */
 
   /**
+   * If the token's movementAction is invalid, force it to null (default)
+   * @returns {Promise<boolean>} true if the refresh has caused a change in movementAction, otherwise false
+   */
+  async refreshMovementAction() {
+    if (!CONFIG.Token.movement.actions[this.movementAction].canSelect(this)) {
+      await this.update({ movementAction: null }, { diff: false });
+      return true;
+    }
+    return false;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
    * Get hostile tokens within range of movement.
    * @param {Point[]} [points]              An array of points describing a segment of movement.
    * @returns {DrawSteelTokenDocument[]}    Hostile tokens.
