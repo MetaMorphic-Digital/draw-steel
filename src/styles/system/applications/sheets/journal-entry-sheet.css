@@ -1,40 +1,57 @@
 /* CSS for DrawSteelJournalEntrySheet */
 
 /*all*/
+.draw-steel.journal-sheet .window-content{
+  backdrop-filter: none;
+}
+.draw-steel .content-link, .inline-roll {
+    background: var(--draw-steel-c-white);
+    border: 1px solid var(--draw-steel-c-laserline);
+    border-radius: 2px;
+    color: var(--draw-steel-c-laserline);
+    margin: -1px 0;
+    padding: 1px 4px 0;
+    white-space: nowrap;
+    word-break: break-all;
+}
 .draw-steel.journal-sheet .journal-sidebar{
-  --color-shadow-primary:#ccccccaa;
-  --button-focus-outline-color: var(--draw-steel-c-laserline);
-  --button-hover-background-color: var(--draw-steel-c-laserline);
+  }
     input{
       --input-text-color:var(--draw-steel-c-white);
     }
     ol li{
       font-family: 'Draw Steel Book';
+      position:relative;
+      a:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--draw-steel-c-laserline);
+/*        background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
+        transition: transform 0.25s ease-out;
+        transform-origin: bottom left;
+        };
+      a:hover::after{;
+      transform: scaleX(1);
+      }
     }
     .toc li.page.active:first-of-type{
-      border-top-color: var(--draw-steel-c-laserline);
+      border-top-color: transparent;
+      border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
     }
     .toc li.page.active:last-of-type{
-          border-bottom-color: var(--draw-steel-c-laserline);
+          border-bottom-color: transparent;
+          border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
         }
 }
 a.button:hover,button:hover{
   background: var(--draw-steel-c-laserline);
 }
 .draw-steel.journal-sheet.journal-entry, .draw-steel .journal-entry-page {
-   --font-h1:'Draw Steel Book',serif;
-    --font-h2:'Newsreader',serif;
-    --font-h3:'Newsreader',serif;
-    --font-h4:'Atkinson Hyperlegible',serif;
-    --font-h5:'Atkinson Hyperlegible',serif;
-    --font-h6:'Atkinson Hyperlegible',serif;
-    --font-h1-size: 2em;
-    --font-h2-size: 1.5em;
-    --font-h3-size: 1.25em;
-    --font-h4-size: 1em;
-    --font-h5-size: 0.83em;
-    --font-h6-size: 0.67em;
-
   .journal-header input{
     font-family: 'Draw Steel Book',serif;
     color: var(--draw-steel-dark);
@@ -105,24 +122,32 @@ tbody tr:nth-child(odd) {
   background: var(--input-background-color);
 }
 a{
-  font-style: italic;
+/*  font-style: italic;*/
   color: #866d4b;
 }
 /* fancy fieldset*/
  .polygonal-fieldset {
   position:relative;
-      border: 1px solid #333; /* Standard border for fallback and visual guide */
-      border-radius: 15px; /* Defines the size of the corner */
-      corner-shape: bevel; /* Creates a straight, angled corner */
+  border: 0px; 
+  --b: 1px;  /* border */
+  --s: 16px; /* size of the cut */
+  
+/*  width:300px;*/
+  display:inline-block;
+/*  aspect-ratio:1.5;*/
+  position:relative;
+  z-index:0;
+
       legend{
         margin:0 auto;
+        margin-bottom:-0.75em;
       }
       div{
         inset: 0px;
         background: var(--input-background-color);
         padding:0.5rem;
       }
-      .specialDiamond{
+      .special-diamond{
         font-family: Draw Steel Glyphs;
         position:absolute;
         bottom: -0.8em;
@@ -131,22 +156,49 @@ a{
         text-align: center;
       }
     }
+    .polygonal-fieldset:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background: #ffffffaa;
+  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
+  --g2:#0000   calc(0.707*var(--s)), 
+       #000  0 calc(0.707*var(--s) + var(--b)),
+       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+       #000  0 calc(100% - 0.707*var(--s)),
+       #0000 0;
+  -webkit-mask:
+    linear-gradient(45deg ,var(--g2)),
+    linear-gradient(-45deg,var(--g2)),
+    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+}
     .polygonal-fieldset-inverse {
       position:relative;
-      border: 1px solid #866d4b; /* Standard border for fallback and visual guide */
-      border-radius: 15px; /* Defines the size of the corner */
-      corner-shape: bevel; /* Creates a straight, angled corner */
+  border: 0px; 
+  --b: 1px;  /* border */
+  --s: 16px; /* size of the cut */
+  
+/*  width:300px;*/
+  display:inline-block;
+/*  aspect-ratio:1.5;*/
+  position:relative;
+  z-index:0;
+
       legend{
         margin:0 auto;
         color: #866d4b;
+        margin-bottom:-0.75em;
       }
+
       div{
-        inset: 0px;
         background: var(--draw-steel-c-black);
         color:var(--draw-steel-c-white);
         padding:0.5rem;
+        margin:8px;
       }
-      .specialDiamond{
+      .special-diamond{
         font-family: Draw Steel Glyphs;
         position:absolute;
         bottom: -0.8em;
@@ -156,7 +208,24 @@ a{
         color: var(--draw-steel-c-laserline);
       }
     }
-
+.polygonal-fieldset-inverse:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background: #856C4B;
+  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
+  --g2:#0000   calc(0.707*var(--s)), 
+       #000  0 calc(0.707*var(--s) + var(--b)),
+       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+       #000  0 calc(100% - 0.707*var(--s)),
+       #0000 0;
+  -webkit-mask:
+    linear-gradient(45deg ,var(--g2)),
+    linear-gradient(-45deg,var(--g2)),
+    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+}
 /*laser lines on captions*/
 .tableTitle {
     width:100%;
@@ -189,27 +258,26 @@ a{
         right: -0.5em;
     }
   }
-    }
 /*dark*/
   .theme-dark &:not(.theme-light), &.themed.theme-dark {
-  --color-shadow-primary:#ccccccaa;
-  --button-focus-outline-color: var(--draw-steel-c-laserline);
-  --button-hover-background-color: var(--draw-steel-c-laserline);
+      background: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+      background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+      background-size: contain;
+      background-position:bottom left;
+      background-repeat:no-repeat;
 /*    background-color: tan;*/
 .polygonal-fieldset {
-  position:relative;
-      border: 1px solid #333; /* Standard border for fallback and visual guide */
-      border-radius: 15px; /* Defines the size of the corner */
-      corner-shape: bevel; /* Creates a straight, angled corner */
+  position:relative;      
       legend{
         margin:0 auto;
+        margin-bottom:-0.75em;
       }
       div{
         inset: 0px;
         background: var(--input-background-color);
         padding:0.5rem;
       }
-      .specialDiamond{
+      .special-diamond{
         font-family: Draw Steel Glyphs;
         position:absolute;
         bottom: -0.8em;
@@ -218,15 +286,40 @@ a{
         text-align: center;
       }
     }
+    .window-title, button, .page-title, .chapter{
+    color:var(--color-light-1);
+    }
   }
 /*end dark*/
 /*light*/
   .theme-light &:not(.theme-dark), &.themed.theme-light {
-/*    this should be default */
-    .journal-sheet.journal-entry, .journal-sheet.journal-entry .journal-entry-content{
+    background: var(--draw-steel-c-white);
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+      background-size: contain;
+      background-position:bottom left;
+      background-repeat:no-repeat;
+  .polygonal-fieldset:before {
+  background: #000000aa;
+  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
+  --g2:#0000   calc(0.707*var(--s)), 
+       #000  0 calc(0.707*var(--s) + var(--b)),
+       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+       #000  0 calc(100% - 0.707*var(--s)),
+       #0000 0;
+  -webkit-mask:
+    linear-gradient(45deg ,var(--g2)),
+    linear-gradient(-45deg,var(--g2)),
+    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+}
+
+    .journal-entry-content, .journal-entry-pages, .journal-entry-page{
       background: var(--draw-steel-c-white);
     }
-    .draw-steel.journal-sheet{
-      background: whitesmoke;
+  .window-header, .journal-sidebar {
+    .window-title, button, .page-title, .chapter{
+    color:var(--color-dark-1);
     }
   }
+}
+}

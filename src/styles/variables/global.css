@@ -2,10 +2,13 @@
   --padding-sm: 5px;
   --padding-md: 10px;
   --padding-lg: 20px;
-
   --border-groove: 2px groove var(--draw-steel-c-groove);
 }
-
+.theme-light{
+  --sidebar-background: whitesmoke;
+  .application{--background:whitesmoke;}
+}
 .theme-dark {
   --border-groove: 2px groove var(--draw-steel-c-groove);
+/*  --sidebar-background: var(--draw-steel-c-light);*/
 }
