@@ -96,6 +96,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
     if (barData?.attribute !== "stamina") return barData;
 
     barData.min = this.actor.system.stamina.min;
+    barData.value += this.actor.system.stamina.temporary || 0;
 
     // Set minion specific stamina bar data based on their combat squad
     if (!this.actor.isMinion || (this.actor.system.combatGroups.size !== 1)) return barData;
