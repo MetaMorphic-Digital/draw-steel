@@ -140,7 +140,9 @@ While there are similarities with roll data, active effects generally lead with 
 |Value Name|Attribute Key|
 |:---:|---|
 |Save Bonus|`system.combat.save.bonus`|
-|Actor Size (on sheet, not token size)|`system.combat.size`|
+|Save Threshold|`system.combat.save.threshold`|
+|Actor Size (on sheet, not token size)|`system.combat.size.value`|
+|Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
