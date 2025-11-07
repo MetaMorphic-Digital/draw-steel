@@ -331,9 +331,7 @@ function enrichGain(parsedConfig, label, options) {
 
   // Reassign aliases first
   const rewrite = GAIN_RESOURCE_ALIASES[linkConfig.gainType];
-  if (rewrite) {
-    linkConfig.gainType = rewrite;
-  }
+  if (rewrite) linkConfig.gainType = rewrite;
 
   const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
   const resourceType = game.i18n.localize(lookup.label);
