@@ -275,11 +275,8 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @returns
    */
   #fulfillsRequirements(item) {
-    if ((item.type === "ability") && item.system.class) {
-      return this.fulfilledDSID.has(item.system.class);
-    } else if (item.system.prerequisites?.dsid?.size) {
-      for (const prerequisite of item.system.prerequisites.dsid) if (this.fulfilledDSID.has(prerequisite)) return true;
-      return false;
+    if (item.system.prerequisites?.dsid?.size) {
+      return this.fulfilledDSID.intersects(item.system.prerequisites.dsid);
     }
     return true;
   }
@@ -344,9 +341,9 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
       if (this.advancement.pointBuy) {
         // if unchosen, potential value is compared to remaining points
         const value = !this.chosen.has(input.value) ? item.system.points : 0;
-        input.disabled = this.#fulfillsRequirements(item) && (value > (this.advancement.chooseN - totalChosen));
+        input.disabled = !this.#fulfillsRequirements(item) || (value > (this.advancement.chooseN - totalChosen));
       }
-      else input.disabled = this.#fulfillsRequirements(item) && !this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN);
+      else input.disabled = !this.#fulfillsRequirements(item) || (!this.chosen.has(input.value) && (totalChosen >= this.advancement.chooseN));
     }
     this.element.querySelector("button[type='submit']").disabled = totalChosen !== this.advancement.chooseN;
   }

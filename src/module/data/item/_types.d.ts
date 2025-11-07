@@ -34,7 +34,10 @@ declare module "./ability.mjs" {
 
   export default interface AbilityModel {
     description: never;
-    class: string;
+    prerequisites: {
+      value: string;
+      dsid: Set<string>;
+    }
     keywords: Set<string>;
     type: keyof typeof ds["CONFIG"]["abilities"]["types"];
     category: keyof typeof ds["CONFIG"]["abilities"]["categories"] | "";
@@ -159,7 +162,7 @@ declare module "./feature.mjs" {
   export default interface FeatureModel {
     prerequisites: {
       value: string;
-      dsid: string;
+      dsid: Set<string>;
     }
   }
 }

@@ -45,10 +45,13 @@ export default class AbilityModel extends BaseItemModel {
     // Items don't have descriptions
     delete schema.description;
 
-    schema.class = new fields.StringField({
-      required: true,
-      validate: string => string === string.slugify({ strict: true }),
-      validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+    // Can be expanded over time for automation
+    schema.prerequisites = new fields.SchemaField({
+      value: new fields.StringField({ required: true }),
+      dsid: new fields.SetField(setOptions({
+        validate: string => string === string.slugify({ strict: true }),
+        validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
+      })),
     });
 
     schema.story = new fields.StringField({ required: true });

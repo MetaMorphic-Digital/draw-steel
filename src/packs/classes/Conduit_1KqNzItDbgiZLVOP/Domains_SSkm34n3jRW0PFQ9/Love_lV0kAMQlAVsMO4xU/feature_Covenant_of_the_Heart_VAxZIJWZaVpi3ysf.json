@@ -6,7 +6,7 @@
   "img": "icons/magic/life/heart-cross-strong-flame-purple-orange.webp",
   "system": {
     "description": {
-      "value": "<p>You can maintain bonds with up to three willing creatures using your @UUID[Compendium.draw-steel.classes.Item.YtM8UBnfX1ilf3w6]{Invocation of the Heart} feature. Additionally, you have the following ability. @UUID[Compendium.draw-steel.abilities.Item.aFeW2OgdoReVdhaD]{Guided to Your Side}</p>",
+      "value": "<p>You can maintain bonds with up to three willing creatures using your @UUID[Compendium.draw-steel.classes.Item.YtM8UBnfX1ilf3w6]{Invocation of the Heart} feature. Additionally, you have the following ability. @UUID[Compendium.draw-steel.classes.Item.AoYGZBaCgcmLDnoa]{Guided to Your Side}</p>",
       "director": ""
     },
     "source": {
@@ -15,7 +15,22 @@
       "license": "Draw Steel Creator License"
     },
     "_dsid": "covenant-of-the-heart",
-    "advancements": {},
+    "advancements": {
+      "IhYhWARbLS8kFU2H": {
+        "name": "Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "IhYhWARbLS8kFU2H",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.AoYGZBaCgcmLDnoa"
+          }
+        ]
+      }
+    },
     "prerequisites": {
       "dsid": [
         "love"

@@ -1,7 +1,11 @@
 {{#if isPlay}}
 {{> "systems/draw-steel/templates/embeds/item/ability.hbs" tier1=system.powerRoll.enabled tier2=system.powerRoll.enabled tier3=system.powerRoll.enabled}}
 {{else}}
-{{formGroup systemFields.class value=system.class}}
+<fieldset>
+  <legend>{{systemFields.prerequisites.label}}</legend>
+  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value}}
+  {{formGroup systemFields.prerequisites.fields.dsid value=system.prerequisites.dsid}}
+</fieldset>
 {{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywordOptions}}
 {{formGroup systemFields.type value=system.type options=actionTypes}}

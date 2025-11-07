@@ -770,6 +770,16 @@
           "_dsid": {
             "label": "DSID",
             "hint": "Draw Steel ID"
+          },
+          "prerequisites": {
+            "label": "Prerequisites",
+            "value": {
+              "label": "Description"
+            },
+            "dsid": {
+              "label": "DSID",
+              "hint": "The Draw Steel ID of other items required by this item. Any may be fulfilled."
+            }
           }
         }
       },
@@ -1185,18 +1195,7 @@
         }
       },
       "feature": {
-        "FIELDS": {
-          "prerequisites": {
-            "label": "Prerequisites",
-            "value": {
-              "label": "Description"
-            },
-            "dsid": {
-              "label": "DSID",
-              "hint": "The Draw Steel ID of classes or subclasses required by this feature. Any may be fulfilled."
-            }
-          }
-        }
+        "FIELDS": {}
       },
       "kit": {
         "FIELDS": {
