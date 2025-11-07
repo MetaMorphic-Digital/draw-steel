@@ -36,17 +36,11 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
  * @typedef {string} label - The full i18n path used to label the resource
  * @typedef {string} resource - The full path, relative to the actor, used to update the resource
  * @typedef {string} resourceFormatString - Final key in the i18n path used for localization, relative to DRAW_STEEL.EDITOR.Enrichers.Gain.{MessageTitle|FormatString} (Default: "Default")
- * @typedef {string} aliasFor - Value that linkConfig.gainType should be rewritten to before creating a link (Optional)
  */
 const GAIN_RESOURCE_LOOKUP = {
   epic: {
     label: "DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label",
     resource: "hero.epic.value",
-  },
-  hr: {
-    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label",
-    resource: "hero.primary.value",
-    aliasFor: "heroic",
   },
   heroic: {
     label: "DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label",
@@ -60,12 +54,6 @@ const GAIN_RESOURCE_LOOKUP = {
     label: "DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label",
     resource: "hero.surges",
   },
-  victories: {
-    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.victories.label",
-    resource: "hero.victories",
-    resourceFormatString: "Victory",
-    aliasFor: "victory",
-  },
   victory: {
     label: "DRAW_STEEL.Actor.hero.FIELDS.hero.victories.label",
     resource: "hero.victories",
@@ -75,6 +63,11 @@ const GAIN_RESOURCE_LOOKUP = {
     label: "DRAW_STEEL.Actor.hero.FIELDS.hero.wealth.label",
     resource: "hero.wealth",
   },
+};
+
+const GAIN_RESOURCE_ALIASES = {
+  hr: "heroic",
+  victories: "victory",
 };
 
 /* -------------------------------------------------- */
@@ -300,6 +293,8 @@ async function rollDamageHeal(link, event) {
 function enrichGain(parsedConfig, label, options) {
   const linkConfig = { type: "gain", formula: null, gainType: null };
 
+  const allGainKeys = Object.keys(GAIN_RESOURCE_LOOKUP).concat(Object.keys(GAIN_RESOURCE_ALIASES));
+
   // Parse the formula and type from configuration
   for (const c of parsedConfig) {
     const formulaParts = [];
@@ -308,7 +303,7 @@ function enrichGain(parsedConfig, label, options) {
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
       // If the normalized value is present in the lookup object, add it to the config type
-      if (Object.entries(GAIN_RESOURCE_LOOKUP).some(([key, _]) => key === normalizedValue)) {
+      if (allGainKeys.some((key) => key === normalizedValue)) {
         c.type.push(normalizedValue);
       } else {
         formulaParts.push(value);
@@ -334,14 +329,13 @@ function enrichGain(parsedConfig, label, options) {
     );
   }
 
-  const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
-
   // Reassign aliases first
-  const aliasFor = lookup.aliasFor;
-  if (aliasFor) {
-    linkConfig.gainType = aliasFor;
+  const rewrite = GAIN_RESOURCE_ALIASES[linkConfig.gainType];
+  if (rewrite) {
+    linkConfig.gainType = rewrite;
   }
 
+  const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
   const resourceType = game.i18n.localize(lookup.label);
 
   const localizationData = {
