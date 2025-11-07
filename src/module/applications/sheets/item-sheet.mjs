@@ -1,4 +1,4 @@
-import { systemID, systemPath } from "../../constants.mjs";
+import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DSDocumentSheet from "../api/document-sheet.mjs";
@@ -808,7 +808,15 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @protected
    */
   async _onDropAdvancement(event, advancement) {
-    if (!this.item.isOwner || !advancement) return false;
+    if (!this.item.isOwner || !advancement) return null;
+
+    if (!ds.CONFIG.Advancement[advancement.type].itemTypes.has(this.item.type)) {
+      ui.notifications.error("DRAW_STEEL.ADVANCEMENT.SHEET.warnDrop", { format: {
+        itemType: game.i18n.localize(CONFIG.Item.typeLabels[this.item.type]),
+        advancementType: game.i18n.localize(ds.CONFIG.Advancement[advancement.type].label),
+      } });
+      return null;
+    }
 
     if (this.item.uuid === advancement.document?.uuid) {
       const result = await this._onSortPseudoDocument(event, advancement);
@@ -819,10 +827,6 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
     const advancementData = advancement.toObject();
 
     const result = await BaseAdvancement.create(advancementData, { keepId, parent: this.item, renderSheet: false });
-
-    if (this.item.actor) {
-      // TODO: Create advancement chain, configuration dialog
-    }
 
     return result ?? null;
   }
@@ -838,7 +842,7 @@ export default class DrawSteelItemSheet extends DSDocumentSheet {
    * @protected
    */
   async _onDropPowerRollEffect(event, effect) {
-    if (!this.item.isOwner || !effect) return false;
+    if (!this.item.isOwner || !effect) return null;
 
     if (this.item.uuid === effect.document?.uuid) {
       const result = await this._onSortPseudoDocument(event, effect);
