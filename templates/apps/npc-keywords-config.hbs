@@ -1,0 +1,23 @@
+<div class="npc-keywords-config-body scrollable">
+  <p class="hint">{{localize "DRAW_STEEL.Setting.NPCKeywords.Hint"}}</p>
+
+  <div class="add-keyword-section">
+    <input type="text" name="newKeyword" placeholder="{{localize "DRAW_STEEL.Setting.NPCKeywords.NewKeywordPlaceholder"}}">
+    <button type="button" class="add-keyword-button" data-action="addKeyword" data-tooltip="{{localize "DRAW_STEEL.Setting.NPCKeywords.AddKeyword"}}">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+
+  {{#if keywords}}
+  <ul class="keywords-list">
+    {{#each keywords as |keyword|}}
+    <li class="keyword-item" data-keyword="{{keyword}}">
+      <span class="keyword-label">{{keyword}}</span>
+      <button type="button" class="keyword-delete" data-action="deleteKeyword" data-tooltip="{{localize "DRAW_STEEL.Setting.NPCKeywords.DeleteKeyword"}}">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>

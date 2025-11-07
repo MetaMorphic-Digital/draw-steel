@@ -79,6 +79,13 @@ export default class DrawSteelSettingsHandler {
         scope: "world",
         onChange: () => ui.players.render(),
       },
+      npcKeywords: {
+        name: "DRAW_STEEL.Setting.NPCKeywords.Label",
+        hint: "DRAW_STEEL.Setting.NPCKeywords.Hint",
+        type: new fields.SetField(new fields.StringField({ required: true, blank: false })),
+        default: [],
+        scope: "world",
+      },
     };
   }
 
@@ -88,6 +95,16 @@ export default class DrawSteelSettingsHandler {
    * Helper function called in the `init` hook.
    */
   static registerSettings() {
+    // Register the settings menu for NPC Keywords
+    game.settings.registerMenu(systemID, "npcKeywordsMenu", {
+      name: "DRAW_STEEL.Setting.NPCKeywords.MenuLabel",
+      label: "DRAW_STEEL.Setting.NPCKeywords.MenuButton",
+      hint: "DRAW_STEEL.Setting.NPCKeywords.Hint",
+      icon: "fa-solid fa-tags",
+      type: ds.applications.apps.NPCKeywordsConfig,
+      restricted: true,
+    });
+
     for (const [key, value] of Object.entries(this.systemSettings)) {
       game.settings.register(systemID, key, value);
     }
