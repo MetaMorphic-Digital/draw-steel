@@ -32,6 +32,11 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
 /**
  * Resource name to localization key and attribute path mappings for gain enricher.
  * Maps resource type identifiers to their i18n localization keys and actor attribute paths.
+ * 
+ * @typedef {string} label - The full i18n path used to label the resource
+ * @typedef {string} resource - The full path, relative to the actor, used to update the resource
+ * @typedef {string} resourceFormatString - Final key in the i18n path used for localization, relative to DRAW_STEEL.EDITOR.Enrichers.Gain.{MessageTitle|FormatString} (Default: "Default")
+ * @typedef {string} aliasFor - Value that linkConfig.gainType should be rewritten to before creating a link (Optional)
  */
 const GAIN_RESOURCE_LOOKUP = {
   epic: {
@@ -389,7 +394,7 @@ async function rollGain(link, event) {
     targetList = `(${combinedNames})`;
   }
 
-  const lookup = GAIN_RESOURCE_LOOKUP[gainType]
+  const lookup = GAIN_RESOURCE_LOOKUP[gainType];
   const resourceFormatString = lookup.resourceFormatString ?? "Default";
 
   // Get the localized resource label
