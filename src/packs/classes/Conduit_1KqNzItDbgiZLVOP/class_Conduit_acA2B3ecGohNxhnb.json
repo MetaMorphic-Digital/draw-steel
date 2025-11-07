@@ -32,7 +32,7 @@
           ]
         },
         "description": "<p>Choose any two skills from the interpersonal or lore skill groups (<em>Quick Build:</em> Read Person, Religion.)</p>",
-        "sort": 35000
+        "sort": -200000
       },
       "zdVqusQ0Zht3iVDy": {
         "name": "Skill",
@@ -118,7 +118,7 @@
             "uuid": "Compendium.draw-steel.classes.Item.oXK9RDnTuXTu47l1"
           }
         ],
-        "sort": 18000
+        "sort": -100000
       },
       "NTtV2ajZK2aEJd4n": {
         "name": "Piety",
@@ -134,7 +134,7 @@
           }
         ],
         "description": "<p>Your deity grants you a Heroic Resource called piety, letting you heal and empower your allies, and unleash holy power upon your foes.</p>",
-        "sort": 28000
+        "sort": -50000
       },
       "p2AwNsp5ySMApdYG": {
         "name": "Healing Grace",
@@ -150,7 +150,7 @@
           }
         ],
         "description": "<p>Your divine energy restores the righteous.</p>",
-        "sort": 21000
+        "sort": 1500
       },
       "gPyQLALhXOgN0TcX": {
         "name": "Ray of Wrath",
@@ -166,10 +166,10 @@
             "uuid": "Compendium.draw-steel.abilities.Item.4r6uYuaEgmiGsdCf"
           }
         ],
-        "sort": 30000
+        "sort": 1875
       },
       "Sh4U3vDFoMw4jEOG": {
-        "name": "Triggered",
+        "name": "Triggered Action",
         "img": "icons/magic/time/clock-stopwatch-white-blue.webp",
         "type": "itemGrant",
         "requirements": {
@@ -186,7 +186,7 @@
         ],
         "chooseN": 1,
         "description": "<p>Choose one of the following triggered actions. (<em>Quick Build:</em> Word of Guidance.)</p>",
-        "sort": 37000
+        "sort": 2250
       },
       "DNIjeFW2NgEnvmTA": {
         "name": "Prayer",
@@ -215,7 +215,7 @@
           }
         ],
         "description": "<p>Your god answers a prayer with enhancements to your body and mind. Choose one of the following prayers. You can change your prayer along with your ward by praying to your god as a respite activity. (<em>Quick Build:</em> Prayer of Distance.)</p>",
-        "sort": 29000
+        "sort": 2625
       },
       "kdU2fIwl5Z8XFs5P": {
         "name": "Conduit Ward",
@@ -279,7 +279,7 @@
             "uuid": "Compendium.draw-steel.abilities.Item.504hBrdvlcWT7yyo"
           }
         ],
-        "sort": 31000
+        "sort": 2813
       },
       "6LpWW8oNYC2i9IXH": {
         "name": "3 Piety",
@@ -378,7 +378,45 @@
         },
         "_id": "vBjjJeBeezefEfdV",
         "description": "<p>You gain the 1st-level domain feature and ability to choose a skill for the domain you selected at 1st level but whose domain feature you didn’t take at that level.</p>",
-        "sort": 2000
+        "sort": 2000,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.rnOmChJZxUMVHGL3"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.yEhOYfiCIa1o1fGc"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.21lMiXOy7dWQvNZH"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.nowK2klms2t0jEUk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.kDa1rc6xRuBARDpJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.D0ef3sDvAeB8Tre7"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.uolRzoBIpSlsbfsZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.FxXIbGZGvaJNpJ4E"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DNfK5Uf55DHX2r9h"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VRC4QcE3f1ob0drS"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX"
+          }
+        ]
       },
       "spLyeQgoouiT59G2": {
         "name": "2nd-Level Domain Ability",
@@ -647,7 +685,7 @@
           "level": 5
         },
         "_id": "qHBHn5C5kIaRjTtT",
-        "description": "<p>You gain the 4th-level domain feature for the domain whose feature</p><p>you didn’t select at that level.</p>",
+        "description": "<p>You gain the 4th-level domain feature for the domain whose feature you didn’t select at that level.</p>",
         "chooseN": 1,
         "pool": [
           {
@@ -698,7 +736,7 @@
         },
         "_id": "A7WpmiWX7LJcMXXo",
         "chooseN": 1,
-        "description": "<p>Choose one of your domains. You gain a domain feature for that</p><p>domain, as shown on the 4th-Level Conduit Domain Features table.</p>",
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.sMpaxA2yjcxXkY2F"
@@ -797,7 +835,7 @@
           "level": 7
         },
         "_id": "qUO487lNRcs486wL",
-        "description": "<p>Choose one of your domains. You gain a domain feature for that</p><p>domain, as shown on the 7th-Level Conduit Domain Features table.</p><p></p><table><tbody><tr><td><p><strong>Domain</strong></p></td><td><p><strong>Feature</strong></p></td></tr><tr><td><p>Creation</p></td><td><p>Divine Quartermaster</p></td></tr><tr><td><p>Death</p></td><td><p>Word of Death Deferred</p></td></tr><tr><td><p>Fate</p></td><td><p>Word of Fate Denied</p></td></tr><tr><td><p>Knowledge</p></td><td><p>Gods' Library</p></td></tr><tr><td><p>Life</p></td><td><p>Font of Grace</p></td></tr><tr><td><p>Love</p></td><td><p>Covenant of the Heart</p></td></tr><tr><td><p>Nature</p></td><td><p>Nature's Bounty</p></td></tr><tr><td><p>Protection</p></td><td><p>Blessing of Iron</p></td></tr><tr><td><p>Storm</p></td><td><p>Thunderstruck</p></td></tr><tr><td><p>Sun</p></td><td><p>Light of the Burning Sun</p></td></tr><tr><td><p>Trickery</p></td><td><p>Trinity of Trickery</p></td></tr><tr><td><p>War</p></td><td><p>Your Triumphs are Remembered</p></td></tr></tbody></table>",
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>",
         "chooseN": 1,
         "pool": [
           {
@@ -938,7 +976,7 @@
       },
       "JGz4DGEIKk5sHW9E": {
         "name": "1st-Level Domain Feature",
-        "img": null,
+        "img": "icons/magic/holy/saint-glass-portrait-halo.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -946,10 +984,10 @@
         "_id": "JGz4DGEIKk5sHW9E",
         "pool": [
           {
-            "uuid": "Compendium.draw-steel.classes.Item.QDpxxvypQpiRqR3t"
+            "uuid": "Compendium.draw-steel.classes.Item.rnOmChJZxUMVHGL3"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i"
+            "uuid": "Compendium.draw-steel.classes.Item.yEhOYfiCIa1o1fGc"
           },
           {
             "uuid": "Compendium.draw-steel.classes.Item.21lMiXOy7dWQvNZH"
@@ -964,7 +1002,7 @@
             "uuid": "Compendium.draw-steel.classes.Item.D0ef3sDvAeB8Tre7"
           },
           {
-            "uuid": "Compendium.draw-steel.classes.Item.OKgn1XTvDQ4anbYK"
+            "uuid": "Compendium.draw-steel.classes.Item.uolRzoBIpSlsbfsZ"
           },
           {
             "uuid": "Compendium.draw-steel.classes.Item.FxXIbGZGvaJNpJ4E"
@@ -982,7 +1020,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain. Additionally, you gain a skill from the chosen domain, selected from a skill group. <span class=\"fontstyle0\">(</span><span class=\"fontstyle1\"><em>Quick Build:</em> </span><span class=\"fontstyle0\">Revitalizing Ritual and the Heal skill from the Life domain.)</span></p>"
       }
     },
     "level": 0,

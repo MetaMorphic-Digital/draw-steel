@@ -1,12 +1,12 @@
 {
-  "folder": "FI4eZ1GE1XrQ7RIx",
-  "name": "Blessing of Comprehension",
+  "folder": "T3XJaPq9pd6F8bCx",
+  "name": "Grave Speech",
   "type": "feature",
-  "_id": "nowK2klms2t0jEUk",
-  "img": "icons/sundries/books/book-red-cross.webp",
+  "_id": "yEhOYfiCIa1o1fGc",
+  "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
   "system": {
     "description": {
-      "value": "<p>You can interpret diagrams and charts even if you don’t understand the language associated with them. You are considered fluent in all languages for the purpose of understanding the project source for any research or crafting project.</p>",
+      "value": "<p>You have the following ability.</p><p>@UUID[Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i]{Grave Speech}</p>",
       "director": ""
     },
     "source": {
@@ -14,16 +14,30 @@
       "page": "97",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "blessing-of-comprehension",
+    "_dsid": "grave-speech",
     "advancements": {
-      "IPhGrtQ62OEMZ3Z5": {
+      "43elmjHIt2VItO3g": {
+        "name": "Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "43elmjHIt2VItO3g",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.19Xsq1UYwruqOI5i"
+          }
+        ]
+      },
+      "dKMxH4YRAXv6N60V": {
         "name": "",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": null
         },
-        "_id": "IPhGrtQ62OEMZ3Z5",
+        "_id": "dKMxH4YRAXv6N60V",
         "skills": {
           "groups": [
             "lore"
@@ -33,13 +47,14 @@
       }
     },
     "prerequisites": {
+      "value": "",
       "dsid": [
-        "knowledge"
+        "grave"
       ]
     }
   },
   "effects": [],
-  "sort": 200000,
+  "sort": 0,
   "ownership": {
     "default": 0
   },
@@ -51,9 +66,9 @@
     "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1755755072529,
+    "createdTime": 1762477663366,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!nowK2klms2t0jEUk"
+  "_key": "!items!yEhOYfiCIa1o1fGc"
 }
