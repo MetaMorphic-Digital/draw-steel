@@ -3,8 +3,8 @@
 {{else}}
 <fieldset>
   <legend>{{systemFields.prerequisites.label}}</legend>
-  {{formGroup systemFields.prerequisites.fields.value value=system.prerequisites.value}}
   {{formGroup systemFields.prerequisites.fields.dsid value=system.prerequisites.dsid}}
+  {{formGroup systemFields.prerequisites.fields.level value=system.prerequisites.level}}
 </fieldset>
 {{formGroup systemFields.story value=system.story}}
 {{formGroup systemFields.keywords value=system.keywords options=config.abilities.keywordOptions}}

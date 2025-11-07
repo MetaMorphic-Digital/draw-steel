@@ -1,4 +1,5 @@
 import { systemPath } from "../../constants.mjs";
+import { validateDSID } from "../helpers.mjs";
 import AdvancementModel from "./advancement.mjs";
 
 export default class SubclassModel extends AdvancementModel {
@@ -26,7 +27,7 @@ export default class SubclassModel extends AdvancementModel {
 
     schema.classLink = new fields.StringField({
       required: true,
-      validate: string => string === string.slugify({ strict: true }),
+      validate: validateDSID,
       validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
     });
 

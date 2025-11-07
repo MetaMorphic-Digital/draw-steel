@@ -46,3 +46,16 @@ export const damageTypes = (inner, { all = false } = {}) => {
 
   return new SchemaField(schema);
 };
+
+/**
+ * Validates if a DSID fulfills our parameters.
+ * @param {string} dsid
+ */
+export const validateDSID = (dsid) => {
+  // Valid slug
+  const slug = dsid.slugify({ strict: true });
+  // multi-slugging can continue to mutate, this checks if the mutation is *only* from the middle mutation.
+  const reSlug = dsid.replace(/[\s-]+/g, "-");
+
+  return [dsid, reSlug].includes(slug);
+};

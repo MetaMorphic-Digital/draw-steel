@@ -2,7 +2,7 @@ import { systemPath } from "../../constants.mjs";
 import { DrawSteelActiveEffect, DrawSteelActor, DrawSteelChatMessage } from "../../documents/_module.mjs";
 import { DamageRoll, PowerRoll } from "../../rolls/_module.mjs";
 import FormulaField from "../fields/formula-field.mjs";
-import { setOptions } from "../helpers.mjs";
+import { setOptions, validateDSID } from "../helpers.mjs";
 import enrichHTML from "../../utils/enrich-html.mjs";
 import DamagePowerRollEffect from "../pseudo-documents/power-roll-effects/damage-effect.mjs";
 import BaseItemModel from "./base.mjs";
@@ -49,7 +49,7 @@ export default class AbilityModel extends BaseItemModel {
     schema.prerequisites = new fields.SchemaField({
       value: new fields.StringField({ required: true }),
       dsid: new fields.SetField(setOptions({
-        validate: string => string === string.slugify({ strict: true }),
+        validate: validateDSID,
         validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
       level: new fields.NumberField({ required: true, integer: true, positive: true }),
