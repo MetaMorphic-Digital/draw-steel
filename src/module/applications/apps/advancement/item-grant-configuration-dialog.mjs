@@ -284,6 +284,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
+   * Fetch the actor's class or pending class.
    * @returns {Promise<DrawSteelItem | null>}
    */
   async #getActorClass() {
@@ -297,6 +298,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /* -------------------------------------------------- */
 
   /**
+   * Fetch the actor's subclasses or pending subclasses.
    * @returns {Promise<DrawSteelItem[]>}
    */
   async #getActorSubclasses() {
