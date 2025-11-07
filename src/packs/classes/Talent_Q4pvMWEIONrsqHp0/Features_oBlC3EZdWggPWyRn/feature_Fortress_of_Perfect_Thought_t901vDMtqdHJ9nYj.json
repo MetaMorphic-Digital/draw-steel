@@ -19,7 +19,7 @@
   },
   "effects": [
     {
-      "name": "Psychic Immunity 10",
+      "name": "Fortress of Perfect Thought",
       "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
       "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.t901vDMtqdHJ9nYj",
@@ -35,6 +35,18 @@
           "key": "system.damage.immunities.psychic",
           "mode": 2,
           "value": "10",
+          "priority": null
+        },
+        {
+          "key": "system.statuses.immunities",
+          "mode": 2,
+          "value": "taunted",
+          "priority": null
+        },
+        {
+          "key": "system.statuses.immunities",
+          "mode": 2,
+          "value": "frightened",
           "priority": null
         }
       ],

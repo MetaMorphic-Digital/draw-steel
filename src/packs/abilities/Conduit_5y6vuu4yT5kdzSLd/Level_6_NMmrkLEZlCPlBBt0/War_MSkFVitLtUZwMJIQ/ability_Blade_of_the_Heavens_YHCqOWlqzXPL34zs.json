@@ -1,17 +1,17 @@
 {
-  "folder": "5GxEMwCDqG7TTcr9",
-  "name": "Your Story Ends Here",
+  "folder": "MSkFVitLtUZwMJIQ",
+  "name": "Blade of the Heavens",
   "type": "ability",
-  "_id": "yDumCGie3ONcr9K7",
-  "img": "icons/magic/death/gallows-hanged-humanoid.webp",
+  "_id": "YHCqOWlqzXPL34zs",
+  "img": "icons/weapons/swords/sword-winged-pink.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "107",
+      "page": "106",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "your-story-ends-here",
-    "story": "You bend the fate of a foe, willing them to die.",
+    "_dsid": "blade-of-the-heavens",
+    "story": "A greatsword streams down from the sky, threatening to pin your foe.",
     "keywords": [
       "magic",
       "ranged",
@@ -23,7 +23,7 @@
     "trigger": "",
     "distance": {
       "type": "ranged",
-      "primary": 10
+      "primary": 5
     },
     "damageDisplay": "melee",
     "target": {
@@ -39,45 +39,40 @@
         ]
       },
       "effects": {
-        "l4G11eFNFxJR24Mj": {
+        "kOhxN0zgpT5TnPeT": {
           "name": "",
           "img": null,
           "type": "damage",
-          "_id": "l4G11eFNFxJR24Mj",
+          "_id": "kOhxN0zgpT5TnPeT",
           "damage": {
             "tier1": {
-              "value": "9 + @chr",
-              "types": [
-                "corruption"
-              ]
+              "value": "8 + @chr"
             },
             "tier2": {
-              "value": "14 + @chr",
-              "types": [
-                "corruption"
-              ]
+              "value": "12 + @chr"
             },
             "tier3": {
-              "value": "19 + @chr",
-              "types": [
-                "corruption"
-              ]
+              "value": "16 + @chr"
             }
           }
         },
-        "dBIekHPb7ckr2Ba3": {
+        "eqnQeNzsNwjOcZ4N": {
           "name": "",
           "img": null,
           "type": "applied",
-          "_id": "dBIekHPb7ckr2Ba3",
+          "_id": "eqnQeNzsNwjOcZ4N",
           "applied": {
             "tier1": {
-              "display": "{{potency}}, weakened (save ends)",
+              "display": "{{potency}}, prone and restrained (save ends)",
               "potency": {
-                "characteristic": "reason"
+                "characteristic": "agility"
               },
               "effects": {
-                "weakened": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                },
+                "restrained": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -85,7 +80,11 @@
             },
             "tier2": {
               "effects": {
-                "weakened": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                },
+                "restrained": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -93,7 +92,11 @@
             },
             "tier3": {
               "effects": {
-                "weakened": {
+                "prone": {
+                  "condition": "failure",
+                  "end": ""
+                },
+                "restrained": {
                   "condition": "failure",
                   "end": "save"
                 }
@@ -105,7 +108,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>If this damage kills the target, you and each ally within distance can spend a Recovery.</p>"
+      "after": ""
     },
     "spend": {
       "text": "",
@@ -113,7 +116,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -122,12 +125,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1760801542068,
+    "createdTime": 1760753730354,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!yDumCGie3ONcr9K7"
+  "_key": "!items!YHCqOWlqzXPL34zs"
 }

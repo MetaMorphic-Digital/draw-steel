@@ -1,34 +1,34 @@
 {
-  "folder": "5GxEMwCDqG7TTcr9",
-  "name": "Blessing of the Midday Sun",
+  "folder": "xiOfdfb0waWB449Y",
+  "name": "Lauded by God",
   "type": "ability",
-  "_id": "JeEHo9msy0O1Qlmy",
-  "img": "icons/magic/light/explosion-star-orange.webp",
+  "_id": "BpV9vREE34LfeqJG",
+  "img": "icons/skills/social/diplomacy-peace-alliance.webp",
   "system": {
     "source": {
       "book": "Heroes",
-      "page": "106",
+      "page": "107",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "blessing-of-the-midday-sun",
-    "story": "Your body emits a heat that bakes your enemies and inspires your allies.",
+    "_dsid": "lauded-by-god",
+    "story": "You beseech the gods to give your allies what they need to win the day, and the gods answer.",
     "keywords": [
-      "area",
-      "magic"
+      "magic",
+      "ranged"
     ],
     "type": "maneuver",
     "category": "heroic",
     "resource": 9,
     "trigger": "",
     "distance": {
-      "type": "aura",
-      "primary": 4
+      "type": "ranged",
+      "primary": 10
     },
     "damageDisplay": "melee",
     "target": {
-      "type": "special",
-      "custom": "Self and each creature in the area",
-      "value": null
+      "type": "ally",
+      "custom": "",
+      "value": 2
     },
     "power": {
       "roll": {
@@ -38,7 +38,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Until the end of the encounter or until you are dying, each enemy in the area takes a bane on power rolls, and you and each ally in the area gain 1 surge at the end of each of your turns.</p>",
+      "before": "<p>Each target [[/gain 3 heroic]].</p>",
       "after": ""
     },
     "spend": {
@@ -47,7 +47,7 @@
     }
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -56,12 +56,12 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1760753997268,
+    "createdTime": 1760754772137,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_key": "!items!JeEHo9msy0O1Qlmy"
+  "_key": "!items!BpV9vREE34LfeqJG"
 }

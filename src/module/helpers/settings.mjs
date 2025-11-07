@@ -64,7 +64,7 @@ export default class DrawSteelSettingsHandler {
         hint: "DRAW_STEEL.Setting.UpdateFromCompendium.Hint",
         type: new fields.NumberField({ required: true, initial: CONST.USER_ROLES.ASSISTANT, choices: () => {
           return Object.entries(CONST.USER_ROLES).reduce((obj, [key, value]) => {
-            if (value) obj[key] = game.i18n.localize(`USER.Role${key.titleCase()}`);
+            if (value) obj[value] = game.i18n.localize(`USER.Role${key.titleCase()}`);
             return obj;
           }, {});
         } }),
