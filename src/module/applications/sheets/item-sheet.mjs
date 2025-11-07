@@ -5,7 +5,6 @@ import DSDocumentSheet from "../api/document-sheet.mjs";
 import DocumentSourceInput from "../apps/document-source-input.mjs";
 import BaseAdvancement from "../../data/pseudo-documents/advancements/base-advancement.mjs";
 import BasePowerRollEffect from "../../data/pseudo-documents/power-roll-effects/base-power-roll-effect.mjs";
-import AdvancementChain from "../../utils/advancement-chain.mjs";
 
 /**
  * @import ProseMirrorEditor from "@client/applications/ux/prosemirror-editor.mjs";
