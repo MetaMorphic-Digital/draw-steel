@@ -30,6 +30,49 @@ export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<conf
 /* -------------------------------------------------- */
 
 /**
+ * Resource name to localization key and attribute path mappings for gain enricher.
+ * Maps resource type identifiers to their i18n localization keys and actor attribute paths.
+ * 
+ * @typedef {string} label - The full i18n path used to label the resource
+ * @typedef {string} resource - The full path, relative to the actor, used to update the resource
+ * @typedef {string} resourceFormatString - Final key in the i18n path used for localization, relative to DRAW_STEEL.EDITOR.Enrichers.Gain.{MessageTitle|FormatString} (Default: "Default")
+ */
+const GAIN_RESOURCE_LOOKUP = {
+  epic: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.epic.value.label",
+    resource: "hero.epic.value",
+  },
+  heroic: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label",
+    resource: "hero.primary.value",
+  },
+  renown: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.renown.label",
+    resource: "hero.renown",
+  },
+  surge: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label",
+    resource: "hero.surges",
+  },
+  victory: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.victories.label",
+    resource: "hero.victories",
+    resourceFormatString: "Victory",
+  },
+  wealth: {
+    label: "DRAW_STEEL.Actor.hero.FIELDS.hero.wealth.label",
+    resource: "hero.wealth",
+  },
+};
+
+const GAIN_RESOURCE_ALIASES = {
+  hr: "heroic",
+  victories: "victory",
+};
+
+/* -------------------------------------------------- */
+
+/**
  * Enricher function.
  * @type {TextEditorEnricher}
  */
@@ -250,15 +293,17 @@ async function rollDamageHeal(link, event) {
 function enrichGain(parsedConfig, label, options) {
   const linkConfig = { type: "gain", formula: null, gainType: null };
 
+  const allGainKeys = Object.keys(GAIN_RESOURCE_LOOKUP).concat(Object.keys(GAIN_RESOURCE_ALIASES));
+
   // Parse the formula and type from configuration
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
-    c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
-      if (["hr", "heroic", "surge"].includes(normalizedValue)) {
-        c.type.push(normalizedValue);
+      // If the normalized value is present in the lookup object, add it to the config type
+      if (allGainKeys.some((key) => key === normalizedValue)) {
+        c.type = normalizedValue;
       } else {
         formulaParts.push(value);
       }
@@ -269,7 +314,7 @@ function enrichGain(parsedConfig, label, options) {
     );
     if (c.formula) {
       linkConfig.formula = c.formula;
-      linkConfig.gainType = c.type[0]; // Require type to be specified
+      linkConfig.gainType = c.type; // Require type to be specified
       break; // Only use first formula
     }
   }
@@ -283,28 +328,24 @@ function enrichGain(parsedConfig, label, options) {
     );
   }
 
-  let resourceType;
+  // Reassign aliases first
+  const rewrite = GAIN_RESOURCE_ALIASES[linkConfig.gainType];
+  if (rewrite) linkConfig.gainType = rewrite;
 
-  switch (linkConfig.gainType) {
-    // Reassign aliases first.
-    case "hr":
-      linkConfig.gainType = "heroic"; // eslint-ignore no-fallthrough
-    case "heroic":
-      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
-      break;
-    case "surge":
-      resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
-      break;
-  }
+  const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
+  const resourceType = game.i18n.localize(lookup.label);
+
   const localizationData = {
     formula: createLink(linkConfig.formula, {}, { tag: "span", icon: "fa-bolt" }).outerHTML,
     type: resourceType,
   };
 
+  const resourceFormatString = lookup.resourceFormatString ?? "Default";
+
   const link = document.createElement("a");
   link.className = "roll-link";
   addDataset(link, linkConfig);
-  link.innerHTML = game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString", localizationData);
+  link.innerHTML = game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.FormatString.${resourceFormatString}`, localizationData);
 
   return link;
 }
@@ -334,17 +375,6 @@ async function rollGain(link, event) {
   const roll = new DSRoll(formula);
   await roll.evaluate();
 
-  let resourceLabel;
-
-  switch (gainType) {
-    case "surge":
-      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
-      break;
-    case "heroic":
-      resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
-      break;
-  }
-
   let targetList;
 
   const multipleActors = (actors.size > 1);
@@ -355,10 +385,16 @@ async function rollGain(link, event) {
     targetList = `(${combinedNames})`;
   }
 
+  const lookup = GAIN_RESOURCE_LOOKUP[gainType];
+  const resourceFormatString = lookup.resourceFormatString ?? "Default";
+
+  // Get the localized resource label
+  const resourceLabel = game.i18n.localize(lookup.label);
+
   // Create the chat message
   await DrawSteelChatMessage.create({
     rolls: [roll],
-    flavor: game.i18n.format("DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle", { type: resourceLabel, targets: targetList ?? "" }),
+    flavor: game.i18n.format(`DRAW_STEEL.EDITOR.Enrichers.Gain.MessageTitle.${resourceFormatString}`, { type: resourceLabel, targets: targetList ?? "" }),
     flags: { core: { canPopout: true } },
     speaker: DrawSteelChatMessage.getSpeaker(),
     style: multipleActors ? CONST.CHAT_MESSAGE_STYLES.OOC : CONST.CHAT_MESSAGE_STYLES.DEFAULT,
@@ -366,15 +402,6 @@ async function rollGain(link, event) {
 
   // Apply the gain to each selected token's actor
   for (const actor of actors) {
-    switch (gainType) {
-      case "surge":
-        await actor.modifyTokenAttribute("hero.surges", roll.total, true, false);
-        break;
-      case "heroic":
-        await actor.modifyTokenAttribute("hero.primary.value", roll.total, true, false);
-        break;
-      default:
-        return;
-    }
+    await actor.modifyTokenAttribute(lookup.resource, roll.total, true, false);
   }
 }
