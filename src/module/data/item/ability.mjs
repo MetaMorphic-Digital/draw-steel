@@ -52,6 +52,7 @@ export default class AbilityModel extends BaseItemModel {
         validate: string => string === string.slugify({ strict: true }),
         validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
+      level: new fields.NumberField({ required: true, integer: true, positive: true }),
     });
 
     schema.story = new fields.StringField({ required: true });

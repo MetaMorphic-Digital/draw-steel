@@ -35,6 +35,7 @@ export default class FeatureModel extends AdvancementModel {
         validate: string => string === string.slugify({ strict: true }),
         validationError: game.i18n.localize("DRAW_STEEL.SOURCE.InvalidDSID"),
       })),
+      level: new fields.NumberField({ required: true, integer: true, positive: true }),
     });
 
     return schema;

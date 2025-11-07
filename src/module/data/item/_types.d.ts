@@ -163,6 +163,7 @@ declare module "./feature.mjs" {
     prerequisites: {
       value: string;
       dsid: Set<string>;
+      level: number | null;
     }
   }
 }
