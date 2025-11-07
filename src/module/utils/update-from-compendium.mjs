@@ -67,7 +67,7 @@ function compendiumUpdateData(doc) {
   switch (doc.documentName) {
     case "Actor":
     case "Item":
-      return { _id: doc.id, system: documentData.system };
+      return { _id: doc.id, "==system": documentData.system };
     case "ActiveEffect":
       return {
         _id: doc.id,

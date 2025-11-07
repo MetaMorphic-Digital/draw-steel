@@ -302,7 +302,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
    * @returns {Promise<DrawSteelItem[]>}
    */
   async #getActorSubclasses() {
-    if (this.node.actor.system.subclasses?.length) return this.node.actor.system.subclasses;
+    if (this.node.actor.system.subclasses?.size) return this.node.actor.system.subclasses;
     // check if this is ultimately granted by a subclass
     let node = this.node;
     while (node && (node.advancement.document.type !== "subclass")) node = node.parent;
