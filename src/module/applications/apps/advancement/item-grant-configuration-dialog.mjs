@@ -272,7 +272,7 @@ export default class ItemGrantConfigurationDialog extends DSApplication {
   /**
    * Checks if an item fulfills all of its prerequisites.
    * @param {DrawSteelItem} item
-   * @returns
+   * @returns {boolean}
    */
   #fulfillsRequirements(item) {
     if (item.system.prerequisites?.dsid?.size) {
