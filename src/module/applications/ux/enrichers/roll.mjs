@@ -299,12 +299,11 @@ function enrichGain(parsedConfig, label, options) {
   for (const c of parsedConfig) {
     const formulaParts = [];
     if (c.formula) formulaParts.push(c.formula);
-    c.type = c.type?.replaceAll("/", "|").split("|") ?? [];
     for (const value of c.values) {
       const normalizedValue = value.toLowerCase();
       // If the normalized value is present in the lookup object, add it to the config type
       if (allGainKeys.some((key) => key === normalizedValue)) {
-        c.type.push(normalizedValue);
+        c.type = normalizedValue;
       } else {
         formulaParts.push(value);
       }
@@ -315,7 +314,7 @@ function enrichGain(parsedConfig, label, options) {
     );
     if (c.formula) {
       linkConfig.formula = c.formula;
-      linkConfig.gainType = c.type[0]; // Require type to be specified
+      linkConfig.gainType = c.type; // Require type to be specified
       break; // Only use first formula
     }
   }
