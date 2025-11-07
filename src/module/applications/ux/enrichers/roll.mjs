@@ -286,7 +286,9 @@ function enrichGain(parsedConfig, label, options) {
   let resourceType;
 
   switch (linkConfig.gainType) {
-    case "hr": // eslint-ignore no-fallthrough
+    // Reassign aliases first.
+    case "hr":
+      linkConfig.gainType = "heroic"; // eslint-ignore no-fallthrough
     case "heroic":
       resourceType = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
       break;
@@ -338,7 +340,6 @@ async function rollGain(link, event) {
     case "surge":
       resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.surges.label");
       break;
-    case "hr": // eslint-ignore no-fallthrough
     case "heroic":
       resourceLabel = game.i18n.localize("DRAW_STEEL.Actor.hero.FIELDS.hero.primary.value.label");
       break;
