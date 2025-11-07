@@ -486,14 +486,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       }
     }
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    const staminaUpdates = {};
-    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
-    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
-
-    const remainingDamage = Math.max(0, damage - damageToTempStamina);
-    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
-
-    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
   }
 
   /* -------------------------------------------------- */
