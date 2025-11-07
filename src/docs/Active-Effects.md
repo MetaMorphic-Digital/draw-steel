@@ -226,4 +226,4 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
 |`keyword`|Add a keyword to an ability|
 
-i**Note:** For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+**Note:** For `keyword`, use the "Add" change mode with values like `magic` or `strike`
