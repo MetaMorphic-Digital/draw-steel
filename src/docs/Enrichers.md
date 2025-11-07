@@ -44,6 +44,7 @@ The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Fo
 - `[[/gain formula epic]]` - Modifies epic resources
 - `[[/gain formula renown]]` - Modifies renown
 - `[[/gain formula wealth]]` - Modifies wealth
+- `[[/gain formula victory]]` - Modifies victories
 - `[[/gain formula victories]]` - Modifies victories
 - `[[/heroic formula]]` - Equivalent to `/gain formula heroic`
 - `[[/surge formula]]` - Equivalent to `/gain formula surge`
@@ -60,9 +61,10 @@ The `[[/gain]]` enricher allows you to grant heroic resources (like Ferocity, Fo
 - [&ZeroWidthSpace;[/gain 2 epic]]: Gain 2 epic resources.
 - [&ZeroWidthSpace;[/gain 3 renown]]: Gain 3 renown.
 - [&ZeroWidthSpace;[/gain 5 wealth]]: Gain 5 wealth.
-- [&ZeroWidthSpace;[/gain 1 victories]]: Gain 1 victory.
+- [&ZeroWidthSpace;[/gain 1 victory]]: Gain 1 victory.
 - [&ZeroWidthSpace;[/gain 1d6 heroic]]: Gain a random amount of heroic resources based on a roll.
 - [&ZeroWidthSpace;[/gain 1d6 surge]]: Gain a random amount of surges based on a roll.
+- [&ZeroWidthSpace;[/gain 1d6 victories]]: Gain a random amount of victories based on a roll.
 - [&ZeroWidthSpace;[/gain @level heroic]]: Gain heroic resources equal to the owner's level.
 - [&ZeroWidthSpace;[/gain @level surge]]: Gain surges equal to the owner's level.
 - [&ZeroWidthSpace;[/gain 3 heroic]]{Gain Focus}: Brackets will replace the default text for the command.
