@@ -20,19 +20,9 @@ export const id = "ds.roll";
 /* -------------------------------------------------- */
 
 /**
- * Valid roll types.
- */
-const rollTypes = ["damage", "heal", "healing", "gain", "heroic", "surge"];
-
-/** @type {TextEditorEnricherConfig["pattern"]} */
-export const pattern = new RegExp(`\\[\\[/(?<type>${rollTypes.join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
-
-/* -------------------------------------------------- */
-
-/**
  * Resource name to localization key and attribute path mappings for gain enricher.
  * Maps resource type identifiers to their i18n localization keys and actor attribute paths.
- * 
+ *
  * @typedef {string} label - The full i18n path used to label the resource
  * @typedef {string} resource - The full path, relative to the actor, used to update the resource
  * @typedef {string} resourceFormatString - Final key in the i18n path used for localization, relative to DRAW_STEEL.EDITOR.Enrichers.Gain.{MessageTitle|FormatString} (Default: "Default")
@@ -65,9 +55,25 @@ const GAIN_RESOURCE_LOOKUP = {
   },
 };
 
+/**
+ * Valid roll types.
+ */
+const multiRollTypes = ["damage", "heal", "healing"];
+
+/**
+ * Valid roll types that only allow a single formula.
+ */
+const singleRollTypes = Object.keys(GAIN_RESOURCE_LOOKUP).concat("gain");
+
+/** @type {TextEditorEnricherConfig["pattern"]} */
+export const pattern = new RegExp(`\\[\\[/(?<type>${multiRollTypes.concat(singleRollTypes).join("|")})(?<config> .*?)?]](?!])(?:{(?<label>[^}]+)})?`, "gi");
+
+/* -------------------------------------------------- */
+
 const GAIN_RESOURCE_ALIASES = {
   hr: "heroic",
   victories: "victory",
+  surges: "surge",
 };
 
 /* -------------------------------------------------- */
@@ -78,24 +84,21 @@ const GAIN_RESOURCE_ALIASES = {
  */
 export function enricher(match, options) {
   let { type, config, label } = match.groups;
-  /** @type {typeof rollTypes} */
+  /** @type {typeof multiRollTypes} */
   type = type.toLowerCase();
-  const parsedConfig = parseConfig(config, { multiple: true });
+  const parsedConfig = parseConfig(config, { multiple: multiRollTypes.includes(type) });
   parsedConfig._input = match[0];
+
+  if (type in GAIN_RESOURCE_LOOKUP) {
+    parsedConfig.type = type;
+    type = "gain";
+  }
 
   switch (type) {
     case "heal":
     case "healing": parsedConfig._isHealing = true; // eslint-ignore no-fallthrough
     case "damage": return enrichDamageHeal(parsedConfig, label, options);
     case "gain": return enrichGain(parsedConfig, label, options);
-    case "heroic":
-      //[[/heroic 2]] -> [[/gain 2 heroic]]
-      parsedConfig[0].values.push("heroic");
-      return enrichGain(parsedConfig, label, options);
-    case "surge":
-      //[[/surge 2]] -> [[/gain 2 surge]]
-      parsedConfig[0].values.push("surge");
-      return enrichGain(parsedConfig, label, options);
   }
 }
 
@@ -285,41 +288,35 @@ async function rollDamageHeal(link, event) {
 
 /**
  * Enrich a gain link for heroic resources.
- * @param {ParsedConfig[]} parsedConfig      Configuration data.
+ * @param {ParsedConfig} parsedConfig      Configuration data.
  * @param {string} [label]             Optional label to replace default text.
  * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
 function enrichGain(parsedConfig, label, options) {
-  const linkConfig = { type: "gain", formula: null, gainType: null };
-
-  const allGainKeys = Object.keys(GAIN_RESOURCE_LOOKUP).concat(Object.keys(GAIN_RESOURCE_ALIASES));
+  const linkConfig = { type: "gain", formula: null, gainType: parsedConfig.type };
 
   // Parse the formula and type from configuration
-  for (const c of parsedConfig) {
-    const formulaParts = [];
-    if (c.formula) formulaParts.push(c.formula);
-    for (const value of c.values) {
-      const normalizedValue = value.toLowerCase();
-      // If the normalized value is present in the lookup object, add it to the config type
-      if (allGainKeys.some((key) => key === normalizedValue)) {
-        c.type = normalizedValue;
-      } else {
-        formulaParts.push(value);
-      }
-    }
-    c.formula = DSRoll.replaceFormulaData(
-      formulaParts.join(" "),
-      options.rollData ?? options.relativeTo?.getRollData?.() ?? {},
-    );
-    if (c.formula) {
-      linkConfig.formula = c.formula;
-      linkConfig.gainType = c.type; // Require type to be specified
-      break; // Only use first formula
+  const formulaParts = [];
+  if (parsedConfig.formula) formulaParts.push(parsedConfig.formula);
+  for (const value of parsedConfig.values) {
+    const normalizedValue = value.toLowerCase();
+    // If the normalized value is present in the lookup object, add it to the config type
+    if (normalizedValue in GAIN_RESOURCE_LOOKUP) {
+      linkConfig.gainType = normalizedValue;
+    } else if (normalizedValue in GAIN_RESOURCE_ALIASES) {
+      linkConfig.gainType = GAIN_RESOURCE_ALIASES[normalizedValue];
+    } else {
+      formulaParts.push(value);
     }
   }
 
-  if (!linkConfig.formula || !linkConfig.gainType) return null;
+  linkConfig.formula = DSRoll.replaceFormulaData(
+    formulaParts.join(" "),
+    options.rollData ?? options.relativeTo?.getRollData?.() ?? {},
+  );
+
+  if (!linkConfig.formula || !(linkConfig.gainType in GAIN_RESOURCE_LOOKUP)) return null;
 
   if (label) {
     return createLink(label,
@@ -327,10 +324,6 @@ function enrichGain(parsedConfig, label, options) {
       { classes: "roll-link", icon: "fa-bolt" },
     );
   }
-
-  // Reassign aliases first
-  const rewrite = GAIN_RESOURCE_ALIASES[linkConfig.gainType];
-  if (rewrite) linkConfig.gainType = rewrite;
 
   const lookup = GAIN_RESOURCE_LOOKUP[linkConfig.gainType];
   const resourceType = game.i18n.localize(lookup.label);
