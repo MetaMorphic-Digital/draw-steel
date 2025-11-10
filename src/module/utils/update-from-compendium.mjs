@@ -67,7 +67,13 @@ function compendiumUpdateData(doc) {
   switch (doc.documentName) {
     case "Actor":
     case "Item":
-      return { _id: doc.id, system: documentData.system };
+      // Preserve project point usage
+      if (doc.type === "career") delete documentData.system.projectPoints;
+      // Preserve class level
+      else if (doc.type === "class") delete documentData.system.level;
+      // Preserve current project completion status
+      else if (doc.type === "project") delete documentData.system.points;
+      return { _id: doc.id, "==system": documentData.system };
     case "ActiveEffect":
       return {
         _id: doc.id,
