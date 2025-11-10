@@ -1,295 +1,317 @@
 /* CSS for DrawSteelJournalEntrySheet */
 
 /*all*/
-.draw-steel.journal-sheet .window-content{
+.draw-steel.journal-sheet .window-content {
   backdrop-filter: none;
   background: var(--draw-steel-c-white);
 }
-.draw-steel .content-link, .inline-roll {
-    background: var(--draw-steel-c-white);
-    border: 1px solid var(--draw-steel-c-laserline);
-    border-radius: 2px;
-    color: var(--draw-steel-c-laserline);
-    margin: -1px 0;
-    padding: 1px 4px 0;
-    white-space: nowrap;
-    word-break: break-all;
+.draw-steel .content-link,
+.inline-roll {
+  background: var(--draw-steel-c-white);
+  border: 1px solid var(--draw-steel-c-laserline);
+  border-radius: 2px;
+  color: var(--draw-steel-c-laserline);
+  margin: -1px 0;
+  padding: 1px 4px 0;
+  white-space: nowrap;
+  word-break: break-all;
 }
-.draw-steel.journal-sheet .journal-sidebar{
-  }
-    ol li{
-      font-family: 'Draw Steel Book';
-      position:relative;
-      a:after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--draw-steel-c-laserline);
-/*        background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
-        transition: transform 0.25s ease-out;
-        transform-origin: bottom left;
-        };
-      a:hover::after{;
+.draw-steel.journal-sheet .journal-sidebar {
+  ol li {
+    font-family: 'Draw Steel Book';
+    position: relative;
+    a:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--draw-steel-c-laserline);
+      /*        background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
+      transition: transform 0.25s ease-out;
+      transform-origin: bottom left;
+    }
+    ;
+    a:hover::after {
       transform: scaleX(1);
-      }
     }
-    .toc li.page.active:first-of-type{
-      border-top-color: transparent;
-      border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
-    }
-    .toc li.page.active:last-of-type{
-          border-bottom-color: transparent;
-          border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
-        }
+  }
+  .toc li.page.active:first-of-type {
+    border-top-color: transparent;
+    border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
+  }
+  .toc li.page.active:last-of-type {
+    border-bottom-color: transparent;
+    border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
+  }
 }
-a.button:hover,button:hover{
+a.button:hover,
+button:hover {
   background: var(--draw-steel-c-laserline);
 }
-.draw-steel.journal-sheet.journal-entry, .draw-steel .journal-entry-page {
-  .journal-header input{
-    font-family: 'Draw Steel Book',serif;
+.draw-steel.journal-sheet.journal-entry,
+.draw-steel .journal-entry-page {
+  .journal-header input {
+    font-family: 'Draw Steel Book', serif;
     color: var(--draw-steel-dark);
   }
-  h1, h1.window-title {
-    font-family: 'Draw Steel Book',serif;
-    size:3em;
-    border-bottom:0px;
+  h1,
+  h1.window-title {
+    font-family: 'Draw Steel Book', serif;
+    size: 3em;
+    border-bottom: 0px;
   }
-  h2{
-    font-family: 'Newsreader',serif;
-    font-weight:bold;
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
     border-color: transparent;
     border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
     border-image-slice: 1;
-    }
-  h3{
-    font-family: 'Newsreader',serif;
-    font-weight:bold;
   }
-  h4{
-    font-family: 'Atkinson Hyperlegible',serif;
-    font-weight:bold;
-    font-variant:small-caps;
-    }
-  h5{
-    font-family: 'Atkinson Hyperlegible',serif;
-    }
-  h6{
-    font-family: 'Atkinson Hyperlegible',serif;
+  h3 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+  }
+  h4 {
+    font-family: 'Atkinson Hyperlegible', serif;
+    font-weight: bold;
+    font-variant: small-caps;
+  }
+  h5 {
+    font-family: 'Atkinson Hyperlegible', serif;
+  }
+  h6 {
+    font-family: 'Atkinson Hyperlegible', serif;
   }
 
-/*imports*/
-.glyph {
-  font-family: Draw Steel Glyphs;
-}
-dl {
-  display: grid;
-  grid-template-columns: max-content auto;
-}
+  /*imports*/
+  .glyph {
+    font-family: Draw Steel Glyphs;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: max-content auto;
+  }
 
-dt {
-  grid-column-start: 1;
-  font-family: Draw Steel Glyphs;
-}
+  dt {
+    grid-column-start: 1;
+    font-family: Draw Steel Glyphs;
+  }
 
-dd {
-  grid-column-start: 2;
-}
+  dd {
+    grid-column-start: 2;
+  }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--input-background-color);
-}
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--input-background-color);
+  }
 
-th, td {
-  padding: 16px;
-}
-/*th{
+  th,
+  td {
+    padding: 16px;
+  }
+  /*th{
   background:white;
 }*/
-/*td:nth-child(even) {
+  /*td:nth-child(even) {
   background: var(--input-background-color);
 }*/
 
-tbody tr:nth-child(odd) {
-  background: var(--input-background-color);
-}
-a{
-/*  font-style: italic;*/
-  color: #866d4b;
-}
-/* fancy fieldset*/
- .polygonal-fieldset {
-  position:relative;
-  border: 0px; 
-  --b: 1px;  /* border */
-  --s: 16px; /* size of the cut */
-  
-/*  width:300px;*/
-  display:inline-block;
-/*  aspect-ratio:1.5;*/
-  position:relative;
-  z-index:0;
+  tbody tr:nth-child(odd) {
+    background: var(--input-background-color);
+  }
+  a {
+    /*  font-style: italic;*/
+    color: #866d4b;
+  }
+  /* fancy fieldset*/
+  .polygonal-fieldset {
+    position: relative;
+    border: 0px;
+    --b: 1px;
+    /* border */
+    --s: 16px;
+    /* size of the cut */
 
-      legend{
-        margin:0 auto;
-        margin-bottom:-0.75em;
-      }
-      div{
-        inset: 0px;
-        background: var(--input-background-color);
-        padding:0.5rem;
-      }
-      .special-diamond{
-        font-family: Draw Steel Glyphs;
-        position:absolute;
-        bottom: -0.8em;
-        left: -1em;
-        width: calc(100% + 20px);
-        text-align: center;
-      }
+    /*  width:300px;*/
+    display: inline-block;
+    /*  aspect-ratio:1.5;*/
+    position: relative;
+    z-index: 0;
+
+    legend {
+      margin: 0 auto;
+      margin-bottom: -0.75em;
     }
-    .polygonal-fieldset:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background: #ffffffaa;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
-    .polygonal-fieldset-inverse {
-      position:relative;
-  border: 0px; 
-  --b: 1px;  /* border */
-  --s: 16px; /* size of the cut */
-  
-/*  width:300px;*/
-  display:inline-block;
-/*  aspect-ratio:1.5;*/
-  position:relative;
-  z-index:0;
-
-      legend{
-        margin:0 auto;
-        color: #866d4b;
-        margin-bottom:-0.75em;
-      }
-
-      div{
-        background: var(--draw-steel-c-black);
-        color:var(--draw-steel-c-white);
-        padding:0.5rem;
-        margin:8px;
-      }
-      .special-diamond{
-        font-family: Draw Steel Glyphs;
-        position:absolute;
-        bottom: -0.8em;
-        left: -0.8em;
-        width: calc(100% + 20px);
-        text-align: center;
-        color: var(--draw-steel-c-laserline);
-      }
+    div {
+      inset: 0px;
+      background: var(--input-background-color);
+      padding: 0.5rem;
     }
-.polygonal-fieldset-inverse:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background: #856C4B;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
-
-
-/*dark*/
-  .theme-dark &:not(.theme-light), &.themed.theme-dark {
-      
-      background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
-      background-size: contain;
-      background-position:bottom left;
-      background-repeat:no-repeat;
-      .journal-entry-content, .journal-entry-pages, .journal-entry-page{
-      background: var(--draw-steel-c-white);
-    }
-.polygonal-fieldset {
-  position:relative;      
-      legend{
-        margin:0 auto;
-        margin-bottom:-0.75em;
-      }
-      div{
-        inset: 0px;
-        background: var(--input-background-color);
-        padding:0.5rem;
-      }
-      .special-diamond{
-        font-family: Draw Steel Glyphs;
-        position:absolute;
-        bottom: -0.8em;
-        left: -0.8em;
-        width: calc(100% + 20px);
-        text-align: center;
-      }
-    }
-    .window-title, button, .page-title, .chapter{
-    color:var(--color-light-1);
+    .special-diamond {
+      font-family: Draw Steel Glyphs;
+      position: absolute;
+      bottom: -0.8em;
+      left: -1em;
+      width: calc(100% + 20px);
+      text-align: center;
     }
   }
-/*end dark*/
-/*light*/
-  .theme-light &:not(.theme-dark), &.themed.theme-light {
-    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-      background-size: contain;
-      background-position:bottom left;
-      background-repeat:no-repeat;
-
   .polygonal-fieldset:before {
-  background: #000000aa;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #ffffffaa;
+    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+    --g2: #0000 calc(0.707*var(--s)),
+      #000 0 calc(0.707*var(--s) + var(--b)),
+      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+      #000 0 calc(100% - 0.707*var(--s)),
+      #0000 0;
+    -webkit-mask:
+      linear-gradient(45deg, var(--g2)),
+      linear-gradient(-45deg, var(--g2)),
+      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+  }
+  .polygonal-fieldset-inverse {
+    position: relative;
+    border: 0px;
+    --b: 1px;
+    /* border */
+    --s: 16px;
+    /* size of the cut */
 
-    .journal-entry-content, .journal-entry-pages, .journal-entry-page{
-      background: var(--draw-steel-c-white);
+    /*  width:300px;*/
+    display: inline-block;
+    /*  aspect-ratio:1.5;*/
+    position: relative;
+    z-index: 0;
+
+    legend {
+      margin: 0 auto;
+      color: #866d4b;
+      margin-bottom: -0.75em;
     }
-  .window-header, .journal-sidebar {
-    .window-title, button, .page-title, .chapter{
-    color:var(--color-dark-1);
+
+    div {
+      background: var(--draw-steel-c-black);
+      color: var(--draw-steel-c-white);
+      padding: 0.5rem;
+      margin: 8px;
+    }
+    .special-diamond {
+      font-family: Draw Steel Glyphs;
+      position: absolute;
+      bottom: -0.8em;
+      left: -0.8em;
+      width: calc(100% + 20px);
+      text-align: center;
+      color: var(--draw-steel-c-laserline);
     }
   }
-}
+  .polygonal-fieldset-inverse:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #856C4B;
+    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+    --g2: #0000 calc(0.707*var(--s)),
+      #000 0 calc(0.707*var(--s) + var(--b)),
+      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+      #000 0 calc(100% - 0.707*var(--s)),
+      #0000 0;
+    -webkit-mask:
+      linear-gradient(45deg, var(--g2)),
+      linear-gradient(-45deg, var(--g2)),
+      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+  }
+
+
+  /*dark*/
+  .theme-dark &:not(.theme-light),
+  &.themed.theme-dark {
+
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+    background-size: contain;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    .journal-entry-content,
+    .journal-entry-pages,
+    .journal-entry-page {
+      background: var(--draw-steel-c-white);
+    }
+    .polygonal-fieldset {
+      position: relative;
+      legend {
+        margin: 0 auto;
+        margin-bottom: -0.75em;
+      }
+      div {
+        inset: 0px;
+        background: var(--input-background-color);
+        padding: 0.5rem;
+      }
+      .special-diamond {
+        font-family: Draw Steel Glyphs;
+        position: absolute;
+        bottom: -0.8em;
+        left: -0.8em;
+        width: calc(100% + 20px);
+        text-align: center;
+      }
+    }
+    .window-title,
+    button,
+    .page-title,
+    .chapter {
+      color: var(--color-light-1);
+    }
+  }
+  /*end dark*/
+  /*light*/
+  .theme-light &:not(.theme-dark),
+  &.themed.theme-light {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+    background-size: contain;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+
+    .polygonal-fieldset:before {
+      background: #000000aa;
+      --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+      --g2: #0000 calc(0.707*var(--s)),
+        #000 0 calc(0.707*var(--s) + var(--b)),
+        #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+        #000 0 calc(100% - 0.707*var(--s)),
+        #0000 0;
+      -webkit-mask:
+        linear-gradient(45deg, var(--g2)),
+        linear-gradient(-45deg, var(--g2)),
+        linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+        linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+    }
+
+    .journal-entry-content,
+    .journal-entry-pages,
+    .journal-entry-page {
+      background: var(--draw-steel-c-white);
+    }
+    .window-header,
+    .journal-sidebar {
+      .window-title,
+      button,
+      .page-title,
+      .chapter {
+        color: var(--color-dark-1);
+      }
+    }
+  }
 }
