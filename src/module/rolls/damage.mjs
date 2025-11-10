@@ -1,27 +1,28 @@
 import DSRoll from "./base.mjs";
+import { decodePayload, encodePayload, escapeHtml, partitionTokensByOwnership } from "../utils/gm-action.mjs";
 
 /**
  * Contains damage-specific info like damage types.
  */
 export default class DamageRoll extends DSRoll {
-  /** Escape simple HTML entities for safe string interpolation. */
-  static _escapeHTML(s) {
-    return String(s).replace(/[&<>"']/g, (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])
-    );
-  }
+  static async _applyResultToActor(actor, { amount, isHealing, applyToTemporary, rollType, ignoredImmunities }) {
+    if (!actor) return;
 
-  static _packPayload(obj) {
-    return btoa(encodeURIComponent(JSON.stringify(obj)));
-  }
+    if (isHealing) {
+      if (applyToTemporary && amount < actor.system.stamina.temporary) {
+        ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", { format: { name: actor.name } });
+        return;
+      }
 
-  static _unpackPayload(s) {
-    return JSON.parse(decodeURIComponent(atob(s)));
-  }
+      const attribute = applyToTemporary ? "stamina.temporary" : "stamina";
+      await actor.modifyTokenAttribute(attribute, amount, !applyToTemporary, !applyToTemporary);
+      return;
+    }
 
-  static _canModifyToken(token, user = game.user) {
-    const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS?.OWNER ?? 3;
-    return token?.document?.testUserPermission?.(user, OWNER) ?? token?.document?.isOwner ?? false;
+    await actor.system.takeDamage(amount, {
+      type: rollType,
+      ignoredImmunities,
+    });
   }
 
   /**
@@ -33,81 +34,85 @@ export default class DamageRoll extends DSRoll {
       return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenTargeted", { localize: true });
     }
 
-    const li = event.currentTarget.closest("[data-message-id]");
-    const message = game.messages.get(li.dataset.messageId);
-    /** @type {DamageRoll} */
-    const roll = message.rolls[event.currentTarget.dataset.index];
+    const listItem = event.currentTarget.closest("[data-message-id]");
+    if (!listItem) return;
 
-    let amount = roll.total;
-    if (event.shiftKey) amount = Math.floor(amount / 2);
-    const tokens = [...game.user.targets].filter((t) => t?.document);
+    const message = game.messages.get(listItem.dataset.messageId);
+    if (!message) return;
+
+    const rollIndex = Number(event.currentTarget.dataset.index);
+    /** @type {DamageRoll} */
+    const roll = message.rolls?.[rollIndex];
+    if (!roll) return;
+
+    const rawAmount = roll.total;
+    const amount = event.shiftKey ? Math.floor(rawAmount / 2) : rawAmount;
+    const targetedTokens = [...game.user.targets].filter((token) => token?.document && token.actor);
 
     this._registerGMButtonHookOnce();
 
-    for (const token of tokens) {
-      const actor = token.actor;
-      if (!actor) continue;
+    const isHealing = Boolean(roll.isHeal);
+    const applyToTemporary = isHealing && roll.type !== "value";
+    const rollType = roll.type ?? null;
+    const ignoredImmunities = roll.ignoredImmunities ?? [];
 
-      const canModify = this._canModifyToken(token, game.user);
+    const { controllable, restricted } = partitionTokensByOwnership(targetedTokens, game.user);
 
-      const isHeal = !!roll.isHeal;
-      const isTemp = isHeal ? roll.type !== "value" : false;
+    for (const token of controllable) {
+      await this._applyResultToActor(token.actor, {
+        amount,
+        isHealing,
+        applyToTemporary,
+        rollType,
+        ignoredImmunities,
+      });
+    }
 
-      if (canModify) {
-        if (isHeal) {
-          if (isTemp && (amount < actor.system.stamina.temporary)) {
-            ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", { format: { name: actor.name } });
-          } else {
-            await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
-          }
-        } else {
-          await actor.system.takeDamage(amount, { type: roll.type, ignoredImmunities: roll.ignoredImmunities });
-        }
-      } else {
-        await this._whisperGMApplyButton({
-          sceneId: token.document.parent?.id ?? token.scene?.id,
-          tokenId: token.id,
-          tokenName: token.name,
-          amount,
-          isHeal,
-          isTemp,
-          rollType: roll.type,
-          ignoredImmunities: roll.ignoredImmunities ?? [],
-        });
-      }
+    for (const token of restricted) {
+      await this._whisperGMApplyButton({
+        sceneId: token.document.parent?.id ?? token.scene?.id,
+        tokenId: token.id,
+        tokenName: token.name,
+        amount,
+        isHealing,
+        applyToTemporary,
+        rollType,
+        ignoredImmunities,
+      });
     }
   }
 
-  static async _whisperGMApplyButton({ sceneId, tokenId, tokenName, amount, isHeal, isTemp, rollType, ignoredImmunities }) {
-    const gmIds = game.users.filter((u) => u.isGM).map((u) => u.id);
+  static async _whisperGMApplyButton({ sceneId, tokenId, tokenName, amount, isHealing, applyToTemporary, rollType, ignoredImmunities }) {
+    const gmIds = game.users.filter((user) => user.isGM).map((user) => user.id);
     if (!gmIds.length) return;
 
     const payload = {
-      s: sceneId,
-      t: tokenId,
-      n: tokenName,
-      m: amount,
-      h: isHeal ? 1 : 0,
-      te: isTemp ? 1 : 0,
-      rt: rollType ?? null,
-      ii: ignoredImmunities ?? [],
+      sceneId,
+      tokenId,
+      amount,
+      isHealing,
+      applyToTemporary,
+      rollType,
+      ignoredImmunities,
     };
 
-    const safeName = this._escapeHTML(tokenName ?? "");
-    const label = isHeal
-      ? (isTemp ? (game.i18n.localize("DRAW_STEEL.UI.ApplyTempHeal") || "Apply Temporary Heal")
-                : (game.i18n.localize("DRAW_STEEL.UI.ApplyHeal") || "Apply Heal"))
+    const safeName = escapeHtml(tokenName);
+    const label = isHealing
+      ? (applyToTemporary ? (game.i18n.localize("DRAW_STEEL.UI.ApplyTempHeal") || "Apply Temporary Heal")
+                         : (game.i18n.localize("DRAW_STEEL.UI.ApplyHeal") || "Apply Heal"))
       : (game.i18n.localize("DRAW_STEEL.UI.ApplyDamage") || "Apply Damage");
 
     const requestLine = game.i18n.localize?.("DRAW_STEEL.UI.RequestGMApplyLine") || "Permission request for token:";
+    const changeLabel = isHealing ? (applyToTemporary ? "Temp Heal" : "Heal") : "Damage";
+    const rollTypeSuffix = !isHealing && rollType ? ` (${escapeHtml(rollType)})` : "";
 
     const content = `
       <div class="ds-gm-apply">
         <p><strong>${requestLine}</strong> ${safeName}</p>
-        <p>${isHeal ? (isTemp ? "Temp Heal" : "Heal") : "Damage"}: <strong>${amount}</strong>${!isHeal && rollType ? ` (${this._escapeHTML(rollType)})` : ""}</p>
+        <p>${changeLabel}: <strong>${amount}</strong>${rollTypeSuffix}</p>
         <button type="button"
           class="ds-apply-damage-gm"
-          data-ds='${this._packPayload(payload)}'>
+          data-ds='${encodePayload(payload)}'>
           ${label}
         </button>
       </div>
@@ -135,9 +140,9 @@ export default class DamageRoll extends DSRoll {
           const encoded = btn.dataset.ds;
           if (!encoded) return;
 
-          const data = this._unpackPayload(encoded);
-          const scene = game.scenes.get(data.s) ?? canvas?.scene;
-          let tokenDoc = scene?.tokens?.get(data.t) ?? canvas?.tokens?.get(data.t)?.document;
+          const data = decodePayload(encoded);
+          const scene = game.scenes.get(data.sceneId) ?? canvas?.scene;
+          let tokenDoc = scene?.tokens?.get(data.tokenId) ?? canvas?.tokens?.get(data.tokenId)?.document;
           if (!tokenDoc) {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.TokenNotFound") || "Token not found.");
           }
@@ -147,21 +152,19 @@ export default class DamageRoll extends DSRoll {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.ActorNotFound") || "Actor not available for token.");
           }
 
-          const amount = Number(data.m) || 0;
-          const isHeal = !!data.h;
-          const isTemp = !!data.te;
-          const rollType = data.rt ?? null;
-          const ignoredImmunities = Array.isArray(data.ii) ? data.ii : [];
+          const amount = Number(data.amount) || 0;
+          const isHealing = Boolean(data.isHealing);
+          const applyToTemporary = Boolean(data.applyToTemporary);
+          const rollType = data.rollType ?? null;
+          const ignoredImmunities = Array.isArray(data.ignoredImmunities) ? data.ignoredImmunities : [];
 
-          if (isHeal) {
-            if (isTemp && (amount < actor.system.stamina.temporary)) {
-              ui.notifications.warn("DRAW_STEEL.ChatMessage.base.Buttons.ApplyHeal.TempCapped", { format: { name: actor.name } });
-            } else {
-              await actor.modifyTokenAttribute(isTemp ? "stamina.temporary" : "stamina", amount, !isTemp, !isTemp);
-            }
-          } else {
-            await actor.system.takeDamage(amount, { type: rollType, ignoredImmunities });
-          }
+          await this._applyResultToActor(actor, {
+            amount,
+            isHealing,
+            applyToTemporary,
+            rollType,
+            ignoredImmunities,
+          });
 
           btn.disabled = true;
           btn.textContent = game.i18n.localize("DRAW_STEEL.UI.Applied") || "Applied";
