@@ -72,7 +72,7 @@
   - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
 - Added support for marking actors as unflankable with `system.statuses.flankable`. (#714)
-- Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources, surges, and other properties. (#606, #1252, #1319)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
