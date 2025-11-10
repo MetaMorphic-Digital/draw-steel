@@ -1,6 +1,7 @@
 
 import BaseMessageModel from "./base.mjs";
 import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+import { decodePayload, encodePayload, escapeHtml, partitionTokensByOwnership } from "../../utils/gm-action.mjs";
 
 /**
  * @import { ActiveEffectData } from "@common/documents/_types.mjs";
@@ -15,31 +16,12 @@ const fields = foundry.data.fields;
  * Chat messages representing the result of {@linkcode AbilityModel.use}.
  */
 export default class AbilityUseModel extends BaseMessageModel {
-  /** Escape simple HTML entities for safe string interpolation. */
-  static _escapeHTML(s) {
-    return String(s).replace(/[&<>"']/g, (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c])
-    );
-  }
-
-  static _packPayload(obj) {
-    return btoa(encodeURIComponent(JSON.stringify(obj)));
-  }
-
-  static _unpackPayload(s) {
-    return JSON.parse(decodeURIComponent(atob(s)));
-  }
-
-  static _canModifyToken(token, user = game.user) {
-    const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS?.OWNER ?? 3;
-    return token?.document?.testUserPermission?.(user, OWNER) ?? token?.document?.isOwner ?? false;
-  }
 
   static _registerGMApplyButtonHookOnce() {
     if (this._dsHookRegistered) return;
     this._dsHookRegistered = true;
 
-    const cls = this;
+    const ModelClass = this;
     Hooks.on("renderChatMessage", (message, html) => {
       html.on("click", ".ds-apply-effect-gm", async (ev) => {
         ev.preventDefault();
@@ -52,9 +34,9 @@ export default class AbilityUseModel extends BaseMessageModel {
           const encoded = btn.dataset.ds;
           if (!encoded) return;
 
-          const data = cls._unpackPayload(encoded);
-          const scene = game.scenes.get(data.s) ?? canvas?.scene;
-          let tokenDoc = scene?.tokens?.get(data.t) ?? canvas?.tokens?.get(data.t)?.document;
+          const data = decodePayload(encoded);
+          const scene = game.scenes.get(data.sceneId) ?? canvas?.scene;
+          let tokenDoc = scene?.tokens?.get(data.tokenId) ?? canvas?.tokens?.get(data.tokenId)?.document;
           if (!tokenDoc) {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.TokenNotFound") || "Token not found.");
           }
@@ -64,12 +46,12 @@ export default class AbilityUseModel extends BaseMessageModel {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.ActorNotFound") || "Actor not available for token.");
           }
 
-          const effectData = data.e;
+          const effectData = data.effectData;
           if (!effectData) {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.EffectNotFound") || "Effect not found.");
           }
 
-          await actor.createEmbeddedDocuments("ActiveEffect", [effectData], { keepId: !!data.k });
+          await actor.createEmbeddedDocuments("ActiveEffect", [effectData], { keepId: Boolean(data.keepId) });
 
           btn.disabled = true;
           btn.textContent = game.i18n.localize("DRAW_STEEL.UI.Applied") || "Applied";
@@ -82,18 +64,18 @@ export default class AbilityUseModel extends BaseMessageModel {
   }
 
   static async _whisperGMApplyButton({ sceneId, tokenId, tokenName, effectName, effectData, keepId }) {
-    const gmIds = game.users.filter((u) => u.isGM).map((u) => u.id);
+    const gmIds = game.users.filter((user) => user.isGM).map((user) => user.id);
     if (!gmIds.length) return;
 
     const payload = {
-      s: sceneId,
-      t: tokenId,
-      e: effectData,
-      k: keepId ? 1 : 0,
+      sceneId,
+      tokenId,
+      effectData,
+      keepId,
     };
 
-    const safeTokenName = this._escapeHTML(tokenName ?? "");
-    const safeEffectName = this._escapeHTML(effectName ?? "");
+    const safeTokenName = escapeHtml(tokenName);
+    const safeEffectName = escapeHtml(effectName);
     const label = game.i18n.localize("DRAW_STEEL.UI.ApplyEffect") || "Apply Effect";
     const requestLine = game.i18n.localize?.("DRAW_STEEL.UI.RequestGMApplyLine") || "Permission request for token:";
     const effectLine = game.i18n.localize?.("DRAW_STEEL.UI.EffectLabel") || "Effect";
@@ -104,7 +86,7 @@ export default class AbilityUseModel extends BaseMessageModel {
         <p>${effectLine}: <strong>${safeEffectName}</strong></p>
         <button type="button"
           class="ds-apply-effect-gm"
-          data-ds='${this._packPayload(payload)}'>
+          data-ds='${encodePayload(payload)}'>
           ${label}
         </button>
       </div>
@@ -247,27 +229,23 @@ export default class AbilityUseModel extends BaseMessageModel {
       }
 
       const user = game.user;
-      const targets = [...user.targets].filter((t) => t?.document && t.actor);
-      if (!targets.length) {
+      const targetTokens = [...user.targets].filter((token) => token?.document && token.actor);
+      if (!targetTokens.length) {
         return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoTokenTargeted", { localize: true });
       }
 
-      const cls = this.constructor;
-      cls._registerGMApplyButtonHookOnce();
+      const ModelClass = this.constructor;
+      ModelClass._registerGMApplyButtonHookOnce();
 
       const effectData = tempEffect.toObject();
-      const ownedActors = new Map();
-      const gmTokens = [];
+      const { controllable, restricted } = partitionTokensByOwnership(targetTokens, user);
 
-      for (const token of targets) {
+      const ownedActors = new Map();
+      for (const token of controllable) {
         const actor = token.actor;
         if (!actor) continue;
-
-        if (cls._canModifyToken(token, user)) {
-          const key = actor.uuid ?? actor.id ?? actor._id ?? foundry.utils.randomID();
-          ownedActors.set(key, actor);
-        }
-        else gmTokens.push(token);
+        const key = actor.uuid ?? actor.id ?? actor._id ?? token.id ?? foundry.utils.randomID();
+        if (!ownedActors.has(key)) ownedActors.set(key, actor);
       }
 
       for (const actor of ownedActors.values()) {
@@ -276,8 +254,8 @@ export default class AbilityUseModel extends BaseMessageModel {
         await actor.createEmbeddedDocuments("ActiveEffect", [foundry.utils.duplicate(effectData)], { keepId: noStack });
       }
 
-      for (const token of gmTokens) {
-        await cls._whisperGMApplyButton({
+      for (const token of restricted) {
+        await ModelClass._whisperGMApplyButton({
           sceneId: token.document.parent?.id ?? token.scene?.id,
           tokenId: token.id,
           tokenName: token.name,
