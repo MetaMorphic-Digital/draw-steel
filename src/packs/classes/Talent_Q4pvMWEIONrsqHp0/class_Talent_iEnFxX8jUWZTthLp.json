@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "186",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "talent",
     "advancements": {
@@ -31,10 +30,11 @@
             "psionics"
           ]
         },
-        "description": "<p>You gain the Psionics and Read Person skills.</p>"
+        "description": "<p>You gain the Psionics and Read Person skills.</p>",
+        "sort": 23000
       },
       "mnSPy2hTQq3QTmEP": {
-        "name": "Choose Skill",
+        "name": "Skills",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -48,7 +48,8 @@
             "lore"
           ]
         },
-        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. <em>(Quick Build: Empathize, Timescape.)</em> </p>"
+        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. <em>(Quick Build: Empathize, Timescape.)</em> </p>",
+        "sort": 27000
       },
       "u9JuwU50FzpsBX4V": {
         "name": "Talent Tradition",
@@ -70,7 +71,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.YvcB53u33Uhpt1wQ"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 28000
       },
       "Up3QFZLWyklPMbGT": {
         "name": "Features",
@@ -88,7 +90,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.0VZoAfHp9CM0jLUJ"
           }
         ],
-        "description": "<p>You gain the following features.</p>"
+        "description": "<p>You gain the following features.</p>",
+        "sort": 8000
       },
       "wqg5KhjHWQuLZUMi": {
         "name": "Psionic Augmentations",
@@ -116,7 +119,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.xxfGODNK1x9MS65e"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 20000
       },
       "s7HQyu2KJppN6nbH": {
         "name": "Talent Ward",
@@ -141,7 +145,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.H0KjiRC8GNA5WBwe"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 29000
       },
       "duCphrf8kIPjgNfD": {
         "name": "Mind Spike",
@@ -156,7 +161,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.2MdIFxCPWqTUE7JT"
           }
-        ]
+        ],
+        "sort": 13000
       },
       "50ozxYVLuwNt7B6D": {
         "name": "Signature Abilities",
@@ -193,10 +199,11 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.OK7FFzXmDaKn8nim"
           }
-        ]
+        ],
+        "sort": 22000
       },
       "vhsgACqXDiz1ED6A": {
-        "name": "3 Clarity Abilities",
+        "name": "3 Clarity Ability",
         "img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
         "type": "itemGrant",
         "requirements": {
@@ -218,10 +225,11 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.ubBYqHf4LxOZZw4G"
           }
-        ]
+        ],
+        "sort": 1000
       },
       "Te4pzHD08FtGie4m": {
-        "name": "5 Clarity Abilities",
+        "name": "5 Clarity Ability",
         "img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
         "type": "itemGrant",
         "requirements": {
@@ -243,7 +251,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.D7hdeakrH2CYbkfT"
           }
-        ]
+        ],
+        "sort": 2000
       },
       "RQml4NvsZOnJFzBo": {
         "name": "Perks",
@@ -253,7 +262,17 @@
           "level": 2
         },
         "_id": "RQml4NvsZOnJFzBo",
-        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "sort": 18000
       },
       "QFnpzyV4alu4UoZ7": {
         "name": "Scan",
@@ -263,15 +282,16 @@
           "level": 3
         },
         "_id": "QFnpzyV4alu4UoZ7",
-        "description": "<p>As a 3rd-level talent, you gain the following feature.</p>",
+        "description": "<p>You can extend your psionic senses beyond their usual range.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.RBNmrLpJpXlVQzBD"
           }
-        ]
+        ],
+        "sort": 21000
       },
       "eYlnVWPeerTjL5eb": {
-        "name": "7 Clarity Abilities",
+        "name": "7 Clarity Ability",
         "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
         "type": "itemGrant",
         "requirements": {
@@ -292,7 +312,342 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.vIWdPG8WnnCpQ5b2"
           }
+        ],
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 7 clarity to use</p>",
+        "sort": 3000
+      },
+      "KNWCVeiFDdL5h6JE": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "KNWCVeiFDdL5h6JE",
+        "description": "<p>Your Reason and Presence scores each increase to 3.</p>",
+        "characteristics": {
+          "reason": 1,
+          "presence": 1
+        },
+        "sort": 5000
+      },
+      "VAwZ604FHDBIPGKd": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "VAwZ604FHDBIPGKd",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "max": 4,
+        "sort": 6000
+      },
+      "yy1WxHORg4I5YV8O": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "yy1WxHORg4I5YV8O",
+        "description": "<p>Your Reason and Presence scores each increase to 5.</p>",
+        "characteristics": {
+          "reason": 1,
+          "presence": 1
+        },
+        "max": 5,
+        "sort": 7000
+      },
+      "itA8YQrgke8oRZM8": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "itA8YQrgke8oRZM8",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 14000
+      },
+      "HGsr3NQVzl5X6rre": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "HGsr3NQVzl5X6rre",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "sort": 15000
+      },
+      "Da1s9i5smJ4WdeCA": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "Da1s9i5smJ4WdeCA",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 16000
+      },
+      "OhKvqTBa5ua50VHb": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "OhKvqTBa5ua50VHb",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "sort": 17000
+      },
+      "qF4R0aLfCWYYI5Bi": {
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "qF4R0aLfCWYYI5Bi",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        },
+        "sort": 24000
+      },
+      "3FEUzOwesu41WHbP": {
+        "name": "9 Clarity Ability",
+        "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "3FEUzOwesu41WHbP",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 clarity to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mBu5t70koxCSfs3B"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.iaCQ1GvXc721iT5U"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.cgW4PcZmnCxuHfJW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YGdo1HWRoRGtmKVl"
+          }
+        ],
+        "sort": 4000
+      },
+      "Md0FTC8x4Db5byoJ": {
+        "name": "Psi Boost",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Md0FTC8x4Db5byoJ",
+        "description": "<p>You gain the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.iRHtOHSjLfrW5CpL"
+          }
+        ],
+        "sort": 19000
+      },
+      "FVrmhnvLlAvDDzFy": {
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "FVrmhnvLlAvDDzFy",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        },
+        "sort": 25000
+      },
+      "8jcevGIjZmoK8MSA": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "8jcevGIjZmoK8MSA",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UaOhrGXS4ObU9hPa"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.ICQ0w7ZvcjoxtY7r"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.PhWM0EjC0O7LADfy"
+          }
+        ],
+        "sort": 9000
+      },
+      "920zETaEmOGh5u0W": {
+        "name": "11 Clarity Ability",
+        "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "920zETaEmOGh5u0W",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 clarity to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.07fuK6yFfpbC2fAm"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tZP5aZyJ7TCcFby0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YriK6LSvv6WAKvWJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Dww4Zl9mtK9Ciftu"
+          }
         ]
+      },
+      "ty8zSIZyPNuxjdTl": {
+        "name": "Fortress of Perfect Thought",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "ty8zSIZyPNuxjdTl",
+        "description": "<p>You gain the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.t901vDMtqdHJ9nYj"
+          }
+        ],
+        "sort": 12000
+      },
+      "uWXiaYCKrrtUfIEZ": {
+        "name": "",
+        "img": null,
+        "type": "skill",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "uWXiaYCKrrtUfIEZ",
+        "description": "<p>You gain one skill of your choice.</p>",
+        "chooseN": 1,
+        "skills": {
+          "groups": [
+            "crafting",
+            "exploration",
+            "interpersonal",
+            "intrigue",
+            "lore"
+          ]
+        },
+        "sort": 26000
+      },
+      "TVzi5RXs9uDA1TwL": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "TVzi5RXs9uDA1TwL",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8wg191obwHlrJ2Ro"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DjfY6oM3HSEp9bpI"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.w0PQ5TkulVFP4eEf"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.tfYO157bwE5kr70g"
+          }
+        ],
+        "sort": 10000
+      },
+      "muCAiU1F5BrG0Eiq": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "muCAiU1F5BrG0Eiq",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.UcICLl9dpCdavWG0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.8d0UWGKdPdDyHGPn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.OXKhxDJFuUFopkx8"
+          }
+        ],
+        "description": "<p>You gain the following features.</p>",
+        "sort": 11000
       }
     },
     "level": 0,
@@ -322,9 +677,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754708515987,
     "modifiedTime": null,
     "lastModifiedBy": null

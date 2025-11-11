@@ -8,8 +8,7 @@
     "source": {
       "book": "Heroes",
       "page": "205",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "star-power",
     "story": "Your years of practicing fencing and dancing pay off on the battlefield.",
@@ -33,7 +32,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>You gain a +2 bonus to speed until the end of your turn. Additionally, the next power roll you make this turn can’t have an outcome lower than tier 2.</p>",
+      "before": "<p>You gain a [[/apply TmUYurW7wqDypQ1u]]{+2 bonus to speed} until the end of your turn. Additionally, the next power roll you make this turn can’t have an outcome lower than tier 2.</p><p>Spend effect: [[/apply X0X5TeeR2r2gmYJJ]]{+4 bonus to speed}</p>",
       "after": ""
     },
     "spend": {
@@ -41,7 +40,106 @@
       "value": 1
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Speed +2",
+      "img": "icons/magic/symbols/star-solid-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.SW3P1zQGCYGJyHco",
+      "transfer": false,
+      "_id": "TmUYurW7wqDypQ1u",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762432170907,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SW3P1zQGCYGJyHco.TmUYurW7wqDypQ1u"
+    },
+    {
+      "name": "Speed +4",
+      "img": "icons/magic/symbols/star-solid-gold.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.SW3P1zQGCYGJyHco",
+      "transfer": false,
+      "_id": "X0X5TeeR2r2gmYJJ",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "4",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762432238262,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SW3P1zQGCYGJyHco.X0X5TeeR2r2gmYJJ"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -51,9 +149,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755796653818,
     "modifiedTime": null,
     "lastModifiedBy": null

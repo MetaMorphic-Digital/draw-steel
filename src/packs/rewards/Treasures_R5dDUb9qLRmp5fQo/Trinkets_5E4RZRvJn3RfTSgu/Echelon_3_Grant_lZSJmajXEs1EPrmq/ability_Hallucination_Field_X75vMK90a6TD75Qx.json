@@ -1,0 +1,110 @@
+{
+  "folder": "lZSJmajXEs1EPrmq",
+  "name": "Hallucination Field",
+  "type": "ability",
+  "_id": "X75vMK90a6TD75Qx",
+  "img": "icons/commodities/cloth/ribbon-bow-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "325",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "hallucination-field",
+    "story": "A blanket of illusion twists around you and your allies, making you seem as if you belong wherever you are.",
+    "keywords": [
+      "psionic",
+      "ranged"
+    ],
+    "type": "maneuver",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each target is covered by an illusion causing them to appear exactly as any creature (humanoid, animal, undead, and so forth) an observer most expects to see. The illusion ends for all targets if any creature under its effect harms or physically interacts with any creature not affected by the illusion, if you use this ability again, or if you choose to end the effect (no action required). The illusion also ends for any affected ally who moves more than the distance of this ability away from you. [[/apply XsBOjnjsLjPOJMWO]]</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Hallucination Field",
+      "img": "icons/commodities/cloth/ribbon-bow-teal.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.X75vMK90a6TD75Qx",
+      "transfer": false,
+      "_id": "XsBOjnjsLjPOJMWO",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Each target is covered by an illusion causing them to appear exactly as any creature (humanoid, animal, undead, and so forth) an observer most expects to see.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761752531356,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!X75vMK90a6TD75Qx.XsBOjnjsLjPOJMWO"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761752368245,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!X75vMK90a6TD75Qx"
+}

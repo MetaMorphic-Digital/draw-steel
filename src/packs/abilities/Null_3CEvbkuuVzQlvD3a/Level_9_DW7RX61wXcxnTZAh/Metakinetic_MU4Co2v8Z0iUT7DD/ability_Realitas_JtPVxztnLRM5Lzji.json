@@ -1,0 +1,133 @@
+{
+  "folder": "MU4Co2v8Z0iUT7DD",
+  "name": "Realitas",
+  "type": "ability",
+  "_id": "JtPVxztnLRM5Lzji",
+  "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "158",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "realitas",
+    "story": "Your essential hyperreality disrupts your enemy’s connection to existence.",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "bCXS2jYK3zaKrFJ2": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "bCXS2jYK3zaKrFJ2",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "10 + @chr",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "13 + @chr",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "aHUJSPZRTgcodRvz": {
+          "name": "Dazed",
+          "img": null,
+          "type": "applied",
+          "_id": "aHUJSPZRTgcodRvz",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, dazed",
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "dazed": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While dazed this way, the target takes [[/damage 2*@I psychic]]{psychic damage equal to twice your Intuition score} at the start of each of your turns. If this ability causes a creature who is not a leader or solo creature to become winded, they are instead reduced to 0 Stamina. Any creature reduced to 0 Stamina by this ability is forgotten by all creatures of your level or lower in the timescape who are not present in the encounter. Loved ones of the forgotten creature retain a faint sense of melancholy. This effect can be reversed only at the Director’s discretion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761335373515,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!JtPVxztnLRM5Lzji"
+}

@@ -337,7 +337,7 @@ export default class PowerRoll extends DSRoll {
     const context = await super._prepareChatRenderContext({ flavor, isPrivate, ...options });
 
     context.tier = {
-      label: game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
+      label: isPrivate ? "" : game.i18n.localize(this.constructor.RESULT_TIERS[this.tier].label),
       class: this.tier,
     };
 
@@ -366,9 +366,10 @@ export default class PowerRoll extends DSRoll {
     if (this.options.target) context.target = await fromUuid(this.options.target);
 
     context.baseRoll = this.options.baseRoll ?? false;
-    context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
-    context.flavorlessFormula = this.flavorlessFormula;
-
+    if (!isPrivate) {
+      context.critical = (this.isCritical || this.isNat20) ? "critical" : "";
+      context.flavorlessFormula = this.flavorlessFormula;
+    } else context.flavorlessFormula = "???";
     return context;
   }
 }

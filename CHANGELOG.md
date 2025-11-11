@@ -18,6 +18,146 @@
 ### Known Issues
 -->
 
+## 0.9.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Updated all ancestries to offer a choice of purchased traits.
+  - Remaining non-imbue projects.
+  - Censor levels 4–10 features and abilities.
+  - Conduit levels 4–10 features and abilities.
+  - Elementalist levels 4–10 features and abilities.
+  - Fury levels 4–10 features and abilities.
+  - Null levels 4–10 features and abilities.
+  - Shadow levels 4–10 features and abilities.
+  - Tactician levels 4–10 features and abilities.
+  - Talent levels 4–10 features and abilities.
+  - Troubadour levels 4–10 features and abilities.
+  - Echelon 2–4 Consumables, Trinkets, and Titles
+- New Director-Facing Compendium Content: (All remaining core monsters)
+  - Ajax
+  - Demon Echelons 2–4
+  - Devils
+  - Draconians
+  - Dragons
+  - Elves (Shadow)
+  - Giants
+  - Hobgoblins
+  - Kingfissure Worm
+  - Medusa
+  - Olothec
+  - Rivals Echelons 2–4
+  - Shambling Mound
+  - Trolls
+  - Undead Echelons 2–4, plus the Lich and Rhodar von Glaur
+  - War Dogs Echelons 2–4
+  - Valok
+  - Voiceless Talkers & Lord Syuul
+  - Xorannox the Tyract and his six, magnificent, beautiful eyeballs
+- Implemented Combatant Group option to update the tint color or ring color of all grouped tokens. (#26)
+- Added "Surprised" as a condition to the token HUD. (#203)
+- Added `ds.utils.updateFromCompendium`, which currently supports Active Effects, Actors, and Items. (#557)
+  - Directors have access to a button in the header button of the NPC and Item sheets to perform this update.
+  - There is a new setting to open this to other permission levels.
+- Added a "Group Selected" option to the Combat Tracker options. (#690)
+  - This will create any missing combatants and then add them all to a new group.
+  - The group's name will use the actor's name if all tokens have matching actor names.
+  - The group's image will use the token's image if all tokens have matching token images.
+  - Any squads created will be created at full stamina.
+- New Advancement Type: Characteristic. (#707)
+  - Characteristic advances allow classes and titles to increase characteristics.
+  - These increases are not saved to the base data of the actor and are instead applied dynamically.
+- Added support for condition immunities as `system.statuses.immunities`. (#704)
+  - This will not prevent application but will prevent their effects and show a warning when applied.
+- Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
+- Added support for marking actors as unflankable with `system.statuses.flankable`. (#714)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources, surges, and other properties. (#606, #1252, #1319)
+- Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
+- Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
+- Added suggested books and licenses in the source input form. (#841)
+- Added drag and drop support for pseudodocuments (Power Roll Effects & Advancements). (#907)
+  - This allows them to be dragged from one sheet to another to make a copy, or onto the same sheet to sort.
+- Added `system.movement.multiplier` which is guaranteed to adjust movement *after* all other adjustments to speed are made. (#957)
+- Added `system.stamina.bonuses.level` which adds bonus stamina per level. (#1120)
+- Added "point buy" support for Ancestry trait advancements. (#1192)
+- Added easily accessed localized labels for monster properties, e.g. `actor.system.monster.roleLabel`. (#1196)
+- Added the official licensed glyphs. (#1209)
+  - Potency displays will automatically use these glyphs. (#1270)
+- Improved handling of private messages for power and damage rolls. (#1221)
+- Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
+- Added `system.recoveries.divisor` for adjusting the ratio of stamina to recovery value. (#1336)
+- In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
+- Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
+- Creating crafting projects from treasures will now use the treasure image as the project image.
+
+### Changed
+
+- Changed available keywords on treasures to be more accurate. (#270)
+- Refactor the toggling of item and effect description dropdowns to use a CSS transition instead of re-rendering the application. (#626)
+- Added vertical ellipses to all document lists for context options (#823)
+- Added a "Custom Label" property for ability targets, which will override the default label. (#886)
+  - Also added "Enemy or Object" as a new target type.
+  - Revised i18n strings for many of the "All" types, e.g. "All creatures" => "Each creature".
+- Kit bonuses to speed are now applied after active effects. (#957)
+- Removed the limitation on one non-minion creature in Squad combat groups. (#1040)
+  - Added controls to the combatants' context menu to toggle whether that monster is the captain or not.
+- Applying an effect to an actor with a disabled copy will delete the old version first. (#1103)
+  - This is a change for applied power roll effects that also applies to the new Apply enricher.
+- In the Power Roll Dialog, changed the target's name from the actor name to the token name. (#1119)
+- Heroes now have a helper app for adjusting characteristics. (#1206)
+- Slightly increased the size of item icons on the actor sheets to match the size of effect icons.
+- Non-default skills and languages added to an actor or advancement will stick around even if the code that added them to ds.CONFIG is no longer active.
+- Renamed the "AbilityBonus" class to "AbilityModifier", the `type` is still `"abilityModifier"`.
+- Sealed the characteristics object to prevent adding or removing characteristics.
+- PseudoDocument.create now returns the pseudo document instead of the parent.
+- Widened space for advancement labels to reduce need for line wrapping.
+- Items created with a default name (e.g. "Ability") will no longer have their _dsid set, instead allowing it to remain blank.
+
+### Removed
+
+- Removed the "source.revision" property from items and NPCs.
+
+### Fixed
+
+- Player-Facing Compendium data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Corrected action types for many echelon 1 abilities.
+  - Added in many missing ability characteristics.
+  - Ancestry bonuses to speed like the Wode Elf's "Swift" now use a priority of 5 to ensure they happen before other bonuses. (#957)
+  - Added active effects to the Vulken's kits for their animal forms that can be toggled as needed. (#957)
+  - Corrected attribute key for Dragon Knight Wyrmplate and Prismatic Scales. (#1108)
+  - Re-implemented "Disciple of Earth" to use `system.stamina.bonuses.level`. (#1120)
+  - Various ancestry immunities and weaknesses switched to Upgrade from Add to prevent stacking. (#1134)
+  - Corrected attribute key for Acolyte of Fire. (#1151)
+  - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
+  - Corrected AE path for fire weakness in the Host complication. (#1325)
+  - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
+  - Corrected damage values for the censor's "Your Allies Cannot Save You".
+  - Added missing damage type to the elementalist's Grasp of Beyond.
+  - Added missing potency to the elementalist's Ray of Agonizing Self-Reflection.
+  - Corrected keywords on Tactician's "Now".
+  - Corrected text on Vanguard's Parry.
+  - Corrected the skill grant on the Shipwrecked complication.
+- Director-Facing Compendium Data fixes:
+  - Implemented the "custom" target text for many abilities.
+  - Converted "With Captain" features to "With Captain" effects.
+  - Implemented a new formatting for abilities that require the targets to make a test.
+  - Bendrak "Warp Perception" now uses a customized Weakened. (#1104)
+  - Bredbeddle Malice Ability costs. (#1114)
+  - Multiple corrections to the Ogre Juggernaut.
+    - Corrected Hrraaaaaagh! ability to be a free triggered action. (#1145)
+    - Added 1 malice cost to the Hrraaaaaagh! ability per errata.
+    - Corrected the description of the Destructive Path feature per errata.
+  - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
+  - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+- Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
+- Fixed active effects not sorting on actor and item sheets. (#1149)
+- Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
+- Fixed issues with "Alternative" initiative. (#1168)
+- Stability is properly capped at a minimum of 0. (#1308)
+- Fixed broken image links in the in-game documentation.
+
 ## 0.8.1
 
 ### Added
@@ -37,13 +177,17 @@
 - The skill list on the character sheet is now sorted alphabetically.
 - Adjusted i18n structure for Power Roll Effects.
 
+### Removed
+
+- Removed minimum and maximums on characteristic values. (#707)
+
 ### Fixed
 
 - Fixed an issue where the migration would error when migrating personal compendiums.
 - Player-Facing Compendium data fixes:
   - Corrected Studied Commander description. (#948)
   - Added missing item grant advancements to Tactician subclasses. (#949)
-  - Stormwight kit abilities no longer double up on kit bonuses (#954)
+  - Stormwight kit abilities no longer double up on kit bonuses. (#954)
   - Corrected name of the Stormwights "Furious Change". (#956)
   - College of Black Ash no longer gives all lore skills. (#980)
   - Corrected Talent "Distance Augmentation" filters & bonus. (#998)
@@ -57,7 +201,7 @@
   - Corrected Ray of Wrath tier 3 damage.
   - Added description to Sacrificial Offer.
   - Corrected Inertial Step keywords.
-- GM-Facing Compendium Data fixes:
+- Director-Facing Compendium Data fixes:
   - Standardized prototype token settings. (#946)
   - Human Archer Crossbow attack stats. (#979)
   - Various monster role and level fixes. (#981)

@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "106",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -102,92 +101,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to Stamina</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "106"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [
-        {
-          "name": "With Captain Bonus",
-          "img": "icons/skills/social/intimidation-impressing.webp",
-          "type": "base",
-          "origin": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.a7emInE4cQxOrYoq",
-          "disabled": true,
-          "_id": "ytAM3RkCZ0DoxEcv",
-          "system": {
-            "end": {
-              "type": "",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [
-            {
-              "key": "system.stamina.max",
-              "mode": 2,
-              "value": "2",
-              "priority": null
-            }
-          ],
-          "duration": {
-            "startTime": null,
-            "combat": null,
-            "seconds": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "transfer": true,
-          "statuses": [],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!yhGxrXcM6ixD9Bfr.dJsw5vQHbdcOYtiU.ytAM3RkCZ0DoxEcv"
-        }
-      ],
-      "folder": null,
-      "sort": -100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "dJsw5vQHbdcOYtiU",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!yhGxrXcM6ixD9Bfr.dJsw5vQHbdcOYtiU"
-    },
-    {
       "name": "Snaring Javelin",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
@@ -205,7 +118,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -308,7 +222,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "106"
         },
         "_dsid": "snaring-javelin",
@@ -324,9 +237,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -344,8 +257,7 @@
         "source": {
           "book": "Monsters",
           "page": "105",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "breaching-charge",
         "story": "",
@@ -407,8 +319,7 @@
         "source": {
           "book": "Monsters",
           "page": "105",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "rappelling-barrage",
         "story": "",
@@ -558,7 +469,57 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.gWjAaDWAa6dtxBNa.Item.a7emInE4cQxOrYoq",
+      "disabled": true,
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": 1,
+        "startTurn": 0
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.Dh8T75p1oaKXU1P1.Item.KcZtLLfm2oeyoI2q.ActiveEffect.fSjGdUm0CN0YE7Sk",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760907450605,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "qwvP68F1fH6PWur1",
+      "sort": 0,
+      "_key": "!actors.effects!yhGxrXcM6ixD9Bfr.qwvP68F1fH6PWur1"
+    }
+  ],
   "ownership": {
     "default": 0
   },

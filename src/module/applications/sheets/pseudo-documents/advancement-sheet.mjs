@@ -48,7 +48,7 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
       case "identity":
         return this.#prepareIdentityContext(context);
       case "details":
-        return this.#prepareDetailsContext(context);
+        return this.#prepareDetailsContext(context, options);
     }
 
     return context;
@@ -62,7 +62,6 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
    * @returns {Promise<object>}     Mutated rendering context.
    */
   async #prepareIdentityContext(context) {
-    const ctx = context.ctx = {};
     return context;
   }
 
@@ -70,32 +69,12 @@ export default class AdvancementSheet extends PseudoDocumentSheet {
 
   /**
    * Prepare context for the details tab.
-   * @param {object} context        Rendering context.
+   * @param {object} context    Rendering context.
    * @returns {Promise<object>}     Mutated rendering context.
    */
-  async #prepareDetailsContext(context) {
-    const ctx = context.ctx = {};
+  async #prepareDetailsContext(context, options) {
 
-    if (context.document.type === "itemGrant") {
-      ctx.itemPool = [];
-      for (const [i, pool] of context.document.pool.entries()) {
-        const item = await fromUuid(pool.uuid);
-        ctx.itemPool.push({
-          ...pool,
-          index: i,
-          link: item ? item.toAnchor() : game.i18n.localize("DRAW_STEEL.ADVANCEMENT.SHEET.unknownItem"),
-        });
-      }
-    }
-
-    else if (context.document.type === "skill") {
-      ctx.skillGroups = Object.entries(ds.CONFIG.skills.groups).map(([value, { label }]) => ({ value, label }));
-      ctx.skillChoices = ds.CONFIG.skills.optgroups;
-    }
-
-    else if (context.document.type === "language") {
-      ctx.languageChoices = Object.entries(ds.CONFIG.languages).map(([value, { label }]) => ({ value, label }));
-    }
+    context.ctx = await this.pseudoDocument.getSheetContext(options);
 
     return context;
   }

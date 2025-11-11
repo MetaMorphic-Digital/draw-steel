@@ -1,0 +1,127 @@
+{
+  "folder": "bWTYtV0FTi2aS4TJ",
+  "name": "Cry Havoc",
+  "type": "ability",
+  "_id": "wbJTnyESAACLBdwU",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "315",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "cry-havoc",
+    "story": "",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "value": null,
+      "custom": "Each enemy in the area"
+    },
+    "power": {
+      "roll": {
+        "formula": "5",
+        "characteristics": []
+      },
+      "effects": {
+        "TzboLJifDtxVNw6n": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "TzboLJifDtxVNw6n",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier2": {
+              "value": "11",
+              "types": [
+                "psychic"
+              ]
+            },
+            "tier3": {
+              "value": "14",
+              "types": [
+                "psychic"
+              ]
+            }
+          }
+        },
+        "dHkqcTkWXaKeo3eq": {
+          "name": "frightened",
+          "img": null,
+          "type": "applied",
+          "_id": "dHkqcTkWXaKeo3eq",
+          "applied": {
+            "tier2": {
+              "display": "{{potency}} frightened (save ends)",
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "presence",
+                "value": "4"
+              }
+            },
+            "tier3": {
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "presence",
+                "value": "5"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>Each war dog within distance deals an extra [[/damage 15]] damage with strikes until the end of their next turn. Additionally, they end any effect on them that can be ended by a saving throw or that ends at the end of their turn, then shift up to their speed and can make a free strike.</p><p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 100000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758223983331,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wbJTnyESAACLBdwU"
+}

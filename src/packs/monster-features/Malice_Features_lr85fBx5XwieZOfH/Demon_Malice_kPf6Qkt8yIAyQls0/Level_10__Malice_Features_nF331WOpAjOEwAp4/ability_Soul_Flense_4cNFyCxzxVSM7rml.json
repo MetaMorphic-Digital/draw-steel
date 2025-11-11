@@ -1,0 +1,61 @@
+{
+  "folder": "nF331WOpAjOEwAp4",
+  "name": "Soul Flense",
+  "type": "ability",
+  "_id": "4cNFyCxzxVSM7rml",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "source": {
+      "book": "Monsters",
+      "page": "73",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "soul-flense",
+    "story": "",
+    "keywords": [],
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "",
+    "distance": {
+      "type": "special"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"92\"><p>11 or less</p></td><td><p>[[/damage 10 corruption]] damage; the target is soul flensed</p></td></tr><tr><td data-colwidth=\"92\"><p>12-16</p></td><td><p>The target is soul flensed</p></td></tr><tr><td data-colwidth=\"92\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+      "after": "<p>The demon removes all conditions and effects on themself that can be ended by a saving throw, and transfers all those effects to each creature soul flensed this way.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.348",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758145512616,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!4cNFyCxzxVSM7rml"
+}

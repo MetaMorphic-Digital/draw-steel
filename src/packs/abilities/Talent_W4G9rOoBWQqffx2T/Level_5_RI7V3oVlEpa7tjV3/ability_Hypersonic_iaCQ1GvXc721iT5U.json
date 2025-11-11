@@ -1,0 +1,109 @@
+{
+  "folder": "RI7V3oVlEpa7tjV3",
+  "name": "Hypersonic",
+  "type": "ability",
+  "_id": "iaCQ1GvXc721iT5U",
+  "img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "195",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "hypersonic",
+    "story": "You move fast enough to turn around and watch your foes feel the aftermath.",
+    "keywords": [
+      "area",
+      "charge",
+      "psionic",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 5,
+      "secondary": 2,
+      "tertiary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "OAwMXupfVvNWOE1o": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "OAwMXupfVvNWOE1o",
+          "damage": {
+            "tier1": {
+              "types": [
+                "sonic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              },
+              "value": "12"
+            },
+            "tier2": {
+              "value": "18",
+              "potency": {
+                "characteristic": "none"
+              },
+              "types": [
+                "sonic"
+              ]
+            },
+            "tier3": {
+              "value": "24",
+              "types": [
+                "sonic"
+              ],
+              "potency": {
+                "characteristic": "none"
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You teleport to a square on the opposite side of the area before making the power roll.</p>",
+      "after": "<p><strong>Strained</strong>: If you obtain a tier 2 outcome or better, you are [[/apply slowed turn]] until the end of your turn and each target is [[/apply slowed turn]] until the end of their turn.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760749175568,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!iaCQ1GvXc721iT5U"
+}

@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "121",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "121"
         },
         "_dsid": "thicket-and-thorns",
@@ -178,7 +176,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "121"
         },
         "_dsid": "wall-of-roses",
@@ -223,7 +220,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -362,7 +360,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "121"
         },
         "_dsid": "whip-frenzy",
@@ -378,9 +375,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -400,8 +397,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "chaincast",
         "story": "",
@@ -454,6 +450,66 @@
     },
     {
       "folder": "OxTqWEvFfbywX7Mb",
+      "name": "In Defiance of Time",
+      "type": "ability",
+      "_id": "oILvREyZahTmzq10",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "119",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "in-defiance-of-time",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special"
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the round, each high elf in the encounter gains a +4 bonus to speed, and whenever a high elf uses an ability against an enemy, each high elf adjacent to that enemy can make a free strike against them.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.oILvREyZahTmzq10",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.8.1",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!27zPkjxDlEJYgfDi.oILvREyZahTmzq10"
+    },
+    {
       "name": "Gift From an Accursed Tome",
       "type": "ability",
       "_id": "vvjYHjxFdP4qKoFR",
@@ -462,8 +518,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "gift-from-an-accursed-tome",
         "story": "",
@@ -484,7 +539,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -659,93 +715,33 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!27zPkjxDlEJYgfDi.vvjYHjxFdP4qKoFR.DyViKrQtR5lHA0fY"
         }
       ],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761096763656,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!27zPkjxDlEJYgfDi.vvjYHjxFdP4qKoFR"
-    },
-    {
-      "folder": "OxTqWEvFfbywX7Mb",
-      "name": "In Defiance of Time",
-      "type": "ability",
-      "_id": "oILvREyZahTmzq10",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "in-defiance-of-time",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Until the end of the round, each high elf in the encounter gains a +4 bonus to speed, and whenever a high elf uses an ability against an enemy, each high elf adjacent to that enemy can make a free strike against them.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.oILvREyZahTmzq10",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!27zPkjxDlEJYgfDi.oILvREyZahTmzq10"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!27zPkjxDlEJYgfDi.vvjYHjxFdP4qKoFR"
     }
   ],
   "folder": "Dj36vXEyn9vry4NO",

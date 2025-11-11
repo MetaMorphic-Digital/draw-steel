@@ -8,8 +8,7 @@
     "source": {
       "book": "Heroes",
       "page": "33",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "the-wode-defends",
     "story": "Thorny vines erupt from every surface and attempt to bind  your foe.",
@@ -55,7 +54,7 @@
           }
         },
         "Rnu7xcmwdD1t0v9A": {
-          "name": "Slowed",
+          "name": "",
           "img": null,
           "type": "applied",
           "_id": "Rnu7xcmwdD1t0v9A",
@@ -64,6 +63,29 @@
               "display": "{{potency}}, slowed (save ends)",
               "potency": {
                 "characteristic": "agility"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "display": "{{potency}}, restrained (save ends)",
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
               }
             }
           }
@@ -89,9 +111,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754533571179,
     "modifiedTime": null,
     "lastModifiedBy": null

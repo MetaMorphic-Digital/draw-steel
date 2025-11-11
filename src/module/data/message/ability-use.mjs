@@ -1,6 +1,6 @@
-
 import BaseMessageModel from "./base.mjs";
 import DrawSteelActiveEffect from "../../documents/active-effect.mjs";
+import DamageRoll from "../../rolls/damage.mjs";
 import { decodePayload, encodePayload, escapeHtml, partitionTokensByOwnership } from "../../utils/gm-action.mjs";
 
 /**
@@ -36,7 +36,7 @@ export default class AbilityUseModel extends BaseMessageModel {
 
           const data = decodePayload(encoded);
           const scene = game.scenes.get(data.sceneId) ?? canvas?.scene;
-          let tokenDoc = scene?.tokens?.get(data.tokenId) ?? canvas?.tokens?.get(data.tokenId)?.document;
+          const tokenDoc = scene?.tokens?.get(data.tokenId) ?? canvas?.tokens?.get(data.tokenId)?.document;
           if (!tokenDoc) {
             return ui.notifications.error(game.i18n.localize("DRAW_STEEL.UI.TokenNotFound") || "Token not found.");
           }
@@ -112,7 +112,7 @@ export default class AbilityUseModel extends BaseMessageModel {
   static defineSchema() {
     const schema = super.defineSchema();
     // All ability use messages MUST have a uuid pointing to the relevant document
-    schema.uuid = new fields.StringField({ required: true, nullable: false, blank: false });
+    schema.uuid = new fields.DocumentUUIDField({ nullable: false, type: "Item" });
     schema.embedText = new fields.BooleanField({ initial: true });
     return schema;
   }
@@ -173,7 +173,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     } else if (item && tierKey) {
       content.insertAdjacentHTML("afterbegin", `<p class="powerResult"><strong>${
         game.i18n.localize(`DRAW_STEEL.ROLL.Power.Results.Tier${this.tier}`)
-      }: </strong>${item.system.power.effects.contents.map(effect => effect.toText(this.tier)).filter(_ => _).join("; ")}</p>`,
+      }: </strong>${item.system.power.effects.sortedContents.map(effect => effect.toText(this.tier)).filter(_ => _).join("; ")}</p>`,
       );
     } else console.warn("Invalid configuration");
   }
@@ -201,7 +201,7 @@ export default class AbilityUseModel extends BaseMessageModel {
     super.addListeners(html);
     /** @type {HTMLButtonElement[]} */
     const effectButtons = html.querySelectorAll(".apply-effect");
-    for (const effectButton of effectButtons) effectButton.addEventListener("click", async (event) => {
+    for (const effectButton of effectButtons) effectButton.addEventListener("click", async () => {
       /** @type {AppliedPowerRollEffect} */
       const pre = await fromUuid(effectButton.dataset.uuid);
       if (!pre) return void ui.notifications.error("DRAW_STEEL.ChatMessage.abilityUse.NoPRE", { localize: true });
@@ -210,15 +210,18 @@ export default class AbilityUseModel extends BaseMessageModel {
 
       const noStack = !config.properties.has("stacking");
 
+      const isStatus = effectButton.dataset.type === "status";
+
       /** @type {DrawSteelActiveEffect} */
-      const tempEffect = effectButton.dataset.type === "custom" ?
-        pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true }) :
-        await DrawSteelActiveEffect.fromStatusEffect(effectId);
+      const tempEffect = isStatus ?
+        await DrawSteelActiveEffect.fromStatusEffect(effectId) :
+        pre.item.effects.get(effectId).clone({}, { keepId: noStack, addSource: true });
 
       /** @type {ActiveEffectData} */
       const updates = {
         transfer: true,
-        origin: pre.uuid,
+        // v14 is turning this into a DocumentUUID field so needs to be a real document
+        origin: pre.item.uuid,
         system: {},
       };
       if (config.end) updates.system.end = { type: config.end };
@@ -265,5 +268,45 @@ export default class AbilityUseModel extends BaseMessageModel {
         });
       }
     });
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Create a new DamageRoll based on applying modifications to a given DamageRoll.
+   * After creation, the new roll is added to the message rolls.
+   * @param {DamageRoll} roll The damage roll to modify.
+   * @param {object} modifications The modification options to apply.
+   * @param {string} [modifications.additionalTerms] Additional formula components to append to the roll.
+   * @param {string} [modifications.damageType] The damage type to use for the modified roll.
+   * @param {object} [evaluationOptions={}] Options passed to the DamageRoll#evaluate.
+   * @returns {DamageRoll}
+   */
+  async createModifiedDamageRoll(roll, { additionalTerms = "", damageType }, evaluationOptions = {}) {
+    const ability = await fromUuid(this.uuid);
+    const rollData = ability?.getRollData() ?? this.parent.getRollData();
+
+    const newRoll = DamageRoll.fromData(roll.toJSON());
+
+    if (additionalTerms) {
+      const terms = DamageRoll.parse(additionalTerms, rollData);
+      for (const term of terms) if (!term._evaluated) await term.evaluate(evaluationOptions);
+      newRoll.terms = newRoll.terms.concat(new foundry.dice.terms.OperatorTerm({ operator: "+" }), terms);
+      newRoll.resetFormula();
+      newRoll._total = newRoll._evaluateTotal();
+    }
+
+    if (damageType !== undefined) {
+      // Without this, changing the new roll damage type changes the original rolls damage type.
+      newRoll.options = { ...newRoll.options };
+      newRoll.options.type = damageType;
+      const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
+      const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
+      newRoll.options.flavor = flavor;
+    }
+
+    await this.parent.update({ rolls: this.parent.rolls.concat(newRoll) });
+
+    return newRoll;
   }
 }

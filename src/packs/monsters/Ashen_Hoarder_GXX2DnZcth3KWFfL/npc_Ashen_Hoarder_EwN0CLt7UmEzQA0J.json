@@ -35,7 +35,7 @@
         "letter": "M"
       },
       "stability": 3,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 8,
@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "46",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -115,7 +114,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "solo-monster",
@@ -153,7 +151,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "bladed-body",
@@ -191,7 +188,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "soul-singularity",
@@ -394,7 +390,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "claw-and-blade",
@@ -555,7 +550,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "corpse-bomb",
@@ -758,7 +752,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "impale",
@@ -868,7 +861,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "bone-dozer",
@@ -932,7 +924,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "armor-of-corpses",
@@ -1153,7 +1144,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "skeletal-eruption",
@@ -1258,7 +1248,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "mobile-mine-field",
@@ -1326,7 +1315,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "46"
         },
         "_dsid": "ossuary-assault",
@@ -1388,8 +1376,7 @@
         "source": {
           "book": "Monsters",
           "page": "46",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "relentless-strikes",
         "story": "",
@@ -1414,67 +1401,6 @@
         "default": 0
       },
       "_key": "!actors.items!EwN0CLt7UmEzQA0J.wQ1PEgnfO5HCOGRK"
-    },
-    {
-      "name": "Blade Wall",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "none",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A ashen starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The ashen hoarder summons a 10 wall of bones and blades into unoccupied squares within 5 squares of them. Each square of the wall has 5 Stamina. An enemy who comes adjacent to the wall for the first time in a round or starts their turn there takes [[/damage 3]] damage.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "46",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "blade-wall",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "o9XUCxec7w22VDBH",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!EwN0CLt7UmEzQA0J.o9XUCxec7w22VDBH"
     },
     {
       "name": "Solo Action",
@@ -1510,8 +1436,7 @@
         "source": {
           "book": "Monsters",
           "page": "46",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
         "story": "",
@@ -1538,6 +1463,70 @@
       "_key": "!actors.items!EwN0CLt7UmEzQA0J.qvQskX0aMUg203Pm"
     },
     {
+      "name": "Blade Wall",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A ashen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ashen hoarder summons a 10 wall of bones and blades into unoccupied squares within 5 squares of them. Each square of the wall has 5 Stamina. An enemy who comes adjacent to the wall for the first time in a round or starts their turn there takes [[/damage 3]] damage.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "46",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "blade-wall",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.Q8cXotr2pqF5U53N",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760847070863,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "Q8cXotr2pqF5U53N",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.Q8cXotr2pqF5U53N"
+    },
+    {
       "name": "Bone Storm",
       "type": "ability",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
@@ -1550,7 +1539,9 @@
           "type": "special"
         },
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "damageDisplay": "melee",
         "power": {
@@ -1561,7 +1552,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The ashen hoarder launches bone lances into the air, raining them</p><p>down on enemies and impaling those unlucky enough to be on</p><p>the receiving end. Each enemy within 20 squares of the ashen</p><p>hoarder makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; restrained and bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; bleeding (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
+          "before": "<p>The ashen hoarder launches bone lances into the air, raining them</p><p>down on enemies and impaling those unlucky enough to be on</p><p>the receiving end. Each enemy within 20 squares of the ashen</p><p>hoarder makes an <strong>Agility test</strong>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 14]] damage; [[/apply eBrxn3KT6rkdyGUS save]]</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>[[/damage 11]] damage; [[/apply bleeding turn]]</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>[[/damage 6]] damage</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -1571,8 +1562,7 @@
         "source": {
           "book": "Monsters",
           "page": "46",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "bone-storm",
         "story": "",
@@ -1609,13 +1599,13 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "iKSKZkUWnJLq8yB9",
-          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3.iKSKZkUWnJLq8yB9"
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.vIJRyTNiGZGtsXhe.iKSKZkUWnJLq8yB9"
         },
         {
           "name": "Bleeding",
@@ -1647,33 +1637,78 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.348",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_id": "e8jY6RqE90bVzKNF",
-          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3.e8jY6RqE90bVzKNF"
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.vIJRyTNiGZGtsXhe.e8jY6RqE90bVzKNF"
+        },
+        {
+          "name": "Restrained and Bleeding",
+          "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.vIJRyTNiGZGtsXhe",
+          "transfer": false,
+          "_id": "eBrxn3KT6rkdyGUS",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "restrained",
+            "bleeding"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!EwN0CLt7UmEzQA0J.vIJRyTNiGZGtsXhe.eBrxn3KT6rkdyGUS"
         }
       ],
-      "folder": null,
-      "sort": 0,
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.vIJRyTNiGZGtsXhe",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1760847072398,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_id": "fv0Mx9PZ5CNDXvU3",
+      "_id": "vIJRyTNiGZGtsXhe",
       "ownership": {
-        "default": 0
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
       },
-      "_key": "!actors.items!EwN0CLt7UmEzQA0J.fv0Mx9PZ5CNDXvU3"
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!EwN0CLt7UmEzQA0J.vIJRyTNiGZGtsXhe"
     }
   ],
   "folder": "GXX2DnZcth3KWFfL",

@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "187",
-      "license": "Draw Steel Creator License",
-      "revision": 2
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "telekinesis",
     "advancements": {
@@ -63,7 +62,7 @@
         "description": "<p>Your talent tradition grants you the following feature.</p>"
       },
       "sL1aSuQxjAo1lMyx": {
-        "name": "2nd-Level Telepathy Ability",
+        "name": "2nd-Level Telepathy Abilities",
         "img": "icons/magic/movement/pinwheel-turning-blue.webp",
         "type": "itemGrant",
         "requirements": {
@@ -80,6 +79,80 @@
             "uuid": "Compendium.draw-steel.abilities.Item.dwhjMDvFu6CMO1Dv"
           }
         ]
+      },
+      "SuGwVHiaMBHtIBD4": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-triangle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "SuGwVHiaMBHtIBD4",
+        "description": "<p>Your talent tradition grants you the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.4RpeBdDOaQPxP4uK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.VfNNM8A46EaoQ20L"
+          }
+        ]
+      },
+      "gMz0lG1B0UValKev": {
+        "name": "6th-Level Telekinesis Abilities",
+        "img": "icons/magic/movement/pinwheel-turning-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "gMz0lG1B0UValKev",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.M0QI30cNWCZuvsVY"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Yd9jRc4setB3igPQ"
+          }
+        ]
+      },
+      "a4FxQK5l1EfQCrIf": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-triangle-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "a4FxQK5l1EfQCrIf",
+        "description": "<p>Your talent tradition grants you the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.c2FklzGVN9tIbVhE"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.j3uvs9Spr1M3VLAP"
+          }
+        ]
+      },
+      "J7PIn5uE3YKlbfiP": {
+        "name": "9th-Level Telekinesis Abilities",
+        "img": "icons/magic/movement/pinwheel-turning-blue.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "J7PIn5uE3YKlbfiP",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.RUy3V8JsgCX4bIUK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yGMyCR8IQ4u7RKux"
+          }
+        ],
+        "chooseN": 1
       }
     },
     "classLink": "talent"
@@ -94,9 +167,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1755828440257,
     "modifiedTime": null,
     "lastModifiedBy": null

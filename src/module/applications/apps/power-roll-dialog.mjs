@@ -2,6 +2,8 @@ import { systemPath } from "../../constants.mjs";
 import PowerRoll from "../../rolls/power.mjs";
 import RollDialog from "../api/roll-dialog.mjs";
 
+/** @import DrawSteelToken  from "../../canvas/placeables/token.mjs" */
+
 const { FormDataExtended } = foundry.applications.ux;
 
 /**
@@ -29,6 +31,14 @@ export default class PowerRollDialog extends RollDialog {
 
   /* -------------------------------------------------- */
 
+  /**
+   * The currently highlighted token.
+   * @type {DrawSteelToken | null}
+   */
+  #highlightedToken = null;
+
+  /* -------------------------------------------------- */
+
   /** @inheritdoc */
   async _preparePartContext(partId, context, options) {
     context = await super._preparePartContext(partId, context, options);
@@ -49,6 +59,28 @@ export default class PowerRollDialog extends RollDialog {
     return context;
   }
 
+  /** @inheritdoc */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+
+    if (context.targets) {
+      // Add event listeners to trigger target token hovering.
+      this.element.addEventListener("pointermove", event => {
+        if (!canvas.ready) return;
+
+        const tokenUuid = event.target.closest(".target.group[data-token-uuid]")?.dataset.tokenUuid;
+        const token = this.options.context.targets.find(target => target.tokenUuid === tokenUuid)?.token.object;
+        if (token && token._canHover(game.user, event) && token.visible) {
+          token._onHoverIn(event, { hoverOutOthers: true });
+          this.#highlightedToken = token;
+        } else {
+          this.#highlightedToken?._onHoverOut(event);
+          this.#highlightedToken = null;
+        }
+      });
+    }
+  }
+
   /* -------------------------------------------------- */
 
   /**
@@ -63,7 +95,7 @@ export default class PowerRollDialog extends RollDialog {
     context.damageOptions = null;
     for (const tier of PowerRoll.TIER_NAMES) {
 
-      const effect = context.ability.system.power.effects.getByType("damage").find(e => e.damage[tier].types.size > 1);
+      const effect = context.ability.system.power.effects.documentsByType.damage.find(e => e.damage[tier].types.size > 1);
       if (!effect) continue;
 
       context.damageOptions = Object.entries(ds.CONFIG.damageTypes)
@@ -82,6 +114,7 @@ export default class PowerRollDialog extends RollDialog {
   async _prepareTargets(context) {
     for (const target of context.targets) {
       if (!target.actor) target.actor = await fromUuid(target.uuid);
+      if (!target.token) target.token = await fromUuid(target.tokenUuid);
 
       target.combinedModifiers = {
         edges: Math.clamp(target.modifiers.edges + context.modifiers.edges, 0, PowerRoll.MAX_EDGE),

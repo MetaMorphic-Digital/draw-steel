@@ -8,8 +8,7 @@
     "source": {
       "book": "Heroes",
       "page": "152",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "kinetic-shield",
     "story": "You manifest a force barrier that absorbs incoming kinetic energy.",
@@ -42,13 +41,13 @@
           "_id": "CDJI6TH7I43rbSf8",
           "other": {
             "tier1": {
-              "display": "You gain 10 [​[/heal 10 type=temporary]]"
+              "display": "You gain 10 temporary Stamina"
             },
             "tier2": {
-              "display": "You gain 15 [​[/heal 15 type=temporary]]"
+              "display": "You gain 15 temporary Stamina"
             },
             "tier3": {
-              "display": "You gain 20 [​[/heal 20 type=temporary]]"
+              "display": "You gain 20 temporary Stamina"
             }
           }
         }
@@ -56,7 +55,7 @@
     },
     "effect": {
       "before": "",
-      "after": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p>"
+      "after": "<p>While you have temporary Stamina from this ability, you can’t be made bleeding even while dying.</p><p>[[/heal 10 temp]] [[/heal 15 temp]] [[/heal 20 temp]]</p>"
     },
     "spend": {
       "text": "",
@@ -73,9 +72,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1756087730304,
     "modifiedTime": null,
     "lastModifiedBy": null

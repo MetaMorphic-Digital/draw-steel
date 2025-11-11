@@ -1,0 +1,67 @@
+{
+  "folder": "LcxQWdKYlF6t7cYu",
+  "name": "Look!",
+  "type": "ability",
+  "_id": "CJWbXcYFmLJYYnvq",
+  "img": "icons/magic/control/mouth-smile-deception-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "169",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "look",
+    "story": "You distract your foes, allowing your allies to take advantage of that distraction.",
+    "keywords": [
+      "area",
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "Each enemy in the area",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the start of your next turn, any ability roll made against a target gains an edge.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760837608569,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!CJWbXcYFmLJYYnvq"
+}

@@ -12,13 +12,12 @@
     "source": {
       "book": "Heroes",
       "page": "38",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "human",
     "advancements": {
       "HVzwmT8i2fyF75AW": {
-        "name": "",
+        "name": "Signature Trait",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -30,6 +29,37 @@
             "uuid": "Compendium.draw-steel.origins.Item.X40Vg1cP1ze1FeBL"
           }
         ]
+      },
+      "ao5QN2zG8qBsGZJr": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "ao5QN2zG8qBsGZJr",
+        "description": "<p>You have 3 ancestry points to spend on the following traits. (<em>Quick Build:</em> Perseverance, Staying Power.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.sApldmo4F6eoArMh"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.hcAmOtDXMqCpcyI4"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.5eR1iLU6P8ogobGB"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.FUrxZYvocf8fmdnv"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.r0zaFM82zkl4tMnC"
+          }
+        ],
+        "chooseN": 3
       }
     }
   },
@@ -43,9 +73,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456818746,
     "modifiedTime": null,
     "lastModifiedBy": null

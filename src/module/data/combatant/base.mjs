@@ -28,4 +28,17 @@ export default class BaseCombatantModel extends foundry.abstract.TypeDataModel {
       }),
     };
   }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Is this combatant the captain of their squad?
+   * @type {boolean}
+   */
+  get isCaptain() {
+    const group = this.parent.group;
+    if (group?.type !== "squad") return false;
+
+    return this.parent === group.system.captain;
+  }
 }

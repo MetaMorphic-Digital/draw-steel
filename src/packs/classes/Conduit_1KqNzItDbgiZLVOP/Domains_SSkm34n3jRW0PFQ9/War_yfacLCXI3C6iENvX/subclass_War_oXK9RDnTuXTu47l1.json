@@ -6,14 +6,13 @@
   "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
   "system": {
     "description": {
-      "value": "<p><strong>Piety: </strong>You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes damage greater than 10 + your level in a single turn.</p><p><strong>Prayer Effect:</strong> Choose up to three allies within 10 squares of you, or choose yourself instead of one ally. Each target gains 2 surges.</p>",
+      "value": "<p><strong>Piety: </strong>You gain 2 piety the first time in an encounter that you or a creature within 10 squares takes damage greater than 10 + your level in a single turn.</p><p><strong>Prayer Effect:</strong> Choose up to three allies within 10 squares of you, or choose yourself instead of one ally. Each target [[/surge 2]].</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
       "page": "97",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "war",
     "advancements": {
@@ -45,6 +44,34 @@
             "uuid": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX"
           }
         ]
+      },
+      "fYf58L3WMimebid8": {
+        "name": "Domain Feature",
+        "img": "icons/weapons/polearms/spear-hooked-broad.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "fYf58L3WMimebid8",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.KB5V93FFPGUKc9Vp"
+          }
+        ]
+      },
+      "Bl00YpY0vrYi6D0R": {
+        "name": "Domain Ability",
+        "img": "icons/weapons/swords/sword-winged-pink.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "Bl00YpY0vrYi6D0R",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YHCqOWlqzXPL34zs"
+          }
+        ]
       }
     },
     "classLink": "conduit"
@@ -59,9 +86,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755671048803,
     "modifiedTime": null,
     "lastModifiedBy": null

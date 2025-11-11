@@ -1,0 +1,112 @@
+{
+  "name": "Float Powder",
+  "type": "treasure",
+  "img": "icons/consumables/potions/potion-bottle-corked-stopper-yellow.webp",
+  "system": {
+    "kind": "other",
+    "category": "consumable",
+    "echelon": 2,
+    "description": {
+      "value": "<p><em>A glass vial holds translucent flakes that twinkle in the light.</em></p><p><strong>Effect:</strong> Dousing yourself in this powder as a maneuver causes you to weightlessly float off the ground. For 1 hour, your stability is reduced to 0, and you can [[/apply ZsZmCflAcicrTNus]]{fly and hover}. Additionally, the hag that the powder is sourced from knows exactly where and when you use it.</p>",
+      "director": ""
+    },
+    "keywords": [
+      "magic"
+    ],
+    "project": {
+      "prerequisites": "Several strands of hag hair",
+      "source": "Texts or lore in Khelt",
+      "rollCharacteristic": [
+        "intuition",
+        "presence"
+      ],
+      "goal": 90,
+      "yield": {
+        "amount": "1d3",
+        "display": "yields 1d3 vials"
+      }
+    },
+    "_dsid": "float-powder",
+    "source": {
+      "book": "Heroes",
+      "page": "318",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Float Powder",
+      "img": "icons/consumables/potions/potion-bottle-corked-stopper-yellow.webp",
+      "type": "base",
+      "origin": "Item.hpSeCg378nKxJq5P",
+      "transfer": false,
+      "_id": "ZsZmCflAcicrTNus",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 3,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "fly",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">For 1 hour, your stability is reduced to 0, and you can fly and hover.</span></p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!hpSeCg378nKxJq5P.ZsZmCflAcicrTNus"
+    }
+  ],
+  "folder": "5KJmrjbJfvNBgjYp",
+  "_id": "hpSeCg378nKxJq5P",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761682822282,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!hpSeCg378nKxJq5P"
+}

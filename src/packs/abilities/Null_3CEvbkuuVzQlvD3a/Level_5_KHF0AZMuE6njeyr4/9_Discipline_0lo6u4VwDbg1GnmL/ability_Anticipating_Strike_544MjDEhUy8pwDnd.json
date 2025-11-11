@@ -1,0 +1,163 @@
+{
+  "folder": "0lo6u4VwDbg1GnmL",
+  "name": "Anticipating Strike",
+  "type": "ability",
+  "_id": "544MjDEhUy8pwDnd",
+  "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "154",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "anticipating-strike",
+    "story": "You suddenly strike an enemy, then grab them in a psionically enhanced grip",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "freeTriggered",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "The target moves or uses a main action.",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "0DgidgC7FymFewiY": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "0DgidgC7FymFewiY",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr"
+            },
+            "tier2": {
+              "value": "10 + @chr"
+            },
+            "tier3": {
+              "value": "13 + @chr"
+            }
+          }
+        },
+        "ewtAW1W4qrnf3lt1": {
+          "name": "Restrained",
+          "img": null,
+          "type": "applied",
+          "_id": "ewtAW1W4qrnf3lt1",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, restrained (save ends)",
+              "potency": {
+                "characteristic": "intuition"
+              },
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "restrained": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>This strike resolves before the triggering movement or main action.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Active Effect",
+      "img": "icons/svg/item-bag.svg",
+      "origin": "Compendium.draw-steel.abilities.Item.544MjDEhUy8pwDnd",
+      "transfer": false,
+      "_id": "xjOUBmjHoetfc9Dn",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760973165950,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!544MjDEhUy8pwDnd.xjOUBmjHoetfc9Dn"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760972835635,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!544MjDEhUy8pwDnd"
+}

@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "122",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -114,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "122"
         },
         "_dsid": "otherworldly-grace",
@@ -227,6 +225,10 @@
                       "condition": "failure",
                       "end": "save",
                       "properties": []
+                    },
+                    "zCKnRU0EG6qDeLzQ": {
+                      "condition": "failure",
+                      "end": "respite"
                     }
                   }
                 },
@@ -241,6 +243,10 @@
                       "condition": "failure",
                       "end": "save",
                       "properties": []
+                    },
+                    "zCKnRU0EG6qDeLzQ": {
+                      "condition": "failure",
+                      "end": "respite"
                     }
                   }
                 },
@@ -261,13 +267,12 @@
           "after": ""
         },
         "spend": {
-          "text": "The potency increases by 1. If the target is weakened this  way at the end of the encounter, they can’t take a respite activity  during their next respite.",
+          "text": "The potency increases by 1. If the target is weakened this way at the end of the encounter, they can’t take a respite activity during their next respite.",
           "value": 2
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "122"
         },
         "_dsid": "instill-regret",
@@ -275,7 +280,50 @@
         "resource": null,
         "trigger": ""
       },
-      "effects": [],
+      "effects": [
+        {
+          "name": "Regret",
+          "img": "icons/magic/control/fear-fright-white.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.UxoLvIdRzgdLOAY0.Item.YXm8ANjisAFpg6gn",
+          "transfer": false,
+          "_id": "zCKnRU0EG6qDeLzQ",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "respite",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot take a respite ability during your next respite.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761101598657,
+            "modifiedTime": 1761101668864,
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!UxoLvIdRzgdLOAY0.YXm8ANjisAFpg6gn.zCKnRU0EG6qDeLzQ"
+        }
+      ],
       "folder": null,
       "sort": 0,
       "flags": {},
@@ -283,9 +331,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -335,7 +383,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "122"
         },
         "_dsid": "recall",
@@ -373,8 +420,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "chaincast",
         "story": "",
@@ -435,8 +481,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "gift-from-an-accursed-tome",
         "story": "",
@@ -457,7 +502,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -650,9 +696,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -668,8 +714,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "in-defiance-of-time",
         "story": "",

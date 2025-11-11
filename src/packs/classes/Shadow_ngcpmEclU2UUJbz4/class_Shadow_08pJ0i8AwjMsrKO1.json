@@ -10,8 +10,7 @@
     "source": {
       "book": "Heroes",
       "page": "160",
-      "license": "Draw Steel Creator License",
-      "revision": 2
+      "license": "Draw Steel Creator License"
     },
     "level": 0,
     "primary": "Insight",
@@ -41,10 +40,11 @@
             "sneak"
           ]
         },
-        "chooseN": 2
+        "chooseN": 2,
+        "sort": 22000
       },
       "SRAejnOFwwqJ7PtH": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -52,10 +52,11 @@
         },
         "_id": "SRAejnOFwwqJ7PtH",
         "description": "<p>You gain one skill of your choice.</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 23000
       },
       "upSQS0I1HD3HAmCS": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -63,10 +64,11 @@
         },
         "_id": "upSQS0I1HD3HAmCS",
         "description": "<p>You gain one skill of your choice.</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 24000
       },
       "K6p4mRHr2oQrNzr9": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -74,10 +76,11 @@
         },
         "_id": "K6p4mRHr2oQrNzr9",
         "description": "<p>You gain one skill of your choice.</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 25000
       },
       "rVxzta9pyPzGkeRk": {
-        "name": "Choose Skill",
+        "name": "Skills",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -95,7 +98,8 @@
             "intrigue"
           ]
         },
-        "chooseN": 5
+        "chooseN": 5,
+        "sort": 26000
       },
       "t6jYyY0XwIK2EEJs": {
         "name": "Shadow College",
@@ -117,7 +121,8 @@
           }
         ],
         "description": "<p>You graduated from a shadow college chosen from the following options, each of which grants you a skill. (<em>Quick Build:</em> College of Black Ash.)</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 20000
       },
       "MFtoHbyZrLvp0QdX": {
         "name": "Features",
@@ -135,7 +140,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.weYBoNzMpzcu9qUr"
           }
         ],
-        "description": "<p>You gain the following features.</p>"
+        "description": "<p>You gain the following features.</p>",
+        "sort": 9000
       },
       "e5IGhKXPmer934df": {
         "name": "Signature Ability",
@@ -160,7 +166,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.JsIqJ0UsUSNJemm3"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 21000
       },
       "jwPkEg7OrYzXIcvN": {
         "name": "3 Insight",
@@ -185,7 +192,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.PF2heedkoTuLzInM"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 1000
       },
       "cwvHruLPKOsQLebf": {
         "name": "5 Insight",
@@ -210,7 +218,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.mMqubTdf0bE8mCXV"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 2000
       },
       "FH9787PO0HX1I60w": {
         "name": "Kit",
@@ -286,7 +295,11 @@
           {
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
-        ]
+        ],
+        "additional": {
+          "type": "kit"
+        },
+        "sort": 14000
       },
       "GedZEWTL8eGx4sFP": {
         "name": "Perk",
@@ -296,7 +309,17 @@
           "level": 2
         },
         "_id": "GedZEWTL8eGx4sFP",
-        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>"
+        "description": "<p>You gain one exploration, interpersonal, or intrigue perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration",
+            "interpersonal",
+            "intrigue"
+          ]
+        },
+        "sort": 15000
       },
       "iiaD9h7vaR6JaT3t": {
         "name": "Careful Observation",
@@ -311,7 +334,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.ohYyQGWF3FCOFUVE"
           }
-        ]
+        ],
+        "sort": 5000
       },
       "JY8zcDfMicwkFDvW": {
         "name": "7 Insight Ability",
@@ -336,7 +360,276 @@
             "uuid": "Compendium.draw-steel.abilities.Item.h82AnBjasPTbNyKl"
           }
         ],
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 3000
+      },
+      "oQUnv0LyfvsVa6k3": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "oQUnv0LyfvsVa6k3",
+        "description": "<p>Your Agility score increases to 3. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 3.</p>",
+        "characteristics": {
+          "agility": 1,
+          "might": 0,
+          "reason": 0,
+          "intuition": 0,
+          "presence": 0
+        },
+        "sort": 6000
+      },
+      "xkQSpmMuBYMPhXet": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "xkQSpmMuBYMPhXet",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "sort": 7000
+      },
+      "QPs0QxF0cBT0Ohw1": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "QPs0QxF0cBT0Ohw1",
+        "description": "<p>Your Agility score increases to 5. Additionally, you can increase one of your characteristic scores by 1, to a maximum of 5.</p>",
+        "characteristics": {
+          "agility": 1,
+          "might": 0,
+          "reason": 0,
+          "intuition": 0,
+          "presence": 0
+        },
+        "max": 5,
+        "sort": 8000
+      },
+      "3Udf9IvW5QNb6rCA": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "3Udf9IvW5QNb6rCA",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 16000
+      },
+      "matmnNplvHQbzJYZ": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "matmnNplvHQbzJYZ",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 17000
+      },
+      "BSjhCILbMGRaOXOK": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "BSjhCILbMGRaOXOK",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 18000
+      },
+      "MYfaUkd2QXCI5N8d": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "MYfaUkd2QXCI5N8d",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 19000
+      },
+      "0BD4QZlDzQZMyjUP": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "0BD4QZlDzQZMyjUP",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.aSAyXpD4xWMiJD1d"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.xDUJBcJtVdSJl7hF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.cj8q3NP2Z98shCoL"
+          }
+        ],
+        "description": "<p>You gain the following features.</p>",
+        "sort": 10000
+      },
+      "VziBscD3AQ0mWPPV": {
+        "name": "Umbral Form",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "VziBscD3AQ0mWPPV",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.74zMvV18CZ7BbnWc"
+          }
+        ],
+        "description": "<p>You gain the following feature.</p>",
+        "sort": 27000
+      },
+      "Ij7nEVoIzkcbV6l4": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "Ij7nEVoIzkcbV6l4",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Pim7dohjYKQ1uVvc"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.9BTUygbbxfR2VOmp"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.6OjHTd64ZPF8Dbaa"
+          }
+        ],
+        "sort": 11000
+      },
+      "bYuN3qCcs0tol2fB": {
+        "name": "9 Insight Ability",
+        "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "bYuN3qCcs0tol2fB",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 insight to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.UGyH8wwYj9XkauGZ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.vkn5ZjAPaNExIpHF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.wxzpnE9EDlFTxSGR"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3UkeC0E9t1koKXGZ"
+          }
+        ],
+        "sort": 4000
+      },
+      "iGzmdObjm0jsthvU": {
+        "name": "11 Insight Ability",
+        "img": "icons/magic/symbols/runes-star-pentagon-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "iGzmdObjm0jsthvU",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 insight to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.jFBkTOGgSnZ0ELAr"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.OnF7sg9uc0gLFRO0"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.57JcdSocUMayVxN1"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.wbwI9oBrIuBJOjGB"
+          }
+        ]
+      },
+      "oZXBETaVLfJBVtzD": {
+        "name": "Gloom Squad",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "oZXBETaVLfJBVtzD",
+        "description": "<p>You gain the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.vtkyb9fGsCU4o0Ov"
+          }
+        ],
+        "sort": 13000
+      },
+      "unUUZhApYagp5i4x": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "unUUZhApYagp5i4x",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DWzG2R7Gh9RaVkfq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.7D710yeGHI4sjZdR"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.tUCdChkTq2oCRTLn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.l9S2KuyTCMrqjqDE"
+          }
+        ],
+        "sort": 12000
       }
     },
     "_dsid": "shadow",
@@ -355,9 +648,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1751673029598,
     "modifiedTime": null,
     "lastModifiedBy": null

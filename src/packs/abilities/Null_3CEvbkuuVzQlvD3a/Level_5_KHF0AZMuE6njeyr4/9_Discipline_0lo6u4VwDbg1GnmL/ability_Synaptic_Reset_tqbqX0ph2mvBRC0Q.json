@@ -1,0 +1,67 @@
+{
+  "folder": "0lo6u4VwDbg1GnmL",
+  "name": "Synaptic Reset",
+  "type": "ability",
+  "_id": "tqbqX0ph2mvBRC0Q",
+  "img": "icons/magic/holy/barrier-shield-winged-cross.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "154",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "synaptic-reset",
+    "story": "You expand your nullifying power to mitigate harmful effects.",
+    "keywords": [
+      "area",
+      "psionic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Each target can end any conditions or effects on themself, and gains [[/heal 5 temp]] for each condition or effect removed .</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760974748068,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!tqbqX0ph2mvBRC0Q"
+}

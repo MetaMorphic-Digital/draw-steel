@@ -6,19 +6,18 @@
   "img": "icons/environment/settlement/watchtower-cliff.webp",
   "system": {
     "description": {
-      "value": "<p>Children of the solar celestials created to tend their libraries and attend to the true elves as heralds, high elf history describes a better age, before the coming of humans and war. A time when the celestials were still in the world, and all that mattered was art and beauty.</p><p>In the millennia since their creators retired to Arcadia, the high elves built a civilization for themselves, primarily living in and among the fallen celestial sky cities. With no creators left to please, the elves continue as they did before—collecting lore and knowledge, worshipping art, and turning more inward and distrusting of outsiders with each generation.</p><h4>High Elf Traits</h4><p>High elf heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Zh8ZNVJqtJgJpW7m]{High Elf Glamor}</p><h4>Purchased High Elf Traits</h4><p>You have 3 ancestry points to spend on the following traits. (Quick Build: High Senses, Otherworldly Grace.)</p><p>@UUID[Compendium.draw-steel.origins.Item.uHpwLB8wTL47WJr5]{Glamor of Terror (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.VF6zaUKLsLN1Im3W]{Graceful Retreat (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.m1tQ43tT1hnixVBn]{High Senses (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.YrnkrcvZSkecn21f]{Otherworldly Grace (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.3Y0oPwqk2tDFlaTp]{Revisit Memory (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.cs8jldLJrjpmpRfl]{Unstoppable Mind (2 Points)}</p><p></p>",
+      "value": "<p>Children of the solar celestials created to tend their libraries and attend to the true elves as heralds, high elf history describes a better age, before the coming of humans and war. A time when the celestials were still in the world, and all that mattered was art and beauty.</p><p>In the millennia since their creators retired to Arcadia, the high elves built a civilization for themselves, primarily living in and among the fallen celestial sky cities. With no creators left to please, the elves continue as they did before—collecting lore and knowledge, worshipping art, and turning more inward and distrusting of outsiders with each generation.</p><h4>High Elf Traits</h4><p>High elf heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.Zh8ZNVJqtJgJpW7m]{High Elf Glamor}</p><h4>Purchased High Elf Traits</h4><p>You have 3 ancestry points to spend on the following traits. (Quick Build: High Senses, Otherworldly Grace.)</p><p>@UUID[Compendium.draw-steel.origins.Item.uHpwLB8wTL47WJr5]{Glamor of Terror (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.VF6zaUKLsLN1Im3W]{Graceful Retreat (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.m1tQ43tT1hnixVBn]{High Senses (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.YrnkrcvZSkecn21f]{Otherworldly Grace (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.3Y0oPwqk2tDFlaTp]{Revisit Memory (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.cs8jldLJrjpmpRfl]{Unstoppable Mind (2 Points)}</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
       "page": "34",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "high-elf",
     "advancements": {
       "mC9IWGVI31c4SkOL": {
-        "name": "",
+        "name": "Signature Trait",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -28,6 +27,40 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.origins.Item.Zh8ZNVJqtJgJpW7m"
+          }
+        ]
+      },
+      "5T4BvFmxVEiwp77W": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "5T4BvFmxVEiwp77W",
+        "description": "<p>You have 3 ancestry points to spend on the following traits. (<em>Quick Build:</em> High Senses, Otherworldly Grace.)</p>",
+        "chooseN": 3,
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.uHpwLB8wTL47WJr5"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.VF6zaUKLsLN1Im3W"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.m1tQ43tT1hnixVBn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.YrnkrcvZSkecn21f"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.3Y0oPwqk2tDFlaTp"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.cs8jldLJrjpmpRfl"
           }
         ]
       }
@@ -43,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456808540,
     "modifiedTime": null,
     "lastModifiedBy": null

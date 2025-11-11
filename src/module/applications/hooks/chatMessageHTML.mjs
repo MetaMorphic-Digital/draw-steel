@@ -8,6 +8,7 @@ import DrawSteelChatMessage from "../../documents/chat-message.mjs";
  * @param {Record<string, any>} context
  */
 export async function renderChatMessageHTML(message, html, context) {
+  if (!message.isContentVisible) return;
   if (message.system.alterMessageHTML instanceof Function) {
     await message.system.alterMessageHTML(html);
   }

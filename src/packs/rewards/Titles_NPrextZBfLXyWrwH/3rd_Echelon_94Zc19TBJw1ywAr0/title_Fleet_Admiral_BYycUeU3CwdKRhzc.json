@@ -1,0 +1,69 @@
+{
+  "folder": "94Zc19TBJw1ywAr0",
+  "name": "Fleet Admiral",
+  "type": "title",
+  "_id": "BYycUeU3CwdKRhzc",
+  "img": "icons/skills/trades/profession-sailing-ship.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect</strong>: Choose one of the following benefits:</p><ul><li><p><em>First Mate:</em></p><p>You have a pirate retainer, such as a human warrior, chosen by the Director from Draw Steel: Monsters. This retainer’s level increases to your level.</p></li><li><p><em>Swashbuckler:</em></p><p>You can automatically climb at full speed while moving.</p></li><li><p><em>Treasure Keeper:</em></p><p>You earn 1 Wealth.</p></li><li><p><em>Weather Wizard:</em></p><p>Once per day, you can spend 10 uninterrupted minutes to magically alter mundane weather in a 5-mile radius around you. The weather moves with you and persists for 6 hours or until you dismiss it as a free maneuver. Choose from one of the following weather types:</p><ul><li><p>Calm: Wind-powered vessels and technology cease working.</p></li><li><p>Fog: Visibility is reduced to 6 squares.</p></li><li><p>High Winds: The speed of wind-powered vessels is doubled.</p></li><li><p>Light Winds: No effects due to weather.</p></li><li><p>Storm: The crew of an unsheltered wind-powered vessel must make a medium group Reason test. On a failure, the vessel needs repairs and moves at half speed until those repairs are made.</p></li></ul></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "347",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "fleet-admiral",
+    "advancements": {
+      "zPIIy9vAViJ00vnF": {
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "zPIIy9vAViJ00vnF",
+        "description": "<p>Choose one of the following benefits:</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.NYFZofaiVNGw6qKl"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.PyAP7tE4UhdGGmGq"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.tMFPiN1lxvB0G9fF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.r2Ar7ILUdpSq0avh"
+          }
+        ]
+      }
+    },
+    "echelon": 3,
+    "story": "All hail the Pirate Queen!",
+    "prerequisites": {
+      "value": "You have the Corsair title, and you lead a fleet of at least three ships."
+    }
+  },
+  "effects": [],
+  "sort": 300000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761857820098,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!BYycUeU3CwdKRhzc"
+}

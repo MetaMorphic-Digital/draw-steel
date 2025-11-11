@@ -1,0 +1,480 @@
+{
+  "folder": "o7pquRxzytKpzUOM",
+  "name": "Nature's Bounty",
+  "type": "feature",
+  "_id": "fpEWKzt4tPehW1GX",
+  "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+  "system": {
+    "description": {
+      "value": "<p>When you finish a respite, you can prepare a magic meal using local flora for any companions who rested with you. Choose two of the following benefits for creatures who consume the meal:</p><ul><li><p>Each creature gains immunity to [[/apply oT4yvGPLAsChcJJ2]], [[/apply z8a6AJazFVHu5MnC]], [[/apply z1m9QCKa08EP2vqK]], [[/apply VpEIkmBpEqJwrIJ1]], [[/apply 28KSxWBBFnMmXzXs]], [[/apply 7n6o9BYz2H9YCgqV]], or [[/apply AXKn2yiMQpG9dAKQ]]damage equal to your level. You can choose this benefit twice, choosing a different damage immunity each time.</p></li><li><p>Each creature gains [[/heal 20 type=temporary]].</p></li><li><p>Each creature gains a [[/apply YyEuFQOWQG5lb3tY]]{+1 bonus to speed}.</p></li><li><p>Each creature gains a [[/apply dIGYuPH4MvIjttBJ]]{+1 bonus to saving throws}.</p></li><li><p>Each creature gains an edge on tests made to influence other creatures.</p></li></ul><p>Each benefit lasts until the creature who gains it finishes another respite.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "90",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "natures-bounty",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Speed Bonus",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.PEBzKcJ0CObveH4p",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284154522,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "YyEuFQOWQG5lb3tY",
+      "sort": 100000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.YyEuFQOWQG5lb3tY"
+    },
+    {
+      "name": "Saving Throw Bonus",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.save.threshold",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.dlw4NFzF507dk8ui",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284157668,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "dIGYuPH4MvIjttBJ",
+      "sort": 200000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.dIGYuPH4MvIjttBJ"
+    },
+    {
+      "name": "Acid Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.acid",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.Wxs2FU26E89kePKO",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284159357,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "oT4yvGPLAsChcJJ2",
+      "sort": 300000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.oT4yvGPLAsChcJJ2"
+    },
+    {
+      "name": "Cold Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.cold",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.cNgt67I3KzdcLCIj",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284160487,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "z8a6AJazFVHu5MnC",
+      "sort": 400000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.z8a6AJazFVHu5MnC"
+    },
+    {
+      "name": "Corruption Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.corruption",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.JNwnNUeLwK9Nn5xb",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284162103,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "z1m9QCKa08EP2vqK",
+      "sort": 500000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.z1m9QCKa08EP2vqK"
+    },
+    {
+      "name": "Fire Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.fire",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.L9ezn20AAjsHxnV0",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284163975,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "VpEIkmBpEqJwrIJ1",
+      "sort": 600000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.VpEIkmBpEqJwrIJ1"
+    },
+    {
+      "name": "Poison Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.poison",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.J7GED0lgtMJGiy2v",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284165336,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "7n6o9BYz2H9YCgqV",
+      "sort": 800000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.7n6o9BYz2H9YCgqV"
+    },
+    {
+      "name": "Sonic Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.sonic",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.CVKrHW9ex8doTr34",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284167714,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "AXKn2yiMQpG9dAKQ",
+      "sort": 900000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.AXKn2yiMQpG9dAKQ"
+    },
+    {
+      "name": "Lightning Immunity",
+      "img": "icons/consumables/food/bowl-stew-tofu-potato-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.lightning",
+          "mode": 2,
+          "value": "7",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.82Cp3GIsKGGoNzfO.ActiveEffect.ArVE1nyjiwuG3CjM",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762284179188,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "28KSxWBBFnMmXzXs",
+      "sort": 700000,
+      "_key": "!items.effects!fpEWKzt4tPehW1GX.28KSxWBBFnMmXzXs"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761261268797,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!fpEWKzt4tPehW1GX"
+}

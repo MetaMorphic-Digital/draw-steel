@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "203",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "duelist",
     "advancements": {
@@ -96,6 +95,90 @@
           }
         ],
         "description": "<p>Your troubadour class act grants your choice of one of two heroic abilities.</p>"
+      },
+      "H6kdVLEqTqj0vVED": {
+        "name": "5th-Level Duelist Ability",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "H6kdVLEqTqj0vVED",
+        "description": "<p>Your troubadour class act grants your choice of one of two features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.dZwqbDCawTFcZS7b"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.gc2YNRg4w3HaNYRw"
+          }
+        ]
+      },
+      "fyB4aOTsWc18bkY8": {
+        "name": "6th-Level Duelist Ability",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "fyB4aOTsWc18bkY8",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.UIlc301odD44qKwf"
+          }
+        ]
+      },
+      "uFMkZcYB1hyWJ0Pg": {
+        "name": "3rd-Level Duelist Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 3
+        },
+        "_id": "uFMkZcYB1hyWJ0Pg",
+        "description": "<p>Your troubadour class act grants you a feature</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.EnhwKqfTK0K5sIaR"
+          }
+        ]
+      },
+      "ogXO31HQaeTtrsSl": {
+        "name": "8th-Level Duelist Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "ogXO31HQaeTtrsSl",
+        "description": "<p>Your troubadour class act grants you a feature</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.zg2V6bveMbsXDVDv"
+          }
+        ]
+      },
+      "N5Cpl4M7f9XCpjnd": {
+        "name": "9th-Level Duelist Ability",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "N5Cpl4M7f9XCpjnd",
+        "description": "<p>Your troubadour class act grants your choice of one of two heroic abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.Tj0NR54WaIuhChEO"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.24jSnYvx9YDPpye9"
+          }
+        ]
       }
     },
     "classLink": "troubadour"
@@ -110,9 +193,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755752908471,
     "modifiedTime": null,
     "lastModifiedBy": null
