@@ -27,6 +27,7 @@
   - Remaining non-imbue projects.
   - Censor levels 4–10 features and abilities.
   - Conduit levels 4–10 features and abilities.
+    - Note: The offset feature and ability choices still need to be implemented, Conduit players should remove abilities not chosen.
   - Elementalist levels 4–10 features and abilities.
   - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
