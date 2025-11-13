@@ -21,7 +21,7 @@
     {
       "name": "Prayer of Destruction",
       "img": "icons/magic/fire/flame-burning-building.webp",
-      "type": "base",
+      "type": "abilityModifier",
       "origin": "Compendium.draw-steel.classes.Item.ELmjh5zCJIQDHq07",
       "transfer": true,
       "_id": "qaNtQJSpDVddWNnS",
@@ -29,11 +29,28 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "magic"
+          ]
         }
       },
       "changes": [
         {
-          "key": "system.abilityBonuses.ranged.damage",
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
           "mode": 2,
           "value": "1",
           "priority": null
