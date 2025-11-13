@@ -1,0 +1,63 @@
+{
+  "folder": "v29RlfHzwMENdfdN",
+  "name": "Fake Your Death",
+  "type": "ability",
+  "_id": "Da8pzPaW9ByflIgG",
+  "img": "icons/magic/death/grave-tombstone-glow-teal.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "207",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "fake-your-death",
+    "story": "O happy dagger, this is thy sheath!",
+    "keywords": [
+      "magic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self"
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>You turn [[/apply invisible]] and create a magical illusion of your corpse falling in your space. While you are invisible, you gain a +3 bonus to speed and you ignore difficult terrain. The illusion and your invisibility last until the end of your next turn, or until the illusion is interacted with, you take damage, or you use a main action or a maneuver.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1755802626610,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Da8pzPaW9ByflIgG"
+}

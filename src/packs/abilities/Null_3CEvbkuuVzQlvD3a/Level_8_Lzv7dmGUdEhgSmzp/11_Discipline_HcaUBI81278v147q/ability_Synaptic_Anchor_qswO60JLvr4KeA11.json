@@ -1,0 +1,65 @@
+{
+  "folder": "HcaUBI81278v147q",
+  "name": "Synaptic Anchor",
+  "type": "ability",
+  "_id": "qswO60JLvr4KeA11",
+  "img": "icons/magic/unholy/strike-body-explode-disintegrate.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "157",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "synaptic-anchor",
+    "story": "You disrupt an enemy’s strike and create a feedback loop in their mind, preventing them from focusing on future attacks.",
+    "keywords": [
+      "psionic"
+    ],
+    "type": "freeTriggered",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "The target takes damage from another creature’s ability while in the area of your Null Field ability.",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrCreature",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target takes half the damage, and if the triggering creature has <strong>I&lt;AVERAGE</strong>, they are [[/apply dazed save]]. While the triggering creature is dazed this way, they take [[/damage @I psychic]]{psychic damage equal to your Intuition score} whenever they use a main action.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761330566676,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!qswO60JLvr4KeA11"
+}

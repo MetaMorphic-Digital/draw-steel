@@ -17,8 +17,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
    */
   constructor(options) {
     super(options);
-    this.#pseudoUuid = options.document.uuid;
-    this.#document = options.document.document;
+    this.#pseudoDocument = options.document;
   }
 
   /* -------------------------------------------------- */
@@ -65,7 +64,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
 
   /**
    * Registered sheets. A map of documents to a map of pseudo-document uuids and their sheets.
-   * @type {Map<foundry.abstract.Document, Map<string, PseudoDocumentSheet>>}
+   * @type {Map<Document, Map<string, PseudoDocumentSheet>>}
    */
   static #sheets = new Map();
 
@@ -98,10 +97,10 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
   /* -------------------------------------------------- */
 
   /**
-   * Stored uuid of this pseudo document.
-   * @type {string}
+   * The pseudo document.
+   * @type {PseudoDocument}
    */
-  #pseudoUuid;
+  #pseudoDocument;
 
   /* -------------------------------------------------- */
 
@@ -110,15 +109,7 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
    * @type {TPseudo|null}
    */
   get pseudoDocument() {
-    let relative = this.document;
-    const uuidParts = this.#pseudoUuid.replace(relative.uuid, "").slice(1).split(".");
-    for (let i = 0; i < uuidParts.length; i += 2) {
-      const dname = uuidParts[i];
-      const id = uuidParts[i + 1];
-      relative = relative?.getEmbeddedDocument(dname, id);
-      if (!relative) return null;
-    }
-    return relative;
+    return this.#pseudoDocument;
   }
 
   /* -------------------------------------------------- */
@@ -127,16 +118,8 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
    * The parent document.
    * @type {Document}
    */
-  #document;
-
-  /* -------------------------------------------------- */
-
-  /**
-   * The parent document.
-   * @type {Document}
-   */
   get document() {
-    return this.#document;
+    return this.#pseudoDocument.document;
   }
 
   /* -------------------------------------------------- */
@@ -154,6 +137,20 @@ export default class PseudoDocumentSheet extends HandlebarsApplicationMixin(Appl
     options = super._initializeApplicationOptions(options);
     options.uniqueId = `${this.constructor.name}-${document.uuid.replaceAll(".", "-")}`;
     return options;
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _configureRenderOptions(options) {
+    super._configureRenderOptions(options);
+    // Update header title.
+    if (
+      options.renderContext &&
+      foundry.utils.getProperty(options, `renderData.${this.pseudoDocument.fieldPath}.${this.pseudoDocument.id}.name`)
+    ) {
+      options.window = Object.assign(options.window ?? {}, { title: this.title });
+    }
   }
 
   /* -------------------------------------------------- */

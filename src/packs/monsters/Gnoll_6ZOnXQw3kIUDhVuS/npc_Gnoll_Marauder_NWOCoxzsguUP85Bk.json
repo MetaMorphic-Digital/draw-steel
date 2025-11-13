@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "157",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "157"
         },
         "_dsid": "death-frenzy",
@@ -290,7 +288,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "157"
         },
         "_dsid": "fury-flail",
@@ -333,8 +330,9 @@
           "primary": 2
         },
         "target": {
-          "type": "ally",
-          "value": null
+          "type": "selfAlly",
+          "value": null,
+          "custom": "Self and each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -357,7 +355,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "157"
         },
         "_dsid": "marauders-cackletongue",
@@ -373,9 +370,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -384,6 +381,204 @@
         "default": 0
       },
       "_key": "!actors.items!NWOCoxzsguUP85Bk.8UvQIpKbLPUO8eQY"
+    },
+    {
+      "name": "Bloodpool",
+      "type": "ability",
+      "_id": "38qnomOvMFz9ES4D",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "153",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "bloodpool",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One gnoll minion suddenly explodes into a pool of blood, splattering the area within 3 squares of them. Any gnoll who starts their turn in this area deals an extra [[/damage 5]] damage on their next strike before the end of their turn. Once per round, an abyssal hyena who starts their turn in the area turns into a @UUID[Compendium.draw-steel.monsters.Actor.NWOCoxzsguUP85Bk]{gnoll marauder}, keeping their current Stamina</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.38qnomOvMFz9ES4D",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761169412560,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!NWOCoxzsguUP85Bk.38qnomOvMFz9ES4D"
+    },
+    {
+      "name": "Echoes of Laughter",
+      "type": "ability",
+      "_id": "wvrInGnyn0e0mj0n",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "153",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "echoes-of-laughter",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Until the end of the encounter, the encounter map is encased in a soundscape of laughter and howling. Each enemy takes a bane on the first power roll they make each round. Whenever a gnoll is killed, this effect is suppressed until the start of the next round.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wvrInGnyn0e0mj0n",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761169413504,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!NWOCoxzsguUP85Bk.wvrInGnyn0e0mj0n"
+    },
+    {
+      "name": "Iron Jaws",
+      "type": "ability",
+      "_id": "9bdZ4N6vu3nGUvPk",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "153",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "iron-jaws",
+        "story": "",
+        "keywords": [
+          "area",
+          "ranged",
+          "weapon"
+        ],
+        "type": "maneuver",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "cube",
+          "primary": 1,
+          "secondary": 3
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A gnoll acting this turn drops an iron-jawed snare into the area. The first time any enemy moves into the area, they make an <strong>Agility test</strong>. If they were unaware of the snare, the test takes a bane.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 6]]{6 damage}; [[/apply bleeding save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; [[/apply bleeding turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": "<p>While an enemy is bleeding this way, each gnoll in the en counter gains an edge on strikes made against them.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.9bdZ4N6vu3nGUvPk",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761169452087,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!NWOCoxzsguUP85Bk.9bdZ4N6vu3nGUvPk"
     }
   ],
   "folder": "6ZOnXQw3kIUDhVuS",

@@ -1,6 +1,6 @@
 # Welcome to the draw-steel wiki!
 
-Start by checking out the [[Frequently Asked Questions]]; more information can be found on the following pages. Also check out the [Foundry System post](https://discord.com/channels/332362513368875008/1342298358664138805) in the [MCDM discord](https://discord.gg/pxehb5G6Gd).
+Start by checking out the [[Frequently Asked Questions]]; more information can be found on the following pages.
 
 ## Documents
 * [[Actors]]
@@ -12,3 +12,7 @@ Start by checking out the [[Frequently Asked Questions]]; more information can b
 ## Helpers
 * [[Enrichers]]
 * [[Roll Data]]
+
+## Development
+- [[CONFIG Modifications]]
+- [[Registering Sources]]

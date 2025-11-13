@@ -1,0 +1,965 @@
+{
+  "name": "Devil High Judge",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "system": {
+    "stamina": {
+      "value": 181,
+      "max": 181,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 1
+      },
+      "agility": {
+        "value": 3
+      },
+      "reason": {
+        "value": 2
+      },
+      "intuition": {
+        "value": 1
+      },
+      "presence": {
+        "value": 4
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 1,
+        "letter": "M"
+      },
+      "stability": 2,
+      "turns": 1
+    },
+    "movement": {
+      "value": 7,
+      "types": [
+        "walk",
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 8,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "82",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 6,
+      "keywords": [
+        "infernal"
+      ],
+      "level": 6,
+      "ev": 32,
+      "role": "leader",
+      "organization": "leader"
+    }
+  },
+  "items": [
+    {
+      "name": "End Effect",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the high judge can take [[/damage 10]] damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "end-effect",
+        "advancements": {}
+      },
+      "_id": "bVKisSDB6go4OWeb",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.bVKisSDB6go4OWeb"
+    },
+    {
+      "name": "True Name",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>If a creature within 10 squares speaks the high judge's true name, the high judge loses their damage immunities, any nondamaging effects of their signature ability, and their Devilish Suggestion triggered action until the end of the encounter.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "true-name",
+        "advancements": {}
+      },
+      "_id": "BB1R9CXTuGeOgNc6",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.BB1R9CXTuGeOgNc6"
+    },
+    {
+      "name": "Infernal Decree",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 12
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 3,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "sa2z7nucJHTqzBK1": {
+              "_id": "sa2z7nucJHTqzBK1",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "15",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "19",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            },
+            "dc5zA0gPlNmOKjsD": {
+              "name": "Can't Hide",
+              "img": null,
+              "type": "applied",
+              "_id": "dc5zA0gPlNmOKjsD",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target can’t hide (save ends)",
+                  "effects": {
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "UkE7Zsr78dlCNRfW": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "While a target is unable to hide this way, any strike against them made by a devil gains an edge.",
+          "value": 2
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "infernal-decree",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Can't Hide",
+          "img": "icons/magic/perception/eye-tendrils-web-purple.webp",
+          "origin": "Actor.WlmvVRI5X2IYU1zg.Item.DT0W9PtAWFstGheT",
+          "transfer": false,
+          "_id": "UkE7Zsr78dlCNRfW",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While a target is unable to hide this way, any strike against them made by a devil gains an edge.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.DT0W9PtAWFstGheT.UkE7Zsr78dlCNRfW"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "DT0W9PtAWFstGheT",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.DT0W9PtAWFstGheT"
+    },
+    {
+      "name": "Compel the Jury",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 12
+        },
+        "target": {
+          "type": "creature",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {
+            "itebqcMqxqZZfDr0": {
+              "name": "Charmed",
+              "img": null,
+              "type": "applied",
+              "_id": "itebqcMqxqZZfDr0",
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} the target is charmed (save ends)",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "intuition"
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {
+                    "sDYDma2WFpKiPqIF": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  },
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "compel-the-jury",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [
+        {
+          "name": "Charmed",
+          "img": "icons/magic/control/voodoo-doll-pain-damage-pink.webp",
+          "origin": "Actor.WlmvVRI5X2IYU1zg.Item.jFEOAFPc4BxLTIuP",
+          "transfer": false,
+          "_id": "sDYDma2WFpKiPqIF",
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.348",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.jFEOAFPc4BxLTIuP.sDYDma2WFpKiPqIF"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "jFEOAFPc4BxLTIuP",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.jFEOAFPc4BxLTIuP"
+    },
+    {
+      "name": "All Rise",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 3
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": "Each enemy in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 15 psychic]] damage; the target is [[/apply ihY2t3izjbz7mvnu save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 12 psychic]] damage; the target is [[/apply ihY2t3izjbz7mvnu save]]</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>[[/damage 7 psychic]] damage</p></td></tr></tbody></table><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "after": "<p>The target makes a **Presence test**.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "all-rise",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "0uPSa1xfRM4JGKIh",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.0uPSa1xfRM4JGKIh"
+    },
+    {
+      "name": "Heed My Decree",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "ally",
+          "value": null,
+          "custom": "Self and each ally in the area"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each target shifts up to their speed. The high judge can make each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion move up to half that creature's speed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "heed-my-decree",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "IZFzsIn8PS1h8q9j",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.IZFzsIn8PS1h8q9j"
+    },
+    {
+      "name": "Deceptive Stratagem",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 12
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>If the target is an ally or a creature charmed by All Rise, Compel the Jury, or Devilish Suggestion, the high judge and the target teleport to swap places. Each ally within 12 squares of the high judge can then make a free strike against a target of the high judge's choice. Each creature charmed by All Rise, Compel the Jury, or Devilish Suggestion makes a free strike against a target of the high judge's choice.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "deceptive-stratagem",
+        "story": "",
+        "resource": null,
+        "trigger": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "OghjJFgeY3lxYyfR",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.OghjJFgeY3lxYyfR"
+    },
+    {
+      "name": "Devilish Suggestion",
+      "type": "ability",
+      "img": "icons/skills/movement/arrow-upward-yellow.webp",
+      "system": {
+        "type": "triggered",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": "The triggering creature"
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "agility"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target is [[/apply 5uNe4RjWi8IjnpgW save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The high judge chooses a new target for the strike.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target takes a bane on the strike.</p></dd></dl><p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": "82"
+        },
+        "_dsid": "devilish-suggestion",
+        "story": "",
+        "resource": 2,
+        "trigger": "A creature targets the magistrate with a strike."
+      },
+      "effects": [
+        {
+          "name": "Charmed",
+          "img": "icons/magic/control/control-influence-puppet.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monsters.Actor.QJNhCLJWoOJXTRjs.Item.0uPSa1xfRM4JGKIh",
+          "disabled": true,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>While charmed this way, a creature treats the high judge as an ally, and the high judge can spend 1 Malice on their turn to make that creature move up to 3 squares</p>",
+          "tint": "#ffffff",
+          "transfer": false,
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.QJNhCLJWoOJXTRjs.Item.0uPSa1xfRM4JGKIh.ActiveEffect.ihY2t3izjbz7mvnu",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "createdTime": 1761167569597,
+            "modifiedTime": 1761167579844,
+            "lastModifiedBy": null
+          },
+          "_id": "5uNe4RjWi8IjnpgW",
+          "sort": 0,
+          "_key": "!actors.items.effects!QJNhCLJWoOJXTRjs.xOe0dvNF9lYVASWj.5uNe4RjWi8IjnpgW"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "xOe0dvNF9lYVASWj",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "_key": "!actors.items!QJNhCLJWoOJXTRjs.xOe0dvNF9lYVASWj"
+    }
+  ],
+  "folder": "0WyeafpcyJ7Gd58P",
+  "prototypeToken": {
+    "name": "Devil High Judge",
+    "displayName": 20,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": true,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758248177166,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "QJNhCLJWoOJXTRjs",
+  "sort": 0,
+  "_key": "!actors!QJNhCLJWoOJXTRjs"
+}

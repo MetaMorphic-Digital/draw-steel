@@ -1,5 +1,5 @@
-import { systemID, systemPath } from "../../../constants.mjs";
-import { DrawSteelCombatant, DrawSteelCombatantGroup } from "../../../documents/_module.mjs";
+import { systemPath } from "../../../constants.mjs";
+import { DrawSteelCombatant, DrawSteelCombatantGroup, DrawSteelTokenDocument } from "../../../documents/_module.mjs";
 
 /**
  * @import { ContextMenuEntry } from "@client/applications/ux/context-menu.mjs";
@@ -57,7 +57,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     // deep clone of static PARTS
     const parts = super._configureRenderParts(options);
 
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       delete parts.tracker;
       delete parts.footer;
     } else {
@@ -107,7 +107,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   async _prepareTrackerContext(context, options) {
     await super._prepareTrackerContext(context, options);
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (!game.combats.isDefaultInitiativeMode) return;
 
     const combat = this.viewed;
 
@@ -206,7 +206,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
     turn.group = combatant.group;
 
-    if ((turn.group?.type === "squad") && !combatant.actor?.isMinion) turn.captain = true;
+    if (combatant.system.isCaptain) turn.captain = true;
 
     return turn;
   }
@@ -217,7 +217,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return;
+    if (!game.combats.isDefaultInitiativeMode) return;
 
     // These buttons/methods are inappropriate for default initiative handling
     this.element.querySelector(".encounter-controls.combat .control-buttons.left [data-action=\"rollAll\"]")?.remove();
@@ -300,10 +300,7 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
     if (groupLI) {
       /** @type {DrawSteelCombatantGroup} */
       const group = this.viewed.groups.get(groupLI.dataset.groupId);
-      if (group.system.captain && !combatant.actor?.isMinion) {
-        ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.SquadOneCaptain", { localize: true });
-      }
-      else if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
+      if ((combatant.actor?.isMinion && (group.type !== "squad"))) {
         ui.notifications.error("DRAW_STEEL.CombatantGroup.Error.MinionMustSquad", { localize: true });
       }
       else {
@@ -334,10 +331,27 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
   _getEntryContextOptions() {
     const entryOptions = super._getEntryContextOptions();
 
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantClear");
       entryOptions.findSplice(e => e.name === "COMBAT.CombatantReroll");
     }
+
+    // Add captain context menu option.
+    const getCombatant = li => this.viewed.combatants.get(li.dataset.combatantId);
+    entryOptions.push({
+      name: "DRAW_STEEL.Combatant.ToggleCaptain",
+      icon: "<i class=\"fa-solid fa-helmet-battle\"></i>",
+      condition: li => {
+        const combatant = getCombatant(li);
+        return game.user.isGM && !combatant.actor?.isMinion && (combatant.group?.type === "squad");
+      },
+      callback: li => {
+        const combatant = getCombatant(li);
+        const newCaptain = (!combatant.system.isCaptain) ? combatant.id : null;
+
+        combatant.group.update({ "system.captainId": newCaptain });
+      },
+    });
 
     return entryOptions;
   }
@@ -346,25 +360,24 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
 
   /** @inheritdoc */
   _getCombatContextOptions() {
-    const entryOptions = super._getCombatContextOptions();
-
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
-      entryOptions.findSplice(o => o.name === "COMBAT.RollAll");
-      entryOptions.findSplice(o => o.name === "COMBAT.RollNPC");
-
-      entryOptions.unshift({
+    const entryOptions = [
+      {
         name: game.i18n.format("DOCUMENT.Create", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),
         icon: "<i class=\"fa-solid fa-users-rectangle\"></i>",
         callback: () => DrawSteelCombatantGroup.createDialog({}, { parent: this.viewed }),
       }, {
+        name: "DRAW_STEEL.CombatantGroup.GroupSelected",
+        icon: "<i class=\"fa-solid fa-users-viewfinder\"></i>",
+        callback: async () => DrawSteelCombatantGroup.createFromTokens(this.viewed),
+      }, {
         name: "COMBAT.InitiativeRoll",
         icon: "<i class=\"fa-solid fa-dice-d10\"></i>",
+        condition: () => game.combats.isDefaultInitiativeMode,
         callback: () => this.viewed.rollFirst(),
-      });
+      },
+    ];
 
-    }
-
-    return entryOptions;
+    return entryOptions.concat(super._getCombatContextOptions());
   }
 
   /* -------------------------------------------------- */
@@ -407,6 +420,14 @@ export default class DrawSteelCombatTracker extends sidebar.tabs.CombatTracker {
         icon: "<i class=\"fa-solid fa-shoe-prints\"></i>",
         condition: li => game.user.isGM,
         callback: li => getCombatantGroup(li).clearMovementHistories(),
+      },
+      {
+        name: "DRAW_STEEL.CombatantGroup.ColorTokens.Label",
+        icon: "<i class=\"fa-solid fa-palette\"></i>",
+        condition: li => getCombatantGroup(li).members.every(c => c.isOwner),
+        callback: async li => {
+          await getCombatantGroup(li).colorTokensDialog();
+        },
       },
       {
         name: game.i18n.format("DOCUMENT.Delete", { type: game.i18n.localize("DOCUMENT.CombatantGroup") }),

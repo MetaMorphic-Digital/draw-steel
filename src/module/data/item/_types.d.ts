@@ -48,6 +48,7 @@ declare module "./ability.mjs" {
     trigger: string;
     target: {
       type: string;
+      custom: string;
       /** Null value indicates "all". */
       value: number | null;
     }

@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "131",
-      "license": "Draw Steel Creator License",
-      "revision": 2
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "reaver",
     "advancements": {
@@ -49,7 +48,7 @@
       },
       "VwoCOtpp9ne4DEgq": {
         "name": "Kit",
-        "img": "icons/equipment/chest/breastplate-collared-leather-brown.webp",
+        "img": "icons/containers/bags/pack-leather-black-brown.webp",
         "type": "itemGrant",
         "requirements": {
           "level": 1
@@ -121,7 +120,10 @@
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
         ],
-        "description": "<p>Choose one of the following kits <em>(quick build: Panther)</em>.</p>"
+        "description": "<p>Choose one of the following kits <em>(quick build: Panther)</em>.</p>",
+        "additional": {
+          "type": "kit"
+        }
       },
       "86dezZH7IFwXBLG4": {
         "name": "Hide",
@@ -186,6 +188,74 @@
           }
         ],
         "description": "<p>Your primordial aspect grants you the following feature.</p>"
+      },
+      "PxIovvGmwPdjYkEF": {
+        "name": "6th-Level Reaver Ability",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "PxIovvGmwPdjYkEF",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.QYVJiZ0VfA3QCxJT"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.4RteOQmDX4e9jxpw"
+          }
+        ],
+        "description": "<p>Your primordial aspect grants your choice of one of two heroic abilities.</p>"
+      },
+      "AZpxnJYN7NotCTaz": {
+        "name": "Unfettered",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "AZpxnJYN7NotCTaz",
+        "description": "<p>Your primordial aspect grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.H8CRNSagEqeQ9cGJ"
+          }
+        ]
+      },
+      "3nJSZgIYr5coweDr": {
+        "name": "A Step Ahead",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "3nJSZgIYr5coweDr",
+        "description": "<p>Your primordial aspect grants you the following feature.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.a7Pdz5RDnIaBZGYn"
+          }
+        ]
+      },
+      "QgU8LO5tbfCZ1uY4": {
+        "name": "9th-Level Reaver Abilities",
+        "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "QgU8LO5tbfCZ1uY4",
+        "description": "<p>Choose one of the following abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3zTNwIovZezjGbUK"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.OEUriHrUdxX3uaF7"
+          }
+        ]
       }
     },
     "classLink": "fury"
@@ -200,9 +270,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1755575332905,
     "modifiedTime": null,
     "lastModifiedBy": null

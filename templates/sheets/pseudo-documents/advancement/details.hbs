@@ -2,8 +2,26 @@
   <fieldset>
     <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.requirements"}}</legend>
     {{formGroup fields.requirements.fields.level value=source.requirements.level name="requirements.level" type="number" classes="slim"}}
+    {{#if fields.chooseN}}
     {{formGroup fields.chooseN value=source.chooseN name="chooseN" placeholder=(localize "DRAW_STEEL.ADVANCEMENT.SHEET.chooseAll")}}
+    {{/if}}
   </fieldset>
+
+  {{#if fields.additional}}
+  <fieldset>
+    <legend>{{localize "DRAW_STEEL.ADVANCEMENT.SHEET.additional"}}</legend>
+    {{formGroup
+    fields.additional.fields.type
+    value=source.additional.type
+    name="additional.type"
+    options=ctx.additionalTypes
+    blank="None"
+    localize=true}}
+    {{#if (eq source.additional.type "perk")}}
+    {{formGroup fields.additional.fields.perkType value=source.additional.perkType name="additional.perkType" options=ctx.perkTypes}}
+    {{/if}}
+  </fieldset>
+  {{/if}}
 
   {{!-- ITEM GRANT POOL --}}
   {{#if (eq document.type "itemGrant")}}
@@ -26,5 +44,14 @@
   {{/if}}
   {{#if (eq document.type "language")}}
   {{formGroup fields.languages value=source.languages name="languages" options=ctx.languageChoices}}
+  {{/if}}
+
+  {{!-- CHARACTERISTIC --}}
+  {{#if (eq document.type "characteristic")}}
+  <p class="hint">{{localize "DRAW_STEEL.ADVANCEMENT.CHARACTERISTIC.CharacteristicHint"}}</p>
+  {{#each ctx.characteristics}}
+  {{formGroup field value=value name=name label=label localize=true}}
+  {{/each}}
+  {{formGroup fields.max value=source.max name="max"}}
   {{/if}}
 </section>

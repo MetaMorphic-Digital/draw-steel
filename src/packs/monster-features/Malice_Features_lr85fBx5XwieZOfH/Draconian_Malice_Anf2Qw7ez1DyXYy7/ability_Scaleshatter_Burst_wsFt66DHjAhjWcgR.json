@@ -1,0 +1,208 @@
+{
+  "name": "Scaleshatter Burst",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "freeManeuver",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A draconian starts its turn.",
+    "distance": {
+      "type": "burst",
+      "primary": 2
+    },
+    "target": {
+      "type": "enemy",
+      "value": null,
+      "custom": "Each enemy in the area"
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "3",
+        "characteristics": []
+      },
+      "effects": {
+        "Q18h2Wjclz24QIuF": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "Q18h2Wjclz24QIuF",
+          "damage": {
+            "tier1": {
+              "value": "7",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "value": "13",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "value": "16",
+              "types": [],
+              "properties": [],
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        },
+        "Y6vZdfP1VIsrjzLf": {
+          "name": "Shattered Scales",
+          "img": null,
+          "type": "applied",
+          "_id": "Y6vZdfP1VIsrjzLf",
+          "applied": {
+            "tier1": {
+              "display": "",
+              "effects": {
+                "Coc2cQHJclPUxtAU": {
+                  "condition": "always",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.weak",
+                "characteristic": "none"
+              }
+            },
+            "tier2": {
+              "display": "",
+              "effects": {
+                "Coc2cQHJclPUxtAU": {
+                  "condition": "always",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.average",
+                "characteristic": ""
+              }
+            },
+            "tier3": {
+              "display": "",
+              "effects": {
+                "Coc2cQHJclPUxtAU": {
+                  "condition": "always",
+                  "end": "",
+                  "properties": []
+                }
+              },
+              "potency": {
+                "value": "@potency.strong",
+                "characteristic": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The draconian’s scales shatter from battle damage. The draconian has damage weakness 5 but can take two turns per round until the end of the encounter.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "85",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "scaleshatter-burst",
+    "story": "",
+    "keywords": [
+      "area",
+      "magic"
+    ]
+  },
+  "effects": [
+    {
+      "name": "Shattered Scales",
+      "img": "icons/commodities/stone/geode-raw-purple.webp",
+      "origin": "Actor.8mtdeNsfNA2Tboih.Item.x4LQVDZ4kQnlUzZK",
+      "transfer": false,
+      "_id": "Coc2cQHJclPUxtAU",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.weaknesses.all",
+          "mode": 4,
+          "value": "5",
+          "priority": null
+        },
+        {
+          "key": "system.combat.turns",
+          "mode": 4,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The draconian’s scales shatter from battle damage. The draconian has damage weakness 5 but can take two turns per round until the end of the encounter.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!wsFt66DHjAhjWcgR.Coc2cQHJclPUxtAU"
+    }
+  ],
+  "folder": "Anf2Qw7ez1DyXYy7",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1758727251460,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "wsFt66DHjAhjWcgR",
+  "sort": 300000,
+  "_key": "!items!wsFt66DHjAhjWcgR"
+}

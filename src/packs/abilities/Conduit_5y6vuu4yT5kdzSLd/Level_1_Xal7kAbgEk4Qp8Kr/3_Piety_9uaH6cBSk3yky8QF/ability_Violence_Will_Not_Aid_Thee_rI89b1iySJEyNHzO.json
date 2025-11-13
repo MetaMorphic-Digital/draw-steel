@@ -8,8 +8,7 @@
     "source": {
       "book": "Heroes",
       "page": "101",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "violence-will-not-aid-thee",
     "story": "After some holy lightning, your enemy will think twice about their next attack.",
@@ -68,7 +67,7 @@
       }
     },
     "effect": {
-      "before": "<p>The first time on a turn that the target deals damage to another creature, the target of this ability takes 1d10 lightning damage (save ends).</p>",
+      "before": "<p>The first time on a turn that the target deals damage to another creature, the target of this ability takes [[/damage 1d10 lightning]] damage (save ends). [[/apply pl9ASgEnSqydKRPy]]</p>",
       "after": ""
     },
     "spend": {
@@ -76,7 +75,50 @@
       "value": null
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Violence Will Not Aid Thee",
+      "img": "icons/magic/lightning/bolts-salvo-clouds-sky.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.rI89b1iySJEyNHzO",
+      "transfer": false,
+      "_id": "pl9ASgEnSqydKRPy",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>The first time on a turn that the target deals damage to another creature, the target of this ability takes [[/damage 1d10 lightning]] damage (save ends).</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762275560407,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!rI89b1iySJEyNHzO.pl9ASgEnSqydKRPy"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0
@@ -86,9 +128,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755646936818,
     "modifiedTime": null,
     "lastModifiedBy": null

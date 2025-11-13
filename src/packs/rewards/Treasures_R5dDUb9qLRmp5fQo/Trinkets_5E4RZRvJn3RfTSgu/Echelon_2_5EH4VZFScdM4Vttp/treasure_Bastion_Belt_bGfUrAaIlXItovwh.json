@@ -1,0 +1,113 @@
+{
+  "name": "Bastion Belt",
+  "type": "treasure",
+  "img": "icons/equipment/waist/belt-buckle-arrow-brown.webp",
+  "system": {
+    "kind": "other",
+    "category": "trinket",
+    "echelon": 2,
+    "description": {
+      "value": "<p><em>This thick leather belt features a bone clasp and feels unusually heavy when handled.</em></p><p>Effect: While worn, this belt grants you a +3 bonus to Stamina and a +1 bonus to Stability. This Stamina bonus adds to the Stamina bonus granted by other treasures.</p>",
+      "director": ""
+    },
+    "keywords": [
+      "magic",
+      "waist"
+    ],
+    "project": {
+      "prerequisites": "A giant’s tooth",
+      "source": "Texts or lore in High Kuric",
+      "rollCharacteristic": [
+        "might",
+        "intuition"
+      ],
+      "goal": 300,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "bastion-belt",
+    "source": {
+      "book": "Heroes",
+      "page": "324",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Bastion Belt",
+      "img": "icons/equipment/waist/belt-buckle-arrow-brown.webp",
+      "type": "base",
+      "origin": "Item.bGfUrAaIlXItovwh",
+      "_id": "zF27D4X8D1HAgqD6",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        },
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!bGfUrAaIlXItovwh.zF27D4X8D1HAgqD6"
+    }
+  ],
+  "folder": "5EH4VZFScdM4Vttp",
+  "_id": "bGfUrAaIlXItovwh",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761685033079,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!bGfUrAaIlXItovwh"
+}

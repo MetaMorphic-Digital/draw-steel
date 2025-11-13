@@ -1,0 +1,86 @@
+{
+  "folder": "yZziBqPdKt8fakec",
+  "name": "Gods' Machine",
+  "type": "ability",
+  "_id": "idV3wRcr2Y2LQxKm",
+  "img": "icons/magic/symbols/cog-orange-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "106",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "gods-machine",
+    "story": "You conjure a whirring tank made of blades and metal.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "special",
+      "custom": ""
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "v2Kat2XCO6oiJv7t": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "v2Kat2XCO6oiJv7t",
+          "damage": {
+            "tier1": {
+              "value": "3"
+            },
+            "tier2": {
+              "value": "5"
+            },
+            "tier3": {
+              "value": "8"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You conjure a size 2 rolling machine that appears in an unoccupied space within distance. The machine has 50 Stamina and immunity all to poison and psychic damage. It disappears at the end of the encounter, if its Stamina drops to 0, or if you are dying. When the machine first appears, make the following power roll once, targeting each enemy adjacent to it.</p>",
+      "after": "<p>Once on each subsequent turn, you can use a free maneuver to move the machine a number of squares up to your Intuition score then repeat the power roll.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760754315978,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!idV3wRcr2Y2LQxKm"
+}

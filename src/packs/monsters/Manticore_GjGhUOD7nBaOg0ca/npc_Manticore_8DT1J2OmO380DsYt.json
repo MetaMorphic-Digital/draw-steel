@@ -35,7 +35,7 @@
         "letter": "M"
       },
       "stability": 2,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 10,
@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "203",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -114,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "solo-monster",
@@ -152,7 +150,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "agile-predator",
@@ -305,7 +302,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "carnivorous-bite",
@@ -505,7 +501,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "tail-spike",
@@ -592,7 +587,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "The triggering creature"
         },
         "damageDisplay": "melee",
         "power": {
@@ -615,7 +611,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "reflexive-instinct",
@@ -631,9 +626,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -660,7 +655,8 @@
         },
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "Each creature in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -749,7 +745,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "trumpeting-howl",
@@ -808,9 +803,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -858,7 +853,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "cornered-predator",
@@ -893,9 +887,7 @@
       "system": {
         "type": "villain",
         "category": "villain",
-        "keywords": [
-          "-"
-        ],
+        "keywords": [],
         "distance": {
           "type": "self"
         },
@@ -915,7 +907,7 @@
         },
         "effect": {
           "before": "",
-          "after": "<p>The manticore sours their poison with enmity. Until the end of the encounter, the manticore has a double edge on power rolls against weakened creatures. Additionally, any creature weakened by the manticore's Tail Spike ability has their speed halved and takes an extra 3 poison damage at the start of each of their turns.</p>"
+          "after": "<p>The manticore sours their poison with enmity. Until the end of the encounter, the manticore has a double edge on power rolls against weakened creatures. Additionally, any creature weakened by the manticore's Tail Spike ability has their speed halved and takes an extra [[/damage 3 poison]]{3 poison damage} at the start of each of their turns.</p>"
         },
         "spend": {
           "text": "",
@@ -924,7 +916,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "203"
         },
         "_dsid": "debilitating-poison",
@@ -940,9 +931,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -951,67 +942,6 @@
         "default": 0
       },
       "_key": "!actors.items!8DT1J2OmO380DsYt.lMFEQIOX3rVnwXGT"
-    },
-    {
-      "name": "Uncanny Mimicry",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "A manticore starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The manticore uses their mimicry in an attempt to unnerve one creature within their line of effect. If the target has R&lt;4, they take a bane on power rolls against the manticore (save ends). Each time this feature is used against the same target during the encounter, its potency decreases by 2.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "202",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "uncanny-mimicry",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "JqIw0rYopZRrPYRG",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!8DT1J2OmO380DsYt.JqIw0rYopZRrPYRG"
     },
     {
       "name": "Solo Action",
@@ -1047,8 +977,7 @@
         "source": {
           "book": "Monsters",
           "page": "202",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
         "story": "",
@@ -1056,13 +985,13 @@
       },
       "effects": [],
       "folder": null,
-      "sort": 0,
+      "sort": 200000,
       "flags": {},
       "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -1075,205 +1004,6 @@
       "_key": "!actors.items!8DT1J2OmO380DsYt.Bc5ISz1Jx0nWiBml"
     },
     {
-      "name": "Desperate Howl",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "main",
-        "category": "heroic",
-        "resource": 5,
-        "trigger": "A manticore starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The manticore lets out an unnerving cry. Each enemy within the</p><p>manticore’s line of effect makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Intuition test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>Frightened (save ends)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>Frightened (EoT)</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "202",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "desperate-howl",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [
-        {
-          "name": "Frightened",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "save",
-              "roll": "1d10 + @combat.save.bonus"
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": null,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "frightened"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_id": "z433dsU2sYhlYYI5",
-          "_key": "!actors.items.effects!8DT1J2OmO380DsYt.wYa7GAHINkkGb85o.z433dsU2sYhlYYI5"
-        },
-        {
-          "name": "Frightened",
-          "img": "icons/svg/downgrade.svg",
-          "origin": null,
-          "transfer": false,
-          "type": "base",
-          "system": {
-            "end": {
-              "type": "turn",
-              "roll": ""
-            }
-          },
-          "changes": [],
-          "disabled": false,
-          "duration": {
-            "rounds": 1,
-            "startTime": null,
-            "combat": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "frightened"
-          ],
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "exportSource": null,
-            "coreVersion": "13.348",
-            "systemId": "draw-steel",
-            "systemVersion": "0.8.1",
-            "lastModifiedBy": null
-          },
-          "_id": "vk2a7PnHDj4049QY",
-          "_key": "!actors.items.effects!8DT1J2OmO380DsYt.wYa7GAHINkkGb85o.vk2a7PnHDj4049QY"
-        }
-      ],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "wYa7GAHINkkGb85o",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!8DT1J2OmO380DsYt.wYa7GAHINkkGb85o"
-    },
-    {
-      "name": "Barrage of Barbs",
-      "type": "ability",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "A manticore starts its turn.",
-        "distance": {
-          "type": "special"
-        },
-        "target": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has A&lt;3 is bleeding (save ends). Additionally, the area is difficult terrain, and any enemy takes [[/damage 3 poison]] damage for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "202",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "barrage-of-barbs",
-        "story": "",
-        "keywords": []
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "56g1ZUDl0M6tUNpo",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!8DT1J2OmO380DsYt.56g1ZUDl0M6tUNpo"
-    },
-    {
       "name": "Harrying Claws",
       "type": "ability",
       "system": {
@@ -1281,8 +1011,7 @@
         "source": {
           "book": "Monsters",
           "page": "203",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "harrying-claws",
         "story": "",
@@ -1422,6 +1151,316 @@
         "modifiedTime": null
       },
       "_key": "!actors.items!8DT1J2OmO380DsYt.nV3zDDsLQJDGYHxr"
+    },
+    {
+      "name": "Desperate Howl",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A manticore starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The manticore lets out an unnerving cry. Each enemy within the manticore’s line of effect makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Frightened save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/apply Frightened turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "202",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "desperate-howl",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Frightened",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "save",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "frightened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "z433dsU2sYhlYYI5",
+          "_key": "!actors.items.effects!8DT1J2OmO380DsYt.kLTUjHwfhlXjjWUh.z433dsU2sYhlYYI5"
+        },
+        {
+          "name": "Frightened",
+          "img": "icons/svg/downgrade.svg",
+          "origin": null,
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "turn",
+              "roll": ""
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "rounds": 1,
+            "startTime": null,
+            "combat": null
+          },
+          "description": "",
+          "tint": "#ffffff",
+          "statuses": [
+            "frightened"
+          ],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "vk2a7PnHDj4049QY",
+          "_key": "!actors.items.effects!8DT1J2OmO380DsYt.kLTUjHwfhlXjjWUh.vk2a7PnHDj4049QY"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.kLTUjHwfhlXjjWUh",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761233013541,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "kLTUjHwfhlXjjWUh",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!8DT1J2OmO380DsYt.kLTUjHwfhlXjjWUh"
+    },
+    {
+      "name": "Uncanny Mimicry",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A manticore starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The manticore uses their mimicry in an attempt to unnerve one creature within their line of effect. If the target has R&lt;4, [[/apply ED3xuenMmRyQpOGP]]{they take a bane on power rolls against the manticore (save ends)}. Each time this feature is used against the same target during the encounter, its potency decreases by 2.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "202",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "uncanny-mimicry",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [
+        {
+          "name": "Unnerved",
+          "img": "icons/magic/control/fear-fright-white.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.7pPJaCExColq09T2",
+          "transfer": false,
+          "_id": "ED3xuenMmRyQpOGP",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You take a bane against the manticore who used Uncanny Mimicry.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_key": "!actors.items.effects!8DT1J2OmO380DsYt.7pPJaCExColq09T2.ED3xuenMmRyQpOGP"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.7pPJaCExColq09T2",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761233017173,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "7pPJaCExColq09T2",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 100000,
+      "_key": "!actors.items!8DT1J2OmO380DsYt.7pPJaCExColq09T2"
+    },
+    {
+      "name": "Barrage of Barbs",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "A manticore starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The manticore sprays tail spikes across the ground within 5 squares of them. Each enemy in that area who has A&lt;3 is [[/apply bleeding save]]. Additionally, the area is difficult terrain, and any enemy takes [[/damage 3 poison]] damage for each square of the area they enter. An enemy who takes [[/damage 9 poison]] damage this way on one turn is weakened until the end of the encounter.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "202",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "barrage-of-barbs",
+        "story": "",
+        "keywords": []
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.usfZej4tFqpr9kDf",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761233026075,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "usfZej4tFqpr9kDf",
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 300000,
+      "_key": "!actors.items!8DT1J2OmO380DsYt.usfZej4tFqpr9kDf"
     }
   ],
   "folder": "GjGhUOD7nBaOg0ca",

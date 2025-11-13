@@ -34,6 +34,25 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
 
   /* -------------------------------------------------- */
 
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    // Check if actor has immunity to any statuses being applied by this effect
+    const immuneList = this.statuses.filter(statusId => this.parent?.system.statuses?.immunities.has(statusId));
+
+    if (immuneList.size) {
+      // Warn the user with a list of condition names
+      const formatter = game.i18n.getListFormatter({ type: "unit" });
+      const formattedConditions = formatter.format(immuneList.map(id => game.i18n.localize(ds.CONFIG.conditions[id]?.name ?? id)));
+
+      ui.notifications.warn("DRAW_STEEL.ActiveEffect.ImmunityWarning", { localize: true, format: { conditions: formattedConditions } });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
   /**
    * Modify the effectData for the new effect with the changes to include the imposing actor's UUID in the appropriate flag.
    * @param {string} statusId
@@ -69,6 +88,18 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (!affected?.statuses.has(statusId)) return null;
 
     return affected.system.statuses?.[statusId]?.sources.has(source.uuid) ?? null;
+  }
+
+  /* -------------------------------------------------- */
+  /** @inheritdoc */
+  get sourceName() {
+    if (!this.origin) return game.i18n.localize("None");
+    let name;
+    try {
+      // Only difference from core is use of relative-to-target
+      name = foundry.utils.fromUuidSync(this.origin, { relative: this.target })?.name;
+    } catch (e) { /* empty */ }
+    return name || game.i18n.localize("Unknown");
   }
 
   /* -------------------------------------------------- */

@@ -101,7 +101,7 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    * @type {number[]}
    */
   get levels() {
-    return [];
+    return [this.requirements.level];
   }
 
   /* -------------------------------------------------- */
@@ -109,11 +109,11 @@ export default class BaseAdvancement extends TypedPseudoDocument {
   /**
    * Configure this advancement such that all choices have been made. Optionally also apply
    * these choices to a node in an advancement chain.
-   * @param {AdvancementChain} [node]   A node that is configured in-place and used to gather options. **will be mutated**.
-   * @returns {Promise<object>}         A promise that resolves to an update to perform on the parent of the advancement.
+   * @param {AdvancementChain} node   A node that is configured in-place and used to gather options. **will be mutated**.
+   * @returns {Promise<object>}       A promise that resolves to an update to perform on the parent of the advancement.
    * @abstract
    */
-  async configureAdvancement(node = null) {
+  async configureAdvancement(node) {
     return {};
   }
 
@@ -126,5 +126,17 @@ export default class BaseAdvancement extends TypedPseudoDocument {
    */
   async reconfigure() {
     if (!this.canReconfigure) throw new Error("You can only reconfigure advancements if the item is embedded in an actor");
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Type-specific context prep for this Advancement.
+   * Called by AdvancementSheet##prepareDetailsContext.
+   * @param {object} options The rendering options.
+   * @returns {Promise<object>} Additional context information.
+   */
+  async getSheetContext(options) {
+    return {};
   }
 }

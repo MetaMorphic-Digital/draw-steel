@@ -53,23 +53,26 @@ export interface ProjectRollPrompt {
 
 /* -------------------------------------------------- */
 
-export interface AdvancementChainItemGrantLeaf {
-  item: DrawSteelItem;
+interface AdvancementLeaf {
   node: AdvancementChain;
-  itemLink: HTMLElement;
-  children: Record<string, AdvancementChainTraitLeaf>;
-
-  // Whether this specific choice has been selected.
+  children: Record<string, AdvancementChain>;
+  /** Whether this specific choice has been selected. */
   isChosen: boolean;
 }
 
-export interface AdvancementChainTraitLeaf {
-  node: AdvancementChain;
-  trait: string;
-  children: object;
+export interface AdvancementChainItemGrantLeaf extends AdvancementLeaf {
+  item: DrawSteelItem;
+  itemLink: HTMLElement;
+}
 
-  // Whether this specific choice has been selected.
-  isChosen: boolean;
+export interface AdvancementChainTraitLeaf extends AdvancementLeaf {
+  choice: string;
+  trait: string;
+}
+
+export interface AdvancementChainCharacteristicLeaf extends AdvancementLeaf {
+  choice: string;
+  characteristic: string;
 }
 
 declare module "./utils/advancement-chain.mjs" {
@@ -78,8 +81,9 @@ declare module "./utils/advancement-chain.mjs" {
     parent?: AdvancementChain;
     depth: number;
     isRoot: boolean;
-    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf>;
-    selected: Record<string, boolean>;
+    choices: Record<string, AdvancementChainItemGrantLeaf | AdvancementChainTraitLeaf | AdvancementChainCharacteristicLeaf>;
+    selected: Record<string, boolean | number>;
+    levels: [number, number];
 
     // Helper property to detect if this has been chosen. Only relevant for root or item grant nodes.
     parentChoice?: AdvancementChainItemGrantLeaf;

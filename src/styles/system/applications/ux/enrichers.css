@@ -2,7 +2,7 @@
 
 enriched-content {
   /* Matches core inline roll styling */
-  &[enricher="ds.roll"] {
+  &[enricher="ds.roll"], &[enricher="ds.apply"] {
     background: var(--content-link-background);
     border: 1px solid var(--content-link-border-color);
     border-radius: 2px;

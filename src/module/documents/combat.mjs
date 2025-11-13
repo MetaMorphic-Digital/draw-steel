@@ -59,7 +59,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
    * @returns {boolean} Is the user allowed to change the round?
    */
   _canChangeRound(user) {
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return super._canChangeRound(user);
+    if (!game.combats.isDefaultInitiativeMode) return super._canChangeRound(user);
     return user.isGM;
   }
 
@@ -82,10 +82,10 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   /** @inheritdoc */
   async nextRound() {
     // In memory adjustment that will get committed during the super call
-    this.turn = null;
+    if (game.combats.isDefaultInitiativeMode) this.turn = null;
     await super.nextRound();
 
-    if (game.settings.get(systemID, "initiativeMode") !== "default") return this;
+    if (!game.combats.isDefaultInitiativeMode) return this;
     const combatantUpdates = this.combatants.map(c => ({ _id: c.id, initiative: c.actor?.system.combat.turns ?? 1 }));
     await this.updateEmbeddedDocuments("Combatant", combatantUpdates);
     const combatantGroupUpdates = this.groups.map(c => ({ _id: c.id, initiative: 1 }));
@@ -105,7 +105,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
   _sortCombatants(a, b) {
     let dc = 0;
     // Sort by Players then Neutrals then Hostiles
-    if (game.settings.get(systemID, "initiativeMode") === "default") {
+    if (game.combats.isDefaultInitiativeMode) {
       dc = b.disposition - a.disposition;
       if (!dc && a.active) return -1;
       else if (!dc && b.active) return 1;
@@ -137,7 +137,7 @@ export default class DrawSteelCombat extends foundry.documents.Combat {
     if (options.endTurn && game.user.isActiveGM) {
       const prev = this.previous;
       const combatant = this.combatants.get(prev.combatantId);
-      if (combatant && (this.current.turn === null)) {
+      if (combatant && (this.current.turn == null)) {
         if (CONFIG.debug.combat) console.debug(` | Combat End Turn: ${combatant.name}`);
         const context = { round: prev.round, turn: prev.turn, skipped: false };
         await this._onEndTurn(combatant, context);

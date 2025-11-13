@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "250",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "250"
         },
         "_dsid": "foresight-squared",
@@ -131,9 +129,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -159,7 +157,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -209,7 +208,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "DHaeavOKhGglq2T1": {
               "_id": "DHaeavOKhGglq2T1",
@@ -247,7 +247,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
             "z03BkCDOMpSJsjOK": {
               "_id": "z03BkCDOMpSJsjOK",
@@ -285,7 +286,8 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -300,7 +302,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "250"
         },
         "_dsid": "sunderbuss",
@@ -316,9 +317,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -329,7 +330,7 @@
       "_key": "!actors.items!QK220xei6VbKwMdS.UCEBslErKb9ufIOe"
     },
     {
-      "name": "Buss Buffe",
+      "name": "Buss Buffer",
       "type": "ability",
       "img": "icons/magic/air/air-wave-gust-blue.webp",
       "system": {
@@ -344,8 +345,9 @@
           "primary": 5
         },
         "target": {
-          "type": "ally",
-          "value": null
+          "type": "selfAlly",
+          "value": null,
+          "custom": "Self and each ally in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -358,8 +360,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The damage is halved for the cannonfall and each target also affected by the triggering ability</p>"
+          "before": "<p>The damage is halved for the cannonfall and each target also affected by the triggering ability</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -368,10 +370,9 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "250"
         },
-        "_dsid": "buss-buffe",
+        "_dsid": "buss-buffer",
         "story": "",
         "resource": 1,
         "trigger": "A creature damages the cannonfall with a ranged or area ability."
@@ -384,9 +385,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -406,8 +407,7 @@
         "source": {
           "book": "Monsters",
           "page": "248",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "gravity-well",
         "story": "",
@@ -428,7 +428,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -457,9 +459,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.DWLBSTbhAO4dJSvg",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -475,8 +477,7 @@
         "source": {
           "book": "Monsters",
           "page": "248",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "recall-module",
         "story": "",
@@ -490,7 +491,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -519,16 +522,15 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.2rKjwi2thIVeeFZf",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
       "_key": "!actors.items!QK220xei6VbKwMdS.2rKjwi2thIVeeFZf"
     },
     {
-      "folder": "LoZnNuHgZjaAO7Gt",
       "name": "Psi-Cage",
       "type": "ability",
       "_id": "ELtwiIpyMZafdAEM",
@@ -537,8 +539,7 @@
         "source": {
           "book": "Monsters",
           "page": "248",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "psi-cage",
         "story": "",
@@ -552,7 +553,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -562,7 +565,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>[[/damage 10 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>[[/damage 7 psychic]] damage; slowed (EoT)</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>All time raiders in the encounter collectively create a psionic field over the encounter map, which lasts until the first time raider with the highest Stamina maximum drops to 0 Stamina or chooses to end the field (no action required). While the field is up, each non-time raider on the map makes a <strong>Reason test</strong> against this psionic effect at the start of each round.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 psychic]]{10 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 7 psychic]]{7 psychic damage}; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -571,22 +574,23 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.ELtwiIpyMZafdAEM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!QK220xei6VbKwMdS.ELtwiIpyMZafdAEM"
     }
   ],
@@ -696,10 +700,10 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
-    "createdTime": 1757296065474,
+    "systemVersion": "0.9.0",
+    "createdTime": 1761424412513,
     "modifiedTime": null,
     "lastModifiedBy": null
   },

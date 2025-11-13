@@ -81,8 +81,7 @@
     "source": {
       "book": "Monsters",
       "page": "216",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -198,46 +197,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "_id": "guwqOTm4GC4M3VoM",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> +2 bonus to forced movement distance</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monsters.Actor.My8y85XQkQHc0cqp.Item.guwqOTm4GC4M3VoM",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1756955695978,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!3y2tRRGSXTCi59k3.guwqOTm4GC4M3VoM"
-    },
-    {
       "name": "Explosive Mote",
       "type": "ability",
       "system": {
@@ -245,8 +204,7 @@
         "source": {
           "book": "Monsters",
           "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "explosive-mote",
         "story": "",
@@ -265,7 +223,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "power": {
           "roll": {
@@ -299,27 +258,15 @@
               "_id": "ZbW1NHHSHnsu561m",
               "forced": {
                 "tier2": {
-                  "distance": "2"
+                  "distance": "2",
+                  "display": "{{forced}}, or the bloodspark shifts up to 2 squares  away from the target"
                 },
                 "tier3": {
-                  "distance": "4"
-                }
-              }
-            },
-            "5IqS3xXb75utDlY8": {
-              "name": "Shift",
-              "img": null,
-              "type": "other",
-              "_id": "5IqS3xXb75utDlY8",
-              "other": {
+                  "distance": "4",
+                  "display": "{{forced}}, or the bloodspark shifts up to 4 squares  away from the target"
+                },
                 "tier1": {
-                  "display": "or the bloodspark can shift 1 square away from the target."
-                },
-                "tier2": {
-                  "display": "or the bloodspark can shift 2 square away from the target."
-                },
-                "tier3": {
-                  "display": "or the bloodspark can shift 4 square away from the target."
+                  "display": "{{forced}}, or the bloodspark can shift 1 square away from the target."
                 }
               }
             }
@@ -348,9 +295,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "createdTime": 1756955719799,
         "modifiedTime": null,
         "lastModifiedBy": null
@@ -370,8 +317,7 @@
         "source": {
           "book": "Monsters",
           "page": "216",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "bloodfire-burn",
         "advancements": {}
@@ -396,9 +342,292 @@
         "lastModifiedBy": null
       },
       "_key": "!actors.items!3y2tRRGSXTCi59k3.cD0TrJyrk2SfV6Zx"
+    },
+    {
+      "name": "Mohler Cavity",
+      "type": "ability",
+      "_id": "OMNyXoF5k0h6ffBa",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "mohler-cavity",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 7,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The ground shakes as a group of mohlers dig a 5 cube pit beneath an area where at least one creature is on the ground. The area is difficult terrain. Each orc in the area can shift into the nearest unoccupied space outside the pit before it is completed. Each non orc in the area makes an Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls; [[/apply prone]] and [[/apply 6tfLepwkoZo1d24S turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; the target falls</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target can shift into the nearest unoccupied space outside the pit.</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [
+        {
+          "name": "Can't Stand",
+          "img": "icons/skills/movement/figure-running-gray.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS",
+          "transfer": false,
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot stand up.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monster-features.Item.etXG4qihF4LWitWS.ActiveEffect.dx8loOnogA4DqJ4J",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "6tfLepwkoZo1d24S",
+          "sort": 0,
+          "_key": "!actors.items.effects!3y2tRRGSXTCi59k3.OMNyXoF5k0h6ffBa.6tfLepwkoZo1d24S"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.OMNyXoF5k0h6ffBa",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761240424130,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 400000,
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.OMNyXoF5k0h6ffBa"
+    },
+    {
+      "name": "Mohler Trench",
+      "type": "ability",
+      "_id": "BStQdG3SobeFUDES",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "mohler-trench",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>An orc acting this turn summons 2 mohlers out of the ground, who dig a trench that is a 10 × 1 line within 10 squares when they appear. The trench is 2 squares deep and is difficult terrain. The trench can’t be created directly underneath creatures.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BStQdG3SobeFUDES",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761240425013,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 300000,
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.BStQdG3SobeFUDES"
+    },
+    {
+      "name": "Overwhelming March",
+      "type": "ability",
+      "_id": "wRlM0yKql0bXpAAe",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "215",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "overwhelming-march",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each orc shifts up to their speed, moving through enemy spaces if they can. Each enemy passed through during this movement makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 6]]{6 damage}; [[/apply prone]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; [[/apply prone]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 2</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.wRlM0yKql0bXpAAe",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761240426149,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!3y2tRRGSXTCi59k3.wRlM0yKql0bXpAAe"
     }
   ],
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.3y2tRRGSXTCi59k3",
+      "disabled": true,
+      "_id": "A5u5UoJkVuSATlaF",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "",
+          "mode": 2,
+          "value": "",
+          "priority": null
+        }
+      ],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>+2 bonus to forced movement distance</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761240630196,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!3y2tRRGSXTCi59k3.A5u5UoJkVuSATlaF"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

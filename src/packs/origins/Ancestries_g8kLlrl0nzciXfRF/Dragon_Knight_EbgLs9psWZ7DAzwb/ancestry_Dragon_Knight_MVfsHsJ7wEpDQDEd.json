@@ -12,13 +12,12 @@
     "source": {
       "book": "Heroes",
       "page": "28",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "dragon-knight",
     "advancements": {
       "0HRmARort6cvuDx1": {
-        "name": "",
+        "name": "Signature Trait",
         "img": null,
         "type": "itemGrant",
         "requirements": {
@@ -28,6 +27,40 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.origins.Item.LBaGlsH1lqNVbcC5"
+          }
+        ]
+      },
+      "xyLbkBtmdUNTeZEo": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "xyLbkBtmdUNTeZEo",
+        "description": "<p>You have 3 ancestry points to spend on the following traits. (<em>Quick Build:</em> Dragon Breath, Prismatic Scales.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "chooseN": 3,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.Vv642vcbeEXyvPyW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.HVeZcjU4yRPJVk73"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.M1NjI2MMsGBvYnYU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.iyieHhQ8wAB5godW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.mmO1ZfnKdcrWr2KF"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.nJVGFNiDbEuGv2ef"
           }
         ]
       }
@@ -43,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456562583,
     "modifiedTime": null,
     "lastModifiedBy": null

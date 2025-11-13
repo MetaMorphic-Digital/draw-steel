@@ -1,0 +1,67 @@
+{
+  "folder": "IOxA16ygtN6N9a3Y",
+  "name": "Bend Fate",
+  "type": "ability",
+  "_id": "Y1l3kymyNVrz1rBP",
+  "img": "icons/magic/light/explosion-star-glow-silhouette.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "110",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "bend-fate",
+    "story": "The gods know you must prevail, and they bless your fate.",
+    "keywords": [
+      "magic",
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the encounter or until you are dying, each of the target’s power rolls has its outcome improved by one tier.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761424414295,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Y1l3kymyNVrz1rBP"
+}

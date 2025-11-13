@@ -35,7 +35,7 @@
         "letter": "M"
       },
       "stability": 4,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 5,
@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "51",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "solo-monster",
@@ -151,7 +149,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "heady-or-not",
@@ -189,7 +186,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "resilient-form",
@@ -253,7 +249,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "envious-imitation",
@@ -372,7 +367,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "turn-green",
@@ -470,7 +464,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The bredbeddle points at the target and issues them a challenge. If the target refuses, they turn green until the end of the encounter (see Turn Green). If the target accepts the challenge, the bredbeddle shifts adjacent to the target, who makes a <strong>Might test </strong>with no additional modifiers.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target is beheaded (see @UUID[Actor.vbfCKIDeENjugbBx.Item.WUqmC7FuqZnmfenM]{Lop})</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target makes the test again.</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can choose to deal [[/damage 40]] damage to the bredbeddle or remove the bredbeddle’s head.</p></td></tr></tbody></table>",
+          "before": "<p>The bredbeddle points at the target and issues them a challenge. If the target refuses, they turn green until the end of the encounter (see Turn Green). If the target accepts the challenge, the bredbeddle shifts adjacent to the target, who makes a <strong>Might test </strong>with no additional modifiers.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target is beheaded (see Lop)</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target makes the test again.</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>The target can choose to deal [[/damage 40]] damage to the bredbeddle or remove the bredbeddle’s head.</p></td></tr></tbody></table>",
           "after": ""
         },
         "spend": {
@@ -480,7 +474,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "challenge",
@@ -496,9 +489,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -649,7 +642,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "headlam-rampage",
@@ -730,8 +722,7 @@
         "source": {
           "book": "Monsters",
           "page": "50",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "engreen",
         "story": "",
@@ -1000,7 +991,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "executioners-swing",
@@ -1206,7 +1196,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "lop",
@@ -1314,7 +1303,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "scramble",
@@ -1480,7 +1468,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "51"
         },
         "_dsid": "headway",
@@ -1519,8 +1506,7 @@
         "source": {
           "book": "Monsters",
           "page": "50",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "shadow-stockade",
         "story": "",
@@ -1581,22 +1567,22 @@
         "source": {
           "book": "Monsters",
           "page": "50",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
         "story": "",
         "keywords": [],
         "type": "none",
         "category": "heroic",
-        "resource": null,
+        "resource": 5,
         "trigger": "",
         "distance": {
           "type": "special"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -1618,18 +1604,19 @@
       "sort": 0,
       "ownership": {
         "default": 0,
-        "R75FAhxK5fADaoJF": 3
+        "oHPurzNpicrNtJsX": 3
       },
       "flags": {},
       "_stats": {
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.mQMBQ1XKQyZs53gm",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.347",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1758387552485,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
       "_key": "!actors.items!wzvNh7FYggjoU6Hv.mQMBQ1XKQyZs53gm"
     },
@@ -1643,22 +1630,22 @@
         "source": {
           "book": "Monsters",
           "page": "50",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "green-phantom",
         "story": "",
         "keywords": [],
         "type": "none",
         "category": "heroic",
-        "resource": null,
+        "resource": 7,
         "trigger": "",
         "distance": {
           "type": "special"
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": ""
         },
         "power": {
           "roll": {
@@ -1680,17 +1667,17 @@
       "sort": 0,
       "ownership": {
         "default": 0,
-        "R75FAhxK5fADaoJF": 3
+        "oHPurzNpicrNtJsX": 3
       },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.SBKfZ0m7IJLOEOah",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.347",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757096745451,
+        "systemVersion": "0.9.0",
+        "createdTime": 1758387562354,
         "modifiedTime": null,
         "lastModifiedBy": null
       },

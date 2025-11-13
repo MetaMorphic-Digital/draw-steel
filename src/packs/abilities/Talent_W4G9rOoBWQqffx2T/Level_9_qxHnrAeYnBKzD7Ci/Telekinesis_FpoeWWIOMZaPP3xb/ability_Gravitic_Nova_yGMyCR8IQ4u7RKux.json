@@ -1,0 +1,105 @@
+{
+  "folder": "FpoeWWIOMZaPP3xb",
+  "name": "Gravitic Nova",
+  "type": "ability",
+  "_id": "yGMyCR8IQ4u7RKux",
+  "img": "icons/magic/unholy/hands-cloud-light-pink.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "200",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "gravitic-nova",
+    "story": "Unbridled psionic energy erupts from your body and flashes outward, hurling your foes back.",
+    "keywords": [
+      "area",
+      "psionic",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "burst",
+      "primary": 3
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemyObject",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "mPAFA6avf2m2pLvh": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "mPAFA6avf2m2pLvh",
+          "damage": {
+            "tier1": {
+              "value": "6"
+            },
+            "tier2": {
+              "value": "9"
+            },
+            "tier3": {
+              "value": "13"
+            }
+          }
+        },
+        "fw8pkVcsw39j1Vok": {
+          "name": "Push",
+          "img": null,
+          "type": "forced",
+          "_id": "fw8pkVcsw39j1Vok",
+          "forced": {
+            "tier1": {
+              "distance": "7"
+            },
+            "tier2": {
+              "distance": "10"
+            },
+            "tier3": {
+              "distance": "15"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>On a critical hit, the size of the area increases by 3, and this ability deals an extra [[/damage 10]] damage.</p><p><strong>Strained:</strong> You are [[/apply weakened save]]. If you scored a critical hit with this ability, you die.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761140049919,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!yGMyCR8IQ4u7RKux"
+}

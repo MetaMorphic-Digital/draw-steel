@@ -1,0 +1,126 @@
+{
+  "folder": "6vnfBHBmGld6FLFn",
+  "name": "They Always Line Up",
+  "type": "ability",
+  "_id": "wbwI9oBrIuBJOjGB",
+  "img": "icons/skills/ranged/projectile-strike-impale-gray.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "171",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "they-always-line-up",
+    "story": "You fire a projectile so fast that it passes through a line of foes, hamstringing them.",
+    "keywords": [
+      "area",
+      "ranged",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "line",
+      "primary": 5,
+      "secondary": 1,
+      "tertiary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "enemy",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "3OJWt64d1OFdw2tC": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "3OJWt64d1OFdw2tC",
+          "damage": {
+            "tier1": {
+              "value": "12"
+            },
+            "tier2": {
+              "value": "18"
+            },
+            "tier3": {
+              "value": "24"
+            }
+          }
+        },
+        "CuRpFRKUP2vZTEvm": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "CuRpFRKUP2vZTEvm",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "potency": {
+                "characteristic": "might"
+              },
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "slowed": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760925178502,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wbwI9oBrIuBJOjGB"
+}

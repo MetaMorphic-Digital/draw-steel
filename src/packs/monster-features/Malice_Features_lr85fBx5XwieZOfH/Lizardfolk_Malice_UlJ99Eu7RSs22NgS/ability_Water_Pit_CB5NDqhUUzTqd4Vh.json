@@ -8,8 +8,7 @@
     "source": {
       "book": "Monsters",
       "page": "198",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "water-pit",
     "story": "",
@@ -33,7 +32,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>The creature falls into the pit and is knocked prone.</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>The creature fails to empty the pit.</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>The pit empties of water.</p></td></tr></tbody></table>",
+      "before": "<p>lizardfolk acting this turn unearths a magical size 2 pit that is 2 squares deep and filled with water. Any lizardfolk who moves into, then exits the pit on their turn gains [[/heal 10 temporary]], regrows their tail if applicable, and ends one effect on them that can be ended by a saving throw. While adjacent to the pit, any creature who can burrow or who has the Nature skill can make a <strong>Might test or a Reason test</strong> to drain it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The creature falls into the pit and is knocked [[/apply prone]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature fails to empty the pit.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The pit empties of water.</p></dd></dl>",
       "after": ""
     },
     "spend": {
@@ -51,9 +50,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757291243539,
     "modifiedTime": null,
     "lastModifiedBy": null

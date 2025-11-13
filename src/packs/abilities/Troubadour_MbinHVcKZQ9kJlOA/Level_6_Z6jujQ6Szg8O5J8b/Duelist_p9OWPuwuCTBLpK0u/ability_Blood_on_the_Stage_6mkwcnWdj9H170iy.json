@@ -1,0 +1,316 @@
+{
+  "folder": "p9OWPuwuCTBLpK0u",
+  "name": "Blood on the Stage",
+  "type": "ability",
+  "_id": "6mkwcnWdj9H170iy",
+  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "212",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "blood-on-the-stage",
+    "story": "It’s love and blood or drama and blood. Either way, there’s always blood.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "",
+    "resource": null,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "OrDSEr7vKXRpCWe6": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "OrDSEr7vKXRpCWe6",
+          "damage": {
+            "tier1": {
+              "value": "12 + @chr"
+            },
+            "tier2": {
+              "value": "18 + @chr"
+            },
+            "tier3": {
+              "value": "24 + @chr"
+            }
+          }
+        },
+        "wIi7T7j7C610hFtm": {
+          "name": "Bleeding EoT",
+          "img": null,
+          "type": "applied",
+          "_id": "wIi7T7j7C610hFtm",
+          "applied": {
+            "tier1": {
+              "potency": {
+                "characteristic": "none"
+              },
+              "display": "",
+              "effects": {}
+            },
+            "tier2": {
+              "display": "",
+              "potency": {
+                "characteristic": "none"
+              },
+              "effects": {}
+            },
+            "tier3": {
+              "potency": {
+                "characteristic": "none"
+              },
+              "effects": {
+                "bleeding": {
+                  "condition": "success",
+                  "end": "turn"
+                }
+              },
+              "display": "bleeding (EoT)"
+            }
+          }
+        },
+        "B5fZoUkXsyfomVbO": {
+          "name": "Bleeding",
+          "img": null,
+          "type": "applied",
+          "_id": "B5fZoUkXsyfomVbO",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, bleeding (save ends)",
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "{{potency}}, bleeding (save ends)"
+            },
+            "tier3": {
+              "effects": {
+                "bleeding": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "or if {{potency}}, bleeding (save ends)"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Bleeding",
+      "img": "icons/svg/item-bag.svg",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "_id": "F796gX0qH3XehjaW",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [
+        "bleeding"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761076555734,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.F796gX0qH3XehjaW"
+    },
+    {
+      "name": "Active Effect",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "R7eTeytrT75p8Czz",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761099436660,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.R7eTeytrT75p8Czz"
+    },
+    {
+      "name": "Active Effect (2)",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "h1m5OPt8O6svWAy6",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761100675096,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.h1m5OPt8O6svWAy6"
+    },
+    {
+      "name": "Active Effect (3)",
+      "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.6mkwcnWdj9H170iy",
+      "transfer": false,
+      "_id": "fVmZlgr5ibLD3vfR",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761100697974,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!6mkwcnWdj9H170iy.fVmZlgr5ibLD3vfR"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761076268387,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!6mkwcnWdj9H170iy"
+}

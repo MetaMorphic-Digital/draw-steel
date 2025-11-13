@@ -5,7 +5,9 @@ import "./api/roll-dialog.css";
 
 import "./apps/advancement/chain-configuration-dialog.css";
 import "./apps/advancement/fill-trait-dialog.css";
+import "./apps/advancement/item-grant-configuration-dialog.css";
 
+import "./apps/characteristic-input.css";
 import "./apps/monster-metadata.css";
 import "./apps/power-roll-dialog.css";
 import "./apps/saving-throw-dialog.css";

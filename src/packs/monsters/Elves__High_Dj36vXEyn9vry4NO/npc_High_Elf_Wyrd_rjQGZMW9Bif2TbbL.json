@@ -72,15 +72,14 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
       "page": "123",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -114,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "123"
         },
         "_dsid": "otherworldly-grace",
@@ -158,7 +156,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -232,7 +231,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "123"
         },
         "_dsid": "twystrd",
@@ -248,9 +246,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -289,8 +287,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The wyrd summons two <strong>@UUID[Actor.yYTmi4JwOnyA0w1s]{Elemental Motes}</strong> or two <strong>@UUID[Actor.a44HNNYHX0iwwarq]{Soot Crows}</strong> into unoccupied spaces within distance.</p>"
+          "before": "<p>The wyrd summons two <strong>@UUID[Actor.yYTmi4JwOnyA0w1s]{Elemental Motes}</strong> or two <strong>@UUID[Actor.a44HNNYHX0iwwarq]{Soot Crows}</strong> into unoccupied spaces within distance.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -299,7 +297,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "123"
         },
         "_dsid": "summon-elemental",
@@ -315,9 +312,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -368,7 +365,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "123"
         },
         "_dsid": "wyrd-warp",
@@ -406,8 +402,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "chaincast",
         "story": "",
@@ -468,8 +463,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "gift-from-an-accursed-tome",
         "story": "",
@@ -490,7 +484,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -683,9 +678,9 @@
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.vvjYHjxFdP4qKoFR",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -701,8 +696,7 @@
         "source": {
           "book": "Monsters",
           "page": "119",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "in-defiance-of-time",
         "story": "",

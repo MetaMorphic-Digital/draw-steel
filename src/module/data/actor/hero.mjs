@@ -83,7 +83,7 @@ export default class HeroModel extends BaseActorModel {
       units: new fields.StringField({ blank: false, required: true, initial: "pounds" }),
     });
 
-    bio.age = new fields.StringField({ blank: false });
+    bio.age = new fields.StringField({ required: true });
 
     return bio;
   }
@@ -95,6 +95,7 @@ export default class HeroModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.recoveries.bonus = 0;
+    this.recoveries.divisor = 3;
 
     const kitBonuses = {
       stamina: 0,
@@ -138,7 +139,7 @@ export default class HeroModel extends BaseActorModel {
     }
 
     this.stamina.max = kitBonuses["stamina"] * this.echelon;
-    this.movement.value += kitBonuses["speed"];
+    this.movement.kitBonus = kitBonuses["speed"];
     this.combat.stability += kitBonuses["stability"];
     this.movement.disengage += kitBonuses["disengage"];
 
@@ -173,10 +174,12 @@ export default class HeroModel extends BaseActorModel {
       if (heroClass.system.epic) this.hero.epic.label = heroClass.system.epic;
     }
 
+    this.movement.value += this.movement.kitBonus;
+
     super.prepareDerivedData();
 
     // allows for stamina bonuses to apply first
-    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / this.recoveries.divisor) + this.recoveries.bonus;
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;
@@ -532,18 +535,19 @@ export default class HeroModel extends BaseActorModel {
   ) {
     // First gather all new items that are to be created.
     for (const chain of chains) for (const node of chain.active()) {
-      if (node.advancement.type !== "itemGrant") continue;
-      const parentItem = node.advancement.document;
+      if (node.advancement.type === "itemGrant") {
+        const parentItem = node.advancement.document;
 
-      for (const uuid of node.chosenSelection ?? []) {
-        const item = node.choices[uuid].item;
-        const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
-        const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
-        if (!keepId) itemData._id = foundry.utils.randomID();
-        toCreate[item.uuid] = itemData;
-        _idMap.set(item.id, itemData._id);
-        itemData._parentId = parentItem.id;
-        itemData._advId = node.advancement.id;
+        for (const uuid of node.chosenSelection ?? []) {
+          const item = node.choices[uuid].item;
+          const keepId = !this.parent.items.has(item.id) && !Array.from(_idMap.values()).includes(item.id);
+          const itemData = game.items.fromCompendium(item, { keepId, clearFolder: true });
+          if (!keepId) itemData._id = foundry.utils.randomID();
+          toCreate[item.uuid] = itemData;
+          _idMap.set(item.id, itemData._id);
+          itemData._parentId = parentItem.id;
+          itemData._advId = node.advancement.id;
+        }
       }
     }
 
@@ -562,19 +566,20 @@ export default class HeroModel extends BaseActorModel {
 
     // Perform item data modifications or store item updates.
     for (const chain of chains) for (const node of chain.active()) {
-      if (!node.advancement.isTrait) continue;
-      const { document: item, id } = node.advancement;
-      const isExisting = item.parent === this.parent;
-      let itemData;
+      if (node.advancement.isTrait || (node.advancement.type === "characteristic")) {
+        const { document: item, id } = node.advancement;
+        const isExisting = item.parent === this.parent;
+        let itemData;
 
-      if (isExisting) {
-        toUpdate[item.id] ??= { _id: item.id };
-        itemData = toUpdate[item.id];
-      } else {
-        itemData = toCreate[item.uuid];
+        if (isExisting) {
+          toUpdate[item.id] ??= { _id: item.id };
+          itemData = toUpdate[item.id];
+        } else {
+          itemData = toCreate[item.uuid];
+        }
+
+        foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
       }
-
-      foundry.utils.setProperty(itemData, `flags.${systemID}.advancement.${id}.selected`, node.chosenSelection);
     }
 
     const operationOptions = {};

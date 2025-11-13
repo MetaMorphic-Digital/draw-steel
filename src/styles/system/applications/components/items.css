@@ -31,8 +31,9 @@
 
     .item-controls {
       display: flex;
-      width: 25px;
+      width: 40px;
       justify-content: space-evenly;
+      font-size: var(--font-size-16);
     }
 
     .item-list {
@@ -65,10 +66,28 @@
             }
 
             img {
-              width: 24px;
-              /* height: 30px; */
+              width: 30px;
+              height: 30px;
               border: none;
             }
+          }
+          .item-controls  > * {
+            line-height: 40px;
+          }
+        }
+
+        .document-description {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows .15s linear;
+          padding: 0px 5px 0px 5px;
+
+          &.expanded {
+            grid-template-rows: 1fr;
+          }
+
+          & > div {
+            overflow: hidden;
           }
         }
       }

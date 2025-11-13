@@ -1,0 +1,90 @@
+{
+  "folder": "oBlC3EZdWggPWyRn",
+  "name": "Suspensor Field",
+  "type": "feature",
+  "_id": "OXKhxDJFuUFopkx8",
+  "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
+  "system": {
+    "description": {
+      "value": "<p>You can fly. While flying, your stability is reduced to 0 and can’t be increased. If you can already fly, you have a +2 bonus to speed while flying instead.</p><p>If you are strained while flying and are force moved, the forced movement distance gains a +2 bonus.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "194",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "suspensor-field",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Fly",
+      "img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.OXKhxDJFuUFopkx8",
+      "transfer": true,
+      "_id": "mJaRt2VawsrSiqe7",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "",
+          "mode": 2,
+          "value": "",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You can fly. While flying, your stability is reduced to 0 and can’t be increased. If you can already fly, you have a +2 bonus to speed while flying instead.</p><p>If you are strained while flying and are force moved, the forced movement distance gains a +2 bonus.</p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "fly"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760900630336,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!OXKhxDJFuUFopkx8.mJaRt2VawsrSiqe7"
+    }
+  ],
+  "sort": 200000,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760747885071,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!OXKhxDJFuUFopkx8"
+}

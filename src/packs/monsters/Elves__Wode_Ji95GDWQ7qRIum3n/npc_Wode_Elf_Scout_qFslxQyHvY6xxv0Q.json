@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "136",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -103,44 +102,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> Gain an edge on strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "136"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "0sEeyNM6ikbdetp2",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!qFslxQyHvY6xxv0Q.0sEeyNM6ikbdetp2"
-    },
-    {
       "name": "Into the Green",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
@@ -152,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "136"
         },
         "_dsid": "into-the-green",
@@ -190,7 +150,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "136"
         },
         "_dsid": "masking-glamor",
@@ -236,7 +195,8 @@
         },
         "target": {
           "type": "creatureObject",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -295,7 +255,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "136"
         },
         "_dsid": "daggers",
@@ -311,9 +270,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -333,8 +292,7 @@
         "source": {
           "book": "Monsters",
           "page": "135",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "forest-network",
         "story": "",
@@ -395,8 +353,7 @@
         "source": {
           "book": "Monsters",
           "page": "135",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "punishing-regrowth",
         "story": "",
@@ -448,7 +405,6 @@
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.4M0YYV4gUX0n98tl"
     },
     {
-      "folder": "g8UHG2eyUpTG7CVk",
       "name": "Vines Everywhere",
       "type": "ability",
       "_id": "Xo0apOKkrnZ7lnKM",
@@ -457,8 +413,7 @@
         "source": {
           "book": "Monsters",
           "page": "135",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "vines-everywhere",
         "story": "",
@@ -472,7 +427,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -482,7 +439,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Vines rapidly grow across the entire encounter map. Each enemy in the encounter makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 8]] damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>Restrained (EoT)</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Vines rapidly grow across the entire encounter map. Each enemy in the encounter makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 8]]{8 damage}; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/Apply Restrained turn]].</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -491,22 +448,24 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.Xo0apOKkrnZ7lnKM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1761099540400,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!qFslxQyHvY6xxv0Q.Xo0apOKkrnZ7lnKM"
     }
   ],
@@ -606,7 +565,50 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.qFslxQyHvY6xxv0Q",
+      "disabled": true,
+      "_id": "6Wjj82hdhaztCmZd",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>Gain an edge on strikes</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761099707129,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!qFslxQyHvY6xxv0Q.6Wjj82hdhaztCmZd"
+    }
+  ],
   "sort": 0,
   "ownership": {
     "default": 0

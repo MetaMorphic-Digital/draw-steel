@@ -1,0 +1,168 @@
+{
+  "folder": "HcaUBI81278v147q",
+  "name": "Arcane Purge",
+  "type": "ability",
+  "_id": "yqD6vxevSj6S7Msx",
+  "img": "icons/magic/control/debuff-chains-orb-movement-blue.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "157",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "arcane-purge",
+    "story": "You focus your null field into a pressure point strike that prevents your foe from channeling sorcery",
+    "keywords": [
+      "melee",
+      "psionic",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "fsWbNKTPvgzdqCxz": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "fsWbNKTPvgzdqCxz",
+          "damage": {
+            "tier1": {
+              "value": "13 + @chr"
+            },
+            "tier2": {
+              "value": "19 + @chr"
+            },
+            "tier3": {
+              "value": "24 + @chr"
+            }
+          }
+        },
+        "Ibfc01p9zsI016E0": {
+          "name": "Suppressed",
+          "img": null,
+          "type": "applied",
+          "_id": "Ibfc01p9zsI016E0",
+          "applied": {
+            "tier1": {
+              "effects": {
+                "GPCyvQZDuAJlxC93": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "display": "{{potency}}, the target is suppressed (save ends)",
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "GPCyvQZDuAJlxC93": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "GPCyvQZDuAJlxC93": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>While suppressed, a target takes [[/damage 2*@I psychic]]{psychic damage equal to twice your Intuition score} at the start of their turns, whenever they use a supernatural ability, or whenever they use an ability that costs Malice.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Suppressed",
+      "img": "icons/magic/control/debuff-chains-orb-movement-blue.webp",
+      "origin": "Compendium.draw-steel.abilities.Item.yqD6vxevSj6S7Msx",
+      "transfer": false,
+      "_id": "GPCyvQZDuAJlxC93",
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761328299331,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!yqD6vxevSj6S7Msx.GPCyvQZDuAJlxC93"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761328078041,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!yqD6vxevSj6S7Msx"
+}
