@@ -1,295 +1,390 @@
 /* CSS for DrawSteelJournalEntrySheet */
 
 /*all*/
-.draw-steel.journal-sheet .window-content{
+.draw-steel.journal-sheet .window-content,
+.draw-steel.journal-sheet .window-header {
   backdrop-filter: none;
   background: var(--draw-steel-c-white);
-}
-.draw-steel .content-link, .inline-roll {
-    background: var(--draw-steel-c-white);
-    border: 1px solid var(--draw-steel-c-laserline);
-    border-radius: 2px;
-    color: var(--draw-steel-c-laserline);
-    margin: -1px 0;
-    padding: 1px 4px 0;
-    white-space: nowrap;
-    word-break: break-all;
-}
-.draw-steel.journal-sheet .journal-sidebar{
+  color: var(--raw-steel-c-light);
+
+  .window-title,
+  button,
+  .page-title,
+  .chapter {
+    color: var(--color-text-primary);
   }
-    ol li{
-      font-family: 'Draw Steel Book';
-      position:relative;
-      a:after{
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--draw-steel-c-laserline);
-/*        background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
-        transition: transform 0.25s ease-out;
-        transform-origin: bottom left;
-        };
-      a:hover::after{;
-      transform: scaleX(1);
-      }
+}
+
+.draw-steel .content-link,
+.inline-roll {
+  background: var(--draw-steel-c-white);
+  border: 1px solid var(--draw-steel-c-laserline);
+  border-radius: 2px;
+  color: var(--draw-steel-c-laserline);
+  margin: -1px 0;
+  padding: 1px 4px 0;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.draw-steel.journal-sheet .journal-sidebar {
+  color: var(--draw-steel-c-dark);
+
+  ol li {
+    font-family: 'Draw Steel Book';
+    position: relative;
+
+    a:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--draw-steel-c-laserline);
+      /*        background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;*/
+      transition: transform 0.25s ease-out;
+      transform-origin: bottom left;
     }
-    .toc li.page.active:first-of-type{
+
+    a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .toc li.page.active:first-of-type {
       border-top-color: transparent;
       border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
     }
-    .toc li.page.active:last-of-type{
-          border-bottom-color: transparent;
-          border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
-        }
-}
-a.button:hover,button:hover{
-  background: var(--draw-steel-c-laserline);
-}
-.draw-steel.journal-sheet.journal-entry, .draw-steel .journal-entry-page {
-  .journal-header input{
-    font-family: 'Draw Steel Book',serif;
-    color: var(--draw-steel-dark);
-  }
-  h1, h1.window-title {
-    font-family: 'Draw Steel Book',serif;
-    size:3em;
-    border-bottom:0px;
-  }
-  h2{
-    font-family: 'Newsreader',serif;
-    font-weight:bold;
-    border-color: transparent;
-    border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
-    border-image-slice: 1;
+
+    .toc li.page.active:last-of-type {
+      border-bottom-color: transparent;
+      border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
     }
-  h3{
-    font-family: 'Newsreader',serif;
-    font-weight:bold;
-  }
-  h4{
-    font-family: 'Atkinson Hyperlegible',serif;
-    font-weight:bold;
-    font-variant:small-caps;
+
+    .toc li {
+      color: var(--draw-steel-dark);
     }
-  h5{
-    font-family: 'Atkinson Hyperlegible',serif;
-    }
-  h6{
-    font-family: 'Atkinson Hyperlegible',serif;
+
   }
 
-/*imports*/
-.glyph {
-  font-family: Draw Steel Glyphs;
-}
-dl {
-  display: grid;
-  grid-template-columns: max-content auto;
-}
+  a.button:hover,
+  button:hover {
+    background: var(--draw-steel-c-laserline);
+  }
 
-dt {
-  grid-column-start: 1;
-  font-family: Draw Steel Glyphs;
-}
+  .draw-steel.journal-sheet.journal-entry,
+  .draw-steel .journal-entry-page {
+    .journal-header input {
+      font-family: 'Draw Steel Book', serif;
+      color: var(--draw-steel-dark);
+    }
 
-dd {
-  grid-column-start: 2;
-}
+    h1,
+    h1.window-title {
+      font-family: 'Draw Steel Book', serif;
+      size: 3em;
+      border-bottom: 0px;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--input-background-color);
-}
+    h2 {
+      font-family: 'Newsreader', serif;
+      font-weight: bold;
+      border-color: transparent;
+      border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
+      border-image-slice: 1;
+    }
 
-th, td {
-  padding: 16px;
-}
-/*th{
-  background:white;
-}*/
-/*td:nth-child(even) {
-  background: var(--input-background-color);
-}*/
+    h3 {
+      font-family: 'Newsreader', serif;
+      font-weight: bold;
+    }
 
-tbody tr:nth-child(odd) {
-  background: var(--input-background-color);
-}
-a{
-/*  font-style: italic;*/
-  color: #866d4b;
-}
-/* fancy fieldset*/
- .polygonal-fieldset {
-  position:relative;
-  border: 0px; 
-  --b: 1px;  /* border */
-  --s: 16px; /* size of the cut */
-  
-/*  width:300px;*/
-  display:inline-block;
-/*  aspect-ratio:1.5;*/
-  position:relative;
-  z-index:0;
+    h4 {
+      font-family: 'Atkinson Hyperlegible', serif;
+      font-weight: bold;
+      font-variant: small-caps;
+    }
 
-      legend{
-        margin:0 auto;
-        margin-bottom:-0.75em;
+    h5 {
+      font-family: 'Atkinson Hyperlegible', serif;
+    }
+
+    h6 {
+      font-family: 'Atkinson Hyperlegible', serif;
+    }
+
+    /*imports*/
+    .glyph {
+      font-family: Draw Steel Glyphs;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: max-content auto;
+    }
+
+    dt {
+      grid-column-start: 1;
+      font-family: Draw Steel Glyphs;
+    }
+
+    dd {
+      grid-column-start: 2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--input-background-color);
+    }
+
+    th,
+    td {
+      padding: 16px;
+    }
+
+
+    tbody tr:nth-child(odd) {
+      background: var(--input-background-color);
+    }
+
+    a {
+      color: #866d4b;
+    }
+
+    /* fancy fieldset*/
+    .polygonal-fieldset {
+      position: relative;
+      border: 0px;
+      --b: 1px;
+      /* border */
+      --s: 16px;
+      /* size of the cut */
+
+      /*  width:300px;*/
+      display: inline-block;
+      /*  aspect-ratio:1.5;*/
+      position: relative;
+      z-index: 0;
+
+      legend {
+        margin: 0 auto;
+        margin-bottom: -0.75em;
       }
-      div{
+
+      div {
         inset: 0px;
         background: var(--input-background-color);
-        padding:0.5rem;
+        padding: 0.5rem;
       }
-      .special-diamond{
+
+      .special-diamond {
         font-family: Draw Steel Glyphs;
-        position:absolute;
+        position: absolute;
         bottom: -0.8em;
         left: -1em;
         width: calc(100% + 20px);
         text-align: center;
       }
-    }
-    .polygonal-fieldset:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background: #ffffffaa;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
-    .polygonal-fieldset-inverse {
-      position:relative;
-  border: 0px; 
-  --b: 1px;  /* border */
-  --s: 16px; /* size of the cut */
-  
-/*  width:300px;*/
-  display:inline-block;
-/*  aspect-ratio:1.5;*/
-  position:relative;
-  z-index:0;
 
-      legend{
-        margin:0 auto;
-        color: #866d4b;
-        margin-bottom:-0.75em;
+      .polygonal-fieldset:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #ffffffaa;
+        --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+        --g2: #0000 calc(0.707*var(--s)),
+          #000 0 calc(0.707*var(--s) + var(--b)),
+          #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+          #000 0 calc(100% - 0.707*var(--s)),
+          #0000 0;
+        -webkit-mask:
+          linear-gradient(45deg, var(--g2)),
+          linear-gradient(-45deg, var(--g2)),
+          linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+          linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
       }
 
-      div{
-        background: var(--draw-steel-c-black);
-        color:var(--draw-steel-c-white);
-        padding:0.5rem;
-        margin:8px;
+      .polygonal-fieldset-inverse {
+        position: relative;
+        border: 0px;
+        --b: 1px;
+        /* border */
+        --s: 16px;
+        /* size of the cut */
+
+        /*  width:300px;*/
+        display: inline-block;
+        /*  aspect-ratio:1.5;*/
+        position: relative;
+        z-index: 0;
+
+        legend {
+          margin: 0 auto;
+          color: #866d4b;
+          margin-bottom: -0.75em;
+        }
+
+        div {
+          background: var(--draw-steel-c-black);
+          color: var(--draw-steel-c-white);
+          padding: 0.5rem;
+          margin: 8px;
+        }
+
+        .special-diamond {
+          font-family: Draw Steel Glyphs;
+          position: absolute;
+          bottom: -0.8em;
+          left: -0.8em;
+          width: calc(100% + 20px);
+          text-align: center;
+          color: var(--draw-steel-c-laserline);
+        }
       }
-      .special-diamond{
-        font-family: Draw Steel Glyphs;
-        position:absolute;
-        bottom: -0.8em;
-        left: -0.8em;
-        width: calc(100% + 20px);
+
+      .polygonal-fieldset-inverse:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #856C4B;
+        --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+        --g2: #0000 calc(0.707*var(--s)),
+          #000 0 calc(0.707*var(--s) + var(--b)),
+          #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+          #000 0 calc(100% - 0.707*var(--s)),
+          #0000 0;
+        -webkit-mask:
+          linear-gradient(45deg, var(--g2)),
+          linear-gradient(-45deg, var(--g2)),
+          linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+          linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+      }
+
+
+      /*laser lines on captions*/
+      caption {
+        width: 100%;
         text-align: center;
-        color: var(--draw-steel-c-laserline);
+        position: relative;
+        border-bottom: 2px solid #866d4b;
+        line-height: 0.75em;
+        padding-top: 1em;
+        width: 100%;
+        border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+        border-image-slice: 1;
+
+        strong {
+          background: var(--draw-steel-c-white);
+          padding: 0.5em 1em;
+          margin-top: -0.75em;
+          position: absolute;
+          transform: translate(-50%, 0%);
+        }
+
+        strong::before {
+          content: "®";
+          font-family: Draw Steel Glyphs;
+          color: #866d4b;
+          position: absolute;
+          left: -0.5em;
+        }
+
+        strong::after {
+          content: "®";
+          font-family: Draw Steel Glyphs;
+          color: #866d4b;
+          position: absolute;
+          right: -0.5em;
+        }
+
+        cite {
+          position: absolute;
+          top: 1.25em;
+          right: 0;
+        }
+
+        cite::before {
+          content: '';
+          clear: both;
+          margin-top: 3em;
+        }
+
       }
-    }
-.polygonal-fieldset-inverse:before {
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  background: #856C4B;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
 
 
-/*dark*/
-  .theme-dark &:not(.theme-light), &.themed.theme-dark {
-      
-      background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
-      background-size: contain;
-      background-position:bottom left;
-      background-repeat:no-repeat;
-      .journal-entry-content, .journal-entry-pages, .journal-entry-page{
-      background: var(--draw-steel-c-white);
-    }
-.polygonal-fieldset {
-  position:relative;      
-      legend{
-        margin:0 auto;
-        margin-bottom:-0.75em;
-      }
-      div{
-        inset: 0px;
-        background: var(--input-background-color);
-        padding:0.5rem;
-      }
-      .special-diamond{
-        font-family: Draw Steel Glyphs;
-        position:absolute;
-        bottom: -0.8em;
-        left: -0.8em;
-        width: calc(100% + 20px);
-        text-align: center;
-      }
-    }
-    .window-title, button, .page-title, .chapter{
-    color:var(--color-light-1);
-    }
-  }
-/*end dark*/
-/*light*/
-  .theme-light &:not(.theme-dark), &.themed.theme-light {
-    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-      background-size: contain;
-      background-position:bottom left;
-      background-repeat:no-repeat;
 
-  .polygonal-fieldset:before {
-  background: #000000aa;
-  --g1:#000 var(--b),#0000 0 calc(100% - var(--b)),#000 0;
-  --g2:#0000   calc(0.707*var(--s)), 
-       #000  0 calc(0.707*var(--s) + var(--b)),
-       #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-       #000  0 calc(100% - 0.707*var(--s)),
-       #0000 0;
-  -webkit-mask:
-    linear-gradient(45deg ,var(--g2)),
-    linear-gradient(-45deg,var(--g2)),
-    linear-gradient(90deg ,var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-    linear-gradient(180deg,var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-}
+      /*dark*/
+      .theme-dark &:not(.theme-light),
+      &.themed.theme-dark {
 
-    .journal-entry-content, .journal-entry-pages, .journal-entry-page{
-      background: var(--draw-steel-c-white);
+        background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+        background-size: contain;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+
+        .journal-entry-content,
+        .journal-entry-pages,
+        .journal-entry-page {
+          background: var(--draw-steel-c-white);
+        }
+
+        .polygonal-fieldset {
+          position: relative;
+
+          legend {
+            margin: 0 auto;
+            margin-bottom: -0.75em;
+          }
+
+          div {
+            inset: 0px;
+            background: var(--input-background-color);
+            padding: 0.5rem;
+          }
+
+          .special-diamond {
+            font-family: Draw Steel Glyphs;
+            position: absolute;
+            bottom: -0.8em;
+            left: -0.8em;
+            width: calc(100% + 20px);
+            text-align: center;
+          }
+        }
+      }
+
+      /*end dark*/
+      /*light*/
+      .theme-light &:not(.theme-dark),
+      &.themed.theme-light {
+        background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+        background-size: contain;
+        background-position: bottom left;
+        background-repeat: no-repeat;
+
+        .polygonal-fieldset:before {
+          background: #000000aa;
+          --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+          --g2: #0000 calc(0.707*var(--s)),
+            #000 0 calc(0.707*var(--s) + var(--b)),
+            #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+            #000 0 calc(100% - 0.707*var(--s)),
+            #0000 0;
+          -webkit-mask:
+            linear-gradient(45deg, var(--g2)),
+            linear-gradient(-45deg, var(--g2)),
+            linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+            linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+        }
+
+        .journal-entry-content,
+        .journal-entry-pages,
+        .journal-entry-page {
+          background: var(--draw-steel-c-white);
+        }
+      }
     }
-  .window-header, .journal-sidebar {
-    .window-title, button, .page-title, .chapter{
-    color:var(--color-dark-1);
-    }
-  }
-}
-}
