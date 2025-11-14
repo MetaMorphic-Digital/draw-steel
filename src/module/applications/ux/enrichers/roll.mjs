@@ -287,7 +287,7 @@ async function rollDamageHeal(link, event) {
 /* -------------------------------------------------- */
 
 /**
- * Enrich a gain link for heroic resources.
+ * Enrich a gain link for resources.
  * @param {ParsedConfig} parsedConfig      Configuration data.
  * @param {string} [label]             Optional label to replace default text.
  * @param {EnrichmentOptions} options  Options provided to customize text enrichment.
@@ -346,7 +346,7 @@ function enrichGain(parsedConfig, label, options) {
 /* -------------------------------------------------- */
 
 /**
- * Helper function that constructs the gain roll for heroic resources.
+ * Helper function that constructs the gain roll for resources.
  * @param {HTMLAnchorElement} link
  * @param {PointerEvent} event
  */
