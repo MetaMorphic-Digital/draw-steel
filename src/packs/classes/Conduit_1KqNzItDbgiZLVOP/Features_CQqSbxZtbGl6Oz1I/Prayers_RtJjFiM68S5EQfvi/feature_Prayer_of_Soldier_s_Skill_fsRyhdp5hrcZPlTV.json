@@ -21,7 +21,7 @@
     {
       "name": "Light Armor",
       "img": "icons/equipment/chest/breastplate-layered-leather-stitched.webp",
-      "type": "abilityModifier",
+      "type": "base",
       "origin": "Compendium.draw-steel.classes.Item.fsRyhdp5hrcZPlTV",
       "transfer": true,
       "_id": "kHwoQTabvNKEY5I6",
@@ -29,11 +29,6 @@
         "end": {
           "type": "",
           "roll": "1d10 + @combat.save.bonus"
-        },
-        "filters": {
-          "keywords": [
-            "magic"
-          ]
         }
       },
       "changes": [
