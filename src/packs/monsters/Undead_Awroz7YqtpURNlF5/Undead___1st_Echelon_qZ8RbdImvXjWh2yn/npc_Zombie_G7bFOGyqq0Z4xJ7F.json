@@ -429,7 +429,7 @@
                   "display": "{{potency}} Dazed (save ends)",
                   "potency": {
                     "characteristic": "might",
-                    "value": "2"
+                    "value": "@potency.strong"
                   },
                   "effects": {
                     "dazed": {
@@ -442,7 +442,7 @@
                 "tier2": {
                   "display": "{{potency}} Weakened (save ends)",
                   "potency": {
-                    "value": "1",
+                    "value": "@potency.average",
                     "characteristic": "might"
                   },
                   "effects": {

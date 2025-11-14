@@ -25,16 +25,25 @@ for (const pack of packs) {
     },
   );
 }
+
+/**
+ * @typedef TransformerContext
+ * @property {object} [adventure]       Data on an adventure if document is stored within an adventure.
+ * @property {object} [adventure.doc]   The entire adventure document.
+ * @property {string} [adventure.path]  The path where the adventure will be extracted.
+ * @property {string} [folder]          Folder path if this entry is in a folder and the folders option is enabled.
+ * @property {string} [documentType]    The type of the Document being extracted.
+ */
+
 /**
  * Prefaces the document with its type.
- * @param {object} doc - The document data.
+ * @param {object} doc                  The document data.
+ * @param {TransformerContext} context  Optional context information for the document being transformed.
  */
 function transformName(doc, context) {
   const safeFileName = doc.name.replace(/[^a-zA-Z0-9А-я]/g, "_");
-  // If we add adventures and enable "expand adventures" it will need handling
-  const type = doc._key?.split("!")[1];
 
-  const prefix = ["actors", "items"].includes(type) ? doc.type : type;
+  const prefix = ["Actor", "Item"].includes(context.documentType) ? doc.type : context.documentType;
   let name = `${doc.name ? `${prefix}_${safeFileName}_${doc._id}` : doc._id}.${yaml ? "yml" : "json"}`;
   if (context.folder) name = path.join(context.folder, name);
   return name;

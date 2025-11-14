@@ -6,7 +6,7 @@
   "img": "icons/magic/symbols/runes-etched-steel-blade.webp",
   "system": {
     "description": {
-      "value": "<p>As a respite activity, you can bless a weapon. Any creature who wields the weapon gains a +1 bonus to rolled damage with abilities that use the weapon. This benefit lasts until you finish another respite.</p>",
+      "value": "<p>As a respite activity, you can bless a weapon. Any creature who wields the weapon gains a +1 bonus to rolled damage with abilities that use the weapon. This benefit lasts until you finish another respite. <span class=\"x x-first x-last\">[[/apply YuJHLApnKTDdlU24]]</span></p>",
       "director": ""
     },
     "source": {
@@ -24,7 +24,74 @@
       "value": ""
     }
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Blessed Weapon",
+      "img": "icons/magic/symbols/runes-etched-steel-blade.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "respite",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "weapon"
+          ]
+        }
+      },
+      "changes": [
+        {
+          "key": "damage.tier1.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier2.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "damage.tier3.value",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Any creature who wields the weapon gains a +1 bonus to rolled damage with abilities that use the weapon.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.classes.Item.rSzQM4yL6cWtfxjX.ActiveEffect.Asn2N3mCLAZ6jkKV",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762818267918,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "YuJHLApnKTDdlU24",
+      "sort": 0,
+      "_key": "!items.effects!QPBQMs2Sw77FH6oa.YuJHLApnKTDdlU24"
+    }
+  ],
   "sort": 200000,
   "ownership": {
     "default": 0
@@ -34,9 +101,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754754755006,
     "modifiedTime": null,
     "lastModifiedBy": null

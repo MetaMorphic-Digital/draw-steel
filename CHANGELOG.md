@@ -27,6 +27,7 @@
   - Remaining non-imbue projects.
   - Censor levels 4–10 features and abilities.
   - Conduit levels 4–10 features and abilities.
+    - Note: The offset feature and ability choices still need to be implemented, Conduit players should remove abilities not chosen.
   - Elementalist levels 4–10 features and abilities.
   - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
@@ -113,6 +114,7 @@
 - PseudoDocument.create now returns the pseudo document instead of the parent.
 - Widened space for advancement labels to reduce need for line wrapping.
 - Items created with a default name (e.g. "Ability") will no longer have their _dsid set, instead allowing it to remain blank.
+- Item grant advancements can now always be reconfigured whether or not they're a choice to recreate the associated items.
 
 ### Removed
 
@@ -132,6 +134,7 @@
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Corrected AE path for fire weakness in the Host complication. (#1325)
+  - Corrected AE types on multiple Conduit prayers. (#1376)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
   - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
