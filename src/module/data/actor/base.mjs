@@ -114,7 +114,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     };
 
     Object.assign(this.statuses, {
-      flankable: false,
+      flankable: true,
       slowed: {
         speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
       },
