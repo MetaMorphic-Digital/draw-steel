@@ -114,6 +114,7 @@
 - PseudoDocument.create now returns the pseudo document instead of the parent.
 - Widened space for advancement labels to reduce need for line wrapping.
 - Items created with a default name (e.g. "Ability") will no longer have their _dsid set, instead allowing it to remain blank.
+- Item grant advancements can now always be reconfigured whether or not they're a choice to recreate the associated items.
 
 ### Removed
 
