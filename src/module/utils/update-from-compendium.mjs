@@ -32,7 +32,22 @@ export default async function updateFromCompendium(doc, options = {}) {
     if (!proceed) return;
   }
 
-  if (!options.embedOnly) await doc.update(compendiumUpdateData(compendiumDocument));
+  if (!options.embedOnly) {
+    let savedProps = {};
+    switch (doc.type) {
+      case "career":
+        savedProps["system.projectPoints"] = doc.system.projectPoints;
+        break;
+      case "class":
+        savedProps["system.level"] = doc.system.level;
+        break;
+      case "project":
+        savedProps["system.points"] = doc.system.points;
+        break;
+    }
+    await doc.update(compendiumUpdateData(compendiumDocument));
+    await doc.update(savedProps);
+  }
 
   for (const [field, collection] of Object.entries(compendiumDocument.collections)) {
     const toCreate = [];
@@ -67,12 +82,6 @@ function compendiumUpdateData(doc) {
   switch (doc.documentName) {
     case "Actor":
     case "Item":
-      // Preserve project point usage
-      if (doc.type === "career") delete documentData.system.projectPoints;
-      // Preserve class level
-      else if (doc.type === "class") delete documentData.system.level;
-      // Preserve current project completion status
-      else if (doc.type === "project") delete documentData.system.points;
       return { _id: doc.id, "==system": documentData.system };
     case "ActiveEffect":
       return {

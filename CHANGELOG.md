@@ -142,6 +142,8 @@
   - Corrected keywords on Tactician's "Now".
   - Corrected text on Vanguard's Parry.
   - Corrected the skill grant on the Shipwrecked complication.
+  - Added missing potency characteristics to Purifying Fire, Optic Blast, and Smolder.
+  - Moved the erroneous inclusion of a push in the tier 1 result of the fury's "Back!" to tier 2.
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
@@ -154,6 +156,7 @@
     - Corrected the description of the Destructive Path feature per errata.
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+  - Added missing potency characteristics to abilities on the Rival Tactician, Wode Hag, and Ghost.
 - Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
