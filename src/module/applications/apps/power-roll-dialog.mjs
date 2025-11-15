@@ -132,11 +132,30 @@ export default class PowerRollDialog extends RollDialog {
    */
   _prepareSkillOptions(context) {
     const { list, groups } = ds.CONFIG.skills;
+    const skillModifiers = context.skillModifiers;
+
+    // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
-      const { label, group } = list[value];
-      accumulator.push({ label, group: groups[group].label, value });
+      const { group } = list[value];
+      let { label } = list[value];
+      if (value in skillModifiers) {
+        const modifiers = [];
+
+        const edges = skillModifiers[value].edges;
+        const edgeName = edges === 1 ? "Edge" : "Edges";
+        if (edges > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
+
+        const banes = skillModifiers[value].banes;
+        const baneName = banes === 1 ? "Bane" : "Banes";
+        if (banes > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
+
+        const formatter = game.i18n.getListFormatter("narrow");
+        label += ` (${formatter.format(modifiers)})`;
+      }
+      accumulator.push({ label: label, group: groups[group].label, value });
       return accumulator;
     }, []);
+    return;
   }
 
   /* -------------------------------------------------- */
@@ -166,6 +185,17 @@ export default class PowerRollDialog extends RollDialog {
       const newSkill = formData.skill;
       if ((previousSkill === "") && (newSkill !== "")) this.options.context.modifiers.bonuses += 2;
       else if ((previousSkill !== "") && (newSkill === "")) this.options.context.modifiers.bonuses -= 2;
+
+      const skillModifiers = this.options.context.skillModifiers;
+      if (previousSkill in skillModifiers) {
+        this.options.context.modifiers.edges -= skillModifiers[previousSkill].edges;
+        this.options.context.modifiers.banes -= skillModifiers[previousSkill].banes;
+      }
+
+      if (newSkill in skillModifiers) {
+        this.options.context.modifiers.edges += skillModifiers[newSkill].edges;
+        this.options.context.modifiers.banes += skillModifiers[newSkill].banes;
+      }
 
       this.options.context.skill = newSkill;
     }

@@ -227,3 +227,5 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
 |`potency`|Give a bonus to all potency values|
+|`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|
+|`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
