@@ -109,7 +109,8 @@
         "additional": "Additional",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
-        "reconfigure": "Reconfigure Advancement"
+        "reconfigure": "Reconfigure Advancement",
+        "warnDrop": "{itemType} items do not support {advancementType} advancements."
       },
       "WARNING": {
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
@@ -126,6 +127,7 @@
         "levelUpTitle": "Level Up: {name}",
         "createWithAdvancementsTitle": "Create {name} with Advancements",
         "reconfigureTitle": "Reconfigure Advancement",
+        "dropAdvancementTitle": "Configure Advancement",
         "CharacteristicIncrease": "+1 {chr}"
       },
       "ConfigureAdvancement": {
@@ -265,8 +267,14 @@
           }
         },
         "Gain": {
-          "FormatString": "Gain {formula} {type}",
-          "MessageTitle": "Gain {type} {targets}",
+          "FormatString": {
+            "Default": "Gain {formula} {type}",
+            "Victory": "Earn {formula} {type}"
+          },
+          "MessageTitle": {
+            "Default": "Gain {type} {targets}",
+            "Victory": "Earn {type} {targets}"
+          },
           "NoSelection": "You must select hero tokens to gain resources."
         },
         "ApplyEffect": {

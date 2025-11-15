@@ -63,7 +63,20 @@
           "roll": "1d10 + @combat.save.bonus"
         }
       },
-      "changes": [],
+      "changes": [
+        {
+          "key": "system.movement.types",
+          "mode": 2,
+          "value": "fly",
+          "priority": null
+        },
+        {
+          "key": "system.movement.value",
+          "mode": 2,
+          "value": "3",
+          "priority": null
+        }
+      ],
       "disabled": false,
       "duration": {
         "startTime": null,
