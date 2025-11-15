@@ -180,6 +180,7 @@ export default class PowerRoll extends DSRoll {
 
     if (options.ability) context.ability = options.ability;
     if (options.skills) context.skills = options.skills;
+    if (options.skillModifiers) context.skillModifiers = options.skillModifiers;
 
     const promptValue = await ds.applications.apps.PowerRollDialog.create({
       context,

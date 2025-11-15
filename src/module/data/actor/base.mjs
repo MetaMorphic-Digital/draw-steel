@@ -402,6 +402,38 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
+    const skillModifiers = {};
+
+    // Extract applicable modifier bonuses
+    for (const bonus of this._abilityBonuses) {
+      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
+
+      const parts = bonus.key.split(".");
+      if (parts.length != 3) continue;
+
+      const [ modType, modTarget, bonusType ] = parts;
+      if (["characteristics", "skills"].includes(modType) === false) continue;
+      if (["edges", "banes"].includes(bonusType) === false) continue;
+
+      if (modType === "skills") {
+        // Save the skill name, modifier type, and value for use in the dialog
+        skillModifiers[modTarget] ??= { edges: 0, banes: 0 };
+        skillModifiers[modTarget][bonusType] += Number(bonus.value);
+      }
+      else if (modType === "characteristics") {
+        if (modTarget !== characteristic) continue;
+
+        switch (bonusType) {
+          case "banes":
+            options.banes = (options.banes ?? 0) + Number(bonus.value);
+            break;
+          case "edges":
+            options.edges = (options.edges ?? 0) + Number(bonus.value);
+            break;
+        }
+      }
+    }
+
     const types = options.types ?? ["test"];
 
     let type = types[0];
@@ -430,7 +462,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       bonuses: options.bonuses ?? 0,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills });
+    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills, skillModifiers });
 
     if (!promptValue) return null;
     const { rollMode, rolls, baseRoll } = promptValue;

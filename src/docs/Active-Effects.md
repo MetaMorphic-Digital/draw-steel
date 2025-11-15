@@ -235,6 +235,8 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`forced.slide`|Give a bonus to slide movement distance|
 |`keyword`|Add a keyword to an ability|
 |`potency`|Give a bonus to all potency values|
+|`power.roll.banes`|Add banes that apply to the ability's power roll regardless of target|
+|`power.roll.edges`|Add edges that apply to the ability's power roll regardless of target|
 
 **Notes:**
 - For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
