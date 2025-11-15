@@ -1,5 +1,5 @@
 import DrawSteelChatMessage from "../../../documents/chat-message.mjs";
-import { DSRoll, DamageRoll } from "../../../rolls/_module.mjs";
+import { DSRoll, DamageRoll, PowerRoll } from "../../../rolls/_module.mjs";
 import DSDialog from "../../api/dialog.mjs";
 import { parseConfig, createLink, addDataset } from "../helpers.mjs";
 
@@ -412,7 +412,11 @@ async function rollGain(link, event) {
  * @returns {HTMLElement|null}         An HTML link if the enricher could be built, otherwise null.
  */
 function enrichTest(parsedConfig, label, options) {
-  const linkConfig = { type: "test", characteristic: parsedConfig.characteristic };
+  const linkConfig = {
+    type: "test",
+    characteristic: parsedConfig.characteristic,
+    difficulty: parsedConfig.difficulty,
+  };
 
   const letterCharacteristics = {
     M: "might",
@@ -426,6 +430,7 @@ function enrichTest(parsedConfig, label, options) {
     const normalizedValue = value.toLowerCase();
     if (value in ds.CONFIG.characteristics) linkConfig.characteristic ??= normalizedValue;
     if (letterCharacteristics[value]) linkConfig.characteristic ??= letterCharacteristics[value];
+    if (PowerRoll.TEST_DIFFICULTIES.has(normalizedValue)) linkConfig.difficulty ??= normalizedValue;
   }
 
   const localizationData = {

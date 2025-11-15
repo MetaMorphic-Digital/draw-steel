@@ -76,3 +76,38 @@ export const potencyConditions = Object.freeze({
     label: "DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CONDITIONS.success",
   },
 });
+
+/* -------------------------------------------------- */
+
+/**
+ * @typedef TestOutcome
+ * @property {string} easy      The i18n string for the result of an easy test.
+ * @property {string} medium    The i18n string for the result of a medium test.
+ * @property {string} hard      The i18n string for the result of a hard test.
+ */
+
+/**
+ * The outcomes of a test by result then difficulty.
+ */
+export const testOutcomes = {
+  tier1: {
+    easy: "DRAW_STEEL.ROLL.Power.TestResult.SuccessConsequence",
+    medium: "DRAW_STEEL.ROLL.Power.TestResult.Failure",
+    hard: "DRAW_STEEL.ROLL.Power.TestResult.FailureConsequence",
+  },
+  tier2: {
+    easy: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+    medium: "DRAW_STEEL.ROLL.Power.TestResult.SuccessConsequence",
+    hard: "DRAW_STEEL.ROLL.Power.TestResult.Failure",
+  },
+  tier3: {
+    easy: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+    medium: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+    hard: "DRAW_STEEL.ROLL.Power.TestResult.Success",
+  },
+  critical: {
+    easy: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+    medium: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+    hard: "DRAW_STEEL.ROLL.Power.TestResult.SuccessReward",
+  },
+};
