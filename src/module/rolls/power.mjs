@@ -152,17 +152,6 @@ export default class PowerRoll extends DSRoll {
   /* -------------------------------------------------- */
 
   /**
-   * The valid test difficulties for {@linkcode ds.CONST.testOutcomes}.
-   */
-  static get TEST_DIFFICULTIES() {
-    return this.#TEST_DIFFICULTIES;
-  }
-
-  static #TEST_DIFFICULTIES = new Set(["easy", "medium", "hard"]);
-
-  /* -------------------------------------------------- */
-
-  /**
    * Prompt the user with a roll configuration dialog.
    * @param {Partial<PowerRollPromptOptions>} [options] Options for the dialog.
    * @return {Promise<PowerRollPrompt>} Based on evaluation made can either return an array of power rolls or chat messages.

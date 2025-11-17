@@ -431,7 +431,21 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     if (!promptValue) return null;
     const { rollMode, powerRolls } = promptValue;
 
+    // TODO: Integrate difficulty result response
+    let content = "";
+    if (options.difficulty) {
+      /** @type {PowerRoll} */
+      const testRoll = powerRolls[0];
+      if (testRoll.isCritical) {
+        content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty].critical);
+      }
+      else {
+        content = game.i18n.localize(ds.CONST.testOutcomes[options.difficulty][`tier${testRoll.product}`]);
+      }
+    }
+
     const messageData = {
+      content,
       speaker: DrawSteelChatMessage.getSpeaker({ actor: this.parent }),
       title: flavor,
       rolls: powerRolls,
