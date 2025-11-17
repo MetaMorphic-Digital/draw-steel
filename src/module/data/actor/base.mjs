@@ -393,6 +393,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @param {number} [options.edges]                    Base edges for the roll.
    * @param {number} [options.banes]                    Base banes for the roll.
    * @param {number} [options.bonuses]                  Base bonuses for the roll.
+   * @param {"easy" | "medium" | "hard"} [options.difficulty] Test difficulty.
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {

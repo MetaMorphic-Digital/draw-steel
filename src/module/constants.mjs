@@ -81,6 +81,7 @@ export const potencyConditions = Object.freeze({
 
 /**
  * @typedef TestOutcome
+ * Outcomes for a given result by difficulty.
  * @property {string} easy      The i18n string for the result of an easy test.
  * @property {string} medium    The i18n string for the result of a medium test.
  * @property {string} hard      The i18n string for the result of a hard test.
@@ -88,6 +89,7 @@ export const potencyConditions = Object.freeze({
 
 /**
  * The outcomes of a test by result then difficulty.
+ * @type {Record<string, TestOutcome>}
  */
 export const testOutcomes = {
   tier1: {

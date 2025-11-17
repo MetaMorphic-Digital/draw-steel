@@ -416,6 +416,8 @@ function enrichTest(parsedConfig, label, options) {
     type: "test",
     characteristic: parsedConfig.characteristic,
     difficulty: parsedConfig.difficulty,
+    edges: parsedConfig.edges,
+    banes: parsedConfig.banes,
   };
 
   const letterCharacteristics = {
@@ -432,6 +434,8 @@ function enrichTest(parsedConfig, label, options) {
     if (letterCharacteristics[value]) linkConfig.characteristic ??= letterCharacteristics[value];
     if (PowerRoll.TEST_DIFFICULTIES.has(normalizedValue)) linkConfig.difficulty ??= normalizedValue;
   }
+
+  if (!linkConfig.characteristic) return null;
 
   const localizationData = {
     characteristic: ds.CONFIG.characteristics[linkConfig.characteristic].label,
@@ -453,11 +457,11 @@ function enrichTest(parsedConfig, label, options) {
  * @param {PointerEvent} event
  */
 async function rollTest(link, event) {
-  const { characteristic } = link.dataset;
+  const { characteristic, edges, banes } = link.dataset;
 
   if (!characteristic) throw new Error("Test enricher must provide a characteristic");
 
   for (const actor of ds.utils.tokensToActors()) {
-    if ("characteristics" in actor.system) actor.system.rollCharacteristic(characteristic, {});
+    if ("characteristics" in actor.system) actor.system.rollCharacteristic(characteristic, { edges, banes });
   }
 }
