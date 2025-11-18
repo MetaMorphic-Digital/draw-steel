@@ -1,4 +1,5 @@
-:root, .application.draw-steel.themed.theme-light {
+:root,
+.application.draw-steel.themed.theme-light {
   --draw-steel-c-dark: #191813;
   --draw-steel-c-faint: #c9c7b8;
   --draw-steel-c-beige: #b5b3a4;
@@ -11,13 +12,16 @@
   --draw-steel-c-item-header-bg: #bebbab;
   --draw-steel-c-item-alternating-bg: rgba(0, 0, 0, .05);
   --draw-steel-c-laserline: #856C4B;
+  --draw-steel-c-color-shadow: #ccccccaa;
   --color-shadow-primary: #ccccccaa;
   --button-focus-outline-color: var(--draw-steel-c-dark);
   --button-hover-background-color: var(--draw-steel-c-dark);
   /*--input-text-color:var(--draw-steel-c-black);*/
+
 }
 
-.theme-dark, .application.draw-steel.themed.theme-dark {
+.theme-dark,
+.application.draw-steel.themed.theme-dark {
   --draw-steel-c-dark: #c9c7b8;
   --draw-steel-c-faint: #191813;
   --draw-steel-c-beige: #444444;
@@ -27,8 +31,10 @@
   --draw-steel-c-groove: #11121f;
   --draw-steel-c-item-header-bg: #28232f;
   --draw-steel-c-item-alternating-bg: rgba(255, 255, 255, .05);
+  --draw-steel-c-color-shadow: #ccccccaa;
   --draw-steel-c-laserline: #856C4B;
   --color-shadow-primary: #ccccccaa;
   --button-focus-outline-color: var(--draw-steel-c-laserline);
   --button-hover-background-color: var(--draw-steel-c-laserline);
+
 }
