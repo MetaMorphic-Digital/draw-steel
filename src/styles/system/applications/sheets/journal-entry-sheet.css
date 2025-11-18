@@ -12,14 +12,7 @@
     text-shadow: 0 0 1px var(--draw-steel-c-dark);
   }
 
-  h1,
-  h1.window-title {
-    font-family: 'Draw Steel Book', serif;
-    size: 3em;
-    border-bottom: 0px;
-  }
-
-  h2 {
+  h1 {
     font-family: 'Newsreader', serif;
     font-weight: bold;
     border-color: transparent;
@@ -27,30 +20,50 @@
     border-image-slice: 1;
   }
 
-  h3 {
-    font-family: 'Newsreader', serif;
-    font-weight: bold;
+  .journal-page-header h1,
+  h1.chapter,
+  h1.window-title {
+    font-family: 'Draw Steel Book', serif;
+    size: 3em;
+    border-bottom: 0px;
+    border-color: transparent;
+    border-image: initial;
   }
 
-  h4 {
-    font-family: 'Atkinson Hyperlegible', serif;
+  h2 {
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    border-bottom: 0px;
+  }
+
+  h3 {
+    font-family: 'Newsreader', serif;
     font-weight: bold;
     font-variant: small-caps;
   }
 
+  h4,
   h5 {
-    font-family: 'Atkinson Hyperlegible', serif;
+    font-family: 'Newsreader', serif;
+    font-weight: bold;
+    font-size: 0.9em;
   }
 
   h6 {
     font-family: 'Atkinson Hyperlegible', serif;
+    font-weight: bold;
   }
 
 
+  .chapter,
+  .journal-page-header {
+    font-size: 1.5em;
+    padding-top: 0.5em;
+  }
+
   .window-title,
   button,
-  .page-title,
-  .chapter {
+  .page-title {
     color: var(--color-text-primary);
   }
 
@@ -118,21 +131,13 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   word-break: break-all;
 }
 
-/*.draw-steel.journal-sheet {
-  color: var(--draw-steel-c-dark);
-*/
-
-
 .draw-steel.journal-sheet .journal-entry,
 .draw-steel .journal-entry-page {
-
-
   aside {
     --b: 1px;
     /* border */
     --s: 20px;
     /* size of the cut */
-    color: var(--draw-steel-c-laserline);
     width: 100%;
     display: inline-block;
     /*aspect-ratio: 1.5;*/
@@ -142,18 +147,19 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     padding: 20px;
 
     .charm {
+      color: var(--draw-steel-c-laserline);
       font-family: Draw Steel Glyphs;
-      width: 100%;
+      width: calc(100% - 40px);
       margin: 0 auto;
       text-align: center;
       position: absolute;
 
       &.top-charm {
-        top: -6px;
+        top: -7px;
       }
 
       &.bottom-charm {
-        bottom: -10px;
+        bottom: -11px;
       }
     }
   }
@@ -175,7 +181,85 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       linear-gradient(-45deg, var(--g2)),
       linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
       linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
+  }
 
+  aside.inverse {
+    --b: 1px;
+    /* border */
+    --s: 20px;
+    /* size of the cut */
+    width: 100%;
+    display: inline-block;
+    /*aspect-ratio: 1.5;*/
+    min-height: 80px;
+    position: relative;
+    z-index: 0;
+    padding: 0px;
+
+    /*background: black;*/
+    div {
+      background-color: black;
+      clip-path: polygon(
+        /* top edge */
+        var(--corner) 0%,
+        /* left top */
+        calc(100% - var(--corner)) 0%,
+        /* right top */
+        /* right edge */
+        100% var(--corner),
+        /* right top */
+        100% calc(100% - var(--corner)),
+        /* right bottom */
+        /* bottom edge*/
+        calc(100% - var(--corner)) 100%,
+        /* right bottom */
+        var(--corner) 100%,
+        /* left bottom*/
+        /* left edge */
+        0% calc(100% - var(--corner)),
+        /* left bottom */
+        0% var(--corner)
+        /* left top */
+        );
+      --corner: 1em;
+      em;
+    }
+
+    .charm {
+      color: var(--draw-steel-c-laserline);
+      font-family: Draw Steel Glyphs;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      text-align: center;
+      position: absolute;
+
+      &.top-charm {
+        top: -8px;
+      }
+
+      &.bottom-charm {
+        bottom: -10px;
+      }
+    }
+  }
+
+  aside.inverse:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--draw-steel-c-laserline);
+    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
+    --g2: #0000 calc(0.707*var(--s)),
+      #000 0 calc(0.707*var(--s) + var(--b)),
+      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
+      #000 0 calc(100% - 0.707*var(--s)),
+      #0000 0;
+    -webkit-mask:
+      linear-gradient(45deg, var(--g2)),
+      linear-gradient(-45deg, var(--g2)),
+      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
+      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
   }
 
 
@@ -239,7 +323,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   }
 
   /* fancy fieldset*/
-  .polygonal-fieldset-inverse {
+  .inverse {
     position: relative;
     border: 0px;
     --b: 1px;
@@ -263,9 +347,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   }
 
-
-
-  .polygonal-fieldset-inverse:before {
+  .inverse:before {
     content: "";
     position: absolute;
     inset: 0;
@@ -284,6 +366,22 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
   }
 
+  .callout {
+    --b: 0px;
+    --s: 0px;
+    border: 4px solid transparent;
+    outline: 2px solid #cdcdcd;
+    outline-offset: -6px;
+    background: linear-gradient(#cdcdcd 0 0) top, linear-gradient(#cdcdcd 0 0) left, linear-gradient(#cdcdcd 0 0) bottom, linear-gradient(#cdcdcd 0 0) right;
+    background-size: 200% 2px, 2px 200%;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background: lightsteelblue;
+
+    .icon {
+      color: steelblue;
+    }
+  }
 
   /*laser lines on captions*/
   caption {
@@ -335,76 +433,39 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   }
 
+}
 
-
-  /*dark*/
-  .theme-dark &:not(.theme-light),
-  &.themed.theme-dark {
-
+/*dark*/
+.theme-dark &:not(.theme-light),
+&.themed.theme-dark {
+  .sidebar.journal-sidebar {
     background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
-
-    .journal-entry-content,
-    .journal-entry-pages,
-    .journal-entry-page {
-      background: var(--draw-steel-c-white);
-    }
-
-    .polygonal-fieldset {
-      position: relative;
-
-      legend {
-        margin: 0 auto;
-        margin-bottom: -0.75em;
-      }
-
-      div {
-        inset: 0px;
-        background: var(--input-background-color);
-        padding: 0.5rem;
-      }
-
-      .special-diamond {
-        font-family: Draw Steel Glyphs;
-        position: absolute;
-        bottom: -0.8em;
-        left: -0.8em;
-        width: calc(100% + 20px);
-        text-align: center;
-      }
-    }
   }
 
-  /*end dark*/
-  /*light*/
-  .theme-light &:not(.theme-dark),
-  &.themed.theme-light {
-    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-    background-size: contain;
-    background-position: bottom left;
-    background-repeat: no-repeat;
+  .journal-entry-content,
+  .journal-entry-pages,
+  .journal-entry-page {
+    background: var(--draw-steel-c-white);
+  }
 
-    .polygonal-fieldset:before {
-      background: #000000aa;
-      --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
-      --g2: #0000 calc(0.707*var(--s)),
-        #000 0 calc(0.707*var(--s) + var(--b)),
-        #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-        #000 0 calc(100% - 0.707*var(--s)),
-        #0000 0;
-      -webkit-mask:
-        linear-gradient(45deg, var(--g2)),
-        linear-gradient(-45deg, var(--g2)),
-        linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-        linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-    }
+}
 
-    .journal-entry-content,
-    .journal-entry-pages,
-    .journal-entry-page {
-      background: var(--draw-steel-c-white);
-    }
+/*end dark*/
+/*light*/
+.theme-light &:not(.theme-dark),
+&.themed.theme-light {
+  background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+  background-size: contain;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+
+
+  .journal-entry-content,
+  .journal-entry-pages,
+  .journal-entry-page {
+    background: var(--draw-steel-c-white);
   }
 }

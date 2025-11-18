@@ -23,19 +23,25 @@
  * General use CSS
  **/
 dl.power-roll-display {
-  dt.tier1, dt.tier2, dt.tier3 {
+
+  dt.tier1,
+  dt.tier2,
+  dt.tier3 {
     font-family: "Draw Steel Glyphs";
     font-size: var(--font-size-24);
     font-weight: 500;
     line-height: 0.9;
   }
+
   span.potency {
     font-family: "Draw Steel Glyphs";
     font-size: var(--font-size-16);
     text-transform: lowercase;
     line-height: 0.9;
   }
-  dd > p, dt > p {
+
+  dd>p,
+  dt>p {
     margin: 0;
   }
 }
@@ -50,6 +56,7 @@ caption {
   width: 100%;
   border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
   border-image-slice: 1;
+
   strong {
     background: var(--draw-steel-c-white);
     padding: 0.5em 1em;
@@ -57,6 +64,7 @@ caption {
     position: absolute;
     transform: translate(-50%, 0%);
   }
+
   strong::before {
     content: "®";
     font-family: Draw Steel Glyphs;
@@ -64,6 +72,7 @@ caption {
     position: absolute;
     left: -0.5em;
   }
+
   strong::after {
     content: "®";
     font-family: Draw Steel Glyphs;
@@ -71,11 +80,13 @@ caption {
     position: absolute;
     right: -0.5em;
   }
+
   cite {
     position: absolute;
     top: 1.25em;
     right: 0;
   }
+
   cite::before {
     content: '';
     clear: both;
