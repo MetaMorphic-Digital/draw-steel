@@ -141,6 +141,13 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
+
+    Object.values(this.characteristics).forEach((chr) => {
+      Object.assign(chr, {
+        edges: 0,
+        banes: 0,
+      });
+    });
   }
 
   /* -------------------------------------------------- */
@@ -402,38 +409,6 @@ export default class BaseActorModel extends DrawSteelSystemModel {
    * @returns {Promise<DrawSteelChatMessage | null>}
    */
   async rollCharacteristic(characteristic, options = {}) {
-    const skillModifiers = {};
-
-    // Extract applicable modifier bonuses
-    for (const bonus of this._abilityBonuses) {
-      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
-
-      const parts = bonus.key.split(".");
-      if (parts.length != 3) continue;
-
-      const [ modType, modTarget, bonusType ] = parts;
-      if (["characteristics", "skills"].includes(modType) === false) continue;
-      if (["edges", "banes"].includes(bonusType) === false) continue;
-
-      if (modType === "skills") {
-        // Save the skill name, modifier type, and value for use in the dialog
-        skillModifiers[modTarget] ??= { edges: 0, banes: 0 };
-        skillModifiers[modTarget][bonusType] += Number(bonus.value);
-      }
-      else if (modType === "characteristics") {
-        if (modTarget !== characteristic) continue;
-
-        switch (bonusType) {
-          case "banes":
-            options.banes = (options.banes ?? 0) + Number(bonus.value);
-            break;
-          case "edges":
-            options.edges = (options.edges ?? 0) + Number(bonus.value);
-            break;
-        }
-      }
-    }
-
     const types = options.types ?? ["test"];
 
     let type = types[0];
@@ -451,15 +426,20 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         rejectClose: true,
       });
     }
+
+    options.edges = (options.edges ?? 0) + this.characteristics[characteristic].edges;
+    options.banes = (options.banes ?? 0) + this.characteristics[characteristic].banes;
+
     const skills = this.hero?.skills ?? null;
+    const skillModifiers = this.hero?.skillModifiers ?? null;
 
     const evaluation = "evaluate";
     const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const modifiers = {
-      edges: options.edges ?? 0,
-      banes: options.banes ?? 0,
-      bonuses: options.bonuses ?? 0,
+      edges: options.edges,
+      banes: options.banes,
+      bonuses: options.bonuses,
     };
 
     const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, modifiers, actor: this.parent, characteristic, skills, skillModifiers });

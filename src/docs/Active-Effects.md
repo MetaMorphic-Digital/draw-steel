@@ -134,6 +134,8 @@ While there are similarities with roll data, active effects generally lead with 
 |Might value|`system.characteristics.might.value`|
 |Presence value|`system.characteristics.presence.value`|
 |Reason value|`system.characteristics.reason.value`|
+|Edges for Characteristic Tests|`system.characteristics.<chr>.edges`|
+|Banes for Characteristic Tests|`system.characteristics.<chr>.banes`|
 
 #### Common bonus effect examples
 
