@@ -134,6 +134,8 @@ export default class PowerRollDialog extends RollDialog {
     const { list, groups } = ds.CONFIG.skills;
     const skillModifiers = context.skillModifiers;
 
+    const pr = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
+
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
       const { group } = list[value];
@@ -142,11 +144,13 @@ export default class PowerRollDialog extends RollDialog {
         const modifiers = [];
 
         const edges = skillModifiers[value].edges;
-        const edgeName = edges === 1 ? "Edge" : "Edges";
+        const edgeCategory = pr.select(edges);
+        const edgeName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Edge.${edgeCategory}`);
         if (edges > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${edges}`, mod: edgeName }));
 
         const banes = skillModifiers[value].banes;
-        const baneName = banes === 1 ? "Bane" : "Banes";
+        const baneCategory = pr.select(banes);
+        const baneName = game.i18n.format(`DRAW_STEEL.ROLL.Power.Modifier.Plurals.Bane.${baneCategory}`);
         if (banes > 0) modifiers.push(game.i18n.format("DRAW_STEEL.ROLL.Power.Modifier.Label", { number: `+${banes}`, mod: baneName }));
 
         const formatter = game.i18n.getListFormatter("narrow");
