@@ -134,6 +134,13 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
 .draw-steel.journal-sheet .journal-entry,
 .draw-steel .journal-entry-page {
+  .hanging-indent {
+    padding-left: 1em;
+    /* Indents the entire block by 2em */
+    text-indent: -1em;
+    /* Pulls the first line back by 2em */
+  }
+
   aside {
     --b: 1px;
     /* border */
@@ -414,48 +421,26 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
 }
 
+
+.journal-entry-content,
+.journal-entry-pages,
+.journal-entry-page {
+  background: var(--draw-steel-c-white);
+}
+
 /*dark*/
 
-.theme-dark .draw-steel.journal-sheet .journal-sidebar {
+.draw-steel.journal-sheet.theme-dark .journal-sidebar {
   background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
   background-size: 800px;
   background-position: bottom left;
   background-repeat: no-repeat;
 }
 
-.theme-light .draw-steel.journal-sheet .journal-sidebar {
+
+.draw-steel.journal-sheet.theme-light .journal-sidebar {
   background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
   background-size: 1000px;
   background-position: bottom left;
   background-repeat: no-repeat;
-}
-
-.draw-steel .theme-dark &:not(.theme-light),
-.draw-steel .themed.theme-dark {
-  .journal-sidebar {}
-
-  .journal-entry-content,
-  .journal-entry-pages,
-  .journal-entry-page {
-    background: var(--draw-steel-c-white);
-  }
-
-}
-
-/*end dark*/
-/*light*/
-.draw-steel .theme-light &:not(.theme-dark),
-.draw-steel .themed.theme-light {
-  .journal-sidebar {
-    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-    background-size: contain;
-    background-position: bottom left;
-    background-repeat: no-repeat;
-  }
-
-  .journal-entry-content,
-  .journal-entry-pages,
-  .journal-entry-page {
-    background: var(--draw-steel-c-white);
-  }
 }

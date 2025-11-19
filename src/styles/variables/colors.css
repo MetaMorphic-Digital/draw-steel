@@ -1,5 +1,6 @@
 :root,
-.application.draw-steel.themed.theme-light {
+body.theme-light,
+.themed.theme-light {
   --draw-steel-c-dark: #191813;
   --draw-steel-c-faint: #cdcdcd;
   --draw-steel-c-beige: #eeede0;
@@ -20,8 +21,8 @@
 
 }
 
-.theme-dark,
-.application.draw-steel.themed.theme-dark {
+body.theme-dark,
+.themed.theme-dark {
   --draw-steel-c-dark: #c9c7b8;
   --draw-steel-c-faint: #191813;
   --draw-steel-c-beige: #444444;
@@ -36,5 +37,23 @@
   --color-shadow-primary: #ccccccaa;
   --button-focus-outline-color: var(--draw-steel-c-laserline);
   --button-hover-background-color: var(--draw-steel-c-laserline);
-
 }
+
+/*inverse options*/
+body.theme-light .themed.theme-dark {
+  --draw-steel-c-dark: #c9c7b8;
+  --draw-steel-c-faint: #191813;
+  --draw-steel-c-beige: #444444;
+  --draw-steel-c-tan: #b5b3a4;
+  --draw-steel-c-white: #000000;
+  --draw-steel-c-black: whitesmoke;
+  --draw-steel-c-groove: #11121f;
+  --draw-steel-c-item-header-bg: #28232f;
+  --draw-steel-c-item-alternating-bg: rgba(255, 255, 255, .05);
+  --draw-steel-c-color-shadow: #ccccccaa;
+  --draw-steel-c-laserline: #856C4B;
+  --color-shadow-primary: #ccccccaa;
+  --button-focus-outline-color: var(--draw-steel-c-laserline);
+  --button-hover-background-color: var(--draw-steel-c-laserline);
+}
+
