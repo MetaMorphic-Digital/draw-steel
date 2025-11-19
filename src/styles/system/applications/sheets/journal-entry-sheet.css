@@ -222,8 +222,12 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
         /* left top */
         );
       --corner: 1em;
-      em;
+      background: var(--draw-steel-c-black);
+      color: var(--draw-steel-c-white);
+      padding: 0.5rem;
+      margin: 8px;
     }
+
 
     .charm {
       color: var(--draw-steel-c-laserline);
@@ -322,64 +326,34 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     text-shadow: transparent;
   }
 
-  /* fancy fieldset*/
-  .inverse {
-    position: relative;
-    border: 0px;
-    --b: 1px;
-    /* border */
-    --s: 16px;
-    /* size of the cut */
-
-    /*  width:300px;*/
-    display: inline-block;
-    /*  aspect-ratio:1.5;*/
-    position: relative;
-    z-index: 0;
-
-    div {
-      background: var(--draw-steel-c-black);
-      color: var(--draw-steel-c-white);
-      padding: 0.5rem;
-      margin: 8px;
-    }
-
-
-  }
-
-  .inverse:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: #856C4B;
-    --g1: #000 var(--b), #0000 0 calc(100% - var(--b)), #000 0;
-    --g2: #0000 calc(0.707*var(--s)),
-      #000 0 calc(0.707*var(--s) + var(--b)),
-      #0000 0 calc(100% - 0.707*var(--s) - var(--b)),
-      #000 0 calc(100% - 0.707*var(--s)),
-      #0000 0;
-    -webkit-mask:
-      linear-gradient(45deg, var(--g2)),
-      linear-gradient(-45deg, var(--g2)),
-      linear-gradient(90deg, var(--g1)) 50%/100% calc(100% - 2*var(--s)) no-repeat,
-      linear-gradient(180deg, var(--g1)) 50%/calc(100% - 2*var(--s)) 100% no-repeat;
-  }
-
   .callout {
     --b: 0px;
     --s: 0px;
     border: 4px solid transparent;
-    outline: 2px solid #cdcdcd;
-    outline-offset: -6px;
-    background: linear-gradient(#cdcdcd 0 0) top, linear-gradient(#cdcdcd 0 0) left, linear-gradient(#cdcdcd 0 0) bottom, linear-gradient(#cdcdcd 0 0) right;
-    background-size: 200% 2px, 2px 200%;
+    /*outline: 2px solid #cdcdcd;*/
+    /*outline-offset: -6px;*/
+    background-color: var(--draw-steel-c-faint);
+    /*background: linear-gradient(#cdcdcd 0 0) top, linear-gradient(#cdcdcd 0 0) left, linear-gradient(#cdcdcd 0 0) bottom, linear-gradient(#cdcdcd 0 0) right;*/
+    /*background-size: 200% 2px, 2px 200%;*/
     background-origin: padding-box;
-    background-repeat: no-repeat;
-    background: lightsteelblue;
+    /*background-repeat: no-repeat;*/
+    border: 1px solid orange;
+    margin-left: 40px;
+    width: calc(100% - 64px);
+    z-index: 1;
 
     .icon {
-      color: steelblue;
+      width: 4em;
+      height: 4em;
+      /*display: inline-block;*/
+      margin-left: -3.5em;
+      z-index: 2;
+      position: absolute;
+      top: calc(50% - 2em);
+    }
+
+    p {
+      padding-left: 20px;
     }
   }
 
@@ -390,7 +364,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     position: relative;
     border-bottom: 2px solid #866d4b;
     line-height: 0.75em;
-    padding-top: 1em;
+    padding-top: 0.75em;
     width: 100%;
     border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
     border-image-slice: 1;
