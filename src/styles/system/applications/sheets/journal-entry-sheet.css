@@ -8,6 +8,7 @@
   background: var(--draw-steel-c-white);
   color: var(--raw-steel-c-light);
 
+
   .active .page-title {
     text-shadow: 0 0 1px var(--draw-steel-c-dark);
   }
@@ -410,14 +411,24 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 }
 
 /*dark*/
-.theme-dark &:not(.theme-light),
-&.themed.theme-dark {
-  .sidebar.journal-sidebar {
-    background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
-    background-size: contain;
-    background-position: bottom left;
-    background-repeat: no-repeat;
-  }
+
+.theme-dark .draw-steel.journal-sheet .journal-sidebar {
+  background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+  background-size: 800px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+.theme-light .draw-steel.journal-sheet .journal-sidebar {
+  background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+  background-size: 1000px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+
+.draw-steel .theme-dark &:not(.theme-light),
+.draw-steel .themed.theme-dark {
+  .journal-sidebar {}
 
   .journal-entry-content,
   .journal-entry-pages,
@@ -429,13 +440,14 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
 /*end dark*/
 /*light*/
-.theme-light &:not(.theme-dark),
-&.themed.theme-light {
-  background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-  background-size: contain;
-  background-position: bottom left;
-  background-repeat: no-repeat;
-
+.draw-steel .theme-light &:not(.theme-dark),
+.draw-steel .themed.theme-light {
+  .journal-sidebar {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+    background-size: contain;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+  }
 
   .journal-entry-content,
   .journal-entry-pages,
