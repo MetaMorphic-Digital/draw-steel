@@ -181,6 +181,16 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       &.bottom-charm {
         bottom: -11px;
       }
+
+      &.bottom-charm:after {
+        content: '£';
+        background: var(--draw-steel-c-white);
+        position: absolute;
+        left: calc(50% - 0.5em);
+        z-index: 1;
+        width: 1em;
+        height: 0.75em;
+      }
     }
 
 
