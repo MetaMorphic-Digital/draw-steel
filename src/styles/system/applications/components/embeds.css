@@ -1,5 +1,6 @@
 /* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
-document-embed, .content-embed {
+.system-draw-steel document-embed,
+.system-draw-steel .content-embed {
   div.ability {
     h5 {
       margin: 0;
@@ -36,10 +37,29 @@ document-embed, .content-embed {
       font-size: var(--font-h6-size);
     }
   }
+
   .roll-table-embed {
+    table-layout: fixed;
+
+
     thead {
       border: none;
       border-color: transparent;
+    }
+
+    th,
+    td {
+      width: auto;
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 5em;
+      worder-wrap: break-word;
+
+      button {
+        margin: 0 auto;
+      }
     }
   }
 }

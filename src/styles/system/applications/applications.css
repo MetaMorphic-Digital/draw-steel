@@ -2,7 +2,7 @@
   max-height: 100vh;
 }
 
-.application .controls-dropdown {
+.application.draw-steel .controls-dropdown {
   background: var(--draw-steel-c-white);
 }
 
@@ -26,82 +26,82 @@
 /**
  * General use CSS
  **/
-dl.power-roll-display {
+.system-draw-steel {
+  dl.power-roll-display {
 
-  dt.tier1,
-  dt.tier2,
-  dt.tier3 {
-    font-family: "Draw Steel Glyphs";
-    font-size: var(--font-size-24);
-    font-weight: 500;
-    line-height: 0.9;
+    dt.tier1,
+    dt.tier2,
+    dt.tier3 {
+      font-family: "Draw Steel Glyphs";
+      font-size: var(--font-size-24);
+      font-weight: 500;
+      line-height: 0.9;
+    }
+
+    span.potency {
+      font-family: "Draw Steel Glyphs";
+      font-size: var(--font-size-16);
+      text-transform: lowercase;
+      line-height: 0.9;
+    }
+
+    dd>p,
+    dt>p {
+      margin: 0;
+    }
   }
 
-  span.potency {
-    font-family: "Draw Steel Glyphs";
-    font-size: var(--font-size-16);
-    text-transform: lowercase;
-    line-height: 0.9;
+  /*laser lines on captions*/
+  caption {
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #866d4b;
+    line-height: 0.75em;
+    padding-top: 1em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+
+    strong {
+      background: var(--draw-steel-c-white);
+      padding: 0.5em 1em;
+      margin-top: -0.75em;
+      position: absolute;
+      transform: translate(-50%, 0%);
+    }
+
+    strong::before {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      left: -0.5em;
+    }
+
+    strong::after {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      position: absolute;
+      right: -0.5em;
+    }
+
+    cite {
+      position: absolute;
+      top: 1.25em;
+      right: 0;
+    }
+
+    cite::before {
+      content: '';
+      clear: both;
+      margin-top: 3em;
+    }
   }
 
-  dd>p,
-  dt>p {
-    margin: 0;
+  .roll-table-sheet {
+    thead {
+      border: none;
+      border-color: transparent;
+    }
   }
-}
-
-/*laser lines on captions*/
-caption {
-  text-align: center;
-  position: relative;
-  border-bottom: 2px solid #866d4b;
-  line-height: 0.75em;
-  padding-top: 1em;
-  width: 100%;
-  border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
-  border-image-slice: 1;
-
-  strong {
-    background: var(--draw-steel-c-white);
-    padding: 0.5em 1em;
-    margin-top: -0.75em;
-    position: absolute;
-    transform: translate(-50%, 0%);
-  }
-
-  strong::before {
-    content: "®";
-    font-family: Draw Steel Glyphs;
-    color: #866d4b;
-    position: absolute;
-    left: -0.5em;
-  }
-
-  strong::after {
-    content: "®";
-    font-family: Draw Steel Glyphs;
-    color: #866d4b;
-    position: absolute;
-    right: -0.5em;
-  }
-
-  cite {
-    position: absolute;
-    top: 1.25em;
-    right: 0;
-  }
-
-  cite::before {
-    content: '';
-    clear: both;
-    margin-top: 3em;
-  }
-}
-
-
-.system-draw-steel .roll-table-sheet {
-  thead {
-    border: none;
-    border-color: transparent;
-  }
-}

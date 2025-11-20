@@ -9,15 +9,19 @@
   color: var(--draw-steel-c-light);
 
 
-  .active .page-title {
-    text-shadow: 0 0 1px var(--draw-steel-c-dark);
+  .active {
+    text-shadow: none;
+    background: transparent;
+    background-image: linear-gradient(to left, var(--draw-steel-c-faint), transparent);
+
+    /*color: white;*/
   }
 
   h1 {
     font-family: 'Newsreader', serif;
     font-weight: bold;
     border-color: transparent;
-    border-image: linear-gradient(to right, var(--draw-steel-c-laserline), transparent) 1;
+    border-image: linear-gradient(to right, var(--draw-steel-c-faint), transparent) 1;
     border-image-slice: 1;
   }
 
@@ -66,10 +70,12 @@
   button,
   .page-title {
     color: var(--color-text-primary);
+    /*background: #ccccccdd;*/
   }
 
   button:disabled {
     opacity: 0.4;
+    pointer-events: none;
   }
 
   a:hover {
@@ -366,7 +372,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   }
 
   a {
-    color: #866d4b;
+    color: var(--draw-steel-c-laserline);
   }
 
   a::hover {
@@ -377,16 +383,15 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     --b: 0px;
     --s: 0px;
     border: 4px solid transparent;
-    /*outline: 2px solid #cdcdcd;*/
-    /*outline-offset: -6px;*/
     background-color: var(--draw-steel-c-faint);
-    /*background: linear-gradient(#cdcdcd 0 0) top, linear-gradient(#cdcdcd 0 0) left, linear-gradient(#cdcdcd 0 0) bottom, linear-gradient(#cdcdcd 0 0) right;*/
-    /*background-size: 200% 2px, 2px 200%;*/
+
+
     background-origin: padding-box;
-    /*background-repeat: no-repeat;*/
-    border: 1px solid orange;
+
+    border: 2px solid orange;
     margin-left: 40px;
     width: calc(100% - 64px);
+    border-radius: 6px;
     z-index: 1;
 
     .icon {
@@ -397,6 +402,9 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
       z-index: 2;
       position: absolute;
       top: calc(50% - 2em);
+      /*border: 2px solid orange;
+      border-radius: 6px;*/
+      filter: drop-shadow(1px 1px 0 orange) drop-shadow(-1px -1px 0 orange) drop-shadow(1px -1px 0 orange) drop-shadow(-1px 1px 0 orange);
     }
 
     p {
@@ -409,11 +417,12 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     width: 100%;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid #866d4b;
+    border-bottom: 2px solid var(--draw-steel-c-laserline);
     line-height: 0.75em;
     padding-top: 0.85em;
     width: 100%;
-    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99
+, #ffffff03) 1;
     border-image-slice: 1;
     margin-bottom: 1em;
 
@@ -472,6 +481,14 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   background-size: 800px;
   background-position: bottom left;
   background-repeat: no-repeat;
+
+  .active {
+    text-shadow: none;
+    background: transparent;
+    background-image: linear-gradient(to left, var(--draw-steel-c-laserline-rev), transparent);
+
+    /*color: white;*/
+  }
 }
 
 
