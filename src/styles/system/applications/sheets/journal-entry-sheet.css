@@ -468,6 +468,65 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   }
 
+  /*laser lines on figcaptions*/
+  figure {
+    display: table;
+  }
+
+  figcaption {
+    display: table-caption;
+    caption-side: top;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid var(--draw-steel-c-laserline);
+    line-height: 0.75em;
+    padding-top: 0.85em;
+    width: 100%;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
+    border-image-slice: 1;
+    margin-bottom: 2em;
+
+    strong {
+      background: var(--draw-steel-c-white);
+      /*padding: 0.5em 1em;*/
+      margin: -0.2em;
+      ;
+      position: absolute;
+      transform: translate(-50%, 0%);
+      font-style: normal;
+    }
+
+    strong::before {
+      content: "®";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      /*margin-left: -0.25em;*/
+      /*margin-right: 0.25em;*/
+    }
+
+    strong::after {
+      content: "® ";
+      font-family: Draw Steel Glyphs;
+      color: #866d4b;
+      /*margin-right: -0.25em;*/
+      /*margin-left: 0.25em;*/
+    }
+
+    cite {
+      position: absolute;
+      top: 1.75em;
+      right: 0;
+    }
+
+    cite::before {
+      content: '';
+      clear: both;
+      /*margin-top: 2em;*/
+    }
+
+  }
+
 }
 
 
