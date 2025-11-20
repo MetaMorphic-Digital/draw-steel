@@ -118,6 +118,11 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     }
   }
 
+  a.button,
+  button {
+    background: var(--draw-steel-c-white);
+  }
+
   a.button:hover,
   button:hover {
     background: var(--draw-steel-c-laserline);
@@ -421,8 +426,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
     line-height: 0.75em;
     padding-top: 0.85em;
     width: 100%;
-    border-image: linear-gradient(to right, #ffffff03, #866d4b99
-, #ffffff03) 1;
+    border-image: linear-gradient(to right, #ffffff03, #866d4b99, #ffffff03) 1;
     border-image-slice: 1;
     margin-bottom: 1em;
 
@@ -473,29 +477,31 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
   background: var(--draw-steel-c-white);
 }
 
-/*dark*/
 
-.theme-dark .draw-steel.journal-sheet:not(.theme-light) .journal-sidebar,
-.draw-steel.journal-sheet.theme-dark .journal-sidebar {
-  background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
-  background-size: 800px;
-  background-position: bottom left;
-  background-repeat: no-repeat;
+.theme-dark .draw-steel.journal-sheet:not(.theme-light),
+.draw-steel.journal-sheet.theme-dark {
+  .journal-sidebar {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
+    background-size: 800px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
 
-  .active {
-    text-shadow: none;
-    background: transparent;
-    background-image: linear-gradient(to left, var(--draw-steel-c-laserline-rev), transparent);
+    .active {
+      text-shadow: none;
+      background: transparent;
+      background-image: linear-gradient(to left, var(--draw-steel-c-laserline-rev), transparent);
 
-    /*color: white;*/
+    }
   }
 }
 
 
-.theme-light .draw-steel.journal-sheet:not(.theme-dark) .journal-sidebar,
-.draw-steel.journal-sheet.theme-light .journal-sidebar {
-  background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
-  background-size: 1000px;
-  background-position: bottom left;
-  background-repeat: no-repeat;
+.theme-light .draw-steel.journal-sheet:not(.theme-dark),
+.draw-steel.journal-sheet.theme-light {
+  .journal-sidebar {
+    background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
+    background-size: 1000px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+  }
 }
