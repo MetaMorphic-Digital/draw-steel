@@ -310,6 +310,18 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
   }
 
+  .left {
+    text-align: left;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -430,6 +442,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 
 /*dark*/
 
+.theme-dark .draw-steel.journal-sheet:not(.theme-light) .journal-sidebar,
 .draw-steel.journal-sheet.theme-dark .journal-sidebar {
   background-image: url('/systems/draw-steel/assets/ui/drawsteel-dark.png');
   background-size: 800px;
@@ -438,6 +451,7 @@ background: linear-gradient(to right, var(--draw-steel-c-laserline), transparent
 }
 
 
+.theme-light .draw-steel.journal-sheet:not(.theme-dark) .journal-sidebar,
 .draw-steel.journal-sheet.theme-light .journal-sidebar {
   background-image: url('/systems/draw-steel/assets/ui/drawsteel-light.png');
   background-size: 1000px;
