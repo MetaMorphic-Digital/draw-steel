@@ -975,10 +975,9 @@
       "_key": "!actors.items!v517WAkDcsA2qxit.XPiOlpj5iRNcFIvP"
     },
     {
-      "folder": "wOmSdK6NadZYxvlf",
       "name": "Grab Javelin",
       "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
+      "_id": "Ie5fkOP90woMMUVx",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
@@ -998,7 +997,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -1008,7 +1009,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have M&lt;1 they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
           "after": ""
         },
         "spend": {
@@ -1017,24 +1018,25 @@
         }
       },
       "effects": [],
-      "sort": 300000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "createdTime": 1757089896819,
+        "systemVersion": "0.9.0",
+        "createdTime": 1763816766848,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
-      "_key": "!actors.items!v517WAkDcsA2qxit.5stni4cw4IVUjzqM"
+      "ownership": {
+        "default": 0,
+        "CIQwmPP4Pjosq4Yp": 3
+      },
+      "folder": null,
+      "sort": 300000,
+      "_key": "!actors.items!v517WAkDcsA2qxit.Ie5fkOP90woMMUVx"
     }
   ],
   "folder": "IOJX0Gbij4nZLkvh",

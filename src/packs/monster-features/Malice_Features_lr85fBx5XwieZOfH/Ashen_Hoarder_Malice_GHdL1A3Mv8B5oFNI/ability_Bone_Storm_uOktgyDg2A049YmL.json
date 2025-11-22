@@ -1,0 +1,186 @@
+{
+  "name": "Bone Storm",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 7,
+    "trigger": "A ashen starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The ashen hoarder launches bone lances into the air, raining them down on enemies and impaling those unlucky enough to be on the receiving end. Each enemy within 20 squares of the ashen hoarder makes an <strong>Agility test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 14]] damage; [[/apply eBrxn3KT6rkdyGUS save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 11]] damage; [[/apply bleeding turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 6]] damag</p></dd></dl>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "46",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "bone-storm",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Restrained",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "restrained"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "iKSKZkUWnJLq8yB9",
+      "_key": "!items.effects!uOktgyDg2A049YmL.iKSKZkUWnJLq8yB9"
+    },
+    {
+      "name": "Bleeding",
+      "img": "icons/svg/downgrade.svg",
+      "origin": null,
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": ""
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "rounds": 1,
+        "startTime": null,
+        "combat": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "bleeding"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "e8jY6RqE90bVzKNF",
+      "_key": "!items.effects!uOktgyDg2A049YmL.e8jY6RqE90bVzKNF"
+    },
+    {
+      "name": "Restrained and Bleeding",
+      "img": "icons/skills/wounds/injury-pain-impaled-hand-blood.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.vIJRyTNiGZGtsXhe",
+      "transfer": false,
+      "_id": "eBrxn3KT6rkdyGUS",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "restrained",
+        "bleeding"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!uOktgyDg2A049YmL.eBrxn3KT6rkdyGUS"
+    }
+  ],
+  "folder": "GHdL1A3Mv8B5oFNI",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1763816394747,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "uOktgyDg2A049YmL",
+  "sort": 0,
+  "_key": "!items!uOktgyDg2A049YmL"
+}

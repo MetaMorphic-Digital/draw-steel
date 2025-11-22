@@ -1,11 +1,11 @@
 {
-  "name": "Aurumvas",
+  "name": "Meteor Dragon",
   "type": "npc",
-  "img": "systems/draw-steel/assets/roles/leader.webp",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
   "system": {
     "stamina": {
-      "value": 260,
-      "max": 260,
+      "value": 650,
+      "max": 650,
       "temporary": 0
     },
     "characteristics": {
@@ -13,10 +13,10 @@
         "value": 5
       },
       "agility": {
-        "value": 2
+        "value": 5
       },
       "reason": {
-        "value": 5
+        "value": 3
       },
       "intuition": {
         "value": 3
@@ -34,14 +34,13 @@
         "value": 3,
         "letter": "M"
       },
-      "stability": 2,
+      "stability": 6,
       "turns": 1
     },
     "movement": {
-      "value": 8,
+      "value": 15,
       "types": [
-        "fly",
-        "walk"
+        "fly"
       ],
       "hover": false,
       "disengage": 1
@@ -65,7 +64,7 @@
         "cold": 0,
         "corruption": 0,
         "fire": 0,
-        "holy": 5,
+        "holy": 0,
         "lightning": 0,
         "poison": 0,
         "psychic": 0,
@@ -79,7 +78,7 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "75",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
     "negotiation": {
@@ -92,33 +91,37 @@
     "monster": {
       "freeStrike": 10,
       "keywords": [
-        "abyssal"
+        "dragon",
+        "elemental"
       ],
       "level": 10,
-      "ev": 48,
-      "role": "leader",
-      "organization": "leader"
+      "ev": 144,
+      "role": "solo",
+      "organization": "solo"
+    },
+    "statuses": {
+      "immunities": []
     }
   },
   "items": [
     {
-      "name": "Absorb Soul",
+      "name": "Solo Monster",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Whenever any demon is reduced to 0 Stamina within 10 squares of Aurumvas, the Director gains 1 Malice. Aurumvas loses this trait while he is dazed.</p>",
+          "value": "<p>At the end of each of their turns, the dragon can take 20 damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The dragon can take two turns each round. They can't take turns consecutively.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "absorb-soul",
-        "advancements": {}
+        "advancements": {},
+        "_dsid": ""
       },
-      "_id": "JxjXKHE3T1PTQXJu",
+      "_id": "8BaFCOwoJA7gtqBj",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -130,32 +133,32 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.JxjXKHE3T1PTQXJu"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.8BaFCOwoJA7gtqBj"
     },
     {
-      "name": "More... More...",
+      "name": "Voidshroud Wyrmscale Aura",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>While Aurumvas is winded, he has a double edge on strikes.</p>",
+          "value": "<p>The dragon's scales create a 1 aura of void space around them. Any enemy who starts their turn in the area takes 10 cold damage and is suffocating. Each time the dragon takes damage, the area of the aura increases by 1 (to a maximum of 5), and they deal an extra 5 damage the next time they use an ability that deals rolled damage.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "more-more",
-        "advancements": {}
+        "advancements": {},
+        "_dsid": ""
       },
-      "_id": "kGfTSqHyaNSKBu39",
+      "_id": "ML7NObxEH0bvOBBo",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -167,32 +170,32 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.kGfTSqHyaNSKBu39"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.ML7NObxEH0bvOBBo"
     },
     {
-      "name": "Soulsight",
+      "name": "Crescent Claws",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>Any creature within 5 squares of Aurumvas can't be hidden from him.</p>",
+          "value": "<p>Once per turn, the dragon chooses a target within 3 squares. The dragon can make a free strike against the target, and ignores banes when using abilities against the target until the start of their next turn.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "soulsight",
-        "advancements": {}
+        "advancements": {},
+        "_dsid": ""
       },
-      "_id": "ZJpjg7TrpoTCfizk",
+      "_id": "yAM47Hbl6TCAZicA",
       "effects": [],
       "folder": null,
       "sort": 0,
@@ -204,33 +207,35 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.ZJpjg7TrpoTCfizk"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.yAM47Hbl6TCAZicA"
     },
     {
-      "name": "Greedy Hands",
+      "name": "Gravity Well",
       "type": "ability",
       "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
       "system": {
         "type": "main",
         "category": "signature",
         "keywords": [
+          "area",
           "magic",
-          "melee",
-          "strike"
+          "ranged"
         ],
         "distance": {
-          "type": "melee",
-          "primary": 2
+          "type": "cube",
+          "primary": 4,
+          "secondary": 10
         },
         "target": {
-          "type": "creatureObject",
-          "value": 2
+          "type": "creature",
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -241,16 +246,16 @@
             ]
           },
           "effects": {
-            "YEEHIyZkJkpAOxds": {
-              "_id": "YEEHIyZkJkpAOxds",
+            "0ffWssg1T8uueehg": {
+              "_id": "0ffWssg1T8uueehg",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "15",
+                  "value": "20",
                   "types": [
-                    "corruption"
+                    "sonic"
                   ],
                   "properties": [],
                   "potency": {
@@ -259,9 +264,9 @@
                   }
                 },
                 "tier2": {
-                  "value": "20",
+                  "value": "16",
                   "types": [
-                    "corruption"
+                    "sonic"
                   ],
                   "properties": [],
                   "potency": {
@@ -270,9 +275,9 @@
                   }
                 },
                 "tier3": {
-                  "value": "24",
+                  "value": "10",
                   "types": [
-                    "corruption"
+                    "sonic"
                   ],
                   "properties": [],
                   "potency": {
@@ -280,10 +285,169 @@
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
-            "6n2Kw3d8Zb831BwQ": {
-              "_id": "6n2Kw3d8Zb831BwQ",
+            "7nN8yDDXBB0HngSt": {
+              "_id": "7nN8yDDXBB0HngSt",
+              "type": "applied",
+              "name": "Dragonsealed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dragonsealed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dragonsealed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "dragonsealed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>A dragonsealed target emits a golden aura, and takes 2 damage per square moved when falling or when force moved into an obstacle.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "F4vaSC2iUzQQ4BUD",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.F4vaSC2iUzQQ4BUD"
+    },
+    {
+      "name": "Cosmic Tail Ray",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "magic",
+          "melee",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 2
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "ilFufPwTeCGiQqoM": {
+              "_id": "ilFufPwTeCGiQqoM",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "15",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "21",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "25",
+                  "types": [
+                    "holy"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "xhxJuARh4EUiuEw1": {
+              "_id": "xhxJuARh4EUiuEw1",
               "type": "applied",
               "name": "Weakened",
               "img": null,
@@ -292,7 +456,7 @@
                   "display": "{{potency}} weakened (save ends)",
                   "potency": {
                     "value": "@potency.weak",
-                    "characteristic": "reason"
+                    "characteristic": "might"
                   },
                   "effects": {
                     "weakened": {
@@ -306,7 +470,7 @@
                   "display": "",
                   "potency": {
                     "value": "@potency.average",
-                    "characteristic": "reason"
+                    "characteristic": "might"
                   },
                   "effects": {
                     "weakened": {
@@ -320,7 +484,7 @@
                   "display": "",
                   "potency": {
                     "value": "@potency.strong",
-                    "characteristic": "reason"
+                    "characteristic": "might"
                   },
                   "effects": {
                     "weakened": {
@@ -330,167 +494,8 @@
                     }
                   }
                 }
-              }
-            }
-          }
-        },
-        "effect": {
-          "before": "",
-          "after": "<p>[[/heal 15]]{Heal 15 Stamina}</p><p>[[/heal 20]]{Heal 20 Stamina}</p><p>[[/heal 24]]{Heal 24 Stamina}</p>"
-        },
-        "spend": {
-          "text": "Aurumvas regains Stamina equal to the damage dealt.",
-          "value": 2
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "75"
-        },
-        "_dsid": "greedy-hands",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "iLYxvfLbwpY3XWf0",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.iLYxvfLbwpY3XWf0"
-    },
-    {
-      "name": "Covetous Bolts",
-      "type": "ability",
-      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
-      "system": {
-        "type": "main",
-        "category": "heroic",
-        "keywords": [
-          "magic",
-          "ranged",
-          "strike"
-        ],
-        "distance": {
-          "type": "ranged",
-          "primary": 20
-        },
-        "target": {
-          "type": "creature",
-          "value": 2
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "might"
-            ]
-          },
-          "effects": {
-            "BJxC6ieShV4tPnYB": {
-              "_id": "BJxC6ieShV4tPnYB",
-              "type": "damage",
-              "name": "",
-              "img": null,
-              "damage": {
-                "tier1": {
-                  "value": "15",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "value": "20",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "value": "24",
-                  "types": [
-                    "psychic"
-                  ],
-                  "properties": [],
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            },
-            "ZeCemRPXCnVOZwCp": {
-              "_id": "ZeCemRPXCnVOZwCp",
-              "type": "applied",
-              "name": "Dazed",
-              "img": null,
-              "applied": {
-                "tier1": {
-                  "display": "{{potency}} dazed (save ends)",
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": "presence"
-                  },
-                  "effects": {
-                    "dazed": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  }
-                }
-              }
+              },
+              "sort": 0
             }
           }
         },
@@ -499,18 +504,18 @@
           "after": ""
         },
         "spend": {
-          "text": "While dazed this way, a target can't gain Heroic Resources.",
-          "value": 2
+          "text": "",
+          "value": null
         },
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "covetous-bolts",
         "story": "",
-        "resource": 3,
-        "trigger": ""
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
       },
       "effects": [],
       "folder": null,
@@ -520,35 +525,37 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "fVYpTvFkzBPDMrVQ",
+      "_id": "LqzlJUOSpZqZS6VV",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.fVYpTvFkzBPDMrVQ"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.LqzlJUOSpZqZS6VV"
     },
     {
-      "name": "Greed Is Good",
+      "name": "Investiture of Gravity",
       "type": "ability",
       "img": "icons/magic/air/air-pressure-shield-blue.webp",
       "system": {
         "type": "maneuver",
         "category": "heroic",
         "keywords": [
-          "ranged"
+          "area",
+          "magic"
         ],
         "distance": {
-          "type": "ranged",
-          "primary": 10
+          "type": "burst",
+          "primary": 15
         },
         "target": {
-          "type": "special",
-          "value": null
+          "type": "enemy",
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -561,8 +568,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Aurumvas chooses a supernatural treasure or an item made of gold and teleports to an unoccupied space adjacent to that object, then ends one effect on him that can be ended by a saving throw.</p>",
-          "after": ""
+          "before": "",
+          "after": "<p>Each target must be dragonsealed. The dragon chooses a direction and vertical slides each target 10 squares in that direction, ignoring stability. A target who strikes an obstacle takes damage as if they had fallen the forced movement distance.</p>"
         },
         "spend": {
           "text": "",
@@ -571,12 +578,12 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "greed-is-good",
         "story": "",
-        "resource": 2,
-        "trigger": ""
+        "resource": 5,
+        "trigger": "",
+        "_dsid": ""
       },
       "effects": [],
       "folder": null,
@@ -586,20 +593,248 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "UH3R0hfyBB7LVeio",
+      "_id": "gLZ5LiN1BlDiBiwY",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.UH3R0hfyBB7LVeio"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.gLZ5LiN1BlDiBiwY"
     },
     {
-      "name": "Time Is Money",
+      "name": "Field Collapse",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "",
+        "keywords": [
+          "-"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The dragon halves the damage. Each enemy and object in the area of the dragon's Voidshroud Wyrmscale Aura trait takes 5 sonic damage and is pulled up to 5 squares toward the dragon. The area of the wyrmscale aura then resets to 1.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "The dragon takes damage from an ability while the area of their Voidshroud Wyrmscale Aura is 2 or more.",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "d3HK4xQw55dmzfvK",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.d3HK4xQw55dmzfvK"
+    },
+    {
+      "name": "A Hero Faces the Void",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "heroic",
+        "keywords": [
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {
+            "tjI2T6ZF7P1ugkk5": {
+              "_id": "tjI2T6ZF7P1ugkk5",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "10",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "16",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "20",
+                  "types": [
+                    "psychic"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "v8EZp2F0yp0xpWTs": {
+              "_id": "v8EZp2F0yp0xpWTs",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "might"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": 2,
+        "trigger": "A creature within distance spends their Heroic Resource to use an ability.",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "QTCmscmXgdSF3E1Z",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.QTCmscmXgdSF3E1Z"
+    },
+    {
+      "name": "Impactful Arrival",
       "type": "ability",
       "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
       "system": {
@@ -611,11 +846,12 @@
         ],
         "distance": {
           "type": "burst",
-          "primary": 20
+          "primary": 1
         },
         "target": {
-          "type": "selfAlly",
-          "value": null
+          "type": "creature",
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -628,8 +864,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Aurumvas warps time with his abyssal avarice. Each target can teleport up to their speed and make a free strike.</p>",
-          "after": ""
+          "before": "<p>Each target takes 30 fire damage, and if they have M &lt; 5, they are knocked prone.</p>",
+          "after": "<p><strong>Special:</strong> The dragon can use this ability before the encounter begins.</p>"
         },
         "spend": {
           "text": "",
@@ -638,12 +874,12 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "time-is-money",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "_dsid": ""
       },
       "effects": [],
       "folder": null,
@@ -653,104 +889,103 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
-      "_id": "4WjmDLVuWZoubtr3",
+      "_id": "h74VcnD2fhWBoHyK",
       "ownership": {
         "default": 0
       },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.4WjmDLVuWZoubtr3"
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.h74VcnD2fhWBoHyK"
     },
     {
-      "name": "Hostile Acquisition",
+      "name": "Burning Aurora",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "might"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p><span class=\"fontstyle0\">Until the end of the encounter, each enemy who is dragonsealed and weakened and who the dragon has line of effect to loses 1 of their Heroic Resource at the start of each of their turns (to a minimum of 0). The dragon then uses their Cosmic Tail Ray ability with a double edge, targeting four creatures or objects.</span> <br style=\"font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:normal;orphans:2;text-align:-webkit-auto;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-size-adjust:auto;-webkit-text-stroke-width:0px\" /></p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "UdkgZsfYu4hHWkSu",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.UdkgZsfYu4hHWkSu"
+    },
+    {
+      "name": "Voidlight Breath",
       "type": "ability",
       "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
       "system": {
         "type": "villain",
         "category": "villain",
         "keywords": [
-          "ranged"
-        ],
-        "distance": {
-          "type": "ranged",
-          "primary": 10
-        },
-        "target": {
-          "type": "special",
-          "value": null
-        },
-        "damageDisplay": "melee",
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": [
-              "might"
-            ]
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>Aurumvas chooses up to three treasures within distance that he has line of effect to and that aren't artifacts. Until the end of the encounter, ethereal golden snakes swirl around the target treasures. While an affected treasure is worn or held by a hero, each time that hero gains any amount of their Heroic Resource, the Director gains 1 Malice.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "page": "75"
-        },
-        "_dsid": "hostile-acquisition",
-        "story": "",
-        "resource": null,
-        "trigger": ""
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "Gik39lNjAaEMgcMQ",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.Gik39lNjAaEMgcMQ"
-    },
-    {
-      "name": "No Matter the Cost",
-      "type": "ability",
-      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
-      "system": {
-        "type": "villain",
-        "category": "signature",
-        "keywords": [
           "area",
-          "magic",
-          "ranged"
+          "magic"
         ],
         "distance": {
-          "type": "cube",
-          "primary": 3,
-          "secondary": 10
+          "type": "line",
+          "primary": null,
+          "secondary": 3,
+          "tertiary": 1
         },
         "target": {
-          "type": "creature",
-          "value": null
+          "type": "object",
+          "value": null,
+          "custom": ""
         },
         "damageDisplay": "melee",
         "power": {
@@ -761,17 +996,15 @@
             ]
           },
           "effects": {
-            "r7UtwrO7rXV12J91": {
-              "_id": "r7UtwrO7rXV12J91",
+            "tMud9fkqb3e24hC3": {
+              "_id": "tMud9fkqb3e24hC3",
               "type": "damage",
               "name": "",
               "img": null,
               "damage": {
                 "tier1": {
-                  "value": "10",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "25",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.weak",
@@ -779,10 +1012,8 @@
                   }
                 },
                 "tier2": {
-                  "value": "15",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "21",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.average",
@@ -790,67 +1021,52 @@
                   }
                 },
                 "tier3": {
-                  "value": "19",
-                  "types": [
-                    "fire"
-                  ],
+                  "value": "15",
+                  "types": [],
                   "properties": [],
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": ""
                   }
                 }
-              }
+              },
+              "sort": 0
             },
-            "wmdlyQIKWjXPjP1V": {
-              "_id": "wmdlyQIKWjXPjP1V",
-              "type": "forced",
-              "name": "push",
+            "cnqHuHCzVhGemtmJ": {
+              "_id": "cnqHuHCzVhGemtmJ",
+              "type": "other",
+              "name": "other",
               "img": null,
-              "forced": {
+              "other": {
                 "tier1": {
-                  "movement": [
-                    "push"
-                  ],
-                  "distance": "1",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "annihilated",
                   "potency": {
                     "value": "@potency.weak",
                     "characteristic": "might"
                   }
                 },
                 "tier2": {
-                  "movement": [
-                    "push"
-                  ],
-                  "distance": "2",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "annihilated",
                   "potency": {
                     "value": "@potency.average",
                     "characteristic": "might"
                   }
                 },
                 "tier3": {
-                  "movement": [
-                    "push"
-                  ],
-                  "distance": "3",
-                  "display": "{{forced}}",
-                  "properties": [],
+                  "display": "annihilated",
                   "potency": {
                     "value": "@potency.strong",
                     "characteristic": "might"
                   }
                 }
-              }
+              },
+              "sort": 0
             }
           }
         },
         "effect": {
-          "before": "<p>Note: the area is <strong>four cubes</strong></p><p>Aurumvas summons treasures from his vaults into the area, then causes them to explode.</p>",
-          "after": ""
+          "before": "",
+          "after": "<p>An annihilated target must make the test again, decreasing the potency for themself by 2 each time they are annihilated. A creature reduced to 0 Stamina by this dies and their soul is destroyed.</p>"
         },
         "spend": {
           "text": "",
@@ -859,12 +1075,12 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "page": "75"
+          "page": ""
         },
-        "_dsid": "no-matter-the-cost",
         "story": "",
         "resource": null,
-        "trigger": ""
+        "trigger": "",
+        "_dsid": ""
       },
       "effects": [],
       "folder": null,
@@ -872,155 +1088,278 @@
       "flags": {},
       "_stats": {
         "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "NT7khOJLysJHDE4Y",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.NT7khOJLysJHDE4Y"
-    },
-    {
-      "folder": "nF331WOpAjOEwAp4",
-      "name": "Prior Malice Features",
-      "type": "ability",
-      "_id": "NVpvDaIfPAbl2K9h",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "73",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "prior-malice-features",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>The demon activates a Malice feature available to demons of level 9 or lower.</p><p>@UUID[Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O]{Abyssal Rift}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.RXLSjlORw6A3YBHN]{Soulburn}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.koF8i0TPdYrfcm4F]{Abyssal Evolution}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.d298nvIWsIOh0Kl7]{Abyssal Jaunt}</p><p>@UUID[Compendium.draw-steel.monster-features.Item.9jFigb63a6bVSeDX]{Seeping Blight}</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.9.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.NVpvDaIfPAbl2K9h"
-    },
-    {
-      "name": "Soul Flense",
-      "type": "ability",
-      "_id": "syxGnTEj50fmkVMO",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "73",
-          "license": "Draw Steel Creator License"
-        },
-        "_dsid": "soul-flense",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 7,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special",
-          "custom": "",
-          "value": null
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One demon acting this turn unleashes their pent-up agony and pain on every non-demon in a 5 burst. Each target makes a <strong>Presence test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 10 corruption]] damage; the target is soul flensed</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is soul flensed</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
-          "after": "<p>The demon removes all conditions and effects on themself that can be ended by a saving throw, and transfers all those effects to each creature soul flensed this way.</p>"
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Compendium.draw-steel.monster-features.Item.4cNFyCxzxVSM7rml",
         "duplicateSource": null,
         "exportSource": null,
         "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.9.0",
-        "createdTime": 1763816920056,
-        "modifiedTime": null,
-        "lastModifiedBy": null
+        "lastModifiedBy": null,
+        "modifiedTime": null
       },
+      "_id": "WDdV2fLN6oiatYDu",
       "ownership": {
-        "default": 0,
-        "CIQwmPP4Pjosq4Yp": 3
+        "default": 0
       },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.WDdV2fLN6oiatYDu"
+    },
+    {
+      "name": "Liftoff",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A meteor starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The next time the dragon uses their Crescent Claws ability, they can also slide the target up to 5 squares. If the target is dragonsealed, the dragon can vertical slide them instead.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
       "folder": null,
       "sort": 0,
-      "_key": "!actors.items!uUW2ZDtajs3eP9tX.syxGnTEj50fmkVMO"
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "eyd25iEamsHreHzs",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.eyd25iEamsHreHzs"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A meteor starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Bp3LBYQw3JVga9SE",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.Bp3LBYQw3JVga9SE"
+    },
+    {
+      "name": "Starfall",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A meteor starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 holy]] damage; slowed (save ends), prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 holy]] damage; slowed (save ends)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 holy]] damage</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "HY6rDh6zSTrW9Kqd",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.HY6rDh6zSTrW9Kqd"
+    },
+    {
+      "name": "Event Horizon",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "A meteor starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>A black hole manifests as a 1 cube within 20 squares of the dragon in an unoccupied space. Each creature who has M&lt;5 and each area at the start of each round, ignoring stability. Any creature ability, and the black hole disappears.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "izlih1XuyI8VRDTN",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!IR8wfQFoUBJsSTUW.izlih1XuyI8VRDTN"
     }
   ],
-  "folder": "YVkbVbuTCdEc4h7w",
+  "folder": "1xAB7dzxBYqdc7qX",
   "prototypeToken": {
-    "name": "Aurumvas",
-    "displayName": 20,
+    "name": "Meteor Dragon",
+    "displayName": 0,
     "actorLink": false,
     "width": 1,
     "height": 1,
     "texture": {
-      "src": "systems/draw-steel/assets/roles/leader.webp",
+      "src": "systems/draw-steel/assets/roles/solo.webp",
       "anchorX": 0.5,
       "anchorY": 0.5,
       "offsetX": 0,
@@ -1032,11 +1371,11 @@
       "tint": "#ffffff",
       "alphaThreshold": 0.75
     },
-    "lockRotation": true,
+    "lockRotation": false,
     "rotation": 0,
     "alpha": 1,
     "disposition": -1,
-    "displayBars": 20,
+    "displayBars": 0,
     "bar1": {
       "attribute": "stamina"
     },
@@ -1116,14 +1455,14 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
-    "createdTime": 1758148877085,
+    "createdTime": 1763781501367,
     "modifiedTime": null,
     "lastModifiedBy": null
   },
-  "_id": "uUW2ZDtajs3eP9tX",
-  "sort": 0,
-  "_key": "!actors!uUW2ZDtajs3eP9tX"
+  "_id": "IR8wfQFoUBJsSTUW",
+  "sort": 400000,
+  "_key": "!actors!IR8wfQFoUBJsSTUW"
 }
