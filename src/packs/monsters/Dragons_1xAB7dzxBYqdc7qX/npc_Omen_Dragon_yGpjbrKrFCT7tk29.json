@@ -1,0 +1,1485 @@
+{
+  "name": "Omen Dragon",
+  "type": "npc",
+  "img": "systems/draw-steel/assets/roles/solo.webp",
+  "system": {
+    "stamina": {
+      "value": 550,
+      "max": 550,
+      "temporary": 0
+    },
+    "characteristics": {
+      "might": {
+        "value": 3
+      },
+      "agility": {
+        "value": 4
+      },
+      "reason": {
+        "value": 2
+      },
+      "intuition": {
+        "value": 3
+      },
+      "presence": {
+        "value": 5
+      }
+    },
+    "combat": {
+      "save": {
+        "threshold": 6,
+        "bonus": ""
+      },
+      "size": {
+        "value": 5,
+        "letter": "M"
+      },
+      "stability": 6,
+      "turns": 1
+    },
+    "movement": {
+      "value": 10,
+      "types": [
+        "fly"
+      ],
+      "hover": false,
+      "disengage": 1
+    },
+    "damage": {
+      "immunities": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      },
+      "weaknesses": {
+        "all": 0,
+        "acid": 0,
+        "cold": 0,
+        "corruption": 0,
+        "fire": 0,
+        "holy": 0,
+        "lightning": 0,
+        "poison": 0,
+        "psychic": 0,
+        "sonic": 0
+      }
+    },
+    "biography": {
+      "value": "",
+      "director": "",
+      "languages": []
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "",
+      "license": "Draw Steel Creator License"
+    },
+    "negotiation": {
+      "interest": 5,
+      "patience": 5,
+      "motivations": [],
+      "pitfalls": [],
+      "impression": 1
+    },
+    "monster": {
+      "freeStrike": 9,
+      "keywords": [
+        "dragon",
+        "elemental"
+      ],
+      "level": 8,
+      "ev": 120,
+      "role": "solo",
+      "organization": "solo"
+    },
+    "statuses": {
+      "immunities": []
+    }
+  },
+  "items": [
+    {
+      "name": "Solo Monster",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>At the end of each of their turns, the dragon can take 15 damage to end one effect on them that can be ended by a saving throw. This damage can't be reduced in any way.</p><p>The dragon can take two turns each round. They can't take turns consecutively.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "advancements": {},
+        "_dsid": ""
+      },
+      "_id": "XxkbTZ24YQmIWd8K",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.XxkbTZ24YQmIWd8K"
+    },
+    {
+      "name": "Deathcount",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Several of the dragon's abilities impose a Deathcount on a target. At the end of every turn, a creature with a Deathcount who is within the area of the dragon's Stagnant Wyrmscale Aura has that Deathcount reduced by 1. When a creature's Deathcount hits 0, they die. If multiple Deathcounts are imposed on a creature, they don't stack. Only the lowest Deathcount takes effect. All Deathcounts are lost when the dragon is reduced to 0 Stamina.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "advancements": {},
+        "_dsid": ""
+      },
+      "_id": "R1Hjzb7G3EhO5wtj",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.R1Hjzb7G3EhO5wtj"
+    },
+    {
+      "name": "Stagnant Wyrmscale Aura",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>The dragon's scales create a 4 aura of supernatural stagnancy around them. The area is difficult terrain for enemies, and no creature except the omen dragon can regain Stamina while in the area. Any creature dragonsealed by the omen dragon who starts their turn in the dragon's aura and doesn't have a Deathcount gains a Deathcount of 12.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "advancements": {},
+        "_dsid": ""
+      },
+      "_id": "x1xPhwokw4O2yb45",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.x1xPhwokw4O2yb45"
+    },
+    {
+      "name": "Death or Victory",
+      "type": "feature",
+      "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
+      "system": {
+        "description": {
+          "value": "<p>Once per turn, the dragon chooses one creature with a Deathcount within line of effect. That creature can choose to take 1d6 damage and lose a recovery to increase their Deathcount by 5.</p>",
+          "director": ""
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "advancements": {},
+        "_dsid": ""
+      },
+      "_id": "CMlEMQYviietNdPu",
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.CMlEMQYviietNdPu"
+    },
+    {
+      "name": "Corroding Breath",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "signature",
+        "keywords": [
+          "area",
+          "magic",
+          "ranged"
+        ],
+        "distance": {
+          "type": "cube",
+          "primary": 5,
+          "secondary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "aebcg4VkLd1Y6l83": {
+              "_id": "aebcg4VkLd1Y6l83",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "18",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "14",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "9",
+                  "types": [
+                    "corruption"
+                  ],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "uf4FPjiGE1oqVaMr": {
+              "_id": "uf4FPjiGE1oqVaMr",
+              "type": "applied",
+              "name": "Dragonsealed",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} dragonsealed (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "dragonsealed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "dragonsealed": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Only creatures with souls can be dragonsealed by the omen dragon. A dragonsealed creature appears ghastly and pale, their Presence score is treated as 1 lower for the purpose of resisting potencies, and they can't treat other creatures as allies.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "aYtv7em72IlkKpME",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.aYtv7em72IlkKpME"
+    },
+    {
+      "name": "Barbed Tail Swing",
+      "type": "ability",
+      "img": "icons/skills/melee/strike-polearm-glowing-white.webp",
+      "system": {
+        "type": "main",
+        "category": "",
+        "keywords": [
+          "charge",
+          "melee",
+          "strike",
+          "weapon"
+        ],
+        "distance": {
+          "type": "melee",
+          "primary": 1
+        },
+        "target": {
+          "type": "creatureObject",
+          "value": 2,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "sorRulinpBUvLflR": {
+              "_id": "sorRulinpBUvLflR",
+              "type": "damage",
+              "name": "",
+              "img": null,
+              "damage": {
+                "tier1": {
+                  "value": "14",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                },
+                "tier2": {
+                  "value": "19",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "value": "23",
+                  "types": [],
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "Wap0kDUJr6BWoJyQ": {
+              "_id": "Wap0kDUJr6BWoJyQ",
+              "type": "applied",
+              "name": "Bleeding",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} bleeding (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "bleeding": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": ""
+        },
+        "spend": {
+          "text": "The potency increases by 2, and each target is also pulled up to 5 squares.",
+          "value": 3
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "LSzhQ2baqjnLL4Et",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.LSzhQ2baqjnLL4Et"
+    },
+    {
+      "name": "Detonation",
+      "type": "ability",
+      "img": "icons/magic/air/air-pressure-shield-blue.webp",
+      "system": {
+        "type": "maneuver",
+        "category": "heroic",
+        "keywords": [
+          "area"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 10
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target must be dragonsealed. Each target takes 9 corruption damage, and the omen dragon regains Stamina equal to half the total damage dealt. The target then loses their dragonseal.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": 5,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "uAQQvwBVt2PqKgYT",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.uAQQvwBVt2PqKgYT"
+    },
+    {
+      "name": "Don't Turn Away",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "heroic",
+        "keywords": [
+          "-"
+        ],
+        "distance": {
+          "type": "self"
+        },
+        "target": {
+          "type": "self",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The dragon shifts up to their speed, and the Deathcount of each dragonsealed creature who comes adjacent to the dragon during this shift is reduced by 1.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": 1,
+        "trigger": "A creature leaves the area of the dragon's Stagnant Wyrmscale Aura trait.",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "C2QiVQJhf5NFUBUk",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.C2QiVQJhf5NFUBUk"
+    },
+    {
+      "name": "Repent!",
+      "type": "ability",
+      "img": "icons/magic/air/air-wave-gust-blue.webp",
+      "system": {
+        "type": "freeTriggered",
+        "category": "heroic",
+        "keywords": [
+          "ranged"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 5
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>The target must choose between making a free strike against themself or gaining a Deathcount of 5.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": 2,
+        "trigger": "A dragonsealed creature within distance deals damage to the dragon.",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "foV4jaiQl1KH5qQb",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.foV4jaiQl1KH5qQb"
+    },
+    {
+      "name": "What You Deserve",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 5
+        },
+        "target": {
+          "type": "enemy",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "oaHUU2qdk0JGUOLZ": {
+              "_id": "oaHUU2qdk0JGUOLZ",
+              "type": "forced",
+              "name": "pull",
+              "img": null,
+              "forced": {
+                "tier1": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "1",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "2",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier3": {
+                  "movement": [
+                    "pull"
+                  ],
+                  "distance": "3",
+                  "display": "{{forced}}",
+                  "properties": [],
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "presence"
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "0gdBMWVvvFnAfNGq": {
+              "_id": "0gdBMWVvvFnAfNGq",
+              "type": "other",
+              "name": "other",
+              "img": null,
+              "other": {
+                "tier1": {
+                  "display": "the target has a Deathcount of 10",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier2": {
+                  "display": "the target has a Deathcount of 8",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier3": {
+                  "display": "the target has a Deathcount of 6",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "presence"
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target receives a premonition of their imminent death.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "UIT3X2OHvsz8mL2L",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.UIT3X2OHvsz8mL2L"
+    },
+    {
+      "name": "Souls of the Broken",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "magic",
+          "ranged",
+          "strike"
+        ],
+        "distance": {
+          "type": "ranged",
+          "primary": 10
+        },
+        "target": {
+          "type": "creature",
+          "value": 5,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {
+            "o9Eckysjgqbmo4BK": {
+              "_id": "o9Eckysjgqbmo4BK",
+              "type": "applied",
+              "name": "Frightened",
+              "img": null,
+              "applied": {
+                "tier1": {
+                  "display": "{{potency}} frightened (save ends)",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "presence"
+                  },
+                  "effects": {
+                    "frightened": {
+                      "condition": "failure",
+                      "end": "save",
+                      "properties": []
+                    }
+                  }
+                },
+                "tier2": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": ""
+                  }
+                },
+                "tier3": {
+                  "display": "",
+                  "effects": {},
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": ""
+                  }
+                }
+              },
+              "sort": 0
+            },
+            "STqexMpI7DcFrzR8": {
+              "_id": "STqexMpI7DcFrzR8",
+              "type": "other",
+              "name": "other",
+              "img": null,
+              "other": {
+                "tier2": {
+                  "display": "P < 5 the target moves up to their speed toward the dragon",
+                  "potency": {
+                    "value": "@potency.average",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier3": {
+                  "display": "P < 5 the target makes a free strike against the nearest ally",
+                  "potency": {
+                    "value": "@potency.strong",
+                    "characteristic": "presence"
+                  }
+                },
+                "tier1": {
+                  "display": "",
+                  "potency": {
+                    "value": "@potency.weak",
+                    "characteristic": "none"
+                  }
+                }
+              },
+              "sort": 0
+            }
+          }
+        },
+        "effect": {
+          "before": "<p>The dragon spits fragments of souls to attempt to possess the targets, making a separate power roll for each target.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "Szs3EAPgAjW3sxY7",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.Szs3EAPgAjW3sxY7"
+    },
+    {
+      "name": "So Long and Goodnight",
+      "type": "ability",
+      "img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+      "system": {
+        "type": "villain",
+        "category": "villain",
+        "keywords": [
+          "area",
+          "magic"
+        ],
+        "distance": {
+          "type": "burst",
+          "primary": 6
+        },
+        "target": {
+          "type": "creature",
+          "value": null,
+          "custom": ""
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": [
+              "presence"
+            ]
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "",
+          "after": "<p>Each target must be dragonsealed. The dragon's eyes glow with unequalled malevolence, and any target who has a Deathcount has that Deathcount reduced to 1.</p>"
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "license": "Draw Steel Creator License",
+          "page": ""
+        },
+        "story": "",
+        "resource": null,
+        "trigger": "",
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "MPXOufbiIhlahQuS",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.MPXOufbiIhlahQuS"
+    },
+    {
+      "name": "Black Skies",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "A omen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon expands their wings to create a shroud of shadow. Until the start of the dragon’s next turn, any strike made against them takes a bane.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "ulgavssuvTNK9qC2",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.ulgavssuvTNK9qC2"
+    },
+    {
+      "name": "Rise and Fall",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A omen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon flies up to 10 squares and carries fated souls with them. Each creature in the area of the dragon’s Stagnant Wyrmscale Aura trait makes a <span style=\"text-decoration:underline\"><strong>Presence test</strong></span>.</p><dl class=\"power-roll-display\">\n      <dt class=\"tier1\">\n        <p>!</p>\n      </dt>\n      <dd>\n        <p>Vertical pull 10</p>\n      </dd>\n    \n      <dt class=\"tier2\">\n        <p>@</p>\n      </dt>\n      <dd>\n        <p>Vertical pull 6</p>\n      </dd>\n    \n      <dt class=\"tier3\">\n        <p>#</p>\n      </dt>\n      <dd>\n        <p>Vertical pull 4</p>\n      </dd>\n    </dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "VcYwdD9S8dLejIrL",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.VcYwdD9S8dLejIrL"
+    },
+    {
+      "name": "Solo Action",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 5,
+        "trigger": "A omen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>The dragon takes an additional main action on their turn. They can use this feature even if they are dazed.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "PKhH9dRo7omydTlG",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.PKhH9dRo7omydTlG"
+    },
+    {
+      "name": "Burn It Right Down",
+      "type": "ability",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "type": "none",
+        "category": "heroic",
+        "resource": 10,
+        "trigger": "A omen starts its turn.",
+        "distance": {
+          "type": "special"
+        },
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "damageDisplay": "melee",
+        "power": {
+          "roll": {
+            "formula": "",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>Each edge of the encounter map burns with intangible purple flames until the end of the encounter. The flames expand by 1 square at the end of every turn. Any enemy takes [[/damage 5 corruption]] damage for each square of flames they enter.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        },
+        "source": {
+          "book": "Monsters",
+          "page": "",
+          "license": "Draw Steel Creator License"
+        },
+        "story": "",
+        "keywords": [],
+        "_dsid": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_id": "caeutXBxLE9NBHYB",
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!yGpjbrKrFCT7tk29.caeutXBxLE9NBHYB"
+    }
+  ],
+  "folder": "1xAB7dzxBYqdc7qX",
+  "prototypeToken": {
+    "name": "Omen Dragon",
+    "displayName": 0,
+    "actorLink": false,
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/draw-steel/assets/roles/solo.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "offsetX": 0,
+      "offsetY": 0,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "rotation": 0,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": "stamina"
+    },
+    "bar2": {
+      "attribute": "hero.resources"
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1763781503510,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_id": "yGpjbrKrFCT7tk29",
+  "sort": 500000,
+  "_key": "!actors!yGpjbrKrFCT7tk29"
+}

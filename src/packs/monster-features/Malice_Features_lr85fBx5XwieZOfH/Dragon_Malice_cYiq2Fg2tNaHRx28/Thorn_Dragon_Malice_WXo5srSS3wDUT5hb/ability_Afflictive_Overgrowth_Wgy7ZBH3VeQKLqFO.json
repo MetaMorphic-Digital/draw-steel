@@ -1,12 +1,12 @@
 {
-  "name": "Dread and Terror",
+  "name": "Afflictive Overgrowth",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A gloom starts its turn.",
+    "resource": 7,
+    "trigger": "A thorn starts its turn.",
     "distance": {
       "type": "special"
     },
@@ -24,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The dragon thickens the fog of their Gloaming Wyrmscale Aura trait and the horrors within it. Each creature in the area takes a bane on strikes made against the dragon until the start of the dragon’s next turn.</p>",
+      "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <span style=\"text-decoration:underline\"><strong>Agility test</strong></span>.</p><dl class=\"power-roll-display\">\n      <dt class=\"tier1\">\n        <p>!</p>\n      </dt>\n      <dd>\n        <p>[[/damage 12 poison]] damage; restrained (save ends)</p>\n      </dd>\n    \n      <dt class=\"tier2\">\n        <p>@</p>\n      </dt>\n      <dd>\n        <p>[[/damage 9 poison]] damage; bleeding (save ends)</p>\n      </dd>\n    \n      <dt class=\"tier3\">\n        <p>#</p>\n      </dt>\n      <dd>\n        <p>[[/damage 5 poison]] damage; bleeding (EoT)</p>\n      </dd>\n    </dl>",
       "after": ""
     },
     "spend": {
@@ -33,15 +33,15 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "97",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "dread-and-terror",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "_dsid": "afflictive-overgrowth"
   },
   "effects": [],
-  "folder": "7lMt5TrWK92Rh5ke",
+  "folder": "WXo5srSS3wDUT5hb",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -57,7 +57,7 @@
   "ownership": {
     "default": 0
   },
-  "_id": "dC861UmVU30rAYsf",
-  "sort": 100000,
-  "_key": "!items!dC861UmVU30rAYsf"
+  "_id": "Wgy7ZBH3VeQKLqFO",
+  "sort": 0,
+  "_key": "!items!Wgy7ZBH3VeQKLqFO"
 }

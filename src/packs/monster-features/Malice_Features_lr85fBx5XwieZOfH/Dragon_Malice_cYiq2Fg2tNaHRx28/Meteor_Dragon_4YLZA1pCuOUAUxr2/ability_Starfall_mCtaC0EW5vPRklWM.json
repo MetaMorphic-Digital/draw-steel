@@ -1,12 +1,12 @@
 {
-  "name": "Dread and Terror",
+  "name": "Starfall",
   "type": "ability",
   "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
   "system": {
     "type": "none",
     "category": "heroic",
-    "resource": 3,
-    "trigger": "A gloom starts its turn.",
+    "resource": 5,
+    "trigger": "A meteor starts its turn.",
     "distance": {
       "type": "special"
     },
@@ -24,7 +24,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>The dragon thickens the fog of their Gloaming Wyrmscale Aura trait and the horrors within it. Each creature in the area takes a bane on strikes made against the dragon until the start of the dragon’s next turn.</p>",
+      "before": "<p>The dragon drops stars into five 2 cubes anywhere on the encounter map. The area is difficult terrain, and each creature and object in the area when it appears makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Agility test</span></strong></span>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 20 holy]] damage; slowed (save ends), prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 16 holy]] damage; slowed (save ends)</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 10 holy]] damage</p></dd></dl>",
       "after": ""
     },
     "spend": {
@@ -33,15 +33,15 @@
     },
     "source": {
       "book": "Monsters",
-      "page": "97",
+      "page": "",
       "license": "Draw Steel Creator License"
     },
-    "_dsid": "dread-and-terror",
     "story": "",
-    "keywords": []
+    "keywords": [],
+    "_dsid": "starfall"
   },
   "effects": [],
-  "folder": "7lMt5TrWK92Rh5ke",
+  "folder": "4YLZA1pCuOUAUxr2",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
@@ -57,7 +57,7 @@
   "ownership": {
     "default": 0
   },
-  "_id": "dC861UmVU30rAYsf",
-  "sort": 100000,
-  "_key": "!items!dC861UmVU30rAYsf"
+  "_id": "mCtaC0EW5vPRklWM",
+  "sort": 0,
+  "_key": "!items!mCtaC0EW5vPRklWM"
 }
