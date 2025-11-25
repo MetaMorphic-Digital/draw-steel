@@ -1,0 +1,11 @@
+<header class="message-header flexrow">
+  <h4 class="message-sender">{{document.alias}}</h4>
+  <span class="message-metadata">
+    <time class="message-timestmap"></time>
+    {{#if canDelete}}
+    <a aria-label="Delete" class="message-delete" data-action="deleteMessage">
+      <i class="fa-solid fa-trash" inert></i>
+    </a>
+    {{/if}}
+  </span>
+</header>
