@@ -3,6 +3,15 @@ import MessagePart from "./parts/base.mjs";
 const { ArrayField, TypedSchemaField } = foundry.data.fields;
 
 export default class StandardModel extends foundry.abstract.TypeDataModel {
+  /**
+   * Chat message subtype metadata.
+   */
+  static metadata = Object.freeze({
+    type: "standard",
+  });
+
+  /* -------------------------------------------------- */
+
   /** @override */
   static defineSchema() {
     return {
