@@ -1,11 +1,20 @@
 <header class="message-header flexrow">
   <h4 class="message-sender">{{document.alias}}</h4>
   <span class="message-metadata">
-    <time class="message-timestmap"></time>
+    <time class="message-timestamp">{{timeSince document.timestamp}}</time>
     {{#if canDelete}}
-    <a aria-label="Delete" class="message-delete" data-action="deleteMessage">
+    <a aria-label="{{localize 'Delete'}}" class="message-delete" data-action="deleteMessage">
       <i class="fa-solid fa-trash" inert></i>
     </a>
     {{/if}}
+    {{#if canClose}}
+    <a aria-label="{{localize 'CHAT.Dismiss'}}" class="message-dismiss" data-action="dismissMessage">
+      <i class="fa-solid fa-xmark" inert></i>
+    </a>
+    {{/if}}
   </span>
+
+  {{#if isWhisper}}
+  <span class="whisper-to">{{localize "CHAT.To"}}: {{whisperTo}}</span>
+  {{/if}}
 </header>

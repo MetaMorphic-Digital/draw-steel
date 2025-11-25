@@ -60,10 +60,11 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
       actor: this.parent.speakerActor,
       user: game.user,
       rollData: this.parent.getRollData?.(),
+      isWhisper: this.parent.whisper.length,
+      whisperTo: this.parent.whisper.map(u => game.users.get(u)?.name).filterJoin(", "),
     };
 
-    const element = document.createElement("LI");
-    element.classList.add(game.system.id, "chat-message", "message", "flexcol");
+    const element = this.#renderFrame(options);
 
     // Always-rendered header element.
     const htmlString = await foundry.applications.handlebars.renderTemplate(
@@ -83,6 +84,33 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
     }
 
     return element;
+  }
+
+  /* -------------------------------------------------- */
+
+  /**
+   * Render the frame (the LI element) of the chat message.
+   * @param {object} options
+   * @returns {HTMLLIElement}
+   */
+  #renderFrame(options) {
+    const frame = document.createElement("LI");
+    const { blind, id, style, whisper } = this.parent;
+    frame.dataset.messageId = id;
+
+    const cssClasses = [
+      game.system.id,
+      "chat-message",
+      "message",
+      "flexcol",
+      style === CONST.CHAT_MESSAGE_STYLES.IC ? "ic" : null,
+      style === CONST.CHAT_MESSAGE_STYLES.EMOTE ? "emote" : null,
+      whisper.length ? "whisper" : null,
+      blind ? "blind" : null,
+    ];
+    for (const cssClass of cssClasses) frame.classList.add(cssClass);
+    if (options.borderColor) frame.style.setProperty("border-color", options.borderColor);
+    return frame;
   }
 
   /* -------------------------------------------------- */
