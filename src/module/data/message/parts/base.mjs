@@ -1,5 +1,8 @@
 const { ArrayField, JSONField, StringField } = foundry.data.fields;
 
+/**
+ * A nested datamodel for rendering partial chat messages.
+ */
 export default class MessagePart extends foundry.abstract.DataModel {
   /**
    * Standard click event listeners.

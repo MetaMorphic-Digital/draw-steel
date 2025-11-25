@@ -1,7 +1,12 @@
+import { systemPath } from "../../constants.mjs";
 import MessagePart from "./parts/base.mjs";
 
 const { ArrayField, TypedSchemaField } = foundry.data.fields;
 
+/**
+ * A standard model for chat messages that holds nested models that each individually
+ * render a part of the chat message html. This class is responsible for delegating responsibility.
+ */
 export default class StandardModel extends foundry.abstract.TypeDataModel {
   /**
    * Chat message subtype metadata.
@@ -62,7 +67,7 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
 
     // Always-rendered header element.
     const htmlString = await foundry.applications.handlebars.renderTemplate(
-      "systems/draw-steel/templates/sidebar/chat/parts/header.hbs", context,
+      systemPath("templates/sidebar/chat/parts/header.hbs"), context,
     );
     element.insertAdjacentHTML("beforeend", htmlString);
 
