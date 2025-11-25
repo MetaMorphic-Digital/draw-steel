@@ -1,0 +1,84 @@
+{
+  "folder": "qFlhvqluapVc3bpR",
+  "name": "Forsaken",
+  "type": "title",
+  "_id": "uJ80ZnRHdJpo9YHC",
+  "img": "icons/commodities/metal/fragments-sword-steel.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect</strong>: A characteristic of your choice increases by 1 (to a maximum of 6). Additionally, choose one of the following benefits:</p><ul><li><p><em>Brief Reunion:</em></p><p>While you’re winded, you can use a maneuver to summon the artifact to your hand. It disappears at the end of your next turn. Once you use this benefit, you can’t use it again until you earn 1 or more Victories.</p></li><li><p><em>Perfect Protection:</em></p><p>The Director chooses a damage type that is dealt by or thematically related to the artifact—for instance, holy for the Blade of a Thousand Years, psychic for the Encepter, or corruption for the Mortal Coil. You have immunity all to the chosen damage type.</p></li><li><p><em>Poor Compensation:</em></p><p>Instead of disappearing or otherwise departing, the artifact turns into a trinket or leveled treasure of the Director’s choice that has the same approximate shape as the lost item—for instance, any magic sword for the Blade of a Thousand Years, any implement for the Encepter, or a Thief of Joy or any other torque for the Mortal Coil.</p></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "348",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "forsaken",
+    "advancements": {
+      "lOm2PEx0k2fCl6kt": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": null
+        },
+        "_id": "lOm2PEx0k2fCl6kt",
+        "description": "<p>A characteristic of your choice increases by 1 (to a maximum of 6).</p>",
+        "characteristics": {
+          "might": 0,
+          "agility": 0,
+          "reason": 0,
+          "intuition": 0,
+          "presence": 0
+        },
+        "max": 6
+      },
+      "5dyFMsTGcKfZMbKk": {
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "5dyFMsTGcKfZMbKk",
+        "description": "<p>Choose one of the following benefits:</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.SnOjbuTdc5uDLoFW"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.XBgXX4Jk064oWAYk"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.Bw8sy8HKFlzMowyq"
+          }
+        ]
+      }
+    },
+    "echelon": 4,
+    "story": "The quest is done, the enemy is defeated, and the Blade of a Thousand Years has passed from our hands. What do we do with the rest of our lives?",
+    "prerequisites": {
+      "value": "Your party loses, destroys, or otherwise parts with an artifact."
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762186596659,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!uJ80ZnRHdJpo9YHC"
+}

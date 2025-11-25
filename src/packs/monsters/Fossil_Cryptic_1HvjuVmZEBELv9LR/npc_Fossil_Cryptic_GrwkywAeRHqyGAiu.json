@@ -35,7 +35,7 @@
         "letter": "L"
       },
       "stability": 3,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 8,
@@ -80,8 +80,7 @@
     "source": {
       "book": "Monsters",
       "page": "143",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -114,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "solo-monster",
@@ -152,7 +150,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "churning-trunk",
@@ -190,7 +187,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "seismic-step",
@@ -396,7 +392,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "sand-slam",
@@ -483,7 +478,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -630,7 +626,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "stone-bone-storm",
@@ -646,9 +641,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -674,7 +669,8 @@
         },
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "One creature or object on the ground"
         },
         "damageDisplay": "melee",
         "power": {
@@ -697,7 +693,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "stoneshift",
@@ -713,9 +708,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -761,7 +756,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "dissipate",
@@ -952,7 +946,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "shatterstone",
@@ -996,7 +989,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -1009,7 +1003,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Special: A target must be on the ground.</p><p>Each target makes a Might test.</p><table><tbody><tr><td data-colwidth=\"95\"><p>11 or less</p></td><td><p>Prone and can’t stand (EoT)</p></td></tr><tr><td data-colwidth=\"95\"><p>12-16</p></td><td><p>Prone</p></td></tr><tr><td data-colwidth=\"95\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>Special: A target must be on the ground.</p><p>Each target makes a Might test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Prone and can’t stand (EoT)</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>Prone</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1019,7 +1013,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "first-warning-quake",
@@ -1035,9 +1028,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1063,7 +1056,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -1076,7 +1070,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p><p></p><table><tbody><tr><td data-colwidth=\"91\"><p>11 or less</p></td><td><p>[[/damage 9]] damage; prone</p></td></tr><tr><td data-colwidth=\"91\"><p>12-16</p></td><td><p>[[/damage 5]] damage</p></td></tr><tr><td data-colwidth=\"91\"><p>17+</p></td><td><p>The target moves to the nearest unoccupied space outside the area.</p></td></tr></tbody></table>",
+          "before": "<p><strong>Special</strong>: A target must be on the ground.</p><p>The area drops 2 squares and is difficult terrain. Each target enemy falls, while each target ally drops safely. Additionally, each target enemy makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 9]] damage; prone</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5]] damage</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The target moves to the nearest unoccupied space outside the area.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1086,7 +1080,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "final-warning-fissure",
@@ -1102,9 +1095,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1289,7 +1282,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "143"
         },
         "_dsid": "no-escape-power-roll-1",
@@ -1325,8 +1317,7 @@
         "source": {
           "book": "Monsters",
           "page": "143",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "no-escape-power-roll-2",
         "story": "",
@@ -1341,7 +1332,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "creatureObject",
-          "value": 2
+          "value": 2,
+          "custom": "Two creatures or objects on the ground"
         },
         "power": {
           "roll": {
@@ -1499,9 +1491,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1517,8 +1509,7 @@
         "source": {
           "book": "Monsters",
           "page": "142",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "stone-pillars",
         "story": "",
@@ -1579,8 +1570,7 @@
         "source": {
           "book": "Monsters",
           "page": "142",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
         "story": "",
@@ -1641,8 +1631,7 @@
         "source": {
           "book": "Monsters",
           "page": "142",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "floor-mosaic",
         "story": "",
@@ -1694,7 +1683,6 @@
       "_key": "!actors.items!GrwkywAeRHqyGAiu.X0loLO3Jtz47FuKw"
     },
     {
-      "folder": "xDX6M76jNDA3V2rq",
       "name": "Choking Dust",
       "type": "ability",
       "_id": "snMRSlLI6Vumz8tx",
@@ -1703,8 +1691,7 @@
         "source": {
           "book": "Monsters",
           "page": "142",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "choking-dust",
         "story": "",
@@ -1718,7 +1705,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -1728,7 +1717,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"94\"><p>11 or less</p></td><td><p>Until the end of the enemy’s next turn, their stability is reduced to 0, and any forced movement effects targeting them gain a +2 bonus to the distance moved.</p></td></tr><tr><td data-colwidth=\"94\"><p>12-16</p></td><td><p>The enemy’s stability is halved (EoT).</p></td></tr><tr><td data-colwidth=\"94\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>The air across the encounter map is thick with dust until the end of the encounter. Each enemy in the dust is suffocating. Additionally, at the end of each round, each enemy in the dust makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>Until the end of the enemy’s next turn, their [[/apply wcBZLFR2RqTQm9fI turn]]{stability is reduced to 0}, and any forced movement effects targeting them gain a +2 bonus to the distance moved.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The enemy’s [[/apply XjhsIBEBU0rhWV0o turn]]{stability is halved (EoT)}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1736,23 +1725,122 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 400000,
+      "effects": [
+        {
+          "name": "Choking Dust",
+          "img": "icons/magic/air/fog-gas-smoke-swirling-yellow.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.snMRSlLI6Vumz8tx",
+          "disabled": true,
+          "_id": "wcBZLFR2RqTQm9fI",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 5,
+              "value": "0",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>Until the end of the your next turn, your stability is reduced to 0, and any forced movement effects targeting you gain a +2 bonus to the distance moved.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null,
+            "modifiedTime": 1761102404482
+          },
+          "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.wcBZLFR2RqTQm9fI"
+        },
+        {
+          "name": "Lesser Choking Dust",
+          "img": "icons/magic/air/fog-gas-smoke-brown.webp",
+          "type": "base",
+          "origin": "Compendium.draw-steel.monster-features.Item.snMRSlLI6Vumz8tx",
+          "disabled": true,
+          "_id": "XjhsIBEBU0rhWV0o",
+          "system": {
+            "end": {
+              "type": "",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [
+            {
+              "key": "system.combat.stability",
+              "mode": 1,
+              "value": ".5",
+              "priority": null
+            }
+          ],
+          "duration": {
+            "startTime": 0,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": 1,
+            "startTurn": 0
+          },
+          "description": "<p>Your stability is halved.</p>",
+          "tint": "#ffffff",
+          "transfer": true,
+          "statuses": [],
+          "sort": 0,
+          "flags": {},
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null,
+            "modifiedTime": 1761102405921
+          },
+          "_key": "!actors.items.effects!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx.XjhsIBEBU0rhWV0o"
+        }
+      ],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.snMRSlLI6Vumz8tx",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761102399379,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!GrwkywAeRHqyGAiu.snMRSlLI6Vumz8tx"
     }
   ],

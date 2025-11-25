@@ -1,0 +1,100 @@
+{
+  "folder": "oBlC3EZdWggPWyRn",
+  "name": "Fortress of Perfect Thought",
+  "type": "feature",
+  "_id": "t901vDMtqdHJ9nYj",
+  "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>Your mind is an impenetrable palace that shields you from danger. You gain the following effects: </p><ul><li><p>You can breathe even when there is no breathable air. </p></li><li><p>You have psychic immunity 10. </p></li><li><p>Creatures can’t read your thoughts unless you allow them to. </p></li><li><p>Your Reason and Intuition are treated as 2 higher for the purpose of resisting the potency of abilities. </p></li><li><p>You can’t be made taunted or frightened.</p></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "200",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "fortress-of-perfect-thought",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Fortress of Perfect Thought",
+      "img": "icons/magic/holy/meditation-chi-focus-blue.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.classes.Item.t901vDMtqdHJ9nYj",
+      "_id": "jv103ro3rccOL7Do",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.damage.immunities.psychic",
+          "mode": 2,
+          "value": "10",
+          "priority": null
+        },
+        {
+          "key": "system.statuses.immunities",
+          "mode": 2,
+          "value": "taunted",
+          "priority": null
+        },
+        {
+          "key": "system.statuses.immunities",
+          "mode": 2,
+          "value": "frightened",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761138349410,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!t901vDMtqdHJ9nYj.jv103ro3rccOL7Do"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761138049941,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!t901vDMtqdHJ9nYj"
+}

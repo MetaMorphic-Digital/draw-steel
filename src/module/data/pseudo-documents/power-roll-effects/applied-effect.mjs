@@ -74,8 +74,8 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
   /* -------------------------------------------------- */
 
   /** @inheritdoc */
-  async _tierRenderingContext(context) {
-    await super._tierRenderingContext(context);
+  async _tierRenderingContext(context, options) {
+    await super._tierRenderingContext(context, options);
 
     const effectOptions = this.item.effects.filter(e => !e.transfer)
       .map(e => ({ value: e.id, label: e.name, group: game.i18n.localize("DRAW_STEEL.POWER_ROLL_EFFECT.APPLIED.CustomEffects") }));
@@ -135,8 +135,10 @@ export default class AppliedPowerRollEffect extends BasePowerRollEffect {
    * @inheritdoc
    */
   toText(tier) {
-    const potencyString = this.toPotencyText(tier);
-    return this.applied[`tier${tier}`].display.replaceAll("{{potency}}", potencyString);
+    const potencyString = this.toPotencyHTML(tier);
+    // Sanitize any HTML that may be in the base display string
+    const escapedDisplay = Handlebars.escapeExpression(this.applied[`tier${tier}`].display);
+    return escapedDisplay.replaceAll("{{potency}}", potencyString);
   }
 
   /* -------------------------------------------------- */

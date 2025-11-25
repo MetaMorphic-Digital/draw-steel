@@ -22,7 +22,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma</p><p>of hatred. Each enemy in the encounter makes an <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Intuition test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target is taunted by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target is taunted by the nearest creature or object (save ends).</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+      "before": "<p>Every wyvern’s anger fills the encounter map with a thick miasma of hatred. Each enemy in the encounter makes an <strong>Intuition test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object (save ends). While the target is taunted this way, power rolls against them have a double edge.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The target is [[/apply taunted save]] by the nearest creature or object.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
       "after": ""
     },
     "spend": {
@@ -32,8 +32,7 @@
     "source": {
       "book": "Monsters",
       "page": "324",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "overflowing-rage",
     "story": "",
@@ -125,9 +124,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757728773160,
     "modifiedTime": null,
     "lastModifiedBy": null

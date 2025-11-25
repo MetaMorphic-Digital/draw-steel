@@ -1,0 +1,66 @@
+{
+  "folder": "aC2kQinXALeBQmzg",
+  "name": "Go Now and Speed Well",
+  "type": "ability",
+  "_id": "sm3HDDOZP8secxv5",
+  "img": "icons/skills/melee/strike-sword-gray.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "184",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "go-now-and-speed-well",
+    "story": "You direct an attack to strike true.",
+    "keywords": [
+      "ranged"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "selfOrAlly",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The target [[/surge 2]] and can use a signature or heroic ability as a free triggered action. The ability has a double edge on the power roll, ignores damage immunity, and increases the potency of any potency effects by 1.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761254758502,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!sm3HDDOZP8secxv5"
+}

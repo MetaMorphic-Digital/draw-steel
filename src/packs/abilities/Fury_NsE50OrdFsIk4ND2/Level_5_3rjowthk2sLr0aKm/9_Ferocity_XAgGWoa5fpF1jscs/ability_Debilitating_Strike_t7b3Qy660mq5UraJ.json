@@ -1,0 +1,169 @@
+{
+  "folder": "XAgGWoa5fpF1jscs",
+  "name": "Debilitating Strike",
+  "type": "ability",
+  "_id": "t7b3Qy660mq5UraJ",
+  "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "137",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "debilitating-strike",
+    "story": "You need just one blow to sabotage your target.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "Dx2nHDunKSEfbwnY": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "Dx2nHDunKSEfbwnY",
+          "damage": {
+            "tier1": {
+              "value": "10 + @chr"
+            },
+            "tier2": {
+              "value": "14 + @chr"
+            },
+            "tier3": {
+              "value": "20 + @chr"
+            }
+          }
+        },
+        "qnRfDKKT1eYmPNU0": {
+          "name": "Slowed",
+          "img": null,
+          "type": "applied",
+          "_id": "qnRfDKKT1eYmPNU0",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, slowed (save ends)",
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              },
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "QevpI7ACSq52Q46m": {
+                  "condition": "failure",
+                  "end": "save"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>While slowed this way, the target takes 1 damage for every square they move, including from forced movement.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Slowed",
+      "img": "icons/skills/melee/strike-flail-destructive-yellow.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.abilities.Item.t7b3Qy660mq5UraJ",
+      "transfer": false,
+      "_id": "QevpI7ACSq52Q46m",
+      "system": {
+        "end": {
+          "type": "save",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>While slowed this way, the target takes 1 damage for every square they move, including from forced movement.</p>",
+      "tint": "#ffffff",
+      "statuses": [
+        "slowed"
+      ],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760993056066,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!t7b3Qy660mq5UraJ.QevpI7ACSq52Q46m"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1760984543220,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!t7b3Qy660mq5UraJ"
+}

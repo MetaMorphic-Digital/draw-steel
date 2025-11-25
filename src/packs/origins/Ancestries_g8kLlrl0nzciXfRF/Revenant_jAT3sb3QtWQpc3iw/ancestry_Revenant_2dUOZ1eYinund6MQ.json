@@ -6,20 +6,19 @@
   "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
   "system": {
     "description": {
-      "value": "<p>The dead walk among us. Some of them are happier about it than others.</p><p>Unlike the necromantic rituals that produce wights and wraiths and zombies, revenants rise from the grave through a combination of an unjust death and a burning desire for vengeance. Creatures sustained on pure will, they have no need of food or water or air—and, unlike their zombified cousins, they retain all their memories and personality from life.</p><p>These revenants are rare. Many are hunted by ignorant villagers who see only their dead flesh and assume the worst. Those who survive the pitchfork brigade either choose a solitary life, often as a wandering soul seeking out living company yet constantly in fear of it, or they migrate to a metropolis such as Blackbottom or Capital, where lost souls gather to make a home.</p><h4>Revenant Traits</h4><p>Revenant heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.xXl9h7qyi4z91jYO]{Former Life}</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.S2OsBBFHqBoHZYUu]{Tough But Withered}</p><h4>Purchased Revenant Traits</h4><p>You have 2 ancestry points to spend on the following traits. (Quick Build: Bloodless, plus Undead Influence if size is 1S.)</p><p>@UUID[Compendium.draw-steel.origins.Item.77tLSEIDpNRpkwnn]{Bloodless (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.LhqV95QNJKZ4ItIU]{Previous Life: 1 Point (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.M8hcInvmTs5DG902]{Previous Life: 2 Points (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.UWNCLuMl8DljBsrN]{Undead Influence (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.4rkruRy4WbjyM7Vx]{Vengeance Mark (2 Points)}</p><p></p>",
+      "value": "<p>The dead walk among us. Some of them are happier about it than others.</p><p>Unlike the necromantic rituals that produce wights and wraiths and zombies, revenants rise from the grave through a combination of an unjust death and a burning desire for vengeance. Creatures sustained on pure will, they have no need of food or water or air—and, unlike their zombified cousins, they retain all their memories and personality from life.</p><p>These revenants are rare. Many are hunted by ignorant villagers who see only their dead flesh and assume the worst. Those who survive the pitchfork brigade either choose a solitary life, often as a wandering soul seeking out living company yet constantly in fear of it, or they migrate to a metropolis such as Blackbottom or Capital, where lost souls gather to make a home.</p><h4>Revenant Traits</h4><p>Revenant heroes have access to the following traits.</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.xXl9h7qyi4z91jYO]{Former Life}</p><p>Signature Trait:@UUID[Compendium.draw-steel.origins.Item.S2OsBBFHqBoHZYUu]{Tough But Withered}</p><h4>Purchased Revenant Traits</h4><p>You have 2 ancestry points to spend on the following traits. (Quick Build: Bloodless, plus Undead Influence if size is 1S.)</p><p>@UUID[Compendium.draw-steel.origins.Item.77tLSEIDpNRpkwnn]{Bloodless (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.LhqV95QNJKZ4ItIU]{Previous Life: 1 Point (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.M8hcInvmTs5DG902]{Previous Life: 2 Points (2 Points)}</p><p>@UUID[Compendium.draw-steel.origins.Item.UWNCLuMl8DljBsrN]{Undead Influence (1 Point)}</p><p>@UUID[Compendium.draw-steel.origins.Item.4rkruRy4WbjyM7Vx]{Vengeance Mark (2 Points)}</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
       "page": "46",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "revenant",
     "advancements": {
       "6QeV1AgB4VaBXFC9": {
-        "name": "",
-        "img": null,
+        "name": "Signature Trait",
+        "img": "icons/magic/death/grave-tombstone-glow-tan.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
@@ -33,6 +32,37 @@
             "uuid": "Compendium.draw-steel.origins.Item.S2OsBBFHqBoHZYUu"
           }
         ]
+      },
+      "wjCnH9cOfQON5aTl": {
+        "name": "Purchased Traits",
+        "img": "icons/skills/social/trading-injustice-scale-gray.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "wjCnH9cOfQON5aTl",
+        "description": "<p>You have 2 ancestry points to spend on the following traits, or 3 ancestry points if your size is 1S. (Quick Build: Bloodless, plus Undead Influence if size 1S.)</p>",
+        "additional": {
+          "type": "ancestryTrait"
+        },
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.77tLSEIDpNRpkwnn"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.LhqV95QNJKZ4ItIU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.M8hcInvmTs5DG902"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.UWNCLuMl8DljBsrN"
+          },
+          {
+            "uuid": "Compendium.draw-steel.origins.Item.4rkruRy4WbjyM7Vx"
+          }
+        ],
+        "chooseN": 2
       }
     }
   },
@@ -46,9 +76,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754456936630,
     "modifiedTime": null,
     "lastModifiedBy": null

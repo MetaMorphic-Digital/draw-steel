@@ -1,0 +1,107 @@
+{
+  "folder": "ukHd9vs5ZMvY8yfO",
+  "name": "Greater Kinetic Grip",
+  "type": "ability",
+  "_id": "Yd9jRc4setB3igPQ",
+  "img": "icons/magic/control/energy-stream-link-spiral-white.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "197",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "greater-kinetic-grip",
+    "story": "You raise the target into the air without breaking a sweat.",
+    "keywords": [
+      "psionic",
+      "ranged",
+      "strike",
+      "telekinesis"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "ranged",
+      "primary": 10
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creatureObject",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "reason"
+        ]
+      },
+      "effects": {
+        "u9HDQjuvIbUezNr2": {
+          "name": "Slide",
+          "img": null,
+          "type": "forced",
+          "_id": "u9HDQjuvIbUezNr2",
+          "forced": {
+            "tier1": {
+              "display": "{{forced}} + @chr {{potency}}, the forced movement is vertical",
+              "movement": [
+                "slide"
+              ],
+              "distance": "4",
+              "properties": [],
+              "potency": {
+                "characteristic": "might"
+              }
+            },
+            "tier2": {
+              "display": "{{forced}} + @chr {{potency}}, the forced movement is vertical",
+              "movement": [
+                "slide"
+              ],
+              "properties": [],
+              "distance": "8"
+            },
+            "tier3": {
+              "display": "{{forced}} + @chr {{potency}}, the forced movement is vertical",
+              "movement": [
+                "slide"
+              ],
+              "properties": [],
+              "distance": "12"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p><strong>Strained:</strong> The forced movement ignores stability. You take [[/damage 2d6]] damage and are [[/apply weakened save]].</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761076868533,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!Yd9jRc4setB3igPQ"
+}

@@ -81,8 +81,7 @@
     "source": {
       "book": "Monsters",
       "page": "210",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -210,8 +209,7 @@
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "defiant-anger",
         "advancements": {}
@@ -291,14 +289,13 @@
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
       "system": {
         "description": {
-          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are forced moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
+          "value": "<p>The juggernaut automatically destroys any mundane size 1 objects in their path when they move or are force moved. They can break through any mundane wall made of wood, stone, or a similarly sturdy material this way as long as the wall is 2 squares thick or less.</p>",
           "director": ""
         },
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "destructive-path",
         "advancements": {}
@@ -315,9 +312,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -331,8 +328,7 @@
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "pitchfork-catapult",
         "story": "",
@@ -534,8 +530,7 @@
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "earth-breaking-jump",
         "story": "",
@@ -553,7 +548,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "creature",
-          "value": null
+          "value": null,
+          "custom": "Each creature in the area"
         },
         "power": {
           "roll": {
@@ -708,9 +704,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -724,8 +720,7 @@
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "horrible-bellow",
         "story": "",
@@ -742,7 +737,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -827,9 +823,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -839,18 +835,17 @@
       "name": "Hrraaaaaagh!",
       "type": "ability",
       "system": {
-        "type": "none",
+        "type": "freeTriggered",
         "source": {
           "book": "Monsters",
           "page": "210",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "hrraaaaaagh",
         "story": "",
         "keywords": [],
         "category": "",
-        "resource": null,
+        "resource": 1,
         "trigger": "The juggernaut takes damage.",
         "distance": {
           "type": "self"
@@ -889,9 +884,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -907,8 +902,7 @@
         "source": {
           "book": "Monsters",
           "page": "209",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "bully",
         "story": "",
@@ -961,68 +955,6 @@
     },
     {
       "folder": "KO4AMPLGcdxEaE0R",
-      "name": "Shockwave",
-      "type": "ability",
-      "_id": "BfYM0KbWwQsW3CrX",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "209",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "shockwave",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": 3,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><p></p><table><tbody><tr><td data-colwidth=\"93\"><p>11 or less</p></td><td><p>[[/damage 5]] damage; vertical push 3</p></td></tr><tr><td data-colwidth=\"93\"><p>12-16</p></td><td><p>[[/damage 4]] damage; vertical push 2</p></td></tr><tr><td data-colwidth=\"93\"><p>17+</p></td><td><p>Push 1</p></td></tr></tbody></table>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 200000,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Item.BfYM0KbWwQsW3CrX",
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!0vlpHQthL2FpdZHA.BfYM0KbWwQsW3CrX"
-    },
-    {
-      "folder": "KO4AMPLGcdxEaE0R",
       "name": "Rampage",
       "type": "ability",
       "_id": "idA5w30OnHM2AQpF",
@@ -1031,8 +963,7 @@
         "source": {
           "book": "Monsters",
           "page": "209",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "rampage",
         "story": "",
@@ -1193,6 +1124,70 @@
         "lastModifiedBy": null
       },
       "_key": "!actors.items!0vlpHQthL2FpdZHA.idA5w30OnHM2AQpF"
+    },
+    {
+      "name": "Shockwave",
+      "type": "ability",
+      "_id": "BfYM0KbWwQsW3CrX",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "209",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "shockwave",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": 3,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>One ogre acting this turn jumps and lands on their rear, causing a 3 burst shockwave. Each size 1 creature in the area makes a Might test or Agility test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5]]{5 damage}; vertical push 3</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 4]]{4 damage}; vertical push 2</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>Push 1</p></dd></dl>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.BfYM0KbWwQsW3CrX",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761239697297,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!0vlpHQthL2FpdZHA.BfYM0KbWwQsW3CrX"
     }
   ],
   "effects": [],

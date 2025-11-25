@@ -29,12 +29,49 @@
           }
         }
       },
+      "CHARACTERISTIC": {
+        "FIELDS": {
+          "guaranteed": {
+            "label": "Guaranteed Increases",
+            "hint": "Increase each of these scores by 1."
+          },
+          "choices": {
+            "label": "Increase Choices",
+            "hint": "Increase one of these scores by 1. Overlap with guaranteed will be ignored."
+          },
+          "max": {
+            "label": "Score Maximum"
+          }
+        },
+        "Options": {
+          "Guaranteed": "Guaranteed",
+          "Choice": "Choice",
+          "Never": "Never"
+        },
+        "CharacteristicHint": "All guaranteed increases will be given, and the advancement will provide an option between the choices."
+      },
       "ITEM_GRANT": {
         "FIELDS": {
           "chooseN": {
             "label": "Choice",
             "hint": "How many of the items can be picked when this advancement is configured. If left blank or if the number is greater than the number of items available, all the items are granted."
+          },
+          "additional": {
+            "type": {
+              "label": "Additional Type",
+              "hint": "Allow other items of the selected type."
+            },
+            "perkType": {
+              "label": "Perk Type",
+              "hint": "If empty, all perk types are allowed."
+            }
           }
+        },
+        "AdditionalText": {
+          "ancestryTrait": "Drop any ancestry trait here.",
+          "kit": "Drop any kit here.",
+          "perk": "Drop any {perkTypes} perk here.",
+          "subclass": "Drop any {itemName} subclass here."
         }
       },
       "TRAIT": {
@@ -69,9 +106,11 @@
       },
       "SHEET": {
         "requirements": "Requirements",
+        "additional": "Additional",
         "chooseAll": "Choose All",
         "unknownItem": "Unknown Item",
-        "reconfigure": "Reconfigure Advancement"
+        "reconfigure": "Reconfigure Advancement",
+        "warnDrop": "{itemType} items do not support {advancementType} advancements."
       },
       "WARNING": {
         "cannotAddNewType": "You cannot add a new {type} to a character that already has one.",
@@ -87,11 +126,24 @@
       "ChainConfiguration": {
         "levelUpTitle": "Level Up: {name}",
         "createWithAdvancementsTitle": "Create {name} with Advancements",
-        "reconfigureTitle": "Reconfigure Advancement"
+        "reconfigureTitle": "Reconfigure Advancement",
+        "dropAdvancementTitle": "Configure Advancement",
+        "CharacteristicIncrease": "+1 {chr}"
       },
       "ConfigureAdvancement": {
         "Title": "Configure {name}",
-        "ChooseN": "Choose {n}"
+        "ChooseN": "Choose {n}",
+        "ChooseNull": "Choose Any",
+        "SpendPoints": "Spend {points} Points",
+        "DropHere": "Drop other items here.",
+        "Characteristic": {
+          "label": "Characteristic",
+          "hint": "Increase choice by 1 to a maximum of {n}."
+        },
+        "Error": {
+          "FilterFail": "Dropped Item did not conform to requirements.",
+          "MustItem": "You can only drop items into an item grant."
+        }
       },
       "DeleteDialog": {
         "ReplaceTitle": "Replace {type}",
@@ -195,6 +247,7 @@
       "Share": "Share",
       "Delete": "Delete",
       "Resources": "Resources",
+      "EditCharacteristics": "Edit Characteristics",
       "Other": "Other",
       "LevelUp": "Level Up Available",
       "ToggleMode": "Toggle Play/Edit Mode",
@@ -212,6 +265,29 @@
             "damage": "Damage Roll",
             "healing": "Healing Roll"
           }
+        },
+        "Gain": {
+          "FormatString": {
+            "Default": "Gain {formula} {type}",
+            "Victory": "Earn {formula} {type}"
+          },
+          "MessageTitle": {
+            "Default": "Gain {type} {targets}",
+            "Victory": "Earn {type} {targets}"
+          },
+          "NoSelection": "You must select hero tokens to gain resources."
+        },
+        "ApplyEffect": {
+          "FormatString": "{name} {end}",
+          "EffectEnds": {
+            "encounter": "(Encounter)",
+            "respite": "(Respite)",
+            "save": "(save ends)",
+            "turn": "(EoT)"
+          },
+          "LinkTooltip": "Apply {name} to selected tokens.",
+          "NoSelection": "You must select tokens to apply the effect to.",
+          "CreateText": "+Applied {name}"
         }
       }
     },
@@ -241,11 +317,30 @@
         "Label": "Compendium Source",
         "Clear": "Clear compendium source",
         "ConfirmDeleteTitle": "Clear Compendium Source",
-        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata."
+        "ConfirmDeleteContent": "Are you sure? Removing the compendium source reference permanently will prevent the application of updates and errata.",
+        "UpdateFrom": {
+          "Label": "Update from Compendium",
+          "Title": "Overwrite Document Data",
+          "Content": "Updating {name} will reset its data to match the compendium copy, including any embedded documents and descriptions.",
+          "Completion": "Successfully updated {name}!"
+        }
       },
       "Display": {
         "Full": "{book} {page}",
         "Page": "pg. {page}"
+      },
+      "Books": {
+        "Heroes": {
+          "Label": "Heroes",
+          "Title": "Draw Steel Heroes"
+        },
+        "Monsters": {
+          "Label": "Monsters",
+          "Title": "Draw Steel Monsters"
+        }
+      },
+      "Licenses": {
+        "DSCL": "Draw Steel Creator License"
       }
     },
     "MEASUREMENT": {
@@ -416,6 +511,15 @@
         "NicheCombatDialog": {
           "EditTooltip": "Edit Specialized Combat Data",
           "Title": "Specialized Combat Data"
+        },
+        "CharacteristicInput": {
+          "Title": "Edit Characteristics",
+          "Advancement": "Advancement Bonus",
+          "Hint": "The inputs represent initial values before active effects and advancements. The bottom row represents increases from advancements.",
+          "Rows": {
+            "Input": "Base",
+            "Advancement": "Advancement"
+          }
         }
       },
       "hero": {
@@ -581,13 +685,12 @@
       "Initiative": {
         "Modes": {
           "Label": "Initiative Mode",
-          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order",
+          "Hint": "Default is each side choose who goes next, alternative uses an agility test to set the order.",
           "Default": "Default",
           "Alternative": "Alternative"
         },
         "Actions": {
           "RollFirst": {
-            "Tooltip": "Roll a d10 to determine which side goes first",
             "Heroes": "Heroes Go First!",
             "Enemies": "Enemies Go First!"
           },
@@ -623,7 +726,8 @@
             "blank": "Match Token"
           }
         }
-      }
+      },
+      "ToggleCaptain": "Toggle Captain"
     },
     "CombatantGroup": {
       "squad": {
@@ -631,11 +735,16 @@
           "staminaValue.label": "Current Stamina"
         }
       },
+      "GroupSelected": "Group Selected Tokens",
       "TypeHint": "A Base combatant group can have any number of non-minion members. A Squad can have any number of minions plus up to one non-minion captain.",
       "ResetSquadHP": "Reset Squad HP To Max",
+      "ColorTokens": {
+        "Label": "Color Tokens",
+        "Title": "Color Tokens",
+        "Input": "Color"
+      },
       "Error": {
         "MinionMustSquad": "Minions can only be added to Squad groups.",
-        "SquadOneCaptain": "A squad can only have one captain.",
         "MinionNoSquad": "Applying damage directly to a minion because it's not in a squad.",
         "TooManySquad": "Applying damage directly to a minion because it's in multiple squads."
       },
@@ -711,6 +820,9 @@
             "label": "Target",
             "type": {
               "label": "Type"
+            },
+            "custom": {
+              "label": "Custom Label"
             },
             "value": {
               "label": "Value"
@@ -797,6 +909,7 @@
           "FreeManeuver": "Free Maneuver",
           "Triggered": "Triggered Action",
           "FreeTriggered": "Free Triggered Action",
+          "Move": "Move",
           "None": "No Action",
           "Villain": "Villain Action"
         },
@@ -835,19 +948,22 @@
           "All": "All",
           "Creature": "Creature",
           "CreatureEmbed": "{value} creature(s)",
-          "AllCreatures": "All creatures",
+          "AllCreatures": "Each creature",
           "Object": "Object",
           "ObjectEmbed": "{value} object(s)",
-          "AllObjects": "All objects",
+          "AllObjects": "Each object",
           "CreatureObject": "Creature or Object",
           "CreatureObjectEmbed": "{value} creature(s) or object(s)",
-          "AllCreatureObject": "All creatures and objects",
+          "AllCreatureObject": "Each creature and object",
           "Enemy": "Enemy",
           "EnemyEmbed": "{value} enemies",
-          "AllEnemies": "All enemies",
+          "EnemyObject": "Enemy or Object",
+          "AllEnemyObject": "Each enemy or object",
+          "EnemyObjectEmbed": "{value} enemies or object(s)",
+          "AllEnemies": "Each enemy",
           "Ally": "Ally",
           "AllyEmbed": "{value} allies",
-          "AllAllies": "All allies",
+          "AllAllies": "Each ally",
           "Self": "Self",
           "SelfOrAlly": "Self or one ally",
           "SelfOrCreature": "Self or one creature",
@@ -872,7 +988,7 @@
           "Weak": "Weak",
           "Average": "Average",
           "Strong": "Strong",
-          "Embed": "{characteristic} < {value}",
+          "Embed": "{characteristic}<{value}",
           "Success": "Success",
           "Failure": "Failure"
         },
@@ -1018,6 +1134,10 @@
             }
           }
         },
+        "Keywords": {
+          "Magic": "Magic",
+          "Psionic": "Psionic"
+        },
         "Categories": {
           "Consumable": "Consumable",
           "Trinket": "Trinket",
@@ -1049,18 +1169,22 @@
           "Whip": "Whip"
         },
         "Implements": {
-          "Bone": "Bone",
-          "Crystal": "Crystal",
-          "Glass": "Glass",
-          "Metal": "Metal",
-          "Stone": "Stone",
-          "Wood": "Wood"
+          "Orb": "Orb",
+          "Wand": "Wand"
         },
         "Other": {
+          "Arms": "Arms",
           "Feet": "Feet",
           "Hands": "Hands",
+          "Head": "Head",
           "Neck": "Neck",
-          "Ring": "Ring"
+          "Ring": "Ring",
+          "Waist": "Waist"
+        },
+        "Consumable": {
+          "Oil": "Oil",
+          "Potion": "Potion",
+          "Scroll": "Scroll"
         }
       },
       "feature": {
@@ -1205,6 +1329,9 @@
           "points": {
             "label": "Project Points"
           },
+          "events": {
+            "label": "Events Roll Table"
+          },
           "yield": {
             "label": "Yield",
             "item": {
@@ -1238,11 +1365,14 @@
           "Success": "{actor} has spent {points} project points from their career on {project}."
         },
         "Events": {
+          "NoTable": "No events roll table found.",
+          "DrawEvent": "Draw Event from Roll Table",
           "RollForEvent": "Roll for Event",
           "RollTriggered": "The event roll triggers an event!",
           "MilestoneTriggered": "This project has passed the milestone for {events} event(s)!"
         },
-        "RollBreakThrough": "Roll Breakthrough"
+        "RollBreakThrough": "Roll Breakthrough",
+        "Varies": "Varies"
       }
     },
     "ActiveEffect": {
@@ -1256,6 +1386,8 @@
       "Inactive": "Inactive Effects",
       "Applied": "Applied Effects",
       "Expired": "Expired",
+      "RollSave": "Roll Save",
+      "ImmunityWarning": "Target has immunity to the following conditions: {conditions}",
       "Ends": {
         "Label": "Ending Effects",
         "Turn": {
@@ -1296,6 +1428,9 @@
         },
         "Slowed": {
           "name": "Slowed"
+        },
+        "Surprised": {
+          "name": "Surprised"
         },
         "Taunted": {
           "name": "Taunted"
@@ -1506,6 +1641,10 @@
         "Hint": "How should project event timing be determined?",
         "Roll": "Roll for Event",
         "Milestone": "Event Milestones"
+      },
+      "UpdateFromCompendium": {
+        "Label": "Update from Compendium",
+        "Hint": "Minimum user level to access the Update from Compendium option in NPC and Item sheets."
       }
     },
     "SOCKET": {
@@ -1692,6 +1831,7 @@
       "npc": "NPC"
     },
     "Advancement": {
+      "characteristic": "Characteristic Increase",
       "itemGrant": "Item Grant",
       "skill": "Skill",
       "language": "Language"

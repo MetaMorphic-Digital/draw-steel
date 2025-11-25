@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "175",
-      "license": "Draw Steel Creator License",
-      "revision": 2
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "vanguard",
     "advancements": {
@@ -78,7 +77,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.kT1PdUuDnWdd8E5j"
           }
-        ]
+        ],
+        "chooseN": 1
       },
       "f40tgLeXPDoEE2xs": {
         "name": "Doctrine Triggered Action",
@@ -91,6 +91,92 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.abilities.Item.NSOHEMtSDSy8qwIh"
+          }
+        ]
+      },
+      "qAYqu1eZObtNYmVr": {
+        "name": "5th-Level Vanguard Features",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "qAYqu1eZObtNYmVr",
+        "description": "<p>Your tactical doctrine grants you two features, as shown on the 5th-Level Doctrine Features table.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.rrJtR2HwvUf34yiJ"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.PDjsX1MFcsfrgLBN"
+          }
+        ]
+      },
+      "5yrmJ6f9ytlGnsRo": {
+        "name": "6th-Level Vanguard Ability",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "5yrmJ6f9ytlGnsRo",
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.mpx2hzJxBNbRkrE3"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.eIcac4zW0WA5JQFl"
+          }
+        ]
+      },
+      "uvqx6hiGMQcxPCey": {
+        "name": "8th-Level Vanguard Feature",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "uvqx6hiGMQcxPCey",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.2ghsSwKmrup5myAY"
+          }
+        ],
+        "description": "<p>Your tactical doctrine grants you a feature</p>"
+      },
+      "RRiBJ5jWYcSpFqeD": {
+        "name": "7th-Level Vanguard Feature",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "RRiBJ5jWYcSpFqeD",
+        "description": "<p>Your tactical doctrine grants you a feature</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.s8OQe8KpHKpSpbnU"
+          }
+        ]
+      },
+      "50Ss8Xh8svc2ppfs": {
+        "name": "9th-Level Vanguard Ability",
+        "img": "icons/skills/melee/shield-block-gray-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "50Ss8Xh8svc2ppfs",
+        "chooseN": 1,
+        "description": "<p>Your tactical doctrine grants your choice of one of two heroic abilities.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.jruuY1CwnWViL6i9"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.tbe4cGYUEFB5EzWZ"
           }
         ]
       }
@@ -107,9 +193,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1752598038716,
     "modifiedTime": null,
     "lastModifiedBy": null

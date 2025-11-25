@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "66",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "sailor",
     "advancements": {
@@ -58,14 +57,21 @@
         "chooseN": 2
       },
       "TV4AP72vGiOHxG8w": {
-        "name": "One Exploration Perk",
-        "img": null,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
         "_id": "TV4AP72vGiOHxG8w",
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>One exploration perk (<em>Quick Build:</em> Put Your Back Into It!)</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration"
+          ]
+        }
       }
     },
     "projectPoints": 0,
@@ -82,9 +88,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754497099224,
     "modifiedTime": null,
     "lastModifiedBy": null

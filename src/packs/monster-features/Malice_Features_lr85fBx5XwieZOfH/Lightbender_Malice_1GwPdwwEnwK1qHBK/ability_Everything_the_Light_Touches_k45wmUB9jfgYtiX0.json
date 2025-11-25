@@ -22,7 +22,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Each lightbender in the encounter shines radiantly, distorting the senses of any enemy within 5 squares of them. Each affected enemy makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Reason test</span></strong></span>.</p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>The target doesn’t have line of effect to any lightbender (save ends).</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The target doesn’t have line of effect to any lightbender (EoT).</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+      "before": "<p>Each lightbender in the encounter shines radiantly, distorting the senses of any enemy within 5 squares of them. Each affected enemy makes a <strong>Reason test</strong>.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/apply Jl97IxJJ269HVVdZ save]]{The target doesn’t have line of effect to any lightbender (save ends).}</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><dl class=\"power-roll-display\"><dd><p>[[/apply Jl97IxJJ269HVVdZ turn]]{The target doesn’t have line of effect to any lightbender (EoT).}</p></dd></dl></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
       "after": ""
     },
     "spend": {
@@ -32,23 +32,65 @@
     "source": {
       "book": "Monsters",
       "page": "196",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "everything-the-light-touches",
     "story": "",
     "keywords": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Light Touch",
+      "img": "icons/magic/light/orbs-smoke-pink.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monster-features.Item.k45wmUB9jfgYtiX0",
+      "transfer": false,
+      "_id": "Jl97IxJJ269HVVdZ",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>You do not have line of effect to any lightbender.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761231650992,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!k45wmUB9jfgYtiX0.Jl97IxJJ269HVVdZ"
+    }
+  ],
   "folder": "1GwPdwwEnwK1qHBK",
   "flags": {},
   "_stats": {
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757289102580,
     "modifiedTime": null,
     "lastModifiedBy": null

@@ -25,7 +25,7 @@
     </div>
     <ol class="item-list kit-list">
       {{#each kits as |kitContext|}}
-      <li class="item feature draggable" data-item-id="{{kitContext.item.id}}" data-document-class="Item">
+      <li class="item feature draggable expandable-document" data-document-uuid="{{kitContext.item.uuid}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{kitContext.item.img}}" alt="{{kitContext.item.name}}">
@@ -39,12 +39,11 @@
           <div class="item-column item-melee-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.melee.damage}}</div>
           <div class="item-column item-ranged-bonus">{{> kitDamageBonuses damage=kitContext.item.system.bonuses.ranged.damage}}</div>
           <div class="item-column item-controls">
-            <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}"></i>
-            </a>
+            <a class="fa-fw fa-solid fa-ellipsis-vertical" data-action="documentListContext"></a>
+            <a class="fa-solid fa-angle-{{ifThen kitContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
-        <div class="item-embed">
+        <div class="document-description item-embed {{#if kitContext.expanded}}expanded{{/if}}">
           {{#if kitContext.expanded}}{{{kitContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>
@@ -74,7 +73,7 @@
     </div>
     <ol class="item-list treasure-list">
       {{#each treasureType.treasure as |treasureContext|}}
-      <li class="item treasure draggable" data-item-id="{{treasureContext.item.id}}" data-document-class="Item">
+      <li class="item treasure draggable expandable-document" data-document-uuid="{{treasureContext.item.uuid}}">
         <div class="item-row">
           <div class="item-column item-name">
             <img class="item-image" src="{{treasureContext.item.img}}" alt="{{treasureContext.item.name}}">
@@ -93,12 +92,10 @@
             </a>
           </div>
           <div class="item-column item-controls">
-            <a data-action="toggleItemEmbed">
-              <i class="fa-solid fa-angle-{{ifThen treasureContext.expanded "down" "right"}}"></i>
-            </a>
+            <a class="fa-solid fa-angle-{{ifThen treasureContext.expanded "down" "right"}}" data-action="toggleDocumentDescription"></a>
           </div>
         </div>
-        <div class="item-embed">
+        <div class="document-description item-embed {{#if treasureContext.expanded}}expanded{{/if}}">
           {{#if treasureContext.expanded}}{{{treasureContext.embed.outerHTML}}}{{/if}}
         </div>
       </li>

@@ -6,8 +6,7 @@
     "source": {
       "book": "Monsters",
       "page": "180",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "alchemical-device",
     "story": "",
@@ -27,7 +26,8 @@
     "damageDisplay": "melee",
     "target": {
       "type": "enemy",
-      "value": null
+      "value": null,
+      "custom": "Each enemy and object in the area"
     },
     "power": {
       "roll": {
@@ -77,7 +77,7 @@
           }
         },
         "WoQ1Q8BcxmPBSXXN": {
-          "name": "Slowed",
+          "name": "Slowed and Restrained",
           "img": null,
           "type": "applied",
           "_id": "WoQ1Q8BcxmPBSXXN",
@@ -92,8 +92,8 @@
                 }
               },
               "potency": {
-                "value": "@potency.weak",
-                "characteristic": "none"
+                "value": "0",
+                "characteristic": "agility"
               }
             },
             "tier2": {
@@ -106,7 +106,7 @@
                 }
               },
               "potency": {
-                "value": "@potency.average",
+                "value": "1",
                 "characteristic": ""
               }
             },
@@ -119,7 +119,7 @@
                 }
               },
               "potency": {
-                "value": "@potency.strong",
+                "value": "2",
                 "characteristic": ""
               }
             }
@@ -128,8 +128,8 @@
       }
     },
     "effect": {
-      "before": "<p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Note:</span></strong></span> Targets each enemy <strong>and object</strong> in the area.</p><p></p>",
-      "after": "<p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Special:</span></strong></span> This ability can’t be used by a minion.</p>"
+      "before": "",
+      "after": "<p><strong>Special:</strong> This ability can’t be used by a minion.</p>"
     },
     "spend": {
       "text": "",
@@ -149,9 +149,9 @@
     "compendiumSource": "Actor.3sZIJ1aJRhMF6iK5.Item.80gzHodmr6sIzkR2",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1755639546111,
     "modifiedTime": null,
     "lastModifiedBy": null

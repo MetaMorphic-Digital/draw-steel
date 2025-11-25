@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "63",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "63"
         },
         "_dsid": "lethe",
@@ -151,7 +149,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "63"
         },
         "_dsid": "soulsight",
@@ -264,7 +261,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "63"
         },
         "_dsid": "floor-to-flesh",
@@ -332,7 +328,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "63"
         },
         "_dsid": "grasping-tendons",
@@ -370,8 +365,7 @@
         "source": {
           "book": "Monsters",
           "page": "60",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "soulburn",
         "story": "",
@@ -434,8 +428,7 @@
         "source": {
           "book": "Monsters",
           "page": "60",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "abyssal-evolution",
         "story": "",
@@ -487,17 +480,15 @@
       "_key": "!actors.items!MH2w4vm4a1H8TzMj.koF8i0TPdYrfcm4F"
     },
     {
-      "folder": "2qh7vaUC82R9wTpn",
       "name": "Abyssal Rift",
       "type": "ability",
-      "_id": "G1VEc1g9pr75VU0O",
+      "_id": "2SIEPuBCCdYjhLdq",
       "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
       "system": {
         "source": {
           "book": "Monsters",
           "page": "60",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "abyssal-rift",
         "story": "",
@@ -511,7 +502,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -521,7 +514,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Two size 2 rifts to the Abyssal Wasteland appear at locations of your choice. Any demon can use an abyssal rift as a portal to another abyssal rift in the encounter, moving into any space in one rift and appearing immediately in any unoccupied space in the other rift. A non-demon who enters a rift for the first time in a round or starts their turn there takes corruption damage equal to the level of the highest-level demon on the encounter map. An abyssal rift is an immovable object that has 25 Stamina, damage immunity 2, and holy weakness 5. The rift closes when there are no demons remaining on the encounter map. Additionally, a creature who has the Magic or Psionics skill can make a <strong>Reason test or Intuition test</strong> as a maneuver while adjacent to a rift to destabilize and close it.</p><p></p><table><tbody><tr><td data-colwidth=\"105\"><p>11 or less</p></td><td><p>The rift remains open and regains [[/heal 5]] Stamina.</p></td></tr><tr><td data-colwidth=\"105\"><p>12-16</p></td><td><p>The rift remains open.</p></td></tr><tr><td data-colwidth=\"105\"><p>17+</p></td><td><p>The rift closes.</p></td></tr></tbody></table>",
+          "before": "<p>Two size 2 rifts to the Abyssal Wasteland appear at locations of your choice. Any demon can use an abyssal rift as a portal to another abyssal rift in the encounter, moving into any space in one rift and appearing immediately in any unoccupied space in the other rift. A non-demon who enters a rift for the first time in a round or starts their turn there takes corruption damage equal to the level of the highest-level demon on the encounter map. An abyssal rift is an immovable object that has 25 Stamina, damage immunity 2, and holy weakness 5. The rift closes when there are no demons remaining on the encounter map. Additionally, a creature who has the Magic or Psionics skill can make a <strong>Reason test or Intuition test</strong> as a maneuver while adjacent to a rift to destabilize and close it.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>The rift remains open and regains [[/heal 5]].</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The rift remains open.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>The rift closes.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -530,23 +523,25 @@
         }
       },
       "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.G1VEc1g9pr75VU0O",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
+        "systemVersion": "0.9.0",
+        "createdTime": 1763816889911,
+        "modifiedTime": null,
+        "lastModifiedBy": null
       },
-      "_key": "!actors.items!MH2w4vm4a1H8TzMj.G1VEc1g9pr75VU0O"
+      "ownership": {
+        "default": 0,
+        "CIQwmPP4Pjosq4Yp": 3
+      },
+      "folder": null,
+      "sort": 0,
+      "_key": "!actors.items!MH2w4vm4a1H8TzMj.2SIEPuBCCdYjhLdq"
     }
   ],
   "folder": "6DKl8v5ROTdmTFsZ",

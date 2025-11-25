@@ -12,8 +12,7 @@
     "source": {
       "book": "Heroes",
       "page": "63",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "laborer",
     "advancements": {
@@ -59,14 +58,21 @@
         "chooseN": 1
       },
       "AlOrDwMy2S589YIi": {
-        "name": "One Exploration Perk",
-        "img": null,
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
         "type": "itemGrant",
         "requirements": {
           "level": null
         },
         "_id": "AlOrDwMy2S589YIi",
-        "chooseN": 1
+        "chooseN": 1,
+        "description": "<p>One exploration perk (<em>Quick Build:</em> Brawny.)</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "exploration"
+          ]
+        }
       }
     },
     "projectPoints": 120,
@@ -83,9 +89,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1754495708332,
     "modifiedTime": null,
     "lastModifiedBy": null

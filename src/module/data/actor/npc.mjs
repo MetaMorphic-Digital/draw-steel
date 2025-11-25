@@ -87,7 +87,31 @@ export default class NPCModel extends BaseActorModel {
 
   /** @inheritdoc */
   get isMinion() {
-    return foundry.utils.getProperty(this, "monster.organization") === "minion";
+    return this.monster.organization === "minion";
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+
+    const updates = {};
+
+    const compendium = game.packs.get(this.parent.pack);
+    if (compendium) {
+      if (compendium.metadata.packageType === "system") foundry.utils.setProperty(updates, "source.license", "Draw Steel Creator License");
+      else if (compendium.metadata.packageType === "module") {
+        const m = game.modules.get(compendium.metadata.packageName);
+        const defaultBook = foundry.utils.getProperty(m, "flags.draw-steel.defaultBook");
+        if (defaultBook) foundry.utils.setProperty(updates, "source.book", defaultBook);
+        const defaultLicense = foundry.utils.getProperty(m, "flags.draw-steel.defaultLicense");
+        if (defaultLicense) foundry.utils.setProperty(updates, "source.license", defaultLicense);
+      }
+    }
+
+    if (!foundry.utils.isEmpty(updates)) this.updateSource(updates);
   }
 
   /* -------------------------------------------------- */
@@ -95,7 +119,25 @@ export default class NPCModel extends BaseActorModel {
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
-    this.source.prepareData(this.parent._stats?.compendiumSource ?? this.parent.uuid);
+    this.source.prepareData();
+
+    const keywordFormatter = game.i18n.getListFormatter({ type: "unit" });
+
+    const monsterKeywords = ds.CONFIG.monsters.keywords;
+    const keywordList = Array.from(this.monster.keywords).map(k => monsterKeywords[k]?.label).filter(_ => _);
+    this.monster.keywords.list = keywordList;
+    this.monster.keywords.labels = keywordFormatter.format(keywordList);
+
+    const organizations = ds.CONFIG.monsters.organizations;
+    this.monster.organizationLabel = organizations[this.monster.organization]?.label ?? "";
+
+    const roles = ds.CONFIG.monsters.roles;
+    this.monster.roleLabel = roles[this.monster.role]?.label ?? "";
+
+    const data = { value: this.monster.ev };
+    this.monster.evLabel = this.isMinion
+      ? game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Minion", data)
+      : game.i18n.format("DRAW_STEEL.Actor.npc.EVLabel.Other", data);
   }
 
   /* -------------------------------------------------- */

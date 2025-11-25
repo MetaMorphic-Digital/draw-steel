@@ -79,8 +79,7 @@
     "source": {
       "book": "Monsters",
       "page": "42",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -113,7 +112,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "42"
         },
         "_dsid": "natures-spirit",
@@ -178,7 +176,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "42"
         },
         "_dsid": "toss",
@@ -207,7 +204,7 @@
       "_key": "!actors.items!UBTaAFYnIGKvvAOj.GHNn3MGemqCi91Va"
     },
     {
-      "name": "**Juke**",
+      "name": "Juke",
       "type": "ability",
       "img": "icons/skills/movement/arrow-upward-yellow.webp",
       "system": {
@@ -242,7 +239,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "42"
         },
         "_dsid": "juke",
@@ -258,7 +254,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
@@ -278,8 +274,7 @@
         "source": {
           "book": "Monsters",
           "page": "42",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "natural-weapon",
         "story": "",
@@ -303,7 +298,9 @@
         "power": {
           "roll": {
             "formula": "@chr",
-            "characteristics": []
+            "characteristics": [
+              "agility"
+            ]
           },
           "effects": {
             "aaeiUH2NIgrCsOuk": {
@@ -401,9 +398,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },

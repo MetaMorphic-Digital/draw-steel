@@ -9,6 +9,13 @@ declare module "./base-advancement.mjs" {
   }
 }
 
+declare module "./characteristic.mjs" {
+  export default interface CharacteristicAdvancement {
+    characteristics: Record<string, number>;
+    max: number;
+  }
+}
+
 interface ItemGrantPool {
   uuid: string;
 }
@@ -18,6 +25,10 @@ declare module "./item-grant-advancement.mjs" {
     pool: ItemGrantPool[];
     /** If `null`, then this is explicitly a "receive all" - but also if the number is equal to or greater than the pool. */
     chooseN: number | null;
+    additional: {
+      type: string | undefined;
+      perkType: Set<string>;
+    }
   }
 }
 

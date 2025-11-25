@@ -1,0 +1,90 @@
+{
+  "folder": "aC2kQinXALeBQmzg",
+  "name": "I’ll Open and You’ll Close",
+  "type": "ability",
+  "_id": "KhPbwY2ufb5gsS8e",
+  "img": "icons/skills/melee/strike-polearm-light-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "184",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "ill-open-and-youll-close",
+    "story": "You create an opening for an ally.",
+    "keywords": [
+      "melee",
+      "ranged",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "meleeRanged",
+      "primary": 1,
+      "secondary": 5
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "iCKe7EYAmCYMjYFV": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "iCKe7EYAmCYMjYFV",
+          "damage": {
+            "tier1": {
+              "value": "6 + @chr"
+            },
+            "tier2": {
+              "value": "10 + @chr"
+            },
+            "tier3": {
+              "value": "14 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>One ally within 10 squares of you can use a heroic ability against the target as a free triggered action without spending any of their Heroic Resource, as long as they have enough Heroic Resource to pay for the ability. If the target is reduced to 0 Stamina before the chosen ally has used their ability, the ally can pick a different target.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761255106501,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!KhPbwY2ufb5gsS8e"
+}

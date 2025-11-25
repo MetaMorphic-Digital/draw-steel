@@ -35,7 +35,7 @@
         "letter": "M"
       },
       "stability": 6,
-      "turns": 1
+      "turns": 2
     },
     "movement": {
       "value": 8,
@@ -73,15 +73,14 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
       "page": "95",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -115,7 +114,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "solo-monster",
@@ -153,7 +151,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "withering-wyrmscale-aura",
@@ -191,7 +188,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "provoking-nettles",
@@ -235,8 +231,9 @@
           "tertiary": 1
         },
         "target": {
-          "type": "enemy",
-          "value": null
+          "type": "enemyObject",
+          "value": null,
+          "custom": "Each enemy and object in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -246,61 +243,10 @@
               "agility"
             ]
           },
-          "effects": {
-            "G0iD5SWwG9OQT27I": {
-              "name": "",
-              "img": null,
-              "type": "applied",
-              "_id": "G0iD5SWwG9OQT27I",
-              "applied": {
-                "tier1": {
-                  "display": "",
-                  "effects": {
-                    "evd5O1lH9z6bKcPr": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.weak",
-                    "characteristic": "none"
-                  }
-                },
-                "tier2": {
-                  "display": "",
-                  "effects": {
-                    "evd5O1lH9z6bKcPr": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.average",
-                    "characteristic": ""
-                  }
-                },
-                "tier3": {
-                  "display": "",
-                  "effects": {
-                    "evd5O1lH9z6bKcPr": {
-                      "condition": "failure",
-                      "end": "save",
-                      "properties": []
-                    }
-                  },
-                  "potency": {
-                    "value": "@potency.strong",
-                    "characteristic": ""
-                  }
-                }
-              }
-            }
-          }
+          "effects": {}
         },
         "effect": {
-          "before": "<p><strong>Note:</strong> Targets each Enemy and Object in the area.</p><p>Each target makes a <strong>Might test.</strong></p><table><tbody><tr><td data-colwidth=\"121\"><p>11 or less</p></td><td><p>[[/damage 12 poison]] damage; the target is dragonsealed (save ends)</p></td></tr><tr><td data-colwidth=\"121\"><p>12-16</p></td><td><p>[[/damage 9 poison]] damage; the target is dragonsealed (save ends)</p></td></tr><tr><td data-colwidth=\"121\"><p>17+</p></td><td><p>[[/damage 5 poison]] damage</p></td></tr></tbody></table>",
+          "before": "<p>Each target makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 poison]] damage; the target is [[/apply evd5O1lH9z6bKcPr save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 poison]] damage; the target is [[/apply evd5O1lH9z6bKcPr save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 poison]] damage</p></dd></dl>",
           "after": "<p>A dragonsealed creature has their wounds bound by nettles and thorns, causing them to take an extra [[/damage 1d3]] damage whenever they take damage rolled as a d6 or a d3.</p>"
         },
         "spend": {
@@ -310,7 +256,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "virulent-breath",
@@ -367,9 +312,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -397,7 +342,7 @@
           "primary": 2
         },
         "target": {
-          "type": "creatureObject",
+          "type": "enemyObject",
           "value": 2
         },
         "damageDisplay": "melee",
@@ -551,7 +496,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "spinous-tail-swing",
@@ -567,9 +511,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -595,7 +539,8 @@
         },
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "damageDisplay": "melee",
         "power": {
@@ -608,8 +553,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>Each target must be dragonsealed. Each target is pulled up to 5 squares toward the dragon, who gains 5 temporary Stamina for each target pulled.</p>"
+          "before": "<p>Each target must be dragonsealed. Each target is pulled up to 5 squares toward the dragon, who gains [[/heal 5 temp]] for each target pulled.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -618,7 +563,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "investiture-of-verdure",
@@ -634,9 +578,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -676,8 +620,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The target is pulled up to 5 squares toward the dragon, and if they have A &lt; 2, they are restrained until the end of their next turn.</p>"
+          "before": "<p>The target is pulled up to 5 squares toward the dragon, and if they have A &lt; 2, they are [[/apply restrained turn]] until the end of their next turn.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -686,7 +630,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "prickly-situation",
@@ -702,9 +645,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -743,8 +686,8 @@
           "effects": {}
         },
         "effect": {
-          "before": "",
-          "after": "<p>The dragon makes a free strike against the target, and if the target has M &lt; 2, they are bleeding until the end of their next turn.</p>"
+          "before": "<p>The dragon makes a free strike against the target, and if the target has M &lt; 2, they are [[/apply bleeding turn]] until the end of their next turn.</p>",
+          "after": ""
         },
         "spend": {
           "text": "",
@@ -753,7 +696,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "thorny-scales",
@@ -769,9 +711,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -907,7 +849,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "briar-bindings",
@@ -961,7 +902,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The thorns upon the dragon's scales grow longer and sharper. Until the end of the encounter, any adjacent creature who targets the dragon with a melee strike takes 3 damage. The dragon then uses their Provoking Nettles ability.</p>",
+          "before": "<p>The thorns upon the dragon's scales grow longer and sharper. Until the end of the encounter, any adjacent creature who targets the dragon with a melee strike takes [[/damage 3]] damage. The dragon then uses their Provoking Nettles ability.</p>",
           "after": ""
         },
         "spend": {
@@ -971,7 +912,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "thorned-armor",
@@ -987,9 +927,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1025,7 +965,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>Poisonous overgrowth and seeking vines cover all surfaces on the encounter map. The dragon uses their Bramble Barricade Malice feature twice at no cost. Until the end of the encounter, any creature force moved by the dragon takes [[/damage 1d3 poison]] damage, and if they have M &lt; 2, they are weakened (save ends).</p>",
+          "before": "<p>Poisonous overgrowth and seeking vines cover all surfaces on the encounter map. The dragon uses their Bramble Barricade Malice feature twice at no cost. Until the end of the encounter, any creature force moved by the dragon takes [[/damage 1d3 poison]] damage, and if they have M &lt; 2, they are [[/apply weakened save]]</p>",
           "after": "<p><strong>Special:</strong> If the Thorn Dragon’s Domain trait is in effect, any creature other than the dragon who starts their turn on the encounter map takes [[/damage 1d3 poison]] damage.</p>"
         },
         "spend": {
@@ -1035,7 +975,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "95"
         },
         "_dsid": "malign-thicket",
@@ -1051,9 +990,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1073,8 +1012,7 @@
         "source": {
           "book": "Monsters",
           "page": "95",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "cage-of-thorns",
         "story": "",
@@ -1098,7 +1036,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A cage of thorns grows around one dragonsealed enemy on the encounter map, making that enemy restrained until the end of their next turn.</p>",
+          "before": "<p>A cage of thorns grows around one dragonsealed enemy on the encounter map, making that enemy [[/apply restrained turn]] until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -1117,9 +1055,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1135,8 +1073,7 @@
         "source": {
           "book": "Monsters",
           "page": "95",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "bramble-barricade",
         "story": "",
@@ -1160,7 +1097,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon grows a 10 wall of briars in unoccupied spaces on the encounter map. The wall blocks line of effect for all creatures except the dragon. Each square of the wall has 5 Stamina and fire weakness 5. The area can be moved through but is difficult terrain. Any creature who is force moved into or within the area takes [[/damage 1]] damage for each square of the area entered and is bleeding until the end of their next turn.</p>",
+          "before": "<p>The dragon grows a 10 wall of briars in unoccupied spaces on the encounter map. The wall blocks line of effect for all creatures except the dragon. Each square of the wall has 5 Stamina and fire weakness 5. The area can be moved through but is difficult terrain. Any creature who is force moved into or within the area takes [[/damage 1]] damage for each square of the area entered and is [[/apply bleeding turn]] until the end of their next turn.</p>",
           "after": ""
         },
         "spend": {
@@ -1179,9 +1116,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1197,8 +1134,7 @@
         "source": {
           "book": "Monsters",
           "page": "95",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "solo-action",
         "story": "",
@@ -1259,8 +1195,7 @@
         "source": {
           "book": "Monsters",
           "page": "95",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "afflictive-overgrowth",
         "story": "",
@@ -1284,7 +1219,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test.</strong></p><table><tbody><tr><td data-colwidth=\"122\"><p>11 or less</p></td><td><p>[[/damage 12 poison]] damage; restrained (save ends)</p></td></tr><tr><td data-colwidth=\"122\"><p>12-16</p></td><td><p>[[/damage 9 poison]] damage; bleeding (save ends)</p></td></tr><tr><td data-colwidth=\"122\"><p>17+</p></td><td><p>[[/damage 5 poison]] damage; bleeding (EoT)</p></td></tr></tbody></table>",
+          "before": "<p>The dragon summons poisonous, biting thorns around their foes. Each enemy on the encounter map makes an <strong>Agility test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 12 poison]] damage; [[/apply restrained save]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 9 poison]] damage; [[/apply bleeding save]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>[[/damage 5 poison]] damage; [[/apply bleeding turn]]</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -1303,9 +1238,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -1407,7 +1342,50 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "Dragonsealed",
+      "img": "icons/creatures/reptiles/lizard-mouth-glowing-red.webp",
+      "origin": "Actor.ppX4EvIyyST6XGZG.Item.RnNLHlAB5q48V5PG",
+      "transfer": false,
+      "type": "base",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": true,
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": 1,
+        "startTurn": 0
+      },
+      "description": "<p>A dragonsealed creature has their wounds bound by nettles and thorns, causing them to take an extra [[/damage 1d3]] damage whenever they take damage rolled as a d6 or a d3.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.s8Dvj26hssemdUrw.Item.RnNLHlAB5q48V5PG.ActiveEffect.evd5O1lH9z6bKcPr",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1760899852191,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "VE5hM241DRNO06JB",
+      "sort": 0,
+      "_key": "!actors.effects!s8Dvj26hssemdUrw.VE5hM241DRNO06JB"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -1416,7 +1394,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.8.1",
     "createdTime": 1757107616495,

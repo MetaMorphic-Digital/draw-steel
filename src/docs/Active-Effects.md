@@ -61,6 +61,15 @@ Traits such as Humans' `Perseverance` can be activated via ActiveEffects, which 
 
 If the `Taunted` status effect is applied to an actor while another actor is targeted, the targeted actor becomes the source of the `Taunt`, and afterwards abilities that are targeted at actors other than the `Taunted` source actor automatically have a double bane while in line of effect to the `Taunted` source.
 
+### Flankable
+
+By default, all actors can be flanked. If an actor has the `Flankable` condition set to false, they cannot be flanked by enemies regardless of positioning. This prevents adjacent enemies from gaining the flanking bonus against the actor.
+
+An example to make an actor unflankable would be
+
+|`system.statuses.flankable`|Override|`false`|
+|---|---|---|
+
 ### Weakened
 
 If the `Weakened` status is applied to an actor, all power rolls of that actor automatically have a bane applied to them.
@@ -131,19 +140,28 @@ While there are similarities with roll data, active effects generally lead with 
 |Value Name|Attribute Key|
 |:---:|---|
 |Save Bonus|`system.combat.save.bonus`|
-|Actor Size (on sheet, not token size)|`system.combat.size`|
+|Save Threshold|`system.combat.save.threshold`|
+|Actor Size (on sheet, not token size)|`system.combat.size.value`|
+|Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
+|Bonus Stamina Per Level|`system.stamina.bonuses.level`|
 |Bonus Recovery Value|`system.recoveries.bonus`|
+|Bonus Recovery Divisor|`system.recoveries.divisor`|
 |Speed|`system.movement.value`|
+|Movement Multiplier|`system.movement.multiplier`|
 |Disengage|`system.movement.disengage`|
 |Damage [Type] Immunity|`system.damage.immunities.[type]`|
 |Damage [Type] Weakness|`system.damage.weaknesses.[type]`|
+|Condition Immunity|`system.statuses.immunities`|
+|Flankable|`system.statuses.flankable`|
+|Slowed Speed|`system.statuses.slowed.speed`|
 
 > Common Mistakes
 > **!**: Current Stamina (`system.stamina.value`) and Temporary Stamina (`system.stamina.temporary`) must *not* be targeted with an active effect. These are meant to regularly change, which is why they're exposed in play mode.
+> **!**: Effects which multiply movement (e.g. set to 0 or double) should target `system.movement.multiplier | MULTIPLY | 2` to ensure that it is applied at the right stage.
 
 > <details><summary>The viable damage [types] for Immunities and Weaknesses are:</summary>
 >
@@ -163,6 +181,29 @@ While there are similarities with roll data, active effects generally lead with 
 > An Example to add fire immunity 3 would be
 >
 > |`system.damage.immunities.fire`|Add|`3`|
+> |---|---|---|
+>
+></details>
+
+> <details><summary>The viable conditions for Immunities are:</summary>
+>
+> |Condition|Active Effect Attribute Key|
+> |:---:|---|
+> |Bleeding|`bleeding`
+> |Dazed|`dazed`
+> |Frightened|`frightened`
+> |Grabbed|`grabbed`
+> |Prone|`prone`
+> |Restrained|`restrained`
+> |Slowed|`slowed`
+> |Taunted|`taunted`
+> |Weakened|`weakened`
+>
+> Immunity to a condition will prevent applying that condition in the future, but will not affect conditions already present.
+>
+> An example to add immunity to Slowed would be
+>
+> |`system.statuses.immunities`|Add|`slowed`|
 > |---|---|---|
 >
 ></details>

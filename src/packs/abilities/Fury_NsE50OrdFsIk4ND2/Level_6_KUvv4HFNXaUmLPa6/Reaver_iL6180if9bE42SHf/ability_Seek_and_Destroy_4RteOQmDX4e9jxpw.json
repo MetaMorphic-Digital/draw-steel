@@ -1,0 +1,122 @@
+{
+  "folder": "iL6180if9bE42SHf",
+  "name": "Seek and Destroy",
+  "type": "ability",
+  "_id": "4RteOQmDX4e9jxpw",
+  "img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "138",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "seek-and-destroy",
+    "story": "You break through the enemy lines to make an example.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "might"
+        ]
+      },
+      "effects": {
+        "e08cgScJoDNm1eSl": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "e08cgScJoDNm1eSl",
+          "damage": {
+            "tier1": {
+              "value": "4 + @chr"
+            },
+            "tier2": {
+              "value": "6 + @chr"
+            },
+            "tier3": {
+              "value": "10 + @chr"
+            }
+          }
+        },
+        "NYVcSO7ZwHe7C6qH": {
+          "name": "",
+          "img": null,
+          "type": "applied",
+          "_id": "NYVcSO7ZwHe7C6qH",
+          "applied": {
+            "tier1": {
+              "display": "{{potency}}, frightened (save ends)",
+              "potency": {
+                "characteristic": "presence"
+              },
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier2": {
+              "effects": {
+                "frightened": {
+                  "condition": "failure",
+                  "end": ""
+                }
+              }
+            },
+            "tier3": {
+              "effects": {
+                "frightened": {
+                  "condition": "failure"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>You shift up to your speed.</p>",
+      "after": "<p>If a target who is not a leader or solo creature is winded by this strike, they are reduced to 0 Stamina and you choose an enemy within 5 squares of you. If that enemy has P&lt;AVERAGE, they are [[/apply frightened save]].</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761523308183,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!4RteOQmDX4e9jxpw"
+}

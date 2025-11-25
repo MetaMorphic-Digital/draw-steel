@@ -72,15 +72,14 @@
       }
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
     "source": {
       "book": "Monsters",
       "page": "55",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -103,44 +102,6 @@
   },
   "items": [
     {
-      "name": "With Captain",
-      "type": "feature",
-      "img": "icons/skills/social/intimidation-impressing.webp",
-      "system": {
-        "description": {
-          "value": "<p><strong>With Captain:</strong> Gain an edge on strikes</p>",
-          "director": ""
-        },
-        "source": {
-          "book": "Monsters",
-          "license": "Draw Steel Creator License",
-          "revision": 1,
-          "page": "55"
-        },
-        "_dsid": "with-captain",
-        "advancements": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": -100000,
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_id": "PtZrnyNxq2BK3bqI",
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!BUM1285qoUoaorwL.PtZrnyNxq2BK3bqI"
-    },
-    {
       "name": "Bu'gathic Inspiration",
       "type": "feature",
       "img": "icons/creatures/unholy/demon-hairy-winged-pink.webp",
@@ -152,7 +113,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "55"
         },
         "_dsid": "bugathic-inspiration",
@@ -190,7 +150,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "55"
         },
         "_dsid": "magic-terror",
@@ -234,8 +193,9 @@
           "primary": 1
         },
         "target": {
-          "type": "creature",
-          "value": 1
+          "type": "creatureObject",
+          "value": 1,
+          "custom": "One creature or object per minion"
         },
         "damageDisplay": "melee",
         "power": {
@@ -382,7 +342,6 @@
         "source": {
           "book": "Monsters",
           "license": "Draw Steel Creator License",
-          "revision": 1,
           "page": "55"
         },
         "_dsid": "corrosive-blade",
@@ -400,7 +359,7 @@
         "exportSource": null,
         "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -420,8 +379,7 @@
         "source": {
           "book": "Monsters",
           "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "goblin-malice-features",
         "story": "",
@@ -482,8 +440,7 @@
         "source": {
           "book": "Monsters",
           "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "grab-iron-ball",
         "story": "",
@@ -536,68 +493,6 @@
     },
     {
       "folder": "wOmSdK6NadZYxvlf",
-      "name": "Grab Javelin",
-      "type": "ability",
-      "_id": "5stni4cw4IVUjzqM",
-      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
-      "system": {
-        "source": {
-          "book": "Monsters",
-          "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
-        },
-        "_dsid": "grab-javelin",
-        "story": "",
-        "keywords": [],
-        "type": "none",
-        "category": "heroic",
-        "resource": null,
-        "trigger": "",
-        "distance": {
-          "type": "special"
-        },
-        "damageDisplay": "melee",
-        "target": {
-          "type": "special"
-        },
-        "power": {
-          "roll": {
-            "formula": "@chr",
-            "characteristics": []
-          },
-          "effects": {}
-        },
-        "effect": {
-          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have m&lt;1 they are bleeding (save ends). While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
-          "after": ""
-        },
-        "spend": {
-          "text": "",
-          "value": null
-        }
-      },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.348",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
-      "_key": "!actors.items!BUM1285qoUoaorwL.5stni4cw4IVUjzqM"
-    },
-    {
-      "folder": "wOmSdK6NadZYxvlf",
       "name": "Show Them the Great Fear",
       "type": "ability",
       "_id": "XPiOlpj5iRNcFIvP",
@@ -606,8 +501,7 @@
         "source": {
           "book": "Monsters",
           "page": "52",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "show-them-the-great-fear",
         "story": "",
@@ -640,7 +534,7 @@
         }
       },
       "effects": [],
-      "sort": 0,
+      "sort": 200000,
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
@@ -650,13 +544,77 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.351",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
       "_key": "!actors.items!BUM1285qoUoaorwL.XPiOlpj5iRNcFIvP"
+    },
+    {
+      "name": "Grab Javelin",
+      "type": "ability",
+      "_id": "Ie5fkOP90woMMUVx",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "system": {
+        "source": {
+          "book": "Monsters",
+          "page": "52",
+          "license": "Draw Steel Creator License"
+        },
+        "_dsid": "grab-javelin",
+        "story": "",
+        "keywords": [],
+        "type": "none",
+        "category": "heroic",
+        "resource": null,
+        "trigger": "",
+        "distance": {
+          "type": "special"
+        },
+        "damageDisplay": "melee",
+        "target": {
+          "type": "special",
+          "custom": "",
+          "value": null
+        },
+        "power": {
+          "roll": {
+            "formula": "@chr",
+            "characteristics": []
+          },
+          "effects": {}
+        },
+        "effect": {
+          "before": "<p>For every 5 Malice spent, one non-minion bugbear acting this turn grabs a javelin and can use a maneuver to throw it at a creature within 5 squares of them. The creature takes damage equal to 12 – the number of squares the javelin was thrown, and if they have M&lt;1 they are [[/apply bleeding save]]. While a creature is bleeding this way, any ally of the bugbear within 2 squares of them can use a free maneuver to pull the bleeding creature up to 2 squares.</p>",
+          "after": ""
+        },
+        "spend": {
+          "text": "",
+          "value": null
+        }
+      },
+      "effects": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.5stni4cw4IVUjzqM",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1763816685347,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "ownership": {
+        "default": 0,
+        "CIQwmPP4Pjosq4Yp": 3
+      },
+      "folder": null,
+      "sort": 100000,
+      "_key": "!actors.items!BUM1285qoUoaorwL.Ie5fkOP90woMMUVx"
     }
   ],
   "folder": "IOJX0Gbij4nZLkvh",
@@ -754,7 +712,55 @@
     "appendNumber": false,
     "prependAdjective": false
   },
-  "effects": [],
+  "effects": [
+    {
+      "name": "With Captain",
+      "img": "icons/skills/social/intimidation-impressing.webp",
+      "type": "abilityModifier",
+      "origin": "Compendium.draw-steel.monsters.Actor.BUM1285qoUoaorwL",
+      "disabled": true,
+      "_id": "UB3zf3KGhETDFWGX",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        },
+        "filters": {
+          "keywords": [
+            "strike"
+          ]
+        }
+      },
+      "changes": [],
+      "duration": {
+        "startTime": 0,
+        "combat": null,
+        "startRound": 1,
+        "startTurn": 0,
+        "seconds": null,
+        "rounds": null,
+        "turns": null
+      },
+      "description": "<p>Gain an edge on strikes.</p>",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.348",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1758857463259,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.effects!BUM1285qoUoaorwL.UB3zf3KGhETDFWGX"
+    }
+  ],
   "ownership": {
     "default": 0
   },
@@ -765,7 +771,7 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757089811510,
     "modifiedTime": null,
     "lastModifiedBy": null

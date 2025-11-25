@@ -47,6 +47,12 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
   /** @inheritdoc */
   prepareDerivedData() {
     super.prepareDerivedData();
+
+    // prepare derived item data that relies on derived actor values (i.e. ability potencies)
+    for (const item of this.items) {
+      item.system.preparePostActorPrepData();
+    }
+
     Hooks.callAll("ds.prepareActorData", this);
   }
 

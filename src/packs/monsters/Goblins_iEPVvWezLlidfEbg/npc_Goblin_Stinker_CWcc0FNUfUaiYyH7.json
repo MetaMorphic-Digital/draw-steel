@@ -81,8 +81,7 @@
     "source": {
       "book": "Monsters",
       "page": "163",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -210,8 +209,7 @@
         "source": {
           "book": "Monsters",
           "page": "163",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "crafty",
         "advancements": {}
@@ -244,8 +242,7 @@
         "source": {
           "book": "Monsters",
           "page": "163",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "toxic-winds",
         "story": "",
@@ -265,7 +262,8 @@
         "damageDisplay": "melee",
         "target": {
           "type": "enemy",
-          "value": null
+          "value": null,
+          "custom": "Each enemy in the area"
         },
         "power": {
           "roll": {
@@ -385,9 +383,9 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.348",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
@@ -401,8 +399,7 @@
         "source": {
           "book": "Monsters",
           "page": "163",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "swamp-gas",
         "story": "",
@@ -469,8 +466,7 @@
         "source": {
           "book": "Monsters",
           "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "goblin-mode",
         "story": "",
@@ -531,8 +527,7 @@
         "source": {
           "book": "Monsters",
           "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "tiny-stabs",
         "story": "",
@@ -593,8 +588,7 @@
         "source": {
           "book": "Monsters",
           "page": "160",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "swamp-stink",
         "story": "",
@@ -607,7 +601,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -619,7 +615,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>The encounter map is covered in a green mist that lasts until the end of the round, and which can’t be dispersed by wind. All areas of the map are difficult terrain for non-goblins, and each non-goblin on the map makes a <span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Might test.</span></strong></span></p><table><tbody><tr><td data-colwidth=\"98\"><p>11 or less</p></td><td><p>[[/damage 5 poison]] damage; the creature is weakened until the mist disappears</p></td></tr><tr><td data-colwidth=\"98\"><p>12-16</p></td><td><p>The creature is weakened until the mist disappears</p></td></tr><tr><td data-colwidth=\"98\"><p>17+</p></td><td><p>No Effect</p></td></tr></tbody></table>",
+          "before": "<p>The encounter map is covered in a green mist that lasts until the end of the round, and which can’t be dispersed by wind. All areas of the map are difficult terrain for non-goblins, and each non-goblin on the map makes a <strong>Might test.</strong></p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 5 poison]]{5 poison damage}; the creature is [[/apply weakened]] until the mist disappears.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>The creature is [[/apply weakened]] until the mist disappears.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -665,9 +661,9 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm.q7HlyoZVCjDQjV8N"
@@ -700,9 +696,9 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm.diY2QfVz88MGGy8p"
@@ -735,9 +731,9 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm.pQmjqzyTzWCf2nj4"
@@ -770,9 +766,9 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm.sHqFyZPtZEXdviKs"
@@ -805,31 +801,32 @@
             "compendiumSource": null,
             "duplicateSource": null,
             "exportSource": null,
-            "coreVersion": "13.347",
+            "coreVersion": "13.350",
             "systemId": "draw-steel",
-            "systemVersion": "0.8.0",
+            "systemVersion": "0.9.0",
             "lastModifiedBy": null
           },
           "_key": "!actors.items.effects!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm.KYZB3U4Batf1yIgd"
         }
       ],
-      "folder": "vxOVWECtypuYigNy",
-      "sort": 300000,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monster-features.Item.vZMdicLidQzWMkgm",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761170013459,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
       "ownership": {
         "default": 0,
         "R75FAhxK5fADaoJF": 3
       },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null,
-        "coreVersion": "13.347",
-        "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "lastModifiedBy": null,
-        "modifiedTime": null
-      },
+      "folder": null,
+      "sort": 300000,
       "_key": "!actors.items!CWcc0FNUfUaiYyH7.vZMdicLidQzWMkgm"
     }
   ],
@@ -844,7 +841,7 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755922157792,
     "modifiedTime": null,
     "lastModifiedBy": null

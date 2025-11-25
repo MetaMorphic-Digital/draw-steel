@@ -1,0 +1,88 @@
+{
+  "folder": "rP4FOCbgnSIutaW7",
+  "name": "Renegotiated Contract",
+  "type": "ability",
+  "_id": "24jSnYvx9YDPpye9",
+  "img": "icons/sundries/documents/document-sealed-red-tan.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "214",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "renegotiated-contract",
+    "story": "No, no. You don’t die until the sequel.",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 11,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "custom": "",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "presence"
+        ]
+      },
+      "effects": {
+        "QVZAo2bRnCOMMQWo": {
+          "name": "Ending Effects",
+          "img": null,
+          "type": "other",
+          "_id": "QVZAo2bRnCOMMQWo",
+          "other": {
+            "tier1": {
+              "display": "You and the target can each end one effect on yourselves that is ended by a saving throw or that ends at the end of your turns."
+            },
+            "tier2": {
+              "display": "You and the target can end any effects on yourselves that are ended by a saving throw or that end at the end of your turns."
+            },
+            "tier3": {
+              "display": "You can choose any of the current effects on you and the target that are ended by a saving throw or that end at the end of your turns, apply the chosen effects to the target, and end the rest."
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "<p>Add your current Stamina to your target’s current Stamina, then you have half that total Stamina and the target has the remainder. If either of you would gain more Stamina this way than their Stamina maximum, the difference in Stamina between what that creature would gain and their maximum is gained by the other creature. Neither of you can gain more Stamina than your maximum this way. You then make a power roll.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761341196978,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!24jSnYvx9YDPpye9"
+}

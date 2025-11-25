@@ -1,0 +1,87 @@
+{
+  "folder": "mHEoUeiihUz4aLds",
+  "name": "En Garde!",
+  "type": "ability",
+  "_id": "MyHevRDBuDyivtDh",
+  "img": "icons/skills/melee/maneuver-sword-katana-yellow.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "208",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "en-garde",
+    "story": "Wait, it’s … Guard! Turn! Parry! Dodge! Spin! Thrust! Ha!",
+    "keywords": [
+      "melee",
+      "strike",
+      "weapon"
+    ],
+    "type": "main",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "",
+    "distance": {
+      "type": "melee",
+      "primary": 1
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "creature",
+      "value": 1
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "agility"
+        ]
+      },
+      "effects": {
+        "eoRsEKYsxNq0wKMW": {
+          "name": "",
+          "img": null,
+          "type": "damage",
+          "_id": "eoRsEKYsxNq0wKMW",
+          "damage": {
+            "tier1": {
+              "value": "7 + @chr"
+            },
+            "tier2": {
+              "value": "11 + @chr"
+            },
+            "tier3": {
+              "value": "16 + @chr"
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>The target can make a melee free strike against you. If they do, you can make a melee free strike against the target.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.347",
+    "systemId": "draw-steel",
+    "systemVersion": "0.8.0",
+    "createdTime": 1755823898435,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!MyHevRDBuDyivtDh"
+}

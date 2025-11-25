@@ -1,4 +1,5 @@
-.content-embed {
+/* Sheets do not include the document-embed wrapper but do use a `.content-embed` div class */
+document-embed, .content-embed {
   div.ability {
     h5 {
       margin: 0;
@@ -17,9 +18,6 @@
 
     .powerResult {
       margin-top: 1rem;
-      .potency {
-        color: red
-      }
     }
 
     .effect {

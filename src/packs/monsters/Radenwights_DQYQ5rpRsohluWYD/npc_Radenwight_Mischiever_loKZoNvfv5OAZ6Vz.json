@@ -40,7 +40,7 @@
       "turns": 1
     },
     "biography": {
-      "value": "<p></p>",
+      "value": "",
       "director": "",
       "languages": []
     },
@@ -82,8 +82,7 @@
     "source": {
       "book": "Monsters",
       "page": "227",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "negotiation": {
       "interest": 5,
@@ -206,8 +205,7 @@
         "source": {
           "book": "Monsters",
           "page": "227",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "ready-rodent",
         "story": "",
@@ -272,8 +270,7 @@
         "source": {
           "book": "Monsters",
           "page": "225",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "rat-race",
         "story": "",
@@ -333,16 +330,15 @@
         "source": {
           "book": "Monsters",
           "page": "227",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "dagger-dance",
         "story": "",
         "keywords": [
+          "melee",
           "ranged",
           "strike",
-          "weapon",
-          "melee"
+          "weapon"
         ],
         "category": "signature",
         "resource": null,
@@ -352,10 +348,11 @@
           "primary": 1,
           "secondary": 5
         },
-        "damageDisplay": "melee",
+        "damageDisplay": "ranged",
         "target": {
           "type": "creature",
-          "value": 1
+          "value": 1,
+          "custom": "One creature per minion"
         },
         "power": {
           "roll": {
@@ -425,16 +422,15 @@
         "compendiumSource": "Actor.loKZoNvfv5OAZ6Vz.Item.f4Jz2hXGnDkTTPEr",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.1",
+        "systemVersion": "0.9.0",
         "lastModifiedBy": null,
         "modifiedTime": null
       },
       "_key": "!actors.items!loKZoNvfv5OAZ6Vz.f4Jz2hXGnDkTTPEr"
     },
     {
-      "folder": "03K0sUwNwFfBqFBD",
       "name": "Rally the Rodents",
       "type": "ability",
       "_id": "jhYQClVszlAUFkeJ",
@@ -443,8 +439,7 @@
         "source": {
           "book": "Monsters",
           "page": "225",
-          "license": "Draw Steel Creator License",
-          "revision": 1
+          "license": "Draw Steel Creator License"
         },
         "_dsid": "rally-the-rodents",
         "story": "",
@@ -458,7 +453,9 @@
         },
         "damageDisplay": "melee",
         "target": {
-          "type": "special"
+          "type": "special",
+          "custom": "",
+          "value": null
         },
         "power": {
           "roll": {
@@ -468,7 +465,7 @@
           "effects": {}
         },
         "effect": {
-          "before": "<p>A radenwight uses music to coordinate living rats, forming a 10 wall of rats scurrying atop one another into unoccupied spaces anywhere on the encounter map. The wall doesn’t block line of effect for radenwights and their allies, but it does for other creatures as the rats coordinate their movements with the radenwights. Each square of the wall has 10 Stamina.</p><p>If the last radenwight in the encounter dies and the wall is still standing, the rats let out a hideous screech as they disperse. Each enemy on the encounter map makes an Intuition test.</p><p></p><table><tbody><tr><td data-colwidth=\"104\"><p>11 or less</p></td><td><p>[[/damage 7 sonic]] damage; the target can’t take a respite activity during their next respite.</p></td></tr><tr><td data-colwidth=\"104\"><p>12-16</p></td><td><p>[[/damage 5 sonic]] damage.</p></td></tr><tr><td data-colwidth=\"104\"><p>17+</p></td><td><p>No effect.</p></td></tr></tbody></table>",
+          "before": "<p>A radenwight uses music to coordinate living rats, forming a 10 wall of rats scurrying atop one another into unoccupied spaces anywhere on the encounter map. The wall doesn’t block line of effect for radenwights and their allies, but it does for other creatures as the rats coordinate their movements with the radenwights. Each square of the wall has 10 Stamina.</p><p>If the last radenwight in the encounter dies and the wall is still standing, the rats let out a hideous screech as they disperse. Each enemy on the encounter map makes an Intuition test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>[[/damage 7 sonic]]{7 damage}; the target can’t take a [[/apply X45S09BuckEngWpQ respite]]{respite activity} during their next respite.</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>[[/damage 5 sonic]]{5 damage}.</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
           "after": ""
         },
         "spend": {
@@ -476,24 +473,66 @@
           "value": null
         }
       },
-      "effects": [],
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "R75FAhxK5fADaoJF": 3
-      },
+      "effects": [
+        {
+          "name": "Rat-tled",
+          "img": "icons/magic/control/fear-fright-white.webp",
+          "origin": "Compendium.draw-steel.monsters.Actor.UxoLvIdRzgdLOAY0.Item.YXm8ANjisAFpg6gn",
+          "transfer": false,
+          "type": "base",
+          "system": {
+            "end": {
+              "type": "respite",
+              "roll": "1d10 + @combat.save.bonus"
+            }
+          },
+          "changes": [],
+          "disabled": false,
+          "duration": {
+            "startTime": null,
+            "combat": null,
+            "seconds": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "description": "<p>You cannot take a respite ability during your next respite.</p>",
+          "tint": "#ffffff",
+          "statuses": [],
+          "flags": {},
+          "_stats": {
+            "compendiumSource": "Compendium.draw-steel.monsters.Actor.UxoLvIdRzgdLOAY0.Item.YXm8ANjisAFpg6gn.ActiveEffect.zCKnRU0EG6qDeLzQ",
+            "duplicateSource": null,
+            "exportSource": null,
+            "coreVersion": "13.350",
+            "systemId": "draw-steel",
+            "systemVersion": "0.9.0",
+            "lastModifiedBy": null
+          },
+          "_id": "X45S09BuckEngWpQ",
+          "sort": 0,
+          "_key": "!actors.items.effects!loKZoNvfv5OAZ6Vz.jhYQClVszlAUFkeJ.X45S09BuckEngWpQ"
+        }
+      ],
       "flags": {},
       "_stats": {
         "compendiumSource": "Compendium.draw-steel.monster-features.Item.jhYQClVszlAUFkeJ",
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.347",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
-        "systemVersion": "0.8.0",
-        "createdTime": 1755714957006,
+        "systemVersion": "0.9.0",
+        "createdTime": 1761242359523,
         "modifiedTime": null,
         "lastModifiedBy": null
       },
+      "ownership": {
+        "default": 0,
+        "R75FAhxK5fADaoJF": 3
+      },
+      "folder": null,
+      "sort": 0,
       "_key": "!actors.items!loKZoNvfv5OAZ6Vz.jhYQClVszlAUFkeJ"
     }
   ],
@@ -535,7 +574,7 @@
           "priority": null
         }
       ],
-      "disabled": false,
+      "disabled": true,
       "duration": {
         "startTime": 0,
         "combat": null,
@@ -555,7 +594,7 @@
         "compendiumSource": null,
         "duplicateSource": null,
         "exportSource": null,
-        "coreVersion": "13.348",
+        "coreVersion": "13.350",
         "systemId": "draw-steel",
         "systemVersion": "0.8.1",
         "createdTime": 1757283592313,
@@ -574,9 +613,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.348",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755708893523,
     "modifiedTime": null,
     "lastModifiedBy": null

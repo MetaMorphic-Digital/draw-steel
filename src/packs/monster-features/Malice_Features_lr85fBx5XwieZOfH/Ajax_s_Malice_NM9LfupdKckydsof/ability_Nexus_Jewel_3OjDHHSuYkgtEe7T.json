@@ -1,0 +1,113 @@
+{
+  "name": "Nexus Jewel",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 5,
+    "trigger": "A ajax’s starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>Until the end of the round, Ajax chooses one of the following environments on top of the encounter map, temporarily merging multiple realities.</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Incredibly High Above the Ground:</span></strong></span> The winds whip and bluster. Any creature who can’t fly takes a −3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures. [[/apply RqFsTSh2IaSnituD]]</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Swamp</span></strong></span>: The ground is difficult terrain for enemies. Any creature who starts and ends their turn in the same space is [[/apply restrained save]]</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Volcanic Canyon:</span></strong></span> The air is stiflingly hot. Each enemy takes [[/damage 5 fire]]{5 fire damage} for each square they enter.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "32",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "nexus-jewel",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [
+    {
+      "name": "Incredibly High Above the Ground",
+      "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee",
+      "transfer": false,
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.combat.stability",
+          "mode": 2,
+          "value": "-3",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "<p>Any creature who can't fly takes a -3 penalty to stability, and forced movement effects gain a +3 bonus to their distance against such creatures.</p>",
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_stats": {
+        "compendiumSource": "Compendium.draw-steel.monsters.Actor.DZKCzrvXRPBUjUJf.Item.QQdv4SeqY90z8Yee.ActiveEffect.GuQPGtkIXZ53LJsT",
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1761703584742,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "RqFsTSh2IaSnituD",
+      "sort": 0,
+      "_key": "!items.effects!3OjDHHSuYkgtEe7T.RqFsTSh2IaSnituD"
+    }
+  ],
+  "folder": "NM9LfupdKckydsof",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761602037083,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "3OjDHHSuYkgtEe7T",
+  "sort": 200000,
+  "_key": "!items!3OjDHHSuYkgtEe7T"
+}

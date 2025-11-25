@@ -6,21 +6,21 @@
   "img": "icons/consumables/potions/potion-tube-corked-orange.webp",
   "system": {
     "description": {
-      "value": "<p>Keyword: oil</p><p><em>his cooling orange salve crackles and pops when exposed to the air.</em></p><p><strong>Effect:</strong> As a maneuver, you rub the balm on your body and feel it tingle across your skin. You immediately end the bleeding and weakened conditions on yourself, and you gain a +2 bonus to speed until the start of your next turn.</p>",
+      "value": "<p><em>This cooling orange salve crackles and pops when exposed to the air.</em></p><p><strong>Effect:</strong> As a maneuver, you rub the balm on your body and feel it tingle across your skin. You immediately end the bleeding and weakened conditions on yourself, and you gain a +2 bonus to speed until the start of your next turn.</p>",
       "director": ""
     },
     "source": {
       "book": "Heroes",
       "page": "316",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "buzz-balm",
     "kind": "",
     "category": "consumable",
     "echelon": 1,
     "keywords": [
-      "magic"
+      "magic",
+      "oil"
     ],
     "quantity": 1,
     "project": {
@@ -52,7 +52,7 @@
       "_id": "aDFBAt6bAypcSJF2",
       "changes": [
         {
-          "key": "@character.speed",
+          "key": "system.movement.value",
           "mode": 2,
           "value": "2",
           "priority": null
@@ -63,8 +63,8 @@
         "startTime": null,
         "combat": null,
         "seconds": null,
-        "rounds": null,
-        "turns": 1,
+        "rounds": 1,
+        "turns": null,
         "startRound": null,
         "startTurn": null
       },
@@ -98,7 +98,7 @@
     "exportSource": null,
     "coreVersion": "13.348",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1757755174216,
     "modifiedTime": null,
     "lastModifiedBy": null

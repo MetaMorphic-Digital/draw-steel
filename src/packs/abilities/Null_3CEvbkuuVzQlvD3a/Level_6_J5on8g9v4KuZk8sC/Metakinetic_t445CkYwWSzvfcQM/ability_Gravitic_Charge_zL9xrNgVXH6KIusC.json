@@ -1,0 +1,103 @@
+{
+  "folder": "t445CkYwWSzvfcQM",
+  "name": "Gravitic Charge",
+  "type": "ability",
+  "_id": "zL9xrNgVXH6KIusC",
+  "img": "icons/magic/unholy/beam-impact-purple.webp",
+  "system": {
+    "source": {
+      "book": "Heroes",
+      "page": "155",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "gravitic-charge",
+    "story": "You channel your discipline into momentum that defies gravity.",
+    "keywords": [
+      "psionic"
+    ],
+    "type": "maneuver",
+    "category": "heroic",
+    "resource": 9,
+    "trigger": "",
+    "distance": {
+      "type": "self"
+    },
+    "damageDisplay": "melee",
+    "target": {
+      "type": "self",
+      "custom": "",
+      "value": null
+    },
+    "power": {
+      "roll": {
+        "formula": "@chr",
+        "characteristics": [
+          "intuition"
+        ]
+      },
+      "effects": {
+        "mbXLD1zpXToaZnMK": {
+          "name": "Slide",
+          "img": null,
+          "type": "forced",
+          "_id": "mbXLD1zpXToaZnMK",
+          "forced": {
+            "tier1": {
+              "movement": [
+                "slide"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "5"
+            },
+            "tier2": {
+              "movement": [
+                "slide"
+              ],
+              "properties": [
+                "vertical"
+              ],
+              "distance": "7"
+            },
+            "tier3": {
+              "distance": "9",
+              "movement": [
+                "slide"
+              ],
+              "properties": [
+                "vertical"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "effect": {
+      "before": "",
+      "after": "<p>This movement ignores stability. If you slide into another creature, you resolve damage to both of you as if your force movement had ended, but you keep moving through that creature’s space.</p>"
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761159181976,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!zL9xrNgVXH6KIusC"
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Poisoned Vines",
+  "type": "ability",
+  "img": "icons/magic/unholy/silhouette-robe-evil-power.webp",
+  "system": {
+    "type": "none",
+    "category": "heroic",
+    "resource": 3,
+    "trigger": "A shambling starts its turn.",
+    "distance": {
+      "type": "special"
+    },
+    "target": {
+      "type": "special",
+      "custom": "",
+      "value": null
+    },
+    "damageDisplay": "melee",
+    "power": {
+      "roll": {
+        "formula": "",
+        "characteristics": []
+      },
+      "effects": {}
+    },
+    "effect": {
+      "before": "<p>The shambling mound seeps noxious residue from their vines. of their next turn, they deal an extra [[/damage 12 poison]]{12 poison damage} to each target.</p>",
+      "after": ""
+    },
+    "spend": {
+      "text": "",
+      "value": null
+    },
+    "source": {
+      "book": "Monsters",
+      "page": "246",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "poisoned-vines",
+    "story": "",
+    "keywords": []
+  },
+  "effects": [],
+  "folder": "QLRklf3hl8xLZdKw",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761529274223,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "_id": "kWr43aYeD8c2WOuB",
+  "sort": 100000,
+  "_key": "!items!kWr43aYeD8c2WOuB"
+}

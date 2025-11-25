@@ -6,8 +6,7 @@
     "source": {
       "book": "Monsters",
       "page": "105",
-      "license": "Draw Steel Creator License",
-      "revision": 1
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "snaring-line",
     "story": "",
@@ -38,8 +37,8 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>Each target makes an Agility Test.</p><table><tbody><tr><td><p>11 or less</p></td><td><p>8 damage; restrained (EoT)</p></td></tr><tr><td><p>12-16</p></td><td><p>6 damage; slowed (EoT)</p></td></tr><tr><td><p>17</p></td><td><p>No effect.</p></td></tr></tbody></table>",
-      "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><span style=\"text-decoration:underline\"><strong><span style=\"text-decoration:underline\">Special:</span></strong></span> This ability canʼt be used by a minion.</p>"
+      "before": "<p>Each target makes an Agility Test.</p><dl class=\"power-roll-display\"><dt class=\"tier1\"><p>!</p></dt><dd><p>8 damage; [[/apply restrained turn]]</p></dd><dt class=\"tier2\"><p>@</p></dt><dd><p>6 damage; [[/apply slowed turn]]</p></dd><dt class=\"tier3\"><p>#</p></dt><dd><p>No effect.</p></dd></dl>",
+      "after": "<p>The snaring line remains until the end of the encounter. Any enemy who moves into the area for the first time in a round or starts their turn there must make the test.</p><p><strong>Special:</strong> This ability canʼt be used by a minion.</p>"
     },
     "spend": {
       "text": "",
@@ -56,9 +55,9 @@
     "compendiumSource": "Actor.0wvOWjLAh0BeOvCp.Item.LawMkoXkoSARdPho",
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755639546111,
     "modifiedTime": null,
     "lastModifiedBy": null

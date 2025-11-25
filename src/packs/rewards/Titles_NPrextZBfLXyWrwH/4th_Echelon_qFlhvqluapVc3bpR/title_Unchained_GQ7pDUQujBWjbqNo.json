@@ -1,0 +1,81 @@
+{
+  "folder": "qFlhvqluapVc3bpR",
+  "name": "Unchained",
+  "type": "title",
+  "_id": "GQ7pDUQujBWjbqNo",
+  "img": "icons/magic/control/debuff-chains-shackles-movement-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Effect</strong>: Your choice of your Might or Agility increases by 1 (to a maximum of 6). Additionally, choose one of the following benefits:</p><ul><li><p><em>Bye-Bye:</em></p><p>You can use a maneuver to teleport yourself and each willing ally within 5 squares of you to new positions within 10 squares of your original starting point. Once you use this benefit, you can’t use it again until you earn 1 or more Victories.</p></li><li><p><em>Laughs at Locks:</em></p><p>Whenever you make a test to open a lock or break a restraint, you don’t need any tools and you automatically obtain a tier 3 outcome.</p></li><li><p><em>Slippery</em>:</p><p>You can’t be grabbed against your will.</p></li></ul>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "349",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "unchained",
+    "advancements": {
+      "DyOHNc7Sv0eClq9l": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": null
+        },
+        "_id": "DyOHNc7Sv0eClq9l",
+        "description": "<p>Your choice of your Might or Agility increases by 1 (to a maximum of 6).</p>",
+        "characteristics": {
+          "might": 0,
+          "agility": 0
+        },
+        "max": 6
+      },
+      "5Nd3mCSLPotONEBR": {
+        "name": "Benefit",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": null
+        },
+        "_id": "5Nd3mCSLPotONEBR",
+        "chooseN": 1,
+        "description": "<p>Choose one of the following benefits:</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.XRik9HDvjxCEgPSg"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.H2L9zv7Q2M64qNru"
+          },
+          {
+            "uuid": "Compendium.draw-steel.rewards.Item.0ouK1xLKRjUzupvY"
+          }
+        ]
+      }
+    },
+    "echelon": 4,
+    "story": "I’ll never get away with it? My dear, I already have.",
+    "prerequisites": {
+      "value": "You have the Heist Hero title, and you have stolen a precious object or escaped from captivity while evading guards of 8th level or higher."
+    }
+  },
+  "effects": [],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762189617244,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!GQ7pDUQujBWjbqNo"
+}

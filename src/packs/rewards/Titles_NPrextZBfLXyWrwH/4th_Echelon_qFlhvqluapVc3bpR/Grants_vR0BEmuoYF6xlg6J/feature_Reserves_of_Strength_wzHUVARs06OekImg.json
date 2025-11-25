@@ -1,0 +1,88 @@
+{
+  "folder": "vR0BEmuoYF6xlg6J",
+  "name": "Reserves of Strength",
+  "type": "feature",
+  "_id": "wzHUVARs06OekImg",
+  "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+  "system": {
+    "description": {
+      "value": "<p><span style=\"color:rgb(239, 230, 216);font-family:Signika, 'Palatino Linotype', sans-serif;font-size:14px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:left;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;background-color:rgba(11, 10, 19, 0.9);text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;display:inline !important;float:none\">Your recovery value is half your Stamina.</span></p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "349",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "reserves-of-strength",
+    "advancements": {}
+  },
+  "effects": [
+    {
+      "name": "Reserves of Strength",
+      "img": "icons/magic/control/buff-strength-muscle-damage-red.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.wzHUVARs06OekImg",
+      "_id": "Qy389U53NkPV1yoe",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.recoveries.divisor",
+          "mode": 5,
+          "value": "2",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "createdTime": 1762192311798,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!wzHUVARs06OekImg.Qy389U53NkPV1yoe"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1762191578122,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!wzHUVARs06OekImg"
+}

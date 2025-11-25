@@ -1,0 +1,100 @@
+{
+  "name": "Psi Blade",
+  "type": "treasure",
+  "img": "icons/equipment/wrist/bracer-orange-fancy.webp",
+  "system": {
+    "kind": "other",
+    "category": "trinket",
+    "echelon": 4,
+    "description": {
+      "value": "<p><em>This wide metal bracer is set with a glowing gemstone.</em></p><p><strong>Effect:</strong> While wearing this metallic band, you can use a maneuver to project a glowing blade of rippling psychic energy that extends parallel to your arm. While the blade is active, you can use a maneuver once per turn to make a melee weapon free strike that deals an extra [[/damage 3 psychic]] damage. [[/apply umqJ838HyZ74EeVk]]</p>",
+      "director": ""
+    },
+    "keywords": [
+      "psionic",
+      "arms"
+    ],
+    "project": {
+      "prerequisites": "Steel alloy, one fine-cut topaz",
+      "source": "Texts or lore in Mindspeech",
+      "rollCharacteristic": [
+        "agility",
+        "presence"
+      ],
+      "goal": 600,
+      "yield": {
+        "amount": "1",
+        "display": ""
+      }
+    },
+    "_dsid": "psi-blade",
+    "source": {
+      "book": "Heroes",
+      "page": "326",
+      "license": "Draw Steel Creator License"
+    },
+    "quantity": 1
+  },
+  "effects": [
+    {
+      "name": "Psi Blade",
+      "img": "icons/equipment/wrist/bracer-orange-fancy.webp",
+      "type": "base",
+      "origin": "Item.apIlMlPjdFwqsxCs",
+      "transfer": false,
+      "_id": "umqJ838HyZ74EeVk",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.350",
+        "systemId": "draw-steel",
+        "systemVersion": "0.9.0",
+        "lastModifiedBy": null,
+        "modifiedTime": null
+      },
+      "_key": "!items.effects!apIlMlPjdFwqsxCs.umqJ838HyZ74EeVk"
+    }
+  ],
+  "folder": "XMfrqjoLyY6P6KWl",
+  "_id": "apIlMlPjdFwqsxCs",
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "draw-steel",
+    "systemVersion": "0.9.0",
+    "createdTime": 1761758151979,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "ownership": {
+    "default": 0
+  },
+  "sort": 0,
+  "_key": "!items!apIlMlPjdFwqsxCs"
+}

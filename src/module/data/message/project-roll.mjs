@@ -20,7 +20,7 @@ export default class ProjectRollModel extends BaseMessageModel {
   static defineSchema() {
     const schema = super.defineSchema();
     // All project roll messages MUST have a uuid pointing to the relevant document
-    schema.uuid = new fields.StringField({ required: true, nullable: false, blank: false });
+    schema.uuid = new fields.DocumentUUIDField({ nullable: false, type: "Item" });
     schema.events = new fields.NumberField({ initial: 0 });
     return schema;
   }

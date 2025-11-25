@@ -12,13 +12,12 @@
     "source": {
       "book": "Heroes",
       "page": "78",
-      "license": "Draw Steel Creator License",
-      "revision": 2
+      "license": "Draw Steel Creator License"
     },
     "_dsid": "censor",
     "advancements": {
       "vH4tHPZ4vku3Le68": {
-        "name": "Choose Skill",
+        "name": "Skills",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -32,10 +31,11 @@
             "lore"
           ]
         },
-        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. (<em>Quick Build:</em> Intimidate, Religion.)</p>"
+        "description": "<p>Choose any two skills from the interpersonal or lore skill groups. (<em>Quick Build:</em> Intimidate, Religion.)</p>",
+        "sort": -100000
       },
       "aEicYiA02iISBysZ": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -46,10 +46,11 @@
         "chooseN": 1,
         "skills": {
           "groups": []
-        }
+        },
+        "sort": 19000
       },
       "oq9ZJraZAsxKNWEd": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
@@ -57,17 +58,19 @@
         },
         "_id": "oq9ZJraZAsxKNWEd",
         "description": "<p>You gain one skill of your choice.</p>",
-        "chooseN": 1
+        "chooseN": 1,
+        "sort": 20000
       },
       "72GcZZBTnVbzByxs": {
-        "name": "Choose Skill",
+        "name": "Skill",
         "img": null,
         "type": "skill",
         "requirements": {
           "level": 10
         },
         "_id": "72GcZZBTnVbzByxs",
-        "description": "<p>You gain one skill of your choice.</p>"
+        "description": "<p>You gain one skill of your choice.</p>",
+        "sort": 21000
       },
       "muZl4KsNLZbdcPMD": {
         "name": "Censor Order",
@@ -89,7 +92,8 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.G7CW919PYBzeVnH9"
           }
-        ]
+        ],
+        "sort": 0
       },
       "hVDXNXUF3DWZZmR4": {
         "name": "Deity and Domains",
@@ -138,7 +142,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.lViMQSujuvawRP0P"
           }
         ],
-        "description": "<p>Choose a god or saint who your character reveres from Chapter 14: Gods and Religion, or ask your Director about the deities in your campaign world. With the Director’s permission, you can also create your own deity and choose four domains to be part of their portfolio.</p><p>After choosing your deity, pick one domain from their portfolio. Your choice of domain determines many of the features you’ll gain from this class. (<em>Quick Build:</em> Cavall as deity and War as domain.)</p>"
+        "description": "<p>Choose a god or saint who your character reveres from Chapter 14: Gods and Religion, or ask your Director about the deities in your campaign world. With the Director’s permission, you can also create your own deity and choose four domains to be part of their portfolio.</p><p>After choosing your deity, pick one domain from their portfolio. Your choice of domain determines many of the features you’ll gain from this class. (<em>Quick Build:</em> Cavall as deity and War as domain.)</p>",
+        "sort": 4000
       },
       "MWcvSkBGMFt6eLjv": {
         "name": "Wrath",
@@ -153,7 +158,8 @@
             "uuid": "Compendium.draw-steel.classes.Item.qkj3iQg7Ga2OzXXY"
           }
         ],
-        "description": "<p>The power you serve grants you a Heroic Resource called wrath, fueling your abilities as you censor those your church deems to be heretics.</p>"
+        "description": "<p>The power you serve grants you a Heroic Resource called wrath, fueling your abilities as you censor those your church deems to be heretics.</p>",
+        "sort": 23000
       },
       "ItQpJgCMQOLs0HZO": {
         "name": "Judgement",
@@ -168,7 +174,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.EhPpL42VZWxqeSEj"
           }
         ],
-        "description": "<p>You utter a prayer that outlines your foe in holy energy.</p>"
+        "description": "<p>You utter a prayer that outlines your foe in holy energy.</p>",
+        "sort": 9000
       },
       "A9K3KTrrkVl3i3Pk": {
         "name": "Kit",
@@ -244,7 +251,11 @@
           {
             "uuid": "Compendium.draw-steel.character-options.Item.zW9eM46rG8tUhTaA"
           }
-        ]
+        ],
+        "additional": {
+          "type": "kit"
+        },
+        "sort": 10000
       },
       "UTko78iGyV9RWW5B": {
         "name": "My Life for Yours",
@@ -259,7 +270,8 @@
             "uuid": "Compendium.draw-steel.abilities.Item.0BbgRsExkr0Iq3PS"
           }
         ],
-        "description": "<p>You channel some of your vitality into more resilience for you or an ally.</p>"
+        "description": "<p>You channel some of your vitality into more resilience for you or an ally.</p>",
+        "sort": 12000
       },
       "VZJR8OYxF3Z40NPR": {
         "name": "Signature Ability",
@@ -284,7 +296,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.zMsvZ08yT9oEdp8h"
           }
-        ]
+        ],
+        "sort": 18000
       },
       "n50AeA4rcxDZT082": {
         "name": "3 Wrath",
@@ -309,7 +322,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.yxeUUh0LXFldQJTp"
           }
-        ]
+        ],
+        "sort": 26000
       },
       "UL1Cu9PGD4lWRDiu": {
         "name": "5 Wrath",
@@ -334,7 +348,8 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.4m5rgK9RH2QXg9S5"
           }
-        ]
+        ],
+        "sort": 28000
       },
       "pbujOq8KUhenV5t2": {
         "name": "Perk",
@@ -344,7 +359,17 @@
           "level": 2
         },
         "_id": "pbujOq8KUhenV5t2",
-        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>"
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "chooseN": 1,
+        "sort": 13000
       },
       "xMJS8JqsP6dYGqlH": {
         "name": "Look On My Work and Despair",
@@ -354,12 +379,13 @@
           "level": 3
         },
         "_id": "xMJS8JqsP6dYGqlH",
-        "description": "<p>you gain the following feature.</p>",
+        "description": "<p>You gain the following feature.</p>",
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.CDq4lOvXJyqB2BMd"
           }
-        ]
+        ],
+        "sort": 11000
       },
       "1Kze4GliEzN8HmGH": {
         "name": "7 Wrath",
@@ -384,7 +410,287 @@
           {
             "uuid": "Compendium.draw-steel.abilities.Item.320N35zYLSePKNpf"
           }
-        ]
+        ],
+        "sort": 30000
+      },
+      "vZUSHIMlvvLr6xFC": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "vZUSHIMlvvLr6xFC",
+        "description": "<p>Your Might and Presence scores each increase to 3.</p>",
+        "characteristics": {
+          "might": 1,
+          "reason": 1
+        },
+        "sort": 1000
+      },
+      "kkhsLduO7PSdbS7H": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "kkhsLduO7PSdbS7H",
+        "description": "<p>Each of your characteristic scores increases by 1, to a maximum of 4.</p>",
+        "max": 4,
+        "characteristics": {
+          "might": 1,
+          "agility": 1,
+          "reason": 1,
+          "intuition": 1,
+          "presence": 1
+        },
+        "sort": 2000
+      },
+      "YqcrXsR4Rt19fji5": {
+        "name": "",
+        "img": null,
+        "type": "characteristic",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "YqcrXsR4Rt19fji5",
+        "description": "<p>Your Might and Presence scores each increase to 5.</p>",
+        "characteristics": {
+          "might": 1,
+          "presence": 1
+        },
+        "max": 5,
+        "sort": 3000
+      },
+      "4EjKHOhmL8Q1FoC7": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "4EjKHOhmL8Q1FoC7",
+        "additional": {
+          "type": "perk"
+        },
+        "chooseN": 1,
+        "description": "<p>You gain one perk of your choice.</p>",
+        "sort": 14000
+      },
+      "uwAppNdsFLP4Jrwp": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "uwAppNdsFLP4Jrwp",
+        "description": "<p>You gain one interpersonal, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "interpersonal",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "sort": 15000
+      },
+      "PIMxp8BISYUZ0CJf": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "PIMxp8BISYUZ0CJf",
+        "description": "<p>You gain one perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk"
+        },
+        "sort": 16000
+      },
+      "a3Mq5cSwgrerV4TM": {
+        "name": "Perk",
+        "img": "icons/magic/symbols/fleur-de-lis-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "a3Mq5cSwgrerV4TM",
+        "description": "<p>You gain one crafting, lore, or supernatural perk of your choice.</p>",
+        "chooseN": 1,
+        "additional": {
+          "type": "perk",
+          "perkType": [
+            "crafting",
+            "lore",
+            "supernatural"
+          ]
+        },
+        "sort": 17000
+      },
+      "QlwYpxf3WUAX2iee": {
+        "name": "Wrath Beyond Wrath",
+        "img": "icons/magic/holy/projectiles-blades-salvo-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "QlwYpxf3WUAX2iee",
+        "description": "<p>The first time each combat round that you deal damage to a creature judged by you, you gain 2 wrath instead of 1.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.fSizQh4GA1xhXIc2"
+          }
+        ],
+        "sort": 24000
+      },
+      "YBSM9wTIASEROzZb": {
+        "name": "4th-Level Domain Feature",
+        "img": "icons/magic/holy/saint-glass-portrait-halo.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 4
+        },
+        "_id": "YBSM9wTIASEROzZb",
+        "chooseN": null,
+        "sort": 27000
+      },
+      "RIFOTx9204iOmkKc": {
+        "name": "9 Wrath",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "RIFOTx9204iOmkKc",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 9 wrath to use.</p>",
+        "chooseN": 1,
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.wW6j8n8AFozqChhz"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.y0aUnANMcvPv1bW6"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.NBS42VJLEBCUaanp"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.9ddWPgUuJBsIX2Y0"
+          }
+        ],
+        "sort": 31000
+      },
+      "RjGXXbgxodBdCER7": {
+        "name": "5th-Level Order Feature",
+        "img": "icons/environment/settlement/palast.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 5
+        },
+        "_id": "RjGXXbgxodBdCER7",
+        "description": "<p>Your censor order grants you a feature</p>",
+        "sort": 29000
+      },
+      "SuC5lR7aOXOH1XmZ": {
+        "name": "Implement of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "SuC5lR7aOXOH1XmZ",
+        "description": "<p>Each time you finish a respite, you can choose one hero’s weapon, including your own, to channel supernatural power as an implement of your god’s wrath.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.Quo7tJUPXumwt0m5"
+          }
+        ],
+        "sort": 7000
+      },
+      "FnURQa5japiJN03y": {
+        "name": "Focused Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "FnURQa5japiJN03y",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.TTfm9nJ8JOf1Bi0a"
+          }
+        ],
+        "description": "<p>When you gain wrath at the start of each of your turns during combat, you gain 3 wrath instead of 2.</p>",
+        "sort": 6000
+      },
+      "qAwusw0yeIy8dIqf": {
+        "name": "11 Wrath",
+        "img": "icons/magic/symbols/runes-star-pentagon-orange.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 8
+        },
+        "_id": "qAwusw0yeIy8dIqf",
+        "description": "<p>Choose one heroic ability from the following options, each of which costs 11 wrath to use.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.ZXBZTU8llhEcR41n"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.aMf4Ihdjb8I3IoaU"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.qp8xUSGJbcPw5EpL"
+          },
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.SmfA5LuygLrDri7x"
+          }
+        ],
+        "chooseN": 1,
+        "sort": 25000
+      },
+      "eKBnIUS90AYUJ7RE": {
+        "name": "Improved Implement of Wrath",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "eKBnIUS90AYUJ7RE",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.mi53lASH8mfRER6S"
+          }
+        ],
+        "sort": 8000
+      },
+      "hGYV77nZgnidlEPd": {
+        "name": "Features",
+        "img": "icons/magic/symbols/runes-star-magenta.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 10
+        },
+        "_id": "hGYV77nZgnidlEPd",
+        "description": "<p>You gain the following features.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.sDXMVcp7GDKEQgvA"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.EAjuNFhc4UdLuhBe"
+          },
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.DsjzTZ8xgKoLfvmm"
+          }
+        ],
+        "sort": 5000
       }
     },
     "level": 0,
@@ -405,7 +711,7 @@
     "recoveries": 12
   },
   "effects": [],
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0
   },
@@ -414,9 +720,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.1",
+    "systemVersion": "0.9.0",
     "createdTime": 1754678969669,
     "modifiedTime": null,
     "lastModifiedBy": null
