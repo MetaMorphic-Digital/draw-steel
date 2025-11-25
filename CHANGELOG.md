@@ -18,6 +18,18 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
 ## 0.9.0
 
 ### Added
