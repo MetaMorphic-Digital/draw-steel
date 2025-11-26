@@ -143,4 +143,32 @@ export default class DamagePowerRollEffect extends BasePowerRollEffect {
       potency: potencyString,
     });
   }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  static migrateData(data) {
+    // 0.10.0 updates
+    for (const tier of ["tier1", "tier2", "tier3"]) {
+      const migrated = foundry.abstract.Document._addDataFieldMigration(data,
+        `damage.${tier}.properties`, `damage.${tier}.ignoredImmunities`,
+        (effect) => {
+          const immunities = new Set();
+          const properties = foundry.utils.getProperty(effect, `damage.${tier}.properties`);
+          if (properties?.includes("ignoresImmunity")) {
+            // ignoresImmunity presence means all immunities are ignored
+            immunities.add("all");
+          }
+          return immunities;
+        });
+      
+      // The result is only true if the new key was *not* present and old key was present
+      // If we get a false result, then we (may) need to manually delete the old key
+      if (migrated === false) {
+        foundry.utils.deleteProperty(data, `damage.${tier}.properties`);
+      }
+    }
+
+    return super.migrateData(data);
+  }
 }
