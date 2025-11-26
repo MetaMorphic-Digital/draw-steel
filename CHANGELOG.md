@@ -22,11 +22,17 @@
 
 ### Added
 
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+- Implemented Summoning. (#583)
+  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added `potency` as a new ability modifier key to increase the potency of abilities. (#1350)
+
 ### Changed
 
-### Deprecated
-
-### Removed
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
 
 ### Fixed
 
