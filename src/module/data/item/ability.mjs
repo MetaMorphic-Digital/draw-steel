@@ -222,6 +222,19 @@ export default class AbilityModel extends BaseItemModel {
           }
         }
       }
+
+      if (bonus.key.startsWith("power.")) {
+        switch (bonus.key) {
+          case "power.roll.banes":
+            this.power.roll.banes = this.power.roll.banes ?? 0 + (Number(bonus.value) || 0);
+            break;
+          case "power.roll.edges":
+            this.power.roll.edges = this.power.roll.edges ?? 0 + (Number(bonus.value) || 0);
+            break;
+          default:
+            break;
+        }
+      }
     }
   }
 
@@ -462,8 +475,8 @@ export default class AbilityModel extends BaseItemModel {
       const formula = this.power.roll.formula ? `2d10 + ${this.power.roll.formula}` : "2d10";
       const rollData = this.parent.getRollData();
       options.modifiers ??= {};
-      options.modifiers.banes ??= 0;
-      options.modifiers.edges ??= 0;
+      options.modifiers.banes = (options.modifiers.banes ?? 0) + (this.power.roll.banes ?? 0);
+      options.modifiers.edges = (options.modifiers.edges ?? 0) + (this.power.roll.edges ?? 0);
       options.modifiers.bonuses ??= 0;
 
       this.getActorModifiers(options);
@@ -564,23 +577,6 @@ export default class AbilityModel extends BaseItemModel {
 
     // Restrained conditions check
     if (this.actor.statuses.has("restrained")) options.modifiers.banes += 1;
-
-    // Apply active effect modifiers from abilityModifier effects
-    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
-      if (!bonus.key.startsWith("power.")) continue;
-      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
-
-      switch (bonus.key) {
-        case "power.roll.banes":
-          options.modifiers.banes += Number(bonus.value) || 0;
-          break;
-        case "power.roll.edges":
-          options.modifiers.edges += Number(bonus.value) || 0;
-          break;
-        default:
-          break;
-      }
-    }
   }
 
   /* -------------------------------------------------- */

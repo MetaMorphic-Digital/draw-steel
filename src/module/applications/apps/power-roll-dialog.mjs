@@ -32,6 +32,15 @@ export default class PowerRollDialog extends RollDialog {
   /* -------------------------------------------------- */
 
   /**
+   * Formatter to select the correct plural form for "Edge".
+   * Must be initialized before first use to ensure language is available.
+   * @type {Intl.PluralRules | null}
+   */
+  static EdgePluralFormatter = null;
+
+  /* -------------------------------------------------- */
+
+  /**
    * The currently highlighted token.
    * @type {DrawSteelToken | null}
    */
@@ -134,7 +143,10 @@ export default class PowerRollDialog extends RollDialog {
     const { list, groups } = ds.CONFIG.skills;
     const skillModifiers = context.skillModifiers;
 
-    const pr = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
+    if (!this.constructor.EdgePluralFormatter) {
+      this.constructor.EdgePluralFormatter = new Intl.PluralRules(game.i18n.lang, { type: "cardinal" });
+    }
+    const pr = this.constructor.EdgePluralFormatter;
 
     // If there are skill modifiers, alter the label to include (+1 Edge) or (+2 Edges), etc.
     context.skillOptions = Array.from(context.skills).reduce((accumulator, value) => {
@@ -192,13 +204,13 @@ export default class PowerRollDialog extends RollDialog {
 
       const skillModifiers = this.options.context.skillModifiers;
       if (previousSkill in skillModifiers) {
-        this.options.context.modifiers.edges -= skillModifiers[previousSkill].edges;
-        this.options.context.modifiers.banes -= skillModifiers[previousSkill].banes;
+        this.options.context.modifiers.edges -= skillModifiers[previousSkill].edges ?? 0;
+        this.options.context.modifiers.banes -= skillModifiers[previousSkill].banes ?? 0;
       }
 
       if (newSkill in skillModifiers) {
-        this.options.context.modifiers.edges += skillModifiers[newSkill].edges;
-        this.options.context.modifiers.banes += skillModifiers[newSkill].banes;
+        this.options.context.modifiers.edges += skillModifiers[newSkill].edges ?? 0;
+        this.options.context.modifiers.banes += skillModifiers[newSkill].banes ?? 0;
       }
 
       this.options.context.skill = newSkill;
