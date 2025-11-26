@@ -3,11 +3,159 @@
   "type": "treasure",
   "img": "icons/equipment/neck/torc-ball-captive.webp",
   "folder": "1cDmqfkfOvvVOQXC",
-  "effects": [],
+  "effects": [
+    {
+      "name": "Thief of Joy (1st level)",
+      "img": "icons/equipment/neck/torc-ball-captive.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.5dGacdmhxE1G5SV2",
+      "_id": "Kqc1cdaZn5yoGnqZ",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "4",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1764198916542,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5dGacdmhxE1G5SV2.Kqc1cdaZn5yoGnqZ"
+    },
+    {
+      "name": "Thief of Joy (5th level)",
+      "img": "icons/equipment/neck/torc-ball-captive.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.5dGacdmhxE1G5SV2",
+      "_id": "JOJBHBY6VOWwuAA4",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "9",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1764198923651,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5dGacdmhxE1G5SV2.JOJBHBY6VOWwuAA4"
+    },
+    {
+      "name": "Thief of Joy (9th level)",
+      "img": "icons/equipment/neck/torc-ball-captive.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.5dGacdmhxE1G5SV2",
+      "_id": "uXgmP91XBo2Vg80v",
+      "system": {
+        "end": {
+          "type": "",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [
+        {
+          "key": "system.stamina.max",
+          "mode": 2,
+          "value": "20",
+          "priority": null
+        }
+      ],
+      "disabled": true,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1764198934897,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!5dGacdmhxE1G5SV2.uXgmP91XBo2Vg80v"
+    }
+  ],
   "flags": {},
   "system": {
     "description": {
-      "value": "<p><em>This burnished copper torque thrums with a sense of judgment. </em></p><p><strong>1st Level:</strong> While you wear this torque, you gain a bonus to Stamina equal to twice your highest characteristic score. Additionally, you can use a maneuver to choose a creature in your line of effect and learn their level. If their level is higher than yours, the torque grants you envy. If their level is equal to or lower than yours, the torque grants you disdain. You can have both envy and disdain from different creatures, but not more than one instance of either. Whenever a creature within 10 squares of you deals damage to another creature, you can use a triggered action to expend your envy or disdain. If you expend envy, you deal damage equal to the triggering damage to a creature adjacent to you. If you expend disdain, you reduce the triggering damage by half. At the end of the encounter, you lose any envy or disdain granted by the torque.</p><p><strong>5th Level:</strong> The torque’s bonus to Stamina increases to three times your highest characteristic score. Additionally, when you use the torque’s maneuver and the target creature is the same level as you, you gain your choice of envy or disdain.</p><p><strong>9th Level:</strong> The torque’s bonus to Stamina increases to five times your highest characteristic score. Additionally, you can have multiple instances of envy and disdain, with no limit on either</p>",
+      "value": "<p><em>This burnished copper torque thrums with a sense of judgment.</em></p><p><strong>1st Level:</strong> While you wear this torque, you gain a bonus to Stamina equal to twice your highest characteristic score. Additionally, you can use a maneuver to choose a creature in your line of effect and learn their level. If their level is higher than yours, the torque grants you envy. If their level is equal to or lower than yours, the torque grants you disdain. You can have both envy and disdain from different creatures, but not more than one instance of either. Whenever a creature within 10 squares of you deals damage to another creature, you can use a triggered action to expend your envy or disdain. If you expend envy, you deal damage equal to the triggering damage to a creature adjacent to you. If you expend disdain, you reduce the triggering damage by half. At the end of the encounter, you lose any envy or disdain granted by the torque.</p><p><strong>5th Level:</strong> The torque’s bonus to Stamina increases to three times your highest characteristic score. Additionally, when you use the torque’s maneuver and the target creature is the same level as you, you gain your choice of envy or disdain.</p><p><strong>9th Level:</strong> The torque’s bonus to Stamina increases to five times your highest characteristic score. Additionally, you can have multiple instances of envy and disdain, with no limit on either</p>",
       "director": ""
     },
     "source": {
@@ -50,7 +198,7 @@
     "exportSource": null,
     "coreVersion": "13.351",
     "systemId": "draw-steel",
-    "systemVersion": "0.9.0",
+    "systemVersion": "0.10.0",
     "createdTime": 1763173310918,
     "modifiedTime": null,
     "lastModifiedBy": null
