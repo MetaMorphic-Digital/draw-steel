@@ -226,3 +226,4 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
+|`potency`|Give a bonus to all potency values|
