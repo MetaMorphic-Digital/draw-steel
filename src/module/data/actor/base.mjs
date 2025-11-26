@@ -140,6 +140,13 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       // Can consider removing in v14 after phases are introduced
       multiplier: 1,
     });
+
+    Object.values(this.characteristics).forEach((chr) => {
+      Object.assign(chr, {
+        edges: 0,
+        banes: 0,
+      });
+    });
   }
 
   /* -------------------------------------------------- */
@@ -413,19 +420,24 @@ export default class BaseActorModel extends DrawSteelSystemModel {
         rejectClose: true,
       });
     }
+
+    options.edges = (options.edges ?? 0) + this.characteristics[characteristic].edges;
+    options.banes = (options.banes ?? 0) + this.characteristics[characteristic].banes;
+
     const skills = this.hero?.skills ?? null;
+    const skillModifiers = this.hero?.skillModifiers ?? null;
 
     const evaluation = "evaluate";
     const formula = `2d10 + @${ds.CONFIG.characteristics[characteristic].rollKey}`;
     const data = this.parent.getRollData();
     const flavor = `${game.i18n.localize(`DRAW_STEEL.Actor.characteristics.${characteristic}.full`)} ${game.i18n.localize(PowerRoll.TYPES[type].label)}`;
     const modifiers = {
-      edges: options.edges ?? 0,
-      banes: options.banes ?? 0,
-      bonuses: options.bonuses ?? 0,
+      edges: options.edges,
+      banes: options.banes,
+      bonuses: options.bonuses,
     };
 
-    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills });
+    const promptValue = await PowerRoll.prompt({ type, evaluation, formula, data, flavor, modifiers, actor: this.parent, characteristic, skills, skillModifiers });
 
     if (!promptValue) return null;
     const { rollMode, powerRolls } = promptValue;

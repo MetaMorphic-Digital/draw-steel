@@ -33,6 +33,7 @@ export interface RollPromptOptions {
   actor: DrawSteelActor;
   data: Record <string, unknown>;
   skills: Set <string>;
+  skillModifiers: Record<string, PowerRollModifiers>;
 }
 
 export interface PowerRollPromptOptions extends RollPromptOptions {
