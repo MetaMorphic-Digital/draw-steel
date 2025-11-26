@@ -11,6 +11,7 @@ import BaseActorModel from "./base.mjs";
  * @import ActiveEffectData from "@common/documents/_types.mjs";
  * @import AdvancementChain from "../../utils/advancement-chain.mjs";
  * @import { ActorData, ItemData } from "@common/documents/_types.mjs";
+ * @import { PowerRollModifiers } from "../../_types.js";
  */
 
 const fields = foundry.data.fields;

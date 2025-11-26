@@ -134,8 +134,23 @@ While there are similarities with roll data, active effects generally lead with 
 |Might value|`system.characteristics.might.value`|
 |Presence value|`system.characteristics.presence.value`|
 |Reason value|`system.characteristics.reason.value`|
-|Edges for Characteristic Tests|`system.characteristics.<chr>.edges`|
-|Banes for Characteristic Tests|`system.characteristics.<chr>.banes`|
+|Edges for Characteristic Tests|`system.characteristics.[chr].edges`|
+|Banes for Characteristic Tests|`system.characteristics.[chr].banes`|
+
+#### Skill Keys
+
+|Purpose|Attribute Key|
+|:---:|---|
+|Edges for skills used in tests|`system.hero.skillModifiers.[skill].edges`|
+|Banes for skills used in tests|`system.hero.skillModifiers.[skill].banes`|
+
+> An example of applying a single edge to uses of the Jump skill would be:
+> |`system.hero.skillModifiers.jump.edges`|Add|`1`|
+> |---|---|---|
+>
+> An example of applying two banes to uses of the Tailoring skill would be:
+> |`system.hero.skillModifiers.tailoring.banes`|Add|`2`|
+> |---|---|---|
 
 #### Common bonus effect examples
 
