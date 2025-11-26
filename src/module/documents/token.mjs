@@ -41,7 +41,7 @@ export default class DrawSteelTokenDocument extends foundry.documents.TokenDocum
 
   /**
    * If the token's movementAction is invalid, force it to null (default).
-   * @returns {Promise<boolean>} True if the refresh has caused a change in movementAction, otherwise false.
+   * @returns {Promise<boolean>} Whether the refresh has caused a change in movementAction.
    */
   async refreshMovementAction() {
     if (!CONFIG.Token.movement.actions[this.movementAction].canSelect(this)) {

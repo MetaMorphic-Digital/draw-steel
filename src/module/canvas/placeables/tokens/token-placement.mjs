@@ -12,9 +12,9 @@ export default class TokenPlacement {
     this.config = config;
   }
 
-  /* -------------------------------------------- */
-  /*  Properties                                  */
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
+  /*  Properties                                        */
+  /* -------------------------------------------------- */
 
   /**
    * Configuration information for the placements.
@@ -22,7 +22,7 @@ export default class TokenPlacement {
    */
   config;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Index of the token configuration currently being placed in the scene.
@@ -30,7 +30,7 @@ export default class TokenPlacement {
    */
   #currentPlacement = -1;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Track the bound event handlers so they can be properly canceled later.
@@ -38,7 +38,7 @@ export default class TokenPlacement {
    */
   #events;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Placements that have been generated.
@@ -46,7 +46,7 @@ export default class TokenPlacement {
    */
   #placements;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Preview tokens. Should match 1-to-1 with placements.
@@ -54,7 +54,7 @@ export default class TokenPlacement {
    */
   #previews;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Is the system currently being throttled to the next animation frame?
@@ -62,9 +62,9 @@ export default class TokenPlacement {
    */
   #throttle = false;
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
   /*  Placement                                   */
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Perform the placement, asking player guidance when necessary.
@@ -75,6 +75,8 @@ export default class TokenPlacement {
     const placement = new this(config);
     return placement.place();
   }
+
+  /* -------------------------------------------------- */
 
   /**
    * Perform the placement, asking player guidance when necessary.
@@ -105,7 +107,7 @@ export default class TokenPlacement {
     }
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Create token previews based on the prototype tokens in config.
@@ -127,7 +129,7 @@ export default class TokenPlacement {
     }
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Clear any previews from the scene.
@@ -136,9 +138,9 @@ export default class TokenPlacement {
     this.#previews.forEach(p => p.object.destroy());
   }
 
-  /* -------------------------------------------- */
-  /*  Event Handlers                              */
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
+  /*  Event Handlers                                    */
+  /* -------------------------------------------------- */
 
   /**
    * Activate listeners for the placement preview.
@@ -164,7 +166,7 @@ export default class TokenPlacement {
     });
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Shared code for when token placement ends by being confirmed or canceled.
@@ -177,7 +179,7 @@ export default class TokenPlacement {
     canvas.app.view.onwheel = null;
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Move the token preview when the mouse moves.
@@ -201,7 +203,7 @@ export default class TokenPlacement {
     requestAnimationFrame(() => this.#throttle = false);
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Rotate the token preview by 3˚ increments when the mouse wheel is rotated.
@@ -218,7 +220,7 @@ export default class TokenPlacement {
     canvas.tokens.preview.children[this.#currentPlacement]?.refresh();
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Confirm placement when the left mouse button is clicked.
@@ -229,7 +231,7 @@ export default class TokenPlacement {
     this.#events.resolve(this.#placements[this.#currentPlacement]);
   }
 
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
 
   /**
    * Skip placement when the right mouse button is clicked.
@@ -240,9 +242,9 @@ export default class TokenPlacement {
     this.#events.resolve(false);
   }
 
-  /* -------------------------------------------- */
-  /*  Helpers                                     */
-  /* -------------------------------------------- */
+  /* -------------------------------------------------- */
+  /*  Helpers                                           */
+  /* -------------------------------------------------- */
 
   /**
    * Adjust the appended number on an unlinked token to account for multiple placements.

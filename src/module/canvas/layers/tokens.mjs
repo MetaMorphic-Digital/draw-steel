@@ -17,12 +17,14 @@ export default class DrawSteelTokenLayer extends foundry.canvas.layers.TokenLaye
    * @param {number} [options.count]            Actor instances to place (default: 1).
    * @param {TokenData} [options.tokenUpdates]  Additional token data to merge into the placed token.
    * @param {ActorData} [options.actorUpdates]  Additional token data to merge into the placed token.
-   * @returns {Promise<DrawSteelTokenDocument[]>}
+   * @returns {Promise<DrawSteelTokenDocument[] | null>} Returns null if the user did not have permissions.
    */
-  async placeToken(actor, options = {}) {
-    // Ensure the user has permission to drop the actor and create a Token
+  async performTokenPlacement(actor, options = {}) {
+    // Ensure the user has permission to drop the actor and create a Token.
     if (!game.user.can("TOKEN_CREATE")) {
-      return ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
+      ui.notifications.warn("DRAW_STEEL.Actor.Summoning.Errors.TOKEN_CREATE", { localize: true });
+
+      return null;
     }
 
     const createData = [];

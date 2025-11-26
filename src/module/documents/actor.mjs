@@ -96,7 +96,7 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
       const update = isDelta ? combatGroup.system.staminaValue + value : value;
       return combatGroup.update({ "system.staminaValue": update });
     }
-    const {value: current, temporary, min, max} = this.system.stamina;
+    const { value: current, temporary, min, max } = this.system.stamina;
     const delta = isDelta ? (-1 * value) : current + temporary - value;
     
     if (!delta) return this;
