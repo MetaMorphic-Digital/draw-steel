@@ -26,6 +26,7 @@
   - Leveled Treasures
 - Implemented Summoning. (#583)
   - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
 - Added `potency` as a new ability modifier key to increase the potency of abilities. (#1350)
 
 ### Changed

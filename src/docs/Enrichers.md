@@ -15,7 +15,9 @@ The `[[lookup]]` enricher allows dynamic display of actor, item, and effect data
 - [&ZeroWidthSpace;[lookup @effect.name]] Prints the effect's name (Requires the context of an Active Effect, e.g. the description)
 - [&ZeroWidthSpace;[lookup @name lowercase]] Prints the actor's name but lowercase. Valid options are `capitalize`, `lowercase`, and `uppercase`.
 - [&ZeroWidthSpace;[lookup @name style=uppercase]] The style property can be defined explicitly.
-- [&ZeroWidthSpace;[lookup @A+3 formula]] Evaluates the lookup value as a formula. Non-deterministic values like dice are treated as 0.
+- [&ZeroWidthSpace;[lookup @A+3 evaluate]] Evaluates the lookup value as a formula. Non-deterministic values like dice are treated as 0.
+- [&ZeroWidthSpace;[lookup formula=@A+3 evaluate=true]] The formula and evaluate parameters can be defined explicitly.
+- [&ZeroWidthSpace;[lookup formula="@A + 3" evaluate=true]] You must use quotes for formulas with spaces
 
 ## Damage and Healing
 
