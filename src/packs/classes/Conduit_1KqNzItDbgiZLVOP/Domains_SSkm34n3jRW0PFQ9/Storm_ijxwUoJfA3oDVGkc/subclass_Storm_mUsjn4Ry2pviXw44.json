@@ -29,7 +29,8 @@
           "groups": [
             "exploration"
           ]
-        }
+        },
+        "description": "<p>Additionally, you gain a skill from the chosen domain.</p>"
       },
       "JaRPXyr0e5Jpl9Dj": {
         "name": "Domain Feature",
@@ -43,7 +44,8 @@
           {
             "uuid": "Compendium.draw-steel.classes.Item.bpROA6P35eYnUQIZ"
           }
-        ]
+        ],
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>"
       },
       "q5jMzvBz3OJJDi6J": {
         "name": "Domain Feature",
@@ -56,6 +58,67 @@
         "pool": [
           {
             "uuid": "Compendium.draw-steel.classes.Item.dohg4J62GQR8Mbd3"
+          }
+        ],
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>"
+      },
+      "3qldXftpqPCefG1N": {
+        "name": "Domain Ability",
+        "img": "icons/magic/lightning/bolt-forked-large-blue-yellow.webp",
+        "type": "itemGrant",
+        "requirements": {
+          "level": 6
+        },
+        "_id": "3qldXftpqPCefG1N",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.3XLw1ud3MBEK2Zf7"
+          }
+        ],
+        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>"
+      },
+      "LGAUHiHERKaDmgkV": {
+        "name": "Domain Feature",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 7
+        },
+        "_id": "LGAUHiHERKaDmgkV",
+        "description": "<p>Choose one of your domains. You gain a domain feature for that domain.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.classes.Item.eSEy7CzAuMZuUqqn"
+          }
+        ]
+      },
+      "yKxgUbUGIz2OcTIH": {
+        "name": "Domain Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 2
+        },
+        "_id": "yKxgUbUGIz2OcTIH",
+        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.YstGmEeDnNvezcSJ"
+          }
+        ]
+      },
+      "6YpOIdJ4iJ9tACNN": {
+        "name": "Domain Ability",
+        "img": null,
+        "type": "itemGrant",
+        "requirements": {
+          "level": 9
+        },
+        "_id": "6YpOIdJ4iJ9tACNN",
+        "description": "<p>Choose one of your domains. You gain a heroic ability from that domain.</p>",
+        "pool": [
+          {
+            "uuid": "Compendium.draw-steel.abilities.Item.yFrlWMzLGompq7cl"
           }
         ]
       }
@@ -72,7 +135,7 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
     "systemVersion": "0.9.0",
     "createdTime": 1755671011819,

@@ -64,7 +64,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       weaknesses: damageTypes(requiredInteger, { all: true }),
     });
 
-    schema.conditions = new fields.SchemaField({
+    schema.statuses = new fields.SchemaField({
       immunities: new fields.SetField(setOptions()),
     });
 
@@ -113,18 +113,17 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       strong: 0,
     };
 
-    this.statuses = {
+    Object.assign(this.statuses, {
+      flankable: true,
       slowed: {
         speed: CONFIG.statusEffects.find(e => e.id === "slowed").defaultSpeed,
       },
-    };
+    });
 
     this.restrictions = {
       type: new Set(),
       dsid: new Set(),
     };
-
-    this.conditions.flankable = true;
 
     Object.assign(this.stamina, {
       min: 0,
@@ -150,7 +149,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
     super.prepareDerivedData();
 
     // Account for immunities first, in case any changes impact later calculations
-    this.conditions.immunities.forEach(imm => this.parent.statuses.delete(imm));
+    this.statuses.immunities.forEach(imm => this.parent.statuses.delete(imm));
 
     // Apply all stamina bonuses before calculating winded
     this.stamina.max += this.echelon * this.stamina.bonuses.echelon;
@@ -487,14 +486,7 @@ export default class BaseActorModel extends DrawSteelSystemModel {
       }
     }
     // If there's damage left after weakness/immunities, apply damage to temporary stamina then stamina value
-    const staminaUpdates = {};
-    const damageToTempStamina = Math.min(damage, this.stamina.temporary);
-    staminaUpdates.temporary = Math.max(0, this.stamina.temporary - damageToTempStamina);
-
-    const remainingDamage = Math.max(0, damage - damageToTempStamina);
-    if (remainingDamage > 0) staminaUpdates.value = this.stamina.value - remainingDamage;
-
-    return this.parent.update({ "system.stamina": staminaUpdates }, damageTypeOption);
+    return this.parent.modifyTokenAttribute("stamina", -1 * damage, true, false);
   }
 
   /* -------------------------------------------------- */

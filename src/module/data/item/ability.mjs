@@ -201,6 +201,18 @@ export default class AbilityModel extends BaseItemModel {
           foundry.utils.setProperty(effect, "bonuses", { ...currentBonuses, [key]: Number(bonus.value) });
         }
       }
+
+      if (bonus.key === "potency") {
+        // For potency effects, apply to all power roll effects and all tiers
+        for (const effect of this.power.effects) {
+          for (const tierNumber of [1, 2, 3]) {
+            const key = `${effect.constructor.TYPE}.tier${tierNumber}.potency.value`;
+            const formulaField = effect.schema.getField(key);
+            const currentValue = foundry.utils.getProperty(effect, key);
+            foundry.utils.setProperty(effect, key, formulaField.applyChange(currentValue, this, bonus));
+          }
+        }
+      }
     }
   }
 

@@ -18,6 +18,24 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+- Implemented Summoning. (#583)
+  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added `potency` as a new ability modifier key to increase the potency of abilities. (#1350)
+
+### Changed
+
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+
+### Fixed
+
 ## 0.9.0
 
 ### Added
@@ -26,7 +44,8 @@
   - Updated all ancestries to offer a choice of purchased traits.
   - Remaining non-imbue projects.
   - Censor levels 4–10 features and abilities.
-  - Conduit levels 4–5 features and abilities.
+  - Conduit levels 4–10 features and abilities.
+    - Note: The offset feature and ability choices still need to be implemented, Conduit players should remove abilities not chosen.
   - Elementalist levels 4–10 features and abilities.
   - Fury levels 4–10 features and abilities.
   - Null levels 4–10 features and abilities.
@@ -34,8 +53,7 @@
   - Tactician levels 4–10 features and abilities.
   - Talent levels 4–10 features and abilities.
   - Troubadour levels 4–10 features and abilities.
-  - Echelon 2–3 Titles.
-  - Echelon 2–4 Consumables and Trinkets
+  - Echelon 2–4 Consumables, Trinkets, and Titles
 - New Director-Facing Compendium Content: (All remaining core monsters)
   - Ajax
   - Demon Echelons 2–4
@@ -69,11 +87,11 @@
 - New Advancement Type: Characteristic. (#707)
   - Characteristic advances allow classes and titles to increase characteristics.
   - These increases are not saved to the base data of the actor and are instead applied dynamically.
-- Added support for condition immunities as `system.conditions.immunities`. (#704)
+- Added support for condition immunities as `system.statuses.immunities`. (#704)
   - This will not prevent application but will prevent their effects and show a warning when applied.
 - Added an "Additional" configuration to Item Grant advancements, which allows players to drop in items. (#708)
-- Added support for marking actors as unflankable with `system.conditions.flankable`. (#714)
-- Added a `[[/gain]]` enricher which can be used to distribute heroic resources and surges. (#606, #1252)
+- Added support for marking actors as unflankable with `system.statuses.flankable`. (#714)
+- Added a `[[/gain]]` enricher which can be used to distribute heroic resources, surges, and other properties. (#606, #1252, #1319)
 - Added an `[[/apply]]` enricher which can be used to apply effects without a power roll. (#791)
 - Added a project events table field to projects and a context menu option on the actor sheet to draw an event from the table. (#797)
 - Added suggested books and licenses in the source input form. (#841)
@@ -87,6 +105,7 @@
   - Potency displays will automatically use these glyphs. (#1270)
 - Improved handling of private messages for power and damage rolls. (#1221)
 - Active Effect origins now use relative UUIDs whenever possible, reducing the amount of Unknown sources. (#1225)
+- Added `system.recoveries.divisor` for adjusting the ratio of stamina to recovery value. (#1336)
 - In the Power Roll Dialog, when hovering a target's name and modifiers, the target's token will be highlighted as well.
 - Added `game.combats.isDefaultInitiativeMode` as a boolean for default vs. alternative initiative modes.
 - Creating crafting projects from treasures will now use the treasure image as the project image.
@@ -112,6 +131,8 @@
 - Sealed the characteristics object to prevent adding or removing characteristics.
 - PseudoDocument.create now returns the pseudo document instead of the parent.
 - Widened space for advancement labels to reduce need for line wrapping.
+- Items created with a default name (e.g. "Ability") will no longer have their _dsid set, instead allowing it to remain blank.
+- Item grant advancements can now always be reconfigured whether or not they're a choice to recreate the associated items.
 
 ### Removed
 
@@ -131,6 +152,7 @@
   - Corrected attribute key for Acolyte of Fire. (#1151)
   - Corrected the spelling of the Troubador's Power Chord ability. (#1153)
   - Corrected AE path for fire weakness in the Host complication. (#1325)
+  - Corrected AE types on multiple Conduit prayers. (#1376)
   - Talent Choke ability didn't have the characteristic selected for the potency and had an unnecessary Active Effect.
   - Corrected damage values for the censor's "Your Allies Cannot Save You".
   - Added missing damage type to the elementalist's Grasp of Beyond.
@@ -138,6 +160,9 @@
   - Corrected keywords on Tactician's "Now".
   - Corrected text on Vanguard's Parry.
   - Corrected the skill grant on the Shipwrecked complication.
+  - Added missing potency characteristics to Purifying Fire, Optic Blast, and Smolder.
+  - Moved the erroneous inclusion of a push in the tier 1 result of the fury's "Back!" to tier 2.
+  - Corrected action type for Berserker "Wrecking Ball".
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
@@ -150,11 +175,14 @@
     - Corrected the description of the Destructive Path feature per errata.
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
+  - Added missing potency characteristics to abilities on the Rival Tactician, Wode Hag, and Ghost.
+  - Corrected data path for "Imposter" animal trait.
 - Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
 - Stability is properly capped at a minimum of 0. (#1308)
+- Fixed save threshold adjustments not being applied. (#1390)
 - Fixed broken image links in the in-game documentation.
 
 ## 0.8.1

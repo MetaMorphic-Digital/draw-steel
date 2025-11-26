@@ -95,6 +95,7 @@ export default class HeroModel extends BaseActorModel {
     super.prepareBaseData();
 
     this.recoveries.bonus = 0;
+    this.recoveries.divisor = 3;
 
     const kitBonuses = {
       stamina: 0,
@@ -178,7 +179,7 @@ export default class HeroModel extends BaseActorModel {
     super.prepareDerivedData();
 
     // allows for stamina bonuses to apply first
-    this.recoveries.recoveryValue = Math.floor(this.stamina.max / 3) + this.recoveries.bonus;
+    this.recoveries.recoveryValue = Math.floor(this.stamina.max / this.recoveries.divisor) + this.recoveries.bonus;
 
     // Winded is set in the base classes derived data, so this needs to run after
     this.stamina.min = -this.stamina.winded;

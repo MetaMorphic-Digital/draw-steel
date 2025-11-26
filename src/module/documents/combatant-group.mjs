@@ -130,7 +130,7 @@ export default class DrawSteelCombatantGroup extends foundry.documents.Combatant
     const type = tokens.some(t => t.actor?.system.isMinion) ? "squad" : "base";
     const group = await this.create({
       type,
-      name: tokens.every(t => t.actor?.name === actorName) ? actorName : this.defaultName({ type, parent: this.viewed }),
+      name: tokens.every(t => t.actor?.name === actorName) ? actorName : this.defaultName({ type, parent: combat }),
       img: tokens.every(t => t.texture.src === tokenImage) ? tokenImage : null,
     }, { parent: combat });
     const updateData = combatants.map(c => ({ _id: c.id, group: group.id }));

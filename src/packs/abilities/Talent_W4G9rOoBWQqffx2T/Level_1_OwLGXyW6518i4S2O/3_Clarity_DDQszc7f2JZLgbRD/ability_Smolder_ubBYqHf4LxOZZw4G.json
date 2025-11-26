@@ -69,6 +69,9 @@
                   "condition": "failure",
                   "end": "save"
                 }
+              },
+              "potency": {
+                "characteristic": "reason"
               }
             },
             "tier2": {
@@ -83,7 +86,8 @@
               "display": "{{potency}}, the target has weakness equal to 5 + your Reason score (save ends)",
               "effects": {
                 "LUcaVS8NL6mNDwb6": {
-                  "condition": "failure"
+                  "condition": "failure",
+                  "end": ""
                 }
               }
             }
@@ -209,9 +213,9 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.347",
+    "coreVersion": "13.350",
     "systemId": "draw-steel",
-    "systemVersion": "0.8.0",
+    "systemVersion": "0.9.0",
     "createdTime": 1755872266582,
     "modifiedTime": null,
     "lastModifiedBy": null

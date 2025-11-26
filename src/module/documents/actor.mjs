@@ -92,15 +92,26 @@ export default class DrawSteelActor extends BaseDocumentMixin(foundry.documents.
     const attribute = "stamina";
     const isBar = true;
     const combatGroup = (this.system.combatGroups.size === 1) ? this.system.combatGroup : null;
-    const current = (this.isMinion && combatGroup) ? combatGroup.system.staminaValue : this.system.stamina.value;
-    const update = isDelta ? current + value : value;
-
-    if (this.isMinion && combatGroup) return combatGroup.update({ "system.staminaValue": update });
-
-    if (update === current) return this;
-
-    // Determine the updates to make to the actor data
-    const updates = { "system.stamina.value": Math.clamp(update, this.system.stamina.min, this.system.stamina.max) };
+    if (this.isMinion && combatGroup) {
+      const update = isDelta ? combatGroup.system.staminaValue + value : value;
+      return combatGroup.update({ "system.staminaValue": update });
+    }
+    const { value: current, temporary, min, max } = this.system.stamina;
+    const delta = isDelta ? (-1 * value) : current + temporary - value;
+    
+    if (!delta) return this;
+    
+    const updates = {};
+    if (delta < 0) {
+      // Healing modifies only stamina value
+      updates["system.stamina.value"] = Math.clamp(current - delta, min, max);
+    } else {
+      // Damage first affects temporary stamina, then stamina value
+      const tempDamage = Math.min(delta, temporary);
+      const valueDamage = Math.max(0, delta - tempDamage);
+      updates["system.stamina.temporary"] = Math.max(0, temporary - tempDamage);
+      if (valueDamage) updates["system.stamina.value"] = Math.clamp(current - valueDamage, min, max);
+    }
 
     // Allow a hook to override these changes
     const allowed = Hooks.call("modifyTokenAttribute", { attribute, value, isDelta, isBar }, updates, this);

@@ -40,7 +40,7 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
     if (allowed === false) return false;
 
     // Check if actor has immunity to any statuses being applied by this effect
-    const immuneList = this.statuses.filter(statusId => this.parent?.system.conditions?.immunities.has(statusId));
+    const immuneList = this.statuses.filter(statusId => this.parent?.system.statuses?.immunities.has(statusId));
 
     if (immuneList.size) {
       // Warn the user with a list of condition names
@@ -48,6 +48,26 @@ export default class DrawSteelActiveEffect extends foundry.documents.ActiveEffec
       const formattedConditions = formatter.format(immuneList.map(id => game.i18n.localize(ds.CONFIG.conditions[id]?.name ?? id)));
 
       ui.notifications.warn("DRAW_STEEL.ActiveEffect.ImmunityWarning", { localize: true, format: { conditions: formattedConditions } });
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onCreate(data, options, userId) {
+    super._onCreate(data, options, userId);
+    if (this.modifiesActor && this.statuses.has("prone")) {
+      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
+    }
+  }
+
+  /* -------------------------------------------------- */
+
+  /** @inheritdoc */
+  _onDelete(options, userId) {
+    super._onDelete(options, userId);
+    if (this.modifiesActor && this.statuses.has("prone")) {
+      for (const token of this.target.getDependentTokens()) token.refreshMovementAction();
     }
   }
 

@@ -38,6 +38,7 @@ declare module "./base.mjs" {
       winded: number;
       bonuses: {
         echelon: number;
+        level: number;
       }
     },
     characteristics: Record<string, { value: number }>;
@@ -50,7 +51,7 @@ declare module "./base.mjs" {
         threshold: number;
       }
     }
-    biography: Biography
+    biography: Biography;
     movement: {
       value: number;
       types: Set<string>;
@@ -58,12 +59,19 @@ declare module "./base.mjs" {
       disengage: number;
       teleport: number | null;
       multiplier: number;
-      /** Only defined for heroes */
+      /** Only defined for heroes. */
       kitBonus?: number;
     }
     damage: {
       immunities: Record<string, number>;
       weaknesses: Record<string, number>;
+    }
+    statuses: {
+      immunities: Set<string>;
+      slowed: {
+        speed: number;
+      };
+      flankable: boolean;
     }
     potency: {
       bonuses: number;
@@ -84,6 +92,7 @@ declare module "./hero.mjs" {
     recoveries: BarAttribute & {
       bonus: number;
       recoveryValue: number;
+      divisor: number;
     };
     hero: {
       primary: HeroicResource;
