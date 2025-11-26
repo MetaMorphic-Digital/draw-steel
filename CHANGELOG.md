@@ -18,6 +18,24 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+- Implemented Summoning. (#583)
+  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added `potency` as a new ability modifier key to increase the potency of abilities. (#1350)
+
+### Changed
+
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+
+### Fixed
+
 ## 0.9.0
 
 ### Added
@@ -144,6 +162,7 @@
   - Corrected the skill grant on the Shipwrecked complication.
   - Added missing potency characteristics to Purifying Fire, Optic Blast, and Smolder.
   - Moved the erroneous inclusion of a push in the tier 1 result of the fury's "Back!" to tier 2.
+  - Corrected action type for Berserker "Wrecking Ball".
 - Director-Facing Compendium Data fixes:
   - Implemented the "custom" target text for many abilities.
   - Converted "With Captain" features to "With Captain" effects.
@@ -157,11 +176,13 @@
   - Radenwight "Trouser Cut" applies a custom "Pantsed" effect. (#1146)
   - Corrected monster roles to the Grulqin, Orliq, and Wobalas. (#1173)
   - Added missing potency characteristics to abilities on the Rival Tactician, Wode Hag, and Ghost.
+  - Corrected data path for "Imposter" animal trait.
 - Fixed "undefined" target value for abilities created on an actor sheet. (#1138)
 - Fixed active effects not sorting on actor and item sheets. (#1149)
 - Addressed the SortingHelpers.performIntegerSort depreciation warning. (#1155)
 - Fixed issues with "Alternative" initiative. (#1168)
 - Stability is properly capped at a minimum of 0. (#1308)
+- Fixed save threshold adjustments not being applied. (#1390)
 - Fixed broken image links in the in-game documentation.
 
 ## 0.8.1
