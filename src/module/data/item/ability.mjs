@@ -191,11 +191,11 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          const formulaField = DamagePowerRollEffect.schema.getField(bonus.key);
+          const field = DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
-          foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
         }
       }
 
@@ -521,7 +521,15 @@ export default class AbilityModel extends BaseItemModel {
 
           const damageLabel = ds.CONFIG.damageTypes[damageType]?.label ?? damageType ?? "";
           const flavor = game.i18n.format("DRAW_STEEL.Item.ability.DamageFlavor", { type: damageLabel });
-          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, { flavor, type: damageType });
+
+          // Extract ignoredImmunities from the damage effect
+          const ignoredImmunities = Array.from(damageEffect.ignoredImmunities);
+
+          const damageRoll = new DamageRoll(String(damageEffect.value), rollData, {
+            flavor,
+            type: damageType,
+            ignoredImmunities,
+          });
           await damageRoll.evaluate();
           messageDataCopy.rolls.push(damageRoll);
         }

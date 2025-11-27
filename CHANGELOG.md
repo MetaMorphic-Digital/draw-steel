@@ -26,7 +26,10 @@
   - Leveled Treasures
 - Implemented Summoning. (#583)
   - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
-- Added `potency` as a new ability modifier key to increase the potency of abilities. (#1350)
+- New ability modifier keys
+  - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
+  - Added `keyword` to add keywords to abilities. (#1322)
+  - Added `potency` to adjust the potency of abilities. (#1350)
 
 ### Changed
 
