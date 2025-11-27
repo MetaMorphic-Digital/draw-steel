@@ -199,6 +199,18 @@ export default class AbilityModel extends BaseItemModel {
         }
       }
 
+      const forcedPrefix = "forced.";
+      if (bonus.key.startsWith(forcedPrefix)) {
+        const key = bonus.key.substring(forcedPrefix.length);
+        // Apply forced movement bonuses to all forced movement effects
+        const forcedEffects = this.power.effects.filter(effect => effect.type === "forced");
+        for (const effect of forcedEffects) {
+          const currentBonuses = foundry.utils.getProperty(effect, "bonuses") ?? {};
+          // Bonus change objects are stored as strings, convert to Number
+          foundry.utils.setProperty(effect, "bonuses", { ...currentBonuses, [key]: Number(bonus.value) });
+        }
+      }
+
       if (bonus.key === "potency") {
         // For potency effects, apply to all power roll effects and all tiers
         for (const effect of this.power.effects) {

@@ -226,8 +226,15 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier1.value`|Give a bonus to the first damage effect's tier 1 damage|
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
+|`forced.push`|Give a bonus to push movement distance|
+|`forced.pull`|Give a bonus to pull movement distance|
+|`forced.slide`|Give a bonus to slide movement distance|
 |`keyword`|Add a keyword to an ability|
 |`potency`|Give a bonus to all potency values|
 
-**Note:** For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+**Notes:**
+- For `forced...`:
+  - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
+  - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
+- For `keyword`, use the "Add" change mode with values like `magic` or `strike`
 
