@@ -16,6 +16,8 @@ Applied effects allow abilities to apply conditions to actors. This application 
 
 Forced Movement effects allow specifying the direction and distance of an ability that pushes, pulls, or slides. There is currently no automation for this feature; owners of the appropriate tokens must apply the position changes themselves.
 
+You can specify bonuses for each type of forced movement (push, pull, and slide). These bonuses are added to the base distance when calculating the final movement amount. The bonuses apply only to their matching movement type. See **Ability Modifiers** under **Active Effects** for details.
+
 ## Other
 
 The Other type is a catch-all for anything that does not fit into the other categories and includes just text displays.
