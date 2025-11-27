@@ -1,3 +1,4 @@
+import { systemID } from "./constants.mjs";
 import { pseudoDocuments } from "./data/_module.mjs";
 import { preLocalize } from "./helpers/localization.mjs";
 
@@ -833,10 +834,33 @@ export const hero = {
     "Compendium.draw-steel.abilities.Item.QXOkflcYF6DITJE3",
   ]),
   /**
-   * XP progression for heroes.
+   * XP advancement options for heroes.
+   */
+  xp_tracks: {
+    normal: {
+      label: "DRAW_STEEL.Setting.XPAdvancement.NormalSpeed",
+      track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
+    },
+    double: {
+      label: "DRAW_STEEL.Setting.XPAdvancement.DoubleSpeed",
+      track: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72],
+    },
+    half: {
+      label: "DRAW_STEEL.Setting.XPAdvancement.HalfSpeed",
+      track: [0, 32, 64, 96, 128, 160, 192, 224, 256, 288],
+    },
+  },
+  /**
+   * The chosen XP advancement option from the settings.
    * @type {number[]}
    */
-  xp_track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
+  get xp_track() {
+    const xpSetting = game.settings.get(systemID, "xpAdvancement");
+    // In case a module added track is removed.
+    const fallbackTrack = ds.CONFIG.hero.xp_tracks.normal;
+
+    return ds.CONFIG.hero.xp_tracks[xpSetting]?.track ?? fallbackTrack;
+  },
   /**
    * Ways to spend hero tokens.
    * @type {Record<string, {label: string, tokens: number, messageContent: string}>}
