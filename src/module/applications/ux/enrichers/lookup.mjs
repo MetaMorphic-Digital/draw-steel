@@ -26,16 +26,14 @@ export async function enricher(match, options) {
   const parsedConfig = parseConfig(config);
   parsedConfig._input = match[0];
 
-  parsedConfig.formulaPath = parsedConfig.path ?? parsedConfig.formula;
-
   for (const val of parsedConfig.values) {
     const normalizedValue = val.toLowerCase();
     if (["capitalize", "lowercase", "uppercase"].includes(normalizedValue)) parsedConfig.style ??= normalizedValue;
     else if (normalizedValue === "evaluate") parsedConfig.evaluate = true;
-    else parsedConfig.formulaPath ??= val;
+    else parsedConfig.formula ??= val;
   }
 
-  if (!parsedConfig.formulaPath) {
+  if (!parsedConfig.formula) {
     console.warn(`Lookup path must be defined to enrich ${config._input}.`);
     return null;
   }
@@ -44,9 +42,9 @@ export async function enricher(match, options) {
 
   /** @type {string | number} */
   let value;
-  if (parsedConfig.evaluate) value = ds.utils.evaluateFormula(parsedConfig.formulaPath, data, { contextName: "lookup" });
+  if (parsedConfig.evaluate) value = ds.utils.evaluateFormula(parsedConfig.formula, data, { contextName: "lookup" });
   else {
-    value = foundry.utils.getProperty(data, parsedConfig.formulaPath.substring(1)) ?? fallback;
+    value = foundry.utils.getProperty(data, parsedConfig.formula.substring(1)) ?? fallback;
 
     switch (parsedConfig.style) {
       case "capitalize":
@@ -65,7 +63,7 @@ export async function enricher(match, options) {
   span.classList.add("lookup-value");
   if (!value && (options.documents === false)) return null;
   else if (!value) span.classList.add("not-found");
-  span.innerText = value ?? parsedConfig.formulaPath;
+  span.innerText = value ?? parsedConfig.formula;
   return span;
 }
 
