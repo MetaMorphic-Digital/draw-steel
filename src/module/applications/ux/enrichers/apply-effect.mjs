@@ -6,7 +6,7 @@ import { createLink, parseConfig } from "../helpers.mjs";
  * @import { TextEditorEnricher, TextEditorEnricherConfig } from "@client/config.mjs";
  * @import HTMLEnrichedContentElement from "@client/applications/elements/enriched-content.mjs";
  * @import { ParsedConfig } from "../helpers.mjs";
- * @import { DrawSteelActor, DrawSteelItem } from "../../../documents/_module.mjs";
+ * @import { DrawSteelItem } from "../../../documents/_module.mjs";
  */
 
 /** @type {TextEditorEnricherConfig["id"]} */
