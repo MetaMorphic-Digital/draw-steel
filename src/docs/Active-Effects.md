@@ -140,7 +140,9 @@ While there are similarities with roll data, active effects generally lead with 
 |Value Name|Attribute Key|
 |:---:|---|
 |Save Bonus|`system.combat.save.bonus`|
-|Actor Size (on sheet, not token size)|`system.combat.size`|
+|Save Threshold|`system.combat.save.threshold`|
+|Actor Size (on sheet, not token size)|`system.combat.size.value`|
+|Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
@@ -225,5 +227,7 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier2.value`|Give a bonus to the first damage effect's tier 2 damage|
 |`damage.tier3.value`|Give a bonus to the first damage effect's tier 3 damage|
 |`keyword`|Add a keyword to an ability|
+|`potency`|Give a bonus to all potency values|
 
 **Note:** For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+

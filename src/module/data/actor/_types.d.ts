@@ -59,7 +59,7 @@ declare module "./base.mjs" {
       disengage: number;
       teleport: number | null;
       multiplier: number;
-      /** Only defined for heroes */
+      /** Only defined for heroes. */
       kitBonus?: number;
     }
     damage: {

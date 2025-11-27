@@ -36,7 +36,7 @@
       "effects": {}
     },
     "effect": {
-      "before": "<p>You gain [[/heal 10 temp]]. Additionally, choose acid, cold, corruption, fire, lightning, poison, or sonic damage. Until the end of the encounter or until you are dying, whenever an enemy damages you, they take 10 damage of the chosen type. If this damage reduces the enemy to 0 Stamina, you gain [[/heal 10 temp]].</p>",
+      "before": "<p>You gain [[/heal 10 temp]]. Additionally, choose acid, cold, corruption, fire, lightning, poison, or sonic damage. Until the end of the encounter or until you are dying, whenever an enemy damages you, they take [[/damage 10 type=acid/cold/corruption/fire/lightning/poison/sonic]] damage of the chosen type. If this damage reduces the enemy to 0 Stamina, you gain [[/heal 10 temp]].</p>",
       "after": ""
     },
     "spend": {
