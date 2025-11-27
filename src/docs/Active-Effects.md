@@ -229,8 +229,12 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`forced.push`|Give a bonus to push movement distance|
 |`forced.pull`|Give a bonus to pull movement distance|
 |`forced.slide`|Give a bonus to slide movement distance|
+|`keyword`|Add a keyword to an ability|
 |`potency`|Give a bonus to all potency values|
 
-**Behavior:**
-- Type-specific bonuses (push/pull/slide) apply only to their matching movement types
-- Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
+**Notes:**
+- For `forced...`:
+  - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
+  - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
+- For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+
