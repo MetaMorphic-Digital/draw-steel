@@ -126,7 +126,7 @@ export default class AdvancementChain {
       }
     } else if (advancement.type === "characteristic") {
       for (const [chr, { label }] of Object.entries(ds.CONFIG.characteristics)) {
-        if (advancement.characteristics[chr] === -1) continue;
+        if (!(advancement.characteristics[chr] >= 0)) continue;
 
         const choice = node.choices[chr] = {
           node,
