@@ -143,6 +143,15 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
+    // Apply keyword modifiers first to ensure later effects operate on the modified set
+    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
+      if (bonus.key !== "keyword") continue;
+      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
+      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+
+      this.keywords.add(bonus.value);
+    }
+
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
 
