@@ -23,6 +23,7 @@
 ### Fixed
 
 - Player-Facing Compendium Data Fixes:
+- Fixed an issue where double-guaranteed characteristic advances would give bonuses to all characteristics instead of only two.
 
 ## 0.9.0
 
