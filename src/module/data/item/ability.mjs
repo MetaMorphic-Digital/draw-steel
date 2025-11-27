@@ -143,6 +143,15 @@ export default class AbilityModel extends BaseItemModel {
    * @protected
    */
   _applyAbilityBonuses() {
+    // Apply keyword modifiers first to ensure later effects operate on the modified set
+    for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
+      if (bonus.key !== "keyword") continue;
+      if (bonus.mode !== CONST.ACTIVE_EFFECT_MODES.ADD) continue;
+      if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
+
+      this.keywords.add(bonus.value);
+    }
+
     for (const bonus of (this.actor.system._abilityBonuses ?? [])) {
       if (!bonus.filters.keywords.isSubsetOf(this.keywords)) continue;
 
@@ -187,6 +196,18 @@ export default class AbilityModel extends BaseItemModel {
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
           foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
+        }
+      }
+
+      const forcedPrefix = "forced.";
+      if (bonus.key.startsWith(forcedPrefix)) {
+        const key = bonus.key.substring(forcedPrefix.length);
+        // Apply forced movement bonuses to all forced movement effects
+        const forcedEffects = this.power.effects.filter(effect => effect.type === "forced");
+        for (const effect of forcedEffects) {
+          const currentBonuses = foundry.utils.getProperty(effect, "bonuses") ?? {};
+          // Bonus change objects are stored as strings, convert to Number
+          foundry.utils.setProperty(effect, "bonuses", { ...currentBonuses, [key]: Number(bonus.value) });
         }
       }
 

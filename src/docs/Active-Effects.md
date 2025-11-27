@@ -229,6 +229,16 @@ Ability modifiers support a far more limited set of keys, but still use the same
 |`damage.tier1.ignoredImmunities`|Add immunity types to ignore for tier 1 damage (use "Add" mode)|
 |`damage.tier2.ignoredImmunities`|Add immunity types to ignore for tier 2 damage (use "Add" mode)|
 |`damage.tier3.ignoredImmunities`|Add immunity types to ignore for tier 3 damage (use "Add" mode)|
+|`forced.push`|Give a bonus to push movement distance|
+|`forced.pull`|Give a bonus to pull movement distance|
+|`forced.slide`|Give a bonus to slide movement distance|
+|`keyword`|Add a keyword to an ability|
 |`potency`|Give a bonus to all potency values|
 
-**Note:** For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
+**Notes:**
+- For `forced...`:
+  - Type-specific bonuses (push/pull/slide) apply only to their matching movement types
+  - Forced movement bonuses apply across all tiers; there is no way to target bonuses per tier
+- For `ignoredImmunities`, use the "Add" change mode with values like `fire`, `cold`, `lightning`, or `all` to ignore all damage immunities.
+- For `keyword`, use the "Add" change mode with values like `magic` or `strike`
+
