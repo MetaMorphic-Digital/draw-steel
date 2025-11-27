@@ -191,11 +191,11 @@ export default class AbilityModel extends BaseItemModel {
         }
 
         if (applyBonus) {
-          const formulaField = DamagePowerRollEffect.schema.getField(bonus.key);
+          const field = DamagePowerRollEffect.schema.getField(bonus.key);
           const firstDamageEffect = this.power.effects.find(effect => effect.type === "damage");
           if (!firstDamageEffect) return;
           const currentValue = foundry.utils.getProperty(firstDamageEffect, bonus.key);
-          foundry.utils.setProperty(firstDamageEffect, bonus.key, formulaField.applyChange(currentValue, this, bonus));
+          foundry.utils.setProperty(firstDamageEffect, bonus.key, field.applyChange(currentValue, this, bonus));
         }
       }
 
