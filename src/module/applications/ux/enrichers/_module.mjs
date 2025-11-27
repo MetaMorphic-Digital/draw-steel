@@ -7,4 +7,5 @@
 
 export * as applyEffect from "./apply-effect.mjs";
 export * as lookup from "./lookup.mjs";
+export * as reference from "./reference.mjs";
 export * as roll from "./roll.mjs";
