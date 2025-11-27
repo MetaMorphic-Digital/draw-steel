@@ -18,6 +18,12 @@
 ### Known Issues
 -->
 
+## 0.9.1
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+
 ## 0.9.0
 
 ### Added
