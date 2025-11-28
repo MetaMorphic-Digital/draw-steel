@@ -18,6 +18,7 @@ globalThis.ds = {
   utils,
   CONST: DS_CONST,
   CONFIG: DS_CONFIG,
+  registry: new helpers.DrawSteelRegistry(),
 };
 
 // Register custom elements.
@@ -190,6 +191,9 @@ Hooks.once("ready", async function () {
       return false;
     }
   });
+
+  await ds.registry.initialize();
+
   Hooks.callAll("ds.ready");
   console.log(DS_CONST.ASCII);
 });
