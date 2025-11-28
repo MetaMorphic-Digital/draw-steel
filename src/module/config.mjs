@@ -836,7 +836,7 @@ export const hero = {
   /**
    * XP advancement options for heroes.
    */
-  xp_tracks: {
+  xpTracks: {
     normal: {
       label: "DRAW_STEEL.Setting.XPAdvancement.NormalSpeed",
       track: [0, 16, 32, 48, 64, 80, 96, 112, 128, 144],
@@ -854,12 +854,21 @@ export const hero = {
    * The chosen XP advancement option from the settings.
    * @type {number[]}
    */
-  get xp_track() {
+  get xpTrack() {
     const xpSetting = game.settings.get(systemID, "xpAdvancement");
     // In case a module added track is removed.
-    const fallbackTrack = ds.CONFIG.hero.xp_tracks.normal;
+    const fallbackTrack = ds.CONFIG.hero.xpTracks.normal?.track ?? Object.values(ds.CONFIG.hero.xpTracks)[0].track;
 
-    return ds.CONFIG.hero.xp_tracks[xpSetting]?.track ?? fallbackTrack;
+    return ds.CONFIG.hero.xpTracks[xpSetting]?.track ?? fallbackTrack;
+  },
+  /**
+   * A deprecated version of {@linkcode ds.CONFIG.hero.xpTrack}.
+   */
+  get xp_track () {
+    foundry.utils.logCompatibilityWarning("ds.CONFIG.hero.xp_track is deprecated. To get the currently configured "
+      + "xp track use ds.CONFIG.hero.xpTrack instead. Setting an xp track "
+      + "has moved to an object in ds.CONFIG.hero.xpTracks.", { since: "0.10.0", until: "0.12.0" });
+    return ds.CONFIG.hero.xpTrack;
   },
   /**
    * Ways to spend hero tokens.

@@ -83,7 +83,7 @@ export default class DrawSteelSettingsHandler {
       xpAdvancement: {
         name: "DRAW_STEEL.Setting.XPAdvancement.Label",
         hint: "DRAW_STEEL.Setting.XPAdvancement.Hint",
-        type: new fields.StringField({ choices: ds.CONFIG.hero.xp_tracks, initial: "normal", required: true }),
+        type: new fields.StringField({ choices: ds.CONFIG.hero.xpTracks, initial: "normal", required: true }),
         config: true,
         scope: "world",
         onChange: () => {
