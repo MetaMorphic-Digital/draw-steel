@@ -20,22 +20,21 @@ export const pattern = /\[\[reference (?<config>[^\]]+)]](?:{(?<label>[^}]+)})?/
  * @type {TextEditorEnricher}
  */
 export async function enricher(match, options) {
-  let { config, label: fallback } = match.groups;
-  config = parseConfig(config);
+  const { config, label: fallback } = match.groups;
+  const parsedConfig = parseConfig(config);
 
-  if (!("id" in config)) {
-    const id = config.values.find(k => k in ds.CONFIG.references);
-    if (!id) return null;
-    config.id = id;
+  for (const value of parsedConfig.values) {
+    if (value in ds.CONFIG.references) parsedConfig.id ??= value;
   }
 
-  const uuid = ds.CONFIG.references[config.id];
+  const uuid = ds.CONFIG.references[parsedConfig.id];
+  if (!uuid) return null;
   const page = await fromUuid(uuid);
   if (!page || (page.type !== "reference")) return null;
 
   const dataset = {
-    referenceId: config.id,
-    tooltipHtml: game.tooltip.constructor.constructHTML({ uuid }),
+    referenceId: parsedConfig.id,
+    tooltipHtml: CONFIG.ux.TooltipManager.constructHTML({ uuid }),
   };
   const label = fallback?.trim() || page.name;
   return createLink(label, dataset);
