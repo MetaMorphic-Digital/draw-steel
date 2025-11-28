@@ -144,6 +144,7 @@ While there are similarities with roll data, active effects generally lead with 
 |Actor Size (on sheet, not token size)|`system.combat.size.value`|
 |Actor Size Letter|`system.combat.size.letter`|
 |Stability|`system.combat.stability`|
+|Initiative Threshold|`system.combat.initiativeThreshold`|
 |Bonus to Potencies|`system.potency.bonuses`|
 |Maximum Stamina|`system.stamina.max`|
 |Bonus Stamina Per Echelon|`system.stamina.bonuses.echelon`|
