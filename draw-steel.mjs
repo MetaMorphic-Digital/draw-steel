@@ -75,7 +75,7 @@ Hooks.once("init", function () {
   }
 
   // Destructuring some pieces for simplification
-  const { Actors, Items } = foundry.documents.collections;
+  const { Actors, Journal, Items } = foundry.documents.collections;
   const { DocumentSheetConfig } = foundry.applications.apps;
 
   // Register sheet application classes
@@ -93,6 +93,10 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.Item",
   });
+  Journal.registerSheet(DS_CONST.systemID, applications.sheets.DrawSteelJournalEntrySheet, {
+    label: "DRAW_STEEL.SHEET.Labels.JournalEntry",
+  });
+
   DocumentSheetConfig.unregisterSheet(ActiveEffect, "core", foundry.applications.sheets.ActiveEffectConfig);
   DocumentSheetConfig.registerSheet(ActiveEffect, DS_CONST.systemID, applications.sheets.DrawSteelActiveEffectConfig, {
     makeDefault: true,
@@ -124,6 +128,13 @@ Hooks.once("init", function () {
     editor: false,
     fonts: [
       { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
+    ],
+  };
+
+  CONFIG.fontDefinitions["Draw Steel Book"] = {
+    editor: true,
+    fonts: [
+      { urls: [DS_CONST.systemPath("assets/fonts/MCDM-Book.otf")] },
     ],
   };
 });
