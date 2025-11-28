@@ -38,8 +38,11 @@ Hooks.once("init", function () {
     CONFIG[docCls.documentName].documentClass = docCls;
   }
 
-  helpers.registerHandlebars();
-  const templates = ["templates/embeds/item/ability.hbs", "templates/embeds/item/kit.hbs", "templates/embeds/item/project.hbs"].map(t => DS_CONST.systemPath(t));
+  const templates = [
+    "templates/embeds/item/ability.hbs",
+    "templates/embeds/item/kit.hbs",
+    "templates/embeds/item/project.hbs",
+  ].map(t => DS_CONST.systemPath(t));
 
   // Assign data models & setup templates
   for (const [doc, models] of Object.entries(data)) {
@@ -108,6 +111,12 @@ Hooks.once("init", function () {
     makeDefault: true,
     label: "DRAW_STEEL.SHEET.Labels.CombatantGroup",
   });
+  DocumentSheetConfig.registerSheet(
+    JournalEntryPage, DS_CONST.systemID,
+    // TODO: Implement custom sheet for Reference pages.
+    foundry.applications.sheets.journal.JournalEntryPageProseMirrorSheet,
+    { makeDefault: true, types: ["reference"] },
+  );
 
   // Register replacements for core UI elements
   Object.assign(CONFIG.ui, {
@@ -115,11 +124,21 @@ Hooks.once("init", function () {
     players: applications.ui.DrawSteelPlayers,
   });
 
+  // Register replacemnets for core ux elements.
+  Object.assign(CONFIG.ux, {
+    TooltipManager: helpers.interaction.DrawSteelTooltipManager,
+  });
+
   // Register dice rolls
   CONFIG.Dice.rolls = [rolls.DSRoll, rolls.PowerRoll, rolls.ProjectRoll, rolls.DamageRoll, rolls.SavingThrowRoll];
 
   // Register enrichers
-  CONFIG.TextEditor.enrichers = [applications.ux.enrichers.roll, applications.ux.enrichers.applyEffect, applications.ux.enrichers.lookup];
+  CONFIG.TextEditor.enrichers = [
+    applications.ux.enrichers.applyEffect,
+    applications.ux.enrichers.lookup,
+    applications.ux.enrichers.reference,
+    applications.ux.enrichers.roll,
+  ];
 
   CONFIG.fontDefinitions["Draw Steel Glyphs"] = {
     editor: false,
@@ -127,6 +146,9 @@ Hooks.once("init", function () {
       { urls: [DS_CONST.systemPath("assets/fonts/DrawSteelGlyphs-Regular.otf")] },
     ],
   };
+
+  // Register handlebars helpers. This is done after any replacement of ui/ux classes.
+  helpers.registerHandlebars();
 });
 
 /**
@@ -183,6 +205,7 @@ Hooks.once("i18nInit", () => {
 /* -------------------------------------------- */
 
 Hooks.once("ready", async function () {
+  game.tooltip.observe();
   await data.migrations.migrateWorld();
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => {

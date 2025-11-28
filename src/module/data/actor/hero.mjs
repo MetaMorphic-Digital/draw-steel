@@ -94,6 +94,8 @@ export default class HeroModel extends BaseActorModel {
   prepareBaseData() {
     super.prepareBaseData();
 
+    this.combat.initiativeThreshold = 6;
+
     this.recoveries.bonus = 0;
     this.recoveries.divisor = 3;
 

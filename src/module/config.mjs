@@ -1893,3 +1893,12 @@ export const sourceInfo = {
 };
 preLocalize("sourceInfo.books", { keys: ["label", "title"] });
 preLocalize("sourceInfo.licenses", { keys: ["label"] });
+
+/* -------------------------------------------------- */
+
+/**
+ * Record of journal entry pages of type `reference` that help display tooltips
+ * throughout the system.
+ * @type {Record<string, string>}
+ */
+export const references = {};
