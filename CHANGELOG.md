@@ -23,6 +23,9 @@
 ### Fixed
 
 - Player-Facing Compendium Data Fixes:
+  - Corrected action type for the 1st & 2nd Grave Domain abilities for the Censor and Conduit.
+- Normalized scrollbar experience across browsers for document sheet tabs. (#1385)
+- Fixed interaction with AE subtypes provided by modules. (#1412)
 - Fixed an issue where double-guaranteed characteristic advances would give bonuses to all characteristics instead of only two.
 
 ## 0.9.0
