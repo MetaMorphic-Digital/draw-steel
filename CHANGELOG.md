@@ -42,6 +42,21 @@
 
 ### Fixed
 
+## 0.9.1
+
+### Fixed
+
+- Player-Facing Compendium Data Fixes:
+  - Corrected action type for the 1st & 2nd Grave Domain abilities for the Censor and Conduit.
+- Director-Facing Compendium Data Fixes:
+  - Corrected a typo in the Arixx's Solo Monster trait.
+  - Corrected a typo in the High Elf malice feature "Gift from an Accursed Tome".
+  - Corrected a typo in the Human Knave's "I'm Your Enemy".
+  - Corrected a typo in the Orc Eye of Grole's "Elemental Affinity" feature.
+- Normalized scrollbar experience across browsers for document sheet tabs. (#1385)
+- Fixed interaction with AE subtypes provided by modules. (#1412)
+- Fixed an issue where double-guaranteed characteristic advances would give bonuses to all characteristics instead of only two.
+
 ## 0.9.0
 
 ### Added
