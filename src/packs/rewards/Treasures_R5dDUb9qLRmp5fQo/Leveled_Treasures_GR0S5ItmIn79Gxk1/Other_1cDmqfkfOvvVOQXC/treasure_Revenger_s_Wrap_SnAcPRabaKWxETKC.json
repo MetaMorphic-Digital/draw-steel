@@ -1,0 +1,102 @@
+{
+  "name": "Revenger’s Wrap",
+  "type": "treasure",
+  "img": "icons/equipment/back/cloak-brown-accent-brown-layered-collared-fur.webp",
+  "folder": "1cDmqfkfOvvVOQXC",
+  "effects": [
+    {
+      "name": "Revenger’s Wrap",
+      "img": "icons/equipment/back/cloak-brown-accent-brown-layered-collared-fur.webp",
+      "type": "base",
+      "origin": "Compendium.draw-steel.rewards.Item.SnAcPRabaKWxETKC",
+      "transfer": false,
+      "_id": "Ki7rH10CbjdvemKH",
+      "system": {
+        "end": {
+          "type": "turn",
+          "roll": "1d10 + @combat.save.bonus"
+        }
+      },
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "combat": null,
+        "seconds": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null,
+        "coreVersion": "13.351",
+        "systemId": "draw-steel",
+        "systemVersion": "0.10.0",
+        "createdTime": 1764196976991,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!SnAcPRabaKWxETKC.Ki7rH10CbjdvemKH"
+    }
+  ],
+  "flags": {},
+  "system": {
+    "description": {
+      "value": "<p><em>When first handled, this tattered cloak fills the mind with thoughts of revenge.</em></p><p><strong>1st Level:</strong> While you wear this cloak, any creature who damages you is marked for revenge until the end of your next turn or until another creature damages you. Any strike you make against a creature marked for revenge deals [[/damage 2]] extra damage equal to your highest characteristic score, and whenever you damage a creature marked for revenge, they are also [[/apply bleeding turn]] until the end of their next turn.</p><p><strong>5th Level:</strong> Each creature who damages you is marked for revenge until the end of your next turn. Whenever you damage a creature marked for revenge, they are also [[/apply bleeding save]].</p><p><strong>9th Level:</strong> When you have three or more creatures marked for revenge and you target one of them with an ability that targets only one creature, you target all the creatures marked for revenge, regardless of their distance from you and even if you don’t have line of effect to them.</p>",
+      "director": ""
+    },
+    "source": {
+      "book": "Heroes",
+      "page": "335",
+      "license": "Draw Steel Creator License"
+    },
+    "_dsid": "treasure",
+    "kind": "other",
+    "category": "leveled",
+    "echelon": 1,
+    "keywords": [
+      "magic",
+      "neck"
+    ],
+    "quantity": 1,
+    "project": {
+      "prerequisites": "A cloak worn by a murdered monarch",
+      "source": "Texts or lore in Caelian",
+      "rollCharacteristic": [
+        "might",
+        "reason",
+        "intuition"
+      ],
+      "yield": {
+        "amount": "1",
+        "display": ""
+      },
+      "goal": 450
+    }
+  },
+  "_id": "SnAcPRabaKWxETKC",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "draw-steel",
+    "systemVersion": "0.10.0",
+    "createdTime": 1763173310918,
+    "modifiedTime": null,
+    "lastModifiedBy": null
+  },
+  "_key": "!items!SnAcPRabaKWxETKC"
+}

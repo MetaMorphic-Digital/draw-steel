@@ -164,6 +164,10 @@
         "types": {
           "label": "Damage Types"
         },
+        "ignoredImmunities": {
+          "label": "Ignored Immunities",
+          "hint": "Select which damage immunity types this effect should ignore. Select 'All Immunities' to ignore all immunities."
+        },
         "display": {
           "label": "Display",
           "hint": "'{{potency}}' will be replaced with the derived potency info (i.e. M<2).",
@@ -219,6 +223,8 @@
         "formatted": "{value} {damageTypes} damage",
         "formattedTypeless": "{value} damage",
         "formattedPotency": "{potency} {damage}",
+        "IgnoresAllImmunities": "ignores all immunities",
+        "IgnoresImmunities": "ignores {types} immunity",
         "Properties": {
           "IgnoresImmunity": "Ignores Immunities"
         }
@@ -679,6 +685,17 @@
       },
       "DamageNotification": {
         "ImmunityReducedToZero": "{name}'s immunities have reduced the damage to zero."
+      },
+      "Summoning": {
+        "Errors": {
+          "TOKEN_CREATE": "You do not have permission to create new Tokens!",
+          "WILDCARD": "You must have 'Use File Browser' permissions to summon creatures with wildcard artwork."
+        }
+      }
+    },
+    "Damage": {
+      "Immunities": {
+        "All": "All Immunities"
       }
     },
     "Combat": {
@@ -691,8 +708,8 @@
         },
         "Actions": {
           "RollFirst": {
-            "Heroes": "Heroes Go First!",
-            "Enemies": "Enemies Go First!"
+            "Heroes": "The Heroes Determine Who Goes First!",
+            "Enemies": "The Director Determines Who Goes First!"
           },
           "Act": "Act",
           "Restore": "Restore Action"
@@ -1857,6 +1874,9 @@
       "project": "Project",
       "subclass": "Subclass",
       "title": "Title"
+    },
+    "JournalEntryPage": {
+      "reference": "Reference"
     },
     "PowerRollEffect": {
       "applied": "Applied Effect",

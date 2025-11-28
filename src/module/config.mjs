@@ -1365,11 +1365,6 @@ export const PowerRollEffect = {
     label: "TYPES.PowerRollEffect.damage",
     defaultImage: "icons/svg/fire.svg",
     documentClass: pseudoDocuments.powerRollEffects.DamagePowerRollEffect,
-    properties: {
-      ignoresImmunity: {
-        label: "DRAW_STEEL.POWER_ROLL_EFFECT.DAMAGE.Properties.IgnoresImmunity",
-      },
-    },
   },
   applied: {
     label: "TYPES.PowerRollEffect.applied",
@@ -1898,3 +1893,12 @@ export const sourceInfo = {
 };
 preLocalize("sourceInfo.books", { keys: ["label", "title"] });
 preLocalize("sourceInfo.licenses", { keys: ["label"] });
+
+/* -------------------------------------------------- */
+
+/**
+ * Record of journal entry pages of type `reference` that help display tooltips
+ * throughout the system.
+ * @type {Record<string, string>}
+ */
+export const references = {};

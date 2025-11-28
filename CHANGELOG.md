@@ -18,6 +18,30 @@
 ### Known Issues
 -->
 
+## 0.10.0
+
+### Added
+
+- New Player-Facing Compendium Content:
+  - Leveled Treasures
+- Implemented Summoning. (#583)
+  - Added `canvas.tokens.performTokenPlacement` as a helper method to place an actor on the canvas.
+- Added a `[[lookup]]` enricher which can be used to dynamically display document data in text. (#759)
+- Added `system.combat.initiativeThreshold` used as the threshold for which side determines who goes first in combat. (#847)
+  - Updated the Infernal Contract complication to make use of this.
+- New ability modifier keys
+  - Added `forced.pull`, `forced.push`, and `forced.slide` to adjust the distance of forced movement abilities. (#1321)
+  - Added `keyword` to add keywords to abilities. (#1322)
+  - Added `potency` to adjust the potency of abilities. (#1350)
+
+### Changed
+
+- Conditions that modify available movement actions (e.g. prone) will reset the target's movement if their current was invalid. (#431)
+- Temporary stamina now shows as part of the stamina bar. (#601)
+- Jumping movement now gets separate coloration logic just for the individual segment, based on the actor's might or agility.
+
+### Fixed
+
 ## 0.9.1
 
 ### Fixed
