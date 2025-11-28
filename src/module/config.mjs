@@ -867,7 +867,7 @@ export const hero = {
   get xp_track () {
     foundry.utils.logCompatibilityWarning("ds.CONFIG.hero.xp_track is deprecated. To get the currently configured "
       + "xp track use ds.CONFIG.hero.xpTrack instead. Setting an xp track "
-      + "has moved to an object in ds.CONFIG.hero.xpTracks.", { since: "0.10.0", until: "0.12.0" });
+      + "has moved to an object in ds.CONFIG.hero.xpTracks.", { since: "0.10.0", until: "0.12.0", once: true });
     return ds.CONFIG.hero.xpTrack;
   },
   /**
