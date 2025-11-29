@@ -49,8 +49,9 @@ export default class GainResourcePowerRollEffect extends BasePowerRollEffect {
 
   /* -------------------------------------------------- */
 
-  /** @type {Intl.PluralRules} */
-  static pluralRules;
+  /** The i18n plural rules to apply.
+   * @type {Intl.PluralRules | null} */
+  static pluralRules = null;
 
   /* -------------------------------------------------- */
 
