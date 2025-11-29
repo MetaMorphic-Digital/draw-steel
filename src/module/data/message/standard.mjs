@@ -77,7 +77,7 @@ export default class StandardModel extends foundry.abstract.TypeDataModel {
       if (!part.visible) continue;
       Object.assign(context, { part, index: i });
       await part._prepareContext(context);
-      const htmlString = foundry.applications.handlebars.renderTemplate(part.constructor.TEMPLATE, context);
+      const htmlString = await foundry.applications.handlebars.renderTemplate(part.constructor.TEMPLATE, context);
       const html = foundry.utils.parseHTML(`<section data-message-part="${i}">${htmlString}</section>`);
       part._addListeners(html, context);
       element.insertAdjacentElement("beforeend", html);
