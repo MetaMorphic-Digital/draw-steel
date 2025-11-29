@@ -70,6 +70,31 @@ The `[[/test]]` enricher allows requesting specific rolls without users needing 
 - [&ZeroWidthSpace;[/test characteristic=intuition difficulty=hard]]: The characteristic and difficulty can be explicitly specified.
 - [&ZeroWidthSpace;[/test P edges=1 banes=1]]: You can specify edges and banes for the roll
 - [&ZeroWidthSpace;[/test M]]{A might test}: Brackets will replace the default text for the command.
+- [&ZeroWidthSpace;[/test A table=someTable]]: An advanced use case is linking the result text to a power roll table. The power roll table must have the following structure to be linked properly. Keep in mind the risk of overly-matching `data-table` properties; the DSID of an item containing the table is a good option to ensure relative uniqueness.
+- [&ZeroWidthSpace;[/test R table=someTable difficulty=medium]] Specifying the difficulty and a table will not use the default difficulty result text but will keep the flavor text for "Easy Test", "Medium Test", or "Hard Test".
+
+```html
+<dl class="power-roll-display" data-table="someTable">
+    <dt class="tier1">
+        <p>!</p>
+    </dt>
+    <dd>
+        <p>Tier 1 Result Text.</p>
+    </dd>
+    <dt class="tier2">
+        <p>@</p>
+    </dt>
+    <dd>
+        <p>Tier 2 Result Text.</p>
+    </dd>
+    <dt class="tier3">
+        <p>#</p>
+    </dt>
+    <dd>
+        <p>Tier 3 Result Text.</p>
+    </dd>
+</dl>
+```
 
 ## Apply Effect
 
