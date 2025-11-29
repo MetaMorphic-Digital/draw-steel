@@ -1,4 +1,5 @@
 import DrawSteelChatMessage from "../../documents/chat-message.mjs";
+import "./parts/_types";
 
 declare module "./base.mjs" {
   export default interface BaseMessageModel {
